@@ -31,6 +31,7 @@
         <button type="button" class="tab active" data-tab="map">Map</button>
         <button type="button" class="tab" data-tab="emissions">Emissions</button>
         <button type="button" class="tab" data-tab="network">Network</button>
+        <button type="button" class="tab" data-tab="methods">Methods</button>
         <button type="button" class="tab" data-tab="share">Share</button>
       </nav>
     </header>
@@ -53,6 +54,10 @@
             <div id="search-suggestions" class="suggestions" role="listbox"></div>
           </div>
           <div class="toggle-stack">
+            <label class="toggle-field emissions-delegate-toggle">
+              <input type="checkbox" id="map-include-non-speaking-delegates" checked />
+              <span>Include non-speaking delegates</span>
+            </label>
             <label class="toggle-field">
               <input type="checkbox" id="connections-size-toggle" />
               <span>Size points by talks on author lists</span>
@@ -82,7 +87,7 @@
       <aside class="panel" id="network-panel" hidden>
         <div class="panel-header">
           <h2>Co-authorship network</h2>
-          <p>Connections where speakers shared authorship on ICRS talks.</p>
+          <p>Connections where speakers shared authorship on ICRS talks. Search by name, affiliation, or talk keyword (e.g. bleaching, OAE).</p>
         </div>
 
         <div class="entry-form network-controls">
@@ -90,7 +95,7 @@
             <label for="network-search-query">Search network</label>
             <input
               id="network-search-query"
-              placeholder="e.g. Miguel Mies, James Cook University"
+              placeholder="e.g. bleaching, OAE, David Suggett"
             />
             <div id="network-suggestions" class="suggestions" role="listbox"></div>
           </div>
@@ -146,7 +151,7 @@
 
         <div class="network-controls entry-form emissions-controls">
           <label class="toggle-field emissions-delegate-toggle">
-            <input type="checkbox" id="include-non-speaking-delegates" />
+            <input type="checkbox" id="include-non-speaking-delegates" checked />
             Include non-speaking delegates
           </label>
           <div class="segmented">
@@ -174,10 +179,69 @@
         </div>
       </aside>
 
+      <aside class="panel methods-panel" id="methods-panel" hidden>
+        <div class="panel-header">
+          <h2>Methods</h2>
+          <p>What this site shows and how the figures are built.</p>
+        </div>
+
+        <div class="methods-body">
+          <section class="methods-section">
+            <h3>Data sources</h3>
+            <p>
+              Speaker names, affiliations, and talk metadata come from the ICRS 2026 programme.
+              Affiliations are geocoded to institutional or country-level coordinates where a precise
+              campus location is unavailable. Non-speaking delegates are included in the emissions view
+              when enabled, using country centroids from the published delegate list.
+            </p>
+          </section>
+
+          <section class="methods-section">
+            <h3>Map</h3>
+            <p>
+              Each point is a geocoded affiliation. Point size can reflect the number of talks on
+              which affiliated speakers appear on the author list, or distance to Auckland when that
+              mode is enabled. Search matches speaker names, affiliations, talk titles, and abstract
+              text.
+            </p>
+          </section>
+
+          <section class="methods-section">
+            <h3>Network</h3>
+            <p>
+              Nodes are speakers or affiliations; edges connect people who share authorship on at least
+              one ICRS talk. Node size reflects how many talks that speaker or affiliation appears on
+              (author-list count, not co-authorship weight). Keyword search highlights nodes whose
+              talks mention a term in the title or abstract, plus their co-authors on the graph.
+            </p>
+          </section>
+
+          <section class="methods-section">
+            <h3>Travel emissions</h3>
+            <p>
+              Return-trip CO₂e is estimated per attendee from their geocoded origin to Auckland. Routes
+              use a flight-emissions model with a business-class multiplier; very short overland legs
+              may use rail or road factors. Totals aggregate by affiliation or country. Figures are
+              indicative — actual travel modes, routing, and class mix will vary.
+            </p>
+          </section>
+
+          <section class="methods-section">
+            <h3>Limitations</h3>
+            <ul>
+              <li>Geocoding is imperfect; some affiliations share a single point or fall back to country centroids.</li>
+              <li>Author lists may be incomplete or differ from final programme changes.</li>
+              <li>Emissions do not include local transport, accommodation, or conference operations.</li>
+              <li>The co-authorship network shows shared programme authorship, not citation or collaboration history outside ICRS.</li>
+            </ul>
+          </section>
+        </div>
+      </aside>
+
       <aside class="panel" id="share-panel" hidden>
         <div class="panel-header">
           <h2>Share this map</h2>
-          <p>Scan the QR code or push the link to another device.</p>
+          <p>Scan the QR code or copy the link to share.</p>
         </div>
 
         <div class="entry-form share-controls">
@@ -185,16 +249,8 @@
           <input id="share-url-input" class="share-url-input" readonly />
           <p id="share-status" class="status" aria-live="polite"></p>
           <div class="form-actions">
-            <button type="button" class="btn-primary" id="share-push-btn">Push / share</button>
-            <button type="button" class="btn-ghost" id="share-copy-btn">Copy link</button>
+            <button type="button" class="btn-primary" id="share-copy-btn">Copy link</button>
           </div>
-        </div>
-
-        <div class="share-notes">
-          <p>
-            On mobile, <strong>Push / share</strong> opens your device share sheet (AirDrop,
-            Messages, email, etc.). On desktop, it copies the link instead.
-          </p>
         </div>
       </aside>
 
