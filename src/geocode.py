@@ -28,7 +28,7 @@ from rich.progress import (
 DEFAULT_CACHE_PATH = Path("data/geocode_cache.json")
 DEFAULT_OVERRIDES_PATH = Path("data/geocode_overrides.json")
 DEFAULT_COUNTRY_CACHE_PATH = Path("data/country_centroids.json")
-DEFAULT_USER_AGENT = "icrs-investigation/0.1"
+DEFAULT_USER_AGENT = "explore-icrs-2026/0.1"
 _CONSOLE = Console()
 
 # Affiliation fragments mapped to clearer geocoding queries.

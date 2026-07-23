@@ -1,6 +1,6 @@
 import QRCode from "https://esm.sh/qrcode@1.5.4";
 
-const CANONICAL_URL = "https://orlando-code.github.io/icrs-investigation/";
+const CANONICAL_URL = "https://orlando-code.github.io/explore-icrs-2026/";
 
 export function createShareView(_siteData, elements) {
   function shareUrl() {
