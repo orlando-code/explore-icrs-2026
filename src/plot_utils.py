@@ -390,18 +390,30 @@ def _affiliation_location_records(
     auckland_lat: float = AUCKLAND_LAT,
     auckland_lon: float = AUCKLAND_LON,
 ) -> list[dict[str, Any]]:
-    """Group geocoded talks by affiliation and coordinates."""
+    """Group geocoded talks by canonical affiliation."""
+    from src.geocode import affiliation_base_name, canonical_affiliation_key
+
     points = _geocoded_points(df, lat_col=lat_col, lon_col=lon_col)
     if points.empty:
         return []
 
-    grouped = points.groupby(
-        [affiliation_col, lat_col, lon_col],
-        dropna=False,
-        sort=True,
-    )
+    buckets: dict[str, list[pd.DataFrame]] = {}
+    display_name: dict[str, str] = {}
+    for _, row in points.iterrows():
+        affiliation_text = "" if pd.isna(row[affiliation_col]) else str(row[affiliation_col])
+        key = canonical_affiliation_key(affiliation_text)
+        buckets.setdefault(key, []).append(row.to_frame().T)
+        preferred = affiliation_base_name(affiliation_text) or affiliation_text
+        existing = display_name.get(key)
+        if not existing or len(preferred) < len(existing):
+            display_name[key] = preferred
+
     records: list[dict[str, Any]] = []
-    for index, ((affiliation, lat, lon), group) in enumerate(grouped, start=1):
+    for index, (key, row_frames) in enumerate(sorted(buckets.items()), start=1):
+        group = pd.concat(row_frames, ignore_index=True)
+        lat = float(group[lat_col].iloc[0])
+        lon = float(group[lon_col].iloc[0])
+
         speaker_details: list[dict[str, str]] = []
         for presenter, speaker_group in group.groupby(presenter_col, dropna=True):
             if pd.isna(presenter):
@@ -430,7 +442,7 @@ def _affiliation_location_records(
             if levels:
                 geocode_level = "institute" if "institute" in levels else str(levels[0])
 
-        affiliation_text = "" if pd.isna(affiliation) else str(affiliation)
+        affiliation_text = display_name.get(key, key)
         search_parts = [affiliation_text, *speakers]
         for item in speaker_details:
             search_parts.append(item["search_text"])
@@ -438,15 +450,15 @@ def _affiliation_location_records(
             {
                 "id": f"loc-{index:04d}",
                 "affiliation": affiliation_text,
-                "lat": float(lat),
-                "lon": float(lon),
+                "lat": lat,
+                "lon": lon,
                 "speakers": speakers,
                 "speaker_details": speaker_details,
                 "speaker_count": len(speakers),
                 "talk_count": int(len(group)),
                 "geocode_level": geocode_level,
                 "distance_km": round(
-                    _haversine_km(float(lat), float(lon), auckland_lat, auckland_lon),
+                    _haversine_km(lat, lon, auckland_lat, auckland_lon),
                     1,
                 ),
                 "search_text": " ".join(search_parts).lower(),

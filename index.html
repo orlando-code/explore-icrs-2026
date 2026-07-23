@@ -17,6 +17,35 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
+    <div class="welcome-overlay" id="welcome-overlay" hidden>
+      <div
+        class="welcome-card"
+        role="dialog"
+        aria-labelledby="welcome-title"
+        aria-modal="true"
+      >
+        <p class="hover-kicker">Welcome</p>
+        <h2 id="welcome-title">The ICRS 2026 delegate explorer</h2>
+        <p class="welcome-lead">
+          An interactive investigation of who came from where, how everyone fits together, and the travel emissions involved.
+        </p>
+        <ul class="welcome-list">
+          <li><strong>Map</strong> — speaker affiliations; search by name, institution, or talk keyword.</li>
+          <li><strong>Emissions</strong> — estimated return-trip CO₂e to Auckland (economy flights where coming from overseas or further than 400 km from Auckland).</li>
+          <li><strong>Network</strong> — co-authorship links between speakers; highlight people working in the same topics e.g. bleaching, OAE.</li>
+        </ul>
+        <p class="welcome-lead">
+          This is a simple tool and may contain errors. Contact me (Orlando) at <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a> if you find any issues.
+        </p>
+        <p class="welcome-lead">
+          Regarding the emissions – from my hotel room in Auckland it would be incredibly hypocritical of me to say that we shouldn't fly to conferences. They are invaluable opportunities to learn, collaborate, and share knowledge. But we must carefully consider the carbon cost of these connections and do everything we can to minimise our emissions in the rest of our lives. If this is something you think about a lot, I'd love to hear from you!
+        </p>
+        <button type="button" class="btn-primary welcome-dismiss" id="welcome-dismiss">
+          Get started
+        </button>
+      </div>
+    </div>
+
     <header class="topbar">
       <div class="brand">
         <h1 id="site-title">ICRS 2026 speaker affiliations</h1>
@@ -145,15 +174,23 @@
           <p>Estimated return-trip CO₂e for speakers and delegates travelling to ICRS in Auckland.</p>
         </div>
 
-        <div class="emissions-headline" id="emissions-headline"></div>
+        <div class="emissions-headline" id="emissions-headline">
+          <p class="emissions-kicker">Total estimated emissions of return travel to ICRS 2026 in Auckland</p>
+          <p class="emissions-total" id="emissions-total"></p>
+          <p class="emissions-assumption" id="emissions-assumption"></p>
+          <div class="emissions-headline-actions" id="emissions-delegate-toggle-wrap">
+            <label class="toggle-field emissions-delegate-toggle">
+              <input type="checkbox" id="include-non-speaking-delegates" checked />
+              <span>Include non-speaking delegates</span>
+            </label>
+          </div>
+          <p class="emissions-meta" id="emissions-meta"></p>
+          <p class="emissions-delegate-note" id="emissions-delegate-note" hidden></p>
+        </div>
         <div class="emissions-context" id="emissions-context"></div>
         <div class="emissions-mode-breakdown" id="emissions-mode-breakdown"></div>
 
         <div class="network-controls entry-form emissions-controls">
-          <label class="toggle-field emissions-delegate-toggle">
-            <input type="checkbox" id="include-non-speaking-delegates" checked />
-            Include non-speaking delegates
-          </label>
           <div class="segmented">
             <button type="button" class="segment active" data-emissions-mode="affiliation">
               By affiliation
@@ -182,27 +219,23 @@
       <aside class="panel methods-panel" id="methods-panel" hidden>
         <div class="panel-header">
           <h2>Methods</h2>
-          <p>What this site shows and how the figures are built.</p>
+
         </div>
 
         <div class="methods-body">
           <section class="methods-section">
             <h3>Data sources</h3>
             <p>
-              Speaker names, affiliations, and talk metadata come from the ICRS 2026 programme.
-              Affiliations are geocoded to institutional or country-level coordinates where a precise
-              campus location is unavailable. Non-speaking delegates are included in the emissions view
-              when enabled, using country centroids from the published delegate list.
+              Speaker names, affiliations, and talk metadata come from the ICRS 2026 programme and delegate list emailed to all participants.
+              Affiliations are geocoded to institutional locations (country-level coordinates are used where a precise
+              campus location is unavailable).
             </p>
           </section>
 
           <section class="methods-section">
-            <h3>Map</h3>
+            <h3>Travel emissions</h3>
             <p>
-              Each point is a geocoded affiliation. Point size can reflect the number of talks on
-              which affiliated speakers appear on the author list, or distance to Auckland when that
-              mode is enabled. Search matches speaker names, affiliations, talk titles, and abstract
-              text.
+              Return-trip CO₂e is estimated per attendee using the <a href="https://emissions.dev/" target="_blank">emissions.dev API</a>. This uses a combination of emission factors and routing data to estimate the average emissions for a given journey between two points. For everyone further than 400 km from Auckland, the journey is assumed to be by plane. Given the deficit of trains in New Zealand, the non-plane overground emissions are assumed to be by car with an occupancy of 1.54 (the <a href="https://www.nzta.govt.nz/resources/research/reports/399" target="_blank">mean occupancy in urban areas</a>).
             </p>
           </section>
 
@@ -216,22 +249,17 @@
             </p>
           </section>
 
-          <section class="methods-section">
-            <h3>Travel emissions</h3>
-            <p>
-              Return-trip CO₂e is estimated per attendee from their geocoded origin to Auckland. Routes
-              use a flight-emissions model with a business-class multiplier; very short overland legs
-              may use rail or road factors. Totals aggregate by affiliation or country. Figures are
-              indicative — actual travel modes, routing, and class mix will vary.
-            </p>
-          </section>
+
 
           <section class="methods-section">
             <h3>Limitations</h3>
             <ul>
-              <li>Geocoding is imperfect; some affiliations share a single point or fall back to country centroids.</li>
-              <li>Author lists may be incomplete or differ from final programme changes.</li>
-              <li>Emissions do not include local transport, accommodation, or conference operations.</li>
+              <li>Geocoding is imperfect; some affiliations fall back to country centroids.</li>
+              <li>
+                Travel emissions are mean values – actual route travelled will significantly affect the value.
+              </li>
+              <li>Emissions do not include local transport, accommodation, or conference operations – although we were told that the conference centre, NZICC is <a href="https://nzicc.co.nz/media-centre/nzicc-achieves-earthcheck-silver-certification/" target="_blank">EarthCheck Silver certified</a>...</li>
+              <li>The delegate/author lists are likely not completely up to date e.g. cancellations or changes to affiliations.</li>
               <li>The co-authorship network shows shared programme authorship, not citation or collaboration history outside ICRS.</li>
             </ul>
           </section>

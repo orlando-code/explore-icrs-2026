@@ -2,31 +2,55 @@
   "University of Miyazaki": {
     "latitude": 31.8301,
     "longitude": 131.4132,
-    "query_used": "override:University of Miyazaki, Japan"
+    "query_used": "override:University of Miyazaki, Japan",
+    "geocode_level": "institute"
   },
   "University of Hawai\u02bbi at Hilo": {
     "latitude": 19.7,
     "longitude": -155.0845,
-    "query_used": "override:University of Hawaii Hilo"
+    "query_used": "override:University of Hawaii Hilo",
+    "geocode_level": "institute"
   },
   "University Of Mons, Belgium": {
     "latitude": 50.464,
     "longitude": 3.9551,
-    "query_used": "override:Universite de Mons, Belgium"
+    "query_used": "override:Universite de Mons, Belgium",
+    "geocode_level": "institute"
   },
   "University of Antsiranana": {
     "latitude": -12.2834,
     "longitude": 49.3077,
-    "query_used": "override:Universite d'Antsiranana, Madagascar"
+    "query_used": "override:Universite d'Antsiranana, Madagascar",
+    "geocode_level": "institute"
   },
   "University of Salento": {
     "latitude": 40.3586,
     "longitude": 18.1655,
-    "query_used": "override:Universita del Salento, Italy"
+    "query_used": "override:Universita del Salento, Italy",
+    "geocode_level": "institute"
   },
   "University of Toliara": {
     "latitude": -23.3619,
     "longitude": 43.6706,
-    "query_used": "override:Universite de Toliara, Madagascar"
+    "query_used": "override:Universite de Toliara, Madagascar",
+    "geocode_level": "institute"
+  },
+  "Victoria University of Wellington": {
+    "latitude": -41.2889,
+    "longitude": 174.7762,
+    "query_used": "override:Victoria University of Wellington, New Zealand",
+    "geocode_level": "institute"
+  },
+  "University of Hong Kong": {
+    "latitude": 22.283,
+    "longitude": 114.137,
+    "query_used": "override:University of Hong Kong, Hong Kong",
+    "geocode_level": "institute"
+  },
+  "Chinese University of Hong Kong": {
+    "latitude": 22.419,
+    "longitude": 114.206,
+    "query_used": "override:Chinese University of Hong Kong, Hong Kong",
+    "geocode_level": "institute"
   }
 }

@@ -52,14 +52,6 @@ export function createNetworkView(siteData, elements) {
   const height = () => Math.max(canvasEl.clientHeight, 280);
 
   const svg = d3.select(elements.networkSvg);
-  const defs = svg.append("defs");
-  defs
-    .append("clipPath")
-    .attr("id", "network-graph-clip")
-    .append("rect")
-    .attr("x", 0)
-    .attr("y", 0);
-
   const viewport = svg.append("g").attr("class", "viewport");
   const graphLayer = viewport.append("g").attr("class", "graph-layer");
 
@@ -683,16 +675,13 @@ export function createNetworkView(siteData, elements) {
     const w = width();
     const h = height();
     svg.attr("viewBox", `0 0 ${w} ${h}`).attr("width", w).attr("height", h);
-    svg
-      .select("#network-graph-clip rect")
-      .attr("width", w)
-      .attr("height", h);
-    graphLayer.attr("clip-path", "url(#network-graph-clip)");
   }
 
   function resize() {
-    updateDimensions();
-    renderGraph();
+    requestAnimationFrame(() => {
+      updateDimensions();
+      renderGraph();
+    });
   }
 
   svg.call(zoom).on("dblclick.zoom", null);
