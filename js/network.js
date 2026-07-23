@@ -10,6 +10,14 @@ export function createNetworkView(siteData, elements) {
   let matchedNodeIds = new Set();
   let simulation = null;
   let hasRendered = false;
+  let graphNodes = [];
+  let graphLinks = [];
+  let radiusScale = null;
+  let linkSelection = null;
+  let nodeSelection = null;
+  let labelSelection = null;
+  let dragMoved = false;
+  const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
 
   const width = () => Math.max(elements.stage.clientWidth, 320);
   const height = () => Math.max(elements.stage.clientHeight, 420);
@@ -29,6 +37,12 @@ export function createNetworkView(siteData, elements) {
   const zoom = d3
     .zoom()
     .scaleExtent([0.15, 10])
+    .filter((event) => {
+      if (event.type === "wheel") return true;
+      if (event.type.startsWith("touch") && event.touches?.length > 1) return true;
+      const target = event.target;
+      return target === svg.node() || target?.nodeName === "svg";
+    })
     .on("zoom", (event) => {
       viewport.attr("transform", event.transform);
     });
@@ -141,19 +155,161 @@ export function createNetworkView(siteData, elements) {
     `;
   }
 
+  function neighborIds(nodeId) {
+    const ids = new Set();
+    if (!nodeId) return ids;
+    for (const link of graphLinks) {
+      const sourceId = typeof link.source === "object" ? link.source.id : link.source;
+      const targetId = typeof link.target === "object" ? link.target.id : link.target;
+      if (sourceId === nodeId) ids.add(targetId);
+      if (targetId === nodeId) ids.add(sourceId);
+    }
+    return ids;
+  }
+
+  function labelNodes(nodes) {
+    const searching = Boolean(searchQuery);
+    const neighbors = neighborIds(selectedNodeId);
+    return nodes.filter((node) => {
+      if (node.id === selectedNodeId) return true;
+      if (selectedNodeId && neighbors.has(node.id)) return true;
+      if (searching && matchedNodeIds.has(node.id)) return true;
+      if (!searchQuery && !selectedNodeId && node.connections >= 20) return true;
+      return false;
+    });
+  }
+
+  function linkEndpointIds(link) {
+    return {
+      sourceId: typeof link.source === "object" ? link.source.id : link.source,
+      targetId: typeof link.target === "object" ? link.target.id : link.target,
+    };
+  }
+
+  function linkIsHighlighted(link) {
+    if (!selectedNodeId) return false;
+    const { sourceId, targetId } = linkEndpointIds(link);
+    return sourceId === selectedNodeId || targetId === selectedNodeId;
+  }
+
+  function updateSelectionUi() {
+    const node = selectedNodeId
+      ? currentGraph().nodes.find((item) => item.id === selectedNodeId)
+      : null;
+
+    if (node) {
+      showNodeCard(node);
+      if (elements.selectionLabel) elements.selectionLabel.textContent = node.label;
+      elements.selectionBadge?.removeAttribute("hidden");
+      elements.clearSelection?.removeAttribute("hidden");
+    } else {
+      elements.card.hidden = true;
+      elements.selectionBadge?.setAttribute("hidden", "");
+      elements.clearSelection?.setAttribute("hidden", "");
+    }
+
+    elements.summary.textContent = selectedNodeId
+      ? `${graphNodes.length.toLocaleString()} nodes · tap background or Clear to deselect`
+      : `${graphNodes.length.toLocaleString()} nodes · ${graphLinks.length.toLocaleString()} co-authorship links · ${isCoarsePointer ? "pinch to zoom, drag background to pan" : "scroll to zoom, drag to pan"}`;
+  }
+
+  function scrollToSelectedSidebar() {
+    if (!selectedNodeId) return;
+    const selector = `[data-node-id="${CSS.escape(selectedNodeId)}"]`;
+    const target =
+      elements.barChart?.querySelector(selector) ||
+      elements.results?.querySelector(selector);
+    target?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+
+  function updateHighlight() {
+    if (!nodeSelection || !linkSelection || !radiusScale) return;
+
+    const searching = Boolean(searchQuery);
+    const neighbors = neighborIds(selectedNodeId);
+
+    linkSelection
+      .attr("stroke", (d) => (linkIsHighlighted(d) ? "#1f6f8b" : "#94a3ad"))
+      .attr("stroke-opacity", (d) => {
+        if (!selectedNodeId) return 0.35;
+        return linkIsHighlighted(d) ? 0.92 : 0.07;
+      })
+      .attr("stroke-width", (d) => {
+        const base = Math.max(0.8, Math.log2(d.weight + 1));
+        return linkIsHighlighted(d) ? base + 1.5 : base;
+      });
+
+    nodeSelection
+      .attr("fill", (d) => {
+        if (d.id === selectedNodeId) return "#1f6f8b";
+        if (selectedNodeId && neighbors.has(d.id)) return "#4a90a7";
+        if (searching && matchedNodeIds.has(d.id)) return "#d95f02";
+        return "#d95f02";
+      })
+      .attr("stroke-width", (d) => {
+        if (d.id === selectedNodeId) return 3;
+        if (selectedNodeId && neighbors.has(d.id)) return 2.5;
+        if (searching && matchedNodeIds.has(d.id)) return 2.5;
+        return 1.5;
+      })
+      .attr("opacity", (d) => {
+        if (d.id === selectedNodeId) return 1;
+        if (selectedNodeId) {
+          return neighbors.has(d.id) ? 0.95 : 0.16;
+        }
+        if (searching && matchedNodeIds.size) {
+          return matchedNodeIds.has(d.id) ? 0.95 : 0.14;
+        }
+        return 0.88;
+      });
+
+    const labels = labelNodes(graphNodes);
+    labelSelection = labelSelection.data(labels, (d) => d.id);
+    labelSelection.exit().remove();
+    const labelEnter = labelSelection
+      .enter()
+      .append("text")
+      .attr("text-anchor", "middle")
+      .attr("pointer-events", "none");
+    labelSelection = labelEnter.merge(labelSelection);
+    labelSelection
+      .attr("font-size", (d) => (d.id === selectedNodeId ? 12 : 10))
+      .attr("font-weight", (d) =>
+        d.id === selectedNodeId ? 700 : neighbors.has(d.id) ? 600 : 500
+      )
+      .attr("fill", (d) => {
+        if (d.id === selectedNodeId) return "#1f6f8b";
+        if (neighbors.has(d.id)) return "#14212b";
+        return "#14212b";
+      })
+      .attr("dy", (d) => -radiusScale(Math.max(1, d.connections)) - (d.id === selectedNodeId ? 6 : 4))
+      .text((d) => (d.label.length > 28 ? `${d.label.slice(0, 26)}…` : d.label))
+      .attr("x", (d) => d.x)
+      .attr("y", (d) => d.y);
+
+    renderBarChart(graphNodes);
+    renderSearchResults(graphNodes);
+    updateSelectionUi();
+    scrollToSelectedSidebar();
+  }
+
   function renderBarChart(nodes) {
     if (!elements.barChart) return;
     const sorted = [...nodes].sort((a, b) => b.connections - a.connections).slice(0, 12);
     const maxConnections = sorted[0]?.connections || 1;
     const logScale = d3.scaleLog().domain([1, maxConnections]).range([0.08, 1]).clamp(true);
+    const neighbors = neighborIds(selectedNodeId);
 
     elements.barChart.innerHTML = sorted
       .map((node) => {
         const widthPct = `${logScale(Math.max(1, node.connections)) * 100}%`;
         const selected = node.id === selectedNodeId;
-        const dimmed = searchQuery && matchedNodeIds.size && !matchedNodeIds.has(node.id);
+        const neighbor = selectedNodeId && neighbors.has(node.id);
+        const dimmed =
+          (searchQuery && matchedNodeIds.size && !matchedNodeIds.has(node.id)) ||
+          (selectedNodeId && !selected && !neighbor);
         return `
-          <div class="bar-row${selected ? " selected" : ""}${dimmed ? " dimmed" : ""}">
+          <div class="bar-row${selected ? " selected" : ""}${neighbor ? " neighbor" : ""}${dimmed ? " dimmed" : ""}">
             <button type="button" data-node-id="${escapeHtml(node.id)}">${escapeHtml(node.label)}</button>
             <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:${widthPct}"></div></div>
             <span class="bar-count">${node.connections.toLocaleString()}</span>
@@ -177,6 +333,7 @@ export function createNetworkView(siteData, elements) {
     }
 
     const matches = nodes.filter((node) => matchedNodeIds.has(node.id));
+    const neighbors = neighborIds(selectedNodeId);
     elements.resultsTitle.textContent = `${matches.length.toLocaleString()} matching node${matches.length === 1 ? "" : "s"}`;
 
     if (!matches.length) {
@@ -189,7 +346,7 @@ export function createNetworkView(siteData, elements) {
       .slice(0, 30)
       .map(
         (node) => `
-        <button type="button" class="result-item${node.id === selectedNodeId ? " selected" : ""}" data-node-id="${escapeHtml(node.id)}">
+        <button type="button" class="result-item${node.id === selectedNodeId ? " selected" : ""}${selectedNodeId && neighbors.has(node.id) ? " neighbor" : ""}" data-node-id="${escapeHtml(node.id)}">
           <div class="affiliation">${escapeHtml(node.label)}</div>
           <div class="meta">${node.connections.toLocaleString()} connections${node.distance_km != null ? ` · ${formatDistance(node.distance_km)} from Auckland` : ""}${node.affiliation ? ` · ${escapeHtml(node.affiliation)}` : ""}</div>
         </button>`
@@ -213,131 +370,95 @@ export function createNetworkView(siteData, elements) {
 
     updateDimensions();
     const graph = prepareGraph();
-    const nodes = graph.nodes;
-    const links = graph.links;
-    const radiusScale = buildRadiusScale(nodes);
+    graphNodes = graph.nodes;
+    graphLinks = graph.links;
+    radiusScale = buildRadiusScale(graphNodes);
     const centerX = width() / 2;
     const centerY = height() / 2;
-    const searching = Boolean(searchQuery);
 
-    elements.summary.textContent = `${nodes.length.toLocaleString()} nodes · ${links.length.toLocaleString()} co-authorship links · scroll to zoom, drag to pan`;
-
-    const link = graphLayer
+    linkSelection = graphLayer
       .append("g")
+      .attr("class", "links")
       .selectAll("line")
-      .data(links)
-      .join("line")
-      .attr("stroke", (d) => {
-        if (!selectedNodeId) return "#94a3ad";
-        const sourceId = typeof d.source === "object" ? d.source.id : d.source;
-        const targetId = typeof d.target === "object" ? d.target.id : d.target;
-        return sourceId === selectedNodeId || targetId === selectedNodeId
-          ? "#1f6f8b"
-          : "#94a3ad";
-      })
-      .attr("stroke-opacity", (d) => {
-        if (!selectedNodeId) return 0.35;
-        const sourceId = typeof d.source === "object" ? d.source.id : d.source;
-        const targetId = typeof d.target === "object" ? d.target.id : d.target;
-        return sourceId === selectedNodeId || targetId === selectedNodeId ? 0.9 : 0.07;
-      })
-      .attr("stroke-width", (d) => {
-        const base = Math.max(0.8, Math.log2(d.weight + 1));
-        if (!selectedNodeId) return base;
-        const sourceId = typeof d.source === "object" ? d.source.id : d.source;
-        const targetId = typeof d.target === "object" ? d.target.id : d.target;
-        return sourceId === selectedNodeId || targetId === selectedNodeId ? base + 1.5 : base;
-      });
+      .data(graphLinks)
+      .join("line");
 
-    const node = graphLayer
+    nodeSelection = graphLayer
       .append("g")
+      .attr("class", "nodes")
       .selectAll("circle")
-      .data(nodes)
+      .data(graphNodes)
       .join("circle")
-      .attr("r", (d) => radiusScale(Math.max(1, d.connections)))
-      .attr("fill", (d) => {
-        if (d.id === selectedNodeId) return "#1f6f8b";
-        if (searching && matchedNodeIds.has(d.id)) return "#d95f02";
-        return "#d95f02";
+      .attr("r", (d) => {
+        const base = radiusScale(Math.max(1, d.connections));
+        return isCoarsePointer ? base + 4 : base;
       })
       .attr("stroke", "#ffffff")
-      .attr("stroke-width", (d) => (searching && matchedNodeIds.has(d.id) ? 2.5 : 1.5))
-      .attr("opacity", (d) => {
-        if (d.id === selectedNodeId) return 1;
-        if (searching && matchedNodeIds.size) {
-          return matchedNodeIds.has(d.id) ? 0.95 : 0.14;
-        }
-        if (selectedNodeId && d.id !== selectedNodeId) return 0.28;
-        return 0.88;
-      })
       .style("cursor", "pointer")
-      .on("mouseenter", (_, d) => showNodeCard(d))
-      .on("click", (_, d) => selectNode(d.id, { focus: false }));
+      .style("touch-action", "none")
+      .on("pointerenter", (_, d) => {
+        if (!isCoarsePointer) showNodeCard(d);
+      })
+      .call(nodeDrag());
 
-    const label = graphLayer
-      .append("g")
-      .selectAll("text")
-      .data(
-        nodes.filter(
-          (node) =>
-            node.id === selectedNodeId ||
-            (searchQuery && matchedNodeIds.has(node.id)) ||
-            (!searchQuery && node.connections >= 20)
-        )
-      )
-      .join("text")
-      .attr("font-size", 10)
-      .attr("fill", "#14212b")
-      .attr("text-anchor", "middle")
-      .attr("dy", (d) => -radiusScale(Math.max(1, d.connections)) - 4)
-      .text((d) => (d.label.length > 28 ? `${d.label.slice(0, 26)}…` : d.label));
+    labelSelection = graphLayer.append("g").attr("class", "labels").selectAll("text").data([]).join("text");
 
     simulation = d3
-      .forceSimulation(nodes)
+      .forceSimulation(graphNodes)
       .force(
         "link",
         d3
-          .forceLink(links)
+          .forceLink(graphLinks)
           .id((d) => d.id)
           .distance(90)
           .strength(0.45)
       )
-      .force("charge", d3.forceManyBody().strength(-180))
+      .force("charge", d3.forceManyBody().strength(isCoarsePointer ? -140 : -180))
       .force("center", d3.forceCenter(centerX, centerY))
-      .force("collide", d3.forceCollide().radius((d) => radiusScale(Math.max(1, d.connections)) + 4))
+      .force(
+        "collide",
+        d3.forceCollide().radius((d) => radiusScale(Math.max(1, d.connections)) + (isCoarsePointer ? 8 : 4))
+      )
       .on("tick", () => {
-        link
+        linkSelection
           .attr("x1", (d) => d.source.x)
           .attr("y1", (d) => d.source.y)
           .attr("x2", (d) => d.target.x)
           .attr("y2", (d) => d.target.y);
-        node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
-        label.attr("x", (d) => d.x).attr("y", (d) => d.y);
+        nodeSelection.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
+        if (labelSelection) {
+          labelSelection.attr("x", (d) => d.x).attr("y", (d) => d.y);
+        }
       });
 
-    node.call(nodeDrag());
-    renderLegend(nodes, radiusScale);
-    renderBarChart(nodes);
-    renderSearchResults(nodes);
+    renderLegend(graphNodes, radiusScale);
+    updateHighlight();
     hasRendered = true;
   }
 
   function nodeDrag() {
     return d3
       .drag()
+      .touchable(true)
+      .clickDistance(isCoarsePointer ? 12 : 4)
       .on("start", (event, d) => {
         event.sourceEvent?.stopPropagation?.();
+        dragMoved = false;
         if (!event.active && simulation) simulation.alphaTarget(0.25).restart();
         d.fx = d.x;
         d.fy = d.y;
       })
       .on("drag", (event, d) => {
+        dragMoved = dragMoved || Math.abs(event.dx) > 1 || Math.abs(event.dy) > 1;
         const transform = d3.zoomTransform(svg.node());
         d.fx = (event.x - transform.x) / transform.k;
         d.fy = (event.y - transform.y) / transform.k;
       })
       .on("end", (event, d) => {
         if (!event.active && simulation) simulation.alphaTarget(0);
+        if (!dragMoved) {
+          selectNode(d.id, { focus: isCoarsePointer });
+        }
         d.fx = null;
         d.fy = null;
       });
@@ -359,11 +480,10 @@ export function createNetworkView(siteData, elements) {
   }
 
   function focusNode(nodeId) {
-    const graph = prepareGraph();
-    const node = graph.nodes.find((item) => item.id === nodeId);
+    const node = graphNodes.find((item) => item.id === nodeId);
     if (!node || node.x == null || node.y == null) return;
 
-    const scale = 2.2;
+    const scale = isCoarsePointer ? 1.8 : 2.2;
     const transform = d3.zoomIdentity
       .translate(width() / 2, height() / 2)
       .scale(scale)
@@ -371,22 +491,22 @@ export function createNetworkView(siteData, elements) {
     svg.transition().duration(450).call(zoom.transform, transform);
   }
 
+  function clearSelection() {
+    selectedNodeId = null;
+    updateHighlight();
+  }
+
   function selectNode(nodeId, { focus = false } = {}) {
-    selectedNodeId = selectedNodeId === nodeId ? null : nodeId;
-    const node = selectedNodeId ? currentGraph().nodes.find((item) => item.id === selectedNodeId) : null;
-    if (node) {
-      showNodeCard(node);
-    } else {
-      elements.card.hidden = true;
+    selectedNodeId = nodeId;
+    updateHighlight();
+    if (focus && selectedNodeId) {
+      window.requestAnimationFrame(() => focusNode(selectedNodeId));
     }
-    renderGraph();
-    if (focus && selectedNodeId) focusNode(selectedNodeId);
   }
 
   function applySearch(query, { focus = true } = {}) {
     updateMatches(query);
     selectedNodeId = null;
-    elements.card.hidden = true;
 
     if (!searchQuery) {
       setSearchStatus("");
@@ -407,9 +527,9 @@ export function createNetworkView(siteData, elements) {
     renderGraph();
 
     if (focus) {
-      const firstMatch = prepareGraph().nodes.find((node) => matchedNodeIds.has(node.id));
+      const firstMatch = graphNodes.find((node) => matchedNodeIds.has(node.id));
       if (firstMatch) {
-        setTimeout(() => selectNode(firstMatch.id, { focus: true }), 300);
+        window.setTimeout(() => selectNode(firstMatch.id, { focus: true }), 300);
       }
     }
   }
@@ -442,6 +562,11 @@ export function createNetworkView(siteData, elements) {
     renderGraph();
   }
 
+  function resetView() {
+    clearSelection();
+    resetZoom();
+  }
+
   function resetZoom() {
     svg.transition().duration(250).call(zoom.transform, d3.zoomIdentity);
   }
@@ -463,14 +588,28 @@ export function createNetworkView(siteData, elements) {
     renderGraph();
   }
 
+  svg.call(zoom).on("dblclick.zoom", null);
+  svg.on("click", (event) => {
+    if (event.target === svg.node() || event.target?.nodeName === "svg") {
+      clearSelection();
+    }
+  });
+
   if (elements.resetZoom) {
-    elements.resetZoom.addEventListener("click", resetZoom);
+    elements.resetZoom.addEventListener("click", resetView);
+  }
+  if (elements.clearSelection) {
+    elements.clearSelection.addEventListener("click", clearSelection);
+  }
+  if (elements.clearSelectionMobile) {
+    elements.clearSelectionMobile.addEventListener("click", clearSelection);
   }
 
   return {
     setMode,
     resize,
     resetZoom,
+    clearSelection,
     applySearch,
     buildSuggestions,
     selectNode,

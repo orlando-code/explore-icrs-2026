@@ -104,7 +104,12 @@
                 By affiliation
               </button>
             </div>
-            <button type="button" class="btn-ghost btn-small" id="network-reset-zoom">Reset zoom</button>
+            <div class="network-action-buttons">
+              <button type="button" class="btn-ghost btn-small" id="network-clear-selection" hidden>
+                Clear selection
+              </button>
+              <button type="button" class="btn-ghost btn-small" id="network-reset-zoom">Reset view</button>
+            </div>
           </div>
           <p id="network-summary" class="status"></p>
           <p id="network-search-status" class="status" aria-live="polite"></p>
@@ -167,7 +172,14 @@
       </section>
 
       <section class="stage network-stage" id="network-stage" hidden>
-        <div class="stage-badge">Scroll to zoom · drag background to pan · drag nodes to rearrange</div>
+        <div class="stage-badge network-help-badge">Pinch to zoom · drag background to pan · tap a node to select</div>
+        <div id="network-selection-badge" class="network-selection-badge" hidden>
+          <div>
+            <p class="hover-kicker">Selected</p>
+            <strong id="network-selection-label"></strong>
+          </div>
+          <button type="button" class="btn-ghost btn-small" id="network-clear-selection-mobile">Clear</button>
+        </div>
         <svg id="network-svg" aria-label="Co-authorship network"></svg>
       </section>
 
