@@ -186,32 +186,62 @@ export function buildDisplayPositions(locations, { precision = 5, ringRadius = 0
 
 /** Map locations for non-speaking delegates not already on the speaker affiliation map. */
 export function buildDelegateMapLocations(speakerLocations, delegateEmissionsLocations = []) {
-  const knownAffiliations = new Set(speakerLocations.map((location) => location.affiliation));
-  return delegateEmissionsLocations
-    .filter(
-      (location) =>
-        location.affiliation &&
-        !knownAffiliations.has(location.affiliation) &&
-        location.lat != null &&
-        location.lon != null
-    )
-    .map((location, index) => {
-      const count = location.travel_attendees || location.speaker_count || 1;
-      const affiliation = location.affiliation;
-      return {
-        id: `delegate-loc-${index + 1}`,
-        affiliation,
-        lat: location.lat,
-        lon: location.lon,
-        speakers: [],
-        speaker_details: [],
-        speaker_count: count,
-        talk_count: 0,
-        geocode_level: "delegate list",
-        distance_km: location.distance_km,
-        search_text: affiliation.toLowerCase(),
-        connection_count: 0,
-        delegate_only: true,
-      };
+  const knownKeys = new Set(
+    speakerLocations.map((location) => affiliationMapKey(location.affiliation))
+  );
+  const seenDelegateKeys = new Set();
+  const supplemental = [];
+
+  for (const location of delegateEmissionsLocations) {
+    const affiliation = location.affiliation;
+    if (!affiliation || location.lat == null || location.lon == null) continue;
+    const key = affiliationMapKey(affiliation);
+    if (knownKeys.has(key) || seenDelegateKeys.has(key)) continue;
+    seenDelegateKeys.add(key);
+    const count = location.travel_attendees || location.speaker_count || 1;
+    supplemental.push({
+      id: `delegate-loc-${supplemental.length + 1}`,
+      affiliation,
+      lat: location.lat,
+      lon: location.lon,
+      speakers: [],
+      speaker_details: [],
+      speaker_count: count,
+      talk_count: 0,
+      geocode_level: "delegate list",
+      distance_km: location.distance_km,
+      search_text: affiliation.toLowerCase(),
+      connection_count: 0,
+      delegate_only: true,
     });
+  }
+  return supplemental;
+}
+
+function affiliationMapKey(affiliation) {
+  const parts = affiliation.split(",").map((part) => part.trim()).filter(Boolean);
+  if (parts.length >= 2) {
+    const last = parts[parts.length - 1].toLowerCase();
+  const countries = new Set([
+      "new zealand",
+      "united kingdom",
+      "united states",
+      "hong kong",
+      "australia",
+      "canada",
+      "germany",
+      "france",
+      "china",
+      "japan",
+      "singapore",
+      "taiwan",
+      "india",
+      "brazil",
+      "south africa",
+    ]);
+    if (countries.has(last)) {
+      return parts.slice(0, -1).join(", ").toLowerCase();
+    }
+  }
+  return affiliation.trim().toLowerCase();
 }

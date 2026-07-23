@@ -201,6 +201,12 @@ const shareView = createShareView(SITE_DATA, {
 const emissionsView = createEmissionsView(EMISSIONS_DATA, SITE_DATA, {
   mapContainer: els.emissionsMap,
   headline: els.emissionsHeadline,
+  headlineTotal: $("emissions-total"),
+  headlineAssumption: $("emissions-assumption"),
+  headlineMeta: $("emissions-meta"),
+  headlineDelegateNote: $("emissions-delegate-note"),
+  delegateToggleWrap: $("emissions-delegate-toggle-wrap"),
+  includeNonSpeakersToggle: els.includeNonSpeakingDelegates,
   context: els.emissionsContext,
   modeBreakdown: els.emissionsModeBreakdown,
   legend: els.emissionsLegend,
@@ -235,7 +241,7 @@ function setTab(tab) {
   if (tab === "map") {
     mapView.resize();
   } else if (tab === "network") {
-    networkView.resize();
+    requestAnimationFrame(() => networkView.resize());
   } else if (tab === "emissions") {
     emissionsView.resize();
   } else if (tab === "share") {
@@ -280,7 +286,6 @@ function setIncludeNonSpeakingDelegates(enabled) {
 }
 
 if (els.includeNonSpeakingDelegates) {
-  els.includeNonSpeakingDelegates.disabled = !hasDelegatePool;
   els.includeNonSpeakingDelegates.addEventListener("change", (event) => {
     setIncludeNonSpeakingDelegates(event.target.checked);
   });
@@ -437,3 +442,41 @@ renderResults({
 });
 mapView.applySearch("", { fly: false });
 setTab("map");
+
+const WELCOME_STORAGE_KEY = "icrs-intro-dismissed";
+
+function initWelcome() {
+  const overlay = $("welcome-overlay");
+  const dismiss = $("welcome-dismiss");
+  if (!overlay || !dismiss) return;
+
+  const closeWelcome = () => {
+    overlay.hidden = true;
+    try {
+      localStorage.setItem(WELCOME_STORAGE_KEY, "1");
+    } catch {
+      /* private browsing */
+    }
+  };
+
+  let dismissed = false;
+  try {
+    dismissed = Boolean(localStorage.getItem(WELCOME_STORAGE_KEY));
+  } catch {
+    dismissed = false;
+  }
+
+  if (!dismissed) {
+    overlay.hidden = false;
+  }
+
+  dismiss.addEventListener("click", closeWelcome);
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) closeWelcome();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !overlay.hidden) closeWelcome();
+  });
+}
+
+initWelcome();

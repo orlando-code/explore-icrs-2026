@@ -15,6 +15,10 @@ function isMobileLayout() {
   return window.matchMedia("(max-width: 900px)").matches;
 }
 
+function useCooperativeMapGestures() {
+  return window.matchMedia("(max-width: 900px) and (pointer: coarse)").matches;
+}
+
 export function createMapView(siteData, elements, { delegateLocations = [] } = {}) {
   const speakerLocations = siteData.locations;
   let includeNonSpeakers = Boolean(delegateLocations.length);
@@ -79,7 +83,7 @@ export function createMapView(siteData, elements, { delegateLocations = [] } = {
     minZoom: isMobileLayout() ? 0.9 : 0.5,
     maxZoom: MAX_ZOOM,
     touchPitch: false,
-    cooperativeGestures: isMobileLayout(),
+    cooperativeGestures: useCooperativeMapGestures(),
   });
 
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "top-right");

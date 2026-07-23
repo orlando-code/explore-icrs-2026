@@ -952,10 +952,11 @@ def summarize_travel_emissions(
             "location": DEFAULT_DESTINATION_LOCATION,
         },
         "assumptions": {
-            "non_nz_transport": "return economy flight to Auckland; upper bound uses business-class multiplier (2.9×)",
-            "nz_transport": "return shared car trip; bounds derived from passenger occupancy (not extra API calls)",
+            "non_nz_transport": "return economy flight to Auckland",
+            "nz_transport": "return shared car trip for attendees in New Zealand",
+            "flight_business_multiplier": FLIGHT_BUSINESS_MULTIPLIER,
             "return_trip": True,
-            "api_strategy": "one emissions.dev query per unique origin route; bounds derived from cabin/occupancy multipliers",
+            "api_strategy": "one emissions.dev query per unique origin route",
         },
         "co2e_kg": float(estimates["co2e_kg"].sum()),
         "co2e_low_kg": float(estimates["co2e_low_kg"].sum()),
@@ -971,13 +972,8 @@ def summarize_travel_emissions(
         "uncertainty": {
             "missing_location_presenters": int(missing_count),
             "country_level_origins": int(country_level),
-            "cabin_class_range": f"economy to business (~{FLIGHT_BUSINESS_MULTIPLIER}×) for flights",
-            "nz_car_occupancy_range": "2 to 4 passengers",
-            "notes": [
-                "Lower bound uses economy flights and higher car-sharing assumptions.",
-                "Upper bound uses business-class multiplier for flights.",
-                exclusion_note,
-            ],
+            "flight_business_multiplier": FLIGHT_BUSINESS_MULTIPLIER,
+            "notes": [exclusion_note] if exclusion_note else [],
         },
         "attendee_label": attendee_label,
     }
@@ -991,7 +987,10 @@ def print_travel_summary(summary: dict[str, Any]) -> None:
     table.add_row("Attendees estimated", f"{summary['attendees_estimated']:,}")
     table.add_row("Missing location", f"{summary['attendees_missing_location']:,}")
     table.add_row("Central total", f"{summary['co2e_kg']:,.0f} kg CO2e ({summary['co2e_tonnes']:,.1f} t)")
-    table.add_row("Range", f"{summary['co2e_low_kg']:,.0f} – {summary['co2e_high_kg']:,.0f} kg CO2e")
+    table.add_row(
+        "Assumption",
+        f"Economy flights (business class ~{FLIGHT_BUSINESS_MULTIPLIER}×)",
+    )
     _CONSOLE.print(table)
 
     mode_table = Table(title="By transport mode")
@@ -1013,15 +1012,30 @@ def _build_emissions_locations(
     estimates: pd.DataFrame,
     legs: pd.DataFrame,
 ) -> list[dict[str, Any]]:
+    from src.geocode import affiliation_base_name, canonical_affiliation_key
+
     leg_cols = legs[
         ["presenter", "affiliation", "latitude", "longitude"]
     ].drop_duplicates(subset=["presenter"])
     merged = estimates.merge(leg_cols, on=["presenter", "affiliation"], how="left")
-    grouped = merged.groupby(["affiliation", "latitude", "longitude"], dropna=False)
+
+    buckets: dict[str, list[pd.DataFrame]] = {}
+    display_name: dict[str, str] = {}
+    for _, row in merged.iterrows():
+        affiliation = "" if pd.isna(row["affiliation"]) else str(row["affiliation"])
+        key = canonical_affiliation_key(affiliation)
+        buckets.setdefault(key, []).append(row.to_frame().T)
+        preferred = affiliation_base_name(affiliation) or affiliation
+        existing = display_name.get(key)
+        if not existing or len(preferred) < len(existing):
+            display_name[key] = preferred
 
     rows: list[dict[str, Any]] = []
-    for index, ((affiliation, lat, lon), group) in enumerate(grouped, start=1):
-        if pd.isna(lat) or pd.isna(lon):
+    for index, (key, row_frames) in enumerate(sorted(buckets.items()), start=1):
+        group = pd.concat(row_frames, ignore_index=True)
+        lat = group["latitude"].dropna()
+        lon = group["longitude"].dropna()
+        if lat.empty or lon.empty:
             continue
         co2e_kg = float(group["co2e_kg"].sum())
         co2e_low_kg = float(group["co2e_low_kg"].sum())
@@ -1030,9 +1044,9 @@ def _build_emissions_locations(
         rows.append(
             {
                 "id": f"emis-loc-{index:04d}",
-                "affiliation": "" if pd.isna(affiliation) else str(affiliation),
-                "lat": float(lat),
-                "lon": float(lon),
+                "affiliation": display_name.get(key, key),
+                "lat": float(lat.iloc[0]),
+                "lon": float(lon.iloc[0]),
                 "speaker_count": attendees,
                 "travel_attendees": attendees,
                 "co2e_kg": round(co2e_kg, 1),

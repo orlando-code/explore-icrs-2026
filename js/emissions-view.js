@@ -8,10 +8,15 @@ import {
 
 const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
 const MAX_ZOOM = 10;
+const FLIGHT_BUSINESS_MULTIPLIER = 2.9;
 const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
 
 function isMobileLayout() {
   return window.matchMedia("(max-width: 900px)").matches;
+}
+
+function useCooperativeMapGestures() {
+  return window.matchMedia("(max-width: 900px) and (pointer: coarse)").matches;
 }
 
 function countryLabel(code) {
@@ -81,7 +86,7 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     minZoom: isMobileLayout() ? 0.9 : 0.5,
     maxZoom: MAX_ZOOM,
     touchPitch: false,
-    cooperativeGestures: isMobileLayout(),
+    cooperativeGestures: useCooperativeMapGestures(),
   });
 
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
@@ -138,23 +143,47 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     return colorScale(location.co2e_kg);
   }
 
+  function flightBusinessMultiplier() {
+    return (
+      emissionsData.meta?.assumptions?.flight_business_multiplier ?? FLIGHT_BUSINESS_MULTIPLIER
+    );
+  }
+
+  function economyAssumptionNote() {
+    const mult = flightBusinessMultiplier();
+    const multLabel = Number.isInteger(mult) ? String(mult) : mult.toFixed(1);
+    return `Assuming economy flights – business class would be around ~${multLabel}× more emissions.`;
+  }
+
   function renderHeadline() {
-    const low = formatTonnes(headline.co2e_low_kg);
-    const high = formatTonnes(headline.co2e_high_kg);
     const label = attendeeLabel();
-    const delegateNote =
-      includeNonSpeakers && delegateMeta.non_speaker_count
-        ? ` · includes <strong>${formatCount(delegateMeta.non_speaker_count)}</strong> non-speaking delegates from the published list`
-        : "";
-    elements.headline.innerHTML = `
-      <p class="emissions-kicker">Estimated return travel to Auckland</p>
-      <p class="emissions-total">${formatTonnes(headline.co2e_kg)}</p>
-      <p class="emissions-range">${low} – ${high}</p>
-      <p class="emissions-meta">
+    const showDelegateNote = includeNonSpeakers && delegateMeta.non_speaker_count;
+
+    if (elements.headlineTotal) {
+      elements.headlineTotal.textContent = formatTonnes(headline.co2e_kg);
+    }
+    if (elements.headlineAssumption) {
+      elements.headlineAssumption.textContent = economyAssumptionNote();
+    }
+    if (elements.headlineMeta) {
+      elements.headlineMeta.innerHTML = `
         <strong>${headline.attendees_estimated.toLocaleString()}</strong> ${label} with geocoded affiliations ·
-        <strong>${headline.attendees_missing_location.toLocaleString()}</strong> excluded (no location)${delegateNote}
-      </p>
-    `;
+        <strong>${headline.attendees_missing_location.toLocaleString()}</strong> excluded (no location)
+      `;
+    }
+    if (elements.headlineDelegateNote) {
+      elements.headlineDelegateNote.hidden = !showDelegateNote;
+      if (showDelegateNote) {
+        elements.headlineDelegateNote.innerHTML = `Includes <strong>${formatCount(delegateMeta.non_speaker_count)}</strong> non-speaking delegates from the published list.`;
+      }
+    }
+    if (elements.delegateToggleWrap) {
+      elements.delegateToggleWrap.hidden = !hasDelegatePool;
+    }
+    if (elements.includeNonSpeakersToggle) {
+      elements.includeNonSpeakersToggle.checked = includeNonSpeakers;
+      elements.includeNonSpeakersToggle.disabled = !hasDelegatePool;
+    }
   }
 
   function formatRatioPhrase(ratio) {
@@ -193,7 +222,7 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     if (context.tree_years) {
       const kgPerTree = context.tree_kg_per_year_assumption || 22;
       bullets.push(
-        `About <strong>${formatCount(context.tree_years)} tree-years</strong> of CO₂ uptake to offset this total (≈${kgPerTree} kg per mature tree per year${sourceLink(treeSource)}).`
+        `About <strong>${formatCount(context.tree_years)} tree-years</strong> of CO₂ uptake to offset this total with the estimated equivalent of ≈${kgPerTree} kg per mature tree per year${sourceLink(treeSource)}.`
       );
     }
 
@@ -207,35 +236,35 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
       ? ` ([<a href="${escapeHtml(nationalSource.url)}" target="_blank" rel="noopener">World Bank ${year}</a>])`
       : ` (World Bank ${year})`;
 
-    if (context.lowest_national_per_capita) {
-      const row = context.lowest_national_per_capita;
-      bullets.push(
-        `Among countries with ≥${minN} ${label}, <strong>${escapeHtml(countryLabel(row.origin_country))}</strong> has the lowest national per-capita emissions (${formatNationalTonnes(row.national_tonnes_per_capita)}${nationalNote}). ${label.charAt(0).toUpperCase() + label.slice(1)} from ${escapeHtml(countryLabel(row.origin_country))} averaged ${formatRatioPhrase(row.ratio_vs_national_annual)} that annual footprint in return travel alone (${formatEmissions(row.co2e_per_attendee_kg, { compact: true })}/person, n=${row.attendee_count}).`
-      );
-    }
+    // if (context.lowest_national_per_capita) {
+    //   const row = context.lowest_national_per_capita;
+    //   bullets.push(
+    //     `Among countries with ≥${minN} ${label}, <strong>${escapeHtml(countryLabel(row.origin_country))}</strong> has the lowest national per-capita emissions (${formatNationalTonnes(row.national_tonnes_per_capita)}${nationalNote}). ${label.charAt(0).toUpperCase() + label.slice(1)} from ${escapeHtml(countryLabel(row.origin_country))} averaged ${formatRatioPhrase(row.ratio_vs_national_annual)} that annual footprint in return travel alone (${formatEmissions(row.co2e_per_attendee_kg, { compact: true })}/person, n=${row.attendee_count}).`
+    //   );
+    // }
 
-    if (context.highest_national_per_capita) {
-      const row = context.highest_national_per_capita;
-      bullets.push(
-        `<strong>${escapeHtml(countryLabel(row.origin_country))}</strong> has the highest national per-capita emissions among represented countries (${formatNationalTonnes(row.national_tonnes_per_capita)}${nationalNote}). ${label.charAt(0).toUpperCase() + label.slice(1)} from ${escapeHtml(countryLabel(row.origin_country))} averaged ${formatRatioPhrase(row.ratio_vs_national_annual)} that annual footprint (${formatEmissions(row.co2e_per_attendee_kg, { compact: true })}/person, n=${row.attendee_count}).`
-      );
-    }
+    // if (context.highest_national_per_capita) {
+    //   const row = context.highest_national_per_capita;
+    //   bullets.push(
+    //     `<strong>${escapeHtml(countryLabel(row.origin_country))}</strong> has the highest national per-capita emissions among represented countries (${formatNationalTonnes(row.national_tonnes_per_capita)}${nationalNote}). ${label.charAt(0).toUpperCase() + label.slice(1)} from ${escapeHtml(countryLabel(row.origin_country))} averaged ${formatRatioPhrase(row.ratio_vs_national_annual)} that annual footprint (${formatEmissions(row.co2e_per_attendee_kg, { compact: true })}/person, n=${row.attendee_count}).`
+    //   );
+    // }
 
     if (context.conference_vs_lowest_national && context.conference_vs_highest_national) {
       const low = context.conference_vs_lowest_national;
       const high = context.conference_vs_highest_national;
       bullets.push(
-        `Conference-wide average return travel (${formatEmissions(context.per_attendee_kg, { compact: true })}/person) is ${formatRatioPhrase(low.ratio_vs_national_annual)} ${escapeHtml(countryLabel(low.origin_country))}'s annual per-capita and ${formatRatioPhrase(high.ratio_vs_national_annual)} ${escapeHtml(countryLabel(high.origin_country))}'s annual per-capita.`
+        `Conference-wide average return travel (${formatEmissions(context.per_attendee_kg, { compact: true })}/person) is ${formatRatioPhrase(low.ratio_vs_national_annual)} ${escapeHtml(countryLabel(low.origin_country))}'s annual per-capita emissions and ${formatRatioPhrase(high.ratio_vs_national_annual)} ${escapeHtml(countryLabel(high.origin_country))}'s annual per-capita emissions: the most and least emitting countries in the world respectively in 2022 respectively${sourceLink(nationalSource)}.`
       );
     }
 
-    for (const row of context.illustrative_per_capita || []) {
-      const labelText =
-        row.role === "illustrative_low"
-          ? `For comparison, ${escapeHtml(countryLabel(row.origin_country))}'s national per-capita is ${formatNationalTonnes(row.national_tonnes_per_capita)}${nationalNote}: the conference average return trip is ${formatRatioPhrase(row.ratio_vs_national_annual)} that annual footprint.`
-          : `${escapeHtml(countryLabel(row.origin_country))}'s national per-capita is ${formatNationalTonnes(row.national_tonnes_per_capita)}${nationalNote}; the conference average return trip is ${formatRatioPhrase(row.ratio_vs_national_annual)} that annual footprint.`;
-      bullets.push(labelText);
-    }
+    // for (const row of context.illustrative_per_capita || []) {
+    //   const labelText =
+    //     row.role === "illustrative_low"
+    //       ? `For comparison, ${escapeHtml(countryLabel(row.origin_country))}'s national per-capita is ${formatNationalTonnes(row.national_tonnes_per_capita)}${nationalNote}: the conference average return trip is ${formatRatioPhrase(row.ratio_vs_national_annual)} that annual footprint.`
+    //       : `${escapeHtml(countryLabel(row.origin_country))}'s national per-capita is ${formatNationalTonnes(row.national_tonnes_per_capita)}${nationalNote}; the conference average return trip is ${formatRatioPhrase(row.ratio_vs_national_annual)} that annual footprint.`;
+    //   bullets.push(labelText);
+    // }
 
     const sources = context.sources || [];
     const sourcesHtml = sources.length
@@ -378,7 +407,6 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
           <div class="meta">
             ${formatEmissions(row.co2e_kg, { compact: true })} total ·
             ${attendees}${perPerson}
-            ${formatEmissions(row.co2e_low_kg, { compact: true })} – ${formatEmissions(row.co2e_high_kg, { compact: true })}
           </div>
         </div>`;
       })
@@ -386,12 +414,22 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
   }
 
   function renderAssumptions() {
-    const notes = emissionsData.meta.uncertainty?.notes || [];
+    const nzTransport =
+      emissionsData.meta.assumptions?.nz_transport ||
+      "Return shared car trip for attendees in New Zealand.";
     elements.assumptions.innerHTML = `
-      <p>${escapeHtml(emissionsData.meta.assumptions?.non_nz_transport || "")}</p>
-      <p>${escapeHtml(emissionsData.meta.assumptions?.nz_transport || "")}</p>
-      ${notes.map((note) => `<p>${escapeHtml(note)}</p>`).join("")}
+      <p>${escapeHtml(economyAssumptionNote())}</p>
+      <p>${escapeHtml(nzTransport)}</p>
     `;
+  }
+
+  function treeKgPerYear() {
+    return context.tree_kg_per_year_assumption || 22;
+  }
+
+  function treeYearsForCo2e(kg) {
+    if (!kg || kg <= 0) return null;
+    return Math.round(kg / treeKgPerYear());
   }
 
   function renderHoverCard(location) {
@@ -401,12 +439,19 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     }
     elements.hoverCard.hidden = false;
     elements.hoverAffiliation.textContent = location.affiliation;
-    elements.hoverMeta.textContent = [
+    const treeYears = treeYearsForCo2e(location.co2e_kg);
+    const metaParts = [
       formatEmissions(location.co2e_kg, { compact: true }),
       `${location.travel_attendees} attendee${location.travel_attendees === 1 ? "" : "s"}`,
       `${formatEmissions(location.co2e_per_speaker_kg, { compact: true })}/person`,
-      formatDistance(location.distance_km),
-    ].join(" · ");
+    ];
+    if (location.distance_km != null) {
+      metaParts.push(`${formatDistance(location.distance_km)} from Auckland`);
+    }
+    if (treeYears != null) {
+      metaParts.push(`≈${formatCount(treeYears)} tree-years to offset`);
+    }
+    elements.hoverMeta.textContent = metaParts.join(" · ");
 
     if (isMobileLayout()) {
       window.requestAnimationFrame(() => {
