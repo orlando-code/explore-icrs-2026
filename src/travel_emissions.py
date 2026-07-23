@@ -65,6 +65,7 @@ EMISSIONS_SOURCES = [
 NZ_CAR_PASSENGERS_CENTRAL = 2
 NZ_CAR_PASSENGERS_LOW = 4
 NZ_CAR_PASSENGERS_HIGH = 1
+FLIGHT_PREMIUM_ECONOMY_MULTIPLIER = 1.6
 FLIGHT_BUSINESS_MULTIPLIER = 2.9
 _CONSOLE = Console()
 _query_count = 0
@@ -129,7 +130,9 @@ def load_site_locations(
 
 
 def _api_key() -> str | None:
-    return os.environ.get("EMISSIONS_DEV_API_KEY") or os.environ.get("EMISSIONS_API_KEY")
+    return os.environ.get("EMISSIONS_DEV_API_KEY") or os.environ.get(
+        "EMISSIONS_API_KEY"
+    )
 
 
 def load_api_key(keys_path: Path = DEFAULT_KEYS_PATH) -> str:
@@ -308,7 +311,10 @@ def load_attendee_legs(
 
     coord_rows = (
         attendees.groupby(["latitude", "longitude"], as_index=False)
-        .agg(affiliation=("affiliation", "first"), geocode_level=("geocode_level", "first"))
+        .agg(
+            affiliation=("affiliation", "first"),
+            geocode_level=("geocode_level", "first"),
+        )
         .sort_values(["latitude", "longitude"])
     )
     coord_lookup: dict[tuple[float, float], dict[str, str]] = {}
@@ -330,7 +336,15 @@ def load_attendee_legs(
         )
 
     if show_progress:
-        from rich.progress import BarColumn, MofNCompleteColumn, Progress, SpinnerColumn, TextColumn, TimeElapsedColumn, TimeRemainingColumn
+        from rich.progress import (
+            BarColumn,
+            MofNCompleteColumn,
+            Progress,
+            SpinnerColumn,
+            TextColumn,
+            TimeElapsedColumn,
+            TimeRemainingColumn,
+        )
 
         with Progress(
             SpinnerColumn(),
@@ -341,11 +355,15 @@ def load_attendee_legs(
             TimeRemainingColumn(),
             console=_CONSOLE,
         ) as progress:
-            task_id = progress.add_task("Reverse geocoding coordinates", total=len(coord_rows))
+            task_id = progress.add_task(
+                "Reverse geocoding coordinates", total=len(coord_rows)
+            )
             for row in coord_rows.itertuples(index=False):
                 lat = float(row.latitude)
                 lon = float(row.longitude)
-                progress.update(task_id, description=f"[cyan]Geocode {lat:.2f}, {lon:.2f}[/]")
+                progress.update(
+                    task_id, description=f"[cyan]Geocode {lat:.2f}, {lon:.2f}[/]"
+                )
                 process_coord(row)
                 progress.advance(task_id)
     else:
@@ -365,7 +383,9 @@ def load_attendee_legs(
         country_code = row.get("country_code")
         if pd.notna(country_code) and str(country_code).strip():
             origin_country = str(country_code).strip().upper()
-        transport_mode = "car" if origin_country == DEFAULT_DESTINATION_COUNTRY else "flight"
+        transport_mode = (
+            "car" if origin_country == DEFAULT_DESTINATION_COUNTRY else "flight"
+        )
         rows.append(
             {
                 "presenter": row["presenter"],
@@ -381,7 +401,9 @@ def load_attendee_legs(
     _save_json(reverse_cache_path, reverse_cache)
 
     legs = pd.DataFrame(rows)
-    missing = talks_geo.loc[~talks_geo["presenter"].isin(legs["presenter"]), "presenter"].drop_duplicates()
+    missing = talks_geo.loc[
+        ~talks_geo["presenter"].isin(legs["presenter"]), "presenter"
+    ].drop_duplicates()
     missing_df = pd.DataFrame({"presenter": missing})
     return legs, missing_df
 
@@ -453,7 +475,9 @@ def _extract_co2e(payload: dict[str, Any]) -> tuple[float, float | None]:
     return float(emissions["co2e"]), None if distance is None else float(distance)
 
 
-def _bounds_from_central(central_co2e: float, transport_mode: str) -> tuple[float, float]:
+def _bounds_from_central(
+    central_co2e: float, transport_mode: str
+) -> tuple[float, float]:
     if transport_mode == "car":
         low = central_co2e * (NZ_CAR_PASSENGERS_CENTRAL / NZ_CAR_PASSENGERS_LOW)
         high = central_co2e * (NZ_CAR_PASSENGERS_CENTRAL / NZ_CAR_PASSENGERS_HIGH)
@@ -500,7 +524,9 @@ def estimate_unique_routes(
     """Query emissions.dev once per unique origin route (efficient for API quotas)."""
     cache = _load_json(travel_cache_path)
     routes = (
-        legs.drop_duplicates(subset=["origin_country", "origin_location", "transport_mode"])
+        legs.drop_duplicates(
+            subset=["origin_country", "origin_location", "transport_mode"]
+        )
         .sort_values(["transport_mode", "origin_country", "origin_location"])
         .reset_index(drop=True)
     )
@@ -509,7 +535,15 @@ def estimate_unique_routes(
 
     rows: list[dict[str, Any]] = []
     if show_progress:
-        from rich.progress import BarColumn, MofNCompleteColumn, Progress, SpinnerColumn, TextColumn, TimeElapsedColumn, TimeRemainingColumn
+        from rich.progress import (
+            BarColumn,
+            MofNCompleteColumn,
+            Progress,
+            SpinnerColumn,
+            TextColumn,
+            TimeElapsedColumn,
+            TimeRemainingColumn,
+        )
 
         progress = Progress(
             SpinnerColumn(),
@@ -578,7 +612,9 @@ def _estimate_route_row(
         pause_seconds=pause_seconds,
     )
     central_co2e, distance_km = _extract_co2e(payload)
-    low_co2e, high_co2e = _bounds_from_central(central_co2e, str(route["transport_mode"]))
+    low_co2e, high_co2e = _bounds_from_central(
+        central_co2e, str(route["transport_mode"])
+    )
     return {
         "route_key": _route_key(
             str(route["origin_country"]),
@@ -599,7 +635,9 @@ def _estimate_route_row(
 def attach_route_emissions(legs: pd.DataFrame, routes: pd.DataFrame) -> pd.DataFrame:
     legs = legs.copy()
     legs["route_key"] = legs.apply(
-        lambda row: _route_key(row["origin_country"], row["origin_location"], row["transport_mode"]),
+        lambda row: _route_key(
+            row["origin_country"], row["origin_location"], row["transport_mode"]
+        ),
         axis=1,
     )
     merged = legs.merge(
@@ -665,7 +703,11 @@ def estimate_leg_emissions(
             "cabin_class": flight_cabin_central,
         }
         low_params = central_params
-        high_params = {**base_params, "transport_mode": "flight", "cabin_class": flight_cabin_high}
+        high_params = {
+            **base_params,
+            "transport_mode": "flight",
+            "cabin_class": flight_cabin_high,
+        }
 
     central_payload = _query_travel_emissions(
         central_params,
@@ -771,8 +813,12 @@ def estimate_conference_travel(
                 co2e_kg=float(row["co2e_kg"]),
                 co2e_low_kg=float(row["co2e_low_kg"]),
                 co2e_high_kg=float(row["co2e_high_kg"]),
-                distance_km=None if pd.isna(row.get("distance_km")) else float(row["distance_km"]),
-                passengers=NZ_CAR_PASSENGERS_CENTRAL if row["transport_mode"] == "car" else 1,
+                distance_km=None
+                if pd.isna(row.get("distance_km"))
+                else float(row["distance_km"]),
+                passengers=NZ_CAR_PASSENGERS_CENTRAL
+                if row["transport_mode"] == "car"
+                else 1,
                 return_trip=True,
                 query_used={},
             )
@@ -792,13 +838,17 @@ def estimate_conference_travel(
     return estimate_df, summary
 
 
-def _load_national_per_capita(path: Path = DEFAULT_NATIONAL_PER_CAPITA_PATH) -> dict[str, Any]:
+def _load_national_per_capita(
+    path: Path = DEFAULT_NATIONAL_PER_CAPITA_PATH,
+) -> dict[str, Any]:
     if not path.exists():
         return {"meta": {}, "countries": {}}
     return _load_json(path)
 
 
-def _build_emissions_context(estimates: pd.DataFrame, total_co2e_kg: float) -> dict[str, Any]:
+def _build_emissions_context(
+    estimates: pd.DataFrame, total_co2e_kg: float
+) -> dict[str, Any]:
     """Comparisons for the emissions tab (trees, national per-capita multipliers)."""
     national_data = _load_national_per_capita()
     national_by_iso2 = national_data.get("countries", {})
@@ -812,13 +862,19 @@ def _build_emissions_context(estimates: pd.DataFrame, total_co2e_kg: float) -> d
         )
         .reset_index()
     )
-    by_country = by_country[by_country["attendee_count"] >= MIN_COUNTRY_ATTENDEES_FOR_CONTEXT].copy()
+    by_country = by_country[
+        by_country["attendee_count"] >= MIN_COUNTRY_ATTENDEES_FOR_CONTEXT
+    ].copy()
     by_country["national_tonnes_per_capita"] = by_country["origin_country"].map(
         lambda code: national_by_iso2.get(str(code), {}).get("tonnes_co2e_per_capita")
     )
     by_country = by_country.dropna(subset=["national_tonnes_per_capita"])
-    by_country = by_country[by_country["national_tonnes_per_capita"] >= MIN_NATIONAL_PER_CAPITA_TONNES]
-    by_country["national_kg_per_capita"] = by_country["national_tonnes_per_capita"] * 1000
+    by_country = by_country[
+        by_country["national_tonnes_per_capita"] >= MIN_NATIONAL_PER_CAPITA_TONNES
+    ]
+    by_country["national_kg_per_capita"] = (
+        by_country["national_tonnes_per_capita"] * 1000
+    )
     by_country["ratio_vs_national_annual"] = (
         by_country["co2e_per_attendee_kg"] / by_country["national_kg_per_capita"]
     )
@@ -835,8 +891,12 @@ def _build_emissions_context(estimates: pd.DataFrame, total_co2e_kg: float) -> d
     if not by_country.empty:
         lowest_pc = by_country.sort_values("national_tonnes_per_capita").iloc[0]
         highest_pc = by_country.sort_values("national_tonnes_per_capita").iloc[-1]
-        context["lowest_national_per_capita"] = _country_per_capita_comparison_row(lowest_pc)
-        context["highest_national_per_capita"] = _country_per_capita_comparison_row(highest_pc)
+        context["lowest_national_per_capita"] = _country_per_capita_comparison_row(
+            lowest_pc
+        )
+        context["highest_national_per_capita"] = _country_per_capita_comparison_row(
+            highest_pc
+        )
 
         conf_avg_kg = context["per_attendee_kg"]
         if national_meta:
@@ -846,9 +906,13 @@ def _build_emissions_context(estimates: pd.DataFrame, total_co2e_kg: float) -> d
             ):
                 context[key] = {
                     "origin_country": str(row["origin_country"]),
-                    "national_tonnes_per_capita": round(float(row["national_tonnes_per_capita"]), 3),
+                    "national_tonnes_per_capita": round(
+                        float(row["national_tonnes_per_capita"]), 3
+                    ),
                     "conference_per_attendee_kg": conf_avg_kg,
-                    "ratio_vs_national_annual": round(conf_avg_kg / float(row["national_kg_per_capita"]), 2),
+                    "ratio_vs_national_annual": round(
+                        conf_avg_kg / float(row["national_kg_per_capita"]), 2
+                    ),
                 }
 
         present = set(estimates["origin_country"].astype(str))
@@ -905,7 +969,9 @@ def _country_per_capita_comparison_row(row: pd.Series) -> dict[str, Any]:
         "origin_country": str(row["origin_country"]),
         "co2e_per_attendee_kg": round(float(row["co2e_per_attendee_kg"]), 1),
         "attendee_count": int(row["attendee_count"]),
-        "national_tonnes_per_capita": round(float(row["national_tonnes_per_capita"]), 3),
+        "national_tonnes_per_capita": round(
+            float(row["national_tonnes_per_capita"]), 3
+        ),
         "national_kg_per_capita": round(float(row["national_kg_per_capita"]), 1),
         "ratio_vs_national_annual": round(float(row["ratio_vs_national_annual"]), 2),
     }
@@ -921,7 +987,11 @@ def summarize_travel_emissions(
     attendee_label: str = "speakers",
     exclusion_note: str = "Speakers without geocoded affiliations are excluded from totals.",
 ) -> dict[str, Any]:
-    country_level = estimates["geocode_level"].eq("country").sum() if "geocode_level" in estimates.columns else 0
+    country_level = (
+        estimates["geocode_level"].eq("country").sum()
+        if "geocode_level" in estimates.columns
+        else 0
+    )
     by_country = (
         estimates.groupby("origin_country")
         .agg(
@@ -962,13 +1032,17 @@ def summarize_travel_emissions(
         "co2e_low_kg": float(estimates["co2e_low_kg"].sum()),
         "co2e_high_kg": float(estimates["co2e_high_kg"].sum()),
         "co2e_tonnes": float(estimates["co2e_kg"].sum() / 1_000),
-        "by_transport_mode": estimates.groupby("transport_mode")[["co2e_kg", "co2e_low_kg", "co2e_high_kg"]]
+        "by_transport_mode": estimates.groupby("transport_mode")[
+            ["co2e_kg", "co2e_low_kg", "co2e_high_kg"]
+        ]
         .sum()
         .reset_index()
         .to_dict(orient="records"),
         "by_country": by_country.to_dict(orient="records"),
         "by_affiliation": by_affiliation.head(50).to_dict(orient="records"),
-        "context": _build_emissions_context(estimates, float(estimates["co2e_kg"].sum())),
+        "context": _build_emissions_context(
+            estimates, float(estimates["co2e_kg"].sum())
+        ),
         "uncertainty": {
             "missing_location_presenters": int(missing_count),
             "country_level_origins": int(country_level),
@@ -986,10 +1060,13 @@ def print_travel_summary(summary: dict[str, Any]) -> None:
     table.add_column("Value", justify="right")
     table.add_row("Attendees estimated", f"{summary['attendees_estimated']:,}")
     table.add_row("Missing location", f"{summary['attendees_missing_location']:,}")
-    table.add_row("Central total", f"{summary['co2e_kg']:,.0f} kg CO2e ({summary['co2e_tonnes']:,.1f} t)")
+    table.add_row(
+        "Central total",
+        f"{summary['co2e_kg']:,.0f} kg CO2e ({summary['co2e_tonnes']:,.1f} t)",
+    )
     table.add_row(
         "Assumption",
-        f"Economy flights (business class ~{FLIGHT_BUSINESS_MULTIPLIER}×)",
+        f"Economy flights (business class ~{FLIGHT_BUSINESS_MULTIPLIER}×, premium economy ~{FLIGHT_PREMIUM_ECONOMY_MULTIPLIER}×)",
     )
     _CONSOLE.print(table)
 
@@ -1169,8 +1246,12 @@ def export_emissions_site_data_legacy(
     for location in site_locations:
         stats = affiliation_map.get(location["affiliation"])
         co2e_kg = round(float(stats["co2e_kg"]), 1) if stats is not None else 0.0
-        co2e_low_kg = round(float(stats["co2e_low_kg"]), 1) if stats is not None else 0.0
-        co2e_high_kg = round(float(stats["co2e_high_kg"]), 1) if stats is not None else 0.0
+        co2e_low_kg = (
+            round(float(stats["co2e_low_kg"]), 1) if stats is not None else 0.0
+        )
+        co2e_high_kg = (
+            round(float(stats["co2e_high_kg"]), 1) if stats is not None else 0.0
+        )
         attendees = int(stats["attendee_count"]) if stats is not None else 0
         location_rows.append(
             {
@@ -1226,5 +1307,7 @@ def export_emissions_site_data_legacy(
 
 def load_geocoded_talks() -> pd.DataFrame:
     talks = load_talks()
-    geocoded = geocode_affiliations(talks["affiliation"].dropna().unique(), show_progress=False)
+    geocoded = geocode_affiliations(
+        talks["affiliation"].dropna().unique(), show_progress=False
+    )
     return attach_coordinates(talks, geocoded)
