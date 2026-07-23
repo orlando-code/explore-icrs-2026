@@ -8,6 +8,7 @@ import {
 
 const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
 const MAX_ZOOM = 10;
+const FLIGHT_PREMIUM_ECONOMY_MULTIPLIER = 1.6;
 const FLIGHT_BUSINESS_MULTIPLIER = 2.9;
 const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
 
@@ -149,10 +150,22 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     );
   }
 
+  function flightPremiumEconomyMultiplier() {
+    return (
+      emissionsData.meta?.assumptions?.flight_premium_economy_multiplier ?? FLIGHT_PREMIUM_ECONOMY_MULTIPLIER
+    );
+  }
+
   function economyAssumptionNote() {
-    const mult = flightBusinessMultiplier();
-    const multLabel = Number.isInteger(mult) ? String(mult) : mult.toFixed(1);
-    return `Assuming economy flights – business class would be around ~${multLabel}× more emissions.`;
+    const premiumEconomyMult = flightPremiumEconomyMultiplier();
+    const businessMult = flightBusinessMultiplier();
+    const premiumEconomyMultLabel = Number.isInteger(premiumEconomyMult)
+      ? String(premiumEconomyMult)
+      : premiumEconomyMult.toFixed(1);
+    const businessMultLabel = Number.isInteger(businessMult)
+      ? String(businessMult)
+      : businessMult.toFixed(1);
+    return `Assuming economy flights – premium economy and business class would be around ~${premiumEconomyMultLabel}× and ~${businessMultLabel}× more emissions respectively.`;
   }
 
   function renderHeadline() {
