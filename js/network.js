@@ -1,9 +1,35 @@
-import { escapeHtml, formatDistance } from "./utils.js";
+import { escapeHtml } from "./utils.js";
 
 const MAX_NODES = 180;
 
+function buildAuthorSearchIndex(locations) {
+  const index = new Map();
+  for (const location of locations) {
+    for (const detail of location.speaker_details || []) {
+      const name = detail.name;
+      if (!name) continue;
+      const existing = index.get(name) || [];
+      if (detail.search_text) existing.push(detail.search_text);
+      index.set(name, existing);
+    }
+  }
+  return index;
+}
+
+function buildAffiliationSearchIndex(locations) {
+  const index = new Map();
+  for (const location of locations) {
+    if (location.affiliation && location.search_text) {
+      index.set(location.affiliation, location.search_text);
+    }
+  }
+  return index;
+}
+
 export function createNetworkView(siteData, elements) {
   const network = siteData.network;
+  const authorSearchIndex = buildAuthorSearchIndex(siteData.locations || []);
+  const affiliationSearchIndex = buildAffiliationSearchIndex(siteData.locations || []);
   let mode = "individual";
   let selectedNodeId = null;
   let searchQuery = "";
@@ -17,6 +43,7 @@ export function createNetworkView(siteData, elements) {
   let nodeSelection = null;
   let labelSelection = null;
   let dragMoved = false;
+  let pendingNodeFocus = false;
   const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
   const canvasEl =
     elements.stage?.querySelector?.(".network-stage-canvas") || elements.stage;
@@ -38,7 +65,7 @@ export function createNetworkView(siteData, elements) {
 
   const zoom = d3
     .zoom()
-    .scaleExtent([0.15, 10])
+    .scaleExtent([0.35, 10])
     .filter((event) => {
       if (event.type === "wheel") return true;
       if (event.type.startsWith("touch") && event.touches?.length > 1) return true;
@@ -59,7 +86,27 @@ export function createNetworkView(siteData, elements) {
     const q = query.toLowerCase();
     if (node.label.toLowerCase().includes(q)) return true;
     if (mode === "individual" && node.affiliation?.toLowerCase().includes(q)) return true;
+    if (mode === "individual") {
+      const texts = authorSearchIndex.get(node.label) || [];
+      if (texts.some((text) => text.includes(q))) return true;
+    } else if (affiliationSearchIndex.get(node.label)?.includes(q)) {
+      return true;
+    }
     return false;
+  }
+
+  function formatNodeMeta(node) {
+    const parts = [
+      `on author list of ${node.connections.toLocaleString()} talk${node.connections === 1 ? "" : "s"}`,
+    ];
+    // Travel distance hidden for now — re-enable when individual travel estimates are ready.
+    // if (node.distance_km != null) {
+    //   parts.push(`${formatDistance(node.distance_km)} from Auckland`);
+    // }
+    if (mode === "individual" && node.affiliation) {
+      parts.push(node.affiliation);
+    }
+    return parts.join(" · ");
   }
 
   function updateMatches(query) {
@@ -74,6 +121,65 @@ export function createNetworkView(siteData, elements) {
       }
     }
     return matchedNodeIds;
+  }
+
+  function graphBounds() {
+    if (!graphNodes.length) return null;
+
+    let minX = Infinity;
+    let minY = Infinity;
+    let maxX = -Infinity;
+    let maxY = -Infinity;
+
+    for (const node of graphNodes) {
+      if (node.x == null || node.y == null) continue;
+      const radius = radiusScale
+        ? radiusScale(Math.max(1, node.connections)) + (isCoarsePointer ? 8 : 4)
+        : 12;
+      minX = Math.min(minX, node.x - radius);
+      minY = Math.min(minY, node.y - radius);
+      maxX = Math.max(maxX, node.x + radius);
+      maxY = Math.max(maxY, node.y + radius);
+    }
+
+    if (!Number.isFinite(minX)) return null;
+
+    return {
+      minX,
+      minY,
+      maxX,
+      maxY,
+      width: Math.max(maxX - minX, 1),
+      height: Math.max(maxY - minY, 1),
+      cx: (minX + maxX) / 2,
+      cy: (minY + maxY) / 2,
+    };
+  }
+
+  function fitToView({ animate = false, transitionMs = 250 } = {}) {
+    const bounds = graphBounds();
+    if (!bounds) return;
+
+    const w = width();
+    const h = height();
+    const pad = 56;
+    const scale = Math.min(
+      (w - pad * 2) / bounds.width,
+      (h - pad * 2) / bounds.height,
+      2.5
+    );
+    const transform = d3.zoomIdentity
+      .translate(w / 2, h / 2)
+      .scale(scale)
+      .translate(-bounds.cx, -bounds.cy);
+
+    zoom.scaleExtent([Math.max(0.35, scale * 0.9), 10]);
+
+    if (animate) {
+      svg.transition().duration(transitionMs).call(zoom.transform, transform);
+    } else {
+      svg.call(zoom.transform, transform);
+    }
   }
 
   function prepareGraph() {
@@ -350,7 +456,7 @@ export function createNetworkView(siteData, elements) {
         (node) => `
         <button type="button" class="result-item${node.id === selectedNodeId ? " selected" : ""}${selectedNodeId && neighbors.has(node.id) ? " neighbor" : ""}" data-node-id="${escapeHtml(node.id)}">
           <div class="affiliation">${escapeHtml(node.label)}</div>
-          <div class="meta">${node.connections.toLocaleString()} talk${node.connections === 1 ? "" : "s"} on author list${node.distance_km != null ? ` · ${formatDistance(node.distance_km)} from Auckland` : ""}${node.affiliation ? ` · ${escapeHtml(node.affiliation)}` : ""}</div>
+          <div class="meta">${escapeHtml(formatNodeMeta(node))}</div>
         </button>`
       )
       .join("");
@@ -431,6 +537,11 @@ export function createNetworkView(siteData, elements) {
         if (labelSelection) {
           labelSelection.attr("x", (d) => d.x).attr("y", (d) => d.y);
         }
+      })
+      .on("end", () => {
+        if (!pendingNodeFocus) {
+          fitToView({ animate: false });
+        }
       });
 
     renderLegend(graphNodes, radiusScale);
@@ -469,16 +580,7 @@ export function createNetworkView(siteData, elements) {
   function showNodeCard(node) {
     elements.card.hidden = false;
     elements.cardTitle.textContent = node.label;
-    const parts = [
-      `${node.connections.toLocaleString()} talk${node.connections === 1 ? "" : "s"} on author list`,
-    ];
-    if (node.distance_km != null) {
-      parts.push(`${formatDistance(node.distance_km)} from Auckland`);
-    }
-    if (mode === "individual" && node.affiliation) {
-      parts.push(node.affiliation);
-    }
-    elements.cardMeta.textContent = parts.join(" · ");
+    elements.cardMeta.textContent = formatNodeMeta(node);
   }
 
   function focusNode(nodeId) {
@@ -512,7 +614,7 @@ export function createNetworkView(siteData, elements) {
 
     if (!searchQuery) {
       setSearchStatus("");
-      resetZoom();
+      pendingNodeFocus = false;
       renderGraph();
       return;
     }
@@ -531,7 +633,11 @@ export function createNetworkView(siteData, elements) {
     if (focus) {
       const firstMatch = graphNodes.find((node) => matchedNodeIds.has(node.id));
       if (firstMatch) {
-        window.setTimeout(() => selectNode(firstMatch.id, { focus: true }), 300);
+        pendingNodeFocus = true;
+        window.setTimeout(() => {
+          selectNode(firstMatch.id, { focus: true });
+          pendingNodeFocus = false;
+        }, 300);
       }
     }
   }
@@ -546,7 +652,7 @@ export function createNetworkView(siteData, elements) {
       .slice(0, 8)
       .map((node) => ({
         label: node.label,
-        detail: `${node.connections.toLocaleString()} talk${node.connections === 1 ? "" : "s"} on author list${node.distance_km != null ? ` · ${formatDistance(node.distance_km)}` : ""}${node.affiliation ? ` · ${node.affiliation}` : ""}`,
+        detail: formatNodeMeta(node),
         query: node.label,
         nodeId: node.id,
       }));
@@ -570,7 +676,7 @@ export function createNetworkView(siteData, elements) {
   }
 
   function resetZoom() {
-    svg.transition().duration(250).call(zoom.transform, d3.zoomIdentity);
+    fitToView({ animate: true });
   }
 
   function updateDimensions() {
@@ -586,7 +692,6 @@ export function createNetworkView(siteData, elements) {
 
   function resize() {
     updateDimensions();
-    if (!hasRendered) resetZoom();
     renderGraph();
   }
 

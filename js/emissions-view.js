@@ -14,10 +14,6 @@ function isMobileLayout() {
   return window.matchMedia("(max-width: 900px)").matches;
 }
 
-function mapProjection() {
-  return isMobileLayout() ? undefined : { type: "globe" };
-}
-
 function countryLabel(code) {
   try {
     return regionNames.of(code) || code;
@@ -53,7 +49,7 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     normalized.all_delegates?.meta?.headline?.attendees_estimated !==
       normalized.speakers?.meta?.headline?.attendees_estimated;
 
-  let includeNonSpeakers = false;
+  let includeNonSpeakers = hasDelegatePool;
   let emissionsData = normalized.speakers;
   let locations = [];
   let allLocations = [];
@@ -84,7 +80,6 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     zoom: isMobileLayout() ? 1.35 : 1.9,
     minZoom: isMobileLayout() ? 0.9 : 0.5,
     maxZoom: MAX_ZOOM,
-    projection: mapProjection(),
     touchPitch: false,
     cooperativeGestures: isMobileLayout(),
   });
@@ -607,17 +602,6 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     hasDelegatePool,
     selectLocation,
     renderSidebar,
-    resize: () => {
-      map.resize();
-      try {
-        if (isMobileLayout() && map.getProjection()?.type === "globe") {
-          map.setProjection(undefined);
-        } else if (!isMobileLayout() && map.getProjection()?.type !== "globe") {
-          map.setProjection({ type: "globe" });
-        }
-      } catch {
-        /* projection API unavailable */
-      }
-    },
+    resize: () => map.resize(),
   };
 }

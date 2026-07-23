@@ -2,11 +2,7 @@ import QRCode from "https://esm.sh/qrcode@1.5.4";
 
 const CANONICAL_URL = "https://orlando-code.github.io/icrs-investigation/";
 
-export function createShareView(siteData, elements) {
-  const title = siteData.meta.title;
-  const summary =
-    "Affiliation map and co-authorship network for ICRS 2026 speakers, centred on Auckland.";
-
+export function createShareView(_siteData, elements) {
   function shareUrl() {
     if (location.hostname.endsWith("github.io")) {
       return CANONICAL_URL;
@@ -58,35 +54,9 @@ export function createShareView(siteData, elements) {
     }
   }
 
-  async function pushShare() {
-    const url = shareUrl();
-    const shareData = {
-      title,
-      text: summary,
-      url,
-    };
-
-    if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-        setStatus("Shared.");
-        return true;
-      } catch (error) {
-        if (error?.name === "AbortError") return false;
-        setStatus("Share failed — try copy link instead.", true);
-        return false;
-      }
-    }
-
-    return copyLink();
-  }
-
   function bindEvents() {
     elements.copyBtn?.addEventListener("click", () => {
       copyLink();
-    });
-    elements.pushBtn?.addEventListener("click", () => {
-      pushShare();
     });
     elements.urlInput?.addEventListener("focus", (event) => {
       event.target.select();
@@ -95,14 +65,9 @@ export function createShareView(siteData, elements) {
 
   bindEvents();
 
-  if (!navigator.share && elements.pushBtn) {
-    elements.pushBtn.textContent = "Copy link to share";
-  }
-
   return {
     render: renderQr,
     copyLink,
-    pushShare,
     shareUrl,
   };
 }

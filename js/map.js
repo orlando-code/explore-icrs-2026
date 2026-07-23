@@ -15,12 +15,12 @@ function isMobileLayout() {
   return window.matchMedia("(max-width: 900px)").matches;
 }
 
-function mapProjection() {
-  return isMobileLayout() ? undefined : { type: "globe" };
-}
-
-export function createMapView(siteData, elements) {
-  const locations = siteData.locations;
+export function createMapView(siteData, elements, { delegateLocations = [] } = {}) {
+  const speakerLocations = siteData.locations;
+  let includeNonSpeakers = Boolean(delegateLocations.length);
+  let locations = includeNonSpeakers
+    ? [...speakerLocations, ...delegateLocations]
+    : [...speakerLocations];
   const meta = siteData.meta;
   const auckland = meta.auckland;
 
@@ -37,7 +37,39 @@ export function createMapView(siteData, elements) {
     ...locations.map((location) => location.connection_count || 0),
     1
   );
-  const displayPositions = buildDisplayPositions(locations);
+  let displayPositions = buildDisplayPositions(locations);
+
+  function applyLocationPool() {
+    locations = includeNonSpeakers
+      ? [...speakerLocations, ...delegateLocations]
+      : [...speakerLocations];
+    maxDistanceKm = Math.max(...locations.map((location) => location.distance_km || 0), 1);
+    maxConnectionCount = Math.max(
+      ...locations.map((location) => location.connection_count || 0),
+      1
+    );
+    displayPositions = buildDisplayPositions(locations);
+    updateMatches(searchQuery);
+    if (selectedId && !locationById(selectedId)) {
+      selectedId = null;
+      hoveredId = null;
+      renderHoverCard(null);
+    }
+    elements.renderResults({
+      searchQuery,
+      matchedIds,
+      selectedId,
+      selectLocation,
+      locationList: locations,
+    });
+    if (mapReady) upsertMapData();
+  }
+
+  function setIncludeNonSpeakers(enabled) {
+    if (!delegateLocations.length) return;
+    includeNonSpeakers = Boolean(enabled);
+    applyLocationPool();
+  }
 
   const map = new maplibregl.Map({
     container: elements.mapContainer,
@@ -46,7 +78,6 @@ export function createMapView(siteData, elements) {
     zoom: isMobileLayout() ? 1.35 : 1.9,
     minZoom: isMobileLayout() ? 0.9 : 0.5,
     maxZoom: MAX_ZOOM,
-    projection: mapProjection(),
     touchPitch: false,
     cooperativeGestures: isMobileLayout(),
   });
@@ -109,6 +140,24 @@ export function createMapView(siteData, elements) {
 
     elements.hoverCard.hidden = false;
     elements.hoverAffiliation.textContent = location.affiliation;
+    if (location.delegate_only) {
+      elements.hoverMeta.textContent = [
+        `${location.speaker_count} non-speaking delegate${location.speaker_count === 1 ? "" : "s"}`,
+        location.geocode_level || null,
+        location.distance_km != null ? `${formatDistance(location.distance_km)} from Auckland` : null,
+      ]
+        .filter(Boolean)
+        .join(" · ");
+      elements.hoverSpeakers.innerHTML =
+        '<li class="status">From published delegate list (no programme talks).</li>';
+      if (isMobileLayout()) {
+        window.requestAnimationFrame(() => {
+          elements.hoverCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        });
+      }
+      return;
+    }
+
     elements.hoverMeta.textContent = [
       `${location.speaker_count} speaker${location.speaker_count === 1 ? "" : "s"}`,
       `${location.talk_count} talk${location.talk_count === 1 ? "" : "s"}`,
@@ -273,6 +322,7 @@ export function createMapView(siteData, elements) {
       matchedIds,
       selectedId,
       selectLocation,
+      locationList: locations,
     });
     upsertMapData();
     if (fly && selectedId) flyToLocation(locationById(selectedId));
@@ -303,6 +353,7 @@ export function createMapView(siteData, elements) {
       matchedIds,
       selectedId,
       selectLocation,
+      locationList: locations,
     });
     upsertMapData();
 
@@ -624,6 +675,7 @@ export function createMapView(siteData, elements) {
       matchedIds,
       selectedId,
       selectLocation,
+      locationList: locations,
     });
     upsertMapData();
   });
@@ -658,18 +710,10 @@ export function createMapView(siteData, elements) {
     selectLocation,
     setDistanceMode,
     setConnectionsSize,
+    setIncludeNonSpeakers,
+    hasDelegatePool: delegateLocations.length > 0,
+    getLocations: () => locations,
     getMatchedIds: () => matchedIds,
-    resize: () => {
-      map.resize();
-      try {
-        if (isMobileLayout() && map.getProjection()?.type === "globe") {
-          map.setProjection(undefined);
-        } else if (!isMobileLayout() && map.getProjection()?.type !== "globe") {
-          map.setProjection({ type: "globe" });
-        }
-      } catch {
-        /* projection API unavailable */
-      }
-    },
+    resize: () => map.resize(),
   };
 }

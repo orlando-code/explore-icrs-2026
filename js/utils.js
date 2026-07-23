@@ -183,3 +183,35 @@ export function buildDisplayPositions(locations, { precision = 5, ringRadius = 0
 
   return display;
 }
+
+/** Map locations for non-speaking delegates not already on the speaker affiliation map. */
+export function buildDelegateMapLocations(speakerLocations, delegateEmissionsLocations = []) {
+  const knownAffiliations = new Set(speakerLocations.map((location) => location.affiliation));
+  return delegateEmissionsLocations
+    .filter(
+      (location) =>
+        location.affiliation &&
+        !knownAffiliations.has(location.affiliation) &&
+        location.lat != null &&
+        location.lon != null
+    )
+    .map((location, index) => {
+      const count = location.travel_attendees || location.speaker_count || 1;
+      const affiliation = location.affiliation;
+      return {
+        id: `delegate-loc-${index + 1}`,
+        affiliation,
+        lat: location.lat,
+        lon: location.lon,
+        speakers: [],
+        speaker_details: [],
+        speaker_count: count,
+        talk_count: 0,
+        geocode_level: "delegate list",
+        distance_km: location.distance_km,
+        search_text: affiliation.toLowerCase(),
+        connection_count: 0,
+        delegate_only: true,
+      };
+    });
+}

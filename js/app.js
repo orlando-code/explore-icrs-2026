@@ -4,10 +4,14 @@ import { createMapView } from "./map.js";
 import { createNetworkView } from "./network.js";
 import { createEmissionsView } from "./emissions-view.js";
 import { createShareView } from "./share.js";
-import { escapeHtml, formatDistance } from "./utils.js";
+import { escapeHtml, formatDistance, buildDelegateMapLocations } from "./utils.js";
 
 const locations = SITE_DATA.locations;
 const meta = SITE_DATA.meta;
+const delegateMapLocations = buildDelegateMapLocations(
+  locations,
+  EMISSIONS_DATA.all_delegates?.locations || []
+);
 
 const $ = (id) => document.getElementById(id);
 const els = {
@@ -28,9 +32,11 @@ const els = {
   hoverSpeakers: $("hover-speakers"),
   distanceToggle: $("distance-toggle"),
   connectionsSizeToggle: $("connections-size-toggle"),
+  mapIncludeNonSpeakingDelegates: $("map-include-non-speaking-delegates"),
   mapPanel: $("map-panel"),
   networkPanel: $("network-panel"),
   emissionsPanel: $("emissions-panel"),
+  methodsPanel: $("methods-panel"),
   sharePanel: $("share-panel"),
   mapStage: $("map-stage"),
   networkStage: $("network-stage"),
@@ -60,7 +66,6 @@ const els = {
   shareQr: $("share-qr"),
   shareUrl: $("share-url"),
   shareUrlInput: $("share-url-input"),
-  sharePushBtn: $("share-push-btn"),
   shareCopyBtn: $("share-copy-btn"),
   shareStatus: $("share-status"),
   emissionsHeadline: $("emissions-headline"),
@@ -91,9 +96,15 @@ function renderStats() {
   ].join("<br>");
 }
 
-function renderResults({ searchQuery, matchedIds, selectedId, selectLocation }) {
+function renderResults({
+  searchQuery,
+  matchedIds,
+  selectedId,
+  selectLocation,
+  locationList = locations,
+}) {
   const searching = Boolean(searchQuery);
-  const ordered = [...locations].sort((a, b) => {
+  const ordered = [...locationList].sort((a, b) => {
     const aMatch = matchedIds.has(a.id) ? 0 : 1;
     const bMatch = matchedIds.has(b.id) ? 0 : 1;
     if (aMatch !== bMatch) return aMatch - bMatch;
@@ -119,9 +130,12 @@ function renderResults({ searchQuery, matchedIds, selectedId, selectLocation }) 
     btn.dataset.id = location.id;
     btn.classList.toggle("selected", location.id === selectedId);
     btn.classList.toggle("dimmed", searching && !matchedIds.has(location.id));
+    const metaText = location.delegate_only
+      ? `${location.speaker_count} non-speaking delegate${location.speaker_count === 1 ? "" : "s"}${location.distance_km != null ? ` · ${formatDistance(location.distance_km)} from Auckland` : ""}`
+      : `${location.speaker_count} speaker${location.speaker_count === 1 ? "" : "s"} · ${location.talk_count} talk${location.talk_count === 1 ? "" : "s"} · ${(location.connection_count || 0).toLocaleString()} on author lists · ${formatDistance(location.distance_km)} from Auckland`;
     btn.innerHTML = `
       <div class="affiliation">${escapeHtml(location.affiliation)}</div>
-      <div class="meta">${location.speaker_count} speaker${location.speaker_count === 1 ? "" : "s"} · ${location.talk_count} talk${location.talk_count === 1 ? "" : "s"} · ${(location.connection_count || 0).toLocaleString()} on author lists · ${formatDistance(location.distance_km)} from Auckland</div>
+      <div class="meta">${metaText}</div>
     `;
     btn.addEventListener("click", () => selectLocation(location.id));
     els.results.appendChild(btn);
@@ -140,17 +154,21 @@ function setStatus(message, isError = false) {
   els.status.classList.toggle("error", isError);
 }
 
-const mapView = createMapView(SITE_DATA, {
-  mapContainer: els.mapContainer,
-  hoverCard: els.hoverCard,
-  hoverAffiliation: els.hoverAffiliation,
-  hoverMeta: els.hoverMeta,
-  hoverSpeakers: els.hoverSpeakers,
-  lineTooltip: els.lineTooltip,
-  legend: els.mapLegend,
-  setStatus,
-  renderResults,
-});
+const mapView = createMapView(
+  SITE_DATA,
+  {
+    mapContainer: els.mapContainer,
+    hoverCard: els.hoverCard,
+    hoverAffiliation: els.hoverAffiliation,
+    hoverMeta: els.hoverMeta,
+    hoverSpeakers: els.hoverSpeakers,
+    lineTooltip: els.lineTooltip,
+    legend: els.mapLegend,
+    setStatus,
+    renderResults,
+  },
+  { delegateLocations: delegateMapLocations }
+);
 
 const networkView = createNetworkView(SITE_DATA, {
   stage: els.networkStage,
@@ -176,7 +194,6 @@ const shareView = createShareView(SITE_DATA, {
   qrCanvas: els.shareQr,
   url: els.shareUrl,
   urlInput: els.shareUrlInput,
-  pushBtn: els.sharePushBtn,
   copyBtn: els.shareCopyBtn,
   status: els.shareStatus,
 });
@@ -198,6 +215,8 @@ const emissionsView = createEmissionsView(EMISSIONS_DATA, SITE_DATA, {
 
 let activeTab = "map";
 
+const layout = document.querySelector(".layout");
+
 function setTab(tab) {
   activeTab = tab;
   els.tabButtons.forEach((button) => {
@@ -206,11 +225,13 @@ function setTab(tab) {
   els.mapPanel.hidden = tab !== "map";
   els.networkPanel.hidden = tab !== "network";
   els.emissionsPanel.hidden = tab !== "emissions";
+  els.methodsPanel.hidden = tab !== "methods";
   els.sharePanel.hidden = tab !== "share";
   els.mapStage.hidden = tab !== "map";
   els.networkStage.hidden = tab !== "network";
   els.emissionsStage.hidden = tab !== "emissions";
   els.shareStage.hidden = tab !== "share";
+  layout?.classList.toggle("layout-methods", tab === "methods");
   if (tab === "map") {
     mapView.resize();
   } else if (tab === "network") {
@@ -244,11 +265,36 @@ els.emissionsModeButtons.forEach((button) => {
   });
 });
 
+const hasDelegatePool = emissionsView.hasDelegatePool || mapView.hasDelegatePool;
+
+function setIncludeNonSpeakingDelegates(enabled) {
+  const include = Boolean(enabled);
+  if (els.includeNonSpeakingDelegates) {
+    els.includeNonSpeakingDelegates.checked = include;
+  }
+  if (els.mapIncludeNonSpeakingDelegates) {
+    els.mapIncludeNonSpeakingDelegates.checked = include;
+  }
+  emissionsView.setIncludeNonSpeakers(include);
+  mapView.setIncludeNonSpeakers(include);
+}
+
 if (els.includeNonSpeakingDelegates) {
-  els.includeNonSpeakingDelegates.disabled = !emissionsView.hasDelegatePool;
+  els.includeNonSpeakingDelegates.disabled = !hasDelegatePool;
   els.includeNonSpeakingDelegates.addEventListener("change", (event) => {
-    emissionsView.setIncludeNonSpeakers(event.target.checked);
+    setIncludeNonSpeakingDelegates(event.target.checked);
   });
+}
+
+if (els.mapIncludeNonSpeakingDelegates) {
+  els.mapIncludeNonSpeakingDelegates.disabled = !hasDelegatePool;
+  els.mapIncludeNonSpeakingDelegates.addEventListener("change", (event) => {
+    setIncludeNonSpeakingDelegates(event.target.checked);
+  });
+}
+
+if (hasDelegatePool) {
+  setIncludeNonSpeakingDelegates(true);
 }
 
 els.distanceToggle.addEventListener("change", (event) => {
@@ -387,6 +433,7 @@ renderResults({
   matchedIds: mapView.getMatchedIds(),
   selectedId: null,
   selectLocation: mapView.selectLocation,
+  locationList: mapView.getLocations(),
 });
 mapView.applySearch("", { fly: false });
 setTab("map");
