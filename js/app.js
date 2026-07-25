@@ -78,6 +78,14 @@ const els = {
   shareCopyBtn: $("share-copy-btn"),
   shareStatus: $("share-status"),
   emissionsHeadline: $("emissions-headline"),
+  emissionsOffsetForm: $("emissions-offset-form"),
+  emissionsOffsetQuery: $("emissions-offset-query"),
+  emissionsOffsetSuggestions: $("emissions-offset-suggestions"),
+  emissionsOffsetRegister: $("emissions-offset-register"),
+  emissionsOffsetStatus: $("emissions-offset-status"),
+  emissionsOffsetTracker: $("emissions-offset-tracker"),
+  emissionsOffsetTrackerFill: $("emissions-offset-tracker-fill"),
+  emissionsOffsetTrackerLabel: $("emissions-offset-tracker-label"),
   emissionsContext: $("emissions-context"),
   emissionsModeBreakdown: $("emissions-mode-breakdown"),
   emissionsLegend: $("emissions-legend"),
@@ -235,6 +243,14 @@ const emissionsView = createEmissionsView(EMISSIONS_DATA, SITE_DATA, {
   headlineDelegateNote: $("emissions-delegate-note"),
   delegateToggleWrap: $("emissions-delegate-toggle-wrap"),
   includeNonSpeakersToggle: els.includeNonSpeakingDelegates,
+  offsetForm: els.emissionsOffsetForm,
+  offsetQuery: els.emissionsOffsetQuery,
+  offsetSuggestions: els.emissionsOffsetSuggestions,
+  offsetRegister: els.emissionsOffsetRegister,
+  offsetStatus: els.emissionsOffsetStatus,
+  offsetTracker: els.emissionsOffsetTracker,
+  offsetTrackerFill: els.emissionsOffsetTrackerFill,
+  offsetTrackerLabel: els.emissionsOffsetTrackerLabel,
   context: els.emissionsContext,
   modeBreakdown: els.emissionsModeBreakdown,
   legend: els.emissionsLegend,
@@ -245,7 +261,7 @@ const emissionsView = createEmissionsView(EMISSIONS_DATA, SITE_DATA, {
   hoverCard: els.emissionsHoverCard,
   hoverAffiliation: els.emissionsHoverAffiliation,
   hoverMeta: els.emissionsHoverMeta,
-});
+}, { delegateGroups: NON_SPEAKING_DELEGATE_GROUPS });
 
 let activeTab = "map";
 

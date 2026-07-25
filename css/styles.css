@@ -893,8 +893,121 @@ button:active {
   color: var(--sea-deep);
 }
 
-.emissions-assumption {
+.emissions-headline-actions.toggle-stack {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.emissions-offset-tracker {
+  margin-top: 0.65rem;
+}
+
+.emissions-offset-tracker-bar {
+  height: 0.55rem;
+  border-radius: 999px;
+  background: rgba(31, 111, 139, 0.12);
+  overflow: hidden;
+}
+
+.emissions-offset-tracker-fill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #2d8a4e, #3aa764);
+  transition: width 0.35s ease;
+}
+
+.emissions-offset-tracker--celebrate .emissions-offset-tracker-bar {
+  background: rgba(45, 138, 78, 0.28);
+  box-shadow: 0 0 0 2px rgba(45, 138, 78, 0.45), 0 0 18px rgba(45, 138, 78, 0.35);
+}
+
+.emissions-offset-tracker--celebrate .emissions-offset-tracker-fill {
+  background: linear-gradient(90deg, #2d8a4e, #5fd68a, #3aa764);
+  animation: offset-bar-glow 0.9s ease-in-out 3;
+}
+
+.emissions-offset-register--celebrate .btn-primary {
+  background: #2d8a4e;
+  box-shadow: 0 8px 22px rgba(45, 138, 78, 0.38);
+}
+
+.emissions-offset-register--celebrate .btn-primary:hover {
+  background: #247a43;
+}
+
+@keyframes offset-bar-glow {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.3);
+  }
+}
+
+.celebration-fireworks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.emissions-offset-tracker-label {
+  margin: 0.4rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.emissions-offset-tracker-label strong {
+  color: var(--ink);
+}
+
+.emissions-offset-register {
+  margin-top: 0.65rem;
+  padding: 0.65rem 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.emissions-headline .emissions-offset-register.entry-form {
+  padding: 0;
+  border-bottom: none;
+  gap: 0.55rem;
+}
+
+.emissions-offset-register .field {
+  margin-bottom: 0;
+}
+
+.emissions-offset-register .form-actions {
   margin: 0;
+}
+
+.emissions-offset-register .status {
+  min-height: 0;
+  margin: 0;
+}
+
+.emissions-offset-register .status:empty {
+  display: none;
+}
+
+.emissions-offset-register .status:not(:empty) {
+  margin-top: 0.3rem;
+}
+
+.emissions-offset-note {
+  margin: 0.35rem 0 0;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.emissions-assumption {
+  margin: 0.5rem 0 0;
   font-size: 0.88rem;
   line-height: 1.4;
   color: var(--muted);

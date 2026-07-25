@@ -1,0 +1,14 @@
+services:
+  offset-api:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      OFFSET_DB_PATH: /data/offsets.db
+      ALLOWED_ORIGINS: "https://orlando-code.github.io,http://localhost:8000,http://127.0.0.1:8000"
+    volumes:
+      - offset-data:/data
+    restart: unless-stopped
+
+volumes:
+  offset-data:

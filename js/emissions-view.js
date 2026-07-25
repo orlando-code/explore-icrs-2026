@@ -1,12 +1,20 @@
 import {
   buildDisplayPositions,
+  enrichSpeakerLocationsWithDelegates,
   escapeHtml,
   formatDistance,
   formatEmissions,
   formatTonnes,
   greatCircleArc,
   haversineKm,
+  buildDelegateIndex,
 } from "./utils.js";
+import {
+  buildEmissionsAttendeesFromSite,
+  createOffsetTracker,
+  pieSlicePolygon,
+} from "./offset-tracker.js";
+import { createFireworksOverlay } from "./celebration.js";
 
 const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
 const MAX_ZOOM = 10;
@@ -49,8 +57,14 @@ function normalizeEmissionsData(data) {
   };
 }
 
-export function createEmissionsView(rawEmissionsData, siteData, elements) {
+export function createEmissionsView(
+  rawEmissionsData,
+  siteData,
+  elements,
+  { delegateGroups = [] } = {}
+) {
   const normalized = normalizeEmissionsData(rawEmissionsData);
+  const delegateIndex = buildDelegateIndex(delegateGroups);
   const delegateMeta = normalized.meta.delegate_meta || {};
   const hasDelegatePool =
     Boolean(delegateMeta.non_speaker_count) &&
@@ -78,6 +92,11 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
   let selectedId = null;
   let hoveredId = null;
   let mapReady = false;
+  let offsetTracker = null;
+  let sliceRefreshTimer = null;
+  let mapUpdateTimer = null;
+  let cachedAttendees = null;
+  let cachedAttendeesKey = "";
 
   const colorScale = (value) =>
     d3.interpolateRgb("#f7dcc8", "#c43c01")(emissionNorm(Math.max(value, minCo2e)));
@@ -94,6 +113,9 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
   });
 
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
+
+  const fireworks = createFireworksOverlay(elements.mapContainer.parentElement);
+  let celebrateTimer = null;
 
   function attendeeLabel() {
     return headline.attendee_label || (includeNonSpeakers ? "delegates" : "speakers");
@@ -125,6 +147,7 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     displayPositions = buildDisplayPositions(allLocations);
     selectedId = null;
     hoveredId = null;
+    cachedAttendees = null;
   }
 
   function locationById(id) {
@@ -143,6 +166,11 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
   function colorFor(location, highlighted) {
     if (!location.co2e_kg) return "#b8c4cc";
     if (location.id === selectedId) return "#1f6f8b";
+    const offsetShare = offsetTracker?.offsetShareForLocation(
+      location.id,
+      location.travel_attendees
+    );
+    if (offsetShare >= 1) return offsetTracker?.OFFSET_GREEN || "#2d8a4e";
     if (!highlighted) return "#b8c4cc";
     return colorScale(location.co2e_kg);
   }
@@ -157,6 +185,65 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     return (
       emissionsData.meta?.assumptions?.flight_premium_economy_multiplier ?? FLIGHT_PREMIUM_ECONOMY_MULTIPLIER
     );
+  }
+
+  function currentAttendees() {
+    if (emissionsData.attendees?.length) return emissionsData.attendees;
+    const cacheKey = includeNonSpeakers ? "all" : "speakers";
+    if (cachedAttendees && cachedAttendeesKey === cacheKey) return cachedAttendees;
+    let siteLocations = siteData.locations || [];
+    if (includeNonSpeakers && delegateIndex.size) {
+      siteLocations = enrichSpeakerLocationsWithDelegates(siteLocations, delegateIndex);
+    }
+    cachedAttendees = buildEmissionsAttendeesFromSite(siteLocations, allLocations);
+    cachedAttendeesKey = cacheKey;
+    return cachedAttendees;
+  }
+
+  function locationOffsetShare(location) {
+    if (!location?.id || !location.travel_attendees) return 0;
+    return offsetTracker?.offsetShareForLocation(location.id, location.travel_attendees) || 0;
+  }
+
+  function offsetSliceFeatures() {
+    if (!mapReady || !offsetTracker) return [];
+    return allLocations
+      .filter((location) => location.co2e_kg > 0 && locationOffsetShare(location) > 0)
+      .map((location) => {
+        const share = locationOffsetShare(location);
+        if (share >= 1) return null;
+        const display = displayForLocation(location);
+        const radius = radiusFor(location);
+        const ring = pieSlicePolygon(map, display.lon, display.lat, radius, share);
+        if (!ring) return null;
+        return {
+          type: "Feature",
+          properties: {
+            id: location.id,
+            offset_share: share,
+            sort_key: location.co2e_kg || 0,
+          },
+          geometry: {
+            type: "Polygon",
+            coordinates: [ring],
+          },
+        };
+      })
+      .filter(Boolean);
+  }
+
+  function scheduleMapUpdate() {
+    if (!mapReady) return;
+    if (mapUpdateTimer) return;
+    mapUpdateTimer = window.requestAnimationFrame(() => {
+      mapUpdateTimer = null;
+      upsertMapData();
+    });
+  }
+
+  function scheduleSliceRefresh() {
+    if (sliceRefreshTimer) window.clearTimeout(sliceRefreshTimer);
+    sliceRefreshTimer = window.setTimeout(() => upsertMapData(), 60);
   }
 
   function economyAssumptionNote() {
@@ -557,6 +644,7 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
       const selected = location.id === selectedId;
       const hovered = location.id === hoveredId;
       const dimmed = Boolean(selectedId && !selected && highlighted);
+      const offsetShare = locationOffsetShare(location);
       return {
         type: "Feature",
         properties: {
@@ -566,6 +654,8 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
           highlighted: highlighted ? 1 : 0,
           selected: selected ? 1 : 0,
           hovered: hovered ? 1 : 0,
+          offset_share: offsetShare,
+          sort_key: selected ? 1e9 + (location.co2e_kg || 0) : location.co2e_kg || 0,
           radius: selected ? radius + 3 : hovered ? radius + 2 : radius,
           color: colorFor(location, highlighted),
           opacity: highlighted
@@ -597,19 +687,64 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
       type: "FeatureCollection",
       features: showLines ? distanceLineFeatures() : [],
     });
+    map.getSource("offset-slices")?.setData({
+      type: "FeatureCollection",
+      features: offsetSliceFeatures(),
+    });
     map.setLayoutProperty("distance-lines-visible", "visibility", showLines ? "visible" : "none");
     map.setLayoutProperty("distance-lines-hit", "visibility", showLines ? "visible" : "none");
     map.setLayoutProperty("auckland-circle", "visibility", showLines ? "visible" : "none");
   }
 
-  function flyToLocation(location) {
+  function flyToLocation(location, { zoom = null, duration = 1400 } = {}) {
     if (!mapReady || !location) return;
     const display = displayForLocation(location);
     map.flyTo({
       center: [display.lon, display.lat],
-      zoom: Math.max(map.getZoom(), 4),
+      zoom: zoom ?? Math.max(map.getZoom(), 4),
+      duration,
       essential: true,
     });
+  }
+
+  function celebrateOffsetRegistration(attendee) {
+    if (!attendee?.location_id || !mapReady) {
+      scheduleMapUpdate();
+      return;
+    }
+    const location = locationById(attendee.location_id);
+    if (!location) {
+      scheduleMapUpdate();
+      return;
+    }
+
+    if (celebrateTimer) window.clearTimeout(celebrateTimer);
+    elements.offsetTracker?.classList.add("emissions-offset-tracker--celebrate");
+    elements.offsetForm?.classList.add("emissions-offset-register--celebrate");
+    celebrateTimer = window.setTimeout(() => {
+      elements.offsetTracker?.classList.remove("emissions-offset-tracker--celebrate");
+      elements.offsetForm?.classList.remove("emissions-offset-register--celebrate");
+      celebrateTimer = null;
+    }, 4500);
+
+    const display = displayForLocation(location);
+    const targetZoom = Math.min(
+      MAX_ZOOM,
+      Math.max(map.getZoom(), isMobileLayout() ? 4.8 : 6)
+    );
+
+    const launchFireworks = () => {
+      fireworks.resize();
+      const point = map.project([display.lon, display.lat]);
+      fireworks.celebrateAt(point.x, point.y);
+    };
+
+    map.once("moveend", () => {
+      launchFireworks();
+      scheduleMapUpdate();
+    });
+    launchFireworks();
+    flyToLocation(location, { zoom: targetZoom, duration: 1600 });
   }
 
   function selectLocation(id, { fly = false, toggle = false } = {}) {
@@ -638,6 +773,7 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     if (!hasDelegatePool) return;
     includeNonSpeakers = Boolean(enabled);
     applyPool();
+    offsetTracker?.refreshAttendees();
     renderSidebar();
     upsertMapData();
     renderHoverCard(null);
@@ -675,6 +811,10 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     map.addSource("auckland", {
       type: "geojson",
       data: aucklandFeature(),
+    });
+    map.addSource("offset-slices", {
+      type: "geojson",
+      data: { type: "FeatureCollection", features: [] },
     });
 
     map.addLayer({
@@ -726,6 +866,9 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
       id: "locations-circle",
       type: "circle",
       source: "locations",
+      layout: {
+        "circle-sort-key": ["get", "sort_key"],
+      },
       paint: {
         "circle-radius": ["get", "radius"],
         "circle-color": ["get", "color"],
@@ -742,8 +885,24 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
       },
     });
 
+    map.addLayer({
+      id: "locations-offset-slices",
+      type: "fill",
+      source: "offset-slices",
+      layout: {
+        "fill-sort-key": ["get", "sort_key"],
+      },
+      paint: {
+        "fill-color": "#2d8a4e",
+        "fill-opacity": 0.95,
+      },
+    });
+
     upsertMapData();
   });
+
+  map.on("zoom", scheduleSliceRefresh);
+  map.on("moveend", scheduleSliceRefresh);
 
   map.on("mouseenter", "locations-circle", (event) => {
     map.getCanvas().style.cursor = "pointer";
@@ -802,7 +961,24 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     hideLineTooltip();
   });
 
+  offsetTracker = createOffsetTracker({
+    elements: {
+      form: elements.offsetForm,
+      query: elements.offsetQuery,
+      suggestions: elements.offsetSuggestions,
+      registerButton: elements.offsetRegister,
+      status: elements.offsetStatus,
+      fill: elements.offsetTrackerFill,
+      label: elements.offsetTrackerLabel,
+    },
+    getAttendees: currentAttendees,
+    getHeadline: () => headline,
+    onChange: () => scheduleMapUpdate(),
+    onRegisterSuccess: celebrateOffsetRegistration,
+  });
+
   applyPool();
+  void offsetTracker.init();
   renderSidebar();
 
   return {
@@ -812,6 +988,9 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     hasDelegatePool,
     selectLocation,
     renderSidebar,
-    resize: () => map.resize(),
+    resize: () => {
+      map.resize();
+      fireworks.resize();
+    },
   };
 }

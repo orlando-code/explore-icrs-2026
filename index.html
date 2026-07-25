@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Live offset API. Set after deploying backend/ (see backend/README.md) -->
+    <!-- <meta name="icrs-offset-api" content="" /> -->
+    <meta name="icrs-offset-api" content="https://icrs-offset-api.fly.dev/api/offsets" />
     <title>ICRS 2026 speaker affiliations</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -239,6 +242,29 @@
               <span>Show distance and route to ICRS</span>
             </label>
           </div>
+          <div class="emissions-offset-tracker" id="emissions-offset-tracker">
+            <div class="emissions-offset-tracker-bar" aria-hidden="true">
+              <div class="emissions-offset-tracker-fill" id="emissions-offset-tracker-fill"></div>
+            </div>
+            <p class="emissions-offset-tracker-label" id="emissions-offset-tracker-label"></p>
+          </div>
+          <form class="emissions-offset-register entry-form" id="emissions-offset-form" autocomplete="off">
+            <div class="field search-wrap">
+              <label for="emissions-offset-query">Register your offset</label>
+              <input
+                id="emissions-offset-query"
+                name="offset-query"
+                placeholder="Search your name…"
+              />
+              <div id="emissions-offset-suggestions" class="suggestions" role="listbox"></div>
+            </div>
+            <div class="form-actions">
+              <button class="btn-primary" type="submit" id="emissions-offset-register">
+                I've offset my travel
+              </button>
+            </div>
+            <p class="status" id="emissions-offset-status" aria-live="polite"></p>
+          </form>
           <p class="emissions-meta" id="emissions-meta"></p>
           <p class="emissions-delegate-note" id="emissions-delegate-note" hidden></p>
         </div>
