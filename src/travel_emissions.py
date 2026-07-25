@@ -40,8 +40,23 @@ TREE_ABSORPTION_KG_PER_YEAR = 22.0
 MIN_COUNTRY_ATTENDEES_FOR_CONTEXT = 3
 MIN_NATIONAL_PER_CAPITA_TONNES = 0.2
 DEFAULT_NATIONAL_PER_CAPITA_PATH = Path("data/national_per_capita_co2.json")
+NATIONAL_PER_CAPITA_INDICATOR = "EN.GHG.CO2.PC.CE.AR5"
+NATIONAL_PER_CAPITA_YEAR = 2024
+WORLD_BANK_NATIONAL_PER_CAPITA_URL = (
+    "https://data.worldbank.org/indicator/EN.GHG.CO2.PC.CE.AR5"
+)
+WORLD_BANK_API_URL = "https://api.worldbank.org/v2"
 ILLUSTRATIVE_LOW_PER_CAPITA_COUNTRIES = ("VU", "TZ", "CM", "FJ", "PG")
 ILLUSTRATIVE_HIGH_PER_CAPITA_COUNTRIES = ("US", "AU", "CA", "SA", "AE", "QA")
+
+
+def national_per_capita_source_note(year: int = NATIONAL_PER_CAPITA_YEAR) -> str:
+    return (
+        f"World Bank {NATIONAL_PER_CAPITA_INDICATOR}, {year}, "
+        "metric tonnes CO₂e per person (excl. LULUCF)"
+    )
+
+
 EMISSIONS_SOURCES = [
     {
         "id": "travel",
@@ -52,8 +67,8 @@ EMISSIONS_SOURCES = [
     {
         "id": "national_per_capita",
         "label": "National per-capita CO₂",
-        "url": "https://data.worldbank.org/indicator/EN.GHG.CO2.PC.CE.AR5",
-        "note": "World Bank EN.GHG.CO2.PC.CE.AR5, 2022, metric tonnes CO₂e per person (excl. LULUCF)",
+        "url": WORLD_BANK_NATIONAL_PER_CAPITA_URL,
+        "note": national_per_capita_source_note(),
     },
     {
         "id": "tree_uptake",
@@ -846,6 +861,211 @@ def _load_national_per_capita(
     return _load_json(path)
 
 
+def fetch_world_bank_national_per_capita(
+    *,
+    year: int = NATIONAL_PER_CAPITA_YEAR,
+    country_codes: list[str] | None = None,
+    timeout: float = 30.0,
+) -> dict[str, Any]:
+    """Fetch national per-capita CO₂ from the World Bank API."""
+    indicator = NATIONAL_PER_CAPITA_INDICATOR
+    values_by_code: dict[str, float] = {}
+    page = 1
+    while True:
+        response = requests.get(
+            f"{WORLD_BANK_API_URL}/country/all/indicator/{indicator}",
+            params={
+                "format": "json",
+                "per_page": 20000,
+                "date": str(year),
+                "page": page,
+            },
+            timeout=timeout,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        if not isinstance(payload, list) or len(payload) < 2:
+            break
+        meta, rows = payload[0], payload[1]
+        for row in rows:
+            code = str(row.get("country", {}).get("id", "")).strip()
+            value = row.get("value")
+            if not code or value is None:
+                continue
+            values_by_code[code] = float(value)
+
+        total_pages = int(meta.get("pages", 1))
+        if page >= total_pages:
+            break
+        page += 1
+
+    requested = country_codes
+    if requested is None and DEFAULT_NATIONAL_PER_CAPITA_PATH.exists():
+        existing = _load_national_per_capita()
+        requested = sorted(existing.get("countries", {}).keys())
+
+    if requested:
+        missing = [code for code in requested if code not in values_by_code]
+        for code in missing:
+            response = requests.get(
+                f"{WORLD_BANK_API_URL}/country/{code}/indicator/{indicator}",
+                params={"format": "json", "mrv": 1},
+                timeout=timeout,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            if not isinstance(payload, list) or len(payload) < 2:
+                continue
+            for row in payload[1]:
+                value = row.get("value")
+                if value is None:
+                    continue
+                values_by_code[code] = float(value)
+                break
+
+    countries: dict[str, dict[str, float]] = {}
+    for code, tonnes in sorted(values_by_code.items()):
+        if requested and code not in requested:
+            continue
+        countries[code] = {
+            "tonnes_co2e_per_capita": round(tonnes, 3),
+            "kg_co2e_per_capita": round(tonnes * 1000, 1),
+        }
+
+    return {
+        "countries": countries,
+        "meta": {
+            "indicator": indicator,
+            "source_label": f"World Bank national CO₂ per capita ({year})",
+            "source_url": WORLD_BANK_NATIONAL_PER_CAPITA_URL,
+            "unit": "metric tonnes CO2e per capita (excl. LULUCF)",
+            "year": year,
+        },
+    }
+
+
+def save_national_per_capita(
+    data: dict[str, Any],
+    path: Path = DEFAULT_NATIONAL_PER_CAPITA_PATH,
+) -> Path:
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(data, ensure_ascii=True, indent=2) + "\n", encoding="utf-8"
+    )
+    return path
+
+
+def _estimates_from_by_country(
+    by_country: list[dict[str, Any]],
+    *,
+    fallback_per_attendee_kg: float | None = None,
+) -> pd.DataFrame:
+    rows: list[dict[str, Any]] = []
+    for index, row in enumerate(by_country):
+        code = str(row.get("origin_country", "")).strip()
+        if not code:
+            continue
+        attendee_count = row.get("attendee_count")
+        co2e_kg = row.get("co2e_kg")
+        co2e_per_attendee_kg = row.get("co2e_per_attendee_kg")
+        if (
+            attendee_count is None
+            and co2e_kg is not None
+            and co2e_per_attendee_kg is not None
+        ):
+            attendee_count = max(1, round(float(co2e_kg) / float(co2e_per_attendee_kg)))
+        if attendee_count is None and co2e_kg is not None and fallback_per_attendee_kg:
+            attendee_count = max(
+                1, round(float(co2e_kg) / float(fallback_per_attendee_kg))
+            )
+        if not attendee_count:
+            continue
+        if co2e_per_attendee_kg is None and co2e_kg is not None:
+            co2e_per_attendee_kg = float(co2e_kg) / int(attendee_count)
+        if co2e_per_attendee_kg is None:
+            continue
+        for subindex in range(int(attendee_count)):
+            rows.append(
+                {
+                    "presenter": f"{code}-{index}-{subindex}",
+                    "origin_country": code,
+                    "co2e_kg": float(co2e_per_attendee_kg),
+                }
+            )
+    return pd.DataFrame(rows)
+
+
+def refresh_emissions_site_national_context(
+    site_path: str | Path = DEFAULT_EMISSIONS_SITE_PATH,
+) -> Path:
+    """Recompute national per-capita comparisons in the exported emissions tab."""
+    site_path = Path(site_path)
+    source = site_path.read_text(encoding="utf-8")
+    prefix = "export const EMISSIONS_DATA = "
+    start = source.index(prefix) + len(prefix)
+    end = source.rindex(";\n")
+    payload = json.loads(source[start:end])
+
+    for pool_name in ("speakers", "all_delegates"):
+        pool = payload.get(pool_name)
+        if not pool:
+            continue
+        headline = pool.get("meta", {}).get("headline", {})
+        total_co2e_kg = float(headline.get("co2e_kg", 0))
+        existing_context = pool.get("meta", {}).get("context", {})
+        fallback_per_attendee = existing_context.get("per_attendee_kg")
+        estimates = _estimates_from_by_country(
+            pool.get("by_country", []),
+            fallback_per_attendee_kg=fallback_per_attendee,
+        )
+        if estimates.empty:
+            continue
+        context = _build_emissions_context(
+            estimates,
+            total_co2e_kg,
+        )
+        attendee_total = int(headline.get("attendees_estimated") or len(estimates) or 1)
+        context["per_attendee_kg"] = round(total_co2e_kg / max(attendee_total, 1), 1)
+        conf_avg_kg = context["per_attendee_kg"]
+        if context.get("conference_vs_lowest_national"):
+            lowest_tonnes = context["conference_vs_lowest_national"][
+                "national_tonnes_per_capita"
+            ]
+            lowest_kg = lowest_tonnes * 1000
+            context["conference_vs_lowest_national"]["conference_per_attendee_kg"] = (
+                conf_avg_kg
+            )
+            context["conference_vs_lowest_national"]["ratio_vs_national_annual"] = (
+                round(conf_avg_kg / lowest_kg, 2)
+            )
+        if context.get("conference_vs_highest_national"):
+            highest_tonnes = context["conference_vs_highest_national"][
+                "national_tonnes_per_capita"
+            ]
+            highest_kg = highest_tonnes * 1000
+            context["conference_vs_highest_national"]["conference_per_attendee_kg"] = (
+                conf_avg_kg
+            )
+            context["conference_vs_highest_national"]["ratio_vs_national_annual"] = (
+                round(conf_avg_kg / highest_kg, 2)
+            )
+        if context.get("illustrative_per_capita"):
+            for row in context["illustrative_per_capita"]:
+                row["conference_per_attendee_kg"] = conf_avg_kg
+                row["ratio_vs_national_annual"] = round(
+                    conf_avg_kg / float(row["national_kg_per_capita"]), 2
+                )
+        pool.setdefault("meta", {})["context"] = context
+
+    js_body = (
+        "/** Generated by estimate_travel_emissions.py – do not edit by hand. */\n"
+        f"export const EMISSIONS_DATA = {json.dumps(payload, ensure_ascii=True, indent=2)};\n"
+    )
+    site_path.write_text(js_body, encoding="utf-8")
+    return site_path
+
+
 def _build_emissions_context(
     estimates: pd.DataFrame, total_co2e_kg: float
 ) -> dict[str, Any]:
@@ -884,7 +1104,7 @@ def _build_emissions_context(
         "tree_kg_per_year_assumption": TREE_ABSORPTION_KG_PER_YEAR,
         "per_attendee_kg": round(total_co2e_kg / max(len(estimates), 1), 1),
         "country_avg_min_attendees": MIN_COUNTRY_ATTENDEES_FOR_CONTEXT,
-        "national_per_capita_year": national_meta.get("year", 2022),
+        "national_per_capita_year": national_meta.get("year", NATIONAL_PER_CAPITA_YEAR),
         "sources": EMISSIONS_SOURCES,
     }
 
@@ -1211,7 +1431,7 @@ def export_emissions_site_data(
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     js_body = (
-        "/** Generated by estimate_travel_emissions.py — do not edit by hand. */\n"
+        "/** Generated by estimate_travel_emissions.py – do not edit by hand. */\n"
         f"export const EMISSIONS_DATA = {json.dumps(payload, ensure_ascii=True, indent=2)};\n"
     )
     output_path.write_text(js_body, encoding="utf-8")
@@ -1298,7 +1518,7 @@ def export_emissions_site_data_legacy(
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     js_body = (
-        "/** Generated by estimate_travel_emissions.py — do not edit by hand. */\n"
+        "/** Generated by estimate_travel_emissions.py – do not edit by hand. */\n"
         f"export const EMISSIONS_DATA = {json.dumps(payload, ensure_ascii=True, indent=2)};\n"
     )
     output_path.write_text(js_body, encoding="utf-8")
