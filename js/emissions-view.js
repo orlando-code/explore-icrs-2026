@@ -4,6 +4,8 @@ import {
   formatDistance,
   formatEmissions,
   formatTonnes,
+  greatCircleArc,
+  haversineKm,
 } from "./utils.js";
 
 const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
@@ -72,6 +74,7 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
 
   const auckland = siteData.meta.auckland;
   let rankMode = "affiliation";
+  let distanceMode = false;
   let selectedId = null;
   let hoveredId = null;
   let mapReady = false;
@@ -187,7 +190,7 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     if (elements.headlineDelegateNote) {
       elements.headlineDelegateNote.hidden = !showDelegateNote;
       if (showDelegateNote) {
-        elements.headlineDelegateNote.innerHTML = `Includes <strong>${formatCount(delegateMeta.non_speaker_count)}</strong> non-speaking delegates from the published list.`;
+        elements.headlineDelegateNote.innerHTML = `Includes <strong>${formatCount(delegateMeta.non_speaker_count)}</strong> non-speaking delegates.`;
       }
     }
     if (elements.delegateToggleWrap) {
@@ -211,14 +214,14 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
   }
 
   function formatNationalTonnes(tonnes) {
-    if (tonnes == null) return "—";
+    if (tonnes == null) return "–";
     return `${Number(tonnes).toLocaleString(undefined, { maximumFractionDigits: 2 })} t/person`;
   }
 
   function renderContext() {
     if (!elements.context) return;
     const bullets = [];
-    const year = context.national_per_capita_year || 2022;
+    const year = context.national_per_capita_year || 2024;
     const minN = context.country_avg_min_attendees || 3;
     const label = attendeeLabel();
     const travelSource = (context.sources || []).find((item) => item.id === "travel");
@@ -267,7 +270,7 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
       const low = context.conference_vs_lowest_national;
       const high = context.conference_vs_highest_national;
       bullets.push(
-        `Conference-wide average return travel (${formatEmissions(context.per_attendee_kg, { compact: true })}/person) is ${formatRatioPhrase(low.ratio_vs_national_annual)} ${escapeHtml(countryLabel(low.origin_country))}'s annual per-capita emissions and ${formatRatioPhrase(high.ratio_vs_national_annual)} ${escapeHtml(countryLabel(high.origin_country))}'s annual per-capita emissions: the most and least emitting countries in the world respectively in 2022 respectively${sourceLink(nationalSource)}.`
+        `Personally, as a delegate from the UK, this return trip was equivalent to a year's worth of emissions...${sourceLink(nationalSource)}.`
       );
     }
 
@@ -284,14 +287,21 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
       ? `<div class="emissions-sources"><h3>Sources</h3><ul>${sources
         .map(
           (source) =>
-            `<li><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${escapeHtml(source.label)}</a>${source.note ? `<span> — ${escapeHtml(source.note)}</span>` : ""}</li>`
+            `<li><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${escapeHtml(source.label)}</a>${source.note ? `<span> – ${escapeHtml(source.note)}</span>` : ""}</li>`
         )
         .join("")}</ul></div>`
       : "";
 
-    elements.context.innerHTML = bullets.length
+    const offsetHtml = `
+      <p class="emissions-offset-suggestion">
+        Offsets are imperfect, but when done well are better than nothing. Consider offsetting your conference travel emissions via Scott Heron's suggested <a href="https://www.greenfleet.com.au/pages/individuals" target="_blank" rel="noopener">Greenfleet</a>.
+      </p>
+    `;
+    const contextHtml = bullets.length
       ? `<h3>Putting it in context</h3><ul class="emissions-context-list">${bullets.map((item) => `<li>${item}</li>`).join("")}</ul>${sourcesHtml}`
       : sourcesHtml;
+
+    elements.context.innerHTML = `${offsetHtml}${contextHtml}`;
   }
 
   function renderModeBreakdown() {
@@ -333,7 +343,7 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
         </div>`
         )
         .join("")}
-      <p class="legend-note">Click a bar or list item to focus the map.</p>
+      <p class="legend-note">Click a bar or map point to show the route to Auckland, or toggle routes for all affiliations.</p>
     `;
   }
 
@@ -346,11 +356,11 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
           const width = Math.max(4, (row.co2e_kg / maxValue) * 100);
           const selected = row.id === selectedId;
           return `
-          <div class="bar-row${selected ? " selected" : ""}">
-            <button type="button" data-id="${escapeHtml(row.id)}">${escapeHtml(row.affiliation)}</button>
+          <button type="button" class="bar-row${selected ? " selected" : ""}" data-id="${escapeHtml(row.id)}">
+            <span class="bar-label">${escapeHtml(row.affiliation)}</span>
             <div class="bar-track"><div class="bar-fill" style="width:${width}%"></div></div>
             <span class="bar-count">${formatEmissions(row.co2e_kg, { compact: true })}</span>
-          </div>`;
+          </button>`;
         })
         .join("");
 
@@ -366,8 +376,8 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
       .map((row) => {
         const width = Math.max(4, (row.co2e_kg / maxValue) * 100);
         return `
-        <div class="bar-row">
-          <button type="button" disabled>${escapeHtml(countryLabel(row.origin_country))}</button>
+        <div class="bar-row emissions-country-row">
+          <span class="bar-label">${escapeHtml(countryLabel(row.origin_country))}</span>
           <div class="bar-track"><div class="bar-fill emissions-country-fill" style="width:${width}%"></div></div>
           <span class="bar-count">${formatEmissions(row.co2e_kg, { compact: true })}</span>
         </div>`;
@@ -378,7 +388,7 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
   function renderRankings() {
     const personLabel = attendeeLabel().replace(/s$/, "");
     if (rankMode === "affiliation") {
-      elements.resultsTitle.textContent = "Top affiliations by emissions";
+      elements.resultsTitle.textContent = "Emissions breakdown";
       elements.results.innerHTML = rankings
         .slice(0, 30)
         .map((row) => {
@@ -460,6 +470,11 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     ];
     if (location.distance_km != null) {
       metaParts.push(`${formatDistance(location.distance_km)} from Auckland`);
+    } else {
+      const distanceKm = distanceForLocation(location);
+      if (distanceKm != null) {
+        metaParts.push(`${formatDistance(distanceKm)} from Auckland`);
+      }
     }
     if (treeYears != null) {
       metaParts.push(`≈${formatCount(treeYears)} tree-years to offset`);
@@ -473,6 +488,67 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     }
   }
 
+  function distanceForLocation(location) {
+    if (location?.distance_km != null) return location.distance_km;
+    if (location?.lat == null || location?.lon == null) return null;
+    return haversineKm(location.lat, location.lon, auckland.lat, auckland.lon);
+  }
+
+  function distanceLineFeatures() {
+    return allLocations
+      .filter((location) => {
+        if (location.lat == null || location.lon == null) return false;
+        if (distanceMode) return location.co2e_kg > 0;
+        return location.id === selectedId;
+      })
+      .map((location) => {
+        const display = displayForLocation(location);
+        const distanceKm = distanceForLocation(location);
+        return {
+          type: "Feature",
+          properties: {
+            id: location.id,
+            affiliation: location.affiliation,
+            distance_km: distanceKm ?? 0,
+            selected: location.id === selectedId ? 1 : 0,
+          },
+          geometry: {
+            type: "LineString",
+            coordinates: greatCircleArc(display.lat, display.lon, auckland.lat, auckland.lon),
+          },
+        };
+      });
+  }
+
+  function aucklandFeature() {
+    return {
+      type: "FeatureCollection",
+      features: [
+        {
+          type: "Feature",
+          properties: { label: auckland.label },
+          geometry: {
+            type: "Point",
+            coordinates: [auckland.lon, auckland.lat],
+          },
+        },
+      ],
+    };
+  }
+
+  function showLineTooltip(text, point) {
+    if (!elements.lineTooltip) return;
+    elements.lineTooltip.textContent = text;
+    elements.lineTooltip.hidden = false;
+    elements.lineTooltip.style.left = `${point.x + 12}px`;
+    elements.lineTooltip.style.top = `${point.y + 12}px`;
+  }
+
+  function hideLineTooltip() {
+    if (!elements.lineTooltip) return;
+    elements.lineTooltip.hidden = true;
+  }
+
   function locationFeatures() {
     return allLocations.map((location) => {
       const highlighted = location.co2e_kg > 0;
@@ -480,6 +556,7 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
       const radius = radiusFor(location);
       const selected = location.id === selectedId;
       const hovered = location.id === hoveredId;
+      const dimmed = Boolean(selectedId && !selected && highlighted);
       return {
         type: "Feature",
         properties: {
@@ -491,7 +568,15 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
           hovered: hovered ? 1 : 0,
           radius: selected ? radius + 3 : hovered ? radius + 2 : radius,
           color: colorFor(location, highlighted),
-          opacity: highlighted ? (selected ? 0.95 : hovered ? 0.9 : 0.82) : 0.2,
+          opacity: highlighted
+            ? selected
+              ? 0.95
+              : dimmed
+                ? 0.22
+                : hovered
+                  ? 0.9
+                  : 0.82
+            : 0.2,
         },
         geometry: {
           type: "Point",
@@ -503,10 +588,18 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
 
   function upsertMapData() {
     if (!mapReady) return;
+    const showLines = distanceMode || Boolean(selectedId);
     map.getSource("locations")?.setData({
       type: "FeatureCollection",
       features: locationFeatures(),
     });
+    map.getSource("distance-lines")?.setData({
+      type: "FeatureCollection",
+      features: showLines ? distanceLineFeatures() : [],
+    });
+    map.setLayoutProperty("distance-lines-visible", "visibility", showLines ? "visible" : "none");
+    map.setLayoutProperty("distance-lines-hit", "visibility", showLines ? "visible" : "none");
+    map.setLayoutProperty("auckland-circle", "visibility", showLines ? "visible" : "none");
   }
 
   function flyToLocation(location) {
@@ -533,6 +626,12 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     rankMode = mode;
     renderBarChart();
     renderRankings();
+  }
+
+  function setDistanceMode(enabled) {
+    distanceMode = Boolean(enabled);
+    upsertMapData();
+    renderLegend();
   }
 
   function setIncludeNonSpeakers(enabled) {
@@ -569,24 +668,52 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
       type: "geojson",
       data: { type: "FeatureCollection", features: [] },
     });
+    map.addSource("distance-lines", {
+      type: "geojson",
+      data: { type: "FeatureCollection", features: [] },
+    });
     map.addSource("auckland", {
       type: "geojson",
-      data: {
-        type: "FeatureCollection",
-        features: [
-          {
-            type: "Feature",
-            properties: { label: auckland.label },
-            geometry: { type: "Point", coordinates: [auckland.lon, auckland.lat] },
-          },
+      data: aucklandFeature(),
+    });
+
+    map.addLayer({
+      id: "distance-lines-visible",
+      type: "line",
+      source: "distance-lines",
+      layout: { visibility: "none" },
+      paint: {
+        "line-color": "#1f6f8b",
+        "line-opacity": [
+          "case",
+          ["==", ["get", "selected"], 1],
+          0.92,
+          0.14,
+        ],
+        "line-width": [
+          "case",
+          ["==", ["get", "selected"], 1],
+          3,
+          1.2,
         ],
       },
     });
-
+    map.addLayer({
+      id: "distance-lines-hit",
+      type: "line",
+      source: "distance-lines",
+      layout: { visibility: "none" },
+      paint: {
+        "line-color": "#000000",
+        "line-opacity": 0.01,
+        "line-width": 10,
+      },
+    });
     map.addLayer({
       id: "auckland-circle",
       type: "circle",
       source: "auckland",
+      layout: { visibility: "none" },
       paint: {
         "circle-radius": 7,
         "circle-color": "#1f6f8b",
@@ -651,11 +778,36 @@ export function createEmissionsView(rawEmissionsData, siteData, elements) {
     upsertMapData();
   });
 
+  map.on("mouseenter", "distance-lines-hit", (event) => {
+    map.getCanvas().style.cursor = "help";
+    const props = event.features?.[0]?.properties;
+    if (!props) return;
+    showLineTooltip(
+      `${props.affiliation}: ${formatDistance(Number(props.distance_km))} from Auckland`,
+      event.point
+    );
+  });
+
+  map.on("mousemove", "distance-lines-hit", (event) => {
+    const props = event.features?.[0]?.properties;
+    if (!props) return;
+    showLineTooltip(
+      `${props.affiliation}: ${formatDistance(Number(props.distance_km))} from Auckland`,
+      event.point
+    );
+  });
+
+  map.on("mouseleave", "distance-lines-hit", () => {
+    map.getCanvas().style.cursor = "";
+    hideLineTooltip();
+  });
+
   applyPool();
   renderSidebar();
 
   return {
     setRankMode,
+    setDistanceMode,
     setIncludeNonSpeakers,
     hasDelegatePool,
     selectLocation,
