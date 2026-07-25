@@ -2,7 +2,7 @@ import { affiliationMapKey, escapeHtml, haversineKm } from "./utils.js";
 import { OFFSET_API_URL } from "./config.js";
 
 const STATIC_REGISTRATIONS_URL = "data/offset-registrations.json";
-const POLL_INTERVAL_MS = 30_000;
+const POLL_INTERVAL_MS = 5_000;
 const OFFSET_GREEN = "#2d8a4e";
 
 function stableAttendeeId(name, locationId) {
@@ -182,9 +182,11 @@ export function createOffsetTracker({
       }</small>`;
       button.addEventListener("mousedown", (event) => {
         event.preventDefault();
+        if (registeredIds.has(attendee.id) || pendingRegistrationIds.has(attendee.id)) return;
         selectedAttendeeId = attendee.id;
         if (elements.query) elements.query.value = attendee.name;
         elements.suggestions.classList.remove("open");
+        renderTracker();
         renderStatus();
       });
       elements.suggestions.appendChild(button);
@@ -277,7 +279,7 @@ export function createOffsetTracker({
     }
   }
 
-  async function registerSelected() {
+  function registerSelected() {
     const attendee = resolveSelectedAttendee();
     if (!attendee) return false;
     if (registeredIds.has(attendee.id) || pendingRegistrationIds.has(attendee.id)) {
@@ -302,12 +304,11 @@ export function createOffsetTracker({
     renderStatus();
     onRegisterSuccess?.(attendee);
 
-    try {
-      return await persistRegistration(attendee);
-    } finally {
+    void persistRegistration(attendee).finally(() => {
       pendingRegistrationIds.delete(attendee.id);
       renderTracker();
-    }
+    });
+    return true;
   }
 
   function bindEvents() {

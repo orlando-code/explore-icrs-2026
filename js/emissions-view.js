@@ -232,6 +232,14 @@ export function createEmissionsView(
       .filter(Boolean);
   }
 
+  function updateOffsetSlices() {
+    if (!mapReady || !offsetTracker) return;
+    map.getSource("offset-slices")?.setData({
+      type: "FeatureCollection",
+      features: offsetSliceFeatures(),
+    });
+  }
+
   function scheduleMapUpdate() {
     if (!mapReady) return;
     if (mapUpdateTimer) return;
@@ -242,8 +250,12 @@ export function createEmissionsView(
   }
 
   function scheduleSliceRefresh() {
-    if (sliceRefreshTimer) window.clearTimeout(sliceRefreshTimer);
-    sliceRefreshTimer = window.setTimeout(() => upsertMapData(), 60);
+    if (!mapReady) return;
+    if (sliceRefreshTimer) return;
+    sliceRefreshTimer = window.requestAnimationFrame(() => {
+      sliceRefreshTimer = null;
+      updateOffsetSlices();
+    });
   }
 
   function economyAssumptionNote() {
@@ -379,16 +391,11 @@ export function createEmissionsView(
         .join("")}</ul></div>`
       : "";
 
-    const offsetHtml = `
-      <p class="emissions-offset-suggestion">
-        Offsets are imperfect, but when done well are better than nothing. Consider offsetting your conference travel emissions via Scott Heron's suggested <a href="https://www.greenfleet.com.au/pages/individuals" target="_blank" rel="noopener">Greenfleet</a>.
-      </p>
-    `;
     const contextHtml = bullets.length
       ? `<h3>Putting it in context</h3><ul class="emissions-context-list">${bullets.map((item) => `<li>${item}</li>`).join("")}</ul>${sourcesHtml}`
       : sourcesHtml;
 
-    elements.context.innerHTML = `${offsetHtml}${contextHtml}`;
+    elements.context.innerHTML = contextHtml;
   }
 
   function renderModeBreakdown() {
@@ -687,10 +694,7 @@ export function createEmissionsView(
       type: "FeatureCollection",
       features: showLines ? distanceLineFeatures() : [],
     });
-    map.getSource("offset-slices")?.setData({
-      type: "FeatureCollection",
-      features: offsetSliceFeatures(),
-    });
+    updateOffsetSlices();
     map.setLayoutProperty("distance-lines-visible", "visibility", showLines ? "visible" : "none");
     map.setLayoutProperty("distance-lines-hit", "visibility", showLines ? "visible" : "none");
     map.setLayoutProperty("auckland-circle", "visibility", showLines ? "visible" : "none");
@@ -705,6 +709,13 @@ export function createEmissionsView(
       duration,
       essential: true,
     });
+  }
+
+  function launchFireworksAt(location) {
+    const display = displayForLocation(location);
+    fireworks.resize();
+    const point = map.project([display.lon, display.lat]);
+    fireworks.celebrateAt(point.x, point.y);
   }
 
   function celebrateOffsetRegistration(attendee) {
@@ -727,24 +738,16 @@ export function createEmissionsView(
       celebrateTimer = null;
     }, 4500);
 
-    const display = displayForLocation(location);
     const targetZoom = Math.min(
       MAX_ZOOM,
       Math.max(map.getZoom(), isMobileLayout() ? 4.8 : 6)
     );
-
-    const launchFireworks = () => {
-      fireworks.resize();
-      const point = map.project([display.lon, display.lat]);
-      fireworks.celebrateAt(point.x, point.y);
-    };
-
     map.once("moveend", () => {
-      launchFireworks();
+      launchFireworksAt(location);
       scheduleMapUpdate();
     });
-    launchFireworks();
-    flyToLocation(location, { zoom: targetZoom, duration: 1600 });
+    launchFireworksAt(location);
+    flyToLocation(location, { zoom: targetZoom, duration: 1400 });
   }
 
   function selectLocation(id, { fly = false, toggle = false } = {}) {
@@ -902,6 +905,8 @@ export function createEmissionsView(
   });
 
   map.on("zoom", scheduleSliceRefresh);
+  map.on("move", scheduleSliceRefresh);
+  map.on("rotate", scheduleSliceRefresh);
   map.on("moveend", scheduleSliceRefresh);
 
   map.on("mouseenter", "locations-circle", (event) => {
