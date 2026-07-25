@@ -41,6 +41,12 @@
     "query_used": "override:Victoria University of Wellington, New Zealand",
     "geocode_level": "institute"
   },
+  "University of Wellington": {
+    "latitude": -41.2889,
+    "longitude": 174.7762,
+    "query_used": "override:Victoria University of Wellington, New Zealand",
+    "geocode_level": "institute"
+  },
   "University of Hong Kong": {
     "latitude": 22.283,
     "longitude": 114.137,

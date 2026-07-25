@@ -1312,6 +1312,7 @@ def _build_emissions_locations(
     from src.geocode import (
         affiliation_base_name,
         canonical_affiliation_key,
+        _institution_rule,
         _load_json,
         _lookup_override,
     )
@@ -1355,7 +1356,12 @@ def _build_emissions_locations(
         affiliation = "" if pd.isna(row["affiliation"]) else str(row["affiliation"])
         key = canonical_affiliation_key(affiliation)
         buckets.setdefault(key, []).append(row.to_frame().T)
-        preferred = affiliation_base_name(affiliation) or affiliation
+        rule = _institution_rule(affiliation)
+        preferred = (
+            rule.get("canonical")
+            if rule
+            else affiliation_base_name(affiliation) or affiliation
+        )
         existing = display_name.get(key)
         if not existing or len(preferred) < len(existing):
             display_name[key] = preferred

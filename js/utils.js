@@ -246,6 +246,7 @@ const AFFILIATION_COORD_OVERRIDE_ENTRIES = [
     115.8613,
   ],
   ["Victoria University of Wellington", -41.2889, 174.7762],
+  ["University of Wellington", -41.2889, 174.7762],
   ["University of Hong Kong", 22.283, 114.137],
   ["Chinese University of Hong Kong", 22.419, 114.206],
   ["University of Leicester", 52.6205879, -1.109923],
@@ -345,6 +346,13 @@ export function buildDisplayPositions(locations, { precision = 5, ringRadius = 0
 }
 
 /** Map locations for non-speaking delegates not already on the speaker affiliation map. */
+function canonicalAffiliationKey(key) {
+  if (key === "university of wellington") {
+    return "victoria university of wellington";
+  }
+  return key;
+}
+
 export function affiliationMapKey(affiliation) {
   let normalized = affiliation.trim();
   if (/^the\s+/i.test(normalized)) {
@@ -371,16 +379,21 @@ export function affiliationMapKey(affiliation) {
       "south africa",
     ]);
     if (countries.has(last)) {
-      return parts.slice(0, -1).join(", ").toLowerCase();
+      return canonicalAffiliationKey(parts.slice(0, -1).join(", ").toLowerCase());
     }
   }
-  return normalized.toLowerCase();
+  return canonicalAffiliationKey(normalized.toLowerCase());
 }
 
 export function buildDelegateIndex(delegateGroups = []) {
-  return new Map(
-    delegateGroups.map((group) => [group.affiliation_key, group.delegates || []])
-  );
+  const index = new Map();
+  for (const group of delegateGroups) {
+    const key = affiliationMapKey(group.affiliation || group.affiliation_key || "");
+    if (!key) continue;
+    const existing = index.get(key) || [];
+    index.set(key, [...existing, ...(group.delegates || [])]);
+  }
+  return index;
 }
 
 function delegateSpeakerDetails(delegates) {

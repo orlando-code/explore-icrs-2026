@@ -44,6 +44,7 @@ _AFFILIATION_ALIASES: dict[str, str] = {
     "cordio": "CORDIO East Africa, Mombasa, Kenya",
     "kaust": "KAUST, Saudi Arabia",
     "victoria university of wellington": "Victoria University of Wellington, New Zealand",
+    "university of wellington": "Victoria University of Wellington, New Zealand",
     "university of hong kong": "University of Hong Kong, Hong Kong",
     "chinese university of hong kong": "Chinese University of Hong Kong, Hong Kong",
     "university of western australia": "University of Western Australia, Crawley, Perth, Australia",
@@ -58,7 +59,7 @@ _AFFILIATION_ALIASES: dict[str, str] = {
 # cities: (name, lat, lon, max_distance_km) for institute-level plausibility checks.
 _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
     (
-        re.compile(r"victoria university of wellington", re.I),
+        re.compile(r"\b(university of wellington|victoria university of wellington)\b", re.I),
         {
             "countries": ["New Zealand"],
             "cities": [("Wellington", -41.2889, 174.7762, 90.0)],
