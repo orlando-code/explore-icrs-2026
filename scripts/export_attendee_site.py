@@ -11,6 +11,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from src.delegates import export_non_speaking_delegates_js
 from src.geocode import attach_coordinates, geocode_affiliations
 from src.plot_utils import export_attendee_site_data
 from src.programme import load_talks
@@ -38,8 +39,10 @@ def main() -> None:
     )
     talks_geo = attach_coordinates(talks, geocoded)
     output = export_attendee_site_data(talks_geo, save_path=args.output)
+    delegates_output = export_non_speaking_delegates_js()
     stats = output.read_text(encoding="utf-8").split('"stats":', 1)[-1][:120]
     print(f"Wrote {output}")
+    print(f"Wrote {delegates_output}")
     print(f"Preview: ...stats{stats}...")
 
 

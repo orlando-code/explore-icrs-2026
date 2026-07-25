@@ -263,7 +263,9 @@ def _extract_country_suffix(line: str) -> tuple[str | None, str]:
 
 
 def _parse_name_org(prefix: str) -> tuple[str, str, str]:
-    parts = [part.strip() for part in re.split(r"\s{2,}", prefix.strip()) if part.strip()]
+    parts = [
+        part.strip() for part in re.split(r"\s{2,}", prefix.strip()) if part.strip()
+    ]
     if len(parts) >= 3:
         return parts[0], parts[1], " ".join(parts[2:])
     if len(parts) == 2:
@@ -308,19 +310,32 @@ def parse_delegate_layout_text(text: str) -> pd.DataFrame:
         if current is not None:
             continuation = line.strip()
             if continuation:
-                current["organisation"] = f"{current['organisation']} {continuation}".strip()
+                current["organisation"] = (
+                    f"{current['organisation']} {continuation}".strip()
+                )
 
     if current is not None:
         records.append(current)
 
     if not records:
         return pd.DataFrame(
-            columns=["first_name", "last_name", "organisation", "country", "full_name", "affiliation"]
+            columns=[
+                "first_name",
+                "last_name",
+                "organisation",
+                "country",
+                "full_name",
+                "affiliation",
+            ]
         )
 
     df = pd.DataFrame(records)
-    df["full_name"] = (df["first_name"].str.strip() + " " + df["last_name"].str.strip()).str.strip()
-    df["affiliation"] = df["organisation"].str.strip() + ", " + df["country"].str.strip()
+    df["full_name"] = (
+        df["first_name"].str.strip() + " " + df["last_name"].str.strip()
+    ).str.strip()
+    df["affiliation"] = (
+        df["organisation"].str.strip() + ", " + df["country"].str.strip()
+    )
     df["country_code"] = df["country"].map(country_to_iso2)
     df = df[df["country_code"].astype(bool)].copy()
     return df
@@ -334,7 +349,11 @@ def load_delegates(
 ) -> pd.DataFrame:
     pdf_path = Path(pdf_path)
     json_path = Path(json_path)
-    if json_path.exists() and not refresh and json_path.stat().st_mtime >= pdf_path.stat().st_mtime:
+    if (
+        json_path.exists()
+        and not refresh
+        and json_path.stat().st_mtime >= pdf_path.stat().st_mtime
+    ):
         payload = _load_json(json_path)
         return pd.DataFrame(payload["delegates"])
 
@@ -371,7 +390,9 @@ def mark_delegate_speakers(delegates: pd.DataFrame) -> pd.DataFrame:
             matches = token_index.get(token)
             if not matches:
                 continue
-            candidate_norms = matches if candidate_norms is None else candidate_norms & matches
+            candidate_norms = (
+                matches if candidate_norms is None else candidate_norms & matches
+            )
             if candidate_norms and len(candidate_norms) == 1:
                 delegates.at[index, "is_speaker"] = True
                 break
@@ -379,6 +400,69 @@ def mark_delegate_speakers(delegates: pd.DataFrame) -> pd.DataFrame:
             delegates.at[index, "is_speaker"] = True
 
     return delegates
+
+
+def non_speaking_delegate_groups(
+    delegates: pd.DataFrame | None = None,
+) -> list[dict[str, Any]]:
+    """Group non-speaking delegates by affiliation for the map site."""
+    from src.geocode import affiliation_base_name
+
+    if delegates is None:
+        delegates = load_delegates()
+
+    groups: dict[str, dict[str, Any]] = {}
+    non_speakers = delegates.loc[~delegates["is_speaker"]]
+    for _, row in non_speakers.iterrows():
+        affiliation = str(
+            row.get("affiliation") or row.get("organisation") or ""
+        ).strip()
+        if not affiliation:
+            continue
+        display = affiliation_base_name(affiliation) or affiliation
+        key = display.casefold()
+        group = groups.setdefault(
+            key,
+            {
+                "affiliation_key": key,
+                "affiliation": display,
+                "delegates": [],
+            },
+        )
+        name = str(row.get("full_name") or "").strip()
+        if not name:
+            continue
+        country = str(row.get("country") or "").strip()
+        group["delegates"].append(
+            {
+                "name": name,
+                "search_text": " ".join(
+                    part for part in (name, display, country) if part
+                ).lower(),
+            }
+        )
+
+    for group in groups.values():
+        group["delegates"].sort(key=lambda item: item["name"].casefold())
+
+    return sorted(groups.values(), key=lambda item: item["affiliation"].casefold())
+
+
+def export_non_speaking_delegates_js(
+    save_path: str | Path = "js/non-speaking-delegates.js",
+    *,
+    delegates: pd.DataFrame | None = None,
+) -> Path:
+    """Export non-speaking delegate names grouped by affiliation."""
+    groups = non_speaking_delegate_groups(delegates)
+    output_path = Path(save_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    body = (
+        "/** Generated from data/delegates.json – do not edit by hand. */\n"
+        f"export const NON_SPEAKING_DELEGATE_GROUPS = {json.dumps(groups, ensure_ascii=True, indent=2)};\n"
+    )
+    output_path.write_text(body, encoding="utf-8")
+    return output_path
 
 
 def save_delegates(
@@ -440,7 +524,9 @@ def _fill_missing_with_country_centroids(rows: pd.DataFrame) -> pd.DataFrame:
         return rows
 
     centroids = _load_country_coords_cache(DEFAULT_COUNTRY_CACHE_PATH)
-    missing_countries = rows.loc[missing_mask, "country"].dropna().astype(str).unique().tolist()
+    missing_countries = (
+        rows.loc[missing_mask, "country"].dropna().astype(str).unique().tolist()
+    )
     unresolved = [
         country
         for country in missing_countries
@@ -481,7 +567,15 @@ def geocoded_non_speakers(
     non_speakers = delegates.loc[~delegates["is_speaker"]].copy()
     if non_speakers.empty:
         return pd.DataFrame(
-            columns=["presenter", "affiliation", "latitude", "longitude", "geocode_level", "country", "country_code"]
+            columns=[
+                "presenter",
+                "affiliation",
+                "latitude",
+                "longitude",
+                "geocode_level",
+                "country",
+                "country_code",
+            ]
         )
 
     rows = non_speakers.rename(columns={"full_name": "presenter"}).copy()
