@@ -248,6 +248,7 @@ const AFFILIATION_COORD_OVERRIDE_ENTRIES = [
   ["Victoria University of Wellington", -41.2889, 174.7762],
   ["University of Hong Kong", 22.283, 114.137],
   ["Chinese University of Hong Kong", 22.419, 114.206],
+  ["University of Leicester", 52.6205879, -1.109923],
 ];
 
 const AFFILIATION_COORD_OVERRIDE_PATTERNS = AFFILIATION_COORD_OVERRIDE_ENTRIES.map(

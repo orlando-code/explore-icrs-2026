@@ -71,6 +71,12 @@
     "query_used": "override:James Cook University, Townsville, Queensland, Australia",
     "geocode_level": "institute"
   },
+  "University of Leicester": {
+    "latitude": 52.6205879,
+    "longitude": -1.109923,
+    "query_used": "override:University of Leicester, Leicester, United Kingdom",
+    "geocode_level": "institute"
+  },
   "Western Australian Museum": {
     "latitude": -31.9492,
     "longitude": 115.8645,

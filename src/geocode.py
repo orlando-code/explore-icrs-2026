@@ -49,6 +49,7 @@ _AFFILIATION_ALIASES: dict[str, str] = {
     "university of western australia": "University of Western Australia, Crawley, Perth, Australia",
     "the university of western australia": "University of Western Australia, Crawley, Perth, Australia",
     "james cook university": "James Cook University, Townsville, Queensland, Australia",
+    "university of leicester": "University of Leicester, Leicester, United Kingdom",
     "western australian museum": "Western Australian Museum, Perth, Western Australia, Australia",
     "department of biodiversity, conservation and attractions": "Department of Biodiversity, Conservation and Attractions, Perth, Western Australia, Australia",
 }
@@ -102,6 +103,15 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
             "cities": [("Townsville", -19.329, 146.757, 120.0)],
             "query": "James Cook University, Townsville, Queensland, Australia",
             "canonical": "James Cook University",
+        },
+    ),
+    (
+        re.compile(r"\buniversity of leicester\b", re.I),
+        {
+            "countries": ["United Kingdom"],
+            "cities": [("Leicester", 52.6206, -1.1099, 40.0)],
+            "query": "University of Leicester, Leicester, United Kingdom",
+            "canonical": "University of Leicester",
         },
     ),
     (

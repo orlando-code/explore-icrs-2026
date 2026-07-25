@@ -1317,7 +1317,10 @@ def _build_emissions_locations(
     )
 
     overrides = _load_json(Path("data/geocode_overrides.json"))
-    australia_centroid = (-24.7761086, 134.755)
+    country_centroids = {
+        (-24.776109, 134.755),  # Australia
+        (54.702354, -3.276575),  # United Kingdom
+    }
 
     def _best_lat_lon(key: str, group: pd.DataFrame) -> tuple[float, float] | None:
         override = _lookup_override(key, overrides)
@@ -1330,7 +1333,7 @@ def _build_emissions_locations(
                 continue
             lat = round(float(row["latitude"]), 6)
             lon = round(float(row["longitude"]), 6)
-            if (lat, lon) == australia_centroid:
+            if (lat, lon) in country_centroids:
                 continue
             pairs[(lat, lon)] = pairs.get((lat, lon), 0) + 1
         if not pairs:
