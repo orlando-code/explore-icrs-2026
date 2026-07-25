@@ -6,6 +6,24 @@ export function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
+const LOCATION_CORRECTION_EMAIL = "rt582@cam.ac.uk";
+
+export function locationCorrectionMailto(location) {
+  const affiliation = location?.affiliation || "";
+  const level = location?.geocode_level || "unknown";
+  const coords =
+    location?.lat != null && location?.lon != null
+      ? `${location.lat}, ${location.lon}`
+      : "not mapped";
+  const subject = encodeURIComponent(
+    "Correction for affiliation location on ICRS delegate explorer"
+  );
+  const body = encodeURIComponent(
+    `Hello,\n\nThe map location for this affiliation is incorrect.\n\nAffiliation: ${affiliation}\nCurrent map coordinates: ${coords}\n\nPlease fill in at least one of the following with the correct location:\nCorrect coordinates (you can get this by right-clicking on Google Maps): [latitude, longitude]\nAddress or campus: [street address, city, country]\nGoogle Maps link: [URL]\n\n\nThank you.`
+  );
+  return `mailto:${LOCATION_CORRECTION_EMAIL}?subject=${subject}&body=${body}`;
+}
+
 const EARTH_RADIUS_KM = 6371;
 
 function toRad(deg) {
@@ -92,13 +110,13 @@ export function greatCircleArc(lat1, lon1, lat2, lon2, numPoints = 64) {
 }
 
 export function formatDistance(km) {
-  if (km == null || Number.isNaN(km)) return "—";
+  if (km == null || Number.isNaN(km)) return "–";
   if (km < 1) return `${Math.round(km * 1000).toLocaleString()} m`;
   return `${Math.round(km).toLocaleString()} km`;
 }
 
 export function formatEmissions(kg, { compact = false } = {}) {
-  if (kg == null || Number.isNaN(kg)) return "—";
+  if (kg == null || Number.isNaN(kg)) return "–";
   const value = Number(kg);
   if (value === 0) return "0 kg";
   if (compact) {
@@ -113,8 +131,78 @@ export function formatEmissions(kg, { compact = false } = {}) {
 }
 
 export function formatTonnes(kg) {
-  if (kg == null || Number.isNaN(kg)) return "—";
+  if (kg == null || Number.isNaN(kg)) return "–";
   return `${(Number(kg) / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })} t CO₂e`;
+}
+
+export function normalizeTalkTitleEntry(entry) {
+  if (!entry) return null;
+  if (typeof entry === "string") {
+    const title = entry.trim();
+    return title ? { title, primary: true } : null;
+  }
+  const title = String(entry.title || "").trim();
+  if (!title) return null;
+  return { title, primary: Boolean(entry.primary) };
+}
+
+function mergeTalkTitleEntries(existing, incoming) {
+  const byTitle = new Map((existing || []).map((entry) => [entry.title, entry]));
+  for (const raw of incoming) {
+    const entry = normalizeTalkTitleEntry(raw);
+    if (!entry) continue;
+    const previous = byTitle.get(entry.title);
+    if (!previous || (entry.primary && !previous.primary)) {
+      byTitle.set(entry.title, entry);
+    }
+  }
+  return [...byTitle.values()];
+}
+
+export function sortTalkTitleEntries(entries) {
+  return [...entries].sort((a, b) => {
+    if (a.primary !== b.primary) return a.primary ? -1 : 1;
+    return a.title.localeCompare(b.title, undefined, { sensitivity: "base" });
+  });
+}
+
+export function buildTalkTitleIndex(locations, talkTitlesByAuthor = null) {
+  if (talkTitlesByAuthor) {
+    const index = new Map();
+    for (const [name, entries] of Object.entries(talkTitlesByAuthor)) {
+      const merged = mergeTalkTitleEntries([], entries)
+        .map(normalizeTalkTitleEntry)
+        .filter(Boolean);
+      if (merged.length) index.set(name, merged);
+    }
+    return index;
+  }
+
+  const index = new Map();
+  for (const location of locations) {
+    for (const speaker of location.speaker_details || []) {
+      const titles = speaker.talk_titles || [];
+      if (!titles.length) continue;
+      const existing = index.get(speaker.name) || [];
+      index.set(speaker.name, mergeTalkTitleEntries(existing, titles));
+    }
+  }
+  return index;
+}
+
+export function renderTalkTitlesHtml(titles, { kicker = null } = {}) {
+  const entries = sortTalkTitleEntries(
+    (titles || []).map(normalizeTalkTitleEntry).filter(Boolean)
+  );
+  if (!entries.length) return "";
+  const items = entries
+    .map(({ title, primary }) => {
+      const text = escapeHtml(title);
+      return primary ? `<li><strong>${text}</strong></li>` : `<li>${text}</li>`;
+    })
+    .join("");
+  const kickerHtml = kicker ? `<p class="hover-kicker">${escapeHtml(kicker)}</p>` : "";
+  return `${kickerHtml}<ul class="speaker-talk-titles">${items}</ul>`;
 }
 
 export function speakerMatchesQuery(speaker, query) {
@@ -185,44 +273,11 @@ export function buildDisplayPositions(locations, { precision = 5, ringRadius = 0
 }
 
 /** Map locations for non-speaking delegates not already on the speaker affiliation map. */
-export function buildDelegateMapLocations(speakerLocations, delegateEmissionsLocations = []) {
-  const knownKeys = new Set(
-    speakerLocations.map((location) => affiliationMapKey(location.affiliation))
-  );
-  const seenDelegateKeys = new Set();
-  const supplemental = [];
-
-  for (const location of delegateEmissionsLocations) {
-    const affiliation = location.affiliation;
-    if (!affiliation || location.lat == null || location.lon == null) continue;
-    const key = affiliationMapKey(affiliation);
-    if (knownKeys.has(key) || seenDelegateKeys.has(key)) continue;
-    seenDelegateKeys.add(key);
-    const count = location.travel_attendees || location.speaker_count || 1;
-    supplemental.push({
-      id: `delegate-loc-${supplemental.length + 1}`,
-      affiliation,
-      lat: location.lat,
-      lon: location.lon,
-      speakers: [],
-      speaker_details: [],
-      speaker_count: count,
-      talk_count: 0,
-      geocode_level: "delegate list",
-      distance_km: location.distance_km,
-      search_text: affiliation.toLowerCase(),
-      connection_count: 0,
-      delegate_only: true,
-    });
-  }
-  return supplemental;
-}
-
-function affiliationMapKey(affiliation) {
+export function affiliationMapKey(affiliation) {
   const parts = affiliation.split(",").map((part) => part.trim()).filter(Boolean);
   if (parts.length >= 2) {
     const last = parts[parts.length - 1].toLowerCase();
-  const countries = new Set([
+    const countries = new Set([
       "new zealand",
       "united kingdom",
       "united states",
@@ -245,3 +300,99 @@ function affiliationMapKey(affiliation) {
   }
   return affiliation.trim().toLowerCase();
 }
+
+export function buildDelegateIndex(delegateGroups = []) {
+  return new Map(
+    delegateGroups.map((group) => [group.affiliation_key, group.delegates || []])
+  );
+}
+
+function delegateSpeakerDetails(delegates) {
+  return (delegates || []).map((delegate) => ({
+    name: delegate.name,
+    search_text: delegate.search_text || delegate.name.toLowerCase(),
+    talk_titles: [],
+    non_speaking_delegate: true,
+  }));
+}
+
+function mergeDelegateSearchText(location, speakerDetails) {
+  const parts = [location.search_text || location.affiliation.toLowerCase()];
+  for (const speaker of speakerDetails) {
+    parts.push(speaker.search_text || speaker.name.toLowerCase());
+  }
+  return parts.join(" ");
+}
+
+export function enrichSpeakerLocationsWithDelegates(speakerLocations, delegateIndex) {
+  if (!delegateIndex?.size) return speakerLocations;
+
+  return speakerLocations.map((location) => {
+    const delegates = delegateIndex.get(affiliationMapKey(location.affiliation)) || [];
+    if (!delegates.length) return location;
+
+    const existingNames = new Set(
+      (location.speaker_details || []).map((speaker) => speaker.name.toLowerCase())
+    );
+    const newDelegates = delegates.filter(
+      (delegate) => !existingNames.has(delegate.name.toLowerCase())
+    );
+    if (!newDelegates.length) return location;
+
+    const speakerDetails = [
+      ...(location.speaker_details || []),
+      ...delegateSpeakerDetails(newDelegates),
+    ];
+    speakerDetails.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
+
+    return {
+      ...location,
+      speakers: speakerDetails.map((speaker) => speaker.name),
+      speaker_details: speakerDetails,
+      speaker_count: speakerDetails.length,
+      non_speaking_delegate_count: newDelegates.length,
+      search_text: mergeDelegateSearchText(location, speakerDetails),
+    };
+  });
+}
+
+export function buildDelegateMapLocations(
+  speakerLocations,
+  delegateEmissionsLocations = [],
+  delegateIndex = new Map(),
+) {
+  const knownKeys = new Set(
+    speakerLocations.map((location) => affiliationMapKey(location.affiliation))
+  );
+  const seenDelegateKeys = new Set();
+  const supplemental = [];
+
+  for (const location of delegateEmissionsLocations) {
+    const affiliation = location.affiliation;
+    if (!affiliation || location.lat == null || location.lon == null) continue;
+    const key = affiliationMapKey(affiliation);
+    if (knownKeys.has(key) || seenDelegateKeys.has(key)) continue;
+    seenDelegateKeys.add(key);
+
+    const speakerDetails = delegateSpeakerDetails(delegateIndex.get(key) || []);
+    const count = speakerDetails.length || location.travel_attendees || location.speaker_count || 1;
+    supplemental.push({
+      id: `delegate-loc-${supplemental.length + 1}`,
+      affiliation,
+      lat: location.lat,
+      lon: location.lon,
+      speakers: speakerDetails.map((speaker) => speaker.name),
+      speaker_details: speakerDetails,
+      speaker_count: count,
+      talk_count: 0,
+      geocode_level: "delegate list",
+      distance_km: location.distance_km,
+      search_text: mergeDelegateSearchText({ affiliation, search_text: affiliation.toLowerCase() }, speakerDetails),
+      connection_count: 0,
+      delegate_only: true,
+      non_speaking_delegate_count: speakerDetails.length,
+    });
+  }
+  return supplemental;
+}
+
