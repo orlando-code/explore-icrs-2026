@@ -1321,6 +1321,7 @@ def _build_emissions_locations(
     country_centroids = {
         (-24.776109, 134.755),  # Australia
         (54.702354, -3.276575),  # United Kingdom
+        (-41.500083, 172.834408),  # New Zealand
     }
 
     def _best_lat_lon(key: str, group: pd.DataFrame) -> tuple[float, float] | None:

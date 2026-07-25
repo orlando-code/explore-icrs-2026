@@ -22,6 +22,8 @@ from src.geocode import (
 from src.programme import load_talks
 
 AUSTRALIA_CENTROID = (-24.7761086, 134.755)
+NEW_ZEALAND_CENTROID = (-41.500083, 172.834408)
+COUNTRY_CENTROIDS = {AUSTRALIA_CENTROID, NEW_ZEALAND_CENTROID}
 LOCATIONS_PATH = PROJECT_ROOT / "js" / "locations.js"
 EMISSIONS_PATH = PROJECT_ROOT / "js" / "emissions-data.js"
 OVERRIDES_PATH = PROJECT_ROOT / "data" / "geocode_overrides.json"
@@ -59,7 +61,8 @@ def _patch_location(location: dict, overrides: dict) -> bool:
         lon = location.get("lon")
         if lat is None or lon is None:
             return False
-        if (round(float(lat), 6), round(float(lon), 6)) != AUSTRALIA_CENTROID:
+        rounded = (round(float(lat), 6), round(float(lon), 6))
+        if rounded not in COUNTRY_CENTROIDS:
             return False
         return False
     lat, lon = coords

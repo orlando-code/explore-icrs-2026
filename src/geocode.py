@@ -51,6 +51,9 @@ _AFFILIATION_ALIASES: dict[str, str] = {
     "the university of western australia": "University of Western Australia, Crawley, Perth, Australia",
     "james cook university": "James Cook University, Townsville, Queensland, Australia",
     "university of leicester": "University of Leicester, Leicester, United Kingdom",
+    "university of auckland": "University of Auckland, Auckland, New Zealand",
+    "university of canterbury": "University of Canterbury, Christchurch, New Zealand",
+    "auckland university of technology": "Auckland University of Technology, Auckland, New Zealand",
     "western australian museum": "Western Australian Museum, Perth, Western Australia, Australia",
     "department of biodiversity, conservation and attractions": "Department of Biodiversity, Conservation and Attractions, Perth, Western Australia, Australia",
 }
@@ -113,6 +116,33 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
             "cities": [("Leicester", 52.6206, -1.1099, 40.0)],
             "query": "University of Leicester, Leicester, United Kingdom",
             "canonical": "University of Leicester",
+        },
+    ),
+    (
+        re.compile(r"\buniversity of auckland\b", re.I),
+        {
+            "countries": ["New Zealand"],
+            "cities": [("Auckland", -36.8661, 174.7737, 90.0)],
+            "query": "University of Auckland, Auckland, New Zealand",
+            "canonical": "University of Auckland",
+        },
+    ),
+    (
+        re.compile(r"\buniversity of canterbury\b", re.I),
+        {
+            "countries": ["New Zealand"],
+            "cities": [("Christchurch", -43.5233, 172.5823, 90.0)],
+            "query": "University of Canterbury, Christchurch, New Zealand",
+            "canonical": "University of Canterbury",
+        },
+    ),
+    (
+        re.compile(r"\bauckland university of technology\b", re.I),
+        {
+            "countries": ["New Zealand"],
+            "cities": [("Auckland", -36.853, 174.7664, 90.0)],
+            "query": "Auckland University of Technology, Auckland, New Zealand",
+            "canonical": "Auckland University of Technology",
         },
     ),
     (

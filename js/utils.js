@@ -234,6 +234,7 @@ export function locationMatchesQuery(location, query) {
 
 /** Spread coincident affiliation points so each remains clickable. */
 export const AUSTRALIA_CENTROID = { lat: -24.7761086, lon: 134.755 };
+export const NEW_ZEALAND_CENTROID = { lat: -41.500083, lon: 172.834408 };
 
 const AFFILIATION_COORD_OVERRIDE_ENTRIES = [
   ["James Cook University", -19.3289618, 146.756645],
@@ -250,6 +251,9 @@ const AFFILIATION_COORD_OVERRIDE_ENTRIES = [
   ["University of Hong Kong", 22.283, 114.137],
   ["Chinese University of Hong Kong", 22.419, 114.206],
   ["University of Leicester", 52.6205879, -1.109923],
+  ["University of Auckland", -36.8660955, 174.7737331],
+  ["University of Canterbury", -43.5232778, 172.5823435],
+  ["Auckland University of Technology", -36.8529871, 174.76642],
 ];
 
 const AFFILIATION_COORD_OVERRIDE_PATTERNS = AFFILIATION_COORD_OVERRIDE_ENTRIES.map(
@@ -268,6 +272,14 @@ export function isAustraliaCentroid(lat, lon) {
   return (
     Math.abs(Number(lat) - AUSTRALIA_CENTROID.lat) < 0.02 &&
     Math.abs(Number(lon) - AUSTRALIA_CENTROID.lon) < 0.02
+  );
+}
+
+export function isNewZealandCentroid(lat, lon) {
+  if (lat == null || lon == null) return false;
+  return (
+    Math.abs(Number(lat) - NEW_ZEALAND_CENTROID.lat) < 0.02 &&
+    Math.abs(Number(lon) - NEW_ZEALAND_CENTROID.lon) < 0.02
   );
 }
 
@@ -292,6 +304,7 @@ export function applyAffiliationGeocodeOverrides(locations) {
     const lon = Number(location.lon);
     if (
       !isAustraliaCentroid(lat, lon) &&
+      !isNewZealandCentroid(lat, lon) &&
       Math.abs(lat - override.lat) < 0.0001 &&
       Math.abs(lon - override.lon) < 0.0001
     ) {
