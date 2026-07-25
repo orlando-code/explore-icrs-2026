@@ -38,6 +38,38 @@ body {
   height: 100vh;
 }
 
+a {
+  color: var(--sea);
+  text-decoration-color: rgba(31, 111, 139, 0.35);
+  text-underline-offset: 0.12em;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--sea-deep);
+}
+
+a:visited {
+  color: var(--sea);
+}
+
+a.btn-primary,
+a.btn-ghost,
+a.btn-small,
+a.network-contact-profile {
+  color: inherit;
+  text-decoration: none;
+}
+
+a.btn-primary {
+  color: white;
+}
+
+a.btn-ghost,
+a.btn-small {
+  color: var(--ink);
+}
+
 .topbar {
   display: flex;
   align-items: flex-end;
@@ -479,11 +511,146 @@ body {
   display: none;
 }
 
-.network-legend {
-  padding: 0.85rem 1.1rem;
-  border-bottom: 1px solid var(--line);
+.network-talk-back {
+  margin-top: 0.65rem;
+}
+
+.network-side-card--on-stage.network-card--talk-open {
+  max-height: min(72vh, calc(100% - 2rem));
+}
+
+.network-talk-detail {
+  margin-top: 0.85rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line);
+}
+
+.network-talk-detail[hidden],
+.network-similar-talks[hidden] {
+  display: none;
+}
+
+.network-talk-title {
+  margin: 0.2rem 0 0.45rem;
+  font-size: 0.98rem;
+  line-height: 1.3;
+  color: var(--sea-deep);
+}
+
+.network-talk-authors {
+  margin: 0 0 0.55rem;
   font-size: 0.82rem;
   color: var(--muted);
+}
+
+.network-talk-abstract {
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+
+.network-similar-talks {
+  margin-top: 0.85rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line);
+}
+
+.network-similar-list {
+  margin: 0.35rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.network-similar-list li + li {
+  margin-top: 0.35rem;
+}
+
+.network-similar-btn {
+  width: 100%;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 0.45rem;
+  background: var(--surface);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.network-similar-btn:hover,
+.network-similar-btn:focus-visible {
+  border-color: var(--sea);
+  background: rgba(18, 94, 120, 0.05);
+}
+
+.network-similar-btn strong {
+  display: block;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.network-similar-authors,
+.network-similar-reason {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.talk-title-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.talk-title-btn:hover,
+.talk-title-btn:focus-visible,
+.talk-title-btn-selected {
+  color: var(--sea-deep);
+  text-decoration: underline;
+}
+
+.talk-title-btn-primary {
+  font-weight: 700;
+}
+
+.network-legend {
+  padding: 0.85rem 1.1rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.network-legend-stack {
+  border-top: 1px solid var(--line);
+}
+
+.network-legend-stack .network-sidebar-bars,
+.network-legend-stack .network-legend + .network-legend {
+  border-top: 1px solid var(--line);
+}
+
+.network-legend-stack .network-legend {
+  border-bottom: 0;
+}
+
+.network-sidebar-bars-header {
+  padding: 0.55rem 1.1rem 0.15rem;
+}
+
+.network-sidebar-bars .network-bar-chart {
+  max-height: 220px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 0 0.55rem 0.55rem;
+}
+
+.network-legend h3:not(:first-child) {
+  margin-top: 0.85rem;
 }
 
 .network-legend h3 {
@@ -1490,26 +1657,36 @@ button:active {
   height: auto;
 }
 
-.share-url {
+.share-url-btn {
+  display: block;
+  width: 100%;
   margin: 1rem 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
   font-size: 0.82rem;
-  color: var(--muted);
+  color: var(--sea);
   word-break: break-all;
   line-height: 1.4;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
 }
 
-.share-controls .field {
-  margin-bottom: 0;
+.share-url-btn:hover,
+.share-url-btn:focus-visible {
+  color: var(--sea-deep);
 }
 
-.share-url-input {
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 0.65rem 0.75rem;
-  font: inherit;
-  background: white;
-  color: var(--ink);
+.share-status {
+  margin: 0.45rem 0 0;
+  text-align: center;
+}
+
+.share-status[hidden] {
+  display: none;
 }
 
 .share-notes {
@@ -1949,8 +2126,7 @@ button:active {
   }
 
   .entry-form,
-  .network-controls,
-  .share-controls {
+  .network-controls {
     position: static;
   }
 

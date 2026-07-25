@@ -143,7 +143,12 @@ export function normalizeTalkTitleEntry(entry) {
   }
   const title = String(entry.title || "").trim();
   if (!title) return null;
-  return { title, primary: Boolean(entry.primary) };
+  const talkId = entry.talk_id ? String(entry.talk_id).trim() : "";
+  return {
+    title,
+    primary: Boolean(entry.primary),
+    ...(talkId ? { talk_id: talkId } : {}),
+  };
 }
 
 function mergeTalkTitleEntries(existing, incoming) {
@@ -190,15 +195,25 @@ export function buildTalkTitleIndex(locations, talkTitlesByAuthor = null) {
   return index;
 }
 
-export function renderTalkTitlesHtml(titles, { kicker = null } = {}) {
+export function renderTalkTitlesHtml(
+  titles,
+  { kicker = null, selectedTalkId = null, resolveTalkId = null } = {}
+) {
   const entries = sortTalkTitleEntries(
     (titles || []).map(normalizeTalkTitleEntry).filter(Boolean)
   );
   if (!entries.length) return "";
   const items = entries
-    .map(({ title, primary }) => {
-      const text = escapeHtml(title);
-      return primary ? `<li><strong>${text}</strong></li>` : `<li>${text}</li>`;
+    .map((entry) => {
+      const talkId = resolveTalkId ? resolveTalkId(entry) : entry.talk_id || "";
+      const text = escapeHtml(entry.title);
+      const selected =
+        talkId && selectedTalkId && talkId === selectedTalkId ? " talk-title-btn-selected" : "";
+      const primaryClass = entry.primary ? " talk-title-btn-primary" : "";
+      if (!talkId) {
+        return entry.primary ? `<li><strong>${text}</strong></li>` : `<li>${text}</li>`;
+      }
+      return `<li><button type="button" class="talk-title-btn${primaryClass}${selected}" data-talk-id="${escapeHtml(talkId)}">${entry.primary ? `<strong>${text}</strong>` : text}</button></li>`;
     })
     .join("");
   const kickerHtml = kicker ? `<p class="hover-kicker">${escapeHtml(kicker)}</p>` : "";

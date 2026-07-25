@@ -230,7 +230,7 @@ export function createOffsetTracker({
     }
     if (elements.label) {
       const rounded = percent < 10 ? percent.toFixed(1) : Math.round(percent).toString();
-      elements.label.innerHTML = `<strong>${rounded}%</strong> offset · <strong>${registeredCount.toLocaleString()}</strong> of ${totalAttendees.toLocaleString()} ${getHeadline()?.attendee_label || "delegates"} registered`;
+      elements.label.innerHTML = `<strong>${rounded}%</strong> offset · <strong>${registeredCount.toLocaleString()}</strong> of ${totalAttendees.toLocaleString()} ${getHeadline()?.attendee_label || "delegates"} offsetted`;
     }
     if (elements.registerButton) {
       const attendee = resolveSelectedAttendee();

@@ -6,7 +6,7 @@
     <!-- Live offset API. Set after deploying backend/ (see backend/README.md) -->
     <!-- <meta name="icrs-offset-api" content="" /> -->
     <meta name="icrs-offset-api" content="https://icrs-offset-api.fly.dev/api/offsets" />
-    <title>ICRS 2026 speaker affiliations</title>
+    <title>ICRS 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,7 +28,7 @@
         aria-modal="true"
       >
         <p class="hover-kicker">Welcome</p>
-        <h2 id="welcome-title">The ICRS 2026 delegate explorer</h2>
+        <h2 id="welcome-title">The ICRS 2026 Explorer</h2>
         <p class="welcome-lead">
           An interactive investigation of who came from where with what associated emissions, and how everyone fits together.
         </p>
@@ -208,6 +208,20 @@
             <p id="network-card-meta" class="hover-meta"></p>
             <div id="network-card-contacts" class="network-card-contacts" hidden></div>
             <div id="network-card-talks" class="network-card-talks" hidden></div>
+            <button type="button" class="btn-ghost btn-small network-talk-back" id="network-talk-back" hidden>
+              ← All talks
+            </button>
+            <div id="network-talk-detail" class="network-talk-detail" hidden>
+              <p class="hover-kicker">Talk details</p>
+              <h3 id="network-talk-title" class="network-talk-title"></h3>
+              <p id="network-talk-authors" class="network-talk-authors"></p>
+              <div id="network-talk-abstract" class="network-talk-abstract"></div>
+            </div>
+            <div id="network-similar-talks" class="network-similar-talks" hidden>
+              <p class="hover-kicker">Similar talks</p>
+              <p id="network-similar-status" class="status" aria-live="polite"></p>
+              <ul id="network-similar-list" class="network-similar-list"></ul>
+            </div>
           </aside>
           </div>
 
@@ -219,7 +233,20 @@
           </div>
         </div>
 
-        <div class="network-legend" id="network-legend"></div>
+        <div class="network-legend-stack">
+          <div class="network-legend" id="network-legend-coauthorship"></div>
+          <div class="network-sidebar-bars">
+            <div class="results-header network-sidebar-bars-header">
+              <h3>Most talks on author lists in view</h3>
+            </div>
+            <div
+              class="network-bar-chart"
+              id="network-bar-chart"
+              aria-label="Talk count ranking for visible nodes"
+            ></div>
+          </div>
+          <div class="network-legend" id="network-legend-scale"></div>
+        </div>
       </aside>
 
       <aside class="panel" id="emissions-panel" hidden>
@@ -254,7 +281,7 @@
               The best offset is an unnecessary offset, but when done well they're better than nothing. Consider offsetting your conference travel emissions via Scott Heron's suggested <a href="https://www.greenfleet.com.au/pages/individuals" target="_blank" rel="noopener">Greenfleet</a>. When you've offset your travel, why not...
             </p>
             <div class="field search-wrap">
-              <label class="visually-hidden" for="emissions-offset-query">...Search your name</label>
+              <label class="visually-hidden" for="emissions-offset-query">...Let's turn this map green!</label>
               <input
                 id="emissions-offset-query"
                 name="offset-query"
@@ -340,6 +367,19 @@
           </section>
 
           <section class="methods-section">
+            <h3>Related talks</h3>
+            <p>
+              Talk abstracts were analysed using a local large language model (deepseek-r1:8b via the Ollama API). Abstracts were first clustered by keywords to increase computational efficiency, then the model was used to generate similarity scores for each abstract in the cluster. We show the top five most similar abstracts for each talk.
+            </p>
+            <!-- <div style="margin-bottom: 1.1em;" aria-hidden="true"></div>
+      
+            <p>
+              Selecting an individual shows public profile links found online via their name and
+              affiliation. <strong>Note</strong>: these were generated automatically (see below) and may contain errors.
+            </p> -->
+          </section>
+
+          <section class="methods-section">
             <h3>Contact links</h3>
             <p>
               Delegate contacts were gathered from public web pages (e.g. university staff pages, personal websites) via a combination of the <a href="https://brave.com/search/api/" target="_blank">Brave Search API</a> and a custom search query using <a href="https://lite.duckduckgo.com/" target="_blank">DuckDuckGo</a> when I ran out of free credits.</p>
@@ -368,37 +408,13 @@
       </aside>
 
       <aside class="panel" id="share-panel" hidden>
-        <div class="panel-header">
-          <h2>Share this map</h2>
-          <p>Scan the QR code or copy the link to share.</p>
-        </div>
-
-        <div class="entry-form share-controls">
-          <label class="field" for="share-url-input">Link</label>
-          <input id="share-url-input" class="share-url-input" readonly />
-          <p id="share-status" class="status" aria-live="polite"></p>
-          <div class="form-actions">
-            <button type="button" class="btn-primary" id="share-copy-btn">Copy link</button>
-          </div>
-        </div>
-
-        <aside class="share-contact" aria-labelledby="share-contact-title">
+        <div class="share-contact" aria-labelledby="share-contact-title">
           <p class="hover-kicker">Contact</p>
-          <h3 id="share-contact-title">Orlando Timmerman</h3>
+          <h3 id="share-contact-title">About the creator</h3>
           <p class="welcome-lead">
-            I mocked this up quickly – it may contain errors! If you spot any issues, have suggestions,
-            or are interested in this kind of work, please get in touch at <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a>.
+            I'm Orlando Timmerman, a PhD student at the University of Cambridge, UK. I believe we can gather, share, and analyse data more effectively – here's just one example!
           </p>
-          <p class="welcome-lead">
-            Regarding the emissions – from my hotel room in Auckland it would be incredibly hypocritical
-            of me to say that we shouldn’t fly to conferences. They're invaluable opportunities to
-            learn, collaborate, and share knowledge. But we must carefully consider the carbon cost of
-            these connections and do everything we can to minimise our emissions and maximise the effectiveness of the collaborations gained! If this is something you think about a lot, I’d love to hear from you!
-          </p>
-          <p class="share-contact-email">
-            <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a>
-          </p>
-        </aside>
+        </div>
       </aside>
 
       <section class="stage stage-stack" id="map-stage">
@@ -478,12 +494,6 @@
           <div class="stage-badge network-help-badge">pinch/scroll to zoom · drag to pan · tap/click a node to select</div>
           <svg id="network-svg" aria-label="Co-authorship network"></svg>
         </div>
-        <div class="network-stage-bars-wrap">
-          <div class="results-header network-stage-bars-header">
-            <h3>Most ICRS 2026 talks on author lists (of selected node)</h3>
-          </div>
-          <div class="network-stage-bars network-bar-chart" id="network-stage-bar-chart" aria-label="Top connections chart"></div>
-        </div>
       </section>
 
       <section class="stage stage-stack" id="emissions-stage" hidden>
@@ -503,21 +513,26 @@
         <div class="share-stage-grid">
           <div class="share-card">
             <p class="hover-kicker">Scan to open</p>
-            <h2 class="share-title">ICRS 2026 affiliations</h2>
+            <h2 class="share-title">ICRS 2026 Explorer</h2>
             <canvas id="share-qr" width="280" height="280" aria-label="QR code for site URL"></canvas>
-            <p id="share-url" class="share-url"></p>
+            <button type="button" id="share-url" class="share-url-btn" aria-label="Copy site link"></button>
+            <p id="share-status" class="status share-status" aria-live="polite" hidden></p>
           </div>
           <aside class="share-contact share-contact-stage" aria-labelledby="share-contact-stage-title">
             <p class="hover-kicker">Contact</p>
             <h3 id="share-contact-stage-title">Orlando Timmerman</h3>
             <p class="welcome-lead">
-          This is a simple tool and may contain errors. Please contact me at <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a> if you find any issues or have suggestions!
+              This is a simple tool and may contain errors. Please contact me at
+              <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a> if you find any issues or have
+              suggestions!
             </p>
             <p class="welcome-lead">
-          Regarding the emissions – from my hotel room in Auckland it would be incredibly hypocritical
-            of me to say that we shouldn’t fly to conferences. They're invaluable opportunities to
-            learn, collaborate, and share knowledge. But we must carefully consider the carbon cost of
-            these connections and do everything we can to minimise our emissions and maximise the effectiveness of the collaborations gained! If this is something you think about a lot, I’d love to hear from you!
+              Regarding the emissions – from my hotel room in Auckland it would be incredibly
+              hypocritical of me to say that we shouldn’t fly to conferences. They're invaluable
+              opportunities to learn, collaborate, and share knowledge. But we must carefully
+              consider the carbon cost of these connections and do everything we can to minimise our
+              emissions and maximise the effectiveness of the collaborations gained! If this is
+              something you think about a lot, I’d love to hear from you!
             </p>
             <p class="share-contact-email">
               <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a>

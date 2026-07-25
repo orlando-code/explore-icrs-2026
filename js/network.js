@@ -1,4 +1,5 @@
 import { escapeHtml, buildTalkTitleIndex, renderTalkTitlesHtml } from "./utils.js";
+import { createTalkSimilarityLookup, resolveTalkId } from "./talk-similarity.js";
 
 const DEFAULT_NODE_LIMIT = 150;
 const MAX_LINKS_ALL = 6000;
@@ -164,6 +165,15 @@ export function createNetworkView(siteData, elements) {
     siteData.locations || [],
     siteData.talk_titles_by_author
   );
+  const talksData = elements.talksData || { by_id: {}, title_index: {} };
+  const talksById = talksData.by_id || {};
+  const similarityLookup = createTalkSimilarityLookup(
+    elements.similaritiesData || { by_id: {} },
+    talksById
+  );
+  let selectedTalkId = null;
+  let selectedSpeakerName = "";
+  let similarRequestId = 0;
   let mode = "individual";
   let nodeLimit = DEFAULT_NODE_LIMIT;
   let graphTotalNodes = 0;
@@ -721,31 +731,12 @@ export function createNetworkView(siteData, elements) {
   }
 
   function renderLegend(nodes, radiusScale) {
-    if (!elements.legend) return;
-    const counts = nodes.map((node) => node.connections);
-    const minCount = Math.max(1, d3.min(counts) || 1);
-    const maxCount = Math.max(minCount, d3.max(counts) || 1);
-    const midCount = Math.round(Math.sqrt(minCount * maxCount));
-    const samples = [
-      { label: `${minCount.toLocaleString()} talks`, value: minCount },
-      { label: `${midCount.toLocaleString()} talks`, value: midCount },
-      { label: `${maxCount.toLocaleString()} talks`, value: maxCount },
-    ];
+    renderCoauthorshipLegend();
+    renderScaleLegend(nodes, radiusScale);
+  }
 
-    const withDistance = nodes.filter((node) => node.distance_km != null);
-    let distanceSection = "";
-    // if (withDistance.length) {
-    //   const distances = withDistance.map((node) => node.distance_km);
-    //   const minDistance = Math.min(...distances);
-    //   const maxDistance = Math.max(...distances);
-    //   const midDistance = Math.round((minDistance + maxDistance) / 2);
-    //   distanceSection = `
-    //     <h3>Distance from Auckland</h3>
-    //     <p>Shown in node details for geocoded affiliations.</p>
-    //     <div class="legend-row"><span class="legend-line"></span><span>${formatDistance(minDistance)} – ${formatDistance(maxDistance)} across network</span></div>
-    //     <div class="legend-row"><span class="legend-dot legend-dot-small"></span><span>Example: ${formatDistance(midDistance)}</span></div>
-    //   `;
-    // }
+  function renderCoauthorshipLegend() {
+    if (!elements.legendCoauthorship) return;
 
     const searchSection =
       searchQuery && matchedNodeIds.size
@@ -763,7 +754,42 @@ export function createNetworkView(siteData, elements) {
     `
         : "";
 
-    elements.legend.innerHTML = `
+    const selectionSection = selectedNodeId
+      ? `
+      <h3>Selection</h3>
+      <p>Highlighted links connect the selected node to direct co-authors. Other nodes fade.</p>
+      <div class="legend-row">
+        <span class="legend-line" style="height:3px;background:#1f6f8b"></span>
+        <span>Link to selected node</span>
+      </div>
+      <div class="legend-row">
+        <span class="legend-line"></span>
+        <span>Other co-authorship links</span>
+      </div>
+    `
+      : "";
+
+    elements.legendCoauthorship.innerHTML = `
+      <h3>Co-authorship links</h3>
+      <p>Edges connect speakers or affiliations who share authorship on at least one ICRS talk. Thicker lines mean more shared talks.</p>
+      ${selectionSection}
+      ${searchSection}
+    `;
+  }
+
+  function renderScaleLegend(nodes, radiusScale) {
+    if (!elements.legendScale || !radiusScale) return;
+    const counts = nodes.map((node) => node.connections);
+    const minCount = Math.max(1, d3.min(counts) || 1);
+    const maxCount = Math.max(minCount, d3.max(counts) || 1);
+    const midCount = Math.round(Math.sqrt(minCount * maxCount));
+    const samples = [
+      { label: `${minCount.toLocaleString()} talks`, value: minCount },
+      { label: `${midCount.toLocaleString()} talks`, value: midCount },
+      { label: `${maxCount.toLocaleString()} talks`, value: maxCount },
+    ];
+
+    elements.legendScale.innerHTML = `
       <h3>Node size · talks on author lists (log scale)</h3>
       <p>Circle area scales with talks where the person or affiliation appears on the author list.</p>
       ${samples
@@ -775,8 +801,6 @@ export function createNetworkView(siteData, elements) {
         </div>`
         )
         .join("")}
-      ${searchSection}
-      ${distanceSection}
     `;
   }
 
@@ -1154,21 +1178,153 @@ export function createNetworkView(siteData, elements) {
       });
   }
 
+  function resolveTalkIdForEntry(entry) {
+    return resolveTalkId(entry, talksData, selectedSpeakerName);
+  }
+
+  function setTalkListVisible(visible) {
+    if (elements.cardTalks) elements.cardTalks.hidden = !visible;
+    if (elements.talkBack) elements.talkBack.hidden = visible;
+    elements.card?.classList.toggle("network-card--talk-open", !visible);
+  }
+
+  function clearTalkDetail() {
+    selectedTalkId = null;
+    similarRequestId += 1;
+    setTalkListVisible(true);
+    if (elements.talkDetail) {
+      elements.talkDetail.hidden = true;
+      if (elements.talkTitle) elements.talkTitle.textContent = "";
+      if (elements.talkAuthors) elements.talkAuthors.textContent = "";
+      if (elements.talkAbstract) elements.talkAbstract.textContent = "";
+    }
+    if (elements.similarTalks) elements.similarTalks.hidden = true;
+    if (elements.similarStatus) elements.similarStatus.textContent = "";
+    if (elements.similarList) elements.similarList.innerHTML = "";
+  }
+
+  function scrollTalkDetailIntoView() {
+    const target = elements.talkDetail;
+    const container = elements.card;
+    if (!target || !container || target.hidden) return;
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      if (container.scrollHeight > container.clientHeight) {
+        const top = Math.max(0, target.offsetTop - 12);
+        container.scrollTo({ top, behavior: "smooth" });
+      }
+    });
+  }
+
+  function setSimilarStatus(message, { isError = false } = {}) {
+    if (!elements.similarStatus) return;
+    elements.similarStatus.textContent = message;
+    elements.similarStatus.classList.toggle("status-error", Boolean(isError));
+  }
+
+  function renderSimilarTalks(results) {
+    if (!elements.similarList || !elements.similarTalks) return;
+    if (!results.length) {
+      elements.similarList.innerHTML = "";
+      elements.similarTalks.hidden = true;
+      return;
+    }
+
+    elements.similarList.innerHTML = results
+      .map(({ talk, reason }) => {
+        const authors = (talk.authors || []).join(", ");
+        const reasonHtml = reason
+          ? `<span class="network-similar-reason">${escapeHtml(reason)}</span>`
+          : "";
+        return `<li><button type="button" class="network-similar-btn" data-talk-id="${escapeHtml(talk.id)}"><strong>${escapeHtml(talk.title)}</strong>${authors ? `<span class="network-similar-authors">${escapeHtml(authors)}</span>` : ""}${reasonHtml}</button></li>`;
+      })
+      .join("");
+    elements.similarTalks.hidden = false;
+  }
+
+  function loadSimilarTalks(talk) {
+    if (!elements.similarTalks) return;
+    const requestId = ++similarRequestId;
+    elements.similarTalks.hidden = false;
+
+    const results = similarityLookup.findSimilar(talk);
+    if (requestId !== similarRequestId || selectedTalkId !== talk.id) return;
+    if (!results.length) {
+      setSimilarStatus("No similar talks found.", true);
+      renderSimilarTalks([]);
+      return;
+    }
+    setSimilarStatus("Similar talks by topic.");
+    renderSimilarTalks(results);
+  }
+
+  function showTalkDetail(talkId, { loadSimilar = false } = {}) {
+    const normalizedTalkId = String(talkId || "").trim();
+    const talk = talksById[normalizedTalkId];
+    if (!talk || !elements.talkDetail) return;
+
+    selectedTalkId = normalizedTalkId;
+    setTalkListVisible(false);
+    elements.talkDetail.hidden = false;
+    if (elements.talkTitle) elements.talkTitle.textContent = talk.title;
+    if (elements.talkAuthors) {
+      elements.talkAuthors.textContent = (talk.authors || []).join(", ");
+    }
+    if (elements.talkAbstract) {
+      elements.talkAbstract.textContent = talk.abstract || "No abstract available.";
+    }
+
+    if (loadSimilar) {
+      loadSimilarTalks(talk);
+    } else if (elements.similarTalks) {
+      elements.similarTalks.hidden = true;
+      setSimilarStatus("");
+      if (elements.similarList) elements.similarList.innerHTML = "";
+    }
+
+    scrollTalkDetailIntoView();
+  }
+
+  function handleTalkSelection(talkId) {
+    const normalizedTalkId = String(talkId || "").trim();
+    if (!normalizedTalkId) return;
+    if (normalizedTalkId === selectedTalkId) {
+      scrollTalkDetailIntoView();
+      return;
+    }
+    showTalkDetail(normalizedTalkId, { loadSimilar: true });
+  }
+
   function updateNodeTalks(node) {
     if (!elements.cardTalks) return;
     if (!node || mode !== "individual") {
+      selectedSpeakerName = "";
       elements.cardTalks.hidden = true;
       elements.cardTalks.innerHTML = "";
+      clearTalkDetail();
       return;
     }
+    if (node.label !== selectedSpeakerName) {
+      clearTalkDetail();
+    }
+    selectedSpeakerName = node.label;
     const titles = talkTitleIndex.get(node.label) || [];
     if (!titles.length) {
       elements.cardTalks.hidden = true;
       elements.cardTalks.innerHTML = "";
+      clearTalkDetail();
       return;
     }
-    elements.cardTalks.hidden = false;
-    elements.cardTalks.innerHTML = renderTalkTitlesHtml(titles, { kicker: "Talks" });
+    elements.cardTalks.innerHTML = renderTalkTitlesHtml(titles, {
+      kicker: "Talks",
+      selectedTalkId,
+      resolveTalkId: resolveTalkIdForEntry,
+    });
+    if (selectedTalkId) {
+      setTalkListVisible(false);
+    } else {
+      setTalkListVisible(true);
+    }
   }
 
   function showNodeCard(node) {
@@ -1199,6 +1355,7 @@ export function createNetworkView(siteData, elements) {
 
   function clearSelection() {
     selectedNodeId = null;
+    clearTalkDetail();
     renderGraph();
   }
 
@@ -1292,6 +1449,7 @@ export function createNetworkView(siteData, elements) {
     matchedNodeIds = new Set();
     userAdjustedZoom = false;
     elements.card.hidden = true;
+    clearTalkDetail();
     updateNodeTalks(null);
     updateNodeContacts(null);
     setDataInfoOpen(false);
@@ -1364,6 +1522,27 @@ export function createNetworkView(siteData, elements) {
   if (elements.dataInfoBtn && elements.dataInfo) {
     elements.dataInfoBtn.addEventListener("click", () => {
       setDataInfoOpen(elements.dataInfo.hidden);
+    });
+  }
+  if (elements.card) {
+    elements.card.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-talk-id]");
+      if (!button || !elements.card.contains(button)) return;
+      event.preventDefault();
+      event.stopPropagation();
+      handleTalkSelection(button.dataset.talkId);
+    });
+  }
+  if (elements.talkBack) {
+    elements.talkBack.addEventListener("click", () => {
+      clearTalkDetail();
+      if (selectedSpeakerName && elements.cardTalks) {
+        const titles = talkTitleIndex.get(selectedSpeakerName) || [];
+        elements.cardTalks.innerHTML = renderTalkTitlesHtml(titles, {
+          kicker: "Talks",
+          resolveTalkId: resolveTalkIdForEntry,
+        });
+      }
     });
   }
 

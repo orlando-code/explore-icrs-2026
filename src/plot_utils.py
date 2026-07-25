@@ -400,9 +400,14 @@ def _build_talk_title_index(
             is_primary = author == presenter_text or (
                 not presenter_text and author == authors[0]
             )
+            talk_id = row.get("talk_id")
+            talk_id_text = "" if pd.isna(talk_id) else str(talk_id).strip()
             existing = author_bucket.get(title_text)
             if not existing or (is_primary and not existing.get("primary")):
-                author_bucket[title_text] = {"title": title_text, "primary": is_primary}
+                entry = {"title": title_text, "primary": is_primary}
+                if talk_id_text:
+                    entry["talk_id"] = talk_id_text
+                author_bucket[title_text] = entry
 
     result: dict[str, list[dict[str, Any]]] = {}
     for author, titles in sorted(index.items()):

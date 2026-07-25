@@ -1,4 +1,6 @@
 import { SITE_DATA } from "./locations.js";
+import { TALKS_DATA } from "./talks.js";
+import { TALK_SIMILARITIES } from "./talk-similarities.js";
 import { EMISSIONS_DATA } from "./emissions-data.js";
 import { SPEAKER_PROFILES } from "./speaker-profiles.js";
 import { NON_SPEAKING_DELEGATE_GROUPS } from "./non-speaking-delegates.js";
@@ -65,6 +67,14 @@ const els = {
   networkCardTitle: $("network-card-title"),
   networkCardMeta: $("network-card-meta"),
   networkCardTalks: $("network-card-talks"),
+  networkTalkBack: $("network-talk-back"),
+  networkTalkDetail: $("network-talk-detail"),
+  networkTalkTitle: $("network-talk-title"),
+  networkTalkAuthors: $("network-talk-authors"),
+  networkTalkAbstract: $("network-talk-abstract"),
+  networkSimilarTalks: $("network-similar-talks"),
+  networkSimilarStatus: $("network-similar-status"),
+  networkSimilarList: $("network-similar-list"),
   networkCardContacts: $("network-card-contacts"),
   networkDataInfoBtn: $("network-data-info-btn"),
   networkDataInfo: $("network-data-info"),
@@ -80,14 +90,13 @@ const els = {
   networkSearchBtn: $("network-search-btn"),
   networkClearSearch: $("network-clear-search"),
   networkDensity: $("network-density"),
-  networkLegend: $("network-legend"),
-  networkStageBarChart: $("network-stage-bar-chart"),
+  networkLegendCoauthorship: $("network-legend-coauthorship"),
+  networkLegendScale: $("network-legend-scale"),
+  networkBarChart: $("network-bar-chart"),
   networkResults: $("network-results"),
   networkResultsTitle: $("network-results-title"),
   shareQr: $("share-qr"),
   shareUrl: $("share-url"),
-  shareUrlInput: $("share-url-input"),
-  shareCopyBtn: $("share-copy-btn"),
   shareStatus: $("share-status"),
   emissionsHeadline: $("emissions-headline"),
   emissionsOffsetForm: $("emissions-offset-form"),
@@ -218,6 +227,16 @@ const networkView = createNetworkView(SITE_DATA, {
   cardTitle: els.networkCardTitle,
   cardMeta: els.networkCardMeta,
   cardTalks: els.networkCardTalks,
+  talkBack: els.networkTalkBack,
+  talkDetail: els.networkTalkDetail,
+  talkTitle: els.networkTalkTitle,
+  talkAuthors: els.networkTalkAuthors,
+  talkAbstract: els.networkTalkAbstract,
+  similarTalks: els.networkSimilarTalks,
+  similarStatus: els.networkSimilarStatus,
+  similarList: els.networkSimilarList,
+  talksData: TALKS_DATA,
+  similaritiesData: TALK_SIMILARITIES,
   cardContacts: els.networkCardContacts,
   dataInfoBtn: els.networkDataInfoBtn,
   dataInfo: els.networkDataInfo,
@@ -229,8 +248,9 @@ const networkView = createNetworkView(SITE_DATA, {
   clearSelection: els.clearSelection,
   cardClear: els.networkCardClear,
   cardSlot: els.networkCardSlot,
-  legend: els.networkLegend,
-  barChart: els.networkStageBarChart,
+  legendCoauthorship: els.networkLegendCoauthorship,
+  legendScale: els.networkLegendScale,
+  barChart: els.networkBarChart,
   results: els.networkResults,
   resultsTitle: els.networkResultsTitle,
   searchInput: els.networkSearch,
@@ -240,8 +260,6 @@ const networkView = createNetworkView(SITE_DATA, {
 const shareView = createShareView(SITE_DATA, {
   qrCanvas: els.shareQr,
   url: els.shareUrl,
-  urlInput: els.shareUrlInput,
-  copyBtn: els.shareCopyBtn,
   status: els.shareStatus,
 });
 

@@ -1,5 +1,7 @@
 data/geocode_cache.json
 data/speaker_profiles_cache.json
+data/talk_embeddings.npz
+data/talk_embeddings.meta.json
 data/country_centroids.json
 data/travel_emissions_cache.json
 data/reverse_geocode_cache.json

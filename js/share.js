@@ -14,12 +14,15 @@ export function createShareView(_siteData, elements) {
     if (!elements.status) return;
     elements.status.textContent = message || "";
     elements.status.classList.toggle("error", isError);
+    elements.status.hidden = !message;
   }
 
   async function renderQr() {
     const url = shareUrl();
-    if (elements.url) elements.url.textContent = url;
-    if (elements.urlInput) elements.urlInput.value = url;
+    if (elements.url) {
+      elements.url.textContent = url;
+      elements.url.title = "Click to copy link";
+    }
     if (!elements.qrCanvas) return;
 
     const size = Math.min(280, Math.max(200, window.innerWidth - 56));
@@ -43,23 +46,14 @@ export function createShareView(_siteData, elements) {
       setStatus("Link copied to clipboard.");
       return true;
     } catch {
-      if (elements.urlInput) {
-        elements.urlInput.select();
-        document.execCommand("copy");
-        setStatus("Link copied to clipboard.");
-        return true;
-      }
       setStatus("Could not copy link.", true);
       return false;
     }
   }
 
   function bindEvents() {
-    elements.copyBtn?.addEventListener("click", () => {
+    elements.url?.addEventListener("click", () => {
       copyLink();
-    });
-    elements.urlInput?.addEventListener("focus", (event) => {
-      event.target.select();
     });
   }
 
