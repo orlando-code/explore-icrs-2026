@@ -1,6 +1,135 @@
-import { escapeHtml } from "./utils.js";
+import { escapeHtml, buildTalkTitleIndex, renderTalkTitlesHtml } from "./utils.js";
 
-const MAX_NODES = 180;
+const DEFAULT_NODE_LIMIT = 150;
+const MAX_LINKS_ALL = 6000;
+const DATA_REMOVAL_EMAIL = "rt582@cam.ac.uk";
+
+function linkEndpointId(endpoint) {
+  return typeof endpoint === "object" ? endpoint.id : endpoint;
+}
+
+function stripSimulationState(node) {
+  const copy = { ...node };
+  delete copy.x;
+  delete copy.y;
+  delete copy.vx;
+  delete copy.vy;
+  delete copy.fx;
+  delete copy.fy;
+  return copy;
+}
+
+function forceTopicCluster(matchedIds, strength = 0.1) {
+  let nodes;
+
+  function force(alpha) {
+    const matched = nodes.filter((node) => matchedIds.has(node.id) && node.x != null && node.y != null);
+    if (matched.length < 2) return;
+
+    let cx = 0;
+    let cy = 0;
+    for (const node of matched) {
+      cx += node.x;
+      cy += node.y;
+    }
+    cx /= matched.length;
+    cy /= matched.length;
+
+    const pull = strength * alpha;
+    for (const node of matched) {
+      node.vx += (cx - node.x) * pull;
+      node.vy += (cy - node.y) * pull;
+    }
+  }
+
+  force.initialize = (_nodes) => {
+    nodes = _nodes;
+  };
+
+  return force;
+}
+
+function dataCorrectionMailto(name) {
+  const subject = encodeURIComponent("Correction for ICRS delegate explorer profile");
+  const body = encodeURIComponent(
+    `Hello,\n\nI would like to correct my information on the ICRS delegate explorer.\n\nName: ${name}\nWebsite: [your website URL]\nContact email: [your contact email]\n\nThank you.`
+  );
+  return `mailto:${DATA_REMOVAL_EMAIL}?subject=${subject}&body=${body}`;
+}
+
+function dataRemovalMailto(name) {
+  const subject = encodeURIComponent("Request to remove my data from ICRS delegate explorer");
+  const body = encodeURIComponent(
+    `Hello,\n\nI would like to request removal of my information from the ICRS delegate explorer.\n\nName: ${name}\n\nThank you.`
+  );
+  return `mailto:${DATA_REMOVAL_EMAIL}?subject=${subject}&body=${body}`;
+}
+
+function linkedInSearchUrl(name, affiliation = "") {
+  const query = encodeURIComponent(`${name} ${affiliation}`.trim());
+  return `https://www.linkedin.com/search/results/people/?keywords=${query}`;
+}
+
+function scholarSearchUrl(name, affiliation = "") {
+  const query = encodeURIComponent(`${name} ${affiliation}`.trim());
+  return `https://scholar.google.com/scholar?q=${query}`;
+}
+
+function profilePageFor(profile) {
+  if (!profile) return null;
+
+  if (profile.institutional_page) {
+    return {
+      label: "University profile",
+      url: profile.institutional_page,
+      kind: "institution",
+    };
+  }
+
+  if (profile.profile_page) {
+    return {
+      label: profile.profile_page_label || "Personal website",
+      url: profile.profile_page,
+      kind: "website",
+    };
+  }
+
+  const links = profile.links || [];
+  const institution = links.find((link) => link.kind === "institution");
+  if (institution?.url) {
+    return {
+      label: institution.label || "University profile",
+      url: institution.url,
+      kind: "institution",
+    };
+  }
+
+  const website = links.find(
+    (link) =>
+      link.kind === "website" &&
+      link.url &&
+      !link.url.startsWith("mailto:") &&
+      link.url !== "value" &&
+      !/linkedin\.com/i.test(link.url)
+  );
+  if (website?.url) {
+    return {
+      label: website.label || "Personal website",
+      url: website.url,
+      kind: "website",
+    };
+  }
+
+  return null;
+}
+
+function profilePageHost(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "View profile";
+  }
+}
 
 function buildAuthorSearchIndex(locations) {
   const index = new Map();
@@ -28,9 +157,17 @@ function buildAffiliationSearchIndex(locations) {
 
 export function createNetworkView(siteData, elements) {
   const network = siteData.network;
+  const speakerProfiles = elements.speakerProfiles || {};
   const authorSearchIndex = buildAuthorSearchIndex(siteData.locations || []);
   const affiliationSearchIndex = buildAffiliationSearchIndex(siteData.locations || []);
+  const talkTitleIndex = buildTalkTitleIndex(
+    siteData.locations || [],
+    siteData.talk_titles_by_author
+  );
   let mode = "individual";
+  let nodeLimit = DEFAULT_NODE_LIMIT;
+  let graphTotalNodes = 0;
+  let graphThinned = false;
   let selectedNodeId = null;
   let searchQuery = "";
   let matchedNodeIds = new Set();
@@ -44,9 +181,30 @@ export function createNetworkView(siteData, elements) {
   let labelSelection = null;
   let dragMoved = false;
   let pendingNodeFocus = false;
+  let resizeTimer = null;
+  let graphRenderKey = "";
+  let autoFitPending = false;
+  let userAdjustedZoom = false;
   const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
   const canvasEl =
     elements.stage?.querySelector?.(".network-stage-canvas") || elements.stage;
+  const cardDesktopMq = window.matchMedia("(min-width: 901px)");
+
+  function cardOnStage() {
+    return cardDesktopMq.matches;
+  }
+
+  function placeNetworkCard() {
+    const card = elements.card;
+    const slot = elements.cardSlot;
+    if (!card || !slot || !canvasEl) return;
+
+    const target = cardOnStage() ? canvasEl : slot;
+    if (card.parentElement !== target) {
+      target.appendChild(card);
+    }
+    card.classList.toggle("network-side-card--on-stage", cardOnStage());
+  }
 
   const width = () => Math.max(canvasEl.clientWidth, 320);
   const height = () => Math.max(canvasEl.clientHeight, 280);
@@ -66,12 +224,180 @@ export function createNetworkView(siteData, elements) {
     })
     .on("zoom", (event) => {
       viewport.attr("transform", event.transform);
+      if (event.sourceEvent) userAdjustedZoom = true;
     });
 
   svg.call(zoom).on("dblclick.zoom", null);
 
+  function parseNodeLimit(value) {
+    if (value === "all" || value == null) return null;
+    const parsed = Number.parseInt(value, 10);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : DEFAULT_NODE_LIMIT;
+  }
+
+  function neighborIdsFromLinks(nodeId, links) {
+    const ids = new Set();
+    if (!nodeId) return ids;
+    for (const link of links) {
+      const sourceId = linkEndpointId(link.source);
+      const targetId = linkEndpointId(link.target);
+      if (sourceId === nodeId) ids.add(targetId);
+      if (targetId === nodeId) ids.add(sourceId);
+    }
+    return ids;
+  }
+
+  function maybeThinLinks(links) {
+    if (nodeLimit != null || links.length <= MAX_LINKS_ALL) return links;
+    return [...links]
+      .sort((a, b) => b.weight - a.weight)
+      .slice(0, MAX_LINKS_ALL);
+  }
+
+  function limitGraph(nodes, links, mustInclude = new Set()) {
+    const totalNodes = nodes.length;
+    const required = nodes.filter((node) => mustInclude.has(node.id));
+    const optional = nodes
+      .filter((node) => !mustInclude.has(node.id))
+      .sort((a, b) => b.connections - a.connections || a.label.localeCompare(b.label));
+
+    let kept;
+    if (nodeLimit == null || nodes.length <= nodeLimit) {
+      kept = nodes;
+    } else {
+      const optionalSlots = Math.max(0, nodeLimit - required.length);
+      kept = [...required, ...optional.slice(0, optionalSlots)];
+    }
+
+    const keep = new Set(kept.map((node) => node.id));
+    const filteredNodes = nodes.filter((node) => keep.has(node.id));
+    const filteredLinks = links.filter(
+      (link) =>
+        keep.has(linkEndpointId(link.source)) && keep.has(linkEndpointId(link.target))
+    );
+
+    return {
+      nodes: filteredNodes,
+      links: maybeThinLinks(filteredLinks),
+      totalNodes,
+      thinned: filteredNodes.length < totalNodes,
+    };
+  }
+
+  function mustIncludeIds(fullLinks) {
+    const mustInclude = new Set(matchedNodeIds);
+    if (selectedNodeId) {
+      mustInclude.add(selectedNodeId);
+      for (const id of neighborIdsFromLinks(selectedNodeId, fullLinks)) {
+        mustInclude.add(id);
+      }
+    }
+    return mustInclude;
+  }
+
+  function graphRenderSignature(nodes, links) {
+    const nodeIds = nodes.map((node) => node.id).sort().join("|");
+    return `${mode}:${nodeLimit ?? "all"}:${searchQuery}:${selectedNodeId ?? ""}:${nodeIds}:${links.length}`;
+  }
+
+  function thinningSummary() {
+    if (selectedNodeId) {
+      const name = currentGraph().nodes.find((node) => node.id === selectedNodeId)?.label;
+      const neighborCount = Math.max(0, graphNodes.length - 1);
+      return `Showing ${neighborCount.toLocaleString()} co-author${neighborCount === 1 ? "" : "s"} linked to ${name || "selection"}.`;
+    }
+    if (!graphThinned || !graphTotalNodes) return "";
+    if (searchQuery && matchedNodeIds.size) {
+      return `Showing ${graphNodes.length.toLocaleString()} of ${graphTotalNodes.toLocaleString()} matches and co-authors. All ${matchedNodeIds.size.toLocaleString()} matches are included.`;
+    }
+    return `Showing ${graphNodes.length.toLocaleString()} of ${graphTotalNodes.toLocaleString()} nodes (by talk count). Search or increase “Nodes shown” to explore more.`;
+  }
+
   function currentGraph() {
     return network[mode];
+  }
+
+  function matchSnippet(node) {
+    if (!searchQuery) return "";
+
+    const texts =
+      mode === "individual"
+        ? authorSearchIndex.get(node.label) || []
+        : [affiliationSearchIndex.get(node.label) || ""].filter(Boolean);
+    const q = searchQuery.toLowerCase();
+
+    for (const text of texts) {
+      const haystack = text.toLowerCase();
+      const idx = haystack.indexOf(q);
+      if (idx < 0) continue;
+
+      const start = Math.max(0, idx - 48);
+      const end = Math.min(text.length, idx + searchQuery.length + 72);
+      let snippet = text.slice(start, end).replace(/\s+/g, " ").trim();
+      if (start > 0) snippet = `…${snippet}`;
+      if (end < text.length) snippet = `${snippet}…`;
+      return snippet;
+    }
+
+    if (node.label.toLowerCase().includes(q)) {
+      return `Name matches “${searchQuery}”.`;
+    }
+    if (mode === "individual" && node.affiliation?.toLowerCase().includes(q)) {
+      return `Affiliation matches “${searchQuery}”.`;
+    }
+
+    return "";
+  }
+
+  function initializeSearchLayout(nodes, links, centerX, centerY) {
+    const matchNodes = nodes
+      .filter((node) => matchedNodeIds.has(node.id))
+      .sort((a, b) => b.connections - a.connections || a.label.localeCompare(b.label));
+    const otherNodes = nodes.filter((node) => !matchedNodeIds.has(node.id));
+    const matchCount = Math.max(matchNodes.length, 1);
+    const baseRadius = Math.max(28, Math.min(140, 12 + Math.sqrt(matchCount) * 7));
+
+    matchNodes.forEach((node, index) => {
+      const ring = Math.floor(index / Math.max(1, Math.ceil(Math.sqrt(matchCount))));
+      const angle = (2 * Math.PI * index) / matchCount + ring * 0.35;
+      const radius = baseRadius + ring * (16 + baseRadius * 0.12);
+      node.x = centerX + radius * Math.cos(angle);
+      node.y = centerY + radius * Math.sin(angle);
+      delete node.vx;
+      delete node.vy;
+      delete node.fx;
+      delete node.fy;
+    });
+
+    const matchById = new Map(matchNodes.map((node) => [node.id, node]));
+    const anchorByNodeId = new Map();
+    for (const link of links) {
+      const sourceId = linkEndpointId(link.source);
+      const targetId = linkEndpointId(link.target);
+      if (matchedNodeIds.has(sourceId) && !matchedNodeIds.has(targetId)) {
+        anchorByNodeId.set(targetId, matchById.get(sourceId));
+      }
+      if (matchedNodeIds.has(targetId) && !matchedNodeIds.has(sourceId)) {
+        anchorByNodeId.set(sourceId, matchById.get(targetId));
+      }
+    }
+
+    otherNodes.forEach((node, index) => {
+      const anchor = anchorByNodeId.get(node.id);
+      const angle = (2 * Math.PI * index) / Math.max(otherNodes.length, 1);
+      const offset = 24 + (index % 5) * 8;
+      if (anchor?.x != null && anchor?.y != null) {
+        node.x = anchor.x + offset * Math.cos(angle);
+        node.y = anchor.y + offset * Math.sin(angle);
+      } else {
+        node.x = centerX + (Math.random() - 0.5) * baseRadius;
+        node.y = centerY + (Math.random() - 0.5) * baseRadius;
+      }
+      delete node.vx;
+      delete node.vy;
+      delete node.fx;
+      delete node.fy;
+    });
   }
 
   function nodeMatchesSearch(node, query) {
@@ -91,7 +417,7 @@ export function createNetworkView(siteData, elements) {
     const parts = [
       `on author list of ${node.connections.toLocaleString()} talk${node.connections === 1 ? "" : "s"}`,
     ];
-    // Travel distance hidden for now — re-enable when individual travel estimates are ready.
+    // Travel distance hidden for now – re-enable when individual travel estimates are ready.
     // if (node.distance_km != null) {
     //   parts.push(`${formatDistance(node.distance_km)} from Auckland`);
     // }
@@ -99,6 +425,119 @@ export function createNetworkView(siteData, elements) {
       parts.push(node.affiliation);
     }
     return parts.join(" · ");
+  }
+
+  function profileForNode(node) {
+    if (!node || mode !== "individual") return null;
+    return speakerProfiles[node.label] || null;
+  }
+
+  function renderContactLinksHtml(node) {
+    if (!elements.cardContacts) return "";
+
+    if (mode !== "individual") {
+      return `
+        <p class="network-contact-note">
+          Switch to <strong>By individual</strong> to see profile and contact links for speakers.
+        </p>
+      `;
+    }
+
+    const affiliation = node.affiliation || "";
+    const profile = profileForNode(node);
+    const primary = profile?.primary;
+    const links = profile?.links || [];
+    const confidence = profile?.confidence || "search";
+    const profilePage = profilePageFor(profile);
+
+    const fallbackLinks = [
+      {
+        kind: "linkedin_search",
+        label: "Search LinkedIn",
+        url: linkedInSearchUrl(node.label, affiliation),
+      },
+      {
+        kind: "scholar_search",
+        label: "Search Google Scholar",
+        url: scholarSearchUrl(node.label, affiliation),
+      },
+    ];
+
+    const displayLinks = links.length ? links : fallbackLinks;
+    const primaryBlock = primary
+      ? `
+        <a class="network-contact-primary network-contact-${escapeHtml(primary.type)}" href="${escapeHtml(primary.url)}" target="_blank" rel="noopener noreferrer">
+          <span class="network-contact-primary-label">${escapeHtml(
+            primary.type === "email"
+              ? "Email"
+              : primary.type === "institution"
+                ? "University profile"
+                : "Suggested contact"
+          )}</span>
+          <span class="network-contact-primary-value">${escapeHtml(primary.label)}</span>
+        </a>
+      `
+      : `
+        <p class="network-contact-note">
+          No verified public email found. Try the profile links below.
+        </p>
+      `;
+
+    const profilePageBlock =
+      profilePage && primary?.url !== profilePage.url
+        ? `
+        <a class="network-contact-profile" href="${escapeHtml(profilePage.url)}" target="_blank" rel="noopener noreferrer">
+          <span class="network-contact-primary-label">${escapeHtml(profilePage.label)}</span>
+          <span class="network-contact-primary-value">${escapeHtml(profilePageHost(profilePage.url))}</span>
+        </a>
+      `
+        : "";
+
+    const profilePageUrls = new Set(
+      [profilePage?.url, profile?.institutional_page].filter(Boolean)
+    );
+
+    const linkItems = displayLinks
+      .filter((link) => {
+        if (primary && link.url === primary.url) return false;
+        if (profilePageUrls.has(link.url)) return false;
+        if (link.kind === "website" && profilePage?.kind === "website") return false;
+        return true;
+      })
+      .map(
+        (link) => `
+          <li>
+            <a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a>
+          </li>
+        `
+      )
+      .join("");
+
+    const confidenceNote =
+      confidence === "search"
+        ? "Links are search-based – please verify before reaching out."
+        : confidence === "low"
+          ? "Profile match is uncertain – please verify before reaching out."
+          : "Public profiles matched by name and affiliation.";
+
+    return `
+      <p class="hover-kicker network-contact-kicker">Connect</p>
+      ${primaryBlock}
+      ${profilePageBlock}
+      <ul class="network-contact-links">${linkItems}</ul>
+      <p class="network-contact-footnote">${escapeHtml(confidenceNote)}</p>
+    `;
+  }
+
+  function updateNodeContacts(node) {
+    if (!elements.cardContacts) return;
+    if (!node) {
+      elements.cardContacts.hidden = true;
+      elements.cardContacts.innerHTML = "";
+      return;
+    }
+    elements.cardContacts.hidden = false;
+    elements.cardContacts.innerHTML = renderContactLinksHtml(node);
   }
 
   function updateMatches(query) {
@@ -176,33 +615,52 @@ export function createNetworkView(siteData, elements) {
 
   function prepareGraph() {
     const graph = currentGraph();
-    const nodesById = new Map(graph.nodes.map((node) => [node.id, { ...node }]));
-    let links = graph.links
-      .filter((link) => nodesById.has(link.source) && nodesById.has(link.target))
+    const fullLinks = graph.links;
+    const nodesById = new Map(graph.nodes.map((node) => [node.id, stripSimulationState(node)]));
+    let links = fullLinks
+      .filter(
+        (link) =>
+          nodesById.has(linkEndpointId(link.source)) &&
+          nodesById.has(linkEndpointId(link.target))
+      )
       .map((link) => ({ ...link }));
 
     let nodes = [...nodesById.values()];
+    const mustInclude = mustIncludeIds(fullLinks);
+
+    if (selectedNodeId) {
+      const egoIds = mustInclude;
+      const egoNodes = nodes.filter((node) => egoIds.has(node.id));
+      const egoLinks = links.filter(
+        (link) =>
+          egoIds.has(linkEndpointId(link.source)) && egoIds.has(linkEndpointId(link.target))
+      );
+      graphTotalNodes = nodesById.size;
+      graphThinned = egoNodes.length < nodesById.size;
+      return { nodes: egoNodes, links: maybeThinLinks(egoLinks) };
+    }
 
     if (searchQuery && matchedNodeIds.size) {
       const visibleIds = new Set(matchedNodeIds);
       for (const link of links) {
-        if (visibleIds.has(link.source)) visibleIds.add(link.target);
-        if (visibleIds.has(link.target)) visibleIds.add(link.source);
+        const sourceId = linkEndpointId(link.source);
+        const targetId = linkEndpointId(link.target);
+        if (visibleIds.has(sourceId)) visibleIds.add(targetId);
+        if (visibleIds.has(targetId)) visibleIds.add(sourceId);
       }
+      for (const id of mustInclude) visibleIds.add(id);
       nodes = nodes.filter((node) => visibleIds.has(node.id));
       links = links.filter(
-        (link) => visibleIds.has(link.source) && visibleIds.has(link.target)
+        (link) =>
+          visibleIds.has(linkEndpointId(link.source)) &&
+          visibleIds.has(linkEndpointId(link.target))
       );
-    } else {
-      nodes.sort((a, b) => b.connections - a.connections || a.label.localeCompare(b.label));
-      if (nodes.length > MAX_NODES) {
-        const keep = new Set(nodes.slice(0, MAX_NODES).map((node) => node.id));
-        nodes = nodes.filter((node) => keep.has(node.id));
-        links = links.filter((link) => keep.has(link.source) && keep.has(link.target));
-      }
     }
 
-    return { nodes, links };
+    const limited = limitGraph(nodes, links, mustInclude);
+    graphTotalNodes = limited.totalNodes;
+    graphThinned = limited.thinned;
+    return { nodes: limited.nodes, links: limited.links };
   }
 
   function buildRadiusScale(nodes) {
@@ -210,6 +668,56 @@ export function createNetworkView(siteData, elements) {
     const minCount = Math.max(1, d3.min(counts));
     const maxCount = Math.max(minCount + 1, d3.max(counts));
     return d3.scaleLog().domain([minCount, maxCount]).range([4, 26]).clamp(true);
+  }
+
+  function renderSearchResults(nodes) {
+    if (!elements.results || !elements.resultsTitle) return;
+    const searching = Boolean(searchQuery);
+    elements.resultsWrap?.classList.toggle("has-search-results", searching);
+
+    if (!searching) {
+      elements.resultsTitle.textContent = "Search matches";
+      elements.results.innerHTML = "";
+      return;
+    }
+
+    const matches = nodes.filter((node) => matchedNodeIds.has(node.id));
+    const neighbors = neighborIds(selectedNodeId);
+    elements.resultsTitle.textContent = `${matches.length.toLocaleString()} matching node${matches.length === 1 ? "" : "s"}`;
+
+    if (!matches.length) {
+      elements.results.innerHTML = `<p class="status">No nodes match that search.</p>`;
+      return;
+    }
+
+    elements.results.innerHTML = matches
+      .sort((a, b) => b.connections - a.connections || a.label.localeCompare(b.label))
+      .slice(0, 30)
+      .map((node) => {
+        const profile = mode === "individual" ? speakerProfiles[node.label] : null;
+        const primary = profile?.primary;
+        const profilePage = profilePageFor(profile);
+        const contactHint =
+          primary?.type === "email"
+            ? " · email"
+            : primary?.type === "linkedin"
+              ? " · LinkedIn"
+              : primary
+                ? " · profile"
+                : profilePage
+                  ? " · profile page"
+                  : "";
+        return `
+        <button type="button" class="result-item${node.id === selectedNodeId ? " selected" : ""}${selectedNodeId && neighbors.has(node.id) ? " neighbor" : ""}" data-node-id="${escapeHtml(node.id)}">
+          <div class="affiliation">${escapeHtml(node.label)}</div>
+          <div class="meta">${escapeHtml(formatNodeMeta(node))}${contactHint}</div>
+        </button>`;
+      })
+      .join("");
+
+    elements.results.querySelectorAll("[data-node-id]").forEach((button) => {
+      button.addEventListener("click", () => selectNode(button.dataset.nodeId, { focus: true }));
+    });
   }
 
   function renderLegend(nodes, radiusScale) {
@@ -239,6 +747,22 @@ export function createNetworkView(siteData, elements) {
     //   `;
     // }
 
+    const searchSection =
+      searchQuery && matchedNodeIds.size
+        ? `
+      <h3>Topic search</h3>
+      <p>Matches cluster at the centre; grey nodes are co-authors on the same talks.</p>
+      <div class="legend-row">
+        <span class="legend-dot" style="background:#d95f02"></span>
+        <span>Matches “${escapeHtml(searchQuery)}”</span>
+      </div>
+      <div class="legend-row">
+        <span class="legend-dot" style="background:#b8c4cc"></span>
+        <span>Co-authors (not a direct match)</span>
+      </div>
+    `
+        : "";
+
     elements.legend.innerHTML = `
       <h3>Node size · talks on author lists (log scale)</h3>
       <p>Circle area scales with talks where the person or affiliation appears on the author list.</p>
@@ -251,20 +775,13 @@ export function createNetworkView(siteData, elements) {
         </div>`
         )
         .join("")}
+      ${searchSection}
       ${distanceSection}
     `;
   }
 
   function neighborIds(nodeId) {
-    const ids = new Set();
-    if (!nodeId) return ids;
-    for (const link of graphLinks) {
-      const sourceId = typeof link.source === "object" ? link.source.id : link.source;
-      const targetId = typeof link.target === "object" ? link.target.id : link.target;
-      if (sourceId === nodeId) ids.add(targetId);
-      if (targetId === nodeId) ids.add(sourceId);
-    }
-    return ids;
+    return neighborIdsFromLinks(nodeId, graphLinks);
   }
 
   function labelNodes(nodes) {
@@ -281,8 +798,8 @@ export function createNetworkView(siteData, elements) {
 
   function linkEndpointIds(link) {
     return {
-      sourceId: typeof link.source === "object" ? link.source.id : link.source,
-      targetId: typeof link.target === "object" ? link.target.id : link.target,
+      sourceId: linkEndpointId(link.source),
+      targetId: linkEndpointId(link.target),
     };
   }
 
@@ -299,27 +816,42 @@ export function createNetworkView(siteData, elements) {
 
     if (node) {
       showNodeCard(node);
-      if (elements.selectionLabel) elements.selectionLabel.textContent = node.label;
-      elements.selectionBadge?.removeAttribute("hidden");
-      elements.clearSelection?.removeAttribute("hidden");
+      elements.cardClear?.removeAttribute("hidden");
+      if (cardOnStage()) {
+        elements.clearSelection?.setAttribute("hidden", "");
+      } else {
+        elements.clearSelection?.removeAttribute("hidden");
+      }
     } else {
       elements.card.hidden = true;
-      elements.selectionBadge?.setAttribute("hidden", "");
+      updateNodeTalks(null);
+      updateNodeContacts(null);
+      setDataInfoOpen(false);
+      elements.cardClear?.setAttribute("hidden", "");
       elements.clearSelection?.setAttribute("hidden", "");
     }
 
+    const thinningNote = thinningSummary();
     elements.summary.textContent = selectedNodeId
       ? `${graphNodes.length.toLocaleString()} nodes · tap background or Clear to deselect`
-      : `${graphNodes.length.toLocaleString()} nodes · ${graphLinks.length.toLocaleString()} co-authorship links · ${isCoarsePointer ? "pinch to zoom, drag background to pan" : "scroll to zoom, drag to pan"}`;
+      : [
+          `${graphNodes.length.toLocaleString()} nodes · ${graphLinks.length.toLocaleString()} co-authorship links · ${isCoarsePointer ? "pinch to zoom, drag background to pan" : "scroll to zoom, drag to pan"}`,
+          thinningNote,
+        ]
+          .filter(Boolean)
+          .join(" · ");
   }
 
   function scrollToSelectedSidebar() {
     if (!selectedNodeId) return;
     const selector = `[data-node-id="${CSS.escape(selectedNodeId)}"]`;
     const target =
-      elements.barChart?.querySelector(selector) ||
-      elements.results?.querySelector(selector);
+      elements.results?.querySelector(selector) ||
+      elements.barChart?.querySelector(selector);
     target?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    if (!target && elements.card && !elements.card.hidden) {
+      elements.card.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
   }
 
   function updateHighlight() {
@@ -344,6 +876,7 @@ export function createNetworkView(siteData, elements) {
         if (d.id === selectedNodeId) return "#1f6f8b";
         if (selectedNodeId && neighbors.has(d.id)) return "#4a90a7";
         if (searching && matchedNodeIds.has(d.id)) return "#d95f02";
+        if (searching) return "#b8c4cc";
         return "#d95f02";
       })
       .attr("stroke-width", (d) => {
@@ -355,7 +888,7 @@ export function createNetworkView(siteData, elements) {
       .attr("opacity", (d) => {
         if (d.id === selectedNodeId) return 1;
         if (selectedNodeId) {
-          return neighbors.has(d.id) ? 0.95 : 0.16;
+          return neighbors.has(d.id) ? 0.72 : 0.16;
         }
         if (searching && matchedNodeIds.size) {
           return matchedNodeIds.has(d.id) ? 0.95 : 0.14;
@@ -373,23 +906,27 @@ export function createNetworkView(siteData, elements) {
       .attr("pointer-events", "none");
     labelSelection = labelEnter.merge(labelSelection);
     labelSelection
-      .attr("font-size", (d) => (d.id === selectedNodeId ? 12 : 10))
+      .attr("font-size", (d) => (d.id === selectedNodeId ? 13 : 10))
       .attr("font-weight", (d) =>
         d.id === selectedNodeId ? 700 : neighbors.has(d.id) ? 600 : 500
       )
       .attr("fill", (d) => {
-        if (d.id === selectedNodeId) return "#1f6f8b";
-        if (neighbors.has(d.id)) return "#14212b";
+        if (d.id === selectedNodeId) return "#14212b";
+        if (neighbors.has(d.id)) return "#3d5a66";
         return "#14212b";
       })
+      .attr("stroke", (d) => (d.id === selectedNodeId ? "#ffffff" : "none"))
+      .attr("stroke-width", (d) => (d.id === selectedNodeId ? 4 : 0))
+      .attr("paint-order", (d) => (d.id === selectedNodeId ? "stroke" : null))
       .attr("dy", (d) => -radiusScale(Math.max(1, d.connections)) - (d.id === selectedNodeId ? 6 : 4))
       .text((d) => (d.label.length > 28 ? `${d.label.slice(0, 26)}…` : d.label))
       .attr("x", (d) => d.x)
       .attr("y", (d) => d.y);
 
-    renderBarChart(graphNodes);
     renderSearchResults(graphNodes);
     updateSelectionUi();
+    renderBarChart(graphNodes);
+    if (radiusScale) renderLegend(graphNodes, radiusScale);
     scrollToSelectedSidebar();
   }
 
@@ -409,11 +946,11 @@ export function createNetworkView(siteData, elements) {
           (searchQuery && matchedNodeIds.size && !matchedNodeIds.has(node.id)) ||
           (selectedNodeId && !selected && !neighbor);
         return `
-          <div class="bar-row${selected ? " selected" : ""}${neighbor ? " neighbor" : ""}${dimmed ? " dimmed" : ""}">
-            <button type="button" data-node-id="${escapeHtml(node.id)}">${escapeHtml(node.label)}</button>
+          <button type="button" class="bar-row${selected ? " selected" : ""}${neighbor ? " neighbor" : ""}${dimmed ? " dimmed" : ""}" data-node-id="${escapeHtml(node.id)}">
+            <span class="bar-label">${escapeHtml(node.label)}</span>
             <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:${widthPct}"></div></div>
             <span class="bar-count">${node.connections.toLocaleString()}</span>
-          </div>`;
+          </button>`;
       })
       .join("");
 
@@ -422,59 +959,62 @@ export function createNetworkView(siteData, elements) {
     });
   }
 
-  function renderSearchResults(nodes) {
-    if (!elements.results || !elements.resultsTitle) return;
-    const searching = Boolean(searchQuery);
-
-    if (!searching) {
-      elements.resultsTitle.textContent = "Search matches";
-      elements.results.innerHTML = `<p class="status">Search to highlight nodes and their co-authors.</p>`;
-      return;
-    }
-
-    const matches = nodes.filter((node) => matchedNodeIds.has(node.id));
-    const neighbors = neighborIds(selectedNodeId);
-    elements.resultsTitle.textContent = `${matches.length.toLocaleString()} matching node${matches.length === 1 ? "" : "s"}`;
-
-    if (!matches.length) {
-      elements.results.innerHTML = `<p class="status">No nodes match that search.</p>`;
-      return;
-    }
-
-    elements.results.innerHTML = matches
-      .sort((a, b) => b.connections - a.connections || a.label.localeCompare(b.label))
-      .slice(0, 30)
-      .map(
-        (node) => `
-        <button type="button" class="result-item${node.id === selectedNodeId ? " selected" : ""}${selectedNodeId && neighbors.has(node.id) ? " neighbor" : ""}" data-node-id="${escapeHtml(node.id)}">
-          <div class="affiliation">${escapeHtml(node.label)}</div>
-          <div class="meta">${escapeHtml(formatNodeMeta(node))}</div>
-        </button>`
-      )
-      .join("");
-
-    elements.results.querySelectorAll("[data-node-id]").forEach((button) => {
-      button.addEventListener("click", () => selectNode(button.dataset.nodeId, { focus: true }));
-    });
-  }
+  
 
   function setSearchStatus(message, isError = false) {
     if (!elements.searchStatus) return;
     elements.searchStatus.textContent = message || "";
     elements.searchStatus.classList.toggle("error", isError);
+    elements.searchStatus.hidden = !message;
   }
 
-  function renderGraph() {
+  function setDataInfoOpen(open) {
+    if (!elements.dataInfo || !elements.dataInfoBtn) return;
+    elements.dataInfo.hidden = !open;
+    elements.dataInfoBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  function updateDataInfoLinks(node) {
+    const name = node?.label || "";
+    if (elements.dataRemovalLink) {
+      elements.dataRemovalLink.href = dataRemovalMailto(name);
+    }
+    if (elements.dataFixLink) {
+      elements.dataFixLink.href = dataCorrectionMailto(name);
+    }
+  }
+
+  function renderGraph({ force = false, resetZoom = false } = {}) {
+    updateDimensions();
+    const graph = prepareGraph();
+    const nextRenderKey = graphRenderSignature(graph.nodes, graph.links);
+    if (!force && hasRendered && nextRenderKey === graphRenderKey) {
+      updateHighlight();
+      return;
+    }
+
+    if (resetZoom) userAdjustedZoom = false;
+
+    const preserveZoom = userAdjustedZoom;
+    const previousTransform = preserveZoom ? d3.zoomTransform(svg.node()) : null;
+
+    graphRenderKey = nextRenderKey;
+    autoFitPending = !preserveZoom;
+
     graphLayer.selectAll("*").remove();
     if (simulation) simulation.stop();
 
-    updateDimensions();
-    const graph = prepareGraph();
     graphNodes = graph.nodes;
     graphLinks = graph.links;
     radiusScale = buildRadiusScale(graphNodes);
     const centerX = width() / 2;
     const centerY = height() / 2;
+    const largeGraph = graphNodes.length > 400;
+    const isSearchLayout = Boolean(searchQuery && matchedNodeIds.size);
+
+    if (isSearchLayout) {
+      initializeSearchLayout(graphNodes, graphLinks, centerX, centerY);
+    }
 
     linkSelection = graphLayer
       .append("g")
@@ -497,7 +1037,7 @@ export function createNetworkView(siteData, elements) {
       .style("cursor", "pointer")
       .style("touch-action", "none")
       .on("pointerenter", (_, d) => {
-        if (!isCoarsePointer) showNodeCard(d);
+        if (!isCoarsePointer && !selectedNodeId) showNodeCard(d);
       })
       .call(nodeDrag());
 
@@ -505,19 +1045,57 @@ export function createNetworkView(siteData, elements) {
 
     simulation = d3
       .forceSimulation(graphNodes)
+      .alpha(isSearchLayout ? 1 : 0.3)
+      .alphaDecay(
+        isSearchLayout ? (largeGraph ? 0.045 : 0.032) : largeGraph ? 0.06 : 0.0228
+      )
+      .velocityDecay(isSearchLayout ? (largeGraph ? 0.55 : 0.45) : largeGraph ? 0.72 : 0.4)
       .force(
         "link",
         d3
           .forceLink(graphLinks)
           .id((d) => d.id)
-          .distance(90)
-          .strength(0.45)
+          .distance(isSearchLayout ? (largeGraph ? 38 : 48) : largeGraph ? 70 : 90)
+          .strength(isSearchLayout ? (largeGraph ? 0.62 : 0.78) : largeGraph ? 0.3 : 0.45)
       )
-      .force("charge", d3.forceManyBody().strength(isCoarsePointer ? -140 : -180))
+      .force(
+        "charge",
+        d3
+          .forceManyBody()
+          .strength(
+            isSearchLayout
+              ? largeGraph
+                ? -28
+                : -48
+              : largeGraph
+                ? -90
+                : isCoarsePointer
+                  ? -140
+                  : -180
+          )
+      )
       .force("center", d3.forceCenter(centerX, centerY))
       .force(
         "collide",
-        d3.forceCollide().radius((d) => radiusScale(Math.max(1, d.connections)) + (isCoarsePointer ? 8 : 4))
+        d3
+          .forceCollide()
+          .radius((d) => radiusScale(Math.max(1, d.connections)) + (isCoarsePointer ? 8 : 4))
+      )
+      .force(
+        "topicCluster",
+        isSearchLayout ? forceTopicCluster(matchedNodeIds, largeGraph ? 0.08 : 0.12) : null
+      )
+      .force(
+        "x",
+        isSearchLayout
+          ? d3.forceX(centerX).strength((d) => (matchedNodeIds.has(d.id) ? 0.06 : 0.025))
+          : null
+      )
+      .force(
+        "y",
+        isSearchLayout
+          ? d3.forceY(centerY).strength((d) => (matchedNodeIds.has(d.id) ? 0.06 : 0.025))
+          : null
       )
       .on("tick", () => {
         linkSelection
@@ -531,8 +1109,15 @@ export function createNetworkView(siteData, elements) {
         }
       })
       .on("end", () => {
-        if (!pendingNodeFocus) {
+        if (autoFitPending && !pendingNodeFocus) {
           fitToView({ animate: false });
+          autoFitPending = false;
+        } else if (previousTransform) {
+          svg.call(zoom.transform, previousTransform);
+        }
+        if (pendingNodeFocus && selectedNodeId) {
+          focusNode(selectedNodeId);
+          pendingNodeFocus = false;
         }
       });
 
@@ -569,16 +1154,41 @@ export function createNetworkView(siteData, elements) {
       });
   }
 
+  function updateNodeTalks(node) {
+    if (!elements.cardTalks) return;
+    if (!node || mode !== "individual") {
+      elements.cardTalks.hidden = true;
+      elements.cardTalks.innerHTML = "";
+      return;
+    }
+    const titles = talkTitleIndex.get(node.label) || [];
+    if (!titles.length) {
+      elements.cardTalks.hidden = true;
+      elements.cardTalks.innerHTML = "";
+      return;
+    }
+    elements.cardTalks.hidden = false;
+    elements.cardTalks.innerHTML = renderTalkTitlesHtml(titles, { kicker: "Talks" });
+  }
+
   function showNodeCard(node) {
     elements.card.hidden = false;
     elements.cardTitle.textContent = node.label;
-    elements.cardMeta.textContent = formatNodeMeta(node);
+    const snippet = matchSnippet(node);
+    elements.cardMeta.textContent = snippet
+      ? `${formatNodeMeta(node)} · ${snippet}`
+      : formatNodeMeta(node);
+    updateNodeContacts(node);
+    updateNodeTalks(node);
+    updateDataInfoLinks(node);
+    setDataInfoOpen(false);
   }
 
   function focusNode(nodeId) {
     const node = graphNodes.find((item) => item.id === nodeId);
     if (!node || node.x == null || node.y == null) return;
 
+    userAdjustedZoom = true;
     const scale = isCoarsePointer ? 1.8 : 2.2;
     const transform = d3.zoomIdentity
       .translate(width() / 2, height() / 2)
@@ -589,15 +1199,35 @@ export function createNetworkView(siteData, elements) {
 
   function clearSelection() {
     selectedNodeId = null;
-    updateHighlight();
+    renderGraph();
   }
 
   function selectNode(nodeId, { focus = false } = {}) {
     selectedNodeId = nodeId;
-    updateHighlight();
-    if (focus && selectedNodeId) {
-      window.requestAnimationFrame(() => focusNode(selectedNodeId));
+    if (focus) pendingNodeFocus = true;
+    renderGraph();
+  }
+
+  function previewSearch(query) {
+    updateMatches(query);
+    selectedNodeId = null;
+
+    if (!searchQuery) {
+      setSearchStatus("");
+      renderGraph({ resetZoom: true });
+      return;
     }
+
+    if (!matchedNodeIds.size) {
+      setSearchStatus("No nodes matched that search.", true);
+      renderGraph({ resetZoom: true });
+      return;
+    }
+
+    setSearchStatus(
+      `${matchedNodeIds.size.toLocaleString()} match${matchedNodeIds.size === 1 ? "" : "es"} (matches always shown; co-authors fill remaining slots)`
+    );
+    renderGraph();
   }
 
   function applySearch(query, { focus = true } = {}) {
@@ -607,31 +1237,36 @@ export function createNetworkView(siteData, elements) {
     if (!searchQuery) {
       setSearchStatus("");
       pendingNodeFocus = false;
-      renderGraph();
+      renderGraph({ resetZoom: true });
       return;
     }
 
     if (!matchedNodeIds.size) {
       setSearchStatus("No nodes matched that search.", true);
-      renderGraph();
+      renderGraph({ resetZoom: true });
       return;
     }
 
     setSearchStatus(
-      `${matchedNodeIds.size.toLocaleString()} node${matchedNodeIds.size === 1 ? "" : "s"} matched (showing matches + co-authors)`
+      `${matchedNodeIds.size.toLocaleString()} node${matchedNodeIds.size === 1 ? "" : "s"} matched (all matches shown; co-authors fill remaining slots)`
     );
-    renderGraph();
 
     if (focus) {
-      const firstMatch = graphNodes.find((node) => matchedNodeIds.has(node.id));
+      const firstMatch = currentGraph().nodes.find((node) => matchedNodeIds.has(node.id));
       if (firstMatch) {
-        pendingNodeFocus = true;
-        window.setTimeout(() => {
-          selectNode(firstMatch.id, { focus: true });
-          pendingNodeFocus = false;
-        }, 300);
+        selectNode(firstMatch.id, { focus: true });
+        return;
       }
     }
+
+    renderGraph({ resetZoom: !focus });
+  }
+
+  function setNodeLimit(value) {
+    const nextLimit = parseNodeLimit(value);
+    if (nextLimit === nodeLimit) return;
+    nodeLimit = nextLimit;
+    renderGraph({ resetZoom: true });
   }
 
   function buildSuggestions(query) {
@@ -655,11 +1290,14 @@ export function createNetworkView(siteData, elements) {
     selectedNodeId = null;
     searchQuery = "";
     matchedNodeIds = new Set();
+    userAdjustedZoom = false;
     elements.card.hidden = true;
+    updateNodeTalks(null);
+    updateNodeContacts(null);
+    setDataInfoOpen(false);
     if (elements.searchInput) elements.searchInput.value = "";
     setSearchStatus("");
-    resetZoom();
-    renderGraph();
+    renderGraph({ resetZoom: true });
   }
 
   function resetView() {
@@ -668,7 +1306,10 @@ export function createNetworkView(siteData, elements) {
   }
 
   function resetZoom() {
+    userAdjustedZoom = false;
+    autoFitPending = true;
     fitToView({ animate: true });
+    autoFitPending = false;
   }
 
   function updateDimensions() {
@@ -678,10 +1319,24 @@ export function createNetworkView(siteData, elements) {
   }
 
   function resize() {
-    requestAnimationFrame(() => {
+    placeNetworkCard();
+    clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
       updateDimensions();
-      renderGraph();
-    });
+      if (!hasRendered) {
+        renderGraph();
+        return;
+      }
+      if (simulation) {
+        const centerX = width() / 2;
+        const centerY = height() / 2;
+        simulation.force("center", d3.forceCenter(centerX, centerY));
+        if (searchQuery && matchedNodeIds.size) {
+          simulation.force("x", d3.forceX(centerX).strength((d) => (matchedNodeIds.has(d.id) ? 0.06 : 0.025)));
+          simulation.force("y", d3.forceY(centerY).strength((d) => (matchedNodeIds.has(d.id) ? 0.06 : 0.025)));
+        }
+      }
+    }, 150);
   }
 
   svg.call(zoom).on("dblclick.zoom", null);
@@ -697,15 +1352,30 @@ export function createNetworkView(siteData, elements) {
   if (elements.clearSelection) {
     elements.clearSelection.addEventListener("click", clearSelection);
   }
-  if (elements.clearSelectionMobile) {
-    elements.clearSelectionMobile.addEventListener("click", clearSelection);
+  if (elements.cardClear) {
+    elements.cardClear.addEventListener("click", clearSelection);
   }
+
+  placeNetworkCard();
+  cardDesktopMq.addEventListener("change", () => {
+    placeNetworkCard();
+    if (selectedNodeId) updateSelectionUi();
+  });
+  if (elements.dataInfoBtn && elements.dataInfo) {
+    elements.dataInfoBtn.addEventListener("click", () => {
+      setDataInfoOpen(elements.dataInfo.hidden);
+    });
+  }
+
+  renderSearchResults([]);
 
   return {
     setMode,
+    setNodeLimit,
     resize,
     resetZoom,
     clearSelection,
+    previewSearch,
     applySearch,
     buildSuggestions,
     selectNode,
