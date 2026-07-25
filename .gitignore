@@ -1,4 +1,5 @@
 data/geocode_cache.json
+data/speaker_profiles_cache.json
 data/country_centroids.json
 data/travel_emissions_cache.json
 data/reverse_geocode_cache.json
