@@ -1309,7 +1309,37 @@ def _build_emissions_locations(
     estimates: pd.DataFrame,
     legs: pd.DataFrame,
 ) -> list[dict[str, Any]]:
-    from src.geocode import affiliation_base_name, canonical_affiliation_key
+    from src.geocode import (
+        affiliation_base_name,
+        canonical_affiliation_key,
+        _load_json,
+        _lookup_override,
+    )
+
+    overrides = _load_json(Path("data/geocode_overrides.json"))
+    australia_centroid = (-24.7761086, 134.755)
+
+    def _best_lat_lon(key: str, group: pd.DataFrame) -> tuple[float, float] | None:
+        override = _lookup_override(key, overrides)
+        if override is not None and override.get("latitude") is not None:
+            return float(override["latitude"]), float(override["longitude"])
+
+        pairs: dict[tuple[float, float], int] = {}
+        for _, row in group.iterrows():
+            if pd.isna(row["latitude"]) or pd.isna(row["longitude"]):
+                continue
+            lat = round(float(row["latitude"]), 6)
+            lon = round(float(row["longitude"]), 6)
+            if (lat, lon) == australia_centroid:
+                continue
+            pairs[(lat, lon)] = pairs.get((lat, lon), 0) + 1
+        if not pairs:
+            lat = group["latitude"].dropna()
+            lon = group["longitude"].dropna()
+            if lat.empty or lon.empty:
+                return None
+            return float(lat.iloc[0]), float(lon.iloc[0])
+        return max(pairs.items(), key=lambda item: item[1])[0]
 
     leg_cols = legs[
         ["presenter", "affiliation", "latitude", "longitude"]
@@ -1328,22 +1358,25 @@ def _build_emissions_locations(
             display_name[key] = preferred
 
     rows: list[dict[str, Any]] = []
+    key_to_id: dict[str, str] = {}
     for index, (key, row_frames) in enumerate(sorted(buckets.items()), start=1):
         group = pd.concat(row_frames, ignore_index=True)
-        lat = group["latitude"].dropna()
-        lon = group["longitude"].dropna()
-        if lat.empty or lon.empty:
+        coords = _best_lat_lon(key, group)
+        if coords is None:
             continue
+        lat_value, lon_value = coords
         co2e_kg = float(group["co2e_kg"].sum())
         co2e_low_kg = float(group["co2e_low_kg"].sum())
         co2e_high_kg = float(group["co2e_high_kg"].sum())
         attendees = int(len(group))
+        loc_id = f"emis-loc-{index:04d}"
+        key_to_id[key] = loc_id
         rows.append(
             {
-                "id": f"emis-loc-{index:04d}",
+                "id": loc_id,
                 "affiliation": display_name.get(key, key),
-                "lat": float(lat.iloc[0]),
-                "lon": float(lon.iloc[0]),
+                "lat": lat_value,
+                "lon": lon_value,
                 "speaker_count": attendees,
                 "travel_attendees": attendees,
                 "co2e_kg": round(co2e_kg, 1),
@@ -1353,7 +1386,56 @@ def _build_emissions_locations(
                 "distance_km": None,
             }
         )
-    return rows
+    return rows, key_to_id
+
+
+def _stable_attendee_id(name: str, location_id: str) -> str:
+    key = f"{name.strip().casefold()}|{location_id}"
+    hash_value = 2166136261
+    for char in key.encode():
+        hash_value ^= char
+        hash_value = (hash_value * 16777619) & 0xFFFFFFFF
+    return f"offset-{hash_value:08x}"
+
+
+def _build_emissions_attendees(
+    estimates: pd.DataFrame,
+    legs: pd.DataFrame,
+    key_to_id: dict[str, str],
+) -> list[dict[str, Any]]:
+    from src.geocode import affiliation_base_name, canonical_affiliation_key
+
+    leg_cols = legs[
+        ["presenter", "affiliation", "latitude", "longitude"]
+    ].drop_duplicates(subset=["presenter"])
+    merged = estimates.merge(leg_cols, on=["presenter", "affiliation"], how="left")
+
+    attendees: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for _, row in merged.iterrows():
+        name = "" if pd.isna(row["presenter"]) else str(row["presenter"]).strip()
+        affiliation = "" if pd.isna(row["affiliation"]) else str(row["affiliation"]).strip()
+        if not name:
+            continue
+        key = canonical_affiliation_key(affiliation)
+        location_id = key_to_id.get(key)
+        if not location_id:
+            continue
+        dedupe_key = f"{name.casefold()}|{location_id}"
+        if dedupe_key in seen:
+            continue
+        seen.add(dedupe_key)
+        attendees.append(
+            {
+                "id": _stable_attendee_id(name, location_id),
+                "name": name,
+                "affiliation": affiliation_base_name(affiliation) or affiliation,
+                "location_id": location_id,
+                "co2e_kg": round(float(row["co2e_kg"]), 1),
+            }
+        )
+    attendees.sort(key=lambda item: item["name"].casefold())
+    return attendees
 
 
 def _build_pool_payload(
@@ -1366,7 +1448,8 @@ def _build_pool_payload(
             **summary,
             "context": _build_emissions_context(estimates, float(summary["co2e_kg"])),
         }
-    location_rows = _build_emissions_locations(estimates, legs)
+    location_rows, key_to_id = _build_emissions_locations(estimates, legs)
+    attendee_rows = _build_emissions_attendees(estimates, legs, key_to_id)
     rankings = sorted(location_rows, key=lambda row: row["co2e_kg"], reverse=True)
     return {
         "meta": {
@@ -1387,6 +1470,7 @@ def _build_pool_payload(
             "context": summary.get("context", {}),
         },
         "locations": location_rows,
+        "attendees": attendee_rows,
         "rankings": rankings[:30],
         "by_country": summary.get("by_country", [])[:30],
     }

@@ -6,7 +6,19 @@ import { createMapView } from "./map.js";
 import { createNetworkView } from "./network.js";
 import { createEmissionsView } from "./emissions-view.js";
 import { createShareView } from "./share.js";
-import { escapeHtml, buildDelegateIndex } from "./utils.js";
+import { escapeHtml, buildDelegateIndex, applyAffiliationGeocodeOverrides } from "./utils.js";
+
+SITE_DATA.locations = applyAffiliationGeocodeOverrides(SITE_DATA.locations);
+if (EMISSIONS_DATA.all_delegates?.locations) {
+  EMISSIONS_DATA.all_delegates.locations = applyAffiliationGeocodeOverrides(
+    EMISSIONS_DATA.all_delegates.locations
+  );
+}
+if (EMISSIONS_DATA.speakers?.locations) {
+  EMISSIONS_DATA.speakers.locations = applyAffiliationGeocodeOverrides(
+    EMISSIONS_DATA.speakers.locations
+  );
+}
 
 const locations = SITE_DATA.locations;
 const meta = SITE_DATA.meta;

@@ -59,6 +59,18 @@
     "query_used": "override:University of Western Australia, Crawley, Perth, Australia",
     "geocode_level": "institute"
   },
+  "the University of Western Australia": {
+    "latitude": -31.9507,
+    "longitude": 115.7979,
+    "query_used": "override:University of Western Australia, Crawley, Perth, Australia",
+    "geocode_level": "institute"
+  },
+  "James Cook University": {
+    "latitude": -19.3289618,
+    "longitude": 146.756645,
+    "query_used": "override:James Cook University, Townsville, Queensland, Australia",
+    "geocode_level": "institute"
+  },
   "Western Australian Museum": {
     "latitude": -31.9492,
     "longitude": 115.8645,

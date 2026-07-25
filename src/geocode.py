@@ -48,6 +48,7 @@ _AFFILIATION_ALIASES: dict[str, str] = {
     "chinese university of hong kong": "Chinese University of Hong Kong, Hong Kong",
     "university of western australia": "University of Western Australia, Crawley, Perth, Australia",
     "the university of western australia": "University of Western Australia, Crawley, Perth, Australia",
+    "james cook university": "James Cook University, Townsville, Queensland, Australia",
     "western australian museum": "Western Australian Museum, Perth, Western Australia, Australia",
     "department of biodiversity, conservation and attractions": "Department of Biodiversity, Conservation and Attractions, Perth, Western Australia, Australia",
 }
@@ -92,6 +93,15 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
             "cities": [("Perth", -31.9507, 115.7979, 90.0)],
             "query": "University of Western Australia, Crawley, Perth, Australia",
             "canonical": "University of Western Australia",
+        },
+    ),
+    (
+        re.compile(r"\bjames cook university\b", re.I),
+        {
+            "countries": ["Australia"],
+            "cities": [("Townsville", -19.329, 146.757, 120.0)],
+            "query": "James Cook University, Townsville, Queensland, Australia",
+            "canonical": "James Cook University",
         },
     ),
     (
@@ -984,6 +994,13 @@ def geocode_affiliations(
             f"Skipped {cached_count:,} cached"
         )
 
+    _propagate_canonical_geocodes(cache)
+    for affiliation in unique_affiliations:
+        if not affiliation:
+            continue
+        override = _lookup_override(affiliation, overrides)
+        if override is not None and override.get("latitude") is not None:
+            cache[affiliation] = override
     _propagate_canonical_geocodes(cache)
     _save_cache(cache_path, cache)
 

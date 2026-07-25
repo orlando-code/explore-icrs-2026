@@ -15,7 +15,15 @@ function stableAttendeeId(name, locationId) {
   return `offset-${(hash >>> 0).toString(16).padStart(8, "0")}`;
 }
 
-export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocations) {
+export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocations, exportedAttendees = []) {
+  if (exportedAttendees?.length) {
+    return exportedAttendees
+      .slice()
+      .sort((left, right) =>
+        left.name.localeCompare(right.name, undefined, { sensitivity: "base" })
+      );
+  }
+
   const travelLocations = emissionsLocations.filter((location) => location.co2e_kg > 0);
   const seen = new Set();
   const attendees = [];

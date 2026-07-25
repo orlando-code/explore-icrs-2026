@@ -1,6 +1,7 @@
 import {
   buildDisplayPositions,
   enrichSpeakerLocationsWithDelegates,
+  applyAffiliationGeocodeOverrides,
   escapeHtml,
   formatDistance,
   formatEmissions,
@@ -43,17 +44,26 @@ function formatCount(value) {
 }
 
 function normalizeEmissionsData(data) {
+  const patchPool = (pool) => {
+    if (!pool?.locations) return pool;
+    return {
+      ...pool,
+      locations: applyAffiliationGeocodeOverrides(pool.locations),
+    };
+  };
+
   if (data?.speakers) {
     return {
       meta: data.meta || {},
-      speakers: data.speakers,
-      all_delegates: data.all_delegates || data.speakers,
+      speakers: patchPool(data.speakers),
+      all_delegates: patchPool(data.all_delegates || data.speakers),
     };
   }
+  const pool = patchPool(data);
   return {
     meta: { generated_at: data.meta?.generated_at, delegate_meta: {} },
-    speakers: data,
-    all_delegates: data,
+    speakers: pool,
+    all_delegates: pool,
   };
 }
 
@@ -195,7 +205,11 @@ export function createEmissionsView(
     if (includeNonSpeakers && delegateIndex.size) {
       siteLocations = enrichSpeakerLocationsWithDelegates(siteLocations, delegateIndex);
     }
-    cachedAttendees = buildEmissionsAttendeesFromSite(siteLocations, allLocations);
+    cachedAttendees = buildEmissionsAttendeesFromSite(
+      siteLocations,
+      allLocations,
+      emissionsData.attendees
+    );
     cachedAttendeesKey = cacheKey;
     return cachedAttendees;
   }
@@ -727,6 +741,15 @@ export function createEmissionsView(
     if (!location) {
       scheduleMapUpdate();
       return;
+    }
+
+    if (selectedId) {
+      selectedId = null;
+      hoveredId = null;
+      renderHoverCard(null);
+      renderBarChart();
+      renderRankings();
+      upsertMapData();
     }
 
     if (celebrateTimer) window.clearTimeout(celebrateTimer);

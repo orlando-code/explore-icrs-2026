@@ -233,6 +233,77 @@ export function locationMatchesQuery(location, query) {
 }
 
 /** Spread coincident affiliation points so each remains clickable. */
+export const AUSTRALIA_CENTROID = { lat: -24.7761086, lon: 134.755 };
+
+const AFFILIATION_COORD_OVERRIDE_ENTRIES = [
+  ["James Cook University", -19.3289618, 146.756645],
+  ["University of Western Australia", -31.9507, 115.7979],
+  ["the University of Western Australia", -31.9507, 115.7979],
+  ["Western Australian Museum", -31.9492, 115.8645],
+  [
+    "Department of Biodiversity, Conservation and Attractions - Western Australia",
+    -31.9523,
+    115.8613,
+  ],
+  ["Victoria University of Wellington", -41.2889, 174.7762],
+  ["University of Hong Kong", 22.283, 114.137],
+  ["Chinese University of Hong Kong", 22.419, 114.206],
+];
+
+const AFFILIATION_COORD_OVERRIDE_PATTERNS = AFFILIATION_COORD_OVERRIDE_ENTRIES.map(
+  ([affiliation, lat, lon]) => ({
+    pattern: new RegExp(
+      affiliation.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+      "i"
+    ),
+    lat,
+    lon,
+  })
+);
+
+export function isAustraliaCentroid(lat, lon) {
+  if (lat == null || lon == null) return false;
+  return (
+    Math.abs(Number(lat) - AUSTRALIA_CENTROID.lat) < 0.02 &&
+    Math.abs(Number(lon) - AUSTRALIA_CENTROID.lon) < 0.02
+  );
+}
+
+export function geocodeOverrideForAffiliation(affiliation) {
+  if (!affiliation) return null;
+  const key = affiliationMapKey(affiliation);
+  for (const [name, lat, lon] of AFFILIATION_COORD_OVERRIDE_ENTRIES) {
+    if (affiliationMapKey(name) === key) return { lat, lon };
+  }
+  for (const { pattern, lat, lon } of AFFILIATION_COORD_OVERRIDE_PATTERNS) {
+    if (pattern.test(affiliation)) return { lat, lon };
+  }
+  return null;
+}
+
+export function applyAffiliationGeocodeOverrides(locations) {
+  if (!Array.isArray(locations)) return locations;
+  return locations.map((location) => {
+    const override = geocodeOverrideForAffiliation(location.affiliation);
+    if (!override) return location;
+    const lat = Number(location.lat);
+    const lon = Number(location.lon);
+    if (
+      !isAustraliaCentroid(lat, lon) &&
+      Math.abs(lat - override.lat) < 0.0001 &&
+      Math.abs(lon - override.lon) < 0.0001
+    ) {
+      return location;
+    }
+    return {
+      ...location,
+      lat: override.lat,
+      lon: override.lon,
+      geocode_level: location.geocode_level || "institute",
+    };
+  });
+}
+
 export function buildDisplayPositions(locations, { precision = 5, ringRadius = 0.055 } = {}) {
   const keyFor = (location) =>
     `${location.lat.toFixed(precision)}:${location.lon.toFixed(precision)}`;
@@ -274,7 +345,11 @@ export function buildDisplayPositions(locations, { precision = 5, ringRadius = 0
 
 /** Map locations for non-speaking delegates not already on the speaker affiliation map. */
 export function affiliationMapKey(affiliation) {
-  const parts = affiliation.split(",").map((part) => part.trim()).filter(Boolean);
+  let normalized = affiliation.trim();
+  if (/^the\s+/i.test(normalized)) {
+    normalized = normalized.replace(/^the\s+/i, "");
+  }
+  const parts = normalized.split(",").map((part) => part.trim()).filter(Boolean);
   if (parts.length >= 2) {
     const last = parts[parts.length - 1].toLowerCase();
     const countries = new Set([
@@ -298,7 +373,7 @@ export function affiliationMapKey(affiliation) {
       return parts.slice(0, -1).join(", ").toLowerCase();
     }
   }
-  return affiliation.trim().toLowerCase();
+  return normalized.toLowerCase();
 }
 
 export function buildDelegateIndex(delegateGroups = []) {

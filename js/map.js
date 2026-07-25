@@ -2,6 +2,7 @@ import {
   buildDisplayPositions,
   buildDelegateMapLocations,
   enrichSpeakerLocationsWithDelegates,
+  applyAffiliationGeocodeOverrides,
   escapeHtml,
   formatDistance,
   locationMatchesQuery,
@@ -32,11 +33,13 @@ export function createMapView(
   let includeNonSpeakers = hasDelegatePool;
 
   function buildLocationPool() {
-    if (!includeNonSpeakers) return [...speakerLocations];
-    return [
+    if (!includeNonSpeakers) {
+      return applyAffiliationGeocodeOverrides([...speakerLocations]);
+    }
+    return applyAffiliationGeocodeOverrides([
       ...enrichSpeakerLocationsWithDelegates(speakerLocations, delegateIndex),
       ...buildDelegateMapLocations(speakerLocations, delegateEmissionsLocations, delegateIndex),
-    ];
+    ]);
   }
 
   let locations = buildLocationPool();
