@@ -131,10 +131,9 @@ def _geocoded_points(
     points[lat_col] = _coerce_coordinate_series(points[lat_col])
     points[lon_col] = _coerce_coordinate_series(points[lon_col])
     points = points.dropna(subset=[lat_col, lon_col])
-    valid = (
-        points[lat_col].between(-90, 90, inclusive="both")
-        & points[lon_col].between(-180, 180, inclusive="both")
-    )
+    valid = points[lat_col].between(-90, 90, inclusive="both") & points[
+        lon_col
+    ].between(-180, 180, inclusive="both")
     return points.loc[valid].copy()
 
 
@@ -378,6 +377,42 @@ def plot_affiliation_map_interactive(
     return fig
 
 
+def _build_talk_title_index(
+    df: pd.DataFrame,
+    *,
+    presenter_col: str = "presenter",
+    title_col: str = "title",
+) -> dict[str, list[dict[str, Any]]]:
+    index: dict[str, dict[str, dict[str, Any]]] = {}
+
+    for _, row in df.iterrows():
+        title = row.get(title_col)
+        if pd.isna(title) or not str(title).strip():
+            continue
+        title_text = str(title).strip()
+        presenter = row.get(presenter_col)
+        presenter_text = "" if pd.isna(presenter) else str(presenter).strip()
+        authors = _talk_authors(row, presenter_col=presenter_col)
+        if not authors:
+            continue
+        for author in authors:
+            author_bucket = index.setdefault(author, {})
+            is_primary = author == presenter_text or (
+                not presenter_text and author == authors[0]
+            )
+            existing = author_bucket.get(title_text)
+            if not existing or (is_primary and not existing.get("primary")):
+                author_bucket[title_text] = {"title": title_text, "primary": is_primary}
+
+    result: dict[str, list[dict[str, Any]]] = {}
+    for author, titles in sorted(index.items()):
+        result[author] = sorted(
+            titles.values(),
+            key=lambda item: (not item["primary"], item["title"].casefold()),
+        )
+    return result
+
+
 def _affiliation_location_records(
     df: pd.DataFrame,
     *,
@@ -400,7 +435,9 @@ def _affiliation_location_records(
     buckets: dict[str, list[pd.DataFrame]] = {}
     display_name: dict[str, str] = {}
     for _, row in points.iterrows():
-        affiliation_text = "" if pd.isna(row[affiliation_col]) else str(row[affiliation_col])
+        affiliation_text = (
+            "" if pd.isna(row[affiliation_col]) else str(row[affiliation_col])
+        )
         key = canonical_affiliation_key(affiliation_text)
         buckets.setdefault(key, []).append(row.to_frame().T)
         preferred = affiliation_base_name(affiliation_text) or affiliation_text
@@ -419,17 +456,21 @@ def _affiliation_location_records(
             if pd.isna(presenter):
                 continue
             parts = [str(presenter)]
+            talk_titles: list[str] = []
             for _, talk in speaker_group.iterrows():
                 title = talk.get(title_col)
                 abstract = talk.get(abstract_col)
                 if pd.notna(title) and str(title).strip():
-                    parts.append(str(title))
+                    title_text = str(title).strip()
+                    parts.append(title_text)
+                    talk_titles.append(title_text)
                 if pd.notna(abstract) and str(abstract).strip():
                     parts.append(str(abstract))
             speaker_details.append(
                 {
                     "name": str(presenter),
                     "search_text": " ".join(parts).lower(),
+                    "talk_titles": talk_titles,
                 }
             )
         speaker_details.sort(key=lambda item: item["name"].casefold())
@@ -483,6 +524,19 @@ def _author_affiliation_map(
         if name and name not in mapping:
             mapping[name] = str(affiliation).strip()
     return mapping
+
+
+def author_talk_counts(
+    df: pd.DataFrame,
+    *,
+    presenter_col: str = "presenter",
+) -> dict[str, int]:
+    """Count talks where each author appears on the author list."""
+    counts: dict[str, int] = {}
+    for _, row in df.iterrows():
+        for author in _talk_authors(row, presenter_col=presenter_col):
+            counts[author] = counts.get(author, 0) + 1
+    return counts
 
 
 def _talk_authors(row: pd.Series, *, presenter_col: str = "presenter") -> list[str]:
@@ -694,6 +748,14 @@ def export_attendee_site_data(
         affiliation_col=affiliation_col,
         presenter_col=presenter_col,
     )
+    talk_titles_by_author = _build_talk_title_index(
+        df,
+        presenter_col=presenter_col,
+        title_col=title_col,
+    )
+    for location in locations:
+        for speaker in location["speaker_details"]:
+            speaker["talk_titles"] = talk_titles_by_author.get(speaker["name"], [])
     affiliation_connections = {
         node["label"]: node["connections"] for node in network["affiliation"]["nodes"]
     }
@@ -717,9 +779,10 @@ def export_attendee_site_data(
         },
         "locations": locations,
         "network": network,
+        "talk_titles_by_author": talk_titles_by_author,
     }
     js_body = (
-        "/** Generated by export_attendee_site_data — do not edit by hand. */\n"
+        "/** Generated by export_attendee_site_data – do not edit by hand. */\n"
         f"export const SITE_DATA = {json.dumps(payload, ensure_ascii=True, indent=2)};\n"
     )
     output_path = Path(save_path)
