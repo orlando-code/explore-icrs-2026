@@ -1,17 +1,17 @@
 import { SITE_DATA } from "./locations.js";
 import { EMISSIONS_DATA } from "./emissions-data.js";
+import { SPEAKER_PROFILES } from "./speaker-profiles.js";
+import { NON_SPEAKING_DELEGATE_GROUPS } from "./non-speaking-delegates.js";
 import { createMapView } from "./map.js";
 import { createNetworkView } from "./network.js";
 import { createEmissionsView } from "./emissions-view.js";
 import { createShareView } from "./share.js";
-import { escapeHtml, formatDistance, buildDelegateMapLocations } from "./utils.js";
+import { escapeHtml, buildDelegateIndex } from "./utils.js";
 
 const locations = SITE_DATA.locations;
 const meta = SITE_DATA.meta;
-const delegateMapLocations = buildDelegateMapLocations(
-  locations,
-  EMISSIONS_DATA.all_delegates?.locations || []
-);
+const delegateIndex = buildDelegateIndex(NON_SPEAKING_DELEGATE_GROUPS);
+const delegateEmissionsLocations = EMISSIONS_DATA.all_delegates?.locations || [];
 
 const $ = (id) => document.getElementById(id);
 const els = {
@@ -30,7 +30,9 @@ const els = {
   hoverAffiliation: $("hover-affiliation"),
   hoverMeta: $("hover-meta"),
   hoverSpeakers: $("hover-speakers"),
-  distanceToggle: $("distance-toggle"),
+  mapLocationInfoBtn: $("map-location-info-btn"),
+  mapLocationInfo: $("map-location-info"),
+  mapLocationFixLink: $("map-location-fix-link"),
   connectionsSizeToggle: $("connections-size-toggle"),
   mapIncludeNonSpeakingDelegates: $("map-include-non-speaking-delegates"),
   mapPanel: $("map-panel"),
@@ -46,21 +48,26 @@ const els = {
   shareStage: $("share-stage"),
   mapContainer: $("map"),
   networkSvg: $("network-svg"),
-  lineTooltip: $("line-tooltip"),
   networkSummary: $("network-summary"),
   networkCard: $("network-card"),
   networkCardTitle: $("network-card-title"),
   networkCardMeta: $("network-card-meta"),
+  networkCardTalks: $("network-card-talks"),
+  networkCardContacts: $("network-card-contacts"),
+  networkDataInfoBtn: $("network-data-info-btn"),
+  networkDataInfo: $("network-data-info"),
+  networkDataFixLink: $("network-data-fix-link"),
+  networkDataRemovalLink: $("network-data-removal-link"),
   resetZoom: $("network-reset-zoom"),
   clearSelection: $("network-clear-selection"),
-  clearSelectionMobile: $("network-clear-selection-mobile"),
-  selectionBadge: $("network-selection-badge"),
-  selectionLabel: $("network-selection-label"),
+  networkCardClear: $("network-card-clear"),
+  networkCardSlot: $("network-card-slot"),
   networkSearch: $("network-search-query"),
   networkSuggestions: $("network-suggestions"),
   networkSearchStatus: $("network-search-status"),
   networkSearchBtn: $("network-search-btn"),
   networkClearSearch: $("network-clear-search"),
+  networkDensity: $("network-density"),
   networkLegend: $("network-legend"),
   networkStageBarChart: $("network-stage-bar-chart"),
   networkResults: $("network-results"),
@@ -79,10 +86,12 @@ const els = {
   emissionsResultsTitle: $("emissions-results-title"),
   emissionsAssumptions: $("emissions-assumptions"),
   emissionsMap: $("emissions-map"),
+  emissionsLineTooltip: $("emissions-line-tooltip"),
   emissionsHoverCard: $("emissions-hover-card"),
   emissionsHoverAffiliation: $("emissions-hover-affiliation"),
   emissionsHoverMeta: $("emissions-hover-meta"),
   includeNonSpeakingDelegates: $("include-non-speaking-delegates"),
+  emissionsDistanceToggle: $("emissions-distance-toggle"),
   tabButtons: [...document.querySelectorAll("[data-tab]")],
   networkModeButtons: [...document.querySelectorAll("[data-network-mode]")],
   emissionsModeButtons: [...document.querySelectorAll("[data-emissions-mode]")],
@@ -133,8 +142,15 @@ function renderResults({
     btn.classList.toggle("selected", location.id === selectedId);
     btn.classList.toggle("dimmed", searching && !matchedIds.has(location.id));
     const metaText = location.delegate_only
-      ? `${location.speaker_count} non-speaking delegate${location.speaker_count === 1 ? "" : "s"}${location.distance_km != null ? ` · ${formatDistance(location.distance_km)} from Auckland` : ""}`
-      : `${location.speaker_count} speaker${location.speaker_count === 1 ? "" : "s"} · ${location.talk_count} talk${location.talk_count === 1 ? "" : "s"} · ${(location.connection_count || 0).toLocaleString()} on author lists · ${formatDistance(location.distance_km)} from Auckland`;
+      ? `${location.speaker_details?.length || location.speaker_count} non-speaking delegate${(location.speaker_details?.length || location.speaker_count) === 1 ? "" : "s"}`
+      : (() => {
+          const nonSpeaking = location.non_speaking_delegate_count || 0;
+          const speakers = Math.max(0, location.speaker_count - nonSpeaking);
+          const peopleLabel = nonSpeaking
+            ? `${speakers} speaker${speakers === 1 ? "" : "s"} · ${nonSpeaking} non-speaking`
+            : `${location.speaker_count} speaker${location.speaker_count === 1 ? "" : "s"}`;
+          return `${peopleLabel} · ${location.talk_count} talk${location.talk_count === 1 ? "" : "s"} · ${(location.connection_count || 0).toLocaleString()} on author lists`;
+        })();
     btn.innerHTML = `
       <div class="affiliation">${escapeHtml(location.affiliation)}</div>
       <div class="meta">${metaText}</div>
@@ -164,12 +180,14 @@ const mapView = createMapView(
     hoverAffiliation: els.hoverAffiliation,
     hoverMeta: els.hoverMeta,
     hoverSpeakers: els.hoverSpeakers,
-    lineTooltip: els.lineTooltip,
+    locationInfoBtn: els.mapLocationInfoBtn,
+    locationInfo: els.mapLocationInfo,
+    locationFixLink: els.mapLocationFixLink,
     legend: els.mapLegend,
     setStatus,
     renderResults,
   },
-  { delegateLocations: delegateMapLocations }
+  { delegateEmissionsLocations, delegateIndex }
 );
 
 const networkView = createNetworkView(SITE_DATA, {
@@ -179,11 +197,18 @@ const networkView = createNetworkView(SITE_DATA, {
   card: els.networkCard,
   cardTitle: els.networkCardTitle,
   cardMeta: els.networkCardMeta,
+  cardTalks: els.networkCardTalks,
+  cardContacts: els.networkCardContacts,
+  dataInfoBtn: els.networkDataInfoBtn,
+  dataInfo: els.networkDataInfo,
+  dataFixLink: els.networkDataFixLink,
+  dataRemovalLink: els.networkDataRemovalLink,
+  resultsWrap: $("network-results-wrap"),
+  speakerProfiles: SPEAKER_PROFILES,
   resetZoom: els.resetZoom,
   clearSelection: els.clearSelection,
-  clearSelectionMobile: els.clearSelectionMobile,
-  selectionBadge: els.selectionBadge,
-  selectionLabel: els.selectionLabel,
+  cardClear: els.networkCardClear,
+  cardSlot: els.networkCardSlot,
   legend: els.networkLegend,
   barChart: els.networkStageBarChart,
   results: els.networkResults,
@@ -202,6 +227,7 @@ const shareView = createShareView(SITE_DATA, {
 
 const emissionsView = createEmissionsView(EMISSIONS_DATA, SITE_DATA, {
   mapContainer: els.emissionsMap,
+  lineTooltip: els.emissionsLineTooltip,
   headline: els.emissionsHeadline,
   headlineTotal: $("emissions-total"),
   headlineAssumption: $("emissions-assumption"),
@@ -224,7 +250,26 @@ const emissionsView = createEmissionsView(EMISSIONS_DATA, SITE_DATA, {
 let activeTab = "map";
 
 const layout = document.querySelector(".layout");
+const TAB_STORAGE_KEY = "icrs-active-tab";
+const VALID_TABS = new Set(["map", "network", "emissions", "methods", "share"]);
 const NETWORK_HINT_STORAGE_KEY = "icrs-network-hint-dismissed";
+
+function getStoredTab() {
+  try {
+    const stored = localStorage.getItem(TAB_STORAGE_KEY);
+    return VALID_TABS.has(stored) ? stored : "map";
+  } catch {
+    return "map";
+  }
+}
+
+function storeTab(tab) {
+  try {
+    localStorage.setItem(TAB_STORAGE_KEY, tab);
+  } catch {
+    /* private browsing */
+  }
+}
 
 function isNetworkHintDismissed() {
   try {
@@ -251,7 +296,9 @@ function showNetworkHintIfNeeded() {
 }
 
 function setTab(tab) {
+  if (!VALID_TABS.has(tab)) tab = "map";
   activeTab = tab;
+  storeTab(tab);
   els.tabButtons.forEach((button) => {
     button.classList.toggle("active", button.dataset.tab === tab);
   });
@@ -299,6 +346,12 @@ els.emissionsModeButtons.forEach((button) => {
   });
 });
 
+if (els.emissionsDistanceToggle) {
+  els.emissionsDistanceToggle.addEventListener("change", (event) => {
+    emissionsView.setDistanceMode(event.target.checked);
+  });
+}
+
 const hasDelegatePool = emissionsView.hasDelegatePool || mapView.hasDelegatePool;
 
 function setIncludeNonSpeakingDelegates(enabled) {
@@ -330,19 +383,7 @@ if (hasDelegatePool) {
   setIncludeNonSpeakingDelegates(true);
 }
 
-els.distanceToggle.addEventListener("change", (event) => {
-  if (event.target.checked) {
-    els.connectionsSizeToggle.checked = false;
-    mapView.setConnectionsSize(false);
-  }
-  mapView.setDistanceMode(event.target.checked);
-});
-
 els.connectionsSizeToggle.addEventListener("change", (event) => {
-  if (event.target.checked) {
-    els.distanceToggle.checked = false;
-    mapView.setDistanceMode(false);
-  }
   const enabled = mapView.setConnectionsSize(event.target.checked);
   els.connectionsSizeToggle.checked = enabled;
 });
@@ -404,12 +445,23 @@ els.networkSearch?.addEventListener("input", () => {
   const query = els.networkSearch.value;
   networkSuggestionTimer = setTimeout(() => {
     renderNetworkSuggestions(networkView.buildSuggestions(query));
-    networkView.applySearch(query, { focus: false });
+    networkView.previewSearch(query);
   }, 180);
+});
+
+els.networkSearch?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    networkView.applySearch(els.networkSearch.value);
+  }
 });
 
 els.networkSearchBtn?.addEventListener("click", () => {
   networkView.applySearch(els.networkSearch.value);
+});
+
+els.networkDensity?.addEventListener("change", () => {
+  networkView.setNodeLimit(els.networkDensity.value);
 });
 
 els.networkClearSearch?.addEventListener("click", () => {
@@ -469,7 +521,7 @@ renderResults({
   locationList: mapView.getLocations(),
 });
 mapView.applySearch("", { fly: false });
-setTab("map");
+setTab(getStoredTab());
 
 const WELCOME_STORAGE_KEY = "icrs-intro-dismissed";
 
