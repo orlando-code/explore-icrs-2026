@@ -46,6 +46,10 @@ _AFFILIATION_ALIASES: dict[str, str] = {
     "victoria university of wellington": "Victoria University of Wellington, New Zealand",
     "university of hong kong": "University of Hong Kong, Hong Kong",
     "chinese university of hong kong": "Chinese University of Hong Kong, Hong Kong",
+    "university of western australia": "University of Western Australia, Crawley, Perth, Australia",
+    "the university of western australia": "University of Western Australia, Crawley, Perth, Australia",
+    "western australian museum": "Western Australian Museum, Perth, Western Australia, Australia",
+    "department of biodiversity, conservation and attractions": "Department of Biodiversity, Conservation and Attractions, Perth, Western Australia, Australia",
 }
 
 # Institutions whose country suffix must not contradict their geography.
@@ -76,6 +80,39 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
             "cities": [("Hong Kong", 22.419, 114.206, 80.0)],
             "query": "Chinese University of Hong Kong, Hong Kong",
             "canonical": "Chinese University of Hong Kong",
+        },
+    ),
+    (
+        re.compile(
+            r"\b(university of western australia|the university of western australia)\b",
+            re.I,
+        ),
+        {
+            "countries": ["Australia"],
+            "cities": [("Perth", -31.9507, 115.7979, 90.0)],
+            "query": "University of Western Australia, Crawley, Perth, Australia",
+            "canonical": "University of Western Australia",
+        },
+    ),
+    (
+        re.compile(r"western australian museum", re.I),
+        {
+            "countries": ["Australia"],
+            "cities": [("Perth", -31.9492, 115.8645, 90.0)],
+            "query": "Western Australian Museum, Perth, Australia",
+            "canonical": "Western Australian Museum",
+        },
+    ),
+    (
+        re.compile(
+            r"department of biodiversity, conservation and attractions",
+            re.I,
+        ),
+        {
+            "countries": ["Australia"],
+            "cities": [("Perth", -31.9523, 115.8613, 120.0)],
+            "query": "Department of Biodiversity, Conservation and Attractions, Perth, Australia",
+            "canonical": "Department of Biodiversity, Conservation and Attractions - Western Australia",
         },
     ),
 )
@@ -196,7 +233,7 @@ def _save_cache(cache_path: Path, cache: dict[str, dict]) -> None:
 def _normalize_text(text: str) -> str:
     text = unicodedata.normalize("NFKD", text)
     text = text.encode("ascii", "ignore").decode("ascii")
-    text = text.replace("–", "-").replace("—", "-").strip()
+    text = text.replace("–", "-").replace("–", "-").strip()
     for pattern, replacement in _NORMALIZATIONS:
         text = re.sub(pattern, replacement, text)
     return text.strip(" ,;-")
@@ -373,7 +410,7 @@ def _extract_country_hints(affiliation: str) -> list[str]:
     for part in re.split(r"[,;/|&]", normalized):
         add(part.strip())
 
-    for sep in (" - ", " – ", " — "):
+    for sep in (" - ", " – ", " – "):
         if sep in normalized:
             tail = normalized.split(sep, 1)[1]
             for part in re.split(r"[,;/|&]", tail):
@@ -406,7 +443,12 @@ def _geocode_country_centroid(
     pause_seconds: float,
 ) -> dict[str, float | str | None]:
     for query in (country, f"{country} country"):
-        result = _geocode_query(geolocator, query, pause_seconds=pause_seconds)
+        result = _geocode_query(
+            geolocator,
+            query,
+            country_hints=[country],
+            pause_seconds=pause_seconds,
+        )
         if result["latitude"] is not None:
             result["query_used"] = f"country:{country}"
             result["geocode_level"] = "country"
@@ -474,6 +516,33 @@ def _resolve_country_coords(
     }
 
 
+def _country_codes_for_hints(country_hints: list[str]) -> str | None:
+    codes: list[str] = []
+    for country in country_hints:
+        try:
+            codes.append(pycountry.countries.lookup(country).alpha_2.lower())
+        except LookupError:
+            continue
+    return ",".join(dict.fromkeys(codes)) if codes else None
+
+
+def _looks_like_specific_institution(affiliation: str) -> bool:
+    lowered = affiliation.lower()
+    markers = (
+        "university",
+        "institute",
+        "college",
+        "museum",
+        "laboratory",
+        "laboratories",
+        "school of",
+        "department of",
+        "centre for",
+        "center for",
+    )
+    return any(marker in lowered for marker in markers)
+
+
 def _query_variants(affiliation: str) -> list[str]:
     """Generate progressively simpler geocoding queries."""
     raw = affiliation.strip()
@@ -506,6 +575,12 @@ def _query_variants(affiliation: str) -> list[str]:
         if fragment in lowered:
             add(alias)
 
+    country_hints = _filtered_country_hints(raw)
+    base_name = affiliation_base_name(raw)
+    for country in country_hints:
+        add(f"{base_name or primary}, {country}")
+        add(f"{primary}, {country}")
+
     if "(" in primary and ")" in primary:
         add(re.sub(r"\([^)]*\)", "", primary).strip(" ,"))
 
@@ -517,7 +592,7 @@ def _query_variants(affiliation: str) -> list[str]:
         add(f"{parts[0]}, {parts[1]}")
         add(f"{parts[1]}, {parts[0]}")
 
-    for sep in (" - ", " – ", " — "):
+    for sep in (" - ", " – ", " – "):
         if sep in primary:
             add(primary.split(sep, 1)[0])
 
@@ -525,11 +600,11 @@ def _query_variants(affiliation: str) -> list[str]:
         add(primary.split(" under ", 1)[0])
 
     if "university" in lowered:
-        match = re.search(
-            r"(university of [^,;/|-]+(?:,\s*[^,;/|-]+)?)", primary, flags=re.I
-        )
+        match = re.search(r"((?:the\s+)?university of [^,;/|-]+)", primary, flags=re.I)
         if match:
             add(match.group(1))
+            for country in country_hints:
+                add(f"{match.group(1)}, {country}")
 
     if "institute" in lowered:
         match = re.search(r"(institute[^,;/|]*?(?:,\s*[^,;/|]+)?)", primary, flags=re.I)
@@ -566,12 +641,18 @@ def _geocode_query(
     geolocator: Nominatim,
     query: str,
     *,
+    country_hints: list[str] | None = None,
     retries: int = 3,
     pause_seconds: float = 1.0,
 ) -> dict[str, float | str | None]:
+    country_codes = _country_codes_for_hints(country_hints or [])
+    geocode_kwargs = {"timeout": 10}
+    if country_codes:
+        geocode_kwargs["country_codes"] = country_codes
+
     for attempt in range(retries):
         try:
-            location = geolocator.geocode(query, timeout=10)
+            location = geolocator.geocode(query, **geocode_kwargs)
             if location is None:
                 return {"latitude": None, "longitude": None, "query_used": query}
             return {
@@ -644,7 +725,12 @@ def _resolve_affiliation(
     for index, query in enumerate(variants, start=1):
         if on_query is not None:
             on_query(query, index, len(variants))
-        result = _geocode_query(geolocator, query, pause_seconds=pause_seconds)
+        result = _geocode_query(
+            geolocator,
+            query,
+            country_hints=country_hints,
+            pause_seconds=pause_seconds,
+        )
         if result["latitude"] is not None:
             if _is_plausible_for_affiliation(
                 affiliation,
@@ -662,7 +748,12 @@ def _resolve_affiliation(
             on_query("llm fallback", len(variants) + 1, len(variants) + 1)
         llm_query = _llm_geocode_query(affiliation)
         if llm_query:
-            result = _geocode_query(geolocator, llm_query, pause_seconds=pause_seconds)
+            result = _geocode_query(
+                geolocator,
+                llm_query,
+                country_hints=country_hints,
+                pause_seconds=pause_seconds,
+            )
             if result["latitude"] is not None and _is_plausible_for_affiliation(
                 affiliation,
                 result["latitude"],
@@ -675,7 +766,7 @@ def _resolve_affiliation(
                 return result
             time.sleep(pause_seconds)
 
-    if country_hints:
+    if country_hints and not _looks_like_specific_institution(affiliation):
         if on_query is not None:
             on_query(f"country fallback ({country_hints[0]})", 1, 1)
         return _resolve_country_coords(
@@ -706,7 +797,9 @@ def _needs_reprocessing(
     lon = cached.get("longitude")
     if lat is None or lon is None:
         return retry_failed
-    if cached.get("geocode_level") == "country" and _institution_rule(affiliation):
+    if cached.get("geocode_level") == "country" and (
+        _institution_rule(affiliation) or _looks_like_specific_institution(affiliation)
+    ):
         return True
     country_hints = _filtered_country_hints(affiliation)
     if not country_hints:
@@ -972,7 +1065,10 @@ def attach_coordinates(
     for index, row in enriched.iterrows():
         affiliation = row.get(affiliation_col)
         if pd.isna(affiliation):
-            enriched.loc[index, ["latitude", "longitude", "geocoded", "geocode_level", "query_used"]] = [
+            enriched.loc[
+                index,
+                ["latitude", "longitude", "geocoded", "geocode_level", "query_used"],
+            ] = [
                 pd.NA,
                 pd.NA,
                 False,
@@ -993,7 +1089,10 @@ def attach_coordinates(
         enriched.at[index, "geocode_level"] = coords.get("geocode_level")
         enriched.at[index, "query_used"] = coords.get("query_used")
         enriched.at[index, "geocoded"] = bool(
-            coords.get("geocoded", coords.get("latitude") is not None and pd.notna(coords.get("latitude")))
+            coords.get(
+                "geocoded",
+                coords.get("latitude") is not None and pd.notna(coords.get("latitude")),
+            )
         )
 
     return enriched

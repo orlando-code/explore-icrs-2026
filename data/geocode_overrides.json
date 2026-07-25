@@ -52,5 +52,23 @@
     "longitude": 114.206,
     "query_used": "override:Chinese University of Hong Kong, Hong Kong",
     "geocode_level": "institute"
+  },
+  "University of Western Australia": {
+    "latitude": -31.9507,
+    "longitude": 115.7979,
+    "query_used": "override:University of Western Australia, Crawley, Perth, Australia",
+    "geocode_level": "institute"
+  },
+  "Western Australian Museum": {
+    "latitude": -31.9492,
+    "longitude": 115.8645,
+    "query_used": "override:Western Australian Museum, Perth, Australia",
+    "geocode_level": "institute"
+  },
+  "Department of Biodiversity, Conservation and Attractions - Western Australia": {
+    "latitude": -31.9523,
+    "longitude": 115.8613,
+    "query_used": "override:Department of Biodiversity, Conservation and Attractions, Perth, Australia",
+    "geocode_level": "institute"
   }
 }
