@@ -11,6 +11,7 @@ import {
   renderTalkTitlesHtml,
   speakerMatchesQuery,
 } from "./utils.js";
+import { resolveTalkId } from "./talk-similarity.js";
 
 const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
 const MAX_ZOOM = 10;
@@ -53,11 +54,132 @@ export function createMapView(
   let hoveredId = null;
   let connectionsSizeMode = false;
   let mapReady = false;
+  let selectedTalkId = null;
+  let hoverCardLocationId = null;
+  let highlightedAuthorName = null;
+  let authorHighlightLocationId = null;
+  let abstractHighlighted = false;
+  let talkHighlightLocationIds = new Set();
+  let speakerLocationIndex = new Map();
+  const talksData = elements.talksData || { by_id: {}, title_index: {} };
+  const talksById = talksData.by_id || {};
   let maxConnectionCount = Math.max(
     ...locations.map((location) => location.connection_count || 0),
     1
   );
   let displayPositions = buildDisplayPositions(locations);
+
+  function rebuildSpeakerLocationIndex() {
+    speakerLocationIndex = new Map();
+    for (const location of locations) {
+      for (const speaker of location.speaker_details || []) {
+        const name = String(speaker.name || speaker).trim();
+        if (name && !speakerLocationIndex.has(name)) {
+          speakerLocationIndex.set(name, location.id);
+        }
+      }
+      for (const name of location.speakers || []) {
+        const trimmed = String(name).trim();
+        if (trimmed && !speakerLocationIndex.has(trimmed)) {
+          speakerLocationIndex.set(trimmed, location.id);
+        }
+      }
+    }
+  }
+
+  rebuildSpeakerLocationIndex();
+
+  function locationIdsForAuthors(authors) {
+    const ids = new Set();
+    for (const name of authors || []) {
+      const locationId = speakerLocationIndex.get(String(name).trim());
+      if (locationId) ids.add(locationId);
+    }
+    return ids;
+  }
+
+  function clearTalkHighlights() {
+    highlightedAuthorName = null;
+    authorHighlightLocationId = null;
+    abstractHighlighted = false;
+    talkHighlightLocationIds = new Set();
+    if (elements.talkAbstract) {
+      elements.talkAbstract.classList.remove("map-talk-abstract--active");
+      elements.talkAbstract.setAttribute("aria-pressed", "false");
+    }
+  }
+
+  function refreshTalkAuthors() {
+    if (!elements.talkAuthors || !selectedTalkId) return;
+    const talk = talksById[selectedTalkId];
+    if (!talk) return;
+    elements.talkAuthors.innerHTML = renderTalkAuthorsHtml(talk.authors);
+  }
+
+  function renderTalkAuthorsHtml(authors) {
+    const list = (authors || []).map((name) => String(name || "").trim()).filter(Boolean);
+    if (!list.length) return "";
+
+    return list
+      .map((name, index) => {
+        const separator = index > 0 ? '<span class="network-talk-author-sep">, </span>' : "";
+        const locationId = speakerLocationIndex.get(name);
+        if (locationId) {
+          const selected =
+            name === highlightedAuthorName || locationId === authorHighlightLocationId
+              ? " network-talk-author-selected"
+              : "";
+          return `${separator}<button type="button" class="network-talk-author-btn${selected}" data-speaker-name="${escapeHtml(name)}">${escapeHtml(name)}</button>`;
+        }
+        return `${separator}<span class="network-talk-author-plain">${escapeHtml(name)}</span>`;
+      })
+      .join("");
+  }
+
+  function highlightAuthorOnMap(speakerName) {
+    const trimmed = String(speakerName || "").trim();
+    const locationId = speakerLocationIndex.get(trimmed);
+    if (!locationId) return;
+
+    highlightedAuthorName = trimmed;
+    authorHighlightLocationId = locationId;
+    abstractHighlighted = false;
+    talkHighlightLocationIds = new Set();
+    if (elements.talkAbstract) {
+      elements.talkAbstract.classList.remove("map-talk-abstract--active");
+      elements.talkAbstract.setAttribute("aria-pressed", "false");
+    }
+    refreshTalkAuthors();
+    upsertMapData();
+    flyToLocation(locationById(locationId));
+  }
+
+  function toggleTalkAbstractHighlight() {
+    if (!selectedTalkId) return;
+    const talk = talksById[selectedTalkId];
+    if (!talk) return;
+
+    abstractHighlighted = !abstractHighlighted;
+    highlightedAuthorName = null;
+    authorHighlightLocationId = null;
+    talkHighlightLocationIds = abstractHighlighted
+      ? locationIdsForAuthors(talk.authors)
+      : new Set();
+
+    if (elements.talkAbstract) {
+      elements.talkAbstract.classList.toggle("map-talk-abstract--active", abstractHighlighted);
+      elements.talkAbstract.setAttribute("aria-pressed", abstractHighlighted ? "true" : "false");
+    }
+    refreshTalkAuthors();
+    upsertMapData();
+
+    if (abstractHighlighted && talkHighlightLocationIds.size) {
+      const bounds = boundsForIds(talkHighlightLocationIds);
+      if (bounds) {
+        map.fitBounds(bounds, { padding: 90, maxZoom: 5.5, duration: 900 });
+      }
+    }
+  }
 
   function applyLocationPool() {
     locations = buildLocationPool();
@@ -66,6 +188,7 @@ export function createMapView(
       1
     );
     displayPositions = buildDisplayPositions(locations);
+    rebuildSpeakerLocationIndex();
     updateMatches(searchQuery);
     if (selectedId && !locationById(selectedId)) {
       selectedId = null;
@@ -166,12 +289,81 @@ export function createMapView(
     }
   }
 
+  function setSpeakerListVisible(visible) {
+    if (elements.hoverSpeakers) elements.hoverSpeakers.hidden = !visible;
+    elements.hoverCard?.classList.toggle("map-card--talk-open", !visible);
+  }
+
+  function clearTalkDetail() {
+    selectedTalkId = null;
+    clearTalkHighlights();
+    if (elements.talkDetail) elements.talkDetail.hidden = true;
+    if (elements.talkBack) elements.talkBack.hidden = true;
+    if (elements.talkAuthors) elements.talkAuthors.innerHTML = "";
+    if (elements.talkTitle) elements.talkTitle.textContent = "";
+    if (elements.talkAbstract) elements.talkAbstract.textContent = "";
+    setSpeakerListVisible(true);
+    upsertMapData();
+  }
+
+  function scrollTalkDetailIntoView() {
+    const target = elements.talkDetail;
+    const container = elements.hoverCard;
+    if (!target || !container || target.hidden) return;
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      if (container.scrollHeight > container.clientHeight) {
+        const top = Math.max(0, target.offsetTop - 12);
+        container.scrollTo({ top, behavior: "smooth" });
+      }
+    });
+  }
+
+  function showTalkDetail(talkId) {
+    const normalizedTalkId = String(talkId || "").trim();
+    const talk = talksById[normalizedTalkId];
+    if (!talk || !elements.talkDetail) return;
+
+    selectedTalkId = normalizedTalkId;
+    clearTalkHighlights();
+    setSpeakerListVisible(false);
+    if (elements.talkBack) elements.talkBack.hidden = false;
+    elements.talkDetail.hidden = false;
+    if (elements.talkTitle) elements.talkTitle.textContent = talk.title;
+    if (elements.talkAuthors) {
+      elements.talkAuthors.innerHTML = renderTalkAuthorsHtml(talk.authors);
+    }
+    if (elements.talkAbstract) {
+      elements.talkAbstract.textContent = talk.abstract || "No abstract available.";
+      elements.talkAbstract.title = "Show co-author affiliations on the map";
+    }
+    upsertMapData();
+    scrollTalkDetailIntoView();
+  }
+
+  function handleTalkSelection(talkId) {
+    const normalizedTalkId = String(talkId || "").trim();
+    if (!normalizedTalkId) return;
+    if (normalizedTalkId === selectedTalkId) {
+      scrollTalkDetailIntoView();
+      return;
+    }
+    showTalkDetail(normalizedTalkId);
+  }
+
   function renderHoverCard(location) {
     if (!location) {
+      hoverCardLocationId = null;
+      clearTalkDetail();
       elements.hoverCard.hidden = true;
       updateLocationInfo(null);
       return;
     }
+
+    if (hoverCardLocationId !== location.id) {
+      clearTalkDetail();
+    }
+    hoverCardLocationId = location.id;
 
     elements.hoverCard.hidden = false;
     updateLocationInfo(location);
@@ -214,6 +406,12 @@ export function createMapView(
     const highlightedSpeakers = matchedSpeakersByLocation.get(location.id) || new Set();
     const searching = Boolean(searchQuery);
     renderSpeakerList(location, { highlightedSpeakers, searching });
+    if (selectedTalkId) {
+      setSpeakerListVisible(false);
+      if (elements.talkBack) elements.talkBack.hidden = false;
+      if (elements.talkDetail) elements.talkDetail.hidden = false;
+      refreshTalkAuthors();
+    }
 
     if (isMobileLayout()) {
       window.requestAnimationFrame(() => {
@@ -231,7 +429,11 @@ export function createMapView(
       .map((speaker) => {
         const name = speaker.name || speaker;
         const isMatch = searching && highlightedSpeakers.has(name);
-        const titlesHtml = renderTalkTitlesHtml(speaker.talk_titles || [], { kicker: "" });
+        const titlesHtml = renderTalkTitlesHtml(speaker.talk_titles || [], {
+          kicker: "",
+          selectedTalkId,
+          resolveTalkId: (entry) => resolveTalkId(entry, talksData, name),
+        });
         return `
           <li class="speaker-entry${isMatch ? " speaker-match" : ""}">
             <span class="speaker-name">${escapeHtml(name)}</span>
@@ -264,6 +466,8 @@ export function createMapView(
     return locations.map((location) => {
       const highlighted = !searching || matchedIds.has(location.id);
       const display = displayForLocation(location);
+      const talkHighlighted = talkHighlightLocationIds.has(location.id) ? 1 : 0;
+      const authorHighlighted = authorHighlightLocationId === location.id ? 1 : 0;
       return {
         type: "Feature",
         properties: {
@@ -276,6 +480,8 @@ export function createMapView(
           highlighted: highlighted ? 1 : 0,
           selected: location.id === selectedId ? 1 : 0,
           hovered: location.id === hoveredId ? 1 : 0,
+          talk_highlighted: talkHighlighted,
+          author_highlighted: authorHighlighted,
           radius: radiusForLocation(location, highlighted),
         },
         geometry: {
@@ -326,7 +532,9 @@ export function createMapView(
   }
 
   function selectLocation(id, { fly = true, toggle = false } = {}) {
-    selectedId = toggle && selectedId === id ? null : id;
+    const nextId = toggle && selectedId === id ? null : id;
+    if (nextId !== selectedId) clearTalkHighlights();
+    selectedId = nextId;
     renderHoverCard(locationById(selectedId));
     elements.renderResults({
       searchQuery,
@@ -510,6 +718,10 @@ export function createMapView(
           "case",
           ["==", ["get", "selected"], 1],
           "#1f6f8b",
+          ["==", ["get", "author_highlighted"], 1],
+          "#4a90a7",
+          ["==", ["get", "talk_highlighted"], 1],
+          "#e8945a",
           ["==", ["get", "highlighted"], 1],
           "#d95f02",
           "#9aa5ad",
@@ -518,6 +730,10 @@ export function createMapView(
           "case",
           ["==", ["get", "selected"], 1],
           0.95,
+          ["==", ["get", "author_highlighted"], 1],
+          0.94,
+          ["==", ["get", "talk_highlighted"], 1],
+          0.9,
           ["==", ["get", "hovered"], 1],
           0.92,
           ["==", ["get", "highlighted"], 1],
@@ -528,6 +744,10 @@ export function createMapView(
           "case",
           ["==", ["get", "selected"], 1],
           3,
+          ["==", ["get", "author_highlighted"], 1],
+          2.8,
+          ["==", ["get", "talk_highlighted"], 1],
+          2.4,
           ["==", ["get", "hovered"], 1],
           2.5,
           ["==", ["get", "highlighted"], 1],
@@ -594,6 +814,51 @@ export function createMapView(
   if (elements.locationInfoBtn && elements.locationInfo) {
     elements.locationInfoBtn.addEventListener("click", () => {
       setLocationInfoOpen(elements.locationInfo.hidden);
+    });
+  }
+
+  if (elements.hoverCard) {
+    elements.hoverCard.addEventListener("click", (event) => {
+      const authorButton = event.target.closest("[data-speaker-name]");
+      if (authorButton && elements.talkAuthors?.contains(authorButton)) {
+        event.preventDefault();
+        event.stopPropagation();
+        highlightAuthorOnMap(authorButton.dataset.speakerName);
+        return;
+      }
+
+      if (elements.talkAbstract?.contains(event.target)) {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleTalkAbstractHighlight();
+        return;
+      }
+
+      const button = event.target.closest("[data-talk-id]");
+      if (!button || !elements.hoverSpeakers?.contains(button)) return;
+      event.preventDefault();
+      event.stopPropagation();
+      handleTalkSelection(button.dataset.talkId);
+    });
+
+    elements.hoverCard.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      if (!elements.talkAbstract?.contains(event.target)) return;
+      event.preventDefault();
+      toggleTalkAbstractHighlight();
+    });
+  }
+
+  if (elements.talkBack) {
+    elements.talkBack.addEventListener("click", () => {
+      clearTalkDetail();
+      const location = locationById(hoverCardLocationId || selectedId || hoveredId);
+      if (!location) return;
+      const highlightedSpeakers = matchedSpeakersByLocation.get(location.id) || new Set();
+      renderSpeakerList(location, {
+        highlightedSpeakers,
+        searching: Boolean(searchQuery),
+      });
     });
   }
 

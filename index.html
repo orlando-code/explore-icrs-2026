@@ -474,6 +474,22 @@
           <h2 id="hover-affiliation"></h2>
           <p id="hover-meta" class="hover-meta"></p>
           <ul id="hover-speakers" class="speaker-list"></ul>
+          <button type="button" class="btn-ghost btn-small network-talk-back" id="map-talk-back" hidden>
+            ← All talks
+          </button>
+          <div id="map-talk-detail" class="network-talk-detail" hidden>
+            <p class="hover-kicker">Talk details</p>
+            <h3 id="map-talk-title" class="network-talk-title"></h3>
+            <div id="map-talk-authors" class="network-talk-authors"></div>
+            <div
+              id="map-talk-abstract"
+              class="network-talk-abstract map-talk-abstract"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+              title="Show co-author affiliations on the map"
+            ></div>
+          </div>
         </aside>
       </section>
 

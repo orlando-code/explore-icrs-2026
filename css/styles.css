@@ -637,6 +637,28 @@ a.btn-small {
   white-space: pre-wrap;
 }
 
+.map-talk-abstract {
+  margin-top: 0.15rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.map-talk-abstract:hover,
+.map-talk-abstract:focus-visible {
+  background: rgba(31, 111, 139, 0.06);
+  border-color: rgba(31, 111, 139, 0.18);
+  outline: none;
+}
+
+.map-talk-abstract--active {
+  background: rgba(232, 148, 90, 0.12);
+  border-color: rgba(217, 95, 2, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(217, 95, 2, 0.08);
+}
+
 .network-similar-talks {
   margin-top: 0.85rem;
   padding-top: 0.8rem;
