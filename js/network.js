@@ -241,6 +241,7 @@ export function createNetworkView(siteData, elements) {
   let nodeSelection = null;
   let labelSelection = null;
   let selectedLabelSelection = null;
+  let labelOverlay = null;
   let dragMoved = false;
   let pendingNodeFocus = false;
   let resizeTimer = null;
@@ -275,6 +276,7 @@ export function createNetworkView(siteData, elements) {
   const svg = d3.select(elements.networkSvg);
   const viewport = svg.append("g").attr("class", "viewport");
   const graphLayer = viewport.append("g").attr("class", "graph-layer");
+  labelOverlay = viewport.append("g").attr("class", "label-overlay");
 
   const zoom = d3
     .zoom()
@@ -896,9 +898,46 @@ export function createNetworkView(siteData, elements) {
     return nodeDrawOrder(node, neighbors);
   }
 
-  function selectedLabelNode() {
-    if (!selectedNodeId) return null;
-    return graphNodes.find((node) => node.id === selectedNodeId) || null;
+  function raiseSelectedLabel() {
+    labelOverlay?.raise();
+    selectedLabelSelection?.raise();
+  }
+
+  function updateSelectedLabel(node) {
+    if (!labelOverlay) return;
+
+    selectedLabelSelection = selectedLabelSelection || labelOverlay.selectAll("text.label-selected");
+    selectedLabelSelection = selectedLabelSelection.data(node ? [node] : [], (d) => d.id);
+    selectedLabelSelection.exit().remove();
+
+    const selectedLabelEnter = selectedLabelSelection
+      .enter()
+      .append("text")
+      .attr("class", "label-selected")
+      .attr("text-anchor", "middle")
+      .attr("pointer-events", "none");
+
+    selectedLabelSelection = selectedLabelEnter.merge(selectedLabelSelection);
+    if (!node) {
+      raiseSelectedLabel();
+      return;
+    }
+
+    selectedLabelSelection
+      .attr("font-size", 14)
+      .attr("font-weight", 700)
+      .attr("fill", "#14212b")
+      .attr("fill-opacity", 1)
+      .attr("stroke", "#ffffff")
+      .attr("stroke-width", 5)
+      .attr("stroke-opacity", 0.95)
+      .attr("paint-order", "stroke")
+      .attr("dy", (d) => -radiusScale(Math.max(1, d.connections)) - 8)
+      .text((d) => (d.label.length > 32 ? `${d.label.slice(0, 30)}…` : d.label))
+      .attr("x", (d) => d.x)
+      .attr("y", (d) => d.y);
+
+    raiseSelectedLabel();
   }
 
   function linkEndpointIds(link) {
@@ -1026,30 +1065,10 @@ export function createNetworkView(siteData, elements) {
       .attr("x", (d) => d.x)
       .attr("y", (d) => d.y);
 
-    const selectedNode = selectedLabelNode();
-    if (selectedLabelSelection) {
-      selectedLabelSelection = selectedLabelSelection.data(selectedNode ? [selectedNode] : [], (d) => d.id);
-      selectedLabelSelection.exit().remove();
-      const selectedLabelEnter = selectedLabelSelection
-        .enter()
-        .append("text")
-        .attr("text-anchor", "middle")
-        .attr("pointer-events", "none");
-      selectedLabelSelection = selectedLabelEnter.merge(selectedLabelSelection);
-      selectedLabelSelection
-        .attr("font-size", 14)
-        .attr("font-weight", 700)
-        .attr("fill", "#14212b")
-        .attr("fill-opacity", 1)
-        .attr("stroke", "#ffffff")
-        .attr("stroke-width", 5)
-        .attr("stroke-opacity", 0.95)
-        .attr("paint-order", "stroke")
-        .attr("dy", (d) => -radiusScale(Math.max(1, d.connections)) - 8)
-        .text((d) => (d.label.length > 32 ? `${d.label.slice(0, 30)}…` : d.label))
-        .attr("x", (d) => d.x)
-        .attr("y", (d) => d.y);
-    }
+    const selectedNode = selectedNodeId
+      ? graphNodes.find((node) => node.id === selectedNodeId) || null
+      : null;
+    updateSelectedLabel(selectedNode);
 
     renderSearchResults(graphNodes);
     updateSelectionUi();
@@ -1129,6 +1148,8 @@ export function createNetworkView(siteData, elements) {
     autoFitPending = !pendingNodeFocus && !userAdjustedZoom;
 
     graphLayer.selectAll("*").remove();
+    labelOverlay.selectAll("*").remove();
+    selectedLabelSelection = null;
     if (simulation) {
       simulation.on("end", null);
       simulation.stop();
@@ -1172,12 +1193,6 @@ export function createNetworkView(siteData, elements) {
       .call(nodeDrag());
 
     labelSelection = graphLayer.append("g").attr("class", "labels").selectAll("text").data([]).join("text");
-    selectedLabelSelection = graphLayer
-      .append("g")
-      .attr("class", "labels-selected")
-      .selectAll("text")
-      .data([])
-      .join("text");
 
     simulation = d3
       .forceSimulation(graphNodes)

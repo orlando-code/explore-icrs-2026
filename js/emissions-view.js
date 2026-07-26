@@ -12,6 +12,7 @@ import {
 } from "./utils.js";
 import {
   buildEmissionsAttendeesFromSite,
+  circlePolygon,
   createOffsetTracker,
   pieSlicePolygon,
 } from "./offset-tracker.js";
@@ -104,6 +105,7 @@ export function createEmissionsView(
   let mapReady = false;
   let offsetTracker = null;
   let sliceRefreshTimer = null;
+  const MARKER_SLICE_SORT_EPSILON = 0.001;
   let mapUpdateTimer = null;
   let cachedAttendees = null;
   let cachedAttendeesKey = "";
@@ -232,38 +234,95 @@ export function createEmissionsView(
     ) || 0;
   }
 
-  function offsetSliceFeatures() {
-    if (!mapReady || !offsetTracker) return [];
-    return allLocations
-      .filter((location) => location.co2e_kg > 0 && locationOffsetShare(location) > 0)
-      .map((location) => {
-        const share = locationOffsetShare(location);
-        if (share >= 1) return null;
-        const display = displayForLocation(location);
-        const radius = radiusFor(location);
-        const ring = pieSlicePolygon(map, display.lon, display.lat, radius, share);
-        if (!ring) return null;
-        return {
-          type: "Feature",
-          properties: {
-            id: location.id,
-            offset_share: share,
-            sort_key: location.co2e_kg || 0,
-          },
-          geometry: {
-            type: "Polygon",
-            coordinates: [ring],
-          },
-        };
-      })
-      .filter(Boolean);
+  function markerSortKey(location, selected) {
+    return selected ? 1e9 + (location.co2e_kg || 0) : location.co2e_kg || 0;
   }
 
-  function updateOffsetSlices() {
-    if (!mapReady || !offsetTracker) return;
-    map.getSource("offset-slices")?.setData({
+  function locationMarkerFeatures() {
+    if (!mapReady) return [];
+
+    return allLocations.flatMap((location) => {
+      const highlighted = location.co2e_kg > 0;
+      const display = displayForLocation(location);
+      const radius = radiusFor(location);
+      const selected = location.id === selectedId;
+      const hovered = location.id === hoveredId;
+      const dimmed = Boolean(selectedId && !selected && highlighted);
+      const offsetShare = locationOffsetShare(location);
+      const effectiveRadius = selected ? radius + 3 : hovered ? radius + 2 : radius;
+      const sortKey = markerSortKey(location, selected);
+      const ring = circlePolygon(map, display.lon, display.lat, effectiveRadius);
+      if (!ring) return [];
+
+      const baseProps = {
+        id: location.id,
+        affiliation: location.affiliation,
+        co2e_kg: location.co2e_kg,
+        highlighted: highlighted ? 1 : 0,
+        selected: selected ? 1 : 0,
+        hovered: hovered ? 1 : 0,
+        offset_share: offsetShare,
+        sort_key: sortKey,
+        color: colorFor(location, highlighted),
+        opacity: highlighted
+          ? selected
+            ? 0.95
+            : dimmed
+              ? 0.22
+              : hovered
+                ? 0.9
+                : 0.82
+          : 0.2,
+      };
+
+      if (offsetShare > 0 && offsetShare < 1) {
+        const sliceRing = pieSlicePolygon(
+          map,
+          display.lon,
+          display.lat,
+          effectiveRadius,
+          offsetShare
+        );
+        const features = [
+          {
+            type: "Feature",
+            properties: { ...baseProps, marker_part: "base" },
+            geometry: { type: "Polygon", coordinates: [ring] },
+          },
+        ];
+        if (sliceRing) {
+          features.push({
+            type: "Feature",
+            properties: {
+              id: location.id,
+              selected: baseProps.selected,
+              hovered: baseProps.hovered,
+              marker_part: "slice",
+              sort_key: sortKey + MARKER_SLICE_SORT_EPSILON,
+              color: offsetTracker?.OFFSET_GREEN || "#2d8a4e",
+              opacity: 0.95,
+            },
+            geometry: { type: "Polygon", coordinates: [sliceRing] },
+          });
+        }
+        return features;
+      }
+
+      return [
+        {
+          type: "Feature",
+          properties: { ...baseProps, marker_part: "circle" },
+          geometry: { type: "Polygon", coordinates: [ring] },
+        },
+      ];
+    });
+  }
+
+  function refreshLocationMarkers() {
+    if (!mapReady) return;
+    map.getSource("locations")?.setData({
       type: "FeatureCollection",
-      features: offsetSliceFeatures(),
+      features: locationMarkerFeatures(),
     });
   }
 
@@ -281,7 +340,7 @@ export function createEmissionsView(
     if (sliceRefreshTimer) return;
     sliceRefreshTimer = window.requestAnimationFrame(() => {
       sliceRefreshTimer = null;
-      updateOffsetSlices();
+      refreshLocationMarkers();
     });
   }
 
@@ -670,58 +729,14 @@ export function createEmissionsView(
     elements.lineTooltip.hidden = true;
   }
 
-  function locationFeatures() {
-    return allLocations.map((location) => {
-      const highlighted = location.co2e_kg > 0;
-      const display = displayForLocation(location);
-      const radius = radiusFor(location);
-      const selected = location.id === selectedId;
-      const hovered = location.id === hoveredId;
-      const dimmed = Boolean(selectedId && !selected && highlighted);
-      const offsetShare = locationOffsetShare(location);
-      return {
-        type: "Feature",
-        properties: {
-          id: location.id,
-          affiliation: location.affiliation,
-          co2e_kg: location.co2e_kg,
-          highlighted: highlighted ? 1 : 0,
-          selected: selected ? 1 : 0,
-          hovered: hovered ? 1 : 0,
-          offset_share: offsetShare,
-          sort_key: selected ? 1e9 + (location.co2e_kg || 0) : location.co2e_kg || 0,
-          radius: selected ? radius + 3 : hovered ? radius + 2 : radius,
-          color: colorFor(location, highlighted),
-          opacity: highlighted
-            ? selected
-              ? 0.95
-              : dimmed
-                ? 0.22
-                : hovered
-                  ? 0.9
-                  : 0.82
-            : 0.2,
-        },
-        geometry: {
-          type: "Point",
-          coordinates: [display.lon, display.lat],
-        },
-      };
-    });
-  }
-
   function upsertMapData() {
     if (!mapReady) return;
     const showLines = distanceMode || Boolean(selectedId);
-    map.getSource("locations")?.setData({
-      type: "FeatureCollection",
-      features: locationFeatures(),
-    });
+    refreshLocationMarkers();
     map.getSource("distance-lines")?.setData({
       type: "FeatureCollection",
       features: showLines ? distanceLineFeatures() : [],
     });
-    updateOffsetSlices();
     map.setLayoutProperty("distance-lines-visible", "visibility", showLines ? "visible" : "none");
     map.setLayoutProperty("distance-lines-hit", "visibility", showLines ? "visible" : "none");
     map.setLayoutProperty("auckland-circle", "visibility", showLines ? "visible" : "none");
@@ -851,10 +866,6 @@ export function createEmissionsView(
       type: "geojson",
       data: aucklandFeature(),
     });
-    map.addSource("offset-slices", {
-      type: "geojson",
-      data: { type: "FeatureCollection", features: [] },
-    });
 
     map.addLayer({
       id: "distance-lines-visible",
@@ -902,38 +913,17 @@ export function createEmissionsView(
     });
 
     map.addLayer({
-      id: "locations-circle",
-      type: "circle",
-      source: "locations",
-      layout: {
-        "circle-sort-key": ["get", "sort_key"],
-      },
-      paint: {
-        "circle-radius": ["get", "radius"],
-        "circle-color": ["get", "color"],
-        "circle-opacity": ["get", "opacity"],
-        "circle-stroke-width": [
-          "case",
-          ["==", ["get", "selected"], 1],
-          3,
-          ["==", ["get", "hovered"], 1],
-          2.5,
-          1.5,
-        ],
-        "circle-stroke-color": "#ffffff",
-      },
-    });
-
-    map.addLayer({
-      id: "locations-offset-slices",
+      id: "locations-markers",
       type: "fill",
-      source: "offset-slices",
+      source: "locations",
       layout: {
         "fill-sort-key": ["get", "sort_key"],
       },
       paint: {
-        "fill-color": "#2d8a4e",
-        "fill-opacity": 0.95,
+        "fill-color": ["get", "color"],
+        "fill-opacity": ["get", "opacity"],
+        "fill-outline-color": "#ffffff",
+        "fill-antialias": true,
       },
     });
 
@@ -945,30 +935,39 @@ export function createEmissionsView(
   map.on("rotate", scheduleSliceRefresh);
   map.on("moveend", scheduleSliceRefresh);
 
-  map.on("mouseenter", "locations-circle", (event) => {
+  function topMarkerFeature(features) {
+    if (!features?.length) return null;
+    return features.reduce((top, feature) => {
+      const topKey = Number(top?.properties?.sort_key) || 0;
+      const featureKey = Number(feature?.properties?.sort_key) || 0;
+      return featureKey >= topKey ? feature : top;
+    }, features[0]);
+  }
+
+  map.on("mouseenter", "locations-markers", (event) => {
     map.getCanvas().style.cursor = "pointer";
-    const id = event.features?.[0]?.properties?.id;
+    const id = topMarkerFeature(event.features)?.properties?.id;
     if (!id || id === hoveredId) return;
     hoveredId = id;
     renderHoverCard(locationById(id));
     upsertMapData();
   });
 
-  map.on("mouseleave", "locations-circle", () => {
+  map.on("mouseleave", "locations-markers", () => {
     map.getCanvas().style.cursor = "";
     hoveredId = selectedId;
     renderHoverCard(locationById(hoveredId));
     upsertMapData();
   });
 
-  map.on("click", "locations-circle", (event) => {
-    const id = event.features?.[0]?.properties?.id;
+  map.on("click", "locations-markers", (event) => {
+    const id = topMarkerFeature(event.features)?.properties?.id;
     if (id) selectLocation(id, { fly: true, toggle: true });
   });
 
   map.on("click", (event) => {
-    const hit = map.queryRenderedFeatures(event.point, { layers: ["locations-circle"] });
-    if (hit.length) return;
+    const hit = map.queryRenderedFeatures(event.point, { layers: ["locations-markers"] });
+    if (topMarkerFeature(hit)) return;
     if (!selectedId) return;
     selectedId = null;
     hoveredId = null;

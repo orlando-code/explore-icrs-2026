@@ -435,6 +435,22 @@ export function createOffsetTracker({
   };
 }
 
+export function circlePolygon(map, lon, lat, radiusPx, steps = 32) {
+  if (!map || radiusPx <= 0) return null;
+  const center = map.project([lon, lat]);
+  const ring = [];
+
+  for (let index = 0; index <= steps; index += 1) {
+    const angle = (2 * Math.PI * index) / steps;
+    const x = center.x + radiusPx * Math.cos(angle);
+    const y = center.y + radiusPx * Math.sin(angle);
+    const point = map.unproject([x, y]);
+    ring.push([point.lng, point.lat]);
+  }
+
+  return ring;
+}
+
 export function pieSlicePolygon(map, lon, lat, radiusPx, fraction) {
   if (!map || fraction <= 0 || fraction >= 1) return null;
   const center = map.project([lon, lat]);
