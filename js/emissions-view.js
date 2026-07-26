@@ -93,7 +93,6 @@ export function createEmissionsView(
   let maxCo2e = 1;
   let minCo2e = 1;
   let sizeScale = null;
-  let emissionNorm = null;
   let displayPositions = new Map();
 
   const auckland = siteData.meta.auckland;
@@ -107,9 +106,6 @@ export function createEmissionsView(
   let mapUpdateTimer = null;
   let cachedAttendees = null;
   let cachedAttendeesKey = "";
-
-  const colorScale = (value) =>
-    d3.interpolateRgb("#f7dcc8", "#c43c01")(emissionNorm(Math.max(value, minCo2e)));
 
   const map = new maplibregl.Map({
     container: elements.mapContainer,
@@ -149,11 +145,6 @@ export function createEmissionsView(
       .domain([minCo2e, maxCo2e])
       .range([7, 30])
       .clamp(true);
-    emissionNorm = d3
-      .scaleLog()
-      .domain([minCo2e, maxCo2e])
-      .range([0, 1])
-      .clamp(true);
     displayPositions = buildDisplayPositions(allLocations);
     selectedId = null;
     hoveredId = null;
@@ -174,7 +165,7 @@ export function createEmissionsView(
   }
 
   function colorFor(location, highlighted) {
-    if (!location.co2e_kg) return "#b8c4cc";
+    if (!location.co2e_kg) return "#9aa5ad";
     if (location.id === selectedId) return "#1f6f8b";
     const offsetShare = offsetTracker?.offsetShareForLocation(
       location.id,
@@ -182,8 +173,8 @@ export function createEmissionsView(
       location.affiliation
     );
     if (offsetShare >= 1) return offsetTracker?.OFFSET_GREEN || "#2d8a4e";
-    if (!highlighted) return "#b8c4cc";
-    return colorScale(location.co2e_kg);
+    if (!highlighted) return "#9aa5ad";
+    return "#d95f02";
   }
 
   function flightBusinessMultiplier() {
@@ -447,22 +438,21 @@ export function createEmissionsView(
 
   function renderLegend() {
     const samples = [
-      { label: formatEmissions(minCo2e, { compact: true }), size: sizeScale(minCo2e), color: colorScale(minCo2e) },
+      { label: formatEmissions(minCo2e, { compact: true }), size: sizeScale(minCo2e) },
       {
         label: formatEmissions(Math.sqrt(minCo2e * maxCo2e), { compact: true }),
         size: sizeScale(Math.sqrt(minCo2e * maxCo2e)),
-        color: colorScale(Math.sqrt(minCo2e * maxCo2e)),
       },
-      { label: formatEmissions(maxCo2e, { compact: true }), size: sizeScale(maxCo2e), color: colorScale(maxCo2e) },
+      { label: formatEmissions(maxCo2e, { compact: true }), size: sizeScale(maxCo2e) },
     ];
     elements.legend.innerHTML = `
-      <h3>Point size &amp; colour · travel CO₂e</h3>
+      <h3>Point size · travel CO₂e (log scale)</h3>
       <p>Return-trip estimates per affiliation (economy flights; NZ by shared car).</p>
       ${samples
         .map(
           (sample) => `
         <div class="legend-row">
-          <span class="legend-dot" style="width:${sample.size}px;height:${sample.size}px;background:${sample.color}"></span>
+          <span class="legend-dot" style="width:${sample.size}px;height:${sample.size}px"></span>
           <span>${sample.label}</span>
         </div>`
         )
@@ -677,7 +667,6 @@ export function createEmissionsView(
     return allLocations.map((location) => {
       const highlighted = location.co2e_kg > 0;
       const display = displayForLocation(location);
-      const radius = radiusFor(location);
       const selected = location.id === selectedId;
       const hovered = location.id === hoveredId;
       const dimmed = Boolean(selectedId && !selected && highlighted);
@@ -691,19 +680,11 @@ export function createEmissionsView(
           highlighted: highlighted ? 1 : 0,
           selected: selected ? 1 : 0,
           hovered: hovered ? 1 : 0,
+          dimmed: dimmed ? 1 : 0,
           offset_share: offsetShare,
           sort_key: selected ? 1e9 + (location.co2e_kg || 0) : location.co2e_kg || 0,
-          radius: selected ? radius + 3 : hovered ? radius + 2 : radius,
+          radius: radiusFor(location),
           color: colorFor(location, highlighted),
-          opacity: highlighted
-            ? selected
-              ? 0.95
-              : dimmed
-                ? 0.22
-                : hovered
-                  ? 0.9
-                  : 0.82
-            : 0.2,
         },
         geometry: {
           type: "Point",
@@ -912,16 +893,36 @@ export function createEmissionsView(
         "circle-sort-key": ["get", "sort_key"],
       },
       paint: {
-        "circle-radius": ["get", "radius"],
+        "circle-radius": [
+          "case",
+          ["==", ["get", "selected"], 1],
+          ["+", ["get", "radius"], 4],
+          ["==", ["get", "hovered"], 1],
+          ["+", ["get", "radius"], 2],
+          ["get", "radius"],
+        ],
         "circle-color": ["get", "color"],
-        "circle-opacity": ["get", "opacity"],
+        "circle-opacity": [
+          "case",
+          ["==", ["get", "selected"], 1],
+          0.95,
+          ["==", ["get", "hovered"], 1],
+          0.92,
+          ["==", ["get", "dimmed"], 1],
+          0.16,
+          ["==", ["get", "highlighted"], 1],
+          0.78,
+          0.16,
+        ],
         "circle-stroke-width": [
           "case",
           ["==", ["get", "selected"], 1],
           3,
           ["==", ["get", "hovered"], 1],
           2.5,
+          ["==", ["get", "highlighted"], 1],
           1.5,
+          0.5,
         ],
         "circle-stroke-color": "#ffffff",
       },
