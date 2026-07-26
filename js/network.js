@@ -240,12 +240,14 @@ export function createNetworkView(siteData, elements) {
   let linkSelection = null;
   let nodeSelection = null;
   let labelSelection = null;
+  let selectedLabelSelection = null;
   let dragMoved = false;
   let pendingNodeFocus = false;
   let resizeTimer = null;
   let graphRenderKey = "";
   let autoFitPending = false;
   let userAdjustedZoom = false;
+  let viewFitGeneration = 0;
   const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
   const canvasEl =
     elements.stage?.querySelector?.(".network-stage-canvas") || elements.stage;
@@ -615,21 +617,28 @@ export function createNetworkView(siteData, elements) {
     return matchedNodeIds;
   }
 
-  function graphBounds() {
+  function graphBounds({ nodeIds = null } = {}) {
     if (!graphNodes.length) return null;
+
+    const nodes =
+      nodeIds && nodeIds.size
+        ? graphNodes.filter((node) => nodeIds.has(node.id))
+        : graphNodes;
+    if (!nodes.length) return null;
 
     let minX = Infinity;
     let minY = Infinity;
     let maxX = -Infinity;
     let maxY = -Infinity;
 
-    for (const node of graphNodes) {
+    for (const node of nodes) {
       if (node.x == null || node.y == null) continue;
       const radius = radiusScale
         ? radiusScale(Math.max(1, node.connections)) + (isCoarsePointer ? 8 : 4)
         : 12;
+      const labelPad = node.id === selectedNodeId ? 22 : 14;
       minX = Math.min(minX, node.x - radius);
-      minY = Math.min(minY, node.y - radius);
+      minY = Math.min(minY, node.y - radius - labelPad);
       maxX = Math.max(maxX, node.x + radius);
       maxY = Math.max(maxY, node.y + radius);
     }
@@ -648,24 +657,29 @@ export function createNetworkView(siteData, elements) {
     };
   }
 
-  function fitToView({ animate = false, transitionMs = 250 } = {}) {
-    const bounds = graphBounds();
+  function fitToView({
+    animate = false,
+    transitionMs = 250,
+    nodeIds = null,
+    minScale = 0.35,
+    maxScale = 2.5,
+    padding = 56,
+  } = {}) {
+    const bounds = graphBounds({ nodeIds });
     if (!bounds) return;
 
     const w = width();
     const h = height();
-    const pad = 56;
     const scale = Math.min(
-      (w - pad * 2) / bounds.width,
-      (h - pad * 2) / bounds.height,
-      2.5
+      (w - padding * 2) / bounds.width,
+      (h - padding * 2) / bounds.height,
+      maxScale
     );
+    const clampedScale = Math.max(minScale, scale);
     const transform = d3.zoomIdentity
       .translate(w / 2, h / 2)
-      .scale(scale)
+      .scale(clampedScale)
       .translate(-bounds.cx, -bounds.cy);
-
-    zoom.scaleExtent([Math.max(0.35, scale * 0.9), 10]);
 
     if (animate) {
       svg.transition().duration(transitionMs).call(zoom.transform, transform);
@@ -863,12 +877,28 @@ export function createNetworkView(siteData, elements) {
     const searching = Boolean(searchQuery);
     const neighbors = neighborIds(selectedNodeId);
     return nodes.filter((node) => {
-      if (node.id === selectedNodeId) return true;
+      if (node.id === selectedNodeId) return false;
       if (selectedNodeId && neighbors.has(node.id)) return true;
       if (searching && matchedNodeIds.has(node.id)) return true;
       if (!searchQuery && !selectedNodeId && node.connections >= 20) return true;
       return false;
     });
+  }
+
+  function nodeDrawOrder(node, neighbors) {
+    if (node.id === selectedNodeId) return 3;
+    if (selectedNodeId && neighbors.has(node.id)) return 2;
+    if (searchQuery && matchedNodeIds.has(node.id)) return 1;
+    return 0;
+  }
+
+  function labelDrawOrder(node, neighbors) {
+    return nodeDrawOrder(node, neighbors);
+  }
+
+  function selectedLabelNode() {
+    if (!selectedNodeId) return null;
+    return graphNodes.find((node) => node.id === selectedNodeId) || null;
   }
 
   function linkEndpointIds(link) {
@@ -947,6 +977,7 @@ export function createNetworkView(siteData, elements) {
       });
 
     nodeSelection
+      .sort((a, b) => nodeDrawOrder(a, neighbors) - nodeDrawOrder(b, neighbors))
       .attr("fill", (d) => {
         if (d.id === selectedNodeId) return "#1f6f8b";
         if (selectedNodeId && neighbors.has(d.id)) return "#4a90a7";
@@ -981,24 +1012,44 @@ export function createNetworkView(siteData, elements) {
       .attr("pointer-events", "none");
     labelSelection = labelEnter.merge(labelSelection);
     labelSelection
-      .attr("font-size", (d) => (d.id === selectedNodeId ? 13 : 10))
-      .attr("font-weight", (d) =>
-        d.id === selectedNodeId ? 700 : neighbors.has(d.id) ? 600 : 600
-      )
-      .attr("fill", (d) => {
-        if (d.id === selectedNodeId) return "#14212b";
-        if (neighbors.has(d.id)) return "#1a3340";
-        return "#14212b";
-      })
+      .sort((a, b) => labelDrawOrder(a, neighbors) - labelDrawOrder(b, neighbors))
+      .attr("font-size", 10)
+      .attr("font-weight", (d) => (neighbors.has(d.id) ? 600 : 500))
+      .attr("fill", (d) => (neighbors.has(d.id) ? "#1a3340" : "#14212b"))
       .attr("fill-opacity", 1)
       .attr("stroke", "#ffffff")
-      .attr("stroke-width", (d) => (d.id === selectedNodeId ? 4 : 3))
-      .attr("stroke-opacity", (d) => (d.id === selectedNodeId ? 0.95 : 0.88))
+      .attr("stroke-width", 3)
+      .attr("stroke-opacity", 0.88)
       .attr("paint-order", "stroke")
-      .attr("dy", (d) => -radiusScale(Math.max(1, d.connections)) - (d.id === selectedNodeId ? 6 : 4))
+      .attr("dy", (d) => -radiusScale(Math.max(1, d.connections)) - 4)
       .text((d) => (d.label.length > 28 ? `${d.label.slice(0, 26)}…` : d.label))
       .attr("x", (d) => d.x)
       .attr("y", (d) => d.y);
+
+    const selectedNode = selectedLabelNode();
+    if (selectedLabelSelection) {
+      selectedLabelSelection = selectedLabelSelection.data(selectedNode ? [selectedNode] : [], (d) => d.id);
+      selectedLabelSelection.exit().remove();
+      const selectedLabelEnter = selectedLabelSelection
+        .enter()
+        .append("text")
+        .attr("text-anchor", "middle")
+        .attr("pointer-events", "none");
+      selectedLabelSelection = selectedLabelEnter.merge(selectedLabelSelection);
+      selectedLabelSelection
+        .attr("font-size", 14)
+        .attr("font-weight", 700)
+        .attr("fill", "#14212b")
+        .attr("fill-opacity", 1)
+        .attr("stroke", "#ffffff")
+        .attr("stroke-width", 5)
+        .attr("stroke-opacity", 0.95)
+        .attr("paint-order", "stroke")
+        .attr("dy", (d) => -radiusScale(Math.max(1, d.connections)) - 8)
+        .text((d) => (d.label.length > 32 ? `${d.label.slice(0, 30)}…` : d.label))
+        .attr("x", (d) => d.x)
+        .attr("y", (d) => d.y);
+    }
 
     renderSearchResults(graphNodes);
     updateSelectionUi();
@@ -1073,14 +1124,15 @@ export function createNetworkView(siteData, elements) {
 
     if (resetZoom) userAdjustedZoom = false;
 
-    const preserveZoom = userAdjustedZoom;
-    const previousTransform = preserveZoom ? d3.zoomTransform(svg.node()) : null;
-
     graphRenderKey = nextRenderKey;
-    autoFitPending = !preserveZoom;
+    const fitGeneration = ++viewFitGeneration;
+    autoFitPending = !pendingNodeFocus && !userAdjustedZoom;
 
     graphLayer.selectAll("*").remove();
-    if (simulation) simulation.stop();
+    if (simulation) {
+      simulation.on("end", null);
+      simulation.stop();
+    }
 
     graphNodes = graph.nodes;
     graphLinks = graph.links;
@@ -1120,6 +1172,12 @@ export function createNetworkView(siteData, elements) {
       .call(nodeDrag());
 
     labelSelection = graphLayer.append("g").attr("class", "labels").selectAll("text").data([]).join("text");
+    selectedLabelSelection = graphLayer
+      .append("g")
+      .attr("class", "labels-selected")
+      .selectAll("text")
+      .data([])
+      .join("text");
 
     simulation = d3
       .forceSimulation(graphNodes)
@@ -1185,17 +1243,23 @@ export function createNetworkView(siteData, elements) {
         if (labelSelection) {
           labelSelection.attr("x", (d) => d.x).attr("y", (d) => d.y);
         }
+        if (selectedLabelSelection) {
+          selectedLabelSelection.attr("x", (d) => d.x).attr("y", (d) => d.y);
+        }
       })
       .on("end", () => {
-        if (autoFitPending && !pendingNodeFocus) {
-          fitToView({ animate: false });
-          autoFitPending = false;
-        } else if (previousTransform) {
-          svg.call(zoom.transform, previousTransform);
-        }
+        if (fitGeneration !== viewFitGeneration) return;
+
         if (pendingNodeFocus && selectedNodeId) {
           focusNode(selectedNodeId);
           pendingNodeFocus = false;
+          autoFitPending = false;
+          return;
+        }
+
+        if (autoFitPending) {
+          fitToView({ animate: false });
+          autoFitPending = false;
         }
       });
 
@@ -1429,24 +1493,28 @@ export function createNetworkView(siteData, elements) {
     const node = graphNodes.find((item) => item.id === nodeId);
     if (!node || node.x == null || node.y == null) return;
 
-    userAdjustedZoom = true;
-    const scale = isCoarsePointer ? 1.8 : 2.2;
-    const transform = d3.zoomIdentity
-      .translate(width() / 2, height() / 2)
-      .scale(scale)
-      .translate(-node.x, -node.y);
-    svg.transition().duration(450).call(zoom.transform, transform);
+    const focusIds = new Set([nodeId, ...neighborIds(nodeId)]);
+    fitToView({
+      animate: true,
+      transitionMs: 450,
+      nodeIds: focusIds,
+      minScale: isCoarsePointer ? 1.2 : 1.4,
+      maxScale: isCoarsePointer ? 2.2 : 2.8,
+      padding: 72,
+    });
   }
 
   function clearSelection() {
     selectedNodeId = null;
+    pendingNodeFocus = false;
     clearTalkDetail();
-    renderGraph();
+    renderGraph({ resetZoom: true });
   }
 
   function selectNode(nodeId, { focus = false } = {}) {
     selectedNodeId = nodeId;
-    if (focus) pendingNodeFocus = true;
+    pendingNodeFocus = focus;
+    if (!focus) userAdjustedZoom = false;
     renderGraph();
   }
 
@@ -1469,7 +1537,7 @@ export function createNetworkView(siteData, elements) {
     setSearchStatus(
       `${matchedNodeIds.size.toLocaleString()} match${matchedNodeIds.size === 1 ? "" : "es"} (matches always shown; co-authors fill remaining slots)`
     );
-    renderGraph();
+    renderGraph({ resetZoom: true });
   }
 
   function applySearch(query, { focus = true } = {}) {
@@ -1577,6 +1645,13 @@ export function createNetworkView(siteData, elements) {
         if (searchQuery && matchedNodeIds.size) {
           simulation.force("x", d3.forceX(centerX).strength((d) => (matchedNodeIds.has(d.id) ? 0.06 : 0.025)));
           simulation.force("y", d3.forceY(centerY).strength((d) => (matchedNodeIds.has(d.id) ? 0.06 : 0.025)));
+        }
+      }
+      if (!userAdjustedZoom) {
+        if (selectedNodeId) {
+          focusNode(selectedNodeId);
+        } else {
+          fitToView({ animate: false });
         }
       }
     }, 150);
