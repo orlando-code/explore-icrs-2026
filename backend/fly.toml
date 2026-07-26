@@ -10,7 +10,7 @@ primary_region = 'syd'
   dockerfile = 'Dockerfile'
 
 [env]
-  ALLOWED_ORIGINS = 'https://orlando-code.github.io,http://localhost:8000,http://127.0.0.1:8000'
+  ALLOWED_ORIGINS = 'https://orlando-codes.com,https://www.orlando-codes.com,https://orlando-code.github.io,http://localhost:8000,http://127.0.0.1:8000'
   OFFSET_DB_PATH = '/data/offsets.db'
 
 [[mounts]]

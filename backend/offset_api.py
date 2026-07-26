@@ -34,7 +34,7 @@ def _db_path() -> str:
 def _allowed_origins() -> set[str]:
     raw = os.environ.get(
         "ALLOWED_ORIGINS",
-        "https://orlando-code.github.io,http://localhost:8000,http://127.0.0.1:8000",
+        "https://orlando-codes.com,https://www.orlando-codes.com,https://orlando-code.github.io,http://localhost:8000,http://127.0.0.1:8000",
     )
     return {origin.strip().rstrip("/") for origin in raw.split(",") if origin.strip()}
 

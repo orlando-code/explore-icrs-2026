@@ -1,10 +1,18 @@
 import QRCode from "https://esm.sh/qrcode@1.5.4";
 
-const CANONICAL_URL = "https://orlando-code.github.io/explore-icrs-2026/";
+const CANONICAL_URL = "https://orlando-codes.com/";
+
+function isProductionHost(hostname) {
+  return (
+    hostname === "orlando-codes.com" ||
+    hostname === "www.orlando-codes.com" ||
+    hostname.endsWith("github.io")
+  );
+}
 
 export function createShareView(_siteData, elements) {
   function shareUrl() {
-    if (location.hostname.endsWith("github.io")) {
+    if (isProductionHost(location.hostname)) {
       return CANONICAL_URL;
     }
     return location.href.split("#")[0];

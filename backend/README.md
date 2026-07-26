@@ -45,7 +45,7 @@ No Fly.io CLI needed. Railway uses a different tool from Concourse’s `fly` com
 3. Select this repository.
 4. In service **Settings** → **Root directory**, set `backend`.
 5. In **Variables**, add:
-   - `ALLOWED_ORIGINS` = `https://orlando-code.github.io,http://localhost:8000,http://127.0.0.1:8000`
+   - `ALLOWED_ORIGINS` = `https://orlando-codes.com,https://www.orlando-codes.com,https://orlando-code.github.io,http://localhost:8000,http://127.0.0.1:8000`
    - `OFFSET_DB_PATH` = `/data/offsets.db`
 6. In **Volumes**, add a volume mounted at `/data` (so SQLite survives redeploys).
 7. **Settings** → **Networking** → **Generate domain**.
