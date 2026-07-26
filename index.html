@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="icrs-base-path" content="/explore-icrs-2026" />
+    <meta name="icrs-base-path" content="" />
     <meta
       name="icrs-canonical-url"
       content="https://orlando-codes.com/icrs2026-explorer/"
@@ -15,6 +15,14 @@
         if (!base) return;
         if (!base.startsWith("/")) base = "/" + base;
         if (!base.endsWith("/")) base += "/";
+        var path = location.pathname;
+        var baseRoot = base.slice(0, -1);
+        var onBasePath =
+          path === baseRoot ||
+          path === base ||
+          path.startsWith(base) ||
+          path.startsWith(baseRoot + "/");
+        if (!onBasePath) return;
         var el = document.createElement("base");
         el.href = base;
         document.head.appendChild(el);
@@ -77,13 +85,16 @@
           Channeling the momentum and inspiration of the conference to facilitate connections and collaborations.
         </p>
       </div>
-      <nav class="tabs" aria-label="Views">
-        <button type="button" class="tab active" data-tab="map">Map</button>
-        <button type="button" class="tab" data-tab="network">Network</button>
-        <button type="button" class="tab" data-tab="emissions">Emissions</button>
-        <button type="button" class="tab" data-tab="methods">Methods</button>
-        <button type="button" class="tab" data-tab="share">Share</button>
-      </nav>
+      <div class="topbar-nav">
+        <a class="site-back-link" href="https://orlando-codes.com/">← Main site</a>
+        <nav class="tabs" aria-label="Views">
+          <button type="button" class="tab active" data-tab="map">Map</button>
+          <button type="button" class="tab" data-tab="network">Network</button>
+          <button type="button" class="tab" data-tab="emissions">Emissions</button>
+          <button type="button" class="tab" data-tab="methods">Methods</button>
+          <button type="button" class="tab" data-tab="share">Share</button>
+        </nav>
+      </div>
     </header>
 
     <main class="layout">
@@ -425,16 +436,6 @@
         </div>
       </aside>
 
-      <aside class="panel" id="share-panel" hidden>
-        <div class="share-contact" aria-labelledby="share-contact-title">
-          <p class="hover-kicker">Contact</p>
-          <h3 id="share-contact-title">About the creator</h3>
-          <p class="welcome-lead">
-            I'm Orlando Timmerman, a PhD student at the University of Cambridge, UK. I believe we can gather, share, and analyse data more effectively – here's just one example!
-          </p>
-        </div>
-      </aside>
-
       <section class="stage stage-stack" id="map-stage">
         <div class="stage-canvas">
           <div class="stage-badge" id="stage-badge">Tap or click a point for information</div>
@@ -528,34 +529,44 @@
       </section>
 
       <section class="stage share-stage" id="share-stage" hidden>
-        <div class="share-stage-grid">
-          <div class="share-card">
-            <p class="hover-kicker">Scan to open</p>
-            <h2 class="share-title">ICRS 2026 Explorer</h2>
-            <canvas id="share-qr" width="280" height="280" aria-label="QR code for site URL"></canvas>
-            <button type="button" id="share-url" class="share-url-btn" aria-label="Copy site link"></button>
-            <p id="share-status" class="status share-status" aria-live="polite" hidden></p>
+        <div class="share-card share-card-unified">
+          <div class="share-card-grid">
+            <aside class="share-contact share-contact-col" aria-labelledby="share-contact-title">
+              <p class="hover-kicker">Contact</p>
+              <h3 id="share-contact-title">Orlando Timmerman</h3>
+              <p class="welcome-lead">
+                This is a simple tool and may contain errors. Please contact me at
+                <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a> if you find any issues or have
+                suggestions!
+              </p>
+              <p class="welcome-lead">
+                Regarding the emissions – from my hotel room in Auckland it would be incredibly
+                hypocritical of me to say that we shouldn’t fly to conferences. They're invaluable
+                opportunities to learn, collaborate, and share knowledge. But we must carefully
+                consider the carbon cost of these connections and do everything we can to minimise our
+                emissions and maximise the effectiveness of the collaborations gained! If this is
+                something you think about a lot, I’d love to hear from you!
+              </p>
+              <p class="share-contact-email">
+                <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a>
+              </p>
+            </aside>
+            <div class="share-qr-col">
+              <p class="hover-kicker">Scan to open</p>
+              <h2 class="share-title">ICRS 2026 Explorer</h2>
+              <canvas id="share-qr" width="280" height="280" aria-label="QR code for site URL"></canvas>
+              <button type="button" id="share-url" class="share-url-btn" aria-label="Copy site link"></button>
+              <p id="share-status" class="status share-status" aria-live="polite" hidden></p>
+            </div>
+            <aside class="share-contact share-about-col" aria-labelledby="share-about-title">
+              <p class="hover-kicker">About the creator</p>
+              <h3 id="share-about-title">Orlando Timmerman</h3>
+              <p class="welcome-lead">
+                I'm Orlando Timmerman, a PhD student at the University of Cambridge, UK. I believe we
+                can gather, share, and analyse data more effectively – here's just one example!
+              </p>
+            </aside>
           </div>
-          <aside class="share-contact share-contact-stage" aria-labelledby="share-contact-stage-title">
-            <p class="hover-kicker">Contact</p>
-            <h3 id="share-contact-stage-title">Orlando Timmerman</h3>
-            <p class="welcome-lead">
-              This is a simple tool and may contain errors. Please contact me at
-              <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a> if you find any issues or have
-              suggestions!
-            </p>
-            <p class="welcome-lead">
-              Regarding the emissions – from my hotel room in Auckland it would be incredibly
-              hypocritical of me to say that we shouldn’t fly to conferences. They're invaluable
-              opportunities to learn, collaborate, and share knowledge. But we must carefully
-              consider the carbon cost of these connections and do everything we can to minimise our
-              emissions and maximise the effectiveness of the collaborations gained! If this is
-              something you think about a lot, I’d love to hear from you!
-            </p>
-            <p class="share-contact-email">
-              <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a>
-            </p>
-          </aside>
         </div>
       </section>
     </main>

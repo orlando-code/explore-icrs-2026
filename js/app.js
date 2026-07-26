@@ -53,7 +53,6 @@ const els = {
   networkPanel: $("network-panel"),
   emissionsPanel: $("emissions-panel"),
   methodsPanel: $("methods-panel"),
-  sharePanel: $("share-panel"),
   mapStage: $("map-stage"),
   networkStage: $("network-stage"),
   networkHintBanner: $("network-hint-banner"),
@@ -352,12 +351,12 @@ function setTab(tab) {
   els.networkPanel.hidden = tab !== "network";
   els.emissionsPanel.hidden = tab !== "emissions";
   els.methodsPanel.hidden = tab !== "methods";
-  els.sharePanel.hidden = tab !== "share";
   els.mapStage.hidden = tab !== "map";
   els.networkStage.hidden = tab !== "network";
   els.emissionsStage.hidden = tab !== "emissions";
   els.shareStage.hidden = tab !== "share";
   layout?.classList.toggle("layout-methods", tab === "methods");
+  layout?.classList.toggle("layout-share", tab === "share");
   if (tab === "map") {
     mapView.resize();
   } else if (tab === "network") {

@@ -98,6 +98,26 @@ a.btn-small {
   max-width: 42rem;
 }
 
+.topbar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.site-back-link {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.site-back-link:hover {
+  color: var(--sea);
+}
+
 .tabs {
   display: flex;
   gap: 0.45rem;
@@ -1464,6 +1484,10 @@ button:active {
   grid-template-columns: 1fr;
 }
 
+.layout-share {
+  grid-template-columns: 1fr;
+}
+
 .layout-methods .methods-panel {
   grid-column: 1 / -1;
   max-width: 44rem;
@@ -1627,6 +1651,40 @@ button:active {
   width: min(44rem, 100%);
 }
 
+.share-card-unified {
+  max-width: 56rem;
+  width: min(56rem, 100%);
+  text-align: left;
+  padding: 1.5rem 1.75rem;
+}
+
+.share-card-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 1.5rem 1.75rem;
+  align-items: start;
+}
+
+.share-contact-col,
+.share-about-col {
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  background: transparent;
+}
+
+.share-qr-col {
+  text-align: center;
+  min-width: 11rem;
+  max-width: 14rem;
+  justify-self: center;
+}
+
+.share-qr-col .share-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
 .share-card {
   text-align: center;
   padding: 2rem 2.2rem 1.75rem;
@@ -1679,10 +1737,6 @@ button:active {
   max-width: 22rem;
   width: 100%;
   justify-self: center;
-}
-
-#share-panel .share-contact {
-  margin-top: 0.25rem;
 }
 
 .share-title {
@@ -2093,6 +2147,16 @@ button:active {
     padding: 0.85rem 1rem 0.75rem;
   }
 
+  .topbar-nav {
+    align-items: stretch;
+    gap: 0.3rem;
+  }
+
+  .site-back-link {
+    font-size: 0.68rem;
+    align-self: flex-start;
+  }
+
   .brand p {
     font-size: 0.9rem;
   }
@@ -2212,6 +2276,19 @@ button:active {
   .share-stage {
     order: -1;
     padding: 0.75rem 0 1rem;
+  }
+
+  .share-card-unified {
+    padding: 1.1rem 1rem;
+  }
+
+  .share-card-grid {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .share-qr-col {
+    max-width: none;
   }
 
   .share-card {
