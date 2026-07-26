@@ -178,7 +178,8 @@ export function createEmissionsView(
     if (location.id === selectedId) return "#1f6f8b";
     const offsetShare = offsetTracker?.offsetShareForLocation(
       location.id,
-      location.travel_attendees
+      location.travel_attendees,
+      location.affiliation
     );
     if (offsetShare >= 1) return offsetTracker?.OFFSET_GREEN || "#2d8a4e";
     if (!highlighted) return "#b8c4cc";
@@ -214,9 +215,21 @@ export function createEmissionsView(
     return cachedAttendees;
   }
 
+  function allAttendeesForLookup() {
+    const combined = [
+      ...(normalized.all_delegates.attendees || []),
+      ...(normalized.speakers.attendees || []),
+    ];
+    return combined.length ? combined : currentAttendees();
+  }
+
   function locationOffsetShare(location) {
     if (!location?.id || !location.travel_attendees) return 0;
-    return offsetTracker?.offsetShareForLocation(location.id, location.travel_attendees) || 0;
+    return offsetTracker?.offsetShareForLocation(
+      location.id,
+      location.travel_attendees,
+      location.affiliation
+    ) || 0;
   }
 
   function offsetSliceFeatures() {
@@ -1000,6 +1013,7 @@ export function createEmissionsView(
       label: elements.offsetTrackerLabel,
     },
     getAttendees: currentAttendees,
+    getAttendeeLookup: allAttendeesForLookup,
     getHeadline: () => headline,
     onChange: () => scheduleMapUpdate(),
     onRegisterSuccess: celebrateOffsetRegistration,

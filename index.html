@@ -369,7 +369,7 @@
           <section class="methods-section">
             <h3>Related talks</h3>
             <p>
-              Talk abstracts were analysed using a local large language model (deepseek-r1:8b via the <a href="https://ollama.com/" target="_blank"></a>Ollama API</a>). Abstracts were first clustered by keywords to increase computational efficiency, then the model was used to generate similarity scores for each abstract in the cluster. We show the top five most similar abstracts for each talk.
+              Talk abstracts were analysed using a locally-hosted large language model (deepseek-r1:8b via the <a href="https://ollama.com/" target="_blank"></a>Ollama API</a>). Abstracts were first clustered by keywords to reduce token number (decrease processing effort) following which the model was used to generate similarity scores between abstracts in the cluster. We display the top five most similar abstracts for each talk.
             </p>
             <!-- <div style="margin-bottom: 1.1em;" aria-hidden="true"></div>
       
@@ -394,12 +394,12 @@
           <section class="methods-section">
             <h3>Limitations</h3>
             <ul>
-              <li>Geocoding is imperfect; some affiliations fall back to country centroids (arranged in a ring) or missed entirely. For 15% of delegates, no geographical affiliation could be found. This likely leads to underestimations of emissions. Furthermore, some delegates may not be geographically based at their named affiliation, of the institute may have multiple campuses.</li>
-              <li>A couple of hundred delegates could not be geocoded from their affiliation titles – these were excluded from the analysis. The exclusion of so many attendees makes this a conservative estimate of total emissions.</li>
+              <li>Geocoding is imperfect; some affiliations fall back to country centroids (arranged in a ring) or missed entirely. For 15% of delegates, no geographical affiliation could be found. This likely leads to underestimations of emissions. Furthermore, some delegates may not be geographically based at their named affiliation, or the institute may have multiple campuses.</li>
+              <li>A couple of hundred delegates could not be geocoded from their affiliation titles – these were excluded from the analysis. The exclusion of so many attendees definitely makes this a conservative estimate of total emissions.</li>
               <li>
                 Travel emissions are mean values – actual route travelled will affect the true value. <a href="https://www.google.com/travel/flights" target="_blank"></a>Google Flights</a> is a nice tool to see estimates of flight emissions!
               </li>
-              <li>Emissions do not include local transport, accommodation, or conference operations – although we were told that the conference centre, NZICC is <a href="https://nzicc.co.nz/media-centre/nzicc-achieves-earthcheck-silver-certification/" target="_blank">EarthCheck Silver certified</a>...</li>
+              <li>Emissions do not include local transport, accommodation, or conference operations – although we were told that the conference centre, NZICC is <a href="https://nzicc.co.nz/media-centre/nzicc-achieves-earthcheck-silver-certification/" target="_blank">EarthCheck Silver certified</a>.</li>
               <li>The delegate/author lists may not be completely up to date e.g. cancellations or changes to affiliations.</li>
               <li>The co-authorship network shows shared programme authorship, not citation or collaboration history outside ICRS.</li>
             </ul>

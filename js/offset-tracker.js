@@ -15,6 +15,20 @@ function stableAttendeeId(name, locationId) {
   return `offset-${(hash >>> 0).toString(16).padStart(8, "0")}`;
 }
 
+function personKey(name, affiliation) {
+  return `${String(name).trim().toLowerCase()}|${affiliationMapKey(affiliation)}`;
+}
+
+function buildAttendeeLookupIndex(attendees) {
+  const byId = new Map();
+  for (const attendee of attendees) {
+    byId.set(attendee.id, attendee);
+    const legacyId = stableAttendeeId(attendee.name, attendee.location_id);
+    if (!byId.has(legacyId)) byId.set(legacyId, attendee);
+  }
+  return byId;
+}
+
 export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocations, exportedAttendees = []) {
   if (exportedAttendees?.length) {
     return exportedAttendees
@@ -80,6 +94,7 @@ export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocation
 export function createOffsetTracker({
   elements,
   getAttendees,
+  getAttendeeLookup,
   getHeadline,
   onChange,
   onRegisterSuccess,
@@ -87,20 +102,42 @@ export function createOffsetTracker({
 }) {
   let attendees = [];
   let attendeeById = new Map();
+  let attendeeLookupById = new Map();
+  let currentPoolKeys = new Set();
   let registeredIds = new Set();
   let selectedAttendeeId = null;
   let searchQuery = "";
   let pollTimer = null;
   let loadError = "";
-  let offsetCountByLocation = new Map();
+  let offsetCountByAffiliation = new Map();
   const pendingRegistrationIds = new Set();
 
-  function rebuildOffsetCounts() {
-    offsetCountByLocation = new Map();
+  function resolveAttendee(id) {
+    return attendeeLookupById.get(id) || attendeeById.get(id) || null;
+  }
+
+  function isRegistered(attendee) {
+    if (!attendee) return false;
+    const key = personKey(attendee.name, attendee.affiliation);
     for (const id of registeredIds) {
-      const locationId = attendeeById.get(id)?.location_id;
-      if (!locationId) continue;
-      offsetCountByLocation.set(locationId, (offsetCountByLocation.get(locationId) || 0) + 1);
+      const resolved = resolveAttendee(id);
+      if (resolved && personKey(resolved.name, resolved.affiliation) === key) return true;
+    }
+    return false;
+  }
+
+  function rebuildOffsetCounts() {
+    offsetCountByAffiliation = new Map();
+    for (const id of registeredIds) {
+      const attendee = resolveAttendee(id);
+      if (!attendee) continue;
+      if (!currentPoolKeys.has(personKey(attendee.name, attendee.affiliation))) continue;
+      const affiliationKey = affiliationMapKey(attendee.affiliation);
+      if (!affiliationKey) continue;
+      offsetCountByAffiliation.set(
+        affiliationKey,
+        (offsetCountByAffiliation.get(affiliationKey) || 0) + 1
+      );
     }
   }
 
@@ -138,22 +175,26 @@ export function createOffsetTracker({
   function refreshAttendees() {
     attendees = getAttendees();
     attendeeById = new Map(attendees.map((attendee) => [attendee.id, attendee]));
-    registeredIds = new Set(
-      [...registeredIds].filter((id) => attendeeById.has(id))
+    currentPoolKeys = new Set(
+      attendees.map((attendee) => personKey(attendee.name, attendee.affiliation))
     );
+    const lookupAttendees = getAttendeeLookup?.() || attendees;
+    attendeeLookupById = buildAttendeeLookupIndex(lookupAttendees);
     rebuildOffsetCounts();
     render();
   }
 
-  function offsetShareForLocation(locationId, travelAttendees) {
+  function offsetShareForLocation(locationId, travelAttendees, affiliation) {
     if (!locationId || !travelAttendees) return 0;
-    const count = offsetCountByLocation.get(locationId) || 0;
+    const affiliationKey = affiliationMapKey(affiliation);
+    if (!affiliationKey) return 0;
+    const count = offsetCountByAffiliation.get(affiliationKey) || 0;
     return Math.min(1, count / travelAttendees);
   }
 
   function stats() {
     const totalAttendees = getHeadline()?.attendees_estimated || attendees.length || 1;
-    const registeredCount = [...registeredIds].filter((id) => attendeeById.has(id)).length;
+    const registeredCount = attendees.filter((attendee) => isRegistered(attendee)).length;
     const percent = totalAttendees ? (registeredCount / totalAttendees) * 100 : 0;
     return { registeredCount, totalAttendees, percent };
   }
@@ -184,13 +225,13 @@ export function createOffsetTracker({
       button.type = "button";
       button.className = "suggestion";
       button.dataset.attendeeId = attendee.id;
-      const alreadyRegistered = registeredIds.has(attendee.id);
+      const alreadyRegistered = isRegistered(attendee);
       button.innerHTML = `${escapeHtml(attendee.name)}<small>${escapeHtml(attendee.affiliation)}${
         alreadyRegistered ? " · registered" : ""
       }</small>`;
       button.addEventListener("mousedown", (event) => {
         event.preventDefault();
-        if (registeredIds.has(attendee.id) || pendingRegistrationIds.has(attendee.id)) return;
+        if (isRegistered(attendee) || pendingRegistrationIds.has(attendee.id)) return;
         selectedAttendeeId = attendee.id;
         if (elements.query) elements.query.value = attendee.name;
         elements.suggestions.classList.remove("open");
@@ -235,9 +276,7 @@ export function createOffsetTracker({
     if (elements.registerButton) {
       const attendee = resolveSelectedAttendee();
       elements.registerButton.disabled =
-        !attendee ||
-        registeredIds.has(attendee.id) ||
-        pendingRegistrationIds.has(attendee.id);
+        !attendee || isRegistered(attendee) || pendingRegistrationIds.has(attendee.id);
       elements.registerButton.textContent = "I've offset my travel";
     }
   }
@@ -290,8 +329,8 @@ export function createOffsetTracker({
   function registerSelected() {
     const attendee = resolveSelectedAttendee();
     if (!attendee) return false;
-    if (registeredIds.has(attendee.id) || pendingRegistrationIds.has(attendee.id)) {
-      if (elements.status && registeredIds.has(attendee.id)) {
+    if (isRegistered(attendee) || pendingRegistrationIds.has(attendee.id)) {
+      if (elements.status && isRegistered(attendee)) {
         elements.status.textContent = `${attendee.name} is already registered.`;
       }
       return false;
