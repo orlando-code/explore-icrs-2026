@@ -2,7 +2,7 @@
 
 Interactive map and co-authorship network for ICRS 2026 speakers, geocoded by affiliation and centred on Auckland.
 
-**Live site:** https://orlando-codes.com/ (also https://orlando-code.github.io/explore-icrs-2026/)
+**Live site:** https://orlando-codes.com/icrs2026-explorer/ (also https://orlando-code.github.io/explore-icrs-2026/)
 
 Regenerate speaker profile/contact links for the network tab:
 

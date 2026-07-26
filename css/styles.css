@@ -381,6 +381,50 @@ a.btn-small {
   word-break: break-word;
 }
 
+.network-contact-email-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.15rem;
+}
+
+.network-contact-email-value {
+  flex: 1;
+  min-width: 0;
+  margin-top: 0;
+}
+
+.network-contact-copy {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid rgba(31, 111, 139, 0.25);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--sea);
+  cursor: pointer;
+}
+
+.network-contact-copy:hover {
+  background: rgba(31, 111, 139, 0.1);
+  border-color: rgba(31, 111, 139, 0.4);
+}
+
+.network-contact-copy.copied {
+  color: #2d8a4e;
+  border-color: rgba(45, 138, 78, 0.45);
+  background: rgba(45, 138, 78, 0.08);
+}
+
+.network-contact-copy svg {
+  width: 1rem;
+  height: 1rem;
+}
+
 .network-contact-links {
   margin: 0.65rem 0 0;
   padding-left: 1rem;

@@ -1,19 +1,14 @@
 import QRCode from "https://esm.sh/qrcode@1.5.4";
-
-const CANONICAL_URL = "https://orlando-codes.com/";
-
-function isProductionHost(hostname) {
-  return (
-    hostname === "orlando-codes.com" ||
-    hostname === "www.orlando-codes.com" ||
-    hostname.endsWith("github.io")
-  );
-}
+import { canonicalSiteUrl } from "./config.js";
 
 export function createShareView(_siteData, elements) {
   function shareUrl() {
-    if (isProductionHost(location.hostname)) {
-      return CANONICAL_URL;
+    if (
+      location.hostname === "orlando-codes.com" ||
+      location.hostname === "www.orlando-codes.com" ||
+      location.hostname.endsWith("github.io")
+    ) {
+      return canonicalSiteUrl();
     }
     return location.href.split("#")[0];
   }

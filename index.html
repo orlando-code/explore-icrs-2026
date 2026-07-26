@@ -3,10 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="icrs-base-path" content="/explore-icrs-2026" />
+    <meta
+      name="icrs-canonical-url"
+      content="https://orlando-codes.com/icrs2026-explorer/"
+    />
+    <script>
+      (function () {
+        var meta = document.querySelector('meta[name="icrs-base-path"]');
+        var base = meta && meta.content ? meta.content.trim() : "";
+        if (!base) return;
+        if (!base.startsWith("/")) base = "/" + base;
+        if (!base.endsWith("/")) base += "/";
+        var el = document.createElement("base");
+        el.href = base;
+        document.head.appendChild(el);
+      })();
+    </script>
     <!-- Live offset API. Set after deploying backend/ (see backend/README.md) -->
     <!-- <meta name="icrs-offset-api" content="" /> -->
     <meta name="icrs-offset-api" content="https://icrs-offset-api.fly.dev/api/offsets" />
-    <link rel="canonical" href="https://orlando-codes.com/" />
+    <link rel="canonical" href="https://orlando-codes.com/icrs2026-explorer/" />
     <title>ICRS 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

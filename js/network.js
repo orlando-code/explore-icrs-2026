@@ -132,6 +132,57 @@ function profilePageHost(url) {
   }
 }
 
+const COPY_EMAIL_ICON = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 18H8V7h11v16z"/></svg>`;
+
+function emailAddressFromContact(contact) {
+  if (!contact) return "";
+  const label = String(contact.label || "").trim();
+  const url = String(contact.url || "");
+  if (url.startsWith("mailto:")) {
+    const address = decodeURIComponent(url.slice("mailto:".length).split("?")[0] || "");
+    return address || label;
+  }
+  return label;
+}
+
+function copyEmailButtonHtml(email) {
+  if (!email) return "";
+  return `<button type="button" class="network-contact-copy" data-copy-email="${escapeHtml(email)}" aria-label="Copy email address" title="Copy email address">${COPY_EMAIL_ICON}</button>`;
+}
+
+function renderEmailPrimaryHtml(primary) {
+  const email = emailAddressFromContact(primary);
+  return `
+    <div class="network-contact-primary network-contact-email">
+      <span class="network-contact-primary-label">Email</span>
+      <div class="network-contact-email-row">
+        <span class="network-contact-primary-value network-contact-email-value">${escapeHtml(email)}</span>
+        ${copyEmailButtonHtml(email)}
+      </div>
+    </div>
+  `;
+}
+
+async function copyTextToClipboard(text, button) {
+  if (!text) return false;
+  try {
+    await navigator.clipboard.writeText(text);
+    if (button) {
+      button.classList.add("copied");
+      button.setAttribute("aria-label", "Copied");
+      button.setAttribute("title", "Copied");
+      window.setTimeout(() => {
+        button.classList.remove("copied");
+        button.setAttribute("aria-label", "Copy email address");
+        button.setAttribute("title", "Copy email address");
+      }, 1500);
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function buildAuthorSearchIndex(locations) {
   const index = new Map();
   for (const location of locations) {
@@ -475,14 +526,14 @@ export function createNetworkView(siteData, elements) {
 
     const displayLinks = links.length ? links : fallbackLinks;
     const primaryBlock = primary
-      ? `
+      ? primary.type === "email"
+        ? renderEmailPrimaryHtml(primary)
+        : `
         <a class="network-contact-primary network-contact-${escapeHtml(primary.type)}" href="${escapeHtml(primary.url)}" target="_blank" rel="noopener noreferrer">
           <span class="network-contact-primary-label">${escapeHtml(
-            primary.type === "email"
-              ? "Email"
-              : primary.type === "institution"
-                ? "University profile"
-                : "Suggested contact"
+            primary.type === "institution"
+              ? "University profile"
+              : "Suggested contact"
           )}</span>
           <span class="network-contact-primary-value">${escapeHtml(primary.label)}</span>
         </a>
@@ -1526,6 +1577,13 @@ export function createNetworkView(siteData, elements) {
   }
   if (elements.card) {
     elements.card.addEventListener("click", (event) => {
+      const copyButton = event.target.closest("[data-copy-email]");
+      if (copyButton && elements.cardContacts?.contains(copyButton)) {
+        event.preventDefault();
+        event.stopPropagation();
+        void copyTextToClipboard(copyButton.dataset.copyEmail, copyButton);
+        return;
+      }
       const button = event.target.closest("[data-talk-id]");
       if (!button || !elements.card.contains(button)) return;
       event.preventDefault();

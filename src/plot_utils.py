@@ -531,6 +531,66 @@ def _author_affiliation_map(
     return mapping
 
 
+def _delegate_affiliation_map(
+    delegates_path: str | Path = "data/delegates.json",
+) -> dict[str, str]:
+    """Map normalized person name to affiliation from the official delegate list."""
+    from src.delegates import normalize_person_name
+    from src.geocode import affiliation_base_name
+
+    path = Path(delegates_path)
+    if not path.exists():
+        return {}
+
+    with path.open(encoding="utf-8") as handle:
+        payload = json.load(handle)
+
+    mapping: dict[str, str] = {}
+    for delegate in payload.get("delegates", []):
+        name = str(delegate.get("full_name") or "").strip()
+        affiliation = str(delegate.get("affiliation") or "").strip()
+        if not name or not affiliation:
+            continue
+        norm = normalize_person_name(name)
+        if norm and norm not in mapping:
+            mapping[norm] = affiliation_base_name(affiliation) or affiliation
+    return mapping
+
+
+def _affiliation_coord_index(
+    locations: list[dict[str, Any]],
+) -> dict[str, tuple[float, float]]:
+    from src.geocode import affiliation_base_name, canonical_affiliation_key
+
+    index: dict[str, tuple[float, float]] = {}
+    for location in locations:
+        coords = (location["lat"], location["lon"])
+        affiliation = location["affiliation"]
+        for candidate in (
+            affiliation,
+            affiliation_base_name(affiliation),
+            canonical_affiliation_key(affiliation),
+        ):
+            if candidate and candidate not in index:
+                index[candidate] = coords
+    return index
+
+
+def _resolve_affiliation_coords(
+    affiliation: str,
+    coord_index: dict[str, tuple[float, float]],
+) -> tuple[str, tuple[float, float] | None]:
+    from src.geocode import affiliation_base_name, canonical_affiliation_key
+
+    if not affiliation:
+        return "", None
+    display = affiliation_base_name(affiliation) or affiliation
+    for candidate in (display, affiliation, canonical_affiliation_key(affiliation)):
+        if candidate in coord_index:
+            return display, coord_index[candidate]
+    return display, None
+
+
 def author_talk_counts(
     df: pd.DataFrame,
     *,
@@ -562,17 +622,18 @@ def _build_network_data(
     *,
     affiliation_col: str = "affiliation",
     presenter_col: str = "presenter",
+    delegate_affiliations: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     """Build co-authorship networks at individual and affiliation level."""
+    from src.delegates import normalize_person_name
+
+    delegate_affiliations = delegate_affiliations or {}
     author_affiliations = _author_affiliation_map(
         df,
         affiliation_col=affiliation_col,
         presenter_col=presenter_col,
     )
-    affiliation_coords = {
-        location["affiliation"]: (location["lat"], location["lon"])
-        for location in locations
-    }
+    affiliation_coords = _affiliation_coord_index(locations)
 
     individual_talk_count: dict[str, int] = {}
     affiliation_talk_count: dict[str, int] = {}
@@ -617,17 +678,25 @@ def _build_network_data(
                 key = tuple(sorted((affiliation_a, affiliation_b)))
                 affiliation_edges[key] = affiliation_edges.get(key, 0) + 1
 
+    for author in individual_talk_count:
+        norm = normalize_person_name(author)
+        if norm in delegate_affiliations:
+            author_affiliations[author] = delegate_affiliations[norm]
+
     individual_nodes = []
     for author, connections in sorted(
         individual_talk_count.items(),
         key=lambda item: (-item[1], item[0].casefold()),
     ):
-        affiliation = author_affiliations.get(author, "")
+        affiliation, coords = _resolve_affiliation_coords(
+            author_affiliations.get(author, ""),
+            affiliation_coords,
+        )
         lat = None
         lon = None
         distance_km = None
-        if affiliation in affiliation_coords:
-            lat, lon = affiliation_coords[affiliation]
+        if coords:
+            lat, lon = coords
             distance_km = round(
                 _haversine_km(lat, lon, AUCKLAND_LAT, AUCKLAND_LON),
                 1,
@@ -650,11 +719,12 @@ def _build_network_data(
         affiliation_talk_count.items(),
         key=lambda item: (-item[1], item[0].casefold()),
     ):
+        _, coords = _resolve_affiliation_coords(affiliation, affiliation_coords)
         lat = None
         lon = None
         distance_km = None
-        if affiliation in affiliation_coords:
-            lat, lon = affiliation_coords[affiliation]
+        if coords:
+            lat, lon = coords
             distance_km = round(
                 _haversine_km(lat, lon, AUCKLAND_LAT, AUCKLAND_LON),
                 1,
@@ -752,6 +822,7 @@ def export_attendee_site_data(
         locations,
         affiliation_col=affiliation_col,
         presenter_col=presenter_col,
+        delegate_affiliations=_delegate_affiliation_map(),
     )
     talk_titles_by_author = _build_talk_title_index(
         df,
