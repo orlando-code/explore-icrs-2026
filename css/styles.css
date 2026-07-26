@@ -605,6 +605,29 @@ a.btn-small {
   margin: 0 0 0.55rem;
   font-size: 0.82rem;
   color: var(--muted);
+  line-height: 1.5;
+}
+
+.network-talk-author-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--sea);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.network-talk-author-btn:hover,
+.network-talk-author-btn:focus-visible,
+.network-talk-author-btn.network-talk-author-selected {
+  color: var(--sea-deep);
+  font-weight: 600;
+}
+
+.network-talk-author-plain {
+  color: var(--muted);
 }
 
 .network-talk-abstract {

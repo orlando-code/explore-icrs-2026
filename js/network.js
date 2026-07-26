@@ -938,12 +938,12 @@ export function createNetworkView(siteData, elements) {
     linkSelection
       .attr("stroke", (d) => (linkIsHighlighted(d) ? "#1f6f8b" : "#94a3ad"))
       .attr("stroke-opacity", (d) => {
-        if (!selectedNodeId) return 0.35;
-        return linkIsHighlighted(d) ? 0.92 : 0.07;
+        if (!selectedNodeId) return 0.18;
+        return linkIsHighlighted(d) ? 0.88 : 0.05;
       })
       .attr("stroke-width", (d) => {
-        const base = Math.max(0.8, Math.log2(d.weight + 1));
-        return linkIsHighlighted(d) ? base + 1.5 : base;
+        const base = Math.max(0.35, Math.log2(d.weight + 1) * 0.45);
+        return linkIsHighlighted(d) ? base + 0.9 : base;
       });
 
     nodeSelection
@@ -983,16 +983,18 @@ export function createNetworkView(siteData, elements) {
     labelSelection
       .attr("font-size", (d) => (d.id === selectedNodeId ? 13 : 10))
       .attr("font-weight", (d) =>
-        d.id === selectedNodeId ? 700 : neighbors.has(d.id) ? 600 : 500
+        d.id === selectedNodeId ? 700 : neighbors.has(d.id) ? 600 : 600
       )
       .attr("fill", (d) => {
         if (d.id === selectedNodeId) return "#14212b";
-        if (neighbors.has(d.id)) return "#3d5a66";
+        if (neighbors.has(d.id)) return "#1a3340";
         return "#14212b";
       })
-      .attr("stroke", (d) => (d.id === selectedNodeId ? "#ffffff" : "none"))
-      .attr("stroke-width", (d) => (d.id === selectedNodeId ? 4 : 0))
-      .attr("paint-order", (d) => (d.id === selectedNodeId ? "stroke" : null))
+      .attr("fill-opacity", 1)
+      .attr("stroke", "#ffffff")
+      .attr("stroke-width", (d) => (d.id === selectedNodeId ? 4 : 3))
+      .attr("stroke-opacity", (d) => (d.id === selectedNodeId ? 0.95 : 0.88))
+      .attr("paint-order", "stroke")
       .attr("dy", (d) => -radiusScale(Math.max(1, d.connections)) - (d.id === selectedNodeId ? 6 : 4))
       .text((d) => (d.label.length > 28 ? `${d.label.slice(0, 26)}…` : d.label))
       .attr("x", (d) => d.x)
@@ -1003,6 +1005,7 @@ export function createNetworkView(siteData, elements) {
     renderBarChart(graphNodes);
     if (radiusScale) renderLegend(graphNodes, radiusScale);
     scrollToSelectedSidebar();
+    refreshTalkAuthors();
   }
 
   function renderBarChart(nodes) {
@@ -1233,6 +1236,37 @@ export function createNetworkView(siteData, elements) {
     return resolveTalkId(entry, talksData, selectedSpeakerName);
   }
 
+  function nodeIdForAuthor(name) {
+    const trimmed = String(name || "").trim();
+    if (!trimmed) return null;
+    const node = network.individual.nodes.find((item) => item.label === trimmed);
+    return node?.id || null;
+  }
+
+  function renderTalkAuthorsHtml(authors) {
+    const list = (authors || []).map((name) => String(name || "").trim()).filter(Boolean);
+    if (!list.length) return "";
+
+    return list
+      .map((name, index) => {
+        const separator = index > 0 ? '<span class="network-talk-author-sep">, </span>' : "";
+        const nodeId = nodeIdForAuthor(name);
+        if (nodeId) {
+          const selected = nodeId === selectedNodeId ? " network-talk-author-selected" : "";
+          return `${separator}<button type="button" class="network-talk-author-btn${selected}" data-node-id="${escapeHtml(nodeId)}">${escapeHtml(name)}</button>`;
+        }
+        return `${separator}<span class="network-talk-author-plain">${escapeHtml(name)}</span>`;
+      })
+      .join("");
+  }
+
+  function refreshTalkAuthors() {
+    if (!elements.talkAuthors || !selectedTalkId) return;
+    const talk = talksById[selectedTalkId];
+    if (!talk) return;
+    elements.talkAuthors.innerHTML = renderTalkAuthorsHtml(talk.authors);
+  }
+
   function setTalkListVisible(visible) {
     if (elements.cardTalks) elements.cardTalks.hidden = !visible;
     if (elements.talkBack) elements.talkBack.hidden = visible;
@@ -1246,7 +1280,7 @@ export function createNetworkView(siteData, elements) {
     if (elements.talkDetail) {
       elements.talkDetail.hidden = true;
       if (elements.talkTitle) elements.talkTitle.textContent = "";
-      if (elements.talkAuthors) elements.talkAuthors.textContent = "";
+      if (elements.talkAuthors) elements.talkAuthors.innerHTML = "";
       if (elements.talkAbstract) elements.talkAbstract.textContent = "";
     }
     if (elements.similarTalks) elements.similarTalks.hidden = true;
@@ -1319,7 +1353,7 @@ export function createNetworkView(siteData, elements) {
     elements.talkDetail.hidden = false;
     if (elements.talkTitle) elements.talkTitle.textContent = talk.title;
     if (elements.talkAuthors) {
-      elements.talkAuthors.textContent = (talk.authors || []).join(", ");
+      elements.talkAuthors.innerHTML = renderTalkAuthorsHtml(talk.authors);
     }
     if (elements.talkAbstract) {
       elements.talkAbstract.textContent = talk.abstract || "No abstract available.";
@@ -1582,6 +1616,13 @@ export function createNetworkView(siteData, elements) {
         event.preventDefault();
         event.stopPropagation();
         void copyTextToClipboard(copyButton.dataset.copyEmail, copyButton);
+        return;
+      }
+      const authorButton = event.target.closest(".network-talk-author-btn[data-node-id]");
+      if (authorButton && elements.card.contains(authorButton)) {
+        event.preventDefault();
+        event.stopPropagation();
+        selectNode(authorButton.dataset.nodeId, { focus: true });
         return;
       }
       const button = event.target.closest("[data-talk-id]");
