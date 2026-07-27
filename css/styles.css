@@ -1527,10 +1527,12 @@ button:active {
 
 .layout-methods {
   grid-template-columns: 1fr;
+  grid-template-areas: "main";
 }
 
 .layout-share {
   grid-template-columns: 1fr;
+  grid-template-areas: "main";
 }
 
 .layout-methods .methods-panel {
