@@ -229,3 +229,4 @@ __marimo__/
 .streamlit/secrets.toml
 
 keys.yaml
+.DS_Store
