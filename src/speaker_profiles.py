@@ -799,6 +799,49 @@ def _linkedin_search_url(name: str, affiliation: str) -> str:
     return f"https://www.linkedin.com/search/results/people/?keywords={query}"
 
 
+def _linkedin_search_link(name: str, affiliation: str) -> dict[str, str]:
+    return {
+        "kind": "linkedin_search",
+        "label": "Search LinkedIn",
+        "url": _linkedin_search_url(name, affiliation),
+    }
+
+
+def _is_direct_linkedin_url(url: str | None) -> bool:
+    return bool(url and "linkedin.com/in/" in url.lower())
+
+
+def normalize_linkedin_links_in_profile(profile: dict[str, Any]) -> bool:
+    """Replace scraped LinkedIn profile URLs with name-based search links."""
+    name = str(profile.get("name") or "")
+    affiliation = str(profile.get("affiliation") or "")
+    changed = False
+
+    primary = profile.get("primary") or {}
+    if primary.get("type") == "linkedin" or _is_direct_linkedin_url(primary.get("url")):
+        profile["primary"] = None
+        changed = True
+
+    search_link = _linkedin_search_link(name, affiliation)
+    kept_links: list[dict[str, str]] = []
+    seen_urls: set[str] = set()
+    for link in profile.get("links") or []:
+        url = str(link.get("url") or "")
+        kind = str(link.get("kind") or "")
+        if kind in {"linkedin", "linkedin_search"} or _is_direct_linkedin_url(url):
+            changed = True
+            continue
+        if url and url not in seen_urls:
+            seen_urls.add(url)
+            kept_links.append(link)
+
+    kept_links.append(search_link)
+    if profile.get("links") != kept_links:
+        profile["links"] = kept_links
+        changed = True
+    return changed
+
+
 def _scholar_search_url(name: str, affiliation: str) -> str:
     query = quote_plus(f"{_clean_name_for_search(name)} {affiliation}".strip())
     return f"https://scholar.google.com/scholar?q={query}"
@@ -2111,13 +2154,11 @@ def _build_profile_record(
         if email not in emails:
             emails.append(email)
 
-    linkedin = (web_profile or {}).get("linkedin") or details.get("linkedin")
     for item in details.get("urls") or []:
         url = item.get("url")
         if not url:
             continue
         if "linkedin.com" in url.lower():
-            linkedin = url
             continue
         links.append(
             {
@@ -2152,12 +2193,6 @@ def _build_profile_record(
             "label": "University profile",
             "url": str(web_profile["page_url"]),
         }
-    elif linkedin:
-        primary = {
-            "type": "linkedin",
-            "label": "LinkedIn profile",
-            "url": linkedin,
-        }
     elif orcid_id:
         primary = {
             "type": "orcid",
@@ -2175,22 +2210,7 @@ def _build_profile_record(
                 "url": openalex_link["url"],
             }
 
-    if linkedin:
-        links.append(
-            {
-                "kind": "linkedin",
-                "label": "LinkedIn profile",
-                "url": linkedin,
-            }
-        )
-    else:
-        links.append(
-            {
-                "kind": "linkedin_search",
-                "label": "Search LinkedIn",
-                "url": _linkedin_search_url(name, affiliation),
-            }
-        )
+    links.append(_linkedin_search_link(name, affiliation))
 
     links.append(
         {
@@ -2710,47 +2730,93 @@ def _preserve_verified_profile(
     return preserved
 
 
-def sanitize_profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
-    """Hide weak or junk auto-scraped emails unless manually verified."""
-    cleaned = dict(profile)
-    cleaned.pop("phones", None)
-    if cleaned.get("verified"):
-        return cleaned
+_PUBLIC_EXPORT_LINK_KINDS = frozenset(
+    {
+        "institution",
+        "website",
+        "linkedin_search",
+        "scholar_search",
+        "orcid",
+        "openalex",
+    }
+)
 
-    primary = cleaned.get("primary") or {}
-    if primary.get("type") != "email":
-        return cleaned
 
-    email = str(primary.get("label") or "")
-    name = str(cleaned.get("name") or "")
-    affiliation = str(cleaned.get("affiliation") or "")
-    domains = _institution_domains(affiliation)
-    structured = bool(cleaned.get("email_structured"))
-    score = float(cleaned.get("email_score") or 0.0)
-    if score <= 0.0:
-        score = _email_plausibility_score(email, name, domains, structured=structured)
+def public_profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
+    """Strip contact emails and other private fields for the public static site."""
+    name = str(profile.get("name") or "")
+    affiliation = str(profile.get("affiliation") or "")
+    working = dict(profile)
+    normalize_linkedin_links_in_profile(working)
 
-    if (
-        _is_obviously_junk_email(email)
-        or _is_generic_role_email(email)
-        or score < MIN_EMAIL_SCORE
+    cleaned: dict[str, Any] = {
+        "name": name,
+        "affiliation": affiliation,
+    }
+    for field in (
+        "profile_role",
+        "affiliation_explicit",
+        "confidence",
+        "verified",
+        "institutional_page",
+        "profile_page",
+        "profile_page_label",
+        "lookup_version",
     ):
-        cleaned["primary"] = None
-        if cleaned.get("institutional_page"):
-            cleaned["primary"] = {
-                "type": "institution",
-                "label": "University profile",
-                "url": str(cleaned["institutional_page"]),
+        value = working.get(field)
+        if value is not None:
+            cleaned[field] = value
+
+    links: list[dict[str, str]] = []
+    seen_urls: set[str] = set()
+    for link in working.get("links") or []:
+        kind = str(link.get("kind") or "")
+        url = str(link.get("url") or "")
+        if kind not in _PUBLIC_EXPORT_LINK_KINDS:
+            continue
+        if not url or url.startswith("mailto:") or url in seen_urls:
+            continue
+        seen_urls.add(url)
+        links.append(
+            {
+                "kind": kind,
+                "label": str(link.get("label") or "Link"),
+                "url": url,
             }
-        elif cleaned.get("confidence") not in {"search", "low"}:
-            cleaned["confidence"] = "search"
-        cleaned.pop("email_score", None)
-        cleaned.pop("email_structured", None)
+        )
+
+    search_link = _linkedin_search_link(name, affiliation)
+    if search_link["url"] not in seen_urls:
+        links.append(search_link)
+
+    cleaned["links"] = links
+
+    primary = working.get("primary") or {}
+    if primary.get("type") == "institution" and primary.get("url"):
+        cleaned["primary"] = {
+            "type": "institution",
+            "label": str(primary.get("label") or "University profile"),
+            "url": str(primary["url"]),
+        }
+    elif working.get("institutional_page"):
+        cleaned["primary"] = {
+            "type": "institution",
+            "label": "University profile",
+            "url": str(working["institutional_page"]),
+        }
+    else:
+        cleaned["primary"] = None
+
     return cleaned
 
 
+def sanitize_profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
+    """Backward-compatible alias for the public site export."""
+    return public_profile_for_export(profile)
+
+
 def _profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
-    return sanitize_profile_for_export(profile)
+    return public_profile_for_export(profile)
 
 
 def export_speaker_profiles_js(

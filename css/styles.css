@@ -470,6 +470,13 @@ a.btn-small {
   font-weight: 500;
 }
 
+.network-contact-link-host {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
 .network-contact-profile {
   display: block;
   margin-top: 0.55rem;
@@ -496,6 +503,20 @@ a.btn-small {
 
 .network-contact-note {
   margin-top: 0;
+}
+
+.network-contact-role {
+  margin: 0 0 0.2rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.network-contact-status {
+  margin: 0 0 0.65rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--muted);
 }
 
 .line-tooltip {

@@ -71,6 +71,40 @@ function linkedInSearchUrl(name, affiliation = "") {
   return `https://www.linkedin.com/search/results/people/?keywords=${query}`;
 }
 
+function fallbackLinksFor(name, affiliation = "") {
+  return [
+    {
+      kind: "linkedin_search",
+      label: "Search LinkedIn",
+      url: linkedInSearchUrl(name, affiliation),
+    },
+    {
+      kind: "scholar_search",
+      label: "Search Google Scholar",
+      url: scholarSearchUrl(name, affiliation),
+    },
+  ];
+function normalizeProfileLinks(links, name, affiliation = "") {
+  const kept = [];
+  const seen = new Set();
+  for (const link of links || []) {
+    const url = String(link?.url || "");
+    const kind = String(link?.kind || "");
+    if (kind === "linkedin" || /linkedin\.com\/in\//i.test(url)) continue;
+    if (kind === "linkedin_search") continue;
+    if (url && !seen.has(url)) {
+      seen.add(url);
+      kept.push(link);
+    }
+  }
+  kept.push({
+    kind: "linkedin_search",
+    label: "Search LinkedIn",
+    url: linkedInSearchUrl(name, affiliation),
+  });
+  return kept;
+}
+
 function scholarSearchUrl(name, affiliation = "") {
   const query = encodeURIComponent(`${name} ${affiliation}`.trim());
   return `https://scholar.google.com/scholar?q=${query}`;
@@ -132,59 +166,18 @@ function profilePageHost(url) {
   }
 }
 
-const COPY_EMAIL_ICON = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 18H8V7h11v16z"/></svg>`;
-
-function emailAddressFromContact(contact) {
-  if (!contact) return "";
-  const label = String(contact.label || "").trim();
-  const url = String(contact.url || "");
-  if (url.startsWith("mailto:")) {
-    const address = decodeURIComponent(url.slice("mailto:".length).split("?")[0] || "");
-    return address || label;
-  }
-  return label;
-}
-
-const GENERIC_EMAIL_LOCAL_RE =
-  /^(?:info|contact|webmaster|admin|press|media|office|enquiries|support|hello|help|team|news|pcn|editorial|partnerships)(?:[._-]|$)/i;
-const JUNK_EMAIL_RE =
-  /(?:%{|\.png|\.jpg|\.gif|spokeo|beenverified|sharathyoga|dailygalaxy|faisalman|travelandtourworld)/i;
-const MIN_DISPLAY_EMAIL_SCORE = 0.72;
-/** Temporarily hide scraped emails and profile URLs on the live site. */
-const HIDE_DIRECT_CONTACTS = true;
-
-const SEARCH_ONLY_LINK_KINDS = new Set(["linkedin_search", "scholar_search"]);
-
-function emailPlausibilityScore(email, name) {
-  if (!email || !email.includes("@") || JUNK_EMAIL_RE.test(email)) return 0;
-  const local = email.split("@")[0].toLowerCase();
-  if (GENERIC_EMAIL_LOCAL_RE.test(local)) return 0;
-  const parts = String(name || "")
-    .toLowerCase()
-    .split(/\s+/)
-    .map((part) => part.replace(/[^a-z]/g, ""))
-    .filter((part) => part.length > 2);
-  const compactLocal = local.replace(/[^a-z]/g, "");
-  if (!parts.length) return 0.2;
-  const last = parts[parts.length - 1];
-  if (compactLocal.includes(last)) return 0.85;
-  if (parts.length >= 2 && compactLocal.includes(parts[0][0] + last)) return 0.8;
-  return 0.2;
-}
-
-function shouldShowEmailPrimary(profile) {
-  const primary = profile?.primary;
-  if (!primary || primary.type !== "email") return false;
-  if (profile.verified) return true;
-  const email = emailAddressFromContact(primary);
-  const score = Number(profile.email_score || 0) || emailPlausibilityScore(email, profile.name);
-  if (score < MIN_DISPLAY_EMAIL_SCORE) return false;
-  if (profile.email_structured) return true;
-  return profile.confidence === "high" || profile.confidence === "medium";
+function linkedInLinkFor(name, affiliation = "", profile = null) {
+  const fromProfile = (profile?.links || []).find((link) => link.kind === "linkedin_search");
+  if (fromProfile?.url) return fromProfile;
+  return {
+    kind: "linkedin_search",
+    label: "Search LinkedIn",
+    url: linkedInSearchUrl(name, affiliation),
+  };
 }
 
 function copyDelegateButtonHtml(name, affiliation) {
-  return `<button type="button" class="btn-small network-contact-copy-details" data-copy-name="${escapeHtml(name)}" data-copy-affiliation="${escapeHtml(affiliation)}" data-original-label="Copy delegate details" aria-label="Copy delegate details" title="Copy name and institute">Copy delegate details</button>`;
+  return `<button type="button" class="btn-small network-contact-copy-details" data-copy-name="${escapeHtml(name)}" data-copy-affiliation="${escapeHtml(affiliation)}" data-original-label="Copy speaker details" aria-label="Copy speaker details" title="Copy name and institute">Copy speaker details</button>`;
 }
 
 function delegateDetailsText(name, affiliation = "") {
@@ -192,24 +185,6 @@ function delegateDetailsText(name, affiliation = "") {
   const inst = String(affiliation || "").trim();
   if (inst) lines.push(inst);
   return lines.join("\n");
-}
-
-function copyEmailButtonHtml(email) {
-  if (!email) return "";
-  return `<button type="button" class="network-contact-copy" data-copy-email="${escapeHtml(email)}" aria-label="Copy email address" title="Copy email address">${COPY_EMAIL_ICON}</button>`;
-}
-
-function renderEmailPrimaryHtml(primary) {
-  const email = emailAddressFromContact(primary);
-  return `
-    <div class="network-contact-primary network-contact-email">
-      <span class="network-contact-primary-label">Email</span>
-      <div class="network-contact-email-row">
-        <span class="network-contact-primary-value network-contact-email-value">${escapeHtml(email)}</span>
-        ${copyEmailButtonHtml(email)}
-      </div>
-    </div>
-  `;
 }
 
 async function copyTextToClipboard(text, button) {
@@ -224,8 +199,8 @@ async function copyTextToClipboard(text, button) {
       if (originalLabel) button.textContent = "Copied";
       window.setTimeout(() => {
         button.classList.remove("copied");
-        button.setAttribute("aria-label", button.dataset.copyName ? "Copy delegate details" : "Copy email address");
-        button.setAttribute("title", button.dataset.copyName ? "Copy name and institute" : "Copy email address");
+        button.setAttribute("aria-label", "Copy speaker details");
+        button.setAttribute("title", "Copy name and institute");
         if (originalLabel) button.textContent = originalLabel;
       }, 1500);
     }
@@ -249,6 +224,53 @@ function buildAuthorSearchIndex(locations) {
   return index;
 }
 
+function buildPresenterIndex(talksData) {
+  const presenters = new Set();
+  for (const talk of Object.values(talksData?.by_id || {})) {
+    const presenter = String(talk?.presenter || "").trim();
+    if (presenter) presenters.add(presenter);
+  }
+  return presenters;
+}
+
+function authorContextFor(node, profile) {
+  const role = node?.author_role || profile?.profile_role || null;
+  const affiliationExplicit =
+    node?.affiliation_explicit ?? profile?.affiliation_explicit ?? Boolean(profile);
+  return { role, affiliationExplicit };
+}
+
+function authorRoleLabel(role) {
+  if (role === "presenter") return "Presenting author";
+  if (role === "co_author") return "Co-author";
+  return "Author";
+}
+
+function profileStatusLabel({ role, affiliationExplicit, hasProfile }) {
+  if (hasProfile && role === "presenter") {
+    return "Presenting author profile";
+  }
+  if (hasProfile && role === "co_author") {
+    return "Co-author profile";
+  }
+  if (role === "presenter" && !affiliationExplicit) {
+    return "Presenting author without a confirmed affiliation";
+  }
+  if (role === "co_author" && !affiliationExplicit) {
+    return "Co-author with inferred affiliation only";
+  }
+  if (role === "co_author") {
+    return "Co-author without a looked-up profile";
+  }
+  return "No profile lookup available";
+}
+
+function affiliationNote({ role, affiliationExplicit, affiliation }) {
+  if (!affiliation) return "";
+  if (affiliationExplicit) return affiliation;
+  if (role === "co_author") {
+    return `${affiliation} (inferred from a presenting author's talk)`;
+  }
 function buildAffiliationSearchIndex(locations) {
   const index = new Map();
   for (const location of locations) {
@@ -270,6 +292,7 @@ export function createNetworkView(siteData, elements) {
   );
   const talksData = elements.talksData || { by_id: {}, title_index: {} };
   const talksById = talksData.by_id || {};
+  const presenterIndex = buildPresenterIndex(talksData);
   const similarityLookup = createTalkSimilarityLookup(
     elements.similaritiesData || { by_id: {} },
     talksById
@@ -531,7 +554,12 @@ export function createNetworkView(siteData, elements) {
   }
 
   function formatNodeMeta(node) {
+    const profile = profileForNode(node);
+    const context = authorContextFor(node, profile);
+    const role =
+      context.role || (presenterIndex.has(node.label) ? "presenter" : "co_author");
     const parts = [
+      authorRoleLabel(role),
       `on author list of ${node.connections.toLocaleString()} talk${node.connections === 1 ? "" : "s"}`,
     ];
     // Travel distance hidden for now – re-enable when individual travel estimates are ready.
@@ -539,7 +567,13 @@ export function createNetworkView(siteData, elements) {
     //   parts.push(`${formatDistance(node.distance_km)} from Auckland`);
     // }
     if (mode === "individual" && node.affiliation) {
-      parts.push(node.affiliation);
+      parts.push(
+        affiliationNote({
+          role,
+          affiliationExplicit: context.affiliationExplicit,
+          affiliation: node.affiliation,
+        })
+      );
     }
     return parts.join(" · ");
   }
@@ -562,118 +596,41 @@ export function createNetworkView(siteData, elements) {
 
     const affiliation = node.affiliation || "";
     const profile = profileForNode(node);
-    const links = profile?.links || [];
-
-    const fallbackLinks = [
-      {
-        kind: "linkedin_search",
-        label: "Search LinkedIn",
-        url: linkedInSearchUrl(node.label, affiliation),
-      },
-      {
-        kind: "scholar_search",
-        label: "Search Google Scholar",
-        url: scholarSearchUrl(node.label, affiliation),
-      },
-    ];
-
-    if (HIDE_DIRECT_CONTACTS) {
-      const searchLinks = (links.length ? links : fallbackLinks).filter((link) =>
-        SEARCH_ONLY_LINK_KINDS.has(link.kind)
-      );
-      const displayLinks = searchLinks.length ? searchLinks : fallbackLinks;
-      const linkItems = displayLinks
-        .map(
-          (link) => `
+    const context = authorContextFor(node, profile);
+    const role =
+      context.role || (presenterIndex.has(node.label) ? "presenter" : "co_author");
+    const profileStatus = profileStatusLabel({
+      role,
+      affiliationExplicit: context.affiliationExplicit,
+      hasProfile: Boolean(profile),
+    });
+    const profilePage = profilePageFor(profile);
+    const linkedIn = linkedInLinkFor(node.label, affiliation, profile);
+    const linkItems = [
+      profilePage
+        ? `
           <li>
-            <a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a>
+            <a href="${escapeHtml(profilePage.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(profilePage.label)}</a>
+            <span class="network-contact-link-host">${escapeHtml(profilePageHost(profilePage.url))}</span>
           </li>
         `
-        )
-        .join("");
+        : "",
+      `
+        <li>
+          <a href="${escapeHtml(linkedIn.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(linkedIn.label)}</a>
+        </li>
+      `,
+    ].join("");
 
-      return `
+    return `
       <p class="hover-kicker network-contact-kicker">Connect</p>
+      <p class="network-contact-role">${escapeHtml(authorRoleLabel(role))}</p>
+      <p class="network-contact-status">${escapeHtml(profileStatus)}</p>
       <div class="network-contact-copy-details-wrap">
         ${copyDelegateButtonHtml(node.label, affiliation)}
       </div>
       <ul class="network-contact-links">${linkItems}</ul>
-      <p class="network-contact-footnote">Search links only – direct contact details are temporarily hidden.</p>
-    `;
-    }
-
-    const primary = profile?.primary;
-    const confidence = profile?.confidence || "search";
-    const profilePage = profilePageFor(profile);
-    const showEmail = shouldShowEmailPrimary(profile);
-    const displayPrimary = showEmail ? primary : primary?.type === "email" ? null : primary;
-
-    const displayLinks = links.length ? links : fallbackLinks;
-    const primaryBlock = displayPrimary
-      ? displayPrimary.type === "email"
-        ? renderEmailPrimaryHtml(displayPrimary)
-        : `
-        <a class="network-contact-primary network-contact-${escapeHtml(displayPrimary.type)}" href="${escapeHtml(displayPrimary.url)}" target="_blank" rel="noopener noreferrer">
-          <span class="network-contact-primary-label">${escapeHtml(
-            displayPrimary.type === "institution"
-              ? "University profile"
-              : "Suggested contact"
-          )}</span>
-          <span class="network-contact-primary-value">${escapeHtml(displayPrimary.label)}</span>
-        </a>
-      `
-      : `
-        <p class="network-contact-note">
-          No verified public email found. Try the profile links below.
-        </p>
-      `;
-
-    const profilePageBlock =
-      profilePage && displayPrimary?.url !== profilePage.url
-        ? `
-        <a class="network-contact-profile" href="${escapeHtml(profilePage.url)}" target="_blank" rel="noopener noreferrer">
-          <span class="network-contact-primary-label">${escapeHtml(profilePage.label)}</span>
-          <span class="network-contact-primary-value">${escapeHtml(profilePageHost(profilePage.url))}</span>
-        </a>
-      `
-        : "";
-
-    const profilePageUrls = new Set(
-      [profilePage?.url, profile?.institutional_page].filter(Boolean)
-    );
-
-    const linkItems = displayLinks
-      .filter((link) => {
-        if (displayPrimary && link.url === displayPrimary.url) return false;
-        if (profilePageUrls.has(link.url)) return false;
-        if (link.kind === "website" && profilePage?.kind === "website") return false;
-        return true;
-      })
-      .map(
-        (link) => `
-          <li>
-            <a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a>
-          </li>
-        `
-      )
-      .join("");
-
-    const confidenceNote = profile?.verified
-      ? "Contact details manually verified."
-      : confidence === "search"
-        ? "Links are search-based – please verify before reaching out."
-        : confidence === "low"
-          ? "Profile match is uncertain – please verify before reaching out."
-          : showEmail
-            ? "Email matched from a public institutional profile."
-            : "Profile links only – no verified email is shown automatically.";
-
-    return `
-      <p class="hover-kicker network-contact-kicker">Connect</p>
-      ${primaryBlock}
-      ${profilePageBlock}
-      <ul class="network-contact-links">${linkItems}</ul>
-      <p class="network-contact-footnote">${escapeHtml(confidenceNote)}</p>
+      <p class="network-contact-footnote">Copy speaker details or follow the public profile links below.</p>
     `;
   }
 
@@ -1771,12 +1728,14 @@ export function createNetworkView(siteData, elements) {
   }
   if (elements.card) {
     elements.card.addEventListener("click", (event) => {
-      const copyButton = event.target.closest("[data-copy-email], [data-copy-name]");
+      const copyButton = event.target.closest("[data-copy-name]");
       if (copyButton && elements.cardContacts?.contains(copyButton)) {
         event.preventDefault();
         event.stopPropagation();
-        const text = copyButton.dataset.copyEmail
-          || delegateDetailsText(copyButton.dataset.copyName, copyButton.dataset.copyAffiliation);
+        const text = delegateDetailsText(
+          copyButton.dataset.copyName,
+          copyButton.dataset.copyAffiliation
+        );
         void copyTextToClipboard(text, copyButton);
         return;
       }

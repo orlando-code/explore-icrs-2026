@@ -1,4 +1,6 @@
-data/geocode_cache.json
+# Local-only exports with contact emails (public site uses sanitize_export_profiles.py)
+data/speaker_profiles_private.json
+js/speaker-profiles.private.js
 data/speaker_profiles_cache.json
 data/talk_embeddings.npz
 data/talk_embeddings.meta.json

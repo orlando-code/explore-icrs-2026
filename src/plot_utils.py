@@ -531,6 +531,65 @@ def _author_affiliation_map(
     return mapping
 
 
+def author_profile_entries(
+    df: pd.DataFrame,
+    *,
+    affiliation_col: str = "affiliation",
+    presenter_col: str = "presenter",
+    delegate_affiliations: dict[str, str] | None = None,
+) -> list[tuple[str, str, str, bool]]:
+    """Return profile candidates as (name, affiliation, role, affiliation_explicit).
+
+    Presenters are included only when their presenting talk has an explicit
+    affiliation. Co-authors are included only when the delegate list provides
+    an explicit affiliation.
+    """
+    from src.delegates import normalize_person_name
+
+    delegate_affiliations = delegate_affiliations or _delegate_affiliation_map()
+    presenter_map = _author_affiliation_map(
+        df,
+        affiliation_col=affiliation_col,
+        presenter_col=presenter_col,
+    )
+    talk_counts = author_talk_counts(df, presenter_col=presenter_col)
+
+    entries: dict[str, tuple[str, str, str, bool]] = {}
+    for name, affiliation in presenter_map.items():
+        entries[name] = (name, affiliation, "presenter", True)
+
+    for name in talk_counts:
+        if name in entries:
+            continue
+        norm = normalize_person_name(name)
+        delegate_affiliation = delegate_affiliations.get(norm)
+        if delegate_affiliation:
+            entries[name] = (name, delegate_affiliation, "co_author", True)
+
+    return list(entries.values())
+
+
+def speakers_by_profile_connections(
+    df: pd.DataFrame,
+    *,
+    affiliation_col: str = "affiliation",
+    presenter_col: str = "presenter",
+    delegate_affiliations: dict[str, str] | None = None,
+) -> list[tuple[str, str, str, bool]]:
+    """Profile candidates sorted by talk count (descending)."""
+    entries = author_profile_entries(
+        df,
+        affiliation_col=affiliation_col,
+        presenter_col=presenter_col,
+        delegate_affiliations=delegate_affiliations,
+    )
+    talk_counts = author_talk_counts(df, presenter_col=presenter_col)
+    return sorted(
+        entries,
+        key=lambda item: (-talk_counts.get(item[0], 0), item[0].casefold()),
+    )
+
+
 def _delegate_affiliation_map(
     delegates_path: str | Path = "data/delegates.json",
 ) -> dict[str, str]:
@@ -628,11 +687,13 @@ def _build_network_data(
     from src.delegates import normalize_person_name
 
     delegate_affiliations = delegate_affiliations or {}
-    author_affiliations = _author_affiliation_map(
+    presenter_affiliations = _author_affiliation_map(
         df,
         affiliation_col=affiliation_col,
         presenter_col=presenter_col,
     )
+    author_affiliations = dict(presenter_affiliations)
+    explicit_affiliation = {name: True for name in presenter_affiliations}
     affiliation_coords = _affiliation_coord_index(locations)
 
     individual_talk_count: dict[str, int] = {}
@@ -652,6 +713,7 @@ def _build_network_data(
             individual_talk_count[author] = individual_talk_count.get(author, 0) + 1
             if affiliation_text and author not in author_affiliations:
                 author_affiliations[author] = affiliation_text
+                explicit_affiliation[author] = False
 
         if affiliation_text:
             affiliation_talk_count[affiliation_text] = (
@@ -682,6 +744,7 @@ def _build_network_data(
         norm = normalize_person_name(author)
         if norm in delegate_affiliations:
             author_affiliations[author] = delegate_affiliations[norm]
+            explicit_affiliation[author] = True
 
     individual_nodes = []
     for author, connections in sorted(
@@ -707,6 +770,10 @@ def _build_network_data(
                 "label": author,
                 "kind": "individual",
                 "affiliation": affiliation,
+                "author_role": (
+                    "presenter" if author in presenter_affiliations else "co_author"
+                ),
+                "affiliation_explicit": explicit_affiliation.get(author, False),
                 "connections": connections,
                 "lat": lat,
                 "lon": lon,

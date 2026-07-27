@@ -14,7 +14,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.plot_utils import _author_affiliation_map, author_talk_counts
+from src.plot_utils import author_talk_counts, speakers_by_profile_connections
 from src.programme import load_talks
 from src.speaker_profiles import (
     DEFAULT_BRAVE_BUDGET,
@@ -33,29 +33,34 @@ console = Console()
 
 
 def _profiles_from_cache(
-    speakers: list[tuple[str, str]],
+    speakers: list[tuple[str, str, str, bool]],
     cache_path: str | Path,
 ) -> dict:
     cache = load_profile_cache(cache_path)
-    return {
-        name: cache[_profile_key(name, affiliation)]
-        for name, affiliation in speakers
-        if _profile_key(name, affiliation) in cache
-    }
+    profiles: dict[str, dict] = {}
+    for name, affiliation, role, affiliation_explicit in speakers:
+        key = _profile_key(name, affiliation)
+        if key not in cache:
+            continue
+        profile = dict(cache[key])
+        profile["profile_role"] = role
+        profile["affiliation_explicit"] = affiliation_explicit
+        profiles[name] = profile
+    return profiles
 
 
 def _speakers_by_connections(
-    author_map: dict[str, str],
+    speakers: list[tuple[str, str, str, bool]],
     talk_counts: dict[str, int],
-) -> list[tuple[str, str]]:
+) -> list[tuple[str, str, str, bool]]:
     return sorted(
-        author_map.items(),
+        speakers,
         key=lambda item: (-talk_counts.get(item[0], 0), item[0].casefold()),
     )
 
 
 def _print_smoke_test(
-    speakers: list[tuple[str, str]],
+    speakers: list[tuple[str, str, str, bool]],
     profiles: dict,
     talk_counts: dict[str, int],
     *,
@@ -69,7 +74,7 @@ def _print_smoke_test(
     table.add_column("Primary contact")
     table.add_column("Profile page")
 
-    for index, (name, affiliation) in enumerate(speakers, start=1):
+    for index, (name, affiliation, role, _) in enumerate(speakers, start=1):
         profile = profiles.get(name, {})
         primary = profile.get("primary") or {}
         primary_text = primary.get("label") or primary.get("type") or "–"
@@ -147,9 +152,8 @@ def main() -> None:
     args = parser.parse_args()
 
     talks = load_talks()
-    author_map = _author_affiliation_map(talks)
     talk_counts = author_talk_counts(talks)
-    speakers = _speakers_by_connections(author_map, talk_counts)
+    speakers = speakers_by_profile_connections(talks)
 
     if args.smoke_test is not None:
         args.limit = args.smoke_test
@@ -160,9 +164,11 @@ def main() -> None:
     if args.limit is not None:
         queried_speakers = speakers[: args.limit]
 
+    speaker_pairs = [(name, affiliation) for name, affiliation, _, _ in speakers]
+
     if not args.export_only:
         _, run_stats = build_speaker_profiles(
-            speakers,
+            speaker_pairs,
             cache_path=args.cache,
             show_progress=True,
             limit=args.limit,

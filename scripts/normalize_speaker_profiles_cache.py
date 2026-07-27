@@ -10,6 +10,11 @@ import unicodedata
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.speaker_profiles import normalize_linkedin_links_in_profile
+
 CACHE_PATH = PROJECT_ROOT / "data" / "speaker_profiles_cache.json"
 MIN_EMAIL_SCORE = 0.72
 _TITLE_PREFIX_RE = re.compile(
@@ -169,6 +174,7 @@ def normalize_cache(cache: dict[str, dict]) -> dict[str, int]:
         "syntax_fixes": 0,
         "primary_normalized": 0,
         "links_cleaned": 0,
+        "linkedin_normalized": 0,
         "verified_true": 0,
         "verified_null": 0,
     }
@@ -189,6 +195,9 @@ def normalize_cache(cache: dict[str, dict]) -> dict[str, int]:
         if len(new_links) != len(old_links):
             stats["links_cleaned"] += 1
         profile["links"] = new_links
+
+        if normalize_linkedin_links_in_profile(profile):
+            stats["linkedin_normalized"] += 1
 
         if profile.get("institutional_page") is None:
             profile.pop("institutional_page", None)
