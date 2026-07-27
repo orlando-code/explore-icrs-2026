@@ -1535,6 +1535,17 @@ button:active {
   grid-template-areas: "main";
 }
 
+.layout-share .share-stage {
+  width: 100%;
+  min-height: min(70vh, 52rem);
+}
+
+.layout-share .share-card-unified {
+  max-width: min(56rem, 100%);
+  width: 100%;
+  justify-self: stretch;
+}
+
 .layout-methods .methods-panel {
   grid-column: 1 / -1;
   max-width: 44rem;
@@ -1703,6 +1714,10 @@ button:active {
   width: min(56rem, 100%);
   text-align: left;
   padding: 1.5rem 1.75rem;
+  border-radius: calc(var(--radius) + 4px);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  background: rgba(255, 255, 255, 0.96);
 }
 
 .share-card-grid {
@@ -1742,6 +1757,15 @@ button:active {
   max-width: 22rem;
   width: 100%;
   justify-self: center;
+}
+
+/* Unified More tab card must not inherit the narrow share-card width cap. */
+.share-card.share-card-unified,
+.share-card-unified {
+  max-width: min(56rem, 100%);
+  width: 100%;
+  text-align: left;
+  justify-self: stretch;
 }
 
 .share-contact {
@@ -2171,6 +2195,18 @@ button:active {
 
   .network-card-slot:empty {
     display: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .share-card-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .share-qr-col {
+    max-width: none;
+    justify-self: center;
   }
 }
 
