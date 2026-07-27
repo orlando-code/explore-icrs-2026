@@ -1691,29 +1691,26 @@ button:active {
   touch-action: none;
 }
 
-.share-stage {
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(900px 500px at 50% 20%, rgba(31, 111, 139, 0.12) 0%, transparent 60%),
-    white;
+.share-stage.stage {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
   height: auto;
   min-height: 0;
-  overflow: auto;
-  padding: 1rem;
+  overflow: visible;
+  padding: 0 1.5rem 1.5rem;
+  display: block;
 }
 
-.share-stage-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 1.25rem;
-  align-items: start;
-  width: min(44rem, 100%);
+.share-stage {
+  width: 100%;
 }
 
 .share-card-unified {
   max-width: 44rem;
   width: 100%;
+  margin: 0 auto;
   text-align: left;
   padding: 0;
   border-radius: var(--radius);
@@ -1722,6 +1719,10 @@ button:active {
   background: var(--panel);
   backdrop-filter: blur(10px);
   overflow: hidden;
+}
+
+.share-card-unified .panel-header p {
+  line-height: 1.45;
 }
 
 .share-card-unified .share-card-grid {
@@ -1744,7 +1745,44 @@ button:active {
 
 .share-card-grid > :last-child {
   border-bottom: 0;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.85rem;
+}
+
+.share-card-unified .share-contact {
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.share-card-unified .share-contact h3,
+.share-card-unified .share-title {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 560;
+  line-height: 1.3;
+}
+
+.share-card-unified .hover-kicker {
+  margin: 0 0 0.35rem;
+}
+
+.share-card-unified .welcome-lead {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.share-card-unified .welcome-lead:last-child {
+  margin-bottom: 0;
+}
+
+.share-card-unified .share-contact-email {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 .share-contact-col,
@@ -1760,12 +1798,16 @@ button:active {
   min-width: 0;
   max-width: none;
   justify-self: stretch;
-  padding: 1rem 0 1.1rem;
+  padding: 1rem 0 1.15rem;
 }
 
 .share-qr-col .share-title {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   margin-bottom: 0.75rem;
+}
+
+.share-qr-col .hover-kicker {
+  margin-bottom: 0.35rem;
 }
 
 .share-card {
@@ -1806,8 +1848,9 @@ button:active {
 }
 
 .share-contact .welcome-lead {
-  margin: 0.55rem 0 0;
-  font-size: 0.88rem;
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
 }
 
 .share-contact-email {
@@ -2367,20 +2410,11 @@ button:active {
 
   .share-stage {
     order: -1;
-    padding: 0.75rem 0 1rem;
+    padding: 0 1rem 1.25rem;
   }
 
-  .share-card-unified {
-    padding: 1.1rem 1rem;
-  }
-
-  .share-card-grid {
-    grid-template-columns: 1fr;
-    gap: 1.1rem;
-  }
-
-  .share-qr-col {
-    max-width: none;
+  .share-card-unified .share-card-grid {
+    padding: 0.25rem 1rem 1.25rem;
   }
 
   .share-card {
