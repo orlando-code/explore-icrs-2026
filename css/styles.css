@@ -1537,13 +1537,15 @@ button:active {
 
 .layout-share .share-stage {
   width: 100%;
-  min-height: min(70vh, 52rem);
+  min-height: 0;
+  align-content: start;
 }
 
 .layout-share .share-card-unified {
-  max-width: min(56rem, 100%);
+  max-width: 44rem;
   width: 100%;
-  justify-self: stretch;
+  margin: 0 auto;
+  justify-self: center;
 }
 
 .layout-methods .methods-panel {
@@ -1710,36 +1712,55 @@ button:active {
 }
 
 .share-card-unified {
-  max-width: 56rem;
-  width: min(56rem, 100%);
+  max-width: 44rem;
+  width: 100%;
   text-align: left;
-  padding: 1.5rem 1.75rem;
-  border-radius: calc(var(--radius) + 4px);
+  padding: 0;
+  border-radius: var(--radius);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
-  background: rgba(255, 255, 255, 0.96);
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.share-card-unified .share-card-grid {
+  padding: 0.25rem 1.1rem 1.5rem;
 }
 
 .share-card-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  gap: 1.5rem 1.75rem;
-  align-items: start;
+  grid-template-columns: 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+
+.share-card-grid > section,
+.share-card-grid > aside,
+.share-card-grid > div {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.share-card-grid > :last-child {
+  border-bottom: 0;
+  padding-bottom: 0.5rem;
 }
 
 .share-contact-col,
 .share-about-col {
   border: 0;
   box-shadow: none;
-  padding: 0;
+  padding: 0.85rem 0;
   background: transparent;
 }
 
 .share-qr-col {
   text-align: center;
-  min-width: 11rem;
-  max-width: 14rem;
-  justify-self: center;
+  min-width: 0;
+  max-width: none;
+  justify-self: stretch;
+  padding: 1rem 0 1.1rem;
 }
 
 .share-qr-col .share-title {
@@ -1759,13 +1780,13 @@ button:active {
   justify-self: center;
 }
 
-/* Unified More tab card must not inherit the narrow share-card width cap. */
+/* Unified More tab card matches the Methods panel width. */
 .share-card.share-card-unified,
 .share-card-unified {
-  max-width: min(56rem, 100%);
+  max-width: 44rem;
   width: 100%;
   text-align: left;
-  justify-self: stretch;
+  justify-self: center;
 }
 
 .share-contact {
@@ -2195,18 +2216,6 @@ button:active {
 
   .network-card-slot:empty {
     display: none;
-  }
-}
-
-@media (max-width: 1100px) {
-  .share-card-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .share-qr-col {
-    max-width: none;
-    justify-self: center;
   }
 }
 
