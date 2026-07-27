@@ -7,7 +7,7 @@ import { NON_SPEAKING_DELEGATE_GROUPS } from "./non-speaking-delegates.js";
 import { createMapView } from "./map.js";
 import { createNetworkView } from "./network.js";
 import { createEmissionsView } from "./emissions-view.js";
-import { createShareView } from "./share.js";
+import { createShareView } from "./more.js";
 import { escapeHtml, buildDelegateIndex, applyAffiliationGeocodeOverrides } from "./utils.js";
 
 SITE_DATA.locations = applyAffiliationGeocodeOverrides(SITE_DATA.locations);
