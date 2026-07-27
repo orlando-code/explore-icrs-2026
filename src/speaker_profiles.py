@@ -44,7 +44,10 @@ DEFAULT_KEYS_PATH = Path("keys.yaml")
 DEFAULT_BRAVE_BUDGET = 1000
 SEARCH_DELAY_SECONDS = 0.35
 REQUEST_DELAY_SECONDS = 0.11
-LOOKUP_VERSION = 7
+LOOKUP_VERSION = 8
+MIN_EMAIL_SCORE = 0.72
+MIN_STRUCTURED_EMAIL_SCORE = 0.58
+MIN_WEB_PROFILE_SCORE = 0.85
 
 _BRAVE_API_KEY: str | None = None
 _BRAVE_BUDGET: int | None = DEFAULT_BRAVE_BUDGET
@@ -67,8 +70,27 @@ _JUNK_EMAIL_RE = re.compile(
 )
 _GENERIC_EMAIL_LOCAL_RE = re.compile(
     r"^(?:info|contact|webmaster|admin|press|media|office|enquiries|onlineredaktion|"
-    r"caseadvising|case|help|support|hello|team|news)(?:[._-]|$)",
+    r"caseadvising|case|help|support|hello|team|news|pcn|editorial|partnerships|"
+    r"healthcare_initiative)(?:[._-]|$)",
     re.IGNORECASE,
+)
+_OBVIOUS_JUNK_EMAIL_RE = re.compile(
+    r"(?:%{|\.png|\.jpg|\.gif|\.svg|spokeo|beenverified|sharathyoga|dailygalaxy|"
+    r"faisalman|travelandtourworld|schema\.org)",
+    re.IGNORECASE,
+)
+_FREEMAIL_DOMAINS = frozenset(
+    {
+        "gmail.com",
+        "googlemail.com",
+        "yahoo.com",
+        "hotmail.com",
+        "outlook.com",
+        "aol.com",
+        "icloud.com",
+        "proton.me",
+        "protonmail.com",
+    }
 )
 _JUNK_PROFILE_HOSTS = (
     "researchgate.net",
@@ -148,6 +170,16 @@ _INSTITUTION_REGISTRY: list[tuple[re.Pattern[str], dict[str, Any]]] = [
                 '"{clean_name}" site:uq.edu.au email',
                 "{clean_name} University of Queensland email",
             ],
+            "crawls": [
+                {
+                    "urls": [
+                        "https://about.uq.edu.au/experts/search?q={name_query}",
+                        "https://researchers.uq.edu.au/search?query={name_query}",
+                    ],
+                    "max_pages": 1,
+                    "active_marker": "",
+                },
+            ],
         },
     ),
     (
@@ -155,6 +187,13 @@ _INSTITUTION_REGISTRY: list[tuple[re.Pattern[str], dict[str, Any]]] = [
         {
             "domains": ["aims.gov.au"],
             "profiles": ["https://www.aims.gov.au/about/our-people/{slug_hyphen}"],
+            "crawls": [
+                {
+                    "urls": ["https://www.aims.gov.au/about/our-people"],
+                    "max_pages": 1,
+                    "active_marker": "our-people",
+                },
+            ],
         },
     ),
     (
@@ -260,6 +299,13 @@ _INSTITUTION_REGISTRY: list[tuple[re.Pattern[str], dict[str, Any]]] = [
         {
             "domains": ["vuw.ac.nz", "wgtn.ac.nz"],
             "profiles": ["https://people.wgtn.ac.nz/{slug_dot}"],
+            "crawls": [
+                {
+                    "urls": ["https://people.wgtn.ac.nz/search?q={name_query}"],
+                    "max_pages": 1,
+                    "active_marker": "",
+                },
+            ],
         },
     ),
     (
@@ -560,6 +606,142 @@ def _is_plausible_personal_email(email: str, name: str) -> bool:
 def _filter_personal_emails(emails: list[str], name: str) -> list[str]:
     personal = [email for email in emails if _is_plausible_personal_email(email, name)]
     return personal or emails
+
+
+def _is_obviously_junk_email(email: str) -> bool:
+    if not email or "@" not in email:
+        return True
+    if _OBVIOUS_JUNK_EMAIL_RE.search(email):
+        return True
+    local, _, domain = email.partition("@")
+    if not local or not domain or len(domain) < 4:
+        return True
+    if local in {"email", "name", "user", "username", "address"}:
+        return True
+    return False
+
+
+def _is_generic_role_email(email: str) -> bool:
+    local = email.split("@", 1)[0].lower()
+    return bool(_GENERIC_EMAIL_LOCAL_RE.match(local))
+
+
+def _email_plausibility_score(
+    email: str,
+    name: str,
+    domains: list[str] | None = None,
+    *,
+    structured: bool = False,
+) -> float:
+    if _is_obviously_junk_email(email) or _JUNK_EMAIL_RE.search(email):
+        return 0.0
+    if _is_generic_role_email(email):
+        return 0.0
+
+    local = email.split("@", 1)[0].lower()
+    domain = email.split("@", 1)[1].lower()
+    score = 0.0
+
+    if domains and _email_matches_domains(email, domains):
+        score += 0.38
+    elif domain.endswith((".edu", ".edu.au", ".ac.uk", ".gov.au", ".ac.nz")):
+        score += 0.22
+
+    if _is_plausible_personal_email(email, name):
+        score += 0.42
+    else:
+        parts = [part for part in _name_parts(name) if len(part) > 2]
+        compact_local = re.sub(r"[^a-z]", "", local)
+        if parts:
+            last = parts[-1]
+            if last in compact_local:
+                score += 0.28
+            if len(parts) >= 2 and parts[0][0] in local and last in compact_local:
+                score += 0.2
+
+    if domain in _FREEMAIL_DOMAINS:
+        score -= 0.35
+
+    if structured:
+        score += 0.15
+
+    return max(0.0, min(1.0, score))
+
+
+def _pick_best_email(
+    emails: list[str],
+    name: str,
+    domains: list[str] | None = None,
+    *,
+    structured: bool = False,
+) -> tuple[str | None, float]:
+    threshold = MIN_STRUCTURED_EMAIL_SCORE if structured else MIN_EMAIL_SCORE
+    best_email: str | None = None
+    best_score = 0.0
+    for email in emails:
+        score = _email_plausibility_score(
+            email,
+            name,
+            domains,
+            structured=structured,
+        )
+        if score > best_score:
+            best_score = score
+            best_email = email
+    if best_email and best_score >= threshold:
+        return best_email, best_score
+    return None, best_score
+
+
+def _filter_scored_emails(
+    emails: list[str],
+    name: str,
+    domains: list[str] | None = None,
+    *,
+    structured: bool = False,
+) -> list[str]:
+    kept: list[str] = []
+    for email in emails:
+        if _email_plausibility_score(email, name, domains, structured=structured) > 0:
+            kept.append(email)
+    return kept
+
+
+def _merge_web_profiles(
+    left: dict[str, Any] | None,
+    right: dict[str, Any] | None,
+    *,
+    name: str,
+    email_domains: list[str],
+) -> dict[str, Any] | None:
+    if not left:
+        return right
+    if not right:
+        return left
+
+    left_score = float(left.get("_score") or 0.0)
+    right_score = float(right.get("_score") or 0.0)
+    combined_emails = list(dict.fromkeys((left.get("emails") or []) + (right.get("emails") or [])))
+    structured = bool(left.get("structured") or right.get("structured"))
+    best_email, email_score = _pick_best_email(
+        combined_emails,
+        name,
+        email_domains,
+        structured=structured,
+    )
+    winner = left if left_score >= right_score else right
+    merged = dict(winner)
+    merged["emails"] = [best_email] if best_email else []
+    merged["structured"] = structured
+    merged["email_score"] = email_score
+    merged["_score"] = max(left_score, right_score, email_score)
+    if merged["emails"]:
+        merged["confidence"] = (
+            "high"
+            if structured and email_score >= MIN_EMAIL_SCORE
+            else winner.get("confidence", "medium")
+        )
+    return merged
 
 
 def _filter_emails(emails: list[str], domains: list[str]) -> list[str]:
@@ -1128,9 +1310,9 @@ def _try_urls_for_profile(
     name: str,
     affiliation: str,
     email_domains: list[str],
-    stop_on_email: bool = True,
+    stop_on_email: bool = False,
 ) -> dict[str, Any] | None:
-    """Walk URLs in order (SERP order when from search) like picking Google results."""
+    """Walk URLs and keep the strongest profile candidate instead of first email."""
     best: dict[str, Any] | None = None
     best_score = 0.0
     for index, url in enumerate(urls):
@@ -1145,15 +1327,29 @@ def _try_urls_for_profile(
         )
         if profile:
             profile_score = float(profile.pop("_score", 0.0))
+            profile_emails = profile.get("emails") or []
+            if profile_emails:
+                best_email, email_score = _pick_best_email(
+                    profile_emails,
+                    name,
+                    email_domains,
+                    structured=bool(profile.get("structured")),
+                )
+                profile["emails"] = [best_email] if best_email else []
+                profile["email_score"] = email_score
+                profile_score = max(profile_score, email_score)
             if profile_score > best_score:
                 best_score = profile_score
                 best = profile
-            if stop_on_email and profile.get("emails"):
+            if stop_on_email and profile.get("emails") and profile_score >= MIN_WEB_PROFILE_SCORE:
                 return profile
         for follow_up in follow_ups:
             if follow_up not in urls:
                 urls.append(follow_up)
         time.sleep(REQUEST_DELAY_SECONDS)
+    if best and best.get("emails") and best_score < MIN_STRUCTURED_EMAIL_SCORE:
+        best = dict(best)
+        best["emails"] = []
     return best
 
 
@@ -1168,6 +1364,8 @@ def _contacts_from_fragment(
     def add_email(raw: str) -> None:
         email = unquote(raw).strip().lower()
         if not email or _JUNK_EMAIL_RE.search(email) or email in seen_emails:
+            return
+        if _is_obviously_junk_email(email) or _is_generic_role_email(email):
             return
         seen_emails.add(email)
         emails.append(email)
@@ -1451,19 +1649,40 @@ def _web_profile_from_page(
     contacts: dict[str, Any],
     name_in_page: bool,
     url_score: float = 0.0,
+    structured: bool = False,
+    email_domains: list[str] | None = None,
 ) -> dict[str, Any]:
-    confidence = "high" if contacts.get("emails") and name_in_page else "medium"
-    if not name_in_page and not contacts.get("emails"):
+    structured = structured or bool(contacts.get("structured"))
+    domains = list(email_domains or [])
+    best_email, email_score = _pick_best_email(
+        contacts.get("emails") or [],
+        name,
+        domains,
+        structured=structured,
+    )
+    emails = [best_email] if best_email else []
+    if emails and structured and name_in_page and email_score >= MIN_EMAIL_SCORE:
+        confidence = "high"
+    elif emails and email_score >= MIN_EMAIL_SCORE:
+        confidence = "medium"
+    elif emails:
+        confidence = "low"
+    elif name_in_page:
+        confidence = "medium"
+    else:
         confidence = "low"
     return {
         "page_url": page_url,
         "page_title": name,
-        "emails": contacts.get("emails") or [],
+        "emails": emails,
         "linkedin": contacts.get("linkedin"),
         "confidence": confidence,
+        "structured": structured,
+        "email_score": email_score,
         "_score": url_score
-        + (0.25 if contacts.get("emails") else 0.0)
-        + (0.15 if name_in_page else 0.0),
+        + email_score
+        + (0.15 if structured else 0.0)
+        + (0.1 if name_in_page else 0.0),
     }
 
 
@@ -1506,6 +1725,8 @@ def _crawl_institution_directories(
                         name=name,
                         contacts=contacts,
                         name_in_page=True,
+                        url_score=0.95,
+                        structured=True,
                     )
                 time.sleep(REQUEST_DELAY_SECONDS)
     return None
@@ -1531,7 +1752,16 @@ def _extract_contacts_from_html(
             email_domains=domains,
         )
         if named and named.get("emails"):
-            return named
+            named = dict(named)
+            named["structured"] = True
+            named["emails"] = _filter_scored_emails(
+                named["emails"],
+                name,
+                domains,
+                structured=True,
+            )
+            if named["emails"]:
+                return named
 
         name_parts = [part for part in _name_parts(name) if len(part) > 2]
         page_text = _normalize_text(html)
@@ -1543,7 +1773,9 @@ def _extract_contacts_from_html(
                 if _email_matches_domains(email, domains)
             ]
             if len(inst_emails) == 1:
+                contacts = dict(contacts)
                 contacts["emails"] = inst_emails
+                contacts["structured"] = True
                 return contacts
 
     contacts = _contacts_from_fragment(html, domains)
@@ -1553,7 +1785,14 @@ def _extract_contacts_from_html(
             email
             for email in contacts["emails"]
             if page_domain_l.split("www.")[-1] in email
-        ] or contacts["emails"]
+        ]
+    if name:
+        contacts["emails"] = _filter_scored_emails(
+            contacts.get("emails") or [],
+            name,
+            domains,
+            structured=bool(contacts.get("structured")),
+        )
     return contacts
 
 
@@ -1580,6 +1819,13 @@ def _evaluate_fetched_page(
         or _extract_from_directory_blocks(html, name, email_domains=email_domains)
     ):
         name_in_page = True
+    structured = bool(contacts.get("structured")) or bool(
+        contacts.get("emails")
+        and (
+            "contact-name" in html.lower()
+            or _extract_from_directory_blocks(html, name, email_domains=email_domains)
+        )
+    )
     if not contacts.get("emails"):
         if _is_search_results_page(page_url):
             return None
@@ -1587,7 +1833,14 @@ def _evaluate_fetched_page(
             return None
     else:
         contacts = dict(contacts)
-        contacts["emails"] = _filter_personal_emails(contacts["emails"], name)
+        contacts["structured"] = structured
+        best_email, email_score = _pick_best_email(
+            contacts["emails"],
+            name,
+            email_domains,
+            structured=structured,
+        )
+        contacts["emails"] = [best_email] if best_email else []
         if not contacts["emails"]:
             return None
     return _web_profile_from_page(
@@ -1596,6 +1849,8 @@ def _evaluate_fetched_page(
         contacts=contacts,
         name_in_page=name_in_page,
         url_score=url_score,
+        structured=structured,
+        email_domains=email_domains,
     )
 
 
@@ -1605,77 +1860,88 @@ def _fetch_web_profile(
     affiliation: str,
 ) -> dict[str, Any] | None:
     email_domains = _institution_domains(affiliation)
+    best_profile: dict[str, Any] | None = None
+
+    def consider(candidate: dict[str, Any] | None) -> dict[str, Any] | None:
+        nonlocal best_profile
+        if not candidate:
+            return best_profile
+        candidate = dict(candidate)
+        candidate.pop("_score", None)
+        best_profile = _merge_web_profiles(
+            best_profile,
+            candidate,
+            name=name,
+            email_domains=email_domains,
+        )
+        return best_profile
 
     # 1. Direct profile URL guesses (cheap; often exact staff page).
     direct_urls = _institution_profile_candidates(name, affiliation)
-    profile = _try_urls_for_profile(
-        session,
-        direct_urls,
-        name=name,
-        affiliation=affiliation,
-        email_domains=email_domains,
-        stop_on_email=True,
+    consider(
+        _try_urls_for_profile(
+            session,
+            direct_urls,
+            name=name,
+            affiliation=affiliation,
+            email_domains=email_domains,
+        )
     )
-    if profile and profile.get("emails"):
-        return profile
+    if best_profile and best_profile.get("emails") and best_profile.get("structured"):
+        best_profile.pop("_score", None)
+        return best_profile
 
-    # 2. Google-like SERP: "{name} {institution}" then walk top results in order.
-    serp_urls = _collect_serp_urls(session, name, affiliation)
-    profile = _try_urls_for_profile(
-        session,
-        serp_urls[:SERP_FETCH_LIMIT],
-        name=name,
-        affiliation=affiliation,
-        email_domains=email_domains,
-        stop_on_email=True,
-    )
-    if profile and profile.get("emails"):
-        return profile
+    # 2. Paginated institution directories (AIMS, NSU, UQ search, etc.).
+    consider(_crawl_institution_directories(session, name, affiliation))
+    if best_profile and best_profile.get("emails") and best_profile.get("structured"):
+        best_profile.pop("_score", None)
+        return best_profile
 
-    # 3. Paginated institution directories (e.g. NSU).
-    directory_profile = _crawl_institution_directories(session, name, affiliation)
-    if directory_profile and directory_profile.get("emails"):
-        directory_profile.pop("_score", None)
-        return directory_profile
-
-    # 4. On-site search pages.
+    # 3. On-site search pages.
     fallback_urls: list[str] = []
-    seen: set[str] = set(direct_urls + serp_urls)
+    seen: set[str] = set(direct_urls)
     for url in _institution_search_candidates(name, affiliation):
         if url not in seen:
             seen.add(url)
             fallback_urls.append(url)
-
-    profile = _try_urls_for_profile(
-        session,
-        fallback_urls,
-        name=name,
-        affiliation=affiliation,
-        email_domains=email_domains,
-        stop_on_email=True,
+    consider(
+        _try_urls_for_profile(
+            session,
+            fallback_urls,
+            name=name,
+            affiliation=affiliation,
+            email_domains=email_domains,
+        )
     )
-    if profile and profile.get("emails"):
-        return profile
+
+    # 4. Google-like SERP: "{name} {institution}".
+    serp_urls = _collect_serp_urls(session, name, affiliation)
+    seen.update(serp_urls)
+    consider(
+        _try_urls_for_profile(
+            session,
+            serp_urls[:SERP_FETCH_LIMIT],
+            name=name,
+            affiliation=affiliation,
+            email_domains=email_domains,
+        )
+    )
 
     # 5. Broader SERP (name + lab / profile keywords).
     broad_urls = _collect_serp_urls(session, name, affiliation, broad=True)
-    profile = _try_urls_for_profile(
-        session,
-        [url for url in broad_urls if url not in seen][:SERP_FETCH_LIMIT],
-        name=name,
-        affiliation=affiliation,
-        email_domains=email_domains,
-        stop_on_email=True,
+    consider(
+        _try_urls_for_profile(
+            session,
+            [url for url in broad_urls if url not in seen][:SERP_FETCH_LIMIT],
+            name=name,
+            affiliation=affiliation,
+            email_domains=email_domains,
+        )
     )
-    if profile and profile.get("emails"):
-        return profile
 
-    if profile and profile.get("page_url"):
-        return profile
-    if directory_profile:
-        directory_profile.pop("_score", None)
-        return directory_profile
-    return profile
+    if best_profile:
+        best_profile.pop("_score", None)
+    return best_profile
 
 
 def _openalex_candidates(
@@ -1861,12 +2127,25 @@ def _build_profile_record(
             }
         )
 
+    email_score = 0.0
+    structured = bool(web_profile and web_profile.get("structured"))
     if emails:
-        primary = {
-            "type": "email",
-            "label": emails[0],
-            "url": f"mailto:{emails[0]}",
-        }
+        domains = _institution_domains(affiliation)
+        best_email, email_score = _pick_best_email(
+            emails,
+            name,
+            domains,
+            structured=structured,
+        )
+        if best_email:
+            primary = {
+                "type": "email",
+                "label": best_email,
+                "url": f"mailto:{best_email}",
+            }
+            emails = [best_email]
+        else:
+            emails = []
     elif web_profile and web_profile.get("page_url"):
         primary = {
             "type": "institution",
@@ -1933,7 +2212,14 @@ def _build_profile_record(
     if web_profile and web_profile.get("confidence") in {"high", "medium"}:
         confidence = web_profile["confidence"]
     elif primary and primary.get("type") == "email":
-        confidence = "high"
+        if email_score <= 0.0:
+            email_score = float((web_profile or {}).get("email_score") or 0.0)
+        if structured and email_score >= MIN_EMAIL_SCORE:
+            confidence = "high"
+        elif email_score >= MIN_EMAIL_SCORE:
+            confidence = "medium"
+        else:
+            confidence = "low"
 
     record: dict[str, Any] = {
         "name": name,
@@ -1943,6 +2229,10 @@ def _build_profile_record(
         "links": deduped_links,
         "lookup_version": LOOKUP_VERSION,
     }
+    if structured:
+        record["email_structured"] = True
+    if email_score > 0.0:
+        record["email_score"] = email_score
     if web_profile and web_profile.get("page_url"):
         record["institutional_page"] = web_profile["page_url"]
 
@@ -2028,6 +2318,8 @@ def _is_low_value_profile(profile: dict[str, Any]) -> bool:
 
 
 def _should_refresh_cached(profile: dict[str, Any], *, retry_failed: bool) -> bool:
+    if profile.get("verified"):
+        return False
     if profile.get("lookup_version", 0) < LOOKUP_VERSION:
         return True
     if profile.get("error"):
@@ -2292,6 +2584,10 @@ def build_speaker_profiles(
         key = _profile_key(name, affiliation)
         profile.pop("phones", None)
         with cache_lock:
+            existing = cache.get(key)
+            if existing and existing.get("verified"):
+                profiles_by_name[name] = existing
+                return
             cache[key] = profile
             profiles_by_name[name] = profile
             completed += 1
@@ -2393,10 +2689,68 @@ def build_speaker_profiles(
     return profiles_by_name, stats
 
 
-def _profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
+def _preserve_verified_profile(
+    existing: dict[str, Any],
+    incoming: dict[str, Any],
+) -> dict[str, Any]:
+    preserved = dict(incoming)
+    for field in (
+        "verified",
+        "primary",
+        "confidence",
+        "institutional_page",
+        "profile_page",
+        "profile_page_label",
+        "email_score",
+        "email_structured",
+    ):
+        if field in existing:
+            preserved[field] = existing[field]
+    preserved["verified"] = True
+    return preserved
+
+
+def sanitize_profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
+    """Hide weak or junk auto-scraped emails unless manually verified."""
     cleaned = dict(profile)
     cleaned.pop("phones", None)
+    if cleaned.get("verified"):
+        return cleaned
+
+    primary = cleaned.get("primary") or {}
+    if primary.get("type") != "email":
+        return cleaned
+
+    email = str(primary.get("label") or "")
+    name = str(cleaned.get("name") or "")
+    affiliation = str(cleaned.get("affiliation") or "")
+    domains = _institution_domains(affiliation)
+    structured = bool(cleaned.get("email_structured"))
+    score = float(cleaned.get("email_score") or 0.0)
+    if score <= 0.0:
+        score = _email_plausibility_score(email, name, domains, structured=structured)
+
+    if (
+        _is_obviously_junk_email(email)
+        or _is_generic_role_email(email)
+        or score < MIN_EMAIL_SCORE
+    ):
+        cleaned["primary"] = None
+        if cleaned.get("institutional_page"):
+            cleaned["primary"] = {
+                "type": "institution",
+                "label": "University profile",
+                "url": str(cleaned["institutional_page"]),
+            }
+        elif cleaned.get("confidence") not in {"search", "low"}:
+            cleaned["confidence"] = "search"
+        cleaned.pop("email_score", None)
+        cleaned.pop("email_structured", None)
     return cleaned
+
+
+def _profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
+    return sanitize_profile_for_export(profile)
 
 
 def export_speaker_profiles_js(

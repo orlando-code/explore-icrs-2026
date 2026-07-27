@@ -13,9 +13,19 @@ python scripts/export_speaker_profiles.py --retry-failed
 # Tune concurrency if you hit rate limits (OpenAlex, DuckDuckGo)
 python scripts/export_speaker_profiles.py --retry-failed --workers 4
 
-# Re-export JS from cache only
+# Normalize cache after manual edits (fix JSON, set verified fields)
+python scripts/normalize_speaker_profiles_cache.py
+
+# Re-export JS from cache only (sanitizes weak auto-scraped emails)
+python scripts/sanitize_export_profiles.py
+# or, if your Python env has project deps installed:
 python scripts/export_speaker_profiles.py --export-only
+
+# Mark good manual email fixes as verified (skipped by future lookups)
+python scripts/mark_verified_profiles.py
 ```
+
+Add `"verified": true` to any entry in `data/speaker_profiles_cache.json` to protect manual edits permanently.
 
 ## Offset registration API
 

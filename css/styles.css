@@ -440,6 +440,19 @@ a.btn-small {
   background: rgba(45, 138, 78, 0.08);
 }
 
+.network-contact-copy-details-wrap {
+  margin: 0.35rem 0 0.75rem;
+}
+
+.network-contact-copy-details {
+  width: 100%;
+}
+
+.network-contact-copy-details.copied {
+  border-color: rgba(45, 138, 78, 0.45);
+  background: rgba(45, 138, 78, 0.08);
+}
+
 .network-contact-copy svg {
   width: 1rem;
   height: 1rem;
@@ -1535,6 +1548,23 @@ button:active {
   grid-template-areas: "main";
 }
 
+.layout-share .share-stage {
+  grid-column: 1 / -1;
+  width: 100%;
+  display: block;
+  overflow: auto;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.layout-share .share-panel {
+  max-width: 44rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .layout-methods .methods-panel {
   grid-column: 1 / -1;
   max-width: 44rem;
@@ -1679,133 +1709,78 @@ button:active {
 }
 
 .share-stage {
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(900px 500px at 50% 20%, rgba(31, 111, 139, 0.12) 0%, transparent 60%),
-    white;
   height: auto;
   min-height: 0;
   overflow: auto;
-  padding: 1rem;
 }
 
-.share-stage-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 1.25rem;
-  align-items: start;
-  width: min(44rem, 100%);
-}
-
-.share-card-unified {
-  max-width: 56rem;
-  width: min(56rem, 100%);
-  text-align: left;
-  padding: 1.5rem 1.75rem;
-}
-
-.share-card-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  gap: 1.5rem 1.75rem;
-  align-items: start;
-}
-
-.share-contact-col,
-.share-about-col {
-  border: 0;
-  box-shadow: none;
-  padding: 0;
-  background: transparent;
-}
-
-.share-qr-col {
-  text-align: center;
-  min-width: 11rem;
-  max-width: 14rem;
-  justify-self: center;
-}
-
-.share-qr-col .share-title {
-  font-size: 1.2rem;
-  margin-bottom: 0.75rem;
-}
-
-.share-card {
-  text-align: center;
-  padding: 2rem 2.2rem 1.75rem;
-  border-radius: calc(var(--radius) + 4px);
+.share-panel {
+  background: var(--panel);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-  background: rgba(255, 255, 255, 0.96);
-  max-width: 22rem;
-  width: 100%;
-  justify-self: center;
-}
-
-.share-contact {
-  padding: 1.1rem 1.2rem 1.15rem;
   border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.96);
   box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
-.share-contact h3 {
-  margin: 0.2rem 0 0;
+.share-body {
+  padding: 0.25rem 1.1rem 1.5rem;
+}
+
+.share-section {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.share-section:last-child {
+  border-bottom: 0;
+  padding-bottom: 0.5rem;
+}
+
+.share-section h3 {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 560;
+}
+
+.share-section p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.share-section p + p {
+  margin-top: 0.55rem;
+}
+
+.share-section-qr {
+  text-align: center;
+}
+
+.share-qr-title {
+  margin: 0 0 0.85rem !important;
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 560;
-  line-height: 1.25;
+  color: var(--ink) !important;
 }
 
-.share-contact .welcome-lead {
-  margin: 0.55rem 0 0;
-  font-size: 0.88rem;
-}
-
-.share-contact-email {
-  margin: 0.9rem 0 0;
-  font-size: 0.95rem;
-}
-
-.share-contact-email a {
-  color: var(--sea);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.share-contact-email a:hover {
-  text-decoration: underline;
-}
-
-.share-contact-stage {
-  max-width: 22rem;
-  width: 100%;
-  justify-self: center;
-}
-
-.share-title {
-  margin: 0.2rem 0 1rem;
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 560;
-}
-
-.share-card canvas {
+.share-section canvas {
   display: block;
   margin: 0 auto;
   border-radius: 12px;
   border: 1px solid var(--line);
-  max-width: 100%;
+  max-width: min(280px, 100%);
   height: auto;
 }
 
 .share-url-btn {
   display: block;
   width: 100%;
-  margin: 1rem 0 0;
+  max-width: min(280px, 100%);
+  margin: 1rem auto 0;
   padding: 0;
   border: 0;
   background: none;
@@ -1832,18 +1807,6 @@ button:active {
 
 .share-status[hidden] {
   display: none;
-}
-
-.share-notes {
-  padding: 0.85rem 1.1rem 1.1rem;
-  border-top: 1px solid var(--line);
-  font-size: 0.84rem;
-  color: var(--muted);
-  line-height: 1.45;
-}
-
-.share-notes p {
-  margin: 0;
 }
 
 .btn-small {
@@ -2322,25 +2285,6 @@ button:active {
 
   .share-stage {
     order: -1;
-    padding: 0.75rem 0 1rem;
-  }
-
-  .share-card-unified {
-    padding: 1.1rem 1rem;
-  }
-
-  .share-card-grid {
-    grid-template-columns: 1fr;
-    gap: 1.1rem;
-  }
-
-  .share-qr-col {
-    max-width: none;
-  }
-
-  .share-card {
-    width: min(22rem, 100%);
-    padding: 1.15rem 1rem 1rem;
   }
 }
 

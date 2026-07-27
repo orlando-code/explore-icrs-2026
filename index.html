@@ -545,17 +545,21 @@
       </section>
 
       <section class="stage share-stage" id="share-stage" hidden>
-        <div class="share-card share-card-unified">
-          <div class="share-card-grid">
-            <aside class="share-contact share-contact-col" aria-labelledby="share-contact-title">
-              <p class="hover-kicker">Contact</p>
-              <h3 id="share-contact-title">Orlando Timmerman</h3>
-              <p class="welcome-lead">
+        <div class="share-panel">
+          <div class="panel-header">
+            <h2>More</h2>
+            <p>Contact, share link, and about this tool.</p>
+          </div>
+
+          <div class="share-body">
+            <section class="share-section">
+              <h3>Contact</h3>
+              <p>
                 This is a simple tool and may contain errors. Please contact me at
                 <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a> if you find any issues or have
                 suggestions!
               </p>
-              <p class="welcome-lead">
+              <p>
                 Regarding the emissions – from my hotel room in Auckland it would be incredibly
                 hypocritical of me to say that we shouldn’t fly to conferences. They're invaluable
                 opportunities to learn, collaborate, and share knowledge. But we must carefully
@@ -563,25 +567,23 @@
                 emissions and maximise the effectiveness of the collaborations gained! If this is
                 something you think about a lot, I’d love to hear from you!
               </p>
-              <p class="share-contact-email">
-                <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a>
-              </p>
-            </aside>
-            <div class="share-qr-col">
-              <p class="hover-kicker">Scan to open</p>
-              <h2 class="share-title">ICRS 2026 Explorer</h2>
+            </section>
+
+            <section class="share-section share-section-qr">
+              <h3>Scan to open</h3>
+              <p class="share-qr-title">ICRS 2026 Explorer</p>
               <canvas id="share-qr" width="280" height="280" aria-label="QR code for site URL"></canvas>
               <button type="button" id="share-url" class="share-url-btn" aria-label="Copy site link"></button>
               <p id="share-status" class="status share-status" aria-live="polite" hidden></p>
-            </div>
-            <aside class="share-contact share-about-col" aria-labelledby="share-about-title">
-              <p class="hover-kicker">About the creator</p>
-              <h3 id="share-about-title">Orlando Timmerman</h3>
-              <p class="welcome-lead">
+            </section>
+
+            <section class="share-section">
+              <h3>About the creator</h3>
+              <p>
                 I'm Orlando Timmerman, a PhD student at the University of Cambridge, UK. I believe we
                 can gather, share, and analyse data more effectively – here's just one example!
               </p>
-            </aside>
+            </section>
           </div>
         </div>
       </section>
