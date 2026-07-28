@@ -84,6 +84,8 @@ function fallbackLinksFor(name, affiliation = "") {
       url: scholarSearchUrl(name, affiliation),
     },
   ];
+}
+
 function normalizeProfileLinks(links, name, affiliation = "") {
   const kept = [];
   const seen = new Set();
@@ -271,6 +273,9 @@ function affiliationNote({ role, affiliationExplicit, affiliation }) {
   if (role === "co_author") {
     return `${affiliation} (inferred from a presenting author's talk)`;
   }
+  return `${affiliation} (inferred)`;
+}
+
 function buildAffiliationSearchIndex(locations) {
   const index = new Map();
   for (const location of locations) {
