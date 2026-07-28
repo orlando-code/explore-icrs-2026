@@ -6,6 +6,7 @@ const DEFAULT_NODE_LIMIT = 150;
 const MAX_LINKS_ALL = 6000;
 const DATA_REMOVAL_EMAIL = "rt582@cam.ac.uk";
 let contactTurnstileWidgetId = null;
+let contactTurnstileToken = "";
 const revealedContactEmails = new Map();
 
 function linkEndpointId(endpoint) {
@@ -200,6 +201,7 @@ function resetContactTurnstile() {
     }
   }
   contactTurnstileWidgetId = null;
+  contactTurnstileToken = "";
 }
 
 function mountContactTurnstile() {
@@ -209,7 +211,22 @@ function mountContactTurnstile() {
   contactTurnstileWidgetId = window.turnstile.render(mount, {
     sitekey: TURNSTILE_SITE_KEY,
     action: "turnstile-spin-v2",
+    callback: (token) => {
+      contactTurnstileToken = token;
+    },
+    "expired-callback": () => {
+      contactTurnstileToken = "";
+    },
+    "error-callback": () => {
+      contactTurnstileToken = "";
+    },
   });
+}
+
+function contactTurnstileResponse() {
+  if (contactTurnstileToken) return contactTurnstileToken;
+  if (contactTurnstileWidgetId == null || !window.turnstile?.getResponse) return "";
+  return window.turnstile.getResponse(contactTurnstileWidgetId) || "";
 }
 
 function renderEmailRevealHtml(node, profile) {
@@ -238,15 +255,14 @@ function renderEmailRevealHtml(node, profile) {
         data-contact-name="${escapeHtml(node.label)}"
         data-contact-affiliation="${escapeHtml(node.affiliation || "")}"
       >
-        Show verified email
+        Show email
       </button>
-      <p class="network-contact-footnote network-contact-email-note">Protected by Cloudflare Turnstile. One lookup per check.</p>
     </div>
   `;
 }
 
 async function fetchVerifiedEmail(name, affiliation, button) {
-  const token = window.turnstile?.getResponse?.(contactTurnstileWidgetId) || window.turnstile?.getResponse?.() || "";
+  const token = contactTurnstileResponse();
   if (!token) {
     if (button) button.textContent = "Complete check above";
     return null;
@@ -263,12 +279,14 @@ async function fetchVerifiedEmail(name, affiliation, button) {
     });
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) {
+      contactTurnstileToken = "";
       window.turnstile?.reset?.(contactTurnstileWidgetId);
       if (button) button.textContent = payload.error || "Unavailable";
       return null;
     }
     return typeof payload.email === "string" ? payload.email : null;
   } catch {
+    contactTurnstileToken = "";
     window.turnstile?.reset?.(contactTurnstileWidgetId);
     if (button) button.textContent = "Try again";
     return null;
@@ -1866,7 +1884,7 @@ export function createNetworkView(siteData, elements) {
           showEmailButton.disabled = false;
           if (!email) {
             if (showEmailButton.textContent === "Loading…") {
-              showEmailButton.textContent = "Show verified email";
+              showEmailButton.textContent = "Show email";
             }
             return;
           }

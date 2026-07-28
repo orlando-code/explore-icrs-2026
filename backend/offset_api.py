@@ -180,13 +180,17 @@ def _verify_turnstile(token: str, remote_ip: str) -> bool:
     if not secret or not token:
         return False
 
-    body = urllib.parse.urlencode(
-        {
-            "secret": secret,
-            "response": token,
-            "remoteip": remote_ip,
-        }
-    ).encode("utf-8")
+    fields: dict[str, str] = {
+        "secret": secret,
+        "response": token,
+    }
+    # Only send remoteip when explicitly enabled — a mismatched proxy IP causes
+    # siteverify to reject otherwise valid tokens (common behind Fly.io/CDN).
+    if os.environ.get("TURNSTILE_SEND_REMOTEIP", "").strip().lower() in ("1", "true", "yes"):
+        if remote_ip:
+            fields["remoteip"] = remote_ip
+
+    body = urllib.parse.urlencode(fields).encode("utf-8")
     request = urllib.request.Request(
         TURNSTILE_VERIFY_URL,
         data=body,
