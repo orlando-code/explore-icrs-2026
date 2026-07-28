@@ -7,7 +7,8 @@ Small stdlib-only HTTP service that stores self-reported travel offsets for the 
 | Method | Path | Description |
 |--------|------|-------------|
 | `GET` | `/api/offsets` | `{ registrations: string[], count: number }` |
-| `POST` | `/api/offsets` | Body `{ "id": "offset-…", "name": "…" }` — idempotent |
+| `POST` | `/api/offsets` | Body `{ "id": "offset-…", "name": "…", "cf-turnstile-response": "…" }` — idempotent |
+| `POST` | `/api/contact` | Body `{ "name": "…", "affiliation": "…", "cf-turnstile-response": "…" }` — verified email lookup |
 | `GET` | `/health` | Liveness check |
 
 Attendee ids must match `offset-[0-9a-f]{8}` (same format as the frontend).
@@ -75,6 +76,18 @@ python scripts/import_offset_registrations.py
 
 Reads `data/offset-registrations.json` into the local SQLite database.
 
+## Verified email lookup
+
+Emails are **not** in the static site. Export verified addresses from your local cache, then bake them into the API image:
+
+```bash
+.venv/bin/python scripts/export_contact_api_data.py
+```
+
+This writes `backend/data/contacts.json` (gitignored). Rebuild and redeploy the backend so Fly picks up the new file.
+
+The network tab shows a **Show verified email** button for profiles marked `verified` in the cache. The browser sends a Turnstile token to `POST /api/contact`; the server verifies it with Cloudflare, then returns one email.
+
 ## Environment
 
 | Variable | Default | Purpose |
@@ -82,6 +95,17 @@ Reads `data/offset-registrations.json` into the local SQLite database.
 | `OFFSET_DB_PATH` | `data/offsets.db` | SQLite file path |
 | `ALLOWED_ORIGINS` | GitHub Pages + localhost | Comma-separated CORS origins |
 | `PORT` | `8080` | Listen port (Railway sets this automatically) |
+| `TURNSTILE_SECRET` | *(required for POST)* | Cloudflare Turnstile secret key for `POST /api/offsets` siteverify |
+| `CONTACTS_PATH` | `data/contacts.json` | Verified email store for `POST /api/contact` |
+
+`POST /api/offsets` requires a valid Turnstile token in `cf-turnstile-response` (or `turnstile_token`). The frontend offset registration form includes the widget; set `TURNSTILE_SECRET` on Fly/Railway before deploying.
+
+```bash
+# Fly.io
+fly secrets set TURNSTILE_SECRET=your-secret-here
+
+# Railway: add TURNSTILE_SECRET in service Variables
+```
 
 ## Note on `fly` vs Fly.io
 

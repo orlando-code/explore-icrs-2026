@@ -2,12 +2,15 @@
 data/speaker_profiles_private.json
 js/speaker-profiles.private.js
 data/speaker_profiles_cache.json
+data/speaker_profiles_cache.autobackup.*.json
+data/speaker_profiles_cache_wiped.json
 data/talk_embeddings.npz
 data/talk_embeddings.meta.json
 data/country_centroids.json
 data/travel_emissions_cache.json
 data/reverse_geocode_cache.json
 data/offsets.db
+backend/data/contacts.json
 data/ne_110m_admin_0_countries.zip
 outputs/
 __pycache__/

@@ -366,6 +366,23 @@ a.btn-small {
   display: none !important;
 }
 
+.network-contact-email-gate {
+  margin: 0.65rem 0 0.35rem;
+}
+
+.network-contact-turnstile {
+  margin-bottom: 0.45rem;
+}
+
+.network-contact-email-note {
+  margin-top: 0.35rem;
+  margin-bottom: 0;
+}
+
+.network-contact-show-email {
+  width: 100%;
+}
+
 .network-contact-kicker {
   margin-bottom: 0.45rem;
 }

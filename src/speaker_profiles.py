@@ -109,6 +109,69 @@ _JUNK_PROFILE_HOSTS = (
     "scispace.com",
     "research.com",
     "ssrn.com",
+    "radaris.com",
+    "spokeo.com",
+    "beenverified.com",
+    "truepeoplesearch.com",
+    "whitepages.com",
+    "fastpeoplesearch.com",
+    "intelius.com",
+    "peekyou.com",
+)
+_PUBLIC_JUNK_URL_PATTERNS = (
+    "radaris.com",
+    "spokeo.com",
+    "beenverified.com",
+    "truepeoplesearch.com",
+    "whitepages.com",
+    "fastpeoplesearch.com",
+    "intelius.com",
+    "peekyou.com",
+    "showbizjunkies.com",
+    "greatexpectation.com.au/presenter",
+    "mail-archive.com",
+    "ecoevo.social",
+    "wikipedia.org",
+    "researchgate.net",
+    "peerj.com/",
+    "youtube.com",
+    "youtu.be",
+)
+_UNTRUSTED_PROFILE_URL_RES = (
+    re.compile(r"wikipedia\.org", re.IGNORECASE),
+    re.compile(r"researchgate\.net", re.IGNORECASE),
+    re.compile(r"orcid\.org", re.IGNORECASE),
+    re.compile(r"scholar\.google", re.IGNORECASE),
+    re.compile(r"linkedin\.com/in/", re.IGNORECASE),
+    re.compile(r"youtube\.com|youtu\.be", re.IGNORECASE),
+    re.compile(r"\.pdf(?:\?|#|$)", re.IGNORECASE),
+    re.compile(
+        r"/news/|/newsroom/|article\.php|nature\.com/articles/|/press-releases?/",
+        re.IGNORECASE,
+    ),
+    re.compile(r"peerj\.com/", re.IGNORECASE),
+    re.compile(r"mail-archive|ecoevo\.social|showbizjunkies", re.IGNORECASE),
+    re.compile(r"/publications(?:/|$|\?)", re.IGNORECASE),
+    re.compile(r"/contact-us(?:/|$|\?)", re.IGNORECASE),
+    re.compile(r"fisheries\.noaa\.gov/contact/", re.IGNORECASE),
+    re.compile(
+        r"(?:\.edu|\.gov|\.ac\.[a-z]{2}|\.org)/.*/contact(?:/|$|\?)",
+        re.IGNORECASE,
+    ),
+)
+_DIRECTORY_LISTING_URL_RES = (
+    re.compile(r"/directory/?(?:\?|$)", re.IGNORECASE),
+    re.compile(r"/full-directory", re.IGNORECASE),
+    re.compile(r"our-people/\?(?:[^/]*&)?(?:page|sort)=", re.IGNORECASE),
+    re.compile(r"our-people/?$", re.IGNORECASE),
+    re.compile(r"meet-the-team/?$", re.IGNORECASE),
+    re.compile(r"/team/?$", re.IGNORECASE),
+    re.compile(r"\?page=\d", re.IGNORECASE),
+    re.compile(r"MemberSearchForm", re.IGNORECASE),
+    re.compile(r"/leadership/?$", re.IGNORECASE),
+    re.compile(r"/students/?$", re.IGNORECASE),
+    re.compile(r"phd-students/?$", re.IGNORECASE),
+    re.compile(r"about_us\.php", re.IGNORECASE),
 )
 _PROFILE_PATH_HINTS = (
     "/researchers/",
@@ -2730,6 +2793,134 @@ def _preserve_verified_profile(
     return preserved
 
 
+def _is_public_junk_url(url: str | None) -> bool:
+    if not url:
+        return False
+    lowered = str(url).lower()
+    if any(pattern in lowered for pattern in _PUBLIC_JUNK_URL_PATTERNS):
+        return True
+    return _is_untrusted_profile_url(url)
+
+
+def _is_untrusted_profile_url(url: str | None) -> bool:
+    """Return True when a URL is not a reliable personal/institutional profile page."""
+    if not url:
+        return False
+    text = str(url).strip()
+    if not text:
+        return False
+    if any(pattern in text.lower() for pattern in _PUBLIC_JUNK_URL_PATTERNS):
+        return True
+    if any(regex.search(text) for regex in _UNTRUSTED_PROFILE_URL_RES):
+        return True
+    return any(regex.search(text) for regex in _DIRECTORY_LISTING_URL_RES)
+
+
+def _is_untrusted_primary_email(profile: dict[str, Any]) -> bool:
+    if profile.get("verified") is True:
+        return False
+    primary = profile.get("primary") or {}
+    if primary.get("type") != "email":
+        return False
+    email = str(primary.get("label") or "").strip()
+    if not email or "@" not in email:
+        return True
+    if _is_obviously_junk_email(email) or _is_generic_role_email(email):
+        return True
+    if _JUNK_EMAIL_RE.search(email):
+        return True
+    score = float(profile.get("email_score") or 0.0)
+    if score <= 0.0:
+        affiliation = str(profile.get("affiliation") or "")
+        score = _email_plausibility_score(
+            email,
+            str(profile.get("name") or ""),
+            _institution_domains(affiliation),
+            structured=bool(profile.get("email_structured")),
+        )
+        profile["email_score"] = score
+    return score < MIN_EMAIL_SCORE
+
+
+def conservative_clean_profile(profile: dict[str, Any]) -> dict[str, int]:
+    """Remove untrusted URLs and emails from a profile. Prefer null over bad data."""
+    stats = {
+        "institutional_page_cleared": 0,
+        "profile_page_cleared": 0,
+        "primary_cleared": 0,
+        "links_removed": 0,
+        "verified_skipped": 0,
+    }
+    verified = profile.get("verified") is True
+
+    def _clear_page_field(field: str, *, youtube_only: bool = False) -> None:
+        value = profile.get(field)
+        if not value:
+            return
+        text = str(value)
+        untrusted = _is_untrusted_profile_url(text)
+        if youtube_only and not (
+            "youtube.com" in text.lower() or "youtu.be" in text.lower()
+        ):
+            return
+        if not youtube_only and not untrusted:
+            return
+        profile.pop(field, None)
+        if field == "profile_page":
+            profile.pop("profile_page_label", None)
+        stats[f"{field}_cleared"] += 1
+
+    if verified:
+        stats["verified_skipped"] += 1
+        for field in ("institutional_page", "profile_page"):
+            _clear_page_field(field, youtube_only=True)
+        primary = profile.get("primary") or {}
+        primary_url = str(primary.get("url") or "")
+        if primary_url and (
+            "youtube.com" in primary_url.lower() or "youtu.be" in primary_url.lower()
+        ):
+            profile["primary"] = None
+            stats["primary_cleared"] += 1
+        cleaned_links: list[dict[str, str]] = []
+        for link in profile.get("links") or []:
+            url = str(link.get("url") or "")
+            if url and (
+                "youtube.com" in url.lower() or "youtu.be" in url.lower()
+            ):
+                stats["links_removed"] += 1
+                continue
+            cleaned_links.append(link)
+        profile["links"] = cleaned_links
+        return stats
+
+    for field in ("institutional_page", "profile_page"):
+        _clear_page_field(field)
+
+    primary = profile.get("primary") or {}
+    primary_url = str(primary.get("url") or "")
+    if primary.get("type") == "email" and _is_untrusted_primary_email(profile):
+        profile["primary"] = None
+        stats["primary_cleared"] += 1
+    elif primary_url and _is_untrusted_profile_url(primary_url):
+        profile["primary"] = None
+        stats["primary_cleared"] += 1
+
+    cleaned_links = []
+    for link in profile.get("links") or []:
+        url = str(link.get("url") or "")
+        kind = str(link.get("kind") or "")
+        if kind in {"scholar_search", "linkedin_search", "openalex", "orcid"}:
+            cleaned_links.append(link)
+            continue
+        if url and _is_untrusted_profile_url(url):
+            stats["links_removed"] += 1
+            continue
+        cleaned_links.append(link)
+    profile["links"] = cleaned_links
+
+    return stats
+
+
 _PUBLIC_EXPORT_LINK_KINDS = frozenset(
     {
         "institution",
@@ -2758,13 +2949,16 @@ def public_profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
         "affiliation_explicit",
         "confidence",
         "verified",
-        "institutional_page",
-        "profile_page",
         "profile_page_label",
         "lookup_version",
     ):
         value = working.get(field)
         if value is not None:
+            cleaned[field] = value
+
+    for field in ("institutional_page", "profile_page"):
+        value = working.get(field)
+        if value and not _is_public_junk_url(str(value)):
             cleaned[field] = value
 
     links: list[dict[str, str]] = []
@@ -2775,6 +2969,8 @@ def public_profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
         if kind not in _PUBLIC_EXPORT_LINK_KINDS:
             continue
         if not url or url.startswith("mailto:") or url in seen_urls:
+            continue
+        if _is_public_junk_url(url):
             continue
         seen_urls.add(url)
         links.append(
@@ -2792,13 +2988,19 @@ def public_profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
     cleaned["links"] = links
 
     primary = working.get("primary") or {}
-    if primary.get("type") == "institution" and primary.get("url"):
+    if (
+        primary.get("type") == "institution"
+        and primary.get("url")
+        and not _is_public_junk_url(str(primary["url"]))
+    ):
         cleaned["primary"] = {
             "type": "institution",
             "label": str(primary.get("label") or "University profile"),
             "url": str(primary["url"]),
         }
-    elif working.get("institutional_page"):
+    elif working.get("institutional_page") and not _is_public_junk_url(
+        str(working["institutional_page"])
+    ):
         cleaned["primary"] = {
             "type": "institution",
             "label": "University profile",

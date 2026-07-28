@@ -14,6 +14,16 @@ function normalizeBasePath(value) {
 
 export const SITE_BASE_PATH = normalizeBasePath(metaContent("icrs-base-path"));
 export const OFFSET_API_URL = metaContent("icrs-offset-api");
+export const TURNSTILE_SITE_KEY = metaContent("icrs-turnstile-site-key");
+
+function apiBaseUrl(apiUrl) {
+  if (!apiUrl) return "";
+  return apiUrl.replace(/\/[^/]+\/?$/, "");
+}
+
+export const CONTACT_API_URL =
+  metaContent("icrs-contact-api") ||
+  (OFFSET_API_URL ? `${apiBaseUrl(OFFSET_API_URL)}/contact` : "");
 
 export function canonicalSiteUrl() {
   const configured = metaContent("icrs-canonical-url");

@@ -13,22 +13,75 @@ import re
 import sqlite3
 import threading
 import time
+import urllib.error
+import urllib.parse
+import urllib.request
 from datetime import UTC, datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
 ATTENDEE_ID_RE = re.compile(r"^offset-[0-9a-f]{8}$")
-MAX_BODY_BYTES = 1024
+MAX_BODY_BYTES = 4096
 POST_LIMIT_PER_HOUR = 40
+CONTACT_LIMIT_PER_HOUR = 30
+TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 
 _db_lock = threading.Lock()
 _rate_lock = threading.Lock()
 _post_times: dict[str, list[float]] = {}
+_contact_times: dict[str, list[float]] = {}
 
 
 def _db_path() -> str:
     return os.environ.get("OFFSET_DB_PATH", "data/offsets.db")
+
+
+def _contacts_path() -> str:
+    return os.environ.get("CONTACTS_PATH", "data/contacts.json")
+
+
+def _load_contacts() -> dict[str, str]:
+    path = _contacts_path()
+    if not os.path.isfile(path):
+        return {}
+    try:
+        payload = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    contacts = payload.get("contacts") if isinstance(payload, dict) else payload
+    if not isinstance(contacts, dict):
+        return {}
+    return {
+        str(key): str(email).strip()
+        for key, email in contacts.items()
+        if str(email).strip() and "@" in str(email)
+    }
+
+
+def _profile_key(name: str, affiliation: str = "") -> str:
+    return f"{name.strip()}|{affiliation.strip()}"
+
+
+def _lookup_contact_email(name: str, affiliation: str = "") -> str | None:
+    contacts = _load_contacts()
+    if not contacts:
+        return None
+    clean_name = name.strip()
+    clean_affiliation = affiliation.strip()
+    if not clean_name:
+        return None
+
+    direct = contacts.get(_profile_key(clean_name, clean_affiliation))
+    if direct:
+        return direct
+
+    prefix = f"{clean_name}|"
+    matches = [email for key, email in contacts.items() if key.startswith(prefix)]
+    if len(matches) == 1:
+        return matches[0]
+    return None
 
 
 def _allowed_origins() -> set[str]:
@@ -96,17 +149,58 @@ def _add_registration(attendee_id: str, name: str | None) -> bool:
             conn.close()
 
 
-def _rate_limit_ok(client_ip: str) -> bool:
+def _rate_limit_ok(client_ip: str, *, bucket: str = "offsets", limit: int = POST_LIMIT_PER_HOUR) -> bool:
     now = time.time()
     window_start = now - 3600
+    store = _post_times if bucket == "offsets" else _contact_times
     with _rate_lock:
-        times = [stamp for stamp in _post_times.get(client_ip, []) if stamp >= window_start]
-        if len(times) >= POST_LIMIT_PER_HOUR:
-            _post_times[client_ip] = times
+        times = [stamp for stamp in store.get(client_ip, []) if stamp >= window_start]
+        if len(times) >= limit:
+            store[client_ip] = times
             return False
         times.append(now)
-        _post_times[client_ip] = times
+        store[client_ip] = times
         return True
+
+
+def _turnstile_secret() -> str:
+    return os.environ.get("TURNSTILE_SECRET", "").strip()
+
+
+def _extract_turnstile_token(payload: dict[str, Any]) -> str:
+    for key in ("cf-turnstile-response", "turnstile_token"):
+        value = payload.get(key)
+        if value:
+            return str(value).strip()
+    return ""
+
+
+def _verify_turnstile(token: str, remote_ip: str) -> bool:
+    secret = _turnstile_secret()
+    if not secret or not token:
+        return False
+
+    body = urllib.parse.urlencode(
+        {
+            "secret": secret,
+            "response": token,
+            "remoteip": remote_ip,
+        }
+    ).encode("utf-8")
+    request = urllib.request.Request(
+        TURNSTILE_VERIFY_URL,
+        data=body,
+        method="POST",
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=10) as response:
+            if response.status != 200:
+                return False
+            result = json.loads(response.read().decode("utf-8"))
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, UnicodeDecodeError):
+        return False
+    return result.get("success") is True
 
 
 def _json_response(
@@ -210,24 +304,49 @@ class OffsetHandler(BaseHTTPRequestHandler):
             return
 
         path = urlparse(self.path).path.rstrip("/")
-        if path != "/api/offsets":
-            self.send_response(404)
-            self.end_headers()
+        if path == "/api/offsets":
+            self._post_offset()
+            return
+        if path == "/api/contact":
+            self._post_contact()
             return
 
-        if not _rate_limit_ok(self._client_ip()):
-            _json_response(self, 429, {"error": "Too many registrations. Try again later."})
-            return
+        self.send_response(404)
+        self.end_headers()
 
+    def _read_json_body(self) -> dict[str, Any] | None:
         length = int(self.headers.get("Content-Length", "0"))
         if length <= 0 or length > MAX_BODY_BYTES:
             _json_response(self, 400, {"error": "Invalid request body."})
-            return
-
+            return None
         try:
             payload = json.loads(self.rfile.read(length).decode("utf-8"))
         except (json.JSONDecodeError, UnicodeDecodeError):
             _json_response(self, 400, {"error": "Invalid JSON."})
+            return None
+        if not isinstance(payload, dict):
+            _json_response(self, 400, {"error": "Invalid JSON."})
+            return None
+        return payload
+
+    def _require_turnstile(self, payload: dict[str, Any]) -> bool:
+        if not _turnstile_secret():
+            _json_response(self, 503, {"error": "Verification is not configured."})
+            return False
+        turnstile_token = _extract_turnstile_token(payload)
+        if not _verify_turnstile(turnstile_token, self._client_ip()):
+            _json_response(self, 403, {"error": "Verification failed."})
+            return False
+        return True
+
+    def _post_offset(self) -> None:
+        payload = self._read_json_body()
+        if payload is None:
+            return
+        if not self._require_turnstile(payload):
+            return
+        if not _rate_limit_ok(self._client_ip(), bucket="offsets", limit=POST_LIMIT_PER_HOUR):
+            _json_response(self, 429, {"error": "Too many registrations. Try again later."})
             return
 
         attendee_id = str(payload.get("id", "")).strip()
@@ -250,6 +369,29 @@ class OffsetHandler(BaseHTTPRequestHandler):
             },
         )
 
+    def _post_contact(self) -> None:
+        payload = self._read_json_body()
+        if payload is None:
+            return
+        if not self._require_turnstile(payload):
+            return
+        if not _rate_limit_ok(self._client_ip(), bucket="contact", limit=CONTACT_LIMIT_PER_HOUR):
+            _json_response(self, 429, {"error": "Too many requests. Try again later."})
+            return
+
+        name = str(payload.get("name", "")).strip()
+        affiliation = str(payload.get("affiliation", "")).strip()
+        if not name:
+            _json_response(self, 400, {"error": "Name is required."})
+            return
+
+        email = _lookup_contact_email(name, affiliation)
+        if not email:
+            _json_response(self, 404, {"error": "No verified email available for this person."})
+            return
+
+        _json_response(self, 200, {"ok": True, "email": email})
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -258,9 +400,11 @@ def main() -> None:
     args = parser.parse_args()
 
     _init_db()
+    contacts = _load_contacts()
     server = ThreadingHTTPServer((args.host, args.port), OffsetHandler)
     print(f"Offset API listening on http://{args.host}:{args.port}")
     print(f"Database: {_db_path()}")
+    print(f"Contacts: {_contacts_path()} ({len(contacts)} verified emails)")
     print(f"Allowed origins: {', '.join(sorted(_allowed_origins()))}")
     server.serve_forever()
 

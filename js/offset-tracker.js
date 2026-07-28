@@ -1,6 +1,14 @@
 import { affiliationMapKey, escapeHtml, haversineKm } from "./utils.js";
 import { OFFSET_API_URL } from "./config.js";
 
+function turnstileToken() {
+  return window.turnstile?.getResponse?.() || "";
+}
+
+function resetTurnstile() {
+  window.turnstile?.reset?.();
+}
+
 const STATIC_REGISTRATIONS_URL = "data/offset-registrations.json";
 const POLL_INTERVAL_MS = 5_000;
 const OFFSET_GREEN = "#2d8a4e";
@@ -289,14 +297,27 @@ export function createOffsetTracker({
   }
 
   async function persistRegistration(attendee) {
+    const token = turnstileToken();
+    if (!token) {
+      if (elements.status) {
+        elements.status.textContent = "Please complete the verification check, then try again.";
+      }
+      return false;
+    }
+
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: attendee.id, name: attendee.name }),
+        body: JSON.stringify({
+          id: attendee.id,
+          name: attendee.name,
+          "cf-turnstile-response": token,
+        }),
       });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
+        resetTurnstile();
         registeredIds.delete(attendee.id);
         rebuildOffsetCounts();
         render({ updateMap: true });
@@ -316,8 +337,10 @@ export function createOffsetTracker({
       searchQuery = "";
       selectedAttendeeId = null;
       renderTracker();
+      resetTurnstile();
       return Boolean(payload.created);
     } catch (error) {
+      resetTurnstile();
       if (elements.status) {
         elements.status.textContent = "Registration failed. Please try again.";
       }

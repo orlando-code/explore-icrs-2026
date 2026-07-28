@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
 import sys
 import unicodedata
 from pathlib import Path
@@ -13,7 +14,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.speaker_profiles import normalize_linkedin_links_in_profile
+from src.speaker_profiles import conservative_clean_profile, normalize_linkedin_links_in_profile
 
 CACHE_PATH = PROJECT_ROOT / "data" / "speaker_profiles_cache.json"
 MIN_EMAIL_SCORE = 0.72
@@ -175,11 +176,26 @@ def normalize_cache(cache: dict[str, dict]) -> dict[str, int]:
         "primary_normalized": 0,
         "links_cleaned": 0,
         "linkedin_normalized": 0,
+        "institutional_page_cleared": 0,
+        "profile_page_cleared": 0,
+        "primary_cleared": 0,
+        "links_removed": 0,
+        "verified_skipped": 0,
         "verified_true": 0,
         "verified_null": 0,
     }
 
     for profile in cache.values():
+        clean_stats = conservative_clean_profile(profile)
+        for key in (
+            "institutional_page_cleared",
+            "profile_page_cleared",
+            "primary_cleared",
+            "links_removed",
+            "verified_skipped",
+        ):
+            stats[key] += clean_stats[key]
+
         primary = profile.get("primary")
         was_user_cleared = isinstance(primary, dict) and (
             primary.get("label") is None or primary.get("url") is None
@@ -220,6 +236,14 @@ def main() -> None:
     if fixed != raw:
         print("Fixed missing link-object delimiter in JSON")
     cache = json.loads(fixed)
+
+    stamp = __import__("datetime").datetime.now(__import__("datetime").UTC).strftime(
+        "%Y%m%dT%H%M%SZ"
+    )
+    backup_path = CACHE_PATH.with_name(f"speaker_profiles_cache.autobackup.{stamp}.json")
+    shutil.copy2(CACHE_PATH, backup_path)
+    print(f"Auto-backup: {backup_path}")
+
     stats = normalize_cache(cache)
     CACHE_PATH.write_text(json.dumps(cache, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Wrote {len(cache)} profiles to {CACHE_PATH}")

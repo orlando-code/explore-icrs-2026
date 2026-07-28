@@ -1,9 +1,12 @@
 import { escapeHtml, buildTalkTitleIndex, renderTalkTitlesHtml } from "./utils.js";
 import { createTalkSimilarityLookup, resolveTalkId } from "./talk-similarity.js";
+import { CONTACT_API_URL, TURNSTILE_SITE_KEY } from "./config.js";
 
 const DEFAULT_NODE_LIMIT = 150;
 const MAX_LINKS_ALL = 6000;
 const DATA_REMOVAL_EMAIL = "rt582@cam.ac.uk";
+let contactTurnstileWidgetId = null;
+const revealedContactEmails = new Map();
 
 function linkEndpointId(endpoint) {
   return typeof endpoint === "object" ? endpoint.id : endpoint;
@@ -176,6 +179,100 @@ function linkedInLinkFor(name, affiliation = "", profile = null) {
     label: "Search LinkedIn",
     url: linkedInSearchUrl(name, affiliation),
   };
+}
+
+function copyEmailButtonHtml(email) {
+  return `<button type="button" class="network-contact-copy" data-copy-email="${escapeHtml(email)}" aria-label="Copy email" title="Copy email">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+  </button>`;
+}
+
+function contactRevealKey(name, affiliation = "") {
+  return `${String(name).trim().toLowerCase()}|${String(affiliation).trim().toLowerCase()}`;
+}
+
+function resetContactTurnstile() {
+  if (contactTurnstileWidgetId != null && window.turnstile) {
+    try {
+      window.turnstile.remove(contactTurnstileWidgetId);
+    } catch {
+      /* widget may already be gone */
+    }
+  }
+  contactTurnstileWidgetId = null;
+}
+
+function mountContactTurnstile() {
+  resetContactTurnstile();
+  const mount = document.getElementById("network-contact-turnstile");
+  if (!mount || !TURNSTILE_SITE_KEY || !window.turnstile) return;
+  contactTurnstileWidgetId = window.turnstile.render(mount, {
+    sitekey: TURNSTILE_SITE_KEY,
+    action: "turnstile-spin-v2",
+  });
+}
+
+function renderEmailRevealHtml(node, profile) {
+  if (!CONTACT_API_URL || !profile?.verified) return "";
+
+  const cacheKey = contactRevealKey(node.label, node.affiliation);
+  const cachedEmail = revealedContactEmails.get(cacheKey);
+  if (cachedEmail) {
+    return `
+      <div class="network-contact-primary">
+        <span class="network-contact-primary-label">Email</span>
+        <div class="network-contact-email-row">
+          <span class="network-contact-primary-value network-contact-email-value">${escapeHtml(cachedEmail)}</span>
+          ${copyEmailButtonHtml(cachedEmail)}
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="network-contact-email-gate">
+      <div id="network-contact-turnstile" class="network-contact-turnstile"></div>
+      <button
+        type="button"
+        class="btn-small network-contact-show-email"
+        data-contact-name="${escapeHtml(node.label)}"
+        data-contact-affiliation="${escapeHtml(node.affiliation || "")}"
+      >
+        Show verified email
+      </button>
+      <p class="network-contact-footnote network-contact-email-note">Protected by Cloudflare Turnstile. One lookup per check.</p>
+    </div>
+  `;
+}
+
+async function fetchVerifiedEmail(name, affiliation, button) {
+  const token = window.turnstile?.getResponse?.(contactTurnstileWidgetId) || window.turnstile?.getResponse?.() || "";
+  if (!token) {
+    if (button) button.textContent = "Complete check above";
+    return null;
+  }
+  try {
+    const response = await fetch(CONTACT_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        affiliation,
+        "cf-turnstile-response": token,
+      }),
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      window.turnstile?.reset?.(contactTurnstileWidgetId);
+      if (button) button.textContent = payload.error || "Unavailable";
+      return null;
+    }
+    return typeof payload.email === "string" ? payload.email : null;
+  } catch {
+    window.turnstile?.reset?.(contactTurnstileWidgetId);
+    if (button) button.textContent = "Try again";
+    return null;
+  }
 }
 
 function copyDelegateButtonHtml(name, affiliation) {
@@ -611,6 +708,7 @@ export function createNetworkView(siteData, elements) {
     });
     const profilePage = profilePageFor(profile);
     const linkedIn = linkedInLinkFor(node.label, affiliation, profile);
+    const emailReveal = renderEmailRevealHtml(node, profile);
     const linkItems = [
       profilePage
         ? `
@@ -634,6 +732,7 @@ export function createNetworkView(siteData, elements) {
       <div class="network-contact-copy-details-wrap">
         ${copyDelegateButtonHtml(node.label, affiliation)}
       </div>
+      ${emailReveal}
       <ul class="network-contact-links">${linkItems}</ul>
       <p class="network-contact-footnote">Copy speaker details or follow the public profile links below.</p>
     `;
@@ -641,6 +740,7 @@ export function createNetworkView(siteData, elements) {
 
   function updateNodeContacts(node) {
     if (!elements.cardContacts) return;
+    resetContactTurnstile();
     if (!node) {
       elements.cardContacts.hidden = true;
       elements.cardContacts.innerHTML = "";
@@ -648,6 +748,9 @@ export function createNetworkView(siteData, elements) {
     }
     elements.cardContacts.hidden = false;
     elements.cardContacts.innerHTML = renderContactLinksHtml(node);
+    if (CONTACT_API_URL && profileForNode(node)?.verified) {
+      window.requestAnimationFrame(() => mountContactTurnstile());
+    }
   }
 
   function updateMatches(query) {
@@ -1742,6 +1845,37 @@ export function createNetworkView(siteData, elements) {
           copyButton.dataset.copyAffiliation
         );
         void copyTextToClipboard(text, copyButton);
+        return;
+      }
+      const copyEmailButton = event.target.closest("[data-copy-email]");
+      if (copyEmailButton && elements.cardContacts?.contains(copyEmailButton)) {
+        event.preventDefault();
+        event.stopPropagation();
+        void copyTextToClipboard(copyEmailButton.dataset.copyEmail, copyEmailButton);
+        return;
+      }
+      const showEmailButton = event.target.closest(".network-contact-show-email");
+      if (showEmailButton && elements.cardContacts?.contains(showEmailButton)) {
+        event.preventDefault();
+        event.stopPropagation();
+        const name = showEmailButton.dataset.contactName || "";
+        const affiliation = showEmailButton.dataset.contactAffiliation || "";
+        showEmailButton.disabled = true;
+        showEmailButton.textContent = "Loading…";
+        void fetchVerifiedEmail(name, affiliation, showEmailButton).then((email) => {
+          showEmailButton.disabled = false;
+          if (!email) {
+            if (showEmailButton.textContent === "Loading…") {
+              showEmailButton.textContent = "Show verified email";
+            }
+            return;
+          }
+          revealedContactEmails.set(contactRevealKey(name, affiliation), email);
+          if (selectedNodeId) {
+            const currentNode = graphNodes.find((node) => node.id === selectedNodeId);
+            if (currentNode) updateNodeContacts(currentNode);
+          }
+        });
         return;
       }
       const authorButton = event.target.closest(".network-talk-author-btn[data-node-id]");
