@@ -1936,11 +1936,11 @@ export function createNetworkView(siteData, elements) {
         const name = showEmailButton.dataset.contactName || "";
         const affiliation = showEmailButton.dataset.contactAffiliation || "";
         showEmailButton.disabled = true;
-        showEmailButton.textContent = "Loading…";
+        showEmailButton.textContent = "Verifying humanity...";
         void fetchVerifiedEmail(name, affiliation, showEmailButton).then((email) => {
           showEmailButton.disabled = false;
           if (!email) {
-            if (showEmailButton.textContent === "Loading…") {
+            if (showEmailButton.textContent === "Verifying humanity...") {
               showEmailButton.textContent = "Show email";
             }
             return;
