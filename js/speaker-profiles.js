@@ -5,8 +5,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/david-suggett",
     "lookup_version": 7,
+    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/david-suggett",
     "links": [
       {
         "kind": "institution",
@@ -37,8 +37,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Leeds",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://biologicalsciences.leeds.ac.uk/school-of-biology/staff/24/dr-maria-beger",
     "lookup_version": 7,
+    "institutional_page": "https://biologicalsciences.leeds.ac.uk/school-of-biology/staff/24/dr-maria-beger",
     "links": [
       {
         "kind": "institution",
@@ -69,8 +69,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://msi.upd.edu.ph/faculty/maria-vanessa-baria-rodriguez/",
     "lookup_version": 7,
+    "institutional_page": "https://msi.upd.edu.ph/faculty/maria-vanessa-baria-rodriguez/",
     "links": [
       {
         "kind": "institution",
@@ -101,8 +101,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://coralreefhealthlab.weebly.com/",
     "lookup_version": 7,
+    "institutional_page": "https://coralreefhealthlab.weebly.com/",
     "links": [
       {
         "kind": "institution",
@@ -133,8 +133,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Technology Sydney",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://emmafcamp.com/contact/",
     "lookup_version": 7,
+    "institutional_page": "https://emmafcamp.com/contact/",
     "links": [
       {
         "kind": "institution",
@@ -165,8 +165,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://about.uq.edu.au/experts/2387",
     "lookup_version": 7,
+    "institutional_page": "https://about.uq.edu.au/experts/2387",
     "links": [
       {
         "kind": "institution",
@@ -197,8 +197,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Konstanz",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.biologie.uni-konstanz.de/voolstra/",
     "lookup_version": 7,
+    "institutional_page": "https://www.biologie.uni-konstanz.de/voolstra/",
     "links": [
       {
         "kind": "institution",
@@ -228,8 +228,8 @@ export const SPEAKER_PROFILES = {
     "name": "Erinn Muller",
     "affiliation": "Mote Marine Laboratory",
     "confidence": "high",
-    "institutional_page": "https://mote.org/staff/erinn-muller/",
     "lookup_version": 7,
+    "institutional_page": "https://mote.org/staff/erinn-muller/",
     "links": [
       {
         "kind": "institution",
@@ -260,8 +260,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Miami",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-members/andrew-baker/index.html",
     "lookup_version": 7,
+    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-members/andrew-baker/index.html",
     "links": [
       {
         "kind": "institution",
@@ -292,8 +292,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/23036/cynthia-riginos",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/23036/cynthia-riginos",
     "links": [
       {
         "kind": "institution",
@@ -324,8 +324,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of the Ryukyus",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "http://miseryukyu.com/MISE@University_of_the_Ryukyus/James_Reimer.html",
     "lookup_version": 7,
+    "institutional_page": "http://miseryukyu.com/MISE@University_of_the_Ryukyus/James_Reimer.html",
     "links": [
       {
         "kind": "institution",
@@ -356,8 +356,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.mesophotic.org/members/166",
     "lookup_version": 7,
+    "institutional_page": "https://www.mesophotic.org/members/166",
     "links": [
       {
         "kind": "institution",
@@ -388,8 +388,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Hawai\u02bbi Institute of Marine Biology",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.coralresiliencelab.com/crawford-drury",
     "lookup_version": 7,
+    "institutional_page": "https://www.coralresiliencelab.com/crawford-drury",
     "links": [
       {
         "kind": "institution",
@@ -420,8 +420,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Pattimura",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Gino-Limmon",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Gino-Limmon",
     "links": [
       {
         "kind": "institution",
@@ -452,8 +452,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://hifmb.de/people/iliana-baums/",
     "lookup_version": 7,
+    "institutional_page": "https://hifmb.de/people/iliana-baums/",
     "links": [
       {
         "kind": "institution",
@@ -484,8 +484,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Newcastle University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.ncl.ac.uk/nes/people/profile/jamesguest1.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.ncl.ac.uk/nes/people/profile/jamesguest1.html",
     "links": [
       {
         "kind": "institution",
@@ -516,8 +516,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "http://miguelmies.com.br/",
     "lookup_version": 7,
+    "institutional_page": "http://miguelmies.com.br/",
     "links": [
       {
         "kind": "institution",
@@ -548,8 +548,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Leeds",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://biologicalsciences.leeds.ac.uk/biological-sciences/staff/3615/fiona-chong",
     "lookup_version": 7,
+    "institutional_page": "https://biologicalsciences.leeds.ac.uk/biological-sciences/staff/3615/fiona-chong",
     "links": [
       {
         "kind": "institution",
@@ -580,8 +580,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/michael-berumen",
     "lookup_version": 7,
+    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/michael-berumen",
     "links": [
       {
         "kind": "institution",
@@ -634,8 +634,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Scripps Institution of Oceanography",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://profiles.ucsd.edu/stuart.sandin",
     "lookup_version": 7,
+    "institutional_page": "https://profiles.ucsd.edu/stuart.sandin",
     "links": [
       {
         "kind": "institution",
@@ -666,8 +666,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/3405/liam-lachs",
     "lookup_version": 7,
+    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/3405/liam-lachs",
     "links": [
       {
         "kind": "institution",
@@ -698,8 +698,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Massachusetts - Boston",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.umb.edu/directory/guilhermelongo/",
     "lookup_version": 7,
+    "institutional_page": "https://www.umb.edu/directory/guilhermelongo/",
     "links": [
       {
         "kind": "institution",
@@ -730,8 +730,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Atlantic Oceanographic and Meteorological Laboratory",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.aoml.noaa.gov/people/ian-enochs/",
     "lookup_version": 7,
+    "institutional_page": "https://www.aoml.noaa.gov/people/ian-enochs/",
     "links": [
       {
         "kind": "institution",
@@ -762,8 +762,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Guam",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.uog.edu/directory/raymundo-laurie",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/directory/raymundo-laurie",
     "links": [
       {
         "kind": "institution",
@@ -794,8 +794,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://coralsymbiomics.kaust.edu.sa/contact-us",
     "lookup_version": 7,
+    "institutional_page": "https://coralsymbiomics.kaust.edu.sa/contact-us",
     "links": [
       {
         "kind": "institution",
@@ -826,8 +826,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Boston University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.bu.edu/biology/people/profiles/sarah-w-davies/",
     "lookup_version": 7,
+    "institutional_page": "https://www.bu.edu/biology/people/profiles/sarah-w-davies/",
     "links": [
       {
         "kind": "institution",
@@ -858,8 +858,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nanyang Technological University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://dr.ntu.edu.sg/entities/person/Kyle-Morgan",
     "lookup_version": 7,
+    "institutional_page": "https://dr.ntu.edu.sg/entities/person/Kyle-Morgan",
     "links": [
       {
         "kind": "institution",
@@ -890,8 +890,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-line-bay",
     "lookup_version": 7,
+    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-line-bay",
     "links": [
       {
         "kind": "institution",
@@ -927,8 +927,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Tokyo",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.a.u-tokyo.ac.jp/english/researchers_e/profile_e/?id=prof-yasuda_nina",
     "lookup_version": 7,
+    "institutional_page": "https://www.a.u-tokyo.ac.jp/english/researchers_e/profile_e/?id=prof-yasuda_nina",
     "links": [
       {
         "kind": "institution",
@@ -969,8 +969,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "National University of Singapore",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://sites.google.com/view/emelnus/people/peter-a-todd?authuser=0",
     "lookup_version": 7,
+    "institutional_page": "https://sites.google.com/view/emelnus/people/peter-a-todd?authuser=0",
     "links": [
       {
         "kind": "institution",
@@ -1001,8 +1001,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/susana-carvalho",
     "lookup_version": 7,
+    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/susana-carvalho",
     "links": [
       {
         "kind": "institution",
@@ -1033,8 +1033,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Hong Kong",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.scifac.hku.hk/people/leray-matthieu",
     "lookup_version": 7,
+    "institutional_page": "https://www.scifac.hku.hk/people/leray-matthieu",
     "links": [
       {
         "kind": "institution",
@@ -1065,8 +1065,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of North Carolina - Wilmington",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.uncw.edu/profiles/f/fogartyn",
     "lookup_version": 7,
+    "institutional_page": "https://www.uncw.edu/profiles/f/fogartyn",
     "links": [
       {
         "kind": "institution",
@@ -1097,8 +1097,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Mauritius",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.uom.ac.mu/FOS/index.php/index.php?option=com_content&view=article&id=77&Itemid=484",
     "lookup_version": 7,
+    "institutional_page": "https://www.uom.ac.mu/FOS/index.php/index.php?option=com_content&view=article&id=77&Itemid=484",
     "links": [
       {
         "kind": "institution",
@@ -1129,8 +1129,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Reef Explorer - Fiji",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Victor-Bonito",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Victor-Bonito",
     "links": [
       {
         "kind": "institution",
@@ -1161,8 +1161,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Newcastle University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.adrianahumanes.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.adrianahumanes.com/",
     "links": [
       {
         "kind": "institution",
@@ -1193,8 +1193,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Woods Hole Oceanographic Institution",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www2.whoi.edu/site/amy-apprill/",
     "lookup_version": 7,
+    "institutional_page": "https://www2.whoi.edu/site/amy-apprill/",
     "links": [
       {
         "kind": "institution",
@@ -1225,8 +1225,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "National Coral Reef Institute",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.nova-ncri.org/people/meet-the-team",
     "lookup_version": 7,
+    "institutional_page": "https://www.nova-ncri.org/people/meet-the-team",
     "links": [
       {
         "kind": "institution",
@@ -1279,8 +1279,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Mauritius",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "http://wio-ecsn.wiomsa.org/personnel/deepeeka-kaullysing/",
     "lookup_version": 7,
+    "institutional_page": "http://wio-ecsn.wiomsa.org/personnel/deepeeka-kaullysing/",
     "links": [
       {
         "kind": "institution",
@@ -1311,8 +1311,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Southern Cross University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.scu.edu.au/about/contacts/directory/112497/",
     "lookup_version": 7,
+    "institutional_page": "https://www.scu.edu.au/about/contacts/directory/112497/",
     "links": [
       {
         "kind": "institution",
@@ -1343,8 +1343,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "National Oceanic and Atmospheric Administration",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://oceanservice.noaa.gov/profiles/2021/erica-towle.html",
     "lookup_version": 7,
+    "institutional_page": "https://oceanservice.noaa.gov/profiles/2021/erica-towle.html",
     "links": [
       {
         "kind": "institution",
@@ -1375,8 +1375,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Coral Reef Alliance",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://coral.org/team/dr-helen-fox/",
     "lookup_version": 7,
+    "institutional_page": "https://coral.org/team/dr-helen-fox/",
     "links": [
       {
         "kind": "institution",
@@ -1407,8 +1407,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Texas - Arlington",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.uta.edu/academics/faculty/profile?user=mydlarz",
     "lookup_version": 7,
+    "institutional_page": "https://www.uta.edu/academics/faculty/profile?user=mydlarz",
     "links": [
       {
         "kind": "institution",
@@ -1439,8 +1439,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Melbourne",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://findanexpert.unimelb.edu.au/profile/726007-madeleine-van-oppen",
     "lookup_version": 7,
+    "institutional_page": "https://findanexpert.unimelb.edu.au/profile/726007-madeleine-van-oppen",
     "links": [
       {
         "kind": "institution",
@@ -1471,8 +1471,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-manuel-gonzalez-rivero",
     "lookup_version": 7,
+    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-manuel-gonzalez-rivero",
     "links": [
       {
         "kind": "institution",
@@ -1503,8 +1503,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Sydney",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://profiles.sydney.edu.au/maria.byrne",
     "lookup_version": 7,
+    "institutional_page": "https://profiles.sydney.edu.au/maria.byrne",
     "links": [
       {
         "kind": "institution",
@@ -1535,8 +1535,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Los Angeles",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.ioes.ucla.edu/person/monica-medina/",
     "lookup_version": 7,
+    "institutional_page": "https://www.ioes.ucla.edu/person/monica-medina/",
     "links": [
       {
         "kind": "institution",
@@ -1567,8 +1567,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://portfolio.jcu.edu.au/researchers/morgan.pratchett",
     "lookup_version": 7,
+    "institutional_page": "https://portfolio.jcu.edu.au/researchers/morgan.pratchett",
     "links": [
       {
         "kind": "institution",
@@ -1599,8 +1599,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-neal-cantin",
     "lookup_version": 7,
+    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-neal-cantin",
     "links": [
       {
         "kind": "openalex",
@@ -1636,8 +1636,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Southern Cross University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.scu.edu.au/about/contacts/directory/100916/",
     "lookup_version": 7,
+    "institutional_page": "https://www.scu.edu.au/about/contacts/directory/100916/",
     "links": [
       {
         "kind": "institution",
@@ -1668,8 +1668,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "National Oceanic and Atmospheric Administration",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://coastalscience.noaa.gov/staff/shay-viehman-phd/",
     "lookup_version": 7,
+    "institutional_page": "https://coastalscience.noaa.gov/staff/shay-viehman-phd/",
     "links": [
       {
         "kind": "institution",
@@ -1700,8 +1700,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://about.uq.edu.au/experts/10263",
     "lookup_version": 7,
+    "institutional_page": "https://about.uq.edu.au/experts/10263",
     "links": [
       {
         "kind": "institution",
@@ -1732,8 +1732,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Florida International University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://case.fiu.edu/about/directory/profiles/duran-alain.html",
     "lookup_version": 7,
+    "institutional_page": "https://case.fiu.edu/about/directory/profiles/duran-alain.html",
     "links": [
       {
         "kind": "institution",
@@ -1764,8 +1764,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Florida International University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://discovery.fiu.edu/display/person-harbornealastair",
     "lookup_version": 7,
+    "institutional_page": "https://discovery.fiu.edu/display/person-harbornealastair",
     "links": [
       {
         "kind": "institution",
@@ -1796,8 +1796,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "The Nature Conservancy",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://peerj.com/AldoCroquer/",
     "lookup_version": 7,
+    "institutional_page": "https://peerj.com/AldoCroquer/",
     "links": [
       {
         "kind": "institution",
@@ -1828,8 +1828,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Rosenstiel School of Marine, Atmospheric and Earth Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-members/carly-dennison/index.html",
     "lookup_version": 7,
+    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-members/carly-dennison/index.html",
     "links": [
       {
         "kind": "institution",
@@ -1860,8 +1860,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Newcastle University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.ncl.ac.uk/nes/people/profile/chanceymacdonald.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.ncl.ac.uk/nes/people/profile/chanceymacdonald.html",
     "links": [
       {
         "kind": "institution",
@@ -1892,8 +1892,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "CSS-INC., Under Contract to NOAA-NCCOS",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://sandinlab.ucsd.edu/staff-members/clinton-edwards/",
     "lookup_version": 7,
+    "institutional_page": "https://sandinlab.ucsd.edu/staff-members/clinton-edwards/",
     "links": [
       {
         "kind": "institution",
@@ -1924,8 +1924,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Coral Reef Watch",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.star.nesdis.noaa.gov/star/Manzello_D.php",
     "lookup_version": 7,
+    "institutional_page": "https://www.star.nesdis.noaa.gov/star/Manzello_D.php",
     "links": [
       {
         "kind": "institution",
@@ -1956,8 +1956,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University Of The Ryukyus",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://researchmap.jp/fredsinniger?lang=en",
     "lookup_version": 7,
+    "institutional_page": "https://researchmap.jp/fredsinniger?lang=en",
     "links": [
       {
         "kind": "institution",
@@ -1988,8 +1988,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Rhode Island",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://web.uri.edu/bio/meet/hollie-putnam/",
     "lookup_version": 7,
+    "institutional_page": "https://web.uri.edu/bio/meet/hollie-putnam/",
     "links": [
       {
         "kind": "institution",
@@ -2020,8 +2020,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "CRIOBE",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.criobe.pf/laboratoire/membres-page-personnel/?smid=3274",
     "lookup_version": 7,
+    "institutional_page": "https://www.criobe.pf/laboratoire/membres-page-personnel/?smid=3274",
     "links": [
       {
         "kind": "institution",
@@ -2052,8 +2052,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Scripps Institution of Oceanography",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://profiles.ucsd.edu/nicole.pedersen",
     "lookup_version": 7,
+    "institutional_page": "https://profiles.ucsd.edu/nicole.pedersen",
     "links": [
       {
         "kind": "institution",
@@ -2084,8 +2084,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of the Ryukyus",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://researchmap.jp/read0069717?lang=en",
     "lookup_version": 7,
+    "institutional_page": "https://researchmap.jp/read0069717?lang=en",
     "links": [
       {
         "kind": "institution",
@@ -2116,8 +2116,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Smithsonian Tropical Research Institute",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://striresearch.si.edu/connolly-lab/lab-member/sean-connolly/",
     "lookup_version": 7,
+    "institutional_page": "https://striresearch.si.edu/connolly-lab/lab-member/sean-connolly/",
     "links": [
       {
         "kind": "institution",
@@ -2158,8 +2158,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Mauritius",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.wiomsa.org/personnel/shakeel-yavan-jogee/",
     "lookup_version": 7,
+    "institutional_page": "https://www.wiomsa.org/personnel/shakeel-yavan-jogee/",
     "links": [
       {
         "kind": "institution",
@@ -2190,8 +2190,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Chinese University of Hong Kong",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://shelbymcilroy.com/bio/",
     "lookup_version": 7,
+    "institutional_page": "https://shelbymcilroy.com/bio/",
     "links": [
       {
         "kind": "institution",
@@ -2222,8 +2222,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Milano-Bicocca",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.disat.unimib.it/en/study/phd-marine-sciences-technologies-and-management/phd-students",
     "lookup_version": 7,
+    "institutional_page": "https://www.disat.unimib.it/en/study/phd-marine-sciences-technologies-and-management/phd-students",
     "links": [
       {
         "kind": "institution",
@@ -2254,8 +2254,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "The Nature Conservancy - Micronesia & Polynesia",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.nature.org/en-us/about-us/who-we-are/our-people/yimnang-golbuu/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/who-we-are/our-people/yimnang-golbuu/",
     "links": [
       {
         "kind": "institution",
@@ -2286,8 +2286,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nova Southeastern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://hcas.nova.edu/research/labs/scieractian-coral-biology.html",
     "lookup_version": 7,
+    "institutional_page": "https://hcas.nova.edu/research/labs/scieractian-coral-biology.html",
     "links": [
       {
         "kind": "institution",
@@ -2318,8 +2318,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://biology.science.upd.edu.ph/profile-ambrocio-melvin-a-matias/",
     "lookup_version": 7,
+    "institutional_page": "https://biology.science.upd.edu.ph/profile-ambrocio-melvin-a-matias/",
     "links": [
       {
         "kind": "institution",
@@ -2350,8 +2350,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Boston University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://sites.bu.edu/davieslab/members/",
     "lookup_version": 7,
+    "institutional_page": "https://sites.bu.edu/davieslab/members/",
     "links": [
       {
         "kind": "institution",
@@ -2382,8 +2382,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/8972/chris-roelfsema",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/8972/chris-roelfsema",
     "links": [
       {
         "kind": "institution",
@@ -2414,8 +2414,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Old Dominion University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.odu.edu/directory/dan-barshis",
     "lookup_version": 7,
+    "institutional_page": "https://www.odu.edu/directory/dan-barshis",
     "links": [
       {
         "kind": "institution",
@@ -2446,8 +2446,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Global Discovery and Conservation Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://search.asu.edu/profile/3398779",
     "lookup_version": 7,
+    "institutional_page": "https://search.asu.edu/profile/3398779",
     "links": [
       {
         "kind": "institution",
@@ -2478,8 +2478,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://marinemicrobiomeslab.kaust.edu.sa/publications",
     "lookup_version": 7,
+    "institutional_page": "https://marinemicrobiomeslab.kaust.edu.sa/publications",
     "links": [
       {
         "kind": "institution",
@@ -2542,8 +2542,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nova Southeastern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://scholars.nova.edu/en/persons/joana-figueiredo/",
     "lookup_version": 7,
+    "institutional_page": "https://scholars.nova.edu/en/persons/joana-figueiredo/",
     "links": [
       {
         "kind": "institution",
@@ -2574,8 +2574,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "The Florida Aquarium",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.flaquarium.org/conservation/leaders-in-conservation/meet-the-experts/keri-oneil/",
     "lookup_version": 7,
+    "institutional_page": "https://www.flaquarium.org/conservation/leaders-in-conservation/meet-the-experts/keri-oneil/",
     "links": [
       {
         "kind": "institution",
@@ -2606,8 +2606,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.laurenolinger.org/",
     "lookup_version": 7,
+    "institutional_page": "https://www.laurenolinger.org/",
     "links": [
       {
         "kind": "institution",
@@ -2638,8 +2638,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Ramkhamhaeng University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Makamas-Sutthacheep",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Makamas-Sutthacheep",
     "links": [
       {
         "kind": "institution",
@@ -2670,8 +2670,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Southeast Fisheries Science Center",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.fisheries.noaa.gov/contact/mark-ladd-phd",
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheries.noaa.gov/contact/mark-ladd-phd",
     "links": [
       {
         "kind": "institution",
@@ -2702,8 +2702,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-mike-emslie",
     "lookup_version": 7,
+    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-mike-emslie",
     "links": [
       {
         "kind": "institution",
@@ -2734,8 +2734,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-muhammad-azmi-abdul-wahab",
     "lookup_version": 7,
+    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-muhammad-azmi-abdul-wahab",
     "links": [
       {
         "kind": "institution",
@@ -2771,8 +2771,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Bar-Ilan University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://life-sciences.biu.ac.il/en/node/706",
     "lookup_version": 7,
+    "institutional_page": "https://life-sciences.biu.ac.il/en/node/706",
     "links": [
       {
         "kind": "institution",
@@ -2802,13 +2802,14 @@ export const SPEAKER_PROFILES = {
     "name": "Thamasak Yeemin",
     "affiliation": "Ramkhamhaeng University",
     "confidence": "medium",
-    "institutional_page": "https://www.biodconference.org/wp-content/uploads/2025/11/%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B9%80%E0%B8%A5%E0%B9%88%E0%B8%A1-abstract-IBD2025-final-edit.pdf",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "http://www.bio.sci.ru.ac.th/index.php/2018-08-11-06-45-38/instructor?layout=edit&id=14",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://www.biodconference.org/wp-content/uploads/2025/11/%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B9%80%E0%B8%A5%E0%B9%88%E0%B8%A1-abstract-IBD2025-final-edit.pdf"
+        "url": "http://www.bio.sci.ru.ac.th/index.php/2018-08-11-06-45-38/instructor?layout=edit&id=14"
       },
       {
         "kind": "scholar_search",
@@ -2824,7 +2825,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://www.biodconference.org/wp-content/uploads/2025/11/%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B9%80%E0%B8%A5%E0%B9%88%E0%B8%A1-abstract-IBD2025-final-edit.pdf"
+      "url": "http://www.bio.sci.ru.ac.th/index.php/2018-08-11-06-45-38/instructor?layout=edit&id=14"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
@@ -2833,13 +2834,14 @@ export const SPEAKER_PROFILES = {
     "name": "Thomas Oliver",
     "affiliation": "National Oceanic and Atmospheric Administration",
     "confidence": "high",
-    "institutional_page": "https://deeply.thenewhumanitarian.org/oceans/community/2017/08/15/three-scientists-bear-witness-to-the-ruin-and-hope-of-coral-reefs",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheries.noaa.gov/contact/thomas-oliver-phd",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://deeply.thenewhumanitarian.org/oceans/community/2017/08/15/three-scientists-bear-witness-to-the-ruin-and-hope-of-coral-reefs"
+        "url": "https://www.fisheries.noaa.gov/contact/thomas-oliver-phd"
       },
       {
         "kind": "scholar_search",
@@ -2855,7 +2857,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://deeply.thenewhumanitarian.org/oceans/community/2017/08/15/three-scientists-bear-witness-to-the-ruin-and-hope-of-coral-reefs"
+      "url": "https://www.fisheries.noaa.gov/contact/thomas-oliver-phd"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
@@ -2864,8 +2866,9 @@ export const SPEAKER_PROFILES = {
     "name": "Verena Schoepf",
     "affiliation": "University of Amsterdam",
     "confidence": "high",
-    "institutional_page": "https://www.uva.nl/en/profile/s/c/v.schoepf/v.schoepf.html",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "https://www.uva.nl/en/profile/s/c/v.schoepf/v.schoepf.html",
     "links": [
       {
         "kind": "institution",
@@ -2896,8 +2899,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Sydney",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.coralassistlab.com/william-figueira",
     "lookup_version": 7,
+    "institutional_page": "https://www.coralassistlab.com/william-figueira",
     "links": [
       {
         "kind": "institution",
@@ -2927,8 +2930,9 @@ export const SPEAKER_PROFILES = {
     "name": "Alex Wyatt",
     "affiliation": "Hong Kong University of Science and Techonology",
     "confidence": "high",
-    "institutional_page": "https://facultyprofiles.hkust.edu.hk/profiles.php?profile=alex-wyatt-wyatt",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "https://facultyprofiles.hkust.edu.hk/profiles.php?profile=alex-wyatt-wyatt",
     "links": [
       {
         "kind": "institution",
@@ -2958,13 +2962,14 @@ export const SPEAKER_PROFILES = {
     "name": "Amanda Ford",
     "affiliation": "University of the South Pacific",
     "confidence": "high",
-    "institutional_page": "https://www.beenverified.com/people/amanda-ford/",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "https://www.usp.ac.fj/discipline-of-marine-studies/staff-profiles/dr-amanda-ford/",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://www.beenverified.com/people/amanda-ford/"
+        "url": "https://www.usp.ac.fj/discipline-of-marine-studies/staff-profiles/dr-amanda-ford/"
       },
       {
         "kind": "scholar_search",
@@ -2980,7 +2985,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://www.beenverified.com/people/amanda-ford/"
+      "url": "https://www.usp.ac.fj/discipline-of-marine-studies/staff-profiles/dr-amanda-ford/"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
@@ -2989,13 +2994,14 @@ export const SPEAKER_PROFILES = {
     "name": "Ana Palacio-castro",
     "affiliation": "University of Miami",
     "confidence": "medium",
-    "institutional_page": "https://www.aoml.noaa.gov/ocd/people/palacio/CV_2023_Palacio.pdf",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "https://anampc.github.io/",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://www.aoml.noaa.gov/ocd/people/palacio/CV_2023_Palacio.pdf"
+        "url": "https://anampc.github.io/"
       },
       {
         "kind": "scholar_search",
@@ -3011,7 +3017,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://www.aoml.noaa.gov/ocd/people/palacio/CV_2023_Palacio.pdf"
+      "url": "https://anampc.github.io/"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
@@ -3021,8 +3027,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Guam",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.uog.edu/directory/bentlage-bastian",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/directory/bentlage-bastian",
     "links": [
       {
         "kind": "institution",
@@ -3052,8 +3058,9 @@ export const SPEAKER_PROFILES = {
     "name": "Blake Spady",
     "affiliation": "Coral Reef Watch",
     "confidence": "high",
-    "institutional_page": "https://coralreefwatch.noaa.gov/about_us.php",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "https://coralreefwatch.noaa.gov/about_us.php",
     "links": [
       {
         "kind": "institution",
@@ -3084,8 +3091,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Sydney",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.coralassistlab.com/brigitte-sommer",
     "lookup_version": 7,
+    "institutional_page": "https://www.coralassistlab.com/brigitte-sommer",
     "links": [
       {
         "kind": "institution",
@@ -3115,8 +3122,8 @@ export const SPEAKER_PROFILES = {
     "name": "Charernmee Chamchoy",
     "affiliation": "Ramkhamhaeng University",
     "confidence": "medium",
-    "institutional_page": "https://ph02.tci-thaijo.org/index.php/RIST",
     "lookup_version": 7,
+    "institutional_page": "https://ph02.tci-thaijo.org/index.php/RIST",
     "links": [
       {
         "kind": "institution",
@@ -3146,8 +3153,8 @@ export const SPEAKER_PROFILES = {
     "name": "Christopher Doropoulos",
     "affiliation": "Commonwealth Scientific and Industrial Research Organisation",
     "confidence": "high",
-    "institutional_page": "https://cordap.org/dipl-team-member/reefseed-a-portable-aquaculture-system/",
     "lookup_version": 7,
+    "institutional_page": "https://cordap.org/dipl-team-member/reefseed-a-portable-aquaculture-system/",
     "links": [
       {
         "kind": "institution",
@@ -3177,8 +3184,8 @@ export const SPEAKER_PROFILES = {
     "name": "David Baker",
     "affiliation": "University of Hong Kong",
     "confidence": "high",
-    "institutional_page": "https://www.thelifeisotopic.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.thelifeisotopic.com/",
     "links": [
       {
         "kind": "institution",
@@ -3239,8 +3246,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jason Spadaro",
     "affiliation": "Mote Marine Laboratory",
     "confidence": "high",
-    "institutional_page": "https://mote.org/staff/dr-jason-spadaro/",
     "lookup_version": 7,
+    "institutional_page": "https://mote.org/staff/dr-jason-spadaro/",
     "links": [
       {
         "kind": "institution",
@@ -3270,13 +3277,13 @@ export const SPEAKER_PROFILES = {
     "name": "Jen Matthews",
     "affiliation": "University of Technology Sydney",
     "confidence": "high",
-    "institutional_page": "https://radaris.com/p/Jen/Matthews/",
     "lookup_version": 7,
+    "institutional_page": "https://profiles.uts.edu.au/Jennifer.Matthews",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://radaris.com/p/Jen/Matthews/"
+        "url": "https://profiles.uts.edu.au/Jennifer.Matthews"
       },
       {
         "kind": "scholar_search",
@@ -3292,7 +3299,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://radaris.com/p/Jen/Matthews/"
+      "url": "https://profiles.uts.edu.au/Jennifer.Matthews"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
@@ -3302,8 +3309,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Florida Atlantic University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.fau.edu/hboi/about/leadership/",
     "lookup_version": 7,
+    "institutional_page": "https://www.fau.edu/hboi/about/leadership/",
     "links": [
       {
         "kind": "institution",
@@ -3333,8 +3340,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kate Quigley",
     "affiliation": "Minderoo Foundation",
     "confidence": "high",
-    "institutional_page": "https://www.timeshighereducation.com/people/interview-kate-quigley",
     "lookup_version": 7,
+    "institutional_page": "https://www.timeshighereducation.com/people/interview-kate-quigley",
     "links": [
       {
         "kind": "institution",
@@ -3365,8 +3372,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Texas - Austin",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://experts.utexas.edu/mikhail_matz",
     "lookup_version": 7,
+    "institutional_page": "https://experts.utexas.edu/mikhail_matz",
     "links": [
       {
         "kind": "institution",
@@ -3397,8 +3404,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://mcr.lternet.edu/people/nyssa-silbiger",
     "lookup_version": 7,
+    "institutional_page": "https://mcr.lternet.edu/people/nyssa-silbiger",
     "links": [
       {
         "kind": "institution",
@@ -3429,8 +3436,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://portfolio.jcu.edu.au/researchers/scott.heron",
     "lookup_version": 7,
+    "institutional_page": "https://portfolio.jcu.edu.au/researchers/scott.heron",
     "links": [
       {
         "kind": "institution",
@@ -3460,8 +3467,8 @@ export const SPEAKER_PROFILES = {
     "name": "Serge Planes",
     "affiliation": "CNRS",
     "confidence": "high",
-    "institutional_page": "https://www.ephe.psl.eu/serge-planes",
     "lookup_version": 7,
+    "institutional_page": "https://www.ephe.psl.eu/serge-planes",
     "links": [
       {
         "kind": "institution",
@@ -3491,8 +3498,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sruti Jeetun",
     "affiliation": "Reef Conservation",
     "confidence": "high",
-    "institutional_page": "https://coralreefs.org/awards-honors-fellowships/recipients/",
     "lookup_version": 7,
+    "institutional_page": "https://coralreefs.org/awards-honors-fellowships/recipients/",
     "links": [
       {
         "kind": "institution",
@@ -3522,13 +3529,14 @@ export const SPEAKER_PROFILES = {
     "name": "Taihun Kim",
     "affiliation": "KIOST",
     "confidence": "high",
-    "institutional_page": "https://radaris.com/p/Alan/Kin/",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "https://pure.kaist.ac.kr/en/persons/tae-hyun-kim/",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://radaris.com/p/Alan/Kin/"
+        "url": "https://pure.kaist.ac.kr/en/persons/tae-hyun-kim/"
       },
       {
         "kind": "scholar_search",
@@ -3544,7 +3552,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://radaris.com/p/Alan/Kin/"
+      "url": "https://pure.kaist.ac.kr/en/persons/tae-hyun-kim/"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
@@ -3554,8 +3562,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of New South Wales - Sydney",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://research.unsw.edu.au/people/associate-professor-tracy-ainsworth",
     "lookup_version": 7,
+    "institutional_page": "https://research.unsw.edu.au/people/associate-professor-tracy-ainsworth",
     "links": [
       {
         "kind": "institution",
@@ -3585,8 +3593,8 @@ export const SPEAKER_PROFILES = {
     "name": "Valerie Paul",
     "affiliation": "Smithsonian Institution",
     "confidence": "high",
-    "institutional_page": "https://global.si.edu/people/valerie-paul",
     "lookup_version": 7,
+    "institutional_page": "https://global.si.edu/people/valerie-paul",
     "links": [
       {
         "kind": "institution",
@@ -3617,8 +3625,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Edith Cowan University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.ecu.edu.au/schools/science/staff/profiles/research-staff/vice-chancellors-research-fellow/dr-alexandre-siqueira",
     "lookup_version": 7,
+    "institutional_page": "https://www.ecu.edu.au/schools/science/staff/profiles/research-staff/vice-chancellors-research-fellow/dr-alexandre-siqueira",
     "links": [
       {
         "kind": "institution",
@@ -3649,8 +3657,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Wildlife Conservation Society",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://about.uq.edu.au/experts/16349",
     "lookup_version": 7,
+    "institutional_page": "https://about.uq.edu.au/experts/16349",
     "links": [
       {
         "kind": "institution",
@@ -3680,8 +3688,8 @@ export const SPEAKER_PROFILES = {
     "name": "Andrea Grottoli",
     "affiliation": "Ohio State University",
     "confidence": "high",
-    "institutional_page": "https://earthsciences.osu.edu/people/grottoli.1",
     "lookup_version": 7,
+    "institutional_page": "https://earthsciences.osu.edu/people/grottoli.1",
     "links": [
       {
         "kind": "institution",
@@ -3711,8 +3719,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ashley Rossin",
     "affiliation": "Cooperative Institute for Marine and Atmospheric Studies",
     "confidence": "high",
-    "institutional_page": "https://www.nature.com/articles/s41598-026-56396-7",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.com/articles/s41598-026-56396-7",
     "links": [
       {
         "kind": "institution",
@@ -3743,8 +3751,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Newcastle",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.newcastle.edu.au/profile/bill-leggat",
     "lookup_version": 7,
+    "institutional_page": "https://www.newcastle.edu.au/profile/bill-leggat",
     "links": [
       {
         "kind": "institution",
@@ -3775,8 +3783,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of North Carolina - Wilmington",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.ushijima-lab.com/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.ushijima-lab.com/people",
     "links": [
       {
         "kind": "institution",
@@ -3807,8 +3815,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Maryland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.umces.edu/directory/carys-mitchelmore/",
     "lookup_version": 7,
+    "institutional_page": "https://www.umces.edu/directory/carys-mitchelmore/",
     "links": [
       {
         "kind": "institution",
@@ -3838,8 +3846,8 @@ export const SPEAKER_PROFILES = {
     "name": "Claudia Pogoreutz",
     "affiliation": "University of Perpignan - Domitia",
     "confidence": "high",
-    "institutional_page": "https://fems-microbiology.org/opportunities/postdoc-position-in-marine-microbial-interactions/",
     "lookup_version": 7,
+    "institutional_page": "https://fems-microbiology.org/opportunities/postdoc-position-in-marine-microbial-interactions/",
     "links": [
       {
         "kind": "institution",
@@ -3869,8 +3877,8 @@ export const SPEAKER_PROFILES = {
     "name": "Courtney Couch",
     "affiliation": "Cooperative Institute for Marine and Atmospheric Research",
     "confidence": "high",
-    "institutional_page": "https://www.fisheries.noaa.gov/contact/courtney-couch-phd",
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheries.noaa.gov/contact/courtney-couch-phd",
     "links": [
       {
         "kind": "institution",
@@ -3901,8 +3909,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://futureforum.kaust.edu.sa/speakers/detail/liz",
     "lookup_version": 7,
+    "institutional_page": "https://futureforum.kaust.edu.sa/speakers/detail/liz",
     "links": [
       {
         "kind": "institution",
@@ -3932,8 +3940,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emily Darling",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "high",
-    "institutional_page": "https://www.forbes.com/profile/emily-darling/",
     "lookup_version": 7,
+    "institutional_page": "https://www.forbes.com/profile/emily-darling/",
     "links": [
       {
         "kind": "institution",
@@ -3964,8 +3972,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST Coral Restoration Initiative",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://marinemicrobiomeslab.kaust.edu.sa/people",
     "lookup_version": 7,
+    "institutional_page": "https://marinemicrobiomeslab.kaust.edu.sa/people",
     "links": [
       {
         "kind": "institution",
@@ -3995,8 +4003,8 @@ export const SPEAKER_PROFILES = {
     "name": "Graham Kolodziej",
     "affiliation": "Global Science and Technology, LLC",
     "confidence": "high",
-    "institutional_page": "https://www.aoml.noaa.gov/people/graham-kolodziej/",
     "lookup_version": 7,
+    "institutional_page": "https://www.aoml.noaa.gov/people/graham-kolodziej/",
     "links": [
       {
         "kind": "institution",
@@ -4026,8 +4034,8 @@ export const SPEAKER_PROFILES = {
     "name": "Guillermo Diaz-Pulido",
     "affiliation": "Griffith University",
     "confidence": "medium",
-    "institutional_page": "https://theconversation.com/profiles/guillermo-diaz-pulido-1230913",
     "lookup_version": 7,
+    "institutional_page": "https://theconversation.com/profiles/guillermo-diaz-pulido-1230913",
     "links": [
       {
         "kind": "institution",
@@ -4062,8 +4070,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hannah Barkley",
     "affiliation": "Pacific Islands Fisheries Science Center",
     "confidence": "high",
-    "institutional_page": "https://www.fisheries.noaa.gov/staff-directory/pacific-islands-fisheries-science-center-staff-directory",
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheries.noaa.gov/staff-directory/pacific-islands-fisheries-science-center-staff-directory",
     "links": [
       {
         "kind": "institution",
@@ -4093,8 +4101,8 @@ export const SPEAKER_PROFILES = {
     "name": "Katherine Hardy",
     "affiliation": "University Of Miami",
     "confidence": "high",
-    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-members/katherine-hardy/index.html",
     "lookup_version": 7,
+    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-members/katherine-hardy/index.html",
     "links": [
       {
         "kind": "institution",
@@ -4124,8 +4132,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kelly Johanna Gomez Campo",
     "affiliation": "Alfred Wegener Institute For Marine And Polar Research (awi)",
     "confidence": "medium",
-    "institutional_page": "https://tethys.pnnl.gov/organization/alfred-wegener-institute-awi",
     "lookup_version": 7,
+    "institutional_page": "https://tethys.pnnl.gov/organization/alfred-wegener-institute-awi",
     "links": [
       {
         "kind": "institution",
@@ -4155,8 +4163,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kira Hughes",
     "affiliation": "State of Hawai'i",
     "confidence": "high",
-    "institutional_page": "https://www.soest.hawaii.edu/soestwp/about/directory/kira-hughes/",
     "lookup_version": 7,
+    "institutional_page": "https://www.soest.hawaii.edu/soestwp/about/directory/kira-hughes/",
     "links": [
       {
         "kind": "institution",
@@ -4186,8 +4194,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kyle John Alan Zawada",
     "affiliation": "Macquarie University",
     "confidence": "medium",
-    "institutional_page": "https://spatialdecisionsorg.wordpress.com/people2/",
     "lookup_version": 7,
+    "institutional_page": "https://spatialdecisionsorg.wordpress.com/people2/",
     "links": [
       {
         "kind": "institution",
@@ -4217,8 +4225,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lisa McManus",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://lmcmanus47.github.io/McManus_Lisa_CV.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://lmcmanus47.github.io/McManus_Lisa_CV.pdf",
     "links": [
       {
         "kind": "institution",
@@ -4248,8 +4256,8 @@ export const SPEAKER_PROFILES = {
     "name": "Luisa Fontoura",
     "affiliation": "Macquarie University",
     "confidence": "high",
-    "institutional_page": "https://www.oceansphere.org/luisa-fontoura",
     "lookup_version": 7,
+    "institutional_page": "https://www.oceansphere.org/luisa-fontoura",
     "links": [
       {
         "kind": "institution",
@@ -4280,8 +4288,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-luke-thomas",
     "lookup_version": 7,
+    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-luke-thomas",
     "links": [
       {
         "kind": "institution",
@@ -4311,8 +4319,8 @@ export const SPEAKER_PROFILES = {
     "name": "Margaret Miller",
     "affiliation": "SECORE International",
     "confidence": "high",
-    "institutional_page": "https://biologos.org/people/margaret-miller",
     "lookup_version": 7,
+    "institutional_page": "https://biologos.org/people/margaret-miller",
     "links": [
       {
         "kind": "institution",
@@ -4342,8 +4350,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maria Dornelas",
     "affiliation": "University of Lisbon",
     "confidence": "high",
-    "institutional_page": "https://extendedevolutionarysynthesis.com/person/maria-dornelas/",
     "lookup_version": 7,
+    "institutional_page": "https://extendedevolutionarysynthesis.com/person/maria-dornelas/",
     "links": [
       {
         "kind": "institution",
@@ -4373,8 +4381,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maria Villalpando",
     "affiliation": "Fundaci\u00f3n Dominicana de Estudios Marinos",
     "confidence": "medium",
-    "institutional_page": "https://public-pages-files-2025.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2021.669505/pdf",
     "lookup_version": 7,
+    "institutional_page": "https://public-pages-files-2025.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2021.669505/pdf",
     "links": [
       {
         "kind": "institution",
@@ -4404,8 +4412,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marichelle Barolo",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Philippines_Diliman",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Philippines_Diliman",
     "links": [
       {
         "kind": "institution",
@@ -4436,8 +4444,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/micaela-justo",
     "lookup_version": 7,
+    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/micaela-justo",
     "links": [
       {
         "kind": "institution",
@@ -4467,8 +4475,8 @@ export const SPEAKER_PROFILES = {
     "name": "Pim Bongaerts",
     "affiliation": "California Academy of Sciences",
     "confidence": "high",
-    "institutional_page": "https://www.calacademy.org/staff/ibss/invertebrate-zoology-and-geology/pim-bongaerts",
     "lookup_version": 7,
+    "institutional_page": "https://www.calacademy.org/staff/ibss/invertebrate-zoology-and-geology/pim-bongaerts",
     "links": [
       {
         "kind": "institution",
@@ -4499,8 +4507,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Santa Barbara",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.eemb.ucsb.edu/people/faculty/vega-thurber",
     "lookup_version": 7,
+    "institutional_page": "https://www.eemb.ucsb.edu/people/faculty/vega-thurber",
     "links": [
       {
         "kind": "institution",
@@ -4530,8 +4538,8 @@ export const SPEAKER_PROFILES = {
     "name": "Serena Hackerott",
     "affiliation": "University of Delaware",
     "confidence": "high",
-    "institutional_page": "https://serenahackerott.com/",
     "lookup_version": 7,
+    "institutional_page": "https://serenahackerott.com/",
     "links": [
       {
         "kind": "institution",
@@ -4561,8 +4569,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sittiporn Pengsakun",
     "affiliation": "Ramkhamhaeng University",
     "confidence": "medium",
-    "institutional_page": "https://ph02.tci-thaijo.org/index.php/RIST",
     "lookup_version": 7,
+    "institutional_page": "https://ph02.tci-thaijo.org/index.php/RIST",
     "links": [
       {
         "kind": "institution",
@@ -4593,8 +4601,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/tullia-isotta-terraneo",
     "lookup_version": 7,
+    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/tullia-isotta-terraneo",
     "links": [
       {
         "kind": "institution",
@@ -4624,8 +4632,8 @@ export const SPEAKER_PROFILES = {
     "name": "Vid Petrovic",
     "affiliation": "University of California - San Diego",
     "confidence": "high",
-    "institutional_page": "https://antiquity.ac.uk/projgall/levy335",
     "lookup_version": 7,
+    "institutional_page": "https://antiquity.ac.uk/projgall/levy335",
     "links": [
       {
         "kind": "institution",
@@ -4655,8 +4663,8 @@ export const SPEAKER_PROFILES = {
     "name": "Wichin Suebpala",
     "affiliation": "Ramkhamhaeng University",
     "confidence": "high",
-    "institutional_page": "https://www.gstc.org/gstc-4th-academic-symposium/",
     "lookup_version": 7,
+    "institutional_page": "https://www.gstc.org/gstc-4th-academic-symposium/",
     "links": [
       {
         "kind": "institution",
@@ -4686,8 +4694,8 @@ export const SPEAKER_PROFILES = {
     "name": "Wiphawan Aunkhongthong",
     "affiliation": "Ramkhamhaeng University",
     "confidence": "medium",
-    "institutional_page": "https://ph02.tci-thaijo.org/index.php/RIST",
     "lookup_version": 7,
+    "institutional_page": "https://ph02.tci-thaijo.org/index.php/RIST",
     "links": [
       {
         "kind": "institution",
@@ -4718,8 +4726,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Curtin University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.taxonomyaustralia.org.au/tcd/zoe--richards",
     "lookup_version": 7,
+    "institutional_page": "https://www.taxonomyaustralia.org.au/tcd/zoe--richards",
     "links": [
       {
         "kind": "institution",
@@ -4750,8 +4758,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Perry Institute for Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.perryinstitute.org/staff/aaron-hartman-phd/",
     "lookup_version": 7,
+    "institutional_page": "https://www.perryinstitute.org/staff/aaron-hartman-phd/",
     "links": [
       {
         "kind": "institution",
@@ -4791,8 +4799,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexandra Wen",
     "affiliation": "University Of Miami",
     "confidence": "high",
-    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-members/alexandra-wen/index.html",
     "lookup_version": 7,
+    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-members/alexandra-wen/index.html",
     "links": [
       {
         "kind": "institution",
@@ -4823,8 +4831,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://marinemicrobiomeslab.kaust.edu.sa/people",
     "lookup_version": 7,
+    "institutional_page": "https://marinemicrobiomeslab.kaust.edu.sa/people",
     "links": [
       {
         "kind": "institution",
@@ -4854,13 +4862,14 @@ export const SPEAKER_PROFILES = {
     "name": "Carlo Caruso",
     "affiliation": "Hawai\u02bbi Institute of Marine Biology",
     "confidence": "high",
-    "institutional_page": "https://radaris.com/p/Carl/Caruso/",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "https://www.coralresiliencelab.com/carlo-caruso",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://radaris.com/p/Carl/Caruso/"
+        "url": "https://www.coralresiliencelab.com/carlo-caruso"
       },
       {
         "kind": "scholar_search",
@@ -4876,7 +4885,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://radaris.com/p/Carl/Caruso/"
+      "url": "https://www.coralresiliencelab.com/carlo-caruso"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
@@ -4885,8 +4894,8 @@ export const SPEAKER_PROFILES = {
     "name": "Christine Roper",
     "affiliation": "University of Technology Sydney",
     "confidence": "high",
-    "institutional_page": "https://edition.cnn.com/science/great-barrier-reef-super-corals-c2e-spc",
     "lookup_version": 7,
+    "institutional_page": "https://edition.cnn.com/science/great-barrier-reef-super-corals-c2e-spc",
     "links": [
       {
         "kind": "institution",
@@ -4917,8 +4926,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://people.wgtn.ac.nz/christopher.cornwall",
     "lookup_version": 7,
+    "institutional_page": "https://people.wgtn.ac.nz/christopher.cornwall",
     "links": [
       {
         "kind": "institution",
@@ -4949,8 +4958,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Stanford University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://palumbilab.stanford.edu/people/courtney-klepac",
     "lookup_version": 7,
+    "institutional_page": "https://palumbilab.stanford.edu/people/courtney-klepac",
     "links": [
       {
         "kind": "institution",
@@ -4980,8 +4989,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dustin Kemp",
     "affiliation": "University of Alabama - Birmingham",
     "confidence": "high",
-    "institutional_page": "https://www.uab.edu/cas/biology/people/faculty/dustin-w-kemp",
     "lookup_version": 7,
+    "institutional_page": "https://www.uab.edu/cas/biology/people/faculty/dustin-w-kemp",
     "links": [
       {
         "kind": "institution",
@@ -5012,8 +5021,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://portfolio.jcu.edu.au/researchers/ira.cooke",
     "lookup_version": 7,
+    "institutional_page": "https://portfolio.jcu.edu.au/researchers/ira.cooke",
     "links": [
       {
         "kind": "institution",
@@ -5043,8 +5052,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jacopo Gobbato",
     "affiliation": "University of Milano-Bicocca",
     "confidence": "high",
-    "institutional_page": "https://www.advancedsciencenews.com/an-eco-friendly-putty-made-from-vegetable-oil-boosts-coral-reef-recovery/",
     "lookup_version": 7,
+    "institutional_page": "https://www.advancedsciencenews.com/an-eco-friendly-putty-made-from-vegetable-oil-boosts-coral-reef-recovery/",
     "links": [
       {
         "kind": "institution",
@@ -5074,8 +5083,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jamie Craggs",
     "affiliation": "Horniman Museum and Gardens",
     "confidence": "high",
-    "institutional_page": "https://www.horniman.ac.uk/people/jamie-craggs/",
     "lookup_version": 7,
+    "institutional_page": "https://www.horniman.ac.uk/people/jamie-craggs/",
     "links": [
       {
         "kind": "institution",
@@ -5106,8 +5115,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/dr.-jessica-bouwmeester",
     "lookup_version": 7,
+    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/dr.-jessica-bouwmeester",
     "links": [
       {
         "kind": "institution",
@@ -5164,8 +5173,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nova Southeastern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://nova.elsevierpure.com/en/persons/karen-l-neely",
     "lookup_version": 7,
+    "institutional_page": "https://nova.elsevierpure.com/en/persons/karen-l-neely",
     "links": [
       {
         "kind": "institution",
@@ -5196,8 +5205,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Arizona State University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://search.asu.edu/profile/4413932",
     "lookup_version": 7,
+    "institutional_page": "https://search.asu.edu/profile/4413932",
     "links": [
       {
         "kind": "institution",
@@ -5227,8 +5236,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marie Melanie Virginie Ricot",
     "affiliation": "Reef Conservation",
     "confidence": "medium",
-    "institutional_page": "https://natureseychelles.org/news/latest-news/fast-and-fused-coral-restoration-practitioners-discover-micro-fragmentation/",
     "lookup_version": 7,
+    "institutional_page": "https://natureseychelles.org/news/latest-news/fast-and-fused-coral-restoration-practitioners-discover-micro-fragmentation/",
     "links": [
       {
         "kind": "institution",
@@ -5259,8 +5268,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Guam",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.uog.edu/directory/houk-peter",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/directory/houk-peter",
     "links": [
       {
         "kind": "institution",
@@ -5290,8 +5299,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rindah Talitha Vida",
     "affiliation": "Maritime and Marine Science Center of Excellence, Pattimura University",
     "confidence": "medium",
-    "institutional_page": "https://www.cfk.edu/coe/",
     "lookup_version": 7,
+    "institutional_page": "https://www.cfk.edu/coe/",
     "links": [
       {
         "kind": "institution",
@@ -5322,8 +5331,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Leeds",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://biologicalsciences.leeds.ac.uk/school-of-biology/staff/5816/sarah-martin",
     "lookup_version": 7,
+    "institutional_page": "https://biologicalsciences.leeds.ac.uk/school-of-biology/staff/5816/sarah-martin",
     "links": [
       {
         "kind": "institution",
@@ -5353,8 +5362,8 @@ export const SPEAKER_PROFILES = {
     "name": "Stacy Jupiter",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "high",
-    "institutional_page": "https://programs.wcs.org/newsroom/News-Releases/articleType/ArticleView/articleId/8038/Wildlife-Conservation-Societys-Stacy-Jupiter-Honored-With-Early-Career-Conservation-Award-by-The-Society-for-Conservation-Biology.aspx",
     "lookup_version": 7,
+    "institutional_page": "https://programs.wcs.org/newsroom/News-Releases/articleType/ArticleView/articleId/8038/Wildlife-Conservation-Societys-Stacy-Jupiter-Honored-With-Early-Career-Conservation-Award-by-The-Society-for-Conservation-Biology.aspx",
     "links": [
       {
         "kind": "institution",
@@ -5384,13 +5393,14 @@ export const SPEAKER_PROFILES = {
     "name": "Takashi Nakamura",
     "affiliation": "Institute of Science - Tokyo",
     "confidence": "high",
-    "institutional_page": "https://radaris.com/p/Takashi/Nakamura/",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "https://strdb.s.isct.ac.jp/html/100001883_en.html",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://radaris.com/p/Takashi/Nakamura/"
+        "url": "https://strdb.s.isct.ac.jp/html/100001883_en.html"
       },
       {
         "kind": "scholar_search",
@@ -5406,7 +5416,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://radaris.com/p/Takashi/Nakamura/"
+      "url": "https://strdb.s.isct.ac.jp/html/100001883_en.html"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
@@ -5416,8 +5426,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Queensland Museum / James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://portfolio.jcu.edu.au/researchers/tom.bridge",
     "lookup_version": 7,
+    "institutional_page": "https://portfolio.jcu.edu.au/researchers/tom.bridge",
     "links": [
       {
         "kind": "institution",
@@ -5447,8 +5457,8 @@ export const SPEAKER_PROFILES = {
     "name": "Trinity Conn",
     "affiliation": "John G. Shedd Aquarium",
     "confidence": "high",
-    "institutional_page": "https://en.wikipedia.org/wiki/Shedd_Aquarium",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Shedd_Aquarium",
     "links": [
       {
         "kind": "institution",
@@ -5479,8 +5489,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Georgia Southern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.georgiasouthern.edu/2024/09/18/getting-in-the-weeds-georgia-southern-receives-250k-grant-for-seagrass-and-climate-change-research",
     "lookup_version": 7,
+    "institutional_page": "https://www.georgiasouthern.edu/2024/09/18/getting-in-the-weeds-georgia-southern-receives-250k-grant-for-seagrass-and-climate-change-research",
     "links": [
       {
         "kind": "institution",
@@ -5510,8 +5520,8 @@ export const SPEAKER_PROFILES = {
     "name": "Vic Lorence Madariaga",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Philippines_Diliman",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Philippines_Diliman",
     "links": [
       {
         "kind": "institution",
@@ -5541,8 +5551,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yusuf El-Khaled",
     "affiliation": "KAUST",
     "confidence": "high",
-    "institutional_page": "https://cflux.kaust.edu.sa/participants",
     "lookup_version": 7,
+    "institutional_page": "https://cflux.kaust.edu.sa/participants",
     "links": [
       {
         "kind": "institution",
@@ -5572,8 +5582,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yusuf Fajariyanto",
     "affiliation": "Yayasan Konservasi Alam Nusantara",
     "confidence": "medium",
-    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "links": [
       {
         "kind": "institution",
@@ -5604,8 +5614,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://hifmb.de/people/abigail-turnland/",
     "lookup_version": 7,
+    "institutional_page": "https://hifmb.de/people/abigail-turnland/",
     "links": [
       {
         "kind": "institution",
@@ -5635,8 +5645,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alejandra Hern\u00e1ndez-Agreda",
     "affiliation": "California Academy of Sciences",
     "confidence": "high",
-    "institutional_page": "https://www.mesophotic.org/members/79",
     "lookup_version": 7,
+    "institutional_page": "https://www.mesophotic.org/members/79",
     "links": [
       {
         "kind": "institution",
@@ -5666,8 +5676,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexa Huzar",
     "affiliation": "University of Texas - Austin",
     "confidence": "medium",
-    "institutional_page": "https://www.cs.utexas.edu/people/staff",
     "lookup_version": 7,
+    "institutional_page": "https://www.cs.utexas.edu/people/staff",
     "links": [
       {
         "kind": "institution",
@@ -5697,8 +5707,8 @@ export const SPEAKER_PROFILES = {
     "name": "Amana Garrido",
     "affiliation": "National Museum",
     "confidence": "medium",
-    "institutional_page": "https://www.nps.gov/places/museum-of-amana-history.htm",
     "lookup_version": 7,
+    "institutional_page": "https://www.nps.gov/places/museum-of-amana-history.htm",
     "links": [
       {
         "kind": "institution",
@@ -5729,8 +5739,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Florida",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://experts.ufl.edu/experts/andrew.altieri/",
     "lookup_version": 7,
+    "institutional_page": "https://experts.ufl.edu/experts/andrew.altieri/",
     "links": [
       {
         "kind": "institution",
@@ -5761,8 +5771,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-andrew-negri",
     "lookup_version": 7,
+    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-andrew-negri",
     "links": [
       {
         "kind": "institution",
@@ -5818,8 +5828,8 @@ export const SPEAKER_PROFILES = {
     "name": "Brian Zgliczynski",
     "affiliation": "Scripps Institution of Oceanography",
     "confidence": "high",
-    "institutional_page": "https://profiles.ucsd.edu/brian.zgliczynski",
     "lookup_version": 7,
+    "institutional_page": "https://profiles.ucsd.edu/brian.zgliczynski",
     "links": [
       {
         "kind": "institution",
@@ -5849,8 +5859,8 @@ export const SPEAKER_PROFILES = {
     "name": "Carlos Prada",
     "affiliation": "University of Rhode Island",
     "confidence": "high",
-    "institutional_page": "https://web.uri.edu/bio/meet/carlos-prada/",
     "lookup_version": 7,
+    "institutional_page": "https://web.uri.edu/bio/meet/carlos-prada/",
     "links": [
       {
         "kind": "institution",
@@ -5881,8 +5891,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Florida Atlantic University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://biology.fau.edu/directory/grupstra/index.php",
     "lookup_version": 7,
+    "institutional_page": "https://biology.fau.edu/directory/grupstra/index.php",
     "links": [
       {
         "kind": "institution",
@@ -5912,8 +5922,8 @@ export const SPEAKER_PROFILES = {
     "name": "Catherine McFadden",
     "affiliation": "Harvey Mudd College",
     "confidence": "high",
-    "institutional_page": "https://www.hmc.edu/biology/faculty-staff/mcfadden/",
     "lookup_version": 7,
+    "institutional_page": "https://www.hmc.edu/biology/faculty-staff/mcfadden/",
     "links": [
       {
         "kind": "institution",
@@ -5943,8 +5953,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cher Chow",
     "affiliation": "Lancaster University",
     "confidence": "high",
-    "institutional_page": "https://www.lancaster.ac.uk/lec/about-us/people/cher-chow",
     "lookup_version": 7,
+    "institutional_page": "https://www.lancaster.ac.uk/lec/about-us/people/cher-chow",
     "links": [
       {
         "kind": "institution",
@@ -5974,8 +5984,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cheryl Logan",
     "affiliation": "California State University Monterey Bay",
     "confidence": "high",
-    "institutional_page": "https://www.yellowbook.com/people/cheryl-logan/",
     "lookup_version": 7,
+    "institutional_page": "https://www.yellowbook.com/people/cheryl-logan/",
     "links": [
       {
         "kind": "institution",
@@ -6005,8 +6015,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cinzia Alessi",
     "affiliation": "Palau International Coral Reef Center",
     "confidence": "high",
-    "institutional_page": "https://www.abc.net.au/news/2025-09-06/palau-corals-selective-breeding-climate-change-reefs/105728666",
     "lookup_version": 7,
+    "institutional_page": "https://www.abc.net.au/news/2025-09-06/palau-corals-selective-breeding-climate-change-reefs/105728666",
     "links": [
       {
         "kind": "institution",
@@ -6037,8 +6047,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.wgtn.ac.nz/sbs/about/staff/clint-oakley",
     "lookup_version": 7,
+    "institutional_page": "https://www.wgtn.ac.nz/sbs/about/staff/clint-oakley",
     "links": [
       {
         "kind": "institution",
@@ -6069,8 +6079,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/10472/daniel-harris",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/10472/daniel-harris",
     "links": [
       {
         "kind": "institution",
@@ -6100,8 +6110,8 @@ export const SPEAKER_PROFILES = {
     "name": "David Abrego",
     "affiliation": "Southern Cross University and Lizard Island Research Station",
     "confidence": "high",
-    "institutional_page": "https://www.scu.edu.au/news/2025/lizard-island-research-station-directors/",
     "lookup_version": 7,
+    "institutional_page": "https://www.scu.edu.au/news/2025/lizard-island-research-station-directors/",
     "links": [
       {
         "kind": "institution",
@@ -6131,8 +6141,8 @@ export const SPEAKER_PROFILES = {
     "name": "David I Kline",
     "affiliation": "Pacific Blue Foundation & Scripps Inst. of Oceanography",
     "confidence": "high",
-    "institutional_page": "https://scripps.ucsd.edu/profiles/dkline",
     "lookup_version": 7,
+    "institutional_page": "https://scripps.ucsd.edu/profiles/dkline",
     "links": [
       {
         "kind": "institution",
@@ -6162,8 +6172,8 @@ export const SPEAKER_PROFILES = {
     "name": "Davide Seveso",
     "affiliation": "University of Milano-Bicocca",
     "confidence": "high",
-    "institutional_page": "http://davideseveso.blogspot.com/",
     "lookup_version": 7,
+    "institutional_page": "http://davideseveso.blogspot.com/",
     "links": [
       {
         "kind": "institution",
@@ -6193,8 +6203,8 @@ export const SPEAKER_PROFILES = {
     "name": "Diane Thompson",
     "affiliation": "University of Arizona",
     "confidence": "high",
-    "institutional_page": "https://geo.arizona.edu/person/diane-thompson",
     "lookup_version": 7,
+    "institutional_page": "https://geo.arizona.edu/person/diane-thompson",
     "links": [
       {
         "kind": "institution",
@@ -6224,8 +6234,8 @@ export const SPEAKER_PROFILES = {
     "name": "Erick Geiger",
     "affiliation": "Global Science and Technology, LLC",
     "confidence": "medium",
-    "institutional_page": "https://profiles.ucsd.edu/eric.geiger",
     "lookup_version": 7,
+    "institutional_page": "https://profiles.ucsd.edu/eric.geiger",
     "links": [
       {
         "kind": "institution",
@@ -6255,8 +6265,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ezri Tarazi",
     "affiliation": "Technion",
     "confidence": "high",
-    "institutional_page": "https://ats.org/about/faces-of-the-technion/ezri-tarazi/",
     "lookup_version": 7,
+    "institutional_page": "https://ats.org/about/faces-of-the-technion/ezri-tarazi/",
     "links": [
       {
         "kind": "institution",
@@ -6286,8 +6296,8 @@ export const SPEAKER_PROFILES = {
     "name": "Fabian G\u00f6sser",
     "affiliation": "Tohoku University",
     "confidence": "high",
-    "institutional_page": "https://news.rub.de/english/press-releases/2021-11-12-biodiversity-how-corals-react-climate-change",
     "lookup_version": 7,
+    "institutional_page": "https://news.rub.de/english/press-releases/2021-11-12-biodiversity-how-corals-react-climate-change",
     "links": [
       {
         "kind": "institution",
@@ -6318,8 +6328,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "San Diego State University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://biology.sdsu.edu/people/forest-rohwer/",
     "lookup_version": 7,
+    "institutional_page": "https://biology.sdsu.edu/people/forest-rohwer/",
     "links": [
       {
         "kind": "institution",
@@ -6349,8 +6359,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gaby Carpenter",
     "affiliation": "Louisiana State University",
     "confidence": "medium",
-    "institutional_page": "https://www.lsu.edu/eng/bae/people/faculty/index.php",
     "lookup_version": 7,
+    "institutional_page": "https://www.lsu.edu/eng/bae/people/faculty/index.php",
     "links": [
       {
         "kind": "institution",
@@ -6380,8 +6390,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gang Liu",
     "affiliation": "National Oceanic and Atmospheric Administration",
     "confidence": "high",
-    "institutional_page": "https://dblp.org/pid/37/2109.html",
     "lookup_version": 7,
+    "institutional_page": "https://dblp.org/pid/37/2109.html",
     "links": [
       {
         "kind": "institution",
@@ -6411,8 +6421,8 @@ export const SPEAKER_PROFILES = {
     "name": "Greta Sartori",
     "affiliation": "Palau International Coral Reef Center",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Palau_International_Coral_Reef_Center",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Palau_International_Coral_Reef_Center",
     "links": [
       {
         "kind": "institution",
@@ -6443,8 +6453,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://coralsymbiomics.kaust.edu.sa/people/detail/guoxin-cui",
     "lookup_version": 7,
+    "institutional_page": "https://coralsymbiomics.kaust.edu.sa/people/detail/guoxin-cui",
     "links": [
       {
         "kind": "institution",
@@ -6474,8 +6484,8 @@ export const SPEAKER_PROFILES = {
     "name": "Helen McGregor",
     "affiliation": "University of Wollongong",
     "confidence": "high",
-    "institutional_page": "https://arcsaef.com/profile/helen-mcgregor/",
     "lookup_version": 7,
+    "institutional_page": "https://arcsaef.com/profile/helen-mcgregor/",
     "links": [
       {
         "kind": "institution",
@@ -6505,8 +6515,8 @@ export const SPEAKER_PROFILES = {
     "name": "Janet Gusti Putri Rande",
     "affiliation": "Maritime and Marine Science Center of Excellence, Pattimura University",
     "confidence": "medium",
-    "institutional_page": "https://journal.maspari.com/index.php/masparijournal/about/editorialTeam",
     "lookup_version": 7,
+    "institutional_page": "https://journal.maspari.com/index.php/masparijournal/about/editorialTeam",
     "links": [
       {
         "kind": "institution",
@@ -6536,8 +6546,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jeremie Vidal-Dupiol",
     "affiliation": "IHPE",
     "confidence": "high",
-    "institutional_page": "https://ihpe.fr/ihpe-vidal-dupiol-jeremie/",
     "lookup_version": 7,
+    "institutional_page": "https://ihpe.fr/ihpe-vidal-dupiol-jeremie/",
     "links": [
       {
         "kind": "institution",
@@ -6567,8 +6577,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jessica Reichert",
     "affiliation": "Hawai\u02bbi Institute of Marine Biology",
     "confidence": "high",
-    "institutional_page": "https://jmadinlab.github.io/people/jessica",
     "lookup_version": 7,
+    "institutional_page": "https://jmadinlab.github.io/people/jessica",
     "links": [
       {
         "kind": "institution",
@@ -6599,8 +6609,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of South Florida",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.usf.edu/arts-sciences/departments/ib/people/faculty/johnparkinson.aspx",
     "lookup_version": 7,
+    "institutional_page": "https://www.usf.edu/arts-sciences/departments/ib/people/faculty/johnparkinson.aspx",
     "links": [
       {
         "kind": "institution",
@@ -6630,8 +6640,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joseane Marques",
     "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
     "confidence": "high",
-    "institutional_page": "https://hifmb.de/people/joseane-marques/",
     "lookup_version": 7,
+    "institutional_page": "https://hifmb.de/people/joseane-marques/",
     "links": [
       {
         "kind": "institution",
@@ -6662,8 +6672,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Joao-Curdia",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Joao-Curdia",
     "links": [
       {
         "kind": "institution",
@@ -6693,8 +6703,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kodai Gibu",
     "affiliation": "National Institute of Advanced Industrial Science and Technology",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/National_Institute_of_Advanced_Industrial_Science_and_Technology",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/National_Institute_of_Advanced_Industrial_Science_and_Technology",
     "links": [
       {
         "kind": "institution",
@@ -6724,8 +6734,8 @@ export const SPEAKER_PROFILES = {
     "name": "Laongdow Jungrak",
     "affiliation": "Ramkhamhaeng University",
     "confidence": "medium",
-    "institutional_page": "https://ph02.tci-thaijo.org/index.php/RIST",
     "lookup_version": 7,
+    "institutional_page": "https://ph02.tci-thaijo.org/index.php/RIST",
     "links": [
       {
         "kind": "institution",
@@ -6756,8 +6766,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://reefresearch.org/member/dr-laura-marangoni/",
     "lookup_version": 7,
+    "institutional_page": "https://reefresearch.org/member/dr-laura-marangoni/",
     "links": [
       {
         "kind": "institution",
@@ -6787,8 +6797,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marc Humblet",
     "affiliation": "Nagoya University",
     "confidence": "high",
-    "institutional_page": "https://www.eps.nagoya-u.ac.jp/chishitsu/marc/Webpage1_Intro.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.eps.nagoya-u.ac.jp/chishitsu/marc/Webpage1_Intro.html",
     "links": [
       {
         "kind": "institution",
@@ -6818,8 +6828,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mareike Huhn",
     "affiliation": "Ruhr University - Bochum",
     "confidence": "high",
-    "institutional_page": "https://www.ruhr-uni-bochum.de/neurobiol/mitglieder/huhn.html.en",
     "lookup_version": 7,
+    "institutional_page": "https://www.ruhr-uni-bochum.de/neurobiol/mitglieder/huhn.html.en",
     "links": [
       {
         "kind": "institution",
@@ -6849,8 +6859,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marleen Stuhr",
     "affiliation": "Leibniz Centre for Tropical Marine Research",
     "confidence": "high",
-    "institutional_page": "https://en.wikipedia.org/wiki/Leibniz_Centre_for_Tropical_Marine_Research",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Leibniz_Centre_for_Tropical_Marine_Research",
     "links": [
       {
         "kind": "institution",
@@ -6880,8 +6890,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mary Donovan",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://donovan-lab-at-himb.github.io/people.html",
     "lookup_version": 7,
+    "institutional_page": "https://donovan-lab-at-himb.github.io/people.html",
     "links": [
       {
         "kind": "institution",
@@ -6911,8 +6921,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mu-Han Chen",
     "affiliation": "Boston University",
     "confidence": "high",
-    "institutional_page": "https://www.bu.edu/gdp/profile/muyang-chen/",
     "lookup_version": 7,
+    "institutional_page": "https://www.bu.edu/gdp/profile/muyang-chen/",
     "links": [
       {
         "kind": "institution",
@@ -6942,8 +6952,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nadia Santodomingo",
     "affiliation": "Senckenberg Nature Museum - Frankfurt",
     "confidence": "medium",
-    "institutional_page": "https://museumfrankfurt.senckenberg.de/en/",
     "lookup_version": 7,
+    "institutional_page": "https://museumfrankfurt.senckenberg.de/en/",
     "links": [
       {
         "kind": "institution",
@@ -6973,8 +6983,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nicole Besemer",
     "affiliation": "Atlantic Oceanographic and Meteorological Laboratory",
     "confidence": "high",
-    "institutional_page": "https://www.aoml.noaa.gov/nicole-besemer/",
     "lookup_version": 7,
+    "institutional_page": "https://www.aoml.noaa.gov/nicole-besemer/",
     "links": [
       {
         "kind": "institution",
@@ -7004,8 +7014,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nicole Krampitz",
     "affiliation": "RPI under contract to NOAA National Ocean Service",
     "confidence": "high",
-    "institutional_page": "https://library.oarcloud.noaa.gov/noaa_documents.lib/CoRIS/CRCP/NCRMP/NCRMP_Coral_Demographics_Protocol_2025.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://library.oarcloud.noaa.gov/noaa_documents.lib/CoRIS/CRCP/NCRMP/NCRMP_Coral_Demographics_Protocol_2025.pdf",
     "links": [
       {
         "kind": "institution",
@@ -7035,8 +7045,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nina Schiettekatte",
     "affiliation": "University of Lisbon",
     "confidence": "high",
-    "institutional_page": "https://jmadinlab.github.io/people/nina",
     "lookup_version": 7,
+    "institutional_page": "https://jmadinlab.github.io/people/nina",
     "links": [
       {
         "kind": "institution",
@@ -7066,8 +7076,8 @@ export const SPEAKER_PROFILES = {
     "name": "Omri Bronstein",
     "affiliation": "Tel Aviv University",
     "confidence": "high",
-    "institutional_page": "https://english.tau.ac.il/profile/bronstein",
     "lookup_version": 7,
+    "institutional_page": "https://english.tau.ac.il/profile/bronstein",
     "links": [
       {
         "kind": "institution",
@@ -7097,8 +7107,8 @@ export const SPEAKER_PROFILES = {
     "name": "Paige Strudwick",
     "affiliation": "University of Technology Sydney",
     "confidence": "high",
-    "institutional_page": "https://www.barrierreef.org/news/news/uniting-science-and-tourism-to-help-protect-the-reef",
     "lookup_version": 7,
+    "institutional_page": "https://www.barrierreef.org/news/news/uniting-science-and-tourism-to-help-protect-the-reef",
     "links": [
       {
         "kind": "institution",
@@ -7128,8 +7138,8 @@ export const SPEAKER_PROFILES = {
     "name": "Patrick Smallhorn-West",
     "affiliation": "James Cook University",
     "confidence": "high",
-    "institutional_page": "https://portfolio.jcu.edu.au/researchers/patrick.smallhornwest",
     "lookup_version": 7,
+    "institutional_page": "https://portfolio.jcu.edu.au/researchers/patrick.smallhornwest",
     "links": [
       {
         "kind": "institution",
@@ -7159,8 +7169,8 @@ export const SPEAKER_PROFILES = {
     "name": "Peter Cowman",
     "affiliation": "Queensland Museum",
     "confidence": "high",
-    "institutional_page": "https://www.museum.qld.gov.au/collections-and-research/staff-profiles/dr-peter-cowman",
     "lookup_version": 7,
+    "institutional_page": "https://www.museum.qld.gov.au/collections-and-research/staff-profiles/dr-peter-cowman",
     "links": [
       {
         "kind": "institution",
@@ -7191,8 +7201,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://portfolio.jcu.edu.au/researchers/peter.doll",
     "lookup_version": 7,
+    "institutional_page": "https://portfolio.jcu.edu.au/researchers/peter.doll",
     "links": [
       {
         "kind": "institution",
@@ -7222,8 +7232,8 @@ export const SPEAKER_PROFILES = {
     "name": "Prandito Simanjuntak",
     "affiliation": "Pattimura University",
     "confidence": "high",
-    "institutional_page": "https://coral.org/blog/climate-reefs-initiative-launched-to-advance-equitable-pathways-to-climate-adaptation-in-asia-pacific/",
     "lookup_version": 7,
+    "institutional_page": "https://coral.org/blog/climate-reefs-initiative-launched-to-advance-equitable-pathways-to-climate-adaptation-in-asia-pacific/",
     "links": [
       {
         "kind": "institution",
@@ -7276,8 +7286,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/renato-morais",
     "lookup_version": 7,
+    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/renato-morais",
     "links": [
       {
         "kind": "institution",
@@ -7307,8 +7317,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rita Rachmawati",
     "affiliation": "National Research and Innovation Agency",
     "confidence": "medium",
-    "institutional_page": "https://tethys-engineering.pnnl.gov/organizations/national-research-innovation-agency-brin",
     "lookup_version": 7,
+    "institutional_page": "https://tethys-engineering.pnnl.gov/organizations/national-research-innovation-agency-brin",
     "links": [
       {
         "kind": "institution",
@@ -7339,8 +7349,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.pbrc.hawaii.edu/index.php/staff-member/robert-h-richmond-director-kml/",
     "lookup_version": 7,
+    "institutional_page": "https://www.pbrc.hawaii.edu/index.php/staff-member/robert-h-richmond-director-kml/",
     "links": [
       {
         "kind": "institution",
@@ -7370,8 +7380,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sara Williams",
     "affiliation": "Mote Marine Laboratory",
     "confidence": "high",
-    "institutional_page": "https://mote.org/staff/dr-sara-williams/",
     "lookup_version": 7,
+    "institutional_page": "https://mote.org/staff/dr-sara-williams/",
     "links": [
       {
         "kind": "institution",
@@ -7401,8 +7411,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shannon Dixon",
     "affiliation": "Ohio State University",
     "confidence": "high",
-    "institutional_page": "https://u.osu.edu/shannondixon/",
     "lookup_version": 7,
+    "institutional_page": "https://u.osu.edu/shannondixon/",
     "links": [
       {
         "kind": "institution",
@@ -7433,8 +7443,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Sydney",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://search.asu.edu/profile/3423914",
     "lookup_version": 7,
+    "institutional_page": "https://search.asu.edu/profile/3423914",
     "links": [
       {
         "kind": "institution",
@@ -7465,8 +7475,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Tasmania",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://portfolio.jcu.edu.au/researchers/sterling.tebbett",
     "lookup_version": 7,
+    "institutional_page": "https://portfolio.jcu.edu.au/researchers/sterling.tebbett",
     "links": [
       {
         "kind": "institution",
@@ -7496,8 +7506,8 @@ export const SPEAKER_PROFILES = {
     "name": "Tsai-Hsuan Tony Hsu",
     "affiliation": "University of Sydney",
     "confidence": "medium",
-    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "links": [
       {
         "kind": "institution",
@@ -7527,8 +7537,8 @@ export const SPEAKER_PROFILES = {
     "name": "Virginia Weis",
     "affiliation": "Oregon State University",
     "confidence": "high",
-    "institutional_page": "https://science.oregonstate.edu/directory/virginia-m-weis",
     "lookup_version": 7,
+    "institutional_page": "https://science.oregonstate.edu/directory/virginia-m-weis",
     "links": [
       {
         "kind": "institution",
@@ -7558,8 +7568,8 @@ export const SPEAKER_PROFILES = {
     "name": "Viviana Brambilla",
     "affiliation": "University of Lisbon",
     "confidence": "high",
-    "institutional_page": "https://researchportal.ulisboa.pt/en/publications/biotime-20-expanding-and-improving-a-database-of-biodiversity-tim/",
     "lookup_version": 7,
+    "institutional_page": "https://researchportal.ulisboa.pt/en/publications/biotime-20-expanding-and-improving-a-database-of-biodiversity-tim/",
     "links": [
       {
         "kind": "institution",
@@ -7589,8 +7599,8 @@ export const SPEAKER_PROFILES = {
     "name": "W. Ryan James",
     "affiliation": "Florida International University",
     "confidence": "high",
-    "institutional_page": "https://case.fiu.edu/about/directory/profiles/james-w-ryan.html",
     "lookup_version": 7,
+    "institutional_page": "https://case.fiu.edu/about/directory/profiles/james-w-ryan.html",
     "links": [
       {
         "kind": "institution",
@@ -7621,8 +7631,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/walter-rich",
     "lookup_version": 7,
+    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/walter-rich",
     "links": [
       {
         "kind": "institution",
@@ -7653,8 +7663,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Bermuda Institute of Ocean Sciences",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://search.asu.edu/profile/4317971",
     "lookup_version": 7,
+    "institutional_page": "https://search.asu.edu/profile/4317971",
     "links": [
       {
         "kind": "institution",
@@ -7685,8 +7695,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Silliman University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://su.edu.ph/faculty-staff/maypa-aileen-p/",
     "lookup_version": 7,
+    "institutional_page": "https://su.edu.ph/faculty-staff/maypa-aileen-p/",
     "links": [
       {
         "kind": "institution",
@@ -7717,8 +7727,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Max Planck Institute for Chemistry",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.adforeman.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.adforeman.com/",
     "links": [
       {
         "kind": "institution",
@@ -7748,8 +7758,8 @@ export const SPEAKER_PROFILES = {
     "name": "Aline Shimada da Cruz",
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "medium",
-    "institutional_page": "https://sites.google.com/view/nilc-usp/team",
     "lookup_version": 7,
+    "institutional_page": "https://sites.google.com/view/nilc-usp/team",
     "links": [
       {
         "kind": "institution",
@@ -7779,8 +7789,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ally Swank",
     "affiliation": "Boston University",
     "confidence": "high",
-    "institutional_page": "https://www.gujackets.com/sports/wbkb/2018-19jv/bios/Ally_Swank",
     "lookup_version": 7,
+    "institutional_page": "https://www.gujackets.com/sports/wbkb/2018-19jv/bios/Ally_Swank",
     "links": [
       {
         "kind": "institution",
@@ -7810,8 +7820,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alyssa Varela",
     "affiliation": "Hawai\u02bbi institute of Marine Biology",
     "confidence": "high",
-    "institutional_page": "https://www.coralresiliencelab.com/alyssa-varela",
     "lookup_version": 7,
+    "institutional_page": "https://www.coralresiliencelab.com/alyssa-varela",
     "links": [
       {
         "kind": "institution",
@@ -7841,8 +7851,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ana Lilia Molina Hernandez",
     "affiliation": "Universidad Nacional Aut\u00f3noma de M\u00e9xico",
     "confidence": "high",
-    "institutional_page": "https://web.siia.unam.mx/siia-publico/?desagregado=&tp=revistas&numeroEmpleado=&NombreCompleto=Ana+Lilia+Molina-Hernandez",
     "lookup_version": 7,
+    "institutional_page": "https://web.siia.unam.mx/siia-publico/?desagregado=&tp=revistas&numeroEmpleado=&NombreCompleto=Ana+Lilia+Molina-Hernandez",
     "links": [
       {
         "kind": "institution",
@@ -7872,8 +7882,8 @@ export const SPEAKER_PROFILES = {
     "name": "Awaludinnoer Ahmad",
     "affiliation": "Yayasan Konservasi Alam Nusantara",
     "confidence": "medium",
-    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "links": [
       {
         "kind": "institution",
@@ -7903,8 +7913,8 @@ export const SPEAKER_PROFILES = {
     "name": "Benjamin Farmer",
     "affiliation": "Louisiana State University",
     "confidence": "high",
-    "institutional_page": "https://www.lsu.edu/cce/mediacenter/news/2021/05/10-farmer-nsf.php",
     "lookup_version": 7,
+    "institutional_page": "https://www.lsu.edu/cce/mediacenter/news/2021/05/10-farmer-nsf.php",
     "links": [
       {
         "kind": "institution",
@@ -7935,8 +7945,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Guam",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.uog.edu/directory/taylor-brett",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/directory/taylor-brett",
     "links": [
       {
         "kind": "institution",
@@ -7966,8 +7976,8 @@ export const SPEAKER_PROFILES = {
     "name": "Brian Stockwell",
     "affiliation": "University of the South Pacific",
     "confidence": "high",
-    "institutional_page": "https://cocofinder.com/name/brian-stockwell",
     "lookup_version": 7,
+    "institutional_page": "https://cocofinder.com/name/brian-stockwell",
     "links": [
       {
         "kind": "institution",
@@ -7997,8 +8007,8 @@ export const SPEAKER_PROFILES = {
     "name": "Camile Avelino",
     "affiliation": "University of Derby",
     "confidence": "medium",
-    "institutional_page": "https://www.ucas.com/explore/unis/008ac8a8/university-of-derby",
     "lookup_version": 7,
+    "institutional_page": "https://www.ucas.com/explore/unis/008ac8a8/university-of-derby",
     "links": [
       {
         "kind": "institution",
@@ -8028,8 +8038,8 @@ export const SPEAKER_PROFILES = {
     "name": "Camille Vizon",
     "affiliation": "Carl Von Ossietzky University of Oldenburg",
     "confidence": "medium",
-    "institutional_page": "https://www.topuniversities.com/universities/carl-von-ossietzky-universitat-oldenburg",
     "lookup_version": 7,
+    "institutional_page": "https://www.topuniversities.com/universities/carl-von-ossietzky-universitat-oldenburg",
     "links": [
       {
         "kind": "institution",
@@ -8059,8 +8069,8 @@ export const SPEAKER_PROFILES = {
     "name": "Carlos Ferreira",
     "affiliation": "Universidade Federal Fluminense",
     "confidence": "high",
-    "institutional_page": "https://finde.uff.br/integrantes/",
     "lookup_version": 7,
+    "institutional_page": "https://finde.uff.br/integrantes/",
     "links": [
       {
         "kind": "institution",
@@ -8091,8 +8101,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://scmb.uq.edu.au/profile/6318/cheong-xin-chan",
     "lookup_version": 7,
+    "institutional_page": "https://scmb.uq.edu.au/profile/6318/cheong-xin-chan",
     "links": [
       {
         "kind": "institution",
@@ -8122,8 +8132,8 @@ export const SPEAKER_PROFILES = {
     "name": "Chloe Carbonne",
     "affiliation": "Bermuda Institute of Ocean Sciences",
     "confidence": "high",
-    "institutional_page": "https://obfs.org/field-station/bermuda-institute-of-ocean-sciences/",
     "lookup_version": 7,
+    "institutional_page": "https://obfs.org/field-station/bermuda-institute-of-ocean-sciences/",
     "links": [
       {
         "kind": "institution",
@@ -8153,8 +8163,8 @@ export const SPEAKER_PROFILES = {
     "name": "Claire Moreland-Ochoa",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "medium",
-    "institutional_page": "https://manoa.hawaii.edu/spas/about/faculty-and-staff/",
     "lookup_version": 7,
+    "institutional_page": "https://manoa.hawaii.edu/spas/about/faculty-and-staff/",
     "links": [
       {
         "kind": "institution",
@@ -8184,8 +8194,8 @@ export const SPEAKER_PROFILES = {
     "name": "Crystal McRae",
     "affiliation": "National Sun Yat-sen University",
     "confidence": "high",
-    "institutional_page": "https://mbr.nsysu.edu.tw/p/405-1260-337561,c23195.php?Lang=en",
     "lookup_version": 7,
+    "institutional_page": "https://mbr.nsysu.edu.tw/p/405-1260-337561,c23195.php?Lang=en",
     "links": [
       {
         "kind": "institution",
@@ -8216,8 +8226,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-daniela-ceccarelli",
     "lookup_version": 7,
+    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-daniela-ceccarelli",
     "links": [
       {
         "kind": "institution",
@@ -8247,8 +8257,8 @@ export const SPEAKER_PROFILES = {
     "name": "David Brefeld",
     "affiliation": "Carl-von-Ossietzky University of Oldenburg",
     "confidence": "high",
-    "institutional_page": "https://www.mylife.com/david-brefeld/e71149573362",
     "lookup_version": 7,
+    "institutional_page": "https://www.mylife.com/david-brefeld/e71149573362",
     "links": [
       {
         "kind": "institution",
@@ -8279,8 +8289,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/3370/david-enrique-carrasco-rivera",
     "lookup_version": 7,
+    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/3370/david-enrique-carrasco-rivera",
     "links": [
       {
         "kind": "institution",
@@ -8310,8 +8320,8 @@ export const SPEAKER_PROFILES = {
     "name": "David Williamson",
     "affiliation": "Great Barrier Reef Marine Park Authority",
     "confidence": "high",
-    "institutional_page": "https://davidwilliamson.com/contact-1",
     "lookup_version": 7,
+    "institutional_page": "https://davidwilliamson.com/contact-1",
     "links": [
       {
         "kind": "institution",
@@ -8341,8 +8351,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emily Croasdale",
     "affiliation": "University of Lisbon",
     "confidence": "medium",
-    "institutional_page": "https://www.ulisboa.pt/en",
     "lookup_version": 7,
+    "institutional_page": "https://www.ulisboa.pt/en",
     "links": [
       {
         "kind": "institution",
@@ -8372,8 +8382,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emily Hall",
     "affiliation": "Mote Marine Laboratory",
     "confidence": "high",
-    "institutional_page": "https://mote.org/staff/dr-emily-hall/",
     "lookup_version": 7,
+    "institutional_page": "https://mote.org/staff/dr-emily-hall/",
     "links": [
       {
         "kind": "institution",
@@ -8403,8 +8413,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emily Howells",
     "affiliation": "Southern Cross University &  Lizard Isalnd Research Station",
     "confidence": "high",
-    "institutional_page": "https://www.scu.edu.au/news/2025/lizard-island-research-station-directors/",
     "lookup_version": 7,
+    "institutional_page": "https://www.scu.edu.au/news/2025/lizard-island-research-station-directors/",
     "links": [
       {
         "kind": "institution",
@@ -8434,8 +8444,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emmanuel Hanert",
     "affiliation": "UCLouvain",
     "confidence": "high",
-    "institutional_page": "https://www.uclouvain.be/en/people/emmanuel.hanert",
     "lookup_version": 7,
+    "institutional_page": "https://www.uclouvain.be/en/people/emmanuel.hanert",
     "links": [
       {
         "kind": "institution",
@@ -8465,8 +8475,8 @@ export const SPEAKER_PROFILES = {
     "name": "Erin Hollander",
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
-    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "links": [
       {
         "kind": "institution",
@@ -8496,8 +8506,8 @@ export const SPEAKER_PROFILES = {
     "name": "Federica Barreca",
     "affiliation": "King Abdullah University of Science and Technology",
     "confidence": "high",
-    "institutional_page": "https://www.federicabarrecanutrizionista.it/",
     "lookup_version": 7,
+    "institutional_page": "https://www.federicabarrecanutrizionista.it/",
     "links": [
       {
         "kind": "institution",
@@ -8527,8 +8537,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gillian Coleman",
     "affiliation": "University of the Virgin Islands",
     "confidence": "medium",
-    "institutional_page": "https://www.wikidata.org/wiki/Q7896780",
     "lookup_version": 7,
+    "institutional_page": "https://www.wikidata.org/wiki/Q7896780",
     "links": [
       {
         "kind": "institution",
@@ -8589,8 +8599,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gonzalo P\u00e9rez-Rosales",
     "affiliation": "Hong Kong University of Science and Technology",
     "confidence": "high",
-    "institutional_page": "https://www.mesophotic.org/members/198",
     "lookup_version": 7,
+    "institutional_page": "https://www.mesophotic.org/members/198",
     "links": [
       {
         "kind": "institution",
@@ -8620,8 +8630,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hannah Swain",
     "affiliation": "University of Texas - Arlington",
     "confidence": "medium",
-    "institutional_page": "https://www.uta.edu/academics/schools-colleges/education/about/directory/staff",
     "lookup_version": 7,
+    "institutional_page": "https://www.uta.edu/academics/schools-colleges/education/about/directory/staff",
     "links": [
       {
         "kind": "institution",
@@ -8651,8 +8661,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hugo Denis",
     "affiliation": "Southern Cross University",
     "confidence": "high",
-    "institutional_page": "https://www.techexplorist.com/diversity-heat-tolerance-help-protect-coral-reefs/90190/",
     "lookup_version": 7,
+    "institutional_page": "https://www.techexplorist.com/diversity-heat-tolerance-help-protect-coral-reefs/90190/",
     "links": [
       {
         "kind": "institution",
@@ -8683,8 +8693,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/2776/ilha-byrne",
     "lookup_version": 7,
+    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/2776/ilha-byrne",
     "links": [
       {
         "kind": "institution",
@@ -8714,8 +8724,8 @@ export const SPEAKER_PROFILES = {
     "name": "Isabella Marrable",
     "affiliation": "University of Sydney",
     "confidence": "high",
-    "institutional_page": "https://www.abc.net.au/news/2024-11-05/great-barrier-reef-coral-bleaching-one-tree-island-widespread/104533034",
     "lookup_version": 7,
+    "institutional_page": "https://www.abc.net.au/news/2024-11-05/great-barrier-reef-coral-bleaching-one-tree-island-widespread/104533034",
     "links": [
       {
         "kind": "institution",
@@ -8745,8 +8755,8 @@ export const SPEAKER_PROFILES = {
     "name": "Isabelle Basden",
     "affiliation": "Ohio State University",
     "confidence": "high",
-    "institutional_page": "https://earthsciences.osu.edu/people",
     "lookup_version": 7,
+    "institutional_page": "https://earthsciences.osu.edu/people",
     "links": [
       {
         "kind": "institution",
@@ -8776,8 +8786,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jason Toy",
     "affiliation": "Old Dominion University",
     "confidence": "medium",
-    "institutional_page": "https://systems.cs.odu.edu/staff/",
     "lookup_version": 7,
+    "institutional_page": "https://systems.cs.odu.edu/staff/",
     "links": [
       {
         "kind": "institution",
@@ -8807,8 +8817,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jenny Fong",
     "affiliation": "National University of Singapore",
     "confidence": "high",
-    "institutional_page": "https://meilin5giantclam.wordpress.com/jenny-fong/",
     "lookup_version": 7,
+    "institutional_page": "https://meilin5giantclam.wordpress.com/jenny-fong/",
     "links": [
       {
         "kind": "institution",
@@ -8838,8 +8848,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jia Jin Marc Chang",
     "affiliation": "National University of Singapore",
     "confidence": "high",
-    "institutional_page": "https://ednaconference.com.au/5635",
     "lookup_version": 7,
+    "institutional_page": "https://ednaconference.com.au/5635",
     "links": [
       {
         "kind": "institution",
@@ -8869,8 +8879,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joel Creed",
     "affiliation": "Universidade do Estado do Rio de Janeiro",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Rio_de_Janeiro_State_University",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Rio_de_Janeiro_State_University",
     "links": [
       {
         "kind": "institution",
@@ -8900,8 +8910,8 @@ export const SPEAKER_PROFILES = {
     "name": "John Burns",
     "affiliation": "University of Hawai'i - Hilo",
     "confidence": "high",
-    "institutional_page": "https://hilo.hawaii.edu/chancellor/stories/2022/10/07/john-burns-tenure/",
     "lookup_version": 7,
+    "institutional_page": "https://hilo.hawaii.edu/chancellor/stories/2022/10/07/john-burns-tenure/",
     "links": [
       {
         "kind": "institution",
@@ -8931,8 +8941,8 @@ export const SPEAKER_PROFILES = {
     "name": "John Morris",
     "affiliation": "Cooperative Institute For Marine and Atmospheric Studies",
     "confidence": "high",
-    "institutional_page": "https://www.aoml.noaa.gov/ocd/people/morris/JohnMorris_CV_2024.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://www.aoml.noaa.gov/ocd/people/morris/JohnMorris_CV_2024.pdf",
     "links": [
       {
         "kind": "institution",
@@ -8962,8 +8972,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jonathan Whitney",
     "affiliation": "National Oceanic and Atmospheric Administration - Pacific Islands",
     "confidence": "high",
-    "institutional_page": "https://www.fisheries.noaa.gov/contact/jonathan-l-whitney-phd",
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheries.noaa.gov/contact/jonathan-l-whitney-phd",
     "links": [
       {
         "kind": "institution",
@@ -8993,8 +9003,8 @@ export const SPEAKER_PROFILES = {
     "name": "Katey Lesneski",
     "affiliation": "Florida Keys National Marine Sanctuary",
     "confidence": "high",
-    "institutional_page": "https://floridakeys.noaa.gov/about/staff/lesneski.html",
     "lookup_version": 7,
+    "institutional_page": "https://floridakeys.noaa.gov/about/staff/lesneski.html",
     "links": [
       {
         "kind": "institution",
@@ -9024,8 +9034,8 @@ export const SPEAKER_PROFILES = {
     "name": "Katherine Parker",
     "affiliation": "Old Dominion University",
     "confidence": "high",
-    "institutional_page": "https://www.odu.edu/english/directory",
     "lookup_version": 7,
+    "institutional_page": "https://www.odu.edu/english/directory",
     "links": [
       {
         "kind": "institution",
@@ -9055,8 +9065,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kim Falinski",
     "affiliation": "The Nature Conservancy",
     "confidence": "high",
-    "institutional_page": "http://www2.hawaii.edu/~falinski/",
     "lookup_version": 7,
+    "institutional_page": "http://www2.hawaii.edu/~falinski/",
     "links": [
       {
         "kind": "institution",
@@ -9086,8 +9096,8 @@ export const SPEAKER_PROFILES = {
     "name": "Laura Fiegel",
     "affiliation": "University of Oldenburg",
     "confidence": "medium",
-    "institutional_page": "https://worldathletics.org/athletes/united-states/laura-fiegel-15124932",
     "lookup_version": 7,
+    "institutional_page": "https://worldathletics.org/athletes/united-states/laura-fiegel-15124932",
     "links": [
       {
         "kind": "institution",
@@ -9117,8 +9127,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lorenzo Massimo Toniolo",
     "affiliation": "University of Milano - Bicocca",
     "confidence": "medium",
-    "institutional_page": "https://www.neglab.de/lorenzo-toniolo/",
     "lookup_version": 7,
+    "institutional_page": "https://www.neglab.de/lorenzo-toniolo/",
     "links": [
       {
         "kind": "institution",
@@ -9169,8 +9179,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lyndsey Holland",
     "affiliation": "Department of Conservation - New Zealand",
     "confidence": "medium",
-    "institutional_page": "https://tethys.pnnl.gov/organization/new-zealand-department-conservation",
     "lookup_version": 7,
+    "institutional_page": "https://tethys.pnnl.gov/organization/new-zealand-department-conservation",
     "links": [
       {
         "kind": "institution",
@@ -9200,8 +9210,8 @@ export const SPEAKER_PROFILES = {
     "name": "Madeleine Sherman",
     "affiliation": "Hawai\u2018i Institute of Marine Biology",
     "confidence": "high",
-    "institutional_page": "https://www.hawaii.edu/news/2022/11/23/hs-girls-pursue-ocean-careers/",
     "lookup_version": 7,
+    "institutional_page": "https://www.hawaii.edu/news/2022/11/23/hs-girls-pursue-ocean-careers/",
     "links": [
       {
         "kind": "institution",
@@ -9231,8 +9241,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maren Stickley",
     "affiliation": "University Of Miami Rosenstiel School of Marine, Atmospheric, and Earth Science",
     "confidence": "high",
-    "institutional_page": "https://www.local10.com/news/local/2025/10/15/um-scientists-race-to-breed-super-corals-to-save-dying-reefs/",
     "lookup_version": 7,
+    "institutional_page": "https://www.local10.com/news/local/2025/10/15/um-scientists-race-to-breed-super-corals-to-save-dying-reefs/",
     "links": [
       {
         "kind": "institution",
@@ -9262,8 +9272,8 @@ export const SPEAKER_PROFILES = {
     "name": "Margarita Brandt",
     "affiliation": "Universidad San Francisco de Quito",
     "confidence": "high",
-    "institutional_page": "https://www.usfq.edu.ec/en/profiles/margarita-brandt",
     "lookup_version": 7,
+    "institutional_page": "https://www.usfq.edu.ec/en/profiles/margarita-brandt",
     "links": [
       {
         "kind": "institution",
@@ -9293,8 +9303,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maria Isabel Martinez Rugerio",
     "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
     "confidence": "high",
-    "institutional_page": "https://hifmb.de/people/isabel-martinez-rugerio/",
     "lookup_version": 7,
+    "institutional_page": "https://hifmb.de/people/isabel-martinez-rugerio/",
     "links": [
       {
         "kind": "institution",
@@ -9325,8 +9335,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Hawai'i Pacific University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.hpu.edu/faculty/cncs/matthew-j-iacchei.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.hpu.edu/faculty/cncs/matthew-j-iacchei.html",
     "links": [
       {
         "kind": "institution",
@@ -9382,8 +9392,8 @@ export const SPEAKER_PROFILES = {
     "name": "Melanie McField",
     "affiliation": "Healthy Reefs for Healthy People",
     "confidence": "high",
-    "institutional_page": "https://www.healthyreefs.org/en/team-member/melanie-mcfield",
     "lookup_version": 7,
+    "institutional_page": "https://www.healthyreefs.org/en/team-member/melanie-mcfield",
     "links": [
       {
         "kind": "institution",
@@ -9413,8 +9423,8 @@ export const SPEAKER_PROFILES = {
     "name": "Michael Studivan",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://www.aoml.noaa.gov/people/michael-studivan/",
     "lookup_version": 7,
+    "institutional_page": "https://www.aoml.noaa.gov/people/michael-studivan/",
     "links": [
       {
         "kind": "institution",
@@ -9444,8 +9454,8 @@ export const SPEAKER_PROFILES = {
     "name": "Michel Pichon",
     "affiliation": "MP Tropical Marine Consultant",
     "confidence": "high",
-    "institutional_page": "https://www.mesophotic.org/members/135",
     "lookup_version": 7,
+    "institutional_page": "https://www.mesophotic.org/members/135",
     "links": [
       {
         "kind": "institution",
@@ -9475,8 +9485,8 @@ export const SPEAKER_PROFILES = {
     "name": "Michelle Taylor",
     "affiliation": "Turks and Caicos Reef Fund",
     "confidence": "high",
-    "institutional_page": "https://www.tcreef.org/fall-2025",
     "lookup_version": 7,
+    "institutional_page": "https://www.tcreef.org/fall-2025",
     "links": [
       {
         "kind": "institution",
@@ -9506,8 +9516,8 @@ export const SPEAKER_PROFILES = {
     "name": "Morgan Pomeroy",
     "affiliation": "Coral Reef Watch",
     "confidence": "high",
-    "institutional_page": "https://coralreefwatch.noaa.gov/about_us.php",
     "lookup_version": 7,
+    "institutional_page": "https://coralreefwatch.noaa.gov/about_us.php",
     "links": [
       {
         "kind": "institution",
@@ -9537,8 +9547,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nabila Ayu Fitriani",
     "affiliation": "Luminocean",
     "confidence": "medium",
-    "institutional_page": "https://www.luminocean.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.luminocean.com/",
     "links": [
       {
         "kind": "institution",
@@ -9568,8 +9578,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nick Graham",
     "affiliation": "Lancaster University",
     "confidence": "high",
-    "institutional_page": "https://www.lancaster.ac.uk/lec/about-us/people/nick-graham",
     "lookup_version": 7,
+    "institutional_page": "https://www.lancaster.ac.uk/lec/about-us/people/nick-graham",
     "links": [
       {
         "kind": "institution",
@@ -9600,8 +9610,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.floridamuseum.ufl.edu/science/hidden-in-plain-sight-dna-reveals-15-overlooked-coral-lineages-in-the-indo-pacific/",
     "lookup_version": 7,
+    "institutional_page": "https://www.floridamuseum.ufl.edu/science/hidden-in-plain-sight-dna-reveals-15-overlooked-coral-lineages-in-the-indo-pacific/",
     "links": [
       {
         "kind": "institution",
@@ -9632,8 +9642,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://bemlab.kaust.edu.sa/publications/4",
     "lookup_version": 7,
+    "institutional_page": "https://bemlab.kaust.edu.sa/publications/4",
     "links": [
       {
         "kind": "institution",
@@ -9664,8 +9674,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute Of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Nicole-Ryan-11",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Nicole-Ryan-11",
     "links": [
       {
         "kind": "institution",
@@ -9695,8 +9705,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nils R\u00e4decker",
     "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
     "confidence": "high",
-    "institutional_page": "https://hifmb.de/people/nils-radecker/",
     "lookup_version": 7,
+    "institutional_page": "https://hifmb.de/people/nils-radecker/",
     "links": [
       {
         "kind": "institution",
@@ -9726,8 +9736,8 @@ export const SPEAKER_PROFILES = {
     "name": "Orion Mccarthy",
     "affiliation": "Seatrees",
     "confidence": "high",
-    "institutional_page": "https://grad.ucsd.edu/student-life/student-spotlights/alumni/orion-mccarthy.html",
     "lookup_version": 7,
+    "institutional_page": "https://grad.ucsd.edu/student-life/student-spotlights/alumni/orion-mccarthy.html",
     "links": [
       {
         "kind": "institution",
@@ -9757,8 +9767,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ove Hoegh-Guldberg",
     "affiliation": "University of Queensland",
     "confidence": "high",
-    "institutional_page": "https://about.uq.edu.au/experts/839",
     "lookup_version": 7,
+    "institutional_page": "https://about.uq.edu.au/experts/839",
     "links": [
       {
         "kind": "institution",
@@ -9788,8 +9798,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ponchanok Weeriyanun",
     "affiliation": "Old Dominion University",
     "confidence": "high",
-    "institutional_page": "https://coralreefsecc.org/team-1",
     "lookup_version": 7,
+    "institutional_page": "https://coralreefsecc.org/team-1",
     "links": [
       {
         "kind": "institution",
@@ -9819,8 +9829,8 @@ export const SPEAKER_PROFILES = {
     "name": "Raymond Banister",
     "affiliation": "University of Alabama",
     "confidence": "medium",
-    "institutional_page": "https://bsc.ua.edu/directory/",
     "lookup_version": 7,
+    "institutional_page": "https://bsc.ua.edu/directory/",
     "links": [
       {
         "kind": "institution",
@@ -9850,8 +9860,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rayna Mcclintock",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://sites.google.com/view/nelsonlab/people/rayna-mcclintock",
     "lookup_version": 7,
+    "institutional_page": "https://sites.google.com/view/nelsonlab/people/rayna-mcclintock",
     "links": [
       {
         "kind": "institution",
@@ -9881,8 +9891,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rob Ruzicka",
     "affiliation": "Florida Fish and Wildlife Conservation Commission",
     "confidence": "high",
-    "institutional_page": "https://restoreactscienceprogram.noaa.gov/projects/ecosystem-indicators",
     "lookup_version": 7,
+    "institutional_page": "https://restoreactscienceprogram.noaa.gov/projects/ecosystem-indicators",
     "links": [
       {
         "kind": "institution",
@@ -9912,8 +9922,8 @@ export const SPEAKER_PROFILES = {
     "name": "Salanieta Kitolelei",
     "affiliation": "Leibniz Centre for Tropical Marine Research",
     "confidence": "high",
-    "institutional_page": "https://www.gbif.org/dataset/99edb547-7911-4e9a-8884-f8dfae055a79",
     "lookup_version": 7,
+    "institutional_page": "https://www.gbif.org/dataset/99edb547-7911-4e9a-8884-f8dfae055a79",
     "links": [
       {
         "kind": "institution",
@@ -9944,8 +9954,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Arizona",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://eeb.arizona.edu/person/samantha-king",
     "lookup_version": 7,
+    "institutional_page": "https://eeb.arizona.edu/person/samantha-king",
     "links": [
       {
         "kind": "institution",
@@ -9975,8 +9985,8 @@ export const SPEAKER_PROFILES = {
     "name": "Samuel Matthews",
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
-    "institutional_page": "https://aims.jcu.edu.au/our-people/students/samuel-matthews.211/",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/students/samuel-matthews.211/",
     "links": [
       {
         "kind": "institution",
@@ -10006,8 +10016,8 @@ export const SPEAKER_PROFILES = {
     "name": "Scarlett Raine",
     "affiliation": "Queensland University of Technology",
     "confidence": "high",
-    "institutional_page": "https://tryst.link/escort/scarlett-raine",
     "lookup_version": 7,
+    "institutional_page": "https://tryst.link/escort/scarlett-raine",
     "links": [
       {
         "kind": "institution",
@@ -10038,8 +10048,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://tajrc.kaust.edu.sa/people/current",
     "lookup_version": 7,
+    "institutional_page": "https://tajrc.kaust.edu.sa/people/current",
     "links": [
       {
         "kind": "institution",
@@ -10069,8 +10079,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shelby Gantt",
     "affiliation": "Boston University",
     "confidence": "medium",
-    "institutional_page": "https://www.bu.edu/provost/offices-contacts/staff-directory/",
     "lookup_version": 7,
+    "institutional_page": "https://www.bu.edu/provost/offices-contacts/staff-directory/",
     "links": [
       {
         "kind": "institution",
@@ -10100,8 +10110,8 @@ export const SPEAKER_PROFILES = {
     "name": "Silvana Guzman",
     "affiliation": "Florida International University",
     "confidence": "high",
-    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/guzman-silvana.html",
     "lookup_version": 7,
+    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/guzman-silvana.html",
     "links": [
       {
         "kind": "institution",
@@ -10132,8 +10142,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Alabama",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://bsc.ua.edu/graduate-student/14295/",
     "lookup_version": 7,
+    "institutional_page": "https://bsc.ua.edu/graduate-student/14295/",
     "links": [
       {
         "kind": "institution",
@@ -10163,8 +10173,8 @@ export const SPEAKER_PROFILES = {
     "name": "Stephanie Green",
     "affiliation": "University of Alberta",
     "confidence": "high",
-    "institutional_page": "https://apps.ualberta.ca/directory/person/sgreen1",
     "lookup_version": 7,
+    "institutional_page": "https://apps.ualberta.ca/directory/person/sgreen1",
     "links": [
       {
         "kind": "institution",
@@ -10195,8 +10205,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/tadd-truscott",
     "lookup_version": 7,
+    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/tadd-truscott",
     "links": [
       {
         "kind": "institution",
@@ -10226,8 +10236,8 @@ export const SPEAKER_PROFILES = {
     "name": "Tina Keller-Costa",
     "affiliation": "Instituto Superior T\u00e9cnico",
     "confidence": "high",
-    "institutional_page": "https://ibb.tecnico.ulisboa.pt/people/members/Tina-Keller-Costa/",
     "lookup_version": 7,
+    "institutional_page": "https://ibb.tecnico.ulisboa.pt/people/members/Tina-Keller-Costa/",
     "links": [
       {
         "kind": "institution",
@@ -10257,8 +10267,8 @@ export const SPEAKER_PROFILES = {
     "name": "Todd LaJeunesse",
     "affiliation": "Pennsylvania State University",
     "confidence": "high",
-    "institutional_page": "https://www.psu.edu/news/eberly-college-science/story/todd-lajeunesse-appointed-wilson-hewitt-professorship-biology",
     "lookup_version": 7,
+    "institutional_page": "https://www.psu.edu/news/eberly-college-science/story/todd-lajeunesse-appointed-wilson-hewitt-professorship-biology",
     "links": [
       {
         "kind": "institution",
@@ -10288,8 +10298,8 @@ export const SPEAKER_PROFILES = {
     "name": "William Barriera",
     "affiliation": "Florida International University",
     "confidence": "high",
-    "institutional_page": "https://case.fiu.edu/about/directory/profiles/barriera-william.html",
     "lookup_version": 7,
+    "institutional_page": "https://case.fiu.edu/about/directory/profiles/barriera-william.html",
     "links": [
       {
         "kind": "institution",
@@ -10319,8 +10329,8 @@ export const SPEAKER_PROFILES = {
     "name": "Wyatt Million",
     "affiliation": "University of Technology Sydney",
     "confidence": "medium",
-    "institutional_page": "https://search.isepstudyabroad.org/University/Detail/b2fc5cb4-3356-46a1-96c4-1937a258a4ec",
     "lookup_version": 7,
+    "institutional_page": "https://search.isepstudyabroad.org/University/Detail/b2fc5cb4-3356-46a1-96c4-1937a258a4ec",
     "links": [
       {
         "kind": "institution",
@@ -10350,8 +10360,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yohan Louis",
     "affiliation": "University of Milan-Bicocca",
     "confidence": "medium",
-    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/university-milan-bicocca",
     "lookup_version": 7,
+    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/university-milan-bicocca",
     "links": [
       {
         "kind": "institution",
@@ -10382,8 +10392,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "http://www.hawaii.edu/news/article.php?aId=14697",
     "lookup_version": 7,
+    "institutional_page": "http://www.hawaii.edu/news/article.php?aId=14697",
     "links": [
       {
         "kind": "institution",
@@ -10414,8 +10424,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Luminocean",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.luminocean.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.luminocean.com/",
     "links": [
       {
         "kind": "institution",
@@ -10467,8 +10477,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alejandro Valdivieso",
     "affiliation": "IHPE",
     "confidence": "high",
-    "institutional_page": "https://ihpe.fr/ihpe-valdivieso-alejandro/",
     "lookup_version": 7,
+    "institutional_page": "https://ihpe.fr/ihpe-valdivieso-alejandro/",
     "links": [
       {
         "kind": "institution",
@@ -10498,8 +10508,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexandra Steckbauer",
     "affiliation": "G20 Coral Research and Development Accelerator Platform",
     "confidence": "medium",
-    "institutional_page": "https://cordap.org/",
     "lookup_version": 7,
+    "institutional_page": "https://cordap.org/",
     "links": [
       {
         "kind": "institution",
@@ -10529,8 +10539,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexis Sturm",
     "affiliation": "National Oceanic and Atmospheric Administration",
     "confidence": "high",
-    "institutional_page": "https://alexisbsturm.weebly.com/uploads/1/3/1/9/131960777/sturm_cv_11.11",
     "lookup_version": 7,
+    "institutional_page": "https://alexisbsturm.weebly.com/uploads/1/3/1/9/131960777/sturm_cv_11.11",
     "links": [
       {
         "kind": "institution",
@@ -10561,8 +10571,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://marinemicrobiomeslab.kaust.edu.sa/people",
     "lookup_version": 7,
+    "institutional_page": "https://marinemicrobiomeslab.kaust.edu.sa/people",
     "links": [
       {
         "kind": "institution",
@@ -10593,8 +10603,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://people.wgtn.ac.nz/alice.rogers?_ga=2.67488978.298887445.1785125051-452730456.1783324996",
     "lookup_version": 7,
+    "institutional_page": "https://people.wgtn.ac.nz/alice.rogers?_ga=2.67488978.298887445.1785125051-452730456.1783324996",
     "links": [
       {
         "kind": "institution",
@@ -10624,8 +10634,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alma Rodr\u00edguez-troncoso",
     "affiliation": "Universidad De Guadalajara",
     "confidence": "high",
-    "institutional_page": "https://www.geoxplora.mx/s-projects-basic",
     "lookup_version": 7,
+    "institutional_page": "https://www.geoxplora.mx/s-projects-basic",
     "links": [
       {
         "kind": "institution",
@@ -10655,8 +10665,8 @@ export const SPEAKER_PROFILES = {
     "name": "Andia Chaves-Fonnegra",
     "affiliation": "Florida Atlantic University",
     "confidence": "high",
-    "institutional_page": "https://www.fau.edu/honors/faculty/chavesfonnegra/",
     "lookup_version": 7,
+    "institutional_page": "https://www.fau.edu/honors/faculty/chavesfonnegra/",
     "links": [
       {
         "kind": "institution",
@@ -10687,8 +10697,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://tajrc.kaust.edu.sa/people/current",
     "lookup_version": 7,
+    "institutional_page": "https://tajrc.kaust.edu.sa/people/current",
     "links": [
       {
         "kind": "institution",
@@ -10719,8 +10729,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://research-repository.uwa.edu.au/en/persons/anna-cresswell/",
     "lookup_version": 7,
+    "institutional_page": "https://research-repository.uwa.edu.au/en/persons/anna-cresswell/",
     "links": [
       {
         "kind": "institution",
@@ -10750,8 +10760,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ashley Carreiro",
     "affiliation": "University of Hawai\u02bbi - M\u0101noa",
     "confidence": "medium",
-    "institutional_page": "https://www.asuhmanoa.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.asuhmanoa.com/",
     "links": [
       {
         "kind": "institution",
@@ -10781,8 +10791,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ashton Williams",
     "affiliation": "Division of Aquatic and Wildlife Resources - Guam",
     "confidence": "medium",
-    "institutional_page": "https://doag.guam.gov/dawr/",
     "lookup_version": 7,
+    "institutional_page": "https://doag.guam.gov/dawr/",
     "links": [
       {
         "kind": "institution",
@@ -10812,8 +10822,8 @@ export const SPEAKER_PROFILES = {
     "name": "Austin Bowden-Kerby",
     "affiliation": "Corals for Conservation",
     "confidence": "high",
-    "institutional_page": "https://www.corals4conservation.org/blank-3",
     "lookup_version": 7,
+    "institutional_page": "https://www.corals4conservation.org/blank-3",
     "links": [
       {
         "kind": "institution",
@@ -10844,8 +10854,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Florida International University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/sosa-brandon.html",
     "lookup_version": 7,
+    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/sosa-brandon.html",
     "links": [
       {
         "kind": "institution",
@@ -10901,14 +10911,8 @@ export const SPEAKER_PROFILES = {
     "name": "Carrie Sims",
     "affiliation": "Smithsonian Tropical Research Institute",
     "confidence": "medium",
-    "institutional_page": "https://www.spokeo.com/Carrie-Sims",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.spokeo.com/Carrie-Sims"
-      },
       {
         "kind": "scholar_search",
         "label": "Search Google Scholar",
@@ -10920,11 +10924,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Carrie+Sims+Smithsonian+Tropical+Research+Institute"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.spokeo.com/Carrie-Sims"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10932,8 +10932,8 @@ export const SPEAKER_PROFILES = {
     "name": "Catherine Sabinot",
     "affiliation": "Institut de recherche pour le D\u00e9veloppement",
     "confidence": "high",
-    "institutional_page": "https://www.ethnographiques.org/sabinot_catherine",
     "lookup_version": 7,
+    "institutional_page": "https://www.ethnographiques.org/sabinot_catherine",
     "links": [
       {
         "kind": "institution",
@@ -10963,8 +10963,8 @@ export const SPEAKER_PROFILES = {
     "name": "Charlon Ligson",
     "affiliation": "Southern Cross University",
     "confidence": "high",
-    "institutional_page": "https://www.coralmagazine.com/2020/11/20/light-pollution-impacts-coral-reefs/",
     "lookup_version": 7,
+    "institutional_page": "https://www.coralmagazine.com/2020/11/20/light-pollution-impacts-coral-reefs/",
     "links": [
       {
         "kind": "institution",
@@ -10995,8 +10995,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://cheryl-barnes.github.io/people.html",
     "lookup_version": 7,
+    "institutional_page": "https://cheryl-barnes.github.io/people.html",
     "links": [
       {
         "kind": "institution",
@@ -11026,8 +11026,8 @@ export const SPEAKER_PROFILES = {
     "name": "Christine Baran",
     "affiliation": "University of the Philippines",
     "confidence": "medium",
-    "institutional_page": "https://www.upb.edu.ph/faculty-roster/",
     "lookup_version": 7,
+    "institutional_page": "https://www.upb.edu.ph/faculty-roster/",
     "links": [
       {
         "kind": "institution",
@@ -11058,8 +11058,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Alabama",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.bu.edu/physics/profile/christopher-grant/",
     "lookup_version": 7,
+    "institutional_page": "https://www.bu.edu/physics/profile/christopher-grant/",
     "links": [
       {
         "kind": "institution",
@@ -11090,8 +11090,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Plymouth",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.plymouth.ac.uk/staff/clara-diaz",
     "lookup_version": 7,
+    "institutional_page": "https://www.plymouth.ac.uk/staff/clara-diaz",
     "links": [
       {
         "kind": "institution",
@@ -11121,8 +11121,8 @@ export const SPEAKER_PROFILES = {
     "name": "Colin Anthony",
     "affiliation": "University of Tokyo",
     "confidence": "high",
-    "institutional_page": "https://veripages.com/name/Colin/Anthony/",
     "lookup_version": 7,
+    "institutional_page": "https://veripages.com/name/Colin/Anthony/",
     "links": [
       {
         "kind": "institution",
@@ -11152,8 +11152,8 @@ export const SPEAKER_PROFILES = {
     "name": "Colin Howe",
     "affiliation": "Pennsylvania State University",
     "confidence": "high",
-    "institutional_page": "https://www.shapeoflife.org/news/featured-scientist/2021/03/09/colin-howe-phd-candidate-penn-state-university",
     "lookup_version": 7,
+    "institutional_page": "https://www.shapeoflife.org/news/featured-scientist/2021/03/09/colin-howe-phd-candidate-penn-state-university",
     "links": [
       {
         "kind": "institution",
@@ -11183,8 +11183,8 @@ export const SPEAKER_PROFILES = {
     "name": "Daniel Wangpraseurt",
     "affiliation": "Scripps Institution of Oceanography",
     "confidence": "high",
-    "institutional_page": "https://scripps.ucsd.edu/news/scientists-life-daniel-wangpraseurt",
     "lookup_version": 7,
+    "institutional_page": "https://scripps.ucsd.edu/news/scientists-life-daniel-wangpraseurt",
     "links": [
       {
         "kind": "institution",
@@ -11214,8 +11214,8 @@ export const SPEAKER_PROFILES = {
     "name": "Daniela Gutierrez Andrade",
     "affiliation": "University of Texas - Arlington",
     "confidence": "medium",
-    "institutional_page": "https://www.uta.edu/academics/fort-worth/contact/staff",
     "lookup_version": 7,
+    "institutional_page": "https://www.uta.edu/academics/fort-worth/contact/staff",
     "links": [
       {
         "kind": "institution",
@@ -11245,8 +11245,8 @@ export const SPEAKER_PROFILES = {
     "name": "Danielle M. Barnas",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "medium",
-    "institutional_page": "https://www.uhcdc.manoa.hawaii.edu/team",
     "lookup_version": 7,
+    "institutional_page": "https://www.uhcdc.manoa.hawaii.edu/team",
     "links": [
       {
         "kind": "institution",
@@ -11276,8 +11276,8 @@ export const SPEAKER_PROFILES = {
     "name": "Darryl Anthony Valino",
     "affiliation": "Earth Observatory of Singapore",
     "confidence": "high",
-    "institutional_page": "https://repository.unesco.gov.ph/collections/8f8c3f27-4630-498b-8a5b-21755c1f1806?spc.page=1&f.geographicname=Philippines%2Cequals&f.sdg=SDG+13+-+Climate+action%2Cequals&f.odc=Challenge+5%3A+Unlock+ocean-based+solutions+to+climate+change%2Cequals&f.odc=Challenge+2%3A+Protect+and+restore+ecosystems+and+biodiversity%2Cequals",
     "lookup_version": 7,
+    "institutional_page": "https://repository.unesco.gov.ph/collections/8f8c3f27-4630-498b-8a5b-21755c1f1806?spc.page=1&f.geographicname=Philippines%2Cequals&f.sdg=SDG+13+-+Climate+action%2Cequals&f.odc=Challenge+5%3A+Unlock+ocean-based+solutions+to+climate+change%2Cequals&f.odc=Challenge+2%3A+Protect+and+restore+ecosystems+and+biodiversity%2Cequals",
     "links": [
       {
         "kind": "institution",
@@ -11307,8 +11307,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dawnette Olsudong",
     "affiliation": "Palau International Coral Reef Center",
     "confidence": "high",
-    "institutional_page": "https://islandtimes.org/olsudong-appointed-as-coral-futures-team-leader-at-picrc/",
     "lookup_version": 7,
+    "institutional_page": "https://islandtimes.org/olsudong-appointed-as-coral-futures-team-leader-at-picrc/",
     "links": [
       {
         "kind": "institution",
@@ -11339,8 +11339,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://gbrrestoration.org/research-team/deborah-burn/",
     "lookup_version": 7,
+    "institutional_page": "https://gbrrestoration.org/research-team/deborah-burn/",
     "links": [
       {
         "kind": "institution",
@@ -11392,8 +11392,8 @@ export const SPEAKER_PROFILES = {
     "name": "Derta Prabuning",
     "affiliation": "Reef Check Indonesia",
     "confidence": "high",
-    "institutional_page": "https://www.reefcheck.org/country/indonesia/",
     "lookup_version": 7,
+    "institutional_page": "https://www.reefcheck.org/country/indonesia/",
     "links": [
       {
         "kind": "institution",
@@ -11424,8 +11424,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.soest.hawaii.edu/soestwp/about/directory/eileen-m-nalley/",
     "lookup_version": 7,
+    "institutional_page": "https://www.soest.hawaii.edu/soestwp/about/directory/eileen-m-nalley/",
     "links": [
       {
         "kind": "institution",
@@ -11455,8 +11455,8 @@ export const SPEAKER_PROFILES = {
     "name": "Elise Keister",
     "affiliation": "Mote Marine Laboratory",
     "confidence": "high",
-    "institutional_page": "https://reefbites.com/2019/05/31/feature-friday-elise-keister/",
     "lookup_version": 7,
+    "institutional_page": "https://reefbites.com/2019/05/31/feature-friday-elise-keister/",
     "links": [
       {
         "kind": "institution",
@@ -11486,8 +11486,8 @@ export const SPEAKER_PROFILES = {
     "name": "Elizabeth Gomez-Requilme",
     "affiliation": "University of the Philippines",
     "confidence": "high",
-    "institutional_page": "https://repository.unesco.gov.ph/communities/67353c34-6808-4773-8f2a-4dd6473581a1?spc.page=1&f.geographicname=Philippines%2Cequals&f.subject=Coral+reefs%2Cequals&f.sdg=SDG+13+-+Climate+action%2Cequals",
     "lookup_version": 7,
+    "institutional_page": "https://repository.unesco.gov.ph/communities/67353c34-6808-4773-8f2a-4dd6473581a1?spc.page=1&f.geographicname=Philippines%2Cequals&f.subject=Coral+reefs%2Cequals&f.sdg=SDG+13+-+Climate+action%2Cequals",
     "links": [
       {
         "kind": "institution",
@@ -11539,8 +11539,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ellyn Darke",
     "affiliation": "University of North Carolina - Wilmington",
     "confidence": "medium",
-    "institutional_page": "https://fulbrightscholars.org/institution/university-north-carolina-wilmington",
     "lookup_version": 7,
+    "institutional_page": "https://fulbrightscholars.org/institution/university-north-carolina-wilmington",
     "links": [
       {
         "kind": "institution",
@@ -11570,8 +11570,8 @@ export const SPEAKER_PROFILES = {
     "name": "Eric Fisher",
     "affiliation": "Experience Co",
     "confidence": "high",
-    "institutional_page": "https://www.ericmfisher.com/contact",
     "lookup_version": 7,
+    "institutional_page": "https://www.ericmfisher.com/contact",
     "links": [
       {
         "kind": "institution",
@@ -11601,8 +11601,8 @@ export const SPEAKER_PROFILES = {
     "name": "Erin Dillon",
     "affiliation": "Smithsonian Tropical Research Institute",
     "confidence": "high",
-    "institutional_page": "https://erinmdillon.wordpress.com/contact/",
     "lookup_version": 7,
+    "institutional_page": "https://erinmdillon.wordpress.com/contact/",
     "links": [
       {
         "kind": "institution",
@@ -11632,8 +11632,8 @@ export const SPEAKER_PROFILES = {
     "name": "Erin Shilling",
     "affiliation": "Texas State University",
     "confidence": "high",
-    "institutional_page": "https://faculty.txst.edu/profile/2386601",
     "lookup_version": 7,
+    "institutional_page": "https://faculty.txst.edu/profile/2386601",
     "links": [
       {
         "kind": "institution",
@@ -11663,8 +11663,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ethel Ruth Baquiran",
     "affiliation": "Marine Environment and Resources Foundation",
     "confidence": "medium",
-    "institutional_page": "https://eos.org/articles/a-cryobank-network-grows-in-the-coral-triangle",
     "lookup_version": 7,
+    "institutional_page": "https://eos.org/articles/a-cryobank-network-grows-in-the-coral-triangle",
     "links": [
       {
         "kind": "institution",
@@ -11694,8 +11694,8 @@ export const SPEAKER_PROFILES = {
     "name": "Eugene Joseph",
     "affiliation": "Conservation Society of Pohnpei",
     "confidence": "high",
-    "institutional_page": "https://onereef.org/cross-site-collaboration-builds-success/",
     "lookup_version": 7,
+    "institutional_page": "https://onereef.org/cross-site-collaboration-builds-success/",
     "links": [
       {
         "kind": "institution",
@@ -11725,8 +11725,8 @@ export const SPEAKER_PROFILES = {
     "name": "Evelyn Otto",
     "affiliation": "Palau International Coral Reef Center",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Palau_International_Coral_Reef_Center",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Palau_International_Coral_Reef_Center",
     "links": [
       {
         "kind": "institution",
@@ -11756,8 +11756,8 @@ export const SPEAKER_PROFILES = {
     "name": "Farhan Pasolong",
     "affiliation": "Luminocean",
     "confidence": "medium",
-    "institutional_page": "https://www.luminocean.com/about",
     "lookup_version": 7,
+    "institutional_page": "https://www.luminocean.com/about",
     "links": [
       {
         "kind": "institution",
@@ -11787,8 +11787,8 @@ export const SPEAKER_PROFILES = {
     "name": "Fl\u00e1via Guebert",
     "affiliation": "Coral Vivo Institute",
     "confidence": "high",
-    "institutional_page": "https://coralvivo.org.br/noticia/participacao-e-transformacao-social/",
     "lookup_version": 7,
+    "institutional_page": "https://coralvivo.org.br/noticia/participacao-e-transformacao-social/",
     "links": [
       {
         "kind": "institution",
@@ -11818,8 +11818,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gal Eyal",
     "affiliation": "Bar-Ilan University",
     "confidence": "high",
-    "institutional_page": "https://life-sciences.biu.ac.il/en/node/10063",
     "lookup_version": 7,
+    "institutional_page": "https://life-sciences.biu.ac.il/en/node/10063",
     "links": [
       {
         "kind": "institution",
@@ -11849,8 +11849,8 @@ export const SPEAKER_PROFILES = {
     "name": "Garrett Fundakowski",
     "affiliation": "University of St Andrews",
     "confidence": "high",
-    "institutional_page": "https://jmadinlab.github.io/people/garrett",
     "lookup_version": 7,
+    "institutional_page": "https://jmadinlab.github.io/people/garrett",
     "links": [
       {
         "kind": "institution",
@@ -11880,8 +11880,8 @@ export const SPEAKER_PROFILES = {
     "name": "Giada Tortorelli",
     "affiliation": "Hawai\u02bbi Institute of Marine Biology",
     "confidence": "high",
-    "institutional_page": "https://www.coralresiliencelab.com/giada-tortorelli",
     "lookup_version": 7,
+    "institutional_page": "https://www.coralresiliencelab.com/giada-tortorelli",
     "links": [
       {
         "kind": "institution",
@@ -11911,8 +11911,8 @@ export const SPEAKER_PROFILES = {
     "name": "Halwi",
     "affiliation": "Hasanuddin University",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Hasanuddin_University",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Hasanuddin_University",
     "links": [
       {
         "kind": "institution",
@@ -11942,8 +11942,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hans Joshua Farinas",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "high",
-    "institutional_page": "https://biology.science.upd.edu.ph/most-outstanding-bs-biology-graduate-award-hans-joshua-farinas/",
     "lookup_version": 7,
+    "institutional_page": "https://biology.science.upd.edu.ph/most-outstanding-bs-biology-graduate-award-hans-joshua-farinas/",
     "links": [
       {
         "kind": "institution",
@@ -11973,8 +11973,8 @@ export const SPEAKER_PROFILES = {
     "name": "Heather Donnelly",
     "affiliation": "Boston College",
     "confidence": "high",
-    "institutional_page": "https://www.bc.edu/bc-web/academics/sites/center-for-teaching-excellence/programs-events/graduate-student-programs/graduate-student-teaching-recognition-ceremony.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.bc.edu/bc-web/academics/sites/center-for-teaching-excellence/programs-events/graduate-student-programs/graduate-student-teaching-recognition-ceremony.html",
     "links": [
       {
         "kind": "institution",
@@ -12004,8 +12004,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hellen Nanlohy",
     "affiliation": "Pattimura University",
     "confidence": "high",
-    "institutional_page": "https://www.wwf.id/en/blog/xpdcmbd-hellen-nanlohy",
     "lookup_version": 7,
+    "institutional_page": "https://www.wwf.id/en/blog/xpdcmbd-hellen-nanlohy",
     "links": [
       {
         "kind": "institution",
@@ -12035,8 +12035,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hiroki Kise",
     "affiliation": "National Institute of Advanced Industrial Science and Technology",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/National_Institute_of_Advanced_Industrial_Science_and_Technology",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/National_Institute_of_Advanced_Industrial_Science_and_Technology",
     "links": [
       {
         "kind": "institution",
@@ -12088,8 +12088,8 @@ export const SPEAKER_PROFILES = {
     "name": "Immy Ashley",
     "affiliation": "University of California - Los Angeles",
     "confidence": "medium",
-    "institutional_page": "https://history.ucla.edu/people/faculty/",
     "lookup_version": 7,
+    "institutional_page": "https://history.ucla.edu/people/faculty/",
     "links": [
       {
         "kind": "institution",
@@ -12119,8 +12119,8 @@ export const SPEAKER_PROFILES = {
     "name": "Isabella Orrantia",
     "affiliation": "University of Delaware",
     "confidence": "medium",
-    "institutional_page": "https://cbe.udel.edu/wp-content/uploads/2025/12/2026_WRR_Resume-Booklet.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://cbe.udel.edu/wp-content/uploads/2025/12/2026_WRR_Resume-Booklet.pdf",
     "links": [
       {
         "kind": "institution",
@@ -12176,8 +12176,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jamison Gove",
     "affiliation": "National Oceanic and Atmospheric Administration",
     "confidence": "high",
-    "institutional_page": "https://www.fisheries.noaa.gov/contact/jamison-gove",
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheries.noaa.gov/contact/jamison-gove",
     "links": [
       {
         "kind": "institution",
@@ -12207,8 +12207,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jan Theodore Miranda",
     "affiliation": "University of the Philippines",
     "confidence": "medium",
-    "institutional_page": "https://polisci.upd.edu.ph/faculty/regular-faculty/miranda-m/",
     "lookup_version": 7,
+    "institutional_page": "https://polisci.upd.edu.ph/faculty/regular-faculty/miranda-m/",
     "links": [
       {
         "kind": "institution",
@@ -12238,8 +12238,8 @@ export const SPEAKER_PROFILES = {
     "name": "Javiera Olivares-Rojas",
     "affiliation": "University of Queensland",
     "confidence": "high",
-    "institutional_page": "https://environment.uq.edu.au/profile/28881/javiera-olivares-rojas",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/28881/javiera-olivares-rojas",
     "links": [
       {
         "kind": "institution",
@@ -12269,8 +12269,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jessica Hodge",
     "affiliation": "University of Bristol",
     "confidence": "high",
-    "institutional_page": "https://www.shmontgomery.co.uk/people.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.shmontgomery.co.uk/people.html",
     "links": [
       {
         "kind": "institution",
@@ -12300,8 +12300,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jill Ashey",
     "affiliation": "University of Pennsylvania",
     "confidence": "high",
-    "institutional_page": "https://www.bio.upenn.edu/people/jill-s-ashey",
     "lookup_version": 7,
+    "institutional_page": "https://www.bio.upenn.edu/people/jill-s-ashey",
     "links": [
       {
         "kind": "institution",
@@ -12332,8 +12332,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Newcastle University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://research.ncl.ac.uk/one-planet/ourresearchers/cohort5/johnstratford.html",
     "lookup_version": 7,
+    "institutional_page": "https://research.ncl.ac.uk/one-planet/ourresearchers/cohort5/johnstratford.html",
     "links": [
       {
         "kind": "institution",
@@ -12363,8 +12363,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jonathan Charendoff",
     "affiliation": "Cooperative Institute for Marine and Atmospheric Research",
     "confidence": "medium",
-    "institutional_page": "https://expertnet.org/index.cfm?fuseaction=centers.details&instituteID=5789",
     "lookup_version": 7,
+    "institutional_page": "https://expertnet.org/index.cfm?fuseaction=centers.details&instituteID=5789",
     "links": [
       {
         "kind": "institution",
@@ -12394,8 +12394,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joshua Bennett-Williams",
     "affiliation": "Hong Kong University of Science and Technology",
     "confidence": "medium",
-    "institutional_page": "https://facultyprofiles.hkust.edu.hk/",
     "lookup_version": 7,
+    "institutional_page": "https://facultyprofiles.hkust.edu.hk/",
     "links": [
       {
         "kind": "institution",
@@ -12425,8 +12425,8 @@ export const SPEAKER_PROFILES = {
     "name": "Julia Baum",
     "affiliation": "University of Victoria",
     "confidence": "high",
-    "institutional_page": "https://www.uvic.ca/science/biology/people/profiles/baum-julia.php",
     "lookup_version": 7,
+    "institutional_page": "https://www.uvic.ca/science/biology/people/profiles/baum-julia.php",
     "links": [
       {
         "kind": "institution",
@@ -12457,8 +12457,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Michigan - Ann Arbor",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.juliacolemusic.com/contact",
     "lookup_version": 7,
+    "institutional_page": "https://www.juliacolemusic.com/contact",
     "links": [
       {
         "kind": "institution",
@@ -12488,8 +12488,8 @@ export const SPEAKER_PROFILES = {
     "name": "Julia Klinges",
     "affiliation": "Island Conservation",
     "confidence": "medium",
-    "institutional_page": "https://www.natucate.com/en/blog/reviews/volunteer-abroad-seychelles-north-island-conservation-julia",
     "lookup_version": 7,
+    "institutional_page": "https://www.natucate.com/en/blog/reviews/volunteer-abroad-seychelles-north-island-conservation-julia",
     "links": [
       {
         "kind": "institution",
@@ -12519,8 +12519,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kamalani Oshiro",
     "affiliation": "Hawai\u02bbi Institute of Marine Biology",
     "confidence": "high",
-    "institutional_page": "https://www.soest.hawaii.edu/soestwp/announce/events/sunset-seminar-series-5/",
     "lookup_version": 7,
+    "institutional_page": "https://www.soest.hawaii.edu/soestwp/announce/events/sunset-seminar-series-5/",
     "links": [
       {
         "kind": "institution",
@@ -12550,8 +12550,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kareen Schnabel",
     "affiliation": "Earth Sciences New Zealand",
     "confidence": "high",
-    "institutional_page": "http://www.oceansatlas.org/member-profile/en/c/130581",
     "lookup_version": 7,
+    "institutional_page": "http://www.oceansatlas.org/member-profile/en/c/130581",
     "links": [
       {
         "kind": "institution",
@@ -12582,8 +12582,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/23825/katharine-prata",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/23825/katharine-prata",
     "links": [
       {
         "kind": "institution",
@@ -12634,14 +12634,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kathryn Cobleigh",
     "affiliation": "University of Technology Sydney",
     "confidence": "medium",
-    "institutional_page": "https://www.spokeo.com/Sue-Cobleigh",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.spokeo.com/Sue-Cobleigh"
-      },
       {
         "kind": "openalex",
         "label": "OpenAlex profile",
@@ -12658,11 +12652,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Kathryn+Cobleigh+University+of+Technology+Sydney"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.spokeo.com/Sue-Cobleigh"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -12671,8 +12661,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Pennsylvania",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.bio.upenn.edu/people/katie-barott",
     "lookup_version": 7,
+    "institutional_page": "https://www.bio.upenn.edu/people/katie-barott",
     "links": [
       {
         "kind": "institution",
@@ -12702,8 +12692,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kelly Rome Publico",
     "affiliation": "University of the Philippines",
     "confidence": "medium",
-    "institutional_page": "https://www.upb.edu.ph/faculty-roster/",
     "lookup_version": 7,
+    "institutional_page": "https://www.upb.edu.ph/faculty-roster/",
     "links": [
       {
         "kind": "institution",
@@ -12733,8 +12723,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kerri Dobson",
     "affiliation": "University of North Carolina - Wilmington",
     "confidence": "high",
-    "institutional_page": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2025.1595911/full",
     "lookup_version": 7,
+    "institutional_page": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2025.1595911/full",
     "links": [
       {
         "kind": "institution",
@@ -12764,8 +12754,8 @@ export const SPEAKER_PROFILES = {
     "name": "Krista Ryon",
     "affiliation": "The Two Frontiers Project",
     "confidence": "high",
-    "institutional_page": "https://twofrontiers.org/team",
     "lookup_version": 7,
+    "institutional_page": "https://twofrontiers.org/team",
     "links": [
       {
         "kind": "institution",
@@ -12795,8 +12785,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kristin Grimes",
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
-    "institutional_page": "https://www.navigatinghomeproject.com/leadership-team/kristin-wilson-grimes-phd",
     "lookup_version": 7,
+    "institutional_page": "https://www.navigatinghomeproject.com/leadership-team/kristin-wilson-grimes-phd",
     "links": [
       {
         "kind": "institution",
@@ -12826,8 +12816,8 @@ export const SPEAKER_PROFILES = {
     "name": "Larissa Pires Teixeira",
     "affiliation": "Universidade do Estado do Rio de Janeiro",
     "confidence": "medium",
-    "institutional_page": "https://www.redalyc.org/journal/3915/391561594018/html/",
     "lookup_version": 7,
+    "institutional_page": "https://www.redalyc.org/journal/3915/391561594018/html/",
     "links": [
       {
         "kind": "institution",
@@ -12858,8 +12848,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://bemlab.kaust.edu.sa/publications",
     "lookup_version": 7,
+    "institutional_page": "https://bemlab.kaust.edu.sa/publications",
     "links": [
       {
         "kind": "institution",
@@ -12890,8 +12880,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://bemlab.kaust.edu.sa/publications/2",
     "lookup_version": 7,
+    "institutional_page": "https://bemlab.kaust.edu.sa/publications/2",
     "links": [
       {
         "kind": "institution",
@@ -12922,8 +12912,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Texas State University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.bio.txst.edu/faculty-staff/lauren-fuess.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.bio.txst.edu/faculty-staff/lauren-fuess.html",
     "links": [
       {
         "kind": "institution",
@@ -12953,13 +12943,14 @@ export const SPEAKER_PROFILES = {
     "name": "Leah Harper",
     "affiliation": "MarineGEO",
     "confidence": "high",
-    "institutional_page": "https://radaris.com/p/Leah/Harper/",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "https://marinegeo.si.edu/about-us/who-we-are/leah-harper",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://radaris.com/p/Leah/Harper/"
+        "url": "https://marinegeo.si.edu/about-us/who-we-are/leah-harper"
       },
       {
         "kind": "scholar_search",
@@ -12975,7 +12966,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://radaris.com/p/Leah/Harper/"
+      "url": "https://marinegeo.si.edu/about-us/who-we-are/leah-harper"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
@@ -12985,8 +12976,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University College London",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.lewisajones.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.lewisajones.com/",
     "links": [
       {
         "kind": "institution",
@@ -13016,8 +13007,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lisa Schellenberg",
     "affiliation": "Royal Netherlands Institute for Sea Research",
     "confidence": "high",
-    "institutional_page": "https://www.nioz.nl/en/news-and-blogs/blog/sealink-cruise",
     "lookup_version": 7,
+    "institutional_page": "https://www.nioz.nl/en/news-and-blogs/blog/sealink-cruise",
     "links": [
       {
         "kind": "institution",
@@ -13048,8 +13039,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Luca-Stirnimann",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Luca-Stirnimann",
     "links": [
       {
         "kind": "institution",
@@ -13079,8 +13070,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ma. Chrischelle Bullecer",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://www.upm.edu.ph/academics-faculty/",
     "lookup_version": 7,
+    "institutional_page": "https://www.upm.edu.ph/academics-faculty/",
     "links": [
       {
         "kind": "institution",
@@ -13110,8 +13101,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marco Contardi",
     "affiliation": "University of Milano-Bicocca",
     "confidence": "high",
-    "institutional_page": "https://www.iit.it/people-details/-/people/marco-contardi",
     "lookup_version": 7,
+    "institutional_page": "https://www.iit.it/people-details/-/people/marco-contardi",
     "links": [
       {
         "kind": "institution",
@@ -13141,8 +13132,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mariana Bender",
     "affiliation": "Federal University of Santa Maria",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Federal_University_of_Santa_Maria",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Federal_University_of_Santa_Maria",
     "links": [
       {
         "kind": "institution",
@@ -13173,8 +13164,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-marji-puotinen",
     "lookup_version": 7,
+    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-marji-puotinen",
     "links": [
       {
         "kind": "institution",
@@ -13214,8 +13205,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mary Mann",
     "affiliation": "Turks and Caicos Reef Foundation",
     "confidence": "medium",
-    "institutional_page": "https://www.tcreef.org/",
     "lookup_version": 7,
+    "institutional_page": "https://www.tcreef.org/",
     "links": [
       {
         "kind": "institution",
@@ -13246,8 +13237,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Plymouth",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://matthew-doherty.com/",
     "lookup_version": 7,
+    "institutional_page": "https://matthew-doherty.com/",
     "links": [
       {
         "kind": "institution",
@@ -13277,8 +13268,8 @@ export const SPEAKER_PROFILES = {
     "name": "Matthew-james Bennett",
     "affiliation": "MARE",
     "confidence": "high",
-    "institutional_page": "https://www.desmondfuneralhome.com/obituaries/Matthew-James-Bennett?obId=48989655",
     "lookup_version": 7,
+    "institutional_page": "https://www.desmondfuneralhome.com/obituaries/Matthew-James-Bennett?obId=48989655",
     "links": [
       {
         "kind": "institution",
@@ -13309,8 +13300,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://coralsymbiomics.kaust.edu.sa/people/detail/max-dhillon",
     "lookup_version": 7,
+    "institutional_page": "https://coralsymbiomics.kaust.edu.sa/people/detail/max-dhillon",
     "links": [
       {
         "kind": "institution",
@@ -13340,8 +13331,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maxine Mouly",
     "affiliation": "California Academy of Sciences",
     "confidence": "medium",
-    "institutional_page": "https://www.calacademy.org/scientists/academy-fellows",
     "lookup_version": 7,
+    "institutional_page": "https://www.calacademy.org/scientists/academy-fellows",
     "links": [
       {
         "kind": "institution",
@@ -13371,8 +13362,8 @@ export const SPEAKER_PROFILES = {
     "name": "Melissa Allen (Sante)",
     "affiliation": "Mote Marine Laboratory",
     "confidence": "high",
-    "institutional_page": "https://mote.org/staff/melissa-sante/",
     "lookup_version": 7,
+    "institutional_page": "https://mote.org/staff/melissa-sante/",
     "links": [
       {
         "kind": "institution",
@@ -13402,8 +13393,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mengiau Sasao",
     "affiliation": "Palau International Coral Reef Center",
     "confidence": "high",
-    "institutional_page": "https://islandtimes.org/mengiau-sasao-joins-the-palau-aquarium-as-junior-researcher/",
     "lookup_version": 7,
+    "institutional_page": "https://islandtimes.org/mengiau-sasao-joins-the-palau-aquarium-as-junior-researcher/",
     "links": [
       {
         "kind": "institution",
@@ -13433,8 +13424,8 @@ export const SPEAKER_PROFILES = {
     "name": "Michelle Devlin",
     "affiliation": "Cefas",
     "confidence": "high",
-    "institutional_page": "https://www.cefas.co.uk/about-us/people/michelle-devlin/",
     "lookup_version": 7,
+    "institutional_page": "https://www.cefas.co.uk/about-us/people/michelle-devlin/",
     "links": [
       {
         "kind": "institution",
@@ -13464,8 +13455,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mollie Asbury",
     "affiliation": "National Geographic Society Pristine Seas",
     "confidence": "medium",
-    "institutional_page": "https://www.impact.upenn.edu/pristine-seas/",
     "lookup_version": 7,
+    "institutional_page": "https://www.impact.upenn.edu/pristine-seas/",
     "links": [
       {
         "kind": "institution",
@@ -13495,8 +13486,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nancy Prouty",
     "affiliation": "United States Geological Survey",
     "confidence": "high",
-    "institutional_page": "https://www.usgs.gov/staff-profiles/nancy-prouty",
     "lookup_version": 7,
+    "institutional_page": "https://www.usgs.gov/staff-profiles/nancy-prouty",
     "links": [
       {
         "kind": "institution",
@@ -13527,8 +13518,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nova Southeastern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.nova-ncri.org/people/meet-the-team",
     "lookup_version": 7,
+    "institutional_page": "https://www.nova-ncri.org/people/meet-the-team",
     "links": [
       {
         "kind": "institution",
@@ -13558,8 +13549,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nick Kamenos",
     "affiliation": "Ume\u00e5 Univeristy",
     "confidence": "high",
-    "institutional_page": "https://www.umu.se/en/staff/nick-kamenos/",
     "lookup_version": 7,
+    "institutional_page": "https://www.umu.se/en/staff/nick-kamenos/",
     "links": [
       {
         "kind": "institution",
@@ -13589,8 +13580,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nikko Galanto",
     "affiliation": "University of Guam",
     "confidence": "high",
-    "institutional_page": "https://guamepscor.uog.edu/uog-epscor-graduate-students-spotlight-coral-research-at-national-conference/",
     "lookup_version": 7,
+    "institutional_page": "https://guamepscor.uog.edu/uog-epscor-graduate-students-spotlight-coral-research-at-national-conference/",
     "links": [
       {
         "kind": "institution",
@@ -13621,8 +13612,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://coralsymbiomics.kaust.edu.sa/people/detail/octavio-salazar-moya",
     "lookup_version": 7,
+    "institutional_page": "https://coralsymbiomics.kaust.edu.sa/people/detail/octavio-salazar-moya",
     "links": [
       {
         "kind": "institution",
@@ -13653,8 +13644,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Scripps Institution of Oceanography",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://scripps.ucsd.edu/profiles/oboulais",
     "lookup_version": 7,
+    "institutional_page": "https://scripps.ucsd.edu/profiles/oboulais",
     "links": [
       {
         "kind": "institution",
@@ -13684,8 +13675,8 @@ export const SPEAKER_PROFILES = {
     "name": "Olivier Rey",
     "affiliation": "IHPE",
     "confidence": "high",
-    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/37120369/",
     "lookup_version": 7,
+    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/37120369/",
     "links": [
       {
         "kind": "institution",
@@ -13716,8 +13707,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Macquarie University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.marineomicslab.com/contact",
     "lookup_version": 7,
+    "institutional_page": "https://www.marineomicslab.com/contact",
     "links": [
       {
         "kind": "institution",
@@ -13748,8 +13739,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-patrick-laffy",
     "lookup_version": 7,
+    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-patrick-laffy",
     "links": [
       {
         "kind": "institution",
@@ -13779,8 +13770,8 @@ export const SPEAKER_PROFILES = {
     "name": "Pierrick Harnay",
     "affiliation": "Reva Atea",
     "confidence": "medium",
-    "institutional_page": "https://www.helloasso.com/associations/reva-atea",
     "lookup_version": 7,
+    "institutional_page": "https://www.helloasso.com/associations/reva-atea",
     "links": [
       {
         "kind": "institution",
@@ -13810,8 +13801,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rachael Bay",
     "affiliation": "University of California - Davis",
     "confidence": "medium",
-    "institutional_page": "https://www.packard.org/fellow/rachael-bay/",
     "lookup_version": 7,
+    "institutional_page": "https://www.packard.org/fellow/rachael-bay/",
     "links": [
       {
         "kind": "institution",
@@ -13851,8 +13842,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ra\u00fal Gonz\u00e1lez-Pech",
     "affiliation": "Texas State University",
     "confidence": "high",
-    "institutional_page": "https://www.bio.txst.edu/faculty-staff/raul-gonzalez-pech.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.bio.txst.edu/faculty-staff/raul-gonzalez-pech.html",
     "links": [
       {
         "kind": "institution",
@@ -13883,8 +13874,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nova Southeastern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://gisandspatialecologylab.weebly.com/lab-members.html",
     "lookup_version": 7,
+    "institutional_page": "https://gisandspatialecologylab.weebly.com/lab-members.html",
     "links": [
       {
         "kind": "institution",
@@ -13914,8 +13905,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rebecca Garcia-Camps",
     "affiliation": "Fundacion Puntacana",
     "confidence": "medium",
-    "institutional_page": "https://www.pledge.to/organizations/30-0108263-617/fundacion-grupo-puntacana",
     "lookup_version": 7,
+    "institutional_page": "https://www.pledge.to/organizations/30-0108263-617/fundacion-grupo-puntacana",
     "links": [
       {
         "kind": "institution",
@@ -13945,14 +13936,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rouenne Camille De Castro",
     "affiliation": "Marine Environment and Resources Foundation",
     "confidence": "high",
-    "institutional_page": "https://www.mail-archive.com/marmam@lists.uvic.ca/msg14560.html",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.mail-archive.com/marmam@lists.uvic.ca/msg14560.html"
-      },
       {
         "kind": "scholar_search",
         "label": "Search Google Scholar",
@@ -13964,11 +13949,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Rouenne+Camille+De+Castro+Marine+Environment+and+Resources+Foundation"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.mail-archive.com/marmam@lists.uvic.ca/msg14560.html"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -13976,8 +13957,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sabrina Rosset",
     "affiliation": "Hawai\u02bbi Institute of Marine Biology",
     "confidence": "high",
-    "institutional_page": "https://www.coralresiliencelab.com/sabrina-rosset",
     "lookup_version": 7,
+    "institutional_page": "https://www.coralresiliencelab.com/sabrina-rosset",
     "links": [
       {
         "kind": "institution",
@@ -14007,8 +13988,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sam Kahng",
     "affiliation": "Kikai Institute for Coral Reef Science",
     "confidence": "high",
-    "institutional_page": "https://kikaireefs.org/2020/06/16/surprising-growth-rates-discovered-in-worlds-deepest-photosynthetic-corals/",
     "lookup_version": 7,
+    "institutional_page": "https://kikaireefs.org/2020/06/16/surprising-growth-rates-discovered-in-worlds-deepest-photosynthetic-corals/",
     "links": [
       {
         "kind": "institution",
@@ -14038,8 +14019,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sara Swaminathan",
     "affiliation": "Bigelow Laboratory for Ocean Sciences",
     "confidence": "high",
-    "institutional_page": "https://www.bigelow.org/about/people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.bigelow.org/about/people/",
     "links": [
       {
         "kind": "institution",
@@ -14069,8 +14050,8 @@ export const SPEAKER_PROFILES = {
     "name": "Seonggil Go",
     "affiliation": "KIOST",
     "confidence": "high",
-    "institutional_page": "https://m.kordi.re.kr/cop/bbs/BBSMSTR_000000000281/selectBoardArticle.do?bbsId=BBSMSTR_000000000281&nttId=24970",
     "lookup_version": 7,
+    "institutional_page": "https://m.kordi.re.kr/cop/bbs/BBSMSTR_000000000281/selectBoardArticle.do?bbsId=BBSMSTR_000000000281&nttId=24970",
     "links": [
       {
         "kind": "institution",
@@ -14100,8 +14081,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sergio Floeter",
     "affiliation": "Universidade Federal de Santa Catarina",
     "confidence": "high",
-    "institutional_page": "https://lbmm.ufsc.br/floeter.html",
     "lookup_version": 7,
+    "institutional_page": "https://lbmm.ufsc.br/floeter.html",
     "links": [
       {
         "kind": "institution",
@@ -14131,8 +14112,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sheriden Morris",
     "affiliation": "Reef and Rainforest Research Centre",
     "confidence": "high",
-    "institutional_page": "https://crcna.com.au/board_members/ms-sheriden-morris-chair/",
     "lookup_version": 7,
+    "institutional_page": "https://crcna.com.au/board_members/ms-sheriden-morris-chair/",
     "links": [
       {
         "kind": "institution",
@@ -14162,8 +14143,8 @@ export const SPEAKER_PROFILES = {
     "name": "Silvia Vimercati",
     "affiliation": "General Organization for Conservation of Coral Reefs in the Red Sea",
     "confidence": "medium",
-    "institutional_page": "https://icriforum.org/events/icrigm38/",
     "lookup_version": 7,
+    "institutional_page": "https://icriforum.org/events/icrigm38/",
     "links": [
       {
         "kind": "institution",
@@ -14193,8 +14174,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sophia Diane Gaton",
     "affiliation": "University of the Philippines",
     "confidence": "medium",
-    "institutional_page": "https://www.ateneo.edu/soss/economics/faculty",
     "lookup_version": 7,
+    "institutional_page": "https://www.ateneo.edu/soss/economics/faculty",
     "links": [
       {
         "kind": "institution",
@@ -14224,8 +14205,8 @@ export const SPEAKER_PROFILES = {
     "name": "Spencer Miller",
     "affiliation": "Settide, LLC",
     "confidence": "medium",
-    "institutional_page": "https://www.wearefounders.uk/spencers-journey-the-mind-behind-settides-cutting-edge-underwater-tools/",
     "lookup_version": 7,
+    "institutional_page": "https://www.wearefounders.uk/spencers-journey-the-mind-behind-settides-cutting-edge-underwater-tools/",
     "links": [
       {
         "kind": "institution",
@@ -14255,8 +14236,8 @@ export const SPEAKER_PROFILES = {
     "name": "Stacia Loong",
     "affiliation": "National University of Singapore",
     "confidence": "medium",
-    "institutional_page": "https://coralreef.nus.edu.sg/lionelng.html",
     "lookup_version": 7,
+    "institutional_page": "https://coralreef.nus.edu.sg/lionelng.html",
     "links": [
       {
         "kind": "institution",
@@ -14291,8 +14272,8 @@ export const SPEAKER_PROFILES = {
     "name": "Stephanie Rosales",
     "affiliation": "University of Miami / NOAA",
     "confidence": "high",
-    "institutional_page": "https://www.aoml.noaa.gov/news/tag/stephanie-rosales/",
     "lookup_version": 7,
+    "institutional_page": "https://www.aoml.noaa.gov/news/tag/stephanie-rosales/",
     "links": [
       {
         "kind": "institution",
@@ -14323,8 +14304,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Western Australia",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://pursuit.unimelb.edu.au/individuals/professor-stephen-swearer",
     "lookup_version": 7,
+    "institutional_page": "https://pursuit.unimelb.edu.au/individuals/professor-stephen-swearer",
     "links": [
       {
         "kind": "institution",
@@ -14354,8 +14335,8 @@ export const SPEAKER_PROFILES = {
     "name": "Suchana Apple Chavanich",
     "affiliation": "Chulalongkorn University",
     "confidence": "high",
-    "institutional_page": "https://www.tatlerasia.com/people/suchana-chavanich",
     "lookup_version": 7,
+    "institutional_page": "https://www.tatlerasia.com/people/suchana-chavanich",
     "links": [
       {
         "kind": "institution",
@@ -14386,8 +14367,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/22154/sun-kim",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/22154/sun-kim",
     "links": [
       {
         "kind": "institution",
@@ -14438,8 +14419,8 @@ export const SPEAKER_PROFILES = {
     "name": "Suzanne Long",
     "affiliation": "Reef and Rainforest Research Centre",
     "confidence": "high",
-    "institutional_page": "https://www.rrrc.org.au/staff/",
     "lookup_version": 7,
+    "institutional_page": "https://www.rrrc.org.au/staff/",
     "links": [
       {
         "kind": "institution",
@@ -14470,8 +14451,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-sven-uthicke",
     "lookup_version": 7,
+    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-sven-uthicke",
     "links": [
       {
         "kind": "institution",
@@ -14501,8 +14482,8 @@ export const SPEAKER_PROFILES = {
     "name": "Thiago Mendes",
     "affiliation": "Projeto Cost\u00e3o Rochoso",
     "confidence": "medium",
-    "institutional_page": "https://www.costaorochoso.com.br/",
     "lookup_version": 7,
+    "institutional_page": "https://www.costaorochoso.com.br/",
     "links": [
       {
         "kind": "institution",
@@ -14533,8 +14514,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://aims.jcu.edu.au/our-people/students/tiny-remmers-barry.711/",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/students/tiny-remmers-barry.711/",
     "links": [
       {
         "kind": "institution",
@@ -14564,8 +14545,8 @@ export const SPEAKER_PROFILES = {
     "name": "Toru Kanyama",
     "affiliation": "Fisheries Infrastructure Development Center",
     "confidence": "high",
-    "institutional_page": "https://link.springer.com/article/10.1007/s00338-025-02754-2",
     "lookup_version": 7,
+    "institutional_page": "https://link.springer.com/article/10.1007/s00338-025-02754-2",
     "links": [
       {
         "kind": "institution",
@@ -14595,8 +14576,8 @@ export const SPEAKER_PROFILES = {
     "name": "TY Fan",
     "affiliation": "National Museum of Marine Biology and Aquarium",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/National_Museum_of_Marine_Biology_and_Aquarium",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/National_Museum_of_Marine_Biology_and_Aquarium",
     "links": [
       {
         "kind": "institution",
@@ -14626,8 +14607,8 @@ export const SPEAKER_PROFILES = {
     "name": "Valeria Pizarro",
     "affiliation": "Perry Institute for Marine Science",
     "confidence": "high",
-    "institutional_page": "https://angari.org/scientist-valeria-pizarro/",
     "lookup_version": 7,
+    "institutional_page": "https://angari.org/scientist-valeria-pizarro/",
     "links": [
       {
         "kind": "institution",
@@ -14658,8 +14639,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/klaus-viktor-peinemann",
     "lookup_version": 7,
+    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/klaus-viktor-peinemann",
     "links": [
       {
         "kind": "institution",
@@ -14689,8 +14670,8 @@ export const SPEAKER_PROFILES = {
     "name": "Voranop Viyakarn",
     "affiliation": "Chulalongkorn University",
     "confidence": "high",
-    "institutional_page": "https://www.chula.ac.th/en/about/administration/the-president-and-administrative-board/",
     "lookup_version": 7,
+    "institutional_page": "https://www.chula.ac.th/en/about/administration/the-president-and-administrative-board/",
     "links": [
       {
         "kind": "institution",
@@ -14720,8 +14701,8 @@ export const SPEAKER_PROFILES = {
     "name": "Wanlaya Klinthong",
     "affiliation": "Ramkhamhaeng University",
     "confidence": "medium",
-    "institutional_page": "https://ph02.tci-thaijo.org/index.php/RIST",
     "lookup_version": 7,
+    "institutional_page": "https://ph02.tci-thaijo.org/index.php/RIST",
     "links": [
       {
         "kind": "institution",
@@ -14752,8 +14733,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Perry Institute for Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.usf.edu/arts-sciences/departments/economics/people/faculty/william-greene.aspx",
     "lookup_version": 7,
+    "institutional_page": "https://www.usf.edu/arts-sciences/departments/economics/people/faculty/william-greene.aspx",
     "links": [
       {
         "kind": "institution",
@@ -14783,8 +14764,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yu-De Pei",
     "affiliation": "Hong Kong University of Science and Technology",
     "confidence": "medium",
-    "institutional_page": "https://www.cs.hku.hk/people/academic-staff",
     "lookup_version": 7,
+    "institutional_page": "https://www.cs.hku.hk/people/academic-staff",
     "links": [
       {
         "kind": "institution",
@@ -14815,8 +14796,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Santa Barbara",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://young-lab.eemb.ucsb.edu/people/addie-dahl",
     "lookup_version": 7,
+    "institutional_page": "https://young-lab.eemb.ucsb.edu/people/addie-dahl",
     "links": [
       {
         "kind": "institution",
@@ -14847,8 +14828,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Wageningen University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://threshershark.id/team/agustin-capriati",
     "lookup_version": 7,
+    "institutional_page": "https://threshershark.id/team/agustin-capriati",
     "links": [
       {
         "kind": "institution",
@@ -14888,8 +14869,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alejandra Robles-Pay\u00e1n",
     "affiliation": "Universidad Aut\u00f3noma de Baja California Sur",
     "confidence": "medium",
-    "institutional_page": "https://www.uabcs.mx/dacsj/docentes",
     "lookup_version": 7,
+    "institutional_page": "https://www.uabcs.mx/dacsj/docentes",
     "links": [
       {
         "kind": "institution",
@@ -14919,8 +14900,8 @@ export const SPEAKER_PROFILES = {
     "name": "Aleksandra Crossman",
     "affiliation": "University of Delaware",
     "confidence": "medium",
-    "institutional_page": "https://www.udel.edu/academics/colleges/cas/units/departments/physics-astronomy/our-people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.udel.edu/academics/colleges/cas/units/departments/physics-astronomy/our-people/",
     "links": [
       {
         "kind": "institution",
@@ -14951,8 +14932,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.fisheriesreform.com/team.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheriesreform.com/team.html",
     "links": [
       {
         "kind": "institution",
@@ -14982,8 +14963,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexander Van Nynatten",
     "affiliation": "University of Victoria",
     "confidence": "high",
-    "institutional_page": "https://chang.eeb.utoronto.ca/lab-alumni/alex/",
     "lookup_version": 7,
+    "institutional_page": "https://chang.eeb.utoronto.ca/lab-alumni/alex/",
     "links": [
       {
         "kind": "institution",
@@ -15013,8 +14994,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexandra Good",
     "affiliation": "Stony Brook University",
     "confidence": "medium",
-    "institutional_page": "https://www.stonybrook.edu/commcms/geosciences/people/grad-students.php",
     "lookup_version": 7,
+    "institutional_page": "https://www.stonybrook.edu/commcms/geosciences/people/grad-students.php",
     "links": [
       {
         "kind": "institution",
@@ -15044,8 +15025,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexandra Skeer",
     "affiliation": "University of Technology Sydney",
     "confidence": "medium",
-    "institutional_page": "https://prezi.com/hqcgo2fhydmi/movement-of-the-southern-rock-lobster/",
     "lookup_version": 7,
+    "institutional_page": "https://prezi.com/hqcgo2fhydmi/movement-of-the-southern-rock-lobster/",
     "links": [
       {
         "kind": "institution",
@@ -15076,8 +15057,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Maryland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.umces.edu/directory/allen-place/",
     "lookup_version": 7,
+    "institutional_page": "https://www.umces.edu/directory/allen-place/",
     "links": [
       {
         "kind": "institution",
@@ -15107,8 +15088,8 @@ export const SPEAKER_PROFILES = {
     "name": "Allie Durdall",
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
-    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "links": [
       {
         "kind": "institution",
@@ -15139,8 +15120,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Florida Atlantic University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://vosslab.weebly.com/uploads/3/0/3/1/30317035/a.klein_cv_august2025.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://vosslab.weebly.com/uploads/3/0/3/1/30317035/a.klein_cv_august2025.pdf",
     "links": [
       {
         "kind": "institution",
@@ -15170,8 +15151,8 @@ export const SPEAKER_PROFILES = {
     "name": "Amanda Quasunella",
     "affiliation": "Southern Cross University",
     "confidence": "medium",
-    "institutional_page": "https://cz.pinterest.com/amandaquasunell/?amp_client_id=CLIENT_ID(_)&mweb_unauth_id=%7B%7Bdefault.session%7D%7D",
     "lookup_version": 7,
+    "institutional_page": "https://cz.pinterest.com/amandaquasunell/?amp_client_id=CLIENT_ID(_)&mweb_unauth_id=%7B%7Bdefault.session%7D%7D",
     "links": [
       {
         "kind": "institution",
@@ -15206,8 +15187,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ana Teresa Herrera Reveles",
     "affiliation": "Universidad Central de Venezuela",
     "confidence": "medium",
-    "institutional_page": "http://www.ucv.ve/estructura/facultades/facultad-de-ciencias/escuelas/biologia/asignaturas/profesores.html",
     "lookup_version": 7,
+    "institutional_page": "http://www.ucv.ve/estructura/facultades/facultad-de-ciencias/escuelas/biologia/asignaturas/profesores.html",
     "links": [
       {
         "kind": "institution",
@@ -15237,8 +15218,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anabelle Dece Espadero",
     "affiliation": "Mindanao State University - Naawan",
     "confidence": "medium",
-    "institutional_page": "https://cdnc.heyzine.com/files/uploaded/v2/9582b03dc70941327c7428eea0b9b268adb2a290.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://cdnc.heyzine.com/files/uploaded/v2/9582b03dc70941327c7428eea0b9b268adb2a290.pdf",
     "links": [
       {
         "kind": "institution",
@@ -15268,8 +15249,8 @@ export const SPEAKER_PROFILES = {
     "name": "Andrea Rivera-sosa",
     "affiliation": "Coral Reef Alliance",
     "confidence": "high",
-    "institutional_page": "https://esa.org/history/2016/07/rivera-sosa-andrea/",
     "lookup_version": 7,
+    "institutional_page": "https://esa.org/history/2016/07/rivera-sosa-andrea/",
     "links": [
       {
         "kind": "institution",
@@ -15299,8 +15280,8 @@ export const SPEAKER_PROFILES = {
     "name": "Andrew Taylor",
     "affiliation": "Blue Corner Marine Research",
     "confidence": "high",
-    "institutional_page": "http://bluecornerconservation.org/andrew-taylor",
     "lookup_version": 7,
+    "institutional_page": "http://bluecornerconservation.org/andrew-taylor",
     "links": [
       {
         "kind": "institution",
@@ -15330,14 +15311,8 @@ export const SPEAKER_PROFILES = {
     "name": "Andy Ridley",
     "affiliation": "Citizens of the Reef",
     "confidence": "high",
-    "institutional_page": "https://www.greatexpectation.com.au/presenter/Leadership-speakers/Andy-Ridley",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.greatexpectation.com.au/presenter/Leadership-speakers/Andy-Ridley"
-      },
       {
         "kind": "scholar_search",
         "label": "Search Google Scholar",
@@ -15349,11 +15324,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Andy+Ridley+Citizens+of+the+Reef"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.greatexpectation.com.au/presenter/Leadership-speakers/Andy-Ridley"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15362,8 +15333,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University Of Maine, Presque Isle; University of Southern California, Los Angeles",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://annavinton.com/",
     "lookup_version": 7,
+    "institutional_page": "https://annavinton.com/",
     "links": [
       {
         "kind": "institution",
@@ -15393,8 +15364,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anna Koester",
     "affiliation": "Seychelles Islands Foundation",
     "confidence": "high",
-    "institutional_page": "https://www.nature.com/articles/s41598-025-09531-9",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.com/articles/s41598-025-09531-9",
     "links": [
       {
         "kind": "institution",
@@ -15424,8 +15395,8 @@ export const SPEAKER_PROFILES = {
     "name": "Annabel Hughes",
     "affiliation": "Northeastern University Marine Science Center",
     "confidence": "medium",
-    "institutional_page": "https://cos.northeastern.edu/nucos-department/marine-environmental-sciences/",
     "lookup_version": 7,
+    "institutional_page": "https://cos.northeastern.edu/nucos-department/marine-environmental-sciences/",
     "links": [
       {
         "kind": "institution",
@@ -15455,14 +15426,9 @@ export const SPEAKER_PROFILES = {
     "name": "Anthony Bellantuono",
     "affiliation": "University of California - Los Angeles",
     "confidence": "high",
-    "institutional_page": "https://radaris.com/p/Bellantuono/Vit/",
+    "verified": true,
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://radaris.com/p/Bellantuono/Vit/"
-      },
       {
         "kind": "scholar_search",
         "label": "Search Google Scholar",
@@ -15474,11 +15440,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Anthony+Bellantuono+University+of+California+-+Los+Angeles"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://radaris.com/p/Bellantuono/Vit/"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15508,8 +15470,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anya Brown",
     "affiliation": "University of California - Davis",
     "confidence": "high",
-    "institutional_page": "https://explorers.nationalgeographic.org/directory/anya-brown",
     "lookup_version": 7,
+    "institutional_page": "https://explorers.nationalgeographic.org/directory/anya-brown",
     "links": [
       {
         "kind": "institution",
@@ -15539,8 +15501,8 @@ export const SPEAKER_PROFILES = {
     "name": "April Johns",
     "affiliation": "Colorado State University",
     "confidence": "high",
-    "institutional_page": "https://biz.colostate.edu/about/directory",
     "lookup_version": 7,
+    "institutional_page": "https://biz.colostate.edu/about/directory",
     "links": [
       {
         "kind": "institution",
@@ -15570,8 +15532,8 @@ export const SPEAKER_PROFILES = {
     "name": "Aric Bickel",
     "affiliation": "SECORE International",
     "confidence": "medium",
-    "institutional_page": "https://www.blogger.com/profile/14748054890577513669",
     "lookup_version": 7,
+    "institutional_page": "https://www.blogger.com/profile/14748054890577513669",
     "links": [
       {
         "kind": "institution",
@@ -15606,8 +15568,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ariel Pezner",
     "affiliation": "University of Technology Sydney",
     "confidence": "high",
-    "institutional_page": "https://www.uts.edu.au/about/uts-vision/initiatives/multicultural-womens-network/about-multicultural-womens-network/core-committee",
     "lookup_version": 7,
+    "institutional_page": "https://www.uts.edu.au/about/uts-vision/initiatives/multicultural-womens-network/about-multicultural-womens-network/core-committee",
     "links": [
       {
         "kind": "institution",
@@ -15637,8 +15599,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ariella Arzey",
     "affiliation": "University of Wollongong",
     "confidence": "high",
-    "institutional_page": "https://grgusyd.org/people/",
     "lookup_version": 7,
+    "institutional_page": "https://grgusyd.org/people/",
     "links": [
       {
         "kind": "institution",
@@ -15668,8 +15630,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ashley Hope Castro",
     "affiliation": "University of Guam",
     "confidence": "medium",
-    "institutional_page": "https://www.uog.edu/_resources/files/administration/_presidents_lists/2022-Fanuchanan-Presidents-List.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/_resources/files/administration/_presidents_lists/2022-Fanuchanan-Presidents-List.pdf",
     "links": [
       {
         "kind": "institution",
@@ -15700,8 +15662,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://highco2-vi.org/meet-the-committees/",
     "lookup_version": 7,
+    "institutional_page": "https://highco2-vi.org/meet-the-committees/",
     "links": [
       {
         "kind": "scholar_search",
@@ -15726,8 +15688,8 @@ export const SPEAKER_PROFILES = {
     "name": "Atsuko Fukunaga",
     "affiliation": "University of Hawai'i",
     "confidence": "high",
-    "institutional_page": "https://www.soest.hawaii.edu/soestwp/about/directory/atsuko-fukunaga/",
     "lookup_version": 7,
+    "institutional_page": "https://www.soest.hawaii.edu/soestwp/about/directory/atsuko-fukunaga/",
     "links": [
       {
         "kind": "institution",
@@ -15758,8 +15720,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Southern Cross University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.scu.edu.au/about/contacts/directory/125610/",
     "lookup_version": 7,
+    "institutional_page": "https://www.scu.edu.au/about/contacts/directory/125610/",
     "links": [
       {
         "kind": "institution",
@@ -15789,8 +15751,8 @@ export const SPEAKER_PROFILES = {
     "name": "Aur\u00e9lie Aqua",
     "affiliation": "CRIOBE",
     "confidence": "medium",
-    "institutional_page": "https://www.radiofrance.fr/franceculture/podcasts/le-reportage-de-la-redaction/en-polynesie-une-course-contre-la-montre-pour-sauver-le-corail-1683113",
     "lookup_version": 7,
+    "institutional_page": "https://www.radiofrance.fr/franceculture/podcasts/le-reportage-de-la-redaction/en-polynesie-une-course-contre-la-montre-pour-sauver-le-corail-1683113",
     "links": [
       {
         "kind": "institution",
@@ -15820,8 +15782,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ayaka Umeda Paul",
     "affiliation": "University of Cambridge",
     "confidence": "medium",
-    "institutional_page": "https://www.zoo.cam.ac.uk/people/ayaka-umeda-paul",
     "lookup_version": 7,
+    "institutional_page": "https://www.zoo.cam.ac.uk/people/ayaka-umeda-paul",
     "links": [
       {
         "kind": "institution",
@@ -15851,8 +15813,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bailey Marquardt",
     "affiliation": "University of Miami",
     "confidence": "medium",
-    "institutional_page": "https://miamioh.edu/profiles/",
     "lookup_version": 7,
+    "institutional_page": "https://miamioh.edu/profiles/",
     "links": [
       {
         "kind": "institution",
@@ -15882,8 +15844,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ben Charo",
     "affiliation": "University of Rhode Island",
     "confidence": "medium",
-    "institutional_page": "https://web.uri.edu/cs/meet/ben-dahrooge/",
     "lookup_version": 7,
+    "institutional_page": "https://web.uri.edu/cs/meet/ben-dahrooge/",
     "links": [
       {
         "kind": "institution",
@@ -15914,8 +15876,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nova Southeastern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://scholars.nova.edu/en/persons/bernhard-riegl/",
     "lookup_version": 7,
+    "institutional_page": "https://scholars.nova.edu/en/persons/bernhard-riegl/",
     "links": [
       {
         "kind": "institution",
@@ -15945,8 +15907,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bethany Dean",
     "affiliation": "Alligator Head Foundation",
     "confidence": "high",
-    "institutional_page": "https://www.truthfinder.com/people-search/bethany-dean/",
     "lookup_version": 7,
+    "institutional_page": "https://www.truthfinder.com/people-search/bethany-dean/",
     "links": [
       {
         "kind": "institution",
@@ -15976,8 +15938,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bilgi Deepak S",
     "affiliation": "Tamil Nadu Coastal Restoration Mission",
     "confidence": "medium",
-    "institutional_page": "https://service.meettaiwan.com/gpa/media/attachments/33ab6abc-76df-4f93-a881-851bfd428130/Strengthening%20Coastal%20Resilience%20and%20the%20Economy%20Project.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://service.meettaiwan.com/gpa/media/attachments/33ab6abc-76df-4f93-a881-851bfd428130/Strengthening%20Coastal%20Resilience%20and%20the%20Economy%20Project.pdf",
     "links": [
       {
         "kind": "institution",
@@ -16007,8 +15969,8 @@ export const SPEAKER_PROFILES = {
     "name": "Brittany Huntington",
     "affiliation": "Cooperative Institute Of Marine and Atmospheric Research",
     "confidence": "high",
-    "institutional_page": "https://www.fisheries.noaa.gov/contact/brittany-huntington-phd",
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheries.noaa.gov/contact/brittany-huntington-phd",
     "links": [
       {
         "kind": "institution",
@@ -16038,8 +16000,8 @@ export const SPEAKER_PROFILES = {
     "name": "Carlos Tramonte",
     "affiliation": "University of Hawai'i",
     "confidence": "high",
-    "institutional_page": "https://research.hawaii.edu/uhconservation/",
     "lookup_version": 7,
+    "institutional_page": "https://research.hawaii.edu/uhconservation/",
     "links": [
       {
         "kind": "institution",
@@ -16070,8 +16032,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Sydney",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://grgusyd.org/caroline-romo/",
     "lookup_version": 7,
+    "institutional_page": "https://grgusyd.org/caroline-romo/",
     "links": [
       {
         "kind": "institution",
@@ -16101,8 +16063,8 @@ export const SPEAKER_PROFILES = {
     "name": "Catherine Mullenmeister",
     "affiliation": "University of California - San Diego",
     "confidence": "medium",
-    "institutional_page": "https://biology.ucsd.edu/administration/directories/directory-faculty.html",
     "lookup_version": 7,
+    "institutional_page": "https://biology.ucsd.edu/administration/directories/directory-faculty.html",
     "links": [
       {
         "kind": "institution",
@@ -16132,8 +16094,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cawa Tran",
     "affiliation": "University of San Diego",
     "confidence": "high",
-    "institutional_page": "https://www.sandiego.edu/cas/directory/biography.php?profile_id=13069",
     "lookup_version": 7,
+    "institutional_page": "https://www.sandiego.edu/cas/directory/biography.php?profile_id=13069",
     "links": [
       {
         "kind": "institution",
@@ -16163,8 +16125,8 @@ export const SPEAKER_PROFILES = {
     "name": "Celia Leto",
     "affiliation": "Mote Marine Laboratory",
     "confidence": "high",
-    "institutional_page": "https://mote.org/staff/celia-leto/",
     "lookup_version": 7,
+    "institutional_page": "https://mote.org/staff/celia-leto/",
     "links": [
       {
         "kind": "institution",
@@ -16194,8 +16156,8 @@ export const SPEAKER_PROFILES = {
     "name": "Charles Gongaware",
     "affiliation": "University of North Carolina - Wilmington",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_North_Carolina_Wilmington",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_North_Carolina_Wilmington",
     "links": [
       {
         "kind": "institution",
@@ -16225,8 +16187,8 @@ export const SPEAKER_PROFILES = {
     "name": "Charlotte Moritz",
     "affiliation": "CMOANA Consulting",
     "confidence": "medium",
-    "institutional_page": "https://gcrmn.net/wp-content/uploads/2022/06/Status-and-Trends-of-Coral-Reefs-of-the-Pacific-2018.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://gcrmn.net/wp-content/uploads/2022/06/Status-and-Trends-of-Coral-Reefs-of-the-Pacific-2018.pdf",
     "links": [
       {
         "kind": "institution",
@@ -16257,8 +16219,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.wgtn.ac.nz/sbs/study/current-postgraduates",
     "lookup_version": 7,
+    "institutional_page": "https://www.wgtn.ac.nz/sbs/study/current-postgraduates",
     "links": [
       {
         "kind": "institution",
@@ -16289,8 +16251,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Sydney",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.kent.edu/trumbull/profile/chris-cooney",
     "lookup_version": 7,
+    "institutional_page": "https://www.kent.edu/trumbull/profile/chris-cooney",
     "links": [
       {
         "kind": "institution",
@@ -16320,8 +16282,8 @@ export const SPEAKER_PROFILES = {
     "name": "Chun Hong Tan",
     "affiliation": "Universiti Malaysia Terengganu",
     "confidence": "high",
-    "institutional_page": "https://fssm.umt.edu.my/ms/tan-chun-hong/",
     "lookup_version": 7,
+    "institutional_page": "https://fssm.umt.edu.my/ms/tan-chun-hong/",
     "links": [
       {
         "kind": "institution",
@@ -16351,8 +16313,8 @@ export const SPEAKER_PROFILES = {
     "name": "Claire Boitel",
     "affiliation": "CRIOBE",
     "confidence": "high",
-    "institutional_page": "http://www.leshommessansepaules.com/auteur-Claire_BOITEL-464-1-1-0-1.html",
     "lookup_version": 7,
+    "institutional_page": "http://www.leshommessansepaules.com/auteur-Claire_BOITEL-464-1-1-0-1.html",
     "links": [
       {
         "kind": "institution",
@@ -16382,8 +16344,8 @@ export const SPEAKER_PROFILES = {
     "name": "Corinne Pickering",
     "affiliation": "Scripps Institution of Oceanography",
     "confidence": "high",
-    "institutional_page": "https://profiles.ucsd.edu/corinne.pickering",
     "lookup_version": 7,
+    "institutional_page": "https://profiles.ucsd.edu/corinne.pickering",
     "links": [
       {
         "kind": "institution",
@@ -16414,8 +16376,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Coralwatch",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/2281/courtney-morgans",
     "lookup_version": 7,
+    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/2281/courtney-morgans",
     "links": [
       {
         "kind": "institution",
@@ -16445,8 +16407,8 @@ export const SPEAKER_PROFILES = {
     "name": "Courtney Tierney",
     "affiliation": "Department of Planning and Natural Resources - Virgin Islands",
     "confidence": "medium",
-    "institutional_page": "https://dpnr.vi.gov/contact/",
     "lookup_version": 7,
+    "institutional_page": "https://dpnr.vi.gov/contact/",
     "links": [
       {
         "kind": "institution",
@@ -16476,8 +16438,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cynthia Silveira",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://www.yellowbook.com/people/cynthia-silveira/",
     "lookup_version": 7,
+    "institutional_page": "https://www.yellowbook.com/people/cynthia-silveira/",
     "links": [
       {
         "kind": "institution",
@@ -16507,8 +16469,8 @@ export const SPEAKER_PROFILES = {
     "name": "Daisy Flores",
     "affiliation": "University of Texas - Austin",
     "confidence": "high",
-    "institutional_page": "https://business.utsa.edu/news/2023/07/meet-a-roadrunner-daisy-flores.html",
     "lookup_version": 7,
+    "institutional_page": "https://business.utsa.edu/news/2023/07/meet-a-roadrunner-daisy-flores.html",
     "links": [
       {
         "kind": "institution",
@@ -16538,8 +16500,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dane Erlo Matorres",
     "affiliation": "Marine Environment and Resources Foundation",
     "confidence": "high",
-    "institutional_page": "https://repository.unesco.gov.ph/server/api/core/bitstreams/33e1503d-323e-4ac1-8b22-1d9c4ecbea35/content",
     "lookup_version": 7,
+    "institutional_page": "https://repository.unesco.gov.ph/server/api/core/bitstreams/33e1503d-323e-4ac1-8b22-1d9c4ecbea35/content",
     "links": [
       {
         "kind": "institution",
@@ -16569,8 +16531,8 @@ export const SPEAKER_PROFILES = {
     "name": "David Juszkiewicz",
     "affiliation": "Curtin University",
     "confidence": "high",
-    "institutional_page": "https://agents.bankerslife.com/ri/warwick/475-kilvert-st/david-juszkiewicz",
     "lookup_version": 7,
+    "institutional_page": "https://agents.bankerslife.com/ri/warwick/475-kilvert-st/david-juszkiewicz",
     "links": [
       {
         "kind": "institution",
@@ -16600,8 +16562,8 @@ export const SPEAKER_PROFILES = {
     "name": "David Paz-Garcia",
     "affiliation": "Centro de Investigaciones Biol\u00f3gicas del Noroeste",
     "confidence": "high",
-    "institutional_page": "https://www.psu.edu/news/research/story/some-corals-may-survive-climate-change-without-paying-metabolic-price",
     "lookup_version": 7,
+    "institutional_page": "https://www.psu.edu/news/research/story/some-corals-may-survive-climate-change-without-paying-metabolic-price",
     "links": [
       {
         "kind": "institution",
@@ -16631,8 +16593,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dayana Chadda-Harmer",
     "affiliation": "University of Sydney",
     "confidence": "high",
-    "institutional_page": "https://opus.lib.uts.edu.au/rest/bitstreams/da8a0b29-a93c-4e2f-9d39-73cacc44d4ec/retrieve",
     "lookup_version": 7,
+    "institutional_page": "https://opus.lib.uts.edu.au/rest/bitstreams/da8a0b29-a93c-4e2f-9d39-73cacc44d4ec/retrieve",
     "links": [
       {
         "kind": "institution",
@@ -16663,14 +16625,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Western Australia",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.spokeo.com/Dennis-Stanley/Texas",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.spokeo.com/Dennis-Stanley/Texas"
-      },
       {
         "kind": "openalex",
         "label": "OpenAlex profile",
@@ -16692,11 +16648,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Dennis+Stanley+University+of+Western+Australia"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.spokeo.com/Dennis-Stanley/Texas"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -16704,8 +16656,8 @@ export const SPEAKER_PROFILES = {
     "name": "Devavrat Bishwa",
     "affiliation": "University of the South Pacific",
     "confidence": "high",
-    "institutional_page": "https://link.springer.com/article/10.1007/s44289-025-00078-1",
     "lookup_version": 7,
+    "institutional_page": "https://link.springer.com/article/10.1007/s44289-025-00078-1",
     "links": [
       {
         "kind": "institution",
@@ -16736,8 +16688,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/870/devin-rowell",
     "lookup_version": 7,
+    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/870/devin-rowell",
     "links": [
       {
         "kind": "institution",
@@ -16767,8 +16719,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dhika Pratama",
     "affiliation": "Yayasan Konservasi Alam Nusantara",
     "confidence": "medium",
-    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "links": [
       {
         "kind": "institution",
@@ -16798,8 +16750,8 @@ export const SPEAKER_PROFILES = {
     "name": "Diana Kleine",
     "affiliation": "Coralwatch",
     "confidence": "high",
-    "institutional_page": "https://www.newwaydivers.com/services/coral-watch/",
     "lookup_version": 7,
+    "institutional_page": "https://www.newwaydivers.com/services/coral-watch/",
     "links": [
       {
         "kind": "institution",
@@ -16829,8 +16781,8 @@ export const SPEAKER_PROFILES = {
     "name": "Diana Macpherson",
     "affiliation": "Earth Sciences New Zealand",
     "confidence": "high",
-    "institutional_page": "https://www.instantcheckmate.com/people/diana-macpherson/",
     "lookup_version": 7,
+    "institutional_page": "https://www.instantcheckmate.com/people/diana-macpherson/",
     "links": [
       {
         "kind": "institution",
@@ -16860,14 +16812,8 @@ export const SPEAKER_PROFILES = {
     "name": "Diana Vergara",
     "affiliation": "University Of Michigan",
     "confidence": "high",
-    "institutional_page": "https://www.beenverified.com/people/diana-vergara/",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.beenverified.com/people/diana-vergara/"
-      },
       {
         "kind": "scholar_search",
         "label": "Search Google Scholar",
@@ -16879,11 +16825,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Diana+Vergara+University+Of+Michigan"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.beenverified.com/people/diana-vergara/"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -16891,8 +16833,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dorian Tsai",
     "affiliation": "Queensland University of Technology",
     "confidence": "high",
-    "institutional_page": "https://eprints.qut.edu.au/view/person/Tsai,_Dorian_Yu_Peng.html",
     "lookup_version": 7,
+    "institutional_page": "https://eprints.qut.edu.au/view/person/Tsai,_Dorian_Yu_Peng.html",
     "links": [
       {
         "kind": "institution",
@@ -16922,8 +16864,8 @@ export const SPEAKER_PROFILES = {
     "name": "Douglas Fenner",
     "affiliation": "Coral Reef Consulting",
     "confidence": "high",
-    "institutional_page": "https://www.reefguardians.org/single-post/exploring-hawaii-s-corals-workshops-inspire-marine-conservation",
     "lookup_version": 7,
+    "institutional_page": "https://www.reefguardians.org/single-post/exploring-hawaii-s-corals-workshops-inspire-marine-conservation",
     "links": [
       {
         "kind": "institution",
@@ -16974,8 +16916,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ee Suan Tan",
     "affiliation": "University Of The Ryukyus",
     "confidence": "high",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "links": [
       {
         "kind": "institution",
@@ -17005,8 +16947,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emily Chei",
     "affiliation": "Lingnan University",
     "confidence": "medium",
-    "institutional_page": "https://divinity-adhoc.library.yale.edu/UnitedBoard/Lingnan_University/Box%20180/RG011-180-3240.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://divinity-adhoc.library.yale.edu/UnitedBoard/Lingnan_University/Box%20180/RG011-180-3240.pdf",
     "links": [
       {
         "kind": "institution",
@@ -17036,8 +16978,8 @@ export const SPEAKER_PROFILES = {
     "name": "Eric Douville",
     "affiliation": "LSCE",
     "confidence": "high",
-    "institutional_page": "https://www.lsce.ipsl.fr/en/archives-traceurs/geotrac/pisp/eric-douville/",
     "lookup_version": 7,
+    "institutional_page": "https://www.lsce.ipsl.fr/en/archives-traceurs/geotrac/pisp/eric-douville/",
     "links": [
       {
         "kind": "institution",
@@ -17068,8 +17010,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Hawai'i",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.soest.hawaii.edu/soestwp/about/directory/erik-c-franklin/",
     "lookup_version": 7,
+    "institutional_page": "https://www.soest.hawaii.edu/soestwp/about/directory/erik-c-franklin/",
     "links": [
       {
         "kind": "institution",
@@ -17099,8 +17041,8 @@ export const SPEAKER_PROFILES = {
     "name": "Erin Papke",
     "affiliation": "University of North Carolina - Wilmington",
     "confidence": "high",
-    "institutional_page": "https://www.seaandlearn.org/erin-papke",
     "lookup_version": 7,
+    "institutional_page": "https://www.seaandlearn.org/erin-papke",
     "links": [
       {
         "kind": "institution",
@@ -17130,8 +17072,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ernest Raphael Arceo",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://upd.edu.ph/academics/faculty/",
     "lookup_version": 7,
+    "institutional_page": "https://upd.edu.ph/academics/faculty/",
     "links": [
       {
         "kind": "institution",
@@ -17162,8 +17104,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/21680/eugenia-nijgh-de-sampayo-garrido",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/21680/eugenia-nijgh-de-sampayo-garrido",
     "links": [
       {
         "kind": "institution",
@@ -17193,8 +17135,8 @@ export const SPEAKER_PROFILES = {
     "name": "Evan Lawrence",
     "affiliation": "University of California - Berkeley",
     "confidence": "high",
-    "institutional_page": "https://math.berkeley.edu/~evans/",
     "lookup_version": 7,
+    "institutional_page": "https://math.berkeley.edu/~evans/",
     "links": [
       {
         "kind": "institution",
@@ -17224,8 +17166,8 @@ export const SPEAKER_PROFILES = {
     "name": "Faye Diederiks",
     "affiliation": "Queensland University of Technology",
     "confidence": "medium",
-    "institutional_page": "https://www.qut.edu.au/",
     "lookup_version": 7,
+    "institutional_page": "https://www.qut.edu.au/",
     "links": [
       {
         "kind": "institution",
@@ -17255,8 +17197,8 @@ export const SPEAKER_PROFILES = {
     "name": "Felipe Mattos",
     "affiliation": "Academia Sinica",
     "confidence": "high",
-    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/35705661/",
     "lookup_version": 7,
+    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/35705661/",
     "links": [
       {
         "kind": "institution",
@@ -17287,8 +17229,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://gcecologylab.kaust.edu.sa/meet-the-team",
     "lookup_version": 7,
+    "institutional_page": "https://gcecologylab.kaust.edu.sa/meet-the-team",
     "links": [
       {
         "kind": "institution",
@@ -17318,8 +17260,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gabriel Lucas Xavier Da Silva",
     "affiliation": "Institute of Science - Tokyo",
     "confidence": "high",
-    "institutional_page": "https://silvaglx.github.io/",
     "lookup_version": 7,
+    "institutional_page": "https://silvaglx.github.io/",
     "links": [
       {
         "kind": "institution",
@@ -17350,8 +17292,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://bemlab.kaust.edu.sa/publications/4",
     "lookup_version": 7,
+    "institutional_page": "https://bemlab.kaust.edu.sa/publications/4",
     "links": [
       {
         "kind": "institution",
@@ -17381,8 +17323,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gavin Miller",
     "affiliation": "Global Reef",
     "confidence": "high",
-    "institutional_page": "https://www.wgbh.org/people/gavin-miller",
     "lookup_version": 7,
+    "institutional_page": "https://www.wgbh.org/people/gavin-miller",
     "links": [
       {
         "kind": "institution",
@@ -17412,8 +17354,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gildas Todinanahary",
     "affiliation": "University of Toliara",
     "confidence": "high",
-    "institutional_page": "https://www.wiomsa.org/personnel/dr-gildas-todinanahary-2-2/",
     "lookup_version": 7,
+    "institutional_page": "https://www.wiomsa.org/personnel/dr-gildas-todinanahary-2-2/",
     "links": [
       {
         "kind": "institution",
@@ -17443,8 +17385,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gina-marie Maddix",
     "affiliation": "The Nature Conservancy - Jamaica",
     "confidence": "medium",
-    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/caribbean/jamaica/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/caribbean/jamaica/",
     "links": [
       {
         "kind": "institution",
@@ -17474,8 +17416,8 @@ export const SPEAKER_PROFILES = {
     "name": "Giovanna Destri",
     "affiliation": "Oceanographic Institute",
     "confidence": "high",
-    "institutional_page": "https://jornal.usp.br/uspnews/2024-heatwave-triggered-coral-reef-collapse-in-northeastern-brazil-but-limited-effects-nationwide/",
     "lookup_version": 7,
+    "institutional_page": "https://jornal.usp.br/uspnews/2024-heatwave-triggered-coral-reef-collapse-in-northeastern-brazil-but-limited-effects-nationwide/",
     "links": [
       {
         "kind": "institution",
@@ -17505,8 +17447,8 @@ export const SPEAKER_PROFILES = {
     "name": "Giovanna Sabini-leite",
     "affiliation": "KAUST",
     "confidence": "high",
-    "institutional_page": "https://marinemicrobiomeslab.kaust.edu.sa/people",
     "lookup_version": 7,
+    "institutional_page": "https://marinemicrobiomeslab.kaust.edu.sa/people",
     "links": [
       {
         "kind": "institution",
@@ -17536,8 +17478,8 @@ export const SPEAKER_PROFILES = {
     "name": "Giulia Braz",
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "medium",
-    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/university-sao-paulo",
     "lookup_version": 7,
+    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/university-sao-paulo",
     "links": [
       {
         "kind": "institution",
@@ -17594,8 +17536,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Texas - Austin",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://marinescience.utexas.edu/directory/hannah-s-rempel",
     "lookup_version": 7,
+    "institutional_page": "https://marinescience.utexas.edu/directory/hannah-s-rempel",
     "links": [
       {
         "kind": "institution",
@@ -17626,8 +17568,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Florida International University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.harmonymartell.com/about",
     "lookup_version": 7,
+    "institutional_page": "https://www.harmonymartell.com/about",
     "links": [
       {
         "kind": "institution",
@@ -17657,8 +17599,8 @@ export const SPEAKER_PROFILES = {
     "name": "Heidi Hirsh",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://www.aoml.noaa.gov/people/heidi-hirsh/",
     "lookup_version": 7,
+    "institutional_page": "https://www.aoml.noaa.gov/people/heidi-hirsh/",
     "links": [
       {
         "kind": "institution",
@@ -17688,14 +17630,8 @@ export const SPEAKER_PROFILES = {
     "name": "Helen Yan",
     "affiliation": "University of Sydney",
     "confidence": "medium",
-    "institutional_page": "https://www.spokeo.com/Helen-Yan",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.spokeo.com/Helen-Yan"
-      },
       {
         "kind": "openalex",
         "label": "OpenAlex profile",
@@ -17717,11 +17653,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Helen+Yan+University+of+Sydney"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.spokeo.com/Helen-Yan"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17729,8 +17661,8 @@ export const SPEAKER_PROFILES = {
     "name": "Henrique Bravo",
     "affiliation": "Nanyang Technological University",
     "confidence": "medium",
-    "institutional_page": "https://www.topuniversities.com/universities/nanyang-technological-university-singapore-ntu-singapore",
     "lookup_version": 7,
+    "institutional_page": "https://www.topuniversities.com/universities/nanyang-technological-university-singapore-ntu-singapore",
     "links": [
       {
         "kind": "institution",
@@ -17760,8 +17692,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hillary Smith",
     "affiliation": "University of New South Wales",
     "confidence": "medium",
-    "institutional_page": "https://slll.cass.anu.edu.au/people/dr-hilary-smith",
     "lookup_version": 7,
+    "institutional_page": "https://slll.cass.anu.edu.au/people/dr-hilary-smith",
     "links": [
       {
         "kind": "institution",
@@ -17791,8 +17723,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hisatake Ishida",
     "affiliation": "University of Queensland",
     "confidence": "high",
-    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/1978/hisatake-ishida",
     "lookup_version": 7,
+    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/1978/hisatake-ishida",
     "links": [
       {
         "kind": "institution",
@@ -17822,8 +17754,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hoaka Thomas",
     "affiliation": "Hawai'i State Department of Land and Natural Resources",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Hawaii_Department_of_Land_and_Natural_Resources",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Hawaii_Department_of_Land_and_Natural_Resources",
     "links": [
       {
         "kind": "institution",
@@ -17854,8 +17786,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://gcecologylab.kaust.edu.sa/meet-the-team",
     "lookup_version": 7,
+    "institutional_page": "https://gcecologylab.kaust.edu.sa/meet-the-team",
     "links": [
       {
         "kind": "institution",
@@ -17885,8 +17817,8 @@ export const SPEAKER_PROFILES = {
     "name": "I Dewa Kadek Wira Sanjaya",
     "affiliation": "Coral Triangle Center",
     "confidence": "medium",
-    "institutional_page": "https://coraltrianglecenter.org/",
     "lookup_version": 7,
+    "institutional_page": "https://coraltrianglecenter.org/",
     "links": [
       {
         "kind": "institution",
@@ -17916,8 +17848,8 @@ export const SPEAKER_PROFILES = {
     "name": "Iain Caldwell",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "medium",
-    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "lookup_version": 7,
+    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "links": [
       {
         "kind": "institution",
@@ -17947,8 +17879,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ifenna Ilechukwu",
     "affiliation": "Molecular Invertebrate Systematics & Ecology Laboratory",
     "confidence": "high",
-    "institutional_page": "https://universityofflorence.medium.com/preliminary-investigation-of-microplastics-in-roadside-soils-of-port-harcourt-and-elele-in-rivers-c1f6c8d260c5",
     "lookup_version": 7,
+    "institutional_page": "https://universityofflorence.medium.com/preliminary-investigation-of-microplastics-in-roadside-soils-of-port-harcourt-and-elele-in-rivers-c1f6c8d260c5",
     "links": [
       {
         "kind": "institution",
@@ -17978,8 +17910,8 @@ export const SPEAKER_PROFILES = {
     "name": "Isabella Ghizzi",
     "affiliation": "University of Milano-Bicocca",
     "confidence": "high",
-    "institutional_page": "https://www.disat.unimib.it/en/study/phd-course/phd-students",
     "lookup_version": 7,
+    "institutional_page": "https://www.disat.unimib.it/en/study/phd-course/phd-students",
     "links": [
       {
         "kind": "institution",
@@ -18009,8 +17941,8 @@ export const SPEAKER_PROFILES = {
     "name": "J.J.  Adolfo Tortolero-Langarica",
     "affiliation": "Instituto Tecnol\u00f3gico de Bah\u00eda de Banderas",
     "confidence": "high",
-    "institutional_page": "https://www.bahia.tecnm.mx/docentes-y-egresada-del-tecnm-campus-bahia-de-banderas-realizan-publicacion-de-un-articulo-cientifico/",
     "lookup_version": 7,
+    "institutional_page": "https://www.bahia.tecnm.mx/docentes-y-egresada-del-tecnm-campus-bahia-de-banderas-realizan-publicacion-de-un-articulo-cientifico/",
     "links": [
       {
         "kind": "institution",
@@ -18040,8 +17972,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jackson Shields",
     "affiliation": "University Of Sydney",
     "confidence": "high",
-    "institutional_page": "https://robotics.sydney.edu.au/phd-thesis-defence-planning-informative-benthic-auv-surveys-25th-july-4pm/",
     "lookup_version": 7,
+    "institutional_page": "https://robotics.sydney.edu.au/phd-thesis-defence-planning-informative-benthic-auv-surveys-25th-july-4pm/",
     "links": [
       {
         "kind": "institution",
@@ -18072,8 +18004,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Washington",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://fish.uw.edu/faculty/jacqueline-padilla-gamino/",
     "lookup_version": 7,
+    "institutional_page": "https://fish.uw.edu/faculty/jacqueline-padilla-gamino/",
     "links": [
       {
         "kind": "institution",
@@ -18103,8 +18035,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jaehyeon Kim",
     "affiliation": "KIOST",
     "confidence": "high",
-    "institutional_page": "https://qcb.illinois.edu/people/jaehyeon-kim/",
     "lookup_version": 7,
+    "institutional_page": "https://qcb.illinois.edu/people/jaehyeon-kim/",
     "links": [
       {
         "kind": "institution",
@@ -18134,8 +18066,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jaeseok Chung",
     "affiliation": "KIOST",
     "confidence": "high",
-    "institutional_page": "https://sites.google.com/yonsei.ac.kr/jaeseokjeong",
     "lookup_version": 7,
+    "institutional_page": "https://sites.google.com/yonsei.ac.kr/jaeseokjeong",
     "links": [
       {
         "kind": "institution",
@@ -18165,8 +18097,8 @@ export const SPEAKER_PROFILES = {
     "name": "James Charlie Rupiasa",
     "affiliation": "Maritime and Marine Science Center of Excellence, Pattimura University",
     "confidence": "medium",
-    "institutional_page": "https://www.cfk.edu/coe/",
     "lookup_version": 7,
+    "institutional_page": "https://www.cfk.edu/coe/",
     "links": [
       {
         "kind": "institution",
@@ -18197,8 +18129,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - San Diego",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://profiles.ucsd.edu/james.fifer",
     "lookup_version": 7,
+    "institutional_page": "https://profiles.ucsd.edu/james.fifer",
     "links": [
       {
         "kind": "institution",
@@ -18229,8 +18161,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Georgia Southern University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.georgiasouthern.edu/offices",
     "lookup_version": 7,
+    "institutional_page": "https://www.georgiasouthern.edu/offices",
     "links": [
       {
         "kind": "institution",
@@ -18260,8 +18192,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jamie McDevitt-Irwin",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://manoa.hawaii.edu/lifesciences/jamie-mcdevitt-irwin/",
     "lookup_version": 7,
+    "institutional_page": "https://manoa.hawaii.edu/lifesciences/jamie-mcdevitt-irwin/",
     "links": [
       {
         "kind": "institution",
@@ -18291,8 +18223,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jann-Fredryck Matias",
     "affiliation": "University Of The Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://commons.wikimedia.org/wiki/Category:University_of_the_Philippines_Diliman",
     "lookup_version": 7,
+    "institutional_page": "https://commons.wikimedia.org/wiki/Category:University_of_the_Philippines_Diliman",
     "links": [
       {
         "kind": "institution",
@@ -18322,8 +18254,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jasha Dehm",
     "affiliation": "University of the South Pacific",
     "confidence": "medium",
-    "institutional_page": "https://www.usp.ac.fj/pace-sd/projects/protectpacific/pocca-about/pocca-team/",
     "lookup_version": 7,
+    "institutional_page": "https://www.usp.ac.fj/pace-sd/projects/protectpacific/pocca-about/pocca-team/",
     "links": [
       {
         "kind": "institution",
@@ -18364,8 +18296,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "http://personal.victoria.ac.nz/jeffrey_shima/",
     "lookup_version": 7,
+    "institutional_page": "http://personal.victoria.ac.nz/jeffrey_shima/",
     "links": [
       {
         "kind": "institution",
@@ -18395,8 +18327,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jenna Dilworth",
     "affiliation": "University of Southern California",
     "confidence": "high",
-    "institutional_page": "https://coralreefsecc.org/team-1",
     "lookup_version": 7,
+    "institutional_page": "https://coralreefsecc.org/team-1",
     "links": [
       {
         "kind": "institution",
@@ -18426,8 +18358,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jennifer Caselle",
     "affiliation": "University of California - Santa Barbara",
     "confidence": "high",
-    "institutional_page": "https://msi.ucsb.edu/people/principal-investigators/jenn-caselle",
     "lookup_version": 7,
+    "institutional_page": "https://msi.ucsb.edu/people/principal-investigators/jenn-caselle",
     "links": [
       {
         "kind": "institution",
@@ -18457,8 +18389,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jennifer Ha",
     "affiliation": "Division of Aquatic and Wildlife Resources - Guam",
     "confidence": "medium",
-    "institutional_page": "https://doag.guam.gov/dawr/",
     "lookup_version": 7,
+    "institutional_page": "https://doag.guam.gov/dawr/",
     "links": [
       {
         "kind": "institution",
@@ -18488,8 +18420,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jennifer Samson",
     "affiliation": "Pacific Islands Fisheries Science Center",
     "confidence": "high",
-    "institutional_page": "https://www.fisheries.noaa.gov/staff-directory/pacific-islands-fisheries-science-center-staff-directory",
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheries.noaa.gov/staff-directory/pacific-islands-fisheries-science-center-staff-directory",
     "links": [
       {
         "kind": "institution",
@@ -18520,8 +18452,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Smithsonian Marine Station",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://jensneed.weebly.com/contact.html",
     "lookup_version": 7,
+    "institutional_page": "https://jensneed.weebly.com/contact.html",
     "links": [
       {
         "kind": "institution",
@@ -18551,8 +18483,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jessica Lueders-Dumont",
     "affiliation": "Boston College",
     "confidence": "high",
-    "institutional_page": "https://www.bc.edu/bc-web/schools/morrissey/departments/eesc/people/staff/jess-lueders-dumont.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.bc.edu/bc-web/schools/morrissey/departments/eesc/people/staff/jess-lueders-dumont.html",
     "links": [
       {
         "kind": "institution",
@@ -18582,8 +18514,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jiang-Shiou Hwang",
     "affiliation": "National Taiwan Ocean University",
     "confidence": "high",
-    "institutional_page": "https://imb.ntou.edu.tw/p/412-1075-9353.php?Lang=en",
     "lookup_version": 7,
+    "institutional_page": "https://imb.ntou.edu.tw/p/412-1075-9353.php?Lang=en",
     "links": [
       {
         "kind": "institution",
@@ -18613,8 +18545,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jin Chi Ho",
     "affiliation": "National University of Singapore",
     "confidence": "high",
-    "institutional_page": "https://www.ece.nus.edu.sg/stfpage/hsyj/people.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.ece.nus.edu.sg/stfpage/hsyj/people.html",
     "links": [
       {
         "kind": "institution",
@@ -18644,8 +18576,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joaquin Rodrigo Garza-Perez",
     "affiliation": "Universidad Nacional Aut\u00f3noma de M\u00e9xico",
     "confidence": "high",
-    "institutional_page": "https://www.lanresc.mx/directorio/joaquin-rodrigo-garza-perez/",
     "lookup_version": 7,
+    "institutional_page": "https://www.lanresc.mx/directorio/joaquin-rodrigo-garza-perez/",
     "links": [
       {
         "kind": "institution",
@@ -18675,8 +18607,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jonathan Jung",
     "affiliation": "Max Planck Institute for Chemistry",
     "confidence": "high",
-    "institutional_page": "https://www.mpic.de/person/132365/3669258",
     "lookup_version": 7,
+    "institutional_page": "https://www.mpic.de/person/132365/3669258",
     "links": [
       {
         "kind": "institution",
@@ -18737,8 +18669,8 @@ export const SPEAKER_PROFILES = {
     "name": "Justin Berg",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "medium",
-    "institutional_page": "https://www.uhcdc.manoa.hawaii.edu/team",
     "lookup_version": 7,
+    "institutional_page": "https://www.uhcdc.manoa.hawaii.edu/team",
     "links": [
       {
         "kind": "institution",
@@ -18768,8 +18700,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kara Rising",
     "affiliation": "University of Derby",
     "confidence": "medium",
-    "institutional_page": "https://www.wikidata.org/wiki/Q3183295",
     "lookup_version": 7,
+    "institutional_page": "https://www.wikidata.org/wiki/Q3183295",
     "links": [
       {
         "kind": "institution",
@@ -18800,8 +18732,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Arizona State University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://search.asu.edu/profile/3598790",
     "lookup_version": 7,
+    "institutional_page": "https://search.asu.edu/profile/3598790",
     "links": [
       {
         "kind": "institution",
@@ -18831,8 +18763,8 @@ export const SPEAKER_PROFILES = {
     "name": "Katie Lubarsky",
     "affiliation": "Scripps Institution of Oceanography",
     "confidence": "medium",
-    "institutional_page": "https://scripps.ucsd.edu/people/faculty",
     "lookup_version": 7,
+    "institutional_page": "https://scripps.ucsd.edu/people/faculty",
     "links": [
       {
         "kind": "institution",
@@ -18862,8 +18794,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kay Watty",
     "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
     "confidence": "medium",
-    "institutional_page": "https://tethys.pnnl.gov/organization/helmholtz-institute-functional-marine-biodiversity-hifmb",
     "lookup_version": 7,
+    "institutional_page": "https://tethys.pnnl.gov/organization/helmholtz-institute-functional-marine-biodiversity-hifmb",
     "links": [
       {
         "kind": "institution",
@@ -18893,8 +18825,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kelly W. Johnson",
     "affiliation": "University of Amsterdam",
     "confidence": "medium",
-    "institutional_page": "https://www.uva.nl/en/profile/w/o/k.j.wong/k.j.wong.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.uva.nl/en/profile/w/o/k.j.wong/k.j.wong.html",
     "links": [
       {
         "kind": "institution",
@@ -18924,8 +18856,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kenji Takata",
     "affiliation": "National Institute of Advanced Industrial Science and Technology",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/National_Institute_of_Advanced_Industrial_Science_and_Technology",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/National_Institute_of_Advanced_Industrial_Science_and_Technology",
     "links": [
       {
         "kind": "institution",
@@ -18955,8 +18887,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kenzie Pollard",
     "affiliation": "University of California - Davis",
     "confidence": "medium",
-    "institutional_page": "https://appliedmath.ucdavis.edu/people/grads",
     "lookup_version": 7,
+    "institutional_page": "https://appliedmath.ucdavis.edu/people/grads",
     "links": [
       {
         "kind": "institution",
@@ -19008,8 +18940,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kim de Luca",
     "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
     "confidence": "medium",
-    "institutional_page": "https://tethys.pnnl.gov/organization/helmholtz-institute-functional-marine-biodiversity-hifmb",
     "lookup_version": 7,
+    "institutional_page": "https://tethys.pnnl.gov/organization/helmholtz-institute-functional-marine-biodiversity-hifmb",
     "links": [
       {
         "kind": "institution",
@@ -19039,8 +18971,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kira Turnham",
     "affiliation": "Cooperative Institute of Marine and Atmospheric Research",
     "confidence": "medium",
-    "institutional_page": "https://expertnet.org/index.cfm?fuseaction=centers.details&instituteID=5789",
     "lookup_version": 7,
+    "institutional_page": "https://expertnet.org/index.cfm?fuseaction=centers.details&instituteID=5789",
     "links": [
       {
         "kind": "institution",
@@ -19070,8 +19002,8 @@ export const SPEAKER_PROFILES = {
     "name": "Krista Laforest",
     "affiliation": "University of North Carolina - Wilmington",
     "confidence": "high",
-    "institutional_page": "https://www.owuscholarship.org/owuss-interns/owuss-past-interns/krista-laforest/",
     "lookup_version": 7,
+    "institutional_page": "https://www.owuscholarship.org/owuss-interns/owuss-past-interns/krista-laforest/",
     "links": [
       {
         "kind": "institution",
@@ -19124,8 +19056,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Santa Barbara",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://labs.eemb.ucsb.edu/burkepile/deron/members/enright",
     "lookup_version": 7,
+    "institutional_page": "https://labs.eemb.ucsb.edu/burkepile/deron/members/enright",
     "links": [
       {
         "kind": "institution",
@@ -19156,8 +19088,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Georgia Institute of Technology",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://ocean.gatech.edu/people/dr-lauren-speare",
     "lookup_version": 7,
+    "institutional_page": "https://ocean.gatech.edu/people/dr-lauren-speare",
     "links": [
       {
         "kind": "institution",
@@ -19187,8 +19119,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lei Jiang",
     "affiliation": "South China Sea Institute of Oceanology",
     "confidence": "high",
-    "institutional_page": "http://english.qdio.cas.cn/people/jzg/",
     "lookup_version": 7,
+    "institutional_page": "http://english.qdio.cas.cn/people/jzg/",
     "links": [
       {
         "kind": "institution",
@@ -19302,8 +19234,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lily Borema",
     "affiliation": "University of Guam",
     "confidence": "high",
-    "institutional_page": "https://www.uog.edu/ml/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/ml/people",
     "links": [
       {
         "kind": "institution",
@@ -19333,8 +19265,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lisa Kirkendale",
     "affiliation": "Western Australian Museum",
     "confidence": "high",
-    "institutional_page": "https://www.gulfbase.org/people/dr-lisa-kirkendale",
     "lookup_version": 7,
+    "institutional_page": "https://www.gulfbase.org/people/dr-lisa-kirkendale",
     "links": [
       {
         "kind": "institution",
@@ -19365,8 +19297,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Edith Cowan University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.ecu.edu.au/schools/science/research-students/profiles/postgraduate-research-students/lucas-lutzenkirchen",
     "lookup_version": 7,
+    "institutional_page": "https://www.ecu.edu.au/schools/science/research-students/profiles/postgraduate-research-students/lucas-lutzenkirchen",
     "links": [
       {
         "kind": "institution",
@@ -19396,8 +19328,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lucas Nunes",
     "affiliation": "Instituto de Estudos do Mar Almirante Paulo Moreira",
     "confidence": "medium",
-    "institutional_page": "https://missionatlantic.eu/consortium/instituto-de-estudos-do-mar-almirante-paulo-moreira/",
     "lookup_version": 7,
+    "institutional_page": "https://missionatlantic.eu/consortium/instituto-de-estudos-do-mar-almirante-paulo-moreira/",
     "links": [
       {
         "kind": "institution",
@@ -19427,8 +19359,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ludovic Hoarau",
     "affiliation": "ENTROPIE",
     "confidence": "high",
-    "institutional_page": "https://www.mesophotic.org/members/500",
     "lookup_version": 7,
+    "institutional_page": "https://www.mesophotic.org/members/500",
     "links": [
       {
         "kind": "institution",
@@ -19458,8 +19390,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lyza Johnston",
     "affiliation": "Johnston Applied Marine Sciences",
     "confidence": "high",
-    "institutional_page": "https://www.sciencebase.gov/catalog/catalogParty/show?partyId=Lyza+Johnston",
     "lookup_version": 7,
+    "institutional_page": "https://www.sciencebase.gov/catalog/catalogParty/show?partyId=Lyza+Johnston",
     "links": [
       {
         "kind": "institution",
@@ -19490,8 +19422,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.wgtn.ac.nz/sbs/study/current-postgraduates",
     "lookup_version": 7,
+    "institutional_page": "https://www.wgtn.ac.nz/sbs/study/current-postgraduates",
     "links": [
       {
         "kind": "institution",
@@ -19521,8 +19453,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ma. Czarmayne Victoria Jude Escoro",
     "affiliation": "University of the Philippines",
     "confidence": "high",
-    "institutional_page": "https://scbmarineprogram.org/science/",
     "lookup_version": 7,
+    "institutional_page": "https://scbmarineprogram.org/science/",
     "links": [
       {
         "kind": "institution",
@@ -19553,8 +19485,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Santa Barbara",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.eemb.ucsb.edu/people/students/kawahara",
     "lookup_version": 7,
+    "institutional_page": "https://www.eemb.ucsb.edu/people/students/kawahara",
     "links": [
       {
         "kind": "institution",
@@ -19585,8 +19517,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Santa Barbara",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://labs.eemb.ucsb.edu/burkepile/deron/members/ward",
     "lookup_version": 7,
+    "institutional_page": "https://labs.eemb.ucsb.edu/burkepile/deron/members/ward",
     "links": [
       {
         "kind": "institution",
@@ -19616,8 +19548,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mallory Kastner",
     "affiliation": "Woods Hole Oceanographic Institution",
     "confidence": "high",
-    "institutional_page": "https://www.whoi.edu/what-we-do/understand/departments-centers-labs/bio/bio-people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.whoi.edu/what-we-do/understand/departments-centers-labs/bio/bio-people/",
     "links": [
       {
         "kind": "institution",
@@ -19648,8 +19580,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/27212/mandy-cheung",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/27212/mandy-cheung",
     "links": [
       {
         "kind": "institution",
@@ -19679,14 +19611,8 @@ export const SPEAKER_PROFILES = {
     "name": "Margot Webster",
     "affiliation": "Blue Alliance",
     "confidence": "medium",
-    "institutional_page": "https://www.showbizjunkies.com/tv/tracker-season-3-episode-6-recap/",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.showbizjunkies.com/tv/tracker-season-3-episode-6-recap/"
-      },
       {
         "kind": "scholar_search",
         "label": "Search Google Scholar",
@@ -19698,11 +19624,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Margot+Webster+Blue+Alliance"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.showbizjunkies.com/tv/tracker-season-3-episode-6-recap/"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -19710,8 +19632,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maria Andersen",
     "affiliation": "University of Guam",
     "confidence": "medium",
-    "institutional_page": "https://asia.umgc.edu/locations/andersen",
     "lookup_version": 7,
+    "institutional_page": "https://asia.umgc.edu/locations/andersen",
     "links": [
       {
         "kind": "institution",
@@ -19741,8 +19663,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maria Juliana Vanegas Gonzalez",
     "affiliation": "Perry Institute for Marine Science",
     "confidence": "medium",
-    "institutional_page": "https://ecomares.org/en/miembro/juliana-vanegas-gonzalez-msc/",
     "lookup_version": 7,
+    "institutional_page": "https://ecomares.org/en/miembro/juliana-vanegas-gonzalez-msc/",
     "links": [
       {
         "kind": "institution",
@@ -19772,8 +19694,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maria Vega Rodriguez",
     "affiliation": "Puerto Rico Department of Natural and Environmental Resources",
     "confidence": "high",
-    "institutional_page": "https://www.uprm.edu/ccri/maria-vega-ph-d/",
     "lookup_version": 7,
+    "institutional_page": "https://www.uprm.edu/ccri/maria-vega-ph-d/",
     "links": [
       {
         "kind": "institution",
@@ -19803,8 +19725,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marie-Lauren Piot",
     "affiliation": "Palau International Coral Reef Center",
     "confidence": "medium",
-    "institutional_page": "https://www.abc.net.au/news/2025-09-06/palau-corals-selective-breeding-climate-change-reefs/105728666",
     "lookup_version": 7,
+    "institutional_page": "https://www.abc.net.au/news/2025-09-06/palau-corals-selective-breeding-climate-change-reefs/105728666",
     "links": [
       {
         "kind": "institution",
@@ -19835,8 +19757,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Scripps Institution of Oceanography",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://scripps.ucsd.edu/profiles/m1agarwal",
     "lookup_version": 7,
+    "institutional_page": "https://scripps.ucsd.edu/profiles/m1agarwal",
     "links": [
       {
         "kind": "institution",
@@ -19866,8 +19788,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marissa Nuttall",
     "affiliation": "Texas A&M University - Galveston",
     "confidence": "high",
-    "institutional_page": "https://www.tamug.edu/rooker/people.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.tamug.edu/rooker/people.html",
     "links": [
       {
         "kind": "institution",
@@ -19898,8 +19820,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://aims.jcu.edu.au/our-people/students/marko-terzin.542/",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/students/marko-terzin.542/",
     "links": [
       {
         "kind": "institution",
@@ -19929,8 +19851,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marthen Welly",
     "affiliation": "Coral Triangle Center",
     "confidence": "high",
-    "institutional_page": "https://atsea-program.com/event/gathering-feedback-for-ats-mpa-network-and-sea-turtle-regional-action-plan/",
     "lookup_version": 7,
+    "institutional_page": "https://atsea-program.com/event/gathering-feedback-for-ats-mpa-network-and-sea-turtle-regional-action-plan/",
     "links": [
       {
         "kind": "institution",
@@ -19960,8 +19882,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mary Bonin",
     "affiliation": "Great Barrier Reef Foundation",
     "confidence": "high",
-    "institutional_page": "https://www.barrierreef.org/news/people-of-the-reef/mary-bonin-billions-of-tiny-plants-and-animals-worked-to-build-our-unique-reef",
     "lookup_version": 7,
+    "institutional_page": "https://www.barrierreef.org/news/people-of-the-reef/mary-bonin-billions-of-tiny-plants-and-animals-worked-to-build-our-unique-reef",
     "links": [
       {
         "kind": "institution",
@@ -19992,8 +19914,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Raising Coral Costa Rica",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.raisingcoral.org/team",
     "lookup_version": 7,
+    "institutional_page": "https://www.raisingcoral.org/team",
     "links": [
       {
         "kind": "institution",
@@ -20024,8 +19946,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.uib.no/en/michaelsarscentre/172182/guest-researchers-kaust-visit-michael-sars-centre-learn-new-techniques",
     "lookup_version": 7,
+    "institutional_page": "https://www.uib.no/en/michaelsarscentre/172182/guest-researchers-kaust-visit-michael-sars-centre-learn-new-techniques",
     "links": [
       {
         "kind": "institution",
@@ -20055,8 +19977,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mathilde Godefroid",
     "affiliation": "Universit\u00e9 Libre de Bruxelles",
     "confidence": "high",
-    "institutional_page": "https://www.ulb.be/fr/mathilde-godefroid",
     "lookup_version": 7,
+    "institutional_page": "https://www.ulb.be/fr/mathilde-godefroid",
     "links": [
       {
         "kind": "institution",
@@ -20108,8 +20030,8 @@ export const SPEAKER_PROFILES = {
     "name": "Matilde Marques",
     "affiliation": "University of Lisbon",
     "confidence": "high",
-    "institutional_page": "https://ibb.tecnico.ulisboa.pt/people/members/Matilde-Marques/",
     "lookup_version": 7,
+    "institutional_page": "https://ibb.tecnico.ulisboa.pt/people/members/Matilde-Marques/",
     "links": [
       {
         "kind": "institution",
@@ -20139,8 +20061,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maya Powell",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "medium",
-    "institutional_page": "https://manoa.hawaii.edu/lifesciences/people/students/",
     "lookup_version": 7,
+    "institutional_page": "https://manoa.hawaii.edu/lifesciences/people/students/",
     "links": [
       {
         "kind": "institution",
@@ -20170,8 +20092,8 @@ export const SPEAKER_PROFILES = {
     "name": "McClaran Shirley",
     "affiliation": "University of California - San Diego",
     "confidence": "high",
-    "institutional_page": "https://sandinlab.ucsd.edu/staff-members/mcclaran-shirley/",
     "lookup_version": 7,
+    "institutional_page": "https://sandinlab.ucsd.edu/staff-members/mcclaran-shirley/",
     "links": [
       {
         "kind": "institution",
@@ -20201,8 +20123,8 @@ export const SPEAKER_PROFILES = {
     "name": "Meg Van Horn",
     "affiliation": "University of Guam",
     "confidence": "high",
-    "institutional_page": "https://coralreefsecc.org/team-1",
     "lookup_version": 7,
+    "institutional_page": "https://coralreefsecc.org/team-1",
     "links": [
       {
         "kind": "institution",
@@ -20232,8 +20154,8 @@ export const SPEAKER_PROFILES = {
     "name": "Melissa Naugle",
     "affiliation": "Southern Cross University",
     "confidence": "medium",
-    "institutional_page": "https://site-search.scu.edu.au/s/search.html?collection=scu~sp-search&f.Tabs%7Cscu~ds-people=People&profile=_default",
     "lookup_version": 7,
+    "institutional_page": "https://site-search.scu.edu.au/s/search.html?collection=scu~sp-search&f.Tabs%7Cscu~ds-people=People&profile=_default",
     "links": [
       {
         "kind": "institution",
@@ -20263,8 +20185,8 @@ export const SPEAKER_PROFILES = {
     "name": "Michael Izumiyama",
     "affiliation": "University of the Ryukyus",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "links": [
       {
         "kind": "institution",
@@ -20294,8 +20216,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mikolaj Zapalski",
     "affiliation": "University of Warsaw",
     "confidence": "medium",
-    "institutional_page": "https://www.youtube.com/channel/UCeeUXDMwRw_lfqc1vicPjoA/channels?view=56",
     "lookup_version": 7,
+    "institutional_page": "https://www.youtube.com/channel/UCeeUXDMwRw_lfqc1vicPjoA/channels?view=56",
     "links": [
       {
         "kind": "institution",
@@ -20335,8 +20257,8 @@ export const SPEAKER_PROFILES = {
     "name": "Miya Isabelle McGlone",
     "affiliation": "UP Marine Science Institute",
     "confidence": "high",
-    "institutional_page": "https://credsverse.com/credentials/89987a12-b2fd-407b-9d4c-a7d58e0638c2",
     "lookup_version": 7,
+    "institutional_page": "https://credsverse.com/credentials/89987a12-b2fd-407b-9d4c-a7d58e0638c2",
     "links": [
       {
         "kind": "institution",
@@ -20366,8 +20288,8 @@ export const SPEAKER_PROFILES = {
     "name": "Molly Chambers",
     "affiliation": "Marine Institute at Maui Ocean Center",
     "confidence": "medium",
-    "institutional_page": "https://mauioceancenter.com/",
     "lookup_version": 7,
+    "institutional_page": "https://mauioceancenter.com/",
     "links": [
       {
         "kind": "institution",
@@ -20397,8 +20319,8 @@ export const SPEAKER_PROFILES = {
     "name": "Morgan Bennett-Smith",
     "affiliation": "Boston University",
     "confidence": "high",
-    "institutional_page": "https://www.bu.edu/articles/2025/bu-marine-programs-belize-trip/",
     "lookup_version": 7,
+    "institutional_page": "https://www.bu.edu/articles/2025/bu-marine-programs-belize-trip/",
     "links": [
       {
         "kind": "institution",
@@ -20429,8 +20351,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nova Southeastern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://hcas.nova.edu/people/index.html?search=Morgan+Hightshoe",
     "lookup_version": 7,
+    "institutional_page": "https://hcas.nova.edu/people/index.html?search=Morgan+Hightshoe",
     "links": [
       {
         "kind": "institution",
@@ -20460,8 +20382,8 @@ export const SPEAKER_PROFILES = {
     "name": "Moriah Bass",
     "affiliation": "University of the Virgin Islands",
     "confidence": "medium",
-    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "links": [
       {
         "kind": "institution",
@@ -20491,8 +20413,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mujiyanto Mujiyanto",
     "affiliation": "National Research and Innovation Agency",
     "confidence": "high",
-    "institutional_page": "https://www.geospatialhealth.net/gh/article/view/1372",
     "lookup_version": 7,
+    "institutional_page": "https://www.geospatialhealth.net/gh/article/view/1372",
     "links": [
       {
         "kind": "institution",
@@ -20522,8 +20444,8 @@ export const SPEAKER_PROFILES = {
     "name": "Naoki Saito",
     "affiliation": "National Institute of Advanced Industrial Science and Technology",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/National_Institute_of_Advanced_Industrial_Science_and_Technology",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/National_Institute_of_Advanced_Industrial_Science_and_Technology",
     "links": [
       {
         "kind": "institution",
@@ -20553,8 +20475,8 @@ export const SPEAKER_PROFILES = {
     "name": "Natalie Rosser",
     "affiliation": "University of Western Australia",
     "confidence": "high",
-    "institutional_page": "https://natalielrosser.wixsite.com/website",
     "lookup_version": 7,
+    "institutional_page": "https://natalielrosser.wixsite.com/website",
     "links": [
       {
         "kind": "institution",
@@ -20585,8 +20507,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of North Carolina - Wilmington",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.nathan-crowe.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nathan-crowe.com/",
     "links": [
       {
         "kind": "institution",
@@ -20616,8 +20538,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nicholas Durgadeen",
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
-    "institutional_page": "https://www.navigatinghomeproject.com/navigating-home-fellows/nicholas-durgadeen",
     "lookup_version": 7,
+    "institutional_page": "https://www.navigatinghomeproject.com/navigating-home-fellows/nicholas-durgadeen",
     "links": [
       {
         "kind": "institution",
@@ -20648,8 +20570,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Fluvio",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://about.uq.edu.au/experts/38771",
     "lookup_version": 7,
+    "institutional_page": "https://about.uq.edu.au/experts/38771",
     "links": [
       {
         "kind": "institution",
@@ -20680,8 +20602,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Plymouth",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.plymouth.ac.uk/staff/nicola-foster",
     "lookup_version": 7,
+    "institutional_page": "https://www.plymouth.ac.uk/staff/nicola-foster",
     "links": [
       {
         "kind": "institution",
@@ -20712,8 +20634,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Florida International University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://nico-rivas.com/fiu.html",
     "lookup_version": 7,
+    "institutional_page": "https://nico-rivas.com/fiu.html",
     "links": [
       {
         "kind": "institution",
@@ -20743,8 +20665,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ninon Martinez",
     "affiliation": "University of Belize",
     "confidence": "high",
-    "institutional_page": "https://www.belizemangrovealliance.org/university-of-belize-environmental-research-institute/",
     "lookup_version": 7,
+    "institutional_page": "https://www.belizemangrovealliance.org/university-of-belize-environmental-research-institute/",
     "links": [
       {
         "kind": "institution",
@@ -20774,8 +20696,8 @@ export const SPEAKER_PROFILES = {
     "name": "Noa Simon-blecher",
     "affiliation": "Bar-Ilan University",
     "confidence": "high",
-    "institutional_page": "https://life-sciences.biu.ac.il/en/node/388",
     "lookup_version": 7,
+    "institutional_page": "https://life-sciences.biu.ac.il/en/node/388",
     "links": [
       {
         "kind": "institution",
@@ -20805,8 +20727,8 @@ export const SPEAKER_PROFILES = {
     "name": "Noam Vogt-vincent",
     "affiliation": "University of Oxford",
     "confidence": "high",
-    "institutional_page": "https://www.earth.ox.ac.uk/people/noam-vogt-vincent",
     "lookup_version": 7,
+    "institutional_page": "https://www.earth.ox.ac.uk/people/noam-vogt-vincent",
     "links": [
       {
         "kind": "institution",
@@ -20836,8 +20758,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ofri Johan",
     "affiliation": "Research Center for Biota System",
     "confidence": "medium",
-    "institutional_page": "https://obfs.org/field-stations/",
     "lookup_version": 7,
+    "institutional_page": "https://obfs.org/field-stations/",
     "links": [
       {
         "kind": "institution",
@@ -20867,8 +20789,8 @@ export const SPEAKER_PROFILES = {
     "name": "Panji Mahyatar",
     "affiliation": "Yayasan Konservasi Alam Nusantara",
     "confidence": "medium",
-    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "links": [
       {
         "kind": "institution",
@@ -20898,8 +20820,8 @@ export const SPEAKER_PROFILES = {
     "name": "Patrick Kiel",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://www.aoml.noaa.gov/people/patrick-kiel/",
     "lookup_version": 7,
+    "institutional_page": "https://www.aoml.noaa.gov/people/patrick-kiel/",
     "links": [
       {
         "kind": "institution",
@@ -20929,8 +20851,8 @@ export const SPEAKER_PROFILES = {
     "name": "Paul Kench",
     "affiliation": "University of Waikato",
     "confidence": "high",
-    "institutional_page": "https://www.waikato.ac.nz/int/news-events/news/global-coastal-scientist-to-head-waikatos-division-of-stem/",
     "lookup_version": 7,
+    "institutional_page": "https://www.waikato.ac.nz/int/news-events/news/global-coastal-scientist-to-head-waikatos-division-of-stem/",
     "links": [
       {
         "kind": "institution",
@@ -20960,8 +20882,8 @@ export const SPEAKER_PROFILES = {
     "name": "Pauline Buso",
     "affiliation": "IHPE",
     "confidence": "high",
-    "institutional_page": "https://ihpe.fr/ihpe-buso-pauline/",
     "lookup_version": 7,
+    "institutional_page": "https://ihpe.fr/ihpe-buso-pauline/",
     "links": [
       {
         "kind": "institution",
@@ -20991,8 +20913,8 @@ export const SPEAKER_PROFILES = {
     "name": "Piera Biondi",
     "affiliation": "Palau International Coral Reef Center",
     "confidence": "high",
-    "institutional_page": "https://link.springer.com/article/10.1007/s00338-025-02731-9",
     "lookup_version": 7,
+    "institutional_page": "https://link.springer.com/article/10.1007/s00338-025-02731-9",
     "links": [
       {
         "kind": "institution",
@@ -21022,8 +20944,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rachel Morgan",
     "affiliation": "The Florida Aquarium",
     "confidence": "high",
-    "institutional_page": "https://www.flaquarium.org/conservation/leaders-in-conservation/meet-the-experts/rachel-morgan/",
     "lookup_version": 7,
+    "institutional_page": "https://www.flaquarium.org/conservation/leaders-in-conservation/meet-the-experts/rachel-morgan/",
     "links": [
       {
         "kind": "institution",
@@ -21053,8 +20975,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rebecca Wenker",
     "affiliation": "National Oceanic and Atmospheric Administration",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/National_Oceanic_and_Atmospheric_Administration",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/National_Oceanic_and_Atmospheric_Administration",
     "links": [
       {
         "kind": "institution",
@@ -21084,8 +21006,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rian Prasetia",
     "affiliation": "Konservasi Indonesia",
     "confidence": "high",
-    "institutional_page": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2025.1687272/full",
     "lookup_version": 7,
+    "institutional_page": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2025.1687272/full",
     "links": [
       {
         "kind": "institution",
@@ -21115,8 +21037,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ricardo Pedraza-Pohlenz",
     "affiliation": "KAUST",
     "confidence": "high",
-    "institutional_page": "https://coralsymbiomics.kaust.edu.sa/people",
     "lookup_version": 7,
+    "institutional_page": "https://coralsymbiomics.kaust.edu.sa/people",
     "links": [
       {
         "kind": "institution",
@@ -21146,8 +21068,8 @@ export const SPEAKER_PROFILES = {
     "name": "Riovie Ramos",
     "affiliation": "Nanyang Technological University",
     "confidence": "high",
-    "institutional_page": "https://www.amnh.org/research/staff-directory/nathalie-goodkin",
     "lookup_version": 7,
+    "institutional_page": "https://www.amnh.org/research/staff-directory/nathalie-goodkin",
     "links": [
       {
         "kind": "institution",
@@ -21177,8 +21099,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rita Bento",
     "affiliation": "New York University - Abu Dhabi",
     "confidence": "high",
-    "institutional_page": "https://nyuad.nyu.edu/en/research/faculty-labs-and-projects/access/rita-bento.html",
     "lookup_version": 7,
+    "institutional_page": "https://nyuad.nyu.edu/en/research/faculty-labs-and-projects/access/rita-bento.html",
     "links": [
       {
         "kind": "institution",
@@ -21209,8 +21131,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Arizona State University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://search.asu.edu/profile/3403192",
     "lookup_version": 7,
+    "institutional_page": "https://search.asu.edu/profile/3403192",
     "links": [
       {
         "kind": "institution",
@@ -21241,8 +21163,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Arizona State University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://search.asu.edu/profile/5009045",
     "lookup_version": 7,
+    "institutional_page": "https://search.asu.edu/profile/5009045",
     "links": [
       {
         "kind": "institution",
@@ -21272,8 +21194,8 @@ export const SPEAKER_PROFILES = {
     "name": "Roger Beeden",
     "affiliation": "Great Barrier Reef Marine Park Authority",
     "confidence": "medium",
-    "institutional_page": "https://www.reefresiliencesymposium.org/speakers/dr-roger-beeden",
     "lookup_version": 7,
+    "institutional_page": "https://www.reefresiliencesymposium.org/speakers/dr-roger-beeden",
     "links": [
       {
         "kind": "institution",
@@ -21308,8 +21230,8 @@ export const SPEAKER_PROFILES = {
     "name": "Roger Huerlimann",
     "affiliation": "Okinawa Institute of Science and Technology",
     "confidence": "high",
-    "institutional_page": "https://finalscout.com/people/roger_huerlimann",
     "lookup_version": 7,
+    "institutional_page": "https://finalscout.com/people/roger_huerlimann",
     "links": [
       {
         "kind": "institution",
@@ -21340,8 +21262,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Texas - Austin",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.jsg.utexas.edu/researcher/rowan_martindale/",
     "lookup_version": 7,
+    "institutional_page": "https://www.jsg.utexas.edu/researcher/rowan_martindale/",
     "links": [
       {
         "kind": "institution",
@@ -21371,8 +21293,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ryan Eckert",
     "affiliation": "Florida Atlantic University - Harbor Branch",
     "confidence": "high",
-    "institutional_page": "https://www.mesophotic.org/members/259",
     "lookup_version": 7,
+    "institutional_page": "https://www.mesophotic.org/members/259",
     "links": [
       {
         "kind": "institution",
@@ -21402,8 +21324,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sai-Kit Yeung",
     "affiliation": "Hong Kong University of Science and Technology",
     "confidence": "high",
-    "institutional_page": "https://facultyprofiles.hkust.edu.hk/profiles.php?profile=sai-kit-yeung-saikit",
     "lookup_version": 7,
+    "institutional_page": "https://facultyprofiles.hkust.edu.hk/profiles.php?profile=sai-kit-yeung-saikit",
     "links": [
       {
         "kind": "institution",
@@ -21433,8 +21355,8 @@ export const SPEAKER_PROFILES = {
     "name": "Samuel Yong Jie Diong",
     "affiliation": "National University of Singapore",
     "confidence": "medium",
-    "institutional_page": "https://www.wujiegroupnus.com/team",
     "lookup_version": 7,
+    "institutional_page": "https://www.wujiegroupnus.com/team",
     "links": [
       {
         "kind": "institution",
@@ -21464,8 +21386,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sandra Mendoza Quiroz",
     "affiliation": "SECORE International",
     "confidence": "high",
-    "institutional_page": "https://www.frontiersin.org/journals/ecology-and-evolution/articles/10.3389/fevo.2025.1688176/full",
     "lookup_version": 7,
+    "institutional_page": "https://www.frontiersin.org/journals/ecology-and-evolution/articles/10.3389/fevo.2025.1688176/full",
     "links": [
       {
         "kind": "institution",
@@ -21495,8 +21417,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sangeeta Mangubhai",
     "affiliation": "Talanoa Consulting Fiji",
     "confidence": "medium",
-    "institutional_page": "https://site-search.scu.edu.au/s/search.html?collection=scu~sp-search&f.Tabs%7Cscu~ds-people=People",
     "lookup_version": 7,
+    "institutional_page": "https://site-search.scu.edu.au/s/search.html?collection=scu~sp-search&f.Tabs%7Cscu~ds-people=People",
     "links": [
       {
         "kind": "institution",
@@ -21526,8 +21448,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sarah Gray",
     "affiliation": "University of San Diego",
     "confidence": "high",
-    "institutional_page": "https://www.sandiego.edu/cas/faculty/biography.php?profile_id=209",
     "lookup_version": 7,
+    "institutional_page": "https://www.sandiego.edu/cas/faculty/biography.php?profile_id=209",
     "links": [
       {
         "kind": "institution",
@@ -21557,8 +21479,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sarah O'Connor",
     "affiliation": "National Oceanic and Atmospheric Administration",
     "confidence": "medium",
-    "institutional_page": "https://wpo.noaa.gov/team/dr-robert-oconnor/",
     "lookup_version": 7,
+    "institutional_page": "https://wpo.noaa.gov/team/dr-robert-oconnor/",
     "links": [
       {
         "kind": "institution",
@@ -21588,8 +21510,8 @@ export const SPEAKER_PROFILES = {
     "name": "Savanna R. Saunders",
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
-    "institutional_page": "https://global.uwi.edu/about/uwi-global-campus-locations",
     "lookup_version": 7,
+    "institutional_page": "https://global.uwi.edu/about/uwi-global-campus-locations",
     "links": [
       {
         "kind": "institution",
@@ -21619,8 +21541,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shaman Patel",
     "affiliation": "Nanyang Technological University",
     "confidence": "medium",
-    "institutional_page": "https://shaktippadhy.com/about/",
     "lookup_version": 7,
+    "institutional_page": "https://shaktippadhy.com/about/",
     "links": [
       {
         "kind": "institution",
@@ -21650,8 +21572,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shannon Ruseborn",
     "affiliation": "National Oceanic and Atmospheric Administration Restoration Center",
     "confidence": "high",
-    "institutional_page": "https://darrp.noaa.gov/ship-groundings/mv-vogetrader",
     "lookup_version": 7,
+    "institutional_page": "https://darrp.noaa.gov/ship-groundings/mv-vogetrader",
     "links": [
       {
         "kind": "institution",
@@ -21681,8 +21603,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sheila Kitchen",
     "affiliation": "Stony Brook University",
     "confidence": "high",
-    "institutional_page": "https://cocofinder.com/name/sheila-kitchen",
     "lookup_version": 7,
+    "institutional_page": "https://cocofinder.com/name/sheila-kitchen",
     "links": [
       {
         "kind": "institution",
@@ -21712,8 +21634,8 @@ export const SPEAKER_PROFILES = {
     "name": "Siska Agustina",
     "affiliation": "Yayasan Konservasi Alam Nusantara",
     "confidence": "medium",
-    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "links": [
       {
         "kind": "institution",
@@ -21743,8 +21665,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sophia Pinter",
     "affiliation": "University of Wisconsin - Madison",
     "confidence": "high",
-    "institutional_page": "https://www.uwsp.edu/college-of-natural-resources/cnr-honors-and-awards/",
     "lookup_version": 7,
+    "institutional_page": "https://www.uwsp.edu/college-of-natural-resources/cnr-honors-and-awards/",
     "links": [
       {
         "kind": "institution",
@@ -21774,8 +21696,8 @@ export const SPEAKER_PROFILES = {
     "name": "Stephanie Martinez",
     "affiliation": "Naturalis Biodiversity Center",
     "confidence": "high",
-    "institutional_page": "https://www.naturalis.nl/en/science/marine-evolution-ecology/stephanie-martinez-hernandez",
     "lookup_version": 7,
+    "institutional_page": "https://www.naturalis.nl/en/science/marine-evolution-ecology/stephanie-martinez-hernandez",
     "links": [
       {
         "kind": "institution",
@@ -21805,8 +21727,8 @@ export const SPEAKER_PROFILES = {
     "name": "Stephanie Schopmeyer",
     "affiliation": "Florida Fish and Wildlife Research Institute",
     "confidence": "high",
-    "institutional_page": "https://www.flickr.com/photos/myfwc/44803674591",
     "lookup_version": 7,
+    "institutional_page": "https://www.flickr.com/photos/myfwc/44803674591",
     "links": [
       {
         "kind": "institution",
@@ -21837,8 +21759,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.fisheriesreform.com/team.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheriesreform.com/team.html",
     "links": [
       {
         "kind": "institution",
@@ -21868,8 +21790,8 @@ export const SPEAKER_PROFILES = {
     "name": "Taufik Abdillah",
     "affiliation": "World Wide Fund for Nature - Indonesia",
     "confidence": "high",
-    "institutional_page": "https://www.wwf.id/en/blog/xpdckoon-taufik-abdillah",
     "lookup_version": 7,
+    "institutional_page": "https://www.wwf.id/en/blog/xpdckoon-taufik-abdillah",
     "links": [
       {
         "kind": "institution",
@@ -21899,8 +21821,8 @@ export const SPEAKER_PROFILES = {
     "name": "Timothy Jackson",
     "affiliation": "Griffith University",
     "confidence": "high",
-    "institutional_page": "https://www.griffith.edu.au/research/sciences/australian-rivers-institute/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.griffith.edu.au/research/sciences/australian-rivers-institute/people",
     "links": [
       {
         "kind": "institution",
@@ -21930,8 +21852,8 @@ export const SPEAKER_PROFILES = {
     "name": "Timothy King",
     "affiliation": "Hong Kong University of Science and Technology",
     "confidence": "medium",
-    "institutional_page": "https://facultyprofiles.hkust.edu.hk/",
     "lookup_version": 7,
+    "institutional_page": "https://facultyprofiles.hkust.edu.hk/",
     "links": [
       {
         "kind": "institution",
@@ -21962,8 +21884,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Riverside",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://sites.google.com/view/thexianglab",
     "lookup_version": 7,
+    "institutional_page": "https://sites.google.com/view/thexianglab",
     "links": [
       {
         "kind": "institution",
@@ -21993,8 +21915,8 @@ export const SPEAKER_PROFILES = {
     "name": "Triona Barker",
     "affiliation": "University of Derby",
     "confidence": "high",
-    "institutional_page": "https://www.bbc.com/news/articles/c80k9rl2k2ko",
     "lookup_version": 7,
+    "institutional_page": "https://www.bbc.com/news/articles/c80k9rl2k2ko",
     "links": [
       {
         "kind": "institution",
@@ -22024,8 +21946,8 @@ export const SPEAKER_PROFILES = {
     "name": "Tyas Trialfhianty",
     "affiliation": "Pelita Bangsa University",
     "confidence": "high",
-    "institutional_page": "https://eprints.whiterose.ac.uk/id/eprint/227066/1/1-s2.0-S0964569125000055-main.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://eprints.whiterose.ac.uk/id/eprint/227066/1/1-s2.0-S0964569125000055-main.pdf",
     "links": [
       {
         "kind": "institution",
@@ -22055,8 +21977,8 @@ export const SPEAKER_PROFILES = {
     "name": "Tzu-Hao Lin",
     "affiliation": "Academia Sinica",
     "confidence": "high",
-    "institutional_page": "https://www.sinica.edu.tw/en/news_content/558/3067",
     "lookup_version": 7,
+    "institutional_page": "https://www.sinica.edu.tw/en/news_content/558/3067",
     "links": [
       {
         "kind": "institution",
@@ -22086,8 +22008,8 @@ export const SPEAKER_PROFILES = {
     "name": "Victor Nestor",
     "affiliation": "Palau International Coral Reef Center",
     "confidence": "high",
-    "institutional_page": "https://islandtimes.org/picrc-leads-regional-coral-monitoring-workshop-in-kosrae/",
     "lookup_version": 7,
+    "institutional_page": "https://islandtimes.org/picrc-leads-regional-coral-monitoring-workshop-in-kosrae/",
     "links": [
       {
         "kind": "institution",
@@ -22118,8 +22040,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Melbourne",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://findanexpert.unimelb.edu.au/profile/810450-vinzenz-hofferek",
     "lookup_version": 7,
+    "institutional_page": "https://findanexpert.unimelb.edu.au/profile/810450-vinzenz-hofferek",
     "links": [
       {
         "kind": "institution",
@@ -22149,8 +22071,8 @@ export const SPEAKER_PROFILES = {
     "name": "Vivien Samantha Ferrer",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "medium",
-    "institutional_page": "https://www.annualreports.com/HostedData/AnnualReportArchive/w/wildlife-conservation-society_2013.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://www.annualreports.com/HostedData/AnnualReportArchive/w/wildlife-conservation-society_2013.pdf",
     "links": [
       {
         "kind": "institution",
@@ -22180,8 +22102,8 @@ export const SPEAKER_PROFILES = {
     "name": "William Barnes",
     "affiliation": "Royal Netherlands Institute for Sea Research",
     "confidence": "high",
-    "institutional_page": "https://www.seaandlearn.org/will-barnes",
     "lookup_version": 7,
+    "institutional_page": "https://www.seaandlearn.org/will-barnes",
     "links": [
       {
         "kind": "institution",
@@ -22212,8 +22134,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Melbourne",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://findanexpert.unimelb.edu.au/profile/839217-wing-yan-chan",
     "lookup_version": 7,
+    "institutional_page": "https://findanexpert.unimelb.edu.au/profile/839217-wing-yan-chan",
     "links": [
       {
         "kind": "institution",
@@ -22243,8 +22165,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yi-kai Tea",
     "affiliation": "Australian Museum Research Institute",
     "confidence": "high",
-    "institutional_page": "https://australian.museum/get-involved/staff-profiles/yi-kai-tea/",
     "lookup_version": 7,
+    "institutional_page": "https://australian.museum/get-involved/staff-profiles/yi-kai-tea/",
     "links": [
       {
         "kind": "institution",
@@ -22274,8 +22196,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zachary Craig",
     "affiliation": "Division of Aquatic Resources - Hawai'i",
     "confidence": "medium",
-    "institutional_page": "https://dlnr.ehawaii.gov/cmls-public/app/contact.html",
     "lookup_version": 7,
+    "institutional_page": "https://dlnr.ehawaii.gov/cmls-public/app/contact.html",
     "links": [
       {
         "kind": "institution",
@@ -22305,8 +22227,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zoe Ariellius",
     "affiliation": "University of Guam",
     "confidence": "high",
-    "institutional_page": "https://www.uog.edu/news-announcements/2024-2025/2024-six-become-faa-certified-remote-pilots-through-uog-drone-corps",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/news-announcements/2024-2025/2024-six-become-faa-certified-remote-pilots-through-uog-drone-corps",
     "links": [
       {
         "kind": "institution",
@@ -22336,8 +22258,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zoe Dellaert",
     "affiliation": "University of Rhode Island",
     "confidence": "medium",
-    "institutional_page": "https://web.uri.edu/graduate-school/top-graduate-school-faqs/",
     "lookup_version": 7,
+    "institutional_page": "https://web.uri.edu/graduate-school/top-graduate-school-faqs/",
     "links": [
       {
         "kind": "institution",
@@ -22368,8 +22290,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/22175/zoe-meziere",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/22175/zoe-meziere",
     "links": [
       {
         "kind": "institution",
@@ -22400,8 +22322,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.asfb.org.au/zoe-storm",
     "lookup_version": 7,
+    "institutional_page": "https://www.asfb.org.au/zoe-storm",
     "links": [
       {
         "kind": "institution",
@@ -22431,8 +22353,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zulfahri Siagian",
     "affiliation": "Yayasan Konservasi Alam Nusantara",
     "confidence": "medium",
-    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "links": [
       {
         "kind": "institution",
@@ -22463,8 +22385,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Louisiana State University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.lsu.edu/science/biosci/news/2024/bringingknowledgehome.php",
     "lookup_version": 7,
+    "institutional_page": "https://www.lsu.edu/science/biosci/news/2024/bringingknowledgehome.php",
     "links": [
       {
         "kind": "institution",
@@ -22539,8 +22461,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Southern California",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://dornsife.usc.edu/meb/people/graduate-students/",
     "lookup_version": 7,
+    "institutional_page": "https://dornsife.usc.edu/meb/people/graduate-students/",
     "links": [
       {
         "kind": "institution",
@@ -22571,8 +22493,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Santa Barbara",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.igpms.ucsb.edu/people/core-faculty/adrian-stier",
     "lookup_version": 7,
+    "institutional_page": "https://www.igpms.ucsb.edu/people/core-faculty/adrian-stier",
     "links": [
       {
         "kind": "institution",
@@ -22603,8 +22525,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.kaust.edu.sa/en/study/students/ahmed-al-saggaf",
     "lookup_version": 7,
+    "institutional_page": "https://www.kaust.edu.sa/en/study/students/ahmed-al-saggaf",
     "links": [
       {
         "kind": "institution",
@@ -22635,8 +22557,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - San Diego",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://sandinlab.ucsd.edu/staff-members/ahmi-cacapit/",
     "lookup_version": 7,
+    "institutional_page": "https://sandinlab.ucsd.edu/staff-members/ahmi-cacapit/",
     "links": [
       {
         "kind": "institution",
@@ -22689,8 +22611,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Center for Marine and Environmental Studies",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://akaciahallidayisaac.weebly.com/",
     "lookup_version": 7,
+    "institutional_page": "https://akaciahallidayisaac.weebly.com/",
     "links": [
       {
         "kind": "institution",
@@ -22742,8 +22664,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexander Venn",
     "affiliation": "Centre Scientifique de Monaco",
     "confidence": "high",
-    "institutional_page": "https://www.centrescientifique.mc/en/physiologie-et-biochimie/fiche/alexander-venn",
     "lookup_version": 7,
+    "institutional_page": "https://www.centrescientifique.mc/en/physiologie-et-biochimie/fiche/alexander-venn",
     "links": [
       {
         "kind": "institution",
@@ -22773,8 +22695,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexander Waller",
     "affiliation": "University of Sydney",
     "confidence": "medium",
-    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "links": [
       {
         "kind": "institution",
@@ -22805,8 +22727,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nova Southeastern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://gisandspatialecologylab.weebly.com/lab-members.html",
     "lookup_version": 7,
+    "institutional_page": "https://gisandspatialecologylab.weebly.com/lab-members.html",
     "links": [
       {
         "kind": "institution",
@@ -22836,8 +22758,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexandra Jordan",
     "affiliation": "Newcastle University",
     "confidence": "medium",
-    "institutional_page": "https://www.ncl.ac.uk/gps/staff/profile/",
     "lookup_version": 7,
+    "institutional_page": "https://www.ncl.ac.uk/gps/staff/profile/",
     "links": [
       {
         "kind": "institution",
@@ -22868,8 +22790,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Stanford University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://profiles.stanford.edu/alexy-khrizman",
     "lookup_version": 7,
+    "institutional_page": "https://profiles.stanford.edu/alexy-khrizman",
     "links": [
       {
         "kind": "institution",
@@ -22899,8 +22821,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexandra Zelaya",
     "affiliation": "University of North Carolina - Wilmington",
     "confidence": "high",
-    "institutional_page": "https://keepingitheel.com/posts/unc-women-s-basketball-alexandra-zelaya-commits-to-uncw",
     "lookup_version": 7,
+    "institutional_page": "https://keepingitheel.com/posts/unc-women-s-basketball-alexandra-zelaya-commits-to-uncw",
     "links": [
       {
         "kind": "institution",
@@ -22930,8 +22852,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alicia Reigel",
     "affiliation": "Washington and Lee University",
     "confidence": "medium",
-    "institutional_page": "https://www.wlu.edu/biology-department?utm_source=my",
     "lookup_version": 7,
+    "institutional_page": "https://www.wlu.edu/biology-department?utm_source=my",
     "links": [
       {
         "kind": "institution",
@@ -22961,8 +22883,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alison Moulding",
     "affiliation": "National Oceanic and Atmospheric Administration - Fisheries",
     "confidence": "high",
-    "institutional_page": "https://www.fisheries.noaa.gov/staff-directory/southeast-regional-office-staff-directory",
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheries.noaa.gov/staff-directory/southeast-regional-office-staff-directory",
     "links": [
       {
         "kind": "institution",
@@ -22992,8 +22914,8 @@ export const SPEAKER_PROFILES = {
     "name": "Aliyah True",
     "affiliation": "University Of Miami",
     "confidence": "high",
-    "institutional_page": "https://www.cnidimmunitylab.com/bio/aliyah-true",
     "lookup_version": 7,
+    "institutional_page": "https://www.cnidimmunitylab.com/bio/aliyah-true",
     "links": [
       {
         "kind": "institution",
@@ -23023,8 +22945,8 @@ export const SPEAKER_PROFILES = {
     "name": "Allison Blanchette",
     "affiliation": "Smithsonian Environmental Research Center",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Smithsonian_Environmental_Research_Center",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Smithsonian_Environmental_Research_Center",
     "links": [
       {
         "kind": "institution",
@@ -23054,8 +22976,8 @@ export const SPEAKER_PROFILES = {
     "name": "Allison Miller",
     "affiliation": "National University of Singapore",
     "confidence": "high",
-    "institutional_page": "http://www.allisonmiller.com/contact/",
     "lookup_version": 7,
+    "institutional_page": "http://www.allisonmiller.com/contact/",
     "links": [
       {
         "kind": "institution",
@@ -23086,8 +23008,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Miami",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.cnidimmunitylab.com/bio/allyson-demerlis",
     "lookup_version": 7,
+    "institutional_page": "https://www.cnidimmunitylab.com/bio/allyson-demerlis",
     "links": [
       {
         "kind": "institution",
@@ -23117,8 +23039,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alric Yeow",
     "affiliation": "National University of Singapore",
     "confidence": "medium",
-    "institutional_page": "https://www.timeshighered-events.com/live-seasia-2022/agenda/speakers/2657504",
     "lookup_version": 7,
+    "institutional_page": "https://www.timeshighered-events.com/live-seasia-2022/agenda/speakers/2657504",
     "links": [
       {
         "kind": "institution",
@@ -23149,8 +23071,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.wgtn.ac.nz/sbs/study/current-postgraduates",
     "lookup_version": 7,
+    "institutional_page": "https://www.wgtn.ac.nz/sbs/study/current-postgraduates",
     "links": [
       {
         "kind": "institution",
@@ -23180,8 +23102,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ana Yranzo Duque",
     "affiliation": "Instituto de Zoolog\u00eda y Ecolog\u00eda Tropical",
     "confidence": "high",
-    "institutional_page": "https://fundacionlosroques.wordpress.com/about/investigadores-asociados/",
     "lookup_version": 7,
+    "institutional_page": "https://fundacionlosroques.wordpress.com/about/investigadores-asociados/",
     "links": [
       {
         "kind": "institution",
@@ -23211,8 +23133,8 @@ export const SPEAKER_PROFILES = {
     "name": "Andrea Toso",
     "affiliation": "University of Salento",
     "confidence": "high",
-    "institutional_page": "https://link.springer.com/article/10.1007/s12526-025-01563-8",
     "lookup_version": 7,
+    "institutional_page": "https://link.springer.com/article/10.1007/s12526-025-01563-8",
     "links": [
       {
         "kind": "institution",
@@ -23242,8 +23164,8 @@ export const SPEAKER_PROFILES = {
     "name": "Andreas Eich",
     "affiliation": "CRIOBE",
     "confidence": "high",
-    "institutional_page": "https://www.criobe.pf/en/publications-en/",
     "lookup_version": 7,
+    "institutional_page": "https://www.criobe.pf/en/publications-en/",
     "links": [
       {
         "kind": "institution",
@@ -23274,8 +23196,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.instantcheckmate.com/people/andres-novoa/",
     "lookup_version": 7,
+    "institutional_page": "https://www.instantcheckmate.com/people/andres-novoa/",
     "links": [
       {
         "kind": "institution",
@@ -23305,8 +23227,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anish Paul",
     "affiliation": "National Centre for Biological Sciences",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/National_Centre_for_Biological_Sciences",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/National_Centre_for_Biological_Sciences",
     "links": [
       {
         "kind": "institution",
@@ -23336,8 +23258,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anna Fiesinger",
     "affiliation": "University of Konstanz",
     "confidence": "high",
-    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/37626296/?fc=None&ff=20230826081840&v=2.17.9.post6+86293ac",
     "lookup_version": 7,
+    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/37626296/?fc=None&ff=20230826081840&v=2.17.9.post6+86293ac",
     "links": [
       {
         "kind": "institution",
@@ -23367,8 +23289,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anne-Sophie Palermo",
     "affiliation": "University of Wollongong",
     "confidence": "high",
-    "institutional_page": "https://mubi.com/fr/cast/anne-sophie-palermo",
     "lookup_version": 7,
+    "institutional_page": "https://mubi.com/fr/cast/anne-sophie-palermo",
     "links": [
       {
         "kind": "institution",
@@ -23398,8 +23320,8 @@ export const SPEAKER_PROFILES = {
     "name": "Annette Breckwoldt",
     "affiliation": "Leibniz Centre for Tropical Marine Research",
     "confidence": "high",
-    "institutional_page": "https://theglobalacademy.ac/leibniz-centre-for-tropical-marine-research-zmt/dr-annette-breckwoldt/",
     "lookup_version": 7,
+    "institutional_page": "https://theglobalacademy.ac/leibniz-centre-for-tropical-marine-research-zmt/dr-annette-breckwoldt/",
     "links": [
       {
         "kind": "institution",
@@ -23430,8 +23352,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "National University of Singapore",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://sites.google.com/view/emelnus/people/research-staff/annie-chew",
     "lookup_version": 7,
+    "institutional_page": "https://sites.google.com/view/emelnus/people/research-staff/annie-chew",
     "links": [
       {
         "kind": "institution",
@@ -23462,8 +23384,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Annie-Guillaume",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Annie-Guillaume",
     "links": [
       {
         "kind": "institution",
@@ -23493,8 +23415,8 @@ export const SPEAKER_PROFILES = {
     "name": "Annielyn Tampus",
     "affiliation": "Mindanao State University-Iligan Institute of Technology",
     "confidence": "high",
-    "institutional_page": "https://eudl.eu/doi/10.4108/eai.25-10-2019.2300504",
     "lookup_version": 7,
+    "institutional_page": "https://eudl.eu/doi/10.4108/eai.25-10-2019.2300504",
     "links": [
       {
         "kind": "institution",
@@ -23524,8 +23446,8 @@ export const SPEAKER_PROFILES = {
     "name": "Annisya Rosdiana",
     "affiliation": "Rekam Nusantara Foundation",
     "confidence": "high",
-    "institutional_page": "https://www.ipb.ac.id/news/index/2024/12/supporting-agromaritime-sustainability-ipb-university-vocational-school-holds-partisipasik-2024",
     "lookup_version": 7,
+    "institutional_page": "https://www.ipb.ac.id/news/index/2024/12/supporting-agromaritime-sustainability-ipb-university-vocational-school-holds-partisipasik-2024",
     "links": [
       {
         "kind": "institution",
@@ -23555,8 +23477,8 @@ export const SPEAKER_PROFILES = {
     "name": "Antares Ramos-Alvarez",
     "affiliation": "Sail for Reefs",
     "confidence": "high",
-    "institutional_page": "https://scma.ucsd.edu/people/",
     "lookup_version": 7,
+    "institutional_page": "https://scma.ucsd.edu/people/",
     "links": [
       {
         "kind": "institution",
@@ -23586,8 +23508,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anthony Bonacolta",
     "affiliation": "University of British Columbia",
     "confidence": "medium",
-    "institutional_page": "https://www.cs.ubc.ca/people/faculty",
     "lookup_version": 7,
+    "institutional_page": "https://www.cs.ubc.ca/people/faculty",
     "links": [
       {
         "kind": "institution",
@@ -23617,8 +23539,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anuata Tetuanui",
     "affiliation": "EPHE-Paris PSL-CRIOBE",
     "confidence": "medium",
-    "institutional_page": "https://www.criobe.pf/en/masters-en/",
     "lookup_version": 7,
+    "institutional_page": "https://www.criobe.pf/en/masters-en/",
     "links": [
       {
         "kind": "institution",
@@ -23648,8 +23570,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anushka Rajagopalan",
     "affiliation": "Stony Brook University",
     "confidence": "medium",
-    "institutional_page": "https://www.stonybrook.edu/mcb/student-research/students-current-past.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.stonybrook.edu/mcb/student-research/students-current-past.html",
     "links": [
       {
         "kind": "institution",
@@ -23679,8 +23601,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anya Salih",
     "affiliation": "Fluoresci Research",
     "confidence": "medium",
-    "institutional_page": "https://escholarship.org/content/qt87b034jn/qt87b034jn_noSplash_c720feec2179021f69ae305b6585cbd7.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://escholarship.org/content/qt87b034jn/qt87b034jn_noSplash_c720feec2179021f69ae305b6585cbd7.pdf",
     "links": [
       {
         "kind": "institution",
@@ -23711,8 +23633,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://accscience.com/journal/MSAM/2/3/10.36922/msam.1786",
     "lookup_version": 7,
+    "institutional_page": "https://accscience.com/journal/MSAM/2/3/10.36922/msam.1786",
     "links": [
       {
         "kind": "institution",
@@ -23743,8 +23665,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Columbia University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.thekrishnanlab.org/team",
     "lookup_version": 7,
+    "institutional_page": "https://www.thekrishnanlab.org/team",
     "links": [
       {
         "kind": "institution",
@@ -23775,8 +23697,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University Of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/22703/arne-adam",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/22703/arne-adam",
     "links": [
       {
         "kind": "institution",
@@ -23807,8 +23729,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-ashton-gainsford",
     "lookup_version": 7,
+    "institutional_page": "https://www.aims.gov.au/about/our-people/dr-ashton-gainsford",
     "links": [
       {
         "kind": "institution",
@@ -23838,8 +23760,8 @@ export const SPEAKER_PROFILES = {
     "name": "Astri Agustina",
     "affiliation": "PT Pupuk Kalimantan Timur",
     "confidence": "medium",
-    "institutional_page": "https://www.ykht-pkt.or.id/contact",
     "lookup_version": 7,
+    "institutional_page": "https://www.ykht-pkt.or.id/contact",
     "links": [
       {
         "kind": "institution",
@@ -23870,8 +23792,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "California State University Monterey Bay",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://mlml.sjsu.edu/invertebrate-ecology/lab-members/ava-besecker/",
     "lookup_version": 7,
+    "institutional_page": "https://mlml.sjsu.edu/invertebrate-ecology/lab-members/ava-besecker/",
     "links": [
       {
         "kind": "institution",
@@ -23901,8 +23823,8 @@ export const SPEAKER_PROFILES = {
     "name": "Beatrice Padovani Ferreira",
     "affiliation": "Federal University of Pernambuco",
     "confidence": "high",
-    "institutional_page": "https://sigaa.ufpe.br/sigaa/public/docente/portal.jsf?siape=1171022",
     "lookup_version": 7,
+    "institutional_page": "https://sigaa.ufpe.br/sigaa/public/docente/portal.jsf?siape=1171022",
     "links": [
       {
         "kind": "institution",
@@ -23932,8 +23854,8 @@ export const SPEAKER_PROFILES = {
     "name": "Benjamin Darby",
     "affiliation": "San Diego State University",
     "confidence": "medium",
-    "institutional_page": "https://www.sandiego.edu/directory/biography.php?profile_id=489",
     "lookup_version": 7,
+    "institutional_page": "https://www.sandiego.edu/directory/biography.php?profile_id=489",
     "links": [
       {
         "kind": "institution",
@@ -23963,8 +23885,8 @@ export const SPEAKER_PROFILES = {
     "name": "Benjamin Moran",
     "affiliation": "University of California - Davis",
     "confidence": "high",
-    "institutional_page": "https://explorers.nationalgeographic.org/directory/benjamin-m-moran",
     "lookup_version": 7,
+    "institutional_page": "https://explorers.nationalgeographic.org/directory/benjamin-m-moran",
     "links": [
       {
         "kind": "institution",
@@ -23994,8 +23916,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bibi Renssen",
     "affiliation": "Scripps Institution of Oceanography",
     "confidence": "high",
-    "institutional_page": "https://www.aihitdata.com/company/00F05FF8/warren/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.aihitdata.com/company/00F05FF8/warren/people",
     "links": [
       {
         "kind": "institution",
@@ -24025,8 +23947,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bobbie Renfro-Price",
     "affiliation": "I.CARE",
     "confidence": "high",
-    "institutional_page": "https://www.bobbierenfro.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.bobbierenfro.com/",
     "links": [
       {
         "kind": "institution",
@@ -24057,8 +23979,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Waikato",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.waikato.ac.nz/int/research/institutes-centres-entities/centres/coastal-marine-field-station/our-people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.waikato.ac.nz/int/research/institutes-centres-entities/centres/coastal-marine-field-station/our-people/",
     "links": [
       {
         "kind": "institution",
@@ -24088,8 +24010,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bradley Arrington",
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
-    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "links": [
       {
         "kind": "institution",
@@ -24119,8 +24041,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bradley Weiler",
     "affiliation": "University Of Miami",
     "confidence": "high",
-    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-alumni/bradley-allen-weiler/index.html",
     "lookup_version": 7,
+    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-alumni/bradley-allen-weiler/index.html",
     "links": [
       {
         "kind": "institution",
@@ -24150,8 +24072,8 @@ export const SPEAKER_PROFILES = {
     "name": "Brendan Cornwell",
     "affiliation": "Hopkins Marine Station of Stanford University",
     "confidence": "high",
-    "institutional_page": "https://palumbilab.stanford.edu/people/brendan-cornwell",
     "lookup_version": 7,
+    "institutional_page": "https://palumbilab.stanford.edu/people/brendan-cornwell",
     "links": [
       {
         "kind": "institution",
@@ -24181,8 +24103,8 @@ export const SPEAKER_PROFILES = {
     "name": "Brianna Bambic",
     "affiliation": "Resource and Ecosystem Management",
     "confidence": "high",
-    "institutional_page": "https://cartogis.org/2022/09/11/geobytes-webinar-with-brianna-bambic-on-allen-coral-atlas-a-new-technology-for-coral-reef-conservation/",
     "lookup_version": 7,
+    "institutional_page": "https://cartogis.org/2022/09/11/geobytes-webinar-with-brianna-bambic-on-allen-coral-atlas-a-new-technology-for-coral-reef-conservation/",
     "links": [
       {
         "kind": "institution",
@@ -24243,8 +24165,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bruce Goldstein",
     "affiliation": "Transformations Community",
     "confidence": "high",
-    "institutional_page": "https://www.colorado.edu/cedar/bruce-goldstein",
     "lookup_version": 7,
+    "institutional_page": "https://www.colorado.edu/cedar/bruce-goldstein",
     "links": [
       {
         "kind": "institution",
@@ -24274,8 +24196,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bryant Grady",
     "affiliation": "The Nature Conservancy",
     "confidence": "medium",
-    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/united-states/new-york/stories-in-new-york/coming-together-boquet/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/united-states/new-york/stories-in-new-york/coming-together-boquet/",
     "links": [
       {
         "kind": "institution",
@@ -24305,8 +24227,8 @@ export const SPEAKER_PROFILES = {
     "name": "Byeungsu Song",
     "affiliation": "KIOST",
     "confidence": "medium",
-    "institutional_page": "https://meetings.pices.int/members/working-groups/wg49",
     "lookup_version": 7,
+    "institutional_page": "https://meetings.pices.int/members/working-groups/wg49",
     "links": [
       {
         "kind": "institution",
@@ -24336,8 +24258,8 @@ export const SPEAKER_PROFILES = {
     "name": "Caitlin Lloyd-Hall",
     "affiliation": "University of Alberta",
     "confidence": "medium",
-    "institutional_page": "https://grad.biology.ualberta.ca/jhall/people/",
     "lookup_version": 7,
+    "institutional_page": "https://grad.biology.ualberta.ca/jhall/people/",
     "links": [
       {
         "kind": "institution",
@@ -24367,8 +24289,8 @@ export const SPEAKER_PROFILES = {
     "name": "Caitlin Lustic",
     "affiliation": "The Nature Conservancy",
     "confidence": "medium",
-    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/united-states/maryland-dc/stories-in-maryland-dc/our-staff/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/united-states/maryland-dc/stories-in-maryland-dc/our-staff/",
     "links": [
       {
         "kind": "institution",
@@ -24398,8 +24320,8 @@ export const SPEAKER_PROFILES = {
     "name": "Callie Stephenson",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://donovan-lab-at-himb.github.io/people.html",
     "lookup_version": 7,
+    "institutional_page": "https://donovan-lab-at-himb.github.io/people.html",
     "links": [
       {
         "kind": "institution",
@@ -24429,8 +24351,8 @@ export const SPEAKER_PROFILES = {
     "name": "Camilla Nivison",
     "affiliation": "University of Georgia",
     "confidence": "medium",
-    "institutional_page": "https://extension.uga.edu/county-offices/mitchell/contact-us.html",
     "lookup_version": 7,
+    "institutional_page": "https://extension.uga.edu/county-offices/mitchell/contact-us.html",
     "links": [
       {
         "kind": "institution",
@@ -24460,8 +24382,8 @@ export const SPEAKER_PROFILES = {
     "name": "Carla Hoge",
     "affiliation": "University of Chicago",
     "confidence": "medium",
-    "institutional_page": "https://news.columbia.edu/news/gathering-new-insights-genetic-shuffling-snakes-and-rest-us",
     "lookup_version": 7,
+    "institutional_page": "https://news.columbia.edu/news/gathering-new-insights-genetic-shuffling-snakes-and-rest-us",
     "links": [
       {
         "kind": "institution",
@@ -24501,8 +24423,8 @@ export const SPEAKER_PROFILES = {
     "name": "Carly E. Karrick",
     "affiliation": "University of California - Berkeley",
     "confidence": "high",
-    "institutional_page": "https://carlykarrick.com/",
     "lookup_version": 7,
+    "institutional_page": "https://carlykarrick.com/",
     "links": [
       {
         "kind": "institution",
@@ -24532,8 +24454,8 @@ export const SPEAKER_PROFILES = {
     "name": "Caroline Donahue",
     "affiliation": "Qatar University",
     "confidence": "medium",
-    "institutional_page": "https://www.wscuc.org/institutions/qatar-university/",
     "lookup_version": 7,
+    "institutional_page": "https://www.wscuc.org/institutions/qatar-university/",
     "links": [
       {
         "kind": "institution",
@@ -24563,8 +24485,8 @@ export const SPEAKER_PROFILES = {
     "name": "Casey Whalen",
     "affiliation": "University of the Virgin Islands",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Virgin_Islands",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Virgin_Islands",
     "links": [
       {
         "kind": "institution",
@@ -24594,8 +24516,8 @@ export const SPEAKER_PROFILES = {
     "name": "Catheline Y.M. Froehlich",
     "affiliation": "University of Alabama",
     "confidence": "high",
-    "institutional_page": "https://cathelinefroehlich.github.io/",
     "lookup_version": 7,
+    "institutional_page": "https://cathelinefroehlich.github.io/",
     "links": [
       {
         "kind": "institution",
@@ -24626,8 +24548,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Institute of Zoology",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.zsl.org/about-zsl/our-people/dr-catherine-head",
     "lookup_version": 7,
+    "institutional_page": "https://www.zsl.org/about-zsl/our-people/dr-catherine-head",
     "links": [
       {
         "kind": "institution",
@@ -24657,8 +24579,8 @@ export const SPEAKER_PROFILES = {
     "name": "Catherine Lawrence",
     "affiliation": "San Diego State University",
     "confidence": "high",
-    "institutional_page": "https://graduate.catalog.sandiego.edu/academics/graduatefaculty",
     "lookup_version": 7,
+    "institutional_page": "https://graduate.catalog.sandiego.edu/academics/graduatefaculty",
     "links": [
       {
         "kind": "institution",
@@ -24688,8 +24610,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cedric Robillot",
     "affiliation": "Great Barrier Reef Foundation",
     "confidence": "high",
-    "institutional_page": "https://www.barrierreef.org/news/people-of-the-reef/cedric-robillot",
     "lookup_version": 7,
+    "institutional_page": "https://www.barrierreef.org/news/people-of-the-reef/cedric-robillot",
     "links": [
       {
         "kind": "institution",
@@ -24740,8 +24662,8 @@ export const SPEAKER_PROFILES = {
     "name": "Charlotte Clay",
     "affiliation": "University of Leeds",
     "confidence": "medium",
-    "institutional_page": "https://eps.leeds.ac.uk/chemistry-research-degrees/dir-record/student-alumni-profiles/2025/charlotte-whalley",
     "lookup_version": 7,
+    "institutional_page": "https://eps.leeds.ac.uk/chemistry-research-degrees/dir-record/student-alumni-profiles/2025/charlotte-whalley",
     "links": [
       {
         "kind": "institution",
@@ -24771,8 +24693,8 @@ export const SPEAKER_PROFILES = {
     "name": "Chika Sato",
     "affiliation": "M.M. Bridge Co., Ltd.",
     "confidence": "high",
-    "institutional_page": "https://www.intechopen.com/profiles/465520",
     "lookup_version": 7,
+    "institutional_page": "https://www.intechopen.com/profiles/465520",
     "links": [
       {
         "kind": "institution",
@@ -24802,8 +24724,8 @@ export const SPEAKER_PROFILES = {
     "name": "Chloe Manley",
     "affiliation": "Georgia Institute of Technology",
     "confidence": "medium",
-    "institutional_page": "https://people.research.gatech.edu/?page=1",
     "lookup_version": 7,
+    "institutional_page": "https://people.research.gatech.edu/?page=1",
     "links": [
       {
         "kind": "institution",
@@ -24833,8 +24755,8 @@ export const SPEAKER_PROFILES = {
     "name": "Chlo\u00e9 Pozas-Schacre",
     "affiliation": "Universit\u00e9 de la Polyn\u00e9sie Fran\u00e7aise",
     "confidence": "high",
-    "institutional_page": "https://www.umr-secopol.com/equipe/pozas-schacre-chloe/",
     "lookup_version": 7,
+    "institutional_page": "https://www.umr-secopol.com/equipe/pozas-schacre-chloe/",
     "links": [
       {
         "kind": "institution",
@@ -24864,8 +24786,8 @@ export const SPEAKER_PROFILES = {
     "name": "Christina Hicks",
     "affiliation": "Lancaster University",
     "confidence": "high",
-    "institutional_page": "https://www.lancaster.ac.uk/lec/about-us/people/christina-hicks",
     "lookup_version": 7,
+    "institutional_page": "https://www.lancaster.ac.uk/lec/about-us/people/christina-hicks",
     "links": [
       {
         "kind": "institution",
@@ -24895,8 +24817,8 @@ export const SPEAKER_PROFILES = {
     "name": "Christina Jayne",
     "affiliation": "State of Hawai'i",
     "confidence": "high",
-    "institutional_page": "https://www.hawaiipublicradio.org/the-conversation/2025-03-26/scientists-are-growing-coral-nearshore-reefs",
     "lookup_version": 7,
+    "institutional_page": "https://www.hawaiipublicradio.org/the-conversation/2025-03-26/scientists-are-growing-coral-nearshore-reefs",
     "links": [
       {
         "kind": "institution",
@@ -24927,8 +24849,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://about.uq.edu.au/experts/41087",
     "lookup_version": 7,
+    "institutional_page": "https://about.uq.edu.au/experts/41087",
     "links": [
       {
         "kind": "institution",
@@ -24958,8 +24880,8 @@ export const SPEAKER_PROFILES = {
     "name": "Claire Guillier",
     "affiliation": "Observatoire Oc\u00e9anologique De Banyuls-sur-mer",
     "confidence": "medium",
-    "institutional_page": "https://sciences.sorbonne-universite.fr/structures-de-recherche/observatoire-oceanologique-de-banyuls",
     "lookup_version": 7,
+    "institutional_page": "https://sciences.sorbonne-universite.fr/structures-de-recherche/observatoire-oceanologique-de-banyuls",
     "links": [
       {
         "kind": "institution",
@@ -24989,8 +24911,8 @@ export const SPEAKER_PROFILES = {
     "name": "Clarissa Reboton",
     "affiliation": "Silliman University",
     "confidence": "high",
-    "institutional_page": "https://australian.museum/get-involved/staff-profiles/zoe-richards/",
     "lookup_version": 7,
+    "institutional_page": "https://australian.museum/get-involved/staff-profiles/zoe-richards/",
     "links": [
       {
         "kind": "institution",
@@ -25021,8 +24943,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Western Australia",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.helsinki.fi/en/researchgroups/evolution-sociality-behaviour/news/welcome-new-masters-students-clelia-mula-juho-jolkkonen",
     "lookup_version": 7,
+    "institutional_page": "https://www.helsinki.fi/en/researchgroups/evolution-sociality-behaviour/news/welcome-new-masters-students-clelia-mula-juho-jolkkonen",
     "links": [
       {
         "kind": "institution",
@@ -25062,8 +24984,8 @@ export const SPEAKER_PROFILES = {
     "name": "Colin Lock",
     "affiliation": "University of Technology Sydney",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Technology_Sydney",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Technology_Sydney",
     "links": [
       {
         "kind": "institution",
@@ -25094,8 +25016,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Ursinus College",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.ursinus.edu/live/profiles/7498-colleen-bove",
     "lookup_version": 7,
+    "institutional_page": "https://www.ursinus.edu/live/profiles/7498-colleen-bove",
     "links": [
       {
         "kind": "institution",
@@ -25125,8 +25047,8 @@ export const SPEAKER_PROFILES = {
     "name": "Colleen Shortal",
     "affiliation": "University of North Carolina - Wilmington",
     "confidence": "high",
-    "institutional_page": "https://www.ushijima-lab.com/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.ushijima-lab.com/people",
     "links": [
       {
         "kind": "institution",
@@ -25156,8 +25078,8 @@ export const SPEAKER_PROFILES = {
     "name": "Courtney Powell",
     "affiliation": "University Of The South Pacific",
     "confidence": "high",
-    "institutional_page": "https://www.pacific.edu/pacific-newsroom/powell-scholars-program-positions-students-success",
     "lookup_version": 7,
+    "institutional_page": "https://www.pacific.edu/pacific-newsroom/powell-scholars-program-positions-students-success",
     "links": [
       {
         "kind": "institution",
@@ -25187,8 +25109,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cristina Linares Prats",
     "affiliation": "Universitat de Barcelona",
     "confidence": "medium",
-    "institutional_page": "https://cristinalinares.info/about/",
     "lookup_version": 7,
+    "institutional_page": "https://cristinalinares.info/about/",
     "links": [
       {
         "kind": "institution",
@@ -25218,8 +25140,8 @@ export const SPEAKER_PROFILES = {
     "name": "Curt Storlazzi",
     "affiliation": "United States Geological Survey",
     "confidence": "high",
-    "institutional_page": "https://www.usgs.gov/staff-profiles/curt-storlazzi",
     "lookup_version": 7,
+    "institutional_page": "https://www.usgs.gov/staff-profiles/curt-storlazzi",
     "links": [
       {
         "kind": "institution",
@@ -25249,8 +25171,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cynthia Grace-McCaskey",
     "affiliation": "East Carolina University",
     "confidence": "high",
-    "institutional_page": "https://coastal.ecu.edu/people/dr-cynthia-grace-mccaskey/",
     "lookup_version": 7,
+    "institutional_page": "https://coastal.ecu.edu/people/dr-cynthia-grace-mccaskey/",
     "links": [
       {
         "kind": "institution",
@@ -25280,8 +25202,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dan Ishibashi",
     "affiliation": "University of the Ryukyus",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "links": [
       {
         "kind": "institution",
@@ -25311,8 +25233,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dana Wusinich-Mendez",
     "affiliation": "NOAA Coral Reef Conservation Program",
     "confidence": "high",
-    "institutional_page": "https://seagrant.whoi.edu/noaa-live-webinar/dive-in-and-explore-coral-reef-ecosystems/",
     "lookup_version": 7,
+    "institutional_page": "https://seagrant.whoi.edu/noaa-live-webinar/dive-in-and-explore-coral-reef-ecosystems/",
     "links": [
       {
         "kind": "institution",
@@ -25342,8 +25264,8 @@ export const SPEAKER_PROFILES = {
     "name": "Danae Stephens",
     "affiliation": "University Of Miami",
     "confidence": "high",
-    "institutional_page": "https://idsc.miami.edu/tag/danae-stephens/",
     "lookup_version": 7,
+    "institutional_page": "https://idsc.miami.edu/tag/danae-stephens/",
     "links": [
       {
         "kind": "institution",
@@ -25373,8 +25295,8 @@ export const SPEAKER_PROFILES = {
     "name": "Daniel Arencibia",
     "affiliation": "Malama Maunalua",
     "confidence": "high",
-    "institutional_page": "https://malamamaunalua.org/staff-member/dan-arencibia/",
     "lookup_version": 7,
+    "institutional_page": "https://malamamaunalua.org/staff-member/dan-arencibia/",
     "links": [
       {
         "kind": "institution",
@@ -25404,8 +25326,8 @@ export const SPEAKER_PROFILES = {
     "name": "Danielle Fukuda",
     "affiliation": "Silliiman University",
     "confidence": "medium",
-    "institutional_page": "https://su.edu.ph/wp-content/uploads/2022/05/honor-Prog-2022-FINAL.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://su.edu.ph/wp-content/uploads/2022/05/honor-Prog-2022-FINAL.pdf",
     "links": [
       {
         "kind": "institution",
@@ -25435,8 +25357,8 @@ export const SPEAKER_PROFILES = {
     "name": "Danielle Jayewardene",
     "affiliation": "National Oceanic and Atmospheric Administration",
     "confidence": "high",
-    "institutional_page": "https://www.federalregister.gov/documents/2021/03/24/2021-06081/endangered-and-threatened-species-announcement-of-a-recovery-planning-workshop-to-inform-recovery",
     "lookup_version": 7,
+    "institutional_page": "https://www.federalregister.gov/documents/2021/03/24/2021-06081/endangered-and-threatened-species-announcement-of-a-recovery-planning-workshop-to-inform-recovery",
     "links": [
       {
         "kind": "institution",
@@ -25466,8 +25388,8 @@ export const SPEAKER_PROFILES = {
     "name": "David Armstrong",
     "affiliation": "Texas A&M University - Corpus Christi",
     "confidence": "medium",
-    "institutional_page": "https://www.tamucc.edu/directory/staff/index.php",
     "lookup_version": 7,
+    "institutional_page": "https://www.tamucc.edu/directory/staff/index.php",
     "links": [
       {
         "kind": "institution",
@@ -25498,8 +25420,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Central Queensland University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://hmns.uq.edu.au/profile/1493/david-jenkins",
     "lookup_version": 7,
+    "institutional_page": "https://hmns.uq.edu.au/profile/1493/david-jenkins",
     "links": [
       {
         "kind": "institution",
@@ -25529,8 +25451,8 @@ export const SPEAKER_PROFILES = {
     "name": "David Obura",
     "affiliation": "CORDIO East Africa",
     "confidence": "medium",
-    "institutional_page": "https://cordioea.academia.edu/DavidObura/CurriculumVitae",
     "lookup_version": 7,
+    "institutional_page": "https://cordioea.academia.edu/DavidObura/CurriculumVitae",
     "links": [
       {
         "kind": "institution",
@@ -25570,8 +25492,8 @@ export const SPEAKER_PROFILES = {
     "name": "David Ory",
     "affiliation": "CRIOBE",
     "confidence": "high",
-    "institutional_page": "https://www.criobe.pf/en/publications-en/",
     "lookup_version": 7,
+    "institutional_page": "https://www.criobe.pf/en/publications-en/",
     "links": [
       {
         "kind": "institution",
@@ -25601,8 +25523,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dean Apistar",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "medium",
-    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "lookup_version": 7,
+    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "links": [
       {
         "kind": "institution",
@@ -25658,8 +25580,8 @@ export const SPEAKER_PROFILES = {
     "name": "Didier Zoccola",
     "affiliation": "Centre Scientifique de Monaco",
     "confidence": "high",
-    "institutional_page": "https://www.centrescientifique.mc/en/physiologie-et-biochimie/fiche/didier-zoccola",
     "lookup_version": 7,
+    "institutional_page": "https://www.centrescientifique.mc/en/physiologie-et-biochimie/fiche/didier-zoccola",
     "links": [
       {
         "kind": "institution",
@@ -25689,8 +25611,8 @@ export const SPEAKER_PROFILES = {
     "name": "Diego Kersting",
     "affiliation": "IATS/CSIC",
     "confidence": "high",
-    "institutional_page": "https://iats.csic.es/el-investigador-del-iats-csic-diego-kersting-participa-como-formador-y-ponente-en-dos-jornadas-de-la-red-natura-2000-marina/",
     "lookup_version": 7,
+    "institutional_page": "https://iats.csic.es/el-investigador-del-iats-csic-diego-kersting-participa-como-formador-y-ponente-en-dos-jornadas-de-la-red-natura-2000-marina/",
     "links": [
       {
         "kind": "institution",
@@ -25720,8 +25642,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dileepa Samika Thanuksha de Croos",
     "affiliation": "Wayamba University of Sri Lanka",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Wayamba_University_of_Sri_Lanka",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Wayamba_University_of_Sri_Lanka",
     "links": [
       {
         "kind": "institution",
@@ -25751,8 +25673,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dominique Gallery",
     "affiliation": "Mote Marine Laboratory",
     "confidence": "high",
-    "institutional_page": "https://mote.org/staff/dr-dominique-gallery/",
     "lookup_version": 7,
+    "institutional_page": "https://mote.org/staff/dr-dominique-gallery/",
     "links": [
       {
         "kind": "institution",
@@ -25782,8 +25704,8 @@ export const SPEAKER_PROFILES = {
     "name": "Doris Kalamasaru",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "medium",
-    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "lookup_version": 7,
+    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "links": [
       {
         "kind": "institution",
@@ -25813,8 +25735,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dustin Paradis",
     "affiliation": "Marine Institute at Maui Ocean Center",
     "confidence": "high",
-    "institutional_page": "https://mauioceancenter.com/news/behind-the-scenes-with-marine-institute/",
     "lookup_version": 7,
+    "institutional_page": "https://mauioceancenter.com/news/behind-the-scenes-with-marine-institute/",
     "links": [
       {
         "kind": "institution",
@@ -25845,8 +25767,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/13253/dylan-cowley",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/13253/dylan-cowley",
     "links": [
       {
         "kind": "institution",
@@ -25877,8 +25799,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Division of Aquatic Resources - Hawai'i",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://oiwileaders.com/awardees/edwardkekoa-jr",
     "lookup_version": 7,
+    "institutional_page": "https://oiwileaders.com/awardees/edwardkekoa-jr",
     "links": [
       {
         "kind": "institution",
@@ -25908,8 +25830,8 @@ export const SPEAKER_PROFILES = {
     "name": "Elana Kysil",
     "affiliation": "Leibniz Institute of Plant Biochemistry",
     "confidence": "medium",
-    "institutional_page": "https://www.leibniz-gemeinschaft.de/en/institutes/list-of-leibniz-institutes/leibniz-institute-of-plant-biochemistry",
     "lookup_version": 7,
+    "institutional_page": "https://www.leibniz-gemeinschaft.de/en/institutes/list-of-leibniz-institutes/leibniz-institute-of-plant-biochemistry",
     "links": [
       {
         "kind": "institution",
@@ -25939,8 +25861,8 @@ export const SPEAKER_PROFILES = {
     "name": "Elisabeth Cahyani",
     "affiliation": "World Wide Fund for Nature - Indonesia",
     "confidence": "medium",
-    "institutional_page": "https://www.wwf.id/en",
     "lookup_version": 7,
+    "institutional_page": "https://www.wwf.id/en",
     "links": [
       {
         "kind": "institution",
@@ -25971,8 +25893,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Adelphi University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.adelphi.edu/program/graduate/environmental-studies/faculty-staff/",
     "lookup_version": 7,
+    "institutional_page": "https://www.adelphi.edu/program/graduate/environmental-studies/faculty-staff/",
     "links": [
       {
         "kind": "institution",
@@ -26002,8 +25924,8 @@ export const SPEAKER_PROFILES = {
     "name": "Elizabeth Shaver",
     "affiliation": "The Nature Conservancy",
     "confidence": "high",
-    "institutional_page": "https://www.youtube.com/watch?v=AN2ihFBxMxA",
     "lookup_version": 7,
+    "institutional_page": "https://www.youtube.com/watch?v=AN2ihFBxMxA",
     "links": [
       {
         "kind": "institution",
@@ -26033,8 +25955,8 @@ export const SPEAKER_PROFILES = {
     "name": "Elly Perez",
     "affiliation": "University of Guam",
     "confidence": "medium",
-    "institutional_page": "https://www.uog.edu/directory/index.php/index?page=49",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/directory/index.php/index?page=49",
     "links": [
       {
         "kind": "institution",
@@ -26064,8 +25986,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emily Jackson",
     "affiliation": "Florida International University",
     "confidence": "high",
-    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/jackson-emily.html",
     "lookup_version": 7,
+    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/jackson-emily.html",
     "links": [
       {
         "kind": "institution",
@@ -26096,8 +26018,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Maryland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.umces.edu/directory/emily-jolly/",
     "lookup_version": 7,
+    "institutional_page": "https://www.umces.edu/directory/emily-jolly/",
     "links": [
       {
         "kind": "institution",
@@ -26127,8 +26049,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emily Rutkowski",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://manoa.hawaii.edu/lifesciences/people/students/",
     "lookup_version": 7,
+    "institutional_page": "https://manoa.hawaii.edu/lifesciences/people/students/",
     "links": [
       {
         "kind": "institution",
@@ -26158,8 +26080,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emma Ryan",
     "affiliation": "University of Auckland",
     "confidence": "high",
-    "institutional_page": "https://resiliencechallenge.nz/team/emma-ryan/",
     "lookup_version": 7,
+    "institutional_page": "https://resiliencechallenge.nz/team/emma-ryan/",
     "links": [
       {
         "kind": "institution",
@@ -26189,8 +26111,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emma Saso",
     "affiliation": "California State University",
     "confidence": "medium",
-    "institutional_page": "https://www.csus.edu/apply/student-orientation/meet-us/",
     "lookup_version": 7,
+    "institutional_page": "https://www.csus.edu/apply/student-orientation/meet-us/",
     "links": [
       {
         "kind": "institution",
@@ -26220,8 +26142,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emmanuel Corse",
     "affiliation": "Univerist\u00e9 De Mayotte",
     "confidence": "medium",
-    "institutional_page": "https://univ-amu.academia.edu/EmmanuelCorse",
     "lookup_version": 7,
+    "institutional_page": "https://univ-amu.academia.edu/EmmanuelCorse",
     "links": [
       {
         "kind": "institution",
@@ -26251,8 +26173,8 @@ export const SPEAKER_PROFILES = {
     "name": "Eric B\u00e9raud",
     "affiliation": "Centre Scientifique de Monaco",
     "confidence": "high",
-    "institutional_page": "https://centrescientifique.mc/en/annuaire-du-csm-fr/fiche/eric-beraud",
     "lookup_version": 7,
+    "institutional_page": "https://centrescientifique.mc/en/annuaire-du-csm-fr/fiche/eric-beraud",
     "links": [
       {
         "kind": "institution",
@@ -26282,8 +26204,8 @@ export const SPEAKER_PROFILES = {
     "name": "Erik Krieger",
     "affiliation": "Centre Scientifique de Monaco",
     "confidence": "high",
-    "institutional_page": "https://www.centrescientifique.mc/fr/article/annuaire-du-csm-fr",
     "lookup_version": 7,
+    "institutional_page": "https://www.centrescientifique.mc/fr/article/annuaire-du-csm-fr",
     "links": [
       {
         "kind": "institution",
@@ -26313,8 +26235,8 @@ export const SPEAKER_PROFILES = {
     "name": "Erin Lausterer",
     "affiliation": "University of Technology Sydney",
     "confidence": "medium",
-    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "links": [
       {
         "kind": "institution",
@@ -26344,8 +26266,8 @@ export const SPEAKER_PROFILES = {
     "name": "Esmeralda Perez-Cervantes",
     "affiliation": "Universidad Nacional Aut\u00f3noma de M\u00e9xico",
     "confidence": "medium",
-    "institutional_page": "http://enp3.unam.mx/profesores/contacto/correos_institucionales_2024_2025.pdf",
     "lookup_version": 7,
+    "institutional_page": "http://enp3.unam.mx/profesores/contacto/correos_institucionales_2024_2025.pdf",
     "links": [
       {
         "kind": "institution",
@@ -26375,8 +26297,8 @@ export const SPEAKER_PROFILES = {
     "name": "Estrella Y. Villamizar Gonz\u00e1lez",
     "affiliation": "Universidad Central de Venezuela",
     "confidence": "high",
-    "institutional_page": "http://www.ucv.ve/estructura/facultades/facultad-de-ciencias/escuelas/biologia/asignaturas/profesores.html",
     "lookup_version": 7,
+    "institutional_page": "http://www.ucv.ve/estructura/facultades/facultad-de-ciencias/escuelas/biologia/asignaturas/profesores.html",
     "links": [
       {
         "kind": "institution",
@@ -26406,8 +26328,8 @@ export const SPEAKER_PROFILES = {
     "name": "Evan Heit",
     "affiliation": "University of Melbourne",
     "confidence": "medium",
-    "institutional_page": "https://cis.unimelb.edu.au/people/academic",
     "lookup_version": 7,
+    "institutional_page": "https://cis.unimelb.edu.au/people/academic",
     "links": [
       {
         "kind": "institution",
@@ -26437,14 +26359,8 @@ export const SPEAKER_PROFILES = {
     "name": "Evan Johnson",
     "affiliation": "Smithsonian Tropical Research Institute",
     "confidence": "medium",
-    "institutional_page": "https://www.spokeo.com/Evan-Johnson",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.spokeo.com/Evan-Johnson"
-      },
       {
         "kind": "openalex",
         "label": "OpenAlex profile",
@@ -26461,11 +26377,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Evan+Johnson+Smithsonian+Tropical+Research+Institute"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.spokeo.com/Evan-Johnson"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -26473,8 +26385,8 @@ export const SPEAKER_PROFILES = {
     "name": "Evelyn Abbott",
     "affiliation": "University of Konstanz",
     "confidence": "medium",
-    "institutional_page": "https://www.gsbs.uni-konstanz.de/people/doctoral-students/",
     "lookup_version": 7,
+    "institutional_page": "https://www.gsbs.uni-konstanz.de/people/doctoral-students/",
     "links": [
       {
         "kind": "institution",
@@ -26504,8 +26416,8 @@ export const SPEAKER_PROFILES = {
     "name": "Evelyne Felix",
     "affiliation": "Wildlife Conservation Society - Malaysia",
     "confidence": "medium",
-    "institutional_page": "https://malaysia.wcs.org/About-Us/Contact-us.aspx",
     "lookup_version": 7,
+    "institutional_page": "https://malaysia.wcs.org/About-Us/Contact-us.aspx",
     "links": [
       {
         "kind": "institution",
@@ -26535,8 +26447,8 @@ export const SPEAKER_PROFILES = {
     "name": "Fabrizio Lepiz Conejo",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-members/fabrizio-lepiz-conejo/index.html",
     "lookup_version": 7,
+    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-members/fabrizio-lepiz-conejo/index.html",
     "links": [
       {
         "kind": "institution",
@@ -26567,8 +26479,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Berkeley",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.coastalclimateresilience.com/team",
     "lookup_version": 7,
+    "institutional_page": "https://www.coastalclimateresilience.com/team",
     "links": [
       {
         "kind": "institution",
@@ -26598,8 +26510,8 @@ export const SPEAKER_PROFILES = {
     "name": "Federica Siena",
     "affiliation": "University Of Milano-bicocca",
     "confidence": "medium",
-    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/university-milan-bicocca",
     "lookup_version": 7,
+    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/university-milan-bicocca",
     "links": [
       {
         "kind": "institution",
@@ -26629,8 +26541,8 @@ export const SPEAKER_PROFILES = {
     "name": "Francesca Necci",
     "affiliation": "University of Salento",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Salento",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Salento",
     "links": [
       {
         "kind": "institution",
@@ -26660,8 +26572,8 @@ export const SPEAKER_PROFILES = {
     "name": "Fran\u00e7ois Seneca",
     "affiliation": "Centre Scientifique de Monaco",
     "confidence": "high",
-    "institutional_page": "https://www.monacoexplorations.org/en/dr-francois-seneca/",
     "lookup_version": 7,
+    "institutional_page": "https://www.monacoexplorations.org/en/dr-francois-seneca/",
     "links": [
       {
         "kind": "institution",
@@ -26691,8 +26603,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ga\u00eblle Qu\u00e9r\u00e9",
     "affiliation": "SECORE International",
     "confidence": "high",
-    "institutional_page": "https://www.secore.org/en/about-us/team",
     "lookup_version": 7,
+    "institutional_page": "https://www.secore.org/en/about-us/team",
     "links": [
       {
         "kind": "institution",
@@ -26722,8 +26634,8 @@ export const SPEAKER_PROFILES = {
     "name": "Genevieve Dallmeyer-Drennen",
     "affiliation": "State University of New York",
     "confidence": "high",
-    "institutional_page": "https://coralreefs.org/awards-honors-fellowships/recipients/",
     "lookup_version": 7,
+    "institutional_page": "https://coralreefs.org/awards-honors-fellowships/recipients/",
     "links": [
       {
         "kind": "institution",
@@ -26753,8 +26665,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gina Badlowski",
     "affiliation": "Florida International University",
     "confidence": "high",
-    "institutional_page": "https://fce-lter.fiu.edu/students/members/",
     "lookup_version": 7,
+    "institutional_page": "https://fce-lter.fiu.edu/students/members/",
     "links": [
       {
         "kind": "institution",
@@ -26785,8 +26697,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/gloria-gil-ramos",
     "lookup_version": 7,
+    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/gloria-gil-ramos",
     "links": [
       {
         "kind": "institution",
@@ -26816,8 +26728,8 @@ export const SPEAKER_PROFILES = {
     "name": "Grace Easteria",
     "affiliation": "Yayasan Konservasi Alam Nusantara",
     "confidence": "medium",
-    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "links": [
       {
         "kind": "institution",
@@ -26848,8 +26760,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Auckland University of Technology",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.connectingcoastalcommunities.com/graham-hinchliffe",
     "lookup_version": 7,
+    "institutional_page": "https://www.connectingcoastalcommunities.com/graham-hinchliffe",
     "links": [
       {
         "kind": "institution",
@@ -26880,8 +26792,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Bureau of Meteorology",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.nature.com/articles/s41597-026-06864-6",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.com/articles/s41597-026-06864-6",
     "links": [
       {
         "kind": "institution",
@@ -26911,8 +26823,8 @@ export const SPEAKER_PROFILES = {
     "name": "Guido Gonsior",
     "affiliation": "GG Biotech Design",
     "confidence": "high",
-    "institutional_page": "https://ggbiotechdesign.com/contact/",
     "lookup_version": 7,
+    "institutional_page": "https://ggbiotechdesign.com/contact/",
     "links": [
       {
         "kind": "institution",
@@ -26942,8 +26854,8 @@ export const SPEAKER_PROFILES = {
     "name": "Haiwei Luo",
     "affiliation": "Chinese University of Hong Kong",
     "confidence": "high",
-    "institutional_page": "https://www.sls.cuhk.edu.hk/profile/luo-haiwei/",
     "lookup_version": 7,
+    "institutional_page": "https://www.sls.cuhk.edu.hk/profile/luo-haiwei/",
     "links": [
       {
         "kind": "institution",
@@ -26995,8 +26907,8 @@ export const SPEAKER_PROFILES = {
     "name": "Halimah Razali",
     "affiliation": "National University of Singapore",
     "confidence": "high",
-    "institutional_page": "https://slimelauro.wordpress.com/who-we-are/the-lab/current-lab-members/halimah-razali/",
     "lookup_version": 7,
+    "institutional_page": "https://slimelauro.wordpress.com/who-we-are/the-lab/current-lab-members/halimah-razali/",
     "links": [
       {
         "kind": "institution",
@@ -27027,8 +26939,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Santa Barbara",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.eemb.ucsb.edu/people/students/lyford",
     "lookup_version": 7,
+    "institutional_page": "https://www.eemb.ucsb.edu/people/students/lyford",
     "links": [
       {
         "kind": "institution",
@@ -27058,8 +26970,8 @@ export const SPEAKER_PROFILES = {
     "name": "Haoya Tong",
     "affiliation": "University of Hong Kong",
     "confidence": "high",
-    "institutional_page": "https://www.nature.com/articles/srep40118.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.com/articles/srep40118.pdf",
     "links": [
       {
         "kind": "institution",
@@ -27089,8 +27001,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hariz Bin Khairul Hisham",
     "affiliation": "World Wide Fund for Nature - Malaysia",
     "confidence": "medium",
-    "institutional_page": "https://www.wwf.org.my/",
     "lookup_version": 7,
+    "institutional_page": "https://www.wwf.org.my/",
     "links": [
       {
         "kind": "institution",
@@ -27120,8 +27032,8 @@ export const SPEAKER_PROFILES = {
     "name": "Harshul Thareja",
     "affiliation": "Nature Conservation Foundation",
     "confidence": "high",
-    "institutional_page": "https://www.ncf-india.org/author/2235453/harshul-thareja-2",
     "lookup_version": 7,
+    "institutional_page": "https://www.ncf-india.org/author/2235453/harshul-thareja-2",
     "links": [
       {
         "kind": "institution",
@@ -27152,8 +27064,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "College of Charleston",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://charleston.edu/biology/faculty/spalding-heather.php",
     "lookup_version": 7,
+    "institutional_page": "https://charleston.edu/biology/faculty/spalding-heather.php",
     "links": [
       {
         "kind": "institution",
@@ -27183,8 +27095,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hilda Lionata Kurniawan",
     "affiliation": "Yayasan Konservasi Alam Nusantara",
     "confidence": "high",
-    "institutional_page": "https://www.kompas.id/artikel/en-saat-mama-mama-raja-ampat-saling-bertukar-resep-menjaga-laut",
     "lookup_version": 7,
+    "institutional_page": "https://www.kompas.id/artikel/en-saat-mama-mama-raja-ampat-saling-bertukar-resep-menjaga-laut",
     "links": [
       {
         "kind": "institution",
@@ -27215,8 +27127,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Holland-Elder",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Holland-Elder",
     "links": [
       {
         "kind": "institution",
@@ -27246,8 +27158,8 @@ export const SPEAKER_PROFILES = {
     "name": "H\u00e9l\u00e8ne Meehl",
     "affiliation": "Hawai\u02bbi Division of Aquatic Resources",
     "confidence": "medium",
-    "institutional_page": "https://dlnr.ehawaii.gov/cmls-public/app/contact.html",
     "lookup_version": 7,
+    "institutional_page": "https://dlnr.ehawaii.gov/cmls-public/app/contact.html",
     "links": [
       {
         "kind": "institution",
@@ -27277,8 +27189,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ikuko Yuyama",
     "affiliation": "Yamaguchi University",
     "confidence": "high",
-    "institutional_page": "https://www.yamaguchi-u.ac.jp/yurctmr/about/staff_profiles/index.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.yamaguchi-u.ac.jp/yurctmr/about/staff_profiles/index.html",
     "links": [
       {
         "kind": "institution",
@@ -27308,8 +27220,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ilsa Kuffner",
     "affiliation": "United States Geological Survey",
     "confidence": "high",
-    "institutional_page": "https://www.usgs.gov/staff-profiles/ilsa-b-kuffner",
     "lookup_version": 7,
+    "institutional_page": "https://www.usgs.gov/staff-profiles/ilsa-b-kuffner",
     "links": [
       {
         "kind": "institution",
@@ -27339,14 +27251,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ina Becker",
     "affiliation": "CNRS/UPVD",
     "confidence": "medium",
-    "institutional_page": "https://www.spokeo.com/Ina-Becker",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.spokeo.com/Ina-Becker"
-      },
       {
         "kind": "scholar_search",
         "label": "Search Google Scholar",
@@ -27358,11 +27264,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Ina+Becker+CNRS%2FUPVD"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.spokeo.com/Ina-Becker"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -27370,8 +27272,8 @@ export const SPEAKER_PROFILES = {
     "name": "Indiana Riley",
     "affiliation": "University of Sydney",
     "confidence": "high",
-    "institutional_page": "https://rileykids.org/news-blog/meet-sydney-parrish-the-riley-childrens-foundation-hoosiers-for-good-athlete",
     "lookup_version": 7,
+    "institutional_page": "https://rileykids.org/news-blog/meet-sydney-parrish-the-riley-childrens-foundation-hoosiers-for-good-athlete",
     "links": [
       {
         "kind": "institution",
@@ -27401,8 +27303,8 @@ export const SPEAKER_PROFILES = {
     "name": "Inti Keith",
     "affiliation": "Charles Darwin Foundation",
     "confidence": "high",
-    "institutional_page": "https://www.darwinfoundation.org/en/about/our-people/meet-our-team/inti-keith/",
     "lookup_version": 7,
+    "institutional_page": "https://www.darwinfoundation.org/en/about/our-people/meet-our-team/inti-keith/",
     "links": [
       {
         "kind": "institution",
@@ -27432,8 +27334,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ioan Fuller",
     "affiliation": "Arizona State University",
     "confidence": "high",
-    "institutional_page": "https://www.asu.edu/?s=Ioan+Fuller",
     "lookup_version": 7,
+    "institutional_page": "https://www.asu.edu/?s=Ioan+Fuller",
     "links": [
       {
         "kind": "institution",
@@ -27463,8 +27365,8 @@ export const SPEAKER_PROFILES = {
     "name": "Irlan Assidiq",
     "affiliation": "Rare - Indonesia",
     "confidence": "high",
-    "institutional_page": "https://itk-buton.ac.id/en/pelatihan-enumerator-survei-sosio-ekonomi-rumah-tangga-perikanan/",
     "lookup_version": 7,
+    "institutional_page": "https://itk-buton.ac.id/en/pelatihan-enumerator-survei-sosio-ekonomi-rumah-tangga-perikanan/",
     "links": [
       {
         "kind": "institution",
@@ -27494,8 +27396,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jackson Ferber",
     "affiliation": "Louisiana State University",
     "confidence": "medium",
-    "institutional_page": "https://www.lsu.edu/hss/english/faculty/ga.php",
     "lookup_version": 7,
+    "institutional_page": "https://www.lsu.edu/hss/english/faculty/ga.php",
     "links": [
       {
         "kind": "institution",
@@ -27525,8 +27427,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jacob Allgeier",
     "affiliation": "University of Michigan",
     "confidence": "high",
-    "institutional_page": "https://midas.umich.edu/directory/jacob-allgeier/",
     "lookup_version": 7,
+    "institutional_page": "https://midas.umich.edu/directory/jacob-allgeier/",
     "links": [
       {
         "kind": "institution",
@@ -27557,8 +27459,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/jacob-asher",
     "lookup_version": 7,
+    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/jacob-asher",
     "links": [
       {
         "kind": "institution",
@@ -27588,8 +27490,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jacob Valenzuela",
     "affiliation": "Institute for Systems Biology",
     "confidence": "high",
-    "institutional_page": "https://www.yellowbook.com/people/jacob-valenzuela/",
     "lookup_version": 7,
+    "institutional_page": "https://www.yellowbook.com/people/jacob-valenzuela/",
     "links": [
       {
         "kind": "institution",
@@ -27620,8 +27522,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Santa Cruz",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.biotaawards.org/allawards/jaelyn-bos",
     "lookup_version": 7,
+    "institutional_page": "https://www.biotaawards.org/allawards/jaelyn-bos",
     "links": [
       {
         "kind": "institution",
@@ -27651,8 +27553,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jake Ivan Baquiran",
     "affiliation": "University of the Ryukyus",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "links": [
       {
         "kind": "institution",
@@ -27683,8 +27585,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Newcastle",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.newcastle.edu.au/profile/james-wong",
     "lookup_version": 7,
+    "institutional_page": "https://www.newcastle.edu.au/profile/james-wong",
     "links": [
       {
         "kind": "institution",
@@ -27714,8 +27616,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jamila Patterson",
     "affiliation": "Suganthi Devadason Marine Research Institute",
     "confidence": "medium",
-    "institutional_page": "https://coralreefs.org/wp-content/uploads/2019/01/Session-73-3-Jamila-Patterson-et-al.NS-2-1.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://coralreefs.org/wp-content/uploads/2019/01/Session-73-3-Jamila-Patterson-et-al.NS-2-1.pdf",
     "links": [
       {
         "kind": "institution",
@@ -27745,8 +27647,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jan Vicente",
     "affiliation": "Bernice Pauahi Bishop Museum",
     "confidence": "medium",
-    "institutional_page": "https://www.hawaii-guide.com/oahu/sights/oahu-bishop-museum",
     "lookup_version": 7,
+    "institutional_page": "https://www.hawaii-guide.com/oahu/sights/oahu-bishop-museum",
     "links": [
       {
         "kind": "institution",
@@ -27776,8 +27678,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jannis Luncke",
     "affiliation": "University of Haifa",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Haifa",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Haifa",
     "links": [
       {
         "kind": "institution",
@@ -27807,8 +27709,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jaret Bilewitch",
     "affiliation": "Earth Sciences New Zealand",
     "confidence": "high",
-    "institutional_page": "https://research.calacademy.org/research/izg/WhoIsDoingWhat_Final.htm",
     "lookup_version": 7,
+    "institutional_page": "https://research.calacademy.org/research/izg/WhoIsDoingWhat_Final.htm",
     "links": [
       {
         "kind": "institution",
@@ -27860,8 +27762,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jasmine Reighard",
     "affiliation": "Hawai\u02bbi Institute of Marine Biology",
     "confidence": "medium",
-    "institutional_page": "https://lmcmanus47.github.io/McManus_Lisa_CV.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://lmcmanus47.github.io/McManus_Lisa_CV.pdf",
     "links": [
       {
         "kind": "institution",
@@ -27891,8 +27793,8 @@ export const SPEAKER_PROFILES = {
     "name": "Javier Pardo D\u00edaz",
     "affiliation": "Smithsonian Tropical Research Institute - Panama",
     "confidence": "medium",
-    "institutional_page": "https://sruk.org.uk/team/javier-pardo-diaz/",
     "lookup_version": 7,
+    "institutional_page": "https://sruk.org.uk/team/javier-pardo-diaz/",
     "links": [
       {
         "kind": "institution",
@@ -27927,8 +27829,8 @@ export const SPEAKER_PROFILES = {
     "name": "Javier Porobic",
     "affiliation": "Commonwealth Scientific and Industrial Research Organisation",
     "confidence": "high",
-    "institutional_page": "https://people.csiro.au/p/j/javier-porobicgarate",
     "lookup_version": 7,
+    "institutional_page": "https://people.csiro.au/p/j/javier-porobicgarate",
     "links": [
       {
         "kind": "institution",
@@ -27958,8 +27860,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jeanne Bloomberg",
     "affiliation": "MIT-Woods Hole Joint Program",
     "confidence": "high",
-    "institutional_page": "https://www.whoi.edu/what-we-do/understand/departments-centers-labs/bio/bio-people/whoi-mit-joint-program-students/",
     "lookup_version": 7,
+    "institutional_page": "https://www.whoi.edu/what-we-do/understand/departments-centers-labs/bio/bio-people/whoi-mit-joint-program-students/",
     "links": [
       {
         "kind": "institution",
@@ -27989,8 +27891,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jeffrey Simprota",
     "affiliation": "Wildlife Conservation Society - Philippines",
     "confidence": "medium",
-    "institutional_page": "https://www.coraltriangleinitiative.org/partner/wildlife-conservation-society",
     "lookup_version": 7,
+    "institutional_page": "https://www.coraltriangleinitiative.org/partner/wildlife-conservation-society",
     "links": [
       {
         "kind": "institution",
@@ -28020,8 +27922,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jen-hong Chu",
     "affiliation": "National Chiayi University",
     "confidence": "high",
-    "institutional_page": "https://en.wikipedia.org/wiki/National_Chiayi_University",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/National_Chiayi_University",
     "links": [
       {
         "kind": "institution",
@@ -28051,8 +27953,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jhon Reimer Fajardo",
     "affiliation": "Silliman University",
     "confidence": "medium",
-    "institutional_page": "https://www.topuniversities.com/universities/silliman-university",
     "lookup_version": 7,
+    "institutional_page": "https://www.topuniversities.com/universities/silliman-university",
     "links": [
       {
         "kind": "institution",
@@ -28082,8 +27984,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jimy Kalther",
     "affiliation": "Konservasi Indonesia",
     "confidence": "high",
-    "institutional_page": "https://www.sahabatrakyat.com/polhukam/kkp-sokong-pengembangan-kawasan-konservasi-lepas-pantai-berbasis-sains/",
     "lookup_version": 7,
+    "institutional_page": "https://www.sahabatrakyat.com/polhukam/kkp-sokong-pengembangan-kawasan-konservasi-lepas-pantai-berbasis-sains/",
     "links": [
       {
         "kind": "institution",
@@ -28113,8 +28015,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joana F. Couceiro",
     "affiliation": "University of Lisbon",
     "confidence": "high",
-    "institutional_page": "https://ibb.tecnico.ulisboa.pt/people/members/Joana-Couceiro/",
     "lookup_version": 7,
+    "institutional_page": "https://ibb.tecnico.ulisboa.pt/people/members/Joana-Couceiro/",
     "links": [
       {
         "kind": "institution",
@@ -28145,8 +28047,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/29715/joanna-smart",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/29715/joanna-smart",
     "links": [
       {
         "kind": "institution",
@@ -28176,8 +28078,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joaquin Yus",
     "affiliation": "Spanish National Research Council",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Spanish_National_Research_Council",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Spanish_National_Research_Council",
     "links": [
       {
         "kind": "institution",
@@ -28207,8 +28109,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joeli Veitayaki",
     "affiliation": "Blue Prosperity Fiji",
     "confidence": "high",
-    "institutional_page": "https://www.blueprosperity.org/post/msp-workshop",
     "lookup_version": 7,
+    "institutional_page": "https://www.blueprosperity.org/post/msp-workshop",
     "links": [
       {
         "kind": "institution",
@@ -28238,8 +28140,8 @@ export const SPEAKER_PROFILES = {
     "name": "Johanna Gijsbers Alejandre",
     "affiliation": "Instituto Politecnico Nacional",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Instituto_Polit%C3%A9cnico_Nacional",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Instituto_Polit%C3%A9cnico_Nacional",
     "links": [
       {
         "kind": "institution",
@@ -28269,8 +28171,8 @@ export const SPEAKER_PROFILES = {
     "name": "John McManus",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://idsc.miami.edu/featured-scientist-john-mcmanus/",
     "lookup_version": 7,
+    "institutional_page": "https://idsc.miami.edu/featured-scientist-john-mcmanus/",
     "links": [
       {
         "kind": "institution",
@@ -28300,8 +28202,8 @@ export const SPEAKER_PROFILES = {
     "name": "Johnenn Manalang",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "high",
-    "institutional_page": "https://nip.upd.edu.ph/profiles/johnenn-r-manalang/",
     "lookup_version": 7,
+    "institutional_page": "https://nip.upd.edu.ph/profiles/johnenn-r-manalang/",
     "links": [
       {
         "kind": "institution",
@@ -28331,8 +28233,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jone Tamanitoakula",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "medium",
-    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "lookup_version": 7,
+    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "links": [
       {
         "kind": "institution",
@@ -28362,8 +28264,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jordan Pierce",
     "affiliation": "University of California - San Diego",
     "confidence": "high",
-    "institutional_page": "https://jordan-pierce.github.io/Jordan-Pierce/Resume/Resume.html",
     "lookup_version": 7,
+    "institutional_page": "https://jordan-pierce.github.io/Jordan-Pierce/Resume/Resume.html",
     "links": [
       {
         "kind": "institution",
@@ -28393,8 +28295,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jordan Ruiz",
     "affiliation": "University of North Carolina - Wilmington",
     "confidence": "high",
-    "institutional_page": "https://www.yellowbook.com/people/jordan-ruiz/",
     "lookup_version": 7,
+    "institutional_page": "https://www.yellowbook.com/people/jordan-ruiz/",
     "links": [
       {
         "kind": "institution",
@@ -28424,8 +28326,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joseph Brennan",
     "affiliation": "University of Hong Kong",
     "confidence": "high",
-    "institutional_page": "https://www.typhoonsrugby.com/teams/255397/player/joebrennan-3155342",
     "lookup_version": 7,
+    "institutional_page": "https://www.typhoonsrugby.com/teams/255397/player/joebrennan-3155342",
     "links": [
       {
         "kind": "institution",
@@ -28455,8 +28357,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joseph Townsend",
     "affiliation": "University of Puerto Rico - Mayag\u00fcez",
     "confidence": "medium",
-    "institutional_page": "https://msiexchange.nasa.gov/institutions/2904",
     "lookup_version": 7,
+    "institutional_page": "https://msiexchange.nasa.gov/institutions/2904",
     "links": [
       {
         "kind": "institution",
@@ -28487,8 +28389,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nova Southeastern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://scholars.nova.edu/en/persons/joshua-feingold/?_gl=1*1i1a59o*_gcl_au*MTgwNDEwODQ2MS4xNzg0ODc5NjkzLjE3Mjg2MjkzNC4xNzg1MTg4NDIyLjE3ODUxODk5MzIuMTk4MzkxMzU5OS4xNzg1MTg4NDIyLjE3ODUxODk5MzI.",
     "lookup_version": 7,
+    "institutional_page": "https://scholars.nova.edu/en/persons/joshua-feingold/?_gl=1*1i1a59o*_gcl_au*MTgwNDEwODQ2MS4xNzg0ODc5NjkzLjE3Mjg2MjkzNC4xNzg1MTg4NDIyLjE3ODUxODk5MzIuMTk4MzkxMzU5OS4xNzg1MTg4NDIyLjE3ODUxODk5MzI.",
     "links": [
       {
         "kind": "institution",
@@ -28518,8 +28420,8 @@ export const SPEAKER_PROFILES = {
     "name": "Josine Wata\u00ef Tiavouane",
     "affiliation": "Conservation International",
     "confidence": "medium",
-    "institutional_page": "https://umr-entropie.ird.nc/index.php/team/josina-tiavouane",
     "lookup_version": 7,
+    "institutional_page": "https://umr-entropie.ird.nc/index.php/team/josina-tiavouane",
     "links": [
       {
         "kind": "institution",
@@ -28549,8 +28451,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joy Smith",
     "affiliation": "Cooperative Institute for Marine and Atmospheric Research",
     "confidence": "medium",
-    "institutional_page": "https://www.soest.hawaii.edu/cimar/wp-content/uploads/2024/04/cimar_rpt2023.low_.res_.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://www.soest.hawaii.edu/cimar/wp-content/uploads/2024/04/cimar_rpt2023.low_.res_.pdf",
     "links": [
       {
         "kind": "institution",
@@ -28580,8 +28482,8 @@ export const SPEAKER_PROFILES = {
     "name": "Juan Pablo D'Olivo Cordero",
     "affiliation": "Universidad Nacional Aut\u00f3noma de M\u00e9xico",
     "confidence": "medium",
-    "institutional_page": "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.66.043001",
     "lookup_version": 7,
+    "institutional_page": "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.66.043001",
     "links": [
       {
         "kind": "institution",
@@ -28612,8 +28514,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Alberta",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.albertacounselnews.com/thenews/l7xhub5ei8yzztsphwemu8vkuwq7aq",
     "lookup_version": 7,
+    "institutional_page": "https://www.albertacounselnews.com/thenews/l7xhub5ei8yzztsphwemu8vkuwq7aq",
     "links": [
       {
         "kind": "institution",
@@ -28643,8 +28545,8 @@ export const SPEAKER_PROFILES = {
     "name": "Julian Christopher Maypa",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "high",
-    "institutional_page": "https://arxiv.org/html/2505.00462v1",
     "lookup_version": 7,
+    "institutional_page": "https://arxiv.org/html/2505.00462v1",
     "links": [
       {
         "kind": "institution",
@@ -28675,8 +28577,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Leibniz Centre for Tropical Marine Research",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.connectingcoastalcommunities.com/julian-lilkendey",
     "lookup_version": 7,
+    "institutional_page": "https://www.connectingcoastalcommunities.com/julian-lilkendey",
     "links": [
       {
         "kind": "institution",
@@ -28706,8 +28608,8 @@ export const SPEAKER_PROFILES = {
     "name": "Juliana Mello Fonseca",
     "affiliation": "Universidade Federal do Rio de Janeiro",
     "confidence": "high",
-    "institutional_page": "https://www.escavador.com/sobre/3515909/juliana-de-souza-graca-gomes-de-mello-fonseca",
     "lookup_version": 7,
+    "institutional_page": "https://www.escavador.com/sobre/3515909/juliana-de-souza-graca-gomes-de-mello-fonseca",
     "links": [
       {
         "kind": "institution",
@@ -28738,8 +28640,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Santa Barbara",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.eemb.ucsb.edu/people/students/renzi",
     "lookup_version": 7,
+    "institutional_page": "https://www.eemb.ucsb.edu/people/students/renzi",
     "links": [
       {
         "kind": "institution",
@@ -28769,8 +28671,8 @@ export const SPEAKER_PROFILES = {
     "name": "Juliette Verstaen",
     "affiliation": "Cooperative Institute for Marine and Atmospheric Research",
     "confidence": "high",
-    "institutional_page": "https://www.fisheries.noaa.gov/contact/juliette-verstaen",
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheries.noaa.gov/contact/juliette-verstaen",
     "links": [
       {
         "kind": "institution",
@@ -28800,8 +28702,8 @@ export const SPEAKER_PROFILES = {
     "name": "Juntong Hu",
     "affiliation": "University of Melbourne",
     "confidence": "high",
-    "institutional_page": "https://www.polito.it/en/staff?p=121302",
     "lookup_version": 7,
+    "institutional_page": "https://www.polito.it/en/staff?p=121302",
     "links": [
       {
         "kind": "institution",
@@ -28852,8 +28754,8 @@ export const SPEAKER_PROFILES = {
     "name": "K Diraviya Raj",
     "affiliation": "Suganthi Devadason Marine Research Institute",
     "confidence": "medium",
-    "institutional_page": "https://www.sdmri.in/",
     "lookup_version": 7,
+    "institutional_page": "https://www.sdmri.in/",
     "links": [
       {
         "kind": "institution",
@@ -28883,8 +28785,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kaho Tisthammer",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://www.pbrc.hawaii.edu/index.php/staff-member/tisthammer-kaho/",
     "lookup_version": 7,
+    "institutional_page": "https://www.pbrc.hawaii.edu/index.php/staff-member/tisthammer-kaho/",
     "links": [
       {
         "kind": "institution",
@@ -28915,8 +28817,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/29700/kailash-cook",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/29700/kailash-cook",
     "links": [
       {
         "kind": "institution",
@@ -28946,8 +28848,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kailey Pascoe",
     "affiliation": "Arizona State University",
     "confidence": "high",
-    "institutional_page": "https://www.asu.edu/?s=Kailey+Pascoe",
     "lookup_version": 7,
+    "institutional_page": "https://www.asu.edu/?s=Kailey+Pascoe",
     "links": [
       {
         "kind": "institution",
@@ -29003,8 +28905,8 @@ export const SPEAKER_PROFILES = {
     "name": "Karen Stone",
     "affiliation": "Vava\u02bbu Environmental Protection Association",
     "confidence": "high",
-    "institutional_page": "https://wildhub.community/users/karen-stone",
     "lookup_version": 7,
+    "institutional_page": "https://wildhub.community/users/karen-stone",
     "links": [
       {
         "kind": "institution",
@@ -29035,8 +28937,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Texas - Austin",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://kirkpatricklab.org/people",
     "lookup_version": 7,
+    "institutional_page": "https://kirkpatricklab.org/people",
     "links": [
       {
         "kind": "institution",
@@ -29066,8 +28968,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kate Fetkenhour",
     "affiliation": "Arizona State University",
     "confidence": "high",
-    "institutional_page": "https://www.asu.edu/?s=Kate+Fetkenhour",
     "lookup_version": 7,
+    "institutional_page": "https://www.asu.edu/?s=Kate+Fetkenhour",
     "links": [
       {
         "kind": "institution",
@@ -29097,8 +28999,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kate Gonzalez",
     "affiliation": "Hawai'i Division of Aquatic Resources",
     "confidence": "medium",
-    "institutional_page": "https://dlnr.ehawaii.gov/cmls-public/app/contact.html",
     "lookup_version": 7,
+    "institutional_page": "https://dlnr.ehawaii.gov/cmls-public/app/contact.html",
     "links": [
       {
         "kind": "institution",
@@ -29128,8 +29030,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kathia Jaramillo",
     "affiliation": "Florida International University",
     "confidence": "medium",
-    "institutional_page": "https://case.fiu.edu/?s=Kathia+Jaramillo",
     "lookup_version": 7,
+    "institutional_page": "https://case.fiu.edu/?s=Kathia+Jaramillo",
     "links": [
       {
         "kind": "institution",
@@ -29160,8 +29062,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Otago",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.otago.ac.nz/marinescience/people/students",
     "lookup_version": 7,
+    "institutional_page": "https://www.otago.ac.nz/marinescience/people/students",
     "links": [
       {
         "kind": "institution",
@@ -29191,8 +29093,8 @@ export const SPEAKER_PROFILES = {
     "name": "Katrina Giambertone",
     "affiliation": "California State University, Monterey Bay And Moss Landing Marine Laboratories",
     "confidence": "high",
-    "institutional_page": "https://digitalcommons.csumb.edu/mlml_theses/",
     "lookup_version": 7,
+    "institutional_page": "https://digitalcommons.csumb.edu/mlml_theses/",
     "links": [
       {
         "kind": "institution",
@@ -29223,8 +29125,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/21527/katrina-mcguigan",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/21527/katrina-mcguigan",
     "links": [
       {
         "kind": "institution",
@@ -29254,8 +29156,8 @@ export const SPEAKER_PROFILES = {
     "name": "Katya Bonilla",
     "affiliation": "Southern Cross University",
     "confidence": "medium",
-    "institutional_page": "https://site-search.scu.edu.au/s/search.html?collection=scu~sp-search&f.Tabs%7Cscu~ds-people=People",
     "lookup_version": 7,
+    "institutional_page": "https://site-search.scu.edu.au/s/search.html?collection=scu~sp-search&f.Tabs%7Cscu~ds-people=People",
     "links": [
       {
         "kind": "institution",
@@ -29285,8 +29187,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kazuma Uesugi",
     "affiliation": "Institute of Science - Tokyo",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Institute_of_Science_Tokyo",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Institute_of_Science_Tokyo",
     "links": [
       {
         "kind": "institution",
@@ -29316,8 +29218,8 @@ export const SPEAKER_PROFILES = {
     "name": "Keanu Rochette-yu Tsuen",
     "affiliation": "University of Hawai'i",
     "confidence": "high",
-    "institutional_page": "https://www.hawaii.edu/news/2024/01/02/rochette-yu-tsuen-graduate/",
     "lookup_version": 7,
+    "institutional_page": "https://www.hawaii.edu/news/2024/01/02/rochette-yu-tsuen-graduate/",
     "links": [
       {
         "kind": "institution",
@@ -29347,8 +29249,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kendall Chancellor",
     "affiliation": "University of California - San Diego",
     "confidence": "high",
-    "institutional_page": "https://scripps.ucsd.edu/news/scripps-student-spotlight-kendall-chancellor",
     "lookup_version": 7,
+    "institutional_page": "https://scripps.ucsd.edu/news/scripps-student-spotlight-kendall-chancellor",
     "links": [
       {
         "kind": "institution",
@@ -29378,8 +29280,8 @@ export const SPEAKER_PROFILES = {
     "name": "Keolohilani Lopes Jr",
     "affiliation": "University of Hawai'i",
     "confidence": "high",
-    "institutional_page": "https://sites.google.com/hawaii.edu/nrem-gso",
     "lookup_version": 7,
+    "institutional_page": "https://sites.google.com/hawaii.edu/nrem-gso",
     "links": [
       {
         "kind": "institution",
@@ -29409,8 +29311,8 @@ export const SPEAKER_PROFILES = {
     "name": "Keyla Plichon",
     "affiliation": "Universit\u00e9 C\u00f4te d'azur",
     "confidence": "medium",
-    "institutional_page": "https://www.biorxiv.org/content/10.1101/2024.11.15.623823v1",
     "lookup_version": 7,
+    "institutional_page": "https://www.biorxiv.org/content/10.1101/2024.11.15.623823v1",
     "links": [
       {
         "kind": "institution",
@@ -29450,8 +29352,8 @@ export const SPEAKER_PROFILES = {
     "name": "Khatija Alliji",
     "affiliation": "Lancaster University",
     "confidence": "high",
-    "institutional_page": "https://www.lancaster.ac.uk/sci-tech/about-us/people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.lancaster.ac.uk/sci-tech/about-us/people/",
     "links": [
       {
         "kind": "institution",
@@ -29481,8 +29383,8 @@ export const SPEAKER_PROFILES = {
     "name": "Killian Ver Hoeye",
     "affiliation": "University Of Mons, Belgium",
     "confidence": "high",
-    "institutional_page": "https://orbi.umons.ac.be/bitstream/20.500.12907/53569/1/Zoology2024-Conference-booklet_9Dec2024.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://orbi.umons.ac.be/bitstream/20.500.12907/53569/1/Zoology2024-Conference-booklet_9Dec2024.pdf",
     "links": [
       {
         "kind": "institution",
@@ -29512,8 +29414,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kimberly Samson",
     "affiliation": "Talanoa Consulting",
     "confidence": "medium",
-    "institutional_page": "https://talanoaconsulting.com/contact",
     "lookup_version": 7,
+    "institutional_page": "https://talanoaconsulting.com/contact",
     "links": [
       {
         "kind": "institution",
@@ -29543,8 +29445,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kirsty Smith",
     "affiliation": "Cawthron Institute",
     "confidence": "high",
-    "institutional_page": "https://www.auckland.ac.nz/en/science/our-research/cawthron-institute/contact-us.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.auckland.ac.nz/en/science/our-research/cawthron-institute/contact-us.html",
     "links": [
       {
         "kind": "institution",
@@ -29574,8 +29476,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kohei Hamamoto",
     "affiliation": "Ehime University",
     "confidence": "medium",
-    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/ehime-university",
     "lookup_version": 7,
+    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/ehime-university",
     "links": [
       {
         "kind": "institution",
@@ -29605,8 +29507,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kris Jypson Esturas",
     "affiliation": "University of Queensland",
     "confidence": "high",
-    "institutional_page": "https://about.uq.edu.au/experts/search?q=Kris%20Jypson%20Esturas&page=216",
     "lookup_version": 7,
+    "institutional_page": "https://about.uq.edu.au/experts/search?q=Kris%20Jypson%20Esturas&page=216",
     "links": [
       {
         "kind": "institution",
@@ -29637,8 +29539,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of South Florida",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.usf.edu/arts-sciences/departments/anthropology/people/hinds.aspx",
     "lookup_version": 7,
+    "institutional_page": "https://www.usf.edu/arts-sciences/departments/anthropology/people/hinds.aspx",
     "links": [
       {
         "kind": "institution",
@@ -29668,8 +29570,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kristina Tietjen",
     "affiliation": "University of Victoria",
     "confidence": "high",
-    "institutional_page": "https://kristinatietjen.weebly.com/",
     "lookup_version": 7,
+    "institutional_page": "https://kristinatietjen.weebly.com/",
     "links": [
       {
         "kind": "institution",
@@ -29699,8 +29601,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lachan Roth",
     "affiliation": "Tel Aviv University",
     "confidence": "medium",
-    "institutional_page": "https://rothinstitute.sites.tau.ac.il",
     "lookup_version": 7,
+    "institutional_page": "https://rothinstitute.sites.tau.ac.il",
     "links": [
       {
         "kind": "institution",
@@ -29730,8 +29632,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lailatul Rokhmah",
     "affiliation": "Rekam Nusantara Foundation",
     "confidence": "medium",
-    "institutional_page": "https://majalahinspiratif.com/lailatul-rokhmah-perempuan-tangguh-di-balik-popularitas-layla-cake-yang-sangat-pesat-dan-agresif/",
     "lookup_version": 7,
+    "institutional_page": "https://majalahinspiratif.com/lailatul-rokhmah-perempuan-tangguh-di-balik-popularitas-layla-cake-yang-sangat-pesat-dan-agresif/",
     "links": [
       {
         "kind": "institution",
@@ -29766,8 +29668,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lara Virginia Birkart",
     "affiliation": "Universidad Nacional Aut\u00f3noma de M\u00e9xico",
     "confidence": "medium",
-    "institutional_page": "https://di.facmed.unam.mx/paginas/busqueda/inv.php",
     "lookup_version": 7,
+    "institutional_page": "https://di.facmed.unam.mx/paginas/busqueda/inv.php",
     "links": [
       {
         "kind": "institution",
@@ -29797,8 +29699,8 @@ export const SPEAKER_PROFILES = {
     "name": "Laura Lardinois",
     "affiliation": "McGill University",
     "confidence": "high",
-    "institutional_page": "https://www.mcgill.ca/graphos/wf",
     "lookup_version": 7,
+    "institutional_page": "https://www.mcgill.ca/graphos/wf",
     "links": [
       {
         "kind": "institution",
@@ -29828,8 +29730,8 @@ export const SPEAKER_PROFILES = {
     "name": "Laura-Li Jeannot",
     "affiliation": "Lancaster University",
     "confidence": "medium",
-    "institutional_page": "https://www.lancaster.ac.uk/global-affairs/people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.lancaster.ac.uk/global-affairs/people/",
     "links": [
       {
         "kind": "institution",
@@ -29859,8 +29761,8 @@ export const SPEAKER_PROFILES = {
     "name": "Laurel Diaz",
     "affiliation": "University of California - Los Angeles",
     "confidence": "medium",
-    "institutional_page": "https://issi.berkeley.edu/people/laura-d%C3%ADaz",
     "lookup_version": 7,
+    "institutional_page": "https://issi.berkeley.edu/people/laura-d%C3%ADaz",
     "links": [
       {
         "kind": "institution",
@@ -29890,8 +29792,8 @@ export const SPEAKER_PROFILES = {
     "name": "Laurence Calagui",
     "affiliation": "Caraga State University / National Sun Yat-sen University",
     "confidence": "medium",
-    "institutional_page": "https://www.topuniversities.com/universities/national-sun-yat-sen-university-nsysu",
     "lookup_version": 7,
+    "institutional_page": "https://www.topuniversities.com/universities/national-sun-yat-sen-university-nsysu",
     "links": [
       {
         "kind": "institution",
@@ -29921,8 +29823,8 @@ export const SPEAKER_PROFILES = {
     "name": "Le Qin Choo",
     "affiliation": "Chinese University of Hong Kong",
     "confidence": "high",
-    "institutional_page": "https://www.econ.cuhk.edu.hk/en/about/people/faculty/regular-faculty-members/",
     "lookup_version": 7,
+    "institutional_page": "https://www.econ.cuhk.edu.hk/en/about/people/faculty/regular-faculty-members/",
     "links": [
       {
         "kind": "institution",
@@ -29973,8 +29875,8 @@ export const SPEAKER_PROFILES = {
     "name": "Leon Tran",
     "affiliation": "University of Hawai\u02bbi - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://www.hawaii.edu/news/2026/02/27/leon-tran/",
     "lookup_version": 7,
+    "institutional_page": "https://www.hawaii.edu/news/2026/02/27/leon-tran/",
     "links": [
       {
         "kind": "institution",
@@ -30004,8 +29906,8 @@ export const SPEAKER_PROFILES = {
     "name": "Les Kaufman",
     "affiliation": "Boston University",
     "confidence": "high",
-    "institutional_page": "https://www.bu.edu/biology/people/profiles/les-kaufman/",
     "lookup_version": 7,
+    "institutional_page": "https://www.bu.edu/biology/people/profiles/les-kaufman/",
     "links": [
       {
         "kind": "institution",
@@ -30066,8 +29968,8 @@ export const SPEAKER_PROFILES = {
     "name": "Linda Eggertsen",
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_S%C3%A3o_Paulo",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_S%C3%A3o_Paulo",
     "links": [
       {
         "kind": "institution",
@@ -30097,8 +29999,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lintao Huang",
     "affiliation": "South China Sea Institute of Oceanology",
     "confidence": "medium",
-    "institutional_page": "http://english.qdio.cas.cn/people/jzg/",
     "lookup_version": 7,
+    "institutional_page": "http://english.qdio.cas.cn/people/jzg/",
     "links": [
       {
         "kind": "institution",
@@ -30128,8 +30030,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lorelei Ing",
     "affiliation": "University of Texas - Arlington",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Texas_at_Arlington",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Texas_at_Arlington",
     "links": [
       {
         "kind": "institution",
@@ -30159,8 +30061,8 @@ export const SPEAKER_PROFILES = {
     "name": "Louis Rycx",
     "affiliation": "Earth and Life Institute",
     "confidence": "medium",
-    "institutional_page": "https://gfair.network/organizations/earth-and-life-institute-environmental-sciences-universit-catholique-de-louvain",
     "lookup_version": 7,
+    "institutional_page": "https://gfair.network/organizations/earth-and-life-institute-environmental-sciences-universit-catholique-de-louvain",
     "links": [
       {
         "kind": "institution",
@@ -30190,8 +30092,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lucas Koh",
     "affiliation": "Nanyang Technological University",
     "confidence": "medium",
-    "institutional_page": "https://www.ntu.edu.sg/eee/faculty",
     "lookup_version": 7,
+    "institutional_page": "https://www.ntu.edu.sg/eee/faculty",
     "links": [
       {
         "kind": "institution",
@@ -30221,8 +30123,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lucian Himes",
     "affiliation": "Mahonia Na Dari",
     "confidence": "high",
-    "institutional_page": "https://sdgs.un.org/partnerships/mahonia-na-dari-influencing-behaviour-and-attitudes-through-theory-and-practice-based",
     "lookup_version": 7,
+    "institutional_page": "https://sdgs.un.org/partnerships/mahonia-na-dari-influencing-behaviour-and-attitudes-through-theory-and-practice-based",
     "links": [
       {
         "kind": "institution",
@@ -30252,8 +30154,8 @@ export const SPEAKER_PROFILES = {
     "name": "Luisa Meister",
     "affiliation": "University of Hong Kong",
     "confidence": "medium",
-    "institutional_page": "https://english.hku.hk/people/Research_Postgraduates",
     "lookup_version": 7,
+    "institutional_page": "https://english.hku.hk/people/Research_Postgraduates",
     "links": [
       {
         "kind": "institution",
@@ -30283,8 +30185,8 @@ export const SPEAKER_PROFILES = {
     "name": "Luiza Waechter",
     "affiliation": "University Of Miami",
     "confidence": "high",
-    "institutional_page": "https://benderlab.weebly.com/uploads/1/1/7/8/117804496/luiza_cv.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://benderlab.weebly.com/uploads/1/1/7/8/117804496/luiza_cv.pdf",
     "links": [
       {
         "kind": "institution",
@@ -30314,8 +30216,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lynn Drescher",
     "affiliation": "National University of Singapore",
     "confidence": "high",
-    "institutional_page": "https://www.psychologytoday.com/ca/therapists/michele-lynn-drescher-kelowna-bc/1183869",
     "lookup_version": 7,
+    "institutional_page": "https://www.psychologytoday.com/ca/therapists/michele-lynn-drescher-kelowna-bc/1183869",
     "links": [
       {
         "kind": "institution",
@@ -30345,8 +30247,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ma. Isabella Rayos del Sol",
     "affiliation": "University of the Philippines",
     "confidence": "medium",
-    "institutional_page": "https://www.upm.edu.ph/academics-faculty/",
     "lookup_version": 7,
+    "institutional_page": "https://www.upm.edu.ph/academics-faculty/",
     "links": [
       {
         "kind": "institution",
@@ -30397,8 +30299,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maddison Shiels",
     "affiliation": "University of Technology Sydney",
     "confidence": "medium",
-    "institutional_page": "https://search.isepstudyabroad.org/University/Detail/b2fc5cb4-3356-46a1-96c4-1937a258a4ec",
     "lookup_version": 7,
+    "institutional_page": "https://search.isepstudyabroad.org/University/Detail/b2fc5cb4-3356-46a1-96c4-1937a258a4ec",
     "links": [
       {
         "kind": "institution",
@@ -30428,8 +30330,8 @@ export const SPEAKER_PROFILES = {
     "name": "Madeline Berger",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://manoa.hawaii.edu/lifesciences/people/students/",
     "lookup_version": 7,
+    "institutional_page": "https://manoa.hawaii.edu/lifesciences/people/students/",
     "links": [
       {
         "kind": "institution",
@@ -30460,8 +30362,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://orcid.org/0009-0007-7477-1990",
     "lookup_version": 7,
+    "institutional_page": "https://orcid.org/0009-0007-7477-1990",
     "links": [
       {
         "kind": "institution",
@@ -30491,8 +30393,8 @@ export const SPEAKER_PROFILES = {
     "name": "Madison Weise",
     "affiliation": "University of California - Santa Barbara",
     "confidence": "medium",
-    "institutional_page": "https://www.americanprogressaction.org/people/madison-weiss/",
     "lookup_version": 7,
+    "institutional_page": "https://www.americanprogressaction.org/people/madison-weiss/",
     "links": [
       {
         "kind": "institution",
@@ -30522,8 +30424,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mai Bonomo",
     "affiliation": "University of Haifa",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Haifa",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Haifa",
     "links": [
       {
         "kind": "institution",
@@ -30553,8 +30455,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marcela Prado-Zapata",
     "affiliation": "University of California - San Diego",
     "confidence": "high",
-    "institutional_page": "https://scripps.ucsd.edu/profiles/mpradozapata",
     "lookup_version": 7,
+    "institutional_page": "https://scripps.ucsd.edu/profiles/mpradozapata",
     "links": [
       {
         "kind": "institution",
@@ -30585,8 +30487,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Pennsylvania",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.bio.upenn.edu/people/marcelina-martynek",
     "lookup_version": 7,
+    "institutional_page": "https://www.bio.upenn.edu/people/marcelina-martynek",
     "links": [
       {
         "kind": "institution",
@@ -30616,8 +30518,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marcos Barbeitos",
     "affiliation": "Federal University of Paran\u00e1",
     "confidence": "high",
-    "institutional_page": "https://bio.ufpr.br/zoologia/docentes/",
     "lookup_version": 7,
+    "institutional_page": "https://bio.ufpr.br/zoologia/docentes/",
     "links": [
       {
         "kind": "institution",
@@ -30647,8 +30549,8 @@ export const SPEAKER_PROFILES = {
     "name": "Margaux Steyaert",
     "affiliation": "Imperial College London",
     "confidence": "medium",
-    "institutional_page": "https://www.youtube.com/channel/UCcmMXX9Rh7QzcLGuA9CPGZA",
     "lookup_version": 7,
+    "institutional_page": "https://www.youtube.com/channel/UCcmMXX9Rh7QzcLGuA9CPGZA",
     "links": [
       {
         "kind": "institution",
@@ -30688,8 +30590,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maria Carolina Pacheco",
     "affiliation": "Universidade Federal do Rio Grande do Norte",
     "confidence": "medium",
-    "institutional_page": "https://repositorio.ufrn.br/server/api/core/bitstreams/c3c506db-b935-42f1-b230-b5c580b85d0c/content",
     "lookup_version": 7,
+    "institutional_page": "https://repositorio.ufrn.br/server/api/core/bitstreams/c3c506db-b935-42f1-b230-b5c580b85d0c/content",
     "links": [
       {
         "kind": "institution",
@@ -30719,8 +30621,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maria Eggertsen",
     "affiliation": "Swedish University of Agricultural Sciences",
     "confidence": "medium",
-    "institutional_page": "https://www.govdirectory.org/sweden/Q1312762/",
     "lookup_version": 7,
+    "institutional_page": "https://www.govdirectory.org/sweden/Q1312762/",
     "links": [
       {
         "kind": "institution",
@@ -30771,8 +30673,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mariana Rocha De Souza",
     "affiliation": "University of Hawai'i",
     "confidence": "high",
-    "institutional_page": "https://www.hawaii.edu/news/2025/08/08/mariana-rocha-de-souza/",
     "lookup_version": 7,
+    "institutional_page": "https://www.hawaii.edu/news/2025/08/08/mariana-rocha-de-souza/",
     "links": [
       {
         "kind": "institution",
@@ -30803,8 +30705,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://bemlab.kaust.edu.sa/publications/4",
     "lookup_version": 7,
+    "institutional_page": "https://bemlab.kaust.edu.sa/publications/4",
     "links": [
       {
         "kind": "institution",
@@ -30834,8 +30736,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marianna Coppola",
     "affiliation": "Florida International University",
     "confidence": "high",
-    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/coppola-marianna.html",
     "lookup_version": 7,
+    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/coppola-marianna.html",
     "links": [
       {
         "kind": "institution",
@@ -30865,8 +30767,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marina Botana",
     "affiliation": "Karolinska Institute",
     "confidence": "high",
-    "institutional_page": "https://ki.se/en/people/marina-tonetti-botana-2",
     "lookup_version": 7,
+    "institutional_page": "https://ki.se/en/people/marina-tonetti-botana-2",
     "links": [
       {
         "kind": "institution",
@@ -30896,8 +30798,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marine Gouezo",
     "affiliation": "Southern Cross University",
     "confidence": "high",
-    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/32051446/",
     "lookup_version": 7,
+    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/32051446/",
     "links": [
       {
         "kind": "institution",
@@ -30927,8 +30829,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mariyam Shidha Afzal",
     "affiliation": "University Of The Ryukyus",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "links": [
       {
         "kind": "institution",
@@ -30985,8 +30887,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marlena Joppien",
     "affiliation": "Nanyang Technological University",
     "confidence": "high",
-    "institutional_page": "https://wildshores.blogspot.com/2025/06/impact-of-sedimentation-on-reef-recovery.html",
     "lookup_version": 7,
+    "institutional_page": "https://wildshores.blogspot.com/2025/06/impact-of-sedimentation-on-reef-recovery.html",
     "links": [
       {
         "kind": "institution",
@@ -31017,8 +30919,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://aims.jcu.edu.au/our-people/students/martina-burgo.701/",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/students/martina-burgo.701/",
     "links": [
       {
         "kind": "institution",
@@ -31048,8 +30950,8 @@ export const SPEAKER_PROFILES = {
     "name": "Masato Ueda",
     "affiliation": "Kansai University",
     "confidence": "high",
-    "institutional_page": "https://www.aacu.org/initiatives/virtual-exchange-collaborative-online-international-learning/norwegian-panorama-virtual-exchange-coil-partnerships/western-norway",
     "lookup_version": 7,
+    "institutional_page": "https://www.aacu.org/initiatives/virtual-exchange-collaborative-online-international-learning/norwegian-panorama-virtual-exchange-coil-partnerships/western-norway",
     "links": [
       {
         "kind": "institution",
@@ -31105,8 +31007,8 @@ export const SPEAKER_PROFILES = {
     "name": "Matt Glue",
     "affiliation": "University Of Queensland",
     "confidence": "medium",
-    "institutional_page": "https://imb.uq.edu.au/profile/431/matt-sweet",
     "lookup_version": 7,
+    "institutional_page": "https://imb.uq.edu.au/profile/431/matt-sweet",
     "links": [
       {
         "kind": "institution",
@@ -31137,8 +31039,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.wgtn.ac.nz/stout-centre/study/student-profiles/museum-and-heritage-studies/past-students/phd/matteo-collina",
     "lookup_version": 7,
+    "institutional_page": "https://www.wgtn.ac.nz/stout-centre/study/student-profiles/museum-and-heritage-studies/past-students/phd/matteo-collina",
     "links": [
       {
         "kind": "institution",
@@ -31168,8 +31070,8 @@ export const SPEAKER_PROFILES = {
     "name": "Matthew Clements",
     "affiliation": "University of Sydney",
     "confidence": "high",
-    "institutional_page": "https://growjo.com/employee/Matthew-Clements-27332737",
     "lookup_version": 7,
+    "institutional_page": "https://growjo.com/employee/Matthew-Clements-27332737",
     "links": [
       {
         "kind": "institution",
@@ -31199,8 +31101,8 @@ export const SPEAKER_PROFILES = {
     "name": "Matthew Mitchell",
     "affiliation": "Yas Seaworld Research and Rescue Center",
     "confidence": "medium",
-    "institutional_page": "https://www.seaworldabudhabi.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.seaworldabudhabi.com/",
     "links": [
       {
         "kind": "institution",
@@ -31231,8 +31133,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/matthew-tietbohl",
     "lookup_version": 7,
+    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/matthew-tietbohl",
     "links": [
       {
         "kind": "institution",
@@ -31262,8 +31164,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maya Gomez",
     "affiliation": "University of Southern California",
     "confidence": "high",
-    "institutional_page": "https://experiment.com/users/migomez",
     "lookup_version": 7,
+    "institutional_page": "https://experiment.com/users/migomez",
     "links": [
       {
         "kind": "institution",
@@ -31293,8 +31195,8 @@ export const SPEAKER_PROFILES = {
     "name": "Megan Carney",
     "affiliation": "University of Hawai'i - Hilo",
     "confidence": "high",
-    "institutional_page": "https://commencement.hawaii.edu/hilo/fall2025/graduates/",
     "lookup_version": 7,
+    "institutional_page": "https://commencement.hawaii.edu/hilo/fall2025/graduates/",
     "links": [
       {
         "kind": "institution",
@@ -31324,8 +31226,8 @@ export const SPEAKER_PROFILES = {
     "name": "Meggan Miller",
     "affiliation": "Western Australian Museum",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Western_Australian_Museum",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Western_Australian_Museum",
     "links": [
       {
         "kind": "institution",
@@ -31355,8 +31257,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mehdi Bouhaddou",
     "affiliation": "University of California - Los Angeles",
     "confidence": "high",
-    "institutional_page": "https://bioscience.ucla.edu/people/mehdi-bouhaddou/",
     "lookup_version": 7,
+    "institutional_page": "https://bioscience.ucla.edu/people/mehdi-bouhaddou/",
     "links": [
       {
         "kind": "institution",
@@ -31386,8 +31288,8 @@ export const SPEAKER_PROFILES = {
     "name": "Meixia Zhao",
     "affiliation": "South China Sea Institute of Oceanology",
     "confidence": "high",
-    "institutional_page": "https://people.ucas.edu.cn/~coralreefecosystem?language=en",
     "lookup_version": 7,
+    "institutional_page": "https://people.ucas.edu.cn/~coralreefecosystem?language=en",
     "links": [
       {
         "kind": "institution",
@@ -31418,8 +31320,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Texas - Austin",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://marinescience.utexas.edu/directory/melman-neill",
     "lookup_version": 7,
+    "institutional_page": "https://marinescience.utexas.edu/directory/melman-neill",
     "links": [
       {
         "kind": "institution",
@@ -31449,8 +31351,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mia Vallee",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://miamihurricanes.com/roster/mia-vallee/",
     "lookup_version": 7,
+    "institutional_page": "https://miamihurricanes.com/roster/mia-vallee/",
     "links": [
       {
         "kind": "institution",
@@ -31480,8 +31382,8 @@ export const SPEAKER_PROFILES = {
     "name": "Michelle Amario",
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "medium",
-    "institutional_page": "http://miguelmies.com.br/wp-content/uploads/2025/03/CV.pdf",
     "lookup_version": 7,
+    "institutional_page": "http://miguelmies.com.br/wp-content/uploads/2025/03/CV.pdf",
     "links": [
       {
         "kind": "institution",
@@ -31511,8 +31413,8 @@ export const SPEAKER_PROFILES = {
     "name": "Michelle Dobler",
     "affiliation": "Coral Restoration Foundation",
     "confidence": "medium",
-    "institutional_page": "https://coralrestoration.org/wp-content/uploads/2024/10/CRF2020_AnnualReport.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://coralrestoration.org/wp-content/uploads/2024/10/CRF2020_AnnualReport.pdf",
     "links": [
       {
         "kind": "institution",
@@ -31542,8 +31444,8 @@ export const SPEAKER_PROFILES = {
     "name": "Michelle Paddack",
     "affiliation": "One People One Reef",
     "confidence": "high",
-    "institutional_page": "https://www.instantcheckmate.com/people/michelle-paddack/",
     "lookup_version": 7,
+    "institutional_page": "https://www.instantcheckmate.com/people/michelle-paddack/",
     "links": [
       {
         "kind": "institution",
@@ -31573,8 +31475,8 @@ export const SPEAKER_PROFILES = {
     "name": "Migdonio Gonzalez",
     "affiliation": "Smithsonian Tropical Research Institute",
     "confidence": "medium",
-    "institutional_page": "https://aeroleads.com/list/top-research-technician-in-panama",
     "lookup_version": 7,
+    "institutional_page": "https://aeroleads.com/list/top-research-technician-in-panama",
     "links": [
       {
         "kind": "institution",
@@ -31604,8 +31506,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mikayla Deigan",
     "affiliation": "University of Arizona",
     "confidence": "high",
-    "institutional_page": "https://gradcenter.arizona.edu/person/mikayla-deigan",
     "lookup_version": 7,
+    "institutional_page": "https://gradcenter.arizona.edu/person/mikayla-deigan",
     "links": [
       {
         "kind": "institution",
@@ -31656,8 +31558,8 @@ export const SPEAKER_PROFILES = {
     "name": "Minjie Hu",
     "affiliation": "Zhejiang University",
     "confidence": "medium",
-    "institutional_page": "https://homepage.zjut.edu.cn//hmz_en/",
     "lookup_version": 7,
+    "institutional_page": "https://homepage.zjut.edu.cn//hmz_en/",
     "links": [
       {
         "kind": "institution",
@@ -31688,8 +31590,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.wgtn.ac.nz/sbs/research/marine-biology-research/sponge-marine-ecology/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.wgtn.ac.nz/sbs/research/marine-biology-research/sponge-marine-ecology/people",
     "links": [
       {
         "kind": "institution",
@@ -31719,8 +31621,8 @@ export const SPEAKER_PROFILES = {
     "name": "Misato Sakoh",
     "affiliation": "University of the Ryukyus",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "links": [
       {
         "kind": "institution",
@@ -31751,8 +31653,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - San Diego",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://profiles.ucsd.edu/mitchell.smelser",
     "lookup_version": 7,
+    "institutional_page": "https://profiles.ucsd.edu/mitchell.smelser",
     "links": [
       {
         "kind": "institution",
@@ -31782,8 +31684,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mitsuru Jimbo",
     "affiliation": "Kitasato University",
     "confidence": "high",
-    "institutional_page": "https://www.intechopen.com/profiles/104773",
     "lookup_version": 7,
+    "institutional_page": "https://www.intechopen.com/profiles/104773",
     "links": [
       {
         "kind": "institution",
@@ -31813,8 +31715,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mohamed Farook Mohamed Fairoz",
     "affiliation": "Ocean University of Sri Lanka",
     "confidence": "medium",
-    "institutional_page": "https://public-pages-files-2025.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2026.1735848/pdf",
     "lookup_version": 7,
+    "institutional_page": "https://public-pages-files-2025.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2026.1735848/pdf",
     "links": [
       {
         "kind": "institution",
@@ -31844,8 +31746,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mohammad Agung Wahyudi Prasetyo",
     "affiliation": "Wwf - Id",
     "confidence": "medium",
-    "institutional_page": "https://www.wwf.id/en/about-us/our-leadership",
     "lookup_version": 7,
+    "institutional_page": "https://www.wwf.id/en/about-us/our-leadership",
     "links": [
       {
         "kind": "institution",
@@ -31875,8 +31777,8 @@ export const SPEAKER_PROFILES = {
     "name": "Molly Brzezinski",
     "affiliation": "University of California - Santa Barbara",
     "confidence": "medium",
-    "institutional_page": "https://www.biorxiv.org/content/10.64898/2026.07.16.738947v1.full.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://www.biorxiv.org/content/10.64898/2026.07.16.738947v1.full.pdf",
     "links": [
       {
         "kind": "institution",
@@ -31928,8 +31830,8 @@ export const SPEAKER_PROFILES = {
     "name": "Murugan Vasanthakumaran",
     "affiliation": "National Taiwan Ocean University",
     "confidence": "high",
-    "institutional_page": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2026.1837557/full",
     "lookup_version": 7,
+    "institutional_page": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2026.1837557/full",
     "links": [
       {
         "kind": "institution",
@@ -31959,8 +31861,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nakoa Goo",
     "affiliation": "N\u0101 Kai \u02bbEwalu",
     "confidence": "medium",
-    "institutional_page": "https://nakaiewalucanoeclub.org/",
     "lookup_version": 7,
+    "institutional_page": "https://nakaiewalucanoeclub.org/",
     "links": [
       {
         "kind": "institution",
@@ -31990,8 +31892,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nan Xiang",
     "affiliation": "Chinese University of Hong Kong",
     "confidence": "high",
-    "institutional_page": "https://www.soc.cuhk.edu.hk/profile/xiang-nan/",
     "lookup_version": 7,
+    "institutional_page": "https://www.soc.cuhk.edu.hk/profile/xiang-nan/",
     "links": [
       {
         "kind": "institution",
@@ -32021,8 +31923,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nanako Kosaka",
     "affiliation": "HI-LEX CORPORATION",
     "confidence": "medium",
-    "institutional_page": "https://www.moomoo.com/stock/HLXFF-US/company",
     "lookup_version": 7,
+    "institutional_page": "https://www.moomoo.com/stock/HLXFF-US/company",
     "links": [
       {
         "kind": "institution",
@@ -32053,8 +31955,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Florida International University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://fiusports.com/staff-directory/natalia-perez-carmona/151",
     "lookup_version": 7,
+    "institutional_page": "https://fiusports.com/staff-directory/natalia-perez-carmona/151",
     "links": [
       {
         "kind": "institution",
@@ -32084,8 +31986,8 @@ export const SPEAKER_PROFILES = {
     "name": "Natalie Scott",
     "affiliation": "Guam Coral Reef Initiative",
     "confidence": "medium",
-    "institutional_page": "https://bsp.guam.gov/coral-reef-initiatives/",
     "lookup_version": 7,
+    "institutional_page": "https://bsp.guam.gov/coral-reef-initiatives/",
     "links": [
       {
         "kind": "institution",
@@ -32115,8 +32017,8 @@ export const SPEAKER_PROFILES = {
     "name": "Natalie Villafranca",
     "affiliation": "University of Southern California",
     "confidence": "medium",
-    "institutional_page": "https://fuesslab.wp.txstate.edu/people/",
     "lookup_version": 7,
+    "institutional_page": "https://fuesslab.wp.txstate.edu/people/",
     "links": [
       {
         "kind": "institution",
@@ -32203,8 +32105,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nicholas MacKnight",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://www.aoml.noaa.gov/people/nicholas-macknight/",
     "lookup_version": 7,
+    "institutional_page": "https://www.aoml.noaa.gov/people/nicholas-macknight/",
     "links": [
       {
         "kind": "institution",
@@ -32234,8 +32136,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nick Mcmahon",
     "affiliation": "Mote Marine Laboratory",
     "confidence": "high",
-    "institutional_page": "https://mote.org/staff/nicholas-nick-mcmahon/",
     "lookup_version": 7,
+    "institutional_page": "https://mote.org/staff/nicholas-nick-mcmahon/",
     "links": [
       {
         "kind": "institution",
@@ -32265,8 +32167,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nicole Crane",
     "affiliation": "One People One Reef",
     "confidence": "high",
-    "institutional_page": "https://www.middlebury.edu/institute/people/nicole-l-crane",
     "lookup_version": 7,
+    "institutional_page": "https://www.middlebury.edu/institute/people/nicole-l-crane",
     "links": [
       {
         "kind": "institution",
@@ -32296,8 +32198,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nicole Dilernia",
     "affiliation": "University of Technology Sydney",
     "confidence": "high",
-    "institutional_page": "https://www.courant.com/obituaries/suzanne-m-dilernia-new-britain-plainville-ct/",
     "lookup_version": 7,
+    "institutional_page": "https://www.courant.com/obituaries/suzanne-m-dilernia-new-britain-plainville-ct/",
     "links": [
       {
         "kind": "institution",
@@ -32328,8 +32230,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Florida International University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environmentalepigenetics.com/team/nina-bean",
     "lookup_version": 7,
+    "institutional_page": "https://environmentalepigenetics.com/team/nina-bean",
     "links": [
       {
         "kind": "institution",
@@ -32359,8 +32261,8 @@ export const SPEAKER_PROFILES = {
     "name": "Noam Altman-kurosaki",
     "affiliation": "Smithsonian Institution",
     "confidence": "high",
-    "institutional_page": "https://mcr.lternet.edu/people/noam-altman-kurosaki",
     "lookup_version": 7,
+    "institutional_page": "https://mcr.lternet.edu/people/noam-altman-kurosaki",
     "links": [
       {
         "kind": "institution",
@@ -32390,8 +32292,8 @@ export const SPEAKER_PROFILES = {
     "name": "Noreen Marie G. Follosco",
     "affiliation": "ACIAR Coral Restoration Governance Project",
     "confidence": "medium",
-    "institutional_page": "https://www.aciar.gov.au/project/fis-2021-112",
     "lookup_version": 7,
+    "institutional_page": "https://www.aciar.gov.au/project/fis-2021-112",
     "links": [
       {
         "kind": "institution",
@@ -32421,8 +32323,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nurfaida Salam Dumato",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Philippines_Diliman",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Philippines_Diliman",
     "links": [
       {
         "kind": "institution",
@@ -32452,8 +32354,8 @@ export const SPEAKER_PROFILES = {
     "name": "N\u00e9stor Rey Villiers",
     "affiliation": "Centro Interdisciplinario de Ciencias marinas",
     "confidence": "high",
-    "institutional_page": "https://gaceta.uabc.mx/notas/academia/primera-feria-interactiva-de-ciencias-del-oceano-acerca-la-ciencia-nuevas",
     "lookup_version": 7,
+    "institutional_page": "https://gaceta.uabc.mx/notas/academia/primera-feria-interactiva-de-ciencias-del-oceano-acerca-la-ciencia-nuevas",
     "links": [
       {
         "kind": "institution",
@@ -32483,8 +32385,8 @@ export const SPEAKER_PROFILES = {
     "name": "Oc\u00e9ane Moeino",
     "affiliation": "Centre de Recherches Insulaires et Observatoire de l'Environnement de Moorea",
     "confidence": "medium",
-    "institutional_page": "https://pipap.sprep.org/content/centre-de-recherches-insulaires-et-observatoire-de-lenvironnement-criobe",
     "lookup_version": 7,
+    "institutional_page": "https://pipap.sprep.org/content/centre-de-recherches-insulaires-et-observatoire-de-lenvironnement-criobe",
     "links": [
       {
         "kind": "institution",
@@ -32514,8 +32416,8 @@ export const SPEAKER_PROFILES = {
     "name": "Oliver Kippax-Chui",
     "affiliation": "Imperial College London",
     "confidence": "high",
-    "institutional_page": "https://www.zsl.org/about-zsl/our-people/chris-yesson",
     "lookup_version": 7,
+    "institutional_page": "https://www.zsl.org/about-zsl/our-people/chris-yesson",
     "links": [
       {
         "kind": "institution",
@@ -32545,8 +32447,8 @@ export const SPEAKER_PROFILES = {
     "name": "Olivia Faris",
     "affiliation": "Harbor Branch Oceanographic Institute",
     "confidence": "medium",
-    "institutional_page": "https://hboifoundation.org/",
     "lookup_version": 7,
+    "institutional_page": "https://hboifoundation.org/",
     "links": [
       {
         "kind": "institution",
@@ -32577,8 +32479,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Santa Barbara",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://bren.ucsb.edu/people/olivia-isbell",
     "lookup_version": 7,
+    "institutional_page": "https://bren.ucsb.edu/people/olivia-isbell",
     "links": [
       {
         "kind": "institution",
@@ -32608,8 +32510,8 @@ export const SPEAKER_PROFILES = {
     "name": "Or Ben-Zvi",
     "affiliation": "UCSD",
     "confidence": "high",
-    "institutional_page": "https://profiles.ucsd.edu/or.ben-zvi",
     "lookup_version": 7,
+    "institutional_page": "https://profiles.ucsd.edu/or.ben-zvi",
     "links": [
       {
         "kind": "institution",
@@ -32639,8 +32541,8 @@ export const SPEAKER_PROFILES = {
     "name": "Orlando Timmerman",
     "affiliation": "University of Cambridge",
     "confidence": "high",
-    "institutional_page": "https://orlando-codes.com/",
     "lookup_version": 7,
+    "institutional_page": "https://orlando-codes.com/",
     "links": [
       {
         "kind": "institution",
@@ -32670,8 +32572,8 @@ export const SPEAKER_PROFILES = {
     "name": "Osmar Luiz",
     "affiliation": "Department of Biodiversity, Conservation and Attractions - Western Australia",
     "confidence": "high",
-    "institutional_page": "https://research.csiro.au/mwe/group/dr-osmar-luiz/",
     "lookup_version": 7,
+    "institutional_page": "https://research.csiro.au/mwe/group/dr-osmar-luiz/",
     "links": [
       {
         "kind": "institution",
@@ -32701,8 +32603,8 @@ export const SPEAKER_PROFILES = {
     "name": "Paige Sawyers",
     "affiliation": "University of New South Wales",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_New_South_Wales",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_New_South_Wales",
     "links": [
       {
         "kind": "institution",
@@ -32732,8 +32634,8 @@ export const SPEAKER_PROFILES = {
     "name": "Patricia Nicole Gajo",
     "affiliation": "Coral Reef Conservation Restoration Network",
     "confidence": "medium",
-    "institutional_page": "https://floridadep.gov/rcp/coral",
     "lookup_version": 7,
+    "institutional_page": "https://floridadep.gov/rcp/coral",
     "links": [
       {
         "kind": "institution",
@@ -32763,8 +32665,8 @@ export const SPEAKER_PROFILES = {
     "name": "Paula E. Pabon Quintero",
     "affiliation": "Florida International University",
     "confidence": "medium",
-    "institutional_page": "https://gradschool.fiu.edu/facultystaff/",
     "lookup_version": 7,
+    "institutional_page": "https://gradschool.fiu.edu/facultystaff/",
     "links": [
       {
         "kind": "institution",
@@ -32794,8 +32696,8 @@ export const SPEAKER_PROFILES = {
     "name": "Peter Musembi",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "high",
-    "institutional_page": "https://ojs.inidep.edu.ar/index.php/mafis/en/article/view/345",
     "lookup_version": 7,
+    "institutional_page": "https://ojs.inidep.edu.ar/index.php/mafis/en/article/view/345",
     "links": [
       {
         "kind": "institution",
@@ -32825,8 +32727,8 @@ export const SPEAKER_PROFILES = {
     "name": "Petra Visser",
     "affiliation": "University of Amsterdam",
     "confidence": "high",
-    "institutional_page": "https://www.uva.nl/en/profile/v/i/p.m.visser/p.m.visser.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.uva.nl/en/profile/v/i/p.m.visser/p.m.visser.html",
     "links": [
       {
         "kind": "institution",
@@ -32856,8 +32758,8 @@ export const SPEAKER_PROFILES = {
     "name": "Phaedra Hern\u00e1ndez",
     "affiliation": "University of Auckland",
     "confidence": "medium",
-    "institutional_page": "https://www.auckland.ac.nz/en/science/about-the-faculty/school-of-psychology/our-psych-people/key-contacts.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.auckland.ac.nz/en/science/about-the-faculty/school-of-psychology/our-psych-people/key-contacts.html",
     "links": [
       {
         "kind": "institution",
@@ -32888,8 +32790,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.thebellwoodreeffishlab.com/people-1.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.thebellwoodreeffishlab.com/people-1.html",
     "links": [
       {
         "kind": "institution",
@@ -32920,8 +32822,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://aims.jcu.edu.au/our-people/?MemberSearchForm%5Bsort%5D=&MemberSearchForm%5Bmember_type%5D=Staff&MemberSearchForm%5Binstitution%5D=&sort=-institution&page=5",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/?MemberSearchForm%5Bsort%5D=&MemberSearchForm%5Bmember_type%5D=Staff&MemberSearchForm%5Binstitution%5D=&sort=-institution&page=5",
     "links": [
       {
         "kind": "institution",
@@ -32956,8 +32858,8 @@ export const SPEAKER_PROFILES = {
     "name": "Prince Jewel Federe",
     "affiliation": "University of the Philippines",
     "confidence": "high",
-    "institutional_page": "https://ejournals.ph/function/author.php?id=29911",
     "lookup_version": 7,
+    "institutional_page": "https://ejournals.ph/function/author.php?id=29911",
     "links": [
       {
         "kind": "institution",
@@ -33019,8 +32921,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Berkeley",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://vcresearch.berkeley.edu/faculty/rachel-carlson",
     "lookup_version": 7,
+    "institutional_page": "https://vcresearch.berkeley.edu/faculty/rachel-carlson",
     "links": [
       {
         "kind": "institution",
@@ -33051,8 +32953,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://portfolio.jcu.edu.au/researchers/rachel.neil",
     "lookup_version": 7,
+    "institutional_page": "https://portfolio.jcu.edu.au/researchers/rachel.neil",
     "links": [
       {
         "kind": "institution",
@@ -33083,8 +32985,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://gbrrestoration.org/our-team/management/rachel-pears/",
     "lookup_version": 7,
+    "institutional_page": "https://gbrrestoration.org/our-team/management/rachel-pears/",
     "links": [
       {
         "kind": "institution",
@@ -33114,8 +33016,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rajneel Singh",
     "affiliation": "Sustainable Environment and Livelihood Solutions",
     "confidence": "medium",
-    "institutional_page": "https://bio4climate.org/speaker/rajendra-singh/",
     "lookup_version": 7,
+    "institutional_page": "https://bio4climate.org/speaker/rajendra-singh/",
     "links": [
       {
         "kind": "institution",
@@ -33166,8 +33068,8 @@ export const SPEAKER_PROFILES = {
     "name": "Raphael Ritson-Williams",
     "affiliation": "California State University Northridge",
     "confidence": "high",
-    "institutional_page": "https://www.csun.edu/our/faculty/our-faculty-mentor-pool",
     "lookup_version": 7,
+    "institutional_page": "https://www.csun.edu/our/faculty/our-faculty-mentor-pool",
     "links": [
       {
         "kind": "institution",
@@ -33197,8 +33099,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rathnayaka Mudiyanselage Gayani Nilupika Thilakarathna",
     "affiliation": "Ruhuna University",
     "confidence": "medium",
-    "institutional_page": "https://www.fmst.ruh.ac.lk/index.php?main=hmpge&menu=Dr.+R+M+G+N+Thilakarathna&flprf=ocg_rmgn_thilakarathna",
     "lookup_version": 7,
+    "institutional_page": "https://www.fmst.ruh.ac.lk/index.php?main=hmpge&menu=Dr.+R+M+G+N+Thilakarathna&flprf=ocg_rmgn_thilakarathna",
     "links": [
       {
         "kind": "institution",
@@ -33228,8 +33130,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ravienkha Raishasaras Budaya",
     "affiliation": "Maritime And Marine Science Center Of Excellence Of Pattimura University",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Pattimura",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Pattimura",
     "links": [
       {
         "kind": "institution",
@@ -33259,8 +33161,8 @@ export const SPEAKER_PROFILES = {
     "name": "Remedy Rule",
     "affiliation": "Guam Coral Reef Initiative",
     "confidence": "medium",
-    "institutional_page": "https://bsp.guam.gov/coral-reef-initiatives/",
     "lookup_version": 7,
+    "institutional_page": "https://bsp.guam.gov/coral-reef-initiatives/",
     "links": [
       {
         "kind": "institution",
@@ -33290,8 +33192,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rhea Mae Luciano",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://www.upm.edu.ph/academics-faculty/",
     "lookup_version": 7,
+    "institutional_page": "https://www.upm.edu.ph/academics-faculty/",
     "links": [
       {
         "kind": "institution",
@@ -33321,8 +33223,8 @@ export const SPEAKER_PROFILES = {
     "name": "Robert Mason",
     "affiliation": "University of New South Wales",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_New_South_Wales",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_New_South_Wales",
     "links": [
       {
         "kind": "institution",
@@ -33353,8 +33255,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Melbourne",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://findanexpert.unimelb.edu.au/profile/1074439-robert-streit",
     "lookup_version": 7,
+    "institutional_page": "https://findanexpert.unimelb.edu.au/profile/1074439-robert-streit",
     "links": [
       {
         "kind": "institution",
@@ -33384,8 +33286,8 @@ export const SPEAKER_PROFILES = {
     "name": "Robin Hartley",
     "affiliation": "University of Otago",
     "confidence": "medium",
-    "institutional_page": "https://www.otago.ac.nz/contacts/dunedindepts?dept=asko",
     "lookup_version": 7,
+    "institutional_page": "https://www.otago.ac.nz/contacts/dunedindepts?dept=asko",
     "links": [
       {
         "kind": "institution",
@@ -33415,8 +33317,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ronald Osinga",
     "affiliation": "Wageningen University",
     "confidence": "medium",
-    "institutional_page": "https://www.iadc-dredging.com/author/ronald-osinga/",
     "lookup_version": 7,
+    "institutional_page": "https://www.iadc-dredging.com/author/ronald-osinga/",
     "links": [
       {
         "kind": "institution",
@@ -33457,8 +33359,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nova Southeastern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.nova-ncri.org/people/meet-the-team",
     "lookup_version": 7,
+    "institutional_page": "https://www.nova-ncri.org/people/meet-the-team",
     "links": [
       {
         "kind": "institution",
@@ -33488,8 +33390,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rowana Walton",
     "affiliation": "World Conservation Monitoring Centre",
     "confidence": "medium",
-    "institutional_page": "https://www.unep-wcmc.org/en",
     "lookup_version": 7,
+    "institutional_page": "https://www.unep-wcmc.org/en",
     "links": [
       {
         "kind": "institution",
@@ -33519,8 +33421,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ruiqi Li",
     "affiliation": "University of Southern California",
     "confidence": "high",
-    "institutional_page": "https://dornsife.usc.edu/profile/ruiqi-li/",
     "lookup_version": 7,
+    "institutional_page": "https://dornsife.usc.edu/profile/ruiqi-li/",
     "links": [
       {
         "kind": "institution",
@@ -33550,8 +33452,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rupert Ormond",
     "affiliation": "Marine Conservation International",
     "confidence": "high",
-    "institutional_page": "https://icrseurope.wordpress.com/about/",
     "lookup_version": 7,
+    "institutional_page": "https://icrseurope.wordpress.com/about/",
     "links": [
       {
         "kind": "institution",
@@ -33582,8 +33484,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://meganlhead.weebly.com/people.html",
     "lookup_version": 7,
+    "institutional_page": "https://meganlhead.weebly.com/people.html",
     "links": [
       {
         "kind": "institution",
@@ -33613,8 +33515,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sahra Greve",
     "affiliation": "University Heidelberg",
     "confidence": "high",
-    "institutional_page": "https://www.iup.uni-heidelberg.de/de/sahra-greve",
     "lookup_version": 7,
+    "institutional_page": "https://www.iup.uni-heidelberg.de/de/sahra-greve",
     "links": [
       {
         "kind": "institution",
@@ -33644,8 +33546,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sanna Eriksson",
     "affiliation": "University of Technology Sydney",
     "confidence": "medium",
-    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "links": [
       {
         "kind": "institution",
@@ -33675,8 +33577,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sara Melo-Merino",
     "affiliation": "Smithsonian Environmental Research Center",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Smithsonian_Environmental_Research_Center",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Smithsonian_Environmental_Research_Center",
     "links": [
       {
         "kind": "institution",
@@ -33728,8 +33630,8 @@ export const SPEAKER_PROFILES = {
     "name": "Satrio Hani Samudra",
     "affiliation": "Blue Alliance",
     "confidence": "high",
-    "institutional_page": "https://bluealliance.earth/who-we-are/",
     "lookup_version": 7,
+    "institutional_page": "https://bluealliance.earth/who-we-are/",
     "links": [
       {
         "kind": "institution",
@@ -33759,8 +33661,8 @@ export const SPEAKER_PROFILES = {
     "name": "Se Songploy",
     "affiliation": "Aquatic Resources Research Institute, Chualalongkorn University",
     "confidence": "medium",
-    "institutional_page": "https://www.chula.ac.th/en/departments/aquatic-resources-research-institute/",
     "lookup_version": 7,
+    "institutional_page": "https://www.chula.ac.th/en/departments/aquatic-resources-research-institute/",
     "links": [
       {
         "kind": "institution",
@@ -33790,8 +33692,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sean Griffin",
     "affiliation": "Sea Ventures Marine Response Unit",
     "confidence": "high",
-    "institutional_page": "https://www.seaventuresmru.com/about-1",
     "lookup_version": 7,
+    "institutional_page": "https://www.seaventuresmru.com/about-1",
     "links": [
       {
         "kind": "institution",
@@ -33822,8 +33724,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Derby",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.nature.com/articles/s41597-026-07499-3",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.com/articles/s41597-026-07499-3",
     "links": [
       {
         "kind": "institution",
@@ -33853,8 +33755,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sefano Moon Katz",
     "affiliation": "Envirotech-Coralz Group",
     "confidence": "high",
-    "institutional_page": "https://www.unisc.edu.au/people/sefano-m-katz",
     "lookup_version": 7,
+    "institutional_page": "https://www.unisc.edu.au/people/sefano-m-katz",
     "links": [
       {
         "kind": "institution",
@@ -33884,8 +33786,8 @@ export const SPEAKER_PROFILES = {
     "name": "Seonock Woo",
     "affiliation": "KIOST",
     "confidence": "high",
-    "institutional_page": "https://link.springer.com/article/10.1186/s12915-019-0643-7",
     "lookup_version": 7,
+    "institutional_page": "https://link.springer.com/article/10.1186/s12915-019-0643-7",
     "links": [
       {
         "kind": "institution",
@@ -33915,8 +33817,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shanna Davidson",
     "affiliation": "Northwestern University",
     "confidence": "medium",
-    "institutional_page": "https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/kelley-shana.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/kelley-shana.html",
     "links": [
       {
         "kind": "institution",
@@ -33946,8 +33848,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sharla Sugierski",
     "affiliation": "Florida Fish and Wildlife Research Institute",
     "confidence": "high",
-    "institutional_page": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2025.1615308/full",
     "lookup_version": 7,
+    "institutional_page": "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2025.1615308/full",
     "links": [
       {
         "kind": "institution",
@@ -33977,8 +33879,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shauna Springer",
     "affiliation": "N\u0101 Kai \u02bbEwalu",
     "confidence": "medium",
-    "institutional_page": "http://www.olelo.hawaii.edu/en/khuok/hknke",
     "lookup_version": 7,
+    "institutional_page": "http://www.olelo.hawaii.edu/en/khuok/hknke",
     "links": [
       {
         "kind": "institution",
@@ -34008,8 +33910,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sheng-Wei Ho",
     "affiliation": "Institute of Fisheries Science",
     "confidence": "medium",
-    "institutional_page": "https://www.omicsonline.org/universities/Fisheries_Research_Institute_COA/",
     "lookup_version": 7,
+    "institutional_page": "https://www.omicsonline.org/universities/Fisheries_Research_Institute_COA/",
     "links": [
       {
         "kind": "institution",
@@ -34039,8 +33941,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shirlamaine Irina Calagui",
     "affiliation": "Caraga State University / National Sun Yat-sen University",
     "confidence": "high",
-    "institutional_page": "https://www.carsu.edu.ph/csu-faculty-researchers-join-nast-2019-conference/",
     "lookup_version": 7,
+    "institutional_page": "https://www.carsu.edu.ph/csu-faculty-researchers-join-nast-2019-conference/",
     "links": [
       {
         "kind": "institution",
@@ -34070,8 +33972,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shoji Yamamoto",
     "affiliation": "Tokyo Metropolitan University",
     "confidence": "high",
-    "institutional_page": "https://www.instantcheckmate.com/people/shoji-yamamoto/",
     "lookup_version": 7,
+    "institutional_page": "https://www.instantcheckmate.com/people/shoji-yamamoto/",
     "links": [
       {
         "kind": "institution",
@@ -34101,8 +34003,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shu Kiu Leung",
     "affiliation": "University of Queensland",
     "confidence": "high",
-    "institutional_page": "https://about.uq.edu.au/experts/30587",
     "lookup_version": 7,
+    "institutional_page": "https://about.uq.edu.au/experts/30587",
     "links": [
       {
         "kind": "institution",
@@ -34133,8 +34035,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Berkeley",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.shumpei.me/",
     "lookup_version": 7,
+    "institutional_page": "https://www.shumpei.me/",
     "links": [
       {
         "kind": "institution",
@@ -34164,8 +34066,8 @@ export const SPEAKER_PROFILES = {
     "name": "Siddhi Jaishankar",
     "affiliation": "Nature Conservation Foundation",
     "confidence": "high",
-    "institutional_page": "https://www.thehindu.com/sci-tech/science/three-new-wrasse-species-spotted-using-tools-laccadive-sea/article68071175.ece",
     "lookup_version": 7,
+    "institutional_page": "https://www.thehindu.com/sci-tech/science/three-new-wrasse-species-spotted-using-tools-laccadive-sea/article68071175.ece",
     "links": [
       {
         "kind": "institution",
@@ -34195,8 +34097,8 @@ export const SPEAKER_PROFILES = {
     "name": "Solene Jonveaux",
     "affiliation": "Coral Guardian",
     "confidence": "high",
-    "institutional_page": "https://sdgs.un.org/partnerships/zoe-artificial-reef-assessment-coral-planting",
     "lookup_version": 7,
+    "institutional_page": "https://sdgs.un.org/partnerships/zoe-artificial-reef-assessment-coral-planting",
     "links": [
       {
         "kind": "institution",
@@ -34226,8 +34128,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sophia Lee",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://com.miami.edu/profile/sophia-mueller-bryson/",
     "lookup_version": 7,
+    "institutional_page": "https://com.miami.edu/profile/sophia-mueller-bryson/",
     "links": [
       {
         "kind": "institution",
@@ -34257,8 +34159,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sophia MacVittie",
     "affiliation": "University of California - Merced",
     "confidence": "high",
-    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/36369337/",
     "lookup_version": 7,
+    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/36369337/",
     "links": [
       {
         "kind": "institution",
@@ -34289,8 +34191,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Scripps Institution of Oceanography",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://scripps.ucsd.edu/profiles/szummo",
     "lookup_version": 7,
+    "institutional_page": "https://scripps.ucsd.edu/profiles/szummo",
     "links": [
       {
         "kind": "institution",
@@ -34320,8 +34222,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sophie Carolan",
     "affiliation": "Newcastle University",
     "confidence": "high",
-    "institutional_page": "https://www.ncl.ac.uk/business/people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.ncl.ac.uk/business/people/",
     "links": [
       {
         "kind": "institution",
@@ -34351,8 +34253,8 @@ export const SPEAKER_PROFILES = {
     "name": "Stephanie Peak",
     "affiliation": "University of South Carolina - Chapel Hill",
     "confidence": "medium",
-    "institutional_page": "https://careers.unc.edu/about/our-staff/",
     "lookup_version": 7,
+    "institutional_page": "https://careers.unc.edu/about/our-staff/",
     "links": [
       {
         "kind": "institution",
@@ -34382,8 +34284,8 @@ export const SPEAKER_PROFILES = {
     "name": "Steven Schill",
     "affiliation": "The Nature Conservancy",
     "confidence": "high",
-    "institutional_page": "https://www.nature.org/en-us/about-us/who-we-are/our-people/steve-schill/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/who-we-are/our-people/steve-schill/",
     "links": [
       {
         "kind": "institution",
@@ -34413,8 +34315,8 @@ export const SPEAKER_PROFILES = {
     "name": "Suraj Bacha Gian",
     "affiliation": "Eco Marine Consultants Ltd",
     "confidence": "high",
-    "institutional_page": "https://www.ecomarineconsultantsltd.org/about-us",
     "lookup_version": 7,
+    "institutional_page": "https://www.ecomarineconsultantsltd.org/about-us",
     "links": [
       {
         "kind": "institution",
@@ -34444,8 +34346,8 @@ export const SPEAKER_PROFILES = {
     "name": "Susanne Baehr",
     "affiliation": "California Academy of Sciences",
     "confidence": "high",
-    "institutional_page": "https://divernet.com/world-dives/australia-oceania/ccr-dives-into-twilight-zone-reveal-new-life-forms/",
     "lookup_version": 7,
+    "institutional_page": "https://divernet.com/world-dives/australia-oceania/ccr-dives-into-twilight-zone-reveal-new-life-forms/",
     "links": [
       {
         "kind": "institution",
@@ -34475,8 +34377,8 @@ export const SPEAKER_PROFILES = {
     "name": "Swaleh Aboud",
     "affiliation": "General Organization for Conservation of Coral Reef in the Red Sea",
     "confidence": "high",
-    "institutional_page": "https://icriforum.org/events/icrigm38/",
     "lookup_version": 7,
+    "institutional_page": "https://icriforum.org/events/icrigm38/",
     "links": [
       {
         "kind": "institution",
@@ -34506,8 +34408,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sydney Bell",
     "affiliation": "James Cook University",
     "confidence": "high",
-    "institutional_page": "https://sydneylbell.weebly.com/",
     "lookup_version": 7,
+    "institutional_page": "https://sydneylbell.weebly.com/",
     "links": [
       {
         "kind": "institution",
@@ -34537,8 +34439,8 @@ export const SPEAKER_PROFILES = {
     "name": "S\u00e9bastien Leveque",
     "affiliation": "Ume\u00e5 University",
     "confidence": "high",
-    "institutional_page": "https://www.umu.se/en/staff/sebastien-leveque/",
     "lookup_version": 7,
+    "institutional_page": "https://www.umu.se/en/staff/sebastien-leveque/",
     "links": [
       {
         "kind": "institution",
@@ -34594,8 +34496,8 @@ export const SPEAKER_PROFILES = {
     "name": "Taissa Damasceno",
     "affiliation": "University of Perpignan - Domitia",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Perpignan_Via_Domitia",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Perpignan_Via_Domitia",
     "links": [
       {
         "kind": "institution",
@@ -34625,8 +34527,8 @@ export const SPEAKER_PROFILES = {
     "name": "TANG WEN",
     "affiliation": "National Taiwan Ocean University",
     "confidence": "high",
-    "institutional_page": "https://www.oc.ntu.edu.tw/en/staffs-en/retired-faculty/30118/",
     "lookup_version": 7,
+    "institutional_page": "https://www.oc.ntu.edu.tw/en/staffs-en/retired-faculty/30118/",
     "links": [
       {
         "kind": "institution",
@@ -34657,8 +34559,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/3366/tania-kenyon",
     "lookup_version": 7,
+    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/3366/tania-kenyon",
     "links": [
       {
         "kind": "institution",
@@ -34688,8 +34590,8 @@ export const SPEAKER_PROFILES = {
     "name": "Taran McNelly",
     "affiliation": "Mote Marine Laboratory",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Mote_Marine_Laboratory",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Mote_Marine_Laboratory",
     "links": [
       {
         "kind": "institution",
@@ -34719,8 +34621,8 @@ export const SPEAKER_PROFILES = {
     "name": "Tarau Janice Taga",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "medium",
-    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "lookup_version": 7,
+    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "links": [
       {
         "kind": "institution",
@@ -34750,8 +34652,8 @@ export const SPEAKER_PROFILES = {
     "name": "Thales Jean Vidal",
     "affiliation": "Instituto Recifes Costeiros",
     "confidence": "medium",
-    "institutional_page": "https://www.recifescosteiros.org.br/en/contact",
     "lookup_version": 7,
+    "institutional_page": "https://www.recifescosteiros.org.br/en/contact",
     "links": [
       {
         "kind": "institution",
@@ -34781,8 +34683,8 @@ export const SPEAKER_PROFILES = {
     "name": "Therese Miller",
     "affiliation": "University of Auckland",
     "confidence": "high",
-    "institutional_page": "https://www.auckland.ac.nz/en/science/our-research/cawthron-institute/meet-our-students/Therese-Miller.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.auckland.ac.nz/en/science/our-research/cawthron-institute/meet-our-students/Therese-Miller.html",
     "links": [
       {
         "kind": "institution",
@@ -34812,8 +34714,8 @@ export const SPEAKER_PROFILES = {
     "name": "Tho Duong",
     "affiliation": "National University of Singapore",
     "confidence": "medium",
-    "institutional_page": "https://nguyentthong.github.io/",
     "lookup_version": 7,
+    "institutional_page": "https://nguyentthong.github.io/",
     "links": [
       {
         "kind": "institution",
@@ -34843,8 +34745,8 @@ export const SPEAKER_PROFILES = {
     "name": "Thomas Quello",
     "affiliation": "Florida Atlantic University",
     "confidence": "medium",
-    "institutional_page": "https://business.fau.edu/faculty-research/faculty-profiles/",
     "lookup_version": 7,
+    "institutional_page": "https://business.fau.edu/faculty-research/faculty-profiles/",
     "links": [
       {
         "kind": "institution",
@@ -34875,8 +34777,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Guam",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.uog.edu/directory/schils-tom",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/directory/schils-tom",
     "links": [
       {
         "kind": "institution",
@@ -34907,8 +34809,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "New York University - Abu Dhabi",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://nyuad.nyu.edu/en/research/faculty-labs-and-projects/nyuad-cgsb/research/environmental-adaptation-and-sustainability/the-role-of-the-microbiome-in-the-high-thermal-tolerance-adaptat/trent-haydon.html",
     "lookup_version": 7,
+    "institutional_page": "https://nyuad.nyu.edu/en/research/faculty-labs-and-projects/nyuad-cgsb/research/environmental-adaptation-and-sustainability/the-role-of-the-microbiome-in-the-high-thermal-tolerance-adaptat/trent-haydon.html",
     "links": [
       {
         "kind": "institution",
@@ -34938,8 +34840,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ty Roach",
     "affiliation": "Duke University",
     "confidence": "high",
-    "institutional_page": "https://www.success.ai/profile/Ty-Roach-669668575944",
     "lookup_version": 7,
+    "institutional_page": "https://www.success.ai/profile/Ty-Roach-669668575944",
     "links": [
       {
         "kind": "institution",
@@ -34969,8 +34871,8 @@ export const SPEAKER_PROFILES = {
     "name": "Val Brown",
     "affiliation": "National Marine Sanctuary of American Samoa",
     "confidence": "high",
-    "institutional_page": "https://www.changingseas.tv/season-12/1204/",
     "lookup_version": 7,
+    "institutional_page": "https://www.changingseas.tv/season-12/1204/",
     "links": [
       {
         "kind": "institution",
@@ -35000,8 +34902,8 @@ export const SPEAKER_PROFILES = {
     "name": "Valerio Visconti",
     "affiliation": "Cefas",
     "confidence": "high",
-    "institutional_page": "https://www.cefas.co.uk/icoe/fisheries/our-people/valerio-visconti/",
     "lookup_version": 7,
+    "institutional_page": "https://www.cefas.co.uk/icoe/fisheries/our-people/valerio-visconti/",
     "links": [
       {
         "kind": "institution",
@@ -35031,14 +34933,8 @@ export const SPEAKER_PROFILES = {
     "name": "Van Wishingrad",
     "affiliation": "Hawai\u02bbi Institute of Marine Biology",
     "confidence": "high",
-    "institutional_page": "https://ecoevo.social/@vwishingrad",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://ecoevo.social/@vwishingrad"
-      },
       {
         "kind": "scholar_search",
         "label": "Search Google Scholar",
@@ -35050,11 +34946,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Van+Wishingrad+Hawai%CA%BBi+Institute+of+Marine+Biology"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://ecoevo.social/@vwishingrad"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -35062,8 +34954,8 @@ export const SPEAKER_PROFILES = {
     "name": "Viacheslav Ivanenko",
     "affiliation": "Shenzhen MSU-BIT University",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Shenzhen_MSU%E2%80%93BIT_University",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Shenzhen_MSU%E2%80%93BIT_University",
     "links": [
       {
         "kind": "institution",
@@ -35124,8 +35016,8 @@ export const SPEAKER_PROFILES = {
     "name": "Vittoria Calabretta",
     "affiliation": "University of Milano-Bicocca",
     "confidence": "medium",
-    "institutional_page": "https://www.topuniversities.com/universities/university-milano-bicocca",
     "lookup_version": 7,
+    "institutional_page": "https://www.topuniversities.com/universities/university-milano-bicocca",
     "links": [
       {
         "kind": "institution",
@@ -35155,8 +35047,8 @@ export const SPEAKER_PROFILES = {
     "name": "Vivian Li",
     "affiliation": "University of California - Los Angeles",
     "confidence": "high",
-    "institutional_page": "https://healthequity.ucla.edu/people/vivian-le/",
     "lookup_version": 7,
+    "institutional_page": "https://healthequity.ucla.edu/people/vivian-le/",
     "links": [
       {
         "kind": "institution",
@@ -35186,8 +35078,8 @@ export const SPEAKER_PROFILES = {
     "name": "Wei-Chen Tung",
     "affiliation": "Biodiversity Research Center,  Academia Sinica",
     "confidence": "medium",
-    "institutional_page": "https://sites.google.com/site/wjchenactinops/home",
     "lookup_version": 7,
+    "institutional_page": "https://sites.google.com/site/wjchenactinops/home",
     "links": [
       {
         "kind": "institution",
@@ -35238,8 +35130,8 @@ export const SPEAKER_PROFILES = {
     "name": "Xiaolei Yu",
     "affiliation": "South China Sea Institute of Oceanology",
     "confidence": "medium",
-    "institutional_page": "http://english.qdio.cas.cn/people/jzg/",
     "lookup_version": 7,
+    "institutional_page": "http://english.qdio.cas.cn/people/jzg/",
     "links": [
       {
         "kind": "institution",
@@ -35270,8 +35162,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://cemse.kaust.edu.sa/profiles/ioannis-yannis-zografopoulos",
     "lookup_version": 7,
+    "institutional_page": "https://cemse.kaust.edu.sa/profiles/ioannis-yannis-zografopoulos",
     "links": [
       {
         "kind": "institution",
@@ -35327,8 +35219,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yossi Loya",
     "affiliation": "Tel Aviv University",
     "confidence": "high",
-    "institutional_page": "https://en-lifesci.tau.ac.il/profile/yosiloya",
     "lookup_version": 7,
+    "institutional_page": "https://en-lifesci.tau.ac.il/profile/yosiloya",
     "links": [
       {
         "kind": "institution",
@@ -35358,8 +35250,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yuk Kwan Wong",
     "affiliation": "Hong Kong University of Science and Technology",
     "confidence": "medium",
-    "institutional_page": "https://facultyprofiles.hkust.edu.hk/profiles.php?profile=hongkai-wu-chhkwu",
     "lookup_version": 7,
+    "institutional_page": "https://facultyprofiles.hkust.edu.hk/profiles.php?profile=hongkai-wu-chhkwu",
     "links": [
       {
         "kind": "institution",
@@ -35389,8 +35281,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yun Scholten",
     "affiliation": "Nanyang Technological University",
     "confidence": "medium",
-    "institutional_page": "https://www.cacalotoyangyun.com/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.cacalotoyangyun.com/people",
     "links": [
       {
         "kind": "institution",
@@ -35421,8 +35313,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Arizona",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://biosphere2.org/person/aaron-bugaj",
     "lookup_version": 7,
+    "institutional_page": "https://biosphere2.org/person/aaron-bugaj",
     "links": [
       {
         "kind": "institution",
@@ -35453,8 +35345,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.corrl.org/the-team",
     "lookup_version": 7,
+    "institutional_page": "https://www.corrl.org/the-team",
     "links": [
       {
         "kind": "institution",
@@ -35485,8 +35377,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "CORDIO East Africa",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.oceanexpert.org/expert/53267",
     "lookup_version": 7,
+    "institutional_page": "https://www.oceanexpert.org/expert/53267",
     "links": [
       {
         "kind": "institution",
@@ -35539,8 +35431,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Universidad Aut\u00f3noma de Baja California Sur",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Adahara-Munoz-Alfaro",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Adahara-Munoz-Alfaro",
     "links": [
       {
         "kind": "institution",
@@ -35593,8 +35485,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.corrl.org/the-team",
     "lookup_version": 7,
+    "institutional_page": "https://www.corrl.org/the-team",
     "links": [
       {
         "kind": "institution",
@@ -35625,8 +35517,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Boston University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://sites.bu.edu/urban/profile/adrian-cheh/",
     "lookup_version": 7,
+    "institutional_page": "https://sites.bu.edu/urban/profile/adrian-cheh/",
     "links": [
       {
         "kind": "institution",
@@ -35679,8 +35571,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Macquarie University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.marineomicslab.com/get-to-know-us",
     "lookup_version": 7,
+    "institutional_page": "https://www.marineomicslab.com/get-to-know-us",
     "links": [
       {
         "kind": "institution",
@@ -35799,8 +35691,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://arms.kaust.edu.sa/people/current",
     "lookup_version": 7,
+    "institutional_page": "https://arms.kaust.edu.sa/people/current",
     "links": [
       {
         "kind": "institution",
@@ -35831,8 +35723,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://alecleitman.weebly.com/",
     "lookup_version": 7,
+    "institutional_page": "https://alecleitman.weebly.com/",
     "links": [
       {
         "kind": "institution",
@@ -35884,8 +35776,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alessandra Vallim",
     "affiliation": "The International Seakeepers Society",
     "confidence": "high",
-    "institutional_page": "https://www.seakeepers.org/our-team/alessandra-vallim/",
     "lookup_version": 7,
+    "institutional_page": "https://www.seakeepers.org/our-team/alessandra-vallim/",
     "links": [
       {
         "kind": "institution",
@@ -35916,8 +35808,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/alessio-bernardi",
     "lookup_version": 7,
+    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/alessio-bernardi",
     "links": [
       {
         "kind": "institution",
@@ -35947,8 +35839,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alex Connelly",
     "affiliation": "Kua\u02bb\u0101ina Ulu \u02bbAuamo",
     "confidence": "high",
-    "institutional_page": "https://smarttreespacific.org/past-projects/hoolaau",
     "lookup_version": 7,
+    "institutional_page": "https://smarttreespacific.org/past-projects/hoolaau",
     "links": [
       {
         "kind": "institution",
@@ -35978,8 +35870,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexander Knorrn",
     "affiliation": "Senckenberg Research Institute",
     "confidence": "high",
-    "institutional_page": "https://www.senckenberg.de/en/research/institutes-overview/sam/sam-marine-research/",
     "lookup_version": 7,
+    "institutional_page": "https://www.senckenberg.de/en/research/institutes-overview/sam/sam-marine-research/",
     "links": [
       {
         "kind": "institution",
@@ -36031,8 +35923,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexandra Cormack",
     "affiliation": "Arizona State University",
     "confidence": "medium",
-    "institutional_page": "https://newcollege.asu.edu/ssbs/faculty-directory",
     "lookup_version": 7,
+    "institutional_page": "https://newcollege.asu.edu/ssbs/faculty-directory",
     "links": [
       {
         "kind": "institution",
@@ -36062,8 +35954,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexandra Fine",
     "affiliation": "Florida Keys National Marine Sanctuary",
     "confidence": "high",
-    "institutional_page": "https://floridakeys.noaa.gov/about/staff/fine.html",
     "lookup_version": 7,
+    "institutional_page": "https://floridakeys.noaa.gov/about/staff/fine.html",
     "links": [
       {
         "kind": "institution",
@@ -36093,8 +35985,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexandra Pineda-Mu\u00f1oz",
     "affiliation": "National University of Colombia - Caribbean Campus",
     "confidence": "medium",
-    "institutional_page": "https://edirc.repec.org/data/funalco.html",
     "lookup_version": 7,
+    "institutional_page": "https://edirc.repec.org/data/funalco.html",
     "links": [
       {
         "kind": "institution",
@@ -36124,8 +36016,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alexi Meltel",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://islandtimes.org/former-picrc-intern-accepted-to-uh-manoa-marine-biology-graduate-progra/",
     "lookup_version": 7,
+    "institutional_page": "https://islandtimes.org/former-picrc-intern-accepted-to-uh-manoa-marine-biology-graduate-progra/",
     "links": [
       {
         "kind": "institution",
@@ -36155,8 +36047,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alfonso Ruiz Moreno",
     "affiliation": "Smithsonian Tropical Research Institute",
     "confidence": "medium",
-    "institutional_page": "https://fellowships.si.edu/SORSSTRI",
     "lookup_version": 7,
+    "institutional_page": "https://fellowships.si.edu/SORSSTRI",
     "links": [
       {
         "kind": "institution",
@@ -36186,8 +36078,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ali Dressel",
     "affiliation": "Resiliensea Immersive",
     "confidence": "high",
-    "institutional_page": "https://onlinedegrees.sandiego.edu/faculty/ali-mariko-dressel/",
     "lookup_version": 7,
+    "institutional_page": "https://onlinedegrees.sandiego.edu/faculty/ali-mariko-dressel/",
     "links": [
       {
         "kind": "institution",
@@ -36217,8 +36109,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alice Ball",
     "affiliation": "University of Cambridge",
     "confidence": "high",
-    "institutional_page": "https://biomin.esc.cam.ac.uk/people/2023-Alice-Ball/",
     "lookup_version": 7,
+    "institutional_page": "https://biomin.esc.cam.ac.uk/people/2023-Alice-Ball/",
     "links": [
       {
         "kind": "institution",
@@ -36248,8 +36140,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alicia Emberson-Semisi",
     "affiliation": "University of the South Pacific",
     "confidence": "medium",
-    "institutional_page": "https://www.wscuc.org/institutions/the-university-of-the-south-pacific/",
     "lookup_version": 7,
+    "institutional_page": "https://www.wscuc.org/institutions/the-university-of-the-south-pacific/",
     "links": [
       {
         "kind": "institution",
@@ -36279,8 +36171,8 @@ export const SPEAKER_PROFILES = {
     "name": "Aline Tribollet",
     "affiliation": "Institut de recherche pour le D\u00e9veloppement",
     "confidence": "high",
-    "institutional_page": "http://tribollet.aline.free.fr/",
     "lookup_version": 7,
+    "institutional_page": "http://tribollet.aline.free.fr/",
     "links": [
       {
         "kind": "institution",
@@ -36311,8 +36203,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "http://personal.victoria.ac.nz/jeffrey_shima/lab/index.html",
     "lookup_version": 7,
+    "institutional_page": "http://personal.victoria.ac.nz/jeffrey_shima/lab/index.html",
     "links": [
       {
         "kind": "institution",
@@ -36342,8 +36234,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ally Swan",
     "affiliation": "University of the Virgin Islands",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Virgin_Islands",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Virgin_Islands",
     "links": [
       {
         "kind": "institution",
@@ -36373,8 +36265,8 @@ export const SPEAKER_PROFILES = {
     "name": "Allyn Duvin Hinoguin",
     "affiliation": "Mindanao State University - Naawan",
     "confidence": "high",
-    "institutional_page": "https://dergipark.org.tr/en/pub/yyutbd/issue/99399",
     "lookup_version": 7,
+    "institutional_page": "https://dergipark.org.tr/en/pub/yyutbd/issue/99399",
     "links": [
       {
         "kind": "institution",
@@ -36404,8 +36296,8 @@ export const SPEAKER_PROFILES = {
     "name": "Almog Haim",
     "affiliation": "Bar-Ilan University",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Bar-Ilan_University",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Bar-Ilan_University",
     "links": [
       {
         "kind": "institution",
@@ -36435,8 +36327,8 @@ export const SPEAKER_PROFILES = {
     "name": "Alyson Lowell",
     "affiliation": "Georgia Southern University",
     "confidence": "high",
-    "institutional_page": "https://www.georgiasouthern.edu/colleges/arts-humanities/departments/communication-arts/facultystaff",
     "lookup_version": 7,
+    "institutional_page": "https://www.georgiasouthern.edu/colleges/arts-humanities/departments/communication-arts/facultystaff",
     "links": [
       {
         "kind": "institution",
@@ -36487,8 +36379,8 @@ export const SPEAKER_PROFILES = {
     "name": "Al\u00e9xia A. Lessa",
     "affiliation": "Universidade Federal do Rio de Janeiro",
     "confidence": "medium",
-    "institutional_page": "https://orcid.org/0000-0002-9975-1183",
     "lookup_version": 7,
+    "institutional_page": "https://orcid.org/0000-0002-9975-1183",
     "links": [
       {
         "kind": "institution",
@@ -36518,8 +36410,8 @@ export const SPEAKER_PROFILES = {
     "name": "Amalia Seigel",
     "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science",
     "confidence": "high",
-    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-members/amalia-seigel/index.html",
     "lookup_version": 7,
+    "institutional_page": "https://coralreeffutures.earth.miami.edu/people/lab-members/amalia-seigel/index.html",
     "links": [
       {
         "kind": "institution",
@@ -36549,8 +36441,8 @@ export const SPEAKER_PROFILES = {
     "name": "Amanda Badai",
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
-    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "links": [
       {
         "kind": "institution",
@@ -36580,8 +36472,8 @@ export const SPEAKER_PROFILES = {
     "name": "Amanda Melendez-Perez",
     "affiliation": "University of Puerto Rico at Mayag\u00fcez",
     "confidence": "high",
-    "institutional_page": "https://theberglab.com/team/amandamelendez/",
     "lookup_version": 7,
+    "institutional_page": "https://theberglab.com/team/amandamelendez/",
     "links": [
       {
         "kind": "institution",
@@ -36611,8 +36503,8 @@ export const SPEAKER_PROFILES = {
     "name": "Amara Jabeen",
     "affiliation": "Macquarie University",
     "confidence": "medium",
-    "institutional_page": "https://nz.pinterest.com/amarajabeen20/",
     "lookup_version": 7,
+    "institutional_page": "https://nz.pinterest.com/amarajabeen20/",
     "links": [
       {
         "kind": "institution",
@@ -36653,8 +36545,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.wgtn.ac.nz/sbs/study/current-postgraduates",
     "lookup_version": 7,
+    "institutional_page": "https://www.wgtn.ac.nz/sbs/study/current-postgraduates",
     "links": [
       {
         "kind": "institution",
@@ -36685,8 +36577,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Western Australia",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://schmidtocean.org/person/amy-carmignani/",
     "lookup_version": 7,
+    "institutional_page": "https://schmidtocean.org/person/amy-carmignani/",
     "links": [
       {
         "kind": "institution",
@@ -36726,8 +36618,8 @@ export const SPEAKER_PROFILES = {
     "name": "Am\u00e9lie RUDLER",
     "affiliation": "IHPE",
     "confidence": "high",
-    "institutional_page": "https://ihpe.fr/ihpe-rudler-amelie/",
     "lookup_version": 7,
+    "institutional_page": "https://ihpe.fr/ihpe-rudler-amelie/",
     "links": [
       {
         "kind": "institution",
@@ -36757,8 +36649,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ana-Belen Yanez-Suarez",
     "affiliation": "Memorial University",
     "confidence": "high",
-    "institutional_page": "https://cordap.org/dipl-team-member/ana-belen-yanez-suarez/",
     "lookup_version": 7,
+    "institutional_page": "https://cordap.org/dipl-team-member/ana-belen-yanez-suarez/",
     "links": [
       {
         "kind": "institution",
@@ -36788,8 +36680,8 @@ export const SPEAKER_PROFILES = {
     "name": "Andrea Carolina Landaverde Ventura",
     "affiliation": "North Carolina State University",
     "confidence": "medium",
-    "institutional_page": "https://provost.ncsu.edu/global-one-health-academy/andrea-landaverde/",
     "lookup_version": 7,
+    "institutional_page": "https://provost.ncsu.edu/global-one-health-academy/andrea-landaverde/",
     "links": [
       {
         "kind": "institution",
@@ -36819,8 +36711,8 @@ export const SPEAKER_PROFILES = {
     "name": "Andrea Melina Fonseca Tovar",
     "affiliation": "Center For Research And Advanced Studies Ipn-m\u00e9rida Unit",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/CINVESTAV",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/CINVESTAV",
     "links": [
       {
         "kind": "institution",
@@ -36850,8 +36742,8 @@ export const SPEAKER_PROFILES = {
     "name": "Andrea Nicte-Ha Munoz",
     "affiliation": "Coral Reef Advisory Group",
     "confidence": "high",
-    "institutional_page": "https://www.crag.as/meet-the-team",
     "lookup_version": 7,
+    "institutional_page": "https://www.crag.as/meet-the-team",
     "links": [
       {
         "kind": "institution",
@@ -36881,8 +36773,8 @@ export const SPEAKER_PROFILES = {
     "name": "Andressa Silva",
     "affiliation": "Universidade Federal do Rio Grande do Norte",
     "confidence": "medium",
-    "institutional_page": "https://sigaa.ufrn.br/sigaa/downloadArquivoPublico?idProducao=16158446&key=fbcf28b8ba4841377bdbefc5c565d01e",
     "lookup_version": 7,
+    "institutional_page": "https://sigaa.ufrn.br/sigaa/downloadArquivoPublico?idProducao=16158446&key=fbcf28b8ba4841377bdbefc5c565d01e",
     "links": [
       {
         "kind": "institution",
@@ -36912,8 +36804,8 @@ export const SPEAKER_PROFILES = {
     "name": "Andrew McInnis",
     "affiliation": "University of Florida",
     "confidence": "medium",
-    "institutional_page": "https://taps.ufl.edu/about/meet-the-team/",
     "lookup_version": 7,
+    "institutional_page": "https://taps.ufl.edu/about/meet-the-team/",
     "links": [
       {
         "kind": "institution",
@@ -36943,8 +36835,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anela Duenas",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://manoa.hawaii.edu/lifesciences/people/students/",
     "lookup_version": 7,
+    "institutional_page": "https://manoa.hawaii.edu/lifesciences/people/students/",
     "links": [
       {
         "kind": "institution",
@@ -36974,8 +36866,8 @@ export const SPEAKER_PROFILES = {
     "name": "Angel Avedo",
     "affiliation": "Florida International University",
     "confidence": "medium",
-    "institutional_page": "https://business.fiu.edu/academics/graduate/executive-mba/meet-the-team/",
     "lookup_version": 7,
+    "institutional_page": "https://business.fiu.edu/academics/graduate/executive-mba/meet-the-team/",
     "links": [
       {
         "kind": "institution",
@@ -37026,8 +36918,8 @@ export const SPEAKER_PROFILES = {
     "name": "Angela Larson",
     "affiliation": "Tulane University",
     "confidence": "high",
-    "institutional_page": "https://angelalarson.github.io/",
     "lookup_version": 7,
+    "institutional_page": "https://angelalarson.github.io/",
     "links": [
       {
         "kind": "institution",
@@ -37057,8 +36949,8 @@ export const SPEAKER_PROFILES = {
     "name": "Angela Randazzo Eisemann",
     "affiliation": "ICML/UNAM",
     "confidence": "high",
-    "institutional_page": "https://www.icmyl.unam.mx/es/quienes_somos/personal_academico/randazzo-eisemann-angela",
     "lookup_version": 7,
+    "institutional_page": "https://www.icmyl.unam.mx/es/quienes_somos/personal_academico/randazzo-eisemann-angela",
     "links": [
       {
         "kind": "institution",
@@ -37088,8 +36980,8 @@ export const SPEAKER_PROFILES = {
     "name": "Angelica Demers",
     "affiliation": "Stantec GS",
     "confidence": "medium",
-    "institutional_page": "https://www.stantec.com/en/people/d/demers-stephanie",
     "lookup_version": 7,
+    "institutional_page": "https://www.stantec.com/en/people/d/demers-stephanie",
     "links": [
       {
         "kind": "institution",
@@ -37119,8 +37011,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ankitha Manohar",
     "affiliation": "University of Leeds",
     "confidence": "high",
-    "institutional_page": "https://environment.leeds.ac.uk/see/pgr/12047/ankitha-manohar",
     "lookup_version": 7,
+    "institutional_page": "https://environment.leeds.ac.uk/see/pgr/12047/ankitha-manohar",
     "links": [
       {
         "kind": "institution",
@@ -37151,8 +37043,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://coralreefsecc.org/team-1",
     "lookup_version": 7,
+    "institutional_page": "https://coralreefsecc.org/team-1",
     "links": [
       {
         "kind": "institution",
@@ -37182,8 +37074,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anna Celis",
     "affiliation": "Sulubaai Environmental Foundation",
     "confidence": "high",
-    "institutional_page": "https://scbmarineprogram.org/science/",
     "lookup_version": 7,
+    "institutional_page": "https://scbmarineprogram.org/science/",
     "links": [
       {
         "kind": "institution",
@@ -37213,8 +37105,8 @@ export const SPEAKER_PROFILES = {
     "name": "Anna Koivunen",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://biology.as.miami.edu/people/graduate-students/index.html",
     "lookup_version": 7,
+    "institutional_page": "https://biology.as.miami.edu/people/graduate-students/index.html",
     "links": [
       {
         "kind": "institution",
@@ -37244,8 +37136,8 @@ export const SPEAKER_PROFILES = {
     "name": "Annelise Lemonius",
     "affiliation": "University of Amsterdam",
     "confidence": "medium",
-    "institutional_page": "https://ivi.fnwi.uva.nl/ellis/people/",
     "lookup_version": 7,
+    "institutional_page": "https://ivi.fnwi.uva.nl/ellis/people/",
     "links": [
       {
         "kind": "institution",
@@ -37276,8 +37168,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Oldenburg",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Annemarie_Selle",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Annemarie_Selle",
     "links": [
       {
         "kind": "institution",
@@ -37328,8 +37220,8 @@ export const SPEAKER_PROFILES = {
     "name": "Aran Sofer",
     "affiliation": "Tel Aviv University",
     "confidence": "high",
-    "institutional_page": "https://english.tau.ac.il/profile/talsofer",
     "lookup_version": 7,
+    "institutional_page": "https://english.tau.ac.il/profile/talsofer",
     "links": [
       {
         "kind": "institution",
@@ -37359,8 +37251,8 @@ export const SPEAKER_PROFILES = {
     "name": "Aranya Dhibar",
     "affiliation": "University of Texas - Austin",
     "confidence": "medium",
-    "institutional_page": "https://catalog.utsa.edu/graduate/faculty/",
     "lookup_version": 7,
+    "institutional_page": "https://catalog.utsa.edu/graduate/faculty/",
     "links": [
       {
         "kind": "institution",
@@ -37390,8 +37282,8 @@ export const SPEAKER_PROFILES = {
     "name": "Arthur Loures Choucair Rodrigues de Oliveira",
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "medium",
-    "institutional_page": "http://miguelmies.com.br/wp-content/uploads/2025/03/CV.pdf",
     "lookup_version": 7,
+    "institutional_page": "http://miguelmies.com.br/wp-content/uploads/2025/03/CV.pdf",
     "links": [
       {
         "kind": "institution",
@@ -37421,14 +37313,9 @@ export const SPEAKER_PROFILES = {
     "name": "Ashlyn Ford",
     "affiliation": "Hampton University",
     "confidence": "high",
-    "institutional_page": "https://radaris.com/p/Ashley/Ford-US/",
+    "verified": true,
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://radaris.com/p/Ashley/Ford-US/"
-      },
       {
         "kind": "scholar_search",
         "label": "Search Google Scholar",
@@ -37440,11 +37327,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Ashlyn+Ford+Hampton+University"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://radaris.com/p/Ashley/Ford-US/"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -37452,8 +37335,8 @@ export const SPEAKER_PROFILES = {
     "name": "Augustina L\u00f6wenstein",
     "affiliation": "Hamburg University",
     "confidence": "medium",
-    "institutional_page": "https://www.ew.uni-hamburg.de/en/ueber-die-fakultaet/personen.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.ew.uni-hamburg.de/en/ueber-die-fakultaet/personen.html",
     "links": [
       {
         "kind": "institution",
@@ -37483,8 +37366,8 @@ export const SPEAKER_PROFILES = {
     "name": "Avery Coble",
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
-    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "links": [
       {
         "kind": "institution",
@@ -37515,8 +37398,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Maldives Coral Institute",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.maldivescoral.org/our-team",
     "lookup_version": 7,
+    "institutional_page": "https://www.maldivescoral.org/our-team",
     "links": [
       {
         "kind": "institution",
@@ -37546,8 +37429,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ayala Porat",
     "affiliation": "Tel Aviv University",
     "confidence": "medium",
-    "institutional_page": "https://english.tau.ac.il/profile/porata",
     "lookup_version": 7,
+    "institutional_page": "https://english.tau.ac.il/profile/porata",
     "links": [
       {
         "kind": "institution",
@@ -37577,8 +37460,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ayumi Maeda",
     "affiliation": "University of Tokyo",
     "confidence": "high",
-    "institutional_page": "https://www.applykite.com/professors/ayumi-maeda-6b254ffb-4af6-4db4-8a0d-5e721df3c983",
     "lookup_version": 7,
+    "institutional_page": "https://www.applykite.com/professors/ayumi-maeda-6b254ffb-4af6-4db4-8a0d-5e721df3c983",
     "links": [
       {
         "kind": "institution",
@@ -37608,8 +37491,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bailey Thomasson",
     "affiliation": "Coral Restoration Foundation",
     "confidence": "high",
-    "institutional_page": "https://stthomassource.com/content/2024/10/07/us-interior-department-invests-in-coral-restoration-around-the-virgin-islands/",
     "lookup_version": 7,
+    "institutional_page": "https://stthomassource.com/content/2024/10/07/us-interior-department-invests-in-coral-restoration-around-the-virgin-islands/",
     "links": [
       {
         "kind": "institution",
@@ -37661,8 +37544,8 @@ export const SPEAKER_PROFILES = {
     "name": "Beatriz Corazza",
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "medium",
-    "institutional_page": "https://www.topuniversities.com/universities/universidade-de-sao-paulo",
     "lookup_version": 7,
+    "institutional_page": "https://www.topuniversities.com/universities/universidade-de-sao-paulo",
     "links": [
       {
         "kind": "institution",
@@ -37692,8 +37575,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bede Johnston",
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
-    "institutional_page": "https://aims.jcu.edu.au/our-people/students/bede-johnston.721/",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/students/bede-johnston.721/",
     "links": [
       {
         "kind": "institution",
@@ -37723,8 +37606,8 @@ export const SPEAKER_PROFILES = {
     "name": "Benedict Yuen",
     "affiliation": "Soneva Conservation and Sustainability Maldives",
     "confidence": "medium",
-    "institutional_page": "https://soneva.com/press-release/soneva-launches-aquaterra-centre-at-soneva-fushi/",
     "lookup_version": 7,
+    "institutional_page": "https://soneva.com/press-release/soneva-launches-aquaterra-centre-at-soneva-fushi/",
     "links": [
       {
         "kind": "institution",
@@ -37755,8 +37638,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Melbourne",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://findanexpert.unimelb.edu.au/profile/649483-benjamin-henley",
     "lookup_version": 7,
+    "institutional_page": "https://findanexpert.unimelb.edu.au/profile/649483-benjamin-henley",
     "links": [
       {
         "kind": "institution",
@@ -37786,8 +37669,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bernhard Riegl Jr.",
     "affiliation": "James Cook University",
     "confidence": "high",
-    "institutional_page": "https://www.nova-ncri.org/people/meet-the-team",
     "lookup_version": 7,
+    "institutional_page": "https://www.nova-ncri.org/people/meet-the-team",
     "links": [
       {
         "kind": "institution",
@@ -37817,8 +37700,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bess Ruff",
     "affiliation": "University of Sydney",
     "confidence": "medium",
-    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "links": [
       {
         "kind": "institution",
@@ -37848,8 +37731,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bhanuka Ranaweera",
     "affiliation": "University of Moratuwa",
     "confidence": "medium",
-    "institutional_page": "https://uom.lk/staff/Ranaweera.RKPS",
     "lookup_version": 7,
+    "institutional_page": "https://uom.lk/staff/Ranaweera.RKPS",
     "links": [
       {
         "kind": "institution",
@@ -37879,8 +37762,8 @@ export const SPEAKER_PROFILES = {
     "name": "Biao Chen",
     "affiliation": "Guangxi University",
     "confidence": "medium",
-    "institutional_page": "https://www.gxu.edu.cn/en/info/1295/2292.htm",
     "lookup_version": 7,
+    "institutional_page": "https://www.gxu.edu.cn/en/info/1295/2292.htm",
     "links": [
       {
         "kind": "institution",
@@ -37911,8 +37794,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Sydney",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.ilcp.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.ilcp.com/",
     "links": [
       {
         "kind": "institution",
@@ -37965,8 +37848,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Technology Sydney",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.biogeographyuts.org/bronte-connolly",
     "lookup_version": 7,
+    "institutional_page": "https://www.biogeographyuts.org/bronte-connolly",
     "links": [
       {
         "kind": "institution",
@@ -37996,8 +37879,8 @@ export const SPEAKER_PROFILES = {
     "name": "Brooke Sienkiewicz",
     "affiliation": "University of Massachusetts Lowell",
     "confidence": "high",
-    "institutional_page": "https://www.uml.edu/profiles/all.aspx",
     "lookup_version": 7,
+    "institutional_page": "https://www.uml.edu/profiles/all.aspx",
     "links": [
       {
         "kind": "institution",
@@ -38027,8 +37910,8 @@ export const SPEAKER_PROFILES = {
     "name": "Bryan Gabriel Tan",
     "affiliation": "University Of The Ryukyus",
     "confidence": "medium",
-    "institutional_page": "https://search.isepstudyabroad.org/University/Detail/2db4b737-b3b7-49b8-9475-3415d53f4462",
     "lookup_version": 7,
+    "institutional_page": "https://search.isepstudyabroad.org/University/Detail/2db4b737-b3b7-49b8-9475-3415d53f4462",
     "links": [
       {
         "kind": "institution",
@@ -38079,8 +37962,8 @@ export const SPEAKER_PROFILES = {
     "name": "Caitlin Younis",
     "affiliation": "University of Technology Sydney",
     "confidence": "medium",
-    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "links": [
       {
         "kind": "institution",
@@ -38110,8 +37993,8 @@ export const SPEAKER_PROFILES = {
     "name": "Callum Backstrom",
     "affiliation": "University of Washington",
     "confidence": "high",
-    "institutional_page": "https://fish.uw.edu/2025/04/corals-contaminants-and-climate-change/",
     "lookup_version": 7,
+    "institutional_page": "https://fish.uw.edu/2025/04/corals-contaminants-and-climate-change/",
     "links": [
       {
         "kind": "institution",
@@ -38141,8 +38024,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cameron White-Spunner",
     "affiliation": "University College London",
     "confidence": "high",
-    "institutional_page": "https://www.ucl.ac.uk/social-historical-sciences/research/london-nerc-doctoral-training-partnership/students/current-students",
     "lookup_version": 7,
+    "institutional_page": "https://www.ucl.ac.uk/social-historical-sciences/research/london-nerc-doctoral-training-partnership/students/current-students",
     "links": [
       {
         "kind": "institution",
@@ -38172,8 +38055,8 @@ export const SPEAKER_PROFILES = {
     "name": "Camila Kato",
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "medium",
-    "institutional_page": "https://www.youtube.com/channel/UCF4z_ZBCujwiwxT-CEWZ3ww",
     "lookup_version": 7,
+    "institutional_page": "https://www.youtube.com/channel/UCF4z_ZBCujwiwxT-CEWZ3ww",
     "links": [
       {
         "kind": "institution",
@@ -38208,8 +38091,8 @@ export const SPEAKER_PROFILES = {
     "name": "Carmen Villegas S\u00e1nchez",
     "affiliation": "National Technological Institute of Mexico",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/National_Technological_Institute_of_Mexico",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/National_Technological_Institute_of_Mexico",
     "links": [
       {
         "kind": "institution",
@@ -38239,8 +38122,8 @@ export const SPEAKER_PROFILES = {
     "name": "Carmine Lee",
     "affiliation": "National University of Singapore",
     "confidence": "medium",
-    "institutional_page": "https://www.ece.nus.edu.sg/stfpage/elelc/bio.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.ece.nus.edu.sg/stfpage/elelc/bio.html",
     "links": [
       {
         "kind": "institution",
@@ -38270,8 +38153,8 @@ export const SPEAKER_PROFILES = {
     "name": "Caroline Bonpain",
     "affiliation": "CRIOBE",
     "confidence": "high",
-    "institutional_page": "https://campus.be/nausicaa-ouvre-une-annee-anniversaire-pleine-de-nouveautes/",
     "lookup_version": 7,
+    "institutional_page": "https://campus.be/nausicaa-ouvre-une-annee-anniversaire-pleine-de-nouveautes/",
     "links": [
       {
         "kind": "institution",
@@ -38322,8 +38205,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cat Hauser",
     "affiliation": "Boston University",
     "confidence": "medium",
-    "institutional_page": "https://trusted.bu.edu/s/1759/2-bu/alumniWeekend/22/page.aspx?sid=1759&gid=2&pgid=252&cid=10187&ecid=10187&crid=0&calpgid=3328&calcid=7007",
     "lookup_version": 7,
+    "institutional_page": "https://trusted.bu.edu/s/1759/2-bu/alumniWeekend/22/page.aspx?sid=1759&gid=2&pgid=252&cid=10187&ecid=10187&crid=0&calpgid=3328&calcid=7007",
     "links": [
       {
         "kind": "institution",
@@ -38354,8 +38237,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Hawai'i Pacific University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.hpu.edu/faculty/cncs/cataixa-lopez-batista.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.hpu.edu/faculty/cncs/cataixa-lopez-batista.html",
     "links": [
       {
         "kind": "institution",
@@ -38386,8 +38269,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Queensland University of Technology",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.catherinejkim.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.catherinejkim.com/",
     "links": [
       {
         "kind": "institution",
@@ -38418,8 +38301,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Stanford University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://profiles.stanford.edu/cat-lee-hing",
     "lookup_version": 7,
+    "institutional_page": "https://profiles.stanford.edu/cat-lee-hing",
     "links": [
       {
         "kind": "institution",
@@ -38450,8 +38333,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Connecticut College",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.conncoll.edu/directories/faculty-profiles/cassie-raker/",
     "lookup_version": 7,
+    "institutional_page": "https://www.conncoll.edu/directories/faculty-profiles/cassie-raker/",
     "links": [
       {
         "kind": "institution",
@@ -38482,8 +38365,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Cecilia-Martin-13",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Cecilia-Martin-13",
     "links": [
       {
         "kind": "institution",
@@ -38513,8 +38396,8 @@ export const SPEAKER_PROFILES = {
     "name": "Celine Luisa Campos",
     "affiliation": "University of The Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Philippines_Diliman",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Philippines_Diliman",
     "links": [
       {
         "kind": "institution",
@@ -38544,8 +38427,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cesar Garcia Carreon",
     "affiliation": "University of Southampton",
     "confidence": "medium",
-    "institutional_page": "https://www.southampton.ac.uk/people?search_api_fulltext=&search_api_school=School+of+Humanities",
     "lookup_version": 7,
+    "institutional_page": "https://www.southampton.ac.uk/people?search_api_fulltext=&search_api_school=School+of+Humanities",
     "links": [
       {
         "kind": "institution",
@@ -38575,8 +38458,8 @@ export const SPEAKER_PROFILES = {
     "name": "Charles Birkeland",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://manoa.hawaii.edu/lifesciences/graduate/zoology-graduate-program/zoology-graduate-faculty/",
     "lookup_version": 7,
+    "institutional_page": "https://manoa.hawaii.edu/lifesciences/graduate/zoology-graduate-program/zoology-graduate-faculty/",
     "links": [
       {
         "kind": "institution",
@@ -38607,8 +38490,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Charlotte-Dale-7",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Charlotte-Dale-7",
     "links": [
       {
         "kind": "institution",
@@ -38638,8 +38521,8 @@ export const SPEAKER_PROFILES = {
     "name": "Chatoolsingh Dawosing",
     "affiliation": "University of Mauritius",
     "confidence": "medium",
-    "institutional_page": "https://www.topuniversities.com/universities/university-mauritius",
     "lookup_version": 7,
+    "institutional_page": "https://www.topuniversities.com/universities/university-mauritius",
     "links": [
       {
         "kind": "institution",
@@ -38669,8 +38552,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cherrisse July Ross Adlawan",
     "affiliation": "Rethinking, Rebuilding, Regenerating Coral Reefs",
     "confidence": "medium",
-    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/24070703/",
     "lookup_version": 7,
+    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/24070703/",
     "links": [
       {
         "kind": "institution",
@@ -38700,8 +38583,8 @@ export const SPEAKER_PROFILES = {
     "name": "Chinmay Girish Somani",
     "affiliation": "National Sun Yat-sen University",
     "confidence": "medium",
-    "institutional_page": "https://ice.nsysu.edu.tw/p/412-1209-4879.php?Lang=en",
     "lookup_version": 7,
+    "institutional_page": "https://ice.nsysu.edu.tw/p/412-1209-4879.php?Lang=en",
     "links": [
       {
         "kind": "institution",
@@ -38731,8 +38614,8 @@ export const SPEAKER_PROFILES = {
     "name": "Chitra Ramphul",
     "affiliation": "Rebuilding with Nature",
     "confidence": "high",
-    "institutional_page": "https://rebuildingwithnature.com/",
     "lookup_version": 7,
+    "institutional_page": "https://rebuildingwithnature.com/",
     "links": [
       {
         "kind": "institution",
@@ -38762,8 +38645,8 @@ export const SPEAKER_PROFILES = {
     "name": "Christine Mae Edullantes",
     "affiliation": "Southern Cross University",
     "confidence": "medium",
-    "institutional_page": "https://site-search.scu.edu.au/s/search.html?collection=scu~sp-search&f.Tabs%7Cscu~ds-people=People",
     "lookup_version": 7,
+    "institutional_page": "https://site-search.scu.edu.au/s/search.html?collection=scu~sp-search&f.Tabs%7Cscu~ds-people=People",
     "links": [
       {
         "kind": "institution",
@@ -38794,8 +38677,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Marine Conservation Society Seychelles",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.mcss.sc/",
     "lookup_version": 7,
+    "institutional_page": "https://www.mcss.sc/",
     "links": [
       {
         "kind": "institution",
@@ -38825,8 +38708,8 @@ export const SPEAKER_PROFILES = {
     "name": "Claire Ittleson",
     "affiliation": "University of Bristol",
     "confidence": "high",
-    "institutional_page": "https://goblackbears.com/sports/womens-track-and-field/roster/claire--ittleson/10800",
     "lookup_version": 7,
+    "institutional_page": "https://goblackbears.com/sports/womens-track-and-field/roster/claire--ittleson/10800",
     "links": [
       {
         "kind": "institution",
@@ -38856,8 +38739,8 @@ export const SPEAKER_PROFILES = {
     "name": "Clancy McIntyre",
     "affiliation": "Pennsylvania State University",
     "confidence": "high",
-    "institutional_page": "https://igc.psu.edu/people/bio/kmb670/",
     "lookup_version": 7,
+    "institutional_page": "https://igc.psu.edu/people/bio/kmb670/",
     "links": [
       {
         "kind": "institution",
@@ -38887,8 +38770,8 @@ export const SPEAKER_PROFILES = {
     "name": "Claudia Gibson",
     "affiliation": "University of Technology Sydney",
     "confidence": "medium",
-    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "links": [
       {
         "kind": "institution",
@@ -38919,8 +38802,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.hbs.edu/mba/student-life/claudia-hill",
     "lookup_version": 7,
+    "institutional_page": "https://www.hbs.edu/mba/student-life/claudia-hill",
     "links": [
       {
         "kind": "institution",
@@ -38950,8 +38833,8 @@ export const SPEAKER_PROFILES = {
     "name": "Clemence Forin",
     "affiliation": "Centre Scientifique de Monaco",
     "confidence": "high",
-    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/41232651/",
     "lookup_version": 7,
+    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/41232651/",
     "links": [
       {
         "kind": "institution",
@@ -38981,8 +38864,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cody Clements",
     "affiliation": "Georgia Institute of Technology",
     "confidence": "high",
-    "institutional_page": "https://postdocs.gatech.edu/news/biodiversity-helps-coral-reefs-thrive-and-could-be-part-strategies-save-them",
     "lookup_version": 7,
+    "institutional_page": "https://postdocs.gatech.edu/news/biodiversity-helps-coral-reefs-thrive-and-could-be-part-strategies-save-them",
     "links": [
       {
         "kind": "institution",
@@ -39012,8 +38895,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cole Sheeley",
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
-    "institutional_page": "https://www.corrl.org/students",
     "lookup_version": 7,
+    "institutional_page": "https://www.corrl.org/students",
     "links": [
       {
         "kind": "institution",
@@ -39044,8 +38927,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Southern Cross University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.scu.edu.au/about/contacts/directory/122924/",
     "lookup_version": 7,
+    "institutional_page": "https://www.scu.edu.au/about/contacts/directory/122924/",
     "links": [
       {
         "kind": "institution",
@@ -39076,8 +38959,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Plymouth",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.plymouth.ac.uk/staff/tigan-schofield",
     "lookup_version": 7,
+    "institutional_page": "https://www.plymouth.ac.uk/staff/tigan-schofield",
     "links": [
       {
         "kind": "institution",
@@ -39107,8 +38990,8 @@ export const SPEAKER_PROFILES = {
     "name": "Corinne D'anna",
     "affiliation": "KAUST",
     "confidence": "high",
-    "institutional_page": "https://gcecologylab.kaust.edu.sa/meet-the-team",
     "lookup_version": 7,
+    "institutional_page": "https://gcecologylab.kaust.edu.sa/meet-the-team",
     "links": [
       {
         "kind": "institution",
@@ -39139,8 +39022,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://portfolio.jcu.edu.au/researchers/courtney.burns",
     "lookup_version": 7,
+    "institutional_page": "https://portfolio.jcu.edu.au/researchers/courtney.burns",
     "links": [
       {
         "kind": "institution",
@@ -39170,8 +39053,8 @@ export const SPEAKER_PROFILES = {
     "name": "Crissa Ann Lilagan",
     "affiliation": "Academia Sinica",
     "confidence": "high",
-    "institutional_page": "https://sites.google.com/view/yjluo/people",
     "lookup_version": 7,
+    "institutional_page": "https://sites.google.com/view/yjluo/people",
     "links": [
       {
         "kind": "institution",
@@ -39201,8 +39084,8 @@ export const SPEAKER_PROFILES = {
     "name": "Cristiana Manullang",
     "affiliation": "Shantou University",
     "confidence": "high",
-    "institutional_page": "https://xmas.aconf.org/presentation/1220.html",
     "lookup_version": 7,
+    "institutional_page": "https://xmas.aconf.org/presentation/1220.html",
     "links": [
       {
         "kind": "institution",
@@ -39233,8 +39116,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://aims.jcu.edu.au/our-people/students/crystle-wee.896/",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/students/crystle-wee.896/",
     "links": [
       {
         "kind": "institution",
@@ -39264,8 +39147,8 @@ export const SPEAKER_PROFILES = {
     "name": "C\u00e9lia Caillibot",
     "affiliation": "Ifremer",
     "confidence": "medium",
-    "institutional_page": "https://annuaire.ifremer.fr/cv/16725/en/",
     "lookup_version": 7,
+    "institutional_page": "https://annuaire.ifremer.fr/cv/16725/en/",
     "links": [
       {
         "kind": "institution",
@@ -39295,8 +39178,8 @@ export const SPEAKER_PROFILES = {
     "name": "Daigo Kishi",
     "affiliation": "University of Miyazaki",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Miyazaki",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Miyazaki",
     "links": [
       {
         "kind": "institution",
@@ -39326,8 +39209,8 @@ export const SPEAKER_PROFILES = {
     "name": "Damien Carrasquet",
     "affiliation": "Universit\u00e9 de la Polyn\u00e9sie Fran\u00e7aise",
     "confidence": "high",
-    "institutional_page": "https://recherche.upf.pf/en/annuaire/",
     "lookup_version": 7,
+    "institutional_page": "https://recherche.upf.pf/en/annuaire/",
     "links": [
       {
         "kind": "institution",
@@ -39357,8 +39240,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dan Hikuroa",
     "affiliation": "University of Auckland",
     "confidence": "high",
-    "institutional_page": "https://www.auckland.ac.nz/en/science/study-with-us/graduate-stories/research-and-academia/daniel-hikuroa.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.auckland.ac.nz/en/science/study-with-us/graduate-stories/research-and-academia/daniel-hikuroa.html",
     "links": [
       {
         "kind": "institution",
@@ -39388,8 +39271,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dane Wattle",
     "affiliation": "University of Technology Sydney",
     "confidence": "medium",
-    "institutional_page": "https://services.anu.edu.au/information-technology/software-systems/wattle",
     "lookup_version": 7,
+    "institutional_page": "https://services.anu.edu.au/information-technology/software-systems/wattle",
     "links": [
       {
         "kind": "institution",
@@ -39419,8 +39302,8 @@ export const SPEAKER_PROFILES = {
     "name": "Daniel G\u00f3mez-Gras",
     "affiliation": "University of Lisbon",
     "confidence": "high",
-    "institutional_page": "https://www.icm.csic.es/en/staff/daniel-gomez-gras-1875",
     "lookup_version": 7,
+    "institutional_page": "https://www.icm.csic.es/en/staff/daniel-gomez-gras-1875",
     "links": [
       {
         "kind": "institution",
@@ -39450,8 +39333,8 @@ export const SPEAKER_PROFILES = {
     "name": "Daniel Sch\u00fcrholz",
     "affiliation": "Leibniz Centre for Tropical Marine Research",
     "confidence": "medium",
-    "institutional_page": "https://www.transfermarkt.us/daniel-schurholz/profil/spieler/94668",
     "lookup_version": 7,
+    "institutional_page": "https://www.transfermarkt.us/daniel-schurholz/profil/spieler/94668",
     "links": [
       {
         "kind": "institution",
@@ -39491,8 +39374,8 @@ export const SPEAKER_PROFILES = {
     "name": "Daniela Rojas-Cano",
     "affiliation": "Posgrado en Ciencias del Mar y Limnolog\u00eda",
     "confidence": "medium",
-    "institutional_page": "https://quimica.unam.mx/ensenanza/posgrados-de-la-facultad-de-quimica/maestria-y-doctorado-en-ciencias-del-mar-y-limnologia/",
     "lookup_version": 7,
+    "institutional_page": "https://quimica.unam.mx/ensenanza/posgrados-de-la-facultad-de-quimica/maestria-y-doctorado-en-ciencias-del-mar-y-limnologia/",
     "links": [
       {
         "kind": "institution",
@@ -39522,8 +39405,8 @@ export const SPEAKER_PROFILES = {
     "name": "Danielle Becker",
     "affiliation": "National Marine Sanctuary Foundation",
     "confidence": "high",
-    "institutional_page": "https://www.yellowbook.com/people/danielle-becker/",
     "lookup_version": 7,
+    "institutional_page": "https://www.yellowbook.com/people/danielle-becker/",
     "links": [
       {
         "kind": "institution",
@@ -39553,8 +39436,8 @@ export const SPEAKER_PROFILES = {
     "name": "Darla White",
     "affiliation": "Darla White - Marine Ecological Consulting, LLC",
     "confidence": "medium",
-    "institutional_page": "https://www.merconsulting.org/",
     "lookup_version": 7,
+    "institutional_page": "https://www.merconsulting.org/",
     "links": [
       {
         "kind": "institution",
@@ -39584,8 +39467,8 @@ export const SPEAKER_PROFILES = {
     "name": "David Anderson",
     "affiliation": "University of Hawai'i",
     "confidence": "medium",
-    "institutional_page": "https://www.uah.edu/eng/faculty-staff/michael-david-anderson",
     "lookup_version": 7,
+    "institutional_page": "https://www.uah.edu/eng/faculty-staff/michael-david-anderson",
     "links": [
       {
         "kind": "institution",
@@ -39615,8 +39498,8 @@ export const SPEAKER_PROFILES = {
     "name": "David Medio",
     "affiliation": "University of York",
     "confidence": "high",
-    "institutional_page": "https://www.york.ac.uk/environment-geography/people/david-medio/",
     "lookup_version": 7,
+    "institutional_page": "https://www.york.ac.uk/environment-geography/people/david-medio/",
     "links": [
       {
         "kind": "institution",
@@ -39646,8 +39529,8 @@ export const SPEAKER_PROFILES = {
     "name": "David Munoz-Maravilla",
     "affiliation": "University of Puerto Rico - Mayaguez",
     "confidence": "medium",
-    "institutional_page": "https://msiexchange.nasa.gov/institutions/2904",
     "lookup_version": 7,
+    "institutional_page": "https://msiexchange.nasa.gov/institutions/2904",
     "links": [
       {
         "kind": "institution",
@@ -39677,13 +39560,13 @@ export const SPEAKER_PROFILES = {
     "name": "Dawn Kaufman",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://radaris.com/p/Dawn/Kaufman-US/",
     "lookup_version": 7,
+    "institutional_page": "https://biology.as.miami.edu/people/graduate-students/index.html",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://radaris.com/p/Dawn/Kaufman-US/"
+        "url": "https://biology.as.miami.edu/people/graduate-students/index.html"
       },
       {
         "kind": "scholar_search",
@@ -39699,7 +39582,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://radaris.com/p/Dawn/Kaufman-US/"
+      "url": "https://biology.as.miami.edu/people/graduate-students/index.html"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
@@ -39708,8 +39591,8 @@ export const SPEAKER_PROFILES = {
     "name": "De-sing Ding",
     "affiliation": "National Pingtung University of Science and Technology",
     "confidence": "high",
-    "institutional_page": "https://en.wikipedia.org/wiki/National_Pingtung_University_of_Science_and_Technology",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/National_Pingtung_University_of_Science_and_Technology",
     "links": [
       {
         "kind": "institution",
@@ -39787,8 +39670,8 @@ export const SPEAKER_PROFILES = {
     "name": "Despina Linaraki",
     "affiliation": "Griffith University",
     "confidence": "high",
-    "institutional_page": "https://www.swellsculpture.com.au/artist-bios-2023/2023-artist-bios-despina-linaraki-brice-pannetier/",
     "lookup_version": 7,
+    "institutional_page": "https://www.swellsculpture.com.au/artist-bios-2023/2023-artist-bios-despina-linaraki-brice-pannetier/",
     "links": [
       {
         "kind": "institution",
@@ -39818,8 +39701,8 @@ export const SPEAKER_PROFILES = {
     "name": "Diana Beltran Rodriguez",
     "affiliation": "University of Rhode Island",
     "confidence": "high",
-    "institutional_page": "https://web.uri.edu/nrs/meet/diana-m-beltran-rodriguez/",
     "lookup_version": 7,
+    "institutional_page": "https://web.uri.edu/nrs/meet/diana-m-beltran-rodriguez/",
     "links": [
       {
         "kind": "institution",
@@ -39881,8 +39764,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Exeter",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://geography.exeter.ac.uk/people/academic/",
     "lookup_version": 7,
+    "institutional_page": "https://geography.exeter.ac.uk/people/academic/",
     "links": [
       {
         "kind": "institution",
@@ -39912,8 +39795,8 @@ export const SPEAKER_PROFILES = {
     "name": "Diego Lera-Lozano",
     "affiliation": "University of California - Los Angeles",
     "confidence": "medium",
-    "institutional_page": "https://cogsci.ucsd.edu/people/faculty/lera-boroditsky.html",
     "lookup_version": 7,
+    "institutional_page": "https://cogsci.ucsd.edu/people/faculty/lera-boroditsky.html",
     "links": [
       {
         "kind": "institution",
@@ -39943,8 +39826,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dione Swanson",
     "affiliation": "University Of Miami, CIMAS",
     "confidence": "medium",
-    "institutional_page": "https://miamihurricanes.com/staff-directory/",
     "lookup_version": 7,
+    "institutional_page": "https://miamihurricanes.com/staff-directory/",
     "links": [
       {
         "kind": "institution",
@@ -39974,8 +39857,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dor Shefy",
     "affiliation": "V-Corals",
     "confidence": "high",
-    "institutional_page": "https://www.nature.com/articles/s41598-026-53199-8",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.com/articles/s41598-026-53199-8",
     "links": [
       {
         "kind": "institution",
@@ -40005,8 +39888,8 @@ export const SPEAKER_PROFILES = {
     "name": "Dorothy Joyce Marquez",
     "affiliation": "De La Salle University",
     "confidence": "medium",
-    "institutional_page": "https://www.lasalle.edu/people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.lasalle.edu/people/",
     "links": [
       {
         "kind": "institution",
@@ -40036,8 +39919,8 @@ export const SPEAKER_PROFILES = {
     "name": "Eduardo Islas-Dominguez",
     "affiliation": "Goethe-Universit\u00e4t",
     "confidence": "medium",
-    "institutional_page": "https://www.artstation.com/edsfox",
     "lookup_version": 7,
+    "institutional_page": "https://www.artstation.com/edsfox",
     "links": [
       {
         "kind": "institution",
@@ -40067,8 +39950,8 @@ export const SPEAKER_PROFILES = {
     "name": "Eleanor Percy-Rouhaud",
     "affiliation": "Max Planck Institute for Chemsitry",
     "confidence": "medium",
-    "institutional_page": "https://www.mpg.de/153030/chemistry",
     "lookup_version": 7,
+    "institutional_page": "https://www.mpg.de/153030/chemistry",
     "links": [
       {
         "kind": "institution",
@@ -40099,8 +39982,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Texas A&M University - Corpus Christi",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.harteresearch.org/people/eleanor-tenbrink",
     "lookup_version": 7,
+    "institutional_page": "https://www.harteresearch.org/people/eleanor-tenbrink",
     "links": [
       {
         "kind": "institution",
@@ -40131,8 +40014,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.researchgate.net/profile/Elena-Pfeffer",
     "lookup_version": 7,
+    "institutional_page": "https://www.researchgate.net/profile/Elena-Pfeffer",
     "links": [
       {
         "kind": "institution",
@@ -40162,8 +40045,8 @@ export const SPEAKER_PROFILES = {
     "name": "Elena Quintanilla",
     "affiliation": "Stazione Zoologica Anton Dohrn",
     "confidence": "high",
-    "institutional_page": "https://tcmadirectory.tml.org/profile/74405",
     "lookup_version": 7,
+    "institutional_page": "https://tcmadirectory.tml.org/profile/74405",
     "links": [
       {
         "kind": "institution",
@@ -40193,8 +40076,8 @@ export const SPEAKER_PROFILES = {
     "name": "Elias Samankassou",
     "affiliation": "University of Geneva",
     "confidence": "high",
-    "institutional_page": "https://www.sepm.org/Switzerland",
     "lookup_version": 7,
+    "institutional_page": "https://www.sepm.org/Switzerland",
     "links": [
       {
         "kind": "institution",
@@ -40224,8 +40107,8 @@ export const SPEAKER_PROFILES = {
     "name": "Elizabeth Boville",
     "affiliation": "Pennsylvania State University",
     "confidence": "high",
-    "institutional_page": "https://science.psu.edu/bio/people/evb5530",
     "lookup_version": 7,
+    "institutional_page": "https://science.psu.edu/bio/people/evb5530",
     "links": [
       {
         "kind": "institution",
@@ -40255,8 +40138,8 @@ export const SPEAKER_PROFILES = {
     "name": "Elizabeth Ivory",
     "affiliation": "Southern Cross University",
     "confidence": "medium",
-    "institutional_page": "https://site-search.scu.edu.au/s/search.html?collection=scu~sp-search&f.Tabs%7Cscu~ds-people=People",
     "lookup_version": 7,
+    "institutional_page": "https://site-search.scu.edu.au/s/search.html?collection=scu~sp-search&f.Tabs%7Cscu~ds-people=People",
     "links": [
       {
         "kind": "institution",
@@ -40286,8 +40169,8 @@ export const SPEAKER_PROFILES = {
     "name": "Elizabeth Weatherup",
     "affiliation": "University of North Carolina - Wilmington",
     "confidence": "medium",
-    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/university-north-carolina-wilmington",
     "lookup_version": 7,
+    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/university-north-carolina-wilmington",
     "links": [
       {
         "kind": "institution",
@@ -40317,8 +40200,8 @@ export const SPEAKER_PROFILES = {
     "name": "Elizabeth Wu",
     "affiliation": "Arizona State University",
     "confidence": "high",
-    "institutional_page": "https://search.asu.edu/profile/2446809",
     "lookup_version": 7,
+    "institutional_page": "https://search.asu.edu/profile/2446809",
     "links": [
       {
         "kind": "institution",
@@ -40348,8 +40231,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emer Cunningham",
     "affiliation": "University of Queensland",
     "confidence": "high",
-    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/2781/emer-cunningham",
     "lookup_version": 7,
+    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/2781/emer-cunningham",
     "links": [
       {
         "kind": "institution",
@@ -40379,13 +40262,14 @@ export const SPEAKER_PROFILES = {
     "name": "Emily Trytten",
     "affiliation": "Northeastern University",
     "confidence": "high",
-    "institutional_page": "https://radaris.com/p/Mark/Keisling-US/",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "https://cos.northeastern.edu/people/emily-trytten/",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://radaris.com/p/Mark/Keisling-US/"
+        "url": "https://cos.northeastern.edu/people/emily-trytten/"
       },
       {
         "kind": "scholar_search",
@@ -40401,7 +40285,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://radaris.com/p/Mark/Keisling-US/"
+      "url": "https://cos.northeastern.edu/people/emily-trytten/"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
@@ -40410,8 +40294,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emma Doyle",
     "affiliation": "MPAConnect",
     "confidence": "high",
-    "institutional_page": "https://www.gcfi.org/improving-access-to-sustainable-marine-conservation-financing-in-the-caribbean/",
     "lookup_version": 7,
+    "institutional_page": "https://www.gcfi.org/improving-access-to-sustainable-marine-conservation-financing-in-the-caribbean/",
     "links": [
       {
         "kind": "institution",
@@ -40441,8 +40325,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emma Garcia",
     "affiliation": "Florida International University",
     "confidence": "medium",
-    "institutional_page": "https://news.fiu.edu/2025/fiu-honors-graduate-emilee-garcia-named-2025-perez-excellence-award-recipient",
     "lookup_version": 7,
+    "institutional_page": "https://news.fiu.edu/2025/fiu-honors-graduate-emilee-garcia-named-2025-perez-excellence-award-recipient",
     "links": [
       {
         "kind": "institution",
@@ -40472,8 +40356,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emma Miller",
     "affiliation": "University of Guam",
     "confidence": "high",
-    "institutional_page": "https://www.uog.edu/ml/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/ml/people",
     "links": [
       {
         "kind": "institution",
@@ -40503,8 +40387,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emma Pontes",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://www.aoml.noaa.gov/people/emma-pontes/",
     "lookup_version": 7,
+    "institutional_page": "https://www.aoml.noaa.gov/people/emma-pontes/",
     "links": [
       {
         "kind": "institution",
@@ -40534,8 +40418,8 @@ export const SPEAKER_PROFILES = {
     "name": "Emmeline Broad",
     "affiliation": "Memorial University of Newfoundland and Labrador",
     "confidence": "medium",
-    "institutional_page": "https://www.cicic.ca/873/memorial_university_of_newfoundland.canada?id=1475",
     "lookup_version": 7,
+    "institutional_page": "https://www.cicic.ca/873/memorial_university_of_newfoundland.canada?id=1475",
     "links": [
       {
         "kind": "institution",
@@ -40565,8 +40449,8 @@ export const SPEAKER_PROFILES = {
     "name": "Enora Carnac",
     "affiliation": "University of Li\u00e8ge",
     "confidence": "high",
-    "institutional_page": "https://oceanexpert.org/expert/61649",
     "lookup_version": 7,
+    "institutional_page": "https://oceanexpert.org/expert/61649",
     "links": [
       {
         "kind": "institution",
@@ -40596,8 +40480,8 @@ export const SPEAKER_PROFILES = {
     "name": "Eric Dilley",
     "affiliation": "Hawai'i Division of Aquatic Resources",
     "confidence": "medium",
-    "institutional_page": "https://www.hawaiiconservation.org/member/hawaii-department-of-land-and-natural-resources-division-of-aquatic-resources-dlnrdar/",
     "lookup_version": 7,
+    "institutional_page": "https://www.hawaiiconservation.org/member/hawaii-department-of-land-and-natural-resources-division-of-aquatic-resources-dlnrdar/",
     "links": [
       {
         "kind": "institution",
@@ -40627,8 +40511,8 @@ export const SPEAKER_PROFILES = {
     "name": "Eric Huitt",
     "affiliation": "University of California - Riverside",
     "confidence": "high",
-    "institutional_page": "https://engr.ucr.edu/image/eric-huitt-branded-collage",
     "lookup_version": 7,
+    "institutional_page": "https://engr.ucr.edu/image/eric-huitt-branded-collage",
     "links": [
       {
         "kind": "institution",
@@ -40658,13 +40542,13 @@ export const SPEAKER_PROFILES = {
     "name": "Eric Wade",
     "affiliation": "North Carolina State University",
     "confidence": "high",
-    "institutional_page": "https://radaris.com/p/Eric/Wade/",
     "lookup_version": 7,
+    "institutional_page": "https://meas.sciences.ncsu.edu/people/eawade/",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://radaris.com/p/Eric/Wade/"
+        "url": "https://meas.sciences.ncsu.edu/people/eawade/"
       },
       {
         "kind": "scholar_search",
@@ -40680,7 +40564,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://radaris.com/p/Eric/Wade/"
+      "url": "https://meas.sciences.ncsu.edu/people/eawade/"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
@@ -40690,8 +40574,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Oregon State University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://engineering.oregonstate.edu/people/erich-white",
     "lookup_version": 7,
+    "institutional_page": "https://engineering.oregonstate.edu/people/erich-white",
     "links": [
       {
         "kind": "institution",
@@ -40721,8 +40605,8 @@ export const SPEAKER_PROFILES = {
     "name": "Erin Cain",
     "affiliation": "University of Miami",
     "confidence": "medium",
-    "institutional_page": "https://miamioh.edu/profiles/",
     "lookup_version": 7,
+    "institutional_page": "https://miamioh.edu/profiles/",
     "links": [
       {
         "kind": "institution",
@@ -40752,8 +40636,8 @@ export const SPEAKER_PROFILES = {
     "name": "Erin Tharp",
     "affiliation": "Florida Atlantic University - Harbor Branch",
     "confidence": "medium",
-    "institutional_page": "https://www.fau.edu/education/facultystaff/phonebook/",
     "lookup_version": 7,
+    "institutional_page": "https://www.fau.edu/education/facultystaff/phonebook/",
     "links": [
       {
         "kind": "institution",
@@ -40783,8 +40667,8 @@ export const SPEAKER_PROFILES = {
     "name": "Eseta Drova",
     "affiliation": "University of the South Pacific",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_South_Pacific",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_South_Pacific",
     "links": [
       {
         "kind": "institution",
@@ -40836,8 +40720,8 @@ export const SPEAKER_PROFILES = {
     "name": "Eveline Kolijn",
     "affiliation": "Eveline Kolijn Studio",
     "confidence": "medium",
-    "institutional_page": "https://www.energyfutureslab.com/ambassador/eveline-kolijn",
     "lookup_version": 7,
+    "institutional_page": "https://www.energyfutureslab.com/ambassador/eveline-kolijn",
     "links": [
       {
         "kind": "institution",
@@ -40888,8 +40772,8 @@ export const SPEAKER_PROFILES = {
     "name": "Faoliu Teakau",
     "affiliation": "Tuvalu Meteorological Service",
     "confidence": "medium",
-    "institutional_page": "https://tuvmet.tv/",
     "lookup_version": 7,
+    "institutional_page": "https://tuvmet.tv/",
     "links": [
       {
         "kind": "institution",
@@ -40919,8 +40803,8 @@ export const SPEAKER_PROFILES = {
     "name": "Farah Oyhenart",
     "affiliation": "Florida International University",
     "confidence": "medium",
-    "institutional_page": "https://business.fiu.edu/academics/departments/international-business/faculty/",
     "lookup_version": 7,
+    "institutional_page": "https://business.fiu.edu/academics/departments/international-business/faculty/",
     "links": [
       {
         "kind": "institution",
@@ -40950,8 +40834,8 @@ export const SPEAKER_PROFILES = {
     "name": "Fatima Ramadhanty Rahmat",
     "affiliation": "Yayasan WWF Indonesia",
     "confidence": "medium",
-    "institutional_page": "https://ngodata.smeru.or.id/ngodb/435",
     "lookup_version": 7,
+    "institutional_page": "https://ngodata.smeru.or.id/ngodb/435",
     "links": [
       {
         "kind": "institution",
@@ -40981,8 +40865,8 @@ export const SPEAKER_PROFILES = {
     "name": "Fernanda Silva",
     "affiliation": "Technical University of Denmark",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Technical_University_of_Denmark",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Technical_University_of_Denmark",
     "links": [
       {
         "kind": "institution",
@@ -41012,8 +40896,8 @@ export const SPEAKER_PROFILES = {
     "name": "Fernando Zapata",
     "affiliation": "Universidad del Valle",
     "confidence": "high",
-    "institutional_page": "https://ciencias.univalle.edu.co/departamento-de-biologia/docentes/fernando-zapata",
     "lookup_version": 7,
+    "institutional_page": "https://ciencias.univalle.edu.co/departamento-de-biologia/docentes/fernando-zapata",
     "links": [
       {
         "kind": "institution",
@@ -41043,8 +40927,8 @@ export const SPEAKER_PROFILES = {
     "name": "Finley Chadwick",
     "affiliation": "University of Southampton",
     "confidence": "medium",
-    "institutional_page": "https://www.southampton.ac.uk/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.southampton.ac.uk/people",
     "links": [
       {
         "kind": "institution",
@@ -41074,8 +40958,8 @@ export const SPEAKER_PROFILES = {
     "name": "Fiona Chabbey",
     "affiliation": "University of Waikato",
     "confidence": "medium",
-    "institutional_page": "https://www.waikato.ac.nz/int/about/faculties-schools/science/staff/",
     "lookup_version": 7,
+    "institutional_page": "https://www.waikato.ac.nz/int/about/faculties-schools/science/staff/",
     "links": [
       {
         "kind": "institution",
@@ -41105,8 +40989,8 @@ export const SPEAKER_PROFILES = {
     "name": "Fong Yew Leong",
     "affiliation": "A*STAR Institute of High Performance Computing",
     "confidence": "high",
-    "institutional_page": "https://erc-assoc.org/content/institute-high-performance-computing",
     "lookup_version": 7,
+    "institutional_page": "https://erc-assoc.org/content/institute-high-performance-computing",
     "links": [
       {
         "kind": "institution",
@@ -41137,8 +41021,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Stanford University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://devbio.stanford.edu/graduate-students",
     "lookup_version": 7,
+    "institutional_page": "https://devbio.stanford.edu/graduate-students",
     "links": [
       {
         "kind": "institution",
@@ -41168,8 +41052,8 @@ export const SPEAKER_PROFILES = {
     "name": "Freya Goetz",
     "affiliation": "University of Southern California",
     "confidence": "medium",
-    "institutional_page": "https://network.expertisefinder.com/experts/goetz-schierle",
     "lookup_version": 7,
+    "institutional_page": "https://network.expertisefinder.com/experts/goetz-schierle",
     "links": [
       {
         "kind": "institution",
@@ -41199,8 +41083,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gabriela Cristina Mitsuhashi",
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "medium",
-    "institutional_page": "https://www.io.usp.br/",
     "lookup_version": 7,
+    "institutional_page": "https://www.io.usp.br/",
     "links": [
       {
         "kind": "institution",
@@ -41230,8 +41114,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gabriela Gutierrez",
     "affiliation": "Universidad Nacional Aut\u00f3noma de M\u00e9xico",
     "confidence": "high",
-    "institutional_page": "https://web.siia.unam.mx/siia-publico/c/busqueda_individual.php?id=77718",
     "lookup_version": 7,
+    "institutional_page": "https://web.siia.unam.mx/siia-publico/c/busqueda_individual.php?id=77718",
     "links": [
       {
         "kind": "institution",
@@ -41287,8 +41171,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gaurav Shimpi",
     "affiliation": "University of Tokyo",
     "confidence": "high",
-    "institutional_page": "https://the-scf.org/main/about-us/gaurav-shimpi/",
     "lookup_version": 7,
+    "institutional_page": "https://the-scf.org/main/about-us/gaurav-shimpi/",
     "links": [
       {
         "kind": "institution",
@@ -41318,8 +41202,8 @@ export const SPEAKER_PROFILES = {
     "name": "George Huster",
     "affiliation": "Newcastle University",
     "confidence": "medium",
-    "institutional_page": "https://www.ncl.ac.uk/hca/people/history/",
     "lookup_version": 7,
+    "institutional_page": "https://www.ncl.ac.uk/hca/people/history/",
     "links": [
       {
         "kind": "institution",
@@ -41349,8 +41233,8 @@ export const SPEAKER_PROFILES = {
     "name": "George Warfel",
     "affiliation": "Northwestern University - Marcelino Lab",
     "confidence": "medium",
-    "institutional_page": "http://www.civil.northwestern.edu/EHE/Marcelinogroup/",
     "lookup_version": 7,
+    "institutional_page": "http://www.civil.northwestern.edu/EHE/Marcelinogroup/",
     "links": [
       {
         "kind": "institution",
@@ -41380,8 +41264,8 @@ export const SPEAKER_PROFILES = {
     "name": "Georgia Lennox",
     "affiliation": "Murdoch University",
     "confidence": "medium",
-    "institutional_page": "https://www.topuniversities.com/universities/murdoch-university",
     "lookup_version": 7,
+    "institutional_page": "https://www.topuniversities.com/universities/murdoch-university",
     "links": [
       {
         "kind": "institution",
@@ -41411,8 +41295,8 @@ export const SPEAKER_PROFILES = {
     "name": "Georgina Musson",
     "affiliation": "University of Leeds",
     "confidence": "medium",
-    "institutional_page": "https://medicinehealth.leeds.ac.uk/medicine/staff/1507/georgina-davis",
     "lookup_version": 7,
+    "institutional_page": "https://medicinehealth.leeds.ac.uk/medicine/staff/1507/georgina-davis",
     "links": [
       {
         "kind": "institution",
@@ -41442,8 +41326,8 @@ export const SPEAKER_PROFILES = {
     "name": "Georgina Ramirez-ortiz",
     "affiliation": "Universidad Nacional Aut\u00f3noma De M\u00e9xico",
     "confidence": "medium",
-    "institutional_page": "https://www.fciencias.unam.mx/directorio/32764",
     "lookup_version": 7,
+    "institutional_page": "https://www.fciencias.unam.mx/directorio/32764",
     "links": [
       {
         "kind": "institution",
@@ -41473,8 +41357,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ge\u00f3rgenes Cavalcante",
     "affiliation": "New York University - Abu Dhabi",
     "confidence": "high",
-    "institutional_page": "https://nyuad.nyu.edu/en/research/faculty-labs-and-projects/access/georgenes-cavalcante.html",
     "lookup_version": 7,
+    "institutional_page": "https://nyuad.nyu.edu/en/research/faculty-labs-and-projects/access/georgenes-cavalcante.html",
     "links": [
       {
         "kind": "institution",
@@ -41504,8 +41388,8 @@ export const SPEAKER_PROFILES = {
     "name": "Giovanni Giallongo",
     "affiliation": "Ben Gurion University of the Negev",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Ben-Gurion_University_of_the_Negev",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Ben-Gurion_University_of_the_Negev",
     "links": [
       {
         "kind": "institution",
@@ -41535,8 +41419,8 @@ export const SPEAKER_PROFILES = {
     "name": "Godfrey Ngupula",
     "affiliation": "Tanzania Marine Parks and Reserves Unit",
     "confidence": "medium",
-    "institutional_page": "https://www.marineparks.go.tz/",
     "lookup_version": 7,
+    "institutional_page": "https://www.marineparks.go.tz/",
     "links": [
       {
         "kind": "institution",
@@ -41567,8 +41451,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Louisiana State University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://chsharrison.wordpress.com/gouri-anil/",
     "lookup_version": 7,
+    "institutional_page": "https://chsharrison.wordpress.com/gouri-anil/",
     "links": [
       {
         "kind": "institution",
@@ -41598,8 +41482,8 @@ export const SPEAKER_PROFILES = {
     "name": "Grace Middleton",
     "affiliation": "Curtin University",
     "confidence": "medium",
-    "institutional_page": "https://www.su.edu/admissions/future-first-year/meet-your-counselor/grace-curtin/",
     "lookup_version": 7,
+    "institutional_page": "https://www.su.edu/admissions/future-first-year/meet-your-counselor/grace-curtin/",
     "links": [
       {
         "kind": "institution",
@@ -41629,8 +41513,8 @@ export const SPEAKER_PROFILES = {
     "name": "Grace Yarger",
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
-    "institutional_page": "https://aims.jcu.edu.au/our-people/?sort=-member_type&page=4",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/?sort=-member_type&page=4",
     "links": [
       {
         "kind": "institution",
@@ -41660,8 +41544,8 @@ export const SPEAKER_PROFILES = {
     "name": "Gracia Schry",
     "affiliation": "Coral Restoration Foundation",
     "confidence": "medium",
-    "institutional_page": "https://coralrestoration.org/wp-content/uploads/2024/10/CRF2021_AnnualReport.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://coralrestoration.org/wp-content/uploads/2024/10/CRF2021_AnnualReport.pdf",
     "links": [
       {
         "kind": "institution",
@@ -41691,8 +41575,8 @@ export const SPEAKER_PROFILES = {
     "name": "Greta Gaiani",
     "affiliation": "University of Technology Sydney",
     "confidence": "high",
-    "institutional_page": "https://theconversation.com/the-tiny-microalgae-behind-south-australias-harmful-algal-bloom-is-among-the-most-toxic-ever-tested-286557",
     "lookup_version": 7,
+    "institutional_page": "https://theconversation.com/the-tiny-microalgae-behind-south-australias-harmful-algal-bloom-is-among-the-most-toxic-ever-tested-286557",
     "links": [
       {
         "kind": "institution",
@@ -41723,8 +41607,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://aims.jcu.edu.au/our-people/?sort=institution&page=6",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/?sort=institution&page=6",
     "links": [
       {
         "kind": "institution",
@@ -41754,8 +41638,8 @@ export const SPEAKER_PROFILES = {
     "name": "Guan-Yan Chen",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://jmadinlab.github.io/people/yan",
     "lookup_version": 7,
+    "institutional_page": "https://jmadinlab.github.io/people/yan",
     "links": [
       {
         "kind": "institution",
@@ -41785,8 +41669,8 @@ export const SPEAKER_PROFILES = {
     "name": "Guohan Yang",
     "affiliation": "University of Leeds",
     "confidence": "medium",
-    "institutional_page": "https://gtr.ukri.org/person/1006A7CF-C167-45D0-85E3-DDE2983F2143/",
     "lookup_version": 7,
+    "institutional_page": "https://gtr.ukri.org/person/1006A7CF-C167-45D0-85E3-DDE2983F2143/",
     "links": [
       {
         "kind": "institution",
@@ -41816,8 +41700,8 @@ export const SPEAKER_PROFILES = {
     "name": "H Malleshappa",
     "affiliation": "Suganthi Devadason Marine Research Institute",
     "confidence": "medium",
-    "institutional_page": "https://marineinfo.org/id/institute/5859.html",
     "lookup_version": 7,
+    "institutional_page": "https://marineinfo.org/id/institute/5859.html",
     "links": [
       {
         "kind": "institution",
@@ -41847,8 +41731,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hailey Hatch-West",
     "affiliation": "University of California - Merced",
     "confidence": "high",
-    "institutional_page": "https://www.soginlab.com/team",
     "lookup_version": 7,
+    "institutional_page": "https://www.soginlab.com/team",
     "links": [
       {
         "kind": "institution",
@@ -41878,8 +41762,8 @@ export const SPEAKER_PROFILES = {
     "name": "Haiying Ma",
     "affiliation": "Southern Marine Science and Engineering Guangdong Laboratory",
     "confidence": "medium",
-    "institutional_page": "https://tethys.pnnl.gov/organization/southern-marine-science-engineering-guangdong-laboratory",
     "lookup_version": 7,
+    "institutional_page": "https://tethys.pnnl.gov/organization/southern-marine-science-engineering-guangdong-laboratory",
     "links": [
       {
         "kind": "institution",
@@ -41930,8 +41814,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hana Amir",
     "affiliation": "Bangor University",
     "confidence": "high",
-    "institutional_page": "https://www.bangor.ac.uk/research-students/sos/hana-amir-128400/en",
     "lookup_version": 7,
+    "institutional_page": "https://www.bangor.ac.uk/research-students/sos/hana-amir-128400/en",
     "links": [
       {
         "kind": "institution",
@@ -41962,8 +41846,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.marinespatialecologylab.org/hannah-allan",
     "lookup_version": 7,
+    "institutional_page": "https://www.marinespatialecologylab.org/hannah-allan",
     "links": [
       {
         "kind": "institution",
@@ -41994,8 +41878,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Western Australia",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://scholars.westpac.com.au/scholars/profile/2025/2027/",
     "lookup_version": 7,
+    "institutional_page": "https://scholars.westpac.com.au/scholars/profile/2025/2027/",
     "links": [
       {
         "kind": "institution",
@@ -42026,8 +41910,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Florida International Univeristy",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/lamle-hannah-marie.html",
     "lookup_version": 7,
+    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/lamle-hannah-marie.html",
     "links": [
       {
         "kind": "institution",
@@ -42058,8 +41942,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/2525/harris-heng-wei-khang",
     "lookup_version": 7,
+    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/2525/harris-heng-wei-khang",
     "links": [
       {
         "kind": "institution",
@@ -42089,8 +41973,8 @@ export const SPEAKER_PROFILES = {
     "name": "Haruna Abe",
     "affiliation": "Kitasato University",
     "confidence": "medium",
-    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/kitasato-university",
     "lookup_version": 7,
+    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/kitasato-university",
     "links": [
       {
         "kind": "institution",
@@ -42121,8 +42005,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Florida International University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/acors-hayden.html",
     "lookup_version": 7,
+    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/acors-hayden.html",
     "links": [
       {
         "kind": "institution",
@@ -42152,8 +42036,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hazel Oakley",
     "affiliation": "National University of Singapore",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/National_University_of_Singapore",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/National_University_of_Singapore",
     "links": [
       {
         "kind": "institution",
@@ -42183,8 +42067,8 @@ export const SPEAKER_PROFILES = {
     "name": "Heather Bauer Reid",
     "affiliation": "Trent University",
     "confidence": "high",
-    "institutional_page": "https://www.rabylab.com/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.rabylab.com/people",
     "links": [
       {
         "kind": "institution",
@@ -42215,8 +42099,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Sea Education Association",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://sea.edu/team/heather-page/",
     "lookup_version": 7,
+    "institutional_page": "https://sea.edu/team/heather-page/",
     "links": [
       {
         "kind": "institution",
@@ -42246,8 +42130,8 @@ export const SPEAKER_PROFILES = {
     "name": "Henry Arbaugh",
     "affiliation": "University of San Diego",
     "confidence": "medium",
-    "institutional_page": "https://www.sandiego.edu/cas/faculty/biography.php?ID=193",
     "lookup_version": 7,
+    "institutional_page": "https://www.sandiego.edu/cas/faculty/biography.php?ID=193",
     "links": [
       {
         "kind": "institution",
@@ -42277,8 +42161,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hidemi Shimbo",
     "affiliation": "University Of The Ryukyus",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "links": [
       {
         "kind": "institution",
@@ -42308,8 +42192,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hin Boo Wee",
     "affiliation": "Universiti Kebangsaan Malaysia",
     "confidence": "high",
-    "institutional_page": "https://www.topuniversities.com/universities/universiti-kebangsaan-malaysia-ukm",
     "lookup_version": 7,
+    "institutional_page": "https://www.topuniversities.com/universities/universiti-kebangsaan-malaysia-ukm",
     "links": [
       {
         "kind": "institution",
@@ -42339,8 +42223,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hiroki Suzuki",
     "affiliation": "University Of The Ryukyus",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "links": [
       {
         "kind": "institution",
@@ -42370,8 +42254,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hudson Feremaito",
     "affiliation": "Ministry of Fisheries, Oceans and Maritime Affairs - Vanuatu",
     "confidence": "high",
-    "institutional_page": "https://journals.plos.org/plosone/article?amp=&amp=&amp=&id=10.1371%2Fjournal.pone.0339852",
     "lookup_version": 7,
+    "institutional_page": "https://journals.plos.org/plosone/article?amp=&amp=&amp=&id=10.1371%2Fjournal.pone.0339852",
     "links": [
       {
         "kind": "institution",
@@ -42401,8 +42285,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hugo Fahey",
     "affiliation": "University of Wollongong",
     "confidence": "medium",
-    "institutional_page": "https://www.uow.edu.au/research/advanced-manufacturing-technologies/cimr/our-people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.uow.edu.au/research/advanced-manufacturing-technologies/cimr/our-people/",
     "links": [
       {
         "kind": "institution",
@@ -42432,8 +42316,8 @@ export const SPEAKER_PROFILES = {
     "name": "Hye-won Moon",
     "affiliation": "National Marine Biodiversity Institute of Korea",
     "confidence": "medium",
-    "institutional_page": "https://www.gbif.org/publisher/2b4e561b-0b1a-4c1b-b564-819bcfe006b8",
     "lookup_version": 7,
+    "institutional_page": "https://www.gbif.org/publisher/2b4e561b-0b1a-4c1b-b564-819bcfe006b8",
     "links": [
       {
         "kind": "institution",
@@ -42511,8 +42395,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ilan Bubb",
     "affiliation": "Johnston Applied Marine Sciences/University of Amsterdam",
     "confidence": "high",
-    "institutional_page": "https://en.wikipedia.org/wiki/Amsterdam_University_of_Applied_Sciences",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Amsterdam_University_of_Applied_Sciences",
     "links": [
       {
         "kind": "institution",
@@ -42542,8 +42426,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ilse Valenzuela",
     "affiliation": "University of Porto",
     "confidence": "medium",
-    "institutional_page": "https://www.wikidata.org/wiki/Q1422903",
     "lookup_version": 7,
+    "institutional_page": "https://www.wikidata.org/wiki/Q1422903",
     "links": [
       {
         "kind": "institution",
@@ -42573,8 +42457,8 @@ export const SPEAKER_PROFILES = {
     "name": "Isabel Marques Silva",
     "affiliation": "Universidade L\u00fario",
     "confidence": "high",
-    "institutional_page": "https://autonoma.pt/en/teachers/",
     "lookup_version": 7,
+    "institutional_page": "https://autonoma.pt/en/teachers/",
     "links": [
       {
         "kind": "institution",
@@ -42604,8 +42488,8 @@ export const SPEAKER_PROFILES = {
     "name": "Isabella Deary",
     "affiliation": "Queensland University of Technology",
     "confidence": "high",
-    "institutional_page": "https://eprints.qut.edu.au/view/types/qut=5Fthesis/2026.html",
     "lookup_version": 7,
+    "institutional_page": "https://eprints.qut.edu.au/view/types/qut=5Fthesis/2026.html",
     "links": [
       {
         "kind": "institution",
@@ -42656,8 +42540,8 @@ export const SPEAKER_PROFILES = {
     "name": "Isabelle Osuna",
     "affiliation": "Georgia Institute of Technology",
     "confidence": "medium",
-    "institutional_page": "https://biosciences.gatech.edu/people",
     "lookup_version": 7,
+    "institutional_page": "https://biosciences.gatech.edu/people",
     "links": [
       {
         "kind": "institution",
@@ -42687,8 +42571,8 @@ export const SPEAKER_PROFILES = {
     "name": "Isla Turcke",
     "affiliation": "University of Alberta",
     "confidence": "medium",
-    "institutional_page": "https://apps.ualberta.ca/directory",
     "lookup_version": 7,
+    "institutional_page": "https://apps.ualberta.ca/directory",
     "links": [
       {
         "kind": "institution",
@@ -42718,8 +42602,8 @@ export const SPEAKER_PROFILES = {
     "name": "Itai Grisaru",
     "affiliation": "Tel Aviv University",
     "confidence": "medium",
-    "institutional_page": "https://sites.google.com/site/itaiater/",
     "lookup_version": 7,
+    "institutional_page": "https://sites.google.com/site/itaiater/",
     "links": [
       {
         "kind": "institution",
@@ -42749,8 +42633,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ivonne Paola Rojas Martinez",
     "affiliation": "University of Bologna",
     "confidence": "high",
-    "institutional_page": "https://www.unibo.it/sitoweb/ivonne.rojasmartine2/",
     "lookup_version": 7,
+    "institutional_page": "https://www.unibo.it/sitoweb/ivonne.rojasmartine2/",
     "links": [
       {
         "kind": "institution",
@@ -42780,8 +42664,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jacinta Gigileia Jonathan",
     "affiliation": "Sea Women of Melanesia Inc",
     "confidence": "high",
-    "institutional_page": "https://www.forbes.com/sites/andrewwight/2023/02/22/an-illegal-trade-is-killing-rare-dolphins-in-papua-new-guinea/",
     "lookup_version": 7,
+    "institutional_page": "https://www.forbes.com/sites/andrewwight/2023/02/22/an-illegal-trade-is-killing-rare-dolphins-in-papua-new-guinea/",
     "links": [
       {
         "kind": "institution",
@@ -42811,8 +42695,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jacob Snyder",
     "affiliation": "Hawai\u02bbi Institute of Marine Biology",
     "confidence": "medium",
-    "institutional_page": "https://lmcmanus47.github.io/people.html",
     "lookup_version": 7,
+    "institutional_page": "https://lmcmanus47.github.io/people.html",
     "links": [
       {
         "kind": "institution",
@@ -42843,8 +42727,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Victoria University of Wellington",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://jadeshivak.com/",
     "lookup_version": 7,
+    "institutional_page": "https://jadeshivak.com/",
     "links": [
       {
         "kind": "institution",
@@ -42875,8 +42759,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.reeffunctionhub.org/our-people.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.reeffunctionhub.org/our-people.html",
     "links": [
       {
         "kind": "institution",
@@ -42906,8 +42790,8 @@ export const SPEAKER_PROFILES = {
     "name": "James KH Fang",
     "affiliation": "Hong Kong Polytechnic University",
     "confidence": "high",
-    "institutional_page": "https://www.polyu.edu.hk/cee/~rnus/people.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.polyu.edu.hk/cee/~rnus/people.html",
     "links": [
       {
         "kind": "institution",
@@ -42937,8 +42821,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jan Paulini",
     "affiliation": "University of Konstanz",
     "confidence": "high",
-    "institutional_page": "https://www.ab.mpg.de/10703/team-alt",
     "lookup_version": 7,
+    "institutional_page": "https://www.ab.mpg.de/10703/team-alt",
     "links": [
       {
         "kind": "institution",
@@ -42968,8 +42852,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jane Cita Syafitri Sudrajat",
     "affiliation": "IPB University",
     "confidence": "medium",
-    "institutional_page": "https://stat.ipb.ac.id/faculty-member/",
     "lookup_version": 7,
+    "institutional_page": "https://stat.ipb.ac.id/faculty-member/",
     "links": [
       {
         "kind": "institution",
@@ -42999,8 +42883,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jane Waterhouse",
     "affiliation": "C2o Consulting And James Cook University",
     "confidence": "high",
-    "institutional_page": "https://www.csiro.au/en/news/All/News/2024/August/Latest-Great-Barrier-Reef-water-quality-Scientific-Consensus-Statement-released",
     "lookup_version": 7,
+    "institutional_page": "https://www.csiro.au/en/news/All/News/2024/August/Latest-Great-Barrier-Reef-water-quality-Scientific-Consensus-Statement-released",
     "links": [
       {
         "kind": "institution",
@@ -43030,8 +42914,8 @@ export const SPEAKER_PROFILES = {
     "name": "Janie Wulff",
     "affiliation": "Florida State University",
     "confidence": "medium",
-    "institutional_page": "https://www.bio.fsu.edu/wulff/Wulff%202005l.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://www.bio.fsu.edu/wulff/Wulff%202005l.pdf",
     "links": [
       {
         "kind": "institution",
@@ -43061,8 +42945,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jasmin Broadbridge",
     "affiliation": "Adelaide University",
     "confidence": "medium",
-    "institutional_page": "https://adelaide.edu.au/people/j.packer",
     "lookup_version": 7,
+    "institutional_page": "https://adelaide.edu.au/people/j.packer",
     "links": [
       {
         "kind": "institution",
@@ -43114,8 +42998,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jean Aim\u00e9 Zafimahatradraibe",
     "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara",
     "confidence": "high",
-    "institutional_page": "https://www.commissionoceanindien.org/faites-connaissance-avec-jean-aime-zafimahatradraibe-premier-beneficiaire-dune-bourse-recos/",
     "lookup_version": 7,
+    "institutional_page": "https://www.commissionoceanindien.org/faites-connaissance-avec-jean-aime-zafimahatradraibe-premier-beneficiaire-dune-bourse-recos/",
     "links": [
       {
         "kind": "institution",
@@ -43145,8 +43029,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jeffry Jeve",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Philippines_Diliman",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Philippines_Diliman",
     "links": [
       {
         "kind": "institution",
@@ -43177,8 +43061,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Sydney",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.unsw.edu.au/staff/jenny-wang",
     "lookup_version": 7,
+    "institutional_page": "https://www.unsw.edu.au/staff/jenny-wang",
     "links": [
       {
         "kind": "institution",
@@ -43208,14 +43092,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jeong-Hyun Lee",
     "affiliation": "Chungnam National University",
     "confidence": "medium",
-    "institutional_page": "https://www.spokeo.com/Jeonghyun-Lee",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.spokeo.com/Jeonghyun-Lee"
-      },
       {
         "kind": "openalex",
         "label": "OpenAlex profile",
@@ -43237,11 +43115,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Jeong-Hyun+Lee+Chungnam+National+University"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.spokeo.com/Jeonghyun-Lee"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -43249,8 +43123,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jeric Diocton",
     "affiliation": "University of the Philippines",
     "confidence": "medium",
-    "institutional_page": "https://www.upb.edu.ph/faculty-roster/",
     "lookup_version": 7,
+    "institutional_page": "https://www.upb.edu.ph/faculty-roster/",
     "links": [
       {
         "kind": "institution",
@@ -43280,8 +43154,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jessica C. Savage",
     "affiliation": "Durrell Institute of Conservation and Ecology",
     "confidence": "high",
-    "institutional_page": "https://www.kent.ac.uk/graduate-researcher-college/people/5262/savage-jessica",
     "lookup_version": 7,
+    "institutional_page": "https://www.kent.ac.uk/graduate-researcher-college/people/5262/savage-jessica",
     "links": [
       {
         "kind": "institution",
@@ -43311,8 +43185,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jessica Eri Fernandez",
     "affiliation": "University of Guam",
     "confidence": "medium",
-    "institutional_page": "https://www.uog.edu/directory/index.php/index?alpha=G",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/directory/index.php/index?alpha=G",
     "links": [
       {
         "kind": "institution",
@@ -43343,8 +43217,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://pi-casc.soest.hawaii.edu/directory/students-post-docs/",
     "lookup_version": 7,
+    "institutional_page": "https://pi-casc.soest.hawaii.edu/directory/students-post-docs/",
     "links": [
       {
         "kind": "institution",
@@ -43375,8 +43249,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST  & Harvard T.H. Chan School of Public Health",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/jessica-zamborain-mason",
     "lookup_version": 7,
+    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty/jessica-zamborain-mason",
     "links": [
       {
         "kind": "institution",
@@ -43406,8 +43280,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jessie Dambra",
     "affiliation": "Coral Restoration Foundation",
     "confidence": "medium",
-    "institutional_page": "https://coralrestoration.org/staff/emma-thomson/",
     "lookup_version": 7,
+    "institutional_page": "https://coralrestoration.org/staff/emma-thomson/",
     "links": [
       {
         "kind": "institution",
@@ -43437,8 +43311,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ji-yen Cheng",
     "affiliation": "Academia Sinica",
     "confidence": "high",
-    "institutional_page": "https://www.science.gov/topicpages/a/academia+sinica+taiwan",
     "lookup_version": 7,
+    "institutional_page": "https://www.science.gov/topicpages/a/academia+sinica+taiwan",
     "links": [
       {
         "kind": "institution",
@@ -43468,8 +43342,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jie Li",
     "affiliation": "South China Sea Institute of Oceanology",
     "confidence": "high",
-    "institutional_page": "http://english.qdio.cas.cn/people2016/faculty_and_staff2016/201907/t20190719_213389.html",
     "lookup_version": 7,
+    "institutional_page": "http://english.qdio.cas.cn/people2016/faculty_and_staff2016/201907/t20190719_213389.html",
     "links": [
       {
         "kind": "institution",
@@ -43499,8 +43373,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jimena Paredes-De la Vega",
     "affiliation": "University of Hong Kong",
     "confidence": "medium",
-    "institutional_page": "https://www.eng.cuhk.edu.hk/people/academic-staff/full-time-staff/",
     "lookup_version": 7,
+    "institutional_page": "https://www.eng.cuhk.edu.hk/people/academic-staff/full-time-staff/",
     "links": [
       {
         "kind": "institution",
@@ -43530,8 +43404,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joanne Salzer",
     "affiliation": "University of Maryland Center for Environmental Sciences- Institute of Marine and Environmental Technology",
     "confidence": "high",
-    "institutional_page": "https://www.mees.umd.edu/student-byfoundation",
     "lookup_version": 7,
+    "institutional_page": "https://www.mees.umd.edu/student-byfoundation",
     "links": [
       {
         "kind": "institution",
@@ -43561,8 +43435,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joelle Mattos",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "medium",
-    "institutional_page": "https://guides.library.manoa.hawaii.edu/prf.php?account_id=18018",
     "lookup_version": 7,
+    "institutional_page": "https://guides.library.manoa.hawaii.edu/prf.php?account_id=18018",
     "links": [
       {
         "kind": "institution",
@@ -43592,8 +43466,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jokim Kitolelei",
     "affiliation": "University of the South Pacific",
     "confidence": "medium",
-    "institutional_page": "https://peump.dev/sites/default/files/2024-12/WIF40.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://peump.dev/sites/default/files/2024-12/WIF40.pdf",
     "links": [
       {
         "kind": "institution",
@@ -43623,8 +43497,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jonas Dreesmann",
     "affiliation": "Bergische Universit\u00e4t Wuppertal",
     "confidence": "high",
-    "institutional_page": "https://www.nature.com/articles/s41598-026-38032-6",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.com/articles/s41598-026-38032-6",
     "links": [
       {
         "kind": "institution",
@@ -43654,8 +43528,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jonathan Martinez",
     "affiliation": "University of Hawai'i",
     "confidence": "high",
-    "institutional_page": "https://academictree.org/mareco/tree.php?pid=95787",
     "lookup_version": 7,
+    "institutional_page": "https://academictree.org/mareco/tree.php?pid=95787",
     "links": [
       {
         "kind": "institution",
@@ -43686,8 +43560,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.scu.edu.au/news/2024/jordan-ivey/",
     "lookup_version": 7,
+    "institutional_page": "https://www.scu.edu.au/news/2024/jordan-ivey/",
     "links": [
       {
         "kind": "institution",
@@ -43717,8 +43591,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jordan Sims",
     "affiliation": "University of California - Berkeley",
     "confidence": "medium",
-    "institutional_page": "https://www.stat.berkeley.edu/~nolan/sims/appl/instruc97.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.stat.berkeley.edu/~nolan/sims/appl/instruc97.html",
     "links": [
       {
         "kind": "institution",
@@ -43748,8 +43622,8 @@ export const SPEAKER_PROFILES = {
     "name": "Josh Hardin",
     "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science",
     "confidence": "medium",
-    "institutional_page": "https://bulletin.miami.edu/undergraduate-academic-programs/marine-atmospheric-science/",
     "lookup_version": 7,
+    "institutional_page": "https://bulletin.miami.edu/undergraduate-academic-programs/marine-atmospheric-science/",
     "links": [
       {
         "kind": "institution",
@@ -43779,8 +43653,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jos\u00e9 Bastos",
     "affiliation": "Universidade Federal do Rio Grande do Norte",
     "confidence": "medium",
-    "institutional_page": "https://ufrn.br/en",
     "lookup_version": 7,
+    "institutional_page": "https://ufrn.br/en",
     "links": [
       {
         "kind": "institution",
@@ -43810,8 +43684,8 @@ export const SPEAKER_PROFILES = {
     "name": "Joy Falotico",
     "affiliation": "California Academy of Sciences",
     "confidence": "medium",
-    "institutional_page": "https://localnewsmatters.org/2025/06/30/drag-joy-and-community-light-up-pride-nightlife-at-california-academy-of-sciences/",
     "lookup_version": 7,
+    "institutional_page": "https://localnewsmatters.org/2025/06/30/drag-joy-and-community-light-up-pride-nightlife-at-california-academy-of-sciences/",
     "links": [
       {
         "kind": "institution",
@@ -43841,8 +43715,8 @@ export const SPEAKER_PROFILES = {
     "name": "Juan Esquivel-muelbert",
     "affiliation": "Macquarie University",
     "confidence": "high",
-    "institutional_page": "https://researchers.mq.edu.au/en/publications/the-natural-architecture-of-oyster-reefs-maximizes-recruit-surviv/",
     "lookup_version": 7,
+    "institutional_page": "https://researchers.mq.edu.au/en/publications/the-natural-architecture-of-oyster-reefs-maximizes-recruit-surviv/",
     "links": [
       {
         "kind": "institution",
@@ -43872,8 +43746,8 @@ export const SPEAKER_PROFILES = {
     "name": "Julia Terra Torres",
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "medium",
-    "institutional_page": "https://www.juliatorres.org/",
     "lookup_version": 7,
+    "institutional_page": "https://www.juliatorres.org/",
     "links": [
       {
         "kind": "institution",
@@ -43903,8 +43777,8 @@ export const SPEAKER_PROFILES = {
     "name": "Julian Gueho",
     "affiliation": "University of Queensland",
     "confidence": "medium",
-    "institutional_page": "https://environment.uq.edu.au/about/our-people",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/about/our-people",
     "links": [
       {
         "kind": "institution",
@@ -43934,14 +43808,9 @@ export const SPEAKER_PROFILES = {
     "name": "Julianne Robinson Stockbridge",
     "affiliation": "Individual",
     "confidence": "high",
-    "institutional_page": "https://radaris.com/p/Julian/Robinson/",
+    "verified": true,
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://radaris.com/p/Julian/Robinson/"
-      },
       {
         "kind": "scholar_search",
         "label": "Search Google Scholar",
@@ -43953,11 +43822,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Julianne+Robinson+Stockbridge+Individual"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://radaris.com/p/Julian/Robinson/"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -43965,8 +43830,8 @@ export const SPEAKER_PROFILES = {
     "name": "Julie Hartup",
     "affiliation": "Micronesian Conservation Coalition",
     "confidence": "high",
-    "institutional_page": "https://www.guampdn.com/news/guam-manta-ray-research-yields-new-understanding-of-species/article_4c72fbb6-7a7b-11ec-98ce-abd86f0de5fe.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.guampdn.com/news/guam-manta-ray-research-yields-new-understanding-of-species/article_4c72fbb6-7a7b-11ec-98ce-abd86f0de5fe.html",
     "links": [
       {
         "kind": "institution",
@@ -43996,8 +43861,8 @@ export const SPEAKER_PROFILES = {
     "name": "Julio San Martin",
     "affiliation": "Coral Reef Alliance",
     "confidence": "medium",
-    "institutional_page": "https://memoriaviva.cl/detenidos-desaparecidos/san-martin-julio",
     "lookup_version": 7,
+    "institutional_page": "https://memoriaviva.cl/detenidos-desaparecidos/san-martin-julio",
     "links": [
       {
         "kind": "institution",
@@ -44027,8 +43892,8 @@ export const SPEAKER_PROFILES = {
     "name": "Jun Cai",
     "affiliation": "Oregon State University",
     "confidence": "high",
-    "institutional_page": "https://ib.oregonstate.edu/directory/jun-cai",
     "lookup_version": 7,
+    "institutional_page": "https://ib.oregonstate.edu/directory/jun-cai",
     "links": [
       {
         "kind": "institution",
@@ -44058,8 +43923,8 @@ export const SPEAKER_PROFILES = {
     "name": "JUNTAO YANG",
     "affiliation": "Tokyo Metropolitan University",
     "confidence": "medium",
-    "institutional_page": "https://www.biz.tmu.ac.jp/en/faculty/",
     "lookup_version": 7,
+    "institutional_page": "https://www.biz.tmu.ac.jp/en/faculty/",
     "links": [
       {
         "kind": "institution",
@@ -44089,8 +43954,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kaiku Kaholoaa",
     "affiliation": "Stanford University",
     "confidence": "high",
-    "institutional_page": "https://vpge.stanford.edu/people/kaikuliumaikalani-kaholoaa",
     "lookup_version": 7,
+    "institutional_page": "https://vpge.stanford.edu/people/kaikuliumaikalani-kaholoaa",
     "links": [
       {
         "kind": "institution",
@@ -44120,8 +43985,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kamaka Frasco",
     "affiliation": "University of Hawai\u02bbi at Hilo",
     "confidence": "high",
-    "institutional_page": "https://hilo.hawaii.edu/chancellor/stories/2026/05/26/coral-restoration-event-at-puhi-bay/",
     "lookup_version": 7,
+    "institutional_page": "https://hilo.hawaii.edu/chancellor/stories/2026/05/26/coral-restoration-event-at-puhi-bay/",
     "links": [
       {
         "kind": "institution",
@@ -44151,8 +44016,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kannapoj Techawongstien",
     "affiliation": "University Of The Ryukyus",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "links": [
       {
         "kind": "institution",
@@ -44213,8 +44078,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kate Brown",
     "affiliation": "Global Island Partnership",
     "confidence": "medium",
-    "institutional_page": "https://contactgovernors.com/oregon/kate-brown/",
     "lookup_version": 7,
+    "institutional_page": "https://contactgovernors.com/oregon/kate-brown/",
     "links": [
       {
         "kind": "institution",
@@ -44276,8 +44141,8 @@ export const SPEAKER_PROFILES = {
     "name": "Katharina Bauda",
     "affiliation": "Instituto Tecnol\u00f3gico de Bah\u00eda de Banderas",
     "confidence": "medium",
-    "institutional_page": "https://www.bahia.tecnm.mx/",
     "lookup_version": 7,
+    "institutional_page": "https://www.bahia.tecnm.mx/",
     "links": [
       {
         "kind": "institution",
@@ -44308,8 +44173,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Oxford",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://reuben.ox.ac.uk/people/katherine-faulkner",
     "lookup_version": 7,
+    "institutional_page": "https://reuben.ox.ac.uk/people/katherine-faulkner",
     "links": [
       {
         "kind": "institution",
@@ -44340,8 +44205,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Washington",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://cvpa.gmu.edu/node/9181",
     "lookup_version": 7,
+    "institutional_page": "https://cvpa.gmu.edu/node/9181",
     "links": [
       {
         "kind": "institution",
@@ -44372,8 +44237,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty",
     "lookup_version": 7,
+    "institutional_page": "https://www.kaust.edu.sa/en/study/faculty",
     "links": [
       {
         "kind": "institution",
@@ -44403,8 +44268,8 @@ export const SPEAKER_PROFILES = {
     "name": "Katy Rylance",
     "affiliation": "University of Leeds",
     "confidence": "medium",
-    "institutional_page": "https://medicinehealth.leeds.ac.uk/medicine/staff/1673/katy",
     "lookup_version": 7,
+    "institutional_page": "https://medicinehealth.leeds.ac.uk/medicine/staff/1673/katy",
     "links": [
       {
         "kind": "institution",
@@ -44434,8 +44299,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kayle Stremler",
     "affiliation": "University of California - Santa Cruz",
     "confidence": "medium",
-    "institutional_page": "https://goslugs.com/staff-directory",
     "lookup_version": 7,
+    "institutional_page": "https://goslugs.com/staff-directory",
     "links": [
       {
         "kind": "institution",
@@ -44465,8 +44330,8 @@ export const SPEAKER_PROFILES = {
     "name": "Keana Richmond",
     "affiliation": "Cal Poly Humboldt",
     "confidence": "medium",
-    "institutional_page": "https://www.humboldt.edu/biological-sciences/faculty",
     "lookup_version": 7,
+    "institutional_page": "https://www.humboldt.edu/biological-sciences/faculty",
     "links": [
       {
         "kind": "institution",
@@ -44496,8 +44361,8 @@ export const SPEAKER_PROFILES = {
     "name": "Keiko Wilkins",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://www.miamialum.org/s/916/22/Interior.aspx?sid=916&gid=1&sitebuilder=1&pgid=19868",
     "lookup_version": 7,
+    "institutional_page": "https://www.miamialum.org/s/916/22/Interior.aspx?sid=916&gid=1&sitebuilder=1&pgid=19868",
     "links": [
       {
         "kind": "institution",
@@ -44527,8 +44392,8 @@ export const SPEAKER_PROFILES = {
     "name": "Keivan Kabiri",
     "affiliation": "Iranian National Institute for Oceanography and Atmospheric Science",
     "confidence": "high",
-    "institutional_page": "https://oceanexpert.org/expert/k1_kabiri",
     "lookup_version": 7,
+    "institutional_page": "https://oceanexpert.org/expert/k1_kabiri",
     "links": [
       {
         "kind": "institution",
@@ -44558,8 +44423,8 @@ export const SPEAKER_PROFILES = {
     "name": "Keku\u02bbiap\u014diula Keliipuleole",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "medium",
-    "institutional_page": "https://www.kuikeliipuleole.com/uploads/9/4/8/8/94886978/keliipuleole_ms_thesis_2022.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://www.kuikeliipuleole.com/uploads/9/4/8/8/94886978/keliipuleole_ms_thesis_2022.pdf",
     "links": [
       {
         "kind": "institution",
@@ -44589,8 +44454,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kelly Inagaki",
     "affiliation": "Universidade Federal do Rio Grande do Norte",
     "confidence": "medium",
-    "institutional_page": "https://www.youtube.com/channel/UCcmMkz6wQcG2L7wMQNfM1Hw",
     "lookup_version": 7,
+    "institutional_page": "https://www.youtube.com/channel/UCcmMkz6wQcG2L7wMQNfM1Hw",
     "links": [
       {
         "kind": "institution",
@@ -44625,8 +44490,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kelly van Woesik",
     "affiliation": "North Carolina State University",
     "confidence": "high",
-    "institutional_page": "https://provost.ncsu.edu/global-one-health-academy/kelly-van-woesik/",
     "lookup_version": 7,
+    "institutional_page": "https://provost.ncsu.edu/global-one-health-academy/kelly-van-woesik/",
     "links": [
       {
         "kind": "institution",
@@ -44657,8 +44522,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://siocpg.ucsd.edu/team/kelsey-kingsbury/",
     "lookup_version": 7,
+    "institutional_page": "https://siocpg.ucsd.edu/team/kelsey-kingsbury/",
     "links": [
       {
         "kind": "institution",
@@ -44688,8 +44553,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ken Dedes",
     "affiliation": "Institut Teknologi Bandung",
     "confidence": "medium",
-    "institutional_page": "https://campus.quipper.com/directory/institut-teknologi-bandung",
     "lookup_version": 7,
+    "institutional_page": "https://campus.quipper.com/directory/institut-teknologi-bandung",
     "links": [
       {
         "kind": "institution",
@@ -44719,8 +44584,8 @@ export const SPEAKER_PROFILES = {
     "name": "Keno Hsueh",
     "affiliation": "University of Guam",
     "confidence": "high",
-    "institutional_page": "https://www.uog.edu/ml/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/ml/people",
     "links": [
       {
         "kind": "institution",
@@ -44750,8 +44615,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kenzie Cooke",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://www.aoml.noaa.gov/people/kenzie-cooke/",
     "lookup_version": 7,
+    "institutional_page": "https://www.aoml.noaa.gov/people/kenzie-cooke/",
     "links": [
       {
         "kind": "institution",
@@ -44781,8 +44646,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kerry Dunleavy",
     "affiliation": "Conservation Metrics",
     "confidence": "high",
-    "institutional_page": "https://conservationmetrics.com/our-team/",
     "lookup_version": 7,
+    "institutional_page": "https://conservationmetrics.com/our-team/",
     "links": [
       {
         "kind": "institution",
@@ -44812,8 +44677,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kevin Bairos-Novak",
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
-    "institutional_page": "https://aims.jcu.edu.au/our-people/students/kevin-bairos-novak.505/",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/students/kevin-bairos-novak.505/",
     "links": [
       {
         "kind": "institution",
@@ -44844,8 +44709,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Konstanz",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.biologie.uni-konstanz.de/voolstra/team/",
     "lookup_version": 7,
+    "institutional_page": "https://www.biologie.uni-konstanz.de/voolstra/team/",
     "links": [
       {
         "kind": "institution",
@@ -44875,8 +44740,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kira Brereton",
     "affiliation": "University of Western Australia",
     "confidence": "medium",
-    "institutional_page": "https://www.appliedbioinformatics.com.au/Members.php",
     "lookup_version": 7,
+    "institutional_page": "https://www.appliedbioinformatics.com.au/Members.php",
     "links": [
       {
         "kind": "institution",
@@ -44906,8 +44771,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kirsty Frith",
     "affiliation": "University of Leeds",
     "confidence": "medium",
-    "institutional_page": "https://www.sisofrida.org/tag/kirsty-liddiard/",
     "lookup_version": 7,
+    "institutional_page": "https://www.sisofrida.org/tag/kirsty-liddiard/",
     "links": [
       {
         "kind": "institution",
@@ -44937,8 +44802,8 @@ export const SPEAKER_PROFILES = {
     "name": "Kok Lynn Chew",
     "affiliation": "Coralku Solutions",
     "confidence": "high",
-    "institutional_page": "https://link.springer.com/article/10.1007/s00338-025-02771-1",
     "lookup_version": 7,
+    "institutional_page": "https://link.springer.com/article/10.1007/s00338-025-02771-1",
     "links": [
       {
         "kind": "institution",
@@ -44990,8 +44855,8 @@ export const SPEAKER_PROFILES = {
     "name": "Krystle-blue Pahl",
     "affiliation": "University of Alabama",
     "confidence": "medium",
-    "institutional_page": "https://bsc.ua.edu/directory/",
     "lookup_version": 7,
+    "institutional_page": "https://bsc.ua.edu/directory/",
     "links": [
       {
         "kind": "institution",
@@ -45021,8 +44886,8 @@ export const SPEAKER_PROFILES = {
     "name": "Laura Cotrino Salcedo",
     "affiliation": "Corales De Paz",
     "confidence": "high",
-    "institutional_page": "https://ipt.biodiversidad.co/sibm/resource?r=coralespaz_expedicion-tribuga",
     "lookup_version": 7,
+    "institutional_page": "https://ipt.biodiversidad.co/sibm/resource?r=coralespaz_expedicion-tribuga",
     "links": [
       {
         "kind": "institution",
@@ -45130,8 +44995,8 @@ export const SPEAKER_PROFILES = {
     "name": "Layla Iijima",
     "affiliation": "Institut de Recherche pour le D\u00e9veloppement/Universit\u00e9 de Bretagne Occidentale",
     "confidence": "medium",
-    "institutional_page": "https://www.univ-brest.fr/fr/page/facultes-ecole-et-instituts",
     "lookup_version": 7,
+    "institutional_page": "https://www.univ-brest.fr/fr/page/facultes-ecole-et-instituts",
     "links": [
       {
         "kind": "institution",
@@ -45162,8 +45027,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/lea-palm",
     "lookup_version": 7,
+    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/lea-palm",
     "links": [
       {
         "kind": "institution",
@@ -45193,8 +45058,8 @@ export const SPEAKER_PROFILES = {
     "name": "Leah Barkai",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "medium",
-    "institutional_page": "https://www.ics.hawaii.edu/people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.ics.hawaii.edu/people/",
     "links": [
       {
         "kind": "institution",
@@ -45224,8 +45089,8 @@ export const SPEAKER_PROFILES = {
     "name": "Leonardo Rafalski",
     "affiliation": "Universidade Federal do Rio de Janeiro",
     "confidence": "medium",
-    "institutional_page": "https://irid.ufrj.br/index.php/institucional/docentes",
     "lookup_version": 7,
+    "institutional_page": "https://irid.ufrj.br/index.php/institucional/docentes",
     "links": [
       {
         "kind": "institution",
@@ -45255,8 +45120,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lewis Haines",
     "affiliation": "Curtin University",
     "confidence": "high",
-    "institutional_page": "https://apps.calbar.ca.gov/attorney/Licensee/Detail/71075",
     "lookup_version": 7,
+    "institutional_page": "https://apps.calbar.ca.gov/attorney/Licensee/Detail/71075",
     "links": [
       {
         "kind": "institution",
@@ -45286,8 +45151,8 @@ export const SPEAKER_PROFILES = {
     "name": "Liat Biniuri",
     "affiliation": "Tel Aviv University",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Tel_Aviv_University",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Tel_Aviv_University",
     "links": [
       {
         "kind": "institution",
@@ -45317,8 +45182,8 @@ export const SPEAKER_PROFILES = {
     "name": "Liav Meoded Stern",
     "affiliation": "University of Sydney",
     "confidence": "high",
-    "institutional_page": "https://grgusyd.org/people/",
     "lookup_version": 7,
+    "institutional_page": "https://grgusyd.org/people/",
     "links": [
       {
         "kind": "institution",
@@ -45348,8 +45213,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lilian Bradshaw",
     "affiliation": "Florida State University",
     "confidence": "medium",
-    "institutional_page": "https://news.fsu.edu/news/students-campus-life/2026/03/17/fsu-doctoral-candidate-receives-ecological-society-policy-award/",
     "lookup_version": 7,
+    "institutional_page": "https://news.fsu.edu/news/students-campus-life/2026/03/17/fsu-doctoral-candidate-receives-ecological-society-policy-award/",
     "links": [
       {
         "kind": "institution",
@@ -45379,8 +45244,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lindsay Dade",
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
-    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "links": [
       {
         "kind": "institution",
@@ -45410,14 +45275,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lindsay Spiers",
     "affiliation": "Florida Fish and Wildlife Conservation Commission",
     "confidence": "medium",
-    "institutional_page": "https://www.spokeo.com/Cassandra-Spiers",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.spokeo.com/Cassandra-Spiers"
-      },
       {
         "kind": "openalex",
         "label": "OpenAlex profile",
@@ -45439,11 +45298,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Lindsay+Spiers+Florida+Fish+and+Wildlife+Conservation+Commission"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.spokeo.com/Cassandra-Spiers"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -45451,8 +45306,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lisa Goberdhan",
     "affiliation": "Lancaster University",
     "confidence": "high",
-    "institutional_page": "https://www.envision-dtp.org/people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.envision-dtp.org/people/",
     "links": [
       {
         "kind": "institution",
@@ -45483,8 +45338,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Villanova University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://expertfile.com/experts/lisa.rodrigues/lisa-rodrigues-phd",
     "lookup_version": 7,
+    "institutional_page": "https://expertfile.com/experts/lisa.rodrigues/lisa-rodrigues-phd",
     "links": [
       {
         "kind": "institution",
@@ -45515,8 +45370,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Randolph-Macon College",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://talents.vaia.com/companies/ncobps/assistant-professor-in-environmental-studies-40223480/",
     "lookup_version": 7,
+    "institutional_page": "https://talents.vaia.com/companies/ncobps/assistant-professor-in-environmental-studies-40223480/",
     "links": [
       {
         "kind": "institution",
@@ -45547,8 +45402,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://bemlab.kaust.edu.sa/team/member/louis-simon",
     "lookup_version": 7,
+    "institutional_page": "https://bemlab.kaust.edu.sa/team/member/louis-simon",
     "links": [
       {
         "kind": "institution",
@@ -45578,8 +45433,8 @@ export const SPEAKER_PROFILES = {
     "name": "Luc Feuillerat",
     "affiliation": "Nagoya University",
     "confidence": "medium",
-    "institutional_page": "https://www.ilas.nagoya-u.ac.jp/en/faculty.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.ilas.nagoya-u.ac.jp/en/faculty.html",
     "links": [
       {
         "kind": "institution",
@@ -45609,8 +45464,8 @@ export const SPEAKER_PROFILES = {
     "name": "Luca Saponari",
     "affiliation": "Nature Seychelles",
     "confidence": "high",
-    "institutional_page": "https://natureseychelles.org/meet-the-team/",
     "lookup_version": 7,
+    "institutional_page": "https://natureseychelles.org/meet-the-team/",
     "links": [
       {
         "kind": "institution",
@@ -45640,8 +45495,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lucia Hu",
     "affiliation": "Hong Kong University of Science and Technology",
     "confidence": "high",
-    "institutional_page": "https://soan.gmu.edu/people/hliu27",
     "lookup_version": 7,
+    "institutional_page": "https://soan.gmu.edu/people/hliu27",
     "links": [
       {
         "kind": "institution",
@@ -45671,8 +45526,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lucian Muala",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "medium",
-    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "lookup_version": 7,
+    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "links": [
       {
         "kind": "institution",
@@ -45702,8 +45557,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lucy Gorman",
     "affiliation": "Marine Biological Association",
     "confidence": "high",
-    "institutional_page": "https://www.mba.ac.uk/staff/lucy-gorman/",
     "lookup_version": 7,
+    "institutional_page": "https://www.mba.ac.uk/staff/lucy-gorman/",
     "links": [
       {
         "kind": "institution",
@@ -45733,8 +45588,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lucy Southworth",
     "affiliation": "James Cook University",
     "confidence": "medium",
-    "institutional_page": "https://www.jcu.edu.au/college-of-arts-society-and-education/About-CASE/our-people",
     "lookup_version": 7,
+    "institutional_page": "https://www.jcu.edu.au/college-of-arts-society-and-education/About-CASE/our-people",
     "links": [
       {
         "kind": "institution",
@@ -45764,8 +45619,8 @@ export const SPEAKER_PROFILES = {
     "name": "Lucyie Liana Misi",
     "affiliation": "International Islamic University Malaysia",
     "confidence": "high",
-    "institutional_page": "https://link.springer.com/book/10.1007/978-981-97-6699-4",
     "lookup_version": 7,
+    "institutional_page": "https://link.springer.com/book/10.1007/978-981-97-6699-4",
     "links": [
       {
         "kind": "institution",
@@ -45795,8 +45650,8 @@ export const SPEAKER_PROFILES = {
     "name": "Luis Calderon-Aguilera",
     "affiliation": "Centre for Scientific Research and Higher Education of Ensenada",
     "confidence": "medium",
-    "institutional_page": "https://tethys.pnnl.gov/organization/ensenada-center-scientific-research-higher-education",
     "lookup_version": 7,
+    "institutional_page": "https://tethys.pnnl.gov/organization/ensenada-center-scientific-research-higher-education",
     "links": [
       {
         "kind": "institution",
@@ -45826,8 +45681,8 @@ export const SPEAKER_PROFILES = {
     "name": "Luisa Chiara Meiritz",
     "affiliation": "Geomar Helmholtz Centre for Ocean Research",
     "confidence": "medium",
-    "institutional_page": "https://www.spp2299.tropicalclimatecorals.de/2026/02/25/how-life-at-sea-prepared-luisa-meiritz-for-studying-coral-bleaching/",
     "lookup_version": 7,
+    "institutional_page": "https://www.spp2299.tropicalclimatecorals.de/2026/02/25/how-life-at-sea-prepared-luisa-meiritz-for-studying-coral-bleaching/",
     "links": [
       {
         "kind": "institution",
@@ -45857,8 +45712,8 @@ export const SPEAKER_PROFILES = {
     "name": "Luna Mayura da Fonseca Bauer",
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "medium",
-    "institutional_page": "http://miguelmies.com.br/wp-content/uploads/2025/03/CV.pdf",
     "lookup_version": 7,
+    "institutional_page": "http://miguelmies.com.br/wp-content/uploads/2025/03/CV.pdf",
     "links": [
       {
         "kind": "institution",
@@ -45888,8 +45743,8 @@ export const SPEAKER_PROFILES = {
     "name": "L\u00e9onore Page",
     "affiliation": "Pacific Community",
     "confidence": "high",
-    "institutional_page": "https://www.spc.int/CoastalFisheries/Help/Reports/BioStatistics/BiosamplingShiny.R",
     "lookup_version": 7,
+    "institutional_page": "https://www.spc.int/CoastalFisheries/Help/Reports/BioStatistics/BiosamplingShiny.R",
     "links": [
       {
         "kind": "institution",
@@ -45919,8 +45774,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ma Victoria Stephane Asio",
     "affiliation": "James Cook University",
     "confidence": "medium",
-    "institutional_page": "https://www.jcu.edu.au/tropical-fisheries-and-aquaculture/our-people/postgraduate-students/ma-victoria-stephane-asio-steph",
     "lookup_version": 7,
+    "institutional_page": "https://www.jcu.edu.au/tropical-fisheries-and-aquaculture/our-people/postgraduate-students/ma-victoria-stephane-asio-steph",
     "links": [
       {
         "kind": "institution",
@@ -45950,8 +45805,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mackenzie Thielmann",
     "affiliation": "Division of Aquatic Resources - Hawai'i",
     "confidence": "high",
-    "institutional_page": "https://www.hawaii.edu/news/2026/05/04/fisheries-students-fellowships/",
     "lookup_version": 7,
+    "institutional_page": "https://www.hawaii.edu/news/2026/05/04/fisheries-students-fellowships/",
     "links": [
       {
         "kind": "institution",
@@ -45981,8 +45836,8 @@ export const SPEAKER_PROFILES = {
     "name": "Madelief Schelvis",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://manoa.hawaii.edu/lifesciences/people/students/",
     "lookup_version": 7,
+    "institutional_page": "https://manoa.hawaii.edu/lifesciences/people/students/",
     "links": [
       {
         "kind": "institution",
@@ -46013,8 +45868,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nova Southeastern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://hcas.nova.edu/people/index.html?search=Madison+Androne",
     "lookup_version": 7,
+    "institutional_page": "https://hcas.nova.edu/people/index.html?search=Madison+Androne",
     "links": [
       {
         "kind": "institution",
@@ -46045,8 +45900,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://aims.jcu.edu.au/our-people/students/magena-marzonie.699/",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/students/magena-marzonie.699/",
     "links": [
       {
         "kind": "institution",
@@ -46076,8 +45931,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mahery RANDRIANARIVO",
     "affiliation": "World Wide Fund for Nature - Madagascar",
     "confidence": "high",
-    "institutional_page": "https://wwfeu.awsassets.panda.org/downloads/assessing-recovery-potential-of-coral-reefs-in-madagascar-and-the-effects-of-marine-p.pdf?14621916%2FAssessing-recovery-potential-of-coral-reefs-in-Madagascar-and-the-effects-of-marine-protected-areas=",
     "lookup_version": 7,
+    "institutional_page": "https://wwfeu.awsassets.panda.org/downloads/assessing-recovery-potential-of-coral-reefs-in-madagascar-and-the-effects-of-marine-p.pdf?14621916%2FAssessing-recovery-potential-of-coral-reefs-in-Madagascar-and-the-effects-of-marine-protected-areas=",
     "links": [
       {
         "kind": "institution",
@@ -46107,8 +45962,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maile Coberly",
     "affiliation": "Hawai\u02bbi Division of Aquatic Resources",
     "confidence": "medium",
-    "institutional_page": "https://dlnr.ehawaii.gov/cmls-public/app/contact.html",
     "lookup_version": 7,
+    "institutional_page": "https://dlnr.ehawaii.gov/cmls-public/app/contact.html",
     "links": [
       {
         "kind": "institution",
@@ -46138,8 +45993,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maja Seier",
     "affiliation": "University of Copenhagen",
     "confidence": "medium",
-    "institutional_page": "https://about.ku.dk/organisation/administration/education/international-education/?pure=en%2Fpersons%2F329443",
     "lookup_version": 7,
+    "institutional_page": "https://about.ku.dk/organisation/administration/education/international-education/?pure=en%2Fpersons%2F329443",
     "links": [
       {
         "kind": "institution",
@@ -46170,8 +46025,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Texas A&M University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://artsci.tamu.edu/oceanography/contact/profiles/makeda-mills.html",
     "lookup_version": 7,
+    "institutional_page": "https://artsci.tamu.edu/oceanography/contact/profiles/makeda-mills.html",
     "links": [
       {
         "kind": "institution",
@@ -46201,8 +46056,8 @@ export const SPEAKER_PROFILES = {
     "name": "Malte Ostendarp",
     "affiliation": "University of Bremen",
     "confidence": "high",
-    "institutional_page": "https://h2mhisummit.org/h2-summit/",
     "lookup_version": 7,
+    "institutional_page": "https://h2mhisummit.org/h2-summit/",
     "links": [
       {
         "kind": "institution",
@@ -46254,8 +46109,8 @@ export const SPEAKER_PROFILES = {
     "name": "Manuel Poretti",
     "affiliation": "University of Melbourne",
     "confidence": "high",
-    "institutional_page": "https://www.ips.unibe.ch/aboutus/personen/ecological_genomics/dr_poretti_manuel/index_eng.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.ips.unibe.ch/aboutus/personen/ecological_genomics/dr_poretti_manuel/index_eng.html",
     "links": [
       {
         "kind": "institution",
@@ -46285,8 +46140,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marcellina Rola",
     "affiliation": "University Wuppertal",
     "confidence": "high",
-    "institutional_page": "https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2025.1605105/full",
     "lookup_version": 7,
+    "institutional_page": "https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2025.1605105/full",
     "links": [
       {
         "kind": "institution",
@@ -46316,8 +46171,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mareike De Breuyn",
     "affiliation": "University of Victoria",
     "confidence": "high",
-    "institutional_page": "https://www.juliakbaum.org/team",
     "lookup_version": 7,
+    "institutional_page": "https://www.juliakbaum.org/team",
     "links": [
       {
         "kind": "institution",
@@ -46347,8 +46202,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maria Angst",
     "affiliation": "Division of Aquatic Resources - Hawai'i",
     "confidence": "medium",
-    "institutional_page": "https://dlnr.ehawaii.gov/cmls-public/app/contact.html",
     "lookup_version": 7,
+    "institutional_page": "https://dlnr.ehawaii.gov/cmls-public/app/contact.html",
     "links": [
       {
         "kind": "institution",
@@ -46378,8 +46233,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maria Jordana Olano",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://www.upm.edu.ph/academics-faculty/",
     "lookup_version": 7,
+    "institutional_page": "https://www.upm.edu.ph/academics-faculty/",
     "links": [
       {
         "kind": "institution",
@@ -46410,8 +46265,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/28356/maria-kottermair",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/28356/maria-kottermair",
     "links": [
       {
         "kind": "institution",
@@ -46441,8 +46296,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maria Rebecca Ferreras",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "medium",
-    "institutional_page": "https://www.annualreports.com/HostedData/AnnualReportArchive/w/wildlife-conservation-society_2013.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://www.annualreports.com/HostedData/AnnualReportArchive/w/wildlife-conservation-society_2013.pdf",
     "links": [
       {
         "kind": "institution",
@@ -46472,8 +46327,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mariana Acipreste",
     "affiliation": "University of S\u00e3o Paulo",
     "confidence": "medium",
-    "institutional_page": "http://miguelmies.com.br/wp-content/uploads/2025/03/CV.pdf",
     "lookup_version": 7,
+    "institutional_page": "http://miguelmies.com.br/wp-content/uploads/2025/03/CV.pdf",
     "links": [
       {
         "kind": "institution",
@@ -46503,8 +46358,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marie-C\u00e9line Piednoir",
     "affiliation": "Positive Ripple Consulting",
     "confidence": "high",
-    "institutional_page": "https://www.positiverippleconsulting.org/about",
     "lookup_version": 7,
+    "institutional_page": "https://www.positiverippleconsulting.org/about",
     "links": [
       {
         "kind": "institution",
@@ -46556,8 +46411,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marina Palacios",
     "affiliation": "Coral soul",
     "confidence": "high",
-    "institutional_page": "https://cadenaser.com/castillayleon/2025/02/21/la-cuellarana-marina-palacios-con-su-ong-coral-soul-acerca-los-ecosistemas-en-los-institutos-de-cuellar-radio-segovia/",
     "lookup_version": 7,
+    "institutional_page": "https://cadenaser.com/castillayleon/2025/02/21/la-cuellarana-marina-palacios-con-su-ong-coral-soul-acerca-los-ecosistemas-en-los-institutos-de-cuellar-radio-segovia/",
     "links": [
       {
         "kind": "institution",
@@ -46587,8 +46442,8 @@ export const SPEAKER_PROFILES = {
     "name": "Marine Pablo",
     "affiliation": "James Cook University",
     "confidence": "medium",
-    "institutional_page": "https://aims.jcu.edu.au/our-people/?sort=-member_type&page=3",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/?sort=-member_type&page=3",
     "links": [
       {
         "kind": "institution",
@@ -46618,8 +46473,8 @@ export const SPEAKER_PROFILES = {
     "name": "Markus Rummel",
     "affiliation": "Hong Kong University of Science and Technology",
     "confidence": "medium",
-    "institutional_page": "https://facultyprofiles.hkust.edu.hk/",
     "lookup_version": 7,
+    "institutional_page": "https://facultyprofiles.hkust.edu.hk/",
     "links": [
       {
         "kind": "institution",
@@ -46650,8 +46505,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://meetingorganizer.copernicus.org/ICG2022/ICG2022-516.html",
     "lookup_version": 7,
+    "institutional_page": "https://meetingorganizer.copernicus.org/ICG2022/ICG2022-516.html",
     "links": [
       {
         "kind": "institution",
@@ -46681,8 +46536,8 @@ export const SPEAKER_PROFILES = {
     "name": "Martin Romain",
     "affiliation": "OneReef Worldwide Stewardship",
     "confidence": "medium",
-    "institutional_page": "https://onereef.org/",
     "lookup_version": 7,
+    "institutional_page": "https://onereef.org/",
     "links": [
       {
         "kind": "institution",
@@ -46712,8 +46567,8 @@ export const SPEAKER_PROFILES = {
     "name": "Martina Facchinelli",
     "affiliation": "Istituto Italiano Di Tecnologia",
     "confidence": "high",
-    "institutional_page": "https://www.iit.it/people-details/-/people/martina-facchinelli",
     "lookup_version": 7,
+    "institutional_page": "https://www.iit.it/people-details/-/people/martina-facchinelli",
     "links": [
       {
         "kind": "institution",
@@ -46743,8 +46598,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mary Cortese",
     "affiliation": "Smithsonian Environmental Research Center",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Smithsonian_Environmental_Research_Center",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Smithsonian_Environmental_Research_Center",
     "links": [
       {
         "kind": "institution",
@@ -46774,8 +46629,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mary Rose Makoski",
     "affiliation": "University of Wisconsin - Green Bay",
     "confidence": "medium",
-    "institutional_page": "https://www.uwgb.edu/directory/people/mary-mach/",
     "lookup_version": 7,
+    "institutional_page": "https://www.uwgb.edu/directory/people/mary-mach/",
     "links": [
       {
         "kind": "institution",
@@ -46805,8 +46660,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mary Williams",
     "affiliation": "Florida International University",
     "confidence": "high",
-    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/williams-mary.html",
     "lookup_version": 7,
+    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/williams-mary.html",
     "links": [
       {
         "kind": "institution",
@@ -46836,8 +46691,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maryann Webb",
     "affiliation": "University of Hawai\u2018i - M\u0101noa",
     "confidence": "medium",
-    "institutional_page": "https://manoa.hawaii.edu/",
     "lookup_version": 7,
+    "institutional_page": "https://manoa.hawaii.edu/",
     "links": [
       {
         "kind": "institution",
@@ -46867,8 +46722,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mathieu Adg\u00e9",
     "affiliation": "CRIOBE",
     "confidence": "high",
-    "institutional_page": "https://www.criobe.pf/en/publications-en/",
     "lookup_version": 7,
+    "institutional_page": "https://www.criobe.pf/en/publications-en/",
     "links": [
       {
         "kind": "institution",
@@ -46898,8 +46753,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mathieu Reynaud",
     "affiliation": "CRIOBE",
     "confidence": "high",
-    "institutional_page": "https://www.criobe.pf/en/publications-en/",
     "lookup_version": 7,
+    "institutional_page": "https://www.criobe.pf/en/publications-en/",
     "links": [
       {
         "kind": "institution",
@@ -46930,8 +46785,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://aims.jcu.edu.au/our-people/?sort=-institution&page=2",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/?sort=-institution&page=2",
     "links": [
       {
         "kind": "institution",
@@ -46961,8 +46816,8 @@ export const SPEAKER_PROFILES = {
     "name": "Matlyn Ua",
     "affiliation": "University of Hawai\u02bbi - Hilo",
     "confidence": "high",
-    "institutional_page": "https://flickr.com/photos/tags/matlyn",
     "lookup_version": 7,
+    "institutional_page": "https://flickr.com/photos/tags/matlyn",
     "links": [
       {
         "kind": "institution",
@@ -46992,8 +46847,8 @@ export const SPEAKER_PROFILES = {
     "name": "Matteo Bravo",
     "affiliation": "National University of Singapore",
     "confidence": "medium",
-    "institutional_page": "https://www.ntu.edu.sg/spms/about-us/mathematics/people/faculty",
     "lookup_version": 7,
+    "institutional_page": "https://www.ntu.edu.sg/spms/about-us/mathematics/people/faculty",
     "links": [
       {
         "kind": "institution",
@@ -47023,8 +46878,8 @@ export const SPEAKER_PROFILES = {
     "name": "Matthew Warham",
     "affiliation": "National Marine Sanctuary Foundation",
     "confidence": "high",
-    "institutional_page": "https://caseagrant.ucsd.edu/news/managing-californias-mpas-discomfort-my-living-room",
     "lookup_version": 7,
+    "institutional_page": "https://caseagrant.ucsd.edu/news/managing-californias-mpas-discomfort-my-living-room",
     "links": [
       {
         "kind": "institution",
@@ -47055,8 +46910,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.uwa.edu.au/oceans-institute/partnerships/aims-uwa/spotlight-max",
     "lookup_version": 7,
+    "institutional_page": "https://www.uwa.edu.au/oceans-institute/partnerships/aims-uwa/spotlight-max",
     "links": [
       {
         "kind": "institution",
@@ -47086,8 +46941,8 @@ export const SPEAKER_PROFILES = {
     "name": "Max Rintoul",
     "affiliation": "University of Tasmania",
     "confidence": "high",
-    "institutional_page": "https://grad.ucsd.edu/student-life/student-spotlights/alumni/max-rintoul.html",
     "lookup_version": 7,
+    "institutional_page": "https://grad.ucsd.edu/student-life/student-spotlights/alumni/max-rintoul.html",
     "links": [
       {
         "kind": "institution",
@@ -47139,8 +46994,8 @@ export const SPEAKER_PROFILES = {
     "name": "Maya Otsu",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Hawai%CA%BBi_at_M%C4%81noa",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Hawai%CA%BBi_at_M%C4%81noa",
     "links": [
       {
         "kind": "institution",
@@ -47170,8 +47025,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mayu Ishikawa",
     "affiliation": "Ochanomizu University",
     "confidence": "high",
-    "institutional_page": "https://globalsportsarchive.com/people/volleyball/mayu-ishikawa/341863/",
     "lookup_version": 7,
+    "institutional_page": "https://globalsportsarchive.com/people/volleyball/mayu-ishikawa/341863/",
     "links": [
       {
         "kind": "institution",
@@ -47201,8 +47056,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mckenna Allen",
     "affiliation": "Division of Aquatic Resources - Kaua\u02bbi",
     "confidence": "high",
-    "institutional_page": "https://hilo.hawaii.edu/pipes/alumni/?p=UH-HIP",
     "lookup_version": 7,
+    "institutional_page": "https://hilo.hawaii.edu/pipes/alumni/?p=UH-HIP",
     "links": [
       {
         "kind": "institution",
@@ -47232,8 +47087,8 @@ export const SPEAKER_PROFILES = {
     "name": "Meenatchi Ramanan",
     "affiliation": "University of Leeds",
     "confidence": "medium",
-    "institutional_page": "https://www.topuniversities.com/universities/university-leeds",
     "lookup_version": 7,
+    "institutional_page": "https://www.topuniversities.com/universities/university-leeds",
     "links": [
       {
         "kind": "institution",
@@ -47263,8 +47118,8 @@ export const SPEAKER_PROFILES = {
     "name": "Megan Moews-Asher",
     "affiliation": "Moews-Asher Art, Imagery and Design",
     "confidence": "medium",
-    "institutional_page": "https://pifscblog.wordpress.com/tag/megan-moews-asher/",
     "lookup_version": 7,
+    "institutional_page": "https://pifscblog.wordpress.com/tag/megan-moews-asher/",
     "links": [
       {
         "kind": "institution",
@@ -47294,8 +47149,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mei Ting Law",
     "affiliation": "National University of Singapore",
     "confidence": "medium",
-    "institutional_page": "https://www.instagram.com/meitinglaw/",
     "lookup_version": 7,
+    "institutional_page": "https://www.instagram.com/meitinglaw/",
     "links": [
       {
         "kind": "institution",
@@ -47335,8 +47190,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mei-Fang Lin",
     "affiliation": "National Sun Yat-sen University",
     "confidence": "high",
-    "institutional_page": "https://mbr.nsysu.edu.tw/p/405-1260-314318,c23195.php?Lang=en",
     "lookup_version": 7,
+    "institutional_page": "https://mbr.nsysu.edu.tw/p/405-1260-314318,c23195.php?Lang=en",
     "links": [
       {
         "kind": "institution",
@@ -47367,8 +47222,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Konstanz",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.biologie.uni-konstanz.de/voolstra/",
     "lookup_version": 7,
+    "institutional_page": "https://www.biologie.uni-konstanz.de/voolstra/",
     "links": [
       {
         "kind": "institution",
@@ -47419,8 +47274,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mengjin Zhang",
     "affiliation": "University of Hong Kong",
     "confidence": "medium",
-    "institutional_page": "https://www.bschool.cuhk.edu.hk/staff/zhang-meng/",
     "lookup_version": 7,
+    "institutional_page": "https://www.bschool.cuhk.edu.hk/staff/zhang-meng/",
     "links": [
       {
         "kind": "institution",
@@ -47450,8 +47305,8 @@ export const SPEAKER_PROFILES = {
     "name": "Merle Schlawinsky",
     "affiliation": "James Cook University",
     "confidence": "high",
-    "institutional_page": "https://aims.jcu.edu.au/our-people/students/merle-schlawinsky.748/",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/students/merle-schlawinsky.748/",
     "links": [
       {
         "kind": "institution",
@@ -47482,8 +47337,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Guam",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.aucegypt.edu/fac/michael-gibson",
     "lookup_version": 7,
+    "institutional_page": "https://www.aucegypt.edu/fac/michael-gibson",
     "links": [
       {
         "kind": "institution",
@@ -47513,8 +47368,8 @@ export const SPEAKER_PROFILES = {
     "name": "Michael Hood",
     "affiliation": "Texas A&M University",
     "confidence": "medium",
-    "institutional_page": "https://faculty.txst.edu/profile/996319",
     "lookup_version": 7,
+    "institutional_page": "https://faculty.txst.edu/profile/996319",
     "links": [
       {
         "kind": "institution",
@@ -47545,8 +47400,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of New Hampshire",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://colsa.unh.edu/person/michael-lesser",
     "lookup_version": 7,
+    "institutional_page": "https://colsa.unh.edu/person/michael-lesser",
     "links": [
       {
         "kind": "institution",
@@ -47577,8 +47432,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Guam",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.uog.edu/directory/mihalitsis-michalis",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/directory/mihalitsis-michalis",
     "links": [
       {
         "kind": "institution",
@@ -47639,8 +47494,8 @@ export const SPEAKER_PROFILES = {
     "name": "Michelle Ballesteros",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://www.upm.edu.ph/academics-faculty/",
     "lookup_version": 7,
+    "institutional_page": "https://www.upm.edu.ph/academics-faculty/",
     "links": [
       {
         "kind": "institution",
@@ -47671,8 +47526,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Ocean Rescue Alliance International",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.oceanrescuealliance.org/our-interns",
     "lookup_version": 7,
+    "institutional_page": "https://www.oceanrescuealliance.org/our-interns",
     "links": [
       {
         "kind": "institution",
@@ -47702,8 +47557,8 @@ export const SPEAKER_PROFILES = {
     "name": "Michelle Diminuco",
     "affiliation": "University of Georgia",
     "confidence": "high",
-    "institutional_page": "https://bios.asu.edu/currents/semester-abroad-bios",
     "lookup_version": 7,
+    "institutional_page": "https://bios.asu.edu/currents/semester-abroad-bios",
     "links": [
       {
         "kind": "institution",
@@ -47755,8 +47610,8 @@ export const SPEAKER_PROFILES = {
     "name": "Miel A. Rodr\u00edguez-jim\u00e9nez",
     "affiliation": "Centre for Scientific Research and Higher Education of Ensenada",
     "confidence": "medium",
-    "institutional_page": "https://tethys.pnnl.gov/organization/ensenada-center-scientific-research-higher-education",
     "lookup_version": 7,
+    "institutional_page": "https://tethys.pnnl.gov/organization/ensenada-center-scientific-research-higher-education",
     "links": [
       {
         "kind": "institution",
@@ -47787,8 +47642,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Tel Aviv University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.tangomercurio.org/bios/doron-levy",
     "lookup_version": 7,
+    "institutional_page": "https://www.tangomercurio.org/bios/doron-levy",
     "links": [
       {
         "kind": "institution",
@@ -47818,8 +47673,8 @@ export const SPEAKER_PROFILES = {
     "name": "Min Kang Ling",
     "affiliation": "National University of Singapore",
     "confidence": "high",
-    "institutional_page": "https://smkang96.github.io/",
     "lookup_version": 7,
+    "institutional_page": "https://smkang96.github.io/",
     "links": [
       {
         "kind": "institution",
@@ -47849,8 +47704,8 @@ export const SPEAKER_PROFILES = {
     "name": "Miyah Brooks",
     "affiliation": "University of Miami",
     "confidence": "medium",
-    "institutional_page": "https://miamioh.edu/profiles/",
     "lookup_version": 7,
+    "institutional_page": "https://miamioh.edu/profiles/",
     "links": [
       {
         "kind": "institution",
@@ -47880,8 +47735,8 @@ export const SPEAKER_PROFILES = {
     "name": "Molly Blyth",
     "affiliation": "University of Plymouth",
     "confidence": "high",
-    "institutional_page": "https://www.instantcheckmate.com/people/molly-blythe-teichert/",
     "lookup_version": 7,
+    "institutional_page": "https://www.instantcheckmate.com/people/molly-blythe-teichert/",
     "links": [
       {
         "kind": "institution",
@@ -47932,8 +47787,8 @@ export const SPEAKER_PROFILES = {
     "name": "Morgane Dierkens",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "medium",
-    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "lookup_version": 7,
+    "institutional_page": "https://www.guidestar.org/profile/shared/922d573e-8f59-4837-8dee-a681d7e06ada",
     "links": [
       {
         "kind": "institution",
@@ -47963,14 +47818,8 @@ export const SPEAKER_PROFILES = {
     "name": "Moriah Kunes",
     "affiliation": "Princeton University",
     "confidence": "high",
-    "institutional_page": "https://www.spokeo.com/Laura-Kunes/New-York/Canandaigua/p6450614071",
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://www.spokeo.com/Laura-Kunes/New-York/Canandaigua/p6450614071"
-      },
       {
         "kind": "scholar_search",
         "label": "Search Google Scholar",
@@ -47982,11 +47831,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Moriah+Kunes+Princeton+University"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://www.spokeo.com/Laura-Kunes/New-York/Canandaigua/p6450614071"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -47994,8 +47839,8 @@ export const SPEAKER_PROFILES = {
     "name": "Moshe Perez",
     "affiliation": "Bar-Ilan University",
     "confidence": "medium",
-    "institutional_page": "https://gondabrain.biu.ac.il/en/bar",
     "lookup_version": 7,
+    "institutional_page": "https://gondabrain.biu.ac.il/en/bar",
     "links": [
       {
         "kind": "institution",
@@ -48025,8 +47870,8 @@ export const SPEAKER_PROFILES = {
     "name": "Muhammad Addin Mazni",
     "affiliation": "World Wide Fund for Nature - Malaysia",
     "confidence": "medium",
-    "institutional_page": "https://www.wwf.org.my/about_wwf/who_we_are/",
     "lookup_version": 7,
+    "institutional_page": "https://www.wwf.org.my/about_wwf/who_we_are/",
     "links": [
       {
         "kind": "institution",
@@ -48056,8 +47901,8 @@ export const SPEAKER_PROFILES = {
     "name": "Muhammad Aris",
     "affiliation": "Yayasan Konservasi Alam Nusantara",
     "confidence": "medium",
-    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/where-we-work/asia-pacific/indonesia/contact-us/",
     "links": [
       {
         "kind": "institution",
@@ -48087,8 +47932,8 @@ export const SPEAKER_PROFILES = {
     "name": "Muhidin Muhidin*",
     "affiliation": "Wildlife Conservation Society Indonesia Program",
     "confidence": "medium",
-    "institutional_page": "https://www.ecohubmap.com/company/NGO/wildlife-conservation-society-indonesia/83q4m1te7kpcgtrnj",
     "lookup_version": 7,
+    "institutional_page": "https://www.ecohubmap.com/company/NGO/wildlife-conservation-society-indonesia/83q4m1te7kpcgtrnj",
     "links": [
       {
         "kind": "institution",
@@ -48118,8 +47963,8 @@ export const SPEAKER_PROFILES = {
     "name": "Mykle Hoban",
     "affiliation": "Hawai\u2018i Institute of Marine Biology",
     "confidence": "high",
-    "institutional_page": "https://myklehoban.com/",
     "lookup_version": 7,
+    "institutional_page": "https://myklehoban.com/",
     "links": [
       {
         "kind": "institution",
@@ -48149,8 +47994,8 @@ export const SPEAKER_PROFILES = {
     "name": "M\u00e1rcio Coelho",
     "affiliation": "Centro de Ci\u00eancias do Mar do Algarve",
     "confidence": "high",
-    "institutional_page": "https://ccmar.ualg.pt/en/users/macoelho",
     "lookup_version": 7,
+    "institutional_page": "https://ccmar.ualg.pt/en/users/macoelho",
     "links": [
       {
         "kind": "institution",
@@ -48180,8 +48025,8 @@ export const SPEAKER_PROFILES = {
     "name": "Na'ama Rose Kochman",
     "affiliation": "University of New South Wales",
     "confidence": "high",
-    "institutional_page": "https://maozfine.wixsite.com/mysite/na-ama-rose-kochman-ph-d-student",
     "lookup_version": 7,
+    "institutional_page": "https://maozfine.wixsite.com/mysite/na-ama-rose-kochman-ph-d-student",
     "links": [
       {
         "kind": "institution",
@@ -48211,8 +48056,8 @@ export const SPEAKER_PROFILES = {
     "name": "Najatul Su Ad Abdullah",
     "affiliation": "International Islamic University Malaysia",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/International_Islamic_University_Malaysia",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/International_Islamic_University_Malaysia",
     "links": [
       {
         "kind": "institution",
@@ -48242,8 +48087,8 @@ export const SPEAKER_PROFILES = {
     "name": "NAJWA ZULKIFLY",
     "affiliation": "Universiti Malaysia Terengganu",
     "confidence": "medium",
-    "institutional_page": "https://tethys.pnnl.gov/organization/universiti-malaysia-terengganu",
     "lookup_version": 7,
+    "institutional_page": "https://tethys.pnnl.gov/organization/universiti-malaysia-terengganu",
     "links": [
       {
         "kind": "institution",
@@ -48273,8 +48118,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nakano Yoshikatsu",
     "affiliation": "Meio University",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Meio_University",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Meio_University",
     "links": [
       {
         "kind": "institution",
@@ -48304,8 +48149,8 @@ export const SPEAKER_PROFILES = {
     "name": "Narayani Subramanian",
     "affiliation": "Pondicherry University",
     "confidence": "medium",
-    "institutional_page": "https://www.pondiuni.edu.in/faculy_profiles/dr-r-subramanian/",
     "lookup_version": 7,
+    "institutional_page": "https://www.pondiuni.edu.in/faculy_profiles/dr-r-subramanian/",
     "links": [
       {
         "kind": "institution",
@@ -48335,8 +48180,8 @@ export const SPEAKER_PROFILES = {
     "name": "Natalia Hurtado Lopez",
     "affiliation": "Cape Eleuthera Institute",
     "confidence": "medium",
-    "institutional_page": "https://tethys-engineering.pnnl.gov/organizations/cape-eleuthera-institute",
     "lookup_version": 7,
+    "institutional_page": "https://tethys-engineering.pnnl.gov/organizations/cape-eleuthera-institute",
     "links": [
       {
         "kind": "institution",
@@ -48366,8 +48211,8 @@ export const SPEAKER_PROFILES = {
     "name": "Natalia Rivas-Escobar",
     "affiliation": "University of Sydney",
     "confidence": "medium",
-    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.sydney.edu.au/about-us/governance-and-structure/staff-directory.html",
     "links": [
       {
         "kind": "institution",
@@ -48397,8 +48242,8 @@ export const SPEAKER_PROFILES = {
     "name": "Natalie Goeler-Slough",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "medium",
-    "institutional_page": "https://www.soest.hawaii.edu/soestwp/wp-content/uploads/2025/08/SOEST-Graduate-Newsletter-Summer-2025.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://www.soest.hawaii.edu/soestwp/wp-content/uploads/2025/08/SOEST-Graduate-Newsletter-Summer-2025.pdf",
     "links": [
       {
         "kind": "institution",
@@ -48429,8 +48274,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Berkeley",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://nataschavarona.com/about/",
     "lookup_version": 7,
+    "institutional_page": "https://nataschavarona.com/about/",
     "links": [
       {
         "kind": "institution",
@@ -48487,8 +48332,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.jcu.edu.au/ierc/indigenous-research-support-network/our-members",
     "lookup_version": 7,
+    "institutional_page": "https://www.jcu.edu.au/ierc/indigenous-research-support-network/our-members",
     "links": [
       {
         "kind": "institution",
@@ -48518,8 +48363,8 @@ export const SPEAKER_PROFILES = {
     "name": "Neelam Nandita Bhan",
     "affiliation": "Wildlife Conservation Society",
     "confidence": "medium",
-    "institutional_page": "https://bangladesh.wcs.org/About-Us/Contact-Us",
     "lookup_version": 7,
+    "institutional_page": "https://bangladesh.wcs.org/About-Us/Contact-Us",
     "links": [
       {
         "kind": "institution",
@@ -48549,8 +48394,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nenik Kholilah",
     "affiliation": "University of Mataram",
     "confidence": "high",
-    "institutional_page": "https://www.ednacollab.org/community/",
     "lookup_version": 7,
+    "institutional_page": "https://www.ednacollab.org/community/",
     "links": [
       {
         "kind": "institution",
@@ -48580,8 +48425,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nicholas Ford-Learner",
     "affiliation": "James Cook University",
     "confidence": "medium",
-    "institutional_page": "https://www.unimelb.edu.au/climate/collaboration/mcf-academy",
     "lookup_version": 7,
+    "institutional_page": "https://www.unimelb.edu.au/climate/collaboration/mcf-academy",
     "links": [
       {
         "kind": "institution",
@@ -48611,8 +48456,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nicholas Wilson",
     "affiliation": "Ohio State University",
     "confidence": "high",
-    "institutional_page": "https://www.si.com/college/ohiostate/football/ohio-state-football-garrett-wilson-nicholas-petit-frere-chris-olave-all-american-football-writers-association-america-fwaa",
     "lookup_version": 7,
+    "institutional_page": "https://www.si.com/college/ohiostate/football/ohio-state-football-garrett-wilson-nicholas-petit-frere-chris-olave-all-american-football-writers-association-america-fwaa",
     "links": [
       {
         "kind": "institution",
@@ -48642,8 +48487,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nicolas Andrialovanirina",
     "affiliation": "Ifremer",
     "confidence": "high",
-    "institutional_page": "https://www.quae.com/auteur/2650/nicolas-andrialovanirina",
     "lookup_version": 7,
+    "institutional_page": "https://www.quae.com/auteur/2650/nicolas-andrialovanirina",
     "links": [
       {
         "kind": "institution",
@@ -48673,8 +48518,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nicolas Mafla Viscarra",
     "affiliation": "James Cook University",
     "confidence": "medium",
-    "institutional_page": "https://www.jcu.edu.au/",
     "lookup_version": 7,
+    "institutional_page": "https://www.jcu.edu.au/",
     "links": [
       {
         "kind": "institution",
@@ -48704,8 +48549,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nicole K Young",
     "affiliation": "Florida Atlantic University",
     "confidence": "medium",
-    "institutional_page": "https://www.fau.edu/artsandletters/scms/faculty/",
     "lookup_version": 7,
+    "institutional_page": "https://www.fau.edu/artsandletters/scms/faculty/",
     "links": [
       {
         "kind": "institution",
@@ -48736,8 +48581,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://environment.uq.edu.au/profile/9923/nicole-leonard",
     "lookup_version": 7,
+    "institutional_page": "https://environment.uq.edu.au/profile/9923/nicole-leonard",
     "links": [
       {
         "kind": "institution",
@@ -48767,8 +48612,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nicole Schroeter",
     "affiliation": "Oldenburg University",
     "confidence": "high",
-    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/39805156/",
     "lookup_version": 7,
+    "institutional_page": "https://pubmed.ncbi.nlm.nih.gov/39805156/",
     "links": [
       {
         "kind": "institution",
@@ -48798,8 +48643,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nikol Slynkova",
     "affiliation": "Griffith University",
     "confidence": "high",
-    "institutional_page": "https://www.griffith.edu.au/research/sciences/australian-rivers-institute/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.griffith.edu.au/research/sciences/australian-rivers-institute/people",
     "links": [
       {
         "kind": "institution",
@@ -48829,8 +48674,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nikole Gualdron",
     "affiliation": "Reef Support",
     "confidence": "high",
-    "institutional_page": "https://travel.reef.support/faq",
     "lookup_version": 7,
+    "institutional_page": "https://travel.reef.support/faq",
     "links": [
       {
         "kind": "institution",
@@ -48860,8 +48705,8 @@ export const SPEAKER_PROFILES = {
     "name": "Niranjan Divakaran",
     "affiliation": "Chulalongkorn University",
     "confidence": "high",
-    "institutional_page": "https://www.nature.com/articles/s41598-026-48630-z",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.com/articles/s41598-026-48630-z",
     "links": [
       {
         "kind": "institution",
@@ -48891,8 +48736,8 @@ export const SPEAKER_PROFILES = {
     "name": "NIZAM IBRAHIM",
     "affiliation": "Southern Cross University",
     "confidence": "high",
-    "institutional_page": "https://www.instantcheckmate.com/people/nizam-ibrahim/",
     "lookup_version": 7,
+    "institutional_page": "https://www.instantcheckmate.com/people/nizam-ibrahim/",
     "links": [
       {
         "kind": "institution",
@@ -48922,8 +48767,8 @@ export const SPEAKER_PROFILES = {
     "name": "Noa Ben Ami",
     "affiliation": "Tel Aviv University",
     "confidence": "high",
-    "institutional_page": "https://english.tau.ac.il/profile/nuabena",
     "lookup_version": 7,
+    "institutional_page": "https://english.tau.ac.il/profile/nuabena",
     "links": [
       {
         "kind": "institution",
@@ -48953,8 +48798,8 @@ export const SPEAKER_PROFILES = {
     "name": "Noreen Wejieme",
     "affiliation": "University of New Caledonia",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_New_Caledonia",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_New_Caledonia",
     "links": [
       {
         "kind": "institution",
@@ -48984,8 +48829,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nour Alhoda Akel",
     "affiliation": "Tel Aviv University",
     "confidence": "high",
-    "institutional_page": "https://english.tau.ac.il/tau/index?page=7&letter=All",
     "lookup_version": 7,
+    "institutional_page": "https://english.tau.ac.il/tau/index?page=7&letter=All",
     "links": [
       {
         "kind": "institution",
@@ -49015,8 +48860,8 @@ export const SPEAKER_PROFILES = {
     "name": "Novia Kayfetz-Vuong",
     "affiliation": "Lingnan University",
     "confidence": "high",
-    "institutional_page": "https://www.tarvinlab.org/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.tarvinlab.org/people",
     "links": [
       {
         "kind": "institution",
@@ -49046,8 +48891,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nugroho Arif Prabowo",
     "affiliation": "Yayasan Konservasi Alam Nusantara",
     "confidence": "high",
-    "institutional_page": "https://pelakita.id/2026/02/25/mangrove-to-market-ala-ykan-menjaga-mangrove-menggerakkan-ekonomi-perempuan-pesisir-berau/",
     "lookup_version": 7,
+    "institutional_page": "https://pelakita.id/2026/02/25/mangrove-to-market-ala-ykan-menjaga-mangrove-menggerakkan-ekonomi-perempuan-pesisir-berau/",
     "links": [
       {
         "kind": "institution",
@@ -49077,8 +48922,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nur Ain Amani Abdul Mubin",
     "affiliation": "Universiti Sains Malaysia",
     "confidence": "high",
-    "institutional_page": "https://umexpert.um.edu.my/wee-cheah.html",
     "lookup_version": 7,
+    "institutional_page": "https://umexpert.um.edu.my/wee-cheah.html",
     "links": [
       {
         "kind": "institution",
@@ -49108,8 +48953,8 @@ export const SPEAKER_PROFILES = {
     "name": "Nurhikmah Tenripada",
     "affiliation": "Hiroshima University",
     "confidence": "medium",
-    "institutional_page": "https://www.int-students-hiroshima.jp/en/school/detail.php?UID=17",
     "lookup_version": 7,
+    "institutional_page": "https://www.int-students-hiroshima.jp/en/school/detail.php?UID=17",
     "links": [
       {
         "kind": "institution",
@@ -49139,8 +48984,8 @@ export const SPEAKER_PROFILES = {
     "name": "Olivia Burleigh",
     "affiliation": "Oregon State University",
     "confidence": "high",
-    "institutional_page": "https://ib.oregonstate.edu/directory/olivia-burleigh",
     "lookup_version": 7,
+    "institutional_page": "https://ib.oregonstate.edu/directory/olivia-burleigh",
     "links": [
       {
         "kind": "institution",
@@ -49170,8 +49015,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ophery Ilomo",
     "affiliation": "University of Dar Es Salaam",
     "confidence": "medium",
-    "institutional_page": "https://www.youtube.com/watch?v=7amBBv6Stws",
     "lookup_version": 7,
+    "institutional_page": "https://www.youtube.com/watch?v=7amBBv6Stws",
     "links": [
       {
         "kind": "institution",
@@ -49202,8 +49047,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Southern California",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://dornsife.usc.edu/profile/paige-duffin/",
     "lookup_version": 7,
+    "institutional_page": "https://dornsife.usc.edu/profile/paige-duffin/",
     "links": [
       {
         "kind": "institution",
@@ -49233,8 +49078,8 @@ export const SPEAKER_PROFILES = {
     "name": "Pallavi Seburn",
     "affiliation": "University Of Mauritius",
     "confidence": "medium",
-    "institutional_page": "https://www.uom.ac.mu/doctoralschool/index.php/liststudentsresearchprojectsflm",
     "lookup_version": 7,
+    "institutional_page": "https://www.uom.ac.mu/doctoralschool/index.php/liststudentsresearchprojectsflm",
     "links": [
       {
         "kind": "institution",
@@ -49264,8 +49109,8 @@ export const SPEAKER_PROFILES = {
     "name": "Pascal Sebastian",
     "affiliation": "Indo Ocean Foundation",
     "confidence": "high",
-    "institutional_page": "https://online.tugraz.at/tug_online/visitenkarte.show_vcard?pPersonenId=41D5181CA0741663&pPersonenGruppe=3",
     "lookup_version": 7,
+    "institutional_page": "https://online.tugraz.at/tug_online/visitenkarte.show_vcard?pPersonenId=41D5181CA0741663&pPersonenGruppe=3",
     "links": [
       {
         "kind": "institution",
@@ -49295,8 +49140,8 @@ export const SPEAKER_PROFILES = {
     "name": "Patricia Rodr\u00edguez Garc\u00eda",
     "affiliation": "University of Konstanz",
     "confidence": "high",
-    "institutional_page": "https://www.sli.uni-konstanz.de/en/depot/listofpersons/?tx_uknpersons_lists%5Baction%5D=find&tx_uknpersons_lists%5Bcontroller%5D=List",
     "lookup_version": 7,
+    "institutional_page": "https://www.sli.uni-konstanz.de/en/depot/listofpersons/?tx_uknpersons_lists%5Baction%5D=find&tx_uknpersons_lists%5Bcontroller%5D=List",
     "links": [
       {
         "kind": "institution",
@@ -49369,8 +49214,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ping Hung Chang",
     "affiliation": "Fisheries Research Institute",
     "confidence": "high",
-    "institutional_page": "https://www.aquanet.com/taiwan/keelung/aquaculture-aquaponics/taiwan-fisheries-research-institute",
     "lookup_version": 7,
+    "institutional_page": "https://www.aquanet.com/taiwan/keelung/aquaculture-aquaponics/taiwan-fisheries-research-institute",
     "links": [
       {
         "kind": "institution",
@@ -49400,8 +49245,8 @@ export const SPEAKER_PROFILES = {
     "name": "Piper Zola",
     "affiliation": "College of Charleston",
     "confidence": "medium",
-    "institutional_page": "https://charleston.edu/english/faculty-and-staff/index.php",
     "lookup_version": 7,
+    "institutional_page": "https://charleston.edu/english/faculty-and-staff/index.php",
     "links": [
       {
         "kind": "institution",
@@ -49431,8 +49276,8 @@ export const SPEAKER_PROFILES = {
     "name": "Pramod Chumun",
     "affiliation": "United Nations Development Programme - Mauritius & Seychelles",
     "confidence": "medium",
-    "institutional_page": "https://mauritius.un.org/en/282821-undp-mauritius-country-programme-document-2024-2028",
     "lookup_version": 7,
+    "institutional_page": "https://mauritius.un.org/en/282821-undp-mauritius-country-programme-document-2024-2028",
     "links": [
       {
         "kind": "institution",
@@ -49462,8 +49307,8 @@ export const SPEAKER_PROFILES = {
     "name": "Pranay Sawant",
     "affiliation": "CSIR National Institute of Oceanography",
     "confidence": "medium",
-    "institutional_page": "https://dip.goa.gov.in/igood/viewSubCategoryOneDetails/MTg3",
     "lookup_version": 7,
+    "institutional_page": "https://dip.goa.gov.in/igood/viewSubCategoryOneDetails/MTg3",
     "links": [
       {
         "kind": "institution",
@@ -49493,8 +49338,8 @@ export const SPEAKER_PROFILES = {
     "name": "Prerana Gawde",
     "affiliation": "Stanford University",
     "confidence": "high",
-    "institutional_page": "https://oceans.stanford.edu/people/prerana-gawde",
     "lookup_version": 7,
+    "institutional_page": "https://oceans.stanford.edu/people/prerana-gawde",
     "links": [
       {
         "kind": "institution",
@@ -49524,8 +49369,8 @@ export const SPEAKER_PROFILES = {
     "name": "Radonirina Lebely Botosoamananto",
     "affiliation": "Institut Halieutique et des Sciences Marines",
     "confidence": "medium",
-    "institutional_page": "https://archimer.ifremer.fr/doc/00901/101338/112009.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://archimer.ifremer.fr/doc/00901/101338/112009.pdf",
     "links": [
       {
         "kind": "institution",
@@ -49555,8 +49400,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rafaella Nunes-Palma",
     "affiliation": "Federal University of Santa Maria",
     "confidence": "medium",
-    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/federal-university-santa-maria",
     "lookup_version": 7,
+    "institutional_page": "https://www.timeshighereducation.com/world-university-rankings/federal-university-santa-maria",
     "links": [
       {
         "kind": "institution",
@@ -49587,8 +49432,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://pi-casc.soest.hawaii.edu/directory/full-directory/",
     "lookup_version": 7,
+    "institutional_page": "https://pi-casc.soest.hawaii.edu/directory/full-directory/",
     "links": [
       {
         "kind": "institution",
@@ -49618,8 +49463,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rakotomahatsiaro Eric Dayda",
     "affiliation": "Kora\u00ef and IH.SM",
     "confidence": "high",
-    "institutional_page": "https://www.reeflifefoundation.org/post/blue-ocean-renaissance-meet-dayda-eric-rakotomahatsiaro-our-new-un-sdg-youth-ambassador",
     "lookup_version": 7,
+    "institutional_page": "https://www.reeflifefoundation.org/post/blue-ocean-renaissance-meet-dayda-eric-rakotomahatsiaro-our-new-un-sdg-youth-ambassador",
     "links": [
       {
         "kind": "institution",
@@ -49649,8 +49494,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ramkumaran Kamaraj",
     "affiliation": "Zoological Survey of India",
     "confidence": "high",
-    "institutional_page": "https://link.springer.com/article/10.1007/s12595-026-00607-6",
     "lookup_version": 7,
+    "institutional_page": "https://link.springer.com/article/10.1007/s12595-026-00607-6",
     "links": [
       {
         "kind": "institution",
@@ -49680,8 +49525,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rana Elmesseri",
     "affiliation": "James Cook University",
     "confidence": "medium",
-    "institutional_page": "https://scholar.google.com.au/citations?user=Tj9EN-cAAAAJ&hl=en",
     "lookup_version": 7,
+    "institutional_page": "https://scholar.google.com.au/citations?user=Tj9EN-cAAAAJ&hl=en",
     "links": [
       {
         "kind": "institution",
@@ -49711,8 +49556,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rasheeda Alexander",
     "affiliation": "National Oceanic and Atmospheric Administration",
     "confidence": "medium",
-    "institutional_page": "https://www.fisheries.noaa.gov/staff-directory/pacific-islands-fisheries-science-center-staff-directory",
     "lookup_version": 7,
+    "institutional_page": "https://www.fisheries.noaa.gov/staff-directory/pacific-islands-fisheries-science-center-staff-directory",
     "links": [
       {
         "kind": "institution",
@@ -49742,8 +49587,8 @@ export const SPEAKER_PROFILES = {
     "name": "Reanna Jeanes",
     "affiliation": "I.CARE",
     "confidence": "high",
-    "institutional_page": "https://www.naui.org/dive-spotlight-on-restoring-hope-underwater-an-insight-into-the-world-of-coral-conservation-at-i-care/",
     "lookup_version": 7,
+    "institutional_page": "https://www.naui.org/dive-spotlight-on-restoring-hope-underwater-an-insight-into-the-world-of-coral-conservation-at-i-care/",
     "links": [
       {
         "kind": "institution",
@@ -49773,8 +49618,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rebecca Lacy",
     "affiliation": "University of Miami",
     "confidence": "high",
-    "institutional_page": "https://miamihurricanes.com/roster/rebecca-lacy/",
     "lookup_version": 7,
+    "institutional_page": "https://miamihurricanes.com/roster/rebecca-lacy/",
     "links": [
       {
         "kind": "institution",
@@ -49805,8 +49650,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Bristol",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.bu.edu/chemed/profile/rebecca-loy/",
     "lookup_version": 7,
+    "institutional_page": "https://www.bu.edu/chemed/profile/rebecca-loy/",
     "links": [
       {
         "kind": "institution",
@@ -49836,8 +49681,8 @@ export const SPEAKER_PROFILES = {
     "name": "Remy Oddenyo",
     "affiliation": "Macquarie University",
     "confidence": "high",
-    "institutional_page": "https://researchers.mq.edu.au/en/publications/diversification-of-refugia-types-needed-to-secure-the-future-of-c/",
     "lookup_version": 7,
+    "institutional_page": "https://researchers.mq.edu.au/en/publications/diversification-of-refugia-types-needed-to-secure-the-future-of-c/",
     "links": [
       {
         "kind": "institution",
@@ -49889,8 +49734,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Shoals Rodrigues",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.shoalsrodrigues.org/our-mission",
     "lookup_version": 7,
+    "institutional_page": "https://www.shoalsrodrigues.org/our-mission",
     "links": [
       {
         "kind": "institution",
@@ -49920,8 +49765,8 @@ export const SPEAKER_PROFILES = {
     "name": "Reshma Thachara Kunnath",
     "affiliation": "Justus Liebig University Giessen",
     "confidence": "medium",
-    "institutional_page": "https://www.mygermanuniversity.com/universities/Justus-Liebig-University-Giessen",
     "lookup_version": 7,
+    "institutional_page": "https://www.mygermanuniversity.com/universities/Justus-Liebig-University-Giessen",
     "links": [
       {
         "kind": "institution",
@@ -49996,8 +49841,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.rinaldigotama.com/presentations",
     "lookup_version": 7,
+    "institutional_page": "https://www.rinaldigotama.com/presentations",
     "links": [
       {
         "kind": "institution",
@@ -50028,8 +49873,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/2575/rio-button",
     "lookup_version": 7,
+    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/2575/rio-button",
     "links": [
       {
         "kind": "institution",
@@ -50059,8 +49904,8 @@ export const SPEAKER_PROFILES = {
     "name": "Roandrianasolo Marcellin Tsihoboto",
     "affiliation": "University of Antsiranana",
     "confidence": "high",
-    "institutional_page": "https://aquapublisher.com/index.php/ijms/article/view/3849",
     "lookup_version": 7,
+    "institutional_page": "https://aquapublisher.com/index.php/ijms/article/view/3849",
     "links": [
       {
         "kind": "institution",
@@ -50112,8 +49957,8 @@ export const SPEAKER_PROFILES = {
     "name": "Robert Tomasetti",
     "affiliation": "Florida International University",
     "confidence": "high",
-    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/tomasetti-robert.html",
     "lookup_version": 7,
+    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/tomasetti-robert.html",
     "links": [
       {
         "kind": "institution",
@@ -50143,8 +49988,8 @@ export const SPEAKER_PROFILES = {
     "name": "Robyn Mast",
     "affiliation": "Coral Restoration Foundation",
     "confidence": "medium",
-    "institutional_page": "https://www.pathwaystoscience.org/Institution.aspx?sort=Institution&subsort=CoralRestorationFound",
     "lookup_version": 7,
+    "institutional_page": "https://www.pathwaystoscience.org/Institution.aspx?sort=Institution&subsort=CoralRestorationFound",
     "links": [
       {
         "kind": "institution",
@@ -50174,8 +50019,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rocio Garcia",
     "affiliation": "Universidad Del Magdalena",
     "confidence": "medium",
-    "institutional_page": "https://unimagdalena.edu.co/Content/DocumentosSubItems/subitem-20210519150348_639.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://unimagdalena.edu.co/Content/DocumentosSubItems/subitem-20210519150348_639.pdf",
     "links": [
       {
         "kind": "institution",
@@ -50205,8 +50050,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rodrigo Alfredo Nunez Inzunza",
     "affiliation": "MesoReef DAO Foundation",
     "confidence": "medium",
-    "institutional_page": "https://www.edspira.com/the-inspiring-story-of-rodrigo-nunez/",
     "lookup_version": 7,
+    "institutional_page": "https://www.edspira.com/the-inspiring-story-of-rodrigo-nunez/",
     "links": [
       {
         "kind": "institution",
@@ -50236,8 +50081,8 @@ export const SPEAKER_PROFILES = {
     "name": "Roman Eric Sieler",
     "affiliation": "University of Basel",
     "confidence": "high",
-    "institutional_page": "https://wwz.unibas.ch/en/persons/roman-eric-sieler/",
     "lookup_version": 7,
+    "institutional_page": "https://wwz.unibas.ch/en/persons/roman-eric-sieler/",
     "links": [
       {
         "kind": "institution",
@@ -50267,14 +50112,9 @@ export const SPEAKER_PROFILES = {
     "name": "Rommel Maneja",
     "affiliation": "Saudi Aramco",
     "confidence": "high",
-    "institutional_page": "https://radaris.com/p/Rommel/Maneja/",
+    "verified": true,
     "lookup_version": 7,
     "links": [
-      {
-        "kind": "institution",
-        "label": "University profile",
-        "url": "https://radaris.com/p/Rommel/Maneja/"
-      },
       {
         "kind": "scholar_search",
         "label": "Search Google Scholar",
@@ -50286,11 +50126,7 @@ export const SPEAKER_PROFILES = {
         "url": "https://www.linkedin.com/search/results/people/?keywords=Rommel+Maneja+Saudi+Aramco"
       }
     ],
-    "primary": {
-      "type": "institution",
-      "label": "University profile",
-      "url": "https://radaris.com/p/Rommel/Maneja/"
-    },
+    "primary": null,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -50298,8 +50134,8 @@ export const SPEAKER_PROFILES = {
     "name": "Rosie Rallings",
     "affiliation": "University of Bristol",
     "confidence": "high",
-    "institutional_page": "https://www.justgiving.com/fundraising/Rosie-Rallings",
     "lookup_version": 7,
+    "institutional_page": "https://www.justgiving.com/fundraising/Rosie-Rallings",
     "links": [
       {
         "kind": "institution",
@@ -50330,8 +50166,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "http://reefecology.kaust.edu.sa/people/current",
     "lookup_version": 7,
+    "institutional_page": "http://reefecology.kaust.edu.sa/people/current",
     "links": [
       {
         "kind": "institution",
@@ -50361,8 +50197,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ruleo Camacho",
     "affiliation": "University of the West Indies",
     "confidence": "high",
-    "institutional_page": "https://www.ecopdecade.org/caribbean/",
     "lookup_version": 7,
+    "institutional_page": "https://www.ecopdecade.org/caribbean/",
     "links": [
       {
         "kind": "institution",
@@ -50392,8 +50228,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ryan Carl De Juan",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Philippines_Diliman",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Philippines_Diliman",
     "links": [
       {
         "kind": "institution",
@@ -50423,8 +50259,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ryusuke Obata",
     "affiliation": "Tokyo Metroplolitan University",
     "confidence": "medium",
-    "institutional_page": "http://www.jpgu.org/meeting_e2015/session_list/detail/MTT44.html",
     "lookup_version": 7,
+    "institutional_page": "http://www.jpgu.org/meeting_e2015/session_list/detail/MTT44.html",
     "links": [
       {
         "kind": "institution",
@@ -50454,8 +50290,8 @@ export const SPEAKER_PROFILES = {
     "name": "R\u00f3is\u00edn Hayden",
     "affiliation": "University of Newcastle",
     "confidence": "medium",
-    "institutional_page": "https://www.ncl.ac.uk/bns/people/profile/roisindevaney.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.ncl.ac.uk/bns/people/profile/roisindevaney.html",
     "links": [
       {
         "kind": "institution",
@@ -50485,8 +50321,8 @@ export const SPEAKER_PROFILES = {
     "name": "Saborni Chowdhury",
     "affiliation": "Arizona State University",
     "confidence": "high",
-    "institutional_page": "https://search.asu.edu/profile/3889654",
     "lookup_version": 7,
+    "institutional_page": "https://search.asu.edu/profile/3889654",
     "links": [
       {
         "kind": "institution",
@@ -50517,8 +50353,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Santa Barbara",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://bren.ucsb.edu/people/sadie-cwikiel",
     "lookup_version": 7,
+    "institutional_page": "https://bren.ucsb.edu/people/sadie-cwikiel",
     "links": [
       {
         "kind": "institution",
@@ -50548,8 +50384,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sam King Fung YIU",
     "affiliation": "University of Hong Kong",
     "confidence": "high",
-    "institutional_page": "https://biol.hkbu.edu.hk/people/academic_staff_detail/111/",
     "lookup_version": 7,
+    "institutional_page": "https://biol.hkbu.edu.hk/people/academic_staff_detail/111/",
     "links": [
       {
         "kind": "institution",
@@ -50579,8 +50415,8 @@ export const SPEAKER_PROFILES = {
     "name": "Samantha Gillis",
     "affiliation": "Auckland University of Technology",
     "confidence": "medium",
-    "institutional_page": "https://www.auckland.ac.nz/en/fmhs/about-the-faculty/sovs/contact-us/academic-staff.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.auckland.ac.nz/en/fmhs/about-the-faculty/sovs/contact-us/academic-staff.html",
     "links": [
       {
         "kind": "institution",
@@ -50610,8 +50446,8 @@ export const SPEAKER_PROFILES = {
     "name": "Samantha McClain",
     "affiliation": "Texas A&M University",
     "confidence": "high",
-    "institutional_page": "https://artsci.tamu.edu/oceanography/contact/profiles/samantha-mcclain.html",
     "lookup_version": 7,
+    "institutional_page": "https://artsci.tamu.edu/oceanography/contact/profiles/samantha-mcclain.html",
     "links": [
       {
         "kind": "institution",
@@ -50641,8 +50477,8 @@ export const SPEAKER_PROFILES = {
     "name": "Samantha Shedd",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
-    "institutional_page": "https://manoa.hawaii.edu/lifesciences/people/students/",
     "lookup_version": 7,
+    "institutional_page": "https://manoa.hawaii.edu/lifesciences/people/students/",
     "links": [
       {
         "kind": "institution",
@@ -50672,8 +50508,8 @@ export const SPEAKER_PROFILES = {
     "name": "Samson Rokkarukala",
     "affiliation": "CSIR National Institute of Oceanography",
     "confidence": "high",
-    "institutional_page": "https://www.nio.res.in/profile/84833/samson-rokkarukala",
     "lookup_version": 7,
+    "institutional_page": "https://www.nio.res.in/profile/84833/samson-rokkarukala",
     "links": [
       {
         "kind": "institution",
@@ -50703,8 +50539,8 @@ export const SPEAKER_PROFILES = {
     "name": "Samuel Koeck",
     "affiliation": "MIT-WHOI Joint Program in Oceanography",
     "confidence": "medium",
-    "institutional_page": "https://oceans.mit.edu/education/graduate-study/mit-whoi-joint-program.html",
     "lookup_version": 7,
+    "institutional_page": "https://oceans.mit.edu/education/graduate-study/mit-whoi-joint-program.html",
     "links": [
       {
         "kind": "institution",
@@ -50734,8 +50570,8 @@ export const SPEAKER_PROFILES = {
     "name": "Samuel Madge",
     "affiliation": "University of Warwick",
     "confidence": "medium",
-    "institutional_page": "https://os-people.org.uk/tng13/getperson.php?personID=I6657&tree=OSPEOPLE",
     "lookup_version": 7,
+    "institutional_page": "https://os-people.org.uk/tng13/getperson.php?personID=I6657&tree=OSPEOPLE",
     "links": [
       {
         "kind": "institution",
@@ -50765,8 +50601,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sara Asadi Gharabaghi",
     "affiliation": "Shahid Beheshti University Of Tehran",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Shahid_Beheshti_University",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Shahid_Beheshti_University",
     "links": [
       {
         "kind": "institution",
@@ -50818,8 +50654,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Clemson University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.clemson.edu/science/academics/departments/biosci/about/profiles/sprider",
     "lookup_version": 7,
+    "institutional_page": "https://www.clemson.edu/science/academics/departments/biosci/about/profiles/sprider",
     "links": [
       {
         "kind": "institution",
@@ -50849,8 +50685,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sarah Tamilkani Peter",
     "affiliation": "Zoological Survey of India",
     "confidence": "medium",
-    "institutional_page": "https://zsi.org.in/uploads/Abstractenglish25.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://zsi.org.in/uploads/Abstractenglish25.pdf",
     "links": [
       {
         "kind": "institution",
@@ -50880,8 +50716,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sarah VanDiepenbos",
     "affiliation": "Michigan State University",
     "confidence": "medium",
-    "institutional_page": "https://directory.natsci.msu.edu/directory/Profiles/Person/101377",
     "lookup_version": 7,
+    "institutional_page": "https://directory.natsci.msu.edu/directory/Profiles/Person/101377",
     "links": [
       {
         "kind": "institution",
@@ -50911,8 +50747,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sarina Bao",
     "affiliation": "University of Tokyo",
     "confidence": "medium",
-    "institutional_page": "https://www.sintef.no/en/all-employees/employee/sarina.bao/",
     "lookup_version": 7,
+    "institutional_page": "https://www.sintef.no/en/all-employees/employee/sarina.bao/",
     "links": [
       {
         "kind": "institution",
@@ -50942,8 +50778,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sayeri Paul",
     "affiliation": "CSIR National Institute of India",
     "confidence": "medium",
-    "institutional_page": "https://www.csir.res.in/en/csir-laboratoriesinstitutes-contacts-details",
     "lookup_version": 7,
+    "institutional_page": "https://www.csir.res.in/en/csir-laboratoriesinstitutes-contacts-details",
     "links": [
       {
         "kind": "institution",
@@ -50974,8 +50810,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Santa Barbara",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://mcr.lternet.edu/people/scott-miller",
     "lookup_version": 7,
+    "institutional_page": "https://mcr.lternet.edu/people/scott-miller",
     "links": [
       {
         "kind": "institution",
@@ -51005,8 +50841,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sean Ben-Shaprut",
     "affiliation": "Tel Aviv University",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Tel_Aviv_University",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Tel_Aviv_University",
     "links": [
       {
         "kind": "institution",
@@ -51037,8 +50873,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Western Australia",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Western_Australia",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_Western_Australia",
     "links": [
       {
         "kind": "institution",
@@ -51068,8 +50904,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sebastian Guillermin",
     "affiliation": "Institut de Recherche pour le D\u00e9veloppement",
     "confidence": "high",
-    "institutional_page": "https://umr-entropie.ird.nc/index.php/team",
     "lookup_version": 7,
+    "institutional_page": "https://umr-entropie.ird.nc/index.php/team",
     "links": [
       {
         "kind": "institution",
@@ -51100,8 +50936,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Australian Institute of Marine Science",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.gov.uk/government/people/selina-stead",
     "lookup_version": 7,
+    "institutional_page": "https://www.gov.uk/government/people/selina-stead",
     "links": [
       {
         "kind": "institution",
@@ -51131,8 +50967,8 @@ export const SPEAKER_PROFILES = {
     "name": "Serafin Iii Geson",
     "affiliation": "University of the Philippines - Diliman",
     "confidence": "medium",
-    "institutional_page": "https://zoolstud.sinica.edu.tw/upload/pdf/20250731085244_c9cbb4cc41.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://zoolstud.sinica.edu.tw/upload/pdf/20250731085244_c9cbb4cc41.pdf",
     "links": [
       {
         "kind": "institution",
@@ -51162,8 +50998,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sergei Nozdrenkov",
     "affiliation": "Wildflow",
     "confidence": "high",
-    "institutional_page": "https://www.geospatial.fm/p/wildflowai",
     "lookup_version": 7,
+    "institutional_page": "https://www.geospatial.fm/p/wildflowai",
     "links": [
       {
         "kind": "institution",
@@ -51214,8 +51050,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shane Akoni Palacat-nelsen",
     "affiliation": "Ho\u02bb\u0101la Kealakekua Nui, Inc.",
     "confidence": "high",
-    "institutional_page": "https://kealakekua.org/resources/",
     "lookup_version": 7,
+    "institutional_page": "https://kealakekua.org/resources/",
     "links": [
       {
         "kind": "institution",
@@ -51245,8 +51081,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shania Schull",
     "affiliation": "Florida State University",
     "confidence": "medium",
-    "institutional_page": "https://seminoles.com/staff-directory/email-address/197",
     "lookup_version": 7,
+    "institutional_page": "https://seminoles.com/staff-directory/email-address/197",
     "links": [
       {
         "kind": "institution",
@@ -51276,8 +51112,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shannon Dee",
     "affiliation": "Edith Cowan University",
     "confidence": "high",
-    "institutional_page": "https://theconversation.com/profiles/shannon-bosch-1506037",
     "lookup_version": 7,
+    "institutional_page": "https://theconversation.com/profiles/shannon-bosch-1506037",
     "links": [
       {
         "kind": "institution",
@@ -51308,8 +51144,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/2630/sharad-bayyana",
     "lookup_version": 7,
+    "institutional_page": "https://cbcs.centre.uq.edu.au/profile/2630/sharad-bayyana",
     "links": [
       {
         "kind": "institution",
@@ -51339,8 +51175,8 @@ export const SPEAKER_PROFILES = {
     "name": "Shay Almagor",
     "affiliation": "Tel Aviv University",
     "confidence": "medium",
-    "institutional_page": "https://english.tau.ac.il/profile/shayavr",
     "lookup_version": 7,
+    "institutional_page": "https://english.tau.ac.il/profile/shayavr",
     "links": [
       {
         "kind": "institution",
@@ -51370,8 +51206,8 @@ export const SPEAKER_PROFILES = {
     "name": "SHEAN-JEN Chen",
     "affiliation": "National Yang Ming Chiao Tung University",
     "confidence": "medium",
-    "institutional_page": "https://spie.org/profile/Shean-Jen.Chen-24269",
     "lookup_version": 7,
+    "institutional_page": "https://spie.org/profile/Shean-Jen.Chen-24269",
     "links": [
       {
         "kind": "institution",
@@ -51401,8 +51237,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sheena Suet-Wah Chung",
     "affiliation": "Southern Cross University",
     "confidence": "medium",
-    "institutional_page": "https://www.scu.edu.au/science-and-engineering/our-people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.scu.edu.au/science-and-engineering/our-people/",
     "links": [
       {
         "kind": "institution",
@@ -51432,8 +51268,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sheng Liu",
     "affiliation": "South China Sea Institute of Oceanology",
     "confidence": "high",
-    "institutional_page": "http://english.qdio.cas.cn/people/jzg/",
     "lookup_version": 7,
+    "institutional_page": "http://english.qdio.cas.cn/people/jzg/",
     "links": [
       {
         "kind": "institution",
@@ -51463,8 +51299,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sherry Lyn Sayco",
     "affiliation": "University of the Philippines - Cebu",
     "confidence": "high",
-    "institutional_page": "https://sites.google.com/up.edu.ph/cscollegesecretary/home/people",
     "lookup_version": 7,
+    "institutional_page": "https://sites.google.com/up.edu.ph/cscollegesecretary/home/people",
     "links": [
       {
         "kind": "institution",
@@ -51515,8 +51351,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sibelle O'donnell",
     "affiliation": "University of California - Santa Barbara",
     "confidence": "high",
-    "institutional_page": "https://www.eemb.ucsb.edu/people/students/odonnell",
     "lookup_version": 7,
+    "institutional_page": "https://www.eemb.ucsb.edu/people/students/odonnell",
     "links": [
       {
         "kind": "institution",
@@ -51547,8 +51383,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/sofia-walzer",
     "lookup_version": 7,
+    "institutional_page": "https://reefecology.kaust.edu.sa/people/details/sofia-walzer",
     "links": [
       {
         "kind": "institution",
@@ -51578,8 +51414,8 @@ export const SPEAKER_PROFILES = {
     "name": "Somok Banerjee",
     "affiliation": "Arizona State University",
     "confidence": "high",
-    "institutional_page": "https://search.asu.edu/profile/5284560",
     "lookup_version": 7,
+    "institutional_page": "https://search.asu.edu/profile/5284560",
     "links": [
       {
         "kind": "institution",
@@ -51610,8 +51446,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Hawai\u02bbi Institute of Marine Biology",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.soest.hawaii.edu/soestwp/about/directory/sophia-rahnke/",
     "lookup_version": 7,
+    "institutional_page": "https://www.soest.hawaii.edu/soestwp/about/directory/sophia-rahnke/",
     "links": [
       {
         "kind": "institution",
@@ -51641,8 +51477,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sophie Guillemet-Fritsch",
     "affiliation": "CNRS",
     "confidence": "medium",
-    "institutional_page": "https://ecers.org/uploads/FELLOWS/2023/Sophie%20Guillemet.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://ecers.org/uploads/FELLOWS/2023/Sophie%20Guillemet.pdf",
     "links": [
       {
         "kind": "institution",
@@ -51673,8 +51509,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://www.marine-omics.net/people/",
     "lookup_version": 7,
+    "institutional_page": "https://www.marine-omics.net/people/",
     "links": [
       {
         "kind": "institution",
@@ -51704,8 +51540,8 @@ export const SPEAKER_PROFILES = {
     "name": "Spencer Parr",
     "affiliation": "University of the Virgin Islands",
     "confidence": "high",
-    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.uvi.edu/academics/science-math/departments/bio-sciences/marine-envir-science/masters-marine-envir/Alumni.html",
     "links": [
       {
         "kind": "institution",
@@ -51736,8 +51572,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://aims.jcu.edu.au/our-people/students/stephanie-diperna.414/",
     "lookup_version": 7,
+    "institutional_page": "https://aims.jcu.edu.au/our-people/students/stephanie-diperna.414/",
     "links": [
       {
         "kind": "institution",
@@ -51767,8 +51603,8 @@ export const SPEAKER_PROFILES = {
     "name": "Stephanie Reynaud",
     "affiliation": "Centre Scientifique de Monaco",
     "confidence": "high",
-    "institutional_page": "https://www.instantcheckmate.com/people/stephanie-reynaud/",
     "lookup_version": 7,
+    "institutional_page": "https://www.instantcheckmate.com/people/stephanie-reynaud/",
     "links": [
       {
         "kind": "institution",
@@ -51798,8 +51634,8 @@ export const SPEAKER_PROFILES = {
     "name": "Stirling Ludwick",
     "affiliation": "Gunggandji-mandingalbay Yidinji Peoples Prescribed Body Corporate Aboriginal Corporation",
     "confidence": "high",
-    "institutional_page": "https://www.gmyppbc.com/",
     "lookup_version": 7,
+    "institutional_page": "https://www.gmyppbc.com/",
     "links": [
       {
         "kind": "institution",
@@ -51829,8 +51665,8 @@ export const SPEAKER_PROFILES = {
     "name": "Supisara Pipithkul",
     "affiliation": "University of Tokyo",
     "confidence": "high",
-    "institutional_page": "https://park.itc.u-tokyo.ac.jp/biomineral/page/schedule/20.html",
     "lookup_version": 7,
+    "institutional_page": "https://park.itc.u-tokyo.ac.jp/biomineral/page/schedule/20.html",
     "links": [
       {
         "kind": "institution",
@@ -51881,8 +51717,8 @@ export const SPEAKER_PROFILES = {
     "name": "Susie Mclaren",
     "affiliation": "University of Cambridge",
     "confidence": "high",
-    "institutional_page": "https://www.pdn.cam.ac.uk/staff/mclaren",
     "lookup_version": 7,
+    "institutional_page": "https://www.pdn.cam.ac.uk/staff/mclaren",
     "links": [
       {
         "kind": "institution",
@@ -51912,8 +51748,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sylvia Jagerroos",
     "affiliation": "Red Sea Global",
     "confidence": "high",
-    "institutional_page": "https://gulfnews.com/world/gulf/saudi/saudi-arabia-discovers-largest-coral-colony-in-red-sea-rivaling-global-record-1.500108985",
     "lookup_version": 7,
+    "institutional_page": "https://gulfnews.com/world/gulf/saudi/saudi-arabia-discovers-largest-coral-colony-in-red-sea-rivaling-global-record-1.500108985",
     "links": [
       {
         "kind": "institution",
@@ -51943,8 +51779,8 @@ export const SPEAKER_PROFILES = {
     "name": "Sze Hui Foo",
     "affiliation": "National University of Singapore",
     "confidence": "medium",
-    "institutional_page": "https://bonusisem.github.io/",
     "lookup_version": 7,
+    "institutional_page": "https://bonusisem.github.io/",
     "links": [
       {
         "kind": "institution",
@@ -51974,8 +51810,8 @@ export const SPEAKER_PROFILES = {
     "name": "Taichi Shigemura",
     "affiliation": "ECOH Corporation",
     "confidence": "high",
-    "institutional_page": "https://link.springer.com/article/10.1007/s00338-025-02754-2",
     "lookup_version": 7,
+    "institutional_page": "https://link.springer.com/article/10.1007/s00338-025-02754-2",
     "links": [
       {
         "kind": "institution",
@@ -52006,8 +51842,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Queensland",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.marinespatialecologylab.org/ka-tai-chang",
     "lookup_version": 7,
+    "institutional_page": "https://www.marinespatialecologylab.org/ka-tai-chang",
     "links": [
       {
         "kind": "institution",
@@ -52037,8 +51873,8 @@ export const SPEAKER_PROFILES = {
     "name": "Taleatha Pell",
     "affiliation": "James Cook University",
     "confidence": "high",
-    "institutional_page": "https://www.csiro.au/en/about/facilities-collections/mnf/education-training/itss/taleatha-pell",
     "lookup_version": 7,
+    "institutional_page": "https://www.csiro.au/en/about/facilities-collections/mnf/education-training/itss/taleatha-pell",
     "links": [
       {
         "kind": "institution",
@@ -52069,8 +51905,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of Mississippi",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://olemiss.edu/profiles/tlgoulet",
     "lookup_version": 7,
+    "institutional_page": "https://olemiss.edu/profiles/tlgoulet",
     "links": [
       {
         "kind": "institution",
@@ -52100,8 +51936,8 @@ export const SPEAKER_PROFILES = {
     "name": "Tamatoa Bambridge",
     "affiliation": "National Center for Scientific Research - R\u0101hui Center",
     "confidence": "high",
-    "institutional_page": "https://rahuicenter.pf/en/member/bambridge-tamatoa-en/",
     "lookup_version": 7,
+    "institutional_page": "https://rahuicenter.pf/en/member/bambridge-tamatoa-en/",
     "links": [
       {
         "kind": "institution",
@@ -52131,8 +51967,8 @@ export const SPEAKER_PROFILES = {
     "name": "Tanya Brown",
     "affiliation": "University of Texas - Tyler",
     "confidence": "high",
-    "institutional_page": "https://www.uttyler.edu/directory/biology/tanya-brown.php",
     "lookup_version": 7,
+    "institutional_page": "https://www.uttyler.edu/directory/biology/tanya-brown.php",
     "links": [
       {
         "kind": "institution",
@@ -52162,8 +51998,8 @@ export const SPEAKER_PROFILES = {
     "name": "Taylor Naaykens",
     "affiliation": "University of Toronto",
     "confidence": "high",
-    "institutional_page": "https://www.utm.utoronto.ca/biology/people/category/graduate-students-and-postdoctoral-fellows",
     "lookup_version": 7,
+    "institutional_page": "https://www.utm.utoronto.ca/biology/people/category/graduate-students-and-postdoctoral-fellows",
     "links": [
       {
         "kind": "institution",
@@ -52194,8 +52030,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "University of California - Berkeley",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.bweems.org/member-directory/taylor-walker",
     "lookup_version": 7,
+    "institutional_page": "https://www.bweems.org/member-directory/taylor-walker",
     "links": [
       {
         "kind": "institution",
@@ -52226,8 +52062,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Kipuka Olowalu",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://kipukaolowalu.org/",
     "lookup_version": 7,
+    "institutional_page": "https://kipukaolowalu.org/",
     "links": [
       {
         "kind": "institution",
@@ -52257,8 +52093,8 @@ export const SPEAKER_PROFILES = {
     "name": "Teresa Baptista Nobre",
     "affiliation": "University of Western Australia",
     "confidence": "medium",
-    "institutional_page": "https://www.uwa.edu.au/institutes/wa-centre-for-road-safety-research/about",
     "lookup_version": 7,
+    "institutional_page": "https://www.uwa.edu.au/institutes/wa-centre-for-road-safety-research/about",
     "links": [
       {
         "kind": "institution",
@@ -52288,8 +52124,8 @@ export const SPEAKER_PROFILES = {
     "name": "Teresa Bednarek",
     "affiliation": "University of Western Australia",
     "confidence": "medium",
-    "institutional_page": "https://www.uwa.edu.au/institutes/wa-centre-for-road-safety-research/about",
     "lookup_version": 7,
+    "institutional_page": "https://www.uwa.edu.au/institutes/wa-centre-for-road-safety-research/about",
     "links": [
       {
         "kind": "institution",
@@ -52340,8 +52176,8 @@ export const SPEAKER_PROFILES = {
     "name": "Thalia Hernandez Trillo",
     "affiliation": "Universidad Aut\u00f3noma de Baja California Sur",
     "confidence": "medium",
-    "institutional_page": "https://www.uabcs.mx/dah/docentes",
     "lookup_version": 7,
+    "institutional_page": "https://www.uabcs.mx/dah/docentes",
     "links": [
       {
         "kind": "institution",
@@ -52371,8 +52207,8 @@ export const SPEAKER_PROFILES = {
     "name": "Thinesh Thangadurai",
     "affiliation": "Sultan Qaboos University",
     "confidence": "high",
-    "institutional_page": "https://www.squ.edu.om/Portals/10/Dr.%20Thinesh%20Thangadurai%20Resume%20Final.pdf?ver=WGr5saXfBwI3KSpqzXdvCQ%3D%3D",
     "lookup_version": 7,
+    "institutional_page": "https://www.squ.edu.om/Portals/10/Dr.%20Thinesh%20Thangadurai%20Resume%20Final.pdf?ver=WGr5saXfBwI3KSpqzXdvCQ%3D%3D",
     "links": [
       {
         "kind": "institution",
@@ -52402,8 +52238,8 @@ export const SPEAKER_PROFILES = {
     "name": "Thomas Johnstone",
     "affiliation": "Otago University",
     "confidence": "medium",
-    "institutional_page": "https://www.otago.ac.nz/contacts/department_heads",
     "lookup_version": 7,
+    "institutional_page": "https://www.otago.ac.nz/contacts/department_heads",
     "links": [
       {
         "kind": "institution",
@@ -52433,8 +52269,8 @@ export const SPEAKER_PROFILES = {
     "name": "Thomas Kemenes",
     "affiliation": "Wageningen University",
     "confidence": "medium",
-    "institutional_page": "https://www.perryinstitute.org/new-research-shows-alarming-decline-in-parrotfish-densities-around-new-providence-and-rose-island/",
     "lookup_version": 7,
+    "institutional_page": "https://www.perryinstitute.org/new-research-shows-alarming-decline-in-parrotfish-densities-around-new-providence-and-rose-island/",
     "links": [
       {
         "kind": "institution",
@@ -52464,8 +52300,8 @@ export const SPEAKER_PROFILES = {
     "name": "Tiara Stark",
     "affiliation": "The Nature Conservancy",
     "confidence": "high",
-    "institutional_page": "https://www.civilbeat.org/2024/11/shootz-school-surfing-returns-pickleball-at-the-convention-center/",
     "lookup_version": 7,
+    "institutional_page": "https://www.civilbeat.org/2024/11/shootz-school-surfing-returns-pickleball-at-the-convention-center/",
     "links": [
       {
         "kind": "institution",
@@ -52495,8 +52331,8 @@ export const SPEAKER_PROFILES = {
     "name": "Tom Moir",
     "affiliation": "University of New South Wales",
     "confidence": "high",
-    "institutional_page": "https://wellingtonandreeves.com.au/agents/tom-moir/",
     "lookup_version": 7,
+    "institutional_page": "https://wellingtonandreeves.com.au/agents/tom-moir/",
     "links": [
       {
         "kind": "institution",
@@ -52526,8 +52362,8 @@ export const SPEAKER_PROFILES = {
     "name": "TOYOSI IGEJONGBO",
     "affiliation": "Federal University of Technology - Akure",
     "confidence": "high",
-    "institutional_page": "https://edutimesafrica.com/futa-lecturer-secures-fisheries-grant-leads-regional-dialogue-on-climate-resilient-marine-systems/",
     "lookup_version": 7,
+    "institutional_page": "https://edutimesafrica.com/futa-lecturer-secures-fisheries-grant-leads-regional-dialogue-on-climate-resilient-marine-systems/",
     "links": [
       {
         "kind": "institution",
@@ -52557,8 +52393,8 @@ export const SPEAKER_PROFILES = {
     "name": "Trina Leberer",
     "affiliation": "The Nature Conservancy",
     "confidence": "high",
-    "institutional_page": "https://www.nature.org/en-us/about-us/who-we-are/our-people/trina-leberer/",
     "lookup_version": 7,
+    "institutional_page": "https://www.nature.org/en-us/about-us/who-we-are/our-people/trina-leberer/",
     "links": [
       {
         "kind": "institution",
@@ -52610,8 +52446,8 @@ export const SPEAKER_PROFILES = {
     "name": "Uilani Naipo",
     "affiliation": "Kalanihale",
     "confidence": "high",
-    "institutional_page": "https://www.civilbeat.org/author/uilani-naipo/",
     "lookup_version": 7,
+    "institutional_page": "https://www.civilbeat.org/author/uilani-naipo/",
     "links": [
       {
         "kind": "institution",
@@ -52641,8 +52477,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ulamila Matairakula - Kotoisuva",
     "affiliation": "University of the South Pacific",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_South_Pacific",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_South_Pacific",
     "links": [
       {
         "kind": "institution",
@@ -52672,8 +52508,8 @@ export const SPEAKER_PROFILES = {
     "name": "Valentina Bautista",
     "affiliation": "Florida International University",
     "confidence": "high",
-    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/bautista-rolo-valentina.html",
     "lookup_version": 7,
+    "institutional_page": "https://crestcache.fiu.edu/about/students/profiles/bautista-rolo-valentina.html",
     "links": [
       {
         "kind": "institution",
@@ -52703,8 +52539,8 @@ export const SPEAKER_PROFILES = {
     "name": "Vanessa Hui Fen Neo",
     "affiliation": "University of Leicester",
     "confidence": "medium",
-    "institutional_page": "https://le.ac.uk/people",
     "lookup_version": 7,
+    "institutional_page": "https://le.ac.uk/people",
     "links": [
       {
         "kind": "institution",
@@ -52734,8 +52570,8 @@ export const SPEAKER_PROFILES = {
     "name": "Vera Emelianenko",
     "affiliation": "Okinawa Institute of Science and Technology",
     "confidence": "medium",
-    "institutional_page": "https://www.biorxiv.org/content/10.64898/2026.04.21.719777v1.full.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://www.biorxiv.org/content/10.64898/2026.04.21.719777v1.full.pdf",
     "links": [
       {
         "kind": "institution",
@@ -52765,8 +52601,8 @@ export const SPEAKER_PROFILES = {
     "name": "Victor Lara",
     "affiliation": "Smithsonian Tropical Research Center",
     "confidence": "medium",
-    "institutional_page": "https://fellowships.si.edu/SORSSTRI",
     "lookup_version": 7,
+    "institutional_page": "https://fellowships.si.edu/SORSSTRI",
     "links": [
       {
         "kind": "institution",
@@ -52796,8 +52632,8 @@ export const SPEAKER_PROFILES = {
     "name": "Victor Manuel Pinon Gonzlez",
     "affiliation": "Academia Sinica",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Academia_Sinica",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Academia_Sinica",
     "links": [
       {
         "kind": "institution",
@@ -52827,8 +52663,8 @@ export const SPEAKER_PROFILES = {
     "name": "Viktor Domazetoski",
     "affiliation": "University of Exeter",
     "confidence": "high",
-    "institutional_page": "https://ecologyconservation.exeter.ac.uk/people/pgr/",
     "lookup_version": 7,
+    "institutional_page": "https://ecologyconservation.exeter.ac.uk/people/pgr/",
     "links": [
       {
         "kind": "institution",
@@ -52858,8 +52694,8 @@ export const SPEAKER_PROFILES = {
     "name": "Virginie Bornarel",
     "affiliation": "University of British Columbia",
     "confidence": "medium",
-    "institutional_page": "https://oceans.ubc.ca/graduate-program/current-students/",
     "lookup_version": 7,
+    "institutional_page": "https://oceans.ubc.ca/graduate-program/current-students/",
     "links": [
       {
         "kind": "institution",
@@ -52889,8 +52725,8 @@ export const SPEAKER_PROFILES = {
     "name": "Vivian Bonacker",
     "affiliation": "Macquarie University/University of Groningen",
     "confidence": "high",
-    "institutional_page": "https://www.marineomicslab.com/get-to-know-us",
     "lookup_version": 7,
+    "institutional_page": "https://www.marineomicslab.com/get-to-know-us",
     "links": [
       {
         "kind": "institution",
@@ -52920,8 +52756,8 @@ export const SPEAKER_PROFILES = {
     "name": "Vivienne Gao",
     "affiliation": "University of Warwick",
     "confidence": "medium",
-    "institutional_page": "https://warwick.ac.uk/fac/sci/lifesci/people/",
     "lookup_version": 7,
+    "institutional_page": "https://warwick.ac.uk/fac/sci/lifesci/people/",
     "links": [
       {
         "kind": "institution",
@@ -52951,8 +52787,8 @@ export const SPEAKER_PROFILES = {
     "name": "Vivienne Weir",
     "affiliation": "University of Guam",
     "confidence": "high",
-    "institutional_page": "https://www.uog.edu/ml/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.uog.edu/ml/people",
     "links": [
       {
         "kind": "institution",
@@ -52982,8 +52818,8 @@ export const SPEAKER_PROFILES = {
     "name": "Wai-Kwan Chu",
     "affiliation": "National Taiwan Ocean University",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/National_Taiwan_Ocean_University",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/National_Taiwan_Ocean_University",
     "links": [
       {
         "kind": "institution",
@@ -53013,8 +52849,8 @@ export const SPEAKER_PROFILES = {
     "name": "Wajd Alaidrous",
     "affiliation": "NEOM Nature Reserve",
     "confidence": "medium",
-    "institutional_page": "https://english.alarabiya.net/News/saudi-arabia/2025/06/05/neom-nature-reserve-the-lost-species-that-have-returned-to-northwest-saudi-arabia",
     "lookup_version": 7,
+    "institutional_page": "https://english.alarabiya.net/News/saudi-arabia/2025/06/05/neom-nature-reserve-the-lost-species-that-have-returned-to-northwest-saudi-arabia",
     "links": [
       {
         "kind": "institution",
@@ -53044,8 +52880,8 @@ export const SPEAKER_PROFILES = {
     "name": "Wei Quan Joel Tan",
     "affiliation": "National University of Singapore",
     "confidence": "medium",
-    "institutional_page": "https://journals.plos.org/plosone/article/authors?id=10.1371/journal.pone.0307818",
     "lookup_version": 7,
+    "institutional_page": "https://journals.plos.org/plosone/article/authors?id=10.1371/journal.pone.0307818",
     "links": [
       {
         "kind": "institution",
@@ -53076,8 +52912,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Scripps Institution of Oceanography",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://scripps.ucsd.edu/profiles/wsparagon",
     "lookup_version": 7,
+    "institutional_page": "https://scripps.ucsd.edu/profiles/wsparagon",
     "links": [
       {
         "kind": "institution",
@@ -53130,8 +52966,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "James Cook University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://portfolio.jcu.edu.au/researchers/william.arlidge",
     "lookup_version": 7,
+    "institutional_page": "https://portfolio.jcu.edu.au/researchers/william.arlidge",
     "links": [
       {
         "kind": "institution",
@@ -53161,8 +52997,8 @@ export const SPEAKER_PROFILES = {
     "name": "William Roman",
     "affiliation": "University of New Caledonia",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_New_Caledonia",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_New_Caledonia",
     "links": [
       {
         "kind": "institution",
@@ -53192,8 +53028,8 @@ export const SPEAKER_PROFILES = {
     "name": "William Zozaya",
     "affiliation": "CRIOBE",
     "confidence": "high",
-    "institutional_page": "https://www.radiofrance.fr/franceculture/podcasts/le-reportage-de-la-redaction/en-polynesie-une-course-contre-la-montre-pour-sauver-le-corail-1683113",
     "lookup_version": 7,
+    "institutional_page": "https://www.radiofrance.fr/franceculture/podcasts/le-reportage-de-la-redaction/en-polynesie-une-course-contre-la-montre-pour-sauver-le-corail-1683113",
     "links": [
       {
         "kind": "institution",
@@ -53223,8 +53059,8 @@ export const SPEAKER_PROFILES = {
     "name": "Ya-Yi Huang",
     "affiliation": "Academia Sinica",
     "confidence": "high",
-    "institutional_page": "https://www1.ihp.sinica.edu.tw/en/People/Fellows",
     "lookup_version": 7,
+    "institutional_page": "https://www1.ihp.sinica.edu.tw/en/People/Fellows",
     "links": [
       {
         "kind": "institution",
@@ -53254,8 +53090,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yan Zhi Yap",
     "affiliation": "Experimental Marine Ecology Lab",
     "confidence": "high",
-    "institutional_page": "https://sites.google.com/view/emelnus/people/postgraduates/yap-yan-zhi",
     "lookup_version": 7,
+    "institutional_page": "https://sites.google.com/view/emelnus/people/postgraduates/yap-yan-zhi",
     "links": [
       {
         "kind": "institution",
@@ -53286,8 +53122,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "KAUST",
     "confidence": "medium",
     "verified": true,
-    "institutional_page": "https://urbanlab.kaust.edu.sa/people",
     "lookup_version": 7,
+    "institutional_page": "https://urbanlab.kaust.edu.sa/people",
     "links": [
       {
         "kind": "institution",
@@ -53317,8 +53153,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yingxin Li",
     "affiliation": "Lingnan University",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Lingnan_University",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Lingnan_University",
     "links": [
       {
         "kind": "institution",
@@ -53348,8 +53184,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yolu\u00e8ne Massey",
     "affiliation": "CNRS",
     "confidence": "medium",
-    "institutional_page": "https://mediaserver.univ-nantes.fr/permalink/v1268baef50f367j8ytw/",
     "lookup_version": 7,
+    "institutional_page": "https://mediaserver.univ-nantes.fr/permalink/v1268baef50f367j8ytw/",
     "links": [
       {
         "kind": "institution",
@@ -53379,8 +53215,8 @@ export const SPEAKER_PROFILES = {
     "name": "Youfang Sun",
     "affiliation": "South China Sea Institute of Oceanology",
     "confidence": "medium",
-    "institutional_page": "http://english.qdio.cas.cn/people/jzg/",
     "lookup_version": 7,
+    "institutional_page": "http://english.qdio.cas.cn/people/jzg/",
     "links": [
       {
         "kind": "institution",
@@ -53431,8 +53267,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yuka Kushida",
     "affiliation": "Kagoshima University",
     "confidence": "medium",
-    "institutional_page": "https://researchmap.jp/umiera",
     "lookup_version": 7,
+    "institutional_page": "https://researchmap.jp/umiera",
     "links": [
       {
         "kind": "institution",
@@ -53462,8 +53298,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yuko Abe",
     "affiliation": "University of the Ryukyus",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/University_of_the_Ryukyus",
     "links": [
       {
         "kind": "institution",
@@ -53493,8 +53329,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yusup Jentewo",
     "affiliation": "University of Auckland",
     "confidence": "medium",
-    "institutional_page": "https://www.auckland.ac.nz/en.html",
     "lookup_version": 7,
+    "institutional_page": "https://www.auckland.ac.nz/en.html",
     "links": [
       {
         "kind": "institution",
@@ -53524,8 +53360,8 @@ export const SPEAKER_PROFILES = {
     "name": "Yuta Miura",
     "affiliation": "Kokusai Kogyo Co., Ltd.",
     "confidence": "medium",
-    "institutional_page": "https://www.cdp.net/en/partners/kokusai-kogyo-co-ltd",
     "lookup_version": 7,
+    "institutional_page": "https://www.cdp.net/en/partners/kokusai-kogyo-co-ltd",
     "links": [
       {
         "kind": "institution",
@@ -53555,8 +53391,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zach Boakes",
     "affiliation": "Brin",
     "confidence": "high",
-    "institutional_page": "https://earthwatch.org/scientists/zach-boakes-phd",
     "lookup_version": 7,
+    "institutional_page": "https://earthwatch.org/scientists/zach-boakes-phd",
     "links": [
       {
         "kind": "institution",
@@ -53587,8 +53423,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Nova Southeastern University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://gisandspatialecologylab.weebly.com/lab-members.html",
     "lookup_version": 7,
+    "institutional_page": "https://gisandspatialecologylab.weebly.com/lab-members.html",
     "links": [
       {
         "kind": "institution",
@@ -53618,8 +53454,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zachary Zagon",
     "affiliation": "North Carolina State University",
     "confidence": "medium",
-    "institutional_page": "https://ncarchitects.lib.ncsu.edu/people/P000392",
     "lookup_version": 7,
+    "institutional_page": "https://ncarchitects.lib.ncsu.edu/people/P000392",
     "links": [
       {
         "kind": "institution",
@@ -53649,8 +53485,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zahidah Afrin",
     "affiliation": "University Of The South Pacific",
     "confidence": "medium",
-    "institutional_page": "https://library.sprep.org/sites/default/files/279.pdf",
     "lookup_version": 7,
+    "institutional_page": "https://library.sprep.org/sites/default/files/279.pdf",
     "links": [
       {
         "kind": "institution",
@@ -53680,8 +53516,8 @@ export const SPEAKER_PROFILES = {
     "name": "ZAHIR RIDWAN",
     "affiliation": "Indonesian Librarian Association of South Sulawesi",
     "confidence": "medium",
-    "institutional_page": "https://rentechdigital.com/smartscraper/business-report-details/list-of-libraries-in-indonesia",
     "lookup_version": 7,
+    "institutional_page": "https://rentechdigital.com/smartscraper/business-report-details/list-of-libraries-in-indonesia",
     "links": [
       {
         "kind": "institution",
@@ -53711,8 +53547,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zena Good",
     "affiliation": "Mahonia Na Dari",
     "confidence": "high",
-    "institutional_page": "https://sdgs.un.org/partnerships/mahonia-na-dari-influencing-behaviour-and-attitudes-through-theory-and-practice-based",
     "lookup_version": 7,
+    "institutional_page": "https://sdgs.un.org/partnerships/mahonia-na-dari-influencing-behaviour-and-attitudes-through-theory-and-practice-based",
     "links": [
       {
         "kind": "institution",
@@ -53742,8 +53578,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zhi Ting Yip",
     "affiliation": "National University of Singapore",
     "confidence": "high",
-    "institutional_page": "https://discovery.researcher.life/article/spatiotemporal-edna-monitoring-of-marine-biodiversity-in-a-hyperurbanised-coastal-environment/cd32dc17dceb3f4882839dda7006ca2f",
     "lookup_version": 7,
+    "institutional_page": "https://discovery.researcher.life/article/spatiotemporal-edna-monitoring-of-marine-biodiversity-in-a-hyperurbanised-coastal-environment/cd32dc17dceb3f4882839dda7006ca2f",
     "links": [
       {
         "kind": "institution",
@@ -53773,8 +53609,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zhongyue Wan",
     "affiliation": "University of Hong Kong",
     "confidence": "medium",
-    "institutional_page": "https://en.wikipedia.org/wiki/Chinese_University_of_Hong_Kong",
     "lookup_version": 7,
+    "institutional_page": "https://en.wikipedia.org/wiki/Chinese_University_of_Hong_Kong",
     "links": [
       {
         "kind": "institution",
@@ -53804,8 +53640,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zoe Fu-Chen",
     "affiliation": "Smithsonian Tropical Research Institute",
     "confidence": "medium",
-    "institutional_page": "https://fellowships.si.edu/SORSSTRI",
     "lookup_version": 7,
+    "institutional_page": "https://fellowships.si.edu/SORSSTRI",
     "links": [
       {
         "kind": "institution",
@@ -53836,8 +53672,8 @@ export const SPEAKER_PROFILES = {
     "affiliation": "Montana State University",
     "confidence": "high",
     "verified": true,
-    "institutional_page": "https://www.aquaticmicro.org/people",
     "lookup_version": 7,
+    "institutional_page": "https://www.aquaticmicro.org/people",
     "links": [
       {
         "kind": "institution",
@@ -53867,8 +53703,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zoe Willis",
     "affiliation": "Florida Atlantic University - Harbor Branch",
     "confidence": "medium",
-    "institutional_page": "https://www.fau.edu/hboi/about/research-personnel/",
     "lookup_version": 7,
+    "institutional_page": "https://www.fau.edu/hboi/about/research-personnel/",
     "links": [
       {
         "kind": "institution",
@@ -53898,8 +53734,8 @@ export const SPEAKER_PROFILES = {
     "name": "Zongyan Shi",
     "affiliation": "South China Sea Institute of Oceanology",
     "confidence": "medium",
-    "institutional_page": "http://english.qdio.cas.cn/people/jzg/",
     "lookup_version": 7,
+    "institutional_page": "http://english.qdio.cas.cn/people/jzg/",
     "links": [
       {
         "kind": "institution",
@@ -53929,8 +53765,8 @@ export const SPEAKER_PROFILES = {
     "name": "\u02bbA\u02bbali\u02bbi Kelling",
     "affiliation": "Hawai\u02bbi Institute of Marine Biology",
     "confidence": "high",
-    "institutional_page": "https://www.hawaii.edu/news/2024/08/13/student-conservation-award-himb/",
     "lookup_version": 7,
+    "institutional_page": "https://www.hawaii.edu/news/2024/08/13/student-conservation-award-himb/",
     "links": [
       {
         "kind": "institution",
