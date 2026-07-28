@@ -1,9 +1,9 @@
 # ICRS 2026 speaker affiliations
 
-Interactive map and co-authorship network for ICRS 2026 speakers, geocoded by affiliation and centred on Auckland.
+Interactive (emissions) map and co-authorship network for ICRS 2026 speakers.
 
-**Live site:** https://orlando-codes.com/icrs2026-explorer/ (also https://orlando-code.github.io/explore-icrs-2026/)
-
+**Live site:** https://orlando-codes.com/icrs2026-explorer/
+<!-- 
 Regenerate speaker profile/contact links for the network tab:
 
 ```bash
@@ -39,4 +39,4 @@ Set the API URL in `index.html`:
 
 ```html
 <meta name="icrs-offset-api" content="https://your-api.example.com/api/offsets" />
-```
+``` -->
