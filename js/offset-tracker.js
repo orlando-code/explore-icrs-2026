@@ -18,7 +18,6 @@ function offsetTurnstileMountEl() {
     mount = document.createElement("div");
     mount.id = "emissions-offset-turnstile";
     mount.className = "turnstile-mount";
-    mount.hidden = true;
     mount.setAttribute("aria-hidden", "true");
     document.body.appendChild(mount);
   }
@@ -42,23 +41,28 @@ function mountOffsetTurnstile() {
   resetTurnstile();
   const mount = offsetTurnstileMountEl();
   if (!TURNSTILE_SITE_KEY || !window.turnstile) return;
-  offsetTurnstileWidgetId = window.turnstile.render(mount, {
-    sitekey: TURNSTILE_SITE_KEY,
-    action: "turnstile-spin-v2",
-    size: "invisible",
-    callback: (token) => {
-      offsetTurnstileToken = token;
-      finishOffsetTurnstilePending(token);
-    },
-    "expired-callback": () => {
-      offsetTurnstileToken = "";
-      finishOffsetTurnstilePending("");
-    },
-    "error-callback": () => {
-      offsetTurnstileToken = "";
-      finishOffsetTurnstilePending("");
-    },
-  });
+  try {
+    offsetTurnstileWidgetId = window.turnstile.render(mount, {
+      sitekey: TURNSTILE_SITE_KEY,
+      action: "turnstile-spin-v2",
+      size: "invisible",
+      callback: (token) => {
+        offsetTurnstileToken = token;
+        finishOffsetTurnstilePending(token);
+      },
+      "expired-callback": () => {
+        offsetTurnstileToken = "";
+        finishOffsetTurnstilePending("");
+      },
+      "error-callback": () => {
+        offsetTurnstileToken = "";
+        finishOffsetTurnstilePending("");
+      },
+    });
+  } catch (error) {
+    offsetTurnstileWidgetId = null;
+    console.warn("Turnstile mount failed:", error);
+  }
 }
 
 function offsetTurnstileResponse() {
@@ -70,7 +74,14 @@ function offsetTurnstileResponse() {
 async function ensureOffsetTurnstileToken() {
   const existing = offsetTurnstileResponse();
   if (existing) return existing;
-  if (offsetTurnstileWidgetId == null) mountOffsetTurnstile();
+  if (offsetTurnstileWidgetId == null) {
+    if (window.turnstile?.ready) {
+      await new Promise((resolve) => window.turnstile.ready(resolve));
+    } else if (!window.turnstile) {
+      return "";
+    }
+    mountOffsetTurnstile();
+  }
   if (offsetTurnstileWidgetId == null || !window.turnstile?.execute) return "";
 
   return new Promise((resolve) => {
@@ -95,17 +106,6 @@ async function ensureOffsetTurnstileToken() {
       resolve("");
     }
   });
-}
-
-function initOffsetTurnstile() {
-  if (!TURNSTILE_SITE_KEY) return;
-  if (window.turnstile?.ready) {
-    window.turnstile.ready(() => mountOffsetTurnstile());
-    return;
-  }
-  window.setTimeout(() => {
-    if (window.turnstile) mountOffsetTurnstile();
-  }, 0);
 }
 
 const STATIC_REGISTRATIONS_URL = "data/offset-registrations.json";
@@ -453,7 +453,12 @@ export function createOffsetTracker({
 
   function registerSelected() {
     const attendee = resolveSelectedAttendee();
-    if (!attendee) return false;
+    if (!attendee) {
+      if (elements.status && searchQuery.trim()) {
+        elements.status.textContent = "Select your name from the suggestions.";
+      }
+      return false;
+    }
     if (isRegistered(attendee) || pendingRegistrationIds.has(attendee.id)) {
       if (elements.status && isRegistered(attendee)) {
         elements.status.textContent = `${attendee.name} is already registered.`;
@@ -537,7 +542,6 @@ export function createOffsetTracker({
   }
 
   async function init() {
-    initOffsetTurnstile();
     refreshAttendees();
     bindEvents();
     startPolling();

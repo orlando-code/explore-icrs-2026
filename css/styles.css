@@ -370,9 +370,15 @@ a.btn-small {
   margin: 0.65rem 0 0.35rem;
 }
 
-.network-contact-turnstile,
 .turnstile-mount {
-  display: none !important;
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .network-contact-email-note {

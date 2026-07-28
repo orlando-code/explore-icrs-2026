@@ -205,8 +205,7 @@ function contactTurnstileMountEl() {
   if (!mount) {
     mount = document.createElement("div");
     mount.id = "network-contact-turnstile";
-    mount.className = "network-contact-turnstile";
-    mount.hidden = true;
+    mount.className = "turnstile-mount";
     mount.setAttribute("aria-hidden", "true");
     document.body.appendChild(mount);
   }
@@ -230,23 +229,28 @@ function mountContactTurnstile() {
   resetContactTurnstile();
   const mount = contactTurnstileMountEl();
   if (!TURNSTILE_SITE_KEY || !window.turnstile) return;
-  contactTurnstileWidgetId = window.turnstile.render(mount, {
-    sitekey: TURNSTILE_SITE_KEY,
-    action: "turnstile-spin-v2",
-    size: "invisible",
-    callback: (token) => {
-      contactTurnstileToken = token;
-      finishContactTurnstilePending(token);
-    },
-    "expired-callback": () => {
-      contactTurnstileToken = "";
-      finishContactTurnstilePending("");
-    },
-    "error-callback": () => {
-      contactTurnstileToken = "";
-      finishContactTurnstilePending("");
-    },
-  });
+  try {
+    contactTurnstileWidgetId = window.turnstile.render(mount, {
+      sitekey: TURNSTILE_SITE_KEY,
+      action: "turnstile-spin-v2",
+      size: "invisible",
+      callback: (token) => {
+        contactTurnstileToken = token;
+        finishContactTurnstilePending(token);
+      },
+      "expired-callback": () => {
+        contactTurnstileToken = "";
+        finishContactTurnstilePending("");
+      },
+      "error-callback": () => {
+        contactTurnstileToken = "";
+        finishContactTurnstilePending("");
+      },
+    });
+  } catch (error) {
+    contactTurnstileWidgetId = null;
+    console.warn("Turnstile mount failed:", error);
+  }
 }
 
 function contactTurnstileResponse() {
@@ -258,7 +262,14 @@ function contactTurnstileResponse() {
 async function ensureContactTurnstileToken() {
   const existing = contactTurnstileResponse();
   if (existing) return existing;
-  if (contactTurnstileWidgetId == null) mountContactTurnstile();
+  if (contactTurnstileWidgetId == null) {
+    if (window.turnstile?.ready) {
+      await new Promise((resolve) => window.turnstile.ready(resolve));
+    } else if (!window.turnstile) {
+      return "";
+    }
+    mountContactTurnstile();
+  }
   if (contactTurnstileWidgetId == null || !window.turnstile?.execute) return "";
 
   return new Promise((resolve) => {
