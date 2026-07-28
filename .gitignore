@@ -233,3 +233,4 @@ __marimo__/
 
 keys.yaml
 .DS_Store
+data/geocode_cache.json
