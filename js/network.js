@@ -7,6 +7,7 @@ const MAX_LINKS_ALL = 6000;
 const DATA_REMOVAL_EMAIL = "rt582@cam.ac.uk";
 let contactTurnstileWidgetId = null;
 let contactTurnstileToken = "";
+let contactTurnstilePending = null;
 const revealedContactEmails = new Map();
 
 function linkEndpointId(endpoint) {
@@ -192,6 +193,26 @@ function contactRevealKey(name, affiliation = "") {
   return `${String(name).trim().toLowerCase()}|${String(affiliation).trim().toLowerCase()}`;
 }
 
+function finishContactTurnstilePending(token = "") {
+  if (!contactTurnstilePending) return;
+  const { resolve } = contactTurnstilePending;
+  contactTurnstilePending = null;
+  resolve(token);
+}
+
+function contactTurnstileMountEl() {
+  let mount = document.getElementById("network-contact-turnstile");
+  if (!mount) {
+    mount = document.createElement("div");
+    mount.id = "network-contact-turnstile";
+    mount.className = "network-contact-turnstile";
+    mount.hidden = true;
+    mount.setAttribute("aria-hidden", "true");
+    document.body.appendChild(mount);
+  }
+  return mount;
+}
+
 function resetContactTurnstile() {
   if (contactTurnstileWidgetId != null && window.turnstile) {
     try {
@@ -202,23 +223,28 @@ function resetContactTurnstile() {
   }
   contactTurnstileWidgetId = null;
   contactTurnstileToken = "";
+  finishContactTurnstilePending("");
 }
 
 function mountContactTurnstile() {
   resetContactTurnstile();
-  const mount = document.getElementById("network-contact-turnstile");
-  if (!mount || !TURNSTILE_SITE_KEY || !window.turnstile) return;
+  const mount = contactTurnstileMountEl();
+  if (!TURNSTILE_SITE_KEY || !window.turnstile) return;
   contactTurnstileWidgetId = window.turnstile.render(mount, {
     sitekey: TURNSTILE_SITE_KEY,
     action: "turnstile-spin-v2",
+    size: "invisible",
     callback: (token) => {
       contactTurnstileToken = token;
+      finishContactTurnstilePending(token);
     },
     "expired-callback": () => {
       contactTurnstileToken = "";
+      finishContactTurnstilePending("");
     },
     "error-callback": () => {
       contactTurnstileToken = "";
+      finishContactTurnstilePending("");
     },
   });
 }
@@ -227,6 +253,36 @@ function contactTurnstileResponse() {
   if (contactTurnstileToken) return contactTurnstileToken;
   if (contactTurnstileWidgetId == null || !window.turnstile?.getResponse) return "";
   return window.turnstile.getResponse(contactTurnstileWidgetId) || "";
+}
+
+async function ensureContactTurnstileToken() {
+  const existing = contactTurnstileResponse();
+  if (existing) return existing;
+  if (contactTurnstileWidgetId == null) mountContactTurnstile();
+  if (contactTurnstileWidgetId == null || !window.turnstile?.execute) return "";
+
+  return new Promise((resolve) => {
+    const timeoutId = window.setTimeout(() => {
+      if (!contactTurnstilePending) return;
+      contactTurnstilePending = null;
+      resolve(contactTurnstileResponse());
+    }, 30000);
+
+    contactTurnstilePending = {
+      resolve: (token) => {
+        window.clearTimeout(timeoutId);
+        resolve(token);
+      },
+    };
+
+    try {
+      window.turnstile.execute(contactTurnstileWidgetId);
+    } catch {
+      window.clearTimeout(timeoutId);
+      contactTurnstilePending = null;
+      resolve("");
+    }
+  });
 }
 
 function renderEmailRevealHtml(node, profile) {
@@ -248,7 +304,6 @@ function renderEmailRevealHtml(node, profile) {
 
   return `
     <div class="network-contact-email-gate">
-      <div id="network-contact-turnstile" class="network-contact-turnstile"></div>
       <button
         type="button"
         class="btn-small network-contact-show-email"
@@ -262,9 +317,9 @@ function renderEmailRevealHtml(node, profile) {
 }
 
 async function fetchVerifiedEmail(name, affiliation, button) {
-  const token = contactTurnstileResponse();
+  const token = await ensureContactTurnstileToken();
   if (!token) {
-    if (button) button.textContent = "Complete check above";
+    if (button) button.textContent = "Try again";
     return null;
   }
   try {
@@ -284,6 +339,8 @@ async function fetchVerifiedEmail(name, affiliation, button) {
       if (button) button.textContent = payload.error || "Unavailable";
       return null;
     }
+    contactTurnstileToken = "";
+    window.turnstile?.reset?.(contactTurnstileWidgetId);
     return typeof payload.email === "string" ? payload.email : null;
   } catch {
     contactTurnstileToken = "";

@@ -1,12 +1,111 @@
 import { affiliationMapKey, escapeHtml, haversineKm } from "./utils.js";
-import { OFFSET_API_URL } from "./config.js";
+import { OFFSET_API_URL, TURNSTILE_SITE_KEY } from "./config.js";
 
-function turnstileToken() {
-  return window.turnstile?.getResponse?.() || "";
+let offsetTurnstileWidgetId = null;
+let offsetTurnstileToken = "";
+let offsetTurnstilePending = null;
+
+function finishOffsetTurnstilePending(token = "") {
+  if (!offsetTurnstilePending) return;
+  const { resolve } = offsetTurnstilePending;
+  offsetTurnstilePending = null;
+  resolve(token);
+}
+
+function offsetTurnstileMountEl() {
+  let mount = document.getElementById("emissions-offset-turnstile");
+  if (!mount) {
+    mount = document.createElement("div");
+    mount.id = "emissions-offset-turnstile";
+    mount.className = "turnstile-mount";
+    mount.hidden = true;
+    mount.setAttribute("aria-hidden", "true");
+    document.body.appendChild(mount);
+  }
+  return mount;
 }
 
 function resetTurnstile() {
-  window.turnstile?.reset?.();
+  if (offsetTurnstileWidgetId != null && window.turnstile) {
+    try {
+      window.turnstile.remove(offsetTurnstileWidgetId);
+    } catch {
+      /* widget may already be gone */
+    }
+  }
+  offsetTurnstileWidgetId = null;
+  offsetTurnstileToken = "";
+  finishOffsetTurnstilePending("");
+}
+
+function mountOffsetTurnstile() {
+  resetTurnstile();
+  const mount = offsetTurnstileMountEl();
+  if (!TURNSTILE_SITE_KEY || !window.turnstile) return;
+  offsetTurnstileWidgetId = window.turnstile.render(mount, {
+    sitekey: TURNSTILE_SITE_KEY,
+    action: "turnstile-spin-v2",
+    size: "invisible",
+    callback: (token) => {
+      offsetTurnstileToken = token;
+      finishOffsetTurnstilePending(token);
+    },
+    "expired-callback": () => {
+      offsetTurnstileToken = "";
+      finishOffsetTurnstilePending("");
+    },
+    "error-callback": () => {
+      offsetTurnstileToken = "";
+      finishOffsetTurnstilePending("");
+    },
+  });
+}
+
+function offsetTurnstileResponse() {
+  if (offsetTurnstileToken) return offsetTurnstileToken;
+  if (offsetTurnstileWidgetId == null || !window.turnstile?.getResponse) return "";
+  return window.turnstile.getResponse(offsetTurnstileWidgetId) || "";
+}
+
+async function ensureOffsetTurnstileToken() {
+  const existing = offsetTurnstileResponse();
+  if (existing) return existing;
+  if (offsetTurnstileWidgetId == null) mountOffsetTurnstile();
+  if (offsetTurnstileWidgetId == null || !window.turnstile?.execute) return "";
+
+  return new Promise((resolve) => {
+    const timeoutId = window.setTimeout(() => {
+      if (!offsetTurnstilePending) return;
+      offsetTurnstilePending = null;
+      resolve(offsetTurnstileResponse());
+    }, 30000);
+
+    offsetTurnstilePending = {
+      resolve: (token) => {
+        window.clearTimeout(timeoutId);
+        resolve(token);
+      },
+    };
+
+    try {
+      window.turnstile.execute(offsetTurnstileWidgetId);
+    } catch {
+      window.clearTimeout(timeoutId);
+      offsetTurnstilePending = null;
+      resolve("");
+    }
+  });
+}
+
+function initOffsetTurnstile() {
+  if (!TURNSTILE_SITE_KEY) return;
+  if (window.turnstile?.ready) {
+    window.turnstile.ready(() => mountOffsetTurnstile());
+    return;
+  }
+  window.setTimeout(() => {
+    if (window.turnstile) mountOffsetTurnstile();
+  }, 0);
 }
 
 const STATIC_REGISTRATIONS_URL = "data/offset-registrations.json";
@@ -297,10 +396,10 @@ export function createOffsetTracker({
   }
 
   async function persistRegistration(attendee) {
-    const token = turnstileToken();
+    const token = await ensureOffsetTurnstileToken();
     if (!token) {
       if (elements.status) {
-        elements.status.textContent = "Please complete the verification check, then try again.";
+        elements.status.textContent = "Verification failed. Please try again.";
       }
       return false;
     }
@@ -317,7 +416,8 @@ export function createOffsetTracker({
       });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
-        resetTurnstile();
+        offsetTurnstileToken = "";
+        window.turnstile?.reset?.(offsetTurnstileWidgetId);
         registeredIds.delete(attendee.id);
         rebuildOffsetCounts();
         render({ updateMap: true });
@@ -337,10 +437,12 @@ export function createOffsetTracker({
       searchQuery = "";
       selectedAttendeeId = null;
       renderTracker();
-      resetTurnstile();
+      offsetTurnstileToken = "";
+      window.turnstile?.reset?.(offsetTurnstileWidgetId);
       return Boolean(payload.created);
     } catch (error) {
-      resetTurnstile();
+      offsetTurnstileToken = "";
+      window.turnstile?.reset?.(offsetTurnstileWidgetId);
       if (elements.status) {
         elements.status.textContent = "Registration failed. Please try again.";
       }
@@ -435,6 +537,7 @@ export function createOffsetTracker({
   }
 
   async function init() {
+    initOffsetTurnstile();
     refreshAttendees();
     bindEvents();
     startPolling();
