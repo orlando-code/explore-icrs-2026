@@ -6,6 +6,12 @@ services:
     environment:
       OFFSET_DB_PATH: /data/offsets.db
       ALLOWED_ORIGINS: "https://orlando-codes.com,https://www.orlando-codes.com,https://orlando-code.github.io,http://localhost:8000,http://127.0.0.1:8000"
+      # No trusted proxy in front by default, so rate-limit on the socket peer.
+      # Set this to a header your reverse proxy overwrites when you add one.
+      CLIENT_IP_HEADER: ""
+      REVIEW_THRESHOLD_PER_HOUR: "60"
+      # Set ADMIN_TOKEN to enable GET /api/admin/export for backups.
+      ADMIN_TOKEN: "${ADMIN_TOKEN:-}"
     volumes:
       - offset-data:/data
     restart: unless-stopped

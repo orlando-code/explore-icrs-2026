@@ -31,6 +31,7 @@
     <!-- Live offset API. Set after deploying backend/ (see backend/README.md) -->
     <!-- <meta name="icrs-offset-api" content="" /> -->
     <meta name="icrs-offset-api" content="https://icrs-offset-api.fly.dev/api/offsets" />
+    <meta name="icrs-contact-api" content="https://icrs-offset-api.fly.dev/api/contact" />
     <meta name="icrs-turnstile-site-key" content="0x4AAAAAAD_imTavnxW9TlYT" />
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <link rel="canonical" href="https://orlando-codes.com/icrs2026-explorer/" />
@@ -325,6 +326,10 @@
                 I've offset my travel
               </button>
             </div>
+            <p class="emissions-offset-visibility">
+              Only the totals are published — no list of who has registered is ever shared. Please still only register
+              yourself.
+            </p>
             <p class="status" id="emissions-offset-status" aria-live="polite"></p>
           </form>
           <p class="emissions-meta" id="emissions-meta"></p>
@@ -413,7 +418,7 @@
           <section class="methods-section">
             <h3>Contact links</h3>
             <p>
-              Public profile links were gathered from university staff pages and similar sources via the <a href="https://brave.com/search/api/" target="_blank">Brave Search API</a> and <a href="https://lite.duckduckgo.com/" target="_blank">DuckDuckGo</a>. I then spent far too much time going through and manually verifying ~500 of them. To protect this information I hid it behind a one-at-a-time Cloudflare Turnstile check with a rate limit (the same system that keeps sites such as Canva, Stack Overflow, and Skyscanner secure).
+              Public profile links were gathered from university staff pages and similar sources via the <a href="https://brave.com/search/api/" target="_blank">Brave Search API</a> and <a href="https://lite.duckduckgo.com/" target="_blank">DuckDuckGo</a>. I then spent far too much time going through and manually verifying ~500 of them. Email addresses are never sent to your browser with the rest of the page: each one is fetched individually, only when you ask for it, from a server that requires a <a href="https://www.cloudflare.com/products/turnstile/" target="_blank" rel="noopener">Cloudflare Turnstile</a> check and applies both a per-visitor and an overall hourly limit. That is designed to make bulk collection slow and visible rather than impossible, so please treat these addresses as you would any colleague's.
             </p>
             <div style="margin-bottom: 1.1em;" aria-hidden="true"></div>
             <p><strong>If for any reason you're uncomfortable with your information being displayed here, please contact me</strong> at <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a> or via the '?' on your author box: I'll remove it immediately! If you spot an error in a profile link, or would like an alternative displayed for you, please let me know at the same address.

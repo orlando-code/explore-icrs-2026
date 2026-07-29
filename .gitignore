@@ -10,9 +10,18 @@ data/country_centroids.json
 data/travel_emissions_cache.json
 data/reverse_geocode_cache.json
 data/offsets.db
+data/snapshots/
+backups/
 backend/data/contacts.json
 data/ne_110m_admin_0_countries.zip
+
+# Organisers' delegate list and its raw text dump. Kept local: the site only
+# needs the derived data/delegates.json, and the PDF is not ours to republish.
+data/delegate_list_230726.pdf
+data/delegates_layout.txt
+
 outputs/
+.sectest/
 __pycache__/
 *.py[codz]
 *$py.class

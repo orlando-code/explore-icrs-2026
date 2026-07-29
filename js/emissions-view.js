@@ -13,6 +13,7 @@ import {
 import {
   buildEmissionsAttendeesFromSite,
   createOffsetTracker,
+  personKey,
   pieSlicePolygon,
 } from "./offset-tracker.js";
 import { createFireworksOverlay } from "./celebration.js";
@@ -206,12 +207,20 @@ export function createEmissionsView(
     return cachedAttendees;
   }
 
-  function allAttendeesForLookup() {
-    const combined = [
-      ...(normalized.all_delegates.attendees || []),
-      ...(normalized.speakers.attendees || []),
-    ];
-    return combined.length ? combined : currentAttendees();
+  let speakerPoolKeys = null;
+
+  /** Which aggregation bucket a person belongs to. Speakers are also in the
+   *  wider delegate pool, so the site sums both when the toggle is on. */
+  function isSpeakerAttendee(attendee) {
+    if (!attendee?.name) return true;
+    if (!speakerPoolKeys) {
+      const speakers = normalized.speakers.attendees || [];
+      speakerPoolKeys = new Set(
+        speakers.map((person) => personKey(person.name, person.affiliation))
+      );
+    }
+    if (!speakerPoolKeys.size) return true;
+    return speakerPoolKeys.has(personKey(attendee.name, attendee.affiliation));
   }
 
   function locationOffsetShare(location) {
@@ -1017,8 +1026,9 @@ export function createEmissionsView(
       label: elements.offsetTrackerLabel,
     },
     getAttendees: currentAttendees,
-    getAttendeeLookup: allAttendeesForLookup,
     getHeadline: () => headline,
+    getPool: () => (includeNonSpeakers ? "delegates" : "speakers"),
+    isSpeakerAttendee,
     onChange: () => scheduleMapUpdate(),
     onRegisterSuccess: celebrateOffsetRegistration,
   });

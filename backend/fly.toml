@@ -9,9 +9,14 @@ primary_region = 'syd'
 [build]
   dockerfile = 'Dockerfile'
 
+# TURNSTILE_SECRET, ADMIN_TOKEN and CLIENT_HINT_SALT are secrets:
+#   fly secrets set ADMIN_TOKEN="$(openssl rand -hex 32)"
 [env]
-  ALLOWED_ORIGINS = 'https://orlando-codes.com,https://www.orlando-codes.com,https://orlando-code.github.io,http://localhost:8000,http://127.0.0.1:8000'
+  ALLOWED_ORIGINS = 'https://orlando-codes.com,https://www.orlando-codes.com,https://orlando-code.github.io'
   OFFSET_DB_PATH = '/data/offsets.db'
+  CLIENT_IP_HEADER = 'Fly-Client-IP'
+  REQUIRE_ORIGIN = '1'
+  REVIEW_THRESHOLD_PER_HOUR = '60'
 
 [[mounts]]
   source = 'offset_data'

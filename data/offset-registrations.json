@@ -1,3 +1,10 @@
 {
-  "registrations": []
+  "counts": {
+    "speakers": {},
+    "delegates": {}
+  },
+  "totals": {
+    "speakers": 0,
+    "delegates": 0
+  }
 }

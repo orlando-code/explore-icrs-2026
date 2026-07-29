@@ -111,6 +111,46 @@ async function ensureOffsetTurnstileToken() {
 const STATIC_REGISTRATIONS_URL = "data/offset-registrations.json";
 const POLL_INTERVAL_MS = 5_000;
 const OFFSET_GREEN = "#2d8a4e";
+const LOCAL_REGISTRATIONS_KEY = "icrs-offset-registered";
+
+/** Person keys this browser has registered. The server publishes only counts,
+ *  so a visitor's own registration is remembered here rather than looked up. */
+function loadLocalRegistrations() {
+  try {
+    const raw = window.localStorage?.getItem(LOCAL_REGISTRATIONS_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return new Set(Array.isArray(parsed) ? parsed.filter((item) => typeof item === "string") : []);
+  } catch {
+    return new Set();
+  }
+}
+
+function saveLocalRegistrations(keys) {
+  try {
+    window.localStorage?.setItem(LOCAL_REGISTRATIONS_KEY, JSON.stringify([...keys]));
+  } catch {
+    /* private browsing or storage disabled — the session still works */
+  }
+}
+
+function emptyAggregate() {
+  return { counts: { speakers: {}, delegates: {} }, totals: { speakers: 0, delegates: 0 } };
+}
+
+function normalizeAggregate(payload) {
+  const aggregate = emptyAggregate();
+  for (const pool of ["speakers", "delegates"]) {
+    const counts = payload?.counts?.[pool];
+    if (counts && typeof counts === "object") {
+      for (const [key, value] of Object.entries(counts)) {
+        if (Number.isFinite(value) && value > 0) aggregate.counts[pool][key] = value;
+      }
+    }
+    const total = payload?.totals?.[pool];
+    aggregate.totals[pool] = Number.isFinite(total) && total > 0 ? total : 0;
+  }
+  return aggregate;
+}
 
 function stableAttendeeId(name, locationId) {
   const key = `${name.trim().toLowerCase()}|${locationId}`;
@@ -122,18 +162,8 @@ function stableAttendeeId(name, locationId) {
   return `offset-${(hash >>> 0).toString(16).padStart(8, "0")}`;
 }
 
-function personKey(name, affiliation) {
+export function personKey(name, affiliation) {
   return `${String(name).trim().toLowerCase()}|${affiliationMapKey(affiliation)}`;
-}
-
-function buildAttendeeLookupIndex(attendees) {
-  const byId = new Map();
-  for (const attendee of attendees) {
-    byId.set(attendee.id, attendee);
-    const legacyId = stableAttendeeId(attendee.name, attendee.location_id);
-    if (!byId.has(legacyId)) byId.set(legacyId, attendee);
-  }
-  return byId;
 }
 
 export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocations, exportedAttendees = []) {
@@ -201,50 +231,44 @@ export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocation
 export function createOffsetTracker({
   elements,
   getAttendees,
-  getAttendeeLookup,
   getHeadline,
+  getPool,
+  isSpeakerAttendee,
   onChange,
   onRegisterSuccess,
   apiUrl = OFFSET_API_URL,
 }) {
   let attendees = [];
   let attendeeById = new Map();
-  let attendeeLookupById = new Map();
-  let currentPoolKeys = new Set();
-  let registeredIds = new Set();
   let selectedAttendeeId = null;
   let searchQuery = "";
   let pollTimer = null;
   let loadError = "";
+  let statusMessage = "";
+  let aggregate = emptyAggregate();
   let offsetCountByAffiliation = new Map();
+  const localRegistrations = loadLocalRegistrations();
   const pendingRegistrationIds = new Set();
 
-  function resolveAttendee(id) {
-    return attendeeLookupById.get(id) || attendeeById.get(id) || null;
+  function activePool() {
+    return getPool?.() === "delegates" ? "delegates" : "speakers";
   }
 
+  /** True only for people this browser registered. Other delegates' status is
+   *  no longer published, so it is not knowable here. */
   function isRegistered(attendee) {
     if (!attendee) return false;
-    const key = personKey(attendee.name, attendee.affiliation);
-    for (const id of registeredIds) {
-      const resolved = resolveAttendee(id);
-      if (resolved && personKey(resolved.name, resolved.affiliation) === key) return true;
-    }
-    return false;
+    return localRegistrations.has(personKey(attendee.name, attendee.affiliation));
   }
 
   function rebuildOffsetCounts() {
     offsetCountByAffiliation = new Map();
-    for (const id of registeredIds) {
-      const attendee = resolveAttendee(id);
-      if (!attendee) continue;
-      if (!currentPoolKeys.has(personKey(attendee.name, attendee.affiliation))) continue;
-      const affiliationKey = affiliationMapKey(attendee.affiliation);
-      if (!affiliationKey) continue;
-      offsetCountByAffiliation.set(
-        affiliationKey,
-        (offsetCountByAffiliation.get(affiliationKey) || 0) + 1
-      );
+    const pools =
+      activePool() === "delegates" ? ["speakers", "delegates"] : ["speakers"];
+    for (const pool of pools) {
+      for (const [key, value] of Object.entries(aggregate.counts[pool])) {
+        offsetCountByAffiliation.set(key, (offsetCountByAffiliation.get(key) || 0) + value);
+      }
     }
   }
 
@@ -254,9 +278,7 @@ export function createOffsetTracker({
       try {
         const response = await fetch(apiUrl, { cache: "no-store" });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const payload = await response.json();
-        const ids = Array.isArray(payload?.registrations) ? payload.registrations : [];
-        registeredIds = new Set(ids.filter((item) => typeof item === "string"));
+        aggregate = normalizeAggregate(await response.json());
         return;
       } catch (error) {
         loadError = "Could not refresh live offset totals.";
@@ -267,26 +289,15 @@ export function createOffsetTracker({
     try {
       const response = await fetch(STATIC_REGISTRATIONS_URL, { cache: "no-store" });
       if (!response.ok) return;
-      const payload = await response.json();
-      const ids = Array.isArray(payload)
-        ? payload
-        : Array.isArray(payload?.registrations)
-          ? payload.registrations
-          : [];
-      registeredIds = new Set(ids.filter((item) => typeof item === "string"));
+      aggregate = normalizeAggregate(await response.json());
     } catch {
-      registeredIds = new Set();
+      aggregate = emptyAggregate();
     }
   }
 
   function refreshAttendees() {
     attendees = getAttendees();
     attendeeById = new Map(attendees.map((attendee) => [attendee.id, attendee]));
-    currentPoolKeys = new Set(
-      attendees.map((attendee) => personKey(attendee.name, attendee.affiliation))
-    );
-    const lookupAttendees = getAttendeeLookup?.() || attendees;
-    attendeeLookupById = buildAttendeeLookupIndex(lookupAttendees);
     rebuildOffsetCounts();
     render();
   }
@@ -301,7 +312,9 @@ export function createOffsetTracker({
 
   function stats() {
     const totalAttendees = getHeadline()?.attendees_estimated || attendees.length || 1;
-    const registeredCount = attendees.filter((attendee) => isRegistered(attendee)).length;
+    const registeredCount =
+      aggregate.totals.speakers +
+      (activePool() === "delegates" ? aggregate.totals.delegates : 0);
     const percent = totalAttendees ? (registeredCount / totalAttendees) * 100 : 0;
     return { registeredCount, totalAttendees, percent };
   }
@@ -334,7 +347,7 @@ export function createOffsetTracker({
       button.dataset.attendeeId = attendee.id;
       const alreadyRegistered = isRegistered(attendee);
       button.innerHTML = `${escapeHtml(attendee.name)}<small>${escapeHtml(attendee.affiliation)}${
-        alreadyRegistered ? " · registered" : ""
+        alreadyRegistered ? " · you registered this" : ""
       }</small>`;
       button.addEventListener("mousedown", (event) => {
         event.preventDefault();
@@ -364,11 +377,14 @@ export function createOffsetTracker({
 
   function renderStatus() {
     if (!elements.status) return;
-    if (loadError) {
-      elements.status.textContent = loadError;
-      return;
-    }
-    elements.status.textContent = "";
+    // Kept in a variable rather than written straight to the DOM so the
+    // five-second poll cannot wipe a message the user has not read yet.
+    elements.status.textContent = statusMessage || loadError;
+  }
+
+  function setStatus(message) {
+    statusMessage = message;
+    renderStatus();
   }
 
   function renderTracker() {
@@ -398,9 +414,7 @@ export function createOffsetTracker({
   async function persistRegistration(attendee) {
     const token = await ensureOffsetTurnstileToken();
     if (!token) {
-      if (elements.status) {
-        elements.status.textContent = "Verification failed. Please try again.";
-      }
+      setStatus("Verification failed. Please try again.");
       return false;
     }
 
@@ -411,6 +425,10 @@ export function createOffsetTracker({
         body: JSON.stringify({
           id: attendee.id,
           name: attendee.name,
+          // The server groups by this label without parsing it, so the site
+          // stays the single source of truth for how affiliations are keyed.
+          affiliation_key: affiliationMapKey(attendee.affiliation || ""),
+          pool: isSpeakerAttendee?.(attendee) === false ? "delegates" : "speakers",
           "cf-turnstile-response": token,
         }),
       });
@@ -418,34 +436,41 @@ export function createOffsetTracker({
       if (!response.ok) {
         offsetTurnstileToken = "";
         window.turnstile?.reset?.(offsetTurnstileWidgetId);
-        registeredIds.delete(attendee.id);
-        rebuildOffsetCounts();
-        render({ updateMap: true });
-        throw new Error(payload.error || `HTTP ${response.status}`);
+        setStatus(payload.error || "Registration failed. Please try again.");
+        return false;
       }
-      if (!payload.created) {
-        registeredIds.delete(attendee.id);
+
+      // Only reflect the registration once the server has stored it, so a
+      // rejected attempt never renders as a success.
+      localRegistrations.add(personKey(attendee.name, attendee.affiliation));
+      saveLocalRegistrations(localRegistrations);
+      if (payload.created && !payload.pending) {
+        const pool = isSpeakerAttendee?.(attendee) === false ? "delegates" : "speakers";
+        aggregate.totals[pool] += 1;
+        const key = affiliationMapKey(attendee.affiliation || "");
+        if (key) {
+          aggregate.counts[pool][key] = (aggregate.counts[pool][key] || 0) + 1;
+        }
         rebuildOffsetCounts();
-        render({ updateMap: true });
       }
-      if (elements.status) {
-        elements.status.textContent = payload.created
-          ? `Thanks, ${attendee.name}! Your offset is registered.`
-          : `${attendee.name} was already registered.`;
+      if (payload.pending) {
+        statusMessage = `Thanks, ${attendee.name}! Your offset is logged and will be counted once checked.`;
+      } else if (payload.created) {
+        statusMessage = `Thanks, ${attendee.name}! Your offset is registered.`;
+      } else {
+        statusMessage = `${attendee.name} was already registered.`;
       }
       if (elements.query) elements.query.value = "";
       searchQuery = "";
       selectedAttendeeId = null;
-      renderTracker();
+      render({ updateMap: true });
       offsetTurnstileToken = "";
       window.turnstile?.reset?.(offsetTurnstileWidgetId);
-      return Boolean(payload.created);
+      return Boolean(payload.created) && !payload.pending;
     } catch (error) {
       offsetTurnstileToken = "";
       window.turnstile?.reset?.(offsetTurnstileWidgetId);
-      if (elements.status) {
-        elements.status.textContent = "Registration failed. Please try again.";
-      }
+      setStatus("Registration failed. Please try again.");
       console.warn("Offset registration failed:", error);
       return false;
     }
@@ -454,37 +479,32 @@ export function createOffsetTracker({
   function registerSelected() {
     const attendee = resolveSelectedAttendee();
     if (!attendee) {
-      if (elements.status && searchQuery.trim()) {
-        elements.status.textContent = "Select your name from the suggestions.";
-      }
+      if (searchQuery.trim()) setStatus("Select your name from the suggestions.");
       return false;
     }
     if (isRegistered(attendee) || pendingRegistrationIds.has(attendee.id)) {
-      if (elements.status && isRegistered(attendee)) {
-        elements.status.textContent = `${attendee.name} is already registered.`;
-      }
+      if (isRegistered(attendee)) setStatus(`You already registered ${attendee.name}.`);
       return false;
     }
 
     if (!apiUrl) {
-      if (elements.status) {
-        elements.status.textContent = "Live registration API is not configured.";
-      }
+      setStatus("Live registration API is not configured.");
       return false;
     }
 
     selectedAttendeeId = attendee.id;
     pendingRegistrationIds.add(attendee.id);
-    registeredIds.add(attendee.id);
-    rebuildOffsetCounts();
+    setStatus("Registering…");
     renderTracker();
-    renderStatus();
-    onRegisterSuccess?.(attendee);
 
-    void persistRegistration(attendee).finally(() => {
-      pendingRegistrationIds.delete(attendee.id);
-      renderTracker();
-    });
+    void persistRegistration(attendee)
+      .then((created) => {
+        if (created) onRegisterSuccess?.(attendee);
+      })
+      .finally(() => {
+        pendingRegistrationIds.delete(attendee.id);
+        renderTracker();
+      });
     return true;
   }
 
@@ -492,6 +512,7 @@ export function createOffsetTracker({
     elements.query?.addEventListener("input", (event) => {
       searchQuery = event.target.value;
       selectedAttendeeId = null;
+      statusMessage = "";
       render();
     });
 

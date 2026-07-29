@@ -1,18 +1,22 @@
 #!/usr/bin/env python3
 """Minimal offset-registration API for the ICRS emissions tracker.
 
-Stdlib only: SQLite persistence, CORS, light rate limiting.
+Stdlib only: SQLite persistence, CORS, rate limiting, Turnstile verification.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
+import hmac
 import json
 import os
 import re
+import secrets
 import sqlite3
 import threading
 import time
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -23,15 +27,49 @@ from typing import Any
 from urllib.parse import urlparse
 
 ATTENDEE_ID_RE = re.compile(r"^offset-[0-9a-f]{8}$")
+CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f-\x9f]")
+WHITESPACE_RE = re.compile(r"\s+")
+
 MAX_BODY_BYTES = 4096
+MAX_NAME_LENGTH = 120
+MAX_BUCKET_KEY_LENGTH = 160
+
+# Aggregation buckets. "speakers" are also part of the wider delegate pool, so
+# the site sums both when the non-speaker toggle is on.
+POOLS = ("speakers", "delegates")
+STATUS_PUBLISHED = "published"
+STATUS_PENDING = "pending"
+STATUS_REVOKED = "revoked"
+
+# Above this many registrations in an hour, new rows are held for review
+# instead of published. Normal traffic is a trickle, so a spike is either a
+# conference-wide announcement or someone scripting it.
+REVIEW_THRESHOLD_PER_HOUR = 60
+
 POST_LIMIT_PER_HOUR = 40
 CONTACT_LIMIT_PER_HOUR = 30
+# Ceilings across all callers, so a rotating pool of addresses cannot turn the
+# per-caller limits into an unlimited budget.
+OFFSET_GLOBAL_LIMIT_PER_HOUR = 600
+CONTACT_GLOBAL_LIMIT_PER_HOUR = 400
+# Bounds the memory a request flood can make the rate limiter allocate.
+MAX_RATE_LIMIT_KEYS = 4096
+
 TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
+TURNSTILE_TIMEOUT_SECONDS = 5
+# Caps how long a slow or stalled client can hold a worker thread.
+REQUEST_TIMEOUT_SECONDS = 20
 
 _db_lock = threading.Lock()
 _rate_lock = threading.Lock()
-_post_times: dict[str, list[float]] = {}
-_contact_times: dict[str, list[float]] = {}
+_contacts_lock = threading.Lock()
+
+_rate_windows: dict[str, dict[str, list[float]]] = {}
+_global_windows: dict[str, list[float]] = {}
+_contacts_cache: tuple[str, float, int, dict[str, str]] | None = None
+# Only used when CLIENT_HINT_SALT is unset: hints stay comparable within a
+# process lifetime but are not linkable across restarts.
+_ephemeral_hint_salt = secrets.token_hex(16)
 
 
 def _db_path() -> str:
@@ -42,22 +80,101 @@ def _contacts_path() -> str:
     return os.environ.get("CONTACTS_PATH", "data/contacts.json")
 
 
+def _env_flag(name: str, default: bool = False) -> bool:
+    raw = os.environ.get(name, "").strip().lower()
+    if not raw:
+        return default
+    return raw in ("1", "true", "yes", "on")
+
+
+def _log(event: str, **fields: Any) -> None:
+    payload = {
+        "ts": datetime.now(UTC).isoformat(timespec="seconds"),
+        "event": event,
+        **fields,
+    }
+    print(json.dumps(payload, ensure_ascii=True), flush=True)
+
+
+def _client_hint(client_ip: str) -> str:
+    """Salted, truncated digest of a caller address.
+
+    Enough to correlate abuse across requests without storing addresses.
+    """
+    if not client_ip:
+        return ""
+    salt = os.environ.get("CLIENT_HINT_SALT", "").strip() or _ephemeral_hint_salt
+    digest = hashlib.sha256(f"{salt}|{client_ip}".encode()).hexdigest()
+    return digest[:16]
+
+
+def _review_threshold() -> int:
+    try:
+        return max(0, int(os.environ.get("REVIEW_THRESHOLD_PER_HOUR", REVIEW_THRESHOLD_PER_HOUR)))
+    except ValueError:
+        return REVIEW_THRESHOLD_PER_HOUR
+
+
+def _clean_bucket_key(value: Any) -> str:
+    """Opaque affiliation bucket label supplied by the site.
+
+    The site computes it with affiliationMapKey(); the server never parses it,
+    it only groups by it, so the two cannot drift apart.
+    """
+    if value is None:
+        return ""
+    text = CONTROL_CHARS_RE.sub("", str(value))
+    text = WHITESPACE_RE.sub(" ", text).strip()
+    return text[:MAX_BUCKET_KEY_LENGTH]
+
+
+def _clean_pool(value: Any) -> str:
+    text = str(value or "").strip().lower()
+    return text if text in POOLS else "speakers"
+
+
+def _clean_name(value: Any) -> str | None:
+    if value is None:
+        return None
+    text = unicodedata.normalize("NFC", str(value))
+    text = CONTROL_CHARS_RE.sub("", text)
+    text = WHITESPACE_RE.sub(" ", text).strip()
+    if not text or len(text) > MAX_NAME_LENGTH:
+        return None
+    if not any(char.isalpha() for char in text):
+        return None
+    return text
+
+
 def _load_contacts() -> dict[str, str]:
+    global _contacts_cache
     path = _contacts_path()
-    if not os.path.isfile(path):
+    try:
+        stat = os.stat(path)
+    except OSError:
         return {}
+
+    with _contacts_lock:
+        cached = _contacts_cache
+    if cached and cached[0] == path and cached[1] == stat.st_mtime and cached[2] == stat.st_size:
+        return cached[3]
+
     try:
         payload = json.loads(Path(path).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return {}
-    contacts = payload.get("contacts") if isinstance(payload, dict) else payload
-    if not isinstance(contacts, dict):
+    raw = payload.get("contacts") if isinstance(payload, dict) else payload
+    if not isinstance(raw, dict):
         return {}
-    return {
+    contacts = {
         str(key): str(email).strip()
-        for key, email in contacts.items()
+        for key, email in raw.items()
         if str(email).strip() and "@" in str(email)
     }
+
+    with _contacts_lock:
+        _contacts_cache = (path, stat.st_mtime, stat.st_size, contacts)
+    return contacts
 
 
 def _profile_key(name: str, affiliation: str = "") -> str:
@@ -92,6 +209,10 @@ def _allowed_origins() -> set[str]:
     return {origin.strip().rstrip("/") for origin in raw.split(",") if origin.strip()}
 
 
+def _table_columns(conn: sqlite3.Connection, table: str) -> set[str]:
+    return {row[1] for row in conn.execute(f"PRAGMA table_info({table})")}
+
+
 def _init_db() -> None:
     path = _db_path()
     parent = os.path.dirname(path)
@@ -109,58 +230,189 @@ def _init_db() -> None:
                 )
                 """
             )
+            existing = _table_columns(conn, "registrations")
+            if "source" not in existing:
+                conn.execute("ALTER TABLE registrations ADD COLUMN source TEXT")
+            if "client_hint" not in existing:
+                conn.execute("ALTER TABLE registrations ADD COLUMN client_hint TEXT")
+            if "revoked" not in existing:
+                conn.execute(
+                    "ALTER TABLE registrations ADD COLUMN revoked INTEGER NOT NULL DEFAULT 0"
+                )
+            if "affiliation_key" not in existing:
+                conn.execute("ALTER TABLE registrations ADD COLUMN affiliation_key TEXT")
+            if "pool" not in existing:
+                conn.execute("ALTER TABLE registrations ADD COLUMN pool TEXT")
+            if "status" not in existing:
+                conn.execute(
+                    "ALTER TABLE registrations ADD COLUMN status TEXT NOT NULL DEFAULT 'published'"
+                )
+                # Carry over the older boolean so nothing silently reappears.
+                conn.execute(
+                    "UPDATE registrations SET status = ? WHERE COALESCE(revoked, 0) = 1",
+                    (STATUS_REVOKED,),
+                )
+            conn.execute(
+                "CREATE INDEX IF NOT EXISTS idx_registrations_status ON registrations(status)"
+            )
+            conn.execute(
+                """
+                CREATE TABLE IF NOT EXISTS registration_events (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    attendee_id TEXT NOT NULL,
+                    event TEXT NOT NULL,
+                    name TEXT,
+                    source TEXT,
+                    client_hint TEXT,
+                    created_at TEXT NOT NULL
+                )
+                """
+            )
             conn.commit()
         finally:
             conn.close()
 
 
-def _list_registrations() -> list[dict[str, str]]:
+def _aggregate_registrations() -> dict[str, Any]:
+    """Published totals and per-affiliation counts.
+
+    Deliberately returns no attendee ids: the ids are a hash of a public name,
+    so publishing them would publish who has and has not offset.
+    """
+    counts: dict[str, dict[str, int]] = {pool: {} for pool in POOLS}
+    totals: dict[str, int] = {pool: 0 for pool in POOLS}
+
     with _db_lock:
         conn = sqlite3.connect(_db_path())
-        conn.row_factory = sqlite3.Row
         try:
             rows = conn.execute(
                 """
-                SELECT attendee_id, name, created_at
+                SELECT pool, affiliation_key, COUNT(*) AS tally
                 FROM registrations
-                ORDER BY created_at ASC
-                """
+                WHERE status = ?
+                GROUP BY pool, affiliation_key
+                """,
+                (STATUS_PUBLISHED,),
             ).fetchall()
-            return [dict(row) for row in rows]
         finally:
             conn.close()
 
+    for pool, affiliation_key, tally in rows:
+        # Rows predating the aggregate schema still count toward the headline;
+        # they just cannot shade a location.
+        bucket = _clean_pool(pool)
+        totals[bucket] += tally
+        if affiliation_key:
+            counts[bucket][affiliation_key] = counts[bucket].get(affiliation_key, 0) + tally
 
-def _add_registration(attendee_id: str, name: str | None) -> bool:
+    return {"counts": counts, "totals": totals}
+
+
+def _recent_registration_count(window_seconds: int = 3600) -> int:
+    cutoff = datetime.fromtimestamp(time.time() - window_seconds, UTC).isoformat(timespec="seconds")
+    with _db_lock:
+        conn = sqlite3.connect(_db_path())
+        try:
+            row = conn.execute(
+                "SELECT COUNT(*) FROM registrations WHERE created_at >= ?",
+                (cutoff,),
+            ).fetchone()
+        finally:
+            conn.close()
+    return int(row[0]) if row else 0
+
+
+def _add_registration(
+    attendee_id: str,
+    name: str | None,
+    *,
+    source: str = "api",
+    client_hint: str = "",
+    affiliation_key: str = "",
+    pool: str = "speakers",
+    status: str = STATUS_PUBLISHED,
+) -> bool:
     created_at = datetime.now(UTC).isoformat(timespec="seconds")
     with _db_lock:
         conn = sqlite3.connect(_db_path())
         try:
             cursor = conn.execute(
                 """
-                INSERT OR IGNORE INTO registrations (attendee_id, name, created_at)
-                VALUES (?, ?, ?)
+                INSERT OR IGNORE INTO registrations
+                    (attendee_id, name, created_at, source, client_hint, revoked,
+                     affiliation_key, pool, status)
+                VALUES (?, ?, ?, ?, ?, 0, ?, ?, ?)
                 """,
-                (attendee_id, name, created_at),
+                (
+                    attendee_id,
+                    name,
+                    created_at,
+                    source,
+                    client_hint,
+                    affiliation_key,
+                    pool,
+                    status,
+                ),
+            )
+            created = cursor.rowcount == 1
+            conn.execute(
+                """
+                INSERT INTO registration_events
+                    (attendee_id, event, name, source, client_hint, created_at)
+                VALUES (?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    attendee_id,
+                    ("held" if status == STATUS_PENDING else "created") if created else "duplicate",
+                    name,
+                    source,
+                    client_hint,
+                    created_at,
+                ),
             )
             conn.commit()
-            return cursor.rowcount == 1
+            return created
         finally:
             conn.close()
 
 
-def _rate_limit_ok(client_ip: str, *, bucket: str = "offsets", limit: int = POST_LIMIT_PER_HOUR) -> bool:
+def _rate_limit_ok(
+    client_ip: str,
+    *,
+    bucket: str,
+    limit: int,
+    global_limit: int,
+) -> tuple[bool, str]:
+    """Check per-caller and global hourly budgets, recording the request."""
     now = time.time()
     window_start = now - 3600
-    store = _post_times if bucket == "offsets" else _contact_times
     with _rate_lock:
+        store = _rate_windows.setdefault(bucket, {})
+        for key in [
+            key
+            for key, stamps in store.items()
+            if not stamps or stamps[-1] < window_start
+        ]:
+            del store[key]
+
+        global_times = [
+            stamp for stamp in _global_windows.get(bucket, []) if stamp >= window_start
+        ]
+        _global_windows[bucket] = global_times
+        if len(global_times) >= global_limit:
+            return False, "global"
+
         times = [stamp for stamp in store.get(client_ip, []) if stamp >= window_start]
         if len(times) >= limit:
             store[client_ip] = times
-            return False
+            return False, "caller"
+        if client_ip not in store and len(store) >= MAX_RATE_LIMIT_KEYS:
+            return False, "capacity"
+
         times.append(now)
         store[client_ip] = times
-        return True
+        global_times.append(now)
+        return True, ""
 
 
 def _turnstile_secret() -> str:
@@ -186,9 +438,8 @@ def _verify_turnstile(token: str, remote_ip: str) -> bool:
     }
     # Only send remoteip when explicitly enabled — a mismatched proxy IP causes
     # siteverify to reject otherwise valid tokens (common behind Fly.io/CDN).
-    if os.environ.get("TURNSTILE_SEND_REMOTEIP", "").strip().lower() in ("1", "true", "yes"):
-        if remote_ip:
-            fields["remoteip"] = remote_ip
+    if remote_ip and _env_flag("TURNSTILE_SEND_REMOTEIP"):
+        fields["remoteip"] = remote_ip
 
     body = urllib.parse.urlencode(fields).encode("utf-8")
     request = urllib.request.Request(
@@ -198,7 +449,7 @@ def _verify_turnstile(token: str, remote_ip: str) -> bool:
         headers={"Content-Type": "application/x-www-form-urlencoded"},
     )
     try:
-        with urllib.request.urlopen(request, timeout=10) as response:
+        with urllib.request.urlopen(request, timeout=TURNSTILE_TIMEOUT_SECONDS) as response:
             if response.status != 200:
                 return False
             result = json.loads(response.read().decode("utf-8"))
@@ -218,7 +469,7 @@ def _json_response(
     handler.send_response(status)
     handler.send_header("Content-Type", "application/json; charset=utf-8")
     if include_cors:
-        handler._send_cors()
+        handler._send_common_headers()
     handler.send_header("Content-Length", str(len(body)))
     handler.end_headers()
     handler.wfile.write(body)
@@ -226,6 +477,7 @@ def _json_response(
 
 class OffsetHandler(BaseHTTPRequestHandler):
     server_version = "ICRSOffsetAPI/1.0"
+    timeout = REQUEST_TIMEOUT_SECONDS
 
     def log_message(self, format: str, *args: Any) -> None:
         return
@@ -240,7 +492,7 @@ class OffsetHandler(BaseHTTPRequestHandler):
             return True
         return origin in _allowed_origins()
 
-    def _send_cors(self) -> None:
+    def _send_common_headers(self) -> None:
         origin = self._origin()
         if origin and origin in _allowed_origins():
             self.send_header("Access-Control-Allow-Origin", origin)
@@ -248,63 +500,113 @@ class OffsetHandler(BaseHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.send_header("Access-Control-Max-Age", "86400")
+        self.send_header("X-Content-Type-Options", "nosniff")
 
     def _client_ip(self) -> str:
-        forwarded = self.headers.get("X-Forwarded-For", "")
-        if forwarded:
-            return forwarded.split(",")[0].strip()
+        """Caller address, taken only from a header the proxy itself sets.
+
+        X-Forwarded-For is deliberately ignored: clients can send it, which
+        would let anyone pick their own rate-limit bucket. Set
+        CLIENT_IP_HEADER to "" when running without a trusted proxy.
+        """
+        header = os.environ.get("CLIENT_IP_HEADER", "Fly-Client-IP").strip()
+        if header:
+            value = self.headers.get(header, "").split(",")[0].strip()
+            if value:
+                return value
         return self.client_address[0]
 
     def do_OPTIONS(self) -> None:
         if not self._cors_allowed():
             self.send_response(403)
+            self.send_header("Content-Length", "0")
             self.end_headers()
             return
         self.send_response(204)
-        self._send_cors()
+        self._send_common_headers()
         self.end_headers()
 
     def do_GET(self) -> None:
         if not self._cors_allowed():
             self.send_response(403)
+            self.send_header("Content-Length", "0")
             self.end_headers()
             return
 
         path = urlparse(self.path).path.rstrip("/") or "/"
-        if path not in {"/", "/api/offsets", "/health"}:
-            self.send_response(404)
-            self.end_headers()
-            return
-
         if path == "/health":
-            body = json.dumps({"ok": True}).encode("utf-8")
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json; charset=utf-8")
-            self._send_cors()
-            self.send_header("Content-Length", str(len(body)))
+            _json_response(self, 200, {"ok": True})
+            return
+        if path == "/api/admin/export":
+            self._get_admin_export()
+            return
+        if path not in {"/", "/api/offsets"}:
+            self.send_response(404)
+            self.send_header("Content-Length", "0")
             self.end_headers()
-            self.wfile.write(body)
             return
 
-        rows = _list_registrations()
-        payload = {
-            "registrations": [row["attendee_id"] for row in rows],
-            "count": len(rows),
-            "updated_at": datetime.now(UTC).isoformat(timespec="seconds"),
-        }
-        body = json.dumps(payload, ensure_ascii=True).encode("utf-8")
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json; charset=utf-8")
-        self._send_cors()
-        self.send_header("Cache-Control", "no-store")
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-        self.wfile.write(body)
+        aggregate = _aggregate_registrations()
+        _json_response(
+            self,
+            200,
+            {
+                "counts": aggregate["counts"],
+                "totals": aggregate["totals"],
+                "updated_at": datetime.now(UTC).isoformat(timespec="seconds"),
+            },
+        )
+
+    def _get_admin_export(self) -> None:
+        expected = os.environ.get("ADMIN_TOKEN", "").strip()
+        if not expected:
+            # Unconfigured: behave as though the route does not exist.
+            self.send_response(404)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
+
+        header = self.headers.get("Authorization", "")
+        supplied = header[7:].strip() if header.lower().startswith("bearer ") else ""
+        if not hmac.compare_digest(supplied, expected):
+            _log("admin_export_denied", client=_client_hint(self._client_ip()))
+            _json_response(self, 403, {"error": "Forbidden."})
+            return
+        if self._check_rate_limit("admin", 60, 120) is None:
+            return
+
+        with _db_lock:
+            conn = sqlite3.connect(_db_path())
+            conn.row_factory = sqlite3.Row
+            try:
+                registrations = [
+                    dict(row)
+                    for row in conn.execute(
+                        "SELECT * FROM registrations ORDER BY created_at ASC"
+                    )
+                ]
+                events = [
+                    dict(row)
+                    for row in conn.execute(
+                        "SELECT * FROM registration_events ORDER BY id ASC"
+                    )
+                ]
+            finally:
+                conn.close()
+
+        _log("admin_export", registrations=len(registrations), events=len(events))
+        _json_response(
+            self,
+            200,
+            {
+                "exported_at": datetime.now(UTC).isoformat(timespec="seconds"),
+                "registrations": registrations,
+                "events": events,
+            },
+        )
 
     def do_POST(self) -> None:
-        if not self._cors_allowed():
-            self.send_response(403)
-            self.end_headers()
+        if not self._require_allowed_origin():
             return
 
         path = urlparse(self.path).path.rstrip("/")
@@ -316,15 +618,37 @@ class OffsetHandler(BaseHTTPRequestHandler):
             return
 
         self.send_response(404)
+        self.send_header("Content-Length", "0")
         self.end_headers()
 
+    def _require_allowed_origin(self) -> bool:
+        """Browsers always send Origin on POST, so require it to be one of ours."""
+        origin = self._origin()
+        if origin and origin in _allowed_origins():
+            return True
+        if origin is None and not _env_flag("REQUIRE_ORIGIN", True):
+            return True
+        _json_response(self, 403, {"error": "Origin not allowed."})
+        return False
+
     def _read_json_body(self) -> dict[str, Any] | None:
-        length = int(self.headers.get("Content-Length", "0"))
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+        except (TypeError, ValueError):
+            _json_response(self, 400, {"error": "Invalid request body."})
+            return None
         if length <= 0 or length > MAX_BODY_BYTES:
             _json_response(self, 400, {"error": "Invalid request body."})
             return None
         try:
-            payload = json.loads(self.rfile.read(length).decode("utf-8"))
+            raw = self.rfile.read(length)
+        except (TimeoutError, OSError):
+            return None
+        if len(raw) != length:
+            _json_response(self, 400, {"error": "Invalid request body."})
+            return None
+        try:
+            payload = json.loads(raw.decode("utf-8"))
         except (json.JSONDecodeError, UnicodeDecodeError):
             _json_response(self, 400, {"error": "Invalid JSON."})
             return None
@@ -332,6 +656,24 @@ class OffsetHandler(BaseHTTPRequestHandler):
             _json_response(self, 400, {"error": "Invalid JSON."})
             return None
         return payload
+
+    def _check_rate_limit(self, bucket: str, limit: int, global_limit: int) -> str | None:
+        """Returns the caller's hint on success, None after sending a 429."""
+        client_ip = self._client_ip()
+        allowed, reason = _rate_limit_ok(
+            client_ip, bucket=bucket, limit=limit, global_limit=global_limit
+        )
+        hint = _client_hint(client_ip)
+        if allowed:
+            return hint
+        _log("rate_limited", bucket=bucket, reason=reason, client=hint)
+        message = (
+            "This service is busy. Try again later."
+            if reason != "caller"
+            else "Too many requests. Try again later."
+        )
+        _json_response(self, 429, {"error": message})
+        return None
 
     def _require_turnstile(self, payload: dict[str, Any]) -> bool:
         if not _turnstile_secret():
@@ -344,52 +686,89 @@ class OffsetHandler(BaseHTTPRequestHandler):
         return True
 
     def _post_offset(self) -> None:
+        # Rate limiting runs first so unverified callers cannot make us spend an
+        # outbound Turnstile request (and a worker thread) per attempt.
+        hint = self._check_rate_limit(
+            "offsets", POST_LIMIT_PER_HOUR, OFFSET_GLOBAL_LIMIT_PER_HOUR
+        )
+        if hint is None:
+            return
         payload = self._read_json_body()
         if payload is None:
             return
-        if not self._require_turnstile(payload):
-            return
-        if not _rate_limit_ok(self._client_ip(), bucket="offsets", limit=POST_LIMIT_PER_HOUR):
-            _json_response(self, 429, {"error": "Too many registrations. Try again later."})
-            return
 
         attendee_id = str(payload.get("id", "")).strip()
-        name = payload.get("name")
-        clean_name = str(name).strip()[:160] if name else None
-
         if not ATTENDEE_ID_RE.fullmatch(attendee_id):
             _json_response(self, 400, {"error": "Invalid attendee id."})
             return
+        clean_name = _clean_name(payload.get("name"))
+        if payload.get("name") not in (None, "") and clean_name is None:
+            _json_response(self, 400, {"error": "Invalid name."})
+            return
+        affiliation_key = _clean_bucket_key(payload.get("affiliation_key"))
+        pool = _clean_pool(payload.get("pool"))
 
-        created = _add_registration(attendee_id, clean_name)
-        status = 201 if created else 200
+        if not self._require_turnstile(payload):
+            return
+
+        threshold = _review_threshold()
+        recent = _recent_registration_count()
+        held = bool(threshold) and recent >= threshold
+        status = STATUS_PENDING if held else STATUS_PUBLISHED
+
+        created = _add_registration(
+            attendee_id,
+            clean_name,
+            source="api",
+            client_hint=hint,
+            affiliation_key=affiliation_key,
+            pool=pool,
+            status=status,
+        )
+        if held and created:
+            _log(
+                "registration_held_for_review",
+                attendee_id=attendee_id,
+                recent_hour=recent,
+                threshold=threshold,
+                client=hint,
+            )
+        else:
+            _log("offset_registered", attendee_id=attendee_id, created=created, client=hint)
         _json_response(
             self,
-            status,
+            201 if created else 200,
             {
                 "ok": True,
                 "id": attendee_id,
                 "created": created,
+                # The site thanks the visitor either way; a held row simply is
+                # not counted publicly until it has been looked at.
+                "pending": held and created,
             },
         )
 
     def _post_contact(self) -> None:
+        hint = self._check_rate_limit(
+            "contact", CONTACT_LIMIT_PER_HOUR, CONTACT_GLOBAL_LIMIT_PER_HOUR
+        )
+        if hint is None:
+            return
         payload = self._read_json_body()
         if payload is None:
             return
-        if not self._require_turnstile(payload):
-            return
-        if not _rate_limit_ok(self._client_ip(), bucket="contact", limit=CONTACT_LIMIT_PER_HOUR):
-            _json_response(self, 429, {"error": "Too many requests. Try again later."})
-            return
 
-        name = str(payload.get("name", "")).strip()
-        affiliation = str(payload.get("affiliation", "")).strip()
+        name = _clean_name(payload.get("name"))
         if not name:
             _json_response(self, 400, {"error": "Name is required."})
             return
+        affiliation = _clean_name(payload.get("affiliation")) or ""
+
+        if not self._require_turnstile(payload):
+            return
 
         email = _lookup_contact_email(name, affiliation)
+        _log("contact_lookup", name=name, found=bool(email), client=hint)
         if not email:
             _json_response(self, 404, {"error": "No verified email available for this person."})
             return
@@ -410,6 +789,12 @@ def main() -> None:
     print(f"Database: {_db_path()}")
     print(f"Contacts: {_contacts_path()} ({len(contacts)} verified emails)")
     print(f"Allowed origins: {', '.join(sorted(_allowed_origins()))}")
+    print(f"Client IP header: {os.environ.get('CLIENT_IP_HEADER', 'Fly-Client-IP') or '(socket peer)'}")
+    print(f"Hold-for-review above: {_review_threshold()} registrations/hour")
+    if not _turnstile_secret():
+        print("WARNING: TURNSTILE_SECRET is unset — POST endpoints will return 503.")
+    if not os.environ.get("ADMIN_TOKEN", "").strip():
+        print("NOTE: ADMIN_TOKEN is unset — /api/admin/export is disabled (404).")
     server.serve_forever()
 
 

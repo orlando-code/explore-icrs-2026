@@ -29,7 +29,7 @@ Add `"verified": true` to any entry in `data/speaker_profiles_cache.json` to pro
 
 ## Offset registration API
 
-The emissions tab shares offset pledges through a small SQLite-backed API in `backend/offset_api.py`.
+The emissions tab shares offset pledges through a small SQLite-backed API in `backend/offset_api.py`. Only aggregate counts are published — never a list of who registered. Rows are held for review rather than published when registrations spike, and `scripts/manage_offset_registrations.py` and `scripts/backup_offsets.py` handle inspection, withdrawal, and offsite backups. See [backend/README.md](backend/README.md).
 
 **Quick start (local):** from the repo root, run `docker compose up --build` or `python backend/offset_api.py --port 8787`.
 

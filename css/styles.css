@@ -1423,6 +1423,13 @@ button:active {
   margin-bottom: 0;
 }
 
+.emissions-offset-visibility {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
 .emissions-context-list {
   margin: 0;
   padding-left: 1.1rem;
