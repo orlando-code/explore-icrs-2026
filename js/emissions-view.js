@@ -16,7 +16,7 @@ import {
   personKey,
   pieSlicePolygon,
 } from "./offset-tracker.js";
-import { createFireworksOverlay } from "./celebration.js";
+import { createMapCelebration } from "./celebration.js";
 
 const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
 const MAX_ZOOM = 10;
@@ -121,7 +121,8 @@ export function createEmissionsView(
 
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
 
-  const fireworks = createFireworksOverlay(elements.mapContainer.parentElement);
+  const mapStageCanvas = elements.mapContainer.parentElement;
+  const mapCelebration = createMapCelebration(mapStageCanvas);
   let celebrateTimer = null;
 
   function attendeeLabel() {
@@ -731,22 +732,24 @@ export function createEmissionsView(
     });
   }
 
-  function launchFireworksAt(location) {
+  function launchSparkAt(location) {
     const display = displayForLocation(location);
-    fireworks.resize();
+    mapCelebration.resize();
     const point = map.project([display.lon, display.lat]);
-    fireworks.celebrateAt(point.x, point.y);
+    mapCelebration.celebrateAt(point.x, point.y);
   }
 
   function celebrateOffsetRegistration(attendee) {
+    const celebrateDurationMs = 3000;
     if (celebrateTimer) window.clearTimeout(celebrateTimer);
     elements.offsetTracker?.classList.add("emissions-offset-tracker--celebrate");
     elements.offsetForm?.classList.add("emissions-offset-register--celebrate");
+    mapCelebration.pulseMapGlow(celebrateDurationMs);
     celebrateTimer = window.setTimeout(() => {
       elements.offsetTracker?.classList.remove("emissions-offset-tracker--celebrate");
       elements.offsetForm?.classList.remove("emissions-offset-register--celebrate");
       celebrateTimer = null;
-    }, 6200);
+    }, celebrateDurationMs);
 
     if (!attendee?.location_id || !mapReady) {
       scheduleMapUpdate();
@@ -771,12 +774,16 @@ export function createEmissionsView(
       MAX_ZOOM,
       Math.max(map.getZoom(), isMobileLayout() ? 4.8 : 6)
     );
-    map.once("moveend", () => {
-      launchFireworksAt(location);
+    let sparked = false;
+    const sparkOnce = () => {
+      if (sparked) return;
+      sparked = true;
+      launchSparkAt(location);
       scheduleMapUpdate();
-    });
-    launchFireworksAt(location);
+    };
+    map.once("moveend", sparkOnce);
     flyToLocation(location, { zoom: targetZoom, duration: 1400 });
+    window.setTimeout(sparkOnce, 1500);
   }
 
   function selectLocation(id, { fly = false, toggle = false } = {}) {
@@ -1046,7 +1053,7 @@ export function createEmissionsView(
     renderSidebar,
     resize: () => {
       map.resize();
-      fireworks.resize();
+      mapCelebration.resize();
     },
   };
 }

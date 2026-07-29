@@ -1279,8 +1279,8 @@ button:active {
   background: linear-gradient(90deg, #2d8a4e, #5fd68a, #7ef0a8, #3aa764);
   background-size: 220% 100%;
   animation:
-    offset-bar-glow 0.85s ease-in-out 4,
-    offset-bar-shimmer 1.8s ease-in-out 2;
+    offset-bar-glow 0.85s ease-in-out 3,
+    offset-bar-shimmer 1.4s ease-in-out 2;
 }
 
 .emissions-offset-register--celebrate .btn-primary {
@@ -1760,6 +1760,40 @@ button:active {
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   background: #0b1c24;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.stage-canvas--celebrate {
+  border-color: rgba(45, 138, 78, 0.9);
+  box-shadow:
+    0 0 0 2px rgba(45, 138, 78, 0.55),
+    0 0 22px rgba(45, 138, 78, 0.42),
+    0 0 44px rgba(95, 214, 138, 0.22),
+    var(--shadow);
+  animation: stage-canvas-celebrate-glow 0.95s ease-in-out 3;
+}
+
+@keyframes stage-canvas-celebrate-glow {
+  0%,
+  100% {
+    border-color: rgba(45, 138, 78, 0.75);
+    box-shadow:
+      0 0 0 2px rgba(45, 138, 78, 0.45),
+      0 0 18px rgba(45, 138, 78, 0.32),
+      0 0 36px rgba(95, 214, 138, 0.16),
+      var(--shadow);
+  }
+
+  50% {
+    border-color: rgba(95, 214, 138, 0.95);
+    box-shadow:
+      0 0 0 3px rgba(45, 138, 78, 0.65),
+      0 0 28px rgba(45, 138, 78, 0.55),
+      0 0 56px rgba(126, 240, 168, 0.28),
+      var(--shadow);
+  }
 }
 
 .network-stage.stage-stack .stage-canvas,
