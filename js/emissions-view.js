@@ -732,15 +732,27 @@ export function createEmissionsView(
     });
   }
 
-  function launchSparkAt(location) {
+  function isLocationCentral(location) {
     const display = displayForLocation(location);
+    const point = map.project([display.lon, display.lat]);
+    const container = map.getContainer();
+    const centerX = container.clientWidth / 2;
+    const centerY = container.clientHeight / 2;
+    const maxOffset = Math.min(centerX, centerY) * 0.14;
+    return Math.hypot(point.x - centerX, point.y - centerY) <= maxOffset;
+  }
+
+  function launchSparkAt(location) {
+    if (!isLocationCentral(location)) return false;
     mapCelebration.resize();
+    const display = displayForLocation(location);
     const point = map.project([display.lon, display.lat]);
     mapCelebration.celebrateAt(point.x, point.y);
+    return true;
   }
 
   function celebrateOffsetRegistration(attendee) {
-    const celebrateDurationMs = 3000;
+    const celebrateDurationMs = 3600;
     if (celebrateTimer) window.clearTimeout(celebrateTimer);
     elements.offsetTracker?.classList.add("emissions-offset-tracker--celebrate");
     elements.offsetForm?.classList.add("emissions-offset-register--celebrate");
@@ -774,16 +786,20 @@ export function createEmissionsView(
       MAX_ZOOM,
       Math.max(map.getZoom(), isMobileLayout() ? 4.8 : 6)
     );
+
     let sparked = false;
-    const sparkOnce = () => {
+    const sparkWhenCentral = () => {
       if (sparked) return;
+      if (!launchSparkAt(location)) return;
       sparked = true;
-      launchSparkAt(location);
       scheduleMapUpdate();
     };
-    map.once("moveend", sparkOnce);
+
+    map.once("moveend", sparkWhenCentral);
     flyToLocation(location, { zoom: targetZoom, duration: 1400 });
-    window.setTimeout(sparkOnce, 1500);
+    if (!map.isMoving()) {
+      window.requestAnimationFrame(sparkWhenCentral);
+    }
   }
 
   function selectLocation(id, { fly = false, toggle = false } = {}) {

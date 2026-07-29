@@ -1,6 +1,18 @@
-const SPARK_COLORS = ["#2d8a4e", "#3aa764", "#5fd68a", "#7ef0a8", "#ffffff"];
+const SPARK_COLORS = [
+  "#7ef0a8",
+  "#5fd68a",
+  "#b8ffd4",
+  "#ffffff",
+  "#ffe566",
+  "#ffc857",
+  "#ff9f43",
+];
 
-/** Lightweight map celebration: CSS border glow + a tiny pin spark (no shadows). */
+function randomBetween(min, max) {
+  return min + Math.random() * (max - min);
+}
+
+/** Lightweight map celebration: CSS border glow + smooth triple bursts at the pin. */
 export function createMapCelebration(stageCanvas) {
   const canvas = document.createElement("canvas");
   canvas.className = "celebration-fireworks";
@@ -11,6 +23,7 @@ export function createMapCelebration(stageCanvas) {
   let particles = [];
   let frameId = null;
   let glowTimer = null;
+  let lastFrameTime = 0;
 
   function resize() {
     const width = stageCanvas.clientWidth;
@@ -21,7 +34,7 @@ export function createMapCelebration(stageCanvas) {
     }
   }
 
-  function pulseMapGlow(durationMs = 2800) {
+  function pulseMapGlow(durationMs = 3600) {
     stageCanvas.classList.remove("stage-canvas--celebrate");
     void stageCanvas.offsetWidth;
     stageCanvas.classList.add("stage-canvas--celebrate");
@@ -32,49 +45,83 @@ export function createMapCelebration(stageCanvas) {
     }, durationMs);
   }
 
-  function addSpark(x, y) {
-    const count = 14;
+  function addBurst(x, y, burstIndex = 0) {
+    const spread = 0.65 + burstIndex * 0.18;
+    const count = 22;
     for (let index = 0; index < count; index += 1) {
       const angle = Math.random() * Math.PI * 2;
-      const speed = 1 + Math.random() * 2.8;
+      const speed = (1.6 + Math.random() * 3.4) * spread;
       particles.push({
-        x,
-        y,
+        x: x + randomBetween(-4, 4),
+        y: y + randomBetween(-4, 4),
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
         life: 1,
-        decay: 0.06 + Math.random() * 0.04,
+        decay: randomBetween(0.018, 0.028),
         color: SPARK_COLORS[Math.floor(Math.random() * SPARK_COLORS.length)],
-        size: 1 + Math.random() * 1.6,
+        size: randomBetween(2.8, 5.4),
+        drag: 0.988,
       });
     }
-    if (!frameId) {
-      resize();
-      frameId = window.requestAnimationFrame(tick);
+    startLoop();
+  }
+
+  function drawParticle(particle) {
+    const fade = particle.life * particle.life;
+    context.globalAlpha = fade;
+    context.fillStyle = particle.color;
+    const radius = particle.size * (0.55 + fade * 0.55);
+    context.beginPath();
+    context.arc(particle.x, particle.y, radius, 0, Math.PI * 2);
+    context.fill();
+
+    if (fade > 0.45) {
+      context.globalAlpha = fade * 0.35;
+      context.fillStyle = "#ffffff";
+      context.beginPath();
+      context.arc(particle.x, particle.y, radius * 0.42, 0, Math.PI * 2);
+      context.fill();
     }
   }
 
-  function tick() {
+  function tick(timestamp) {
+    const delta = lastFrameTime ? Math.min(24, timestamp - lastFrameTime) / 16.67 : 1;
+    lastFrameTime = timestamp;
+
     context.clearRect(0, 0, canvas.width, canvas.height);
     particles = particles.filter((particle) => particle.life > 0);
+
     for (const particle of particles) {
-      particle.x += particle.vx;
-      particle.y += particle.vy;
-      particle.vy += 0.05;
-      particle.life -= particle.decay;
-      context.globalAlpha = Math.max(0, particle.life);
-      context.fillStyle = particle.color;
-      context.beginPath();
-      context.arc(particle.x, particle.y, particle.size * particle.life, 0, Math.PI * 2);
-      context.fill();
+      particle.x += particle.vx * delta;
+      particle.y += particle.vy * delta;
+      particle.vy += 0.028 * delta;
+      particle.vx *= particle.drag ** delta;
+      particle.vy *= particle.drag ** delta;
+      particle.life -= particle.decay * delta;
+      drawParticle(particle);
     }
+
     context.globalAlpha = 1;
-    frameId = particles.length ? window.requestAnimationFrame(tick) : null;
+
+    if (particles.length) {
+      frameId = window.requestAnimationFrame(tick);
+    } else {
+      frameId = null;
+      lastFrameTime = 0;
+    }
+  }
+
+  function startLoop() {
+    if (frameId) return;
+    resize();
+    frameId = window.requestAnimationFrame(tick);
   }
 
   function celebrateAt(x, y) {
     resize();
-    addSpark(x, y);
+    addBurst(x, y, 0);
+    window.setTimeout(() => addBurst(x, y, 1), 240);
+    window.setTimeout(() => addBurst(x, y, 2), 480);
   }
 
   resize();
