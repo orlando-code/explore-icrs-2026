@@ -5,6 +5,42 @@ let offsetTurnstileWidgetId = null;
 let offsetTurnstileToken = "";
 let offsetTurnstilePending = null;
 
+const TURNSTILE_READY_TIMEOUT_MS = 12_000;
+const TURNSTILE_EXECUTE_TIMEOUT_MS = 20_000;
+const FETCH_TIMEOUT_MS = 25_000;
+
+async function waitForTurnstileReady(timeoutMs = TURNSTILE_READY_TIMEOUT_MS) {
+  if (!window.turnstile) return false;
+  if (!window.turnstile.ready) return true;
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = (ready) => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timerId);
+      resolve(ready);
+    };
+    const timerId = window.setTimeout(() => finish(Boolean(window.turnstile)), timeoutMs);
+    try {
+      window.turnstile.ready(() => finish(true));
+    } catch {
+      finish(Boolean(window.turnstile));
+    }
+  });
+}
+
+async function fetchJsonWithTimeout(url, options = {}, timeoutMs = FETCH_TIMEOUT_MS) {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    const payload = await response.json().catch(() => ({}));
+    return { response, payload };
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
 function finishOffsetTurnstilePending(token = "") {
   if (!offsetTurnstilePending) return;
   const { resolve } = offsetTurnstilePending;
@@ -75,21 +111,16 @@ async function ensureOffsetTurnstileToken() {
   const existing = offsetTurnstileResponse();
   if (existing) return existing;
   if (offsetTurnstileWidgetId == null) {
-    if (window.turnstile?.ready) {
-      await new Promise((resolve) => window.turnstile.ready(resolve));
-    } else if (!window.turnstile) {
-      return "";
-    }
+    const ready = await waitForTurnstileReady();
+    if (!ready) return "";
     mountOffsetTurnstile();
   }
   if (offsetTurnstileWidgetId == null || !window.turnstile?.execute) return "";
 
   return new Promise((resolve) => {
     const timeoutId = window.setTimeout(() => {
-      if (!offsetTurnstilePending) return;
-      offsetTurnstilePending = null;
-      resolve(offsetTurnstileResponse());
-    }, 30000);
+      finishOffsetTurnstilePending(offsetTurnstileResponse());
+    }, TURNSTILE_EXECUTE_TIMEOUT_MS);
 
     offsetTurnstilePending = {
       resolve: (token) => {
@@ -102,10 +133,35 @@ async function ensureOffsetTurnstileToken() {
       window.turnstile.execute(offsetTurnstileWidgetId);
     } catch {
       window.clearTimeout(timeoutId);
-      offsetTurnstilePending = null;
-      resolve("");
+      finishOffsetTurnstilePending("");
     }
   });
+}
+
+function initOffsetTurnstile() {
+  if (!TURNSTILE_SITE_KEY || offsetTurnstileWidgetId != null) return;
+
+  const tryMount = () => {
+    void waitForTurnstileReady().then((ready) => {
+      if (ready && offsetTurnstileWidgetId == null) mountOffsetTurnstile();
+    });
+  };
+
+  if (window.turnstile) {
+    tryMount();
+    return;
+  }
+
+  let attempts = 0;
+  const timerId = window.setInterval(() => {
+    attempts += 1;
+    if (window.turnstile) {
+      window.clearInterval(timerId);
+      tryMount();
+    } else if (attempts >= 150) {
+      window.clearInterval(timerId);
+    }
+  }, 100);
 }
 
 const STATIC_REGISTRATIONS_URL = "data/offset-registrations.json";
@@ -276,9 +332,9 @@ export function createOffsetTracker({
     loadError = "";
     if (apiUrl) {
       try {
-        const response = await fetch(apiUrl, { cache: "no-store" });
+        const { response, payload } = await fetchJsonWithTimeout(apiUrl, { cache: "no-store" });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        aggregate = normalizeAggregate(await response.json());
+        aggregate = normalizeAggregate(payload);
         return;
       } catch (error) {
         loadError = "Could not refresh live offset totals.";
@@ -287,9 +343,11 @@ export function createOffsetTracker({
     }
 
     try {
-      const response = await fetch(STATIC_REGISTRATIONS_URL, { cache: "no-store" });
+      const { response, payload } = await fetchJsonWithTimeout(STATIC_REGISTRATIONS_URL, {
+        cache: "no-store",
+      });
       if (!response.ok) return;
-      aggregate = normalizeAggregate(await response.json());
+      aggregate = normalizeAggregate(payload);
     } catch {
       aggregate = emptyAggregate();
     }
@@ -389,6 +447,7 @@ export function createOffsetTracker({
 
   function renderTracker() {
     const { registeredCount, totalAttendees, percent } = stats();
+    const isRegistering = pendingRegistrationIds.size > 0;
     if (elements.fill) {
       elements.fill.style.width = `${Math.min(100, percent)}%`;
     }
@@ -396,11 +455,18 @@ export function createOffsetTracker({
       const rounded = percent < 10 ? percent.toFixed(1) : Math.round(percent).toString();
       elements.label.innerHTML = `<strong>${rounded}%</strong> offset · <strong>${registeredCount.toLocaleString()}</strong> of ${totalAttendees.toLocaleString()} ${getHeadline()?.attendee_label || "delegates"} offsetted`;
     }
+    if (elements.form) {
+      elements.form.classList.toggle("emissions-offset-register--pending", isRegistering);
+    }
+    if (elements.status) {
+      elements.status.classList.toggle("status--pending", isRegistering);
+    }
     if (elements.registerButton) {
       const attendee = resolveSelectedAttendee();
       elements.registerButton.disabled =
-        !attendee || isRegistered(attendee) || pendingRegistrationIds.has(attendee.id);
-      elements.registerButton.textContent = "I've offset my travel";
+        isRegistering || !attendee || isRegistered(attendee) || pendingRegistrationIds.has(attendee.id);
+      elements.registerButton.textContent = isRegistering ? "Registering…" : "I've offset my travel";
+      elements.registerButton.setAttribute("aria-busy", isRegistering ? "true" : "false");
     }
   }
 
@@ -419,7 +485,7 @@ export function createOffsetTracker({
     }
 
     try {
-      const response = await fetch(apiUrl, {
+      const { response, payload } = await fetchJsonWithTimeout(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -432,7 +498,6 @@ export function createOffsetTracker({
           "cf-turnstile-response": token,
         }),
       });
-      const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
         offsetTurnstileToken = "";
         window.turnstile?.reset?.(offsetTurnstileWidgetId);
@@ -460,25 +525,6 @@ export function createOffsetTracker({
         rebuildOffsetCounts();
       }
 
-      try {
-        await loadRegistrations();
-        rebuildOffsetCounts();
-        const afterTotal =
-          aggregate.totals.speakers +
-          (activePool() === "delegates" ? aggregate.totals.delegates : 0);
-        // If the server has not caught up yet, keep the optimistic bump.
-        if (payload.created && !payload.pending && afterTotal < beforeTotal + 1) {
-          aggregate.totals[pool] += 1;
-          const key = affiliationMapKey(attendee.affiliation || "");
-          if (key) {
-            aggregate.counts[pool][key] = (aggregate.counts[pool][key] || 0) + 1;
-          }
-          rebuildOffsetCounts();
-        }
-      } catch {
-        /* loadRegistrations handles its own errors */
-      }
-
       if (payload.pending) {
         statusMessage = `Thanks, ${attendee.name}! Your offset is logged and will be counted once checked.`;
       } else if (payload.created) {
@@ -492,13 +538,40 @@ export function createOffsetTracker({
       render({ updateMap: true });
       offsetTurnstileToken = "";
       window.turnstile?.reset?.(offsetTurnstileWidgetId);
+
+      void loadRegistrations()
+        .then(() => {
+          rebuildOffsetCounts();
+          const afterTotal =
+            aggregate.totals.speakers +
+            (activePool() === "delegates" ? aggregate.totals.delegates : 0);
+          // If the server has not caught up yet, keep the optimistic bump.
+          if (payload.created && !payload.pending && afterTotal < beforeTotal + 1) {
+            aggregate.totals[pool] += 1;
+            const key = affiliationMapKey(attendee.affiliation || "");
+            if (key) {
+              aggregate.counts[pool][key] = (aggregate.counts[pool][key] || 0) + 1;
+            }
+            rebuildOffsetCounts();
+          }
+          render({ updateMap: true });
+        })
+        .catch(() => {
+          /* loadRegistrations handles its own errors */
+        });
+
       // Celebrate any newly accepted registration, including ones held for
       // review — the visitor did the work; the hold only delays the total.
       return Boolean(payload.created);
     } catch (error) {
       offsetTurnstileToken = "";
       window.turnstile?.reset?.(offsetTurnstileWidgetId);
-      setStatus("Registration failed. Please try again.");
+      const timedOut = error?.name === "AbortError";
+      setStatus(
+        timedOut
+          ? "Registration timed out. Check your connection and try again."
+          : "Registration failed. Please try again."
+      );
       console.warn("Offset registration failed:", error);
       return false;
     }
@@ -591,6 +664,7 @@ export function createOffsetTracker({
   }
 
   async function init() {
+    initOffsetTurnstile();
     refreshAttendees();
     bindEvents();
     startPolling();

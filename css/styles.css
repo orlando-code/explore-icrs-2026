@@ -1159,6 +1159,21 @@ button:active {
   color: #b42318;
 }
 
+.status--pending {
+  animation: status-pending-pulse 1.15s ease-in-out infinite;
+}
+
+@keyframes status-pending-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.45;
+  }
+}
+
 .stats-card {
   padding: 0.85rem 1.1rem;
   border-bottom: 1px solid var(--line);
@@ -1357,6 +1372,11 @@ button:active {
 
 .emissions-offset-register .status:not(:empty) {
   margin-top: 0.3rem;
+}
+
+.emissions-offset-register--pending .btn-primary {
+  cursor: wait;
+  opacity: 0.82;
 }
 
 .emissions-offset-note {
