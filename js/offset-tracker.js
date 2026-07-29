@@ -444,6 +444,9 @@ export function createOffsetTracker({
       // rejected attempt never renders as a success.
       localRegistrations.add(personKey(attendee.name, attendee.affiliation));
       saveLocalRegistrations(localRegistrations);
+
+      // Optimistic bump so the bar moves immediately; then re-fetch so we
+      // match the published aggregates (and do not count a held row).
       if (payload.created && !payload.pending) {
         const pool = isSpeakerAttendee?.(attendee) === false ? "delegates" : "speakers";
         aggregate.totals[pool] += 1;
@@ -452,7 +455,15 @@ export function createOffsetTracker({
           aggregate.counts[pool][key] = (aggregate.counts[pool][key] || 0) + 1;
         }
         rebuildOffsetCounts();
+      } else {
+        try {
+          await loadRegistrations();
+          rebuildOffsetCounts();
+        } catch {
+          /* loadRegistrations handles its own errors */
+        }
       }
+
       if (payload.pending) {
         statusMessage = `Thanks, ${attendee.name}! Your offset is logged and will be counted once checked.`;
       } else if (payload.created) {
@@ -466,7 +477,9 @@ export function createOffsetTracker({
       render({ updateMap: true });
       offsetTurnstileToken = "";
       window.turnstile?.reset?.(offsetTurnstileWidgetId);
-      return Boolean(payload.created) && !payload.pending;
+      // Celebrate any newly accepted registration, including ones held for
+      // review — the visitor did the work; the hold only delays the total.
+      return Boolean(payload.created);
     } catch (error) {
       offsetTurnstileToken = "";
       window.turnstile?.reset?.(offsetTurnstileWidgetId);
