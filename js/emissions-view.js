@@ -746,7 +746,7 @@ export function createEmissionsView(
       elements.offsetTracker?.classList.remove("emissions-offset-tracker--celebrate");
       elements.offsetForm?.classList.remove("emissions-offset-register--celebrate");
       celebrateTimer = null;
-    }, 4500);
+    }, 6200);
 
     if (!attendee?.location_id || !mapReady) {
       scheduleMapUpdate();
