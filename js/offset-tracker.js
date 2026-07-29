@@ -445,23 +445,38 @@ export function createOffsetTracker({
       localRegistrations.add(personKey(attendee.name, attendee.affiliation));
       saveLocalRegistrations(localRegistrations);
 
-      // Optimistic bump so the bar moves immediately; then re-fetch so we
-      // match the published aggregates (and do not count a held row).
+      const pool = isSpeakerAttendee?.(attendee) === false ? "delegates" : "speakers";
+      const beforeTotal =
+        aggregate.totals.speakers +
+        (activePool() === "delegates" ? aggregate.totals.delegates : 0);
+
+      // Bump immediately so the bar moves, then re-fetch published totals.
       if (payload.created && !payload.pending) {
-        const pool = isSpeakerAttendee?.(attendee) === false ? "delegates" : "speakers";
         aggregate.totals[pool] += 1;
         const key = affiliationMapKey(attendee.affiliation || "");
         if (key) {
           aggregate.counts[pool][key] = (aggregate.counts[pool][key] || 0) + 1;
         }
         rebuildOffsetCounts();
-      } else {
-        try {
-          await loadRegistrations();
+      }
+
+      try {
+        await loadRegistrations();
+        rebuildOffsetCounts();
+        const afterTotal =
+          aggregate.totals.speakers +
+          (activePool() === "delegates" ? aggregate.totals.delegates : 0);
+        // If the server has not caught up yet, keep the optimistic bump.
+        if (payload.created && !payload.pending && afterTotal < beforeTotal + 1) {
+          aggregate.totals[pool] += 1;
+          const key = affiliationMapKey(attendee.affiliation || "");
+          if (key) {
+            aggregate.counts[pool][key] = (aggregate.counts[pool][key] || 0) + 1;
+          }
           rebuildOffsetCounts();
-        } catch {
-          /* loadRegistrations handles its own errors */
         }
+      } catch {
+        /* loadRegistrations handles its own errors */
       }
 
       if (payload.pending) {

@@ -739,6 +739,15 @@ export function createEmissionsView(
   }
 
   function celebrateOffsetRegistration(attendee) {
+    if (celebrateTimer) window.clearTimeout(celebrateTimer);
+    elements.offsetTracker?.classList.add("emissions-offset-tracker--celebrate");
+    elements.offsetForm?.classList.add("emissions-offset-register--celebrate");
+    celebrateTimer = window.setTimeout(() => {
+      elements.offsetTracker?.classList.remove("emissions-offset-tracker--celebrate");
+      elements.offsetForm?.classList.remove("emissions-offset-register--celebrate");
+      celebrateTimer = null;
+    }, 4500);
+
     if (!attendee?.location_id || !mapReady) {
       scheduleMapUpdate();
       return;
@@ -757,15 +766,6 @@ export function createEmissionsView(
       renderRankings();
       upsertMapData();
     }
-
-    if (celebrateTimer) window.clearTimeout(celebrateTimer);
-    elements.offsetTracker?.classList.add("emissions-offset-tracker--celebrate");
-    elements.offsetForm?.classList.add("emissions-offset-register--celebrate");
-    celebrateTimer = window.setTimeout(() => {
-      elements.offsetTracker?.classList.remove("emissions-offset-tracker--celebrate");
-      elements.offsetForm?.classList.remove("emissions-offset-register--celebrate");
-      celebrateTimer = null;
-    }, 4500);
 
     const targetZoom = Math.min(
       MAX_ZOOM,

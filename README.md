@@ -2,7 +2,7 @@
 
 Interactive (emissions) map and co-authorship network for ICRS 2026 speakers.
 
-**Live site:** https://orlando-codes.com/icrs2026-explorer/
+**Live site:** https://orlando-codes.com/explore-icrs-2026/ (also https://orlando-code.github.io/explore-icrs-2026/)
 <!-- 
 Regenerate speaker profile/contact links for the network tab:
 
