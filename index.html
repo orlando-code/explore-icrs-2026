@@ -29,9 +29,12 @@
       })();
     </script>
     <!-- Live offset API. Set after deploying backend/ (see backend/README.md) -->
-    <!-- <meta name="icrs-offset-api" content="" /> -->
+    <!-- Local delegate-ID testing: point at docker-compose API (see docs/DELEGATE-ID-TESTING.md) -->
+    <!-- <meta name="icrs-offset-api" content="http://127.0.0.1:8080/api/offsets" /> -->
+    <!-- <meta name="icrs-contact-api" content="http://127.0.0.1:8080/api/contact" /> -->
     <meta name="icrs-offset-api" content="https://icrs-offset-api.fly.dev/api/offsets" />
     <meta name="icrs-contact-api" content="https://icrs-offset-api.fly.dev/api/contact" />
+    <meta name="icrs-require-delegate-id" content="1" />
     <meta name="icrs-turnstile-site-key" content="0x4AAAAAAD_imTavnxW9TlYT" />
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <link rel="canonical" href="https://orlando-codes.com/explore-icrs-2026/" />
@@ -322,6 +325,19 @@
               />
               <div id="emissions-offset-suggestions" class="suggestions" role="listbox"></div>
             </div>
+            <div class="field emissions-offset-delegate-field" id="emissions-offset-delegate-field" hidden>
+              <label for="emissions-offset-delegate-id">Your 5-digit delegate ID</label>
+              <input
+                id="emissions-offset-delegate-id"
+                name="delegate-id"
+                inputmode="numeric"
+                pattern="[0-9]{5}"
+                maxlength="5"
+                autocomplete="off"
+                placeholder="e.g. 12345"
+              />
+              <p class="field-hint">Use the ID from your registration confirmation email.</p>
+            </div>
             <div class="form-actions">
               <button class="btn-primary" type="submit" id="emissions-offset-register">
                 I've offset my travel
@@ -402,7 +418,7 @@
             </p>
             <div style="margin-bottom: 1.1em;" aria-hidden="true"></div>
             <p>
-            As emphasised throughout ICRS: <i>"We need to get rid of carbon now like there is no tomorrow – because, for corals, there is no tomorrow"</i>.
+            As emphasised throughout ICRS: <i>"We need to get rid of carbon now like there is no tomorrow – because, for many corals, there is no tomorrow"</i>.
 </p>
             <!-- to mitigating the effect of these emissions. At best, it contributes towards cancelling out emissions; at worst, they waste money and encourage business as usual. But, at the bare minimum, offsetting while acting on the call to arms which reverberated throughout the conference signals that we recognise the impact of our choices, the urgency of the problem, and our commitment to doing what we can to solve it. -->
             

@@ -5,6 +5,9 @@ services:
       - "8080:8080"
     environment:
       OFFSET_DB_PATH: /data/offsets.db
+      DELEGATE_IDS_PATH: /app/data/delegate_ids.csv
+      REQUIRE_DELEGATE_ID: "1"
+      SKIP_TURNSTILE_VERIFY: "1"
       ALLOWED_ORIGINS: "https://orlando-codes.com,https://www.orlando-codes.com,https://orlando-code.github.io,http://localhost:8000,http://127.0.0.1:8000"
       # No trusted proxy in front by default, so rate-limit on the socket peer.
       # Set this to a header your reverse proxy overwrites when you add one.
@@ -14,6 +17,7 @@ services:
       ADMIN_TOKEN: "${ADMIN_TOKEN:-}"
     volumes:
       - offset-data:/data
+      - ./backend/data/delegate_ids.sample.csv:/app/data/delegate_ids.csv:ro
     restart: unless-stopped
 
 volumes:

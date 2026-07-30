@@ -16,6 +16,13 @@ export const SITE_BASE_PATH = normalizeBasePath(metaContent("icrs-base-path"));
 export const OFFSET_API_URL = metaContent("icrs-offset-api");
 export const TURNSTILE_SITE_KEY = metaContent("icrs-turnstile-site-key");
 
+function metaFlag(name) {
+  const value = metaContent(name).toLowerCase();
+  return value === "1" || value === "true" || value === "yes";
+}
+
+export const REQUIRE_DELEGATE_ID = metaFlag("icrs-require-delegate-id");
+
 function apiBaseUrl(apiUrl) {
   if (!apiUrl) return "";
   return apiUrl.replace(/\/[^/]+\/?$/, "");

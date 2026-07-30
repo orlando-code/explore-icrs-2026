@@ -1,5 +1,5 @@
 import { affiliationMapKey, escapeHtml, haversineKm } from "./utils.js";
-import { OFFSET_API_URL, TURNSTILE_SITE_KEY } from "./config.js";
+import { OFFSET_API_URL, REQUIRE_DELEGATE_ID, TURNSTILE_SITE_KEY } from "./config.js";
 
 let offsetTurnstileWidgetId = null;
 let offsetTurnstileToken = "";
@@ -293,6 +293,7 @@ export function createOffsetTracker({
   onChange,
   onRegisterSuccess,
   apiUrl = OFFSET_API_URL,
+  requireDelegateId = REQUIRE_DELEGATE_ID,
 }) {
   let attendees = [];
   let attendeeById = new Map();
@@ -301,6 +302,7 @@ export function createOffsetTracker({
   let pollTimer = null;
   let loadError = "";
   let statusMessage = "";
+  let delegateIdInput = "";
   let aggregate = emptyAggregate();
   let offsetCountByAffiliation = new Map();
   const localRegistrations = loadLocalRegistrations();
@@ -421,6 +423,14 @@ export function createOffsetTracker({
     elements.suggestions.classList.add("open");
   }
 
+  function normalizedDelegateId(value = delegateIdInput) {
+    return String(value || "").replace(/\D/g, "").slice(0, 5);
+  }
+
+  function delegateIdReady() {
+    return !requireDelegateId || /^\d{5}$/.test(normalizedDelegateId());
+  }
+
   function resolveSelectedAttendee() {
     if (selectedAttendeeId && attendeeById.has(selectedAttendeeId)) {
       return attendeeById.get(selectedAttendeeId);
@@ -464,7 +474,11 @@ export function createOffsetTracker({
     if (elements.registerButton) {
       const attendee = resolveSelectedAttendee();
       elements.registerButton.disabled =
-        isRegistering || !attendee || isRegistered(attendee) || pendingRegistrationIds.has(attendee.id);
+        isRegistering ||
+        !attendee ||
+        !delegateIdReady() ||
+        isRegistered(attendee) ||
+        pendingRegistrationIds.has(attendee.id);
       elements.registerButton.textContent = isRegistering ? "Registering…" : "I've offset my travel";
       elements.registerButton.setAttribute("aria-busy", isRegistering ? "true" : "false");
     }
@@ -495,6 +509,7 @@ export function createOffsetTracker({
           // stays the single source of truth for how affiliations are keyed.
           affiliation_key: affiliationMapKey(attendee.affiliation || ""),
           pool: isSpeakerAttendee?.(attendee) === false ? "delegates" : "speakers",
+          ...(requireDelegateId ? { delegate_id: normalizedDelegateId() } : {}),
           "cf-turnstile-response": token,
         }),
       });
@@ -505,10 +520,16 @@ export function createOffsetTracker({
         return false;
       }
 
-      // Only reflect the registration once the server has stored it, so a
-      // rejected attempt never renders as a success.
-      localRegistrations.add(personKey(attendee.name, attendee.affiliation));
-      saveLocalRegistrations(localRegistrations);
+      const accepted = Boolean(payload.created);
+
+      if (accepted) {
+        localRegistrations.add(personKey(attendee.name, attendee.affiliation));
+        saveLocalRegistrations(localRegistrations);
+      } else {
+        // Already published on the server — sync browser memory only.
+        localRegistrations.add(personKey(attendee.name, attendee.affiliation));
+        saveLocalRegistrations(localRegistrations);
+      }
 
       const pool = isSpeakerAttendee?.(attendee) === false ? "delegates" : "speakers";
       const beforeTotal =
@@ -516,7 +537,7 @@ export function createOffsetTracker({
         (activePool() === "delegates" ? aggregate.totals.delegates : 0);
 
       // Bump immediately so the bar moves, then re-fetch published totals.
-      if (payload.created && !payload.pending) {
+      if (accepted && !payload.pending) {
         aggregate.totals[pool] += 1;
         const key = affiliationMapKey(attendee.affiliation || "");
         if (key) {
@@ -527,13 +548,17 @@ export function createOffsetTracker({
 
       if (payload.pending) {
         statusMessage = `Thanks, ${attendee.name}! Your offset is logged and will be counted once checked.`;
-      } else if (payload.created) {
-        statusMessage = `Thanks, ${attendee.name}! Your offset is registered.`;
+      } else if (accepted) {
+        statusMessage = payload.reactivated
+          ? `Thanks, ${attendee.name}! Your offset is registered again.`
+          : `Thanks, ${attendee.name}! Your offset is registered.`;
       } else {
-        statusMessage = `${attendee.name} was already registered.`;
+        statusMessage = `${attendee.name} is already registered on the server.`;
       }
       if (elements.query) elements.query.value = "";
+      if (elements.delegateId) elements.delegateId.value = "";
       searchQuery = "";
+      delegateIdInput = "";
       selectedAttendeeId = null;
       render({ updateMap: true });
       offsetTurnstileToken = "";
@@ -546,7 +571,7 @@ export function createOffsetTracker({
             aggregate.totals.speakers +
             (activePool() === "delegates" ? aggregate.totals.delegates : 0);
           // If the server has not caught up yet, keep the optimistic bump.
-          if (payload.created && !payload.pending && afterTotal < beforeTotal + 1) {
+          if (accepted && !payload.pending && afterTotal < beforeTotal + 1) {
             aggregate.totals[pool] += 1;
             const key = affiliationMapKey(attendee.affiliation || "");
             if (key) {
@@ -562,7 +587,7 @@ export function createOffsetTracker({
 
       // Celebrate any newly accepted registration, including ones held for
       // review — the visitor did the work; the hold only delays the total.
-      return Boolean(payload.created);
+      return accepted;
     } catch (error) {
       offsetTurnstileToken = "";
       window.turnstile?.reset?.(offsetTurnstileWidgetId);
@@ -592,6 +617,10 @@ export function createOffsetTracker({
       setStatus("Live registration API is not configured.");
       return false;
     }
+    if (requireDelegateId && !delegateIdReady()) {
+      setStatus("Enter your 5-digit delegate ID.");
+      return false;
+    }
 
     selectedAttendeeId = attendee.id;
     pendingRegistrationIds.add(attendee.id);
@@ -615,6 +644,12 @@ export function createOffsetTracker({
       selectedAttendeeId = null;
       statusMessage = "";
       render();
+    });
+
+    elements.delegateId?.addEventListener("input", (event) => {
+      delegateIdInput = event.target.value;
+      statusMessage = "";
+      renderTracker();
     });
 
     elements.query?.addEventListener("focus", () => {
@@ -664,6 +699,9 @@ export function createOffsetTracker({
   }
 
   async function init() {
+    if (elements.delegateField) {
+      elements.delegateField.hidden = !requireDelegateId;
+    }
     initOffsetTurnstile();
     refreshAttendees();
     bindEvents();

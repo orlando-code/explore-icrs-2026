@@ -7,6 +7,7 @@ Stdlib only: SQLite persistence, CORS, rate limiting, Turnstile verification.
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import hmac
 import json
@@ -27,6 +28,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 ATTENDEE_ID_RE = re.compile(r"^offset-[0-9a-f]{8}$")
+DELEGATE_ID_RE = re.compile(r"^\d{5}$")
 CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f-\x9f]")
 WHITESPACE_RE = re.compile(r"\s+")
 
@@ -67,6 +69,9 @@ _contacts_lock = threading.Lock()
 _rate_windows: dict[str, dict[str, list[float]]] = {}
 _global_windows: dict[str, list[float]] = {}
 _contacts_cache: tuple[str, float, int, dict[str, str]] | None = None
+_delegate_ids_lock = threading.Lock()
+_delegate_ids_by_name: dict[str, str] | None = None
+_delegate_ids_loaded_path: str | None = None
 # Only used when CLIENT_HINT_SALT is unset: hints stay comparable within a
 # process lifetime but are not linkable across restarts.
 _ephemeral_hint_salt = secrets.token_hex(16)
@@ -78,6 +83,14 @@ def _db_path() -> str:
 
 def _contacts_path() -> str:
     return os.environ.get("CONTACTS_PATH", "data/contacts.json")
+
+
+def _delegate_ids_path() -> str:
+    return os.environ.get("DELEGATE_IDS_PATH", "data/delegate_ids.csv").strip()
+
+
+def _require_delegate_id() -> bool:
+    return _env_flag("REQUIRE_DELEGATE_ID")
 
 
 def _env_flag(name: str, default: bool = False) -> bool:
@@ -144,6 +157,56 @@ def _clean_name(value: Any) -> str | None:
     if not any(char.isalpha() for char in text):
         return None
     return text
+
+
+def _delegate_name_key(name: str | None) -> str:
+    cleaned = _clean_name(name)
+    return cleaned.lower() if cleaned else ""
+
+
+def _load_delegate_ids() -> dict[str, str]:
+    """Map normalized delegate name → 5-digit ID."""
+    global _delegate_ids_by_name, _delegate_ids_loaded_path
+    path = _delegate_ids_path()
+    if not path or not os.path.isfile(path):
+        return {}
+
+    with _delegate_ids_lock:
+        if _delegate_ids_by_name is not None and _delegate_ids_loaded_path == path:
+            return _delegate_ids_by_name
+
+        by_name: dict[str, str] = {}
+        try:
+            with Path(path).open(encoding="utf-8", newline="") as handle:
+                reader = csv.DictReader(handle)
+                for row in reader:
+                    name = str(row.get("name") or "").strip()
+                    delegate_id = str(row.get("delegate_id") or "").strip()
+                    if not name or not DELEGATE_ID_RE.fullmatch(delegate_id):
+                        continue
+                    key = _delegate_name_key(name)
+                    if key:
+                        by_name[key] = delegate_id
+        except OSError:
+            by_name = {}
+
+        _delegate_ids_by_name = by_name
+        _delegate_ids_loaded_path = path
+        return by_name
+
+
+def _verify_delegate_id(name: str | None, delegate_id: str) -> bool:
+    if not _require_delegate_id():
+        return True
+    if not DELEGATE_ID_RE.fullmatch(delegate_id):
+        return False
+    index = _load_delegate_ids()
+    if not index:
+        return False
+    key = _delegate_name_key(name)
+    if not key:
+        return False
+    return index.get(key) == delegate_id
 
 
 def _load_contacts() -> dict[str, str]:
@@ -331,7 +394,11 @@ def _add_registration(
     affiliation_key: str = "",
     pool: str = "speakers",
     status: str = STATUS_PUBLISHED,
-) -> bool:
+) -> tuple[bool, bool]:
+    """Insert a registration, or republish one that was revoked.
+
+    Returns (counts_as_new, reactivated_from_revoked).
+    """
     created_at = datetime.now(UTC).isoformat(timespec="seconds")
     with _db_lock:
         conn = sqlite3.connect(_db_path())
@@ -354,7 +421,59 @@ def _add_registration(
                     status,
                 ),
             )
-            created = cursor.rowcount == 1
+            if cursor.rowcount == 1:
+                conn.execute(
+                    """
+                    INSERT INTO registration_events
+                        (attendee_id, event, name, source, client_hint, created_at)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        attendee_id,
+                        "held" if status == STATUS_PENDING else "created",
+                        name,
+                        source,
+                        client_hint,
+                        created_at,
+                    ),
+                )
+                conn.commit()
+                return True, False
+
+            row = conn.execute(
+                "SELECT status FROM registrations WHERE attendee_id = ?",
+                (attendee_id,),
+            ).fetchone()
+            if not row or row[0] != STATUS_REVOKED:
+                conn.execute(
+                    """
+                    INSERT INTO registration_events
+                        (attendee_id, event, name, source, client_hint, created_at)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                    """,
+                    (attendee_id, "duplicate", name, source, client_hint, created_at),
+                )
+                conn.commit()
+                return False, False
+
+            conn.execute(
+                """
+                UPDATE registrations
+                SET name = ?, created_at = ?, source = ?, client_hint = ?,
+                    affiliation_key = ?, pool = ?, status = ?, revoked = 0
+                WHERE attendee_id = ?
+                """,
+                (
+                    name,
+                    created_at,
+                    source,
+                    client_hint,
+                    affiliation_key,
+                    pool,
+                    status,
+                    attendee_id,
+                ),
+            )
             conn.execute(
                 """
                 INSERT INTO registration_events
@@ -363,7 +482,7 @@ def _add_registration(
                 """,
                 (
                     attendee_id,
-                    ("held" if status == STATUS_PENDING else "created") if created else "duplicate",
+                    "held" if status == STATUS_PENDING else "republished",
                     name,
                     source,
                     client_hint,
@@ -371,7 +490,7 @@ def _add_registration(
                 ),
             )
             conn.commit()
-            return created
+            return True, True
         finally:
             conn.close()
 
@@ -676,6 +795,8 @@ class OffsetHandler(BaseHTTPRequestHandler):
         return None
 
     def _require_turnstile(self, payload: dict[str, Any]) -> bool:
+        if _env_flag("SKIP_TURNSTILE_VERIFY"):
+            return True
         if not _turnstile_secret():
             _json_response(self, 503, {"error": "Verification is not configured."})
             return False
@@ -707,6 +828,21 @@ class OffsetHandler(BaseHTTPRequestHandler):
             return
         affiliation_key = _clean_bucket_key(payload.get("affiliation_key"))
         pool = _clean_pool(payload.get("pool"))
+        delegate_id = str(payload.get("delegate_id", "")).strip()
+
+        if _require_delegate_id():
+            if not _verify_delegate_id(clean_name, delegate_id):
+                _log(
+                    "delegate_id_rejected",
+                    attendee_id=attendee_id,
+                    client=hint,
+                )
+                _json_response(
+                    self,
+                    403,
+                    {"error": "Delegate ID does not match this name."},
+                )
+                return
 
         if not self._require_turnstile(payload):
             return
@@ -716,7 +852,7 @@ class OffsetHandler(BaseHTTPRequestHandler):
         held = bool(threshold) and recent >= threshold
         status = STATUS_PENDING if held else STATUS_PUBLISHED
 
-        created = _add_registration(
+        created, reactivated = _add_registration(
             attendee_id,
             clean_name,
             source="api",
@@ -725,7 +861,8 @@ class OffsetHandler(BaseHTTPRequestHandler):
             pool=pool,
             status=status,
         )
-        if held and created:
+        accepted = created or reactivated
+        if held and accepted:
             _log(
                 "registration_held_for_review",
                 attendee_id=attendee_id,
@@ -734,17 +871,24 @@ class OffsetHandler(BaseHTTPRequestHandler):
                 client=hint,
             )
         else:
-            _log("offset_registered", attendee_id=attendee_id, created=created, client=hint)
+            _log(
+                "offset_registered",
+                attendee_id=attendee_id,
+                created=created,
+                reactivated=reactivated,
+                client=hint,
+            )
         _json_response(
             self,
-            201 if created else 200,
+            201 if accepted else 200,
             {
                 "ok": True,
                 "id": attendee_id,
-                "created": created,
+                "created": accepted,
+                "reactivated": reactivated,
                 # The site thanks the visitor either way; a held row simply is
                 # not counted publicly until it has been looked at.
-                "pending": held and created,
+                "pending": held and accepted,
             },
         )
 
@@ -791,7 +935,16 @@ def main() -> None:
     print(f"Allowed origins: {', '.join(sorted(_allowed_origins()))}")
     print(f"Client IP header: {os.environ.get('CLIENT_IP_HEADER', 'Fly-Client-IP') or '(socket peer)'}")
     print(f"Hold-for-review above: {_review_threshold()} registrations/hour")
-    if not _turnstile_secret():
+    if _require_delegate_id():
+        delegate_ids = _load_delegate_ids()
+        print(
+            f"Delegate IDs: {_delegate_ids_path()} ({len(delegate_ids)} names, required on POST)"
+        )
+        if not delegate_ids:
+            print("WARNING: REQUIRE_DELEGATE_ID is set but no delegate IDs were loaded.")
+    if _env_flag("SKIP_TURNSTILE_VERIFY"):
+        print("WARNING: SKIP_TURNSTILE_VERIFY is set — Turnstile is not checked.")
+    elif not _turnstile_secret():
         print("WARNING: TURNSTILE_SECRET is unset — POST endpoints will return 503.")
     if not os.environ.get("ADMIN_TOKEN", "").strip():
         print("NOTE: ADMIN_TOKEN is unset — /api/admin/export is disabled (404).")

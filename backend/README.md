@@ -22,6 +22,21 @@ Attendee ids are a hash of a public name, so publishing them published who had a
 
 A visitor's own registration is remembered in their browser's local storage, which is the only reason the form can still say "you registered this".
 
+## Deploy to Fly.io
+
+`backend/data/contacts.json` is gitignored (verified emails). The Docker build needs a file there, so use the deploy helper from the **repo root**:
+
+```bash
+./scripts/deploy_offset_api.sh
+```
+
+This copies `backend/data/contacts.template.json` when you have not exported contacts locally. To include verified emails in the image:
+
+```bash
+python scripts/export_contact_api_data.py
+./scripts/deploy_offset_api.sh
+```
+
 ## Run locally (Python)
 
 From the **repo root** (not inside `backend/`):
@@ -45,6 +60,24 @@ docker compose up --build
 ```
 
 API at `http://localhost:8080/api/offsets`. Data persists in a Docker volume.
+
+### Delegate ID verification (feature branch)
+
+See [docs/DELEGATE-ID-TESTING.md](../docs/DELEGATE-ID-TESTING.md). Docker Compose enables `REQUIRE_DELEGATE_ID=1` and mounts `backend/data/delegate_ids.sample.csv`.
+
+Generate the full list (gitignored):
+
+```bash
+python3 scripts/generate_delegate_ids_csv.py
+```
+
+Environment variables:
+
+| Variable | Purpose |
+|----------|---------|
+| `DELEGATE_IDS_PATH` | CSV with `name,delegate_id` columns |
+| `REQUIRE_DELEGATE_ID` | When `1`, POST `/api/offsets` requires a matching pair |
+| `SKIP_TURNSTILE_VERIFY` | Local dev only — skips Cloudflare Turnstile |
 
 ## Deploy to Railway (recommended)
 

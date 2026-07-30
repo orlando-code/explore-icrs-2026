@@ -1407,6 +1407,12 @@ button:active {
   margin-bottom: 0;
 }
 
+.emissions-offset-register .field-hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted, #5c6670);
+}
+
 .emissions-offset-register .form-actions {
   margin: 0;
 }
