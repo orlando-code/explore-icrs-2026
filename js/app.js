@@ -351,6 +351,28 @@ function showNetworkHintIfNeeded() {
   els.networkHintBanner.hidden = false;
 }
 
+function tabForHash(hash) {
+  if (!hash) return null;
+  if (VALID_TABS.has(hash)) return hash;
+  if (hash === "methods-panel" || hash === "methods-offsetting" || hash.startsWith("methods-")) {
+    return "methods";
+  }
+  return null;
+}
+
+function navigateToHash({ scroll = true } = {}) {
+  const hash = decodeURIComponent(location.hash.slice(1));
+  const tab = tabForHash(hash);
+  if (tab) setTab(tab);
+  if (!hash || !scroll) return;
+
+  requestAnimationFrame(() => {
+    const target =
+      document.getElementById(hash) || (hash === "methods-panel" ? els.methodsPanel : null);
+    target?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
 function setTab(tab) {
   if (!VALID_TABS.has(tab)) tab = "map";
   activeTab = tab;
@@ -577,7 +599,9 @@ renderResults({
   locationList: mapView.getLocations(),
 });
 mapView.applySearch("", { fly: false });
-setTab(getStoredTab());
+setTab(location.hash ? tabForHash(decodeURIComponent(location.hash.slice(1))) || getStoredTab() : getStoredTab());
+if (location.hash) navigateToHash();
+window.addEventListener("hashchange", () => navigateToHash());
 
 const WELCOME_STORAGE_KEY = "icrs-intro-dismissed";
 

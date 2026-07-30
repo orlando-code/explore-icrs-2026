@@ -124,8 +124,13 @@ Fly's own daily volume snapshots are a second layer; `fly volumes snapshots list
 Without a token you can still copy the database off and snapshot it locally:
 
 ```bash
-fly ssh sftp get /data/offsets.db ./offsets-live.db
-python scripts/backup_offsets.py --db ./offsets-live.db
+# fly.toml lives in backend/ — pass -a or cd there first
+flyctl ssh sftp get /data/offsets.db ./backend/offsets-live.db -a icrs-offset-api
+
+# Run manage/backup commands from the repo root with the downloaded copy:
+OFFSET_DB_PATH=./backend/offsets-live.db python scripts/manage_offset_registrations.py stats
+OFFSET_DB_PATH=./backend/offsets-live.db python scripts/manage_offset_registrations.py list --status all
+python scripts/backup_offsets.py --db ./backend/offsets-live.db
 ```
 
 ### Restore
@@ -137,6 +142,39 @@ python scripts/import_offset_registrations.py backups/offsets-20260801T030000Z.j
 ```
 
 It only inserts ids that are missing, so running it against a live database is safe — it tops up rather than overwrites.
+
+### Push an edited database back to Fly
+
+After revoking rows locally with `manage_offset_registrations.py`, push the file back:
+
+```bash
+./scripts/push_offsets_db.sh ./backend/offsets-live.db
+```
+
+**Why the naive approach fails:**
+
+| Step | Problem |
+|------|---------|
+| `fly machine stop` then `fly ssh sftp put …/offsets.db` | SFTP needs a **running** VM — fails with “no started VMs” |
+| `fly ssh sftp put …/offsets.db` (file exists) | SFTP **refuses to overwrite** existing paths |
+| `pkill -f offset_api.py` in the container | `python:3.12-slim` image has **no pkill** |
+
+The script uploads to `/data/offsets-replacement.db`, atomically swaps it over the live file (old copy kept as `offsets.db.bak`), then restarts the machine so the API opens the new inode.
+
+If you already uploaded a replacement file and only need the swap + restart:
+
+```bash
+./scripts/push_offsets_db.sh ./backend/offsets-live.db
+```
+
+**If a broken swap left the API at 0 totals:** the live file was moved to `offsets.db.bak` but the replacement upload was missing. Either restore the backup (`offsets.db.bak` on the volume has the pre-edit ledger) or push your local copy with the script above — it checks the upload exists before swapping.
+
+Emergency restore from the volume backup only (reverts all local edits):
+
+```bash
+flyctl ssh console -a icrs-offset-api -C 'python3 -c "import shutil; shutil.copy2(\"/data/offsets.db.bak\", \"/data/offsets.db\"); print(\"restored\")"'
+flyctl machine restart 857677db46d768 -a icrs-offset-api
+```
 
 ## Verified email lookup
 

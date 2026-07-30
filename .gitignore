@@ -10,6 +10,8 @@ data/country_centroids.json
 data/travel_emissions_cache.json
 data/reverse_geocode_cache.json
 data/offsets.db
+offsets-live.db
+backend/offsets-live.db
 data/snapshots/
 backups/
 backend/data/contacts.json
