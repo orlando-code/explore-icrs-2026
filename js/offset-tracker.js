@@ -167,28 +167,6 @@ function initOffsetTurnstile() {
 const STATIC_REGISTRATIONS_URL = "data/offset-registrations.json";
 const POLL_INTERVAL_MS = 5_000;
 const OFFSET_GREEN = "#2d8a4e";
-const LOCAL_REGISTRATIONS_KEY = "icrs-offset-registered";
-
-/** Person keys this browser has registered. The server publishes only counts,
- *  so a visitor's own registration is remembered here rather than looked up. */
-function loadLocalRegistrations() {
-  try {
-    const raw = window.localStorage?.getItem(LOCAL_REGISTRATIONS_KEY);
-    const parsed = raw ? JSON.parse(raw) : [];
-    return new Set(Array.isArray(parsed) ? parsed.filter((item) => typeof item === "string") : []);
-  } catch {
-    return new Set();
-  }
-}
-
-function saveLocalRegistrations(keys) {
-  try {
-    window.localStorage?.setItem(LOCAL_REGISTRATIONS_KEY, JSON.stringify([...keys]));
-  } catch {
-    /* private browsing or storage disabled — the session still works */
-  }
-}
-
 function emptyAggregate() {
   return { counts: { speakers: {}, delegates: {} }, totals: { speakers: 0, delegates: 0 } };
 }
@@ -308,18 +286,10 @@ export function createOffsetTracker({
   let delegateIdErrorMessage = "";
   let aggregate = emptyAggregate();
   let offsetCountByAffiliation = new Map();
-  const localRegistrations = loadLocalRegistrations();
   const pendingRegistrationIds = new Set();
 
   function activePool() {
     return getPool?.() === "delegates" ? "delegates" : "speakers";
-  }
-
-  /** True only for people this browser registered. Other delegates' status is
-   *  no longer published, so it is not knowable here. */
-  function isRegistered(attendee) {
-    if (!attendee) return false;
-    return localRegistrations.has(personKey(attendee.name, attendee.affiliation));
   }
 
   function rebuildOffsetCounts() {
@@ -443,13 +413,10 @@ export function createOffsetTracker({
       button.type = "button";
       button.className = "suggestion";
       button.dataset.attendeeId = attendee.id;
-      const alreadyRegistered = isRegistered(attendee);
-      button.innerHTML = `${escapeHtml(attendee.name)}<small>${escapeHtml(attendee.affiliation)}${
-        alreadyRegistered ? " · you registered this" : ""
-      }</small>`;
+      button.innerHTML = `${escapeHtml(attendee.name)}<small>${escapeHtml(attendee.affiliation)}</small>`;
       button.addEventListener("mousedown", (event) => {
         event.preventDefault();
-        if (isRegistered(attendee) || pendingRegistrationIds.has(attendee.id)) return;
+        if (pendingRegistrationIds.has(attendee.id)) return;
         lockSelection(attendee);
         renderTracker();
         renderStatus();
@@ -590,7 +557,6 @@ export function createOffsetTracker({
         isRegistering ||
         !attendee ||
         !delegateIdReady() ||
-        isRegistered(attendee) ||
         pendingRegistrationIds.has(attendee.id);
       elements.registerButton.textContent = isRegistering ? "Registering…" : "I've offset my travel";
       elements.registerButton.setAttribute("aria-busy", isRegistering ? "true" : "false");
@@ -646,14 +612,6 @@ export function createOffsetTracker({
       }
 
       const accepted = Boolean(payload.created);
-
-      if (accepted) {
-        localRegistrations.add(personKey(attendee.name, attendee.affiliation));
-        saveLocalRegistrations(localRegistrations);
-      } else {
-        localRegistrations.add(personKey(attendee.name, attendee.affiliation));
-        saveLocalRegistrations(localRegistrations);
-      }
 
       const pool = isSpeakerAttendee?.(attendee) === false ? "delegates" : "speakers";
       const beforeTotal =
@@ -727,10 +685,6 @@ export function createOffsetTracker({
     const attendee = resolveSelectedAttendee();
     if (!attendee) {
       if (searchQuery.trim()) setStatus("Select your name from the suggestions.");
-      return false;
-    }
-    if (isRegistered(attendee)) {
-      setStatus(`You already registered ${attendee.name}.`, { error: true });
       return false;
     }
     if (pendingRegistrationIds.has(attendee.id)) {
