@@ -594,6 +594,58 @@ def _json_response(
     handler.wfile.write(body)
 
 
+def _wants_html(handler: BaseHTTPRequestHandler) -> bool:
+    accept = handler.headers.get("Accept", "")
+    return "text/html" in accept.lower() and "application/json" not in accept.split(",")[0].lower()
+
+
+def _html_response(handler: BaseHTTPRequestHandler, status: int, html: str) -> None:
+    body = html.encode("utf-8")
+    handler.send_response(status)
+    handler.send_header("Content-Type", "text/html; charset=utf-8")
+    handler._send_common_headers()
+    handler.send_header("Content-Length", str(len(body)))
+    handler.end_headers()
+    handler.wfile.write(body)
+
+
+def _offsets_status_html(payload: dict[str, Any]) -> str:
+    totals = payload.get("totals") or {}
+    published = int(totals.get("speakers") or 0) + int(totals.get("delegates") or 0)
+    require_ids = _require_delegate_id()
+    delegate_count = len(_load_delegate_ids()) if require_ids else 0
+    pretty = json.dumps(payload, ensure_ascii=True, indent=2)
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ICRS offset API</title>
+  <style>
+    body {{ font-family: system-ui, sans-serif; max-width: 42rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }}
+    h1 {{ font-size: 1.35rem; }}
+    .ok {{ color: #2d8a4e; font-weight: 600; }}
+    pre {{ background: #f4f6f8; padding: 1rem; border-radius: 8px; overflow: auto; font-size: 0.85rem; }}
+    ul {{ padding-left: 1.2rem; }}
+  </style>
+</head>
+<body>
+  <h1>ICRS offset API</h1>
+  <p class="ok">Running</p>
+  <ul>
+    <li>Published offsets: <strong>{published}</strong></li>
+    <li>Delegate ID required: <strong>{"yes" if require_ids else "no"}</strong></li>
+    <li>Delegate IDs loaded: <strong>{delegate_count}</strong></li>
+  </ul>
+  <p>This is the JSON API used by the emissions page — not the public site.
+     Open the site at <code>http://127.0.0.1:8000</code> after
+     <code>python3 -m http.server 8000</code>.</p>
+  <p>Endpoints: <a href="/health">/health</a> · <a href="/api/offsets?format=json">/api/offsets</a> (JSON)</p>
+  <pre>{pretty}</pre>
+</body>
+</html>"""
+
+
 class OffsetHandler(BaseHTTPRequestHandler):
     server_version = "ICRSOffsetAPI/1.0"
     timeout = REQUEST_TIMEOUT_SECONDS
@@ -646,12 +698,6 @@ class OffsetHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self) -> None:
-        if not self._cors_allowed():
-            self.send_response(403)
-            self.send_header("Content-Length", "0")
-            self.end_headers()
-            return
-
         path = urlparse(self.path).path.rstrip("/") or "/"
         if path == "/health":
             _json_response(self, 200, {"ok": True})
@@ -666,15 +712,16 @@ class OffsetHandler(BaseHTTPRequestHandler):
             return
 
         aggregate = _aggregate_registrations()
-        _json_response(
-            self,
-            200,
-            {
-                "counts": aggregate["counts"],
-                "totals": aggregate["totals"],
-                "updated_at": datetime.now(UTC).isoformat(timespec="seconds"),
-            },
-        )
+        payload = {
+            "counts": aggregate["counts"],
+            "totals": aggregate["totals"],
+            "updated_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        }
+        query = urllib.parse.parse_qs(urlparse(self.path).query)
+        if _wants_html(self) and "format" not in query:
+            _html_response(self, 200, _offsets_status_html(payload))
+            return
+        _json_response(self, 200, payload)
 
     def _get_admin_export(self) -> None:
         expected = os.environ.get("ADMIN_TOKEN", "").strip()
@@ -889,6 +936,11 @@ class OffsetHandler(BaseHTTPRequestHandler):
                 # The site thanks the visitor either way; a held row simply is
                 # not counted publicly until it has been looked at.
                 "pending": held and accepted,
+                **(
+                    {"delegate_verified": True}
+                    if _require_delegate_id()
+                    else {}
+                ),
             },
         )
 

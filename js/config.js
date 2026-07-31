@@ -23,6 +23,10 @@ function metaFlag(name) {
 
 export const REQUIRE_DELEGATE_ID = metaFlag("icrs-require-delegate-id");
 
+export const SKIP_TURNSTILE =
+  metaFlag("icrs-skip-turnstile") ||
+  /^https?:\/\/(127\.0\.0\.1|localhost)(:\d+)?\//i.test(OFFSET_API_URL);
+
 function apiBaseUrl(apiUrl) {
   if (!apiUrl) return "";
   return apiUrl.replace(/\/[^/]+\/?$/, "");

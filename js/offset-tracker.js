@@ -1,5 +1,5 @@
 import { affiliationMapKey, escapeHtml, haversineKm } from "./utils.js";
-import { OFFSET_API_URL, REQUIRE_DELEGATE_ID, TURNSTILE_SITE_KEY } from "./config.js";
+import { OFFSET_API_URL, REQUIRE_DELEGATE_ID, SKIP_TURNSTILE, TURNSTILE_SITE_KEY } from "./config.js";
 
 let offsetTurnstileWidgetId = null;
 let offsetTurnstileToken = "";
@@ -139,7 +139,7 @@ async function ensureOffsetTurnstileToken() {
 }
 
 function initOffsetTurnstile() {
-  if (!TURNSTILE_SITE_KEY || offsetTurnstileWidgetId != null) return;
+  if (!TURNSTILE_SITE_KEY || SKIP_TURNSTILE || offsetTurnstileWidgetId != null) return;
 
   const tryMount = () => {
     void waitForTurnstileReady().then((ready) => {
@@ -302,7 +302,10 @@ export function createOffsetTracker({
   let pollTimer = null;
   let loadError = "";
   let statusMessage = "";
+  let statusIsError = false;
+  let statusIsSuccess = false;
   let delegateIdInput = "";
+  let delegateIdErrorMessage = "";
   let aggregate = emptyAggregate();
   let offsetCountByAffiliation = new Map();
   const localRegistrations = loadLocalRegistrations();
@@ -379,6 +382,36 @@ export function createOffsetTracker({
     return { registeredCount, totalAttendees, percent };
   }
 
+  function closeSuggestions() {
+    if (!elements.suggestions) return;
+    elements.suggestions.innerHTML = "";
+    elements.suggestions.classList.remove("open");
+  }
+
+  function syncSelectionFromQuery() {
+    const query = searchQuery.trim();
+    if (!query) {
+      selectedAttendeeId = null;
+      return;
+    }
+    const exact = attendees.find(
+      (attendee) => attendee.name.toLowerCase() === query.toLowerCase()
+    );
+    selectedAttendeeId = exact ? exact.id : null;
+  }
+
+  function hasLockedSelection() {
+    return Boolean(selectedAttendeeId && attendeeById.has(selectedAttendeeId));
+  }
+
+  function lockSelection(attendee) {
+    if (!attendee) return;
+    selectedAttendeeId = attendee.id;
+    searchQuery = attendee.name;
+    if (elements.query) elements.query.value = attendee.name;
+    closeSuggestions();
+  }
+
   function filteredAttendees() {
     const query = searchQuery.trim().toLowerCase();
     if (!query) return attendees.slice(0, 40);
@@ -392,10 +425,15 @@ export function createOffsetTracker({
 
   function renderSuggestions() {
     if (!elements.suggestions) return;
+    const query = searchQuery.trim();
+    if (!query || hasLockedSelection()) {
+      closeSuggestions();
+      return;
+    }
+
     const matches = filteredAttendees();
-    if (!searchQuery.trim() || !matches.length) {
-      elements.suggestions.innerHTML = "";
-      elements.suggestions.classList.remove("open");
+    if (!matches.length) {
+      closeSuggestions();
       return;
     }
 
@@ -412,9 +450,7 @@ export function createOffsetTracker({
       button.addEventListener("mousedown", (event) => {
         event.preventDefault();
         if (isRegistered(attendee) || pendingRegistrationIds.has(attendee.id)) return;
-        selectedAttendeeId = attendee.id;
-        if (elements.query) elements.query.value = attendee.name;
-        elements.suggestions.classList.remove("open");
+        lockSelection(attendee);
         renderTracker();
         renderStatus();
       });
@@ -423,12 +459,60 @@ export function createOffsetTracker({
     elements.suggestions.classList.add("open");
   }
 
-  function normalizedDelegateId(value = delegateIdInput) {
-    return String(value || "").replace(/\D/g, "").slice(0, 5);
+  function normalizedDelegateId() {
+    const raw = elements.delegateId?.value ?? delegateIdInput;
+    return String(raw || "").replace(/\D/g, "").slice(0, 5);
   }
 
   function delegateIdReady() {
     return !requireDelegateId || /^\d{5}$/.test(normalizedDelegateId());
+  }
+
+  function beginRegistering(attendeeId) {
+    pendingRegistrationIds.add(attendeeId);
+    renderTracker();
+  }
+
+  function endRegistering(attendeeId) {
+    pendingRegistrationIds.delete(attendeeId);
+    renderTracker();
+    renderDelegateIdError();
+    renderStatus();
+  }
+
+  function clearOffsetForm() {
+    if (elements.query) elements.query.value = "";
+    if (elements.delegateId) elements.delegateId.value = "";
+    searchQuery = "";
+    delegateIdInput = "";
+    selectedAttendeeId = null;
+    closeSuggestions();
+  }
+
+  function applyRegistrationResult(result) {
+    if (!result) return;
+    if (result.error) {
+      showRegistrationError(result.error, { underDelegateField: result.underDelegateField });
+      return;
+    }
+    if (result.message) {
+      clearDelegateIdError();
+      setStatus(result.message, { success: true });
+      if (result.clearForm) clearOffsetForm();
+      render({ updateMap: result.updateMap ?? false });
+    }
+  }
+
+  function showRegistrationError(message, { underDelegateField = false } = {}) {
+    const text = String(message || "").trim();
+    if (!text) return;
+    if (underDelegateField) {
+      setDelegateIdError(text);
+    } else {
+      clearDelegateIdError();
+    }
+    setStatus(text, { error: true, success: false });
+    render({ updateMap: false });
   }
 
   function resolveSelectedAttendee() {
@@ -443,15 +527,47 @@ export function createOffsetTracker({
     return matches.length === 1 ? matches[0] : null;
   }
 
+  const DELEGATE_ID_ERROR =
+    "Incorrect delegate ID. Check the code from your confirmation email.";
+
+  function renderDelegateIdError() {
+    const text = delegateIdErrorMessage;
+    if (elements.delegateIdError) {
+      elements.delegateIdError.textContent = text;
+      if (text) elements.delegateIdError.removeAttribute("hidden");
+      else elements.delegateIdError.setAttribute("hidden", "");
+    }
+    if (elements.delegateId) {
+      elements.delegateId.setAttribute("aria-invalid", text ? "true" : "false");
+    }
+    elements.delegateField?.classList.toggle("field--error", Boolean(text));
+    elements.form?.classList.toggle("emissions-offset-register--error", Boolean(text));
+  }
+
+  function setDelegateIdError(message) {
+    delegateIdErrorMessage = String(message || "").trim();
+    renderDelegateIdError();
+  }
+
+  function clearDelegateIdError() {
+    setDelegateIdError("");
+  }
+
   function renderStatus() {
     if (!elements.status) return;
     // Kept in a variable rather than written straight to the DOM so the
     // five-second poll cannot wipe a message the user has not read yet.
-    elements.status.textContent = statusMessage || loadError;
+    const text = statusMessage || loadError;
+    elements.status.textContent = text;
+    elements.status.hidden = !text;
+    elements.status.classList.toggle("error", statusIsError || Boolean(loadError));
+    elements.status.classList.toggle("success", statusIsSuccess && !statusIsError && !loadError);
   }
 
-  function setStatus(message) {
+  function setStatus(message, { error = false, success = false } = {}) {
     statusMessage = message;
+    statusIsError = error;
+    statusIsSuccess = success;
     renderStatus();
   }
 
@@ -468,9 +584,6 @@ export function createOffsetTracker({
     if (elements.form) {
       elements.form.classList.toggle("emissions-offset-register--pending", isRegistering);
     }
-    if (elements.status) {
-      elements.status.classList.toggle("status--pending", isRegistering);
-    }
     if (elements.registerButton) {
       const attendee = resolveSelectedAttendee();
       elements.registerButton.disabled =
@@ -486,18 +599,13 @@ export function createOffsetTracker({
 
   function render({ updateMap = false } = {}) {
     renderSuggestions();
+    renderDelegateIdError();
     renderStatus();
     renderTracker();
     if (updateMap) onChange?.();
   }
 
-  async function persistRegistration(attendee) {
-    const token = await ensureOffsetTurnstileToken();
-    if (!token) {
-      setStatus("Verification failed. Please try again.");
-      return false;
-    }
-
+  async function persistRegistration(attendee, token) {
     try {
       const { response, payload } = await fetchJsonWithTimeout(apiUrl, {
         method: "POST",
@@ -505,19 +613,36 @@ export function createOffsetTracker({
         body: JSON.stringify({
           id: attendee.id,
           name: attendee.name,
-          // The server groups by this label without parsing it, so the site
-          // stays the single source of truth for how affiliations are keyed.
           affiliation_key: affiliationMapKey(attendee.affiliation || ""),
           pool: isSpeakerAttendee?.(attendee) === false ? "delegates" : "speakers",
           ...(requireDelegateId ? { delegate_id: normalizedDelegateId() } : {}),
           "cf-turnstile-response": token,
         }),
       });
+
       if (!response.ok) {
         offsetTurnstileToken = "";
         window.turnstile?.reset?.(offsetTurnstileWidgetId);
-        setStatus(payload.error || "Registration failed. Please try again.");
-        return false;
+        const delegateMismatch =
+          requireDelegateId &&
+          (response.status === 403 ||
+            String(payload.error || "").toLowerCase().includes("delegate id"));
+        return {
+          created: false,
+          error: delegateMismatch
+            ? DELEGATE_ID_ERROR
+            : payload.error || "Registration failed. Please try again.",
+          underDelegateField: delegateMismatch,
+        };
+      }
+
+      if (requireDelegateId && payload.delegate_verified !== true) {
+        return {
+          created: false,
+          error:
+            "This API is not checking delegate IDs. For local testing, use docker compose and point index.html at http://127.0.0.1:8080/api/offsets.",
+          underDelegateField: true,
+        };
       }
 
       const accepted = Boolean(payload.created);
@@ -526,7 +651,6 @@ export function createOffsetTracker({
         localRegistrations.add(personKey(attendee.name, attendee.affiliation));
         saveLocalRegistrations(localRegistrations);
       } else {
-        // Already published on the server — sync browser memory only.
         localRegistrations.add(personKey(attendee.name, attendee.affiliation));
         saveLocalRegistrations(localRegistrations);
       }
@@ -536,7 +660,6 @@ export function createOffsetTracker({
         aggregate.totals.speakers +
         (activePool() === "delegates" ? aggregate.totals.delegates : 0);
 
-      // Bump immediately so the bar moves, then re-fetch published totals.
       if (accepted && !payload.pending) {
         aggregate.totals[pool] += 1;
         const key = affiliationMapKey(attendee.affiliation || "");
@@ -546,21 +669,17 @@ export function createOffsetTracker({
         rebuildOffsetCounts();
       }
 
+      let message;
       if (payload.pending) {
-        statusMessage = `Thanks, ${attendee.name}! Your offset is logged and will be counted once checked.`;
+        message = `Thanks, ${attendee.name}! Your offset is logged and will be counted once checked.`;
       } else if (accepted) {
-        statusMessage = payload.reactivated
+        message = payload.reactivated
           ? `Thanks, ${attendee.name}! Your offset is registered again.`
           : `Thanks, ${attendee.name}! Your offset is registered.`;
       } else {
-        statusMessage = `${attendee.name} is already registered on the server.`;
+        message = `${attendee.name} is already registered on the server.`;
       }
-      if (elements.query) elements.query.value = "";
-      if (elements.delegateId) elements.delegateId.value = "";
-      searchQuery = "";
-      delegateIdInput = "";
-      selectedAttendeeId = null;
-      render({ updateMap: true });
+
       offsetTurnstileToken = "";
       window.turnstile?.reset?.(offsetTurnstileWidgetId);
 
@@ -570,7 +689,6 @@ export function createOffsetTracker({
           const afterTotal =
             aggregate.totals.speakers +
             (activePool() === "delegates" ? aggregate.totals.delegates : 0);
-          // If the server has not caught up yet, keep the optimistic bump.
           if (accepted && !payload.pending && afterTotal < beforeTotal + 1) {
             aggregate.totals[pool] += 1;
             const key = affiliationMapKey(attendee.affiliation || "");
@@ -585,31 +703,37 @@ export function createOffsetTracker({
           /* loadRegistrations handles its own errors */
         });
 
-      // Celebrate any newly accepted registration, including ones held for
-      // review — the visitor did the work; the hold only delays the total.
-      return accepted;
+      return {
+        created: accepted,
+        message,
+        clearForm: true,
+        updateMap: true,
+      };
     } catch (error) {
       offsetTurnstileToken = "";
       window.turnstile?.reset?.(offsetTurnstileWidgetId);
       const timedOut = error?.name === "AbortError";
-      setStatus(
-        timedOut
-          ? "Registration timed out. Check your connection and try again."
-          : "Registration failed. Please try again."
-      );
       console.warn("Offset registration failed:", error);
-      return false;
+      return {
+        created: false,
+        error: timedOut
+          ? "Registration timed out. Check your connection and try again."
+          : "Registration failed. Please try again.",
+      };
     }
   }
 
-  function registerSelected() {
+  async function registerSelected() {
     const attendee = resolveSelectedAttendee();
     if (!attendee) {
       if (searchQuery.trim()) setStatus("Select your name from the suggestions.");
       return false;
     }
-    if (isRegistered(attendee) || pendingRegistrationIds.has(attendee.id)) {
-      if (isRegistered(attendee)) setStatus(`You already registered ${attendee.name}.`);
+    if (isRegistered(attendee)) {
+      setStatus(`You already registered ${attendee.name}.`, { error: true });
+      return false;
+    }
+    if (pendingRegistrationIds.has(attendee.id)) {
       return false;
     }
 
@@ -622,37 +746,57 @@ export function createOffsetTracker({
       return false;
     }
 
-    selectedAttendeeId = attendee.id;
-    pendingRegistrationIds.add(attendee.id);
-    setStatus("Registering…");
-    renderTracker();
+    let token = "local-dev";
+    if (!SKIP_TURNSTILE) {
+      setStatus("Verifying…");
+      token = await ensureOffsetTurnstileToken();
+      if (!token) {
+        setStatus("Verification failed. Please try again.", { error: true });
+        return false;
+      }
+    }
 
-    void persistRegistration(attendee)
-      .then((created) => {
-        if (created) onRegisterSuccess?.(attendee);
-      })
-      .finally(() => {
-        pendingRegistrationIds.delete(attendee.id);
-        renderTracker();
-      });
-    return true;
+    selectedAttendeeId = attendee.id;
+    beginRegistering(attendee.id);
+    closeSuggestions();
+    elements.query?.blur();
+
+    try {
+      const result = await persistRegistration(attendee, token);
+      applyRegistrationResult(result);
+      if (result?.created) onRegisterSuccess?.(attendee);
+      return Boolean(result?.created);
+    } finally {
+      endRegistering(attendee.id);
+    }
   }
 
   function bindEvents() {
     elements.query?.addEventListener("input", (event) => {
       searchQuery = event.target.value;
-      selectedAttendeeId = null;
+      syncSelectionFromQuery();
       statusMessage = "";
+      statusIsError = false;
+      statusIsSuccess = false;
+      clearDelegateIdError();
       render();
     });
 
     elements.delegateId?.addEventListener("input", (event) => {
-      delegateIdInput = event.target.value;
+      const digits = String(event.target.value || "").replace(/\D/g, "").slice(0, 5);
+      delegateIdInput = digits;
+      if (elements.delegateId && elements.delegateId.value !== digits) {
+        elements.delegateId.value = digits;
+      }
       statusMessage = "";
+      statusIsError = false;
+      statusIsSuccess = false;
+      clearDelegateIdError();
       renderTracker();
     });
 
     elements.query?.addEventListener("focus", () => {
+      if (hasLockedSelection()) return;
       if (searchQuery.trim()) renderSuggestions();
     });
 
@@ -662,12 +806,16 @@ export function createOffsetTracker({
         !elements.suggestions.contains(event.target) &&
         event.target !== elements.query
       ) {
-        elements.suggestions.classList.remove("open");
+        closeSuggestions();
       }
     });
 
     elements.form?.addEventListener("submit", (event) => {
       event.preventDefault();
+      void registerSelected();
+    });
+
+    elements.registerButton?.addEventListener("click", () => {
       void registerSelected();
     });
 

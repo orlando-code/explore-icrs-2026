@@ -1042,25 +1042,9 @@ export function createNetworkView(siteData, elements) {
     `
         : "";
 
-    const selectionSection = selectedNodeId
-      ? `
-      <h3>Selection</h3>
-      <p>Highlighted links connect the selected node to direct co-authors. Other nodes fade.</p>
-      <div class="legend-row">
-        <span class="legend-line" style="height:3px;background:#1f6f8b"></span>
-        <span>Link to selected node</span>
-      </div>
-      <div class="legend-row">
-        <span class="legend-line"></span>
-        <span>Other co-authorship links</span>
-      </div>
-    `
-      : "";
-
     elements.legendCoauthorship.innerHTML = `
       <h3>Co-authorship links</h3>
       <p>Edges connect speakers or affiliations who share authorship on at least one ICRS talk. Thicker lines mean more shared talks.</p>
-      ${selectionSection}
       ${searchSection}
     `;
   }
@@ -1077,6 +1061,21 @@ export function createNetworkView(siteData, elements) {
       { label: `${maxCount.toLocaleString()} talks`, value: maxCount },
     ];
 
+    const selectionSection = selectedNodeId
+      ? `
+      <h3>Selection</h3>
+      <p>Highlighted links connect the selected node to direct co-authors. Other nodes fade.</p>
+      <div class="legend-row">
+        <span class="legend-line" style="height:3px;background:#1f6f8b"></span>
+        <span>Link to selected node</span>
+      </div>
+      <div class="legend-row">
+        <span class="legend-line"></span>
+        <span>Other co-authorship links</span>
+      </div>
+    `
+      : "";
+
     elements.legendScale.innerHTML = `
       <h3>Node size · talks on author lists (log scale)</h3>
       <p>Circle area scales with talks where the person or affiliation appears on the author list.</p>
@@ -1089,6 +1088,7 @@ export function createNetworkView(siteData, elements) {
         </div>`
         )
         .join("")}
+      ${selectionSection}
     `;
   }
 
@@ -1209,14 +1209,34 @@ export function createNetworkView(siteData, elements) {
 
   function scrollToSelectedSidebar() {
     if (!selectedNodeId) return;
-    const selector = `[data-node-id="${CSS.escape(selectedNodeId)}"]`;
-    const target =
-      elements.results?.querySelector(selector) ||
-      elements.barChart?.querySelector(selector);
-    target?.scrollIntoView({ block: "nearest", behavior: "smooth" });
-    if (!target && elements.card && !elements.card.hidden) {
-      elements.card.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    requestAnimationFrame(() => {
+      const selector = `[data-node-id="${CSS.escape(selectedNodeId)}"]`;
+      const target =
+        elements.barChart?.querySelector(selector) ||
+        elements.results?.querySelector(selector);
+      if (target) {
+        target.scrollIntoView({ block: "center", behavior: "auto" });
+        return;
+      }
+      if (elements.card && !elements.card.hidden) {
+        elements.card.scrollIntoView({ block: "nearest", behavior: "auto" });
+      }
+    });
+  }
+
+  function barChartNodes(nodes) {
+    const sorted = [...nodes].sort((a, b) => b.connections - a.connections);
+    const limit = 12;
+    let chartNodes = sorted.slice(0, limit);
+    if (selectedNodeId && !chartNodes.some((node) => node.id === selectedNodeId)) {
+      const selected = nodes.find((node) => node.id === selectedNodeId);
+      if (selected) {
+        chartNodes = [...chartNodes.slice(0, limit - 1), selected].sort(
+          (a, b) => b.connections - a.connections
+        );
+      }
     }
+    return chartNodes;
   }
 
   function updateHighlight() {
@@ -1301,7 +1321,7 @@ export function createNetworkView(siteData, elements) {
 
   function renderBarChart(nodes) {
     if (!elements.barChart) return;
-    const sorted = [...nodes].sort((a, b) => b.connections - a.connections).slice(0, 12);
+    const sorted = barChartNodes(nodes);
     const maxConnections = sorted[0]?.connections || 1;
     const logScale = d3.scaleLog().domain([1, maxConnections]).range([0.08, 1]).clamp(true);
     const neighbors = neighborIds(selectedNodeId);

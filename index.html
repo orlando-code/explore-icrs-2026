@@ -29,9 +29,6 @@
       })();
     </script>
     <!-- Live offset API. Set after deploying backend/ (see backend/README.md) -->
-    <!-- Local delegate-ID testing: point at docker-compose API (see docs/DELEGATE-ID-TESTING.md) -->
-    <!-- <meta name="icrs-offset-api" content="http://127.0.0.1:8080/api/offsets" /> -->
-    <!-- <meta name="icrs-contact-api" content="http://127.0.0.1:8080/api/contact" /> -->
     <meta name="icrs-offset-api" content="https://icrs-offset-api.fly.dev/api/offsets" />
     <meta name="icrs-contact-api" content="https://icrs-offset-api.fly.dev/api/contact" />
     <meta name="icrs-require-delegate-id" content="1" />
@@ -92,7 +89,7 @@
         </p>
       </div>
       <div class="topbar-nav">
-        <a class="site-back-link" href="https://orlando-codes.com/">← Main site</a>
+        <a class="site-back-link" href="https://orlando-codes.com/">← Orlando's site</a>
         <nav class="tabs" aria-label="Views">
           <button type="button" class="tab active" data-tab="map">Map</button>
           <button type="button" class="tab" data-tab="network">Network</button>
@@ -337,13 +334,25 @@
                 placeholder="e.g. 12345"
               />
               <p class="field-hint">Use the ID from your registration confirmation email.</p>
+              <p
+                class="delegate-id-error"
+                id="emissions-offset-delegate-error"
+                role="alert"
+                aria-live="assertive"
+                hidden
+              ></p>
             </div>
+            <p
+              class="status emissions-offset-feedback"
+              id="emissions-offset-status"
+              role="status"
+              aria-live="polite"
+            ></p>
             <div class="form-actions">
-              <button class="btn-primary" type="submit" id="emissions-offset-register">
+              <button class="btn-primary" type="button" id="emissions-offset-register">
                 I've offset my travel
               </button>
             </div>
-            <p class="status" id="emissions-offset-status" aria-live="polite"></p>
           </form>
           <p class="emissions-meta" id="emissions-meta"></p>
           <p class="emissions-delegate-note" id="emissions-delegate-note" hidden></p>

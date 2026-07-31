@@ -1413,6 +1413,26 @@ button:active {
   color: var(--text-muted, #5c6670);
 }
 
+.emissions-offset-register .field--error input {
+  border-color: #b42318;
+  box-shadow: 0 0 0 2px rgba(180, 35, 24, 0.14);
+}
+
+.emissions-offset-register .delegate-id-error {
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #b42318;
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+  border-radius: 8px;
+}
+
+.emissions-offset-register .delegate-id-error[hidden] {
+  display: none;
+}
+
 .emissions-offset-register .form-actions {
   margin: 0;
 }
@@ -1428,6 +1448,28 @@ button:active {
 
 .emissions-offset-register .status:not(:empty) {
   margin-top: 0.3rem;
+}
+
+.emissions-offset-register .status.success {
+  padding: 0.5rem 0.65rem;
+  font-weight: 600;
+  color: #1a6b38;
+  background: #ecfdf3;
+  border: 1px solid #abefc6;
+  border-radius: 8px;
+}
+
+.emissions-offset-register .status.error {
+  padding: 0.5rem 0.65rem;
+  font-weight: 600;
+  color: #b42318;
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+  border-radius: 8px;
+}
+
+.emissions-offset-register--error .btn-primary {
+  border-color: #b42318;
 }
 
 .emissions-offset-register--pending .btn-primary {

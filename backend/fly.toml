@@ -16,6 +16,7 @@ primary_region = 'syd'
   OFFSET_DB_PATH = '/data/offsets.db'
   CLIENT_IP_HEADER = 'Fly-Client-IP'
   REQUIRE_ORIGIN = '1'
+  REQUIRE_DELEGATE_ID = '1'
   REVIEW_THRESHOLD_PER_HOUR = '60'
 
 [[mounts]]
