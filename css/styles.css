@@ -1943,7 +1943,7 @@ button:active {
 }
 
 .share-card-unified .share-card-grid {
-  padding: 0.25rem 1.1rem 1.5rem;
+  padding: 0 0 1.5rem;
 }
 
 .share-card-grid {
@@ -1956,8 +1956,12 @@ button:active {
 .share-card-grid > section,
 .share-card-grid > aside,
 .share-card-grid > div {
-  padding: 0.85rem 0;
+  padding: 0.85rem 1.1rem;
   border-bottom: 1px solid var(--line);
+}
+
+.share-card-grid > :first-child {
+  padding-top: 0.25rem;
 }
 
 .share-card-grid > :last-child {
@@ -1966,8 +1970,6 @@ button:active {
 }
 
 .share-card-unified .share-contact {
-  padding: 0;
-  border: 0;
   box-shadow: none;
   background: transparent;
 }
@@ -2004,9 +2006,7 @@ button:active {
 
 .share-contact-col,
 .share-about-col {
-  border: 0;
   box-shadow: none;
-  padding: 0.85rem 0;
   background: transparent;
 }
 
@@ -2015,7 +2015,7 @@ button:active {
   min-width: 0;
   max-width: none;
   justify-self: stretch;
-  padding: 1rem 0 1.15rem;
+  padding: 1rem 1.1rem 1.15rem;
 }
 
 .share-qr-col .share-title {
@@ -2631,7 +2631,19 @@ button:active {
   }
 
   .share-card-unified .share-card-grid {
-    padding: 0.25rem 1rem 1.25rem;
+    padding: 0 0 1.25rem;
+  }
+
+  .share-card-grid > section,
+  .share-card-grid > aside,
+  .share-card-grid > div {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .share-qr-col {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .share-card {

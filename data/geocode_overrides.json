@@ -206,5 +206,41 @@
     "latitude": -31.9507,
     "longitude": 115.7979,
     "query_used": "override:University of Western Australia, Crawley, Perth, Australia"
+  },
+  "Faculty of Engineering - University of Porto": {
+    "geocode_level": "institute",
+    "latitude": 41.178622253392895, 
+    "longitude": -8.595858641207045,
+    "query_used": "override:Faculty of Engineering - University of Porto"
+  },
+  "Australian Institute of Marine Science": {
+    "geocode_level": "institute",
+    "latitude": -18.909646919126157, 
+    "longitude": 146.97106258535263, 
+    "query_used": "override:Australian Institute of Marine Science"
+  },
+  "Hawai\u02bbi Cooperative Fishery Research Unit": {
+    "geocode_level": "institute",
+    "latitude": 21.31140986535154, 
+    "longitude": -157.87326953841875, 
+    "query_used": "override:Hawai\u02bbi Cooperative Fishery Research Unit"
+  },
+  "University of Hawai\u02bbi - Maui College": {
+    "geocode_level": "institute",
+    "latitude": 20.890805564835343, 
+    "longitude": -156.4795825633126, 
+    "query_used": "override:University of Hawai\u02bbi - Maui College"
+  },
+  "Windward Community College": {
+    "geocode_level": "institute",
+    "latitude": 21.413360134617406, 
+    "longitude": -157.8134462543146, 
+    "query_used": "override:Windward Community College"
+  },
+  "Wofford College": {
+    "geocode_level": "institute",
+    "latitude": 34.9595796397247, 
+    "longitude": -81.9350682445119, 
+    "query_used": "override:Wofford College"
   }
 }

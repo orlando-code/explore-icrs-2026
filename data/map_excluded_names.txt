@@ -1,0 +1,10 @@
+# Excluded from the main map and the emissions map (not network or talks).
+#
+# Person names — one per line (matched after normalize_person_name).
+# Include every spelling used in talks vs the delegate list.
+nick hutley
+nicholas hutley
+#
+# Affiliations — prefix with @ (hides the map pin from delegate/emissions layer too).
+@Fluvio
+@Individual

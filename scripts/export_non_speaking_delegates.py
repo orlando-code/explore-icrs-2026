@@ -16,6 +16,7 @@ from src.delegates import (
     load_delegates,
     non_speaking_delegate_groups,
 )
+from src.map_exclusions import export_map_exclusions_js
 
 
 def main() -> None:
@@ -28,12 +29,14 @@ def main() -> None:
     args = parser.parse_args()
 
     delegates = load_delegates()
+    exclusions_output = export_map_exclusions_js()
     group_list = non_speaking_delegate_groups(delegates)
     output = export_non_speaking_delegates_js(args.output, delegates=delegates)
     delegate_count = sum(len(group["delegates"]) for group in group_list)
     print(
         f"Wrote {output} ({delegate_count:,} delegates across {len(group_list):,} affiliations)"
     )
+    print(f"Wrote {exclusions_output}")
 
 
 if __name__ == "__main__":

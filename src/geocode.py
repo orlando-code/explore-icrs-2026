@@ -301,6 +301,18 @@ def affiliation_base_name(affiliation: str) -> str:
     return normalized
 
 
+def _affiliation_fingerprint(text: str) -> str:
+    """Fold punctuation/Unicode variants for override and cache matching."""
+    folded = unicodedata.normalize("NFKD", str(text or ""))
+    for char in ("\u02bb", "\u02bc", "'", "'", "`", "´", "’", "ʻ"):
+        folded = folded.replace(char, "")
+    folded = folded.encode("ascii", "ignore").decode("ascii")
+    folded = folded.replace("–", "-").replace("—", "-")
+    for pattern, replacement in _NORMALIZATIONS:
+        folded = re.sub(pattern, replacement, folded)
+    return folded.strip(" ,;-").casefold()
+
+
 def canonical_affiliation_key(affiliation: str) -> str:
     """Stable key for deduplicating institution variants."""
     base = affiliation_base_name(affiliation)
@@ -385,18 +397,34 @@ def _is_plausible_for_affiliation(
     return True
 
 
+def _override_payload(override: dict[str, Any]) -> dict[str, float | str | None]:
+    return {
+        "latitude": override.get("latitude"),
+        "longitude": override.get("longitude"),
+        "query_used": override.get("query_used", "override"),
+        "geocode_level": override.get("geocode_level", "institute"),
+    }
+
+
 def _lookup_override(
     affiliation: str, overrides: dict[str, dict]
 ) -> dict[str, float | str | None] | None:
     for key in affiliation_lookup_keys(affiliation):
         if key in overrides:
-            override = overrides[key]
-            return {
-                "latitude": override.get("latitude"),
-                "longitude": override.get("longitude"),
-                "query_used": override.get("query_used", "override"),
-                "geocode_level": override.get("geocode_level", "institute"),
-            }
+            return _override_payload(overrides[key])
+
+    if not overrides:
+        return None
+
+    by_fingerprint = {
+        _affiliation_fingerprint(key): key
+        for key in overrides
+        if _affiliation_fingerprint(key)
+    }
+    for key in affiliation_lookup_keys(affiliation):
+        matched = by_fingerprint.get(_affiliation_fingerprint(key))
+        if matched is not None:
+            return _override_payload(overrides[matched])
     return None
 
 
@@ -842,6 +870,7 @@ def _needs_reprocessing(
     cached: dict | None,
     *,
     retry_failed: bool,
+    upgrade_incomplete: bool,
     country_coords_cache: dict[str, tuple[float, float]],
 ) -> bool:
     if not cached:
@@ -850,6 +879,8 @@ def _needs_reprocessing(
     lon = cached.get("longitude")
     if lat is None or lon is None:
         return retry_failed
+    if not upgrade_incomplete:
+        return False
     if cached.get("geocode_level") == "country" and (
         _institution_rule(affiliation) or _looks_like_specific_institution(affiliation)
     ):
@@ -868,6 +899,7 @@ def _affiliations_needing_work(
     overrides: dict[str, dict],
     *,
     retry_failed: bool,
+    upgrade_incomplete: bool,
     country_coords_cache: dict[str, tuple[float, float]],
 ) -> tuple[list[str], int, int]:
     """Return affiliations requiring API calls plus cached/override counts."""
@@ -886,6 +918,7 @@ def _affiliations_needing_work(
                 affiliation,
                 override,
                 retry_failed=retry_failed,
+                upgrade_incomplete=upgrade_incomplete,
                 country_coords_cache=country_coords_cache,
             ):
                 pending.append(affiliation)
@@ -900,6 +933,7 @@ def _affiliations_needing_work(
                 affiliation,
                 cached,
                 retry_failed=retry_failed,
+                upgrade_incomplete=upgrade_incomplete,
                 country_coords_cache=country_coords_cache,
             ):
                 pending.append(affiliation)
@@ -924,13 +958,18 @@ def geocode_affiliations(
     user_agent: str = DEFAULT_USER_AGENT,
     pause_seconds: float = 0.1,
     retry_failed: bool = False,
+    upgrade_incomplete: bool = False,
+    cache_only: bool = False,
     use_llm: bool = False,
     show_progress: bool = True,
 ) -> pd.DataFrame:
     """Return coordinates for each unique affiliation string.
 
-    Uses cached results when available. Set ``retry_failed=True`` to re-attempt
-    affiliations previously stored without coordinates using improved queries.
+    Uses cached results when available. By default, failed or incomplete
+    geocodes are not re-queried. Pass ``retry_failed=True`` to re-attempt
+    affiliations previously stored without coordinates, and
+    ``upgrade_incomplete=True`` to retry country-level or implausible hits.
+    Set ``cache_only=True`` to never call Nominatim (export-friendly).
     """
     cache_path = Path(cache_path)
     overrides_path = Path(overrides_path)
@@ -948,7 +987,7 @@ def geocode_affiliations(
             for hint in _extract_country_hints(affiliation)
         }
     )
-    if all_country_hints:
+    if all_country_hints and not cache_only:
         _ensure_country_coords(
             geolocator,
             all_country_hints,
@@ -962,8 +1001,18 @@ def geocode_affiliations(
         cache,
         overrides,
         retry_failed=retry_failed,
+        upgrade_incomplete=upgrade_incomplete,
         country_coords_cache=country_coords_cache,
     )
+
+    if cache_only:
+        skipped = len(pending)
+        pending = []
+        if show_progress and skipped:
+            _CONSOLE.print(
+                f"[dim]Skipping {skipped} geocode queries "
+                f"(cache-only; use --refresh-geocodes to query Nominatim)[/]"
+            )
 
     if show_progress:
         _CONSOLE.print(

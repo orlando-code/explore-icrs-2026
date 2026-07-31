@@ -870,8 +870,21 @@ def export_attendee_site_data(
     """Export grouped affiliation locations for the static JS map site."""
     from datetime import UTC, datetime
 
-    locations = _affiliation_location_records(
+    from src.map_exclusions import (
+        export_map_exclusions_js,
+        load_map_exclusions,
+        map_talks_for_export,
+    )
+
+    map_exclusions = load_map_exclusions()
+    export_map_exclusions_js()
+    map_df = map_talks_for_export(
         df,
+        exclusions=map_exclusions,
+        presenter_col=presenter_col,
+    )
+    locations = _affiliation_location_records(
+        map_df,
         lat_col=lat_col,
         lon_col=lon_col,
         affiliation_col=affiliation_col,
@@ -884,6 +897,7 @@ def export_attendee_site_data(
     if not locations:
         raise ValueError("No geocoded affiliations available for site export.")
 
+    # Network, talks index, and stats use the full programme; map locations do not.
     network = _build_network_data(
         df,
         locations,

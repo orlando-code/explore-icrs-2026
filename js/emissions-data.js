@@ -131,54 +131,58 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0001",
         "affiliation": "Academia Sinica",
-        "lat": 25.042074,
-        "lon": 121.614046,
+        "lat": 25.0422388,
+        "lon": 121.6161527,
         "speaker_count": 6,
         "travel_attendees": 6,
         "co2e_kg": 13576.1,
         "co2e_low_kg": 13576.1,
         "co2e_high_kg": 39370.8,
         "co2e_per_speaker_kg": 2262.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0002",
         "affiliation": "Adelaide University",
-        "lat": -34.918923,
-        "lon": 138.604237,
+        "lat": -34.920603,
+        "lon": 138.6062277,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 891.1,
         "co2e_low_kg": 891.1,
         "co2e_high_kg": 2584.3,
         "co2e_per_speaker_kg": 891.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0003",
         "affiliation": "Adelphi University",
-        "lat": 40.719764,
-        "lon": -73.651972,
+        "lat": 40.7200034,
+        "lon": -73.6521126,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3627.0,
         "co2e_low_kg": 3627.0,
         "co2e_high_kg": 10518.4,
         "co2e_per_speaker_kg": 3627.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0004",
         "affiliation": "Arizona State University",
-        "lat": 33.421317,
-        "lon": -111.933163,
+        "lat": 33.4229975,
+        "lon": -111.9278306,
         "speaker_count": 11,
         "travel_attendees": 11,
         "co2e_kg": 30584.1,
         "co2e_low_kg": 30584.1,
         "co2e_high_kg": 88693.8,
         "co2e_per_speaker_kg": 2780.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0005",
@@ -197,54 +201,58 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0006",
         "affiliation": "Australian Institute of Marine Science",
-        "lat": -19.26764,
-        "lon": 147.055399,
+        "lat": -18.909646919126157,
+        "lon": 146.97106258535263,
         "speaker_count": 36,
         "travel_attendees": 36,
         "co2e_kg": 35730.4,
         "co2e_low_kg": 35730.4,
         "co2e_high_kg": 103618.0,
         "co2e_per_speaker_kg": 992.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0008",
         "affiliation": "Bangor University",
-        "lat": 53.215465,
-        "lon": -4.178117,
+        "lat": 53.22836780000001,
+        "lon": -4.1294373,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4641.4,
         "co2e_low_kg": 4641.4,
         "co2e_high_kg": 13459.9,
         "co2e_per_speaker_kg": 4641.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0009",
         "affiliation": "Bar-Ilan University",
-        "lat": 32.069329,
-        "lon": 34.843343,
+        "lat": 32.0691989,
+        "lon": 34.8430876,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 20828.2,
         "co2e_low_kg": 20828.2,
         "co2e_high_kg": 60401.8,
         "co2e_per_speaker_kg": 4165.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0010",
         "affiliation": "Ben Gurion University of the Negev",
-        "lat": 31.263125,
-        "lon": 34.802239,
+        "lat": 31.261426,
+        "lon": 34.7995546,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4165.6,
         "co2e_low_kg": 4165.6,
         "co2e_high_kg": 12080.4,
         "co2e_per_speaker_kg": 4165.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0011",
@@ -262,45 +270,48 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0012",
         "affiliation": "Bermuda Institute of Ocean Sciences",
-        "lat": 32.370715,
-        "lon": -64.695922,
+        "lat": 32.3708572,
+        "lon": -64.6961517,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 7471.6,
         "co2e_low_kg": 7471.6,
         "co2e_high_kg": 21667.6,
         "co2e_per_speaker_kg": 3735.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0013",
         "affiliation": "Bernice Pauahi Bishop Museum",
-        "lat": 21.333084,
-        "lon": -157.870711,
+        "lat": 21.3329195,
+        "lon": -157.8706127,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1808.8,
         "co2e_low_kg": 1808.8,
         "co2e_high_kg": 5245.4,
         "co2e_per_speaker_kg": 1808.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0014",
         "affiliation": "Bigelow Laboratory for Ocean Sciences",
-        "lat": 43.858098,
-        "lon": -69.579415,
+        "lat": 43.8597347,
+        "lon": -69.5800368,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3722.6,
         "co2e_low_kg": 3722.6,
         "co2e_high_kg": 10795.4,
         "co2e_per_speaker_kg": 3722.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0015",
-        "affiliation": "Biodiversity Research Center, Academia Sinica",
+        "affiliation": "Biodiversity Research Center",
         "lat": 10.324304,
         "lon": 123.775607,
         "speaker_count": 1,
@@ -314,54 +325,58 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0016",
         "affiliation": "Blue Alliance",
-        "lat": 39.244341,
-        "lon": -84.380768,
+        "lat": 39.2012313,
+        "lon": -84.3705374,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6781.9,
         "co2e_low_kg": 6781.9,
         "co2e_high_kg": 19667.4,
         "co2e_per_speaker_kg": 3390.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0017",
         "affiliation": "Blue Prosperity Fiji",
-        "lat": -18.12397,
-        "lon": 179.012274,
+        "lat": -17.713371,
+        "lon": 178.065032,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 587.0,
         "co2e_low_kg": 587.0,
         "co2e_high_kg": 1702.4,
         "co2e_per_speaker_kg": 587.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0018",
         "affiliation": "Boston College",
-        "lat": 42.335448,
-        "lon": -71.168267,
+        "lat": 42.3355488,
+        "lon": -71.16849450000001,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6251.0,
         "co2e_low_kg": 6251.0,
         "co2e_high_kg": 18127.8,
         "co2e_per_speaker_kg": 3125.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0019",
         "affiliation": "Boston University",
-        "lat": 42.350422,
-        "lon": -71.103225,
+        "lat": 42.3504997,
+        "lon": -71.1053991,
         "speaker_count": 9,
         "travel_attendees": 9,
         "co2e_kg": 33285.1,
         "co2e_low_kg": 33285.1,
         "co2e_high_kg": 96526.9,
         "co2e_per_speaker_kg": 3698.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0020",
@@ -379,15 +394,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0021",
         "affiliation": "Bureau of Meteorology",
-        "lat": -27.391496,
-        "lon": 153.130007,
+        "lat": -27.3914956,
+        "lon": 153.1300069,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 629.2,
         "co2e_low_kg": 629.2,
         "co2e_high_kg": 1824.8,
         "co2e_per_speaker_kg": 629.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0022",
@@ -405,19 +421,20 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0023",
         "affiliation": "CORDIO East Africa",
-        "lat": 1.441968,
-        "lon": 38.431398,
+        "lat": -4.0026058,
+        "lon": 39.7277679,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 7110.6,
         "co2e_low_kg": 7110.6,
         "co2e_high_kg": 20620.9,
         "co2e_per_speaker_kg": 3555.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0024",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "lat": -17.51906,
         "lon": -149.849702,
         "speaker_count": 9,
@@ -431,67 +448,72 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0026",
         "affiliation": "Cal Poly Humboldt",
-        "lat": 40.876476,
-        "lon": -124.080056,
+        "lat": 40.8747332,
+        "lon": -124.0789268,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2768.4,
         "co2e_low_kg": 2768.4,
         "co2e_high_kg": 8028.3,
         "co2e_per_speaker_kg": 2768.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0027",
         "affiliation": "California Academy of Sciences",
-        "lat": 37.769827,
-        "lon": -122.466093,
+        "lat": 37.7698646,
+        "lon": -122.4660947,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 13407.6,
         "co2e_low_kg": 13407.6,
         "co2e_high_kg": 38882.0,
         "co2e_per_speaker_kg": 2681.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0028",
         "affiliation": "California State University",
-        "lat": 34.179905,
-        "lon": -117.3263,
+        "lat": 34.0663797,
+        "lon": -118.1684782,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2699.1,
         "co2e_low_kg": 2699.1,
         "co2e_high_kg": 7827.4,
         "co2e_per_speaker_kg": 2699.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0029",
-        "affiliation": "California State University Monterey Bay",
-        "lat": 36.653767,
-        "lon": -121.797345,
+        "affiliation": "California State University",
+        "lat": 34.0663797,
+        "lon": -118.1684782,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5367.1,
         "co2e_low_kg": 5367.1,
         "co2e_high_kg": 15564.7,
         "co2e_per_speaker_kg": 2683.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0030",
-        "affiliation": "California State University Northridge",
-        "lat": 34.245535,
-        "lon": -118.526322,
+        "affiliation": "California State University",
+        "lat": 34.0663797,
+        "lon": -118.1684782,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2681.7,
         "co2e_low_kg": 2681.7,
         "co2e_high_kg": 7776.8,
         "co2e_per_speaker_kg": 2681.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0031",
@@ -509,54 +531,58 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0032",
         "affiliation": "Caraga State University / National Sun Yat-sen University",
-        "lat": 8.956396,
-        "lon": 125.597027,
+        "lat": 8.801456199999999,
+        "lon": 125.7406882,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3612.2,
         "co2e_low_kg": 3612.2,
         "co2e_high_kg": 10475.5,
         "co2e_per_speaker_kg": 1806.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0033",
         "affiliation": "Carl Von Ossietzky University of Oldenburg",
-        "lat": 53.146727,
-        "lon": 8.181643,
+        "lat": 53.1467333,
+        "lon": 8.183124,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4574.3,
         "co2e_low_kg": 4574.3,
         "co2e_high_kg": 13265.5,
         "co2e_per_speaker_kg": 4574.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0034",
         "affiliation": "Carl-von-Ossietzky University of Oldenburg",
-        "lat": 53.146727,
-        "lon": 8.181643,
+        "lat": 53.1467333,
+        "lon": 8.183124,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4574.3,
         "co2e_low_kg": 4574.3,
         "co2e_high_kg": 13265.5,
         "co2e_per_speaker_kg": 4574.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0035",
         "affiliation": "Cawthron Institute",
-        "lat": -41.271619,
-        "lon": 173.293495,
+        "lat": -41.271457,
+        "lon": 173.2933615,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 277.2,
         "co2e_low_kg": 138.6,
         "co2e_high_kg": 554.3,
         "co2e_per_speaker_kg": 277.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0036",
@@ -574,80 +600,86 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0037",
         "affiliation": "Central Queensland University",
-        "lat": -23.318314,
-        "lon": 150.52167,
+        "lat": -23.3242441,
+        "lon": 150.5189056,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 643.5,
         "co2e_low_kg": 643.5,
         "co2e_high_kg": 1866.2,
         "co2e_per_speaker_kg": 643.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0038",
         "affiliation": "Centre Scientifique de Monaco",
-        "lat": 43.732728,
-        "lon": 7.425338,
+        "lat": 43.7328381,
+        "lon": 7.4252867,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 33396.6,
         "co2e_low_kg": 33396.6,
         "co2e_high_kg": 96850.1,
         "co2e_per_speaker_kg": 4770.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0039",
         "affiliation": "Centre de Recherches Insulaires et Observatoire de l'Environnement de Moorea",
-        "lat": -17.024375,
-        "lon": -144.64349,
+        "lat": -17.5388435,
+        "lon": -149.8295234,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1044.6,
         "co2e_low_kg": 1044.6,
         "co2e_high_kg": 3029.3,
         "co2e_per_speaker_kg": 1044.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0040",
         "affiliation": "Centro Interdisciplinario de Ciencias marinas",
-        "lat": 24.141484,
-        "lon": -110.349464,
+        "lat": 24.140896,
+        "lon": -110.3509768,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2639.2,
         "co2e_low_kg": 2639.2,
         "co2e_high_kg": 7653.7,
         "co2e_per_speaker_kg": 2639.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0041",
         "affiliation": "Chulalongkorn University",
-        "lat": 13.743089,
-        "lon": 100.532872,
+        "lat": 13.7385647,
+        "lon": 100.5321342,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 7335.3,
         "co2e_low_kg": 7335.3,
         "co2e_high_kg": 21272.5,
         "co2e_per_speaker_kg": 2445.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0042",
         "affiliation": "Chungnam National University",
-        "lat": 36.369879,
-        "lon": 127.34483,
+        "lat": 36.3669174,
+        "lon": 127.346504,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2432.5,
         "co2e_low_kg": 2432.5,
         "co2e_high_kg": 7054.2,
         "co2e_per_speaker_kg": 2432.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0043",
@@ -665,132 +697,142 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0044",
         "affiliation": "Clemson University",
-        "lat": 34.668692,
-        "lon": -82.837435,
+        "lat": 34.6749926,
+        "lon": -82.8406184,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3388.9,
         "co2e_low_kg": 3388.9,
         "co2e_high_kg": 9827.8,
         "co2e_per_speaker_kg": 3388.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0045",
         "affiliation": "College of Charleston",
-        "lat": 32.78409,
-        "lon": -79.938002,
+        "lat": 32.7834441,
+        "lon": -79.93700179999999,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6818.3,
         "co2e_low_kg": 6818.3,
         "co2e_high_kg": 19773.1,
         "co2e_per_speaker_kg": 3409.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0046",
         "affiliation": "Colorado State University",
-        "lat": 40.570657,
-        "lon": -105.085399,
+        "lat": 40.5729432,
+        "lon": -105.0848391,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3023.3,
         "co2e_low_kg": 3023.3,
         "co2e_high_kg": 8767.6,
         "co2e_per_speaker_kg": 3023.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0047",
         "affiliation": "Columbia University",
-        "lat": 40.807751,
-        "lon": -73.96249,
+        "lat": 40.8075355,
+        "lon": -73.9625727,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3626.5,
         "co2e_low_kg": 3626.5,
         "co2e_high_kg": 10516.8,
         "co2e_per_speaker_kg": 3626.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0048",
         "affiliation": "Commonwealth Scientific and Industrial Research Organisation",
-        "lat": -31.949509,
-        "lon": 115.789617,
+        "lat": -31.9495086,
+        "lon": 115.7896174,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 2722.9,
         "co2e_low_kg": 2722.9,
         "co2e_high_kg": 7896.4,
         "co2e_per_speaker_kg": 1361.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0049",
         "affiliation": "Connecticut College",
-        "lat": 41.379133,
-        "lon": -72.106531,
+        "lat": 41.3797568,
+        "lon": -72.10434289999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3684.5,
         "co2e_low_kg": 3684.5,
         "co2e_high_kg": 10685.1,
         "co2e_per_speaker_kg": 3684.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0050",
         "affiliation": "Conservation International",
-        "lat": -18.876189,
-        "lon": 47.550128,
+        "lat": -18.9166927,
+        "lon": 47.5388561,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 8964.0,
         "co2e_low_kg": 8964.0,
         "co2e_high_kg": 25995.7,
         "co2e_per_speaker_kg": 2988.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0051",
         "affiliation": "Conservation Society of Pohnpei",
-        "lat": 6.887047,
-        "lon": 158.240614,
+        "lat": 6.966285399999999,
+        "lon": 158.2147525,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1242.2,
         "co2e_low_kg": 1242.2,
         "co2e_high_kg": 3602.5,
         "co2e_per_speaker_kg": 1242.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0052",
         "affiliation": "Coral Guardian",
-        "lat": 25.761111,
-        "lon": -80.258056,
+        "lat": 45.7572412,
+        "lon": 4.8470396,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3306.8,
         "co2e_low_kg": 3306.8,
         "co2e_high_kg": 9589.8,
         "co2e_per_speaker_kg": 3306.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0053",
         "affiliation": "Coral Reef Watch",
-        "lat": 25.627558,
-        "lon": -80.387443,
+        "lat": 25.6275583,
+        "lon": -80.3874433,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9920.5,
         "co2e_low_kg": 9920.5,
         "co2e_high_kg": 28769.5,
         "co2e_per_speaker_kg": 3306.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0054",
@@ -808,41 +850,44 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0055",
         "affiliation": "Corales De Paz",
-        "lat": 12.289773,
-        "lon": -86.717975,
+        "lat": 3.4331807,
+        "lon": -76.5463659,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3014.7,
         "co2e_low_kg": 3014.7,
         "co2e_high_kg": 8742.6,
         "co2e_per_speaker_kg": 3014.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0056",
         "affiliation": "Curtin University",
-        "lat": 1.288421,
-        "lon": 103.779567,
+        "lat": -32.0054649,
+        "lon": 115.8919818,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 8581.0,
         "co2e_low_kg": 8581.0,
         "co2e_high_kg": 24885.0,
         "co2e_per_speaker_kg": 2145.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0057",
         "affiliation": "De La Salle University",
-        "lat": 14.567514,
-        "lon": 120.99142,
+        "lat": 14.5647642,
+        "lon": 120.9931652,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2047.7,
         "co2e_low_kg": 2047.7,
         "co2e_high_kg": 5938.2,
         "co2e_per_speaker_kg": 2047.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0058",
@@ -860,59 +905,63 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0059",
-        "affiliation": "Department of Conservation - New Zealand",
-        "lat": -41.289932,
-        "lon": 174.775079,
+        "affiliation": "Department of Conservation",
+        "lat": -40.900557,
+        "lon": 174.885971,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 209.9,
         "co2e_low_kg": 104.9,
         "co2e_high_kg": 419.7,
         "co2e_per_speaker_kg": 209.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0060",
-        "affiliation": "Department of Planning and Natural Resources - Virgin Islands",
-        "lat": 17.697567,
-        "lon": -64.875287,
+        "affiliation": "Department of Planning and Natural Resources",
+        "lat": 18.336764,
+        "lon": -64.89007470000001,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3300.4,
         "co2e_low_kg": 3300.4,
         "co2e_high_kg": 9571.2,
         "co2e_per_speaker_kg": 3300.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0061",
-        "affiliation": "Division of Aquatic and Wildlife Resources - Guam",
-        "lat": 13.449994,
-        "lon": 144.765168,
+        "affiliation": "Division of Aquatic and Wildlife Resources",
+        "lat": 13.3823791,
+        "lon": 144.6972774,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3282.4,
         "co2e_low_kg": 3282.4,
         "co2e_high_kg": 9519.1,
         "co2e_per_speaker_kg": 1641.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0062",
         "affiliation": "Duke University",
-        "lat": 36.000156,
-        "lon": -78.94423,
+        "lat": 36.0014258,
+        "lon": -78.9382286,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3472.5,
         "co2e_low_kg": 3472.5,
         "co2e_high_kg": 10070.2,
         "co2e_per_speaker_kg": 3472.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0063",
-        "affiliation": "ENTROPIE",
+        "affiliation": "ENTROPIE, Reunion",
         "lat": 48.155125,
         "lon": -3.799268,
         "speaker_count": 1,
@@ -926,41 +975,44 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0064",
         "affiliation": "Earth Observatory of Singapore",
-        "lat": 1.346622,
-        "lon": 103.680444,
+        "lat": 1.3466116,
+        "lon": 103.6804897,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2145.3,
         "co2e_low_kg": 2145.3,
         "co2e_high_kg": 6221.3,
         "co2e_per_speaker_kg": 2145.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0065",
-        "affiliation": "Earth Sciences New Zealand",
-        "lat": -41.5000831,
-        "lon": 172.8344077,
+        "affiliation": "Earth Sciences",
+        "lat": -40.900557,
+        "lon": 174.885971,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 888.7,
         "co2e_low_kg": 444.3,
         "co2e_high_kg": 1777.4,
         "co2e_per_speaker_kg": 296.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0066",
         "affiliation": "East Carolina University",
-        "lat": 35.632851,
-        "lon": -77.485267,
+        "lat": 35.6068806,
+        "lon": -77.3665364,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3472.5,
         "co2e_low_kg": 3472.5,
         "co2e_high_kg": 10070.2,
         "co2e_per_speaker_kg": 3472.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0067",
@@ -978,28 +1030,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0068",
         "affiliation": "Edith Cowan University",
-        "lat": -33.366782,
-        "lon": 115.653338,
+        "lat": -31.7522505,
+        "lon": 115.7728829,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 4084.4,
         "co2e_low_kg": 4084.4,
         "co2e_high_kg": 11844.6,
         "co2e_per_speaker_kg": 1361.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0069",
         "affiliation": "Ehime University",
-        "lat": 33.843312,
-        "lon": 132.783016,
+        "lat": 33.8526386,
+        "lon": 132.7743413,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2296.8,
         "co2e_low_kg": 2296.8,
         "co2e_high_kg": 6660.8,
         "co2e_per_speaker_kg": 2296.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0070",
@@ -1012,7 +1066,8 @@ export const EMISSIONS_DATA = {
         "co2e_low_kg": 2681.7,
         "co2e_high_kg": 7776.8,
         "co2e_per_speaker_kg": 2681.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0071",
@@ -1030,158 +1085,170 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0072",
         "affiliation": "Federal University of Pernambuco",
-        "lat": -8.052424,
-        "lon": -34.951062,
+        "lat": -8.0507245,
+        "lon": -34.9508812,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3602.4,
         "co2e_low_kg": 3602.4,
         "co2e_high_kg": 10447.0,
         "co2e_per_speaker_kg": 3602.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0073",
         "affiliation": "Federal University of Santa Maria",
-        "lat": 6.911813,
-        "lon": 122.059141,
+        "lat": -29.7208878,
+        "lon": -53.7147551,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4267.1,
         "co2e_low_kg": 4267.1,
         "co2e_high_kg": 12374.5,
         "co2e_per_speaker_kg": 2133.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0074",
         "affiliation": "Federal University of Technology - Akure",
-        "lat": 7.304535,
-        "lon": 5.129479,
+        "lat": 7.307042000000001,
+        "lon": 5.1397549,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4258.5,
         "co2e_low_kg": 4258.5,
         "co2e_high_kg": 12349.8,
         "co2e_per_speaker_kg": 4258.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0075",
         "affiliation": "Fisheries Research Institute",
-        "lat": 25.154665,
-        "lon": 121.763451,
+        "lat": 25.154645,
+        "lon": 121.7631776,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2262.7,
         "co2e_low_kg": 2262.7,
         "co2e_high_kg": 6561.8,
         "co2e_per_speaker_kg": 2262.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0076",
         "affiliation": "Fisheries Technology Institute",
-        "lat": 35.077074,
-        "lon": 129.076925,
+        "lat": 9.9392092,
+        "lon": 76.2685351,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2377.8,
         "co2e_low_kg": 2377.8,
         "co2e_high_kg": 6895.7,
         "co2e_per_speaker_kg": 2377.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0077",
         "affiliation": "Florida Atlantic University",
-        "lat": 26.119406,
-        "lon": -80.14168,
+        "lat": 27.6648274,
+        "lon": -81.5157535,
         "speaker_count": 6,
         "travel_attendees": 6,
         "co2e_kg": 19883.3,
         "co2e_low_kg": 19883.3,
         "co2e_high_kg": 57661.5,
         "co2e_per_speaker_kg": 3313.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0078",
-        "affiliation": "Florida Atlantic University - Harbor Branch",
-        "lat": 26.119406,
-        "lon": -80.14168,
+        "affiliation": "Florida Atlantic University",
+        "lat": 27.6648274,
+        "lon": -81.5157535,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9941.6,
         "co2e_low_kg": 9941.6,
         "co2e_high_kg": 28830.8,
         "co2e_per_speaker_kg": 3313.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0079",
         "affiliation": "Florida Fish and Wildlife Conservation Commission",
-        "lat": 30.437034,
-        "lon": -84.277503,
+        "lat": 27.6648274,
+        "lon": -81.5157535,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6567.7,
         "co2e_low_kg": 6567.7,
         "co2e_high_kg": 19046.3,
         "co2e_per_speaker_kg": 3283.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0080",
         "affiliation": "Florida Fish and Wildlife Research Institute",
-        "lat": 27.76145,
-        "lon": -82.633626,
+        "lat": 27.7615125,
+        "lon": -82.63352789999999,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6569.3,
         "co2e_low_kg": 6569.3,
         "co2e_high_kg": 19050.9,
         "co2e_per_speaker_kg": 3284.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0081",
         "affiliation": "Florida International University",
-        "lat": 25.75539,
-        "lon": -80.376283,
+        "lat": 25.7562465,
+        "lon": -80.3755401,
         "speaker_count": 22,
         "travel_attendees": 22,
         "co2e_kg": 72605.9,
         "co2e_low_kg": 72605.9,
         "co2e_high_kg": 210557.2,
         "co2e_per_speaker_kg": 3300.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0082",
-        "affiliation": "Florida Keys National Marine Sanctuary",
-        "lat": 25.008779,
-        "lon": -80.408109,
+        "affiliation": "Florida Keys National Marine",
+        "lat": 24.4269857,
+        "lon": -83.11127979999999,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6246.0,
         "co2e_low_kg": 6246.0,
         "co2e_high_kg": 18113.4,
         "co2e_per_speaker_kg": 3123.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0083",
         "affiliation": "Florida State University",
-        "lat": 30.442216,
-        "lon": -84.297453,
+        "lat": 30.442087,
+        "lon": -84.2979579,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9851.5,
         "co2e_low_kg": 9851.5,
         "co2e_high_kg": 28569.4,
         "co2e_per_speaker_kg": 3283.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0084",
@@ -1199,28 +1266,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0085",
         "affiliation": "Georgia Institute of Technology",
-        "lat": 33.776095,
-        "lon": -84.398808,
+        "lat": 33.7779791,
+        "lon": -84.3979638,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 13306.0,
         "co2e_low_kg": 13306.0,
         "co2e_high_kg": 38587.3,
         "co2e_per_speaker_kg": 3326.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0086",
         "affiliation": "Georgia Southern University",
-        "lat": 32.421438,
-        "lon": -81.784505,
+        "lat": 32.4206845,
+        "lon": -81.7869734,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 13497.8,
         "co2e_low_kg": 13497.8,
         "co2e_high_kg": 39143.5,
         "co2e_per_speaker_kg": 3374.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0087",
@@ -1238,15 +1307,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0088",
         "affiliation": "Global Science and Technology, LLC",
-        "lat": 22.052907,
-        "lon": 88.074011,
+        "lat": 22.0529069,
+        "lon": 88.0740115,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5711.1,
         "co2e_low_kg": 5711.1,
         "co2e_high_kg": 16562.1,
         "co2e_per_speaker_kg": 2855.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0089",
@@ -1264,132 +1334,142 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0090",
         "affiliation": "Griffith University",
-        "lat": -27.963338,
-        "lon": 153.384692,
+        "lat": -27.5530181,
+        "lon": 153.0510796,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 2430.2,
         "co2e_low_kg": 2430.2,
         "co2e_high_kg": 7047.7,
         "co2e_per_speaker_kg": 607.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0091",
         "affiliation": "Guam Coral Reef Initiative",
-        "lat": 13.449994,
-        "lon": 144.765168,
+        "lat": 13.3823791,
+        "lon": 144.6972774,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3282.4,
         "co2e_low_kg": 3282.4,
         "co2e_high_kg": 9519.1,
         "co2e_per_speaker_kg": 1641.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0092",
         "affiliation": "Guangxi University",
-        "lat": 22.847211,
-        "lon": 108.291348,
+        "lat": 22.8471376,
+        "lon": 108.2913474,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2453.5,
         "co2e_low_kg": 2453.5,
         "co2e_high_kg": 7115.2,
         "co2e_per_speaker_kg": 2453.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0093",
         "affiliation": "HI-LEX CORPORATION",
-        "lat": 42.337327,
-        "lon": -85.282687,
+        "lat": 42.3372001,
+        "lon": -85.2834396,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3419.8,
         "co2e_low_kg": 3419.8,
         "co2e_high_kg": 9917.5,
         "co2e_per_speaker_kg": 3419.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0094",
         "affiliation": "Hamburg University",
-        "lat": 53.590905,
-        "lon": 9.975376,
+        "lat": 53.5659703,
+        "lon": 9.9849977,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4548.8,
         "co2e_low_kg": 4548.8,
         "co2e_high_kg": 13191.5,
         "co2e_per_speaker_kg": 4548.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0095",
         "affiliation": "Hampton University",
-        "lat": 37.02101,
-        "lon": -76.338626,
+        "lat": 37.0228392,
+        "lon": -76.3343603,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3538.2,
         "co2e_low_kg": 3538.2,
         "co2e_high_kg": 10260.8,
         "co2e_per_speaker_kg": 3538.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0096",
         "affiliation": "Harbor Branch Oceanographic Institute",
-        "lat": 27.532324,
-        "lon": -80.352946,
+        "lat": 27.5340658,
+        "lon": -80.355442,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3331.8,
         "co2e_low_kg": 3331.8,
         "co2e_high_kg": 9662.3,
         "co2e_per_speaker_kg": 3331.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0097",
         "affiliation": "Harvey Mudd College",
-        "lat": 34.10614,
-        "lon": -117.708728,
+        "lat": 34.1060906,
+        "lon": -117.7086431,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2692.0,
         "co2e_low_kg": 2692.0,
         "co2e_high_kg": 7806.7,
         "co2e_per_speaker_kg": 2692.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0098",
         "affiliation": "Hasanuddin University",
-        "lat": -5.132566,
-        "lon": 119.488455,
+        "lat": -5.1341871,
+        "lon": 119.4880786,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1689.4,
         "co2e_low_kg": 1689.4,
         "co2e_high_kg": 4899.4,
         "co2e_per_speaker_kg": 1689.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0099",
         "affiliation": "Hawai'i Pacific University",
-        "lat": 21.306559,
-        "lon": -157.865611,
+        "lat": 19.8986819,
+        "lon": -155.6658568,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3617.5,
         "co2e_low_kg": 3617.5,
         "co2e_high_kg": 10490.8,
         "co2e_per_speaker_kg": 1808.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0100",
@@ -1406,68 +1486,73 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0103",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
-        "lat": 53.153953,
-        "lon": 8.175427,
+        "affiliation": "Helmholtz Institute for Functional Marine",
+        "lat": 53.15391289999999,
+        "lon": 8.1753942,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 32020.2,
         "co2e_low_kg": 32020.2,
         "co2e_high_kg": 92858.7,
         "co2e_per_speaker_kg": 4574.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0104",
         "affiliation": "Hiroshima University",
-        "lat": 34.401638,
-        "lon": 132.720721,
+        "lat": 34.3991292,
+        "lon": 132.7140406,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2308.6,
         "co2e_low_kg": 2308.6,
         "co2e_high_kg": 6694.9,
         "co2e_per_speaker_kg": 2308.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0105",
         "affiliation": "Hong Kong Polytechnic University",
-        "lat": 22.302722,
-        "lon": 114.178045,
+        "lat": 22.3045633,
+        "lon": 114.1795767,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2348.4,
         "co2e_low_kg": 2348.4,
         "co2e_high_kg": 6810.4,
         "co2e_per_speaker_kg": 2348.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0106",
         "affiliation": "Hong Kong University of Science and Technology",
-        "lat": 22.338721,
-        "lon": 114.261899,
+        "lat": 22.3374847,
+        "lon": 114.2633989,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 18787.4,
         "co2e_low_kg": 18787.4,
         "co2e_high_kg": 54483.3,
         "co2e_per_speaker_kg": 2348.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0107",
         "affiliation": "Horniman Museum and Gardens",
-        "lat": 51.44218,
-        "lon": -0.061324,
+        "lat": 51.4419283,
+        "lon": -0.0619967,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4685.6,
         "co2e_low_kg": 4685.6,
         "co2e_high_kg": 13588.2,
         "co2e_per_speaker_kg": 4685.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0108",
@@ -1498,15 +1583,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0110",
         "affiliation": "IPB University",
-        "lat": -6.555272,
-        "lon": 106.725016,
+        "lat": -6.5552739,
+        "lon": 106.7229062,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1947.1,
         "co2e_low_kg": 1947.1,
         "co2e_high_kg": 5646.5,
         "co2e_per_speaker_kg": 1947.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0111",
@@ -1523,29 +1609,31 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0112",
-        "affiliation": "Imperial College London",
-        "lat": 51.498959,
-        "lon": -0.175641,
+        "affiliation": "Imperial College",
+        "lat": 51.49882220000001,
+        "lon": -0.1748735,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9371.2,
         "co2e_low_kg": 9371.2,
         "co2e_high_kg": 27176.4,
         "co2e_per_speaker_kg": 4685.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0113",
         "affiliation": "Independent Consultant/Researcher",
-        "lat": -34.443743,
-        "lon": 147.536509,
+        "lat": -34.4437431,
+        "lon": 147.5365095,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 591.9,
         "co2e_low_kg": 591.9,
         "co2e_high_kg": 1716.6,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0114",
@@ -1563,54 +1651,58 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0115",
         "affiliation": "Indonesian Librarian Association of South Sulawesi",
-        "lat": -2.483383,
-        "lon": 117.890285,
+        "lat": -3.6687994,
+        "lon": 119.9740534,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1817.1,
         "co2e_low_kg": 1817.1,
         "co2e_high_kg": 5269.5,
         "co2e_per_speaker_kg": 1817.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0116",
-        "affiliation": "Institut Halieutique et des Sciences Marines",
-        "lat": -23.368146,
-        "lon": 43.673511,
+        "affiliation": "Institut Halieutique et des Sciences",
+        "lat": -23.3681539,
+        "lon": 43.6733576,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2988.0,
         "co2e_low_kg": 2988.0,
         "co2e_high_kg": 8665.2,
         "co2e_per_speaker_kg": 2988.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0117",
-        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara",
-        "lat": -23.368146,
-        "lon": 43.673511,
+        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara of Toliara",
+        "lat": -23.3679765,
+        "lon": 43.6735609,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2988.0,
         "co2e_low_kg": 2988.0,
         "co2e_high_kg": 8665.2,
         "co2e_per_speaker_kg": 2988.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0118",
         "affiliation": "Institut Teknologi Bandung",
-        "lat": -6.890449,
-        "lon": 107.610314,
+        "lat": -6.890361700000001,
+        "lon": 107.6101912,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1947.1,
         "co2e_low_kg": 1947.1,
         "co2e_high_kg": 5646.5,
         "co2e_per_speaker_kg": 1947.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0119",
@@ -1654,20 +1746,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0122",
         "affiliation": "Institute for Systems Biology",
-        "lat": 47.622648,
-        "lon": -122.337417,
+        "lat": 47.6226441,
+        "lon": -122.337512,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2878.2,
         "co2e_low_kg": 2878.2,
         "co2e_high_kg": 8346.9,
         "co2e_per_speaker_kg": 2878.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0123",
         "affiliation": "Institute of Fisheries Science",
-        "lat": 34.727326,
+        "lat": 34.7273265,
         "lon": 128.625684,
         "speaker_count": 1,
         "travel_attendees": 1,
@@ -1675,46 +1768,50 @@ export const EMISSIONS_DATA = {
         "co2e_low_kg": 2377.8,
         "co2e_high_kg": 6895.7,
         "co2e_per_speaker_kg": 2377.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0124",
-        "affiliation": "Institute of Science - Tokyo",
-        "lat": 35.605049,
-        "lon": 139.682751,
+        "affiliation": "Institute of Science",
+        "lat": 35.6059021,
+        "lon": 139.6835601,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 6766.7,
         "co2e_low_kg": 6766.7,
         "co2e_high_kg": 19623.5,
         "co2e_per_speaker_kg": 2255.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0125",
         "affiliation": "Institute of Zoology",
-        "lat": 51.535277,
-        "lon": -0.157383,
+        "lat": 51.5351446,
+        "lon": -0.1580143,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4685.6,
         "co2e_low_kg": 4685.6,
         "co2e_high_kg": 13588.2,
         "co2e_per_speaker_kg": 4685.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0126",
         "affiliation": "Instituto Politecnico Nacional",
-        "lat": 20.677727,
-        "lon": -105.222574,
+        "lat": 19.501738,
+        "lon": -99.14013519999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2687.4,
         "co2e_low_kg": 2687.4,
         "co2e_high_kg": 7793.5,
         "co2e_per_speaker_kg": 2687.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0127",
@@ -1745,7 +1842,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0129",
         "affiliation": "Instituto de Estudos do Mar Almirante Paulo Moreira",
-        "lat": -22.977218,
+        "lat": -22.9772182,
         "lon": -42.021433,
         "speaker_count": 1,
         "travel_attendees": 1,
@@ -1753,7 +1850,8 @@ export const EMISSIONS_DATA = {
         "co2e_low_kg": 3128.3,
         "co2e_high_kg": 9072.2,
         "co2e_per_speaker_kg": 3128.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0130",
@@ -1770,42 +1868,45 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0131",
-        "affiliation": "International Islamic University Malaysia",
-        "lat": 3.253081,
-        "lon": 101.735684,
+        "affiliation": "International Islamic University",
+        "lat": 3.2503254,
+        "lon": 101.7345347,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4461.9,
         "co2e_low_kg": 4461.9,
         "co2e_high_kg": 12939.4,
         "co2e_per_speaker_kg": 2230.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0132",
         "affiliation": "Island Conservation",
-        "lat": 57.106005,
-        "lon": -2.650535,
+        "lat": 57.1060047,
+        "lon": -2.6505346,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4531.2,
         "co2e_low_kg": 4531.2,
         "co2e_high_kg": 13140.4,
         "co2e_per_speaker_kg": 4531.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0133",
         "affiliation": "Istituto Italiano Di Tecnologia",
-        "lat": 44.475017,
-        "lon": 8.906362,
+        "lat": 44.4749312,
+        "lon": 8.9064299,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4739.6,
         "co2e_low_kg": 4739.6,
         "co2e_high_kg": 13744.9,
         "co2e_per_speaker_kg": 4739.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0134",
@@ -1823,29 +1924,31 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0135",
-        "affiliation": "Justus Liebig University Giessen",
-        "lat": 50.570647,
-        "lon": 8.666985,
+        "affiliation": "Justus Liebig University",
+        "lat": 50.5804674,
+        "lon": 8.6771403,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4642.9,
         "co2e_low_kg": 4642.9,
         "co2e_high_kg": 13464.6,
         "co2e_per_speaker_kg": 4642.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0136",
         "affiliation": "KAUST",
-        "lat": 22.322375,
-        "lon": 39.117384,
+        "lat": 22.309465,
+        "lon": 39.104697,
         "speaker_count": 54,
         "travel_attendees": 54,
         "co2e_kg": 212699.5,
         "co2e_low_kg": 212699.5,
         "co2e_high_kg": 616828.6,
         "co2e_per_speaker_kg": 3938.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0137",
@@ -1863,15 +1966,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0138",
         "affiliation": "KAUST Coral Restoration Initiative",
-        "lat": 22.322375,
-        "lon": 39.117384,
+        "lat": 22.309465,
+        "lon": 39.104697,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3938.9,
         "co2e_low_kg": 3938.9,
         "co2e_high_kg": 11422.8,
         "co2e_per_speaker_kg": 3938.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0139",
@@ -1889,119 +1993,128 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0140",
         "affiliation": "Kagoshima University",
-        "lat": 31.571605,
-        "lon": 130.544087,
+        "lat": 31.5699425,
+        "lon": 130.5442848,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2275.1,
         "co2e_low_kg": 2275.1,
         "co2e_high_kg": 6597.8,
         "co2e_per_speaker_kg": 2275.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0141",
         "affiliation": "Kansai University",
-        "lat": 34.772783,
-        "lon": 135.510452,
+        "lat": 34.7732731,
+        "lon": 135.5107369,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2285.9,
         "co2e_low_kg": 2285.9,
         "co2e_high_kg": 6629.2,
         "co2e_per_speaker_kg": 2285.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0142",
         "affiliation": "Karolinska Institute",
-        "lat": 59.21955,
-        "lon": 17.940055,
+        "lat": 59.3485413,
+        "lon": 18.0275982,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4338.9,
         "co2e_low_kg": 4338.9,
         "co2e_high_kg": 12583.0,
         "co2e_per_speaker_kg": 4338.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0143",
         "affiliation": "King Abdullah University of Science and Technology",
-        "lat": 22.322375,
-        "lon": 39.117384,
+        "lat": 22.309465,
+        "lon": 39.104697,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3938.9,
         "co2e_low_kg": 3938.9,
         "co2e_high_kg": 11422.8,
         "co2e_per_speaker_kg": 3938.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0144",
         "affiliation": "Kitasato University",
-        "lat": 35.53911,
-        "lon": 139.393793,
+        "lat": 35.6447768,
+        "lon": 139.7256298,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4511.1,
         "co2e_low_kg": 4511.1,
         "co2e_high_kg": 13082.3,
         "co2e_per_speaker_kg": 2255.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0145",
         "affiliation": "Kochi University",
-        "lat": 9.984831,
-        "lon": 76.229135,
+        "lat": 33.5490378,
+        "lon": 133.4867352,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2915.2,
         "co2e_low_kg": 2915.2,
         "co2e_high_kg": 8454.0,
         "co2e_per_speaker_kg": 2915.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0146",
         "affiliation": "Kokusai Kogyo Co., Ltd.",
-        "lat": 35.766801,
-        "lon": 139.707048,
+        "lat": 35.7668008,
+        "lon": 139.7070478,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2255.6,
         "co2e_low_kg": 2255.6,
         "co2e_high_kg": 6541.2,
         "co2e_per_speaker_kg": 2255.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0147",
         "affiliation": "Konservasi Indonesia",
-        "lat": 0.853409,
-        "lon": 107.218515,
+        "lat": -0.789275,
+        "lon": 113.921327,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4276.8,
         "co2e_low_kg": 4276.8,
         "co2e_high_kg": 12402.8,
         "co2e_per_speaker_kg": 2138.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0148",
         "affiliation": "Kyushu University",
-        "lat": 33.670777,
-        "lon": 130.444499,
+        "lat": 33.6707768,
+        "lon": 130.4444986,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2320.5,
         "co2e_low_kg": 2320.5,
         "co2e_high_kg": 6729.4,
         "co2e_per_speaker_kg": 2320.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0149",
@@ -2019,54 +2132,58 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0150",
         "affiliation": "Lancaster University",
-        "lat": 54.009843,
-        "lon": -2.787577,
+        "lat": 54.0104286,
+        "lon": -2.7864467,
         "speaker_count": 6,
         "travel_attendees": 6,
         "co2e_kg": 27848.1,
         "co2e_low_kg": 27848.1,
         "co2e_high_kg": 80759.5,
         "co2e_per_speaker_kg": 4641.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0151",
         "affiliation": "Lingnan University",
-        "lat": 22.412359,
-        "lon": 113.981278,
+        "lat": 22.4109705,
+        "lon": 113.9830974,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 7045.3,
         "co2e_low_kg": 7045.3,
         "co2e_high_kg": 20431.3,
         "co2e_per_speaker_kg": 2348.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0152",
         "affiliation": "Louisiana State University",
-        "lat": 30.406201,
-        "lon": -91.185413,
+        "lat": 30.4102406,
+        "lon": -91.18570590000002,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 15766.0,
         "co2e_low_kg": 15766.0,
         "co2e_high_kg": 45721.4,
         "co2e_per_speaker_kg": 3153.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0153",
         "affiliation": "M.M. Bridge Co., Ltd.",
-        "lat": 52.053011,
-        "lon": -9.065883,
+        "lat": 52.0530114,
+        "lon": -9.0658832,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4681.0,
         "co2e_low_kg": 4681.0,
         "co2e_high_kg": 13574.8,
         "co2e_per_speaker_kg": 4681.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0154",
@@ -2085,170 +2202,183 @@ export const EMISSIONS_DATA = {
         "id": "emis-loc-0155",
         "affiliation": "Macquarie University",
         "lat": -33.774197,
-        "lon": 151.112714,
+        "lon": 151.1127138,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 4143.5,
         "co2e_low_kg": 4143.5,
         "co2e_high_kg": 12016.2,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0156",
         "affiliation": "Macquarie University/University of Groningen",
-        "lat": -33.774197,
-        "lon": 151.112714,
+        "lat": 53.2193266,
+        "lon": 6.562830099999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 591.9,
         "co2e_low_kg": 591.9,
         "co2e_high_kg": 1716.6,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0157",
         "affiliation": "Marine Biological Association",
-        "lat": 50.3643,
-        "lon": -4.139168,
+        "lat": 50.3641851,
+        "lon": -4.139168199999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4696.9,
         "co2e_low_kg": 4696.9,
         "co2e_high_kg": 13621.2,
         "co2e_per_speaker_kg": 4696.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0158",
         "affiliation": "Max Planck Institute for Chemistry",
-        "lat": 49.991445,
-        "lon": 8.229166,
+        "lat": 49.99098559999999,
+        "lon": 8.2290347,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9285.9,
         "co2e_low_kg": 9285.9,
         "co2e_high_kg": 26929.1,
         "co2e_per_speaker_kg": 4642.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0159",
         "affiliation": "McGill University",
-        "lat": 45.431843,
-        "lon": -73.945286,
+        "lat": 45.50601839999999,
+        "lon": -73.5783235,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3669.9,
         "co2e_low_kg": 3669.9,
         "co2e_high_kg": 10642.7,
         "co2e_per_speaker_kg": 3669.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0160",
         "affiliation": "Meio University",
-        "lat": 26.624447,
-        "lon": 127.973613,
+        "lat": 26.6244518,
+        "lon": 127.9738733,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2191.8,
         "co2e_low_kg": 2191.8,
         "co2e_high_kg": 6356.2,
         "co2e_per_speaker_kg": 2191.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0161",
         "affiliation": "Memorial University",
-        "lat": 47.573283,
-        "lon": -52.735191,
+        "lat": 47.5741117,
+        "lon": -52.7352094,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4082.7,
         "co2e_low_kg": 4082.7,
         "co2e_high_kg": 11839.9,
         "co2e_per_speaker_kg": 4082.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0162",
         "affiliation": "Memorial University of Newfoundland and Labrador",
-        "lat": 47.573347,
-        "lon": -52.733309,
+        "lat": 47.5741117,
+        "lon": -52.7352094,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4082.7,
         "co2e_low_kg": 4082.7,
         "co2e_high_kg": 11839.9,
         "co2e_per_speaker_kg": 4082.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0163",
         "affiliation": "Michigan State University",
-        "lat": 42.702379,
-        "lon": -84.480387,
+        "lat": 42.7250725,
+        "lon": -84.47908269999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3436.5,
         "co2e_low_kg": 3436.5,
         "co2e_high_kg": 9965.9,
         "co2e_per_speaker_kg": 3436.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0164",
         "affiliation": "Micronesian Conservation Coalition",
-        "lat": 8.606235,
-        "lon": 151.832744,
+        "lat": 7.425554,
+        "lon": 150.550812,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1401.2,
         "co2e_low_kg": 1401.2,
         "co2e_high_kg": 4063.5,
         "co2e_per_speaker_kg": 1401.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0165",
-        "affiliation": "Mindanao State University - Naawan",
-        "lat": 8.42925,
-        "lon": 124.287749,
+        "affiliation": "Mindanao State University",
+        "lat": 8.4294678,
+        "lon": 124.2882165,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 5418.4,
         "co2e_low_kg": 5418.4,
         "co2e_high_kg": 15713.2,
         "co2e_per_speaker_kg": 1806.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0166",
-        "affiliation": "Mindanao State University-Iligan Institute of Technology",
-        "lat": 8.241511,
-        "lon": 124.243977,
+        "affiliation": "Mindanao State University",
+        "lat": 8.2409688,
+        "lon": 124.2433605,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1806.1,
         "co2e_low_kg": 1806.1,
         "co2e_high_kg": 5237.7,
         "co2e_per_speaker_kg": 1806.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0167",
         "affiliation": "Minderoo Foundation",
-        "lat": -31.975688,
-        "lon": 115.821919,
+        "lat": -31.9756877,
+        "lon": 115.8219191,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1361.5,
         "co2e_low_kg": 1361.5,
         "co2e_high_kg": 3948.2,
         "co2e_per_speaker_kg": 1361.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0168",
@@ -2266,366 +2396,394 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0169",
         "affiliation": "Ministry of Fisheries, Oceans and Maritime Affairs - Vanuatu",
-        "lat": -16.525507,
-        "lon": 168.106915,
+        "lat": -15.376706,
+        "lon": 166.959158,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 613.8,
         "co2e_low_kg": 613.8,
         "co2e_high_kg": 1780.0,
         "co2e_per_speaker_kg": 613.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0170",
         "affiliation": "Montana State University",
-        "lat": 45.663922,
-        "lon": -111.079277,
+        "lat": 45.6673524,
+        "lon": -111.0546211,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3012.1,
         "co2e_low_kg": 3012.1,
         "co2e_high_kg": 8735.1,
         "co2e_per_speaker_kg": 3012.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0171",
         "affiliation": "Mote Marine Laboratory",
-        "lat": 25.143978,
-        "lon": -80.399072,
+        "lat": 27.3331533,
+        "lon": -82.5773352,
         "speaker_count": 10,
         "travel_attendees": 10,
         "co2e_kg": 33004.1,
         "co2e_low_kg": 33004.1,
         "co2e_high_kg": 95711.9,
         "co2e_per_speaker_kg": 3300.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0172",
         "affiliation": "Murdoch University",
-        "lat": -32.067416,
-        "lon": 115.834609,
+        "lat": -32.0679659,
+        "lon": 115.8352366,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1361.5,
         "co2e_low_kg": 1361.5,
         "co2e_high_kg": 3948.2,
         "co2e_per_speaker_kg": 1361.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0173",
         "affiliation": "Nagoya University",
-        "lat": 35.153309,
-        "lon": 136.967781,
+        "lat": 35.1538553,
+        "lon": 136.9682402,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4543.5,
         "co2e_low_kg": 4543.5,
         "co2e_high_kg": 13176.1,
         "co2e_per_speaker_kg": 2271.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0174",
         "affiliation": "Nanyang Technological University",
-        "lat": 1.34841,
-        "lon": 103.682933,
+        "lat": 1.3483099,
+        "lon": 103.6831347,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 15016.8,
         "co2e_low_kg": 15016.8,
         "co2e_high_kg": 43548.8,
         "co2e_per_speaker_kg": 2145.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0175",
         "affiliation": "National Center for Wildlife",
-        "lat": 16.678642,
-        "lon": 42.150491,
+        "lat": 16.6786425,
+        "lon": 42.1504909,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3807.4,
         "co2e_low_kg": 3807.4,
         "co2e_high_kg": 11041.4,
         "co2e_per_speaker_kg": 3807.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0176",
         "affiliation": "National Chiayi University",
-        "lat": 23.46779,
-        "lon": 120.48394,
+        "lat": 23.4678916,
+        "lon": 120.4848779,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2240.3,
         "co2e_low_kg": 2240.3,
         "co2e_high_kg": 6496.9,
         "co2e_per_speaker_kg": 2240.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0177",
         "affiliation": "National Institute of Advanced Industrial Science and Technology",
-        "lat": 36.05318,
-        "lon": 140.117115,
+        "lat": 36.0531797,
+        "lon": 140.1171149,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 9018.7,
         "co2e_low_kg": 9018.7,
         "co2e_high_kg": 26154.2,
         "co2e_per_speaker_kg": 2254.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0178",
         "affiliation": "National Marine Sanctuary of American Samoa",
-        "lat": -14.542646,
-        "lon": -167.713297,
+        "lat": -14.3586818,
+        "lon": -170.7589766,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 792.8,
         "co2e_low_kg": 792.8,
         "co2e_high_kg": 2299.0,
         "co2e_per_speaker_kg": 792.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0179",
         "affiliation": "National Museum",
-        "lat": 50.078919,
-        "lon": 14.430968,
+        "lat": 1.296613,
+        "lon": 103.8485091,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4563.8,
         "co2e_low_kg": 4563.8,
         "co2e_high_kg": 13234.9,
         "co2e_per_speaker_kg": 4563.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0180",
         "affiliation": "National Museum of Marine Biology and Aquarium",
-        "lat": 22.045753,
-        "lon": 120.699334,
+        "lat": 22.0460159,
+        "lon": 120.6989058,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2229.9,
         "co2e_low_kg": 2229.9,
         "co2e_high_kg": 6466.7,
         "co2e_per_speaker_kg": 2229.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0181",
-        "affiliation": "National Oceanic and Atmospheric Administration",
-        "lat": 36.003031,
-        "lon": -84.248984,
+        "affiliation": "National Oceanic and Atmospheric",
+        "lat": 36.0030305,
+        "lon": -84.2489839,
         "speaker_count": 11,
         "travel_attendees": 11,
         "co2e_kg": 37003.3,
         "co2e_low_kg": 37003.3,
         "co2e_high_kg": 107309.7,
         "co2e_per_speaker_kg": 3363.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0182",
         "affiliation": "National Oceanic and Atmospheric Administration - Fisheries",
-        "lat": 36.003031,
-        "lon": -84.248984,
+        "lat": 36.0030305,
+        "lon": -84.2489839,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3363.9,
         "co2e_low_kg": 3363.9,
         "co2e_high_kg": 9755.4,
         "co2e_per_speaker_kg": 3363.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0183",
-        "affiliation": "National Oceanic and Atmospheric Administration - Pacific Islands",
-        "lat": 36.003031,
-        "lon": -84.248984,
+        "affiliation": "National Oceanic and Atmospheric Administration",
+        "lat": 36.0030305,
+        "lon": -84.2489839,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3363.9,
         "co2e_low_kg": 3363.9,
         "co2e_high_kg": 9755.4,
         "co2e_per_speaker_kg": 3363.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0184",
         "affiliation": "National Pingtung University of Science and Technology",
-        "lat": 22.643024,
-        "lon": 120.610006,
+        "lat": 22.6433454,
+        "lon": 120.6098266,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2229.9,
         "co2e_low_kg": 2229.9,
         "co2e_high_kg": 6466.7,
         "co2e_per_speaker_kg": 2229.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0185",
         "affiliation": "National Research and Innovation Agency",
-        "lat": -6.228808,
-        "lon": 106.818084,
+        "lat": -6.2288079,
+        "lon": 106.8180845,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3894.1,
         "co2e_low_kg": 3894.1,
         "co2e_high_kg": 11293.0,
         "co2e_per_speaker_kg": 1947.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0186",
         "affiliation": "National Sun Yat-sen University",
-        "lat": 22.628006,
-        "lon": 120.266224,
+        "lat": 22.6283384,
+        "lon": 120.2647299,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 6689.6,
         "co2e_low_kg": 6689.6,
         "co2e_high_kg": 19400.0,
         "co2e_per_speaker_kg": 2229.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0187",
         "affiliation": "National Taiwan Ocean University",
-        "lat": 25.14969,
-        "lon": 121.775731,
+        "lat": 25.1505447,
+        "lon": 121.7757756,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 9050.8,
         "co2e_low_kg": 9050.8,
         "co2e_high_kg": 26247.2,
         "co2e_per_speaker_kg": 2262.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0189",
         "affiliation": "National University of Colombia - Caribbean Campus",
-        "lat": 6.262958,
-        "lon": -75.57717,
+        "lat": 4.6396672,
+        "lon": -74.0890479,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3106.0,
         "co2e_low_kg": 3106.0,
         "co2e_high_kg": 9007.4,
         "co2e_per_speaker_kg": 3106.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0190",
         "affiliation": "National University of Singapore",
-        "lat": 1.295985,
-        "lon": 103.776619,
+        "lat": 1.2976493,
+        "lon": 103.7766916,
         "speaker_count": 24,
         "travel_attendees": 24,
         "co2e_kg": 51486.2,
         "co2e_low_kg": 51486.2,
         "co2e_high_kg": 149310.1,
         "co2e_per_speaker_kg": 2145.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0191",
         "affiliation": "National Yang Ming Chiao Tung University",
-        "lat": 24.786768,
-        "lon": 120.997244,
+        "lat": 24.7868862,
+        "lon": 120.9974969,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2268.3,
         "co2e_low_kg": 2268.3,
         "co2e_high_kg": 6578.0,
         "co2e_per_speaker_kg": 2268.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0192",
         "affiliation": "Nature Seychelles",
-        "lat": -4.661512,
-        "lon": 55.438884,
+        "lat": -4.679574,
+        "lon": 55.491977,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3117.3,
         "co2e_low_kg": 3117.3,
         "co2e_high_kg": 9040.2,
         "co2e_per_speaker_kg": 3117.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0193",
-        "affiliation": "New York University - Abu Dhabi",
-        "lat": 24.523789,
-        "lon": 54.434761,
+        "affiliation": "New York University",
+        "lat": 24.5263311,
+        "lon": 54.4364913,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 10896.8,
         "co2e_low_kg": 10896.8,
         "co2e_high_kg": 31600.8,
         "co2e_per_speaker_kg": 3632.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0194",
         "affiliation": "Newcastle University",
-        "lat": 54.980175,
-        "lon": -1.61468,
+        "lat": 54.9791871,
+        "lon": -1.6146608,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 36726.8,
         "co2e_low_kg": 36726.8,
         "co2e_high_kg": 106507.7,
         "co2e_per_speaker_kg": 4590.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0195",
         "affiliation": "North Carolina State University",
-        "lat": 35.77185,
-        "lon": -78.674087,
+        "lat": 35.7850744,
+        "lon": -78.6812824,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 13890.0,
         "co2e_low_kg": 13890.0,
         "co2e_high_kg": 40281.0,
         "co2e_per_speaker_kg": 3472.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0196",
         "affiliation": "Northeastern University",
-        "lat": 42.335107,
-        "lon": -71.089258,
+        "lat": 42.3398067,
+        "lon": -71.0891717,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3698.3,
         "co2e_low_kg": 3698.3,
         "co2e_high_kg": 10725.2,
         "co2e_per_speaker_kg": 3698.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0197",
         "affiliation": "Northeastern University Marine Science Center",
-        "lat": 42.418536,
-        "lon": -70.906686,
+        "lat": 42.4185262,
+        "lon": -70.9073684,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3698.3,
         "co2e_low_kg": 3698.3,
         "co2e_high_kg": 10725.2,
         "co2e_per_speaker_kg": 3698.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0198",
@@ -2643,29 +2801,31 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0199",
-        "affiliation": "Northwestern University - Marcelino Lab",
-        "lat": 42.055716,
-        "lon": -87.675295,
+        "affiliation": "Northwestern University",
+        "lat": 42.0564594,
+        "lon": -87.67526699999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3363.8,
         "co2e_low_kg": 3363.8,
         "co2e_high_kg": 9755.1,
         "co2e_per_speaker_kg": 3363.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0200",
         "affiliation": "Nova Southeastern University",
-        "lat": 26.078802,
-        "lon": -80.243511,
+        "lat": 26.0791417,
+        "lon": -80.2465466,
         "speaker_count": 35,
         "travel_attendees": 35,
         "co2e_kg": 120793.0,
         "co2e_low_kg": 120793.0,
         "co2e_high_kg": 350299.8,
         "co2e_per_speaker_kg": 3451.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0201",
@@ -2683,470 +2843,506 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0202",
         "affiliation": "Ocean University of Sri Lanka",
-        "lat": 6.901517,
-        "lon": 79.862653,
+        "lat": 6.9749431,
+        "lon": 79.8721717,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2780.5,
         "co2e_low_kg": 2780.5,
         "co2e_high_kg": 8063.3,
         "co2e_per_speaker_kg": 2780.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0203",
         "affiliation": "Oceanographic Institute",
-        "lat": 36.528199,
-        "lon": -6.285291,
+        "lat": 41.5245291,
+        "lon": -70.6683781,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 5087.6,
         "co2e_low_kg": 5087.6,
         "co2e_high_kg": 14754.0,
         "co2e_per_speaker_kg": 5087.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0204",
         "affiliation": "Ochanomizu University",
-        "lat": 35.718742,
-        "lon": 139.731181,
+        "lat": 35.71883529999999,
+        "lon": 139.7315093,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2255.6,
         "co2e_low_kg": 2255.6,
         "co2e_high_kg": 6541.2,
         "co2e_per_speaker_kg": 2255.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0205",
         "affiliation": "Ohio State University",
-        "lat": 40.005698,
-        "lon": -83.028657,
+        "lat": 40.0060889,
+        "lon": -83.0282624,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 13750.1,
         "co2e_low_kg": 13750.1,
         "co2e_high_kg": 39875.2,
         "co2e_per_speaker_kg": 3437.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0206",
         "affiliation": "Okinawa Institute of Science and Technology",
-        "lat": 26.461209,
-        "lon": 127.830598,
+        "lat": 26.4649533,
+        "lon": 127.8301187,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4383.6,
         "co2e_low_kg": 4383.6,
         "co2e_high_kg": 12712.3,
         "co2e_per_speaker_kg": 2191.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0207",
         "affiliation": "Old Dominion University",
-        "lat": 36.88627,
-        "lon": -76.309725,
+        "lat": 36.8853217,
+        "lon": -76.3058786,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 14152.8,
         "co2e_low_kg": 14152.8,
         "co2e_high_kg": 41043.1,
         "co2e_per_speaker_kg": 3538.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0208",
         "affiliation": "Oldenburg University",
-        "lat": 53.146727,
-        "lon": 8.181643,
+        "lat": 53.1467333,
+        "lon": 8.183124,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4574.3,
         "co2e_low_kg": 4574.3,
         "co2e_high_kg": 13265.5,
         "co2e_per_speaker_kg": 4574.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0209",
         "affiliation": "Oregon State University",
-        "lat": 44.563056,
-        "lon": -123.283923,
+        "lat": 44.5618097,
+        "lon": -123.2822671,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 11192.8,
         "co2e_low_kg": 11192.8,
         "co2e_high_kg": 32459.1,
         "co2e_per_speaker_kg": 2798.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0210",
         "affiliation": "Otago University",
-        "lat": -45.864979,
-        "lon": 170.514615,
+        "lat": -45.8646835,
+        "lon": 170.5144227,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 468.3,
         "co2e_low_kg": 234.2,
         "co2e_high_kg": 936.7,
         "co2e_per_speaker_kg": 468.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0211",
         "affiliation": "PT Pupuk Kalimantan Timur",
-        "lat": -7.256504,
-        "lon": 112.741953,
+        "lat": -7.2565041,
+        "lon": 112.7419535,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1796.3,
         "co2e_low_kg": 1796.3,
         "co2e_high_kg": 5209.2,
         "co2e_per_speaker_kg": 1796.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0212",
         "affiliation": "Pacific Community",
-        "lat": -22.301994,
-        "lon": 166.442987,
+        "lat": -22.3019938,
+        "lon": 166.4429871,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4768.1,
         "co2e_low_kg": 4768.1,
         "co2e_high_kg": 13827.5,
         "co2e_per_speaker_kg": 4768.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0213",
         "affiliation": "Pattimura University",
-        "lat": -3.70134,
-        "lon": 128.178775,
+        "lat": -3.6546187,
+        "lon": 128.1956754,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3073.4,
         "co2e_low_kg": 3073.4,
         "co2e_high_kg": 8912.8,
         "co2e_per_speaker_kg": 1536.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0214",
         "affiliation": "Pelita Bangsa University",
-        "lat": -6.324199,
-        "lon": 107.16925,
+        "lat": -6.324108499999999,
+        "lon": 107.1696207,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1947.1,
         "co2e_low_kg": 1947.1,
         "co2e_high_kg": 5646.5,
         "co2e_per_speaker_kg": 1947.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0215",
         "affiliation": "Pennsylvania State University",
-        "lat": 40.812897,
-        "lon": -77.871057,
+        "lat": 40.7982133,
+        "lon": -77.8599084,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 14249.0,
         "co2e_low_kg": 14249.0,
         "co2e_high_kg": 41322.2,
         "co2e_per_speaker_kg": 3562.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0216",
         "affiliation": "Pondicherry University",
-        "lat": 12.022868,
-        "lon": 79.850942,
+        "lat": 12.0182619,
+        "lon": 79.8568461,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2877.3,
         "co2e_low_kg": 2877.3,
         "co2e_high_kg": 8344.2,
         "co2e_per_speaker_kg": 2877.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0217",
         "affiliation": "Princeton University",
-        "lat": 40.338675,
-        "lon": -74.658366,
+        "lat": 40.3430942,
+        "lon": -74.65507389999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3619.7,
         "co2e_low_kg": 3619.7,
         "co2e_high_kg": 10497.0,
         "co2e_per_speaker_kg": 3619.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0218",
         "affiliation": "Qatar University",
-        "lat": 25.371971,
-        "lon": 51.487958,
+        "lat": 25.376139,
+        "lon": 51.48307390000001,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3709.0,
         "co2e_low_kg": 3709.0,
         "co2e_high_kg": 10756.1,
         "co2e_per_speaker_kg": 3709.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0219",
         "affiliation": "Queensland Museum",
-        "lat": -27.472776,
-        "lon": 153.017984,
+        "lat": -27.473109,
+        "lon": 153.0181887,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 629.2,
         "co2e_low_kg": 629.2,
         "co2e_high_kg": 1824.8,
         "co2e_per_speaker_kg": 629.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0220",
         "affiliation": "Queensland University of Technology",
-        "lat": -27.542195,
-        "lon": 153.064953,
+        "lat": -27.4778241,
+        "lon": 153.0274859,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 3146.2,
         "co2e_low_kg": 3146.2,
         "co2e_high_kg": 9123.8,
         "co2e_per_speaker_kg": 629.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0221",
         "affiliation": "Ramkhamhaeng University",
-        "lat": 13.756202,
-        "lon": 100.61745,
+        "lat": 13.7587013,
+        "lon": 100.6181488,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 19560.9,
         "co2e_low_kg": 19560.9,
         "co2e_high_kg": 56726.6,
         "co2e_per_speaker_kg": 2445.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0222",
         "affiliation": "Randolph-Macon College",
-        "lat": 37.76251,
-        "lon": -77.479542,
+        "lat": 37.7631796,
+        "lon": -77.4773666,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3474.1,
         "co2e_low_kg": 3474.1,
         "co2e_high_kg": 10074.9,
         "co2e_per_speaker_kg": 3474.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0223",
         "affiliation": "Rare - Indonesia",
-        "lat": -8.145506,
-        "lon": 114.651509,
+        "lat": -6.5853769,
+        "lon": 106.8010277,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1719.7,
         "co2e_low_kg": 1719.7,
         "co2e_high_kg": 4987.0,
         "co2e_per_speaker_kg": 1719.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0224",
         "affiliation": "Red Sea Global",
-        "lat": 25.363029,
-        "lon": 36.906278,
+        "lat": 25.3630291,
+        "lon": 36.9062778,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3967.9,
         "co2e_low_kg": 3967.9,
         "co2e_high_kg": 11507.0,
         "co2e_per_speaker_kg": 3967.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0225",
         "affiliation": "Reef Check Indonesia",
-        "lat": -2.483383,
-        "lon": 117.890285,
+        "lat": -8.6848473,
+        "lon": 115.2425564,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1817.1,
         "co2e_low_kg": 1817.1,
         "co2e_high_kg": 5269.5,
         "co2e_per_speaker_kg": 1817.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0226",
         "affiliation": "Reef Conservation",
-        "lat": -22.436954,
-        "lon": 149.728725,
+        "lat": -19.9902655,
+        "lon": 57.59912669999999,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 1985.0,
         "co2e_low_kg": 1985.0,
         "co2e_high_kg": 5756.6,
         "co2e_per_speaker_kg": 992.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0227",
         "affiliation": "Reef Explorer - Fiji",
-        "lat": -18.12397,
-        "lon": 179.012274,
+        "lat": -17.713371,
+        "lon": 178.065032,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 587.0,
         "co2e_low_kg": 587.0,
         "co2e_high_kg": 1702.4,
         "co2e_per_speaker_kg": 587.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0228",
         "affiliation": "Rosenstiel School of Marine, Atmospheric and Earth Science",
-        "lat": 25.732586,
-        "lon": -80.162756,
+        "lat": 25.7324169,
+        "lon": -80.1636566,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3300.3,
         "co2e_low_kg": 3300.3,
         "co2e_high_kg": 9570.8,
         "co2e_per_speaker_kg": 3300.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0229",
         "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science",
-        "lat": 25.732586,
-        "lon": -80.162756,
+        "lat": 25.7324169,
+        "lon": -80.1636566,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6600.5,
         "co2e_low_kg": 6600.5,
         "co2e_high_kg": 19141.6,
         "co2e_per_speaker_kg": 3300.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0230",
         "affiliation": "Royal Netherlands Institute for Sea Research",
-        "lat": 53.002859,
-        "lon": 4.785892,
+        "lat": 53.0028595,
+        "lon": 4.7858923,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9258.9,
         "co2e_low_kg": 9258.9,
         "co2e_high_kg": 26850.7,
         "co2e_per_speaker_kg": 4629.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0231",
-        "affiliation": "Ruhr University - Bochum",
-        "lat": 51.444158,
-        "lon": 7.261005,
+        "affiliation": "Ruhr University",
+        "lat": 51.444419,
+        "lon": 7.2613027,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4621.3,
         "co2e_low_kg": 4621.3,
         "co2e_high_kg": 13401.7,
         "co2e_per_speaker_kg": 4621.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0232",
         "affiliation": "Ruhuna University",
-        "lat": 6.069246,
-        "lon": 80.226339,
+        "lat": 5.9383232,
+        "lon": 80.5764962,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2780.5,
         "co2e_low_kg": 2780.5,
         "co2e_high_kg": 8063.3,
         "co2e_per_speaker_kg": 2780.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0233",
         "affiliation": "San Diego State University",
-        "lat": 32.776153,
-        "lon": -117.073304,
+        "lat": 32.7754647,
+        "lon": -117.0711887,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 8022.1,
         "co2e_low_kg": 8022.1,
         "co2e_high_kg": 23264.1,
         "co2e_per_speaker_kg": 2674.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0234",
         "affiliation": "Saudi Aramco",
-        "lat": 23.949402,
-        "lon": 38.292046,
+        "lat": 23.9494015,
+        "lon": 38.2920459,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3967.9,
         "co2e_low_kg": 3967.9,
         "co2e_high_kg": 11507.0,
         "co2e_per_speaker_kg": 3967.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0235",
         "affiliation": "Scripps Institution of Oceanography",
-        "lat": 32.865049,
-        "lon": -117.254067,
+        "lat": 32.8681401,
+        "lon": -117.2503233,
         "speaker_count": 11,
         "travel_attendees": 11,
         "co2e_kg": 29414.3,
         "co2e_low_kg": 29414.3,
         "co2e_high_kg": 85301.6,
         "co2e_per_speaker_kg": 2674.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0236",
         "affiliation": "Sea Education Association",
-        "lat": 41.548421,
-        "lon": -70.645018,
+        "lat": 41.5486144,
+        "lon": -70.64535339999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3684.5,
         "co2e_low_kg": 3684.5,
         "co2e_high_kg": 10685.1,
         "co2e_per_speaker_kg": 3684.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0237",
         "affiliation": "Sea Women of Melanesia Inc",
-        "lat": -5.681607,
-        "lon": 144.248908,
+        "lat": -8.190185699999999,
+        "lon": 152.8264684,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1127.7,
         "co2e_low_kg": 1127.7,
         "co2e_high_kg": 3270.2,
         "co2e_per_speaker_kg": 1127.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0238",
@@ -3164,15 +3360,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0239",
         "affiliation": "Seychelles Islands Foundation",
-        "lat": -4.630578,
-        "lon": 55.456585,
+        "lat": -4.679574,
+        "lon": 55.491977,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3117.3,
         "co2e_low_kg": 3117.3,
         "co2e_high_kg": 9040.2,
         "co2e_per_speaker_kg": 3117.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0240",
@@ -3190,98 +3387,105 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0241",
         "affiliation": "Shantou University",
-        "lat": 23.416325,
-        "lon": 116.629069,
+        "lat": 23.409312,
+        "lon": 116.63429,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2310.0,
         "co2e_low_kg": 2310.0,
         "co2e_high_kg": 6699.0,
         "co2e_per_speaker_kg": 2310.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0242",
         "affiliation": "Shenzhen MSU-BIT University",
-        "lat": 22.681917,
-        "lon": 114.200338,
+        "lat": 22.6826092,
+        "lon": 114.2056483,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2348.4,
         "co2e_low_kg": 2348.4,
         "co2e_high_kg": 6810.4,
         "co2e_per_speaker_kg": 2348.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0243",
         "affiliation": "Shoals Rodrigues",
-        "lat": -19.68269,
-        "lon": 63.417569,
+        "lat": -19.6827533,
+        "lon": 63.4176398,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2766.6,
         "co2e_low_kg": 2766.6,
         "co2e_high_kg": 8023.1,
         "co2e_per_speaker_kg": 2766.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0244",
         "affiliation": "Silliman University",
-        "lat": 9.313192,
-        "lon": 123.305884,
+        "lat": 9.3131921,
+        "lon": 123.3058842,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 7617.6,
         "co2e_low_kg": 7617.6,
         "co2e_high_kg": 22090.9,
         "co2e_per_speaker_kg": 1904.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0245",
         "affiliation": "Smithsonian Environmental Research Center",
-        "lat": 38.879374,
-        "lon": -76.55773,
+        "lat": 38.90156229999999,
+        "lon": -76.5564251,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 10660.5,
         "co2e_low_kg": 10660.5,
         "co2e_high_kg": 30915.4,
         "co2e_per_speaker_kg": 3553.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0246",
         "affiliation": "Smithsonian Institution",
-        "lat": 36.57855,
-        "lon": -118.292367,
+        "lat": 38.8860146,
+        "lon": -77.0213921,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5416.5,
         "co2e_low_kg": 5416.5,
         "co2e_high_kg": 15707.9,
         "co2e_per_speaker_kg": 2708.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0247",
         "affiliation": "Smithsonian Tropical Research Center",
-        "lat": 8.963233,
-        "lon": -79.543661,
+        "lat": 38.8860146,
+        "lon": -77.0213921,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3065.8,
         "co2e_low_kg": 3065.8,
         "co2e_high_kg": 8890.7,
         "co2e_per_speaker_kg": 3065.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0248",
         "affiliation": "Smithsonian Tropical Research Institute",
-        "lat": 9.352374,
+        "lat": 9.3523736,
         "lon": -82.256601,
         "speaker_count": 7,
         "travel_attendees": 7,
@@ -3289,12 +3493,13 @@ export const EMISSIONS_DATA = {
         "co2e_low_kg": 20896.5,
         "co2e_high_kg": 60600.0,
         "co2e_per_speaker_kg": 2985.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0249",
-        "affiliation": "Smithsonian Tropical Research Institute - Panama",
-        "lat": 9.352374,
+        "affiliation": "Smithsonian Tropical Research Institute",
+        "lat": 9.3523736,
         "lon": -82.256601,
         "speaker_count": 1,
         "travel_attendees": 1,
@@ -3302,163 +3507,176 @@ export const EMISSIONS_DATA = {
         "co2e_low_kg": 2985.2,
         "co2e_high_kg": 8657.1,
         "co2e_per_speaker_kg": 2985.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0251",
         "affiliation": "Southeast Fisheries Science Center",
-        "lat": 25.73339,
-        "lon": -80.160691,
+        "lat": 25.7333896,
+        "lon": -80.1606913,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3306.8,
         "co2e_low_kg": 3306.8,
         "co2e_high_kg": 9589.8,
         "co2e_per_speaker_kg": 3306.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0252",
         "affiliation": "Southern Cross University",
-        "lat": -37.810021,
-        "lon": 144.968908,
+        "lat": -28.8193845,
+        "lon": 153.2994738,
         "speaker_count": 14,
         "travel_attendees": 14,
         "co2e_kg": 10122.4,
         "co2e_low_kg": 10122.4,
         "co2e_high_kg": 29355.0,
         "co2e_per_speaker_kg": 723.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0253",
-        "affiliation": "Spanish National Research Council",
-        "lat": 50.838027,
-        "lon": 4.369089,
+        "affiliation": "Spanish National Research",
+        "lat": 40.46366700000001,
+        "lon": -3.74922,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4666.6,
         "co2e_low_kg": 4666.6,
         "co2e_high_kg": 13533.3,
         "co2e_per_speaker_kg": 4666.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0254",
         "affiliation": "Stanford University",
-        "lat": 37.431314,
-        "lon": -122.169365,
+        "lat": 37.42766,
+        "lon": -122.17006,
         "speaker_count": 6,
         "travel_attendees": 6,
         "co2e_kg": 16249.5,
         "co2e_low_kg": 16249.5,
         "co2e_high_kg": 47123.6,
         "co2e_per_speaker_kg": 2708.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0255",
         "affiliation": "State University of New York",
-        "lat": 40.729205,
-        "lon": -73.995015,
+        "lat": 40.72951339999999,
+        "lon": -73.9964609,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3626.5,
         "co2e_low_kg": 3626.5,
         "co2e_high_kg": 10516.8,
         "co2e_per_speaker_kg": 3626.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0256",
         "affiliation": "State of Hawai'i",
-        "lat": 21.307333,
-        "lon": -157.85699,
+        "lat": 19.708546749900975,
+        "lon": -155.59210907543473,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3617.5,
         "co2e_low_kg": 3617.5,
         "co2e_high_kg": 10490.8,
         "co2e_per_speaker_kg": 1808.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0257",
         "affiliation": "Stazione Zoologica Anton Dohrn",
-        "lat": 40.832735,
-        "lon": 14.235336,
+        "lat": 40.8327613,
+        "lon": 14.2352737,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4663.7,
         "co2e_low_kg": 4663.7,
         "co2e_high_kg": 13524.6,
         "co2e_per_speaker_kg": 4663.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0258",
         "affiliation": "Stony Brook University",
-        "lat": 40.909081,
-        "lon": -73.120552,
+        "lat": 40.9132244,
+        "lon": -73.1261091,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 10881.1,
         "co2e_low_kg": 10881.1,
         "co2e_high_kg": 31555.2,
         "co2e_per_speaker_kg": 3627.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0259",
         "affiliation": "Sultan Qaboos University",
-        "lat": 23.593874,
-        "lon": 58.171335,
+        "lat": 23.5912214,
+        "lon": 58.17212660000001,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3534.4,
         "co2e_low_kg": 3534.4,
         "co2e_high_kg": 10249.7,
         "co2e_per_speaker_kg": 3534.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0260",
         "affiliation": "Swedish University of Agricultural Sciences",
-        "lat": 63.820158,
-        "lon": 20.314666,
+        "lat": 59.8163458,
+        "lon": 17.6594849,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4231.2,
         "co2e_low_kg": 4231.2,
         "co2e_high_kg": 12270.5,
         "co2e_per_speaker_kg": 4231.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0261",
-        "affiliation": "Talanoa Consulting Fiji",
-        "lat": -18.12397,
-        "lon": 179.012274,
+        "affiliation": "Talanoa Consulting",
+        "lat": -18.1441605,
+        "lon": 178.4306091,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 587.0,
         "co2e_low_kg": 587.0,
         "co2e_high_kg": 1702.4,
         "co2e_per_speaker_kg": 587.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0262",
         "affiliation": "Technical University of Denmark",
-        "lat": 55.785415,
-        "lon": 12.520215,
+        "lat": 55.7860512,
+        "lon": 12.5233698,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4477.4,
         "co2e_low_kg": 4477.4,
         "co2e_high_kg": 12984.5,
         "co2e_per_speaker_kg": 4477.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0263",
@@ -3476,132 +3694,142 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0264",
         "affiliation": "Tel Aviv University",
-        "lat": 32.112358,
-        "lon": 34.805013,
+        "lat": 32.113496,
+        "lon": 34.803609,
         "speaker_count": 12,
         "travel_attendees": 12,
         "co2e_kg": 49987.7,
         "co2e_low_kg": 49987.7,
         "co2e_high_kg": 144964.3,
         "co2e_per_speaker_kg": 4165.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0265",
         "affiliation": "Texas A&M University",
-        "lat": 30.610862,
-        "lon": -96.352061,
+        "lat": 30.6186625,
+        "lon": -96.3364251,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9142.5,
         "co2e_low_kg": 9142.5,
         "co2e_high_kg": 26513.3,
         "co2e_per_speaker_kg": 3047.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0266",
-        "affiliation": "Texas A&M University - Corpus Christi",
-        "lat": 27.712751,
-        "lon": -97.323388,
+        "affiliation": "Texas A&M University",
+        "lat": 30.6186625,
+        "lon": -96.3364251,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5935.9,
         "co2e_low_kg": 5935.9,
         "co2e_high_kg": 17214.2,
         "co2e_per_speaker_kg": 2968.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0267",
-        "affiliation": "Texas A&M University - Galveston",
-        "lat": 29.3167,
-        "lon": -94.818726,
+        "affiliation": "Texas A&M University",
+        "lat": 30.6186625,
+        "lon": -96.3364251,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3043.6,
         "co2e_low_kg": 3043.6,
         "co2e_high_kg": 8826.4,
         "co2e_per_speaker_kg": 3043.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0268",
         "affiliation": "Texas State University",
-        "lat": 29.891088,
-        "lon": -97.937621,
+        "lat": 29.888411,
+        "lon": -97.938351,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9010.2,
         "co2e_low_kg": 9010.2,
         "co2e_high_kg": 26129.5,
         "co2e_per_speaker_kg": 3003.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0269",
         "affiliation": "Tohoku University",
-        "lat": 38.253193,
-        "lon": 140.829239,
+        "lat": 38.253834,
+        "lon": 140.874074,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2309.2,
         "co2e_low_kg": 2309.2,
         "co2e_high_kg": 6696.5,
         "co2e_per_speaker_kg": 2309.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0270",
         "affiliation": "Tokyo Metropolitan University",
-        "lat": 35.620037,
-        "lon": 139.382867,
+        "lat": 35.6172487,
+        "lon": 139.3771559,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4511.1,
         "co2e_low_kg": 4511.1,
         "co2e_high_kg": 13082.3,
         "co2e_per_speaker_kg": 2255.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0271",
         "affiliation": "Trent University",
-        "lat": 44.357293,
-        "lon": -78.289382,
+        "lat": 44.3572933,
+        "lon": -78.2893817,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3541.0,
         "co2e_low_kg": 3541.0,
         "co2e_high_kg": 10269.0,
         "co2e_per_speaker_kg": 3541.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0272",
         "affiliation": "Tulane University",
-        "lat": 29.94122,
-        "lon": -90.120101,
+        "lat": 29.9407282,
+        "lon": -90.12031669999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3153.2,
         "co2e_low_kg": 3153.2,
         "co2e_high_kg": 9144.3,
         "co2e_per_speaker_kg": 3153.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0273",
         "affiliation": "Tuvalu Meteorological Service",
-        "lat": -8.525537,
-        "lon": 179.196703,
+        "lat": -7.109534999999999,
+        "lon": 177.64933,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 877.0,
         "co2e_low_kg": 877.0,
         "co2e_high_kg": 2543.2,
         "co2e_per_speaker_kg": 877.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0274",
@@ -3632,15 +3860,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0276",
         "affiliation": "UP Marine Science Institute",
-        "lat": 14.650674,
-        "lon": 121.069113,
+        "lat": 14.6506435,
+        "lon": 121.0690557,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2047.7,
         "co2e_low_kg": 2047.7,
         "co2e_high_kg": 5938.2,
         "co2e_per_speaker_kg": 2047.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0277",
@@ -3657,29 +3886,31 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0278",
-        "affiliation": "United Nations Development Programme - Mauritius & Seychelles",
-        "lat": -4.657498,
-        "lon": 55.454015,
+        "affiliation": "United Nations Development Programme - Mauritius & Seychelles Jaeseok",
+        "lat": -4.679574,
+        "lon": 55.491977,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3117.3,
         "co2e_low_kg": 3117.3,
         "co2e_high_kg": 9040.2,
         "co2e_per_speaker_kg": 3117.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0279",
         "affiliation": "United States Geological Survey",
-        "lat": 38.893748,
-        "lon": -77.042288,
+        "lat": 38.8937481,
+        "lon": -77.0422884,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 10627.4,
         "co2e_low_kg": 10627.4,
         "co2e_high_kg": 30819.6,
         "co2e_per_speaker_kg": 3542.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0280",
@@ -3697,41 +3928,44 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0281",
         "affiliation": "Universidad Central de Venezuela",
-        "lat": 10.490179,
-        "lon": -66.891663,
+        "lat": 10.4869942,
+        "lon": -66.894094,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6741.6,
         "co2e_low_kg": 6741.6,
         "co2e_high_kg": 19550.6,
         "co2e_per_speaker_kg": 3370.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0282",
         "affiliation": "Universidad De Guadalajara",
-        "lat": 19.720008,
-        "lon": -101.251118,
+        "lat": 20.6747257,
+        "lon": -103.3589506,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2772.3,
         "co2e_low_kg": 2772.3,
         "co2e_high_kg": 8039.8,
         "co2e_per_speaker_kg": 2772.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0283",
         "affiliation": "Universidad Del Magdalena",
-        "lat": 11.224103,
-        "lon": -74.185597,
+        "lat": 11.2262461,
+        "lon": -74.1873608,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3200.2,
         "co2e_low_kg": 3200.2,
         "co2e_high_kg": 9280.5,
         "co2e_per_speaker_kg": 3200.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0284",
@@ -3762,80 +3996,86 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0286",
         "affiliation": "Universidad San Francisco de Quito",
-        "lat": -0.196861,
-        "lon": -78.435916,
+        "lat": -0.1970509,
+        "lon": -78.4360876,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2931.1,
         "co2e_low_kg": 2931.1,
         "co2e_high_kg": 8500.2,
         "co2e_per_speaker_kg": 2931.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0287",
         "affiliation": "Universidad del Valle",
-        "lat": 3.43478,
-        "lon": -76.542534,
+        "lat": 3.3747602,
+        "lon": -76.5343899,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3039.2,
         "co2e_low_kg": 3039.2,
         "co2e_high_kg": 8813.8,
         "co2e_per_speaker_kg": 3039.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0288",
         "affiliation": "Universidade Federal Fluminense",
-        "lat": -22.532363,
-        "lon": -43.207621,
+        "lat": -22.5323633,
+        "lon": -43.2076213,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3128.3,
         "co2e_low_kg": 3128.3,
         "co2e_high_kg": 9072.2,
         "co2e_per_speaker_kg": 3128.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0289",
         "affiliation": "Universidade Federal de Santa Catarina",
-        "lat": -27.603413,
-        "lon": -48.522442,
+        "lat": -27.5999578,
+        "lon": -48.5194134,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2938.7,
         "co2e_low_kg": 2938.7,
         "co2e_high_kg": 8522.1,
         "co2e_per_speaker_kg": 2938.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0290",
         "affiliation": "Universidade Federal do Rio Grande do Norte",
-        "lat": -5.837799,
-        "lon": -35.203978,
+        "lat": -5.839721,
+        "lon": -35.2016966,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 18269.5,
         "co2e_low_kg": 18269.5,
         "co2e_high_kg": 52981.5,
         "co2e_per_speaker_kg": 3653.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0291",
         "affiliation": "Universidade Federal do Rio de Janeiro",
-        "lat": -22.85335,
-        "lon": -43.23317,
+        "lat": -22.8674532,
+        "lon": -43.2151914,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9385.0,
         "co2e_low_kg": 9385.0,
         "co2e_high_kg": 27216.5,
         "co2e_per_speaker_kg": 3128.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0292",
@@ -3853,28 +4093,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0293",
         "affiliation": "Universidade do Estado do Rio de Janeiro",
-        "lat": -22.286812,
-        "lon": -42.542038,
+        "lat": -22.9111739,
+        "lon": -43.2361323,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6256.7,
         "co2e_low_kg": 6256.7,
         "co2e_high_kg": 18144.3,
         "co2e_per_speaker_kg": 3128.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0294",
         "affiliation": "Universitat de Barcelona",
-        "lat": 41.386859,
-        "lon": 2.163478,
+        "lat": 41.38667239999999,
+        "lon": 2.1638661,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4905.6,
         "co2e_low_kg": 4905.6,
         "co2e_high_kg": 14226.3,
         "co2e_per_speaker_kg": 4905.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0295",
@@ -3918,132 +4160,142 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0298",
         "affiliation": "Universiti Kebangsaan Malaysia",
-        "lat": 2.924081,
-        "lon": 101.781222,
+        "lat": 2.9289681,
+        "lon": 101.7800927,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2220.5,
         "co2e_low_kg": 2220.5,
         "co2e_high_kg": 6439.5,
         "co2e_per_speaker_kg": 2220.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0299",
         "affiliation": "Universiti Malaysia Terengganu",
-        "lat": 5.409421,
-        "lon": 103.088738,
+        "lat": 5.407184500000001,
+        "lon": 103.0883203,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4533.1,
         "co2e_low_kg": 4533.1,
         "co2e_high_kg": 13146.1,
         "co2e_per_speaker_kg": 2266.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0300",
         "affiliation": "Universiti Sains Malaysia",
-        "lat": 5.357432,
-        "lon": 100.30355,
+        "lat": 5.3555943,
+        "lon": 100.3025455,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2297.5,
         "co2e_low_kg": 2297.5,
         "co2e_high_kg": 6662.7,
         "co2e_per_speaker_kg": 2297.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0301",
-        "affiliation": "University College London",
-        "lat": 51.524203,
-        "lon": -0.133001,
+        "affiliation": "University College",
+        "lat": 51.52455920000001,
+        "lon": -0.1340401,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9371.2,
         "co2e_low_kg": 9371.2,
         "co2e_high_kg": 27176.4,
         "co2e_per_speaker_kg": 4685.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0302",
-        "affiliation": "University Heidelberg",
-        "lat": 49.4186,
-        "lon": 8.66924,
+        "affiliation": "University",
+        "lat": 49.41066,
+        "lon": 8.706554299999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4642.9,
         "co2e_low_kg": 4642.9,
         "co2e_high_kg": 13464.6,
         "co2e_per_speaker_kg": 4642.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0303",
-        "affiliation": "University Wuppertal",
-        "lat": 51.244469,
-        "lon": 7.149567,
+        "affiliation": "University",
+        "lat": 51.2445542,
+        "lon": 7.150124399999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4641.1,
         "co2e_low_kg": 4641.1,
         "co2e_high_kg": 13459.0,
         "co2e_per_speaker_kg": 4641.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0304",
         "affiliation": "University of Alabama",
-        "lat": 33.212082,
-        "lon": -87.539674,
+        "lat": 33.2114385,
+        "lon": -87.5401002,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 16386.3,
         "co2e_low_kg": 16386.3,
         "co2e_high_kg": 47520.3,
         "co2e_per_speaker_kg": 3277.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0305",
-        "affiliation": "University of Alabama - Birmingham",
-        "lat": 33.501615,
-        "lon": -86.806048,
+        "affiliation": "University of Alabama",
+        "lat": 33.2114385,
+        "lon": -87.5401002,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3277.3,
         "co2e_low_kg": 3277.3,
         "co2e_high_kg": 9504.1,
         "co2e_per_speaker_kg": 3277.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0306",
         "affiliation": "University of Alberta",
-        "lat": 53.52682,
-        "lon": -113.524494,
+        "lat": 53.5232189,
+        "lon": -113.5263186,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 12416.7,
         "co2e_low_kg": 12416.7,
         "co2e_high_kg": 36008.5,
         "co2e_per_speaker_kg": 3104.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0307",
         "affiliation": "University of Amsterdam",
-        "lat": 52.368133,
-        "lon": 4.889804,
+        "lat": 52.35581819999999,
+        "lon": 4.955726299999999,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 18517.7,
         "co2e_low_kg": 18517.7,
         "co2e_high_kg": 53701.4,
         "co2e_per_speaker_kg": 4629.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0308",
@@ -4062,15 +4314,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0309",
         "affiliation": "University of Arizona",
-        "lat": 32.235698,
-        "lon": -110.951744,
+        "lat": 32.2318981,
+        "lon": -110.9535407,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 11105.4,
         "co2e_low_kg": 11105.4,
         "co2e_high_kg": 32205.8,
         "co2e_per_speaker_kg": 2776.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0310",
@@ -4089,184 +4342,198 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0311",
         "affiliation": "University of Basel",
-        "lat": 47.561265,
-        "lon": 7.575296,
+        "lat": 47.5585281,
+        "lon": 7.5838692,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4694.0,
         "co2e_low_kg": 4694.0,
         "co2e_high_kg": 13612.6,
         "co2e_per_speaker_kg": 4694.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0312",
         "affiliation": "University of Belize",
-        "lat": 17.243932,
-        "lon": -88.760789,
+        "lat": 17.243049,
+        "lon": -88.7605919,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3002.9,
         "co2e_low_kg": 3002.9,
         "co2e_high_kg": 8708.5,
         "co2e_per_speaker_kg": 3002.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0313",
         "affiliation": "University of Berkeley",
-        "lat": 43.032359,
-        "lon": -76.126973,
+        "lat": 37.8712141,
+        "lon": -122.255463,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3604.0,
         "co2e_low_kg": 3604.0,
         "co2e_high_kg": 10451.5,
         "co2e_per_speaker_kg": 3604.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0314",
         "affiliation": "University of Bologna",
-        "lat": 44.498289,
-        "lon": 11.354457,
+        "lat": 44.4968678,
+        "lon": 11.3524094,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4694.1,
         "co2e_low_kg": 4694.1,
         "co2e_high_kg": 13612.9,
         "co2e_per_speaker_kg": 4694.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0315",
         "affiliation": "University of Bremen",
-        "lat": 53.107965,
-        "lon": 8.855665,
+        "lat": 53.1065412,
+        "lon": 8.8553306,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4574.3,
         "co2e_low_kg": 4574.3,
         "co2e_high_kg": 13265.5,
         "co2e_per_speaker_kg": 4574.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0316",
         "affiliation": "University of Bristol",
-        "lat": 51.490558,
-        "lon": -2.630482,
+        "lat": 51.4585376,
+        "lon": -2.6021758,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 18784.0,
         "co2e_low_kg": 18784.0,
         "co2e_high_kg": 54473.6,
         "co2e_per_speaker_kg": 4696.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0317",
         "affiliation": "University of British Columbia",
-        "lat": 49.257891,
-        "lon": -123.242976,
+        "lat": 49.2593121,
+        "lon": -123.2474966,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5797.7,
         "co2e_low_kg": 5797.7,
         "co2e_high_kg": 16813.3,
         "co2e_per_speaker_kg": 2898.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0318",
         "affiliation": "University of California - Berkeley",
-        "lat": 37.8755,
-        "lon": -122.239069,
+        "lat": 37.8712141,
+        "lon": -122.255463,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 18801.8,
         "co2e_low_kg": 18801.8,
         "co2e_high_kg": 54525.2,
         "co2e_per_speaker_kg": 2686.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0319",
         "affiliation": "University of California - Davis",
-        "lat": 38.53379,
-        "lon": -121.790754,
+        "lat": 38.5382322,
+        "lon": -121.7617125,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 10833.0,
         "co2e_low_kg": 10833.0,
         "co2e_high_kg": 31415.7,
         "co2e_per_speaker_kg": 2708.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0320",
         "affiliation": "University of California - Los Angeles",
-        "lat": 34.070878,
-        "lon": -118.44685,
+        "lat": 34.0699182,
+        "lon": -118.4438495,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 18771.5,
         "co2e_low_kg": 18771.5,
         "co2e_high_kg": 54437.5,
         "co2e_per_speaker_kg": 2681.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0321",
         "affiliation": "University of California - Merced",
-        "lat": 37.365182,
-        "lon": -120.422528,
+        "lat": 37.3647478,
+        "lon": -120.4242449,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5416.5,
         "co2e_low_kg": 5416.5,
         "co2e_high_kg": 15707.9,
         "co2e_per_speaker_kg": 2708.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0322",
         "affiliation": "University of California - Riverside",
-        "lat": 33.964258,
-        "lon": -117.33981,
+        "lat": 33.9737055,
+        "lon": -117.3280644,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5398.2,
         "co2e_low_kg": 5398.2,
         "co2e_high_kg": 15654.8,
         "co2e_per_speaker_kg": 2699.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0323",
         "affiliation": "University of California - San Diego",
-        "lat": 32.879244,
-        "lon": -117.231125,
+        "lat": 32.881168,
+        "lon": -117.2343605,
         "speaker_count": 9,
         "travel_attendees": 9,
         "co2e_kg": 24066.3,
         "co2e_low_kg": 24066.3,
         "co2e_high_kg": 69792.2,
         "co2e_per_speaker_kg": 2674.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0324",
         "affiliation": "University of California - Santa Barbara",
-        "lat": 34.414603,
-        "lon": -119.84581,
+        "lat": 34.4139629,
+        "lon": -119.848947,
         "speaker_count": 15,
         "travel_attendees": 15,
         "co2e_kg": 40224.8,
         "co2e_low_kg": 40224.8,
         "co2e_high_kg": 116651.8,
         "co2e_per_speaker_kg": 2681.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0325",
@@ -4285,197 +4552,212 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0326",
         "affiliation": "University of Cambridge",
-        "lat": 52.189092,
-        "lon": 0.121298,
+        "lat": 52.205356,
+        "lon": 0.113168,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 18683.8,
         "co2e_low_kg": 18683.8,
         "co2e_high_kg": 54183.0,
         "co2e_per_speaker_kg": 4670.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0327",
         "affiliation": "University of Chicago",
-        "lat": 41.788124,
-        "lon": -87.604774,
+        "lat": 41.7904484,
+        "lon": -87.6003953,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3364.4,
         "co2e_low_kg": 3364.4,
         "co2e_high_kg": 9756.6,
         "co2e_per_speaker_kg": 3364.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0328",
-        "affiliation": "University of Copenhagen",
-        "lat": 55.68015,
-        "lon": 12.572327,
+        "affiliation": "University of Copenhagen Jorg-Dieter",
+        "lat": 55.6801409,
+        "lon": 12.5715182,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4477.4,
         "co2e_low_kg": 4477.4,
         "co2e_high_kg": 12984.5,
         "co2e_per_speaker_kg": 4477.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0329",
         "affiliation": "University of Dar Es Salaam",
-        "lat": -6.780016,
-        "lon": 39.205211,
+        "lat": -6.7791817,
+        "lon": 39.204323,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3393.6,
         "co2e_low_kg": 3393.6,
         "co2e_high_kg": 9841.4,
         "co2e_per_speaker_kg": 3393.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0330",
         "affiliation": "University of Delaware",
-        "lat": 39.680284,
-        "lon": -75.753098,
+        "lat": 39.6809151,
+        "lon": -75.7523313,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 10859.0,
         "co2e_low_kg": 10859.0,
         "co2e_high_kg": 31491.0,
         "co2e_per_speaker_kg": 3619.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0331",
         "affiliation": "University of Derby",
-        "lat": 52.937955,
-        "lon": -1.497999,
+        "lat": 52.9379632,
+        "lon": -1.497392,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 18605.7,
         "co2e_low_kg": 18605.7,
         "co2e_high_kg": 53956.5,
         "co2e_per_speaker_kg": 4651.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0332",
         "affiliation": "University of Exeter",
-        "lat": 50.736937,
-        "lon": -3.534735,
+        "lat": 50.7371369,
+        "lon": -3.5351475,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9393.9,
         "co2e_low_kg": 9393.9,
         "co2e_high_kg": 27242.3,
         "co2e_per_speaker_kg": 4696.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0333",
         "affiliation": "University of Florida",
-        "lat": 29.641188,
-        "lon": -82.35623,
+        "lat": 29.6465428,
+        "lon": -82.3533266,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6684.2,
         "co2e_low_kg": 6684.2,
         "co2e_high_kg": 19384.3,
         "co2e_per_speaker_kg": 3342.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0334",
         "affiliation": "University of Geneva",
-        "lat": 44.227697,
-        "lon": -76.49852,
+        "lat": 46.199444,
+        "lon": 6.1451157,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3631.9,
         "co2e_low_kg": 3631.9,
         "co2e_high_kg": 10532.7,
         "co2e_per_speaker_kg": 3631.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0335",
         "affiliation": "University of Georgia",
-        "lat": 33.940428,
-        "lon": -83.373068,
+        "lat": 33.9423394,
+        "lon": -83.37242420000001,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6653.0,
         "co2e_low_kg": 6653.0,
         "co2e_high_kg": 19293.6,
         "co2e_per_speaker_kg": 3326.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0336",
         "affiliation": "University of Guam",
-        "lat": 13.43238,
-        "lon": 144.802923,
+        "lat": 13.4322112,
+        "lon": 144.8033219,
         "speaker_count": 19,
         "travel_attendees": 19,
         "co2e_kg": 71441.9,
         "co2e_low_kg": 71441.9,
         "co2e_high_kg": 207181.5,
         "co2e_per_speaker_kg": 3760.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0337",
         "affiliation": "University of Haifa",
-        "lat": 32.760946,
-        "lon": 35.020464,
+        "lat": 32.7614296,
+        "lon": 35.0195184,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 8331.3,
         "co2e_low_kg": 8331.3,
         "co2e_high_kg": 24160.7,
         "co2e_per_speaker_kg": 4165.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0338",
         "affiliation": "University of Hawai'i",
-        "lat": 21.298279,
-        "lon": -157.818693,
+        "lat": 21.2998224,
+        "lon": -157.8182521,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 14470.0,
         "co2e_low_kg": 14470.0,
         "co2e_high_kg": 41963.0,
         "co2e_per_speaker_kg": 1808.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0339",
-        "affiliation": "University of Hawai'i - Hilo",
-        "lat": 19.699987,
-        "lon": -155.084519,
+        "affiliation": "University of Hawai'i",
+        "lat": 21.2998224,
+        "lon": -157.8182521,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3601.2,
         "co2e_low_kg": 3601.2,
         "co2e_high_kg": 10443.5,
         "co2e_per_speaker_kg": 1800.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0340",
-        "affiliation": "University of Hawai'i - Manoa",
-        "lat": 21.298279,
-        "lon": -157.818693,
+        "affiliation": "University of Hawai'i",
+        "lat": 21.2998224,
+        "lon": -157.8182521,
         "speaker_count": 31,
         "travel_attendees": 31,
         "co2e_kg": 56071.2,
         "co2e_low_kg": 56071.2,
         "co2e_high_kg": 162606.6,
         "co2e_per_speaker_kg": 1808.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0341",
@@ -4492,7 +4774,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0342",
-        "affiliation": "University of Hawaii - Manoa",
+        "affiliation": "University of Hawaii - Manoa Margot",
         "lat": 21.298279,
         "lon": -157.818693,
         "speaker_count": 3,
@@ -4506,15 +4788,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0343",
         "affiliation": "University of Hawaii at Hilo",
-        "lat": 19.7,
-        "lon": -155.0845,
+        "lat": 19.6997798,
+        "lon": -155.0848929,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1800.6,
         "co2e_low_kg": 1800.6,
         "co2e_high_kg": 5221.8,
         "co2e_per_speaker_kg": 1800.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0344",
@@ -4533,28 +4816,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0345",
         "affiliation": "University of Konstanz",
-        "lat": 47.689957,
-        "lon": 9.188262,
+        "lat": 47.6898803,
+        "lon": 9.187944200000002,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 32731.8,
         "co2e_low_kg": 32731.8,
         "co2e_high_kg": 94922.2,
         "co2e_per_speaker_kg": 4676.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0346",
         "affiliation": "University of Leeds",
-        "lat": 53.806572,
-        "lon": -1.555785,
+        "lat": 53.8079743,
+        "lon": -1.5533339,
         "speaker_count": 10,
         "travel_attendees": 10,
         "co2e_kg": 46235.8,
         "co2e_low_kg": 46235.8,
         "co2e_high_kg": 134083.8,
         "co2e_per_speaker_kg": 4623.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0347",
@@ -4586,15 +4871,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0349",
         "affiliation": "University of Lisbon",
-        "lat": 38.752796,
-        "lon": -9.157028,
+        "lat": 38.7526578,
+        "lon": -9.158244999999999,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 35039.6,
         "co2e_low_kg": 35039.6,
         "co2e_high_kg": 101614.9,
         "co2e_per_speaker_kg": 5005.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0350",
@@ -4612,119 +4898,128 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0351",
         "affiliation": "University of Maryland",
-        "lat": 48.098982,
-        "lon": 11.582349,
+        "lat": 38.9869183,
+        "lon": -76.9425543,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 13889.9,
         "co2e_low_kg": 13889.9,
         "co2e_high_kg": 40280.7,
         "co2e_per_speaker_kg": 4630.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0352",
         "affiliation": "University of Maryland Center for Environmental Sciences- Institute of Marine and Environmental Technology",
-        "lat": 39.290882,
-        "lon": -76.610759,
+        "lat": 38.9869183,
+        "lon": -76.9425543,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3553.5,
         "co2e_low_kg": 3553.5,
         "co2e_high_kg": 10305.1,
         "co2e_per_speaker_kg": 3553.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0353",
         "affiliation": "University of Massachusetts - Boston",
-        "lat": 42.314068,
-        "lon": -71.038713,
+        "lat": 42.3141992,
+        "lon": -71.0419953,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3698.3,
         "co2e_low_kg": 3698.3,
         "co2e_high_kg": 10725.2,
         "co2e_per_speaker_kg": 3698.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0354",
         "affiliation": "University of Massachusetts Lowell",
-        "lat": 42.65191,
-        "lon": -71.317363,
+        "lat": 42.6552587,
+        "lon": -71.3247164,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3694.5,
         "co2e_low_kg": 3694.5,
         "co2e_high_kg": 10714.2,
         "co2e_per_speaker_kg": 3694.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0355",
         "affiliation": "University of Mataram",
-        "lat": -8.582251,
-        "lon": 116.094385,
+        "lat": -8.587232600000002,
+        "lon": 116.092239,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1694.9,
         "co2e_low_kg": 1694.9,
         "co2e_high_kg": 4915.1,
         "co2e_per_speaker_kg": 1694.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0356",
-        "affiliation": "University of Mauritius",
-        "lat": -20.234514,
-        "lon": 57.497657,
+        "affiliation": "University",
+        "lat": -20.2349416,
+        "lon": 57.4962994,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 22132.7,
         "co2e_low_kg": 22132.7,
         "co2e_high_kg": 64184.9,
         "co2e_per_speaker_kg": 2766.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0357",
         "affiliation": "University of Melbourne",
-        "lat": -37.824137,
-        "lon": 144.917089,
+        "lat": -37.7983459,
+        "lon": 144.960974,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 5784.2,
         "co2e_low_kg": 5784.2,
         "co2e_high_kg": 16774.3,
         "co2e_per_speaker_kg": 723.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0358",
-        "affiliation": "University of Miami",
-        "lat": 25.717272,
-        "lon": -80.278707,
+        "affiliation": "University",
+        "lat": 25.7169568,
+        "lon": -80.2798198,
         "speaker_count": 29,
         "travel_attendees": 29,
         "co2e_kg": 95898.4,
         "co2e_low_kg": 95898.4,
         "co2e_high_kg": 278105.2,
         "co2e_per_speaker_kg": 3306.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0359",
         "affiliation": "University of Miami / NOAA",
-        "lat": 25.754489,
-        "lon": -80.383621,
+        "lat": 25.7169568,
+        "lon": -80.2798198,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3306.8,
         "co2e_low_kg": 3306.8,
         "co2e_high_kg": 9589.8,
         "co2e_per_speaker_kg": 3306.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0360",
@@ -4754,68 +5049,73 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0362",
-        "affiliation": "University of Michigan",
-        "lat": 42.294214,
-        "lon": -83.710039,
+        "affiliation": "University",
+        "lat": 42.277145,
+        "lon": -83.7382071,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 10361.4,
         "co2e_low_kg": 10361.4,
         "co2e_high_kg": 30048.1,
         "co2e_per_speaker_kg": 3453.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0363",
-        "affiliation": "University of Michigan - Ann Arbor",
-        "lat": 42.294214,
-        "lon": -83.710039,
+        "affiliation": "University of Michigan",
+        "lat": 42.277145,
+        "lon": -83.7382071,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3453.8,
         "co2e_low_kg": 3453.8,
         "co2e_high_kg": 10016.0,
         "co2e_per_speaker_kg": 3453.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0364",
         "affiliation": "University of Milan-Bicocca",
-        "lat": 45.515245,
-        "lon": 9.212836,
+        "lat": 45.5182898,
+        "lon": 9.2137614,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4716.9,
         "co2e_low_kg": 4716.9,
         "co2e_high_kg": 13678.9,
         "co2e_per_speaker_kg": 4716.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0365",
         "affiliation": "University of Milano - Bicocca",
-        "lat": 45.515245,
-        "lon": 9.212836,
+        "lat": 45.5182898,
+        "lon": 9.2137614,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4716.9,
         "co2e_low_kg": 4716.9,
         "co2e_high_kg": 13678.9,
         "co2e_per_speaker_kg": 4716.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0366",
         "affiliation": "University of Milano-Bicocca",
-        "lat": 45.515245,
-        "lon": 9.212836,
+        "lat": 45.5182898,
+        "lon": 9.2137614,
         "speaker_count": 6,
         "travel_attendees": 6,
         "co2e_kg": 28301.2,
         "co2e_low_kg": 28301.2,
         "co2e_high_kg": 82073.4,
         "co2e_per_speaker_kg": 4716.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0367",
@@ -4833,15 +5133,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0368",
         "affiliation": "University of Mississippi",
-        "lat": 34.364612,
-        "lon": -89.539635,
+        "lat": 34.3662492,
+        "lon": -89.5379687,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3190.9,
         "co2e_low_kg": 3190.9,
         "co2e_high_kg": 9253.6,
         "co2e_per_speaker_kg": 3190.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0369",
@@ -4873,210 +5174,226 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0371",
         "affiliation": "University of Moratuwa",
-        "lat": 6.797227,
-        "lon": 79.901224,
+        "lat": 6.7951276,
+        "lon": 79.90086699999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2780.5,
         "co2e_low_kg": 2780.5,
         "co2e_high_kg": 8063.3,
         "co2e_per_speaker_kg": 2780.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0372",
         "affiliation": "University of New Caledonia",
-        "lat": 52.982994,
-        "lon": -122.471169,
+        "lat": -22.2628981,
+        "lon": 166.4032454,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5993.3,
         "co2e_low_kg": 5993.3,
         "co2e_high_kg": 17380.6,
         "co2e_per_speaker_kg": 2996.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0373",
         "affiliation": "University of New Hampshire",
-        "lat": 43.135541,
-        "lon": -70.946182,
+        "lat": 43.138948,
+        "lon": -70.9370252,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3472.5,
         "co2e_low_kg": 3472.5,
         "co2e_high_kg": 10070.2,
         "co2e_per_speaker_kg": 3472.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0374",
         "affiliation": "University of New South Wales",
-        "lat": -33.917599,
-        "lon": 151.231237,
+        "lat": -33.917347,
+        "lon": 151.2312675,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 2959.6,
         "co2e_low_kg": 2959.6,
         "co2e_high_kg": 8583.0,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0375",
         "affiliation": "University of New South Wales - Sydney",
-        "lat": -33.917599,
-        "lon": 151.231237,
+        "lat": -33.917347,
+        "lon": 151.2312675,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 591.9,
         "co2e_low_kg": 591.9,
         "co2e_high_kg": 1716.6,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0376",
         "affiliation": "University of Newcastle",
-        "lat": -32.895031,
-        "lon": 151.697866,
+        "lat": -32.8927718,
+        "lon": 151.7041775,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 1759.4,
         "co2e_low_kg": 1759.4,
         "co2e_high_kg": 5102.3,
         "co2e_per_speaker_kg": 586.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0377",
         "affiliation": "University of North Carolina - Wilmington",
-        "lat": 34.224983,
-        "lon": -77.869077,
+        "lat": 34.224675,
+        "lon": -77.8678426,
         "speaker_count": 12,
         "travel_attendees": 12,
         "co2e_kg": 42964.6,
         "co2e_low_kg": 42964.6,
         "co2e_high_kg": 124597.2,
         "co2e_per_speaker_kg": 3580.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0378",
         "affiliation": "University of Oldenburg",
-        "lat": 53.146727,
-        "lon": 8.181643,
+        "lat": 53.1467333,
+        "lon": 8.183124,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9148.6,
         "co2e_low_kg": 9148.6,
         "co2e_high_kg": 26531.1,
         "co2e_per_speaker_kg": 4574.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0379",
         "affiliation": "University of Otago",
-        "lat": -45.864979,
-        "lon": 170.514615,
+        "lat": -45.8646835,
+        "lon": 170.5144227,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 936.7,
         "co2e_low_kg": 468.3,
         "co2e_high_kg": 1873.3,
         "co2e_per_speaker_kg": 468.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0380",
         "affiliation": "University of Oxford",
-        "lat": 33.650542,
-        "lon": -117.827053,
+        "lat": 51.75704289999999,
+        "lon": -1.2545179,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5360.1,
         "co2e_low_kg": 5360.1,
         "co2e_high_kg": 15544.2,
         "co2e_per_speaker_kg": 2680.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0381",
         "affiliation": "University of Pattimura",
-        "lat": -3.652209,
-        "lon": 128.19163,
+        "lat": -3.6546187,
+        "lon": 128.1956754,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1536.7,
         "co2e_low_kg": 1536.7,
         "co2e_high_kg": 4456.4,
         "co2e_per_speaker_kg": 1536.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0382",
         "affiliation": "University of Pennsylvania",
-        "lat": 39.952215,
-        "lon": -75.195573,
+        "lat": 39.9515013,
+        "lon": -75.1910161,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 10769.4,
         "co2e_low_kg": 10769.4,
         "co2e_high_kg": 31231.2,
         "co2e_per_speaker_kg": 3589.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0383",
         "affiliation": "University of Perpignan - Domitia",
-        "lat": 42.682174,
-        "lon": 2.899098,
+        "lat": 42.6820471,
+        "lon": 2.8988581,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9742.8,
         "co2e_low_kg": 9742.8,
         "co2e_high_kg": 28254.2,
         "co2e_per_speaker_kg": 4871.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0384",
         "affiliation": "University of Plymouth",
-        "lat": 50.3757,
-        "lon": -4.139379,
+        "lat": 50.3758892,
+        "lon": -4.1395842,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 23484.8,
         "co2e_low_kg": 23484.8,
         "co2e_high_kg": 68105.8,
         "co2e_per_speaker_kg": 4696.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0385",
         "affiliation": "University of Porto",
-        "lat": 41.178493,
-        "lon": -8.596197,
+        "lat": 41.1465479,
+        "lon": -8.6156998,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4964.5,
         "co2e_low_kg": 4964.5,
         "co2e_high_kg": 14396.9,
         "co2e_per_speaker_kg": 4964.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0386",
         "affiliation": "University of Puerto Rico - Mayaguez",
-        "lat": 18.213824,
-        "lon": -67.142568,
+        "lat": 18.2108895,
+        "lon": -67.14090250000001,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6600.8,
         "co2e_low_kg": 6600.8,
         "co2e_high_kg": 19142.4,
         "co2e_per_speaker_kg": 3300.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0387",
@@ -5094,28 +5411,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0388",
         "affiliation": "University of Queensland",
-        "lat": -27.498142,
-        "lon": 153.011154,
+        "lat": -27.4976696,
+        "lon": 153.0128661,
         "speaker_count": 35,
         "travel_attendees": 35,
         "co2e_kg": 22023.0,
         "co2e_low_kg": 22023.0,
         "co2e_high_kg": 63866.8,
         "co2e_per_speaker_kg": 629.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0389",
         "affiliation": "University of Rhode Island",
-        "lat": 41.487513,
-        "lon": -71.534309,
+        "lat": 41.4862328,
+        "lon": -71.53067879999999,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 18422.7,
         "co2e_low_kg": 18422.7,
         "co2e_high_kg": 53425.7,
         "co2e_per_speaker_kg": 3684.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0390",
@@ -5134,15 +5453,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0391",
         "affiliation": "University of San Diego",
-        "lat": 32.77263,
-        "lon": -117.189135,
+        "lat": 32.7721681,
+        "lon": -117.1888625,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 8022.1,
         "co2e_low_kg": 8022.1,
         "co2e_high_kg": 23264.1,
         "co2e_per_speaker_kg": 2674.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0392",
@@ -5160,72 +5480,77 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0393",
         "affiliation": "University of South Carolina - Chapel Hill",
-        "lat": 35.904673,
-        "lon": -79.053359,
+        "lat": 35.9049122,
+        "lon": -79.0469134,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3472.5,
         "co2e_low_kg": 3472.5,
         "co2e_high_kg": 10070.2,
         "co2e_per_speaker_kg": 3472.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0394",
         "affiliation": "University of South Florida",
-        "lat": 28.06,
-        "lon": -82.413836,
+        "lat": 28.0622334,
+        "lon": -82.4135057,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6577.8,
         "co2e_low_kg": 6577.8,
         "co2e_high_kg": 19075.6,
         "co2e_per_speaker_kg": 3288.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0395",
         "affiliation": "University of Southampton",
-        "lat": 1.429917,
-        "lon": 103.612177,
+        "lat": 50.935742,
+        "lon": -1.3966381,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4315.2,
         "co2e_low_kg": 4315.2,
         "co2e_high_kg": 12514.1,
         "co2e_per_speaker_kg": 2157.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0396",
-        "affiliation": "University of Southern California",
-        "lat": 34.021869,
-        "lon": -118.285858,
+        "affiliation": "University of Southern California Frank",
+        "lat": 34.0223519,
+        "lon": -118.285117,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 18771.5,
         "co2e_low_kg": 18771.5,
         "co2e_high_kg": 54437.5,
         "co2e_per_speaker_kg": 2681.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0397",
         "affiliation": "University of St Andrews",
-        "lat": 56.339855,
-        "lon": -2.811777,
+        "lat": 56.3417136,
+        "lon": -2.7942674,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4568.3,
         "co2e_low_kg": 4568.3,
         "co2e_high_kg": 13248.2,
         "co2e_per_speaker_kg": 4568.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0398",
         "affiliation": "University of Sydney",
-        "lat": 32.872527,
+        "lat": 32.8725266,
         "lon": -117.202023,
         "speaker_count": 21,
         "travel_attendees": 21,
@@ -5233,85 +5558,92 @@ export const EMISSIONS_DATA = {
         "co2e_low_kg": 56154.6,
         "co2e_high_kg": 162848.4,
         "co2e_per_speaker_kg": 2674.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0399",
         "affiliation": "University of Tasmania",
-        "lat": -42.906822,
-        "lon": 147.321808,
+        "lat": -42.0409059,
+        "lon": 146.8087322,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 1317.3,
         "co2e_low_kg": 1317.3,
         "co2e_high_kg": 3820.1,
         "co2e_per_speaker_kg": 658.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0400",
         "affiliation": "University of Technology Sydney",
-        "lat": -33.883254,
-        "lon": 151.200329,
+        "lat": -33.8836537,
+        "lon": 151.2006119,
         "speaker_count": 19,
         "travel_attendees": 19,
         "co2e_kg": 11246.7,
         "co2e_low_kg": 11246.7,
         "co2e_high_kg": 32615.3,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0401",
         "affiliation": "University of Texas - Arlington",
-        "lat": 32.728471,
-        "lon": -97.112021,
+        "lat": 32.7292117,
+        "lon": -97.11519709999999,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 12233.0,
         "co2e_low_kg": 12233.0,
         "co2e_high_kg": 35475.7,
         "co2e_per_speaker_kg": 3058.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0402",
         "affiliation": "University of Texas - Austin",
-        "lat": 30.285149,
-        "lon": -97.733935,
+        "lat": 30.2850284,
+        "lon": -97.7335226,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 24027.1,
         "co2e_low_kg": 24027.1,
         "co2e_high_kg": 69678.6,
         "co2e_per_speaker_kg": 3003.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0403",
-        "affiliation": "University of Texas - Tyler",
-        "lat": 32.316308,
-        "lon": -95.253699,
+        "affiliation": "University of Texas",
+        "lat": 32.3150044,
+        "lon": -95.2519974,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3061.2,
         "co2e_low_kg": 3061.2,
         "co2e_high_kg": 8877.6,
         "co2e_per_speaker_kg": 3061.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0404",
         "affiliation": "University of Tokyo",
-        "lat": 35.711716,
-        "lon": 139.763746,
+        "lat": 35.7147555,
+        "lon": 139.761332,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 18044.6,
         "co2e_low_kg": 18044.6,
         "co2e_high_kg": 52329.2,
         "co2e_per_speaker_kg": 2255.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0405",
@@ -5330,80 +5662,86 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0406",
         "affiliation": "University of Toronto",
-        "lat": 43.660814,
-        "lon": -79.396032,
+        "lat": 43.663487,
+        "lon": -79.3958273,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3541.0,
         "co2e_low_kg": 3541.0,
         "co2e_high_kg": 10269.0,
         "co2e_per_speaker_kg": 3541.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0407",
         "affiliation": "University of Victoria",
-        "lat": 48.46206,
-        "lon": -123.31142,
+        "lat": 48.4631345,
+        "lon": -123.3121763,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 11539.2,
         "co2e_low_kg": 11539.2,
         "co2e_high_kg": 33463.7,
         "co2e_per_speaker_kg": 2884.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0408",
         "affiliation": "University of Waikato",
-        "lat": -37.785874,
-        "lon": 175.316766,
+        "lat": -37.78667069999999,
+        "lon": 175.3182658,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 121.4,
         "co2e_low_kg": 60.7,
         "co2e_high_kg": 242.8,
         "co2e_per_speaker_kg": 40.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0409",
         "affiliation": "University of Warsaw",
-        "lat": 52.221639,
-        "lon": 21.007377,
+        "lat": 52.2403463,
+        "lon": 21.0186012,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4431.6,
         "co2e_low_kg": 4431.6,
         "co2e_high_kg": 12851.8,
         "co2e_per_speaker_kg": 4431.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0410",
         "affiliation": "University of Warwick",
-        "lat": 52.381307,
-        "lon": -1.563957,
+        "lat": 52.3792525,
+        "lon": -1.5614704,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9326.6,
         "co2e_low_kg": 9326.6,
         "co2e_high_kg": 27047.1,
         "co2e_per_speaker_kg": 4663.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0411",
         "affiliation": "University of Washington",
-        "lat": 47.65543,
-        "lon": -122.300169,
+        "lat": 47.6565919,
+        "lon": -122.3126783,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 8634.7,
         "co2e_low_kg": 8634.7,
         "co2e_high_kg": 25040.7,
         "co2e_per_speaker_kg": 2878.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0412",
@@ -5422,158 +5760,170 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0413",
         "affiliation": "University of Wisconsin - Green Bay",
-        "lat": 44.526527,
-        "lon": -87.907347,
+        "lat": 44.5313196,
+        "lon": -87.9210482,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3389.7,
         "co2e_low_kg": 3389.7,
         "co2e_high_kg": 9830.0,
         "co2e_per_speaker_kg": 3389.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0414",
         "affiliation": "University of Wisconsin - Madison",
-        "lat": 43.080275,
-        "lon": -89.430959,
+        "lat": 43.07551429999999,
+        "lon": -89.4154526,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3343.9,
         "co2e_low_kg": 3343.9,
         "co2e_high_kg": 9697.3,
         "co2e_per_speaker_kg": 3343.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0415",
         "affiliation": "University of Wollongong",
-        "lat": -34.405055,
-        "lon": 150.878346,
+        "lat": -34.4053396,
+        "lon": 150.8778394,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 2367.7,
         "co2e_low_kg": 2367.7,
         "co2e_high_kg": 6866.4,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0416",
         "affiliation": "University of York",
-        "lat": 53.945391,
-        "lon": -1.031459,
+        "lat": 53.9461089,
+        "lon": -1.0517718,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4623.6,
         "co2e_low_kg": 4623.6,
         "co2e_high_kg": 13408.4,
         "co2e_per_speaker_kg": 4623.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0417",
         "affiliation": "University of the Philippines",
-        "lat": 14.609843,
-        "lon": 120.989465,
+        "lat": 14.6538783,
+        "lon": 121.0684573,
         "speaker_count": 10,
         "travel_attendees": 10,
         "co2e_kg": 20476.7,
         "co2e_low_kg": 20476.7,
         "co2e_high_kg": 59382.4,
         "co2e_per_speaker_kg": 2047.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0418",
-        "affiliation": "University of the Philippines - Cebu",
-        "lat": 10.322532,
-        "lon": 123.898888,
+        "affiliation": "University of the Philippines",
+        "lat": 14.6538783,
+        "lon": 121.0684573,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1904.4,
         "co2e_low_kg": 1904.4,
         "co2e_high_kg": 5522.7,
         "co2e_per_speaker_kg": 1904.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0419",
         "affiliation": "University of the Philippines - Diliman",
-        "lat": 14.650376,
-        "lon": 121.067643,
+        "lat": 14.6538783,
+        "lon": 121.0684573,
         "speaker_count": 18,
         "travel_attendees": 18,
         "co2e_kg": 36858.1,
         "co2e_low_kg": 36858.1,
         "co2e_high_kg": 106888.4,
         "co2e_per_speaker_kg": 2047.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0420",
-        "affiliation": "University of the Ryukyus",
-        "lat": 26.249377,
-        "lon": 127.764158,
+        "affiliation": "University",
+        "lat": 26.2516868,
+        "lon": 127.7684078,
         "speaker_count": 16,
         "travel_attendees": 16,
         "co2e_kg": 35042.2,
         "co2e_low_kg": 35042.2,
         "co2e_high_kg": 101622.5,
         "co2e_per_speaker_kg": 2190.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0421",
         "affiliation": "University of the South Pacific",
-        "lat": -18.150546,
-        "lon": 178.44371,
+        "lat": -18.1480462,
+        "lon": 178.4476007,
         "speaker_count": 10,
         "travel_attendees": 10,
         "co2e_kg": 5870.2,
         "co2e_low_kg": 5870.2,
         "co2e_high_kg": 17023.6,
         "co2e_per_speaker_kg": 587.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0422",
         "affiliation": "University of the Virgin Islands",
-        "lat": 18.343563,
-        "lon": -64.972644,
+        "lat": 18.3432344,
+        "lon": -64.9728797,
         "speaker_count": 22,
         "travel_attendees": 22,
         "co2e_kg": 72609.0,
         "co2e_low_kg": 72609.0,
         "co2e_high_kg": 210566.2,
         "co2e_per_speaker_kg": 3300.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0423",
         "affiliation": "University of the West Indies",
-        "lat": 18.005376,
-        "lon": -76.745334,
+        "lat": 18.0059084,
+        "lon": -76.746836,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3267.9,
         "co2e_low_kg": 3267.9,
         "co2e_high_kg": 9476.8,
         "co2e_per_speaker_kg": 3267.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0424",
         "affiliation": "Ursinus College",
-        "lat": 40.195409,
-        "lon": -75.45532,
+        "lat": 40.19396769999999,
+        "lon": -75.4563232,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3589.8,
         "co2e_low_kg": 3589.8,
         "co2e_high_kg": 10410.4,
         "co2e_per_speaker_kg": 3589.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0425",
@@ -5605,54 +5955,58 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0427",
         "affiliation": "Villanova University",
-        "lat": 40.036783,
-        "lon": -75.342018,
+        "lat": 40.0368926,
+        "lon": -75.3425785,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3589.8,
         "co2e_low_kg": 3589.8,
         "co2e_high_kg": 10410.4,
         "co2e_per_speaker_kg": 3589.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0428",
         "affiliation": "Wageningen University",
-        "lat": 51.985445,
-        "lon": 5.663212,
+        "lat": 51.9863475,
+        "lon": 5.6680189,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 13935.4,
         "co2e_low_kg": 13935.4,
         "co2e_high_kg": 40412.8,
         "co2e_per_speaker_kg": 4645.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0429",
         "affiliation": "Washington and Lee University",
-        "lat": 37.792999,
-        "lon": -79.447735,
+        "lat": 37.7898776,
+        "lon": -79.4458935,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3379.6,
         "co2e_low_kg": 3379.6,
         "co2e_high_kg": 9800.9,
         "co2e_per_speaker_kg": 3379.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0430",
         "affiliation": "Wayamba University of Sri Lanka",
-        "lat": 7.462596,
-        "lon": 80.022204,
+        "lat": 7.4645435,
+        "lon": 80.0216286,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2786.6,
         "co2e_low_kg": 2786.6,
         "co2e_high_kg": 8081.1,
         "co2e_per_speaker_kg": 2786.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0431",
@@ -5684,119 +6038,128 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0433",
         "affiliation": "Wildlife Conservation Society",
-        "lat": 3.894444,
-        "lon": 11.508945,
+        "lat": 3.8944436,
+        "lon": 11.5089445,
         "speaker_count": 15,
         "travel_attendees": 15,
         "co2e_kg": 60994.0,
         "co2e_low_kg": 60994.0,
         "co2e_high_kg": 176882.7,
         "co2e_per_speaker_kg": 4066.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0434",
-        "affiliation": "Wildlife Conservation Society - Malaysia",
-        "lat": 4.569375,
-        "lon": 102.265682,
+        "affiliation": "Wildlife Conservation Society",
+        "lat": 3.8944436,
+        "lon": 11.5089445,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2266.6,
         "co2e_low_kg": 2266.6,
         "co2e_high_kg": 6573.1,
         "co2e_per_speaker_kg": 2266.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0435",
-        "affiliation": "Wildlife Conservation Society - Philippines",
-        "lat": 12.750349,
-        "lon": 122.73121,
+        "affiliation": "Wildlife Conservation Society",
+        "lat": 3.8944436,
+        "lon": 11.5089445,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2047.7,
         "co2e_low_kg": 2047.7,
         "co2e_high_kg": 5938.2,
         "co2e_per_speaker_kg": 2047.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0436",
         "affiliation": "Wildlife Conservation Society Indonesia Program",
-        "lat": -2.483383,
-        "lon": 117.890285,
+        "lat": -6.595104999999999,
+        "lon": 106.8056102,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1817.1,
         "co2e_low_kg": 1817.1,
         "co2e_high_kg": 5269.5,
         "co2e_per_speaker_kg": 1817.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0437",
         "affiliation": "Woods Hole Oceanographic Institution",
-        "lat": 41.534922,
-        "lon": -70.648251,
+        "lat": 41.5245291,
+        "lon": -70.6683781,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 7369.1,
         "co2e_low_kg": 7369.1,
         "co2e_high_kg": 21370.3,
         "co2e_per_speaker_kg": 3684.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0438",
         "affiliation": "World Conservation Monitoring Centre",
-        "lat": 52.2198,
-        "lon": 0.091735,
+        "lat": 52.2197995,
+        "lon": 0.0917354,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4670.9,
         "co2e_low_kg": 4670.9,
         "co2e_high_kg": 13545.8,
         "co2e_per_speaker_kg": 4670.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0439",
         "affiliation": "World Wide Fund for Nature - Indonesia",
-        "lat": -2.483383,
-        "lon": 117.890285,
+        "lat": -0.789275,
+        "lon": 113.921327,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3634.1,
         "co2e_low_kg": 3634.1,
         "co2e_high_kg": 10538.9,
         "co2e_per_speaker_kg": 1817.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0440",
         "affiliation": "World Wide Fund for Nature - Madagascar",
-        "lat": -18.92496,
-        "lon": 46.441642,
+        "lat": -18.766947,
+        "lon": 46.869107,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2988.0,
         "co2e_low_kg": 2988.0,
         "co2e_high_kg": 8665.2,
         "co2e_per_speaker_kg": 2988.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0441",
         "affiliation": "World Wide Fund for Nature - Malaysia",
-        "lat": 4.569375,
-        "lon": 102.265682,
+        "lat": 4.210484,
+        "lon": 101.975766,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4533.1,
         "co2e_low_kg": 4533.1,
         "co2e_high_kg": 13146.1,
         "co2e_per_speaker_kg": 2266.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0442",
@@ -5814,67 +6177,72 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0443",
         "affiliation": "Yamaguchi University",
-        "lat": 34.148076,
-        "lon": 131.468678,
+        "lat": 34.1488153,
+        "lon": 131.4701034,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2318.9,
         "co2e_low_kg": 2318.9,
         "co2e_high_kg": 6724.7,
         "co2e_per_speaker_kg": 2318.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0444",
         "affiliation": "Yayasan WWF Indonesia",
-        "lat": -2.483383,
-        "lon": 117.890285,
+        "lat": 2.1376851,
+        "lon": 117.481067,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1817.1,
         "co2e_low_kg": 1817.1,
         "co2e_high_kg": 5269.5,
         "co2e_per_speaker_kg": 1817.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0445",
         "affiliation": "Zhejiang University",
-        "lat": 30.521595,
-        "lon": 120.719531,
+        "lat": 30.30868439999999,
+        "lon": 120.0864995,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2392.4,
         "co2e_low_kg": 2392.4,
         "co2e_high_kg": 6938.0,
         "co2e_per_speaker_kg": 2392.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0446",
         "affiliation": "Zoological Society of London",
-        "lat": 51.536955,
-        "lon": -0.152962,
+        "lat": 51.5369552,
+        "lon": -0.1529621,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4685.6,
         "co2e_low_kg": 4685.6,
         "co2e_high_kg": 13588.2,
         "co2e_per_speaker_kg": 4685.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0447",
         "affiliation": "Zoological Survey of India",
-        "lat": 22.509841,
-        "lon": 88.334259,
+        "lat": 20.593684,
+        "lon": 78.96288,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5711.1,
         "co2e_low_kg": 5711.1,
         "co2e_high_kg": 16562.1,
         "co2e_per_speaker_kg": 2855.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0448",
@@ -5891,7 +6259,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0449",
-        "affiliation": "the Nature Conservancy - Jamaica",
+        "affiliation": "the Nature Conservancy",
         "lat": 18.185051,
         "lon": -77.394769,
         "speaker_count": 1,
@@ -5955,7 +6323,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-498108c4",
         "name": "Abigail Turnlund",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0103",
         "co2e_kg": 4574.3
       },
@@ -5983,7 +6351,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1dc3d56b",
         "name": "Adele Battini",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -6102,7 +6470,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-92df4e73",
         "name": "Akili Ligons",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -6249,7 +6617,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-67c88803",
         "name": "Alexandra Fine",
-        "affiliation": "Florida Keys National Marine Sanctuary",
+        "affiliation": "Florida Keys National Marine",
         "location_id": "emis-loc-0082",
         "co2e_kg": 3123.0
       },
@@ -6291,7 +6659,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a098b17d",
         "name": "Alexandra Wen",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -6312,7 +6680,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ee8b396a",
         "name": "Alexi Meltel",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -6396,7 +6764,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fcc8321d",
         "name": "Aliyah True",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -6452,14 +6820,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-59603588",
         "name": "Allyn Duvin Hinoguin",
-        "affiliation": "Mindanao State University - Naawan",
+        "affiliation": "Mindanao State University",
         "location_id": "emis-loc-0165",
         "co2e_kg": 1806.1
       },
       {
         "id": "offset-62eabf14",
         "name": "Allyson DeMerlis",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -6599,7 +6967,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a9b61ddf",
         "name": "Ana Palacio-castro",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -6627,7 +6995,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cef5de4b",
         "name": "Anabelle Dece Espadero",
-        "affiliation": "Mindanao State University - Naawan",
+        "affiliation": "Mindanao State University",
         "location_id": "emis-loc-0165",
         "co2e_kg": 1806.1
       },
@@ -6662,7 +7030,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8ebbd3fa",
         "name": "Andreas Eich",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0024",
         "co2e_kg": 4781.9
       },
@@ -6690,7 +7058,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4e6fce91",
         "name": "Andrew Baker",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -6711,7 +7079,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7ba7a4fb",
         "name": "Anela Duenas",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -6795,7 +7163,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8c5f4634",
         "name": "Anna Koivunen",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -6844,7 +7212,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0d591f36",
         "name": "Annielyn Tampus",
-        "affiliation": "Mindanao State University-Iligan Institute of Technology",
+        "affiliation": "Mindanao State University",
         "location_id": "emis-loc-0166",
         "co2e_kg": 1806.1
       },
@@ -6956,7 +7324,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8b75f644",
         "name": "Ashfaaq Korimbocus",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0356",
         "co2e_kg": 2766.6
       },
@@ -6991,7 +7359,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fdc08853",
         "name": "Ashton Williams",
-        "affiliation": "Division of Aquatic and Wildlife Resources - Guam",
+        "affiliation": "Division of Aquatic and Wildlife Resources",
         "location_id": "emis-loc-0061",
         "co2e_kg": 1641.2
       },
@@ -7033,14 +7401,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-61ea23db",
         "name": "Aur\u00e9lie Aqua",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0024",
         "co2e_kg": 4781.9
       },
       {
         "id": "offset-aab6151e",
         "name": "Ava Besecker",
-        "affiliation": "California State University Monterey Bay",
+        "affiliation": "California State University",
         "location_id": "emis-loc-0029",
         "co2e_kg": 2683.6
       },
@@ -7075,7 +7443,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3f6b30ae",
         "name": "Bailey Marquardt",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -7250,7 +7618,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2a845af0",
         "name": "Bradley Weiler",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -7320,7 +7688,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f33c5360",
         "name": "Bryan Gabriel Tan",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -7369,14 +7737,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c7c2964e",
         "name": "Caitlin Younis",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney Ana",
         "location_id": "emis-loc-0400",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-bfd00ba7",
         "name": "Callie Stephenson",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -7390,7 +7758,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-582f1cd1",
         "name": "Cameron White-Spunner",
-        "affiliation": "University College London",
+        "affiliation": "University College",
         "location_id": "emis-loc-0301",
         "co2e_kg": 4685.6
       },
@@ -7460,14 +7828,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-29df80c2",
         "name": "Carmine Lee",
-        "affiliation": "National University of Singapore",
+        "affiliation": "National University of Singapore Gaby",
         "location_id": "emis-loc-0190",
         "co2e_kg": 2145.3
       },
       {
         "id": "offset-c4c2325d",
         "name": "Caroline Bonpain",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0024",
         "co2e_kg": 4781.9
       },
@@ -7551,7 +7919,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f65d82cb",
         "name": "Catherine Kim",
-        "affiliation": "Queensland University of Technology",
+        "affiliation": "Queensland University of Technology Jaehyeon",
         "location_id": "emis-loc-0220",
         "co2e_kg": 629.2
       },
@@ -7649,7 +8017,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-862e3a76",
         "name": "Charles Birkeland",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -7684,7 +8052,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9ac1de58",
         "name": "Chatoolsingh Dawosing",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0356",
         "co2e_kg": 2766.6
       },
@@ -7712,7 +8080,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-aa49ff2c",
         "name": "Cheryl Logan",
-        "affiliation": "California State University Monterey Bay",
+        "affiliation": "California State University",
         "location_id": "emis-loc-0029",
         "co2e_kg": 2683.6
       },
@@ -7852,7 +8220,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9fd771c2",
         "name": "Claire Boitel",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0024",
         "co2e_kg": 4781.9
       },
@@ -7873,7 +8241,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-997dd325",
         "name": "Claire Moreland-Ochoa",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -8041,7 +8409,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9bb11156",
         "name": "Courtney Tierney",
-        "affiliation": "Department of Planning and Natural Resources - Virgin Islands",
+        "affiliation": "Department of Planning and Natural Resources",
         "location_id": "emis-loc-0060",
         "co2e_kg": 3300.4
       },
@@ -8104,7 +8472,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4317e9ac",
         "name": "Cynthia Silveira",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -8153,14 +8521,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2d27a456",
         "name": "Dan Ishibashi",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
       {
         "id": "offset-bc839cbc",
         "name": "Danae Stephens",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -8209,14 +8577,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-78937b84",
         "name": "Danielle Jayewardene",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration Christina",
         "location_id": "emis-loc-0181",
         "co2e_kg": 3363.9
       },
       {
         "id": "offset-57945a08",
         "name": "Danielle M. Barnas",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -8237,7 +8605,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-11c7984e",
         "name": "David Armstrong",
-        "affiliation": "Texas A&M University - Corpus Christi",
+        "affiliation": "Texas A&M University",
         "location_id": "emis-loc-0266",
         "co2e_kg": 2968.0
       },
@@ -8300,7 +8668,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-31b024d7",
         "name": "David Ory",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0024",
         "co2e_kg": 4781.9
       },
@@ -8321,7 +8689,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2c1f070a",
         "name": "Dawn Kaufman",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -8356,7 +8724,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-73933864",
         "name": "Deepeeka Kaullysing",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0356",
         "co2e_kg": 2766.6
       },
@@ -8447,7 +8815,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7c911795",
         "name": "Diana Macpherson",
-        "affiliation": "Earth Sciences New Zealand",
+        "affiliation": "Earth Sciences",
         "location_id": "emis-loc-0065",
         "co2e_kg": 296.2
       },
@@ -8461,7 +8829,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9b6ae835",
         "name": "Diana Vergara",
-        "affiliation": "University of Michigan",
+        "affiliation": "University",
         "location_id": "emis-loc-0362",
         "co2e_kg": 3453.8
       },
@@ -8545,7 +8913,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-73e82de1",
         "name": "Dustin Kemp",
-        "affiliation": "University of Alabama - Birmingham",
+        "affiliation": "University of Alabama",
         "location_id": "emis-loc-0305",
         "co2e_kg": 3277.3
       },
@@ -8573,21 +8941,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-df2345ff",
         "name": "Ee Suan Tan",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
       {
         "id": "offset-7211e197",
         "name": "Eileen Nalley",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-830c34e8",
         "name": "Eleanor TenBrink",
-        "affiliation": "Texas A&M University - Corpus Christi",
+        "affiliation": "Texas A&M University",
         "location_id": "emis-loc-0266",
         "co2e_kg": 2968.0
       },
@@ -8755,7 +9123,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-082caf03",
         "name": "Emily Rutkowski",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -8790,7 +9158,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fe2ba870",
         "name": "Emma Pontes",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -8909,7 +9277,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b3c6e490",
         "name": "Erin Cain",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -8951,7 +9319,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bbf9c2a3",
         "name": "Erin Tharp",
-        "affiliation": "Florida Atlantic University - Harbor Branch",
+        "affiliation": "Florida Atlantic University",
         "location_id": "emis-loc-0078",
         "co2e_kg": 3313.9
       },
@@ -9042,7 +9410,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-75feb4de",
         "name": "Evelyne Felix",
-        "affiliation": "Wildlife Conservation Society - Malaysia",
+        "affiliation": "Wildlife Conservation Society",
         "location_id": "emis-loc-0434",
         "co2e_kg": 2266.6
       },
@@ -9063,7 +9431,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d84372a3",
         "name": "Fabrizio Lepiz Conejo",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -9196,7 +9564,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7b7b25c4",
         "name": "Frederic Sinniger",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -9210,7 +9578,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-227b0319",
         "name": "Gabriel Lucas Xavier Da Silva",
-        "affiliation": "Institute of Science - Tokyo",
+        "affiliation": "Institute of Science",
         "location_id": "emis-loc-0124",
         "co2e_kg": 2255.6
       },
@@ -9294,7 +9662,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7029cd3c",
         "name": "George Warfel",
-        "affiliation": "Northwestern University - Marcelino Lab",
+        "affiliation": "Northwestern University",
         "location_id": "emis-loc-0199",
         "co2e_kg": 3363.8
       },
@@ -9322,7 +9690,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-82f17fc6",
         "name": "Ge\u00f3rgenes Cavalcante",
-        "affiliation": "New York University - Abu Dhabi",
+        "affiliation": "New York University",
         "location_id": "emis-loc-0193",
         "co2e_kg": 3632.3
       },
@@ -9350,7 +9718,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e7b6fa31",
         "name": "Gina-marie Maddix",
-        "affiliation": "the Nature Conservancy - Jamaica",
+        "affiliation": "the Nature Conservancy",
         "location_id": "emis-loc-0449",
         "co2e_kg": 3251.2
       },
@@ -9469,7 +9837,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-63e282c0",
         "name": "Guan-Yan Chen",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -9518,7 +9886,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0424de85",
         "name": "Haiwei Luo",
-        "affiliation": "Chinese University of Hong Kong",
+        "affiliation": "Chinese University of Hong Kong Caitlin",
         "location_id": "emis-loc-0344",
         "co2e_kg": 2348.4
       },
@@ -9637,7 +10005,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4f99efbe",
         "name": "Haruko Kurihara",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -9693,7 +10061,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-14e063f6",
         "name": "Heidi Hirsh",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -9735,7 +10103,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bb0252a9",
         "name": "Hidemi Shimbo",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -9763,7 +10131,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4d0abb04",
         "name": "Hiroki Suzuki",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -9868,7 +10236,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a17f160d",
         "name": "Iliana Baums",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0103",
         "co2e_kg": 4574.3
       },
@@ -9889,7 +10257,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d7b2ed16",
         "name": "Immy Ashley",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los",
         "location_id": "emis-loc-0320",
         "co2e_kg": 2681.7
       },
@@ -10029,7 +10397,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-afe39f48",
         "name": "Jacob Allgeier",
-        "affiliation": "University of Michigan",
+        "affiliation": "University",
         "location_id": "emis-loc-0362",
         "co2e_kg": 3453.8
       },
@@ -10092,14 +10460,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5c7f26c9",
         "name": "Jake Ivan Baquiran",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
       {
         "id": "offset-0bfb8d5a",
         "name": "James Davis Reimer",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -10155,7 +10523,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7c7d06be",
         "name": "Jamie McDevitt-Irwin",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -10218,7 +10586,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-096e66c3",
         "name": "Jaret Bilewitch",
-        "affiliation": "Earth Sciences New Zealand",
+        "affiliation": "Earth Sciences",
         "location_id": "emis-loc-0065",
         "co2e_kg": 296.2
       },
@@ -10260,7 +10628,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-aa8fbf06",
         "name": "Javier Pardo D\u00edaz",
-        "affiliation": "Smithsonian Tropical Research Institute - Panama",
+        "affiliation": "Smithsonian Tropical Research Institute",
         "location_id": "emis-loc-0249",
         "co2e_kg": 2985.2
       },
@@ -10288,7 +10656,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-559b3b76",
         "name": "Jean Aim\u00e9 Zafimahatradraibe",
-        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara",
+        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara of Toliara",
         "location_id": "emis-loc-0117",
         "co2e_kg": 2988.0
       },
@@ -10302,7 +10670,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7ee57151",
         "name": "Jeffrey Simprota",
-        "affiliation": "Wildlife Conservation Society - Philippines",
+        "affiliation": "Wildlife Conservation Society",
         "location_id": "emis-loc-0435",
         "co2e_kg": 2047.7
       },
@@ -10344,7 +10712,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-24d69aea",
         "name": "Jennifer Ha",
-        "affiliation": "Division of Aquatic and Wildlife Resources - Guam",
+        "affiliation": "Division of Aquatic and Wildlife Resources",
         "location_id": "emis-loc-0061",
         "co2e_kg": 1641.2
       },
@@ -10393,7 +10761,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0c92a7cd",
         "name": "Jessica Glazner",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -10512,7 +10880,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-edc862ed",
         "name": "Joaquin Yus",
-        "affiliation": "Spanish National Research Council",
+        "affiliation": "Spanish National Research",
         "location_id": "emis-loc-0253",
         "co2e_kg": 4666.6
       },
@@ -10533,7 +10901,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-caa79791",
         "name": "Joelle Mattos",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -10547,21 +10915,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7743e5cb",
         "name": "John Burns",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0339",
         "co2e_kg": 1800.6
       },
       {
         "id": "offset-fdd13660",
         "name": "John McManus",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-45c5ce69",
         "name": "John Parkinson",
-        "affiliation": "University of South Florida",
+        "affiliation": "University of South Florida Spencer",
         "location_id": "emis-loc-0394",
         "co2e_kg": 3288.9
       },
@@ -10610,7 +10978,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-61ef9874",
         "name": "Jonathan Whitney",
-        "affiliation": "National Oceanic and Atmospheric Administration - Pacific Islands",
+        "affiliation": "National Oceanic and Atmospheric Administration",
         "location_id": "emis-loc-0183",
         "co2e_kg": 3363.9
       },
@@ -10652,7 +11020,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3d60ec10",
         "name": "Joseane Marques",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0103",
         "co2e_kg": 4574.3
       },
@@ -10673,7 +11041,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-94a58e96",
         "name": "Joseph Unsworth",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -10771,7 +11139,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4056ec09",
         "name": "Julia Cole",
-        "affiliation": "University of Michigan - Ann Arbor",
+        "affiliation": "University of Michigan",
         "location_id": "emis-loc-0363",
         "co2e_kg": 3453.8
       },
@@ -10855,14 +11223,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-be6e7277",
         "name": "Justin Berg",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-8d50efd3",
         "name": "Kaho Tisthammer",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -10890,7 +11258,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4bcb66fb",
         "name": "Kainalu Steward",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -10904,7 +11272,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ec485096",
         "name": "Kannapoj Techawongstien",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -10918,7 +11286,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b5736a4e",
         "name": "Kareen Schnabel",
-        "affiliation": "Earth Sciences New Zealand",
+        "affiliation": "Earth Sciences",
         "location_id": "emis-loc-0065",
         "co2e_kg": 296.2
       },
@@ -10960,7 +11328,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-37dd675f",
         "name": "Katey Lesneski",
-        "affiliation": "Florida Keys National Marine Sanctuary",
+        "affiliation": "Florida Keys National Marine",
         "location_id": "emis-loc-0082",
         "co2e_kg": 3123.0
       },
@@ -10988,7 +11356,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8b83cae0",
         "name": "Katherine Hardy",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -11093,7 +11461,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-faba6835",
         "name": "Kay Watty",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0103",
         "co2e_kg": 4574.3
       },
@@ -11107,7 +11475,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-60e2cf49",
         "name": "Kazuma Uesugi",
-        "affiliation": "Institute of Science - Tokyo",
+        "affiliation": "Institute of Science",
         "location_id": "emis-loc-0124",
         "co2e_kg": 2255.6
       },
@@ -11128,14 +11496,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2092b608",
         "name": "Keiko Wilkins",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-8ffea8a4",
         "name": "Keku\u02bbiap\u014diula Keliipuleole",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -11205,7 +11573,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-59898ea4",
         "name": "Kenzie Cooke",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -11268,7 +11636,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0c7a7a08",
         "name": "Kim de Luca",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0103",
         "co2e_kg": 4574.3
       },
@@ -11408,7 +11776,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9c58825d",
         "name": "Laetitia H\u00e9douin",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0024",
         "co2e_kg": 4781.9
       },
@@ -11569,7 +11937,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5be2b460",
         "name": "Leah Barkai",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -11618,7 +11986,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-89438917",
         "name": "Lewis A. Jones",
-        "affiliation": "University College London",
+        "affiliation": "University College",
         "location_id": "emis-loc-0301",
         "co2e_kg": 4685.6
       },
@@ -11723,7 +12091,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-900d592b",
         "name": "Lisa McManus",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -11849,14 +12217,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6e09c5a8",
         "name": "Lucyie Liana Misi",
-        "affiliation": "International Islamic University Malaysia",
+        "affiliation": "International Islamic University",
         "location_id": "emis-loc-0131",
         "co2e_kg": 2230.9
       },
       {
         "id": "offset-b4493696",
         "name": "Ludovic Hoarau",
-        "affiliation": "ENTROPIE",
+        "affiliation": "ENTROPIE, Reunion",
         "location_id": "emis-loc-0063",
         "co2e_kg": 4781.9
       },
@@ -11884,7 +12252,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0db8eabb",
         "name": "Luiza Waechter",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -11905,7 +12273,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a3c7ad3f",
         "name": "Lyndsey Holland",
-        "affiliation": "Department of Conservation - New Zealand",
+        "affiliation": "Department of Conservation",
         "location_id": "emis-loc-0059",
         "co2e_kg": 209.9
       },
@@ -11996,14 +12364,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-066ad5da",
         "name": "Madelief Schelvis",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-a304349a",
         "name": "Madeline Berger",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -12059,7 +12427,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-30d31d9d",
         "name": "Maja Seier",
-        "affiliation": "University of Copenhagen",
+        "affiliation": "University of Copenhagen Jorg-Dieter",
         "location_id": "emis-loc-0328",
         "co2e_kg": 4477.4
       },
@@ -12150,7 +12518,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-81e562a1",
         "name": "Marcellina Rola",
-        "affiliation": "University Wuppertal",
+        "affiliation": "University",
         "location_id": "emis-loc-0303",
         "co2e_kg": 4641.1
       },
@@ -12178,7 +12546,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9f7f2a80",
         "name": "Mareike Huhn",
-        "affiliation": "Ruhr University - Bochum",
+        "affiliation": "Ruhr University",
         "location_id": "emis-loc-0231",
         "co2e_kg": 4621.3
       },
@@ -12199,7 +12567,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4e6bafd3",
         "name": "Margaux Steyaert",
-        "affiliation": "Imperial College London",
+        "affiliation": "Imperial College",
         "location_id": "emis-loc-0112",
         "co2e_kg": 4685.6
       },
@@ -12255,7 +12623,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-11cfa4f0",
         "name": "Maria Isabel Martinez Rugerio",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0103",
         "co2e_kg": 4574.3
       },
@@ -12395,14 +12763,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7cdcc372",
         "name": "Marissa Nuttall",
-        "affiliation": "Texas A&M University - Galveston",
+        "affiliation": "Texas A&M University",
         "location_id": "emis-loc-0267",
         "co2e_kg": 3043.6
       },
       {
         "id": "offset-ee665350",
         "name": "Mariyam Shidha Afzal",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -12423,7 +12791,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7374e24e",
         "name": "Mark Meekan",
-        "affiliation": "University of Western Australia",
+        "affiliation": "University of Western Australia Sonora",
         "location_id": "emis-loc-0412",
         "co2e_kg": 891.1
       },
@@ -12479,7 +12847,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2e51b940",
         "name": "Mary Donovan",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -12500,7 +12868,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5333dc70",
         "name": "Maryann Webb",
-        "affiliation": "University of Hawaii - Manoa",
+        "affiliation": "University of Hawaii - Manoa Margot",
         "location_id": "emis-loc-0342",
         "co2e_kg": 1808.8
       },
@@ -12528,14 +12896,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0c963774",
         "name": "Mathieu Adg\u00e9",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0024",
         "co2e_kg": 4781.9
       },
       {
         "id": "offset-af74f542",
         "name": "Mathieu Reynaud",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0024",
         "co2e_kg": 4781.9
       },
@@ -12640,7 +13008,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6681731d",
         "name": "Maukshada Kamakshi Ramkalam",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0356",
         "co2e_kg": 2766.6
       },
@@ -12689,14 +13057,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2a6498c1",
         "name": "Maya Otsu",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-d859058b",
         "name": "Maya Powell",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -12731,7 +13099,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6d26a33a",
         "name": "Megan Carney",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0339",
         "co2e_kg": 1800.6
       },
@@ -12815,7 +13183,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-283a7021",
         "name": "Mia Vallee",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -12850,7 +13218,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5e115d64",
         "name": "Michael Izumiyama",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -12864,7 +13232,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-12542e94",
         "name": "Michael Studivan",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -12990,7 +13358,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8d0ba50a",
         "name": "Misato Sakoh",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -13018,7 +13386,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-49eba241",
         "name": "Miyah Brooks",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -13046,7 +13414,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-042352a8",
         "name": "Molly Brzezinski",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara Ilan",
         "location_id": "emis-loc-0324",
         "co2e_kg": 2681.7
       },
@@ -13179,7 +13547,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ac6aacb3",
         "name": "Najatul Su Ad Abdullah",
-        "affiliation": "International Islamic University Malaysia",
+        "affiliation": "International Islamic University",
         "location_id": "emis-loc-0131",
         "co2e_kg": 2230.9
       },
@@ -13249,7 +13617,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e4065301",
         "name": "Natalie Goeler-Slough",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -13270,7 +13638,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4024863a",
         "name": "Natalie Villafranca",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California Frank",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2681.7
       },
@@ -13326,7 +13694,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4388edb9",
         "name": "Nepsis Garcia Lara",
-        "affiliation": "University of Michigan",
+        "affiliation": "University",
         "location_id": "emis-loc-0362",
         "co2e_kg": 3453.8
       },
@@ -13368,7 +13736,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-654d2726",
         "name": "Nicholas MacKnight",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -13501,7 +13869,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-044fd64c",
         "name": "Nils R\u00e4decker",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0103",
         "co2e_kg": 4574.3
       },
@@ -13620,7 +13988,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2c22bddf",
         "name": "Nyssa Silbiger",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -13655,7 +14023,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-23153337",
         "name": "Oliver Kippax-Chui",
-        "affiliation": "Imperial College London",
+        "affiliation": "Imperial College",
         "location_id": "emis-loc-0112",
         "co2e_kg": 4685.6
       },
@@ -13760,7 +14128,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-704f3fe3",
         "name": "Pallavi Seburn",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0356",
         "co2e_kg": 2766.6
       },
@@ -13788,7 +14156,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-438daea2",
         "name": "Patrick Kiel",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -13921,7 +14289,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-243d5559",
         "name": "Pramod Chumun",
-        "affiliation": "United Nations Development Programme - Mauritius & Seychelles",
+        "affiliation": "United Nations Development Programme - Mauritius & Seychelles Jaeseok",
         "location_id": "emis-loc-0278",
         "co2e_kg": 3117.3
       },
@@ -13991,7 +14359,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1f05737c",
         "name": "Radonirina Lebely Botosoamananto",
-        "affiliation": "Institut Halieutique et des Sciences Marines",
+        "affiliation": "Institut Halieutique et des Sciences",
         "location_id": "emis-loc-0116",
         "co2e_kg": 2988.0
       },
@@ -14005,7 +14373,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-61337ac9",
         "name": "Raffi Isah",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -14026,14 +14394,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-92e828b3",
         "name": "Ranjeet Bhagooli",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0356",
         "co2e_kg": 2766.6
       },
       {
         "id": "offset-283f1113",
         "name": "Raphael Ritson-Williams",
-        "affiliation": "California State University Northridge",
+        "affiliation": "California State University",
         "location_id": "emis-loc-0030",
         "co2e_kg": 2681.7
       },
@@ -14061,7 +14429,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dfd8c718",
         "name": "Rayna Mcclintock",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -14089,7 +14457,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cec980b1",
         "name": "Rebecca Lacy",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -14110,7 +14478,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-165a8f5e",
         "name": "Rebecca Wenker",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric",
         "location_id": "emis-loc-0181",
         "co2e_kg": 3363.9
       },
@@ -14138,7 +14506,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6468ff73",
         "name": "Renoir Abrea",
-        "affiliation": "Mindanao State University - Naawan",
+        "affiliation": "Mindanao State University",
         "location_id": "emis-loc-0165",
         "co2e_kg": 1806.1
       },
@@ -14152,7 +14520,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9b1ea9e5",
         "name": "Reshma Thachara Kunnath",
-        "affiliation": "Justus Liebig University Giessen",
+        "affiliation": "Justus Liebig University",
         "location_id": "emis-loc-0135",
         "co2e_kg": 4642.9
       },
@@ -14215,7 +14583,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-647997f8",
         "name": "Rita Bento",
-        "affiliation": "New York University - Abu Dhabi",
+        "affiliation": "New York University",
         "location_id": "emis-loc-0193",
         "co2e_kg": 3632.3
       },
@@ -14243,14 +14611,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-07e004f5",
         "name": "Robert Mason",
-        "affiliation": "University of New South Wales",
+        "affiliation": "Commonwealth Scientific and Industrial Research Organisation",
         "location_id": "emis-loc-0374",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-40cb2dda",
         "name": "Robert Richmond",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -14390,7 +14758,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bbfb7b4c",
         "name": "Ryan Eckert",
-        "affiliation": "Florida Atlantic University - Harbor Branch",
+        "affiliation": "Florida Atlantic University",
         "location_id": "emis-loc-0078",
         "co2e_kg": 3313.9
       },
@@ -14425,7 +14793,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f032d34c",
         "name": "Sahra Greve",
-        "affiliation": "University Heidelberg",
+        "affiliation": "University",
         "location_id": "emis-loc-0302",
         "co2e_kg": 4642.9
       },
@@ -14439,7 +14807,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8919d5ca",
         "name": "Saki Harii",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -14474,7 +14842,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-871e0e29",
         "name": "Samantha Shedd",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -14502,7 +14870,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2bc80dc4",
         "name": "Sangeeta Mangubhai",
-        "affiliation": "Talanoa Consulting Fiji",
+        "affiliation": "Talanoa Consulting",
         "location_id": "emis-loc-0261",
         "co2e_kg": 587.0
       },
@@ -14740,7 +15108,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-502bbf57",
         "name": "Shakeel Yavan Jogee",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0356",
         "co2e_kg": 2766.6
       },
@@ -14866,7 +15234,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-42434ca3",
         "name": "Sherry Lyn Sayco",
-        "affiliation": "University of the Philippines - Cebu",
+        "affiliation": "University of the Philippines",
         "location_id": "emis-loc-0418",
         "co2e_kg": 1904.4
       },
@@ -14887,7 +15255,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-77214b0c",
         "name": "Shouraseni Roy",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -14971,7 +15339,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-be281f8f",
         "name": "Sophia Lee",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3306.8
       },
@@ -15244,7 +15612,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a89a37b3",
         "name": "Takashi Nakamura",
-        "affiliation": "Institute of Science - Tokyo",
+        "affiliation": "Institute of Science",
         "location_id": "emis-loc-0124",
         "co2e_kg": 2255.6
       },
@@ -15279,7 +15647,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-165345a7",
         "name": "Tanya Brown",
-        "affiliation": "University of Texas - Tyler",
+        "affiliation": "University of Texas",
         "location_id": "emis-loc-0403",
         "co2e_kg": 3061.2
       },
@@ -15496,7 +15864,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-60a197b4",
         "name": "Trent Haydon",
-        "affiliation": "New York University - Abu Dhabi",
+        "affiliation": "New York University",
         "location_id": "emis-loc-0193",
         "co2e_kg": 3632.3
       },
@@ -15762,7 +16130,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7cfb0f32",
         "name": "Vivienne Weir",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam Virginia",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
@@ -15811,7 +16179,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5679dc8b",
         "name": "Wei-Chen Tung",
-        "affiliation": "Biodiversity Research Center, Academia Sinica",
+        "affiliation": "Biodiversity Research Center",
         "location_id": "emis-loc-0015",
         "co2e_kg": 1904.4
       },
@@ -15881,7 +16249,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-20ed55cc",
         "name": "William Zozaya",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0024",
         "co2e_kg": 4781.9
       },
@@ -15923,7 +16291,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8f128671",
         "name": "Yashvi Nundlall",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0356",
         "co2e_kg": 2766.6
       },
@@ -16000,7 +16368,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-94a6dfa1",
         "name": "Yuko Abe",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0420",
         "co2e_kg": 2190.1
       },
@@ -16063,7 +16431,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-26030b62",
         "name": "Zach Quinlan",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -16154,7 +16522,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fd0e19dc",
         "name": "Zoe Willis",
-        "affiliation": "Florida Atlantic University - Harbor Branch",
+        "affiliation": "Florida Atlantic University",
         "location_id": "emis-loc-0078",
         "co2e_kg": 3313.9
       }
@@ -16188,7 +16556,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0358",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "lat": 25.717272,
         "lon": -80.278707,
         "speaker_count": 29,
@@ -16266,7 +16634,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0340",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "lat": 21.298279,
         "lon": -157.818693,
         "speaker_count": 31,
@@ -16357,7 +16725,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0024",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "lat": -17.51906,
         "lon": -149.849702,
         "speaker_count": 9,
@@ -16396,7 +16764,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0181",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric",
         "lat": 36.003031,
         "lon": -84.248984,
         "speaker_count": 11,
@@ -16448,7 +16816,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0420",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "lat": 26.249377,
         "lon": 127.764158,
         "speaker_count": 16,
@@ -16539,7 +16907,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0103",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "lat": 53.153953,
         "lon": 8.175427,
         "speaker_count": 7,
@@ -16882,15 +17250,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0003",
         "affiliation": "Academia Sinica",
-        "lat": 25.042074,
-        "lon": 121.614046,
+        "lat": 25.0422388,
+        "lon": 121.6161527,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 18035.9,
         "co2e_low_kg": 18035.9,
         "co2e_high_kg": 52304.1,
         "co2e_per_speaker_kg": 2254.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0004",
@@ -16908,28 +17277,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0005",
         "affiliation": "Adelaide University",
-        "lat": -34.918923,
-        "lon": 138.604237,
+        "lat": -34.920603,
+        "lon": 138.6062277,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 891.1,
         "co2e_low_kg": 891.1,
         "co2e_high_kg": 2584.3,
         "co2e_per_speaker_kg": 891.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0006",
         "affiliation": "Adelphi University",
-        "lat": 40.719764,
-        "lon": -73.651972,
+        "lat": 40.7200034,
+        "lon": -73.6521126,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3627.0,
         "co2e_low_kg": 3627.0,
         "co2e_high_kg": 10518.4,
         "co2e_per_speaker_kg": 3627.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0007",
@@ -16986,15 +17357,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0011",
         "affiliation": "Arizona State University",
-        "lat": 33.421317,
-        "lon": -111.933163,
+        "lat": 33.4229975,
+        "lon": -111.9278306,
         "speaker_count": 12,
         "travel_attendees": 12,
         "co2e_kg": 33707.1,
         "co2e_low_kg": 33707.1,
         "co2e_high_kg": 97750.5,
         "co2e_per_speaker_kg": 2808.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0012",
@@ -17013,15 +17385,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0013",
         "affiliation": "Australian Institute of Marine Science",
-        "lat": -19.26764,
-        "lon": 147.055399,
+        "lat": -18.909646919126157,
+        "lon": 146.97106258535263,
         "speaker_count": 42,
         "travel_attendees": 42,
         "co2e_kg": 43191.8,
         "co2e_low_kg": 43191.8,
         "co2e_high_kg": 125256.3,
         "co2e_per_speaker_kg": 1028.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0015",
@@ -17038,7 +17411,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0016",
-        "affiliation": "Backpacker Marissa Boylan the Nature Conservancy Micronesia (the Federated States of)",
+        "affiliation": "the Nature Conservancy",
         "lat": 39.78373,
         "lon": -100.445882,
         "speaker_count": 1,
@@ -17052,41 +17425,44 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0017",
         "affiliation": "Bangor University",
-        "lat": 53.215465,
-        "lon": -4.178117,
+        "lat": 53.22836780000001,
+        "lon": -4.1294373,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4641.4,
         "co2e_low_kg": 4641.4,
         "co2e_high_kg": 13459.9,
         "co2e_per_speaker_kg": 4641.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0018",
         "affiliation": "Bar-Ilan University",
-        "lat": 32.069329,
-        "lon": 34.843343,
+        "lat": 32.0691989,
+        "lon": 34.8430876,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 20828.2,
         "co2e_low_kg": 20828.2,
         "co2e_high_kg": 60401.8,
         "co2e_per_speaker_kg": 4165.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0019",
         "affiliation": "Ben Gurion University of the Negev",
-        "lat": 31.263125,
-        "lon": 34.802239,
+        "lat": 31.261426,
+        "lon": 34.7995546,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4165.6,
         "co2e_low_kg": 4165.6,
         "co2e_high_kg": 12080.4,
         "co2e_per_speaker_kg": 4165.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0020",
@@ -17104,45 +17480,48 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0021",
         "affiliation": "Bermuda Institute of Ocean Sciences",
-        "lat": 32.370715,
-        "lon": -64.695922,
+        "lat": 32.3708572,
+        "lon": -64.6961517,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 7471.6,
         "co2e_low_kg": 7471.6,
         "co2e_high_kg": 21667.6,
         "co2e_per_speaker_kg": 3735.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0022",
         "affiliation": "Bernice Pauahi Bishop Museum",
-        "lat": 21.333084,
-        "lon": -157.870711,
+        "lat": 21.3329195,
+        "lon": -157.8706127,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1808.8,
         "co2e_low_kg": 1808.8,
         "co2e_high_kg": 5245.4,
         "co2e_per_speaker_kg": 1808.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0023",
         "affiliation": "Bigelow Laboratory for Ocean Sciences",
-        "lat": 43.858098,
-        "lon": -69.579415,
+        "lat": 43.8597347,
+        "lon": -69.5800368,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3722.6,
         "co2e_low_kg": 3722.6,
         "co2e_high_kg": 10795.4,
         "co2e_per_speaker_kg": 3722.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0024",
-        "affiliation": "Biodiversity Research Center, Academia Sinica",
+        "affiliation": "Biodiversity Research Center",
         "lat": 10.324304,
         "lon": 123.775607,
         "speaker_count": 1,
@@ -17169,54 +17548,58 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0026",
         "affiliation": "Blue Alliance",
-        "lat": 39.244341,
-        "lon": -84.380768,
+        "lat": 39.2012313,
+        "lon": -84.3705374,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 10361.7,
         "co2e_low_kg": 10361.7,
         "co2e_high_kg": 30048.9,
         "co2e_per_speaker_kg": 3453.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0027",
         "affiliation": "Blue Prosperity Fiji",
-        "lat": -18.12397,
-        "lon": 179.012274,
+        "lat": -17.713371,
+        "lon": 178.065032,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 1174.0,
         "co2e_low_kg": 1174.0,
         "co2e_high_kg": 3404.7,
         "co2e_per_speaker_kg": 587.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0028",
         "affiliation": "Boston College",
-        "lat": 42.335448,
-        "lon": -71.168267,
+        "lat": 42.3355488,
+        "lon": -71.16849450000001,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6251.0,
         "co2e_low_kg": 6251.0,
         "co2e_high_kg": 18127.8,
         "co2e_per_speaker_kg": 3125.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0029",
         "affiliation": "Boston University",
-        "lat": 42.350422,
-        "lon": -71.103225,
+        "lat": 42.3504997,
+        "lon": -71.1053991,
         "speaker_count": 9,
         "travel_attendees": 9,
         "co2e_kg": 33285.1,
         "co2e_low_kg": 33285.1,
         "co2e_high_kg": 96526.9,
         "co2e_per_speaker_kg": 3698.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0030",
@@ -17247,15 +17630,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0032",
         "affiliation": "Bureau of Meteorology",
-        "lat": -27.391496,
-        "lon": 153.130007,
+        "lat": -27.3914956,
+        "lon": 153.1300069,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 629.2,
         "co2e_low_kg": 629.2,
         "co2e_high_kg": 1824.8,
         "co2e_per_speaker_kg": 629.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0033",
@@ -17286,32 +17670,34 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0035",
         "affiliation": "CNRS/UPVD",
-        "lat": 46.603354,
-        "lon": 1.888334,
+        "lat": 42.6820471,
+        "lon": 2.8988581,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4739.4,
         "co2e_low_kg": 4739.4,
         "co2e_high_kg": 13744.2,
         "co2e_per_speaker_kg": 4739.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0036",
         "affiliation": "CORDIO East Africa",
-        "lat": 1.441968,
-        "lon": 38.431398,
+        "lat": -4.0026058,
+        "lon": 39.7277679,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 7110.6,
         "co2e_low_kg": 7110.6,
         "co2e_high_kg": 20620.9,
         "co2e_per_speaker_kg": 3555.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0037",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "lat": -17.51906,
         "lon": -149.849702,
         "speaker_count": 10,
@@ -17338,67 +17724,72 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0040",
         "affiliation": "Cal Poly Humboldt",
-        "lat": 40.876476,
-        "lon": -124.080056,
+        "lat": 40.8747332,
+        "lon": -124.0789268,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2768.4,
         "co2e_low_kg": 2768.4,
         "co2e_high_kg": 8028.3,
         "co2e_per_speaker_kg": 2768.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0041",
         "affiliation": "California Academy of Sciences",
-        "lat": 37.769827,
-        "lon": -122.466093,
+        "lat": 37.7698646,
+        "lon": -122.4660947,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 19653.6,
         "co2e_low_kg": 19653.6,
         "co2e_high_kg": 56995.4,
         "co2e_per_speaker_kg": 2807.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0042",
         "affiliation": "California State University",
-        "lat": 34.179905,
-        "lon": -117.3263,
+        "lat": 34.0663797,
+        "lon": -118.1684782,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2699.1,
         "co2e_low_kg": 2699.1,
         "co2e_high_kg": 7827.4,
         "co2e_per_speaker_kg": 2699.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0043",
-        "affiliation": "California State University Monterey Bay",
-        "lat": 36.653767,
-        "lon": -121.797345,
+        "affiliation": "California State University",
+        "lat": 34.0663797,
+        "lon": -118.1684782,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5367.1,
         "co2e_low_kg": 5367.1,
         "co2e_high_kg": 15564.7,
         "co2e_per_speaker_kg": 2683.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0044",
-        "affiliation": "California State University Northridge",
-        "lat": 34.245535,
-        "lon": -118.526322,
+        "affiliation": "California State University",
+        "lat": 34.0663797,
+        "lon": -118.1684782,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2681.7,
         "co2e_low_kg": 2681.7,
         "co2e_high_kg": 7776.8,
         "co2e_per_speaker_kg": 2681.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0045",
@@ -17429,67 +17820,72 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0047",
         "affiliation": "Cape Eleuthera Institute",
-        "lat": 24.773655,
-        "lon": -78.000055,
+        "lat": 24.8294798,
+        "lon": -76.3281061,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6717.1,
         "co2e_low_kg": 6717.1,
         "co2e_high_kg": 19479.6,
         "co2e_per_speaker_kg": 3358.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0048",
         "affiliation": "Caraga State University / National Sun Yat-sen University",
-        "lat": 8.956396,
-        "lon": 125.597027,
+        "lat": 8.801456199999999,
+        "lon": 125.7406882,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3612.2,
         "co2e_low_kg": 3612.2,
         "co2e_high_kg": 10475.5,
         "co2e_per_speaker_kg": 1806.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0049",
         "affiliation": "Carl Von Ossietzky University of Oldenburg",
-        "lat": 53.146727,
-        "lon": 8.181643,
+        "lat": 53.1467333,
+        "lon": 8.183124,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4574.3,
         "co2e_low_kg": 4574.3,
         "co2e_high_kg": 13265.5,
         "co2e_per_speaker_kg": 4574.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0050",
         "affiliation": "Carl-von-Ossietzky University of Oldenburg",
-        "lat": 53.146727,
-        "lon": 8.181643,
+        "lat": 53.1467333,
+        "lon": 8.183124,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4574.3,
         "co2e_low_kg": 4574.3,
         "co2e_high_kg": 13265.5,
         "co2e_per_speaker_kg": 4574.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0051",
         "affiliation": "Cawthron Institute",
-        "lat": -41.271619,
-        "lon": 173.293495,
+        "lat": -41.271457,
+        "lon": 173.2933615,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 277.2,
         "co2e_low_kg": 138.6,
         "co2e_high_kg": 554.3,
         "co2e_per_speaker_kg": 277.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0052",
@@ -17520,80 +17916,86 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0054",
         "affiliation": "Central Queensland University",
-        "lat": -23.318314,
-        "lon": 150.52167,
+        "lat": -23.3242441,
+        "lon": 150.5189056,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 643.5,
         "co2e_low_kg": 643.5,
         "co2e_high_kg": 1866.2,
         "co2e_per_speaker_kg": 643.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0055",
         "affiliation": "Centre Scientifique de Monaco",
-        "lat": 43.732728,
-        "lon": 7.425338,
+        "lat": 43.7328381,
+        "lon": 7.4252867,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 33396.6,
         "co2e_low_kg": 33396.6,
         "co2e_high_kg": 96850.1,
         "co2e_per_speaker_kg": 4770.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0056",
         "affiliation": "Centre de Recherches Insulaires et Observatoire de l'Environnement de Moorea",
-        "lat": -17.024375,
-        "lon": -144.64349,
+        "lat": -17.5388435,
+        "lon": -149.8295234,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1044.6,
         "co2e_low_kg": 1044.6,
         "co2e_high_kg": 3029.3,
         "co2e_per_speaker_kg": 1044.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0057",
         "affiliation": "Centro Interdisciplinario de Ciencias marinas",
-        "lat": 24.141484,
-        "lon": -110.349464,
+        "lat": 24.140896,
+        "lon": -110.3509768,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2639.2,
         "co2e_low_kg": 2639.2,
         "co2e_high_kg": 7653.7,
         "co2e_per_speaker_kg": 2639.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0058",
         "affiliation": "Chulalongkorn University",
-        "lat": 13.743089,
-        "lon": 100.532872,
+        "lat": 13.7385647,
+        "lon": 100.5321342,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 7335.3,
         "co2e_low_kg": 7335.3,
         "co2e_high_kg": 21272.5,
         "co2e_per_speaker_kg": 2445.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0059",
         "affiliation": "Chungnam National University",
-        "lat": 36.369879,
-        "lon": 127.34483,
+        "lat": 36.3669174,
+        "lon": 127.346504,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2432.5,
         "co2e_low_kg": 2432.5,
         "co2e_high_kg": 7054.2,
         "co2e_per_speaker_kg": 2432.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0060",
@@ -17624,19 +18026,20 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0062",
         "affiliation": "Clemson University",
-        "lat": 34.668692,
-        "lon": -82.837435,
+        "lat": 34.6749926,
+        "lon": -82.8406184,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3388.9,
         "co2e_low_kg": 3388.9,
         "co2e_high_kg": 9827.8,
         "co2e_per_speaker_kg": 3388.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0063",
-        "affiliation": "Coastal and Marine Resource Development",
+        "affiliation": "Coastal and Marine Resource",
         "lat": 1.441968,
         "lon": 38.431398,
         "speaker_count": 1,
@@ -17650,106 +18053,114 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0064",
         "affiliation": "College of Charleston",
-        "lat": 32.78409,
-        "lon": -79.938002,
+        "lat": 32.7834441,
+        "lon": -79.93700179999999,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6818.3,
         "co2e_low_kg": 6818.3,
         "co2e_high_kg": 19773.1,
         "co2e_per_speaker_kg": 3409.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0065",
         "affiliation": "Colorado State University",
-        "lat": 40.570657,
-        "lon": -105.085399,
+        "lat": 40.5729432,
+        "lon": -105.0848391,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3023.3,
         "co2e_low_kg": 3023.3,
         "co2e_high_kg": 8767.6,
         "co2e_per_speaker_kg": 3023.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0066",
         "affiliation": "Columbia University",
-        "lat": 40.807751,
-        "lon": -73.96249,
+        "lat": 40.8075355,
+        "lon": -73.9625727,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3626.5,
         "co2e_low_kg": 3626.5,
         "co2e_high_kg": 10516.8,
         "co2e_per_speaker_kg": 3626.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0067",
         "affiliation": "Commonwealth Scientific and Industrial Research Organisation",
-        "lat": -31.949509,
-        "lon": 115.789617,
+        "lat": -31.9495086,
+        "lon": 115.7896174,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 2722.9,
         "co2e_low_kg": 2722.9,
         "co2e_high_kg": 7896.4,
         "co2e_per_speaker_kg": 1361.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0068",
         "affiliation": "Connecticut College",
-        "lat": 41.379133,
-        "lon": -72.106531,
+        "lat": 41.3797568,
+        "lon": -72.10434289999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3684.5,
         "co2e_low_kg": 3684.5,
         "co2e_high_kg": 10685.1,
         "co2e_per_speaker_kg": 3684.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0069",
         "affiliation": "Conservation International",
-        "lat": -18.876189,
-        "lon": 47.550128,
+        "lat": -18.9166927,
+        "lon": 47.5388561,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 9756.8,
         "co2e_low_kg": 9756.8,
         "co2e_high_kg": 28294.7,
         "co2e_per_speaker_kg": 2439.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0070",
         "affiliation": "Conservation Society of Pohnpei",
-        "lat": 6.887047,
-        "lon": 158.240614,
+        "lat": 6.966285399999999,
+        "lon": 158.2147525,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1242.2,
         "co2e_low_kg": 1242.2,
         "co2e_high_kg": 3602.5,
         "co2e_per_speaker_kg": 1242.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0071",
         "affiliation": "Coral Guardian",
-        "lat": 25.761111,
-        "lon": -80.258056,
+        "lat": 45.7572412,
+        "lon": 4.8470396,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3306.8,
         "co2e_low_kg": 3306.8,
         "co2e_high_kg": 9589.8,
         "co2e_per_speaker_kg": 3306.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0072",
@@ -17767,15 +18178,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0073",
         "affiliation": "Coral Reef Watch",
-        "lat": 25.627558,
-        "lon": -80.387443,
+        "lat": 25.6275583,
+        "lon": -80.3874433,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9920.5,
         "co2e_low_kg": 9920.5,
         "co2e_high_kg": 28769.5,
         "co2e_per_speaker_kg": 3306.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0074",
@@ -17793,19 +18205,20 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0075",
         "affiliation": "Coral Restoration Foundation",
-        "lat": 39.78373,
-        "lon": -100.445882,
+        "lat": 25.088014,
+        "lon": -80.441046,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3123.0,
         "co2e_low_kg": 3123.0,
         "co2e_high_kg": 9056.7,
         "co2e_per_speaker_kg": 3123.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0076",
-        "affiliation": "Coral Restoration Foundation / Coral Restoration Consortium",
+        "affiliation": "Coral Restoration Foundation /",
         "lat": 39.78373,
         "lon": -100.445882,
         "speaker_count": 1,
@@ -17819,15 +18232,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0077",
         "affiliation": "Coral Triangle Center",
-        "lat": -2.483383,
-        "lon": 117.890285,
+        "lat": -8.7029974,
+        "lon": 115.2591332,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1817.1,
         "co2e_low_kg": 1817.1,
         "co2e_high_kg": 5269.5,
         "co2e_per_speaker_kg": 1817.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0078",
@@ -17845,15 +18259,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0079",
         "affiliation": "Corales De Paz",
-        "lat": 12.289773,
-        "lon": -86.717975,
+        "lat": 3.4331807,
+        "lon": -76.5463659,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3014.7,
         "co2e_low_kg": 3014.7,
         "co2e_high_kg": 8742.6,
         "co2e_per_speaker_kg": 3014.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0080",
@@ -17871,15 +18286,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0081",
         "affiliation": "Coralku Solutions",
-        "lat": 4.569375,
-        "lon": 102.265682,
+        "lat": 5.7944933,
+        "lon": 102.9000729,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2266.6,
         "co2e_low_kg": 2266.6,
         "co2e_high_kg": 6573.1,
         "co2e_per_speaker_kg": 2266.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0082",
@@ -17897,15 +18313,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0083",
         "affiliation": "Curtin University",
-        "lat": 1.288421,
-        "lon": 103.779567,
+        "lat": -32.0054649,
+        "lon": 115.8919818,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 8581.0,
         "co2e_low_kg": 8581.0,
         "co2e_high_kg": 24885.0,
         "co2e_per_speaker_kg": 2145.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0084",
@@ -17923,15 +18340,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0085",
         "affiliation": "De La Salle University",
-        "lat": 14.567514,
-        "lon": 120.99142,
+        "lat": 14.5647642,
+        "lon": 120.9931652,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2047.7,
         "co2e_low_kg": 2047.7,
         "co2e_high_kg": 5938.2,
         "co2e_per_speaker_kg": 2047.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0086",
@@ -17962,20 +18380,21 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0088",
-        "affiliation": "Department of Conservation - New Zealand",
-        "lat": -41.289932,
-        "lon": 174.775079,
+        "affiliation": "Department of Conservation",
+        "lat": -40.900557,
+        "lon": 174.885971,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 209.9,
         "co2e_low_kg": 104.9,
         "co2e_high_kg": 419.7,
         "co2e_per_speaker_kg": 209.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0089",
-        "affiliation": "Department of Environment and Natural Resources - Philippines",
+        "affiliation": "Department of Environment and Natural Resources",
         "lat": 12.750349,
         "lon": 122.73121,
         "speaker_count": 1,
@@ -17988,7 +18407,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0090",
-        "affiliation": "Department of Environment and Natural Resources - Philippines Philippines",
+        "affiliation": "Department of Environment and Natural Resources",
         "lat": 12.750349,
         "lon": 122.73121,
         "speaker_count": 1,
@@ -18001,20 +18420,21 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0091",
-        "affiliation": "Department of Planning and Natural Resources - Virgin Islands",
-        "lat": 17.697567,
-        "lon": -64.875287,
+        "affiliation": "Department of Planning and Natural Resources",
+        "lat": 18.336764,
+        "lon": -64.89007470000001,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3300.4,
         "co2e_low_kg": 3300.4,
         "co2e_high_kg": 9571.2,
         "co2e_per_speaker_kg": 3300.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0092",
-        "affiliation": "Disaster Risk Reduction Center Universitas Indonesia",
+        "affiliation": "Disaster Risk Reduction Center",
         "lat": -2.483383,
         "lon": 117.890285,
         "speaker_count": 1,
@@ -18027,20 +18447,21 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0093",
-        "affiliation": "Division of Aquatic and Wildlife Resources - Guam",
-        "lat": 13.449994,
-        "lon": 144.765168,
+        "affiliation": "Division of Aquatic and Wildlife Resources",
+        "lat": 13.3823791,
+        "lon": 144.6972774,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3282.4,
         "co2e_low_kg": 3282.4,
         "co2e_high_kg": 9519.1,
         "co2e_per_speaker_kg": 1641.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0094",
-        "affiliation": "Drawaqa Marine Conservation Trust",
+        "affiliation": "Drawaqa Marine",
         "lat": -18.12397,
         "lon": 179.012274,
         "speaker_count": 1,
@@ -18054,19 +18475,20 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0095",
         "affiliation": "Duke University",
-        "lat": 36.000156,
-        "lon": -78.94423,
+        "lat": 36.0014258,
+        "lon": -78.9382286,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3472.5,
         "co2e_low_kg": 3472.5,
         "co2e_high_kg": 10070.2,
         "co2e_per_speaker_kg": 3472.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0096",
-        "affiliation": "ENTROPIE",
+        "affiliation": "ENTROPIE, Reunion",
         "lat": 48.155125,
         "lon": -3.799268,
         "speaker_count": 1,
@@ -18093,41 +18515,44 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0098",
         "affiliation": "Earth Observatory of Singapore",
-        "lat": 1.346622,
-        "lon": 103.680444,
+        "lat": 1.3466116,
+        "lon": 103.6804897,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2145.3,
         "co2e_low_kg": 2145.3,
         "co2e_high_kg": 6221.3,
         "co2e_per_speaker_kg": 2145.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0099",
-        "affiliation": "Earth Sciences New Zealand",
-        "lat": -41.5000831,
-        "lon": 172.8344077,
+        "affiliation": "Earth Sciences",
+        "lat": -40.900557,
+        "lon": 174.885971,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 888.7,
         "co2e_low_kg": 444.3,
         "co2e_high_kg": 1777.4,
         "co2e_per_speaker_kg": 296.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0100",
         "affiliation": "East Carolina University",
-        "lat": 35.632851,
-        "lon": -77.485267,
+        "lat": 35.6068806,
+        "lon": -77.3665364,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3472.5,
         "co2e_low_kg": 3472.5,
         "co2e_high_kg": 10070.2,
         "co2e_per_speaker_kg": 3472.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0101",
@@ -18145,28 +18570,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0102",
         "affiliation": "Edith Cowan University",
-        "lat": -33.366782,
-        "lon": 115.653338,
+        "lat": -31.7522505,
+        "lon": 115.7728829,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 4084.4,
         "co2e_low_kg": 4084.4,
         "co2e_high_kg": 11844.6,
         "co2e_per_speaker_kg": 1361.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0103",
         "affiliation": "Ehime University",
-        "lat": 33.843312,
-        "lon": 132.783016,
+        "lat": 33.8526386,
+        "lon": 132.7743413,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2296.8,
         "co2e_low_kg": 2296.8,
         "co2e_high_kg": 6660.8,
         "co2e_per_speaker_kg": 2296.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0104",
@@ -18179,20 +18606,22 @@ export const EMISSIONS_DATA = {
         "co2e_low_kg": 2681.7,
         "co2e_high_kg": 7776.8,
         "co2e_per_speaker_kg": 2681.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0105",
         "affiliation": "Faculty of Engineering - University of Porto",
-        "lat": 39.662165,
-        "lon": -8.135352,
+        "lat": 41.178622253392895,
+        "lon": -8.595858641207045,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 5005.7,
         "co2e_low_kg": 5005.7,
         "co2e_high_kg": 14516.4,
         "co2e_per_speaker_kg": 5005.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0106",
@@ -18210,145 +18639,156 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0107",
         "affiliation": "Federal University of Pernambuco",
-        "lat": -8.052424,
-        "lon": -34.951062,
+        "lat": -8.0507245,
+        "lon": -34.9508812,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3602.4,
         "co2e_low_kg": 3602.4,
         "co2e_high_kg": 10447.0,
         "co2e_per_speaker_kg": 3602.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0108",
         "affiliation": "Federal University of Santa Maria",
-        "lat": 6.911813,
-        "lon": 122.059141,
+        "lat": -29.7208878,
+        "lon": -53.7147551,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4267.1,
         "co2e_low_kg": 4267.1,
         "co2e_high_kg": 12374.5,
         "co2e_per_speaker_kg": 2133.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0109",
         "affiliation": "Federal University of Technology - Akure",
-        "lat": 7.304535,
-        "lon": 5.129479,
+        "lat": 7.307042000000001,
+        "lon": 5.1397549,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4258.5,
         "co2e_low_kg": 4258.5,
         "co2e_high_kg": 12349.8,
         "co2e_per_speaker_kg": 4258.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0110",
         "affiliation": "Fisheries Research Institute",
-        "lat": 25.154665,
-        "lon": 121.763451,
+        "lat": 25.154645,
+        "lon": 121.7631776,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2262.7,
         "co2e_low_kg": 2262.7,
         "co2e_high_kg": 6561.8,
         "co2e_per_speaker_kg": 2262.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0111",
         "affiliation": "Fisheries Technology Institute",
-        "lat": 35.077074,
-        "lon": 129.076925,
+        "lat": 9.9392092,
+        "lon": 76.2685351,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2377.8,
         "co2e_low_kg": 2377.8,
         "co2e_high_kg": 6895.7,
         "co2e_per_speaker_kg": 2377.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0112",
         "affiliation": "Florida Atlantic University",
-        "lat": 26.119406,
-        "lon": -80.14168,
+        "lat": 27.6648274,
+        "lon": -81.5157535,
         "speaker_count": 6,
         "travel_attendees": 6,
         "co2e_kg": 19883.3,
         "co2e_low_kg": 19883.3,
         "co2e_high_kg": 57661.5,
         "co2e_per_speaker_kg": 3313.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0113",
-        "affiliation": "Florida Atlantic University - Harbor Branch",
-        "lat": 26.119406,
-        "lon": -80.14168,
+        "affiliation": "Florida Atlantic University",
+        "lat": 27.6648274,
+        "lon": -81.5157535,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9941.6,
         "co2e_low_kg": 9941.6,
         "co2e_high_kg": 28830.8,
         "co2e_per_speaker_kg": 3313.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0114",
         "affiliation": "Florida Fish and Wildlife Conservation Commission",
-        "lat": 30.437034,
-        "lon": -84.277503,
+        "lat": 27.6648274,
+        "lon": -81.5157535,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6567.7,
         "co2e_low_kg": 6567.7,
         "co2e_high_kg": 19046.3,
         "co2e_per_speaker_kg": 3283.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0115",
         "affiliation": "Florida Fish and Wildlife Research Institute",
-        "lat": 27.76145,
-        "lon": -82.633626,
+        "lat": 27.7615125,
+        "lon": -82.63352789999999,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6569.3,
         "co2e_low_kg": 6569.3,
         "co2e_high_kg": 19050.9,
         "co2e_per_speaker_kg": 3284.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0116",
         "affiliation": "Florida International University",
-        "lat": 25.75539,
-        "lon": -80.376283,
+        "lat": 25.7562465,
+        "lon": -80.3755401,
         "speaker_count": 24,
         "travel_attendees": 24,
         "co2e_kg": 78851.9,
         "co2e_low_kg": 78851.9,
         "co2e_high_kg": 228670.6,
         "co2e_per_speaker_kg": 3285.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0117",
-        "affiliation": "Florida Keys National Marine Sanctuary",
-        "lat": 25.008779,
-        "lon": -80.408109,
+        "affiliation": "Florida Keys National Marine",
+        "lat": 24.4269857,
+        "lon": -83.11127979999999,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6246.0,
         "co2e_low_kg": 6246.0,
         "co2e_high_kg": 18113.4,
         "co2e_per_speaker_kg": 3123.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0118",
@@ -18366,15 +18806,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0119",
         "affiliation": "Florida State University",
-        "lat": 30.442216,
-        "lon": -84.297453,
+        "lat": 30.442087,
+        "lon": -84.2979579,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9851.5,
         "co2e_low_kg": 9851.5,
         "co2e_high_kg": 28569.4,
         "co2e_per_speaker_kg": 3283.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0120",
@@ -18444,28 +18885,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0125",
         "affiliation": "Georgia Institute of Technology",
-        "lat": 33.776095,
-        "lon": -84.398808,
+        "lat": 33.7779791,
+        "lon": -84.3979638,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 16429.0,
         "co2e_low_kg": 16429.0,
         "co2e_high_kg": 47644.0,
         "co2e_per_speaker_kg": 3285.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0126",
         "affiliation": "Georgia Southern University",
-        "lat": 32.421438,
-        "lon": -81.784505,
+        "lat": 32.4206845,
+        "lon": -81.7869734,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 13497.8,
         "co2e_low_kg": 13497.8,
         "co2e_high_kg": 39143.5,
         "co2e_per_speaker_kg": 3374.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0127",
@@ -18483,15 +18926,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0128",
         "affiliation": "Global Science and Technology, LLC",
-        "lat": 22.052907,
-        "lon": 88.074011,
+        "lat": 22.0529069,
+        "lon": 88.0740115,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5711.1,
         "co2e_low_kg": 5711.1,
         "co2e_high_kg": 16562.1,
         "co2e_per_speaker_kg": 2855.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0129",
@@ -18522,15 +18966,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0131",
         "affiliation": "Griffith University",
-        "lat": -27.963338,
-        "lon": 153.384692,
+        "lat": -27.5530181,
+        "lon": 153.0510796,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 3321.4,
         "co2e_low_kg": 3321.4,
         "co2e_high_kg": 9632.0,
         "co2e_per_speaker_kg": 664.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0132",
@@ -18548,132 +18993,142 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0133",
         "affiliation": "Guam Coral Reef Initiative",
-        "lat": 13.449994,
-        "lon": 144.765168,
+        "lat": 13.3823791,
+        "lon": 144.6972774,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3282.4,
         "co2e_low_kg": 3282.4,
         "co2e_high_kg": 9519.1,
         "co2e_per_speaker_kg": 1641.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0134",
         "affiliation": "Guangxi University",
-        "lat": 22.847211,
-        "lon": 108.291348,
+        "lat": 22.8471376,
+        "lon": 108.2913474,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5253.4,
         "co2e_low_kg": 5253.4,
         "co2e_high_kg": 15234.7,
         "co2e_per_speaker_kg": 2626.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0135",
         "affiliation": "HI-LEX CORPORATION",
-        "lat": 42.337327,
-        "lon": -85.282687,
+        "lat": 42.3372001,
+        "lon": -85.2834396,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3419.8,
         "co2e_low_kg": 3419.8,
         "co2e_high_kg": 9917.5,
         "co2e_per_speaker_kg": 3419.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0136",
         "affiliation": "Hamburg University",
-        "lat": 53.590905,
-        "lon": 9.975376,
+        "lat": 53.5659703,
+        "lon": 9.9849977,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4548.8,
         "co2e_low_kg": 4548.8,
         "co2e_high_kg": 13191.5,
         "co2e_per_speaker_kg": 4548.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0137",
         "affiliation": "Hampton University",
-        "lat": 37.02101,
-        "lon": -76.338626,
+        "lat": 37.0228392,
+        "lon": -76.3343603,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3538.2,
         "co2e_low_kg": 3538.2,
         "co2e_high_kg": 10260.8,
         "co2e_per_speaker_kg": 3538.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0138",
         "affiliation": "Harbor Branch Oceanographic Institute",
-        "lat": 27.532324,
-        "lon": -80.352946,
+        "lat": 27.5340658,
+        "lon": -80.355442,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3331.8,
         "co2e_low_kg": 3331.8,
         "co2e_high_kg": 9662.3,
         "co2e_per_speaker_kg": 3331.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0139",
         "affiliation": "Harvey Mudd College",
-        "lat": 34.10614,
-        "lon": -117.708728,
+        "lat": 34.1060906,
+        "lon": -117.7086431,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2692.0,
         "co2e_low_kg": 2692.0,
         "co2e_high_kg": 7806.7,
         "co2e_per_speaker_kg": 2692.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0140",
         "affiliation": "Hasanuddin University",
-        "lat": -5.132566,
-        "lon": 119.488455,
+        "lat": -5.1341871,
+        "lon": 119.4880786,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1689.4,
         "co2e_low_kg": 1689.4,
         "co2e_high_kg": 4899.4,
         "co2e_per_speaker_kg": 1689.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0141",
         "affiliation": "Hawai'i Cooperative Fishery Research Unit",
-        "lat": 39.78373,
-        "lon": -100.445882,
+        "lat": 21.31140986535154,
+        "lon": -157.87326953841875,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3123.0,
         "co2e_low_kg": 3123.0,
         "co2e_high_kg": 9056.7,
         "co2e_per_speaker_kg": 3123.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0142",
         "affiliation": "Hawai'i Pacific University",
-        "lat": 21.306559,
-        "lon": -157.865611,
+        "lat": 19.8986819,
+        "lon": -155.6658568,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3617.5,
         "co2e_low_kg": 3617.5,
         "co2e_high_kg": 10490.8,
         "co2e_per_speaker_kg": 1808.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0143",
@@ -18690,7 +19145,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0144",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "lat": 21.4325581,
         "lon": -157.7880442,
         "speaker_count": 15,
@@ -18704,29 +19159,31 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0146",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
-        "lat": 53.153953,
-        "lon": 8.175427,
+        "affiliation": "Helmholtz Institute for Functional Marine",
+        "lat": 53.15391289999999,
+        "lon": 8.1753942,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 32020.2,
         "co2e_low_kg": 32020.2,
         "co2e_high_kg": 92858.7,
         "co2e_per_speaker_kg": 4574.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0147",
         "affiliation": "Hiroshima University",
-        "lat": 34.401638,
-        "lon": 132.720721,
+        "lat": 34.3991292,
+        "lon": 132.7140406,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2308.6,
         "co2e_low_kg": 2308.6,
         "co2e_high_kg": 6694.9,
         "co2e_per_speaker_kg": 2308.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0148",
@@ -18745,41 +19202,44 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0149",
         "affiliation": "Hong Kong Polytechnic University",
-        "lat": 22.302722,
-        "lon": 114.178045,
+        "lat": 22.3045633,
+        "lon": 114.1795767,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2348.4,
         "co2e_low_kg": 2348.4,
         "co2e_high_kg": 6810.4,
         "co2e_per_speaker_kg": 2348.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0150",
         "affiliation": "Hong Kong University of Science and Technology",
-        "lat": 22.338721,
-        "lon": 114.261899,
+        "lat": 22.3374847,
+        "lon": 114.2633989,
         "speaker_count": 10,
         "travel_attendees": 10,
         "co2e_kg": 23927.0,
         "co2e_low_kg": 23927.0,
         "co2e_high_kg": 69388.2,
         "co2e_per_speaker_kg": 2392.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0151",
         "affiliation": "Horniman Museum and Gardens",
-        "lat": 51.44218,
-        "lon": -0.061324,
+        "lat": 51.4419283,
+        "lon": -0.0619967,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4685.6,
         "co2e_low_kg": 4685.6,
         "co2e_high_kg": 13588.2,
         "co2e_per_speaker_kg": 4685.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0152",
@@ -18810,15 +19270,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0154",
         "affiliation": "IPB University",
-        "lat": -2.483383,
-        "lon": 117.890285,
+        "lat": -6.5552739,
+        "lon": 106.7229062,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3764.1,
         "co2e_low_kg": 3764.1,
         "co2e_high_kg": 10916.0,
         "co2e_per_speaker_kg": 1882.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0155",
@@ -18835,29 +19296,31 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0156",
-        "affiliation": "Imperial College London",
-        "lat": 51.498959,
-        "lon": -0.175641,
+        "affiliation": "Imperial College",
+        "lat": 51.49882220000001,
+        "lon": -0.1748735,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9371.2,
         "co2e_low_kg": 9371.2,
         "co2e_high_kg": 27176.4,
         "co2e_per_speaker_kg": 4685.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0157",
         "affiliation": "Independent Consultant/Researcher",
-        "lat": -34.443743,
-        "lon": 147.536509,
+        "lat": -34.4437431,
+        "lon": 147.5365095,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 591.9,
         "co2e_low_kg": 591.9,
         "co2e_high_kg": 1716.6,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0158",
@@ -18889,54 +19352,58 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0160",
         "affiliation": "Indonesian Librarian Association of South Sulawesi",
-        "lat": -2.483383,
-        "lon": 117.890285,
+        "lat": -3.6687994,
+        "lon": 119.9740534,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1817.1,
         "co2e_low_kg": 1817.1,
         "co2e_high_kg": 5269.5,
         "co2e_per_speaker_kg": 1817.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0161",
-        "affiliation": "Institut Halieutique et des Sciences Marines",
-        "lat": -23.368146,
-        "lon": 43.673511,
+        "affiliation": "Institut Halieutique et des Sciences",
+        "lat": -23.3681539,
+        "lon": 43.6733576,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2988.0,
         "co2e_low_kg": 2988.0,
         "co2e_high_kg": 8665.2,
         "co2e_per_speaker_kg": 2988.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0162",
-        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara",
-        "lat": -23.368146,
-        "lon": 43.673511,
+        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara of Toliara",
+        "lat": -23.3679765,
+        "lon": 43.6735609,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2988.0,
         "co2e_low_kg": 2988.0,
         "co2e_high_kg": 8665.2,
         "co2e_per_speaker_kg": 2988.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0163",
         "affiliation": "Institut Teknologi Bandung",
-        "lat": -6.890449,
-        "lon": 107.610314,
+        "lat": -6.890361700000001,
+        "lon": 107.6101912,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1947.1,
         "co2e_low_kg": 1947.1,
         "co2e_high_kg": 5646.5,
         "co2e_per_speaker_kg": 1947.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0164",
@@ -18980,20 +19447,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0167",
         "affiliation": "Institute for Systems Biology",
-        "lat": 47.622648,
-        "lon": -122.337417,
+        "lat": 47.6226441,
+        "lon": -122.337512,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2878.2,
         "co2e_low_kg": 2878.2,
         "co2e_high_kg": 8346.9,
         "co2e_per_speaker_kg": 2878.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0168",
         "affiliation": "Institute of Fisheries Science",
-        "lat": 34.727326,
+        "lat": 34.7273265,
         "lon": 128.625684,
         "speaker_count": 1,
         "travel_attendees": 1,
@@ -19001,46 +19469,50 @@ export const EMISSIONS_DATA = {
         "co2e_low_kg": 2377.8,
         "co2e_high_kg": 6895.7,
         "co2e_per_speaker_kg": 2377.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0169",
-        "affiliation": "Institute of Science - Tokyo",
-        "lat": 35.605049,
-        "lon": 139.682751,
+        "affiliation": "Institute of Science",
+        "lat": 35.6059021,
+        "lon": 139.6835601,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 6766.7,
         "co2e_low_kg": 6766.7,
         "co2e_high_kg": 19623.5,
         "co2e_per_speaker_kg": 2255.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0170",
         "affiliation": "Institute of Zoology",
-        "lat": 51.535277,
-        "lon": -0.157383,
+        "lat": 51.5351446,
+        "lon": -0.1580143,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4685.6,
         "co2e_low_kg": 4685.6,
         "co2e_high_kg": 13588.2,
         "co2e_per_speaker_kg": 4685.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0171",
         "affiliation": "Instituto Politecnico Nacional",
-        "lat": 20.677727,
-        "lon": -105.222574,
+        "lat": 19.501738,
+        "lon": -99.14013519999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2687.4,
         "co2e_low_kg": 2687.4,
         "co2e_high_kg": 7793.5,
         "co2e_per_speaker_kg": 2687.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0172",
@@ -19071,7 +19543,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0174",
         "affiliation": "Instituto de Estudos do Mar Almirante Paulo Moreira",
-        "lat": -22.977218,
+        "lat": -22.9772182,
         "lon": -42.021433,
         "speaker_count": 1,
         "travel_attendees": 1,
@@ -19079,7 +19551,8 @@ export const EMISSIONS_DATA = {
         "co2e_low_kg": 3128.3,
         "co2e_high_kg": 9072.2,
         "co2e_per_speaker_kg": 3128.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0175",
@@ -19109,42 +19582,45 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0177",
-        "affiliation": "International Islamic University Malaysia",
-        "lat": 3.253081,
-        "lon": 101.735684,
+        "affiliation": "International Islamic University",
+        "lat": 3.2503254,
+        "lon": 101.7345347,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4461.9,
         "co2e_low_kg": 4461.9,
         "co2e_high_kg": 12939.4,
         "co2e_per_speaker_kg": 2230.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0178",
         "affiliation": "Island Conservation",
-        "lat": 39.78373,
-        "lon": -100.445882,
+        "lat": 57.1060047,
+        "lon": -2.6505346,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 7654.2,
         "co2e_low_kg": 7654.2,
         "co2e_high_kg": 22197.1,
         "co2e_per_speaker_kg": 3827.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0179",
         "affiliation": "Istituto Italiano Di Tecnologia",
-        "lat": 44.475017,
-        "lon": 8.906362,
+        "lat": 44.4749312,
+        "lon": 8.9064299,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4739.6,
         "co2e_low_kg": 4739.6,
         "co2e_high_kg": 13744.9,
         "co2e_per_speaker_kg": 4739.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0180",
@@ -19162,29 +19638,31 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0181",
-        "affiliation": "Justus Liebig University Giessen",
-        "lat": 50.570647,
-        "lon": 8.666985,
+        "affiliation": "Justus Liebig University",
+        "lat": 50.5804674,
+        "lon": 8.6771403,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9236.3,
         "co2e_low_kg": 9236.3,
         "co2e_high_kg": 26785.4,
         "co2e_per_speaker_kg": 4618.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0182",
         "affiliation": "KAUST",
-        "lat": 22.322375,
-        "lon": 39.117384,
+        "lat": 22.309465,
+        "lon": 39.104697,
         "speaker_count": 57,
         "travel_attendees": 57,
         "co2e_kg": 224603.3,
         "co2e_low_kg": 224603.3,
         "co2e_high_kg": 651349.5,
         "co2e_per_speaker_kg": 3940.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0183",
@@ -19202,15 +19680,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0184",
         "affiliation": "KAUST Coral Restoration Initiative",
-        "lat": 22.322375,
-        "lon": 39.117384,
+        "lat": 22.309465,
+        "lon": 39.104697,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3938.9,
         "co2e_low_kg": 3938.9,
         "co2e_high_kg": 11422.8,
         "co2e_per_speaker_kg": 3938.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0185",
@@ -19241,15 +19720,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0187",
         "affiliation": "Kagoshima University",
-        "lat": 31.571605,
-        "lon": 130.544087,
+        "lat": 31.5699425,
+        "lon": 130.5442848,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2275.1,
         "co2e_low_kg": 2275.1,
         "co2e_high_kg": 6597.8,
         "co2e_per_speaker_kg": 2275.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0188",
@@ -19280,106 +19760,114 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0190",
         "affiliation": "Kansai University",
-        "lat": 34.772783,
-        "lon": 135.510452,
+        "lat": 34.7732731,
+        "lon": 135.5107369,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2285.9,
         "co2e_low_kg": 2285.9,
         "co2e_high_kg": 6629.2,
         "co2e_per_speaker_kg": 2285.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0191",
         "affiliation": "Karolinska Institute",
-        "lat": 59.21955,
-        "lon": 17.940055,
+        "lat": 59.3485413,
+        "lon": 18.0275982,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4338.9,
         "co2e_low_kg": 4338.9,
         "co2e_high_kg": 12583.0,
         "co2e_per_speaker_kg": 4338.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0192",
         "affiliation": "Kikai Institute for Coral Reef Science",
-        "lat": 14.897192,
-        "lon": 100.83273,
+        "lat": 28.3216123,
+        "lon": 129.9709674,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2445.1,
         "co2e_low_kg": 2445.1,
         "co2e_high_kg": 7090.8,
         "co2e_per_speaker_kg": 2445.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0193",
         "affiliation": "King Abdullah University of Science and Technology",
-        "lat": 22.322375,
-        "lon": 39.117384,
+        "lat": 22.309465,
+        "lon": 39.104697,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3938.9,
         "co2e_low_kg": 3938.9,
         "co2e_high_kg": 11422.8,
         "co2e_per_speaker_kg": 3938.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0194",
         "affiliation": "Kitasato University",
-        "lat": 35.53911,
-        "lon": 139.393793,
+        "lat": 35.6447768,
+        "lon": 139.7256298,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4511.1,
         "co2e_low_kg": 4511.1,
         "co2e_high_kg": 13082.3,
         "co2e_per_speaker_kg": 2255.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0195",
         "affiliation": "Kochi University",
-        "lat": 9.984831,
-        "lon": 76.229135,
+        "lat": 33.5490378,
+        "lon": 133.4867352,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2915.2,
         "co2e_low_kg": 2915.2,
         "co2e_high_kg": 8454.0,
         "co2e_per_speaker_kg": 2915.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0196",
         "affiliation": "Kokusai Kogyo Co., Ltd.",
-        "lat": 35.766801,
-        "lon": 139.707048,
+        "lat": 35.7668008,
+        "lon": 139.7070478,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2255.6,
         "co2e_low_kg": 2255.6,
         "co2e_high_kg": 6541.2,
         "co2e_per_speaker_kg": 2255.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0197",
         "affiliation": "Konservasi Indonesia",
-        "lat": 0.853409,
-        "lon": 107.218515,
+        "lat": -0.789275,
+        "lon": 113.921327,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4276.8,
         "co2e_low_kg": 4276.8,
         "co2e_high_kg": 12402.8,
         "co2e_per_speaker_kg": 2138.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0198",
@@ -19423,15 +19911,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0201",
         "affiliation": "Kyushu University",
-        "lat": 36.574844,
-        "lon": 139.239418,
+        "lat": 33.6707768,
+        "lon": 130.4444986,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4576.1,
         "co2e_low_kg": 4576.1,
         "co2e_high_kg": 13270.6,
         "co2e_per_speaker_kg": 2288.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0202",
@@ -19462,15 +19951,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0204",
         "affiliation": "Lancaster University",
-        "lat": 54.009843,
-        "lon": -2.787577,
+        "lat": 54.0104286,
+        "lon": -2.7864467,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 32416.4,
         "co2e_low_kg": 32416.4,
         "co2e_high_kg": 94007.7,
         "co2e_per_speaker_kg": 4630.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0205",
@@ -19501,28 +19991,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0207",
         "affiliation": "Lingnan University",
-        "lat": 22.412359,
-        "lon": 113.981278,
+        "lat": 22.4109705,
+        "lon": 113.9830974,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 7045.3,
         "co2e_low_kg": 7045.3,
         "co2e_high_kg": 20431.3,
         "co2e_per_speaker_kg": 2348.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0208",
         "affiliation": "Louisiana State University",
-        "lat": 30.406201,
-        "lon": -91.185413,
+        "lat": 30.4102406,
+        "lon": -91.18570590000002,
         "speaker_count": 6,
         "travel_attendees": 6,
         "co2e_kg": 18889.0,
         "co2e_low_kg": 18889.0,
         "co2e_high_kg": 54778.1,
         "co2e_per_speaker_kg": 3148.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0209",
@@ -19540,15 +20032,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0210",
         "affiliation": "M.M. Bridge Co., Ltd.",
-        "lat": 52.053011,
-        "lon": -9.065883,
+        "lat": 52.0530114,
+        "lon": -9.0658832,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4681.0,
         "co2e_low_kg": 4681.0,
         "co2e_high_kg": 13574.8,
         "co2e_per_speaker_kg": 4681.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0211",
@@ -19567,31 +20060,33 @@ export const EMISSIONS_DATA = {
         "id": "emis-loc-0212",
         "affiliation": "Macquarie University",
         "lat": -33.774197,
-        "lon": 151.112714,
+        "lon": 151.1127138,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 5034.7,
         "co2e_low_kg": 5034.7,
         "co2e_high_kg": 14600.5,
         "co2e_per_speaker_kg": 629.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0213",
         "affiliation": "Macquarie University/University of Groningen",
-        "lat": -33.774197,
-        "lon": 151.112714,
+        "lat": 53.2193266,
+        "lon": 6.562830099999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 591.9,
         "co2e_low_kg": 591.9,
         "co2e_high_kg": 1716.6,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0214",
-        "affiliation": "Madagascar National Parks",
+        "affiliation": "Madagascar National",
         "lat": -18.92496,
         "lon": 46.441642,
         "speaker_count": 1,
@@ -19631,15 +20126,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0217",
         "affiliation": "Marine Biological Association",
-        "lat": 50.3643,
-        "lon": -4.139168,
+        "lat": 50.3641851,
+        "lon": -4.139168199999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4696.9,
         "co2e_low_kg": 4696.9,
         "co2e_high_kg": 13621.2,
         "co2e_per_speaker_kg": 4696.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0218",
@@ -19683,132 +20179,142 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0221",
         "affiliation": "Max Planck Institute for Chemistry",
-        "lat": 49.991445,
-        "lon": 8.229166,
+        "lat": 49.99098559999999,
+        "lon": 8.2290347,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9285.9,
         "co2e_low_kg": 9285.9,
         "co2e_high_kg": 26929.1,
         "co2e_per_speaker_kg": 4642.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0222",
         "affiliation": "McGill University",
-        "lat": 45.431843,
-        "lon": -73.945286,
+        "lat": 45.50601839999999,
+        "lon": -73.5783235,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3669.9,
         "co2e_low_kg": 3669.9,
         "co2e_high_kg": 10642.7,
         "co2e_per_speaker_kg": 3669.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0223",
         "affiliation": "Meio University",
-        "lat": 26.624447,
-        "lon": 127.973613,
+        "lat": 26.6244518,
+        "lon": 127.9738733,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2191.8,
         "co2e_low_kg": 2191.8,
         "co2e_high_kg": 6356.2,
         "co2e_per_speaker_kg": 2191.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0224",
         "affiliation": "Memorial University",
-        "lat": 47.573283,
-        "lon": -52.735191,
+        "lat": 47.5741117,
+        "lon": -52.7352094,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4082.7,
         "co2e_low_kg": 4082.7,
         "co2e_high_kg": 11839.9,
         "co2e_per_speaker_kg": 4082.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0225",
         "affiliation": "Memorial University of Newfoundland and Labrador",
-        "lat": 47.573347,
-        "lon": -52.733309,
+        "lat": 47.5741117,
+        "lon": -52.7352094,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4082.7,
         "co2e_low_kg": 4082.7,
         "co2e_high_kg": 11839.9,
         "co2e_per_speaker_kg": 4082.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0226",
         "affiliation": "Michigan State University",
-        "lat": 42.702379,
-        "lon": -84.480387,
+        "lat": 42.7250725,
+        "lon": -84.47908269999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3436.5,
         "co2e_low_kg": 3436.5,
         "co2e_high_kg": 9965.9,
         "co2e_per_speaker_kg": 3436.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0227",
         "affiliation": "Micronesian Conservation Coalition",
-        "lat": 8.606235,
-        "lon": 151.832744,
+        "lat": 7.425554,
+        "lon": 150.550812,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1401.2,
         "co2e_low_kg": 1401.2,
         "co2e_high_kg": 4063.5,
         "co2e_per_speaker_kg": 1401.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0228",
-        "affiliation": "Mindanao State University - Naawan",
-        "lat": 8.42925,
-        "lon": 124.287749,
+        "affiliation": "Mindanao State University",
+        "lat": 8.4294678,
+        "lon": 124.2882165,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 5418.4,
         "co2e_low_kg": 5418.4,
         "co2e_high_kg": 15713.2,
         "co2e_per_speaker_kg": 1806.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0229",
-        "affiliation": "Mindanao State University-Iligan Institute of Technology",
-        "lat": 8.241511,
-        "lon": 124.243977,
+        "affiliation": "Mindanao State University",
+        "lat": 8.2409688,
+        "lon": 124.2433605,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1806.1,
         "co2e_low_kg": 1806.1,
         "co2e_high_kg": 5237.7,
         "co2e_per_speaker_kg": 1806.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0230",
         "affiliation": "Minderoo Foundation",
-        "lat": -31.975688,
-        "lon": 115.821919,
+        "lat": -31.9756877,
+        "lon": 115.8219191,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 2252.6,
         "co2e_low_kg": 2252.6,
         "co2e_high_kg": 6532.5,
         "co2e_per_speaker_kg": 1126.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0231",
@@ -19838,7 +20344,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0233",
-        "affiliation": "Ministry of Environment and Natural Resources - Dominican Republic",
+        "affiliation": "Ministry of Environment and Natural Resources",
         "lat": 19.097403,
         "lon": -70.302803,
         "speaker_count": 1,
@@ -19852,15 +20358,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0234",
         "affiliation": "Ministry of Fisheries, Oceans and Maritime Affairs - Vanuatu",
-        "lat": -16.525507,
-        "lon": 168.106915,
+        "lat": -15.376706,
+        "lon": 166.959158,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 613.8,
         "co2e_low_kg": 613.8,
         "co2e_high_kg": 1780.0,
         "co2e_per_speaker_kg": 613.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0235",
@@ -19878,67 +20385,72 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0236",
         "affiliation": "Montana State University",
-        "lat": 45.663922,
-        "lon": -111.079277,
+        "lat": 45.6673524,
+        "lon": -111.0546211,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3012.1,
         "co2e_low_kg": 3012.1,
         "co2e_high_kg": 8735.1,
         "co2e_per_speaker_kg": 3012.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0237",
         "affiliation": "Mote Marine Laboratory",
-        "lat": 25.143978,
-        "lon": -80.399072,
+        "lat": 27.3331533,
+        "lon": -82.5773352,
         "speaker_count": 10,
         "travel_attendees": 10,
         "co2e_kg": 33004.1,
         "co2e_low_kg": 33004.1,
         "co2e_high_kg": 95711.9,
         "co2e_per_speaker_kg": 3300.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0238",
         "affiliation": "Murdoch University",
-        "lat": -32.067416,
-        "lon": 115.834609,
+        "lat": -32.0679659,
+        "lon": 115.8352366,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1361.5,
         "co2e_low_kg": 1361.5,
         "co2e_high_kg": 3948.2,
         "co2e_per_speaker_kg": 1361.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0239",
         "affiliation": "Nagoya University",
-        "lat": 35.153309,
-        "lon": 136.967781,
+        "lat": 35.1538553,
+        "lon": 136.9682402,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4543.5,
         "co2e_low_kg": 4543.5,
         "co2e_high_kg": 13176.1,
         "co2e_per_speaker_kg": 2271.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0240",
         "affiliation": "Nanyang Technological University",
-        "lat": 1.34841,
-        "lon": 103.682933,
+        "lat": 1.3483099,
+        "lon": 103.6831347,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 15016.8,
         "co2e_low_kg": 15016.8,
         "co2e_high_kg": 43548.8,
         "co2e_per_speaker_kg": 2145.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0241",
@@ -19956,15 +20468,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0242",
         "affiliation": "National Center for Wildlife",
-        "lat": 16.678642,
-        "lon": 42.150491,
+        "lat": 16.6786425,
+        "lon": 42.1504909,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3807.4,
         "co2e_low_kg": 3807.4,
         "co2e_high_kg": 11041.4,
         "co2e_per_speaker_kg": 3807.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0243",
@@ -19995,19 +20508,20 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0245",
         "affiliation": "National Chiayi University",
-        "lat": 23.973937,
-        "lon": 120.982018,
+        "lat": 23.4678916,
+        "lon": 120.4848779,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4470.2,
         "co2e_low_kg": 4470.2,
         "co2e_high_kg": 12963.5,
         "co2e_per_speaker_kg": 2235.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0246",
-        "affiliation": "National Geographic Pristine Seas",
+        "affiliation": "National",
         "lat": 39.78373,
         "lon": -100.445882,
         "speaker_count": 1,
@@ -20021,93 +20535,100 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0247",
         "affiliation": "National Institute of Advanced Industrial Science and Technology",
-        "lat": 36.05318,
-        "lon": 140.117115,
+        "lat": 36.0531797,
+        "lon": 140.1171149,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 9018.7,
         "co2e_low_kg": 9018.7,
         "co2e_high_kg": 26154.2,
         "co2e_per_speaker_kg": 2254.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0248",
         "affiliation": "National Marine Sanctuary of American Samoa",
-        "lat": -14.542646,
-        "lon": -167.713297,
+        "lat": -14.3586818,
+        "lon": -170.7589766,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 792.8,
         "co2e_low_kg": 792.8,
         "co2e_high_kg": 2299.0,
         "co2e_per_speaker_kg": 792.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0249",
         "affiliation": "National Museum",
-        "lat": 50.078919,
-        "lon": 14.430968,
+        "lat": 1.296613,
+        "lon": 103.8485091,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4563.8,
         "co2e_low_kg": 4563.8,
         "co2e_high_kg": 13234.9,
         "co2e_per_speaker_kg": 4563.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0250",
         "affiliation": "National Museum of Marine Biology and Aquarium",
-        "lat": 23.973937,
-        "lon": 120.982018,
+        "lat": 22.0460159,
+        "lon": 120.6989058,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4459.8,
         "co2e_low_kg": 4459.8,
         "co2e_high_kg": 12933.3,
         "co2e_per_speaker_kg": 2229.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0251",
-        "affiliation": "National Oceanic and Atmospheric Administration",
-        "lat": 36.003031,
-        "lon": -84.248984,
+        "affiliation": "National Oceanic and Atmospheric",
+        "lat": 36.0030305,
+        "lon": -84.2489839,
         "speaker_count": 11,
         "travel_attendees": 11,
         "co2e_kg": 37003.3,
         "co2e_low_kg": 37003.3,
         "co2e_high_kg": 107309.7,
         "co2e_per_speaker_kg": 3363.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0252",
         "affiliation": "National Oceanic and Atmospheric Administration - Fisheries",
-        "lat": 36.003031,
-        "lon": -84.248984,
+        "lat": 36.0030305,
+        "lon": -84.2489839,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3363.9,
         "co2e_low_kg": 3363.9,
         "co2e_high_kg": 9755.4,
         "co2e_per_speaker_kg": 3363.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0253",
-        "affiliation": "National Oceanic and Atmospheric Administration - Pacific Islands",
-        "lat": 36.003031,
-        "lon": -84.248984,
+        "affiliation": "National Oceanic and Atmospheric Administration",
+        "lat": 36.0030305,
+        "lon": -84.2489839,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3363.9,
         "co2e_low_kg": 3363.9,
         "co2e_high_kg": 9755.4,
         "co2e_per_speaker_kg": 3363.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0254",
@@ -20125,184 +20646,198 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0255",
         "affiliation": "National Pingtung University of Science and Technology",
-        "lat": 22.643024,
-        "lon": 120.610006,
+        "lat": 22.6433454,
+        "lon": 120.6098266,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2229.9,
         "co2e_low_kg": 2229.9,
         "co2e_high_kg": 6466.7,
         "co2e_per_speaker_kg": 2229.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0256",
         "affiliation": "National Research and Innovation Agency",
-        "lat": -6.228808,
-        "lon": 106.818084,
+        "lat": -6.2288079,
+        "lon": 106.8180845,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3894.1,
         "co2e_low_kg": 3894.1,
         "co2e_high_kg": 11293.0,
         "co2e_per_speaker_kg": 1947.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0257",
         "affiliation": "National Sun Yat-sen University",
-        "lat": 22.628006,
-        "lon": 120.266224,
+        "lat": 22.6283384,
+        "lon": 120.2647299,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 6689.6,
         "co2e_low_kg": 6689.6,
         "co2e_high_kg": 19400.0,
         "co2e_per_speaker_kg": 2229.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0258",
         "affiliation": "National Taiwan Ocean University",
-        "lat": 25.14969,
-        "lon": 121.775731,
+        "lat": 25.1505447,
+        "lon": 121.7757756,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 11317.3,
         "co2e_low_kg": 11317.3,
         "co2e_high_kg": 32820.3,
         "co2e_per_speaker_kg": 2263.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0260",
         "affiliation": "National University of Colombia - Caribbean Campus",
-        "lat": 6.262958,
-        "lon": -75.57717,
+        "lat": 4.6396672,
+        "lon": -74.0890479,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3106.0,
         "co2e_low_kg": 3106.0,
         "co2e_high_kg": 9007.4,
         "co2e_per_speaker_kg": 3106.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0261",
         "affiliation": "National University of Singapore",
-        "lat": 1.295985,
-        "lon": 103.776619,
+        "lat": 1.2976493,
+        "lon": 103.7766916,
         "speaker_count": 25,
         "travel_attendees": 25,
         "co2e_kg": 53631.5,
         "co2e_low_kg": 53631.5,
         "co2e_high_kg": 155531.4,
         "co2e_per_speaker_kg": 2145.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0262",
         "affiliation": "National Yang Ming Chiao Tung University",
-        "lat": 24.786768,
-        "lon": 120.997244,
+        "lat": 24.7868862,
+        "lon": 120.9974969,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2268.3,
         "co2e_low_kg": 2268.3,
         "co2e_high_kg": 6578.0,
         "co2e_per_speaker_kg": 2268.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0263",
         "affiliation": "Nature Seychelles",
-        "lat": -4.661512,
-        "lon": 55.438884,
+        "lat": -4.679574,
+        "lon": 55.491977,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3117.3,
         "co2e_low_kg": 3117.3,
         "co2e_high_kg": 9040.2,
         "co2e_per_speaker_kg": 3117.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0264",
-        "affiliation": "New York University - Abu Dhabi",
-        "lat": 24.523789,
-        "lon": 54.434761,
+        "affiliation": "New York University",
+        "lat": 24.5263311,
+        "lon": 54.4364913,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 18161.4,
         "co2e_low_kg": 18161.4,
         "co2e_high_kg": 52668.1,
         "co2e_per_speaker_kg": 3632.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0265",
         "affiliation": "Newcastle University",
-        "lat": 54.980175,
-        "lon": -1.61468,
+        "lat": 54.9791871,
+        "lon": -1.6146608,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 36726.8,
         "co2e_low_kg": 36726.8,
         "co2e_high_kg": 106507.7,
         "co2e_per_speaker_kg": 4590.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0266",
-        "affiliation": "Newcastle University Eugene Joseph Conservation Society of Pohnpei Micronesia (the Federated States of)",
-        "lat": 51.163818,
-        "lon": 10.447831,
+        "affiliation": "Newcastle University",
+        "lat": 54.9791871,
+        "lon": -1.6146608,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4603.6,
         "co2e_low_kg": 4603.6,
         "co2e_high_kg": 13350.4,
         "co2e_per_speaker_kg": 4603.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0267",
         "affiliation": "North Carolina State University",
-        "lat": 35.77185,
-        "lon": -78.674087,
+        "lat": 35.7850744,
+        "lon": -78.6812824,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 17013.0,
         "co2e_low_kg": 17013.0,
         "co2e_high_kg": 49337.7,
         "co2e_per_speaker_kg": 3402.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0268",
         "affiliation": "Northeastern University",
-        "lat": 42.335107,
-        "lon": -71.089258,
+        "lat": 42.3398067,
+        "lon": -71.0891717,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3698.3,
         "co2e_low_kg": 3698.3,
         "co2e_high_kg": 10725.2,
         "co2e_per_speaker_kg": 3698.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0269",
         "affiliation": "Northeastern University Marine Science Center",
-        "lat": 42.418536,
-        "lon": -70.906686,
+        "lat": 42.4185262,
+        "lon": -70.9073684,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3698.3,
         "co2e_low_kg": 3698.3,
         "co2e_high_kg": 10725.2,
         "co2e_per_speaker_kg": 3698.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0270",
@@ -20320,29 +20855,31 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0271",
-        "affiliation": "Northwestern University - Marcelino Lab",
-        "lat": 42.055716,
-        "lon": -87.675295,
+        "affiliation": "Northwestern University",
+        "lat": 42.0564594,
+        "lon": -87.67526699999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3363.8,
         "co2e_low_kg": 3363.8,
         "co2e_high_kg": 9755.1,
         "co2e_per_speaker_kg": 3363.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0272",
         "affiliation": "Nova Southeastern University",
-        "lat": 26.078802,
-        "lon": -80.243511,
+        "lat": 26.0791417,
+        "lon": -80.2465466,
         "speaker_count": 38,
         "travel_attendees": 38,
         "co2e_kg": 130162.0,
         "co2e_low_kg": 130162.0,
         "co2e_high_kg": 377469.9,
         "co2e_per_speaker_kg": 3425.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0273",
@@ -20386,132 +20923,142 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0276",
         "affiliation": "Ocean University of Sri Lanka",
-        "lat": 6.901517,
-        "lon": 79.862653,
+        "lat": 6.9749431,
+        "lon": 79.8721717,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2780.5,
         "co2e_low_kg": 2780.5,
         "co2e_high_kg": 8063.3,
         "co2e_per_speaker_kg": 2780.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0277",
         "affiliation": "Oceanographic Institute",
-        "lat": 36.528199,
-        "lon": -6.285291,
+        "lat": 41.5245291,
+        "lon": -70.6683781,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 5087.6,
         "co2e_low_kg": 5087.6,
         "co2e_high_kg": 14754.0,
         "co2e_per_speaker_kg": 5087.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0278",
         "affiliation": "Ochanomizu University",
-        "lat": 35.718742,
-        "lon": 139.731181,
+        "lat": 35.71883529999999,
+        "lon": 139.7315093,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2255.6,
         "co2e_low_kg": 2255.6,
         "co2e_high_kg": 6541.2,
         "co2e_per_speaker_kg": 2255.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0279",
         "affiliation": "Ohio State University",
-        "lat": 40.005698,
-        "lon": -83.028657,
+        "lat": 40.0060889,
+        "lon": -83.0282624,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 16873.1,
         "co2e_low_kg": 16873.1,
         "co2e_high_kg": 48931.9,
         "co2e_per_speaker_kg": 3374.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0280",
         "affiliation": "Okinawa Institute of Science and Technology",
-        "lat": 26.461209,
-        "lon": 127.830598,
+        "lat": 26.4649533,
+        "lon": 127.8301187,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4383.6,
         "co2e_low_kg": 4383.6,
         "co2e_high_kg": 12712.3,
         "co2e_per_speaker_kg": 2191.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0281",
         "affiliation": "Old Dominion University",
-        "lat": 36.88627,
-        "lon": -76.309725,
+        "lat": 36.8853217,
+        "lon": -76.3058786,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 14152.8,
         "co2e_low_kg": 14152.8,
         "co2e_high_kg": 41043.1,
         "co2e_per_speaker_kg": 3538.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0282",
         "affiliation": "Oldenburg University",
-        "lat": 53.146727,
-        "lon": 8.181643,
+        "lat": 53.1467333,
+        "lon": 8.183124,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4574.3,
         "co2e_low_kg": 4574.3,
         "co2e_high_kg": 13265.5,
         "co2e_per_speaker_kg": 4574.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0283",
         "affiliation": "Oregon State University",
-        "lat": 44.563056,
-        "lon": -123.283923,
+        "lat": 44.5618097,
+        "lon": -123.2822671,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 11192.8,
         "co2e_low_kg": 11192.8,
         "co2e_high_kg": 32459.1,
         "co2e_per_speaker_kg": 2798.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0284",
         "affiliation": "Otago University",
-        "lat": -45.864979,
-        "lon": 170.514615,
+        "lat": -45.8646835,
+        "lon": 170.5144227,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 468.3,
         "co2e_low_kg": 234.2,
         "co2e_high_kg": 936.7,
         "co2e_per_speaker_kg": 468.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0285",
         "affiliation": "PT Pupuk Kalimantan Timur",
-        "lat": -7.256504,
-        "lon": 112.741953,
+        "lat": -7.2565041,
+        "lon": 112.7419535,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3613.3,
         "co2e_low_kg": 3613.3,
         "co2e_high_kg": 10478.7,
         "co2e_per_speaker_kg": 1806.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0286",
@@ -20529,15 +21076,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0287",
         "affiliation": "Pacific Community",
-        "lat": -20.637843,
-        "lon": 161.211763,
+        "lat": -22.3019938,
+        "lon": 166.4429871,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5278.2,
         "co2e_low_kg": 5278.2,
         "co2e_high_kg": 15306.7,
         "co2e_per_speaker_kg": 2639.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0288",
@@ -20568,93 +21116,100 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0290",
         "affiliation": "Palau International Coral Reef Center",
-        "lat": 5.378354,
-        "lon": 132.910257,
+        "lat": 7.338594899999999,
+        "lon": 134.4663622,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3301.1,
         "co2e_low_kg": 3301.1,
         "co2e_high_kg": 9573.1,
         "co2e_per_speaker_kg": 1650.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0291",
         "affiliation": "Pattimura University",
-        "lat": -3.70134,
-        "lon": 128.178775,
+        "lat": -3.6546187,
+        "lon": 128.1956754,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3073.4,
         "co2e_low_kg": 3073.4,
         "co2e_high_kg": 8912.8,
         "co2e_per_speaker_kg": 1536.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0292",
         "affiliation": "Pelita Bangsa University",
-        "lat": -6.324199,
-        "lon": 107.16925,
+        "lat": -6.324108499999999,
+        "lon": 107.1696207,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1947.1,
         "co2e_low_kg": 1947.1,
         "co2e_high_kg": 5646.5,
         "co2e_per_speaker_kg": 1947.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0293",
         "affiliation": "Pennsylvania State University",
-        "lat": 40.812897,
-        "lon": -77.871057,
+        "lat": 40.7982133,
+        "lon": -77.8599084,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 14249.0,
         "co2e_low_kg": 14249.0,
         "co2e_high_kg": 41322.2,
         "co2e_per_speaker_kg": 3562.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0294",
         "affiliation": "Pondicherry University",
-        "lat": 12.022868,
-        "lon": 79.850942,
+        "lat": 12.0182619,
+        "lon": 79.8568461,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2877.3,
         "co2e_low_kg": 2877.3,
         "co2e_high_kg": 8344.2,
         "co2e_per_speaker_kg": 2877.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0295",
         "affiliation": "Princeton University",
-        "lat": 40.338675,
-        "lon": -74.658366,
+        "lat": 40.3430942,
+        "lon": -74.65507389999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3619.7,
         "co2e_low_kg": 3619.7,
         "co2e_high_kg": 10497.0,
         "co2e_per_speaker_kg": 3619.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0296",
         "affiliation": "Puerto Rico Department of Natural and Environmental Resources",
-        "lat": 18.224771,
-        "lon": -66.485829,
+        "lat": 18.220833,
+        "lon": -66.590149,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3500.5,
         "co2e_low_kg": 3500.5,
         "co2e_high_kg": 10151.3,
         "co2e_per_speaker_kg": 3500.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0297",
@@ -20672,15 +21227,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0298",
         "affiliation": "Qatar University",
-        "lat": 25.371971,
-        "lon": 51.487958,
+        "lat": 25.376139,
+        "lon": 51.48307390000001,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3709.0,
         "co2e_low_kg": 3709.0,
         "co2e_high_kg": 10756.1,
         "co2e_per_speaker_kg": 3709.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0299",
@@ -20698,123 +21254,132 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0300",
         "affiliation": "Queensland Museum",
-        "lat": -27.472776,
-        "lon": 153.017984,
+        "lat": -27.473109,
+        "lon": 153.0181887,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 629.2,
         "co2e_low_kg": 629.2,
         "co2e_high_kg": 1824.8,
         "co2e_per_speaker_kg": 629.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0301",
         "affiliation": "Queensland University of Technology",
-        "lat": -27.542195,
-        "lon": 153.064953,
+        "lat": -27.4778241,
+        "lon": 153.0274859,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 3146.2,
         "co2e_low_kg": 3146.2,
         "co2e_high_kg": 9123.8,
         "co2e_per_speaker_kg": 629.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0302",
         "affiliation": "Ramkhamhaeng University",
-        "lat": 13.756202,
-        "lon": 100.61745,
+        "lat": 13.7587013,
+        "lon": 100.6181488,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 19560.9,
         "co2e_low_kg": 19560.9,
         "co2e_high_kg": 56726.6,
         "co2e_per_speaker_kg": 2445.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0303",
         "affiliation": "Randolph-Macon College",
-        "lat": 37.76251,
-        "lon": -77.479542,
+        "lat": 37.7631796,
+        "lon": -77.4773666,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3474.1,
         "co2e_low_kg": 3474.1,
         "co2e_high_kg": 10074.9,
         "co2e_per_speaker_kg": 3474.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0304",
         "affiliation": "Rare - Indonesia",
-        "lat": -8.145506,
-        "lon": 114.651509,
+        "lat": -6.5853769,
+        "lon": 106.8010277,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1719.7,
         "co2e_low_kg": 1719.7,
         "co2e_high_kg": 4987.0,
         "co2e_per_speaker_kg": 1719.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0305",
         "affiliation": "Red Sea Global",
-        "lat": 25.363029,
-        "lon": 36.906278,
+        "lat": 25.3630291,
+        "lon": 36.9062778,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3967.9,
         "co2e_low_kg": 3967.9,
         "co2e_high_kg": 11507.0,
         "co2e_per_speaker_kg": 3967.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0306",
         "affiliation": "Reef Check Indonesia",
-        "lat": -2.483383,
-        "lon": 117.890285,
+        "lat": -8.6848473,
+        "lon": 115.2425564,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3634.1,
         "co2e_low_kg": 3634.1,
         "co2e_high_kg": 10538.9,
         "co2e_per_speaker_kg": 1817.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0307",
         "affiliation": "Reef Conservation",
-        "lat": -22.436954,
-        "lon": 149.728725,
+        "lat": -19.9902655,
+        "lon": 57.59912669999999,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 1985.0,
         "co2e_low_kg": 1985.0,
         "co2e_high_kg": 5756.6,
         "co2e_per_speaker_kg": 992.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0308",
         "affiliation": "Reef Explorer - Fiji",
-        "lat": -18.12397,
-        "lon": 179.012274,
+        "lat": -17.713371,
+        "lon": 178.065032,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 587.0,
         "co2e_low_kg": 587.0,
         "co2e_high_kg": 1702.4,
         "co2e_per_speaker_kg": 587.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0309",
-        "affiliation": "Reef Renewal Foundation - Curacao, Curacao",
+        "affiliation": "Reef Renewal Foundation",
         "lat": 12.117649,
         "lon": -68.930926,
         "speaker_count": 1,
@@ -20841,132 +21406,142 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0311",
         "affiliation": "Rosenstiel School of Marine, Atmospheric and Earth Science",
-        "lat": 25.732586,
-        "lon": -80.162756,
+        "lat": 25.7324169,
+        "lon": -80.1636566,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3300.3,
         "co2e_low_kg": 3300.3,
         "co2e_high_kg": 9570.8,
         "co2e_per_speaker_kg": 3300.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0312",
         "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science",
-        "lat": 25.732586,
-        "lon": -80.162756,
+        "lat": 25.7324169,
+        "lon": -80.1636566,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6600.5,
         "co2e_low_kg": 6600.5,
         "co2e_high_kg": 19141.6,
         "co2e_per_speaker_kg": 3300.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0313",
         "affiliation": "Royal Netherlands Institute for Sea Research",
-        "lat": 53.002859,
-        "lon": 4.785892,
+        "lat": 53.0028595,
+        "lon": 4.7858923,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9258.9,
         "co2e_low_kg": 9258.9,
         "co2e_high_kg": 26850.7,
         "co2e_per_speaker_kg": 4629.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0314",
-        "affiliation": "Ruhr University - Bochum",
-        "lat": 51.444158,
-        "lon": 7.261005,
+        "affiliation": "Ruhr University",
+        "lat": 51.444419,
+        "lon": 7.2613027,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4621.3,
         "co2e_low_kg": 4621.3,
         "co2e_high_kg": 13401.7,
         "co2e_per_speaker_kg": 4621.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0315",
         "affiliation": "Ruhuna University",
-        "lat": 6.069246,
-        "lon": 80.226339,
+        "lat": 5.9383232,
+        "lon": 80.5764962,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2780.5,
         "co2e_low_kg": 2780.5,
         "co2e_high_kg": 8063.3,
         "co2e_per_speaker_kg": 2780.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0316",
         "affiliation": "SECORE International",
-        "lat": -20.275945,
-        "lon": 57.570357,
+        "lat": 40.037692,
+        "lon": -83.142082,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2766.6,
         "co2e_low_kg": 2766.6,
         "co2e_high_kg": 8023.1,
         "co2e_per_speaker_kg": 2766.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0317",
         "affiliation": "San Diego State University",
-        "lat": 32.776153,
-        "lon": -117.073304,
+        "lat": 32.7754647,
+        "lon": -117.0711887,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 11145.1,
         "co2e_low_kg": 11145.1,
         "co2e_high_kg": 32320.8,
         "co2e_per_speaker_kg": 2786.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0318",
         "affiliation": "Saudi Aramco",
-        "lat": 23.949402,
-        "lon": 38.292046,
+        "lat": 23.9494015,
+        "lon": 38.2920459,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3967.9,
         "co2e_low_kg": 3967.9,
         "co2e_high_kg": 11507.0,
         "co2e_per_speaker_kg": 3967.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0319",
         "affiliation": "Scripps Institution of Oceanography",
-        "lat": 32.865049,
-        "lon": -117.254067,
+        "lat": 32.8681401,
+        "lon": -117.2503233,
         "speaker_count": 11,
         "travel_attendees": 11,
         "co2e_kg": 29414.3,
         "co2e_low_kg": 29414.3,
         "co2e_high_kg": 85301.6,
         "co2e_per_speaker_kg": 2674.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0320",
         "affiliation": "Sea Education Association",
-        "lat": 41.548421,
-        "lon": -70.645018,
+        "lat": 41.5486144,
+        "lon": -70.64535339999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3684.5,
         "co2e_low_kg": 3684.5,
         "co2e_high_kg": 10685.1,
         "co2e_per_speaker_kg": 3684.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0321",
@@ -20984,15 +21559,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0322",
         "affiliation": "Sea Women of Melanesia Inc",
-        "lat": -5.681607,
-        "lon": 144.248908,
+        "lat": -8.190185699999999,
+        "lon": 152.8264684,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1127.7,
         "co2e_low_kg": 1127.7,
         "co2e_high_kg": 3270.2,
         "co2e_per_speaker_kg": 1127.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0323",
@@ -21010,15 +21586,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0324",
         "affiliation": "Seychelles Islands Foundation",
-        "lat": -4.630578,
-        "lon": 55.456585,
+        "lat": -4.679574,
+        "lon": 55.491977,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6234.6,
         "co2e_low_kg": 6234.6,
         "co2e_high_kg": 18080.4,
         "co2e_per_speaker_kg": 3117.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0325",
@@ -21036,98 +21613,105 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0326",
         "affiliation": "Shantou University",
-        "lat": 23.416325,
-        "lon": 116.629069,
+        "lat": 23.409312,
+        "lon": 116.63429,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2310.0,
         "co2e_low_kg": 2310.0,
         "co2e_high_kg": 6699.0,
         "co2e_per_speaker_kg": 2310.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0327",
         "affiliation": "Shenzhen MSU-BIT University",
-        "lat": 22.681917,
-        "lon": 114.200338,
+        "lat": 22.6826092,
+        "lon": 114.2056483,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2348.4,
         "co2e_low_kg": 2348.4,
         "co2e_high_kg": 6810.4,
         "co2e_per_speaker_kg": 2348.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0328",
         "affiliation": "Shoals Rodrigues",
-        "lat": -19.68269,
-        "lon": 63.417569,
+        "lat": -19.6827533,
+        "lon": 63.4176398,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2766.6,
         "co2e_low_kg": 2766.6,
         "co2e_high_kg": 8023.1,
         "co2e_per_speaker_kg": 2766.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0329",
         "affiliation": "Silliman University",
-        "lat": 9.313192,
-        "lon": 123.305884,
+        "lat": 9.3131921,
+        "lon": 123.3058842,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 7617.6,
         "co2e_low_kg": 7617.6,
         "co2e_high_kg": 22090.9,
         "co2e_per_speaker_kg": 1904.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0330",
         "affiliation": "Smithsonian Environmental Research Center",
-        "lat": 38.879374,
-        "lon": -76.55773,
+        "lat": 38.90156229999999,
+        "lon": -76.5564251,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 10660.5,
         "co2e_low_kg": 10660.5,
         "co2e_high_kg": 30915.4,
         "co2e_per_speaker_kg": 3553.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0331",
         "affiliation": "Smithsonian Institution",
-        "lat": 36.57855,
-        "lon": -118.292367,
+        "lat": 38.8860146,
+        "lon": -77.0213921,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5416.5,
         "co2e_low_kg": 5416.5,
         "co2e_high_kg": 15707.9,
         "co2e_per_speaker_kg": 2708.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0332",
         "affiliation": "Smithsonian Tropical Research Center",
-        "lat": 8.963233,
-        "lon": -79.543661,
+        "lat": 38.8860146,
+        "lon": -77.0213921,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3065.8,
         "co2e_low_kg": 3065.8,
         "co2e_high_kg": 8890.7,
         "co2e_per_speaker_kg": 3065.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0333",
         "affiliation": "Smithsonian Tropical Research Institute",
-        "lat": 9.352374,
+        "lat": 9.3523736,
         "lon": -82.256601,
         "speaker_count": 7,
         "travel_attendees": 7,
@@ -21135,12 +21719,13 @@ export const EMISSIONS_DATA = {
         "co2e_low_kg": 20896.5,
         "co2e_high_kg": 60600.0,
         "co2e_per_speaker_kg": 2985.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0334",
-        "affiliation": "Smithsonian Tropical Research Institute - Panama",
-        "lat": 9.352374,
+        "affiliation": "Smithsonian Tropical Research Institute",
+        "lat": 9.3523736,
         "lon": -82.256601,
         "speaker_count": 1,
         "travel_attendees": 1,
@@ -21148,33 +21733,36 @@ export const EMISSIONS_DATA = {
         "co2e_low_kg": 2985.2,
         "co2e_high_kg": 8657.1,
         "co2e_per_speaker_kg": 2985.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0336",
         "affiliation": "Southeast Fisheries Science Center",
-        "lat": 25.73339,
-        "lon": -80.160691,
+        "lat": 25.7333896,
+        "lon": -80.1606913,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3306.8,
         "co2e_low_kg": 3306.8,
         "co2e_high_kg": 9589.8,
         "co2e_per_speaker_kg": 3306.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0337",
         "affiliation": "Southern Cross University",
-        "lat": -37.810021,
-        "lon": 144.968908,
+        "lat": -28.8193845,
+        "lon": 153.2994738,
         "speaker_count": 15,
         "travel_attendees": 15,
         "co2e_kg": 11013.6,
         "co2e_low_kg": 11013.6,
         "co2e_high_kg": 31939.4,
         "co2e_per_speaker_kg": 734.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0338",
@@ -21191,29 +21779,31 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0339",
-        "affiliation": "Spanish National Research Council",
-        "lat": 50.838027,
-        "lon": 4.369089,
+        "affiliation": "Spanish National Research",
+        "lat": 40.46366700000001,
+        "lon": -3.74922,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4666.6,
         "co2e_low_kg": 4666.6,
         "co2e_high_kg": 13533.3,
         "co2e_per_speaker_kg": 4666.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0340",
         "affiliation": "Stanford University",
-        "lat": 37.431314,
-        "lon": -122.169365,
+        "lat": 37.42766,
+        "lon": -122.17006,
         "speaker_count": 6,
         "travel_attendees": 6,
         "co2e_kg": 16249.5,
         "co2e_low_kg": 16249.5,
         "co2e_high_kg": 47123.6,
         "co2e_per_speaker_kg": 2708.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0341",
@@ -21231,41 +21821,44 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0342",
         "affiliation": "State University of New York",
-        "lat": 40.729205,
-        "lon": -73.995015,
+        "lat": 40.72951339999999,
+        "lon": -73.9964609,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3626.5,
         "co2e_low_kg": 3626.5,
         "co2e_high_kg": 10516.8,
         "co2e_per_speaker_kg": 3626.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0343",
         "affiliation": "State of Hawai'i",
-        "lat": 21.307333,
-        "lon": -157.85699,
+        "lat": 19.708546749900975,
+        "lon": -155.59210907543473,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3617.5,
         "co2e_low_kg": 3617.5,
         "co2e_high_kg": 10490.8,
         "co2e_per_speaker_kg": 1808.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0344",
-        "affiliation": "State of Hawai'i Joseph Nekaifes Johnston Applied Marine Sciences Northern Mariana Islands",
-        "lat": 39.78373,
-        "lon": -100.445882,
+        "affiliation": "State of Hawai'i",
+        "lat": 19.708546749900975,
+        "lon": -155.59210907543473,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3123.0,
         "co2e_low_kg": 3123.0,
         "co2e_high_kg": 9056.7,
         "co2e_per_speaker_kg": 3123.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0345",
@@ -21284,67 +21877,72 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0346",
         "affiliation": "Stazione Zoologica Anton Dohrn",
-        "lat": 40.832735,
-        "lon": 14.235336,
+        "lat": 40.8327613,
+        "lon": 14.2352737,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4663.7,
         "co2e_low_kg": 4663.7,
         "co2e_high_kg": 13524.6,
         "co2e_per_speaker_kg": 4663.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0347",
         "affiliation": "Stony Brook University",
-        "lat": 40.909081,
-        "lon": -73.120552,
+        "lat": 40.9132244,
+        "lon": -73.1261091,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 17127.1,
         "co2e_low_kg": 17127.1,
         "co2e_high_kg": 49668.6,
         "co2e_per_speaker_kg": 3425.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0348",
         "affiliation": "Sultan Qaboos University",
-        "lat": 23.593874,
-        "lon": 58.171335,
+        "lat": 23.5912214,
+        "lon": 58.17212660000001,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3534.4,
         "co2e_low_kg": 3534.4,
         "co2e_high_kg": 10249.7,
         "co2e_per_speaker_kg": 3534.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0349",
         "affiliation": "Swedish University of Agricultural Sciences",
-        "lat": 63.820158,
-        "lon": 20.314666,
+        "lat": 59.8163458,
+        "lon": 17.6594849,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4231.2,
         "co2e_low_kg": 4231.2,
         "co2e_high_kg": 12270.5,
         "co2e_per_speaker_kg": 4231.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0350",
-        "affiliation": "Talanoa Consulting Fiji",
-        "lat": -18.12397,
-        "lon": 179.012274,
+        "affiliation": "Talanoa Consulting",
+        "lat": -18.1441605,
+        "lon": 178.4306091,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 587.0,
         "co2e_low_kg": 587.0,
         "co2e_high_kg": 1702.4,
         "co2e_per_speaker_kg": 587.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0351",
@@ -21362,15 +21960,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0352",
         "affiliation": "Technical University of Denmark",
-        "lat": 55.785415,
-        "lon": 12.520215,
+        "lat": 55.7860512,
+        "lon": 12.5233698,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4477.4,
         "co2e_low_kg": 4477.4,
         "co2e_high_kg": 12984.5,
         "co2e_per_speaker_kg": 4477.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0353",
@@ -21388,15 +21987,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0354",
         "affiliation": "Tel Aviv University",
-        "lat": 32.112358,
-        "lon": 34.805013,
+        "lat": 32.113496,
+        "lon": 34.803609,
         "speaker_count": 12,
         "travel_attendees": 12,
         "co2e_kg": 49987.7,
         "co2e_low_kg": 49987.7,
         "co2e_high_kg": 144964.3,
         "co2e_per_speaker_kg": 4165.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0355",
@@ -21414,67 +22014,72 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0356",
         "affiliation": "Texas A&M University",
-        "lat": 30.610862,
-        "lon": -96.352061,
+        "lat": 30.6186625,
+        "lon": -96.3364251,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9142.5,
         "co2e_low_kg": 9142.5,
         "co2e_high_kg": 26513.3,
         "co2e_per_speaker_kg": 3047.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0357",
-        "affiliation": "Texas A&M University - Corpus Christi",
-        "lat": 27.712751,
-        "lon": -97.323388,
+        "affiliation": "Texas A&M University",
+        "lat": 30.6186625,
+        "lon": -96.3364251,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5935.9,
         "co2e_low_kg": 5935.9,
         "co2e_high_kg": 17214.2,
         "co2e_per_speaker_kg": 2968.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0358",
-        "affiliation": "Texas A&M University - Galveston",
-        "lat": 29.3167,
-        "lon": -94.818726,
+        "affiliation": "Texas A&M University",
+        "lat": 30.6186625,
+        "lon": -96.3364251,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3043.6,
         "co2e_low_kg": 3043.6,
         "co2e_high_kg": 8826.4,
         "co2e_per_speaker_kg": 3043.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0359",
         "affiliation": "Texas State University",
-        "lat": 29.891088,
-        "lon": -97.937621,
+        "lat": 29.888411,
+        "lon": -97.938351,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9010.2,
         "co2e_low_kg": 9010.2,
         "co2e_high_kg": 26129.5,
         "co2e_per_speaker_kg": 3003.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0360",
         "affiliation": "Tohoku University",
-        "lat": 38.253193,
-        "lon": 140.829239,
+        "lat": 38.253834,
+        "lon": 140.874074,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2309.2,
         "co2e_low_kg": 2309.2,
         "co2e_high_kg": 6696.5,
         "co2e_per_speaker_kg": 2309.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0361",
@@ -21492,15 +22097,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0362",
         "affiliation": "Tokyo Metropolitan University",
-        "lat": 35.620037,
-        "lon": 139.382867,
+        "lat": 35.6172487,
+        "lon": 139.3771559,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4511.1,
         "co2e_low_kg": 4511.1,
         "co2e_high_kg": 13082.3,
         "co2e_per_speaker_kg": 2255.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0363",
@@ -21518,15 +22124,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0364",
         "affiliation": "Trent University",
-        "lat": 44.357293,
-        "lon": -78.289382,
+        "lat": 44.3572933,
+        "lon": -78.2893817,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3541.0,
         "co2e_low_kg": 3541.0,
         "co2e_high_kg": 10269.0,
         "co2e_per_speaker_kg": 3541.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0365",
@@ -21544,41 +22151,44 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0366",
         "affiliation": "Tulane University",
-        "lat": 29.94122,
-        "lon": -90.120101,
+        "lat": 29.9407282,
+        "lon": -90.12031669999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3153.2,
         "co2e_low_kg": 3153.2,
         "co2e_high_kg": 9144.3,
         "co2e_per_speaker_kg": 3153.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0367",
         "affiliation": "Turks and Caicos Reef Foundation",
-        "lat": 39.78373,
-        "lon": -100.445882,
+        "lat": 21.7641337,
+        "lon": -72.1752489,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3123.0,
         "co2e_low_kg": 3123.0,
         "co2e_high_kg": 9056.7,
         "co2e_per_speaker_kg": 3123.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0368",
         "affiliation": "Tuvalu Meteorological Service",
-        "lat": -8.525537,
-        "lon": 179.196703,
+        "lat": -7.109534999999999,
+        "lon": 177.64933,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 877.0,
         "co2e_low_kg": 877.0,
         "co2e_high_kg": 2543.2,
         "co2e_per_speaker_kg": 877.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0369",
@@ -21609,15 +22219,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0371",
         "affiliation": "UP Marine Science Institute",
-        "lat": 14.650674,
-        "lon": 121.069113,
+        "lat": 14.6506435,
+        "lon": 121.0690557,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2047.7,
         "co2e_low_kg": 2047.7,
         "co2e_high_kg": 5938.2,
         "co2e_per_speaker_kg": 2047.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0372",
@@ -21634,29 +22245,31 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0373",
-        "affiliation": "United Nations Development Programme - Mauritius & Seychelles",
-        "lat": -4.657498,
-        "lon": 55.454015,
+        "affiliation": "United Nations Development Programme - Mauritius & Seychelles Jaeseok",
+        "lat": -4.679574,
+        "lon": 55.491977,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3117.3,
         "co2e_low_kg": 3117.3,
         "co2e_high_kg": 9040.2,
         "co2e_per_speaker_kg": 3117.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0374",
         "affiliation": "United States Geological Survey",
-        "lat": 38.893748,
-        "lon": -77.042288,
+        "lat": 38.8937481,
+        "lon": -77.0422884,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 13750.4,
         "co2e_low_kg": 13750.4,
         "co2e_high_kg": 39876.3,
         "co2e_per_speaker_kg": 3437.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0375",
@@ -21674,41 +22287,44 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0376",
         "affiliation": "Universidad Central de Venezuela",
-        "lat": 10.490179,
-        "lon": -66.891663,
+        "lat": 10.4869942,
+        "lon": -66.894094,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6741.6,
         "co2e_low_kg": 6741.6,
         "co2e_high_kg": 19550.6,
         "co2e_per_speaker_kg": 3370.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0377",
         "affiliation": "Universidad De Guadalajara",
-        "lat": 19.720008,
-        "lon": -101.251118,
+        "lat": 20.6747257,
+        "lon": -103.3589506,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5551.6,
         "co2e_low_kg": 5551.6,
         "co2e_high_kg": 16099.7,
         "co2e_per_speaker_kg": 2775.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0378",
         "affiliation": "Universidad Del Magdalena",
-        "lat": 11.224103,
-        "lon": -74.185597,
+        "lat": 11.2262461,
+        "lon": -74.1873608,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3200.2,
         "co2e_low_kg": 3200.2,
         "co2e_high_kg": 9280.5,
         "co2e_per_speaker_kg": 3200.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0379",
@@ -21739,80 +22355,86 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0381",
         "affiliation": "Universidad San Francisco de Quito",
-        "lat": -0.196861,
-        "lon": -78.435916,
+        "lat": -0.1970509,
+        "lon": -78.4360876,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2931.1,
         "co2e_low_kg": 2931.1,
         "co2e_high_kg": 8500.2,
         "co2e_per_speaker_kg": 2931.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0382",
         "affiliation": "Universidad del Valle",
-        "lat": 3.43478,
-        "lon": -76.542534,
+        "lat": 3.3747602,
+        "lon": -76.5343899,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3039.2,
         "co2e_low_kg": 3039.2,
         "co2e_high_kg": 8813.8,
         "co2e_per_speaker_kg": 3039.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0383",
         "affiliation": "Universidade Federal Fluminense",
-        "lat": -22.532363,
-        "lon": -43.207621,
+        "lat": -22.5323633,
+        "lon": -43.2076213,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6311.9,
         "co2e_low_kg": 6311.9,
         "co2e_high_kg": 18304.4,
         "co2e_per_speaker_kg": 3155.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0384",
         "affiliation": "Universidade Federal de Santa Catarina",
-        "lat": -27.603413,
-        "lon": -48.522442,
+        "lat": -27.5999578,
+        "lon": -48.5194134,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2938.7,
         "co2e_low_kg": 2938.7,
         "co2e_high_kg": 8522.1,
         "co2e_per_speaker_kg": 2938.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0385",
         "affiliation": "Universidade Federal do Rio Grande do Norte",
-        "lat": -5.837799,
-        "lon": -35.203978,
+        "lat": -5.839721,
+        "lon": -35.2016966,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 18269.5,
         "co2e_low_kg": 18269.5,
         "co2e_high_kg": 52981.5,
         "co2e_per_speaker_kg": 3653.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0386",
         "affiliation": "Universidade Federal do Rio de Janeiro",
-        "lat": -22.85335,
-        "lon": -43.23317,
+        "lat": -22.8674532,
+        "lon": -43.2151914,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9385.0,
         "co2e_low_kg": 9385.0,
         "co2e_high_kg": 27216.5,
         "co2e_per_speaker_kg": 3128.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0387",
@@ -21830,15 +22452,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0388",
         "affiliation": "Universidade do Estado do Rio de Janeiro",
-        "lat": -22.286812,
-        "lon": -42.542038,
+        "lat": -22.9111739,
+        "lon": -43.2361323,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6256.7,
         "co2e_low_kg": 6256.7,
         "co2e_high_kg": 18144.3,
         "co2e_per_speaker_kg": 3128.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0389",
@@ -21856,15 +22479,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0390",
         "affiliation": "Universitat de Barcelona",
-        "lat": 41.386859,
-        "lon": 2.163478,
+        "lat": 41.38667239999999,
+        "lon": 2.1638661,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4905.6,
         "co2e_low_kg": 4905.6,
         "co2e_high_kg": 14226.3,
         "co2e_per_speaker_kg": 4905.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0391",
@@ -21921,80 +22545,86 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0395",
         "affiliation": "Universiti Kebangsaan Malaysia",
-        "lat": 2.924081,
-        "lon": 101.781222,
+        "lat": 2.9289681,
+        "lon": 101.7800927,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2220.5,
         "co2e_low_kg": 2220.5,
         "co2e_high_kg": 6439.5,
         "co2e_per_speaker_kg": 2220.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0396",
         "affiliation": "Universiti Malaysia Terengganu",
-        "lat": 5.409421,
-        "lon": 103.088738,
+        "lat": 5.407184500000001,
+        "lon": 103.0883203,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 6799.7,
         "co2e_low_kg": 6799.7,
         "co2e_high_kg": 19719.2,
         "co2e_per_speaker_kg": 2266.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0397",
         "affiliation": "Universiti Sains Malaysia",
-        "lat": 5.357432,
-        "lon": 100.30355,
+        "lat": 5.3555943,
+        "lon": 100.3025455,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2297.5,
         "co2e_low_kg": 2297.5,
         "co2e_high_kg": 6662.7,
         "co2e_per_speaker_kg": 2297.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0398",
-        "affiliation": "University College London",
-        "lat": 51.524203,
-        "lon": -0.133001,
+        "affiliation": "University College",
+        "lat": 51.52455920000001,
+        "lon": -0.1340401,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9371.2,
         "co2e_low_kg": 9371.2,
         "co2e_high_kg": 27176.4,
         "co2e_per_speaker_kg": 4685.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0399",
-        "affiliation": "University Heidelberg",
-        "lat": 49.4186,
-        "lon": 8.66924,
+        "affiliation": "University",
+        "lat": 49.41066,
+        "lon": 8.706554299999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4642.9,
         "co2e_low_kg": 4642.9,
         "co2e_high_kg": 13464.6,
         "co2e_per_speaker_kg": 4642.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0400",
-        "affiliation": "University Wuppertal",
-        "lat": 51.244469,
-        "lon": 7.149567,
+        "affiliation": "University",
+        "lat": 51.2445542,
+        "lon": 7.150124399999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4641.1,
         "co2e_low_kg": 4641.1,
         "co2e_high_kg": 13459.0,
         "co2e_per_speaker_kg": 4641.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0401",
@@ -22013,54 +22643,58 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0402",
         "affiliation": "University of Alabama",
-        "lat": 33.212082,
-        "lon": -87.539674,
+        "lat": 33.2114385,
+        "lon": -87.5401002,
         "speaker_count": 6,
         "travel_attendees": 6,
         "co2e_kg": 19509.3,
         "co2e_low_kg": 19509.3,
         "co2e_high_kg": 56577.0,
         "co2e_per_speaker_kg": 3251.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0403",
-        "affiliation": "University of Alabama - Birmingham",
-        "lat": 33.501615,
-        "lon": -86.806048,
+        "affiliation": "University of Alabama",
+        "lat": 33.2114385,
+        "lon": -87.5401002,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3277.3,
         "co2e_low_kg": 3277.3,
         "co2e_high_kg": 9504.1,
         "co2e_per_speaker_kg": 3277.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0404",
         "affiliation": "University of Alberta",
-        "lat": 53.52682,
-        "lon": -113.524494,
+        "lat": 53.5232189,
+        "lon": -113.5263186,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 12416.7,
         "co2e_low_kg": 12416.7,
         "co2e_high_kg": 36008.5,
         "co2e_per_speaker_kg": 3104.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0405",
         "affiliation": "University of Amsterdam",
-        "lat": 52.368133,
-        "lon": 4.889804,
+        "lat": 52.35581819999999,
+        "lon": 4.955726299999999,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 23162.9,
         "co2e_low_kg": 23162.9,
         "co2e_high_kg": 67172.3,
         "co2e_per_speaker_kg": 4632.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0406",
@@ -22079,15 +22713,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0407",
         "affiliation": "University of Arizona",
-        "lat": 32.235698,
-        "lon": -110.951744,
+        "lat": 32.2318981,
+        "lon": -110.9535407,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 11105.4,
         "co2e_low_kg": 11105.4,
         "co2e_high_kg": 32205.8,
         "co2e_per_speaker_kg": 2776.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0408",
@@ -22106,119 +22741,128 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0409",
         "affiliation": "University of Basel",
-        "lat": 47.561265,
-        "lon": 7.575296,
+        "lat": 47.5585281,
+        "lon": 7.5838692,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4694.0,
         "co2e_low_kg": 4694.0,
         "co2e_high_kg": 13612.6,
         "co2e_per_speaker_kg": 4694.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0410",
         "affiliation": "University of Belize",
-        "lat": 17.243932,
-        "lon": -88.760789,
+        "lat": 17.243049,
+        "lon": -88.7605919,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3002.9,
         "co2e_low_kg": 3002.9,
         "co2e_high_kg": 8708.5,
         "co2e_per_speaker_kg": 3002.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0411",
         "affiliation": "University of Berkeley",
-        "lat": 43.032359,
-        "lon": -76.126973,
+        "lat": 37.8712141,
+        "lon": -122.255463,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3604.0,
         "co2e_low_kg": 3604.0,
         "co2e_high_kg": 10451.5,
         "co2e_per_speaker_kg": 3604.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0412",
         "affiliation": "University of Bologna",
-        "lat": 44.498289,
-        "lon": 11.354457,
+        "lat": 44.4968678,
+        "lon": 11.3524094,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9380.1,
         "co2e_low_kg": 9380.1,
         "co2e_high_kg": 27202.3,
         "co2e_per_speaker_kg": 4690.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0413",
         "affiliation": "University of Bremen",
-        "lat": 53.107965,
-        "lon": 8.855665,
+        "lat": 53.1065412,
+        "lon": 8.8553306,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4574.3,
         "co2e_low_kg": 4574.3,
         "co2e_high_kg": 13265.5,
         "co2e_per_speaker_kg": 4574.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0414",
         "affiliation": "University of Bristol",
-        "lat": 51.490558,
-        "lon": -2.630482,
+        "lat": 51.4585376,
+        "lon": -2.6021758,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 18784.0,
         "co2e_low_kg": 18784.0,
         "co2e_high_kg": 54473.6,
         "co2e_per_speaker_kg": 4696.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0415",
         "affiliation": "University of British Columbia",
-        "lat": 49.257891,
-        "lon": -123.242976,
+        "lat": 49.2593121,
+        "lon": -123.2474966,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5797.7,
         "co2e_low_kg": 5797.7,
         "co2e_high_kg": 16813.3,
         "co2e_per_speaker_kg": 2898.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0416",
         "affiliation": "University of California - Berkeley",
-        "lat": 37.8755,
-        "lon": -122.239069,
+        "lat": 37.8712141,
+        "lon": -122.255463,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 18801.8,
         "co2e_low_kg": 18801.8,
         "co2e_high_kg": 54525.2,
         "co2e_per_speaker_kg": 2686.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0417",
         "affiliation": "University of California - Davis",
-        "lat": 38.53379,
-        "lon": -121.790754,
+        "lat": 38.5382322,
+        "lon": -121.7617125,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 13956.0,
         "co2e_low_kg": 13956.0,
         "co2e_high_kg": 40472.4,
         "co2e_per_speaker_kg": 2791.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0418",
@@ -22237,67 +22881,72 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0419",
         "affiliation": "University of California - Los Angeles",
-        "lat": 34.070878,
-        "lon": -118.44685,
+        "lat": 34.0699182,
+        "lon": -118.4438495,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 18771.5,
         "co2e_low_kg": 18771.5,
         "co2e_high_kg": 54437.5,
         "co2e_per_speaker_kg": 2681.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0420",
         "affiliation": "University of California - Merced",
-        "lat": 37.365182,
-        "lon": -120.422528,
+        "lat": 37.3647478,
+        "lon": -120.4242449,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 8539.5,
         "co2e_low_kg": 8539.5,
         "co2e_high_kg": 24764.6,
         "co2e_per_speaker_kg": 2846.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0421",
         "affiliation": "University of California - Riverside",
-        "lat": 33.964258,
-        "lon": -117.33981,
+        "lat": 33.9737055,
+        "lon": -117.3280644,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5398.2,
         "co2e_low_kg": 5398.2,
         "co2e_high_kg": 15654.8,
         "co2e_per_speaker_kg": 2699.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0422",
         "affiliation": "University of California - San Diego",
-        "lat": 32.879244,
-        "lon": -117.231125,
+        "lat": 32.881168,
+        "lon": -117.2343605,
         "speaker_count": 9,
         "travel_attendees": 9,
         "co2e_kg": 24066.3,
         "co2e_low_kg": 24066.3,
         "co2e_high_kg": 69792.2,
         "co2e_per_speaker_kg": 2674.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0423",
         "affiliation": "University of California - Santa Barbara",
-        "lat": 34.414603,
-        "lon": -119.84581,
+        "lat": 34.4139629,
+        "lon": -119.848947,
         "speaker_count": 15,
         "travel_attendees": 15,
         "co2e_kg": 40224.8,
         "co2e_low_kg": 40224.8,
         "co2e_high_kg": 116651.8,
         "co2e_per_speaker_kg": 2681.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0424",
@@ -22316,19 +22965,20 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0425",
         "affiliation": "University of Cambridge",
-        "lat": 52.189092,
-        "lon": 0.121298,
+        "lat": 52.205356,
+        "lon": 0.113168,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 18683.8,
         "co2e_low_kg": 18683.8,
         "co2e_high_kg": 54183.0,
         "co2e_per_speaker_kg": 4670.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0426",
-        "affiliation": "University of Canterbury",
+        "affiliation": "University",
         "lat": -43.5232778,
         "lon": 172.5823435,
         "speaker_count": 1,
@@ -22343,223 +22993,240 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0427",
         "affiliation": "University of Chicago",
-        "lat": 41.788124,
-        "lon": -87.604774,
+        "lat": 41.7904484,
+        "lon": -87.6003953,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3364.4,
         "co2e_low_kg": 3364.4,
         "co2e_high_kg": 9756.6,
         "co2e_per_speaker_kg": 3364.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0428",
-        "affiliation": "University of Copenhagen",
-        "lat": 55.68015,
-        "lon": 12.572327,
+        "affiliation": "University of Copenhagen Jorg-Dieter",
+        "lat": 55.6801409,
+        "lon": 12.5715182,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4477.4,
         "co2e_low_kg": 4477.4,
         "co2e_high_kg": 12984.5,
         "co2e_per_speaker_kg": 4477.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0429",
         "affiliation": "University of Dar Es Salaam",
-        "lat": -6.780016,
-        "lon": 39.205211,
+        "lat": -6.7791817,
+        "lon": 39.204323,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3393.6,
         "co2e_low_kg": 3393.6,
         "co2e_high_kg": 9841.4,
         "co2e_per_speaker_kg": 3393.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0430",
         "affiliation": "University of Delaware",
-        "lat": 39.680284,
-        "lon": -75.753098,
+        "lat": 39.6809151,
+        "lon": -75.7523313,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 10859.0,
         "co2e_low_kg": 10859.0,
         "co2e_high_kg": 31491.0,
         "co2e_per_speaker_kg": 3619.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0431",
-        "affiliation": "University of Delaware Bailey Warren Coral Reef Initiative Northern Mariana Islands",
-        "lat": 39.78373,
-        "lon": -100.445882,
+        "affiliation": "University of Delaware Bailey",
+        "lat": 39.6809151,
+        "lon": -75.7523313,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3123.0,
         "co2e_low_kg": 3123.0,
         "co2e_high_kg": 9056.7,
         "co2e_per_speaker_kg": 3123.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0432",
         "affiliation": "University of Derby",
-        "lat": 52.937955,
-        "lon": -1.497999,
+        "lat": 52.9379632,
+        "lon": -1.497392,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 18605.7,
         "co2e_low_kg": 18605.7,
         "co2e_high_kg": 53956.5,
         "co2e_per_speaker_kg": 4651.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0433",
         "affiliation": "University of Exeter",
-        "lat": 50.736937,
-        "lon": -3.534735,
+        "lat": 50.7371369,
+        "lon": -3.5351475,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9393.9,
         "co2e_low_kg": 9393.9,
         "co2e_high_kg": 27242.3,
         "co2e_per_speaker_kg": 4696.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0434",
         "affiliation": "University of Florida",
-        "lat": 29.641188,
-        "lon": -82.35623,
+        "lat": 29.6465428,
+        "lon": -82.3533266,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 9807.2,
         "co2e_low_kg": 9807.2,
         "co2e_high_kg": 28441.0,
         "co2e_per_speaker_kg": 3269.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0435",
         "affiliation": "University of Geneva",
-        "lat": 44.227697,
-        "lon": -76.49852,
+        "lat": 46.199444,
+        "lon": 6.1451157,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3631.9,
         "co2e_low_kg": 3631.9,
         "co2e_high_kg": 10532.7,
         "co2e_per_speaker_kg": 3631.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0436",
         "affiliation": "University of Georgia",
-        "lat": 33.940428,
-        "lon": -83.373068,
+        "lat": 33.9423394,
+        "lon": -83.37242420000001,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6653.0,
         "co2e_low_kg": 6653.0,
         "co2e_high_kg": 19293.6,
         "co2e_per_speaker_kg": 3326.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0437",
         "affiliation": "University of Guam",
-        "lat": 13.43238,
-        "lon": 144.802923,
+        "lat": 13.4322112,
+        "lon": 144.8033219,
         "speaker_count": 20,
         "travel_attendees": 20,
         "co2e_kg": 73083.1,
         "co2e_low_kg": 73083.1,
         "co2e_high_kg": 211941.0,
         "co2e_per_speaker_kg": 3654.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0438",
         "affiliation": "University of Haifa",
-        "lat": 32.760946,
-        "lon": 35.020464,
+        "lat": 32.7614296,
+        "lon": 35.0195184,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 8331.3,
         "co2e_low_kg": 8331.3,
         "co2e_high_kg": 24160.7,
         "co2e_per_speaker_kg": 4165.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0439",
         "affiliation": "University of Hawai'i",
-        "lat": 21.298279,
-        "lon": -157.818693,
+        "lat": 21.2998224,
+        "lon": -157.8182521,
         "speaker_count": 10,
         "travel_attendees": 10,
         "co2e_kg": 20716.0,
         "co2e_low_kg": 20716.0,
         "co2e_high_kg": 60076.4,
         "co2e_per_speaker_kg": 2071.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0440",
-        "affiliation": "University of Hawai'i - Hilo",
-        "lat": 19.699987,
-        "lon": -155.084519,
+        "affiliation": "University of Hawai'i",
+        "lat": 21.2998224,
+        "lon": -157.8182521,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 6724.2,
         "co2e_low_kg": 6724.2,
         "co2e_high_kg": 19500.2,
         "co2e_per_speaker_kg": 2241.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0441",
-        "affiliation": "University of Hawai'i - Manoa",
-        "lat": 21.298279,
-        "lon": -157.818693,
+        "affiliation": "University of Hawai'i",
+        "lat": 21.2998224,
+        "lon": -157.8182521,
         "speaker_count": 35,
         "travel_attendees": 35,
         "co2e_kg": 68563.2,
         "co2e_low_kg": 68563.2,
         "co2e_high_kg": 198833.4,
         "co2e_per_speaker_kg": 1959.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0442",
         "affiliation": "University of Hawai'i - Maui College",
-        "lat": 39.78373,
-        "lon": -100.445882,
+        "lat": 20.890805564835343,
+        "lon": -156.4795825633126,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3123.0,
         "co2e_low_kg": 3123.0,
         "co2e_high_kg": 9056.7,
         "co2e_per_speaker_kg": 3123.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0443",
-        "affiliation": "University of Hawai'i Dr Lauren Olinger University of the Virgin Islands Virgin Islands (U.S.)",
-        "lat": 39.78373,
-        "lon": -100.445882,
+        "affiliation": "University of Hawai'i",
+        "lat": 21.2998224,
+        "lon": -157.8182521,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3300.4,
         "co2e_low_kg": 3300.4,
         "co2e_high_kg": 9571.2,
         "co2e_per_speaker_kg": 3300.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0444",
@@ -22576,7 +23243,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0445",
-        "affiliation": "University of Hawaii - Manoa",
+        "affiliation": "University of Hawaii - Manoa Margot",
         "lat": 21.298279,
         "lon": -157.818693,
         "speaker_count": 3,
@@ -22590,15 +23257,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0446",
         "affiliation": "University of Hawaii at Hilo",
-        "lat": 19.7,
-        "lon": -155.0845,
+        "lat": 19.6997798,
+        "lon": -155.0848929,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1800.6,
         "co2e_low_kg": 1800.6,
         "co2e_high_kg": 5221.8,
         "co2e_per_speaker_kg": 1800.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0447",
@@ -22617,28 +23285,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0448",
         "affiliation": "University of Konstanz",
-        "lat": 47.689957,
-        "lon": 9.188262,
+        "lat": 47.6898803,
+        "lon": 9.187944200000002,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 32731.8,
         "co2e_low_kg": 32731.8,
         "co2e_high_kg": 94922.2,
         "co2e_per_speaker_kg": 4676.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0449",
         "affiliation": "University of Leeds",
-        "lat": 53.806572,
-        "lon": -1.555785,
+        "lat": 53.8079743,
+        "lon": -1.5533339,
         "speaker_count": 10,
         "travel_attendees": 10,
         "co2e_kg": 46235.8,
         "co2e_low_kg": 46235.8,
         "co2e_high_kg": 134083.8,
         "co2e_per_speaker_kg": 4623.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0450",
@@ -22670,15 +23340,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0452",
         "affiliation": "University of Lisbon",
-        "lat": 38.752796,
-        "lon": -9.157028,
+        "lat": 38.7526578,
+        "lon": -9.158244999999999,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 35039.6,
         "co2e_low_kg": 35039.6,
         "co2e_high_kg": 101614.9,
         "co2e_per_speaker_kg": 5005.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0453",
@@ -22696,119 +23367,128 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0454",
         "affiliation": "University of Maryland",
-        "lat": 48.098982,
-        "lon": 11.582349,
+        "lat": 38.9869183,
+        "lon": -76.9425543,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 13889.9,
         "co2e_low_kg": 13889.9,
         "co2e_high_kg": 40280.7,
         "co2e_per_speaker_kg": 4630.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0455",
         "affiliation": "University of Maryland Center for Environmental Sciences- Institute of Marine and Environmental Technology",
-        "lat": 39.290882,
-        "lon": -76.610759,
+        "lat": 38.9869183,
+        "lon": -76.9425543,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3553.5,
         "co2e_low_kg": 3553.5,
         "co2e_high_kg": 10305.1,
         "co2e_per_speaker_kg": 3553.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0456",
         "affiliation": "University of Massachusetts - Boston",
-        "lat": 42.314068,
-        "lon": -71.038713,
+        "lat": 42.3141992,
+        "lon": -71.0419953,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3698.3,
         "co2e_low_kg": 3698.3,
         "co2e_high_kg": 10725.2,
         "co2e_per_speaker_kg": 3698.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0457",
         "affiliation": "University of Massachusetts Lowell",
-        "lat": 42.65191,
-        "lon": -71.317363,
+        "lat": 42.6552587,
+        "lon": -71.3247164,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3694.5,
         "co2e_low_kg": 3694.5,
         "co2e_high_kg": 10714.2,
         "co2e_per_speaker_kg": 3694.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0458",
         "affiliation": "University of Mataram",
-        "lat": -8.582251,
-        "lon": 116.094385,
+        "lat": -8.587232600000002,
+        "lon": 116.092239,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1694.9,
         "co2e_low_kg": 1694.9,
         "co2e_high_kg": 4915.1,
         "co2e_per_speaker_kg": 1694.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0459",
-        "affiliation": "University of Mauritius",
-        "lat": -20.234514,
-        "lon": 57.497657,
+        "affiliation": "University",
+        "lat": -20.2349416,
+        "lon": 57.4962994,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 22132.7,
         "co2e_low_kg": 22132.7,
         "co2e_high_kg": 64184.9,
         "co2e_per_speaker_kg": 2766.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0460",
         "affiliation": "University of Melbourne",
-        "lat": -37.824137,
-        "lon": 144.917089,
+        "lat": -37.7983459,
+        "lon": 144.960974,
         "speaker_count": 9,
         "travel_attendees": 9,
         "co2e_kg": 6675.4,
         "co2e_low_kg": 6675.4,
         "co2e_high_kg": 19358.6,
         "co2e_per_speaker_kg": 741.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0461",
-        "affiliation": "University of Miami",
-        "lat": 25.717272,
-        "lon": -80.278707,
+        "affiliation": "University",
+        "lat": 25.7169568,
+        "lon": -80.2798198,
         "speaker_count": 32,
         "travel_attendees": 32,
         "co2e_kg": 105267.4,
         "co2e_low_kg": 105267.4,
         "co2e_high_kg": 305275.3,
         "co2e_per_speaker_kg": 3289.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0462",
         "affiliation": "University of Miami / NOAA",
-        "lat": 25.754489,
-        "lon": -80.383621,
+        "lat": 25.7169568,
+        "lon": -80.2798198,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3306.8,
         "co2e_low_kg": 3306.8,
         "co2e_high_kg": 9589.8,
         "co2e_per_speaker_kg": 3306.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0463",
@@ -22838,68 +23518,73 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0465",
-        "affiliation": "University of Michigan",
-        "lat": 42.294214,
-        "lon": -83.710039,
+        "affiliation": "University",
+        "lat": 42.277145,
+        "lon": -83.7382071,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 10361.4,
         "co2e_low_kg": 10361.4,
         "co2e_high_kg": 30048.1,
         "co2e_per_speaker_kg": 3453.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0466",
-        "affiliation": "University of Michigan - Ann Arbor",
-        "lat": 42.294214,
-        "lon": -83.710039,
+        "affiliation": "University of Michigan",
+        "lat": 42.277145,
+        "lon": -83.7382071,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3453.8,
         "co2e_low_kg": 3453.8,
         "co2e_high_kg": 10016.0,
         "co2e_per_speaker_kg": 3453.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0467",
         "affiliation": "University of Milan-Bicocca",
-        "lat": 45.515245,
-        "lon": 9.212836,
+        "lat": 45.5182898,
+        "lon": 9.2137614,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4716.9,
         "co2e_low_kg": 4716.9,
         "co2e_high_kg": 13678.9,
         "co2e_per_speaker_kg": 4716.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0468",
         "affiliation": "University of Milano - Bicocca",
-        "lat": 45.515245,
-        "lon": 9.212836,
+        "lat": 45.5182898,
+        "lon": 9.2137614,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4716.9,
         "co2e_low_kg": 4716.9,
         "co2e_high_kg": 13678.9,
         "co2e_per_speaker_kg": 4716.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0469",
         "affiliation": "University of Milano-Bicocca",
-        "lat": 45.515245,
-        "lon": 9.212836,
+        "lat": 45.5182898,
+        "lon": 9.2137614,
         "speaker_count": 7,
         "travel_attendees": 7,
         "co2e_kg": 32987.2,
         "co2e_low_kg": 32987.2,
         "co2e_high_kg": 95662.8,
         "co2e_per_speaker_kg": 4712.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0470",
@@ -22917,15 +23602,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0471",
         "affiliation": "University of Mississippi",
-        "lat": 39.78373,
-        "lon": -100.445882,
+        "lat": 34.3662492,
+        "lon": -89.5379687,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6313.9,
         "co2e_low_kg": 6313.9,
         "co2e_high_kg": 18310.3,
         "co2e_per_speaker_kg": 3156.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0472",
@@ -22957,210 +23643,226 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0474",
         "affiliation": "University of Moratuwa",
-        "lat": 6.797227,
-        "lon": 79.901224,
+        "lat": 6.7951276,
+        "lon": 79.90086699999999,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2780.5,
         "co2e_low_kg": 2780.5,
         "co2e_high_kg": 8063.3,
         "co2e_per_speaker_kg": 2780.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0475",
         "affiliation": "University of New Caledonia",
-        "lat": 52.982994,
-        "lon": -122.471169,
+        "lat": -22.2628981,
+        "lon": 166.4032454,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5993.3,
         "co2e_low_kg": 5993.3,
         "co2e_high_kg": 17380.6,
         "co2e_per_speaker_kg": 2996.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0476",
         "affiliation": "University of New Hampshire",
-        "lat": 43.135541,
-        "lon": -70.946182,
+        "lat": 43.138948,
+        "lon": -70.9370252,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3472.5,
         "co2e_low_kg": 3472.5,
         "co2e_high_kg": 10070.2,
         "co2e_per_speaker_kg": 3472.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0477",
         "affiliation": "University of New South Wales",
-        "lat": -33.917599,
-        "lon": 151.231237,
+        "lat": -33.917347,
+        "lon": 151.2312675,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 2959.6,
         "co2e_low_kg": 2959.6,
         "co2e_high_kg": 8583.0,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0478",
         "affiliation": "University of New South Wales - Sydney",
-        "lat": -33.917599,
-        "lon": 151.231237,
+        "lat": -33.917347,
+        "lon": 151.2312675,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 591.9,
         "co2e_low_kg": 591.9,
         "co2e_high_kg": 1716.6,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0479",
         "affiliation": "University of Newcastle",
-        "lat": -32.895031,
-        "lon": 151.697866,
+        "lat": -32.8927718,
+        "lon": 151.7041775,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 3541.7,
         "co2e_low_kg": 3541.7,
         "co2e_high_kg": 10271.0,
         "co2e_per_speaker_kg": 708.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0480",
         "affiliation": "University of North Carolina - Wilmington",
-        "lat": 34.224983,
-        "lon": -77.869077,
+        "lat": 34.224675,
+        "lon": -77.8678426,
         "speaker_count": 12,
         "travel_attendees": 12,
         "co2e_kg": 42964.6,
         "co2e_low_kg": 42964.6,
         "co2e_high_kg": 124597.2,
         "co2e_per_speaker_kg": 3580.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0481",
         "affiliation": "University of Oldenburg",
-        "lat": 53.146727,
-        "lon": 8.181643,
+        "lat": 53.1467333,
+        "lon": 8.183124,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9148.6,
         "co2e_low_kg": 9148.6,
         "co2e_high_kg": 26531.1,
         "co2e_per_speaker_kg": 4574.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0482",
         "affiliation": "University of Otago",
-        "lat": -45.864979,
-        "lon": 170.514615,
+        "lat": -45.8646835,
+        "lon": 170.5144227,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 936.7,
         "co2e_low_kg": 468.3,
         "co2e_high_kg": 1873.3,
         "co2e_per_speaker_kg": 468.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0483",
         "affiliation": "University of Oxford",
-        "lat": 33.650542,
-        "lon": -117.827053,
+        "lat": 51.75704289999999,
+        "lon": -1.2545179,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5360.1,
         "co2e_low_kg": 5360.1,
         "co2e_high_kg": 15544.2,
         "co2e_per_speaker_kg": 2680.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0484",
         "affiliation": "University of Pattimura",
-        "lat": -3.652209,
-        "lon": 128.19163,
+        "lat": -3.6546187,
+        "lon": 128.1956754,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1536.7,
         "co2e_low_kg": 1536.7,
         "co2e_high_kg": 4456.4,
         "co2e_per_speaker_kg": 1536.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0485",
         "affiliation": "University of Pennsylvania",
-        "lat": 39.952215,
-        "lon": -75.195573,
+        "lat": 39.9515013,
+        "lon": -75.1910161,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 10769.4,
         "co2e_low_kg": 10769.4,
         "co2e_high_kg": 31231.2,
         "co2e_per_speaker_kg": 3589.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0486",
         "affiliation": "University of Perpignan - Domitia",
-        "lat": 42.682174,
-        "lon": 2.899098,
+        "lat": 42.6820471,
+        "lon": 2.8988581,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9742.8,
         "co2e_low_kg": 9742.8,
         "co2e_high_kg": 28254.2,
         "co2e_per_speaker_kg": 4871.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0487",
         "affiliation": "University of Plymouth",
-        "lat": 50.3757,
-        "lon": -4.139379,
+        "lat": 50.3758892,
+        "lon": -4.1395842,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 23484.8,
         "co2e_low_kg": 23484.8,
         "co2e_high_kg": 68105.8,
         "co2e_per_speaker_kg": 4696.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0488",
         "affiliation": "University of Porto",
-        "lat": 41.178493,
-        "lon": -8.596197,
+        "lat": 41.1465479,
+        "lon": -8.6156998,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4964.5,
         "co2e_low_kg": 4964.5,
         "co2e_high_kg": 14396.9,
         "co2e_per_speaker_kg": 4964.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0489",
         "affiliation": "University of Puerto Rico - Mayaguez",
-        "lat": 18.213824,
-        "lon": -67.142568,
+        "lat": 18.2108895,
+        "lon": -67.14090250000001,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6600.8,
         "co2e_low_kg": 6600.8,
         "co2e_high_kg": 19142.4,
         "co2e_per_speaker_kg": 3300.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0490",
@@ -23178,28 +23880,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0491",
         "affiliation": "University of Queensland",
-        "lat": -27.498142,
-        "lon": 153.011154,
+        "lat": -27.4976696,
+        "lon": 153.0128661,
         "speaker_count": 39,
         "travel_attendees": 39,
         "co2e_kg": 25587.6,
         "co2e_low_kg": 25587.6,
         "co2e_high_kg": 74204.2,
         "co2e_per_speaker_kg": 656.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0492",
         "affiliation": "University of Rhode Island",
-        "lat": 41.487513,
-        "lon": -71.534309,
+        "lat": 41.4862328,
+        "lon": -71.53067879999999,
         "speaker_count": 5,
         "travel_attendees": 5,
         "co2e_kg": 18422.7,
         "co2e_low_kg": 18422.7,
         "co2e_high_kg": 53425.7,
         "co2e_per_speaker_kg": 3684.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0493",
@@ -23218,15 +23922,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0494",
         "affiliation": "University of San Diego",
-        "lat": 32.77263,
-        "lon": -117.189135,
+        "lat": 32.7721681,
+        "lon": -117.1888625,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 8022.1,
         "co2e_low_kg": 8022.1,
         "co2e_high_kg": 23264.1,
         "co2e_per_speaker_kg": 2674.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0495",
@@ -23257,58 +23962,62 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0497",
         "affiliation": "University of South Carolina - Chapel Hill",
-        "lat": 35.904673,
-        "lon": -79.053359,
+        "lat": 35.9049122,
+        "lon": -79.0469134,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3472.5,
         "co2e_low_kg": 3472.5,
         "co2e_high_kg": 10070.2,
         "co2e_per_speaker_kg": 3472.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0498",
         "affiliation": "University of South Florida",
-        "lat": 28.06,
-        "lon": -82.413836,
+        "lat": 28.0622334,
+        "lon": -82.4135057,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 6577.8,
         "co2e_low_kg": 6577.8,
         "co2e_high_kg": 19075.6,
         "co2e_per_speaker_kg": 3288.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0499",
         "affiliation": "University of Southampton",
-        "lat": 1.429917,
-        "lon": 103.612177,
+        "lat": 50.935742,
+        "lon": -1.3966381,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 8883.5,
         "co2e_low_kg": 8883.5,
         "co2e_high_kg": 25762.3,
         "co2e_per_speaker_kg": 2961.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0500",
-        "affiliation": "University of Southern California",
-        "lat": 34.021869,
-        "lon": -118.285858,
+        "affiliation": "University of Southern California Frank",
+        "lat": 34.0223519,
+        "lon": -118.285117,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 21894.6,
         "co2e_low_kg": 21894.6,
         "co2e_high_kg": 63494.2,
         "co2e_per_speaker_kg": 2736.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0501",
-        "affiliation": "University of Southern California Dr Sun Kyeong Choi KIOST South Korea",
+        "affiliation": "University of Southern",
         "lat": 39.78373,
         "lon": -100.445882,
         "speaker_count": 1,
@@ -23322,20 +24031,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0502",
         "affiliation": "University of St Andrews",
-        "lat": 56.339855,
-        "lon": -2.811777,
+        "lat": 56.3417136,
+        "lon": -2.7942674,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4568.3,
         "co2e_low_kg": 4568.3,
         "co2e_high_kg": 13248.2,
         "co2e_per_speaker_kg": 4568.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0503",
         "affiliation": "University of Sydney",
-        "lat": 32.872527,
+        "lat": 32.8725266,
         "lon": -117.202023,
         "speaker_count": 21,
         "travel_attendees": 21,
@@ -23343,85 +24053,92 @@ export const EMISSIONS_DATA = {
         "co2e_low_kg": 56154.6,
         "co2e_high_kg": 162848.4,
         "co2e_per_speaker_kg": 2674.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0504",
         "affiliation": "University of Tasmania",
-        "lat": -42.906822,
-        "lon": 147.321808,
+        "lat": -42.0409059,
+        "lon": 146.8087322,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 1317.3,
         "co2e_low_kg": 1317.3,
         "co2e_high_kg": 3820.1,
         "co2e_per_speaker_kg": 658.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0505",
         "affiliation": "University of Technology Sydney",
-        "lat": -33.883254,
-        "lon": 151.200329,
+        "lat": -33.8836537,
+        "lon": 151.2006119,
         "speaker_count": 19,
         "travel_attendees": 19,
         "co2e_kg": 11246.7,
         "co2e_low_kg": 11246.7,
         "co2e_high_kg": 32615.3,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0506",
         "affiliation": "University of Texas - Arlington",
-        "lat": 32.728471,
-        "lon": -97.112021,
+        "lat": 32.7292117,
+        "lon": -97.11519709999999,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 12233.0,
         "co2e_low_kg": 12233.0,
         "co2e_high_kg": 35475.7,
         "co2e_per_speaker_kg": 3058.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0507",
         "affiliation": "University of Texas - Austin",
-        "lat": 30.285149,
-        "lon": -97.733935,
+        "lat": 30.2850284,
+        "lon": -97.7335226,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 24027.1,
         "co2e_low_kg": 24027.1,
         "co2e_high_kg": 69678.6,
         "co2e_per_speaker_kg": 3003.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0508",
-        "affiliation": "University of Texas - Tyler",
-        "lat": 32.316308,
-        "lon": -95.253699,
+        "affiliation": "University of Texas",
+        "lat": 32.3150044,
+        "lon": -95.2519974,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3061.2,
         "co2e_low_kg": 3061.2,
         "co2e_high_kg": 8877.6,
         "co2e_per_speaker_kg": 3061.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0509",
         "affiliation": "University of Tokyo",
-        "lat": 35.711716,
-        "lon": 139.763746,
+        "lat": 35.7147555,
+        "lon": 139.761332,
         "speaker_count": 8,
         "travel_attendees": 8,
         "co2e_kg": 18044.6,
         "co2e_low_kg": 18044.6,
         "co2e_high_kg": 52329.2,
         "co2e_per_speaker_kg": 2255.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0510",
@@ -23440,80 +24157,86 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0511",
         "affiliation": "University of Toronto",
-        "lat": 43.660814,
-        "lon": -79.396032,
+        "lat": 43.663487,
+        "lon": -79.3958273,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3541.0,
         "co2e_low_kg": 3541.0,
         "co2e_high_kg": 10269.0,
         "co2e_per_speaker_kg": 3541.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0512",
         "affiliation": "University of Victoria",
-        "lat": 48.46206,
-        "lon": -123.31142,
+        "lat": 48.4631345,
+        "lon": -123.3121763,
         "speaker_count": 6,
         "travel_attendees": 6,
         "co2e_kg": 17919.7,
         "co2e_low_kg": 17919.7,
         "co2e_high_kg": 51967.0,
         "co2e_per_speaker_kg": 2986.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0513",
         "affiliation": "University of Waikato",
-        "lat": -37.785874,
-        "lon": 175.316766,
+        "lat": -37.78667069999999,
+        "lon": 175.3182658,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 417.6,
         "co2e_low_kg": 208.8,
         "co2e_high_kg": 835.2,
         "co2e_per_speaker_kg": 104.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0514",
         "affiliation": "University of Warsaw",
-        "lat": 52.221639,
-        "lon": 21.007377,
+        "lat": 52.2403463,
+        "lon": 21.0186012,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4431.6,
         "co2e_low_kg": 4431.6,
         "co2e_high_kg": 12851.8,
         "co2e_per_speaker_kg": 4431.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0515",
         "affiliation": "University of Warwick",
-        "lat": 52.381307,
-        "lon": -1.563957,
+        "lat": 52.3792525,
+        "lon": -1.5614704,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 9326.6,
         "co2e_low_kg": 9326.6,
         "co2e_high_kg": 27047.1,
         "co2e_per_speaker_kg": 4663.3,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0516",
         "affiliation": "University of Washington",
-        "lat": 47.65543,
-        "lon": -122.300169,
+        "lat": 47.6565919,
+        "lon": -122.3126783,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 8634.7,
         "co2e_low_kg": 8634.7,
         "co2e_high_kg": 25040.7,
         "co2e_per_speaker_kg": 2878.2,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0517",
@@ -23532,158 +24255,170 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0518",
         "affiliation": "University of Wisconsin - Green Bay",
-        "lat": 44.526527,
-        "lon": -87.907347,
+        "lat": 44.5313196,
+        "lon": -87.9210482,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3389.7,
         "co2e_low_kg": 3389.7,
         "co2e_high_kg": 9830.0,
         "co2e_per_speaker_kg": 3389.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0519",
         "affiliation": "University of Wisconsin - Madison",
-        "lat": 43.080275,
-        "lon": -89.430959,
+        "lat": 43.07551429999999,
+        "lon": -89.4154526,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3343.9,
         "co2e_low_kg": 3343.9,
         "co2e_high_kg": 9697.3,
         "co2e_per_speaker_kg": 3343.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0520",
         "affiliation": "University of Wollongong",
-        "lat": -34.405055,
-        "lon": 150.878346,
+        "lat": -34.4053396,
+        "lon": 150.8778394,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 2367.7,
         "co2e_low_kg": 2367.7,
         "co2e_high_kg": 6866.4,
         "co2e_per_speaker_kg": 591.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0521",
         "affiliation": "University of York",
-        "lat": 53.945391,
-        "lon": -1.031459,
+        "lat": 53.9461089,
+        "lon": -1.0517718,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4623.6,
         "co2e_low_kg": 4623.6,
         "co2e_high_kg": 13408.4,
         "co2e_per_speaker_kg": 4623.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0522",
         "affiliation": "University of the Philippines",
-        "lat": 14.609843,
-        "lon": 120.989465,
+        "lat": 14.6538783,
+        "lon": 121.0684573,
         "speaker_count": 12,
         "travel_attendees": 12,
         "co2e_kg": 24572.0,
         "co2e_low_kg": 24572.0,
         "co2e_high_kg": 71258.9,
         "co2e_per_speaker_kg": 2047.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0523",
-        "affiliation": "University of the Philippines - Cebu",
-        "lat": 10.322532,
-        "lon": 123.898888,
+        "affiliation": "University of the Philippines",
+        "lat": 14.6538783,
+        "lon": 121.0684573,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1904.4,
         "co2e_low_kg": 1904.4,
         "co2e_high_kg": 5522.7,
         "co2e_per_speaker_kg": 1904.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0524",
         "affiliation": "University of the Philippines - Diliman",
-        "lat": 14.650376,
-        "lon": 121.067643,
+        "lat": 14.6538783,
+        "lon": 121.0684573,
         "speaker_count": 21,
         "travel_attendees": 21,
         "co2e_kg": 43001.1,
         "co2e_low_kg": 43001.1,
         "co2e_high_kg": 124703.1,
         "co2e_per_speaker_kg": 2047.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0525",
-        "affiliation": "University of the Ryukyus",
-        "lat": 26.249377,
-        "lon": 127.764158,
+        "affiliation": "University",
+        "lat": 26.2516868,
+        "lon": 127.7684078,
         "speaker_count": 16,
         "travel_attendees": 16,
         "co2e_kg": 35042.2,
         "co2e_low_kg": 35042.2,
         "co2e_high_kg": 101622.5,
         "co2e_per_speaker_kg": 2190.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0526",
         "affiliation": "University of the South Pacific",
-        "lat": -18.150546,
-        "lon": 178.44371,
+        "lat": -18.1480462,
+        "lon": 178.4476007,
         "speaker_count": 13,
         "travel_attendees": 13,
         "co2e_kg": 7658.0,
         "co2e_low_kg": 7658.0,
         "co2e_high_kg": 22208.3,
         "co2e_per_speaker_kg": 589.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0527",
         "affiliation": "University of the Virgin Islands",
-        "lat": 18.343563,
-        "lon": -64.972644,
+        "lat": 18.3432344,
+        "lon": -64.9728797,
         "speaker_count": 22,
         "travel_attendees": 22,
         "co2e_kg": 72609.0,
         "co2e_low_kg": 72609.0,
         "co2e_high_kg": 210566.2,
         "co2e_per_speaker_kg": 3300.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0528",
         "affiliation": "University of the West Indies",
-        "lat": 18.005376,
-        "lon": -76.745334,
+        "lat": 18.0059084,
+        "lon": -76.746836,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3267.9,
         "co2e_low_kg": 3267.9,
         "co2e_high_kg": 9476.8,
         "co2e_per_speaker_kg": 3267.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0529",
         "affiliation": "Ursinus College",
-        "lat": 40.195409,
-        "lon": -75.45532,
+        "lat": 40.19396769999999,
+        "lon": -75.4563232,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3589.8,
         "co2e_low_kg": 3589.8,
         "co2e_high_kg": 10410.4,
         "co2e_per_speaker_kg": 3589.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0530",
@@ -23715,28 +24450,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0532",
         "affiliation": "Villanova University",
-        "lat": 40.036783,
-        "lon": -75.342018,
+        "lat": 40.0368926,
+        "lon": -75.3425785,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3589.8,
         "co2e_low_kg": 3589.8,
         "co2e_high_kg": 10410.4,
         "co2e_per_speaker_kg": 3589.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0533",
         "affiliation": "Wageningen University",
-        "lat": 51.985445,
-        "lon": 5.663212,
+        "lat": 51.9863475,
+        "lon": 5.6680189,
         "speaker_count": 3,
         "travel_attendees": 3,
         "co2e_kg": 13935.4,
         "co2e_low_kg": 13935.4,
         "co2e_high_kg": 40412.8,
         "co2e_per_speaker_kg": 4645.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0534",
@@ -23767,28 +24504,30 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0536",
         "affiliation": "Washington and Lee University",
-        "lat": 37.792999,
-        "lon": -79.447735,
+        "lat": 37.7898776,
+        "lon": -79.4458935,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3379.6,
         "co2e_low_kg": 3379.6,
         "co2e_high_kg": 9800.9,
         "co2e_per_speaker_kg": 3379.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0537",
         "affiliation": "Wayamba University of Sri Lanka",
-        "lat": 7.462596,
-        "lon": 80.022204,
+        "lat": 7.4645435,
+        "lon": 80.0216286,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2786.6,
         "co2e_low_kg": 2786.6,
         "co2e_high_kg": 8081.1,
         "co2e_per_speaker_kg": 2786.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0538",
@@ -23846,145 +24585,156 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0542",
         "affiliation": "Wildlife Conservation Society",
-        "lat": 3.894444,
-        "lon": 11.508945,
+        "lat": 3.8944436,
+        "lon": 11.5089445,
         "speaker_count": 20,
         "travel_attendees": 20,
         "co2e_kg": 69708.1,
         "co2e_low_kg": 69708.1,
         "co2e_high_kg": 202153.5,
         "co2e_per_speaker_kg": 3485.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0543",
-        "affiliation": "Wildlife Conservation Society - Malaysia",
-        "lat": 4.569375,
-        "lon": 102.265682,
+        "affiliation": "Wildlife Conservation Society",
+        "lat": 3.8944436,
+        "lon": 11.5089445,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2266.6,
         "co2e_low_kg": 2266.6,
         "co2e_high_kg": 6573.1,
         "co2e_per_speaker_kg": 2266.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0544",
-        "affiliation": "Wildlife Conservation Society - Philippines",
-        "lat": 12.750349,
-        "lon": 122.73121,
+        "affiliation": "Wildlife Conservation Society",
+        "lat": 3.8944436,
+        "lon": 11.5089445,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2047.7,
         "co2e_low_kg": 2047.7,
         "co2e_high_kg": 5938.2,
         "co2e_per_speaker_kg": 2047.7,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0545",
         "affiliation": "Wildlife Conservation Society Indonesia Program",
-        "lat": -2.483383,
-        "lon": 117.890285,
+        "lat": -6.595104999999999,
+        "lon": 106.8056102,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1817.1,
         "co2e_low_kg": 1817.1,
         "co2e_high_kg": 5269.5,
         "co2e_per_speaker_kg": 1817.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0546",
         "affiliation": "Windward Community College",
-        "lat": 39.78373,
-        "lon": -100.445882,
+        "lat": 21.413360134617406,
+        "lon": -157.8134462543146,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3123.0,
         "co2e_low_kg": 3123.0,
         "co2e_high_kg": 9056.7,
         "co2e_per_speaker_kg": 3123.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0547",
         "affiliation": "Wofford College",
-        "lat": 39.78373,
-        "lon": -100.445882,
+        "lat": 34.9595796397247,
+        "lon": -81.9350682445119,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 3123.0,
         "co2e_low_kg": 3123.0,
         "co2e_high_kg": 9056.7,
         "co2e_per_speaker_kg": 3123.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0548",
         "affiliation": "Woods Hole Oceanographic Institution",
-        "lat": 41.534922,
-        "lon": -70.648251,
+        "lat": 41.5245291,
+        "lon": -70.6683781,
         "speaker_count": 4,
         "travel_attendees": 4,
         "co2e_kg": 13615.1,
         "co2e_low_kg": 13615.1,
         "co2e_high_kg": 39483.7,
         "co2e_per_speaker_kg": 3403.8,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0549",
         "affiliation": "World Conservation Monitoring Centre",
-        "lat": 52.2198,
-        "lon": 0.091735,
+        "lat": 52.2197995,
+        "lon": 0.0917354,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4670.9,
         "co2e_low_kg": 4670.9,
         "co2e_high_kg": 13545.8,
         "co2e_per_speaker_kg": 4670.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0550",
         "affiliation": "World Wide Fund for Nature - Indonesia",
-        "lat": -2.483383,
-        "lon": 117.890285,
+        "lat": -0.789275,
+        "lon": 113.921327,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 3634.1,
         "co2e_low_kg": 3634.1,
         "co2e_high_kg": 10538.9,
         "co2e_per_speaker_kg": 1817.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0551",
         "affiliation": "World Wide Fund for Nature - Madagascar",
-        "lat": -18.92496,
-        "lon": 46.441642,
+        "lat": -18.766947,
+        "lon": 46.869107,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2988.0,
         "co2e_low_kg": 2988.0,
         "co2e_high_kg": 8665.2,
         "co2e_per_speaker_kg": 2988.0,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0552",
         "affiliation": "World Wide Fund for Nature - Malaysia",
-        "lat": 4.569375,
-        "lon": 102.265682,
+        "lat": 4.210484,
+        "lon": 101.975766,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 4533.1,
         "co2e_low_kg": 4533.1,
         "co2e_high_kg": 13146.1,
         "co2e_per_speaker_kg": 2266.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0553",
@@ -24001,7 +24751,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0554",
-        "affiliation": "World Wildlife Fund - Australia",
+        "affiliation": "World Wildlife Fund",
         "lat": -24.7761086,
         "lon": 134.755,
         "speaker_count": 1,
@@ -24014,7 +24764,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0555",
-        "affiliation": "World Wildlife Fund - Indonesia",
+        "affiliation": "World Wildlife Fund",
         "lat": -2.483383,
         "lon": 117.890285,
         "speaker_count": 2,
@@ -24041,15 +24791,16 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0557",
         "affiliation": "Yamaguchi University",
-        "lat": 34.148076,
-        "lon": 131.468678,
+        "lat": 34.1488153,
+        "lon": 131.4701034,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2318.9,
         "co2e_low_kg": 2318.9,
         "co2e_high_kg": 6724.7,
         "co2e_per_speaker_kg": 2318.9,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0558",
@@ -24067,54 +24818,58 @@ export const EMISSIONS_DATA = {
       {
         "id": "emis-loc-0559",
         "affiliation": "Yayasan WWF Indonesia",
-        "lat": -2.483383,
-        "lon": 117.890285,
+        "lat": 2.1376851,
+        "lon": 117.481067,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1817.1,
         "co2e_low_kg": 1817.1,
         "co2e_high_kg": 5269.5,
         "co2e_per_speaker_kg": 1817.1,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0560",
         "affiliation": "Zhejiang University",
-        "lat": 30.521595,
-        "lon": 120.719531,
+        "lat": 30.30868439999999,
+        "lon": 120.0864995,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 2392.4,
         "co2e_low_kg": 2392.4,
         "co2e_high_kg": 6938.0,
         "co2e_per_speaker_kg": 2392.4,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0561",
         "affiliation": "Zoological Society of London",
-        "lat": 51.536955,
-        "lon": -0.152962,
+        "lat": 51.5369552,
+        "lon": -0.1529621,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 4685.6,
         "co2e_low_kg": 4685.6,
         "co2e_high_kg": 13588.2,
         "co2e_per_speaker_kg": 4685.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0562",
         "affiliation": "Zoological Survey of India",
-        "lat": 22.509841,
-        "lon": 88.334259,
+        "lat": 20.593684,
+        "lon": 78.96288,
         "speaker_count": 2,
         "travel_attendees": 2,
         "co2e_kg": 5711.1,
         "co2e_low_kg": 5711.1,
         "co2e_high_kg": 16562.1,
         "co2e_per_speaker_kg": 2855.5,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0563",
@@ -24131,7 +24886,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0564",
-        "affiliation": "the Nature Conservancy - Jamaica",
+        "affiliation": "the Nature Conservancy",
         "lat": 18.185051,
         "lon": -77.394769,
         "speaker_count": 1,
@@ -24170,7 +24925,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0567",
-        "affiliation": "the Nature Conservancy Papua New",
+        "affiliation": "the Nature Conservancy",
         "lat": 10.722623,
         "lon": -10.708359,
         "speaker_count": 1,
@@ -24214,7 +24969,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b34e3547",
         "name": "A/Prof Steve Doo",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3123.0
       },
@@ -24263,7 +25018,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b67726ff",
         "name": "Abigail Turnlund",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
@@ -24291,7 +25046,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-24726523",
         "name": "Adele Battini",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -24319,7 +25074,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-13dfd20c",
         "name": "Adonis Muzanni",
-        "affiliation": "Disaster Risk Reduction Center Universitas Indonesia",
+        "affiliation": "Disaster Risk Reduction Center",
         "location_id": "emis-loc-0092",
         "co2e_kg": 1817.1
       },
@@ -24424,7 +25179,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-64daec7e",
         "name": "Akili Ligons",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -24515,7 +25270,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-285fcb27",
         "name": "Alessandra Shea",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 3123.0
       },
@@ -24599,7 +25354,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7d0a9e36",
         "name": "Alexandra Fine",
-        "affiliation": "Florida Keys National Marine Sanctuary",
+        "affiliation": "Florida Keys National Marine",
         "location_id": "emis-loc-0117",
         "co2e_kg": 3123.0
       },
@@ -24641,7 +25396,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-05d5ccc0",
         "name": "Alexandra Wen",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -24662,7 +25417,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-aa3f51b8",
         "name": "Alexi Meltel",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -24753,7 +25508,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e20616e0",
         "name": "Aliyah True",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -24809,14 +25564,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-91535e1a",
         "name": "Allyn Duvin Hinoguin",
-        "affiliation": "Mindanao State University - Naawan",
+        "affiliation": "Mindanao State University",
         "location_id": "emis-loc-0228",
         "co2e_kg": 1806.1
       },
       {
         "id": "offset-5db34f6d",
         "name": "Allyson DeMerlis",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -24914,7 +25669,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-632ff53f",
         "name": "Ambar Condori Boughton",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3123.0
       },
@@ -24977,7 +25732,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-838e9ef2",
         "name": "Ana Palacio-castro",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -25005,7 +25760,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6266860d",
         "name": "Anabelle Dece Espadero",
-        "affiliation": "Mindanao State University - Naawan",
+        "affiliation": "Mindanao State University",
         "location_id": "emis-loc-0228",
         "co2e_kg": 1806.1
       },
@@ -25040,7 +25795,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8dbe10fe",
         "name": "Andreas Eich",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0037",
         "co2e_kg": 4781.9
       },
@@ -25068,7 +25823,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5cef0cac",
         "name": "Andrew Baker",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -25089,7 +25844,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bff38cad",
         "name": "Anela Duenas",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -25187,7 +25942,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-05e9d88d",
         "name": "Anna Koivunen",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -25236,7 +25991,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-afb75fa2",
         "name": "Annielyn Tampus",
-        "affiliation": "Mindanao State University-Iligan Institute of Technology",
+        "affiliation": "Mindanao State University",
         "location_id": "emis-loc-0229",
         "co2e_kg": 1806.1
       },
@@ -25369,7 +26124,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a65df25c",
         "name": "Ashfaaq Korimbocus",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0459",
         "co2e_kg": 2766.6
       },
@@ -25411,7 +26166,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-97e64b9a",
         "name": "Ashton Williams",
-        "affiliation": "Division of Aquatic and Wildlife Resources - Guam",
+        "affiliation": "Division of Aquatic and Wildlife Resources",
         "location_id": "emis-loc-0093",
         "co2e_kg": 1641.2
       },
@@ -25453,14 +26208,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-62e7e6d7",
         "name": "Aur\u00e9lie Aqua",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0037",
         "co2e_kg": 4781.9
       },
       {
         "id": "offset-a8c51c82",
         "name": "Ava Besecker",
-        "affiliation": "California State University Monterey Bay",
+        "affiliation": "California State University",
         "location_id": "emis-loc-0043",
         "co2e_kg": 2683.6
       },
@@ -25495,7 +26250,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ed88f857",
         "name": "Bailey Marquardt",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -25712,7 +26467,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3d50f6f1",
         "name": "Bradley Weiler",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -25747,7 +26502,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fd2fc496",
         "name": "Brian Neilson",
-        "affiliation": "State of Hawai'i Joseph Nekaifes Johnston Applied Marine Sciences Northern Mariana Islands",
+        "affiliation": "State of Hawai'i",
         "location_id": "emis-loc-0344",
         "co2e_kg": 3123.0
       },
@@ -25789,7 +26544,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e4dd68f0",
         "name": "Bryan Gabriel Tan",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -25838,7 +26593,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2a475172",
         "name": "Caitlin Younis",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney Ana",
         "location_id": "emis-loc-0505",
         "co2e_kg": 591.9
       },
@@ -25852,7 +26607,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5ab2c111",
         "name": "Callie Stephenson",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -25866,7 +26621,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-551dcef7",
         "name": "Cameron White-Spunner",
-        "affiliation": "University College London",
+        "affiliation": "University College",
         "location_id": "emis-loc-0398",
         "co2e_kg": 4685.6
       },
@@ -25908,7 +26663,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dc877a60",
         "name": "Carlo Caruso",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -25943,14 +26698,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1b7e57bb",
         "name": "Carmine Lee",
-        "affiliation": "National University of Singapore",
+        "affiliation": "National University of Singapore Gaby",
         "location_id": "emis-loc-0261",
         "co2e_kg": 2145.3
       },
       {
         "id": "offset-c1bfef0d",
         "name": "Caroline Bonpain",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0037",
         "co2e_kg": 4781.9
       },
@@ -26041,7 +26796,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0bd37461",
         "name": "Catherine Kim",
-        "affiliation": "Queensland University of Technology",
+        "affiliation": "Queensland University of Technology Jaehyeon",
         "location_id": "emis-loc-0301",
         "co2e_kg": 629.2
       },
@@ -26146,7 +26901,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6a0d870c",
         "name": "Charles Birkeland",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -26181,7 +26936,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c8013310",
         "name": "Chatoolsingh Dawosing",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0459",
         "co2e_kg": 2766.6
       },
@@ -26209,7 +26964,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ac3af7c8",
         "name": "Cheryl Logan",
-        "affiliation": "California State University Monterey Bay",
+        "affiliation": "California State University",
         "location_id": "emis-loc-0043",
         "co2e_kg": 2683.6
       },
@@ -26363,7 +27118,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9ed9aec6",
         "name": "Claire Boitel",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0037",
         "co2e_kg": 4781.9
       },
@@ -26384,7 +27139,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-090199fb",
         "name": "Claire Moreland-Ochoa",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -26552,21 +27307,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2cb8b15e",
         "name": "Courtney Tierney",
-        "affiliation": "Department of Planning and Natural Resources - Virgin Islands",
+        "affiliation": "Department of Planning and Natural Resources",
         "location_id": "emis-loc-0091",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-e0f8f0c2",
         "name": "Crawford Drury",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
       {
         "id": "offset-723e7ceb",
         "name": "Criselda Castor",
-        "affiliation": "Department of Environment and Natural Resources - Philippines",
+        "affiliation": "Department of Environment and Natural Resources",
         "location_id": "emis-loc-0089",
         "co2e_kg": 2047.7
       },
@@ -26629,7 +27384,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2ca32c55",
         "name": "Cynthia Silveira",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -26678,14 +27433,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2eb54b5e",
         "name": "Dan Ishibashi",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
       {
         "id": "offset-a60edf65",
         "name": "Danae Stephens",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -26734,14 +27489,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-66607494",
         "name": "Danielle Jayewardene",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration Christina",
         "location_id": "emis-loc-0251",
         "co2e_kg": 3363.9
       },
       {
         "id": "offset-e6d35eb2",
         "name": "Danielle M. Barnas",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -26769,7 +27524,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-708ab5e5",
         "name": "David Armstrong",
-        "affiliation": "Texas A&M University - Corpus Christi",
+        "affiliation": "Texas A&M University",
         "location_id": "emis-loc-0357",
         "co2e_kg": 2968.0
       },
@@ -26839,7 +27594,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-22adcea3",
         "name": "David Ory",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0037",
         "co2e_kg": 4781.9
       },
@@ -26860,7 +27615,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-62689a1b",
         "name": "Dawn Kaufman",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -26888,7 +27643,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-db055582",
         "name": "Dean Tysdale",
-        "affiliation": "the University of Western Australia",
+        "affiliation": "the University",
         "location_id": "emis-loc-0517",
         "co2e_kg": 891.1
       },
@@ -26909,7 +27664,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8fb868fc",
         "name": "Deepeeka Kaullysing",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0459",
         "co2e_kg": 2766.6
       },
@@ -27000,7 +27755,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8097d9a6",
         "name": "Diana Macpherson",
-        "affiliation": "Earth Sciences New Zealand",
+        "affiliation": "Earth Sciences",
         "location_id": "emis-loc-0099",
         "co2e_kg": 296.2
       },
@@ -27014,7 +27769,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-04eea599",
         "name": "Diana Vergara",
-        "affiliation": "University of Michigan",
+        "affiliation": "University",
         "location_id": "emis-loc-0465",
         "co2e_kg": 3453.8
       },
@@ -27112,7 +27867,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1f51f4ae",
         "name": "Dorka Evangelista P\u00e9rez",
-        "affiliation": "Ministry of Environment and Natural Resources - Dominican Republic",
+        "affiliation": "Ministry of Environment and Natural Resources",
         "location_id": "emis-loc-0233",
         "co2e_kg": 3430.2
       },
@@ -27154,14 +27909,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-86852efc",
         "name": "Dr Andrea Kealoha",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-55a0049e",
         "name": "Dr Angela Richards Don\u00e0",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 3123.0
       },
@@ -27273,7 +28028,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2097aea5",
         "name": "Dr Emilie Boissin",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0037",
         "co2e_kg": 4739.4
       },
@@ -27287,7 +28042,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c976fc65",
         "name": "Dr Evelyn Cox",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -27420,7 +28175,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-662e586b",
         "name": "Dr Mark Warner",
-        "affiliation": "University of Delaware Bailey Warren Coral Reef Initiative Northern Mariana Islands",
+        "affiliation": "University of Delaware Bailey",
         "location_id": "emis-loc-0431",
         "co2e_kg": 3123.0
       },
@@ -27434,7 +28189,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-587d0cfe",
         "name": "Dr Megan Donahue",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -27623,7 +28378,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bde75f2c",
         "name": "Dr Tye Kindinger",
-        "affiliation": "National Geographic Pristine Seas",
+        "affiliation": "National",
         "location_id": "emis-loc-0246",
         "co2e_kg": 3123.0
       },
@@ -27658,7 +28413,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bcc81976",
         "name": "Dustin Kemp",
-        "affiliation": "University of Alabama - Birmingham",
+        "affiliation": "University of Alabama",
         "location_id": "emis-loc-0403",
         "co2e_kg": 3277.3
       },
@@ -27693,28 +28448,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ec44fbef",
         "name": "Ee Suan Tan",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
       {
         "id": "offset-52f4a753",
         "name": "Eena Marie Nuevas",
-        "affiliation": "Department of Environment and Natural Resources - Philippines Philippines",
+        "affiliation": "Department of Environment and Natural Resources",
         "location_id": "emis-loc-0090",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-0e31cb81",
         "name": "Eileen Nalley",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-709bfb0b",
         "name": "Eleanor TenBrink",
-        "affiliation": "Texas A&M University - Corpus Christi",
+        "affiliation": "Texas A&M University",
         "location_id": "emis-loc-0357",
         "co2e_kg": 2968.0
       },
@@ -27882,7 +28637,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cc29ae55",
         "name": "Emily Rutkowski",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -27924,7 +28679,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-10f84471",
         "name": "Emma Pontes",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -28043,14 +28798,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8e2d6268",
         "name": "Erin Bowman",
-        "affiliation": "Backpacker Marissa Boylan the Nature Conservancy Micronesia (the Federated States of)",
+        "affiliation": "the Nature Conservancy",
         "location_id": "emis-loc-0016",
         "co2e_kg": 3542.5
       },
       {
         "id": "offset-4692b711",
         "name": "Erin Cain",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -28092,7 +28847,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-21910173",
         "name": "Erin Tharp",
-        "affiliation": "Florida Atlantic University - Harbor Branch",
+        "affiliation": "Florida Atlantic University",
         "location_id": "emis-loc-0113",
         "co2e_kg": 3313.9
       },
@@ -28190,7 +28945,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fc5a8a9f",
         "name": "Evelyne Felix",
-        "affiliation": "Wildlife Conservation Society - Malaysia",
+        "affiliation": "Wildlife Conservation Society",
         "location_id": "emis-loc-0543",
         "co2e_kg": 2266.6
       },
@@ -28211,7 +28966,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a901dc2e",
         "name": "Fabrizio Lepiz Conejo",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -28358,7 +29113,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-551c158c",
         "name": "Frederic Sinniger",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -28386,7 +29141,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a57143f6",
         "name": "Gabriel Lucas Xavier Da Silva",
-        "affiliation": "Institute of Science - Tokyo",
+        "affiliation": "Institute of Science",
         "location_id": "emis-loc-0169",
         "co2e_kg": 2255.6
       },
@@ -28470,7 +29225,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0a41d3c7",
         "name": "George Warfel",
-        "affiliation": "Northwestern University - Marcelino Lab",
+        "affiliation": "Northwestern University",
         "location_id": "emis-loc-0271",
         "co2e_kg": 3363.8
       },
@@ -28512,14 +29267,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ad8471ad",
         "name": "Ge\u00f3rgenes Cavalcante",
-        "affiliation": "New York University - Abu Dhabi",
+        "affiliation": "New York University",
         "location_id": "emis-loc-0264",
         "co2e_kg": 3632.3
       },
       {
         "id": "offset-529993b2",
         "name": "Giada Tortorelli",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -28554,7 +29309,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5d3f47a7",
         "name": "Gina-marie Maddix",
-        "affiliation": "the Nature Conservancy - Jamaica",
+        "affiliation": "the Nature Conservancy",
         "location_id": "emis-loc-0564",
         "co2e_kg": 3251.2
       },
@@ -28673,7 +29428,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-145eee4a",
         "name": "Guan-Yan Chen",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -28722,7 +29477,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-96e9f541",
         "name": "Haiwei Luo",
-        "affiliation": "Chinese University of Hong Kong",
+        "affiliation": "Chinese University of Hong Kong Caitlin",
         "location_id": "emis-loc-0447",
         "co2e_kg": 2348.4
       },
@@ -28869,7 +29624,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-31276466",
         "name": "Haruko Kurihara",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -28932,7 +29687,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b2fe126f",
         "name": "Heidi Hirsh",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -28988,7 +29743,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d0379ce9",
         "name": "Hidemi Shimbo",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -29016,7 +29771,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-26abaacc",
         "name": "Hiroki Suzuki",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -29135,7 +29890,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0c753122",
         "name": "Iliana Baums",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
@@ -29163,7 +29918,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f01425db",
         "name": "Immy Ashley",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los",
         "location_id": "emis-loc-0419",
         "co2e_kg": 2681.7
       },
@@ -29247,7 +30002,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-78c84be6",
         "name": "Isabelle Chiang",
-        "affiliation": "University of Southern California Dr Sun Kyeong Choi KIOST South Korea",
+        "affiliation": "University of Southern",
         "location_id": "emis-loc-0501",
         "co2e_kg": 3123.0
       },
@@ -29317,7 +30072,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1d1e888c",
         "name": "Jacob Allgeier",
-        "affiliation": "University of Michigan",
+        "affiliation": "University",
         "location_id": "emis-loc-0465",
         "co2e_kg": 3453.8
       },
@@ -29331,7 +30086,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e3f98628",
         "name": "Jacob Snyder",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -29387,14 +30142,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-72f1a589",
         "name": "Jake Ivan Baquiran",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
       {
         "id": "offset-f5890e9a",
         "name": "James Davis Reimer",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -29457,7 +30212,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e19a5154",
         "name": "Jamie McDevitt-Irwin",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -29499,7 +30254,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c7d9457e",
         "name": "Jane Wia",
-        "affiliation": "the Nature Conservancy Papua New",
+        "affiliation": "the Nature Conservancy",
         "location_id": "emis-loc-0567",
         "co2e_kg": 4299.1
       },
@@ -29527,7 +30282,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8d57dd40",
         "name": "Jaret Bilewitch",
-        "affiliation": "Earth Sciences New Zealand",
+        "affiliation": "Earth Sciences",
         "location_id": "emis-loc-0099",
         "co2e_kg": 296.2
       },
@@ -29555,7 +30310,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a8b66525",
         "name": "Jasmine Reighard",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -29583,7 +30338,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cb000eed",
         "name": "Javier Pardo D\u00edaz",
-        "affiliation": "Smithsonian Tropical Research Institute - Panama",
+        "affiliation": "Smithsonian Tropical Research Institute",
         "location_id": "emis-loc-0334",
         "co2e_kg": 2985.2
       },
@@ -29618,7 +30373,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5089ea76",
         "name": "Jean Aim\u00e9 Zafimahatradraibe",
-        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara",
+        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara of Toliara",
         "location_id": "emis-loc-0162",
         "co2e_kg": 2988.0
       },
@@ -29632,7 +30387,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-81420a46",
         "name": "Jeffrey Simprota",
-        "affiliation": "Wildlife Conservation Society - Philippines",
+        "affiliation": "Wildlife Conservation Society",
         "location_id": "emis-loc-0544",
         "co2e_kg": 2047.7
       },
@@ -29681,7 +30436,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a2e29a37",
         "name": "Jennifer Ha",
-        "affiliation": "Division of Aquatic and Wildlife Resources - Guam",
+        "affiliation": "Division of Aquatic and Wildlife Resources",
         "location_id": "emis-loc-0093",
         "co2e_kg": 1641.2
       },
@@ -29723,7 +30478,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ecd8076b",
         "name": "Jeroen Schneider",
-        "affiliation": "Reef Renewal Foundation - Curacao, Curacao",
+        "affiliation": "Reef Renewal Foundation",
         "location_id": "emis-loc-0309",
         "co2e_kg": 3353.1
       },
@@ -29744,7 +30499,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5c163c43",
         "name": "Jessica Glazner",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -29758,7 +30513,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-747ca728",
         "name": "Jessica Levy",
-        "affiliation": "Coral Restoration Foundation / Coral Restoration Consortium",
+        "affiliation": "Coral Restoration Foundation /",
         "location_id": "emis-loc-0076",
         "co2e_kg": 3123.0
       },
@@ -29772,7 +30527,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e7001058",
         "name": "Jessica Reichert",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -29877,7 +30632,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7b76342a",
         "name": "Joaquin Yus",
-        "affiliation": "Spanish National Research Council",
+        "affiliation": "Spanish National Research",
         "location_id": "emis-loc-0339",
         "co2e_kg": 4666.6
       },
@@ -29898,7 +30653,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-436c855f",
         "name": "Joelle Mattos",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -29912,21 +30667,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1237e456",
         "name": "John Burns",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0440",
         "co2e_kg": 1800.6
       },
       {
         "id": "offset-109dd261",
         "name": "John McManus",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-57293ac0",
         "name": "John Parkinson",
-        "affiliation": "University of South Florida",
+        "affiliation": "University of South Florida Spencer",
         "location_id": "emis-loc-0498",
         "co2e_kg": 3288.9
       },
@@ -29982,7 +30737,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-82f86320",
         "name": "Jonathan Whitney",
-        "affiliation": "National Oceanic and Atmospheric Administration - Pacific Islands",
+        "affiliation": "National Oceanic and Atmospheric Administration",
         "location_id": "emis-loc-0253",
         "co2e_kg": 3363.9
       },
@@ -30024,7 +30779,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d26ad0fb",
         "name": "Joseane Marques",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
@@ -30045,7 +30800,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3186088f",
         "name": "Joseph Unsworth",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -30150,7 +30905,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9c5a1f17",
         "name": "Julia Cole",
-        "affiliation": "University of Michigan - Ann Arbor",
+        "affiliation": "University of Michigan",
         "location_id": "emis-loc-0466",
         "co2e_kg": 3453.8
       },
@@ -30234,7 +30989,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d951f161",
         "name": "Justin Berg",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -30248,7 +31003,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-514def25",
         "name": "Kaho Tisthammer",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -30283,7 +31038,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-90174ead",
         "name": "Kainalu Steward",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -30297,7 +31052,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7e6321ce",
         "name": "Kamalani Oshiro",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -30311,7 +31066,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-edd5f79e",
         "name": "Kannapoj Techawongstien",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -30325,7 +31080,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-317f6675",
         "name": "Kareen Schnabel",
-        "affiliation": "Earth Sciences New Zealand",
+        "affiliation": "Earth Sciences",
         "location_id": "emis-loc-0099",
         "co2e_kg": 296.2
       },
@@ -30374,7 +31129,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d634e5ba",
         "name": "Katey Lesneski",
-        "affiliation": "Florida Keys National Marine Sanctuary",
+        "affiliation": "Florida Keys National Marine",
         "location_id": "emis-loc-0117",
         "co2e_kg": 3123.0
       },
@@ -30402,7 +31157,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9e5066e1",
         "name": "Katherine Hardy",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -30479,7 +31234,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8eeb8537",
         "name": "Katie Eaton",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3123.0
       },
@@ -30521,7 +31276,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-85b0b5aa",
         "name": "Kay Watty",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
@@ -30535,7 +31290,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-63d846a6",
         "name": "Kazuma Uesugi",
-        "affiliation": "Institute of Science - Tokyo",
+        "affiliation": "Institute of Science",
         "location_id": "emis-loc-0169",
         "co2e_kg": 2255.6
       },
@@ -30563,14 +31318,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-afd1bab2",
         "name": "Keiko Wilkins",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-773a51f6",
         "name": "Keku\u02bbiap\u014diula Keliipuleole",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -30661,7 +31416,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5314ea7d",
         "name": "Kenzie Cooke",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -30738,7 +31493,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-81842c93",
         "name": "Kim de Luca",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
@@ -30892,14 +31647,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-99563f0d",
         "name": "Laetitia H\u00e9douin",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0037",
         "co2e_kg": 4781.9
       },
       {
         "id": "offset-8deb5fd5",
         "name": "Lalatiana Randriamiharisoa",
-        "affiliation": "Madagascar National Parks",
+        "affiliation": "Madagascar National",
         "location_id": "emis-loc-0214",
         "co2e_kg": 2988.0
       },
@@ -31067,7 +31822,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0b21eb6a",
         "name": "Leah Barkai",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -31137,7 +31892,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-065a142d",
         "name": "Lewis A. Jones",
-        "affiliation": "University College London",
+        "affiliation": "University College",
         "location_id": "emis-loc-0398",
         "co2e_kg": 4685.6
       },
@@ -31249,7 +32004,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d45940dd",
         "name": "Lisa McManus",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -31403,14 +32158,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e41379c6",
         "name": "Lucyie Liana Misi",
-        "affiliation": "International Islamic University Malaysia",
+        "affiliation": "International Islamic University",
         "location_id": "emis-loc-0177",
         "co2e_kg": 2230.9
       },
       {
         "id": "offset-c7380b5e",
         "name": "Ludovic Hoarau",
-        "affiliation": "ENTROPIE",
+        "affiliation": "ENTROPIE, Reunion",
         "location_id": "emis-loc-0096",
         "co2e_kg": 4781.9
       },
@@ -31438,7 +32193,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4f658736",
         "name": "Luiza Waechter",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -31466,7 +32221,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-20d3aaf9",
         "name": "Lyndsey Holland",
-        "affiliation": "Department of Conservation - New Zealand",
+        "affiliation": "Department of Conservation",
         "location_id": "emis-loc-0088",
         "co2e_kg": 209.9
       },
@@ -31564,7 +32319,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-79f729b8",
         "name": "Madeleine Sherman",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -31578,14 +32333,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c21eee28",
         "name": "Madelief Schelvis",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-5eb84ce8",
         "name": "Madeline Berger",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -31613,7 +32368,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9b2dc4eb",
         "name": "Magali Rochat",
-        "affiliation": "World Wildlife Fund - Australia",
+        "affiliation": "World Wildlife Fund",
         "location_id": "emis-loc-0554",
         "co2e_kg": 891.1
       },
@@ -31648,7 +32403,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e50d36ac",
         "name": "Maja Seier",
-        "affiliation": "University of Copenhagen",
+        "affiliation": "University of Copenhagen Jorg-Dieter",
         "location_id": "emis-loc-0428",
         "co2e_kg": 4477.4
       },
@@ -31739,7 +32494,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f733e035",
         "name": "Marcellina Rola",
-        "affiliation": "University Wuppertal",
+        "affiliation": "University",
         "location_id": "emis-loc-0400",
         "co2e_kg": 4641.1
       },
@@ -31774,7 +32529,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a30cd4ae",
         "name": "Mareike Huhn",
-        "affiliation": "Ruhr University - Bochum",
+        "affiliation": "Ruhr University",
         "location_id": "emis-loc-0314",
         "co2e_kg": 4621.3
       },
@@ -31795,7 +32550,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e275932b",
         "name": "Margaux Steyaert",
-        "affiliation": "Imperial College London",
+        "affiliation": "Imperial College",
         "location_id": "emis-loc-0156",
         "co2e_kg": 4685.6
       },
@@ -31851,7 +32606,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a6d989db",
         "name": "Maria Isabel Martinez Rugerio",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
@@ -31998,14 +32753,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1b56d40f",
         "name": "Marissa Nuttall",
-        "affiliation": "Texas A&M University - Galveston",
+        "affiliation": "Texas A&M University",
         "location_id": "emis-loc-0358",
         "co2e_kg": 3043.6
       },
       {
         "id": "offset-e1449d60",
         "name": "Mariyam Shidha Afzal",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -32026,7 +32781,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fbe20456",
         "name": "Mark Meekan",
-        "affiliation": "University of Western Australia",
+        "affiliation": "University of Western Australia Sonora",
         "location_id": "emis-loc-0517",
         "co2e_kg": 891.1
       },
@@ -32082,7 +32837,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dece24ca",
         "name": "Mary Donovan",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -32110,7 +32865,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b65123e0",
         "name": "Maryann Webb",
-        "affiliation": "University of Hawaii - Manoa",
+        "affiliation": "University of Hawaii - Manoa Margot",
         "location_id": "emis-loc-0445",
         "co2e_kg": 1808.8
       },
@@ -32138,14 +32893,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0f987ac4",
         "name": "Mathieu Adg\u00e9",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0037",
         "co2e_kg": 4781.9
       },
       {
         "id": "offset-ae773246",
         "name": "Mathieu Reynaud",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0037",
         "co2e_kg": 4781.9
       },
@@ -32173,7 +32928,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e79c9825",
         "name": "Matilde Lanzini",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3123.0
       },
@@ -32257,7 +33012,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-aa800335",
         "name": "Maukshada Kamakshi Ramkalam",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0459",
         "co2e_kg": 2766.6
       },
@@ -32313,21 +33068,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b7ca2b06",
         "name": "Maya Olin",
-        "affiliation": "University of Hawai'i Dr Lauren Olinger University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0443",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-a329868f",
         "name": "Maya Otsu",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-1ca4ed3d",
         "name": "Maya Powell",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -32362,7 +33117,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b0d342db",
         "name": "Megan Carney",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0440",
         "co2e_kg": 1800.6
       },
@@ -32439,7 +33194,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d3fae10a",
         "name": "Meme Fong",
-        "affiliation": "Drawaqa Marine Conservation Trust",
+        "affiliation": "Drawaqa Marine",
         "location_id": "emis-loc-0094",
         "co2e_kg": 587.0
       },
@@ -32467,7 +33222,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b6b8e4bc",
         "name": "Mia Vallee",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -32502,7 +33257,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b7b316ac",
         "name": "Michael Izumiyama",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -32516,7 +33271,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0d1cbeed",
         "name": "Michael Studivan",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -32656,7 +33411,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-77d65aca",
         "name": "Misato Sakoh",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -32705,7 +33460,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-572dabdc",
         "name": "Miyah Brooks",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -32733,7 +33488,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4226567c",
         "name": "Molly Brzezinski",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara Ilan",
         "location_id": "emis-loc-0423",
         "co2e_kg": 2681.7
       },
@@ -32880,7 +33635,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7afc5c46",
         "name": "Mykle Hoban",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -32894,7 +33649,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-42749331",
         "name": "Najatul Su Ad Abdullah",
-        "affiliation": "International Islamic University Malaysia",
+        "affiliation": "International Islamic University",
         "location_id": "emis-loc-0177",
         "co2e_kg": 2230.9
       },
@@ -32936,7 +33691,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c90c74b0",
         "name": "Nanda Sachra",
-        "affiliation": "World Wildlife Fund - Indonesia",
+        "affiliation": "World Wildlife Fund",
         "location_id": "emis-loc-0555",
         "co2e_kg": 1817.1
       },
@@ -32971,7 +33726,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5ccb40cf",
         "name": "Natalie Goeler-Slough",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -32992,7 +33747,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0d41bddf",
         "name": "Natalie Villafranca",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California Frank",
         "location_id": "emis-loc-0500",
         "co2e_kg": 2681.7
       },
@@ -33048,7 +33803,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-de4e110d",
         "name": "Nepsis Garcia Lara",
-        "affiliation": "University of Michigan",
+        "affiliation": "University",
         "location_id": "emis-loc-0465",
         "co2e_kg": 3453.8
       },
@@ -33090,7 +33845,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-036ad59f",
         "name": "Nicholas MacKnight",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -33244,7 +33999,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-914626e7",
         "name": "Nils R\u00e4decker",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
@@ -33370,7 +34125,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-48437149",
         "name": "Nyssa Silbiger",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -33405,7 +34160,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8f0b4fdf",
         "name": "Oliver Kippax-Chui",
-        "affiliation": "Imperial College London",
+        "affiliation": "Imperial College",
         "location_id": "emis-loc-0156",
         "co2e_kg": 4685.6
       },
@@ -33517,14 +34272,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6b84f883",
         "name": "Pallavi Seburn",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0459",
         "co2e_kg": 2766.6
       },
       {
         "id": "offset-5799bb4f",
         "name": "Pamela Odhiambo",
-        "affiliation": "Coastal and Marine Resource Development",
+        "affiliation": "Coastal and Marine Resource",
         "location_id": "emis-loc-0063",
         "co2e_kg": 3555.3
       },
@@ -33552,7 +34307,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e9884023",
         "name": "Patrick Kiel",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -33706,7 +34461,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-86dba863",
         "name": "Pramod Chumun",
-        "affiliation": "United Nations Development Programme - Mauritius & Seychelles",
+        "affiliation": "United Nations Development Programme - Mauritius & Seychelles Jaeseok",
         "location_id": "emis-loc-0373",
         "co2e_kg": 3117.3
       },
@@ -33755,7 +34510,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3157bc1c",
         "name": "Prof Bob Richmond",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 3123.0
       },
@@ -33811,7 +34566,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d1be82d2",
         "name": "Prof John Burt",
-        "affiliation": "New York University - Abu Dhabi",
+        "affiliation": "New York University",
         "location_id": "emis-loc-0264",
         "co2e_kg": 3632.3
       },
@@ -33846,7 +34601,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3146c81c",
         "name": "Prof Shady Amin",
-        "affiliation": "New York University - Abu Dhabi",
+        "affiliation": "New York University",
         "location_id": "emis-loc-0264",
         "co2e_kg": 3632.3
       },
@@ -33916,7 +34671,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9df96f76",
         "name": "Radonirina Lebely Botosoamananto",
-        "affiliation": "Institut Halieutique et des Sciences Marines",
+        "affiliation": "Institut Halieutique et des Sciences",
         "location_id": "emis-loc-0161",
         "co2e_kg": 2988.0
       },
@@ -33930,7 +34685,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-79f7d177",
         "name": "Raffi Isah",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -33951,14 +34706,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8e1de153",
         "name": "Ranjeet Bhagooli",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0459",
         "co2e_kg": 2766.6
       },
       {
         "id": "offset-aa421c50",
         "name": "Raphael Ritson-Williams",
-        "affiliation": "California State University Northridge",
+        "affiliation": "California State University",
         "location_id": "emis-loc-0044",
         "co2e_kg": 2681.7
       },
@@ -33986,7 +34741,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f055c9c2",
         "name": "Rayna Mcclintock",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -34014,7 +34769,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5d47f54c",
         "name": "Rebecca Lacy",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -34035,7 +34790,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c79ed3e2",
         "name": "Rebecca Wenker",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric",
         "location_id": "emis-loc-0251",
         "co2e_kg": 3363.9
       },
@@ -34070,7 +34825,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-08c74305",
         "name": "Renoir Abrea",
-        "affiliation": "Mindanao State University - Naawan",
+        "affiliation": "Mindanao State University",
         "location_id": "emis-loc-0228",
         "co2e_kg": 1806.1
       },
@@ -34084,7 +34839,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9f2ff952",
         "name": "Reshma Thachara Kunnath",
-        "affiliation": "Justus Liebig University Giessen",
+        "affiliation": "Justus Liebig University",
         "location_id": "emis-loc-0181",
         "co2e_kg": 4642.9
       },
@@ -34154,7 +34909,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2e75296b",
         "name": "Rita Bento",
-        "affiliation": "New York University - Abu Dhabi",
+        "affiliation": "New York University",
         "location_id": "emis-loc-0264",
         "co2e_kg": 3632.3
       },
@@ -34189,14 +34944,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5aa179bd",
         "name": "Robert Mason",
-        "affiliation": "University of New South Wales",
+        "affiliation": "Commonwealth Scientific and Industrial Research Organisation",
         "location_id": "emis-loc-0477",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-fc7f4628",
         "name": "Robert Richmond",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -34357,7 +35112,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-42641d00",
         "name": "Ryan Eckert",
-        "affiliation": "Florida Atlantic University - Harbor Branch",
+        "affiliation": "Florida Atlantic University",
         "location_id": "emis-loc-0113",
         "co2e_kg": 3313.9
       },
@@ -34392,7 +35147,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d5e9e830",
         "name": "Sabrina Rosset",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -34406,7 +35161,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6f496188",
         "name": "Sahra Greve",
-        "affiliation": "University Heidelberg",
+        "affiliation": "University",
         "location_id": "emis-loc-0399",
         "co2e_kg": 4642.9
       },
@@ -34420,7 +35175,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-73e48b8a",
         "name": "Saki Harii",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -34462,14 +35217,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1fe32e57",
         "name": "Samantha Shedd",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-7f5a6505",
         "name": "Samuel Levine",
-        "affiliation": "University of Canterbury",
+        "affiliation": "University",
         "location_id": "emis-loc-0426",
         "co2e_kg": 296.2
       },
@@ -34497,7 +35252,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-381a291b",
         "name": "Sangeeta Mangubhai",
-        "affiliation": "Talanoa Consulting Fiji",
+        "affiliation": "Talanoa Consulting",
         "location_id": "emis-loc-0350",
         "co2e_kg": 587.0
       },
@@ -34602,7 +35357,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7f8608fa",
         "name": "Sassa Jordan",
-        "affiliation": "Newcastle University Eugene Joseph Conservation Society of Pohnpei Micronesia (the Federated States of)",
+        "affiliation": "Newcastle University",
         "location_id": "emis-loc-0266",
         "co2e_kg": 4603.6
       },
@@ -34756,7 +35511,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dca37507",
         "name": "Shakeel Yavan Jogee",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0459",
         "co2e_kg": 2766.6
       },
@@ -34882,7 +35637,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-afdcd6a2",
         "name": "Sherry Lyn Sayco",
-        "affiliation": "University of the Philippines - Cebu",
+        "affiliation": "University of the Philippines",
         "location_id": "emis-loc-0523",
         "co2e_kg": 1904.4
       },
@@ -34924,7 +35679,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-60ac8db5",
         "name": "Shouraseni Roy",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -35022,7 +35777,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9800a0a2",
         "name": "Sophia Lee",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "location_id": "emis-loc-0461",
         "co2e_kg": 3306.8
       },
@@ -35043,7 +35798,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-11bbecaf",
         "name": "Sophia Rahnke",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -35316,7 +36071,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2b907890",
         "name": "Takashi Nakamura",
-        "affiliation": "Institute of Science - Tokyo",
+        "affiliation": "Institute of Science",
         "location_id": "emis-loc-0169",
         "co2e_kg": 2255.6
       },
@@ -35351,7 +36106,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7dea879d",
         "name": "Tanya Brown",
-        "affiliation": "University of Texas - Tyler",
+        "affiliation": "University of Texas",
         "location_id": "emis-loc-0508",
         "co2e_kg": 3061.2
       },
@@ -35498,7 +36253,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-84aa176b",
         "name": "Tiela",
-        "affiliation": "World Wildlife Fund - Indonesia",
+        "affiliation": "World Wildlife Fund",
         "location_id": "emis-loc-0555",
         "co2e_kg": 1817.1
       },
@@ -35603,7 +36358,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a261bbe7",
         "name": "Trent Haydon",
-        "affiliation": "New York University - Abu Dhabi",
+        "affiliation": "New York University",
         "location_id": "emis-loc-0264",
         "co2e_kg": 3632.3
       },
@@ -35750,7 +36505,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7cf43c99",
         "name": "Van Wishingrad",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -35764,7 +36519,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e590fbf8",
         "name": "Vanessa Tirpitz",
-        "affiliation": "Justus Liebig University Giessen",
+        "affiliation": "Justus Liebig University",
         "location_id": "emis-loc-0181",
         "co2e_kg": 4593.4
       },
@@ -35939,7 +36694,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9f20493c",
         "name": "Vivienne Weir",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam Virginia",
         "location_id": "emis-loc-0437",
         "co2e_kg": 3760.1
       },
@@ -35988,7 +36743,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c7814a33",
         "name": "Wei-Chen Tung",
-        "affiliation": "Biodiversity Research Center, Academia Sinica",
+        "affiliation": "Biodiversity Research Center",
         "location_id": "emis-loc-0024",
         "co2e_kg": 1904.4
       },
@@ -36065,7 +36820,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a3f0629c",
         "name": "William Zozaya",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "location_id": "emis-loc-0037",
         "co2e_kg": 4781.9
       },
@@ -36128,7 +36883,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-642a7129",
         "name": "Yashvi Nundlall",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University",
         "location_id": "emis-loc-0459",
         "co2e_kg": 2766.6
       },
@@ -36205,7 +36960,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ab195e61",
         "name": "Yuko Abe",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "location_id": "emis-loc-0525",
         "co2e_kg": 2190.1
       },
@@ -36268,7 +37023,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e206d590",
         "name": "Zach Quinlan",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "location_id": "emis-loc-0441",
         "co2e_kg": 1808.8
       },
@@ -36380,14 +37135,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8376bb90",
         "name": "Zoe Willis",
-        "affiliation": "Florida Atlantic University - Harbor Branch",
+        "affiliation": "Florida Atlantic University",
         "location_id": "emis-loc-0113",
         "co2e_kg": 3313.9
       },
       {
         "id": "offset-8766d697",
         "name": "\u02bbA\u02bbali\u02bbi Kelling",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       }
@@ -36421,7 +37176,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0461",
-        "affiliation": "University of Miami",
+        "affiliation": "University",
         "lat": 25.717272,
         "lon": -80.278707,
         "speaker_count": 32,
@@ -36486,7 +37241,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0441",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawai'i",
         "lat": 21.298279,
         "lon": -157.818693,
         "speaker_count": 35,
@@ -36564,7 +37319,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0144",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaii Institute of Marine",
         "lat": 39.78373,
         "lon": -100.445882,
         "speaker_count": 15,
@@ -36590,7 +37345,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0037",
-        "affiliation": "CRIOBE",
+        "affiliation": "CRIOBE, Reunion",
         "lat": -17.51906,
         "lon": -149.849702,
         "speaker_count": 10,
@@ -36681,7 +37436,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0251",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric",
         "lat": 36.003031,
         "lon": -84.248984,
         "speaker_count": 11,
@@ -36707,7 +37462,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0525",
-        "affiliation": "University of the Ryukyus",
+        "affiliation": "University",
         "lat": 26.249377,
         "lon": 127.764158,
         "speaker_count": 16,

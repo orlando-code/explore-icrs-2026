@@ -484,7 +484,7 @@ export function buildDelegateMapLocations(
   const seenDelegateKeys = new Set();
   const supplemental = [];
 
-  for (const location of delegateEmissionsLocations) {
+  for (const location of filterDelegateEmissionsLocationsForMap(delegateEmissionsLocations)) {
     const affiliation = location.affiliation;
     if (!affiliation || location.lat == null || location.lon == null) continue;
     const key = affiliationMapKey(affiliation);
@@ -511,5 +511,112 @@ export function buildDelegateMapLocations(
     });
   }
   return supplemental;
+}
+
+function normalizePersonNameForExclusion(name) {
+  return String(name || "")
+    .replace(/^(dr|prof|professor|mr|mrs|ms|miss)\.?\s+/i, "")
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+let mapExcludedNames = null;
+let mapExcludedAffiliationKeys = null;
+
+export function setMapExclusions({ names = [], affiliationKeys = [] } = {}) {
+  mapExcludedNames = new Set(names.map(normalizePersonNameForExclusion));
+  mapExcludedAffiliationKeys = new Set(
+    affiliationKeys.map((key) => String(key || "").trim().toLowerCase()).filter(Boolean)
+  );
+}
+
+export function isMapExcludedPerson(name) {
+  if (!mapExcludedNames?.size) return false;
+  return mapExcludedNames.has(normalizePersonNameForExclusion(name));
+}
+
+export function isMapExcludedAffiliation(affiliation) {
+  if (!mapExcludedAffiliationKeys?.size) return false;
+  return mapExcludedAffiliationKeys.has(affiliationMapKey(affiliation));
+}
+
+export function filterEmissionsPool(pool) {
+  if (!pool) return pool;
+  if (!mapExcludedNames?.size && !mapExcludedAffiliationKeys?.size) {
+    return pool;
+  }
+
+  const attendees = (pool.attendees || []).filter(
+    (attendee) =>
+      !isMapExcludedPerson(attendee?.name) &&
+      !isMapExcludedAffiliation(attendee?.affiliation)
+  );
+
+  const locationById = new Map(
+    (pool.locations || [])
+      .filter((location) => location?.id && !isMapExcludedAffiliation(location.affiliation))
+      .map((location) => [location.id, { ...location }])
+  );
+
+  const totals = new Map();
+  for (const attendee of attendees) {
+    const locationId = attendee.location_id;
+    if (!locationId || !locationById.has(locationId)) continue;
+    const bucket = totals.get(locationId) || { co2eKg: 0, count: 0 };
+    bucket.co2eKg += Number(attendee.co2e_kg) || 0;
+    bucket.count += 1;
+    totals.set(locationId, bucket);
+  }
+
+  const locations = [];
+  for (const [locationId, location] of locationById) {
+    const bucket = totals.get(locationId);
+    if (!bucket?.count) continue;
+    const co2eKg = Math.round(bucket.co2eKg * 10) / 10;
+    locations.push({
+      ...location,
+      co2e_kg: co2eKg,
+      co2e_low_kg: co2eKg,
+      co2e_high_kg: co2eKg,
+      travel_attendees: bucket.count,
+      speaker_count: bucket.count,
+      co2e_per_speaker_kg: Math.round((co2eKg / bucket.count) * 10) / 10,
+    });
+  }
+
+  const rankings = [...locations].sort((left, right) => right.co2e_kg - left.co2e_kg).slice(0, 30);
+  const totalCo2e = Math.round(locations.reduce((sum, row) => sum + row.co2e_kg, 0) * 10) / 10;
+  const headline = pool.meta?.headline
+    ? {
+        ...pool.meta.headline,
+        co2e_kg: totalCo2e,
+        co2e_low_kg: totalCo2e,
+        co2e_high_kg: totalCo2e,
+        co2e_tonnes: Math.round((totalCo2e / 1000) * 100) / 100,
+        attendees_estimated: attendees.length,
+      }
+    : pool.meta?.headline;
+
+  return {
+    ...pool,
+    meta: {
+      ...pool.meta,
+      headline,
+    },
+    attendees,
+    locations,
+    rankings,
+  };
+}
+
+export function filterDelegateEmissionsLocationsForMap(locations = []) {
+  if (!mapExcludedNames?.size && !mapExcludedAffiliationKeys?.size) {
+    return locations;
+  }
+  return locations.filter(
+    (location) => location?.affiliation && !isMapExcludedAffiliation(location.affiliation)
+  );
 }
 

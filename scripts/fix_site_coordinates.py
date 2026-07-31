@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 import sys
 from pathlib import Path
@@ -13,6 +14,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.geocode import (
+    affiliation_base_name,
     attach_coordinates,
     canonical_affiliation_key,
     geocode_affiliations,
@@ -26,6 +28,7 @@ NEW_ZEALAND_CENTROID = (-41.500083, 172.834408)
 COUNTRY_CENTROIDS = {AUSTRALIA_CENTROID, NEW_ZEALAND_CENTROID}
 LOCATIONS_PATH = PROJECT_ROOT / "js" / "locations.js"
 EMISSIONS_PATH = PROJECT_ROOT / "js" / "emissions-data.js"
+DELEGATES_PATH = PROJECT_ROOT / "data" / "delegates.json"
 OVERRIDES_PATH = PROJECT_ROOT / "data" / "geocode_overrides.json"
 
 
@@ -45,17 +48,283 @@ def _write_js_export(path: Path, export_name: str, payload: dict, generator: str
     path.write_text(body, encoding="utf-8")
 
 
-def _coords_for_key(key: str, overrides: dict) -> tuple[float, float] | None:
-    override = _lookup_override(key, overrides)
-    if override and override.get("latitude") is not None:
-        return float(override["latitude"]), float(override["longitude"])
+def _coords_from_cache(affiliation: str) -> tuple[float, float] | None:
+    geocoded = geocode_affiliations([affiliation], cache_only=True, show_progress=False)
+    if geocoded.empty:
+        return None
+    row = geocoded.iloc[0]
+    latitude = row.get("latitude")
+    longitude = row.get("longitude")
+    try:
+        lat = float(latitude)
+        lon = float(longitude)
+    except (TypeError, ValueError):
+        return None
+    if math.isnan(lat) or math.isnan(lon):
+        return None
+    return lat, lon
+
+
+def delegate_affiliation_replacements() -> dict[str, str]:
+    """Map corrupted delegate PDF affiliations to cleaned display names."""
+    from src.delegates import delegate_affiliation_for_row, normalize_delegate_records
+
+    import pandas as pd
+
+    if not DELEGATES_PATH.exists():
+        return {}
+
+    payload = _load_json(DELEGATES_PATH)
+    replacements: dict[str, str] = {}
+    for raw_row in payload.get("delegates", []):
+        normalized = normalize_delegate_records(pd.DataFrame([raw_row])).iloc[0]
+        new_affiliation = delegate_affiliation_for_row(normalized)
+        new_display = affiliation_base_name(new_affiliation) or str(
+            normalized.get("organisation") or ""
+        ).strip()
+        if not new_display:
+            continue
+
+        old_candidates = {
+            str(raw_row.get("affiliation") or "").strip(),
+            str(raw_row.get("organisation") or "").strip(),
+            re.sub(r"\s+", " ", str(raw_row.get("organisation") or "")).strip(),
+            affiliation_base_name(str(raw_row.get("affiliation") or "")),
+        }
+        country = str(raw_row.get("country") or "").strip()
+        if country:
+            old_candidates.add(
+                f"{str(raw_row.get('organisation') or '').strip()}, {country}"
+            )
+            old_candidates.add(
+                re.sub(
+                    r"\s+",
+                    " ",
+                    f"{str(raw_row.get('organisation') or '').strip()}, {country}",
+                ).strip()
+            )
+
+        for old in old_candidates:
+            if old and old not in {new_display, new_affiliation}:
+                replacements[old] = new_display
+    return replacements
+
+
+def _sanitized_affiliation_display(affiliation: str) -> str | None:
+    """Clean a stale exported affiliation string using delegate bleed rules."""
+    from src.delegates import is_incomplete_organisation, sanitize_delegate_organisation
+
+    cleaned = affiliation.strip()
+    if not cleaned:
+        return None
+
+    base = affiliation_base_name(cleaned) or cleaned
+    parts = [part.strip() for part in cleaned.split(",") if part.strip()]
+    country = parts[-1] if len(parts) >= 2 else ""
+    sanitized = sanitize_delegate_organisation(
+        base,
+        country=country,
+    )
+    if is_incomplete_organisation(sanitized):
+        return None
+    if sanitized and sanitized != cleaned and sanitized != base:
+        return sanitized
+    if sanitized and sanitized != cleaned:
+        return sanitized
     return None
 
 
-def _patch_location(location: dict, overrides: dict) -> bool:
+def _affiliation_by_person_name() -> dict[str, str]:
+    from src.delegates import (
+        delegate_affiliation_for_row,
+        is_incomplete_organisation,
+        load_delegates,
+        normalize_person_name,
+    )
+    from src.programme import load_talks
+
+    mapping: dict[str, str] = {}
+
+    def add_name(name: str, display: str) -> None:
+        display = display.strip()
+        if not name.strip() or not display or is_incomplete_organisation(display):
+            return
+        for key in {
+            name.strip().casefold(),
+            normalize_person_name(name),
+        }:
+            if key:
+                mapping.setdefault(key, display)
+
+    for _, row in load_delegates().iterrows():
+        display = (
+            affiliation_base_name(delegate_affiliation_for_row(row))
+            or str(row.get("organisation") or "").strip()
+        )
+        add_name(str(row.get("full_name") or ""), display)
+
+    talks = load_talks()
+    for presenter, affiliation in (
+        talks[["presenter", "affiliation"]].dropna().drop_duplicates().itertuples(index=False)
+    ):
+        display = affiliation_base_name(str(affiliation)) or str(affiliation).strip()
+        add_name(str(presenter), display)
+
+    return mapping
+
+
+def _lookup_person_affiliation(by_name: dict[str, str], name: str) -> str | None:
+    from src.delegates import normalize_person_name
+
+    cleaned = str(name or "").strip()
+    if not cleaned:
+        return None
+    return by_name.get(cleaned.casefold()) or by_name.get(normalize_person_name(cleaned))
+
+
+def _infer_affiliation_for_node(node: dict, by_name: dict[str, str]) -> str | None:
+    names: list[str] = []
+    for key in ("name", "presenter", "label"):
+        value = node.get(key)
+        if isinstance(value, str) and value.strip():
+            names.append(value.strip())
+    for speaker in node.get("speakers", []) or []:
+        if isinstance(speaker, str):
+            names.append(speaker)
+    for detail in node.get("speaker_details", []) or []:
+        if isinstance(detail, dict) and detail.get("name"):
+            names.append(str(detail["name"]))
+
+    counts: dict[str, int] = {}
+    for name in names:
+        affiliation = _lookup_person_affiliation(by_name, name)
+        if affiliation:
+            counts[affiliation] = counts.get(affiliation, 0) + 1
+    if not counts:
+        return None
+    return max(counts.items(), key=lambda item: item[1])[0]
+
+
+def _patch_incomplete_affiliation_tree(node, by_name: dict[str, str]) -> int:
+    from src.delegates import is_incomplete_organisation
+
+    changed = 0
+    if isinstance(node, dict):
+        affiliation = node.get("affiliation")
+        if isinstance(affiliation, str) and is_incomplete_organisation(affiliation):
+            replacement = _infer_affiliation_for_node(node, by_name)
+            if replacement and replacement != affiliation:
+                node["affiliation"] = replacement
+                changed += 1
+        for value in node.values():
+            changed += _patch_incomplete_affiliation_tree(value, by_name)
+    elif isinstance(node, list):
+        for item in node:
+            changed += _patch_incomplete_affiliation_tree(item, by_name)
+    return changed
+
+
+def _patch_incomplete_emissions_affiliations(payload: dict) -> int:
+    from src.delegates import is_incomplete_organisation
+
+    by_name = _affiliation_by_person_name()
+    changed = 0
+    for pool_name in ("speakers", "all_delegates"):
+        pool = payload.get(pool_name)
+        if not pool:
+            continue
+        location_affiliations: dict[str, str] = {}
+        for attendee in pool.get("attendees", []):
+            affiliation = str(attendee.get("affiliation") or "").strip()
+            if not is_incomplete_organisation(affiliation):
+                continue
+            name = str(attendee.get("name") or "").strip().casefold()
+            replacement = by_name.get(name)
+            if not replacement:
+                from src.delegates import normalize_person_name
+
+                replacement = by_name.get(normalize_person_name(attendee.get("name") or ""))
+            if not replacement or replacement == affiliation:
+                continue
+            attendee["affiliation"] = replacement
+            location_id = attendee.get("location_id")
+            if location_id:
+                location_affiliations[str(location_id)] = replacement
+            changed += 1
+        for location in pool.get("locations", []):
+            affiliation = str(location.get("affiliation") or "").strip()
+            if not is_incomplete_organisation(affiliation):
+                continue
+            replacement = location_affiliations.get(str(location.get("id")))
+            if not replacement:
+                loc_id = location.get("id")
+                attendee_affs = [
+                    str(attendee.get("affiliation") or "").strip()
+                    for attendee in pool.get("attendees", [])
+                    if attendee.get("location_id") == loc_id
+                    and not is_incomplete_organisation(attendee.get("affiliation"))
+                ]
+                if attendee_affs:
+                    replacement = max(set(attendee_affs), key=attendee_affs.count)
+            if replacement and replacement != affiliation:
+                location["affiliation"] = replacement
+                changed += 1
+    changed += _patch_incomplete_affiliation_tree(payload, by_name)
+    return changed
+
+
+def _sync_emissions_rankings(payload: dict) -> int:
+    changed = 0
+    for pool_name in ("speakers", "all_delegates"):
+        pool = payload.get(pool_name)
+        if not pool:
+            continue
+        by_id = {
+            str(location.get("id")): str(location.get("affiliation") or "")
+            for location in pool.get("locations", [])
+            if location.get("id")
+        }
+        for ranking in pool.get("rankings", []):
+            loc_id = str(ranking.get("id") or "")
+            replacement = by_id.get(loc_id)
+            if replacement and ranking.get("affiliation") != replacement:
+                ranking["affiliation"] = replacement
+                changed += 1
+    return changed
+
+
+def _patch_affiliation_strings(node, replacements: dict[str, str]) -> int:
+    changed = 0
+    if isinstance(node, dict):
+        affiliation = node.get("affiliation")
+        if isinstance(affiliation, str):
+            replacement = replacements.get(affiliation.strip())
+            if not replacement:
+                replacement = _sanitized_affiliation_display(affiliation)
+            if replacement and replacement != affiliation:
+                node["affiliation"] = replacement
+                changed += 1
+        for value in node.values():
+            changed += _patch_affiliation_strings(value, replacements)
+    elif isinstance(node, list):
+        for item in node:
+            changed += _patch_affiliation_strings(item, replacements)
+    return changed
+
+
+def _patch_location(
+    location: dict,
+    overrides: dict,
+    *,
+    allow_cache: bool = False,
+) -> bool:
     affiliation = location.get("affiliation") or ""
-    key = canonical_affiliation_key(affiliation)
-    coords = _coords_for_key(key, overrides)
+    coords = None
+    override = _lookup_override(affiliation, overrides)
+    if override and override.get("latitude") is not None:
+        coords = (float(override["latitude"]), float(override["longitude"]))
+    elif allow_cache:
+        coords = _coords_from_cache(affiliation)
     if coords is None:
         lat = location.get("lat")
         lon = location.get("lon")
@@ -87,27 +356,34 @@ def _patch_object_tree(node, overrides: dict) -> int:
             changed += _patch_object_tree(item, overrides)
     return changed
 
-
-def patch_locations_file(path: Path, overrides: dict) -> int:
-    payload = _read_js_export(path, "SITE_DATA")
-    changed = _patch_object_tree(payload, overrides)
-    if changed:
-        _write_js_export(path, "SITE_DATA", payload, "fix_site_coordinates.py")
-    return changed
-
-
 def patch_emissions_file(path: Path, overrides: dict) -> int:
     payload = _read_js_export(path, "EMISSIONS_DATA")
+    replacements = delegate_affiliation_replacements()
     changed = 0
+    changed += _patch_incomplete_emissions_affiliations(payload)
     for pool_name in ("speakers", "all_delegates"):
         pool = payload.get(pool_name)
         if not pool:
             continue
+        changed += _patch_affiliation_strings(pool, replacements)
         for location in pool.get("locations", []):
-            if _patch_location(location, overrides):
+            if _patch_location(location, overrides, allow_cache=True):
                 changed += 1
+    changed += _sync_emissions_rankings(payload)
     if changed:
         _write_js_export(path, "EMISSIONS_DATA", payload, "fix_site_coordinates.py")
+    return changed
+
+
+def patch_locations_file(path: Path, overrides: dict) -> int:
+    payload = _read_js_export(path, "SITE_DATA")
+    replacements = delegate_affiliation_replacements()
+    by_name = _affiliation_by_person_name()
+    changed = _patch_incomplete_affiliation_tree(payload, by_name)
+    changed += _patch_affiliation_strings(payload, replacements)
+    changed += _patch_object_tree(payload, overrides)
+    if changed:
+        _write_js_export(path, "SITE_DATA", payload, "fix_site_coordinates.py")
     return changed
 
 

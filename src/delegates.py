@@ -163,6 +163,221 @@ _EXTRA_COUNTRY_NAMES = {
 
 _COUNTRY_SUFFIXES: list[str] | None = None
 
+_ORG_HINT_RE = re.compile(
+    r"\b(?:university|institute|college|school|department|division|dept|center|centre|"
+    r"laboratory|laboratories|research|national|marine|sciences?|conservancy|foundation|"
+    r"ministry|agency|government|state of|cooperative|museum|corporation|corp|"
+    r"organization|organisation|limited|ltd|inc|consulting|studies|resources?|"
+    r"management|bureau|office|authority|commission|programme|program|unit|fund|"
+    r"academy|society|association|network|partners|group|company|tech|a&m)\b",
+    re.I,
+)
+
+_BLEED_NAME_RE = re.compile(r"^[A-Z][a-z'`-]+(?:\s+[A-Z][a-z'`-]+){0,2}$")
+
+_TITLE_TOKENS = frozenset(
+    {"dr", "prof", "professor", "mr", "mrs", "ms", "miss"}
+)
+
+_BLEED_TITLE_NAME_RE = re.compile(
+    r"^(.*?)(?:\s+(?:Dr|Prof|Professor|Mr|Mrs|Ms|Miss)\.?\s+[A-Z].*)$",
+    re.I,
+)
+
+_INCOMPLETE_ORG_ENDINGS = frozenset(
+    {"of", "the", "and", "for", "at", "in", "de", "du", "la", "le", "-", "&"}
+)
+
+
+def is_incomplete_organisation(name: str) -> bool:
+    cleaned = str(name or "").strip()
+    if not cleaned:
+        return True
+    if cleaned in ("University of", "University of the"):
+        return True
+    last = cleaned.split()[-1].casefold().rstrip(".")
+    return last in _INCOMPLETE_ORG_ENDINGS
+
+
+def _is_title_token(word: str) -> bool:
+    return word.casefold().rstrip(".") in _TITLE_TOKENS
+
+
+def _split_bleed_title_name(segment: str) -> str:
+    """Drop a glued-on ``Dr Firstname …`` suffix from a merged PDF column."""
+    match = _BLEED_TITLE_NAME_RE.match(segment.strip())
+    if not match:
+        return segment.strip()
+    prefix = match.group(1).strip()
+    if prefix and _ORG_HINT_RE.search(prefix):
+        return prefix
+    return segment.strip()
+
+
+def _strip_trailing_title_only(segment: str) -> str:
+    words = segment.split()
+    while len(words) >= 2 and _is_title_token(words[-1]):
+        words.pop()
+    return " ".join(words).strip()
+
+
+def _clean_org_tail(
+    segment: str,
+    first_name: str,
+    last_name: str,
+) -> str:
+    """Remove trailing title tokens and person-name bleed from an organisation."""
+    own = {first_name.strip().casefold(), last_name.strip().casefold()}
+    words = segment.split()
+    changed = True
+    while len(words) >= 2 and changed:
+        changed = False
+        trailing = words[-1]
+        trailing_fold = trailing.casefold().rstrip(".")
+        candidate_words = words[:-1]
+        if not candidate_words:
+            break
+        if candidate_words[-1].casefold().rstrip(".") in _INCOMPLETE_ORG_ENDINGS:
+            break
+        if trailing_fold in own:
+            words.pop()
+            changed = True
+            continue
+        if _is_title_token(trailing):
+            words.pop()
+            changed = True
+            continue
+        if (
+            trailing[0].isupper()
+            and trailing.istitle()
+            and len(trailing) <= 15
+            and not _ORG_HINT_RE.search(trailing)
+            and _ORG_HINT_RE.search(" ".join(candidate_words))
+        ):
+            words.pop()
+            changed = True
+    return " ".join(words).strip()
+
+
+def _segment_is_bleed_person_name(segment: str) -> bool:
+    segment = segment.strip()
+    if not segment or _ORG_HINT_RE.search(segment):
+        return False
+    words = segment.split()
+    if len(words) > 3:
+        return False
+    if _BLEED_NAME_RE.match(segment):
+        return True
+    return len(words) == 1 and words[0][0].isupper() and len(words[0]) > 2
+
+
+def _strip_trailing_bleed_name(
+    segment: str,
+    first_name: str,
+    last_name: str,
+    *,
+    aggressive: bool = False,
+) -> str:
+    """Remove glued-on person-name and title bleed from a merged PDF column."""
+    original = re.sub(r"\s+", " ", segment).strip()
+    segment = _split_bleed_title_name(original)
+    segment = _strip_trailing_title_only(segment)
+    if aggressive or segment != original or _BLEED_TITLE_NAME_RE.match(original):
+        segment = _clean_org_tail(segment, first_name, last_name)
+    return segment
+
+
+def sanitize_delegate_organisation(
+    organisation: str,
+    *,
+    first_name: str = "",
+    last_name: str = "",
+    country: str = "",
+) -> str:
+    """Extract the primary organisation when PDF columns bleed into each other."""
+    raw = str(organisation or "").strip()
+    if not raw:
+        return ""
+
+    if not re.search(r"\s{2,}", raw):
+        single = re.sub(r"\s+", " ", raw)
+        result = _strip_trailing_bleed_name(single, first_name, last_name)
+        if is_incomplete_organisation(result):
+            return single
+        return result
+
+    segments = [part.strip() for part in re.split(r"\s{2,}", raw) if part.strip()]
+    country_fold = country.strip().casefold()
+    cleaned: list[str] = []
+    for segment in segments:
+        if _segment_is_bleed_person_name(segment):
+            continue
+        if country_fold and segment.casefold() == country_fold:
+            continue
+        if country and segment in _known_country_suffixes():
+            continue
+        cleaned.append(
+            _strip_trailing_bleed_name(
+                segment,
+                first_name,
+                last_name,
+                aggressive=bool(_BLEED_TITLE_NAME_RE.search(segment)),
+            )
+        )
+
+    org_like = [segment for segment in cleaned if _ORG_HINT_RE.search(segment)]
+    pick = (org_like or cleaned or [raw])[0]
+    result = _strip_trailing_bleed_name(
+        re.sub(r"\s+", " ", pick).strip(),
+        first_name,
+        last_name,
+        aggressive=bool(_BLEED_TITLE_NAME_RE.search(pick)),
+    )
+    if is_incomplete_organisation(result):
+        fallback = re.sub(r"\s+", " ", raw).strip()
+        fallback = _strip_trailing_title_only(_split_bleed_title_name(fallback))
+        if fallback and not is_incomplete_organisation(fallback):
+            return fallback
+    return result
+
+
+def delegate_affiliation_for_row(row: pd.Series | dict[str, Any]) -> str:
+    """Return a cleaned affiliation string for geocoding and map grouping."""
+    if isinstance(row, pd.Series):
+        row = row.to_dict()
+    organisation = sanitize_delegate_organisation(
+        str(row.get("organisation") or ""),
+        first_name=str(row.get("first_name") or ""),
+        last_name=str(row.get("last_name") or ""),
+        country=str(row.get("country") or ""),
+    )
+    country = str(row.get("country") or "").strip()
+    if organisation and country:
+        return f"{organisation}, {country}"
+    return organisation or str(row.get("affiliation") or "").strip()
+
+
+def normalize_delegate_records(delegates: pd.DataFrame) -> pd.DataFrame:
+    """Repair merged organisation fields from the delegate PDF layout."""
+    delegates = delegates.copy()
+    for index, row in delegates.iterrows():
+        organisation = sanitize_delegate_organisation(
+            str(row.get("organisation") or ""),
+            first_name=str(row.get("first_name") or ""),
+            last_name=str(row.get("last_name") or ""),
+            country=str(row.get("country") or ""),
+        )
+        affiliation = delegate_affiliation_for_row(
+            {
+                "organisation": organisation,
+                "country": row.get("country"),
+                "affiliation": row.get("affiliation"),
+            }
+        )
+        delegates.at[index, "organisation"] = organisation
+        delegates.at[index, "affiliation"] = affiliation
+    return delegates
+
 
 def _load_json(path: Path) -> Any:
     with path.open(encoding="utf-8") as handle:
@@ -333,9 +548,7 @@ def parse_delegate_layout_text(text: str) -> pd.DataFrame:
     df["full_name"] = (
         df["first_name"].str.strip() + " " + df["last_name"].str.strip()
     ).str.strip()
-    df["affiliation"] = (
-        df["organisation"].str.strip() + ", " + df["country"].str.strip()
-    )
+    df = normalize_delegate_records(df)
     df["country_code"] = df["country"].map(country_to_iso2)
     df = df[df["country_code"].astype(bool)].copy()
     return df
@@ -349,13 +562,19 @@ def load_delegates(
 ) -> pd.DataFrame:
     pdf_path = Path(pdf_path)
     json_path = Path(json_path)
-    if (
-        json_path.exists()
-        and not refresh
-        and json_path.stat().st_mtime >= pdf_path.stat().st_mtime
-    ):
-        payload = _load_json(json_path)
-        return pd.DataFrame(payload["delegates"])
+    if json_path.exists() and not refresh:
+        if not pdf_path.exists() or json_path.stat().st_mtime >= pdf_path.stat().st_mtime:
+            payload = _load_json(json_path)
+            return normalize_delegate_records(pd.DataFrame(payload["delegates"]))
+
+    if not pdf_path.exists():
+        if json_path.exists():
+            payload = _load_json(json_path)
+            return normalize_delegate_records(pd.DataFrame(payload["delegates"]))
+        raise FileNotFoundError(
+            f"Delegate PDF not found: {pdf_path}. "
+            f"Place the list PDF there or keep {json_path} up to date."
+        )
 
     text = extract_layout_text(pdf_path)
     delegates = parse_delegate_layout_text(text)
@@ -407,17 +626,20 @@ def non_speaking_delegate_groups(
 ) -> list[dict[str, Any]]:
     """Group non-speaking delegates by affiliation for the map site."""
     from src.geocode import affiliation_base_name
+    from src.map_exclusions import is_map_excluded, load_map_exclusions
 
     if delegates is None:
         delegates = load_delegates()
 
+    map_exclusions = load_map_exclusions()
     groups: dict[str, dict[str, Any]] = {}
     non_speakers = delegates.loc[~delegates["is_speaker"]]
     for _, row in non_speakers.iterrows():
-        affiliation = str(
-            row.get("affiliation") or row.get("organisation") or ""
-        ).strip()
+        affiliation = delegate_affiliation_for_row(row)
         if not affiliation:
+            continue
+        name = str(row.get("full_name") or "").strip()
+        if not name or is_map_excluded(name, set(map_exclusions.names)):
             continue
         display = affiliation_base_name(affiliation) or affiliation
         key = display.casefold()
@@ -429,9 +651,6 @@ def non_speaking_delegate_groups(
                 "delegates": [],
             },
         )
-        name = str(row.get("full_name") or "").strip()
-        if not name:
-            continue
         country = str(row.get("country") or "").strip()
         group["delegates"].append(
             {
@@ -560,7 +779,9 @@ def geocoded_non_speakers(
     *,
     show_progress: bool = False,
 ) -> pd.DataFrame:
-    """Return geocoded rows for non-speaking delegates (country-centroid fallback)."""
+    """Return geocoded rows for non-speaking delegates."""
+    from src.geocode import geocode_affiliations
+
     if delegates is None:
         delegates = load_delegates()
 
@@ -579,11 +800,35 @@ def geocoded_non_speakers(
         )
 
     rows = non_speakers.rename(columns={"full_name": "presenter"}).copy()
+    rows["affiliation"] = rows.apply(delegate_affiliation_for_row, axis=1)
     rows["latitude"] = pd.NA
     rows["longitude"] = pd.NA
     rows["geocode_level"] = pd.NA
     rows["geocoded"] = False
     rows["query_used"] = pd.NA
+
+    unique_affiliations = sorted(
+        {aff for aff in rows["affiliation"].dropna().astype(str) if aff.strip()}
+    )
+    if unique_affiliations:
+        geocoded = geocode_affiliations(
+            unique_affiliations,
+            cache_only=True,
+            show_progress=show_progress,
+        )
+        geo_by_affiliation = {
+            str(row["affiliation"]): row for _, row in geocoded.iterrows()
+        }
+        for index, row in rows.iterrows():
+            geo = geo_by_affiliation.get(str(row["affiliation"]))
+            if geo is None or pd.isna(geo.get("latitude")) or pd.isna(geo.get("longitude")):
+                continue
+            rows.at[index, "latitude"] = float(geo["latitude"])
+            rows.at[index, "longitude"] = float(geo["longitude"])
+            rows.at[index, "geocode_level"] = geo.get("geocode_level")
+            rows.at[index, "geocoded"] = True
+            rows.at[index, "query_used"] = geo.get("query_used")
+
     rows = _fill_missing_with_country_centroids(rows)
     if "country_code" not in rows.columns:
         rows["country_code"] = rows["country"].map(country_to_iso2)

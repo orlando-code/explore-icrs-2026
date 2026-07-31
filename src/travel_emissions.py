@@ -1505,6 +1505,9 @@ def export_emissions_site_data(
         legs["longitude"] = pd.NA
 
     speakers_pool = _build_pool_payload(estimates, summary, legs)
+    from src.map_exclusions import filter_emissions_pool
+
+    speakers_pool = filter_emissions_pool(speakers_pool)
     payload: dict[str, Any] = {
         "meta": {
             "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
@@ -1514,10 +1517,12 @@ def export_emissions_site_data(
     }
     if all_delegates is not None:
         delegate_estimates, delegate_summary, delegate_legs = all_delegates
-        payload["all_delegates"] = _build_pool_payload(
-            delegate_estimates,
-            delegate_summary,
-            delegate_legs,
+        payload["all_delegates"] = filter_emissions_pool(
+            _build_pool_payload(
+                delegate_estimates,
+                delegate_summary,
+                delegate_legs,
+            )
         )
     else:
         payload["all_delegates"] = speakers_pool
