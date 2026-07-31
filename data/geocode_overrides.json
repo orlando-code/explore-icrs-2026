@@ -1,116 +1,210 @@
 {
-  "University of Miyazaki": {
-    "latitude": 31.8301,
-    "longitude": 131.4132,
-    "query_used": "override:University of Miyazaki, Japan",
-    "geocode_level": "institute"
-  },
-  "University of Hawai\u02bbi at Hilo": {
-    "latitude": 19.7,
-    "longitude": -155.0845,
-    "query_used": "override:University of Hawaii Hilo",
-    "geocode_level": "institute"
-  },
-  "University Of Mons, Belgium": {
-    "latitude": 50.464,
-    "longitude": 3.9551,
-    "query_used": "override:Universite de Mons, Belgium",
-    "geocode_level": "institute"
-  },
-  "University of Antsiranana": {
-    "latitude": -12.2834,
-    "longitude": 49.3077,
-    "query_used": "override:Universite d'Antsiranana, Madagascar",
-    "geocode_level": "institute"
-  },
-  "University of Salento": {
-    "latitude": 40.3586,
-    "longitude": 18.1655,
-    "query_used": "override:Universita del Salento, Italy",
-    "geocode_level": "institute"
-  },
-  "University of Toliara": {
-    "latitude": -23.3619,
-    "longitude": 43.6706,
-    "query_used": "override:Universite de Toliara, Madagascar",
-    "geocode_level": "institute"
-  },
-  "Victoria University of Wellington": {
-    "latitude": -41.2889,
-    "longitude": 174.7762,
-    "query_used": "override:Victoria University of Wellington, New Zealand",
-    "geocode_level": "institute"
-  },
-  "University of Wellington": {
-    "latitude": -41.2889,
-    "longitude": 174.7762,
-    "query_used": "override:Victoria University of Wellington, New Zealand",
-    "geocode_level": "institute"
-  },
-  "University of Hong Kong": {
-    "latitude": 22.283,
-    "longitude": 114.137,
-    "query_used": "override:University of Hong Kong, Hong Kong",
-    "geocode_level": "institute"
+  "Auckland University of Technology": {
+    "geocode_level": "institute",
+    "google_formatted_address": "55 Wellesley Street East, Auckland CBD, Auckland 1010, New Zealand",
+    "google_place_id": "ChIJU8nmY-RHDW0Rvc2vvVoYj-A",
+    "latitude": -36.8536098,
+    "longitude": 174.7664805,
+    "query_used": "google:Auckland University of Technology, Auckland, New Zealand"
   },
   "Chinese University of Hong Kong": {
-    "latitude": 22.419,
-    "longitude": 114.206,
-    "query_used": "override:Chinese University of Hong Kong, Hong Kong",
-    "geocode_level": "institute"
-  },
-  "University of Western Australia": {
-    "latitude": -31.9507,
-    "longitude": 115.7979,
-    "query_used": "override:University of Western Australia, Crawley, Perth, Australia",
-    "geocode_level": "institute"
-  },
-  "the University of Western Australia": {
-    "latitude": -31.9507,
-    "longitude": 115.7979,
-    "query_used": "override:University of Western Australia, Crawley, Perth, Australia",
-    "geocode_level": "institute"
-  },
-  "James Cook University": {
-    "latitude": -19.3289618,
-    "longitude": 146.756645,
-    "query_used": "override:James Cook University, Townsville, Queensland, Australia",
-    "geocode_level": "institute"
-  },
-  "University of Leicester": {
-    "latitude": 52.6205879,
-    "longitude": -1.109923,
-    "query_used": "override:University of Leicester, Leicester, United Kingdom",
-    "geocode_level": "institute"
-  },
-  "Western Australian Museum": {
-    "latitude": -31.9492,
-    "longitude": 115.8645,
-    "query_used": "override:Western Australian Museum, Perth, Australia",
-    "geocode_level": "institute"
+    "geocode_level": "institute",
+    "google_formatted_address": "Ma Liu Shui, Hong Kong",
+    "google_place_id": "ChIJr4ERXZ4IBDQRnqJ-S1Q85Tw",
+    "latitude": 22.419625,
+    "longitude": 114.2067606,
+    "query_used": "google:Chinese University of Hong Kong, Hong Kong"
   },
   "Department of Biodiversity, Conservation and Attractions - Western Australia": {
-    "latitude": -31.9523,
-    "longitude": 115.8613,
-    "query_used": "override:Department of Biodiversity, Conservation and Attractions, Perth, Australia",
-    "geocode_level": "institute"
+    "geocode_level": "institute",
+    "google_formatted_address": "17 Dick Perry Ave, Kensington WA 6151, Australia",
+    "google_place_id": "ChIJc-mwt-ikMioRjyBu19pog50",
+    "latitude": -31.9961196,
+    "longitude": 115.8837242,
+    "query_used": "google:Department of Biodiversity, Conservation and Attractions, Perth, Australia"
+  },
+  "Hawaii Institute of Marine Biology": {
+    "geocode_level": "institute",
+    "google_formatted_address": "46-007 Lilipuna Rd, Kaneohe, HI 96744, USA",
+    "google_place_id": "ChIJXX4hEOxqAHwR0KPWe4dWm6s",
+    "latitude": 21.4325581,
+    "longitude": -157.7880442,
+    "query_used": "google:Hawaii Institute of Marine Biology"
+  },
+  "Hoala Kealakekua Nui, Inc.": {
+    "geocode_level": "institute",
+    "google_formatted_address": "81-990 Halekii St Box 1301, Kealakekua, HI 96750, USA",
+    "google_place_id": "ChIJsbuNU90HVHkRf3NTxeFC5tY",
+    "latitude": 19.5181493,
+    "longitude": -155.9206778,
+    "query_used": "google:Hoala Kealakekua Nui, Inc."
+  },
+  "Indiana University": {
+    "geocode_level": "institute",
+    "latitude": 39.16843504356545,
+    "longitude": -86.52286038622873,
+    "query_used": "override:Indiana University"
+  },
+  "James Cook University": {
+    "geocode_level": "institute",
+    "google_formatted_address": "1 James Cook Dr, Douglas QLD 4814, Australia",
+    "google_place_id": "ChIJkXJV82X61WsRuj3GJj0fkKc",
+    "latitude": -19.3254243,
+    "longitude": 146.7597646,
+    "query_used": "google:James Cook University, Townsville, Queensland, Australia"
+  },
+  "Northwestern University": {
+    "geocode_level": "institute",
+    "google_formatted_address": "633 Clark St, Evanston, IL 60208, USA",
+    "google_place_id": "ChIJOUw-cAvQD4gRBmHV-me1Nyw",
+    "latitude": 42.0564594,
+    "longitude": -87.67526699999999,
+    "query_used": "google:Northwestern University"
+  },
+  "State of Hawaii": {
+    "geocode_level": "institute",
+    "latitude": 19.708546749900975,
+    "longitude": -155.59210907543473,
+    "query_used": "override:State of Hawaii"
+  },
+  "State of Hawai\u02bbi Joseph Nekaifes Johnston Applied Marine Sciences Northern Mariana Islands": {
+    "geocode_level": "institute",
+    "latitude": 15.223092472156852,
+    "longitude": 145.7470777750201,
+    "query_used": "override:State of Hawai\u02bbi Joseph Nekaifes Johnston Applied Marine Sciences Northern Mariana Islands"
+  },
+  "University Of Mons, Belgium": {
+    "geocode_level": "institute",
+    "google_formatted_address": "Bd Dolez 31, 7000 Mons, Belgium",
+    "google_place_id": "ChIJo_YzAvxPwkcRkbuuTDh9s2c",
+    "latitude": 50.4516865,
+    "longitude": 3.9589928,
+    "query_used": "google:University of Mons, Belgium"
+  },
+  "University at Buffalo": {
+    "geocode_level": "institute",
+    "latitude": 43.00460334641616,
+    "longitude": -78.78777196628067,
+    "query_used": "override:University at Buffalo"
+  },
+  "University of Antsiranana": {
+    "geocode_level": "institute",
+    "google_formatted_address": "P894+6H7, Unnamed Road, Antsiranana, Madagascar",
+    "google_place_id": "ChIJ-SjLUV4cayIRZxFyPXchaGk",
+    "latitude": -12.2819627,
+    "longitude": 49.3064147,
+    "query_used": "google:University of Antsiranana"
   },
   "University of Auckland": {
-    "latitude": -36.8660955,
-    "longitude": 174.7737331,
-    "query_used": "override:University of Auckland, Auckland, New Zealand",
-    "geocode_level": "institute"
+    "geocode_level": "institute",
+    "google_formatted_address": "Auckland, New Zealand",
+    "google_place_id": "ChIJ--acWvtHDW0RF5miQ2HvAAU",
+    "latitude": -36.85088270000001,
+    "longitude": 174.7644881,
+    "query_used": "google:University of Auckland, Auckland, New Zealand"
+  },
+  "University of California - Irvine": {
+    "geocode_level": "institute",
+    "latitude": 33.64334495770783,
+    "longitude": -117.84126142084176,
+    "query_used": "override:University of California - Irvine"
+  },
+  "University of California - Santa Cruz": {
+    "geocode_level": "institute",
+    "google_formatted_address": "1156 High St, Santa Cruz, CA 95064, USA",
+    "google_place_id": "ChIJT7-M_6JBjoAR1SCDknw7jjo",
+    "latitude": 36.9905322,
+    "longitude": -122.0584354,
+    "query_used": "google:University of California - Santa Cruz"
   },
   "University of Canterbury": {
+    "geocode_level": "institute",
     "latitude": -43.5232778,
     "longitude": 172.5823435,
-    "query_used": "override:University of Canterbury, Christchurch, New Zealand",
-    "geocode_level": "institute"
+    "query_used": "override:University of Canterbury, Christchurch, New Zealand"
   },
-  "Auckland University of Technology": {
-    "latitude": -36.8529871,
-    "longitude": 174.76642,
-    "query_used": "override:Auckland University of Technology, Auckland, New Zealand",
-    "geocode_level": "institute"
+  "University of Hawai\u02bbi at Hilo": {
+    "geocode_level": "institute",
+    "google_formatted_address": "200 W Kawili St, Hilo, HI 96720, USA",
+    "google_place_id": "ChIJtXNoWjhLUnkRIzppYurNPPU",
+    "latitude": 19.6997798,
+    "longitude": -155.0848929,
+    "query_used": "google:University of Hawaii at Hilo"
+  },
+  "University of Hong Kong": {
+    "geocode_level": "institute",
+    "google_formatted_address": "Pok Fu Lam, Hong Kong",
+    "google_place_id": "ChIJlzW0J4T_AzQR2MhvzdP1SCw",
+    "latitude": 22.2830891,
+    "longitude": 114.1365621,
+    "query_used": "google:University of Hong Kong, Hong Kong"
+  },
+  "University of Leicester": {
+    "geocode_level": "institute",
+    "google_formatted_address": "University Rd, Leicester LE1 7RH, UK",
+    "google_place_id": "ChIJf5RdpS9hd0gRRABO1_4X2vg",
+    "latitude": 52.6219231,
+    "longitude": -1.1246117,
+    "query_used": "google:University of Leicester, Leicester, United Kingdom"
+  },
+  "University of Miyazaki": {
+    "geocode_level": "institute",
+    "google_formatted_address": "Japan, \u3012889-2155 \u5bae\u5d0e\u770c\u5bae\u5d0e\u5e02\u5b66\u5712\u6728\u82b1\u53f0\u897f\uff11\u4e01\u76ee\uff11",
+    "google_place_id": "ChIJpbtMtFDIODURrC2LM_A3Xo8",
+    "latitude": 31.8295664,
+    "longitude": 131.4141929,
+    "query_used": "google:University of Miyazaki"
+  },
+  "University of Salento": {
+    "geocode_level": "institute",
+    "google_formatted_address": "Piazza Tancredi, 7, 73100 Lecce LE, Italy",
+    "google_place_id": "ChIJ182onecuRBMRb6pY4PtKvls",
+    "latitude": 40.34956,
+    "longitude": 18.1672671,
+    "query_used": "google:University of Salento"
+  },
+  "University of Toliara": {
+    "geocode_level": "institute",
+    "google_formatted_address": "Rte de L'Universite, Tul\u00e9ar 601, Madagascar",
+    "google_place_id": "ChIJUVk5bxR8ZB8RJt5TLU12SQI",
+    "latitude": -23.3292083,
+    "longitude": 43.6987046,
+    "query_used": "google:University of Toliara"
+  },
+  "University of Wellington": {
+    "geocode_level": "institute",
+    "latitude": -41.2889,
+    "longitude": 174.7762,
+    "query_used": "override:Victoria University of Wellington, New Zealand"
+  },
+  "University of Western Australia": {
+    "geocode_level": "institute",
+    "google_formatted_address": "35 Stirling Hwy, Crawley WA 6009, Australia",
+    "google_place_id": "ChIJ6YBzbu6kMioRkILyGLbwBA8",
+    "latitude": -31.9789061,
+    "longitude": 115.8180721,
+    "query_used": "google:University of Western Australia, Crawley, Perth, Australia"
+  },
+  "Victoria University of Wellington": {
+    "geocode_level": "institute",
+    "google_formatted_address": "2 Waiteata Road, Kelburn, Wellington 6012, New Zealand",
+    "google_place_id": "ChIJu11XUimwOG0R8BYhYom6860",
+    "latitude": -41.2901075,
+    "longitude": 174.7678789,
+    "query_used": "google:Victoria University of Wellington, New Zealand"
+  },
+  "Western Australian Museum": {
+    "geocode_level": "institute",
+    "google_formatted_address": "Perth Cultural Centre, Perth WA 6000, Australia",
+    "google_place_id": "ChIJWWeM1nGhMioROLTRnS9QXec",
+    "latitude": -31.9495403,
+    "longitude": 115.8618542,
+    "query_used": "google:Western Australian Museum, Perth, Australia"
+  },
+  "the University of Western Australia": {
+    "geocode_level": "institute",
+    "latitude": -31.9507,
+    "longitude": 115.7979,
+    "query_used": "override:University of Western Australia, Crawley, Perth, Australia"
   }
 }

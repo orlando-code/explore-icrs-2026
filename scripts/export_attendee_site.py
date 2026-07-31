@@ -30,6 +30,11 @@ def main() -> None:
         action="store_true",
         help="Re-query affiliations that previously failed geocoding",
     )
+    parser.add_argument(
+        "--google-geocode",
+        action="store_true",
+        help="Supplement geocodes with Google Maps Geocoding API (see keys.yaml)",
+    )
     args = parser.parse_args()
 
     talks = load_talks()
@@ -38,6 +43,17 @@ def main() -> None:
         retry_failed=args.retry_failed,
         show_progress=True,
     )
+    if args.google_geocode:
+        from src.google_geocode import supplement_with_google_geocodes
+
+        supplement_with_google_geocodes(
+            talks["affiliation"].dropna().unique(),
+            show_progress=True,
+        )
+        geocoded = geocode_affiliations(
+            talks["affiliation"].dropna().unique(),
+            show_progress=False,
+        )
     talks_geo = attach_coordinates(talks, geocoded)
     output = export_attendee_site_data(talks_geo, save_path=args.output)
     talks_output = export_talks_catalog(talks_geo)

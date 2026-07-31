@@ -71,21 +71,21 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"university of hong kong", re.I),
-        {
-            "countries": ["Hong Kong"],
-            "cities": [("Hong Kong", 22.283, 114.137, 80.0)],
-            "query": "University of Hong Kong, Hong Kong",
-            "canonical": "University of Hong Kong",
-        },
-    ),
-    (
         re.compile(r"chinese university of hong kong", re.I),
         {
             "countries": ["Hong Kong"],
             "cities": [("Hong Kong", 22.419, 114.206, 80.0)],
             "query": "Chinese University of Hong Kong, Hong Kong",
             "canonical": "Chinese University of Hong Kong",
+        },
+    ),
+    (
+        re.compile(r"(?<!chinese )university of hong kong\b", re.I),
+        {
+            "countries": ["Hong Kong"],
+            "cities": [("Hong Kong", 22.283, 114.137, 80.0)],
+            "query": "University of Hong Kong, Hong Kong",
+            "canonical": "University of Hong Kong",
         },
     ),
     (
@@ -338,6 +338,8 @@ def geocode_coords_score(coords: dict[str, Any] | None) -> int:
     query = str(coords.get("query_used") or "")
     if query.startswith("override"):
         return 100
+    if query.startswith("google:"):
+        return 80
     level = coords.get("geocode_level")
     if level == "institute":
         return 50

@@ -9,6 +9,8 @@ data/talk_embeddings.meta.json
 data/country_centroids.json
 data/travel_emissions_cache.json
 data/reverse_geocode_cache.json
+data/google_geocode_cache.json
+data/google_geocode_flags.json
 data/offsets.db
 offsets-live.db
 backend/offsets-live.db
