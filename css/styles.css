@@ -1972,6 +1972,10 @@ button:active {
 .share-card-unified .share-contact {
   box-shadow: none;
   background: transparent;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
 }
 
 .share-card-unified .share-contact h3,
@@ -2008,6 +2012,7 @@ button:active {
 .share-about-col {
   box-shadow: none;
   background: transparent;
+  border: 0;
 }
 
 .share-qr-col {

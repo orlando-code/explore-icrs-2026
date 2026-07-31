@@ -16,6 +16,10 @@ from src.programme import load_talks
 DEFAULT_DELEGATE_PDF_PATH = Path("data/delegate_list_230726.pdf")
 DEFAULT_DELEGATES_JSON_PATH = Path("data/delegates.json")
 DEFAULT_DELEGATES_LAYOUT_CACHE = Path("data/delegates_layout.txt")
+DEFAULT_ORG_OVERRIDES_PATH = Path("data/delegate_organisation_overrides.csv")
+DEFAULT_ORG_REVIEW_PATH = Path("data/delegate_organisation_review.csv")
+
+_ORGANISATION_OVERRIDE_CACHE: dict[str, str] | None = None
 
 COL_FIRST = 4
 COL_LAST = 32
@@ -196,7 +200,26 @@ def is_incomplete_organisation(name: str) -> bool:
     if cleaned in ("University of", "University of the"):
         return True
     last = cleaned.split()[-1].casefold().rstrip(".")
-    return last in _INCOMPLETE_ORG_ENDINGS
+    if last in _INCOMPLETE_ORG_ENDINGS:
+        return True
+    # Directional/region words alone after "University of" usually mean truncation.
+    parts = [part for part in cleaned.split() if part]
+    if len(parts) == 3 and parts[0].casefold() == "university" and parts[1].casefold() == "of":
+        if parts[2].casefold() in {
+            "southern",
+            "northern",
+            "eastern",
+            "western",
+            "central",
+            "virgin",
+            "new",
+            "south",
+            "north",
+            "east",
+            "west",
+        }:
+            return True
+    return False
 
 
 def _is_title_token(word: str) -> bool:
@@ -221,44 +244,6 @@ def _strip_trailing_title_only(segment: str) -> str:
     return " ".join(words).strip()
 
 
-def _clean_org_tail(
-    segment: str,
-    first_name: str,
-    last_name: str,
-) -> str:
-    """Remove trailing title tokens and person-name bleed from an organisation."""
-    own = {first_name.strip().casefold(), last_name.strip().casefold()}
-    words = segment.split()
-    changed = True
-    while len(words) >= 2 and changed:
-        changed = False
-        trailing = words[-1]
-        trailing_fold = trailing.casefold().rstrip(".")
-        candidate_words = words[:-1]
-        if not candidate_words:
-            break
-        if candidate_words[-1].casefold().rstrip(".") in _INCOMPLETE_ORG_ENDINGS:
-            break
-        if trailing_fold in own:
-            words.pop()
-            changed = True
-            continue
-        if _is_title_token(trailing):
-            words.pop()
-            changed = True
-            continue
-        if (
-            trailing[0].isupper()
-            and trailing.istitle()
-            and len(trailing) <= 15
-            and not _ORG_HINT_RE.search(trailing)
-            and _ORG_HINT_RE.search(" ".join(candidate_words))
-        ):
-            words.pop()
-            changed = True
-    return " ".join(words).strip()
-
-
 def _segment_is_bleed_person_name(segment: str) -> bool:
     segment = segment.strip()
     if not segment or _ORG_HINT_RE.search(segment):
@@ -278,13 +263,12 @@ def _strip_trailing_bleed_name(
     *,
     aggressive: bool = False,
 ) -> str:
-    """Remove glued-on person-name and title bleed from a merged PDF column."""
+    """Remove glued-on ``Dr Firstname …`` suffixes from a merged PDF column."""
+    del aggressive  # kept for call-site compatibility
+    del first_name, last_name
     original = re.sub(r"\s+", " ", segment).strip()
     segment = _split_bleed_title_name(original)
-    segment = _strip_trailing_title_only(segment)
-    if aggressive or segment != original or _BLEED_TITLE_NAME_RE.match(original):
-        segment = _clean_org_tail(segment, first_name, last_name)
-    return segment
+    return _strip_trailing_title_only(segment)
 
 
 def sanitize_delegate_organisation(
@@ -341,16 +325,69 @@ def sanitize_delegate_organisation(
     return result
 
 
-def delegate_affiliation_for_row(row: pd.Series | dict[str, Any]) -> str:
-    """Return a cleaned affiliation string for geocoding and map grouping."""
+def load_organisation_overrides(
+    path: Path = DEFAULT_ORG_OVERRIDES_PATH,
+) -> dict[str, str]:
+    """Return manual organisation overrides keyed by normalized person name."""
+    global _ORGANISATION_OVERRIDE_CACHE
+    if _ORGANISATION_OVERRIDE_CACHE is not None and path == DEFAULT_ORG_OVERRIDES_PATH:
+        return _ORGANISATION_OVERRIDE_CACHE
+
+    overrides: dict[str, str] = {}
+    if not path.exists():
+        _ORGANISATION_OVERRIDE_CACHE = overrides
+        return overrides
+
+    frame = pd.read_csv(path)
+    for _, row in frame.iterrows():
+        organisation = str(row.get("organisation") or "").strip()
+        if not organisation:
+            continue
+        for name_column in ("full_name", "name"):
+            name = str(row.get(name_column) or "").strip()
+            if not name:
+                continue
+            overrides[normalize_person_name(name)] = organisation
+            overrides[name.casefold()] = organisation
+
+    if path == DEFAULT_ORG_OVERRIDES_PATH:
+        _ORGANISATION_OVERRIDE_CACHE = overrides
+    return overrides
+
+
+def organisation_override_for_row(row: pd.Series | dict[str, Any]) -> str | None:
     if isinstance(row, pd.Series):
         row = row.to_dict()
-    organisation = sanitize_delegate_organisation(
+    overrides = load_organisation_overrides()
+    for key in (
+        normalize_person_name(str(row.get("full_name") or "")),
+        str(row.get("full_name") or "").strip().casefold(),
+        normalize_person_name(str(row.get("presenter") or "")),
+        str(row.get("presenter") or "").strip().casefold(),
+    ):
+        if key and key in overrides:
+            return overrides[key]
+    return None
+
+
+def organisation_for_delegate_row(row: pd.Series | dict[str, Any]) -> str:
+    """Resolve the best organisation string for a delegate row."""
+    override = organisation_override_for_row(row)
+    if override:
+        return override
+    return sanitize_delegate_organisation(
         str(row.get("organisation") or ""),
         first_name=str(row.get("first_name") or ""),
         last_name=str(row.get("last_name") or ""),
         country=str(row.get("country") or ""),
     )
+
+
+def delegate_affiliation_for_row(row: pd.Series | dict[str, Any]) -> str:
+    """Return a cleaned affiliation string for geocoding and map grouping."""
+    if isinstance(row, pd.Series):
+        row = row.to_dict()
+    organisation = organisation_for_delegate_row(row)
     country = str(row.get("country") or "").strip()
     if organisation and country:
         return f"{organisation}, {country}"
@@ -361,12 +398,7 @@ def normalize_delegate_records(delegates: pd.DataFrame) -> pd.DataFrame:
     """Repair merged organisation fields from the delegate PDF layout."""
     delegates = delegates.copy()
     for index, row in delegates.iterrows():
-        organisation = sanitize_delegate_organisation(
-            str(row.get("organisation") or ""),
-            first_name=str(row.get("first_name") or ""),
-            last_name=str(row.get("last_name") or ""),
-            country=str(row.get("country") or ""),
-        )
+        organisation = organisation_for_delegate_row(row)
         affiliation = delegate_affiliation_for_row(
             {
                 "organisation": organisation,

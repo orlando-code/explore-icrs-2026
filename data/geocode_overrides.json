@@ -242,5 +242,11 @@
     "latitude": 34.9595796397247, 
     "longitude": -81.9350682445119, 
     "query_used": "override:Wofford College"
+  },
+  "University of South Carolina Beaufort - Beaufort Campus": {
+    "geocode_level": "institute",
+    "latitude": 32.45765485133005,
+    "longitude": -80.67268620169327, 
+    "query_used": "override:University of South Carolina Beaufort - Beaufort Campus"
   }
 }

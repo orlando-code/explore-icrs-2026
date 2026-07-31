@@ -1678,7 +1678,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0117",
-        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara of Toliara",
+        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara",
         "lat": -23.3679765,
         "lon": 43.6735609,
         "speaker_count": 1,
@@ -1719,7 +1719,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0120",
-        "affiliation": "Institut de Recherche pour le Developpement/Universite de Bretagne Occidentale",
+        "affiliation": "Universite de Bretagne Occidentale",
         "lat": -12.094179,
         "lon": -77.015213,
         "speaker_count": 1,
@@ -4761,16 +4761,17 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0341",
-        "affiliation": "University of Hawaii - Hilo",
-        "lat": 19.699987,
-        "lon": -155.084519,
+        "affiliation": "University of Hawai'i - Hilo",
+        "lat": 19.6997798,
+        "lon": -155.0848929,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1800.6,
         "co2e_low_kg": 1800.6,
         "co2e_high_kg": 5221.8,
         "co2e_per_speaker_kg": 1800.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0342",
@@ -5815,9 +5816,9 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0417",
-        "affiliation": "University of the Philippines",
-        "lat": 14.6538783,
-        "lon": 121.0684573,
+        "affiliation": "UP Marine Science Institute",
+        "lat": 14.6506435,
+        "lon": 121.0690557,
         "speaker_count": 10,
         "travel_attendees": 10,
         "co2e_kg": 20476.7,
@@ -5829,9 +5830,9 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0418",
-        "affiliation": "University of the Philippines",
-        "lat": 14.6538783,
-        "lon": 121.0684573,
+        "affiliation": "UP Marine Science Institute",
+        "lat": 14.6506435,
+        "lon": 121.0690557,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1904.4,
@@ -7331,7 +7332,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7ca5b5f3",
         "name": "Ashley Carreiro",
-        "affiliation": "University of Hawaii - Manoa",
+        "affiliation": "University of Hawai'i - Manoa",
         "location_id": "emis-loc-0342",
         "co2e_kg": 1808.8
       },
@@ -8157,7 +8158,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-54f8b254",
         "name": "Christine Baran",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0417",
         "co2e_kg": 2047.7
       },
@@ -9018,7 +9019,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5e9f4888",
         "name": "Elizabeth Gomez-Requilme",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0417",
         "co2e_kg": 2047.7
       },
@@ -10544,7 +10545,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9873e15a",
         "name": "Jan Theodore Miranda",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0417",
         "co2e_kg": 2047.7
       },
@@ -10656,7 +10657,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-559b3b76",
         "name": "Jean Aim\u00e9 Zafimahatradraibe",
-        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara of Toliara",
+        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara",
         "location_id": "emis-loc-0117",
         "co2e_kg": 2988.0
       },
@@ -10740,7 +10741,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8beae450",
         "name": "Jeric Diocton",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0417",
         "co2e_kg": 2047.7
       },
@@ -11517,7 +11518,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-20f862df",
         "name": "Kelly Rome Publico",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0417",
         "co2e_kg": 2047.7
       },
@@ -11902,7 +11903,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9d50cb71",
         "name": "Laurice Janette Dagum",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0417",
         "co2e_kg": 2047.7
       },
@@ -11916,7 +11917,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-65f9f412",
         "name": "Layla Iijima",
-        "affiliation": "Institut de Recherche pour le Developpement/Universite de Bretagne Occidentale",
+        "affiliation": "Universite de Bretagne Occidentale",
         "location_id": "emis-loc-0120",
         "co2e_kg": 2744.4
       },
@@ -11958,7 +11959,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8adab41f",
         "name": "Leon Tran",
-        "affiliation": "University of Hawaii - Manoa",
+        "affiliation": "University of Hawai'i - Manoa",
         "location_id": "emis-loc-0342",
         "co2e_kg": 1808.8
       },
@@ -12315,14 +12316,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4d68b579",
         "name": "Ma. Czarmayne Victoria Jude Escoro",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0417",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-3520479d",
         "name": "Ma. Isabella Rayos del Sol",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0417",
         "co2e_kg": 2047.7
       },
@@ -12938,7 +12939,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-92002860",
         "name": "Matlyn Ua",
-        "affiliation": "University of Hawaii - Hilo",
+        "affiliation": "University of Hawai'i - Hilo",
         "location_id": "emis-loc-0341",
         "co2e_kg": 1800.6
       },
@@ -14317,7 +14318,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f3e2708e",
         "name": "Prince Jewel Federe",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0417",
         "co2e_kg": 2047.7
       },
@@ -15234,7 +15235,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-42434ca3",
         "name": "Sherry Lyn Sayco",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0418",
         "co2e_kg": 1904.4
       },
@@ -15332,7 +15333,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-99baac23",
         "name": "Sophia Diane Gaton",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0417",
         "co2e_kg": 2047.7
       },
@@ -19379,7 +19380,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0162",
-        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara of Toliara",
+        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara",
         "lat": -23.3679765,
         "lon": 43.6735609,
         "speaker_count": 1,
@@ -19420,7 +19421,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0165",
-        "affiliation": "Institut de Recherche pour le Developpement/Universite de Bretagne Occidentale",
+        "affiliation": "Universite de Bretagne Occidentale",
         "lat": -12.094179,
         "lon": -77.015213,
         "speaker_count": 1,
@@ -23230,16 +23231,17 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0444",
-        "affiliation": "University of Hawaii - Hilo",
-        "lat": 19.699987,
-        "lon": -155.084519,
+        "affiliation": "University of Hawai'i - Hilo",
+        "lat": 19.6997798,
+        "lon": -155.0848929,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1800.6,
         "co2e_low_kg": 1800.6,
         "co2e_high_kg": 5221.8,
         "co2e_per_speaker_kg": 1800.6,
-        "distance_km": null
+        "distance_km": null,
+        "geocode_level": "institute"
       },
       {
         "id": "emis-loc-0445",
@@ -24017,7 +24019,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0501",
-        "affiliation": "University of Southern",
+        "affiliation": "nan",
         "lat": 39.78373,
         "lon": -100.445882,
         "speaker_count": 1,
@@ -24310,9 +24312,9 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0522",
-        "affiliation": "University of the Philippines",
-        "lat": 14.6538783,
-        "lon": 121.0684573,
+        "affiliation": "UP Marine Science Institute",
+        "lat": 14.6506435,
+        "lon": 121.0690557,
         "speaker_count": 12,
         "travel_attendees": 12,
         "co2e_kg": 24572.0,
@@ -24324,9 +24326,9 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0523",
-        "affiliation": "University of the Philippines",
-        "lat": 14.6538783,
-        "lon": 121.0684573,
+        "affiliation": "UP Marine Science Institute",
+        "lat": 14.6506435,
+        "lon": 121.0690557,
         "speaker_count": 1,
         "travel_attendees": 1,
         "co2e_kg": 1904.4,
@@ -26131,7 +26133,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-136ad2fb",
         "name": "Ashley Carreiro",
-        "affiliation": "University of Hawaii - Manoa",
+        "affiliation": "University of Hawai'i - Manoa",
         "location_id": "emis-loc-0445",
         "co2e_kg": 1808.8
       },
@@ -27048,7 +27050,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3fc5a6ab",
         "name": "Christine Baran",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0522",
         "co2e_kg": 2047.7
       },
@@ -28245,7 +28247,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-822e0ddf",
         "name": "Dr Patrick Cabaitan",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0522",
         "co2e_kg": 2047.7
       },
@@ -28259,7 +28261,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0ded786e",
         "name": "Dr Pros Naval",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0522",
         "co2e_kg": 2047.7
       },
@@ -28532,7 +28534,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-502f14f7",
         "name": "Elizabeth Gomez-Requilme",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0522",
         "co2e_kg": 2047.7
       },
@@ -30002,7 +30004,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-78c84be6",
         "name": "Isabelle Chiang",
-        "affiliation": "University of Southern",
+        "affiliation": "nan",
         "location_id": "emis-loc-0501",
         "co2e_kg": 3123.0
       },
@@ -30233,7 +30235,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fa0d5875",
         "name": "Jan Theodore Miranda",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0522",
         "co2e_kg": 2047.7
       },
@@ -30373,7 +30375,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5089ea76",
         "name": "Jean Aim\u00e9 Zafimahatradraibe",
-        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara of Toliara",
+        "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara",
         "location_id": "emis-loc-0162",
         "co2e_kg": 2988.0
       },
@@ -30471,7 +30473,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7d7ab0bf",
         "name": "Jeric Diocton",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0522",
         "co2e_kg": 2047.7
       },
@@ -31346,7 +31348,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2f689670",
         "name": "Kelly Rome Publico",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0522",
         "co2e_kg": 2047.7
       },
@@ -31787,7 +31789,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1a79ed76",
         "name": "Laurice Janette Dagum",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0522",
         "co2e_kg": 2047.7
       },
@@ -31801,7 +31803,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e303b335",
         "name": "Layla Iijima",
-        "affiliation": "Institut de Recherche pour le Developpement/Universite de Bretagne Occidentale",
+        "affiliation": "Universite de Bretagne Occidentale",
         "location_id": "emis-loc-0165",
         "co2e_kg": 2744.4
       },
@@ -31857,7 +31859,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-019bb8e7",
         "name": "Leon Tran",
-        "affiliation": "University of Hawaii - Manoa",
+        "affiliation": "University of Hawai'i - Manoa",
         "location_id": "emis-loc-0445",
         "co2e_kg": 1808.8
       },
@@ -32263,14 +32265,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ea9209de",
         "name": "Ma. Czarmayne Victoria Jude Escoro",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0522",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-cb86c3ea",
         "name": "Ma. Isabella Rayos del Sol",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0522",
         "co2e_kg": 2047.7
       },
@@ -32942,7 +32944,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d3398c66",
         "name": "Matlyn Ua",
-        "affiliation": "University of Hawaii - Hilo",
+        "affiliation": "University of Hawai'i - Hilo",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1800.6
       },
@@ -34489,7 +34491,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-de6a4061",
         "name": "Prince Jewel Federe",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0522",
         "co2e_kg": 2047.7
       },
@@ -35637,7 +35639,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-afdcd6a2",
         "name": "Sherry Lyn Sayco",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0523",
         "co2e_kg": 1904.4
       },
@@ -35770,7 +35772,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-302a22cc",
         "name": "Sophia Diane Gaton",
-        "affiliation": "University of the Philippines",
+        "affiliation": "UP Marine Science Institute",
         "location_id": "emis-loc-0522",
         "co2e_kg": 2047.7
       },
