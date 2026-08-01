@@ -1193,6 +1193,35 @@ button:active {
   gap: 0.35rem;
 }
 
+.emissions-prerelease-banner {
+  margin: 0;
+  padding: 0.7rem 1.1rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  font-weight: 600;
+  text-align: center;
+  color: var(--sea-deep);
+  background: var(--accent-soft);
+  border-bottom: 1px solid rgba(217, 95, 2, 0.22);
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  flex-shrink: 0;
+}
+
+.emissions-prerelease-banner--stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  border-bottom: 1px solid rgba(217, 95, 2, 0.22);
+}
+
+.emissions-stage-badge {
+  top: 3.35rem;
+}
+
 .emissions-headline-actions {
   margin-top: 0.35rem;
   padding-top: 0.7rem;
