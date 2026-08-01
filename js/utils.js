@@ -375,10 +375,33 @@ export function buildDisplayPositions(locations, { precision = 5, ringRadius = 0
 
 /** Map locations for non-speaking delegates not already on the speaker affiliation map. */
 function canonicalAffiliationKey(key) {
-  if (key === "university of wellington") {
+  const normalized = String(key || "").trim().toLowerCase();
+  if (normalized === "university of wellington") {
     return "victoria university of wellington";
   }
-  return key;
+  if (/\buniversity of south carolina\b.*\bbeaufort\b/.test(normalized)) {
+    return "university of south carolina beaufort";
+  }
+  const wwfMatch = normalized.match(/^world wildlife fund(?:\s*[-–]\s*(.+))?$/);
+  if (wwfMatch) {
+    const region = (wwfMatch[1] || "").trim();
+    if (region) return `world wildlife fund - ${region}`;
+    return normalized;
+  }
+  return normalized;
+}
+
+function regionalizeAffiliationKey(baseKey, country) {
+  const normalized = canonicalAffiliationKey(baseKey);
+  if (normalized === "world wildlife fund" && country) {
+    const countryMap = {
+      australia: "australia",
+      indonesia: "indonesia",
+    };
+    const region = countryMap[String(country).trim().toLowerCase()];
+    if (region) return `world wildlife fund - ${region}`;
+  }
+  return normalized;
 }
 
 export function affiliationMapKey(affiliation) {
@@ -405,9 +428,11 @@ export function affiliationMapKey(affiliation) {
       "india",
       "brazil",
       "south africa",
+      "indonesia",
     ]);
     if (countries.has(last)) {
-      return canonicalAffiliationKey(parts.slice(0, -1).join(", ").toLowerCase());
+      const base = parts.slice(0, -1).join(", ");
+      return regionalizeAffiliationKey(base, last);
     }
   }
   return canonicalAffiliationKey(normalized.toLowerCase());

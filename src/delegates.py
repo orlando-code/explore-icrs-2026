@@ -197,6 +197,10 @@ def is_incomplete_organisation(name: str) -> bool:
     cleaned = str(name or "").strip()
     if not cleaned:
         return True
+    if cleaned.casefold() in {"nan", "national", "lumpkin"}:
+        return True
+    if re.search(r"\s/\s*$", cleaned):
+        return True
     if cleaned in ("University of", "University of the"):
         return True
     last = cleaned.split()[-1].casefold().rstrip(".")
@@ -657,7 +661,7 @@ def non_speaking_delegate_groups(
     delegates: pd.DataFrame | None = None,
 ) -> list[dict[str, Any]]:
     """Group non-speaking delegates by affiliation for the map site."""
-    from src.geocode import affiliation_base_name
+    from src.geocode import affiliation_display_name, canonical_affiliation_key
     from src.map_exclusions import is_map_excluded, load_map_exclusions
 
     if delegates is None:
@@ -673,8 +677,10 @@ def non_speaking_delegate_groups(
         name = str(row.get("full_name") or "").strip()
         if not name or is_map_excluded(name, set(map_exclusions.names)):
             continue
-        display = affiliation_base_name(affiliation) or affiliation
-        key = display.casefold()
+        display = affiliation_display_name(affiliation) or organisation_for_delegate_row(row)
+        if is_incomplete_organisation(display):
+            continue
+        key = canonical_affiliation_key(affiliation).casefold()
         group = groups.setdefault(
             key,
             {
@@ -683,6 +689,8 @@ def non_speaking_delegate_groups(
                 "delegates": [],
             },
         )
+        if len(display) > len(group["affiliation"]):
+            group["affiliation"] = display
         country = str(row.get("country") or "").strip()
         group["delegates"].append(
             {
@@ -710,7 +718,7 @@ def export_non_speaking_delegates_js(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     body = (
         "/** Generated from data/delegates.json – do not edit by hand. */\n"
-        f"export const NON_SPEAKING_DELEGATE_GROUPS = {json.dumps(groups, ensure_ascii=True, indent=2)};\n"
+        f"export const NON_SPEAKING_DELEGATE_GROUPS = {json.dumps(groups, ensure_ascii=False, indent=2)};\n"
     )
     output_path.write_text(body, encoding="utf-8")
     return output_path

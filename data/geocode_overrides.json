@@ -246,7 +246,67 @@
   "University of South Carolina Beaufort - Beaufort Campus": {
     "geocode_level": "institute",
     "latitude": 32.45765485133005,
-    "longitude": -80.67268620169327, 
+    "longitude": -80.67268620169327,
     "query_used": "override:University of South Carolina Beaufort - Beaufort Campus"
+  },
+  "University of South Carolina Beaufort": {
+    "geocode_level": "institute",
+    "latitude": 32.45765485133005,
+    "longitude": -80.67268620169327,
+    "query_used": "override:University of South Carolina Beaufort"
+  },
+  "University of South Carolina - Beaufort": {
+    "geocode_level": "institute",
+    "latitude": 32.45765485133005,
+    "longitude": -80.67268620169327,
+    "query_used": "override:University of South Carolina - Beaufort"
+  },
+  "University of South Carolina Beaufort - Beaufort": {
+    "geocode_level": "institute",
+    "latitude": 32.45765485133005,
+    "longitude": -80.67268620169327,
+    "query_used": "override:University of South Carolina Beaufort - Beaufort"
+  },
+  "World Wildlife Fund": {
+    "geocode_level": "institute",
+    "latitude": -33.8396,
+    "longitude": 151.2054,
+    "query_used": "override:World Wildlife Fund Australia, Sydney"
+  },
+  "World Wildlife Fund - Australia": {
+    "geocode_level": "institute",
+    "latitude": -33.8396,
+    "longitude": 151.2054,
+    "query_used": "override:World Wildlife Fund - Australia"
+  },
+  "World Wildlife Fund - Indonesia": {
+    "geocode_level": "institute",
+    "latitude": -6.225,
+    "longitude": 106.809,
+    "query_used": "override:World Wildlife Fund - Indonesia"
+  },
+  "Coral Restoration Foundation": {
+    "geocode_level": "institute",
+    "latitude": 25.088014,
+    "longitude": -80.441046,
+    "query_used": "override:Coral Restoration Foundation, Key Largo, Florida"
+  },
+  "Coral Restoration Foundation / Coral Restoration Consortium": {
+    "geocode_level": "institute",
+    "latitude": 25.088014,
+    "longitude": -80.441046,
+    "query_used": "override:Coral Restoration Foundation / Coral Restoration Consortium"
+  },
+  "Universite Laval": {
+    "geocode_level": "institute",
+    "latitude": 46.78192270161853, 
+    "longitude": -71.27475313351863, 
+    "query_used": "override:Universite Laval"
+  },
+  "Wildflow": {
+    "geocode_level": "institute",
+    "latitude": 51.51153458861203, 
+    "longitude":-0.12643724066723255, 
+    "query_used": "override:Wildflow"
   }
 }

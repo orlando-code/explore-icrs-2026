@@ -166,6 +166,37 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
             "canonical": "Department of Biodiversity, Conservation and Attractions - Western Australia",
         },
     ),
+    (
+        re.compile(r"\bworld wildlife fund\b", re.I),
+        {
+            "countries": ["Australia", "Indonesia", "United States", "United Kingdom"],
+            "query": "World Wildlife Fund",
+            "canonical": "World Wildlife Fund",
+            "regionalize": True,
+            "regional_countries": {
+                "Australia": "Australia",
+                "Indonesia": "Indonesia",
+            },
+        },
+    ),
+    (
+        re.compile(r"\buniversity of south carolina\b.*\bbeaufort\b", re.I),
+        {
+            "countries": ["United States"],
+            "cities": [("Beaufort", 32.4577, -80.6727, 50.0)],
+            "query": "University of South Carolina Beaufort, South Carolina, USA",
+            "canonical": "University of South Carolina Beaufort",
+        },
+    ),
+    (
+        re.compile(r"\bcoral restoration foundation\b", re.I),
+        {
+            "countries": ["United States"],
+            "cities": [("Key Largo", 25.088, -80.441, 80.0)],
+            "query": "Coral Restoration Foundation, Key Largo, Florida, USA",
+            "canonical": "Coral Restoration Foundation",
+        },
+    ),
 )
 
 # Region or informal place names mapped to geocodable country queries.
@@ -290,6 +321,23 @@ def _normalize_text(text: str) -> str:
     return text.strip(" ,;-")
 
 
+def _strip_country_suffix_display(affiliation: str) -> str:
+    """Strip a trailing country suffix while preserving Unicode punctuation."""
+    text = str(affiliation or "").strip()
+    if not text:
+        return ""
+    parts = [part.strip() for part in text.split(",") if part.strip()]
+    if len(parts) >= 2 and _lookup_country(_normalize_text(parts[-1])):
+        return ", ".join(parts[:-1]).strip()
+    return text
+
+
+def _clean_affiliation_display(text: str) -> str:
+    cleaned = re.sub(r"\s+", " ", str(text or "")).strip(" ,;-")
+    cleaned = re.sub(r"\s*/\s*$", "", cleaned).strip()
+    return cleaned
+
+
 def affiliation_base_name(affiliation: str) -> str:
     """Strip a trailing country suffix when present."""
     normalized = _normalize_text(affiliation).strip()
@@ -299,6 +347,45 @@ def affiliation_base_name(affiliation: str) -> str:
     if len(parts) >= 2 and _lookup_country(parts[-1]):
         return ", ".join(parts[:-1]).strip()
     return normalized
+
+
+def affiliation_display_name(affiliation: str) -> str:
+    """Human-readable affiliation label with accents and regional qualifiers."""
+    text = _clean_affiliation_display(_strip_country_suffix_display(affiliation))
+    if not text:
+        return ""
+    key = canonical_affiliation_key(affiliation)
+    rule = _institution_rule(affiliation)
+    if rule and rule.get("canonical"):
+        canonical = str(rule["canonical"])
+        if " / " in text and text.lower().startswith(canonical.lower()):
+            return text
+        if key == canonical:
+            return canonical
+        if key.startswith(f"{canonical} -"):
+            return key
+    return text
+
+
+def _regionalized_canonical_name(affiliation: str, rule: dict[str, Any], base: str) -> str:
+    canonical = str(rule.get("canonical") or base or "").strip()
+    if not canonical or not rule.get("regionalize"):
+        return canonical or base
+
+    regional_suffix_re = re.compile(
+        rf"^{re.escape(canonical)}\s*[-–]\s*(.+)$",
+        re.I,
+    )
+    match = regional_suffix_re.match(_clean_affiliation_display(base))
+    if match:
+        return f"{canonical} - {match.group(1).strip()}"
+
+    regional_countries = rule.get("regional_countries") or {}
+    for hint in _extract_country_hints(affiliation):
+        label = regional_countries.get(hint)
+        if label:
+            return f"{canonical} - {label}"
+    return canonical
 
 
 def _affiliation_fingerprint(text: str) -> str:
@@ -315,10 +402,12 @@ def _affiliation_fingerprint(text: str) -> str:
 
 def canonical_affiliation_key(affiliation: str) -> str:
     """Stable key for deduplicating institution variants."""
-    base = affiliation_base_name(affiliation)
+    base = _clean_affiliation_display(
+        _strip_country_suffix_display(affiliation) or affiliation_base_name(affiliation)
+    )
     for pattern, rule in _INSTITUTION_GEO_RULES:
         if pattern.search(affiliation):
-            return rule.get("canonical", base) or base
+            return _regionalized_canonical_name(affiliation, rule, base) or base
     return base or _normalize_text(affiliation).strip()
 
 
