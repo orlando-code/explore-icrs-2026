@@ -10,6 +10,7 @@ import {
   locationCorrectionMailto,
   renderTalkTitlesHtml,
   speakerMatchesQuery,
+  findLocationIdByAffiliation,
 } from "./utils.js";
 import { resolveTalkId } from "./talk-similarity.js";
 
@@ -31,6 +32,9 @@ export function createMapView(
 ) {
   const speakerLocations = siteData.locations;
   const hasDelegatePool = delegateEmissionsLocations.length > 0;
+  const networkNodeIdsByName = new Map(
+    (siteData.network?.individual?.nodes || []).map((node) => [node.label, node.id])
+  );
   let includeNonSpeakers = hasDelegatePool;
 
   function buildLocationPool() {
@@ -425,6 +429,11 @@ export function createMapView(
     const speakers = details.filter((speaker) => !speaker.non_speaking_delegate);
     const delegates = details.filter((speaker) => speaker.non_speaking_delegate);
 
+    const networkLinkHtml = (name) => {
+      if (!networkNodeIdsByName.has(name)) return "";
+      return `<button type="button" class="btn-ghost btn-small cross-view-link" data-show-network="${escapeHtml(name)}">Show in network</button>`;
+    };
+
     const speakerHtml = speakers
       .map((speaker) => {
         const name = speaker.name || speaker;
@@ -436,7 +445,10 @@ export function createMapView(
         });
         return `
           <li class="speaker-entry${isMatch ? " speaker-match" : ""}">
-            <span class="speaker-name">${escapeHtml(name)}</span>
+            <div class="speaker-name-row">
+              <span class="speaker-name">${escapeHtml(name)}</span>
+              ${networkLinkHtml(name)}
+            </div>
             ${titlesHtml}
           </li>`;
       })
@@ -451,7 +463,8 @@ export function createMapView(
               .map((speaker) => {
                 const name = speaker.name || speaker;
                 const isMatch = searching && highlightedSpeakers.has(name);
-                return `<li class="${isMatch ? "speaker-match" : ""}">${escapeHtml(name)}</li>`;
+                const link = networkLinkHtml(name);
+                return `<li class="${isMatch ? "speaker-match" : ""}"><span class="speaker-delegate-name">${escapeHtml(name)}</span>${link ? ` ${link}` : ""}</li>`;
               })
               .join("")}
           </ul>
@@ -842,7 +855,15 @@ export function createMapView(
       }
 
       const button = event.target.closest("[data-talk-id]");
-      if (!button || !elements.hoverSpeakers?.contains(button)) return;
+      if (!button || !elements.hoverSpeakers?.contains(button)) {
+        const networkButton = event.target.closest("[data-show-network]");
+        if (networkButton && elements.hoverSpeakers?.contains(networkButton)) {
+          event.preventDefault();
+          event.stopPropagation();
+          elements.onShowInNetwork?.(networkButton.dataset.showNetwork);
+        }
+        return;
+      }
       event.preventDefault();
       event.stopPropagation();
       handleTalkSelection(button.dataset.talkId);
@@ -878,6 +899,7 @@ export function createMapView(
     hasDelegatePool,
     getLocations: () => locations,
     getMatchedIds: () => matchedIds,
+    findLocationIdByAffiliation: (affiliation) => findLocationIdByAffiliation(locations, affiliation),
     resize: () => map.resize(),
   };
 }

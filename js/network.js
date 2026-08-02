@@ -1,4 +1,4 @@
-import { escapeHtml, buildTalkTitleIndex, renderTalkTitlesHtml } from "./utils.js";
+import { escapeHtml, buildTalkTitleIndex, renderTalkTitlesHtml, findLocationIdByAffiliation } from "./utils.js";
 import { createTalkSimilarityLookup, resolveTalkId } from "./talk-similarity.js";
 import { CONTACT_API_URL, TURNSTILE_SITE_KEY } from "./config.js";
 
@@ -1054,12 +1054,19 @@ export function createNetworkView(siteData, elements) {
     const counts = nodes.map((node) => node.connections);
     const minCount = Math.max(1, d3.min(counts) || 1);
     const maxCount = Math.max(minCount, d3.max(counts) || 1);
-    const midCount = Math.round(Math.sqrt(minCount * maxCount));
-    const samples = [
-      { label: `${minCount.toLocaleString()} talks`, value: minCount },
-      { label: `${midCount.toLocaleString()} talks`, value: midCount },
-      { label: `${maxCount.toLocaleString()} talks`, value: maxCount },
-    ];
+    const talkLabel = (count) =>
+      `${count.toLocaleString()} talk${count === 1 ? "" : "s"}`;
+    const samples =
+      minCount === maxCount
+        ? [{ label: talkLabel(minCount), value: minCount }]
+        : (() => {
+            const midCount = Math.round(Math.sqrt(minCount * maxCount));
+            return [
+              { label: talkLabel(minCount), value: minCount },
+              { label: talkLabel(midCount), value: midCount },
+              { label: talkLabel(maxCount), value: maxCount },
+            ];
+          })();
 
     const selectionSection = selectedNodeId
       ? `
@@ -1189,6 +1196,7 @@ export function createNetworkView(siteData, elements) {
       }
     } else {
       elements.card.hidden = true;
+      updateViewLinks(null);
       updateNodeTalks(null);
       updateNodeContacts(null);
       setDataInfoOpen(false);
@@ -1739,10 +1747,48 @@ export function createNetworkView(siteData, elements) {
     elements.cardMeta.textContent = snippet
       ? `${formatNodeMeta(node)} · ${snippet}`
       : formatNodeMeta(node);
+    updateViewLinks(node);
     updateNodeContacts(node);
     updateNodeTalks(node);
     updateDataInfoLinks(node);
     setDataInfoOpen(false);
+  }
+
+  let cardViewLinks = null;
+
+  function ensureCardViewLinks() {
+    if (cardViewLinks || !elements.cardMeta) return cardViewLinks;
+    cardViewLinks = document.createElement("div");
+    cardViewLinks.className = "view-links";
+    cardViewLinks.hidden = true;
+    elements.cardMeta.insertAdjacentElement("afterend", cardViewLinks);
+    cardViewLinks.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-show-on-map]");
+      if (!button || !cardViewLinks.contains(button)) return;
+      event.preventDefault();
+      event.stopPropagation();
+      elements.onShowOnMap?.(button.dataset.showOnMap);
+    });
+    return cardViewLinks;
+  }
+
+  function updateViewLinks(node) {
+    const links = ensureCardViewLinks();
+    if (!links) return;
+    if (!node) {
+      links.hidden = true;
+      links.innerHTML = "";
+      return;
+    }
+    const affiliation = mode === "individual" ? node.affiliation : node.label;
+    const locationId = findLocationIdByAffiliation(siteData.locations || [], affiliation);
+    if (!locationId) {
+      links.hidden = true;
+      links.innerHTML = "";
+      return;
+    }
+    links.hidden = false;
+    links.innerHTML = `<button type="button" class="btn-ghost btn-small cross-view-link" data-show-on-map="${escapeHtml(locationId)}">Show on map</button>`;
   }
 
   function focusNode(nodeId) {
@@ -2011,10 +2057,18 @@ export function createNetworkView(siteData, elements) {
     });
   }
 
+  function findNodeIdByName(name) {
+    const trimmed = String(name || "").trim();
+    if (!trimmed) return null;
+    const node = network.individual.nodes.find((item) => item.label === trimmed);
+    return node?.id || null;
+  }
+
   renderSearchResults([]);
 
   return {
     setMode,
+    getMode: () => mode,
     setNodeLimit,
     resize,
     resetZoom,
@@ -2023,5 +2077,6 @@ export function createNetworkView(siteData, elements) {
     applySearch,
     buildSuggestions,
     selectNode,
+    findNodeIdByName,
   };
 }

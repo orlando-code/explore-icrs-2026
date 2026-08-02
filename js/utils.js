@@ -438,6 +438,13 @@ export function affiliationMapKey(affiliation) {
   return canonicalAffiliationKey(normalized.toLowerCase());
 }
 
+export function findLocationIdByAffiliation(locations, affiliation) {
+  const key = affiliationMapKey(affiliation);
+  if (!key) return null;
+  const match = (locations || []).find((location) => affiliationMapKey(location.affiliation) === key);
+  return match?.id || null;
+}
+
 export function buildDelegateIndex(delegateGroups = []) {
   const index = new Map();
   for (const group of delegateGroups) {

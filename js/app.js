@@ -223,6 +223,26 @@ function setStatus(message, isError = false) {
   els.status.classList.toggle("error", isError);
 }
 
+function ensureNetworkIndividualMode() {
+  if (networkView.getMode() === "individual") return;
+  els.networkModeButtons.forEach((button) => {
+    button.classList.toggle("active", button.dataset.networkMode === "individual");
+  });
+  networkView.setMode("individual");
+}
+
+function showPersonInNetwork(name) {
+  setTab("network");
+  ensureNetworkIndividualMode();
+  const nodeId = networkView.findNodeIdByName(name);
+  if (nodeId) networkView.selectNode(nodeId, { focus: true });
+}
+
+function showAffiliationOnMap(locationId) {
+  setTab("map");
+  if (locationId) mapView.selectLocation(locationId, { fly: true });
+}
+
 const mapView = createMapView(
   SITE_DATA,
   {
@@ -243,6 +263,7 @@ const mapView = createMapView(
     legend: els.mapLegend,
     setStatus,
     renderResults,
+    onShowInNetwork: showPersonInNetwork,
   },
   { delegateEmissionsLocations, delegateIndex }
 );
@@ -283,6 +304,7 @@ const networkView = createNetworkView(SITE_DATA, {
   resultsTitle: els.networkResultsTitle,
   searchInput: els.networkSearch,
   searchStatus: els.networkSearchStatus,
+  onShowOnMap: showAffiliationOnMap,
 });
 
 const shareView = createShareView(SITE_DATA, {
