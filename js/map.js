@@ -621,18 +621,25 @@ export function createMapView(
     if (connectionsSizeMode) {
       const counts = locations.map((location) => Math.max(1, location.connection_count || 1));
       const minCount = Math.max(1, d3.min(counts));
-      const maxCount = Math.max(minCount + 1, d3.max(counts));
-      const midCount = Math.round(Math.sqrt(minCount * maxCount));
+      const maxCount = Math.max(minCount, d3.max(counts));
       const scale = d3
         .scaleLog()
-        .domain([minCount, maxCount])
+        .domain([minCount, Math.max(minCount + 1, maxCount)])
         .range([8, 28])
         .clamp(true);
-      const samples = [
-        { label: `${minCount.toLocaleString()} talks`, size: scale(minCount) },
-        { label: `${midCount.toLocaleString()} talks`, size: scale(midCount) },
-        { label: `${maxCount.toLocaleString()} talks`, size: scale(maxCount) },
-      ];
+      const talkLabel = (count) =>
+        `${count.toLocaleString()} talk${count === 1 ? "" : "s"}`;
+      const samples =
+        minCount === maxCount
+          ? [{ label: talkLabel(minCount), size: scale(minCount) }]
+          : (() => {
+              const midCount = Math.round(Math.sqrt(minCount * maxCount));
+              return [
+                { label: talkLabel(minCount), size: scale(minCount) },
+                { label: talkLabel(midCount), size: scale(midCount) },
+                { label: talkLabel(maxCount), size: scale(maxCount) },
+              ];
+            })();
       elements.legend.innerHTML = `
         <h3>Point size · talks on author lists (log scale)</h3>
         <p>Circle area scales with talks where this affiliation appears on the author list.</p>
