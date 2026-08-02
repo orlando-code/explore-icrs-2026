@@ -9841,6 +9841,7 @@ export const SPEAKER_PROFILES = {
     "name": "Julia Baum",
     "affiliation": "University of Victoria",
     "confidence": "high",
+    "verified": true,
     "lookup_version": 7,
     "institutional_page": "https://www.uvic.ca/science/biology/people/profiles/baum-julia.php",
     "links": [
@@ -11693,12 +11694,12 @@ export const SPEAKER_PROFILES = {
     "confidence": "high",
     "verified": true,
     "lookup_version": 7,
-    "institutional_page": "https://www.usf.edu/arts-sciences/departments/economics/people/faculty/william-greene.aspx",
+    "institutional_page": "https://www.perryinstitute.org/staff/will-greene-bsc/",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://www.usf.edu/arts-sciences/departments/economics/people/faculty/william-greene.aspx"
+        "url": "https://www.perryinstitute.org/staff/will-greene-bsc/"
       },
       {
         "kind": "linkedin_search",
@@ -11709,7 +11710,7 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://www.usf.edu/arts-sciences/departments/economics/people/faculty/william-greene.aspx"
+      "url": "https://www.perryinstitute.org/staff/will-greene-bsc/"
     },
     "profile_role": "presenter",
     "affiliation_explicit": true
