@@ -12507,7 +12507,6 @@ export const SPEAKER_PROFILES = {
     "name": "Ayaka Umeda Paul",
     "affiliation": "University of Cambridge",
     "confidence": "medium",
-    "verified": true,
     "lookup_version": 7,
     "institutional_page": "https://www.zoo.cam.ac.uk/people/ayaka-umeda-paul",
     "links": [
@@ -25606,7 +25605,6 @@ export const SPEAKER_PROFILES = {
     "name": "Orlando Timmerman",
     "affiliation": "University of Cambridge",
     "confidence": "high",
-    "verified": true,
     "lookup_version": 7,
     "institutional_page": "https://orlando-codes.com/",
     "links": [
@@ -28471,7 +28469,6 @@ export const SPEAKER_PROFILES = {
     "name": "Alice Ball",
     "affiliation": "University of Cambridge",
     "confidence": "high",
-    "verified": true,
     "lookup_version": 7,
     "institutional_page": "https://biomin.esc.cam.ac.uk/people/2023-Alice-Ball/",
     "links": [
@@ -32183,15 +32180,26 @@ export const SPEAKER_PROFILES = {
     "name": "Fernanda Silva",
     "affiliation": "Technical University of Denmark",
     "confidence": "medium",
+    "verified": true,
     "lookup_version": 7,
+    "institutional_page": "https://orbit.dtu.dk/en/persons/fernanda-carolina-da-silva-2/",
     "links": [
+      {
+        "kind": "institution",
+        "label": "University profile",
+        "url": "https://orbit.dtu.dk/en/persons/fernanda-carolina-da-silva-2/"
+      },
       {
         "kind": "linkedin_search",
         "label": "Search LinkedIn",
         "url": "https://www.linkedin.com/search/results/people/?keywords=Fernanda+Silva+Technical+University+of+Denmark"
       }
     ],
-    "primary": null,
+    "primary": {
+      "type": "institution",
+      "label": "University profile",
+      "url": "https://orbit.dtu.dk/en/persons/fernanda-carolina-da-silva-2/"
+    },
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -40552,7 +40560,6 @@ export const SPEAKER_PROFILES = {
     "name": "Susie Mclaren",
     "affiliation": "University of Cambridge",
     "confidence": "high",
-    "verified": true,
     "lookup_version": 7,
     "institutional_page": "https://www.pdn.cam.ac.uk/staff/mclaren",
     "links": [
