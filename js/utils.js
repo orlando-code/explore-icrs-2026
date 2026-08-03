@@ -545,6 +545,54 @@ export function buildDelegateMapLocations(
   return supplemental;
 }
 
+/** Same affiliation pins as the main map tab (speakers ± non-speaking delegates). */
+export function buildMapLocationPool(
+  siteLocations = [],
+  {
+    includeNonSpeakers = false,
+    delegateIndex = new Map(),
+    delegateEmissionsLocations = [],
+  } = {}
+) {
+  let pool = [...siteLocations];
+  if (includeNonSpeakers) {
+    pool = [
+      ...enrichSpeakerLocationsWithDelegates(siteLocations, delegateIndex),
+      ...buildDelegateMapLocations(siteLocations, delegateEmissionsLocations, delegateIndex),
+    ];
+  }
+  return applyAffiliationGeocodeOverrides(pool);
+}
+
+function inferCountryCodeFromAffiliation(affiliation) {
+  const parts = String(affiliation || "")
+    .split(",")
+    .map((part) => part.trim())
+    .filter(Boolean);
+  if (parts.length < 2) return "";
+  const country = parts[parts.length - 1].toLowerCase();
+  const lookup = {
+    india: "IN",
+    "sri lanka": "LK",
+    "united states": "US",
+    australia: "AU",
+    "new zealand": "NZ",
+    "united kingdom": "GB",
+    germany: "DE",
+    france: "FR",
+    china: "CN",
+    japan: "JP",
+    singapore: "SG",
+    taiwan: "TW",
+    brazil: "BR",
+    indonesia: "ID",
+    "south africa": "ZA",
+    "saudi arabia": "SA",
+    "hong kong": "HK",
+  };
+  return lookup[country] || "";
+}
+
 /** Align emissions map pins with the main map: site geocodes + emissions totals. */
 export function mergeEmissionsMapLocations(
   emissionsLocations = [],
@@ -555,14 +603,11 @@ export function mergeEmissionsMapLocations(
     delegateEmissionsLocations = [],
   } = {}
 ) {
-  let sitePool = [...siteLocations];
-  if (includeNonSpeakers) {
-    sitePool = [
-      ...enrichSpeakerLocationsWithDelegates(siteLocations, delegateIndex),
-      ...buildDelegateMapLocations(siteLocations, delegateEmissionsLocations, delegateIndex),
-    ];
-  }
-  sitePool = applyAffiliationGeocodeOverrides(sitePool);
+  const sitePool = buildMapLocationPool(siteLocations, {
+    includeNonSpeakers,
+    delegateIndex,
+    delegateEmissionsLocations,
+  });
 
   const emissionsByKey = new Map();
   for (const location of emissionsLocations) {
@@ -577,27 +622,37 @@ export function mergeEmissionsMapLocations(
   const merged = [];
 
   for (const siteLocation of sitePool) {
+    const lat = Number(siteLocation.lat);
+    const lon = Number(siteLocation.lon);
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) continue;
+
     const key = affiliationMapKey(siteLocation.affiliation);
     const emissions = key ? emissionsByKey.get(key) : null;
     if (emissions) {
       merged.push({
         ...emissions,
         id: siteLocation.id,
-        lat: siteLocation.lat,
-        lon: siteLocation.lon,
+        affiliation: siteLocation.affiliation,
+        lat,
+        lon,
         geocode_level: siteLocation.geocode_level || emissions.geocode_level,
         speaker_count: siteLocation.speaker_count ?? emissions.speaker_count,
         travel_attendees:
           emissions.travel_attendees ?? siteLocation.speaker_count ?? emissions.speaker_count ?? 0,
+        origin_country:
+          emissions.origin_country ||
+          inferCountryCodeFromAffiliation(siteLocation.affiliation),
+        country_cluster_id: emissions.country_cluster_id || "",
       });
       continue;
     }
 
+    const originCountry = inferCountryCodeFromAffiliation(siteLocation.affiliation);
     merged.push({
       id: siteLocation.id,
       affiliation: siteLocation.affiliation,
-      lat: siteLocation.lat,
-      lon: siteLocation.lon,
+      lat,
+      lon,
       speaker_count: siteLocation.speaker_count || 0,
       travel_attendees: siteLocation.speaker_count || 0,
       co2e_kg: 0,
@@ -606,7 +661,7 @@ export function mergeEmissionsMapLocations(
       co2e_per_speaker_kg: 0,
       distance_km: siteLocation.distance_km ?? null,
       geocode_level: siteLocation.geocode_level,
-      origin_country: "",
+      origin_country: originCountry,
       country_cluster_id: "",
     });
   }

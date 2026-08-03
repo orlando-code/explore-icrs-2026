@@ -1,5 +1,5 @@
 {
-  "alias_count": 289,
+  "alias_count": 294,
   "aliases": {
     "Academia Sinica": "Academia Sinica, Taiwan",
     "Arizona State University": "Arizona State University, United States",
@@ -289,7 +289,12 @@
     "Yayasan Konservasi Alam Nusantara": "Yayasan Konservasi Alam Nusantara, Indonesia",
     "the Florida Aquarium": "The Florida Aquarium, United States",
     "the Nature Conservancy - Reef Resilience Network": "The Nature Conservancy - Reef Resilience Network, United States",
-    "the University of Western Australia": "The University Of Western Australia, Australia"
+    "the University of Western Australia": "The University Of Western Australia, Australia",
+    "Tanzania Marine Parks and Reserves Unit Tanzania, United Republic of": "James Cook University, Australia",
+    "Tanzania Marine Parks and Reserves Unit Tanzania, United Republic of, Australia": "James Cook University, Australia",
+    "Conservation Society of Pohnpei Micronesia (the Federated States of)": "Conservation Society of Pohnpei",
+    "the Nature Conservancy Micronesia (the Federated States of)": "The Nature Conservancy",
+    "the Nature Conservancy Venezuela, Bolivarian Republic of": "The Nature Conservancy"
   },
   "source": "data/affiliation_duplicate_summary_150corrected.csv",
   "split_clusters": [

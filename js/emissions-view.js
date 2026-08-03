@@ -193,12 +193,12 @@ export function createEmissionsView(
   }
 
   function radiusFor(location) {
-    if (!location.co2e_kg) return 4;
+    if (!location.co2e_kg) return 6;
     return sizeScale(location.co2e_kg);
   }
 
   function colorFor(location, highlighted) {
-    if (!location.co2e_kg) return "#9aa5ad";
+    if (!location.co2e_kg) return "#5c6b73";
     if (location.id === selectedId) return "#1f6f8b";
     const offsetShare = offsetTracker?.offsetShareForLocation(
       location.id,
@@ -206,8 +206,8 @@ export function createEmissionsView(
       location.affiliation
     );
     if (offsetShare >= 1) return offsetTracker?.OFFSET_GREEN || "#2d8a4e";
-    if (!highlighted) return "#9aa5ad";
-    return "#d95f02";
+    if (!highlighted) return "#5c6b73";
+    return "#ffffff";
   }
 
   function flightBusinessMultiplier() {
@@ -995,10 +995,10 @@ export function createEmissionsView(
           ["==", ["get", "hovered"], 1],
           0.92,
           ["==", ["get", "dimmed"], 1],
-          0.16,
+          0.28,
           ["==", ["get", "highlighted"], 1],
-          0.78,
-          0.16,
+          0.95,
+          0.55,
         ],
         "circle-stroke-width": [
           "case",
@@ -1007,10 +1007,17 @@ export function createEmissionsView(
           ["==", ["get", "hovered"], 1],
           2.5,
           ["==", ["get", "highlighted"], 1],
+          2.5,
           1.5,
-          0.5,
         ],
-        "circle-stroke-color": "#ffffff",
+        "circle-stroke-color": [
+          "case",
+          ["==", ["get", "selected"], 1],
+          "#ffffff",
+          ["==", ["get", "highlighted"], 1],
+          "#b34702",
+          "#ffffff",
+        ],
       },
     });
 
@@ -1128,6 +1135,8 @@ export function createEmissionsView(
     resize: () => {
       map.resize();
       mapCelebration.resize();
+      scheduleMapUpdate();
     },
+    refreshMap: () => scheduleMapUpdate(),
   };
 }

@@ -323,14 +323,36 @@ def _normalize_text(text: str) -> str:
     return text.strip(" ,;-")
 
 
+def _trailing_country_part_count(parts: list[str]) -> int:
+    """Return how many trailing comma-separated parts form a country name."""
+    if len(parts) < 2:
+        return 0
+
+    from src.delegates import country_to_iso2
+
+    normalized_parts = [_normalize_text(part) for part in parts]
+    max_parts = min(4, len(parts) - 1)
+    for n in range(max_parts, 0, -1):
+        suffix = ", ".join(parts[-n:])
+        suffix_norm = ", ".join(normalized_parts[-n:])
+        if (
+            country_to_iso2(suffix)
+            or country_to_iso2(suffix_norm)
+            or _lookup_country(suffix_norm)
+        ):
+            return n
+    return 0
+
+
 def _strip_country_suffix_display(affiliation: str) -> str:
     """Strip a trailing country suffix while preserving Unicode punctuation."""
     text = str(affiliation or "").strip()
     if not text:
         return ""
     parts = [part.strip() for part in text.split(",") if part.strip()]
-    if len(parts) >= 2 and _lookup_country(_normalize_text(parts[-1])):
-        return ", ".join(parts[:-1]).strip()
+    trailing = _trailing_country_part_count(parts)
+    if trailing:
+        return ", ".join(parts[:-trailing]).strip()
     return text
 
 
@@ -346,8 +368,9 @@ def affiliation_base_name(affiliation: str) -> str:
     if not normalized:
         return ""
     parts = [part.strip() for part in normalized.split(",") if part.strip()]
-    if len(parts) >= 2 and _lookup_country(parts[-1]):
-        return ", ".join(parts[:-1]).strip()
+    trailing = _trailing_country_part_count(parts)
+    if trailing:
+        return ", ".join(parts[:-trailing]).strip()
     return normalized
 
 

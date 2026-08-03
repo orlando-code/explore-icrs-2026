@@ -444,7 +444,10 @@ function setTab(tab) {
     requestAnimationFrame(() => networkView.resize());
     showNetworkHintIfNeeded();
   } else if (tab === "emissions") {
-    emissionsView.resize();
+    requestAnimationFrame(() => {
+      emissionsView.resize();
+      emissionsView.refreshMap?.();
+    });
   } else if (tab === "share") {
     shareView.render();
   }
