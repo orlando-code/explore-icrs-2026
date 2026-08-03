@@ -7,6 +7,12 @@
     "longitude": 174.7664805,
     "query_used": "google:Auckland University of Technology, Auckland, New Zealand"
   },
+  "Australian Institute of Marine Science": {
+    "geocode_level": "institute",
+    "latitude": -19.266508785523758,
+    "longitude": 147.05558077860096,
+    "query_used": "override:Australian Institute of Marine Science"
+  },
   "Chinese University of Hong Kong": {
     "geocode_level": "institute",
     "google_formatted_address": "Ma Liu Shui, Hong Kong",
@@ -14,6 +20,18 @@
     "latitude": 22.419625,
     "longitude": 114.2067606,
     "query_used": "google:Chinese University of Hong Kong, Hong Kong"
+  },
+  "Coral Restoration Foundation": {
+    "geocode_level": "institute",
+    "latitude": 25.088014,
+    "longitude": -80.441046,
+    "query_used": "override:Coral Restoration Foundation, Key Largo, Florida"
+  },
+  "Coral Restoration Foundation / Coral Restoration Consortium": {
+    "geocode_level": "institute",
+    "latitude": 25.088014,
+    "longitude": -80.441046,
+    "query_used": "override:Coral Restoration Foundation / Coral Restoration Consortium"
   },
   "Department of Biodiversity, Conservation and Attractions - Western Australia": {
     "geocode_level": "institute",
@@ -23,6 +41,12 @@
     "longitude": 115.8837242,
     "query_used": "google:Department of Biodiversity, Conservation and Attractions, Perth, Australia"
   },
+  "Faculty of Engineering - University of Porto": {
+    "geocode_level": "institute",
+    "latitude": 41.178622253392895,
+    "longitude": -8.595858641207045,
+    "query_used": "override:Faculty of Engineering - University of Porto"
+  },
   "Hawaii Institute of Marine Biology": {
     "geocode_level": "institute",
     "google_formatted_address": "46-007 Lilipuna Rd, Kaneohe, HI 96744, USA",
@@ -30,6 +54,12 @@
     "latitude": 21.4325581,
     "longitude": -157.7880442,
     "query_used": "google:Hawaii Institute of Marine Biology"
+  },
+  "Hawai\u02bbi Cooperative Fishery Research Unit": {
+    "geocode_level": "institute",
+    "latitude": 21.31140986535154,
+    "longitude": -157.87326953841875,
+    "query_used": "override:Hawai\u02bbi Cooperative Fishery Research Unit"
   },
   "Hoala Kealakekua Nui, Inc.": {
     "geocode_level": "institute",
@@ -72,6 +102,12 @@
     "latitude": 15.223092472156852,
     "longitude": 145.7470777750201,
     "query_used": "override:State of Hawai\u02bbi Joseph Nekaifes Johnston Applied Marine Sciences Northern Mariana Islands"
+  },
+  "Universite Laval": {
+    "geocode_level": "institute",
+    "latitude": 46.78192270161853,
+    "longitude": -71.27475313351863,
+    "query_used": "override:Universite Laval"
   },
   "University Of Mons, Belgium": {
     "geocode_level": "institute",
@@ -123,6 +159,12 @@
     "longitude": 172.5823435,
     "query_used": "override:University of Canterbury, Christchurch, New Zealand"
   },
+  "University of Hawai\u02bbi - Maui College": {
+    "geocode_level": "institute",
+    "latitude": 20.890805564835343,
+    "longitude": -156.4795825633126,
+    "query_used": "override:University of Hawai\u02bbi - Maui College"
+  },
   "University of Hawai\u02bbi at Hilo": {
     "geocode_level": "institute",
     "google_formatted_address": "200 W Kawili St, Hilo, HI 96720, USA",
@@ -163,6 +205,30 @@
     "longitude": 18.1672671,
     "query_used": "google:University of Salento"
   },
+  "University of South Carolina - Beaufort": {
+    "geocode_level": "institute",
+    "latitude": 32.45765485133005,
+    "longitude": -80.67268620169327,
+    "query_used": "override:University of South Carolina - Beaufort"
+  },
+  "University of South Carolina Beaufort": {
+    "geocode_level": "institute",
+    "latitude": 32.45765485133005,
+    "longitude": -80.67268620169327,
+    "query_used": "override:University of South Carolina Beaufort"
+  },
+  "University of South Carolina Beaufort - Beaufort": {
+    "geocode_level": "institute",
+    "latitude": 32.45765485133005,
+    "longitude": -80.67268620169327,
+    "query_used": "override:University of South Carolina Beaufort - Beaufort"
+  },
+  "University of South Carolina Beaufort - Beaufort Campus": {
+    "geocode_level": "institute",
+    "latitude": 32.45765485133005,
+    "longitude": -80.67268620169327,
+    "query_used": "override:University of South Carolina Beaufort - Beaufort Campus"
+  },
   "University of Toliara": {
     "geocode_level": "institute",
     "google_formatted_address": "Rte de L'Universite, Tul\u00e9ar 601, Madagascar",
@@ -201,71 +267,23 @@
     "longitude": 115.8618542,
     "query_used": "google:Western Australian Museum, Perth, Australia"
   },
-  "the University of Western Australia": {
+  "Wildflow": {
     "geocode_level": "institute",
-    "latitude": -31.9507,
-    "longitude": 115.7979,
-    "query_used": "override:University of Western Australia, Crawley, Perth, Australia"
-  },
-  "Faculty of Engineering - University of Porto": {
-    "geocode_level": "institute",
-    "latitude": 41.178622253392895, 
-    "longitude": -8.595858641207045,
-    "query_used": "override:Faculty of Engineering - University of Porto"
-  },
-  "Australian Institute of Marine Science": {
-    "geocode_level": "institute",
-    "latitude": -18.909646919126157, 
-    "longitude": 146.97106258535263, 
-    "query_used": "override:Australian Institute of Marine Science"
-  },
-  "Hawai\u02bbi Cooperative Fishery Research Unit": {
-    "geocode_level": "institute",
-    "latitude": 21.31140986535154, 
-    "longitude": -157.87326953841875, 
-    "query_used": "override:Hawai\u02bbi Cooperative Fishery Research Unit"
-  },
-  "University of Hawai\u02bbi - Maui College": {
-    "geocode_level": "institute",
-    "latitude": 20.890805564835343, 
-    "longitude": -156.4795825633126, 
-    "query_used": "override:University of Hawai\u02bbi - Maui College"
+    "latitude": 51.51153458861203,
+    "longitude": -0.12643724066723255,
+    "query_used": "override:Wildflow"
   },
   "Windward Community College": {
     "geocode_level": "institute",
-    "latitude": 21.413360134617406, 
-    "longitude": -157.8134462543146, 
+    "latitude": 21.413360134617406,
+    "longitude": -157.8134462543146,
     "query_used": "override:Windward Community College"
   },
   "Wofford College": {
     "geocode_level": "institute",
-    "latitude": 34.9595796397247, 
-    "longitude": -81.9350682445119, 
+    "latitude": 34.9595796397247,
+    "longitude": -81.9350682445119,
     "query_used": "override:Wofford College"
-  },
-  "University of South Carolina Beaufort - Beaufort Campus": {
-    "geocode_level": "institute",
-    "latitude": 32.45765485133005,
-    "longitude": -80.67268620169327,
-    "query_used": "override:University of South Carolina Beaufort - Beaufort Campus"
-  },
-  "University of South Carolina Beaufort": {
-    "geocode_level": "institute",
-    "latitude": 32.45765485133005,
-    "longitude": -80.67268620169327,
-    "query_used": "override:University of South Carolina Beaufort"
-  },
-  "University of South Carolina - Beaufort": {
-    "geocode_level": "institute",
-    "latitude": 32.45765485133005,
-    "longitude": -80.67268620169327,
-    "query_used": "override:University of South Carolina - Beaufort"
-  },
-  "University of South Carolina Beaufort - Beaufort": {
-    "geocode_level": "institute",
-    "latitude": 32.45765485133005,
-    "longitude": -80.67268620169327,
-    "query_used": "override:University of South Carolina Beaufort - Beaufort"
   },
   "World Wildlife Fund": {
     "geocode_level": "institute",
@@ -285,28 +303,70 @@
     "longitude": 106.809,
     "query_used": "override:World Wildlife Fund - Indonesia"
   },
-  "Coral Restoration Foundation": {
+  "Wildlife Conservation Society": {
     "geocode_level": "institute",
-    "latitude": 25.088014,
-    "longitude": -80.441046,
-    "query_used": "override:Coral Restoration Foundation, Key Largo, Florida"
+    "latitude": 40.8509,
+    "longitude": -73.877469,
+    "query_used": "override:Wildlife Conservation Society, Bronx, New York"
   },
-  "Coral Restoration Foundation / Coral Restoration Consortium": {
+  "Coral Restoration Consortium Sint Maarten": {
     "geocode_level": "institute",
-    "latitude": 25.088014,
-    "longitude": -80.441046,
-    "query_used": "override:Coral Restoration Foundation / Coral Restoration Consortium"
+    "latitude": 18.04248,
+    "longitude": -63.05483,
+    "query_used": "override:Coral Restoration Consortium, Philipsburg, Sint Maarten"
   },
-  "Universite Laval": {
+  "Coral Restoration Consortium, Sint Maarten": {
     "geocode_level": "institute",
-    "latitude": 46.78192270161853, 
-    "longitude": -71.27475313351863, 
-    "query_used": "override:Universite Laval"
+    "latitude": 18.04248,
+    "longitude": -63.05483,
+    "query_used": "override:Coral Restoration Consortium, Philipsburg, Sint Maarten"
   },
-  "Wildflow": {
+  "Coral Reef Initiative Northern Mariana Islands": {
     "geocode_level": "institute",
-    "latitude": 51.51153458861203, 
-    "longitude":-0.12643724066723255, 
-    "query_used": "override:Wildflow"
+    "latitude": 15.1850483,
+    "longitude": 145.7467259,
+    "query_used": "override:Coral Reef Initiative, Saipan, Northern Mariana Islands"
+  },
+  "NOAA Coral Reef Conservation Program": {
+    "geocode_level": "institute",
+    "latitude": 38.9960671,
+    "longitude": -77.0280731,
+    "query_used": "override:NOAA Coral Reef Conservation Program, Silver Spring, Maryland"
+  },
+  "Universidad Central de Venezuela": {
+    "geocode_level": "institute",
+    "latitude": 10.48801,
+    "longitude": -66.87919,
+    "query_used": "override:Universidad Central de Venezuela, Caracas"
+  },
+  "Universidad Central de Venezuela Venezuela, Bolivarian Republic of": {
+    "geocode_level": "institute",
+    "latitude": 10.48801,
+    "longitude": -66.87919,
+    "query_used": "override:Universidad Central de Venezuela, Caracas, Venezuela"
+  },
+  "National Center for Scientific Research - Rāhui Center": {
+    "geocode_level": "institute",
+    "latitude": -17.679742,
+    "longitude": -149.406843,
+    "query_used": "override:Rāhui Center, Moorea, French Polynesia"
+  },
+  "Maritime and Marine Science Centre of Excellence, Pattimura University": {
+    "geocode_level": "institute",
+    "latitude": -3.6546187,
+    "longitude": 128.1956754,
+    "query_used": "override:Pattimura University, Ambon, Indonesia"
+  },
+  "Maritime And Marine Science Center Of Excellence Of Pattimura University": {
+    "geocode_level": "institute",
+    "latitude": -3.6546187,
+    "longitude": 128.1956754,
+    "query_used": "override:Pattimura University, Ambon, Indonesia"
+  },
+  "the University of Western Australia": {
+    "geocode_level": "institute",
+    "latitude": -31.9507,
+    "longitude": 115.7979,
+    "query_used": "override:University of Western Australia, Crawley, Perth, Australia"
   }
 }

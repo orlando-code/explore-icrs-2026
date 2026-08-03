@@ -244,6 +244,37 @@ _COUNTRY_ALIASES: dict[str, str] = {
 
 _MAX_COUNTRY_DISTANCE_KM = 1_500
 
+# Coral Restoration Foundation override coords (Key Largo, FL). A bad propagate/cache
+# write once stamped these onto unrelated affiliations — detect and purge/re-geocode.
+_CRF_OVERRIDE_LAT = 25.088014
+_CRF_OVERRIDE_LON = -80.441046
+_CRF_LEGITIMATE_RE = re.compile(r"\bcoral restoration foundation\b", re.I)
+_CRF_POISON_QUERY_MARKERS = (
+    "override:coral restoration foundation",
+    "coral restoration foundation, key largo",
+)
+
+
+def _coords_near(lat: float, lon: float, ref_lat: float, ref_lon: float, *, km: float = 5.0) -> bool:
+    return _haversine_km(lat, lon, ref_lat, ref_lon) <= km
+
+
+def is_crf_cache_poison(affiliation: str, coords: dict[str, Any] | None) -> bool:
+    """True when coords look like the CRF Key Largo override applied to the wrong affiliation."""
+    if not coords or coords.get("latitude") is None or coords.get("longitude") is None:
+        return False
+    if _CRF_LEGITIMATE_RE.search(str(affiliation or "")):
+        return False
+    try:
+        lat = float(coords["latitude"])
+        lon = float(coords["longitude"])
+    except (TypeError, ValueError):
+        return False
+    if not _coords_near(lat, lon, _CRF_OVERRIDE_LAT, _CRF_OVERRIDE_LON):
+        return False
+    query = str(coords.get("query_used") or "").casefold()
+    return any(marker in query for marker in _CRF_POISON_QUERY_MARKERS)
+
 # Regex replacements applied before query generation.
 _NORMALIZATIONS = (
     (r"\bOf\b", "of"),
@@ -604,6 +635,8 @@ def _propagate_canonical_geocodes(cache: dict[str, dict]) -> None:
     """Apply the best geocode for each canonical institution to all variants."""
     canonical_best: dict[str, tuple[int, dict]] = {}
     for affiliation, coords in cache.items():
+        if is_crf_cache_poison(affiliation, coords):
+            continue
         key = canonical_affiliation_key(affiliation)
         score = geocode_coords_score(coords)
         existing = canonical_best.get(key)
@@ -612,8 +645,19 @@ def _propagate_canonical_geocodes(cache: dict[str, dict]) -> None:
 
     for affiliation in list(cache.keys()):
         key = canonical_affiliation_key(affiliation)
-        if key in canonical_best:
-            cache[affiliation] = dict(canonical_best[key][1])
+        if key not in canonical_best:
+            if is_crf_cache_poison(affiliation, cache.get(affiliation)):
+                cache[affiliation] = {
+                    "latitude": None,
+                    "longitude": None,
+                    "query_used": None,
+                    "geocode_level": None,
+                }
+            continue
+        candidate = canonical_best[key][1]
+        if is_crf_cache_poison(affiliation, candidate):
+            continue
+        cache[affiliation] = dict(candidate)
 
 
 def _split_primary_segment(affiliation: str) -> str:
@@ -1051,6 +1095,8 @@ def _needs_reprocessing(
     lon = cached.get("longitude")
     if lat is None or lon is None:
         return retry_failed
+    if is_crf_cache_poison(affiliation, cached):
+        return True
     if not upgrade_incomplete:
         return False
     if cached.get("geocode_level") == "country" and (

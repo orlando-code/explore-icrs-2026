@@ -2,8 +2,8 @@
   "meta": {
     "source_pdf": "data/delegate_list_230726.pdf",
     "delegate_count": 1955,
-    "speaker_count": 1676,
-    "non_speaker_count": 279
+    "speaker_count": 1667,
+    "non_speaker_count": 288
   },
   "delegates": [
     {
@@ -593,10 +593,10 @@
       "first_name": "Maria",
       "last_name": "Angst",
       "organisation": "Division of Aquatic Resources - Hawai'i",
-      "country": "",
+      "country": "United States",
       "full_name": "Maria Angst",
-      "affiliation": "Division of Aquatic Resources - Hawai'i",
-      "country_code": "",
+      "affiliation": "Division of Aquatic Resources - Hawai'i, United States",
+      "country_code": "US",
       "norm_name": "maria angst",
       "is_speaker": true
     },
@@ -802,10 +802,10 @@
       "first_name": "Dr Greg",
       "last_name": "Asner",
       "organisation": "Global Discovery and Conservation Science",
-      "country": "",
+      "country": "United States",
       "full_name": "Dr Greg Asner",
-      "affiliation": "Global Discovery and Conservation Science",
-      "country_code": "",
+      "affiliation": "Global Discovery and Conservation Science, United States",
+      "country_code": "US",
       "norm_name": "greg asner",
       "is_speaker": true
     },
@@ -1055,10 +1055,10 @@
       "first_name": "Tamatoa",
       "last_name": "Bambridge",
       "organisation": "National Center for Scientific Research - R\u0101hui Center",
-      "country": "",
+      "country": "French Polynesia",
       "full_name": "Tamatoa Bambridge",
-      "affiliation": "National Center for Scientific Research - R\u0101hui Center",
-      "country_code": "",
+      "affiliation": "National Center for Scientific Research - R\u0101hui Center, French Polynesia",
+      "country_code": "PF",
       "norm_name": "tamatoa bambridge",
       "is_speaker": true
     },
@@ -2754,7 +2754,7 @@
       "affiliation": "New York University - Abu Dhabi, United Arab Emirates",
       "country_code": "AE",
       "norm_name": "john burt",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Nicole",
@@ -3249,7 +3249,7 @@
       "affiliation": "University of Guam, Guam",
       "country_code": "GU",
       "norm_name": "fran castro",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Dr Ge\u00f3rgenes",
@@ -4107,7 +4107,7 @@
       "affiliation": "Arizona State University, United States",
       "country_code": "US",
       "norm_name": "alex cormack",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Christopher",
@@ -4580,7 +4580,7 @@
       "affiliation": "San Diego State University, United States",
       "country_code": "US",
       "norm_name": "ben darby",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Ellyn",
@@ -5493,7 +5493,7 @@
       "affiliation": "Hawai\u02bbi Institute of Marine Biology, United States",
       "country_code": "US",
       "norm_name": "ford drury",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Dr Gustavo",
@@ -6109,7 +6109,7 @@
       "affiliation": "Louisiana State University, United States",
       "country_code": "US",
       "norm_name": "ben farmer",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Viliami",
@@ -8243,7 +8243,7 @@
       "affiliation": "University of Melbourne, Australia",
       "country_code": "AU",
       "norm_name": "ben henley",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Phaedra",
@@ -8315,10 +8315,10 @@
       "first_name": "Dan",
       "last_name": "Hikuroa",
       "organisation": "University of Auckland",
-      "country": "",
+      "country": "New Zealand",
       "full_name": "Dan Hikuroa",
-      "affiliation": "University of Auckland",
-      "country_code": "",
+      "affiliation": "University of Auckland, New Zealand",
+      "country_code": "NZ",
       "norm_name": "dan hikuroa",
       "is_speaker": true
     },
@@ -8837,7 +8837,7 @@
       "affiliation": "Fluvio, Australia",
       "country_code": "AU",
       "norm_name": "nick hutley",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Alexa",
@@ -9261,10 +9261,10 @@
       "first_name": "Christina",
       "last_name": "Jayne",
       "organisation": "State of Hawai'i",
-      "country": "",
+      "country": "United States",
       "full_name": "Christina Jayne",
-      "affiliation": "State of Hawai'i",
-      "country_code": "",
+      "affiliation": "State of Hawai'i, United States",
+      "country_code": "US",
       "norm_name": "christina jayne",
       "is_speaker": true
     },
@@ -9508,7 +9508,7 @@
       "affiliation": "Coral Guardian, France",
       "country_code": "FR",
       "norm_name": "sol ne jonveaux",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Marlena",
@@ -9882,7 +9882,7 @@
       "affiliation": "Ho\u02bb\u0101la Kealakekua Nui, Inc., United States",
       "country_code": "US",
       "norm_name": "kainalu keli ikuli grace",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Ku\u02bbi",
@@ -9976,10 +9976,10 @@
       "first_name": "Prof Paul",
       "last_name": "Kench",
       "organisation": "University of Waikato",
-      "country": "",
+      "country": "New Zealand",
       "full_name": "Prof Paul Kench",
-      "affiliation": "University of Waikato",
-      "country_code": "",
+      "affiliation": "University of Waikato, New Zealand",
+      "country_code": "NZ",
       "norm_name": "paul kench",
       "is_speaker": true
     },
@@ -10300,7 +10300,7 @@
       "affiliation": "Island Conservation, United States",
       "country_code": "US",
       "norm_name": "grace klinges",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Wanlaya",
@@ -11752,7 +11752,7 @@
       "affiliation": "University of California - Merced, United States",
       "country_code": "US",
       "norm_name": "sophie macvittie",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "VL",
@@ -11785,7 +11785,7 @@
       "affiliation": "University of Warwick, United Kingdom",
       "country_code": "GB",
       "norm_name": "sam madge",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Will",
@@ -11796,7 +11796,7 @@
       "affiliation": "Kalanihale, United States",
       "country_code": "US",
       "norm_name": "will mae huihui",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Nicolas",
@@ -13171,7 +13171,7 @@
       "affiliation": "United Nations Environment Programme, Kenya",
       "country_code": "KE",
       "norm_name": "ahmed mohamed",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Fairoz",
@@ -13776,7 +13776,7 @@
       "affiliation": "University of Texas - Austin, United States",
       "country_code": "US",
       "norm_name": "caitlin neill",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Melman",
@@ -14018,7 +14018,7 @@
       "affiliation": "MesoReef DAO Foundation, Mexico",
       "country_code": "MX",
       "norm_name": "rodrigo nu ez",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Marissa",
@@ -15976,7 +15976,7 @@
       "affiliation": "University of Hawai'i - M\u0101noa, United States",
       "country_code": "US",
       "norm_name": "angela richards don",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Keana",
@@ -16059,10 +16059,10 @@
       "first_name": "Cynthia",
       "last_name": "Riginos",
       "organisation": "Australian Institute of Marine Science",
-      "country": "",
+      "country": "Australia",
       "full_name": "Cynthia Riginos",
-      "affiliation": "Australian Institute of Marine Science",
-      "country_code": "",
+      "affiliation": "Australian Institute of Marine Science, Australia",
+      "country_code": "AU",
       "norm_name": "cynthia riginos",
       "is_speaker": true
     },
@@ -17791,7 +17791,7 @@
       "affiliation": "Universidade L\u00fario, Mozambique",
       "country_code": "MZ",
       "norm_name": "isabel marques da silva",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Cynthia",
@@ -18033,7 +18033,7 @@
       "affiliation": "University of Hawai'i, United States",
       "country_code": "US",
       "norm_name": "celia smith",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Grant",
@@ -18611,10 +18611,10 @@
       "first_name": "David",
       "last_name": "Suggett",
       "organisation": "KAUST",
-      "country": "",
+      "country": "Saudi Arabia",
       "full_name": "David Suggett",
-      "affiliation": "KAUST",
-      "country_code": "",
+      "affiliation": "KAUST, Saudi Arabia",
+      "country_code": "SA",
       "norm_name": "david suggett",
       "is_speaker": true
     },
@@ -19144,7 +19144,7 @@
       "affiliation": "Olohana Foundation, United States",
       "country_code": "US",
       "norm_name": "bill thomas",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Bailey",
@@ -19859,7 +19859,7 @@
       "affiliation": "University of Queensland, Australia",
       "country_code": "AU",
       "norm_name": "liana van woesik",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Sarah",
@@ -20244,7 +20244,7 @@
       "affiliation": "University of Sydney, Australia",
       "country_code": "AU",
       "norm_name": "alex waller",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Rowana",
@@ -20299,7 +20299,7 @@
       "affiliation": "National Cheng Kung University, Taiwan",
       "country_code": "TW",
       "norm_name": "yu chieh wang",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Daniel",
@@ -20558,10 +20558,10 @@
       "first_name": "Virginia",
       "last_name": "Weis",
       "organisation": "Oregon State University",
-      "country": "",
+      "country": "United States",
       "full_name": "Virginia Weis",
-      "affiliation": "Oregon State University",
-      "country_code": "",
+      "affiliation": "Oregon State University, United States",
+      "country_code": "US",
       "norm_name": "virginia weis",
       "is_speaker": true
     },
@@ -20618,7 +20618,7 @@
       "affiliation": "National Taiwan Ocean University, Malaysia",
       "country_code": "MY",
       "norm_name": "pei wen tang",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Amelia",
@@ -20827,7 +20827,7 @@
       "affiliation": "Nova Southeastern University, United States",
       "country_code": "US",
       "norm_name": "hope wilson",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Nick",
@@ -21256,7 +21256,7 @@
       "affiliation": "Soneva Conservation and Sustainability Maldives, Maldives",
       "country_code": "MV",
       "norm_name": "ben yuen",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Nanda",

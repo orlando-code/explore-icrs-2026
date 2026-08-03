@@ -355,6 +355,16 @@ def load_attendee_legs(
         lat = float(row.latitude)
         lon = float(row.longitude)
         fast_geo = _try_affiliation_geo(row.affiliation, row.geocode_level)
+        if fast_geo is None:
+            hints = _extract_country_hints(str(row.affiliation or ""))
+            if hints:
+                country_code = _country_name_to_alpha2(hints[0]) or ""
+                if country_code:
+                    organisation = str(row.affiliation or "").split(",")[0].strip()
+                    fast_geo = {
+                        "country_code": country_code,
+                        "location_name": organisation or hints[0],
+                    }
         if fast_geo is not None:
             coord_lookup[(lat, lon)] = fast_geo
             return
@@ -1676,8 +1686,6 @@ def export_emissions_site_data_legacy(
 
 
 def load_geocoded_talks() -> pd.DataFrame:
-    talks = load_talks()
-    geocoded = geocode_affiliations(
-        talks["affiliation"].dropna().unique(), show_progress=False
-    )
-    return attach_coordinates(talks, geocoded)
+    from src.affiliation_geocodes import attach_affiliation_geocodes
+
+    return attach_affiliation_geocodes(load_talks())

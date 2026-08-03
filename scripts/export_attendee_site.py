@@ -11,8 +11,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from src.affiliation_geocodes import attach_affiliation_geocodes
 from src.delegates import export_non_speaking_delegates_js
-from src.geocode import attach_coordinates, geocode_affiliations
 from src.map_exclusions import export_map_exclusions_js
 from src.plot_utils import export_attendee_site_data
 from src.talks_export import export_talks_catalog
@@ -49,26 +49,7 @@ def main() -> None:
     args = parser.parse_args()
 
     talks = load_talks()
-    geocoded = geocode_affiliations(
-        talks["affiliation"].dropna().unique(),
-        retry_failed=args.retry_failed,
-        upgrade_incomplete=args.upgrade_incomplete,
-        cache_only=not args.refresh_geocodes,
-        show_progress=True,
-    )
-    if args.google_geocode:
-        from src.google_geocode import supplement_with_google_geocodes
-
-        supplement_with_google_geocodes(
-            talks["affiliation"].dropna().unique(),
-            show_progress=True,
-        )
-        geocoded = geocode_affiliations(
-            talks["affiliation"].dropna().unique(),
-            cache_only=not args.refresh_geocodes,
-            show_progress=False,
-        )
-    talks_geo = attach_coordinates(talks, geocoded)
+    talks_geo = attach_affiliation_geocodes(talks)
     exclusions_output = export_map_exclusions_js()
     output = export_attendee_site_data(talks_geo, save_path=args.output)
     talks_output = export_talks_catalog(talks_geo)

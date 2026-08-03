@@ -434,6 +434,47 @@ def delegate_affiliation_for_row(
     return organisation or str(row.get("affiliation") or "").strip()
 
 
+# PDF rows with long organisation names often omit the country column entirely.
+_ORGANISATION_COUNTRY_OVERRIDES: dict[str, str] = {
+    "australian institute of marine science": "Australia",
+    "division of aquatic resources - hawai'i": "United States",
+    "division of aquatic resources - hawaii": "United States",
+    "global discovery and conservation science": "United States",
+    "kaust": "Saudi Arabia",
+    "national center for scientific research - rahui center": "French Polynesia",
+    "national center for scientific research - rāhui center": "French Polynesia",
+    "oregon state university": "United States",
+    "state of hawai'i": "United States",
+    "state of hawaii": "United States",
+    "university of auckland": "New Zealand",
+    "university of waikato": "New Zealand",
+}
+
+
+def infer_country_from_organisation(organisation: str) -> str:
+    """Infer country when the PDF layout truncates before the country column."""
+    org = repair_mojibake(str(organisation or "")).strip()
+    if not org:
+        return ""
+
+    key = re.sub(r"\s+", " ", org).casefold()
+    if key in _ORGANISATION_COUNTRY_OVERRIDES:
+        return _ORGANISATION_COUNTRY_OVERRIDES[key]
+
+    if re.search(r"hawai['\u2019]?i?\b", org, re.I):
+        return "United States"
+    if re.search(r"\baustralian\b", org, re.I):
+        return "Australia"
+    if re.search(
+        r"\b(university of auckland|university of waikato|victoria university of wellington)\b",
+        org,
+        re.I,
+    ):
+        return "New Zealand"
+
+    return ""
+
+
 def normalize_delegate_records(
     delegates: pd.DataFrame,
     *,
@@ -445,10 +486,13 @@ def normalize_delegate_records(
         organisation = organisation_for_delegate_row(
             row, apply_overrides=apply_overrides
         )
+        country = str(row.get("country") or "").strip()
+        if not country:
+            country = infer_country_from_organisation(organisation)
         affiliation = delegate_affiliation_for_row(
             {
                 "organisation": organisation,
-                "country": row.get("country"),
+                "country": country,
                 "affiliation": row.get("affiliation"),
                 "first_name": row.get("first_name"),
                 "last_name": row.get("last_name"),
@@ -457,7 +501,10 @@ def normalize_delegate_records(
             apply_overrides=False,
         )
         delegates.at[index, "organisation"] = organisation
+        delegates.at[index, "country"] = country
         delegates.at[index, "affiliation"] = affiliation
+        if country:
+            delegates.at[index, "country_code"] = country_to_iso2(country)
     return delegates
 
 
@@ -1139,7 +1186,7 @@ def geocoded_non_speakers(
     show_progress: bool = False,
 ) -> pd.DataFrame:
     """Return geocoded rows for non-speaking delegates."""
-    from src.geocode import geocode_affiliations
+    from src.affiliation_geocodes import resolve_geocode, build_geocode_lookup, load_ok_geocodes
 
     if delegates is None:
         delegates = load_delegates()
@@ -1166,27 +1213,20 @@ def geocoded_non_speakers(
     rows["geocoded"] = False
     rows["query_used"] = pd.NA
 
-    unique_affiliations = sorted(
-        {aff for aff in rows["affiliation"].dropna().astype(str) if aff.strip()}
-    )
-    if unique_affiliations:
-        geocoded = geocode_affiliations(
-            unique_affiliations,
-            cache_only=True,
-            show_progress=show_progress,
+    lookup = build_geocode_lookup(load_ok_geocodes())
+    for index, row in rows.iterrows():
+        hit = resolve_geocode(
+            str(row["affiliation"]),
+            presenter=str(row["presenter"]),
+            lookup=lookup,
         )
-        geo_by_affiliation = {
-            str(row["affiliation"]): row for _, row in geocoded.iterrows()
-        }
-        for index, row in rows.iterrows():
-            geo = geo_by_affiliation.get(str(row["affiliation"]))
-            if geo is None or pd.isna(geo.get("latitude")) or pd.isna(geo.get("longitude")):
-                continue
-            rows.at[index, "latitude"] = float(geo["latitude"])
-            rows.at[index, "longitude"] = float(geo["longitude"])
-            rows.at[index, "geocode_level"] = geo.get("geocode_level")
-            rows.at[index, "geocoded"] = True
-            rows.at[index, "query_used"] = geo.get("query_used")
+        if hit is None:
+            continue
+        rows.at[index, "latitude"] = float(hit["latitude"])
+        rows.at[index, "longitude"] = float(hit["longitude"])
+        rows.at[index, "geocode_level"] = hit.get("geocode_level")
+        rows.at[index, "geocoded"] = True
+        rows.at[index, "query_used"] = hit.get("query_used")
 
     rows = _fill_missing_with_country_centroids(rows)
     if "country_code" not in rows.columns:

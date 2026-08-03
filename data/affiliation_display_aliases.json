@@ -294,7 +294,8 @@
     "Tanzania Marine Parks and Reserves Unit Tanzania, United Republic of, Australia": "James Cook University, Australia",
     "Conservation Society of Pohnpei Micronesia (the Federated States of)": "Conservation Society of Pohnpei",
     "the Nature Conservancy Micronesia (the Federated States of)": "The Nature Conservancy",
-    "the Nature Conservancy Venezuela, Bolivarian Republic of": "The Nature Conservancy"
+    "the Nature Conservancy Venezuela, Bolivarian Republic of": "The Nature Conservancy",
+    "Australian Institute Of Marine Science": "Australian Institute of Marine Science"
   },
   "source": "data/affiliation_duplicate_summary_150corrected.csv",
   "split_clusters": [

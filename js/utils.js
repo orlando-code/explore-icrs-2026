@@ -6,6 +6,61 @@ export function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
+/** Shared affiliation pin styling for the main map and emissions map. */
+export const AFFILIATION_MAP_CIRCLE_PAINT = {
+  "circle-radius": [
+    "case",
+    ["==", ["get", "selected"], 1],
+    ["+", ["get", "radius"], 4],
+    ["==", ["get", "hovered"], 1],
+    ["+", ["get", "radius"], 2],
+    ["get", "radius"],
+  ],
+  "circle-color": [
+    "case",
+    ["==", ["get", "selected"], 1],
+    "#1f6f8b",
+    ["==", ["get", "hovered"], 1],
+    "#1f6f8b",
+    ["==", ["get", "talk_highlighted"], 1],
+    "#e8945a",
+    ["==", ["get", "author_highlighted"], 1],
+    "#4a90a7",
+    ["==", ["get", "highlighted"], 1],
+    "#d95f02",
+    "#9aa5ad",
+  ],
+  "circle-opacity": [
+    "case",
+    ["==", ["get", "selected"], 1],
+    0.95,
+    ["==", ["get", "hovered"], 1],
+    0.92,
+    ["==", ["get", "talk_highlighted"], 1],
+    0.9,
+    ["==", ["get", "author_highlighted"], 1],
+    0.94,
+    ["==", ["get", "highlighted"], 1],
+    0.78,
+    0.16,
+  ],
+  "circle-stroke-width": [
+    "case",
+    ["==", ["get", "selected"], 1],
+    3,
+    ["==", ["get", "hovered"], 1],
+    2.5,
+    ["==", ["get", "talk_highlighted"], 1],
+    2.4,
+    ["==", ["get", "author_highlighted"], 1],
+    2.8,
+    ["==", ["get", "highlighted"], 1],
+    1.5,
+    0.5,
+  ],
+  "circle-stroke-color": "#ffffff",
+};
+
 const LOCATION_CORRECTION_EMAIL = "rt582@cam.ac.uk";
 
 export function locationCorrectionMailto(location) {

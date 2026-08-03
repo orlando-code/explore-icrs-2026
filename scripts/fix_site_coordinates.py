@@ -19,6 +19,7 @@ from src.geocode import (
     attach_coordinates,
     canonical_affiliation_key,
     geocode_affiliations,
+    is_crf_cache_poison,
     load_affiliation_display_aliases,
     _load_json,
     _lookup_override,
@@ -289,14 +290,24 @@ def _rebuild_emissions_locations(pool: dict, overrides: dict) -> int:
         if not _patch_location(location, overrides, allow_cache=True):
             for attendee in bucket["attendees"]:
                 old = old_locations.get(str(attendee.get("location_id")))
-                if old and old.get("lat") is not None and old.get("lon") is not None:
-                    location["lat"] = old["lat"]
-                    location["lon"] = old["lon"]
-                    if old.get("geocode_level"):
-                        location["geocode_level"] = old["geocode_level"]
-                    if old.get("distance_km") is not None:
-                        location["distance_km"] = old["distance_km"]
-                    break
+                if not old or old.get("lat") is None or old.get("lon") is None:
+                    continue
+                if is_crf_cache_poison(
+                    bucket["affiliation"],
+                    {
+                        "latitude": old["lat"],
+                        "longitude": old["lon"],
+                        "query_used": old.get("query_used"),
+                    },
+                ):
+                    continue
+                location["lat"] = old["lat"]
+                location["lon"] = old["lon"]
+                if old.get("geocode_level"):
+                    location["geocode_level"] = old["geocode_level"]
+                if old.get("distance_km") is not None:
+                    location["distance_km"] = old["distance_km"]
+                break
         for attendee in bucket["attendees"]:
             attendee["location_id"] = loc_id
         locations.append(location)

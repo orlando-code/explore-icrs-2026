@@ -1,4 +1,5 @@
 import {
+  AFFILIATION_MAP_CIRCLE_PAINT,
   buildDisplayPositions,
   enrichSpeakerLocationsWithDelegates,
   applyAffiliationGeocodeOverrides,
@@ -193,21 +194,15 @@ export function createEmissionsView(
   }
 
   function radiusFor(location) {
-    if (!location.co2e_kg) return 6;
-    return sizeScale(location.co2e_kg);
+    const count = Math.max(
+      1,
+      location.speaker_count || location.travel_attendees || 1
+    );
+    return Math.min(28, 6 + Math.sqrt(count) * 3.2);
   }
 
-  function colorFor(location, highlighted) {
-    if (!location.co2e_kg) return "#5c6b73";
-    if (location.id === selectedId) return "#1f6f8b";
-    const offsetShare = offsetTracker?.offsetShareForLocation(
-      location.id,
-      location.travel_attendees,
-      location.affiliation
-    );
-    if (offsetShare >= 1) return offsetTracker?.OFFSET_GREEN || "#2d8a4e";
-    if (!highlighted) return "#5c6b73";
-    return "#ffffff";
+  function colorFor(_location, _highlighted) {
+    return "#d95f02";
   }
 
   function flightBusinessMultiplier() {
@@ -714,11 +709,9 @@ export function createEmissionsView(
 
   function locationFeatures() {
     return allLocations.map((location) => {
-      const highlighted = location.co2e_kg > 0;
       const display = displayForLocation(location);
       const selected = location.id === selectedId;
       const hovered = location.id === hoveredId;
-      const dimmed = Boolean(selectedId && !selected && highlighted);
       const offsetShare = locationOffsetShare(location);
       return {
         type: "Feature",
@@ -726,14 +719,16 @@ export function createEmissionsView(
           id: location.id,
           affiliation: location.affiliation,
           co2e_kg: location.co2e_kg,
-          highlighted: highlighted ? 1 : 0,
+          highlighted: 1,
           selected: selected ? 1 : 0,
           hovered: hovered ? 1 : 0,
-          dimmed: dimmed ? 1 : 0,
+          talk_highlighted: 0,
+          author_highlighted: 0,
+          dimmed: selectedId && !selected ? 1 : 0,
           offset_share: offsetShare,
           sort_key: selected ? 1e9 + (location.co2e_kg || 0) : location.co2e_kg || 0,
           radius: radiusFor(location),
-          color: colorFor(location, highlighted),
+          color: colorFor(location, true),
         },
         geometry: {
           type: "Point",
@@ -978,47 +973,7 @@ export function createEmissionsView(
       layout: {
         "circle-sort-key": ["get", "sort_key"],
       },
-      paint: {
-        "circle-radius": [
-          "case",
-          ["==", ["get", "selected"], 1],
-          ["+", ["get", "radius"], 4],
-          ["==", ["get", "hovered"], 1],
-          ["+", ["get", "radius"], 2],
-          ["get", "radius"],
-        ],
-        "circle-color": ["get", "color"],
-        "circle-opacity": [
-          "case",
-          ["==", ["get", "selected"], 1],
-          0.95,
-          ["==", ["get", "hovered"], 1],
-          0.92,
-          ["==", ["get", "dimmed"], 1],
-          0.28,
-          ["==", ["get", "highlighted"], 1],
-          0.95,
-          0.55,
-        ],
-        "circle-stroke-width": [
-          "case",
-          ["==", ["get", "selected"], 1],
-          3,
-          ["==", ["get", "hovered"], 1],
-          2.5,
-          ["==", ["get", "highlighted"], 1],
-          2.5,
-          1.5,
-        ],
-        "circle-stroke-color": [
-          "case",
-          ["==", ["get", "selected"], 1],
-          "#ffffff",
-          ["==", ["get", "highlighted"], 1],
-          "#b34702",
-          "#ffffff",
-        ],
-      },
+      paint: AFFILIATION_MAP_CIRCLE_PAINT,
     });
 
     map.addLayer({
