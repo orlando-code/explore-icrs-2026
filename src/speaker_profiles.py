@@ -2816,6 +2816,19 @@ def _is_untrusted_profile_url(url: str | None) -> bool:
     return any(regex.search(text) for regex in _DIRECTORY_LISTING_URL_RES)
 
 
+def verified_contact_email(profile: dict[str, Any]) -> str | None:
+    """Return a verified email suitable for the contact API, if any."""
+    if profile.get("verified") is not True:
+        return None
+    primary = profile.get("primary") or {}
+    if primary.get("type") != "email":
+        return None
+    email = str(primary.get("label") or "").strip()
+    if not email or "@" not in email:
+        return None
+    return email
+
+
 def _is_untrusted_primary_email(profile: dict[str, Any]) -> bool:
     if profile.get("verified") is True:
         return False
@@ -3008,6 +3021,9 @@ def public_profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
         }
     else:
         cleaned["primary"] = None
+
+    if verified_contact_email(working):
+        cleaned["has_verified_email"] = True
 
     return cleaned
 

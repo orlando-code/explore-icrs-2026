@@ -297,7 +297,7 @@ async function ensureContactTurnstileToken() {
 }
 
 function renderEmailRevealHtml(node, profile) {
-  if (!CONTACT_API_URL || !profile?.verified) return "";
+  if (!CONTACT_API_URL || !profile?.has_verified_email) return "";
 
   const cacheKey = contactRevealKey(node.label, node.affiliation);
   const cachedEmail = revealedContactEmails.get(cacheKey);
@@ -834,7 +834,7 @@ export function createNetworkView(siteData, elements) {
     }
     elements.cardContacts.hidden = false;
     elements.cardContacts.innerHTML = renderContactLinksHtml(node);
-    if (CONTACT_API_URL && profileForNode(node)?.verified) {
+    if (CONTACT_API_URL && profileForNode(node)?.has_verified_email) {
       window.requestAnimationFrame(() => mountContactTurnstile());
     }
   }
@@ -1767,7 +1767,7 @@ export function createNetworkView(siteData, elements) {
       if (!button || !cardViewLinks.contains(button)) return;
       event.preventDefault();
       event.stopPropagation();
-      elements.onShowOnMap?.(button.dataset.showOnMap);
+      elements.onShowOnMap?.(button.dataset.showOnMap, button.dataset.showOnMapSpeaker || "");
     });
     return cardViewLinks;
   }
@@ -1787,8 +1787,9 @@ export function createNetworkView(siteData, elements) {
       links.innerHTML = "";
       return;
     }
+    const personName = mode === "individual" ? node.label : "";
     links.hidden = false;
-    links.innerHTML = `<button type="button" class="btn-ghost btn-small cross-view-link" data-show-on-map="${escapeHtml(locationId)}">Show on map</button>`;
+    links.innerHTML = `<button type="button" class="btn-ghost btn-small cross-view-link" data-show-on-map="${escapeHtml(locationId)}" data-show-on-map-speaker="${escapeHtml(personName)}">Show on map</button>`;
   }
 
   function focusNode(nodeId) {

@@ -19,6 +19,7 @@ backups/
 backend/data/contacts.json
 backend/data/delegate_ids.csv
 data/ne_110m_admin_0_countries.zip
+data/affiliation_duplicate_summary*
 
 # Organisers' delegate list and its raw text dump. Kept local: the site only
 # needs the derived data/delegates.json, and the PDF is not ours to republish.

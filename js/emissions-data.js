@@ -256,7 +256,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0010",
-        "affiliation": "Bergische Universitat Wuppertal",
+        "affiliation": "Bergische Universität Wuppertal",
         "lat": 51.256505,
         "lon": 7.164153,
         "speaker_count": 1,
@@ -630,7 +630,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0037",
-        "affiliation": "Cinvestav Merida",
+        "affiliation": "Cinvestav Mérida",
         "lat": 21.021872,
         "lon": -89.626851,
         "speaker_count": 1,
@@ -865,7 +865,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0054",
-        "affiliation": "CRIOBE, Reunion",
+        "affiliation": "CRIOBE, Réunion",
         "lat": -17.51906,
         "lon": -149.849702,
         "speaker_count": 9,
@@ -962,7 +962,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0061",
-        "affiliation": "Division of Aquatic Resources - Hawai'i",
+        "affiliation": "Hawaiʻi Division of Aquatic Resources",
         "lat": 21.3055433,
         "lon": -157.8558282,
         "speaker_count": 1,
@@ -1073,7 +1073,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0069",
-        "affiliation": "ENTROPIE, Reunion",
+        "affiliation": "ENTROPIE, Réunion",
         "lat": 48.155125,
         "lon": -3.799268,
         "speaker_count": 1,
@@ -1100,7 +1100,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0071",
-        "affiliation": "Federal University of Parana",
+        "affiliation": "Federal University of Paraná",
         "lat": -26.196282,
         "lon": -52.689964,
         "speaker_count": 1,
@@ -1349,7 +1349,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0089",
-        "affiliation": "Goethe-Universitat",
+        "affiliation": "Goethe-Universität",
         "lat": 48.529715,
         "lon": 9.057581,
         "speaker_count": 1,
@@ -1488,7 +1488,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0099",
-        "affiliation": "Hawaii Division of Aquatic Resources",
+        "affiliation": "Hawaiʻi Division of Aquatic Resources",
         "lat": 19.593802,
         "lon": -155.42837,
         "speaker_count": 1,
@@ -1693,7 +1693,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0114",
-        "affiliation": "Institut de recherche pour le Developpement",
+        "affiliation": "Institut de Recherche pour le Developpement",
         "lat": -12.094179,
         "lon": -77.015213,
         "speaker_count": 3,
@@ -1832,7 +1832,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0124",
-        "affiliation": "Instituto de Zoologia y Ecologia Tropical",
+        "affiliation": "Instituto de Zoología y Ecología Tropical",
         "lat": 10.486966,
         "lon": -66.895851,
         "speaker_count": 1,
@@ -1859,7 +1859,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0126",
-        "affiliation": "Instituto Superior Tecnico",
+        "affiliation": "Instituto Superior Técnico",
         "lat": 38.736745,
         "lon": -9.138391,
         "speaker_count": 1,
@@ -1872,7 +1872,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0127",
-        "affiliation": "Instituto Tecnologico de Bahia de Banderas",
+        "affiliation": "Instituto Tecnológico de Bahía de Banderas",
         "lat": 20.749999,
         "lon": -105.382219,
         "speaker_count": 2,
@@ -3013,7 +3013,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0209",
-        "affiliation": "Oldenburg University",
+        "affiliation": "University of Oldenburg",
         "lat": 53.1467333,
         "lon": 8.183124,
         "speaker_count": 1,
@@ -3041,7 +3041,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0211",
-        "affiliation": "Otago University",
+        "affiliation": "University of Otago",
         "lat": -45.8646835,
         "lon": 170.5144227,
         "speaker_count": 1,
@@ -3069,7 +3069,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0213",
-        "affiliation": "Pattimura University",
+        "affiliation": "University of Pattimura",
         "lat": -3.6546187,
         "lon": 128.1956754,
         "speaker_count": 2,
@@ -3307,7 +3307,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0230",
-        "affiliation": "Rosenstiel School of Marine, Atmospheric and Earth Science",
+        "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science",
         "lat": 25.7324169,
         "lon": -80.1636566,
         "speaker_count": 1,
@@ -3669,7 +3669,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0256",
-        "affiliation": "State of Hawai'i",
+        "affiliation": "State of Hawaiʻi",
         "lat": 19.708546749900975,
         "lon": -155.59210907543473,
         "speaker_count": 2,
@@ -3999,7 +3999,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0280",
-        "affiliation": "Umea University",
+        "affiliation": "Umeå University",
         "lat": 63.821776,
         "lon": 20.304316,
         "speaker_count": 1,
@@ -4026,7 +4026,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0282",
-        "affiliation": "Universidad Autonoma de Baja California Sur",
+        "affiliation": "Universidad Autónoma de Baja California Sur",
         "lat": 22.896494,
         "lon": -109.91358,
         "speaker_count": 3,
@@ -4095,7 +4095,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0287",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México",
         "lat": 19.321597,
         "lon": -99.184926,
         "speaker_count": 7,
@@ -4178,7 +4178,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0293",
-        "affiliation": "Universidade Lurio",
+        "affiliation": "Universidade Lúrio",
         "lat": -15.120738,
         "lon": 39.199658,
         "speaker_count": 1,
@@ -4205,7 +4205,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0295",
-        "affiliation": "Universite Cote d'azur",
+        "affiliation": "Université Côte d'azur",
         "lat": 43.717013,
         "lon": 7.267577,
         "speaker_count": 1,
@@ -4218,7 +4218,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0296",
-        "affiliation": "Universite de Bretagne Occidentale",
+        "affiliation": "Université de Bretagne Occidentale",
         "lat": -12.094179,
         "lon": -77.015213,
         "speaker_count": 1,
@@ -4231,7 +4231,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0297",
-        "affiliation": "Universite de la Polynesie Francaise",
+        "affiliation": "Université de la Polynésie Française",
         "lat": -17.576993,
         "lon": -149.608662,
         "speaker_count": 2,
@@ -4244,7 +4244,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0298",
-        "affiliation": "Universite Libre de Bruxelles",
+        "affiliation": "Université Libre de Bruxelles",
         "lat": 50.813472,
         "lon": 4.381253,
         "speaker_count": 1,
@@ -4803,7 +4803,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0338",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi",
         "lat": 21.2998224,
         "lon": -157.8182521,
         "speaker_count": 13,
@@ -4817,7 +4817,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0339",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo",
         "lat": 19.6997798,
         "lon": -155.0848929,
         "speaker_count": 3,
@@ -4831,7 +4831,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0340",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa",
         "lat": 21.2998224,
         "lon": -157.8182521,
         "speaker_count": 28,
@@ -4858,7 +4858,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0342",
-        "affiliation": "University of Hawaii at Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo",
         "lat": 19.6997798,
         "lon": -155.0848929,
         "speaker_count": 1,
@@ -4928,7 +4928,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0347",
-        "affiliation": "University of Liege",
+        "affiliation": "University of Liège",
         "lat": 50.63686,
         "lon": 5.562425,
         "speaker_count": 2,
@@ -4955,7 +4955,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0349",
-        "affiliation": "University of Maine, Presque Isle; University of Southern California, Los Angeles",
+        "affiliation": "University Of Maine, Presque Isle; University of Southern California, Los Angeles",
         "lat": 46.668861,
         "lon": -68.017908,
         "speaker_count": 1,
@@ -5038,7 +5038,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0355",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University Of Mauritius",
         "lat": -20.2349416,
         "lon": 57.4962994,
         "speaker_count": 4,
@@ -5066,7 +5066,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0357",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami",
         "lat": 25.7169568,
         "lon": -80.2798198,
         "speaker_count": 24,
@@ -5107,7 +5107,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0360",
-        "affiliation": "University of Miami, CIMAS",
+        "affiliation": "University Of Miami, CIMAS",
         "lat": 25.717272,
         "lon": -80.278707,
         "speaker_count": 1,
@@ -5120,7 +5120,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0361",
-        "affiliation": "University of Michigan",
+        "affiliation": "University Of Michigan",
         "lat": 42.277145,
         "lon": -83.7382071,
         "speaker_count": 3,
@@ -5134,7 +5134,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0362",
-        "affiliation": "University of Milan-Bicocca",
+        "affiliation": "University of Milano - Bicocca",
         "lat": 45.5182898,
         "lon": 9.2137614,
         "speaker_count": 1,
@@ -5162,7 +5162,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0364",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca",
         "lat": 45.5182898,
         "lon": 9.2137614,
         "speaker_count": 6,
@@ -5204,7 +5204,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0367",
-        "affiliation": "University of Mons",
+        "affiliation": "University Of Mons",
         "lat": 50.464,
         "lon": 3.9551,
         "speaker_count": 1,
@@ -5427,7 +5427,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0383",
-        "affiliation": "University of Puerto Rico - Mayaguez",
+        "affiliation": "University of Puerto Rico at Mayagüez",
         "lat": 18.2108895,
         "lon": -67.14090250000001,
         "speaker_count": 2,
@@ -5441,7 +5441,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0384",
-        "affiliation": "University of Puerto Rico at Mayaguez",
+        "affiliation": "University of Puerto Rico at Mayagüez",
         "lat": 18.213478,
         "lon": -67.149536,
         "speaker_count": 1,
@@ -5524,7 +5524,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0390",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo",
         "lat": -23.561048,
         "lon": -46.725226,
         "speaker_count": 16,
@@ -5705,7 +5705,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0403",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman",
         "lat": 14.6538783,
         "lon": 121.0684573,
         "speaker_count": 18,
@@ -5733,7 +5733,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0405",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific",
         "lat": -18.1480462,
         "lon": 178.4476007,
         "speaker_count": 10,
@@ -5761,7 +5761,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0407",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands",
         "lat": 40.0060889,
         "lon": -83.0282624,
         "speaker_count": 9,
@@ -6295,21 +6295,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dc453ef5",
         "name": "Aaron Bugaj",
-        "affiliation": "University of Arizona",
+        "affiliation": "University of Arizona, United States",
         "location_id": "emis-loc-0310",
         "co2e_kg": 2776.4
       },
       {
         "id": "offset-052a238e",
         "name": "Abdul M. Ada",
-        "affiliation": "Louisiana State University",
+        "affiliation": "Louisiana State University, United States",
         "location_id": "emis-loc-0153",
         "co2e_kg": 3153.2
       },
       {
         "id": "offset-8a49afe3",
         "name": "Abigail Gretta",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
@@ -6323,35 +6323,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5e2acff0",
         "name": "Abigail Renegar",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-498108c4",
         "name": "Abigail Turnlund",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity, Germany",
         "location_id": "emis-loc-0101",
         "co2e_kg": 4574.3
       },
       {
         "id": "offset-ffb0d5f2",
         "name": "Abigail Wilson",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-0458be7e",
         "name": "Adahara Muñoz-Alfaro",
-        "affiliation": "Universidad Autonoma de Baja California Sur",
+        "affiliation": "Universidad Autónoma de Baja California Sur, Mexico",
         "location_id": "emis-loc-0282",
         "co2e_kg": 2639.2
       },
       {
         "id": "offset-ad138c48",
         "name": "Adelaide Dahl",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
@@ -6365,7 +6365,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-36b733b8",
         "name": "Adeline Shelby",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
@@ -6379,21 +6379,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3cfa9b02",
         "name": "Adib Mustofa",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0394",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-642c677e",
         "name": "Adrian Cheh",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0016",
         "co2e_kg": 3698.3
       },
       {
         "id": "offset-e403c280",
         "name": "Adrian Stier",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
@@ -6407,14 +6407,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9c5b47a2",
         "name": "Afrah Alothman",
-        "affiliation": "National Center for Wildlife",
+        "affiliation": "National Center for Wildlife, Saudi Arabia",
         "location_id": "emis-loc-0177",
         "co2e_kg": 3807.4
       },
       {
         "id": "offset-6e5dee15",
         "name": "Afrin Priya Talukder",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0156",
         "co2e_kg": 591.9
       },
@@ -6428,7 +6428,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f81b8214",
         "name": "Agustina Piccaluga",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
@@ -6449,42 +6449,42 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3226b7bd",
         "name": "Ahmi Cacapit",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0324",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-1accaa71",
         "name": "Aidan Healy",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-425d4775",
         "name": "Aidan Stockley",
-        "affiliation": "Auckland University of Technology",
+        "affiliation": "Auckland University of Technology, New Zealand",
         "location_id": "emis-loc-0005",
         "co2e_kg": 0.0
       },
       {
         "id": "offset-857f4527",
         "name": "Aileen Maypa",
-        "affiliation": "Silliman University",
+        "affiliation": "Silliman University, Philippines",
         "location_id": "emis-loc-0246",
         "co2e_kg": 1904.4
       },
       {
         "id": "offset-92df4e73",
         "name": "Akili Ligons",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-c8d08ca7",
         "name": "Alain Duran",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -6498,14 +6498,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-aaea9e26",
         "name": "Alan Gojanovic",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0417",
         "co2e_kg": 891.1
       },
       {
         "id": "offset-26053258",
         "name": "Alastair Harborne",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -6547,7 +6547,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fcc6ed53",
         "name": "Alejandra Robles-Payán",
-        "affiliation": "Universidad Autonoma de Baja California Sur",
+        "affiliation": "Universidad Autónoma de Baja California Sur, Mexico",
         "location_id": "emis-loc-0282",
         "co2e_kg": 2639.2
       },
@@ -6575,7 +6575,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9117e71a",
         "name": "Alexa Huzar",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0401",
         "co2e_kg": 3003.4
       },
@@ -6589,35 +6589,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-51e54221",
         "name": "Alexander Venn",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0032",
         "co2e_kg": 4770.9
       },
       {
         "id": "offset-cdca93a8",
         "name": "Alexander Waller",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-9658dc53",
         "name": "Alexander Wheeler",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-629f5c95",
         "name": "Alexandra Butler",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-dc16bc07",
         "name": "Alexandra Cormack",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0004",
         "co2e_kg": 2780.4
       },
@@ -6645,7 +6645,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b46dca8e",
         "name": "Alexandra Khrizman",
-        "affiliation": "Stanford University",
+        "affiliation": "Stanford University, United States",
         "location_id": "emis-loc-0255",
         "co2e_kg": 2708.2
       },
@@ -6659,21 +6659,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-908d89ad",
         "name": "Alexandra Skeer",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-a098b17d",
         "name": "Alexandra Wen",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-ad46ccc2",
         "name": "Alexandra Zelaya",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0374",
         "co2e_kg": 3580.4
       },
@@ -6687,14 +6687,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ee8b396a",
         "name": "Alexi Meltel",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-d5314e0e",
         "name": "Alexis Sturm",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0184",
         "co2e_kg": 3363.9
       },
@@ -6715,7 +6715,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-07cf805d",
         "name": "Alice Ball",
-        "affiliation": "University of Cambridge",
+        "affiliation": "University of Cambridge, United Kingdom",
         "location_id": "emis-loc-0327",
         "co2e_kg": 4670.9
       },
@@ -6729,7 +6729,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-083a9dfd",
         "name": "Alicia Emberson-Semisi",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0405",
         "co2e_kg": 587.0
       },
@@ -6743,7 +6743,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b9767e24",
         "name": "Aline Shimada da Cruz",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
@@ -6771,7 +6771,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fcc8321d",
         "name": "Aliyah True",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -6785,7 +6785,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-919dec96",
         "name": "Allie Durdall",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
@@ -6799,7 +6799,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-51be8d5e",
         "name": "Allison Klein",
-        "affiliation": "Florida Atlantic University",
+        "affiliation": "Florida Atlantic University, United States",
         "location_id": "emis-loc-0077",
         "co2e_kg": 3313.9
       },
@@ -6813,14 +6813,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9c60d5e8",
         "name": "Ally Swan",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-4f98ac3b",
         "name": "Ally Swank",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0016",
         "co2e_kg": 3698.3
       },
@@ -6834,7 +6834,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-62eabf14",
         "name": "Allyson DeMerlis",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -6848,7 +6848,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9e2bd389",
         "name": "Almog Haim",
-        "affiliation": "Bar-Ilan University",
+        "affiliation": "Bar-Ilan University, Israel",
         "location_id": "emis-loc-0008",
         "co2e_kg": 4165.6
       },
@@ -6883,7 +6883,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7a30735e",
         "name": "Amalia Seigel",
-        "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science",
+        "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science, United States",
         "location_id": "emis-loc-0231",
         "co2e_kg": 3300.3
       },
@@ -6897,21 +6897,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e9df94ce",
         "name": "Amanda Badai",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-207e86d9",
         "name": "Amanda Ford",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0405",
         "co2e_kg": 587.0
       },
       {
         "id": "offset-a26231b0",
         "name": "Amanda Melendez-Perez",
-        "affiliation": "University of Puerto Rico at Mayaguez",
+        "affiliation": "University of Puerto Rico at Mayagüez, United States",
         "location_id": "emis-loc-0384",
         "co2e_kg": 3300.4
       },
@@ -6925,7 +6925,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0396d6cf",
         "name": "Amara Jabeen",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0156",
         "co2e_kg": 591.9
       },
@@ -6939,7 +6939,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3fb7ad37",
         "name": "Ambrocio Melvin Matias",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -6960,14 +6960,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7e3f1724",
         "name": "Amy Carmignani",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0417",
         "co2e_kg": 891.1
       },
       {
         "id": "offset-04914d1e",
         "name": "Ana Lilia Molina Hernandez",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0287",
         "co2e_kg": 2779.3
       },
@@ -6988,7 +6988,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f5dce278",
         "name": "Ana Yranzo Duque",
-        "affiliation": "Instituto de Zoologia y Ecologia Tropical",
+        "affiliation": "Instituto de Zoología y Ecología Tropical",
         "location_id": "emis-loc-0124",
         "co2e_kg": 3370.8
       },
@@ -7009,7 +7009,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-455eea17",
         "name": "Andia Chaves-Fonnegra",
-        "affiliation": "Florida Atlantic University",
+        "affiliation": "Florida Atlantic University, United States",
         "location_id": "emis-loc-0077",
         "co2e_kg": 3313.9
       },
@@ -7051,7 +7051,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c6fc10d2",
         "name": "Andressa Silva",
-        "affiliation": "Universidade Federal do Rio Grande do Norte",
+        "affiliation": "Universidade Federal do Rio Grande do Norte, Brazil",
         "location_id": "emis-loc-0291",
         "co2e_kg": 3653.9
       },
@@ -7065,7 +7065,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4e6fce91",
         "name": "Andrew Baker",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -7086,14 +7086,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7ba7a4fb",
         "name": "Anela Duenas",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-5a02413e",
         "name": "Angel Avedo",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -7128,21 +7128,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5fa572c6",
         "name": "Ankitha Manohar",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0345",
         "co2e_kg": 4623.6
       },
       {
         "id": "offset-abc133b1",
         "name": "Anna Berrettini",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-78ed6900",
         "name": "Anna C Vinton",
-        "affiliation": "University of Maine, Presque Isle; University of Southern California, Los Angeles",
+        "affiliation": "University Of Maine, Presque Isle; University of Southern California, Los Angeles, United States",
         "location_id": "emis-loc-0349",
         "co2e_kg": 3476.4
       },
@@ -7170,7 +7170,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8c5f4634",
         "name": "Anna Koivunen",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -7198,7 +7198,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-15a6ca6e",
         "name": "Annemarie Selle",
-        "affiliation": "University of Oldenburg",
+        "affiliation": "University of Oldenburg, Germany",
         "location_id": "emis-loc-0375",
         "co2e_kg": 4574.3
       },
@@ -7226,7 +7226,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-67d0b2e0",
         "name": "Anthony Bellantuono",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los Angeles, United States",
         "location_id": "emis-loc-0321",
         "co2e_kg": 2681.7
       },
@@ -7240,7 +7240,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-589cfd28",
         "name": "Antoni Badowski",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
@@ -7275,21 +7275,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-865dda4a",
         "name": "Aran Sofer",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0265",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-565166b7",
         "name": "Aranya Dhibar",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0401",
         "co2e_kg": 3003.4
       },
       {
         "id": "offset-a46f83e8",
         "name": "Ariel Pezner",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
@@ -7324,7 +7324,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8f456523",
         "name": "Arthur Loures Choucair Rodrigues de Oliveira",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
@@ -7338,14 +7338,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7ca5b5f3",
         "name": "Ashley Carreiro",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-829856f1",
         "name": "Ashley Hope Castro",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
@@ -7387,7 +7387,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d184e130",
         "name": "Atsuko Fukunaga",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
@@ -7422,35 +7422,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1f1aa197",
         "name": "Avery Coble",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-baa903fb",
         "name": "Ayaka Umeda Paul",
-        "affiliation": "University of Cambridge",
+        "affiliation": "University of Cambridge, United Kingdom",
         "location_id": "emis-loc-0327",
         "co2e_kg": 4670.9
       },
       {
         "id": "offset-9a84eaa1",
         "name": "Ayala Porat",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0265",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-db415286",
         "name": "Ayumi Maeda",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0409",
         "co2e_kg": 2255.6
       },
       {
         "id": "offset-3f6b30ae",
         "name": "Bailey Marquardt",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -7464,7 +7464,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cf9976e7",
         "name": "Bastian Bentlage",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
@@ -7478,7 +7478,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-72b19ace",
         "name": "Beatriz Corazza",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
@@ -7492,7 +7492,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8248fb5d",
         "name": "Ben Charo",
-        "affiliation": "University of Rhode Island",
+        "affiliation": "University of Rhode Island, United States",
         "location_id": "emis-loc-0386",
         "co2e_kg": 3684.5
       },
@@ -7506,21 +7506,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f0831e2c",
         "name": "Benjamin Farmer",
-        "affiliation": "Louisiana State University",
+        "affiliation": "Louisiana State University, United States",
         "location_id": "emis-loc-0153",
         "co2e_kg": 3153.2
       },
       {
         "id": "offset-ca002c03",
         "name": "Benjamin Glass",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0016",
         "co2e_kg": 3698.3
       },
       {
         "id": "offset-f03c6431",
         "name": "Benjamin Henley",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0356",
         "co2e_kg": 723.0
       },
@@ -7534,7 +7534,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bd17d570",
         "name": "Bernhard Riegl",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -7548,7 +7548,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-89d04ddb",
         "name": "Bess Ruff",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
@@ -7569,7 +7569,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-07a072c3",
         "name": "Bibi Renssen",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0237",
         "co2e_kg": 2674.0
       },
@@ -7583,7 +7583,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0a9606c8",
         "name": "Bing Lin",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
@@ -7597,7 +7597,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9840d269",
         "name": "Blake Ushijima",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0374",
         "co2e_kg": 3580.4
       },
@@ -7618,70 +7618,70 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-783c1200",
         "name": "Bradley Arrington",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-2a845af0",
         "name": "Bradley Weiler",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-ae66a523",
         "name": "Brady Estrada",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-59e663fc",
         "name": "Brandon Sosa",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-91a69357",
         "name": "Brett Taylor",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-b9b304ea",
         "name": "Brian Beck",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0184",
         "co2e_kg": 3363.9
       },
       {
         "id": "offset-dbdb23a4",
         "name": "Brian Stockwell",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0405",
         "co2e_kg": 587.0
       },
       {
         "id": "offset-21711972",
         "name": "Brian Zgliczynski",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0237",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-68cfc296",
         "name": "Brigitte Sommer",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-5051d4ab",
         "name": "Bronte Connolly",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
@@ -7730,7 +7730,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0b53d182",
         "name": "Caitlin Lloyd-Hall",
-        "affiliation": "University of Alberta",
+        "affiliation": "University of Alberta, Canada",
         "location_id": "emis-loc-0307",
         "co2e_kg": 3104.2
       },
@@ -7744,14 +7744,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c7c2964e",
         "name": "Caitlin Younis",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-bfd00ba7",
         "name": "Callie Stephenson",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -7772,14 +7772,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dec89087",
         "name": "Camila Kato",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-b8ff06cb",
         "name": "Camile Avelino",
-        "affiliation": "University of Derby",
+        "affiliation": "University of Derby, United Kingdom",
         "location_id": "emis-loc-0331",
         "co2e_kg": 4651.4
       },
@@ -7814,21 +7814,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fcd3d15d",
         "name": "Carlos Prada",
-        "affiliation": "University of Rhode Island",
+        "affiliation": "University of Rhode Island, United States",
         "location_id": "emis-loc-0386",
         "co2e_kg": 3684.5
       },
       {
         "id": "offset-5975f92f",
         "name": "Carlos Tramonte",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-4be98774",
         "name": "Carly E. Karrick",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0319",
         "co2e_kg": 2686.0
       },
@@ -7849,7 +7849,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-639fe7d6",
         "name": "Caroline Dennison",
-        "affiliation": "Rosenstiel School of Marine, Atmospheric and Earth Science",
+        "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science, United States",
         "location_id": "emis-loc-0230",
         "co2e_kg": 3300.3
       },
@@ -7863,7 +7863,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-94e7558b",
         "name": "Caroline Romo",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
@@ -7877,7 +7877,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7f354003",
         "name": "Carsten Grupstra",
-        "affiliation": "Florida Atlantic University",
+        "affiliation": "Florida Atlantic University, United States",
         "location_id": "emis-loc-0077",
         "co2e_kg": 3313.9
       },
@@ -7891,14 +7891,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-25080789",
         "name": "Casey Whalen",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-873fae9b",
         "name": "Cat Hauser",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0016",
         "co2e_kg": 3698.3
       },
@@ -7912,7 +7912,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-62de76f3",
         "name": "Catheline Y.M. Froehlich",
-        "affiliation": "University of Alabama",
+        "affiliation": "University of Alabama, United States",
         "location_id": "emis-loc-0305",
         "co2e_kg": 3277.3
       },
@@ -7926,7 +7926,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f65d82cb",
         "name": "Catherine Kim",
-        "affiliation": "Queensland University of Technology",
+        "affiliation": "Queensland University of Technology, Australia",
         "location_id": "emis-loc-0222",
         "co2e_kg": 629.2
       },
@@ -7940,7 +7940,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c5cf7f35",
         "name": "Catherine Lee Hing",
-        "affiliation": "Stanford University",
+        "affiliation": "Stanford University, United States",
         "location_id": "emis-loc-0255",
         "co2e_kg": 2708.2
       },
@@ -7954,7 +7954,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-343f9d2c",
         "name": "Catherine Mullenmeister",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0324",
         "co2e_kg": 2674.0
       },
@@ -7989,14 +7989,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4b8583f6",
         "name": "Celia Leto",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0173",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-7b4d47c2",
         "name": "Celine Luisa Campos",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -8017,21 +8017,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-01f89f32",
         "name": "Charernmee Chamchoy",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0223",
         "co2e_kg": 2445.1
       },
       {
         "id": "offset-862e3a76",
         "name": "Charles Birkeland",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-95d2a385",
         "name": "Charles Gongaware",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0374",
         "co2e_kg": 3580.4
       },
@@ -8045,7 +8045,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f7a06283",
         "name": "Charlotte Clay",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0345",
         "co2e_kg": 4623.6
       },
@@ -8059,7 +8059,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9ac1de58",
         "name": "Chatoolsingh Dawosing",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University Of Mauritius, Mauritius",
         "location_id": "emis-loc-0355",
         "co2e_kg": 2766.6
       },
@@ -8080,7 +8080,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2cb096f4",
         "name": "Cher Chow",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0151",
         "co2e_kg": 4641.4
       },
@@ -8122,14 +8122,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cb6a0277",
         "name": "Chloe Manley",
-        "affiliation": "Georgia Institute of Technology",
+        "affiliation": "Georgia Institute of Technology, United States",
         "location_id": "emis-loc-0085",
         "co2e_kg": 3326.5
       },
       {
         "id": "offset-04ba7b02",
         "name": "Chloé Pozas-Schacre",
-        "affiliation": "Universite de la Polynesie Francaise",
+        "affiliation": "Université de la Polynésie Française, French Polynesia",
         "location_id": "emis-loc-0297",
         "co2e_kg": 4781.9
       },
@@ -8150,21 +8150,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9002681e",
         "name": "Christina Hicks",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0151",
         "co2e_kg": 4641.4
       },
       {
         "id": "offset-65d8f55e",
         "name": "Christina Jayne",
-        "affiliation": "State of Hawai'i",
+        "affiliation": "State of Hawaiʻi, United States",
         "location_id": "emis-loc-0256",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-54f8b254",
         "name": "Christine Baran",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0402",
         "co2e_kg": 2047.7
       },
@@ -8178,14 +8178,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-11bc76ec",
         "name": "Christine Roper",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-233dfa07",
         "name": "Christopher Cooney",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
@@ -8206,7 +8206,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0c385c21",
         "name": "Christopher Grant",
-        "affiliation": "University of Alabama",
+        "affiliation": "University of Alabama, United States",
         "location_id": "emis-loc-0305",
         "co2e_kg": 3277.3
       },
@@ -8241,42 +8241,42 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f0e97205",
         "name": "Claire Ittleson",
-        "affiliation": "University of Bristol",
+        "affiliation": "University of Bristol, United Kingdom",
         "location_id": "emis-loc-0317",
         "co2e_kg": 4696.0
       },
       {
         "id": "offset-997dd325",
         "name": "Claire Moreland-Ochoa",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-7cd115a2",
         "name": "Clancy McIntyre",
-        "affiliation": "Pennsylvania State University",
+        "affiliation": "Pennsylvania State University, United States",
         "location_id": "emis-loc-0216",
         "co2e_kg": 3562.3
       },
       {
         "id": "offset-c97b7f91",
         "name": "Clara Diaz",
-        "affiliation": "University of Plymouth",
+        "affiliation": "University of Plymouth, United Kingdom",
         "location_id": "emis-loc-0381",
         "co2e_kg": 4696.9
       },
       {
         "id": "offset-77c67154",
         "name": "Clarissa Reboton",
-        "affiliation": "Silliman University",
+        "affiliation": "Silliman University, Philippines",
         "location_id": "emis-loc-0246",
         "co2e_kg": 1904.4
       },
       {
         "id": "offset-d9ca8814",
         "name": "Claudia Gibson",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
@@ -8297,14 +8297,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3465165d",
         "name": "Clelia Mula",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0417",
         "co2e_kg": 891.1
       },
       {
         "id": "offset-198d144c",
         "name": "Clemence Forin",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0032",
         "co2e_kg": 4770.9
       },
@@ -8318,35 +8318,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d35a6308",
         "name": "Cody Clements",
-        "affiliation": "Georgia Institute of Technology",
+        "affiliation": "Georgia Institute of Technology, United States",
         "location_id": "emis-loc-0085",
         "co2e_kg": 3326.5
       },
       {
         "id": "offset-644de7cd",
         "name": "Cole Sheeley",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-cc10e8eb",
         "name": "Colin Anthony",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0409",
         "co2e_kg": 2255.6
       },
       {
         "id": "offset-d95685f3",
         "name": "Colin Howe",
-        "affiliation": "Pennsylvania State University",
+        "affiliation": "Pennsylvania State University, United States",
         "location_id": "emis-loc-0216",
         "co2e_kg": 3562.3
       },
       {
         "id": "offset-a16d2a21",
         "name": "Colin Lock",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
@@ -8360,7 +8360,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-496ef3ad",
         "name": "Colleen Shortal",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0374",
         "co2e_kg": 3580.4
       },
@@ -8374,7 +8374,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e9b3c45c",
         "name": "Corin Schofield",
-        "affiliation": "University of Plymouth",
+        "affiliation": "University of Plymouth, United Kingdom",
         "location_id": "emis-loc-0381",
         "co2e_kg": 4696.9
       },
@@ -8388,7 +8388,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-798f1fd5",
         "name": "Corinne Pickering",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0237",
         "co2e_kg": 2674.0
       },
@@ -8402,14 +8402,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-662628ad",
         "name": "Courtney Klepac",
-        "affiliation": "Stanford University",
+        "affiliation": "Stanford University, United States",
         "location_id": "emis-loc-0255",
         "co2e_kg": 2708.2
       },
       {
         "id": "offset-c91163a4",
         "name": "Courtney Powell",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0405",
         "co2e_kg": 587.0
       },
@@ -8423,7 +8423,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-75c79abe",
         "name": "Crissa Ann Lilagan",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0001",
         "co2e_kg": 2262.7
       },
@@ -8479,7 +8479,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4317e9ac",
         "name": "Cynthia Silveira",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -8500,14 +8500,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-73b65472",
         "name": "Daisy Flores",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0401",
         "co2e_kg": 3003.4
       },
       {
         "id": "offset-8e4f64f0",
         "name": "Damien Carrasquet",
-        "affiliation": "Universite de la Polynesie Francaise",
+        "affiliation": "Université de la Polynésie Française, French Polynesia",
         "location_id": "emis-loc-0297",
         "co2e_kg": 4781.9
       },
@@ -8535,14 +8535,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bc839cbc",
         "name": "Danae Stephens",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-773a0206",
         "name": "Dane Wattle",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
@@ -8563,7 +8563,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-98eb3169",
         "name": "Daniel Wangpraseurt",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0237",
         "co2e_kg": 2674.0
       },
@@ -8584,14 +8584,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-78937b84",
         "name": "Danielle Jayewardene",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0184",
         "co2e_kg": 3363.9
       },
       {
         "id": "offset-57945a08",
         "name": "Danielle M. Barnas",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
@@ -8605,7 +8605,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e902014b",
         "name": "David Anderson",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
@@ -8619,7 +8619,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f4ae0bf5",
         "name": "David Baker",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0343",
         "co2e_kg": 4533.9
       },
@@ -8661,7 +8661,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2dd9fdc3",
         "name": "David Munoz-Maravilla",
-        "affiliation": "University of Puerto Rico - Mayaguez",
+        "affiliation": "University of Puerto Rico at Mayagüez, United States",
         "location_id": "emis-loc-0383",
         "co2e_kg": 3300.4
       },
@@ -8689,21 +8689,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2b43f9c2",
         "name": "Davide Seveso",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0364",
         "co2e_kg": 4716.9
       },
       {
         "id": "offset-2c1f070a",
         "name": "Dawn Kaufman",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-a57f21f0",
         "name": "Dayana Chadda-Harmer",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
@@ -8731,14 +8731,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-73933864",
         "name": "Deepeeka Kaullysing",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University Of Mauritius, Mauritius",
         "location_id": "emis-loc-0355",
         "co2e_kg": 2766.6
       },
       {
         "id": "offset-cf61bef7",
         "name": "Delaney Deinlein",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -8752,7 +8752,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3c215317",
         "name": "Dennis Stanley",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0417",
         "co2e_kg": 891.1
       },
@@ -8766,7 +8766,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2ddd087b",
         "name": "Denzyl Divinagracia",
-        "affiliation": "Silliman University",
+        "affiliation": "Silliman University, Philippines",
         "location_id": "emis-loc-0246",
         "co2e_kg": 1904.4
       },
@@ -8794,7 +8794,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-96f57851",
         "name": "Devavrat Bishwa",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0405",
         "co2e_kg": 587.0
       },
@@ -8815,7 +8815,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3a8bb1b7",
         "name": "Diana Beltran Rodriguez",
-        "affiliation": "University of Rhode Island",
+        "affiliation": "University of Rhode Island, United States",
         "location_id": "emis-loc-0386",
         "co2e_kg": 3684.5
       },
@@ -8829,21 +8829,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-801a00e1",
         "name": "Diana Morales-de-Anda",
-        "affiliation": "Cinvestav Merida",
+        "affiliation": "Cinvestav Mérida, Mexico",
         "location_id": "emis-loc-0037",
         "co2e_kg": 3027.3
       },
       {
         "id": "offset-9b6ae835",
         "name": "Diana Vergara",
-        "affiliation": "University of Michigan",
+        "affiliation": "University Of Michigan, United States",
         "location_id": "emis-loc-0361",
         "co2e_kg": 3453.8
       },
       {
         "id": "offset-abfcbfce",
         "name": "Diane Thompson",
-        "affiliation": "University of Arizona",
+        "affiliation": "University of Arizona, United States",
         "location_id": "emis-loc-0310",
         "co2e_kg": 2776.4
       },
@@ -8857,14 +8857,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6d6bbd28",
         "name": "Didier Zoccola",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0032",
         "co2e_kg": 4770.9
       },
       {
         "id": "offset-3fe07a76",
         "name": "Diego Lera-Lozano",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los Angeles, United States",
         "location_id": "emis-loc-0321",
         "co2e_kg": 2681.7
       },
@@ -8878,14 +8878,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cea5158d",
         "name": "Dione Swanson",
-        "affiliation": "University of Miami, CIMAS",
+        "affiliation": "University Of Miami, CIMAS, United States",
         "location_id": "emis-loc-0360",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-f023d07d",
         "name": "Dominique Gallery",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0173",
         "co2e_kg": 3300.4
       },
@@ -8899,7 +8899,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-14507cb5",
         "name": "Dorian Tsai",
-        "affiliation": "Queensland University of Technology",
+        "affiliation": "Queensland University of Technology, Australia",
         "location_id": "emis-loc-0222",
         "co2e_kg": 629.2
       },
@@ -8920,7 +8920,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-73e82de1",
         "name": "Dustin Kemp",
-        "affiliation": "University of Alabama at Birmingham",
+        "affiliation": "University of Alabama at Birmingham, United States",
         "location_id": "emis-loc-0306",
         "co2e_kg": 3277.3
       },
@@ -8941,7 +8941,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9689c88f",
         "name": "Eduardo Islas-Dominguez",
-        "affiliation": "Goethe-Universitat",
+        "affiliation": "Goethe-Universität, Germany",
         "location_id": "emis-loc-0089",
         "co2e_kg": 4661.2
       },
@@ -8955,7 +8955,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7211e197",
         "name": "Eileen Nalley",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -8997,14 +8997,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0e45e05f",
         "name": "Elise Keister",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0173",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-d552b3da",
         "name": "Elizabeth Boville",
-        "affiliation": "Pennsylvania State University",
+        "affiliation": "Pennsylvania State University, United States",
         "location_id": "emis-loc-0216",
         "co2e_kg": 3562.3
       },
@@ -9025,7 +9025,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5e9f4888",
         "name": "Elizabeth Gomez-Requilme",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0402",
         "co2e_kg": 2047.7
       },
@@ -9046,35 +9046,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e85e0ec5",
         "name": "Elizabeth Weatherup",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0374",
         "co2e_kg": 3580.4
       },
       {
         "id": "offset-2967aad5",
         "name": "Elizabeth Wu",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0004",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-2e2a6de3",
         "name": "Ellen Regina Skelton",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-417f5d77",
         "name": "Elly Perez",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-9c4aa9d3",
         "name": "Ellyn Darke",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0374",
         "co2e_kg": 3580.4
       },
@@ -9095,7 +9095,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-721added",
         "name": "Emily Croasdale",
-        "affiliation": "University of Lisbon",
+        "affiliation": "University of Lisbon, Portugal",
         "location_id": "emis-loc-0348",
         "co2e_kg": 5005.7
       },
@@ -9109,14 +9109,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-de6bbcf3",
         "name": "Emily Hall",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0173",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-ca3ce647",
         "name": "Emily Jackson",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -9130,7 +9130,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-082caf03",
         "name": "Emily Rutkowski",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
@@ -9144,28 +9144,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-96e4d2e6",
         "name": "Emma Camp",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-5c5af6a9",
         "name": "Emma Garcia",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-a2544512",
         "name": "Emma Miller",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-fe2ba870",
         "name": "Emma Pontes",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -9200,14 +9200,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7697533f",
         "name": "Enora Carnac",
-        "affiliation": "University of Liege",
+        "affiliation": "University of Liège, Belgium",
         "location_id": "emis-loc-0347",
         "co2e_kg": 4663.9
       },
       {
         "id": "offset-4d7192ff",
         "name": "Eric Béraud",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0032",
         "co2e_kg": 4770.9
       },
@@ -9242,7 +9242,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e16308cc",
         "name": "Erica Towle",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0184",
         "co2e_kg": 3363.9
       },
@@ -9263,14 +9263,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fb146477",
         "name": "Erik Franklin",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-92bb386e",
         "name": "Erik Krieger",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0032",
         "co2e_kg": 4770.9
       },
@@ -9284,7 +9284,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b3c6e490",
         "name": "Erin Cain",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -9298,21 +9298,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b01c502c",
         "name": "Erin Hollander",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-81bbac20",
         "name": "Erin Lausterer",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-900e0c27",
         "name": "Erin Papke",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0374",
         "co2e_kg": 3580.4
       },
@@ -9333,21 +9333,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4014996d",
         "name": "Erinn Muller",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0173",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-3554cbb3",
         "name": "Ernest Raphael Arceo",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-eb8b3728",
         "name": "Eseta Drova",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0405",
         "co2e_kg": 587.0
       },
@@ -9361,7 +9361,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-31026374",
         "name": "Esmeralda Perez-Cervantes",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0287",
         "co2e_kg": 2779.3
       },
@@ -9389,7 +9389,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-46967418",
         "name": "Evan Heit",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0356",
         "co2e_kg": 723.0
       },
@@ -9403,7 +9403,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b4e2396e",
         "name": "Evan Lawrence",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0319",
         "co2e_kg": 2686.0
       },
@@ -9438,7 +9438,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d84372a3",
         "name": "Fabrizio Lepiz Conejo",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -9452,14 +9452,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8d8acf3e",
         "name": "Farah Oyhenart",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-9a85380c",
         "name": "Farai Divan Patel",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0319",
         "co2e_kg": 2686.0
       },
@@ -9473,7 +9473,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ca53c12c",
         "name": "Faye Diederiks",
-        "affiliation": "Queensland University of Technology",
+        "affiliation": "Queensland University of Technology, Australia",
         "location_id": "emis-loc-0222",
         "co2e_kg": 629.2
       },
@@ -9487,14 +9487,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-716084fe",
         "name": "Federica Siena",
-        "affiliation": "University of Milano-bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0364",
         "co2e_kg": 4716.9
       },
       {
         "id": "offset-c07809d7",
         "name": "Felipe Mattos",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0001",
         "co2e_kg": 2262.7
       },
@@ -9529,7 +9529,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1d9b4018",
         "name": "Fiona Chong",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0345",
         "co2e_kg": 4623.6
       },
@@ -9550,7 +9550,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b39385ba",
         "name": "Francesca Cohn",
-        "affiliation": "Stanford University",
+        "affiliation": "Stanford University, United States",
         "location_id": "emis-loc-0255",
         "co2e_kg": 2708.2
       },
@@ -9564,7 +9564,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c23f7d75",
         "name": "François Seneca",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0032",
         "co2e_kg": 4770.9
       },
@@ -9578,7 +9578,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ef09686f",
         "name": "Freya Goetz",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0394",
         "co2e_kg": 2681.7
       },
@@ -9592,21 +9592,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-819a01e6",
         "name": "Gabriela Cristina Mitsuhashi",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-41acb0f8",
         "name": "Gabriela Gutierrez",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0287",
         "co2e_kg": 2779.3
       },
       {
         "id": "offset-ffd0e724",
         "name": "Gaby Carpenter",
-        "affiliation": "Louisiana State University",
+        "affiliation": "Louisiana State University, United States",
         "location_id": "emis-loc-0153",
         "co2e_kg": 3153.2
       },
@@ -9620,14 +9620,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b7354b45",
         "name": "Gal Eyal",
-        "affiliation": "Bar-Ilan University",
+        "affiliation": "Bar-Ilan University, Israel",
         "location_id": "emis-loc-0008",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-66363c3c",
         "name": "Gang Liu",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0184",
         "co2e_kg": 3363.9
       },
@@ -9641,7 +9641,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-40e45c21",
         "name": "Gaurav Shimpi",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0409",
         "co2e_kg": 2255.6
       },
@@ -9683,14 +9683,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-75a0e165",
         "name": "Georgina Musson",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0345",
         "co2e_kg": 4623.6
       },
       {
         "id": "offset-57705c22",
         "name": "Georgina Ramirez-ortiz",
-        "affiliation": "Universidad Nacional Autonoma De Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0287",
         "co2e_kg": 2779.3
       },
@@ -9711,14 +9711,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5266e2a0",
         "name": "Gillian Coleman",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-01568487",
         "name": "Gina Badlowski",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -9732,7 +9732,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bdf757d8",
         "name": "Gino Valentino Limmon",
-        "affiliation": "University of Pattimura",
+        "affiliation": "University of Pattimura, Indonesia",
         "location_id": "emis-loc-0378",
         "co2e_kg": 1536.7
       },
@@ -9760,7 +9760,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-841ddc0f",
         "name": "Giulia Braz",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
@@ -9781,14 +9781,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0d4f2a95",
         "name": "Gonzalo Pérez-Rosales",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0105",
         "co2e_kg": 2348.4
       },
       {
         "id": "offset-044ed093",
         "name": "Gouri Anil",
-        "affiliation": "Louisiana State University",
+        "affiliation": "Louisiana State University, United States",
         "location_id": "emis-loc-0153",
         "co2e_kg": 3153.2
       },
@@ -9809,7 +9809,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-46e68298",
         "name": "Graham Hinchliffe",
-        "affiliation": "Auckland University of Technology",
+        "affiliation": "Auckland University of Technology, New Zealand",
         "location_id": "emis-loc-0005",
         "co2e_kg": 0.0
       },
@@ -9830,7 +9830,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bdddcf87",
         "name": "Greta Gaiani",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
@@ -9844,7 +9844,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-63e282c0",
         "name": "Guan-Yan Chen",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -9865,7 +9865,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8d45099d",
         "name": "Guohan Yang",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0345",
         "co2e_kg": 4623.6
       },
@@ -9942,21 +9942,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-96890526",
         "name": "Hannah Kish",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-7581b180",
         "name": "Hannah Lyford",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-59e5f4bb",
         "name": "Hannah S. Rempel",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0401",
         "co2e_kg": 3003.4
       },
@@ -9970,21 +9970,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4b8bd853",
         "name": "Hannah Whitaker",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0417",
         "co2e_kg": 891.1
       },
       {
         "id": "offset-adf12069",
         "name": "Hans Joshua Farinas",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-c8396df0",
         "name": "Haoya Tong",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0343",
         "co2e_kg": 4533.9
       },
@@ -9998,7 +9998,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dca24111",
         "name": "Harmony Martell",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -10026,7 +10026,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-77b302ad",
         "name": "Hayden Acors",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -10068,7 +10068,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-14e063f6",
         "name": "Heidi Hirsh",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -10082,21 +10082,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-888f1f69",
         "name": "Helen Yan",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-8d3f4c78",
         "name": "Hellen Nanlohy",
-        "affiliation": "Pattimura University",
+        "affiliation": "University of Pattimura, Indonesia",
         "location_id": "emis-loc-0213",
         "co2e_kg": 1536.7
       },
       {
         "id": "offset-6a11a86a",
         "name": "Henrique Bravo",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0176",
         "co2e_kg": 2145.3
       },
@@ -10117,7 +10117,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-76687225",
         "name": "Hillary Smith",
-        "affiliation": "University of New South Wales",
+        "affiliation": "University of New South Wales, Australia",
         "location_id": "emis-loc-0371",
         "co2e_kg": 591.9
       },
@@ -10159,7 +10159,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ae3daddb",
         "name": "Hollie Putnam",
-        "affiliation": "University of Rhode Island",
+        "affiliation": "University of Rhode Island, United States",
         "location_id": "emis-loc-0386",
         "co2e_kg": 3684.5
       },
@@ -10201,14 +10201,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b2835d5d",
         "name": "Héloïse Maniquet",
-        "affiliation": "University of Liege",
+        "affiliation": "University of Liège, Belgium",
         "location_id": "emis-loc-0347",
         "co2e_kg": 4663.9
       },
       {
         "id": "offset-b99bab49",
         "name": "Hélène Meehl",
-        "affiliation": "Hawaii Division of Aquatic Resources",
+        "affiliation": "Hawaiʻi Division of Aquatic Resources, United States",
         "location_id": "emis-loc-0099",
         "co2e_kg": 3274.8
       },
@@ -10222,7 +10222,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ff730f5e",
         "name": "Ian Johnson",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -10243,7 +10243,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a17f160d",
         "name": "Iliana Baums",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity, Germany",
         "location_id": "emis-loc-0101",
         "co2e_kg": 4574.3
       },
@@ -10264,21 +10264,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d7b2ed16",
         "name": "Immy Ashley",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-36e34890",
         "name": "Indiana Riley",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-b0296bfc",
         "name": "Ioan Fuller",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0004",
         "co2e_kg": 2780.4
       },
@@ -10299,28 +10299,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d10b8ac1",
         "name": "Isabel Marques Silva",
-        "affiliation": "Universidade Lurio",
+        "affiliation": "Universidade Lúrio, Mozambique",
         "location_id": "emis-loc-0293",
         "co2e_kg": 3170.6
       },
       {
         "id": "offset-56ae95a3",
         "name": "Isabella Deary",
-        "affiliation": "Queensland University of Technology",
+        "affiliation": "Queensland University of Technology, Australia",
         "location_id": "emis-loc-0222",
         "co2e_kg": 629.2
       },
       {
         "id": "offset-a1df1a20",
         "name": "Isabella Ghizzi",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0364",
         "co2e_kg": 4716.9
       },
       {
         "id": "offset-be157d8a",
         "name": "Isabella Marrable",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
@@ -10334,7 +10334,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3cc10560",
         "name": "Isabelle Basden",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 3437.5
       },
@@ -10348,21 +10348,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-603b48ab",
         "name": "Isabelle Osuna",
-        "affiliation": "Georgia Institute of Technology",
+        "affiliation": "Georgia Institute of Technology, United States",
         "location_id": "emis-loc-0085",
         "co2e_kg": 3326.5
       },
       {
         "id": "offset-486054c9",
         "name": "Isla Turcke",
-        "affiliation": "University of Alberta",
+        "affiliation": "University of Alberta, Canada",
         "location_id": "emis-loc-0307",
         "co2e_kg": 3104.2
       },
       {
         "id": "offset-766f329b",
         "name": "Itai Grisaru",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0265",
         "co2e_kg": 4165.6
       },
@@ -10376,7 +10376,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-63cf30e6",
         "name": "J.J.  Adolfo Tortolero-Langarica",
-        "affiliation": "Instituto Tecnologico de Bahia de Banderas",
+        "affiliation": "Instituto Tecnológico de Bahía de Banderas, Mexico",
         "location_id": "emis-loc-0127",
         "co2e_kg": 2687.4
       },
@@ -10390,21 +10390,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b98cab7c",
         "name": "Jackson Ferber",
-        "affiliation": "Louisiana State University",
+        "affiliation": "Louisiana State University, United States",
         "location_id": "emis-loc-0153",
         "co2e_kg": 3153.2
       },
       {
         "id": "offset-d4156d30",
         "name": "Jackson Shields",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-afe39f48",
         "name": "Jacob Allgeier",
-        "affiliation": "University of Michigan",
+        "affiliation": "University Of Michigan, United States",
         "location_id": "emis-loc-0361",
         "co2e_kg": 3453.8
       },
@@ -10425,7 +10425,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-32945ef2",
         "name": "Jacopo Gobbato",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0364",
         "co2e_kg": 4716.9
       },
@@ -10481,7 +10481,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6c0e04eb",
         "name": "James Fifer",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0324",
         "co2e_kg": 2674.0
       },
@@ -10530,14 +10530,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7c7d06be",
         "name": "Jamie McDevitt-Irwin",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-9996d04d",
         "name": "Jamison Gove",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0184",
         "co2e_kg": 3363.9
       },
@@ -10551,7 +10551,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9873e15a",
         "name": "Jan Theodore Miranda",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0402",
         "co2e_kg": 2047.7
       },
@@ -10579,7 +10579,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-28449750",
         "name": "Jann-Fredryck Matias",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -10600,14 +10600,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-52a8c723",
         "name": "Jarrod Little",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-1ad9cf37",
         "name": "Jasha Dehm",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0405",
         "co2e_kg": 587.0
       },
@@ -10621,7 +10621,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3e8a2ec1",
         "name": "Jason Spadaro",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0173",
         "co2e_kg": 3300.4
       },
@@ -10684,14 +10684,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-880d3071",
         "name": "Jeffry Jeve",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-e650bc61",
         "name": "Jen Matthews",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
@@ -10705,14 +10705,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-25ce1898",
         "name": "Jenna Dilworth",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0394",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-355dbee0",
         "name": "Jennifer Caselle",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
@@ -10733,7 +10733,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b9dd3f66",
         "name": "Jenny Wang",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
@@ -10747,7 +10747,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8beae450",
         "name": "Jeric Diocton",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0402",
         "co2e_kg": 2047.7
       },
@@ -10761,21 +10761,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dbfd2b2e",
         "name": "Jessica Eri Fernandez",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-0c92a7cd",
         "name": "Jessica Glazner",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-911d3fc0",
         "name": "Jessica Hodge",
-        "affiliation": "University of Bristol",
+        "affiliation": "University of Bristol, United Kingdom",
         "location_id": "emis-loc-0317",
         "co2e_kg": 4696.0
       },
@@ -10796,14 +10796,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-418249c3",
         "name": "Jhon Reimer Fajardo",
-        "affiliation": "Silliman University",
+        "affiliation": "Silliman University, Philippines",
         "location_id": "emis-loc-0246",
         "co2e_kg": 1904.4
       },
       {
         "id": "offset-307c5667",
         "name": "Ji-yen Cheng",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0001",
         "co2e_kg": 2262.7
       },
@@ -10831,7 +10831,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-04cd6176",
         "name": "Jimena Paredes-De la Vega",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0343",
         "co2e_kg": 4533.9
       },
@@ -10852,14 +10852,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f11ca475",
         "name": "Joana F. Couceiro",
-        "affiliation": "University of Lisbon",
+        "affiliation": "University of Lisbon, Portugal",
         "location_id": "emis-loc-0348",
         "co2e_kg": 5005.7
       },
       {
         "id": "offset-b6f9a0dd",
         "name": "Joana Figueiredo",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -10880,7 +10880,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c501f569",
         "name": "Joaquin Rodrigo Garza-Perez",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0287",
         "co2e_kg": 2779.3
       },
@@ -10908,7 +10908,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-caa79791",
         "name": "Joelle Mattos",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -10922,14 +10922,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7743e5cb",
         "name": "John Burns",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo, United States",
         "location_id": "emis-loc-0339",
         "co2e_kg": 1800.6
       },
       {
         "id": "offset-fdd13660",
         "name": "John McManus",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -10950,21 +10950,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-62f4955c",
         "name": "Johnenn Manalang",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-16d1fd78",
         "name": "Jokim Kitolelei",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0405",
         "co2e_kg": 587.0
       },
       {
         "id": "offset-d943de41",
         "name": "Jonas Dreesmann",
-        "affiliation": "Bergische Universitat Wuppertal",
+        "affiliation": "Bergische Universität Wuppertal, Germany",
         "location_id": "emis-loc-0010",
         "co2e_kg": 4641.1
       },
@@ -10978,14 +10978,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-35f1a272",
         "name": "Jonathan Martinez",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-61ef9874",
         "name": "Jonathan Whitney",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0184",
         "co2e_kg": 3363.9
       },
@@ -11006,42 +11006,42 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cf23613f",
         "name": "Jordan Pierce",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0324",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-bffb008c",
         "name": "Jordan Ruiz",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0374",
         "co2e_kg": 3580.4
       },
       {
         "id": "offset-b945bda1",
         "name": "Jordan Sims",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0319",
         "co2e_kg": 2686.0
       },
       {
         "id": "offset-3d60ec10",
         "name": "Joseane Marques",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity, Germany",
         "location_id": "emis-loc-0101",
         "co2e_kg": 4574.3
       },
       {
         "id": "offset-8685bb4f",
         "name": "Joseph Brennan",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0343",
         "co2e_kg": 4533.9
       },
       {
         "id": "offset-9453532b",
         "name": "Joseph Townsend",
-        "affiliation": "University of Puerto Rico - Mayaguez",
+        "affiliation": "University of Puerto Rico at Mayagüez, United States",
         "location_id": "emis-loc-0383",
         "co2e_kg": 3300.4
       },
@@ -11055,35 +11055,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b673bb26",
         "name": "Josh Hardin",
-        "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science",
+        "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science, United States",
         "location_id": "emis-loc-0231",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-0a921f19",
         "name": "Joshua Bennett-Williams",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0105",
         "co2e_kg": 2348.4
       },
       {
         "id": "offset-e5c80eda",
         "name": "Joshua Cinner",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-e63f22a3",
         "name": "Joshua Feingold",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-57d4bc8e",
         "name": "Joshua Voss",
-        "affiliation": "Florida Atlantic University",
+        "affiliation": "Florida Atlantic University, United States",
         "location_id": "emis-loc-0077",
         "co2e_kg": 3313.9
       },
@@ -11097,7 +11097,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-20fde64a",
         "name": "José Bastos",
-        "affiliation": "Universidade Federal do Rio Grande do Norte",
+        "affiliation": "Universidade Federal do Rio Grande do Norte, Brazil",
         "location_id": "emis-loc-0291",
         "co2e_kg": 3653.9
       },
@@ -11118,14 +11118,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5794eb41",
         "name": "Juan Esquivel-muelbert",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0156",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-9e41922a",
         "name": "Juan Pablo D'Olivo Cordero",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0287",
         "co2e_kg": 2779.3
       },
@@ -11139,14 +11139,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-37c6b451",
         "name": "Julia Briand",
-        "affiliation": "University of Alberta",
+        "affiliation": "University of Alberta, Canada",
         "location_id": "emis-loc-0307",
         "co2e_kg": 3104.2
       },
       {
         "id": "offset-4056ec09",
         "name": "Julia Cole",
-        "affiliation": "University of Michigan",
+        "affiliation": "University Of Michigan, United States",
         "location_id": "emis-loc-0361",
         "co2e_kg": 3453.8
       },
@@ -11160,14 +11160,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8cf69683",
         "name": "Julia Terra Torres",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-bfa16a29",
         "name": "Julian Christopher Maypa",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -11188,7 +11188,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-68ae81f6",
         "name": "Julianna Renzi",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
@@ -11223,28 +11223,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-96a20afa",
         "name": "Juntong Hu",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0356",
         "co2e_kg": 723.0
       },
       {
         "id": "offset-be6e7277",
         "name": "Justin Berg",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-8d50efd3",
         "name": "Kaho Tisthammer",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-56a94601",
         "name": "Kaiku Kaholoaa",
-        "affiliation": "Stanford University",
+        "affiliation": "Stanford University, United States",
         "location_id": "emis-loc-0255",
         "co2e_kg": 2708.2
       },
@@ -11258,21 +11258,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b661ddef",
         "name": "Kailey Pascoe",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0004",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-4bcb66fb",
         "name": "Kainalu Steward",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-652d1827",
         "name": "Kamaka Frasco",
-        "affiliation": "University of Hawaii at Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo, United States",
         "location_id": "emis-loc-0342",
         "co2e_kg": 1800.6
       },
@@ -11286,7 +11286,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e32839ab",
         "name": "Kara Rising",
-        "affiliation": "University of Derby",
+        "affiliation": "University of Derby, United Kingdom",
         "location_id": "emis-loc-0331",
         "co2e_kg": 4651.4
       },
@@ -11300,28 +11300,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b41b8ba7",
         "name": "Karen Neely",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-2eedc02e",
         "name": "Karim Primov",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0401",
         "co2e_kg": 3003.4
       },
       {
         "id": "offset-556e7caf",
         "name": "Kate Fetkenhour",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0004",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-58ca0518",
         "name": "Kate Heffner",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -11342,7 +11342,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cb36ceb2",
         "name": "Katharina Bauda",
-        "affiliation": "Instituto Tecnologico de Bahia de Banderas",
+        "affiliation": "Instituto Tecnológico de Bahía de Banderas, Mexico",
         "location_id": "emis-loc-0127",
         "co2e_kg": 2687.4
       },
@@ -11377,7 +11377,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d696e82f",
         "name": "Kathia Jaramillo",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -11405,14 +11405,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-62491c2f",
         "name": "Kathryn Cobleigh",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-2823d850",
         "name": "Kathryn Scafidi",
-        "affiliation": "University of Otago",
+        "affiliation": "University of Otago, New Zealand",
         "location_id": "emis-loc-0376",
         "co2e_kg": 468.3
       },
@@ -11426,14 +11426,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e517f367",
         "name": "Katie Cramer",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0004",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-f558daa8",
         "name": "Katie Lubarsky",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0237",
         "co2e_kg": 2674.0
       },
@@ -11454,7 +11454,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6d194f7d",
         "name": "Katy Rylance",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0345",
         "co2e_kg": 4623.6
       },
@@ -11468,7 +11468,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-faba6835",
         "name": "Kay Watty",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity, Germany",
         "location_id": "emis-loc-0101",
         "co2e_kg": 4574.3
       },
@@ -11496,28 +11496,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-47767bf7",
         "name": "Keanu Rochette-yu Tsuen",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-2092b608",
         "name": "Keiko Wilkins",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-8ffea8a4",
         "name": "Kekuʻiapōiula Keliipuleole",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-1c8995f5",
         "name": "Kelly Inagaki",
-        "affiliation": "Universidade Federal do Rio Grande do Norte",
+        "affiliation": "Universidade Federal do Rio Grande do Norte, Brazil",
         "location_id": "emis-loc-0291",
         "co2e_kg": 3653.9
       },
@@ -11559,7 +11559,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b2e90ae5",
         "name": "Kendall Chancellor",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0324",
         "co2e_kg": 2674.0
       },
@@ -11573,14 +11573,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-394e327f",
         "name": "Keno Hsueh",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-59898ea4",
         "name": "Kenzie Cooke",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -11594,14 +11594,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-33f71425",
         "name": "Keolohilani Lopes Jr",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-27d961c4",
         "name": "Kerri Dobson",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0374",
         "co2e_kg": 3580.4
       },
@@ -11622,28 +11622,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8d5e3126",
         "name": "Keyla Plichon",
-        "affiliation": "Universite Cote d'azur",
+        "affiliation": "Université Côte d'azur, France",
         "location_id": "emis-loc-0295",
         "co2e_kg": 4779.0
       },
       {
         "id": "offset-66769b60",
         "name": "Khatija Alliji",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0151",
         "co2e_kg": 4641.4
       },
       {
         "id": "offset-f7854352",
         "name": "Killian Ver Hoeye",
-        "affiliation": "University of Mons, Belgium",
+        "affiliation": "University of Mons",
         "location_id": "emis-loc-0367",
         "co2e_kg": 4677.6
       },
       {
         "id": "offset-0c7a7a08",
         "name": "Kim de Luca",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity, Germany",
         "location_id": "emis-loc-0101",
         "co2e_kg": 4574.3
       },
@@ -11664,21 +11664,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-48e60a30",
         "name": "Kira Brereton",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0417",
         "co2e_kg": 891.1
       },
       {
         "id": "offset-951f266d",
         "name": "Kira Hughes",
-        "affiliation": "State of Hawai'i",
+        "affiliation": "State of Hawaiʻi, United States",
         "location_id": "emis-loc-0256",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-bd0753bd",
         "name": "Kirsty Frith",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0345",
         "co2e_kg": 4623.6
       },
@@ -11720,21 +11720,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3b2c3960",
         "name": "Krista Laforest",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0374",
         "co2e_kg": 3580.4
       },
       {
         "id": "offset-77693baf",
         "name": "Kristen Reed",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-d117db3a",
         "name": "Kristin Grimes",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
@@ -11748,56 +11748,56 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7d00e7e8",
         "name": "Krystle-blue Pahl",
-        "affiliation": "University of Alabama",
+        "affiliation": "University of Alabama, United States",
         "location_id": "emis-loc-0305",
         "co2e_kg": 3277.3
       },
       {
         "id": "offset-6c9626be",
         "name": "Kyle John Alan Zawada",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0156",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-a98f101e",
         "name": "Kyle Morgan",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0176",
         "co2e_kg": 2145.3
       },
       {
         "id": "offset-3c4ba888",
         "name": "Kyle Pisano",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-60998c5d",
         "name": "Lachan Roth",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0265",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-9c58825d",
         "name": "Laetitia Hédouin",
-        "affiliation": "CRIOBE, Reunion",
+        "affiliation": "CRIOBE, Réunion",
         "location_id": "emis-loc-0054",
         "co2e_kg": 4781.9
       },
       {
         "id": "offset-9c9b0509",
         "name": "Laongdow Jungrak",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0223",
         "co2e_kg": 2445.1
       },
       {
         "id": "offset-5245bc44",
         "name": "Lara Virginia Birkart",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0287",
         "co2e_kg": 2779.3
       },
@@ -11825,7 +11825,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d69a42b2",
         "name": "Laura Fiegel",
-        "affiliation": "University of Oldenburg",
+        "affiliation": "University of Oldenburg, Germany",
         "location_id": "emis-loc-0375",
         "co2e_kg": 4574.3
       },
@@ -11860,21 +11860,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a4e85ad9",
         "name": "Laura-Li Jeannot",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0151",
         "co2e_kg": 4641.4
       },
       {
         "id": "offset-743d6347",
         "name": "Laurel Diaz",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los Angeles, United States",
         "location_id": "emis-loc-0321",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-f077861a",
         "name": "Lauren Enright",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
@@ -11888,14 +11888,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4ea56d68",
         "name": "Lauren Olinger",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-06986ac5",
         "name": "Lauren Speare",
-        "affiliation": "Georgia Institute of Technology",
+        "affiliation": "Georgia Institute of Technology, United States",
         "location_id": "emis-loc-0085",
         "co2e_kg": 3326.5
       },
@@ -11916,14 +11916,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b6401c18",
         "name": "Laurie Raymundo",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-65f9f412",
         "name": "Layla Iijima",
-        "affiliation": "Universite de Bretagne Occidentale",
+        "affiliation": "Université de Bretagne Occidentale, France",
         "location_id": "emis-loc-0296",
         "co2e_kg": 2744.4
       },
@@ -11944,7 +11944,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5be2b460",
         "name": "Leah Barkai",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -11965,7 +11965,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8adab41f",
         "name": "Leon Tran",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -11979,14 +11979,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-83245db4",
         "name": "Les Kaufman",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0016",
         "co2e_kg": 3698.3
       },
       {
         "id": "offset-ac2674e1",
         "name": "Letícia Pinheiro",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
@@ -12014,7 +12014,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2b34cb18",
         "name": "Liam Abrams",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -12028,14 +12028,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-07ff8f85",
         "name": "Liat Biniuri",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0265",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-961f9d4d",
         "name": "Liav Meoded Stern",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
@@ -12049,21 +12049,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-13a7223f",
         "name": "Lily Borema",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-feb1cc99",
         "name": "Linda Eggertsen",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-41ba6659",
         "name": "Lindsay Dade",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
@@ -12084,7 +12084,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dc4662f8",
         "name": "Lisa Goberdhan",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0151",
         "co2e_kg": 4641.4
       },
@@ -12098,7 +12098,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-900d592b",
         "name": "Lisa McManus",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -12126,7 +12126,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0c2fc3c0",
         "name": "Liza Roger",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0004",
         "co2e_kg": 2780.4
       },
@@ -12140,7 +12140,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a40d8f71",
         "name": "Lorenzo Massimo Toniolo",
-        "affiliation": "University of Milano - Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0363",
         "co2e_kg": 4716.9
       },
@@ -12175,7 +12175,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c8c11cdd",
         "name": "Lucas Koh",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0176",
         "co2e_kg": 2145.3
       },
@@ -12196,7 +12196,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-40cd1241",
         "name": "Lucia Hu",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0105",
         "co2e_kg": 2348.4
       },
@@ -12238,28 +12238,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-92bd6c86",
         "name": "Luisa Fontoura",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0156",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-d3331621",
         "name": "Luisa Meister",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0343",
         "co2e_kg": 4533.9
       },
       {
         "id": "offset-5e9040cf",
         "name": "Luiza P. Campos",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-0db8eabb",
         "name": "Luiza Waechter",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -12273,14 +12273,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7ada0449",
         "name": "Luna Mayura da Fonseca Bauer",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-a3c7ad3f",
         "name": "Lyndsey Holland",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 209.9
       },
@@ -12315,7 +12315,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ef8923ff",
         "name": "Ma. Chrischelle Bullecer",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -12336,49 +12336,49 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ee0ecc6b",
         "name": "Mackenzie Kawahara",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-9922670a",
         "name": "Madchen Gebhard",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-5997f03e",
         "name": "Maddison Shiels",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-a2199cc9",
         "name": "Madeleine JH van Oppen",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0356",
         "co2e_kg": 723.0
       },
       {
         "id": "offset-628e0dc0",
         "name": "Madeleine Ward",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-066ad5da",
         "name": "Madelief Schelvis",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-a304349a",
         "name": "Madeline Berger",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -12392,14 +12392,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c78c6b49",
         "name": "Madison Androne",
-        "affiliation": "Division of Aquatic Resources - Hawai'i",
+        "affiliation": "Hawaiʻi Division of Aquatic Resources, United States",
         "location_id": "emis-loc-0061",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-0b9b5fcc",
         "name": "Madison Weise",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
@@ -12427,7 +12427,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cf2a0ef6",
         "name": "Maile Coberly",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 3274.8
       },
@@ -12441,7 +12441,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-13cb6377",
         "name": "Makamas Sutthacheep",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0223",
         "co2e_kg": 2445.1
       },
@@ -12490,14 +12490,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9b377c39",
         "name": "Manuel Ploner",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-d3817ba5",
         "name": "Manuel Poretti",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0356",
         "co2e_kg": 723.0
       },
@@ -12511,7 +12511,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8d7d4354",
         "name": "Marcela Prado-Zapata",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0324",
         "co2e_kg": 2674.0
       },
@@ -12532,14 +12532,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7b684ee2",
         "name": "Marco Contardi",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0364",
         "co2e_kg": 4716.9
       },
       {
         "id": "offset-d0489881",
         "name": "Marcos Barbeitos",
-        "affiliation": "Federal University of Parana",
+        "affiliation": "Federal University of Paraná, Brazil",
         "location_id": "emis-loc-0071",
         "co2e_kg": 2979.6
       },
@@ -12567,7 +12567,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-63a24f48",
         "name": "Margarita Brandt",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 2931.1
       },
@@ -12588,35 +12588,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dd296337",
         "name": "Maria Andersen",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-f29b141f",
         "name": "Maria Beger",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0345",
         "co2e_kg": 4623.6
       },
       {
         "id": "offset-303a2111",
         "name": "Maria Byrne",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-c8eca990",
         "name": "Maria Carolina Pacheco",
-        "affiliation": "Universidade Federal do Rio Grande do Norte",
+        "affiliation": "Universidade Federal do Rio Grande do Norte, Brazil",
         "location_id": "emis-loc-0291",
         "co2e_kg": 3653.9
       },
       {
         "id": "offset-bd31ef79",
         "name": "Maria Dornelas",
-        "affiliation": "University of Lisbon",
+        "affiliation": "University of Lisbon, Portugal",
         "location_id": "emis-loc-0348",
         "co2e_kg": 5005.7
       },
@@ -12637,7 +12637,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a92e1dd7",
         "name": "Maria Jordana Olano",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -12658,14 +12658,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9c364d4f",
         "name": "Maria Vanessa Baria-Rodriguez",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-85318778",
         "name": "Mariana Acipreste",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
@@ -12679,14 +12679,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-84a636de",
         "name": "Mariana Marcondes",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-5c077170",
         "name": "Mariana Rocha De Souza",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
@@ -12700,14 +12700,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-06db478b",
         "name": "Marianna Coppola",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-7dc324ec",
         "name": "Marichelle Barolo",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -12721,7 +12721,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b373151c",
         "name": "Marilyn Brandt",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
@@ -12735,7 +12735,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-284a1c29",
         "name": "Marina Garmendia",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -12763,7 +12763,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cc3f61d9",
         "name": "Marisa Agarwal",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0237",
         "co2e_kg": 2674.0
       },
@@ -12798,7 +12798,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7374e24e",
         "name": "Mark Meekan",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 891.1
       },
@@ -12812,14 +12812,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6914c02f",
         "name": "Markus Rummel",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0105",
         "co2e_kg": 2348.4
       },
       {
         "id": "offset-954d3644",
         "name": "Marlena Joppien",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0176",
         "co2e_kg": 2145.3
       },
@@ -12854,7 +12854,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2e51b940",
         "name": "Mary Donovan",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -12868,7 +12868,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5d8582bb",
         "name": "Mary Williams",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -12896,7 +12896,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4649109e",
         "name": "Masumi Kamata",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0409",
         "co2e_kg": 2255.6
       },
@@ -12917,14 +12917,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9d6df02b",
         "name": "Mathilde Godefroid",
-        "affiliation": "Universite Libre de Bruxelles",
+        "affiliation": "Université Libre de Bruxelles, Belgium",
         "location_id": "emis-loc-0298",
         "co2e_kg": 4666.6
       },
       {
         "id": "offset-aee81c97",
         "name": "Matias Gomez Corrales",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -12938,14 +12938,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9e1fe88b",
         "name": "Matilde Marques",
-        "affiliation": "University of Lisbon",
+        "affiliation": "University of Lisbon, Portugal",
         "location_id": "emis-loc-0348",
         "co2e_kg": 5005.7
       },
       {
         "id": "offset-92002860",
         "name": "Matlyn Ua",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo, United States",
         "location_id": "emis-loc-0339",
         "co2e_kg": 1800.6
       },
@@ -12973,14 +12973,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8fb3afd0",
         "name": "Matthew Clements",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-2f86883f",
         "name": "Matthew Doherty",
-        "affiliation": "University of Plymouth",
+        "affiliation": "University of Plymouth, United Kingdom",
         "location_id": "emis-loc-0381",
         "co2e_kg": 4696.9
       },
@@ -13008,7 +13008,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e0417f82",
         "name": "Matthieu Leray",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0343",
         "co2e_kg": 4533.9
       },
@@ -13050,28 +13050,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3f6368c1",
         "name": "Maya Becker",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-fb3da42d",
         "name": "Maya Gomez",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0394",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-2a6498c1",
         "name": "Maya Otsu",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-d859058b",
         "name": "Maya Powell",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -13085,28 +13085,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f8c5dc4a",
         "name": "McClaran Shirley",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0324",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-2b22f41a",
         "name": "Meenatchi Ramanan",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0345",
         "co2e_kg": 4623.6
       },
       {
         "id": "offset-e884e5fa",
         "name": "Meg Van Horn",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-6d26a33a",
         "name": "Megan Carney",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo, United States",
         "location_id": "emis-loc-0339",
         "co2e_kg": 1800.6
       },
@@ -13120,7 +13120,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-27bf57fc",
         "name": "Mehdi Bouhaddou",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los Angeles, United States",
         "location_id": "emis-loc-0321",
         "co2e_kg": 2681.7
       },
@@ -13148,14 +13148,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7c7498a0",
         "name": "Melina Ferreira Martello",
-        "affiliation": "Universidade Federal do Rio Grande do Norte",
+        "affiliation": "Universidade Federal do Rio Grande do Norte, Brazil",
         "location_id": "emis-loc-0291",
         "co2e_kg": 3653.9
       },
       {
         "id": "offset-0ea04dd6",
         "name": "Melissa Allen (Sante)",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0173",
         "co2e_kg": 3300.4
       },
@@ -13169,14 +13169,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e796e89d",
         "name": "Melman Neill",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0401",
         "co2e_kg": 3003.4
       },
       {
         "id": "offset-92b2055e",
         "name": "Mengjin Zhang",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0343",
         "co2e_kg": 4533.9
       },
@@ -13190,7 +13190,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-283a7021",
         "name": "Mia Vallee",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -13211,7 +13211,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-48ab409c",
         "name": "Michael Gibson",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
@@ -13239,28 +13239,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-12542e94",
         "name": "Michael Studivan",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-ff682348",
         "name": "Michalis Mihalitsis",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-6e43a4f1",
         "name": "Michelle Amario",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-bbb181c6",
         "name": "Michelle Ballesteros",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -13281,7 +13281,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e41b8e8d",
         "name": "Michelle Mair",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -13295,21 +13295,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5ea2dac6",
         "name": "Miguel Mies",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-fee6f147",
         "name": "Mika Doron",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0265",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-5faace45",
         "name": "Mikayla Deigan",
-        "affiliation": "University of Arizona",
+        "affiliation": "University of Arizona, United States",
         "location_id": "emis-loc-0310",
         "co2e_kg": 2776.4
       },
@@ -13323,14 +13323,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ef3b9be4",
         "name": "Mikhail Matz",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0401",
         "co2e_kg": 3003.4
       },
       {
         "id": "offset-8a2008cf",
         "name": "Mikito Murakami",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0409",
         "co2e_kg": 2255.6
       },
@@ -13372,7 +13372,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-245e1d66",
         "name": "Mitchell Smelser",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0324",
         "co2e_kg": 2674.0
       },
@@ -13386,14 +13386,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5c918728",
         "name": "Miya Isabelle McGlone",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0402",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-49eba241",
         "name": "Miyah Brooks",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -13414,7 +13414,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e5117ecc",
         "name": "Molly Blyth",
-        "affiliation": "University of Plymouth",
+        "affiliation": "University of Plymouth, United Kingdom",
         "location_id": "emis-loc-0381",
         "co2e_kg": 4696.9
       },
@@ -13428,7 +13428,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-92e02747",
         "name": "Molly Mae Baker",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0417",
         "co2e_kg": 891.1
       },
@@ -13442,14 +13442,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0935d4b7",
         "name": "Monica Medina",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los Angeles, United States",
         "location_id": "emis-loc-0321",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-9f346981",
         "name": "Morgan Bennett-Smith",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0016",
         "co2e_kg": 3698.3
       },
@@ -13484,7 +13484,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1868085c",
         "name": "Moriah Bass",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
@@ -13498,14 +13498,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0da7d366",
         "name": "Moshe Perez",
-        "affiliation": "Bar-Ilan University",
+        "affiliation": "Bar-Ilan University, Israel",
         "location_id": "emis-loc-0008",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-fe7c0c41",
         "name": "Mu-Han Chen",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0016",
         "co2e_kg": 3698.3
       },
@@ -13547,7 +13547,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b7c6a408",
         "name": "Na'ama Rose Kochman",
-        "affiliation": "University of New South Wales",
+        "affiliation": "University of New South Wales, Australia",
         "location_id": "emis-loc-0371",
         "co2e_kg": 591.9
       },
@@ -13610,28 +13610,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-eb82da5c",
         "name": "Natalia Perez",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-53925a3c",
         "name": "Natalia Rivas-Escobar",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-e4065301",
         "name": "Natalie Goeler-Slough",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-d4920b08",
         "name": "Natalie Rosser",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0417",
         "co2e_kg": 891.1
       },
@@ -13673,7 +13673,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-368c9876",
         "name": "Nathan Crowe",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0374",
         "co2e_kg": 3580.4
       },
@@ -13715,7 +13715,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-84301143",
         "name": "Nicholas Durgadeen",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
@@ -13736,7 +13736,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7aa0a7fd",
         "name": "Nicholas Jones",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -13757,21 +13757,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d1ac3c82",
         "name": "Nick Graham",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0151",
         "co2e_kg": 4641.4
       },
       {
         "id": "offset-9559d726",
         "name": "Nick Mcmahon",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0173",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-c6695cbd",
         "name": "Nicola Foster",
-        "affiliation": "University of Plymouth",
+        "affiliation": "University of Plymouth, United Kingdom",
         "location_id": "emis-loc-0381",
         "co2e_kg": 4696.9
       },
@@ -13799,7 +13799,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9c87ee50",
         "name": "Nicolas Rivas",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -13813,14 +13813,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-752d4709",
         "name": "Nicole Dilernia",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-bdf1d99e",
         "name": "Nicole K Young",
-        "affiliation": "Florida Atlantic University",
+        "affiliation": "Florida Atlantic University, United States",
         "location_id": "emis-loc-0077",
         "co2e_kg": 3313.9
       },
@@ -13834,7 +13834,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3a3318b9",
         "name": "Nicole Pedersen",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0237",
         "co2e_kg": 2674.0
       },
@@ -13848,21 +13848,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-97617894",
         "name": "Nicole Schroeter",
-        "affiliation": "Oldenburg University",
+        "affiliation": "University of Oldenburg, Germany",
         "location_id": "emis-loc-0209",
         "co2e_kg": 4574.3
       },
       {
         "id": "offset-0c7e818e",
         "name": "Nikki Fogarty",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0374",
         "co2e_kg": 3580.4
       },
       {
         "id": "offset-60ec43f5",
         "name": "Nikko Galanto",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
@@ -13876,28 +13876,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-044fd64c",
         "name": "Nils Rädecker",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity, Germany",
         "location_id": "emis-loc-0101",
         "co2e_kg": 4574.3
       },
       {
         "id": "offset-63c5c456",
         "name": "Nina Bean",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-e8cb0a8d",
         "name": "Nina Schiettekatte",
-        "affiliation": "University of Lisbon",
+        "affiliation": "University of Lisbon, Portugal",
         "location_id": "emis-loc-0348",
         "co2e_kg": 5005.7
       },
       {
         "id": "offset-222ba1b6",
         "name": "Nina Yasuda",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0409",
         "co2e_kg": 2255.6
       },
@@ -13925,14 +13925,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-20ace2d9",
         "name": "Noa Ben Ami",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0265",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-1f86f1bc",
         "name": "Noa Simon-blecher",
-        "affiliation": "Bar-Ilan University",
+        "affiliation": "Bar-Ilan University, Israel",
         "location_id": "emis-loc-0008",
         "co2e_kg": 4165.6
       },
@@ -13960,7 +13960,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7e229511",
         "name": "Nour Alhoda Akel",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0265",
         "co2e_kg": 4165.6
       },
@@ -13981,7 +13981,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1ca5379b",
         "name": "Nurfaida Salam Dumato",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -13995,7 +13995,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2c22bddf",
         "name": "Nyssa Silbiger",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -14016,7 +14016,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9a43b9b0",
         "name": "Océane Boulais",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0237",
         "co2e_kg": 2674.0
       },
@@ -14051,14 +14051,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-62d022df",
         "name": "Olivia Isbell",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-2d83bda2",
         "name": "Omri Bronstein",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0265",
         "co2e_kg": 4165.6
       },
@@ -14079,7 +14079,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0888c364",
         "name": "Oren Levy",
-        "affiliation": "Bar-Ilan University",
+        "affiliation": "Bar-Ilan University, Israel",
         "location_id": "emis-loc-0008",
         "co2e_kg": 4165.6
       },
@@ -14093,7 +14093,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-370fd3e9",
         "name": "Orlando Timmerman",
-        "affiliation": "University of Cambridge",
+        "affiliation": "University of Cambridge, United Kingdom",
         "location_id": "emis-loc-0327",
         "co2e_kg": 4670.9
       },
@@ -14114,28 +14114,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4c9f31d5",
         "name": "Paige Duffin",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0394",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-b51e4cdf",
         "name": "Paige Sawyers",
-        "affiliation": "University of New South Wales",
+        "affiliation": "University of New South Wales, Australia",
         "location_id": "emis-loc-0371",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-e948a3f1",
         "name": "Paige Strudwick",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-704f3fe3",
         "name": "Pallavi Seburn",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University Of Mauritius, Mauritius",
         "location_id": "emis-loc-0355",
         "co2e_kg": 2766.6
       },
@@ -14149,21 +14149,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-de2993a0",
         "name": "Patrick Buerger",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0156",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-c2bd1d73",
         "name": "Patrick Idank Idank",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-438daea2",
         "name": "Patrick Kiel",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -14191,7 +14191,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fc641673",
         "name": "Paula E. Pabon Quintero",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -14219,7 +14219,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-989aa3a6",
         "name": "Peter Houk",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
@@ -14310,14 +14310,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a36eed1f",
         "name": "Prandito Simanjuntak",
-        "affiliation": "Pattimura University",
+        "affiliation": "University of Pattimura, Indonesia",
         "location_id": "emis-loc-0213",
         "co2e_kg": 1536.7
       },
       {
         "id": "offset-2ce36f17",
         "name": "Prerana Gawde",
-        "affiliation": "Stanford University",
+        "affiliation": "Stanford University, United States",
         "location_id": "emis-loc-0255",
         "co2e_kg": 2708.2
       },
@@ -14338,14 +14338,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-60a027a8",
         "name": "Rachel Carlson",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0319",
         "co2e_kg": 2686.0
       },
       {
         "id": "offset-b731369a",
         "name": "Rachel Ionata",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -14380,7 +14380,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-61337ac9",
         "name": "Raffi Isah",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -14401,7 +14401,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-92e828b3",
         "name": "Ranjeet Bhagooli",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University Of Mauritius, Mauritius",
         "location_id": "emis-loc-0355",
         "co2e_kg": 2766.6
       },
@@ -14415,7 +14415,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9ee04be0",
         "name": "Rasheeda Alexander",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0184",
         "co2e_kg": 3363.9
       },
@@ -14429,14 +14429,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-37102aa2",
         "name": "Raymond Banister",
-        "affiliation": "University of Alabama",
+        "affiliation": "University of Alabama, United States",
         "location_id": "emis-loc-0305",
         "co2e_kg": 3277.3
       },
       {
         "id": "offset-dfd8c718",
         "name": "Rayna Mcclintock",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -14450,7 +14450,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8f9ac062",
         "name": "Reagan Sharkey",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -14464,28 +14464,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cec980b1",
         "name": "Rebecca Lacy",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-2d433968",
         "name": "Rebecca Loy",
-        "affiliation": "University of Bristol",
+        "affiliation": "University of Bristol, United Kingdom",
         "location_id": "emis-loc-0317",
         "co2e_kg": 4696.0
       },
       {
         "id": "offset-c1c43918",
         "name": "Rebecca Vega Thurber",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-165a8f5e",
         "name": "Rebecca Wenker",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 3363.9
       },
@@ -14499,7 +14499,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8f5b9c29",
         "name": "Remy Oddenyo",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0156",
         "co2e_kg": 591.9
       },
@@ -14541,7 +14541,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d81891bf",
         "name": "Rhea Mae Luciano",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -14583,7 +14583,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f60f32a1",
         "name": "Riovie Ramos",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0176",
         "co2e_kg": 2145.3
       },
@@ -14625,49 +14625,49 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-40cb2dda",
         "name": "Robert Richmond",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0338",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-c31500ca",
         "name": "Robert Spekis",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-67b1cbf9",
         "name": "Robert Streit",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0356",
         "co2e_kg": 723.0
       },
       {
         "id": "offset-4da57960",
         "name": "Robert Tomasetti",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-c519e5fb",
         "name": "Roberta Martin",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0004",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-e44c2b07",
         "name": "Robin Hartley",
-        "affiliation": "University of Otago",
+        "affiliation": "University of Otago, New Zealand",
         "location_id": "emis-loc-0376",
         "co2e_kg": 468.3
       },
       {
         "id": "offset-f21e7644",
         "name": "Robin Smith",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 2780.4
       },
@@ -14709,21 +14709,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1cd94a9f",
         "name": "Ronen Liberman",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-6b126bed",
         "name": "Rosie Rallings",
-        "affiliation": "University of Bristol",
+        "affiliation": "University of Bristol, United Kingdom",
         "location_id": "emis-loc-0317",
         "co2e_kg": 4696.0
       },
       {
         "id": "offset-02fb5f91",
         "name": "Rowan Martindale",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0401",
         "co2e_kg": 3003.4
       },
@@ -14744,7 +14744,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-907d4e06",
         "name": "Ruiqi Li",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0394",
         "co2e_kg": 2681.7
       },
@@ -14758,7 +14758,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0cc83272",
         "name": "Ryan Carl De Juan",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -14786,14 +14786,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2dbe00dc",
         "name": "Saborni Chowdhury",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0004",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-785671e2",
         "name": "Sadie Cwikiel",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
@@ -14807,7 +14807,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bce35b22",
         "name": "Sai-Kit Yeung",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0105",
         "co2e_kg": 2348.4
       },
@@ -14821,21 +14821,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a079e54b",
         "name": "Sam King Fung YIU",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0343",
         "co2e_kg": 4533.9
       },
       {
         "id": "offset-a07c2559",
         "name": "Samantha Gillis",
-        "affiliation": "Auckland University of Technology",
+        "affiliation": "Auckland University of Technology, New Zealand",
         "location_id": "emis-loc-0005",
         "co2e_kg": 0.0
       },
       {
         "id": "offset-c511632f",
         "name": "Samantha King",
-        "affiliation": "University of Arizona",
+        "affiliation": "University of Arizona, United States",
         "location_id": "emis-loc-0310",
         "co2e_kg": 2776.4
       },
@@ -14849,7 +14849,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-871e0e29",
         "name": "Samantha Shedd",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 1808.8
       },
@@ -14884,7 +14884,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-087de804",
         "name": "Sanna Eriksson",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
@@ -14905,14 +14905,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f2ce510c",
         "name": "Sara Swaminathan",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 3722.6
       },
       {
         "id": "offset-6057d4cd",
         "name": "Sara Williams",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0173",
         "co2e_kg": 3300.4
       },
@@ -14926,21 +14926,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4961fe30",
         "name": "Sarah Leinbach",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-1250ed80",
         "name": "Sarah Martin",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0345",
         "co2e_kg": 4623.6
       },
       {
         "id": "offset-f6067c4d",
         "name": "Sarah O'Connor",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0184",
         "co2e_kg": 3363.9
       },
@@ -14968,14 +14968,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d2fd4b5f",
         "name": "Sarah W. Davies",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0016",
         "co2e_kg": 3698.3
       },
       {
         "id": "offset-3af1fd33",
         "name": "Sarina Bao",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0409",
         "co2e_kg": 2255.6
       },
@@ -14989,14 +14989,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-474d8a8c",
         "name": "Savanna R. Saunders",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-8e0e490e",
         "name": "Scarlett Raine",
-        "affiliation": "Queensland University of Technology",
+        "affiliation": "Queensland University of Technology, Australia",
         "location_id": "emis-loc-0222",
         "co2e_kg": 629.2
       },
@@ -15010,21 +15010,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-49d25c1a",
         "name": "Scott Miller",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-38c847d7",
         "name": "Sean Ben-Shaprut",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0265",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-c99f5143",
         "name": "Sean Bensadon",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0417",
         "co2e_kg": 891.1
       },
@@ -15045,7 +15045,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f6280212",
         "name": "Sebastian Metz",
-        "affiliation": "University of Derby",
+        "affiliation": "University of Derby, United Kingdom",
         "location_id": "emis-loc-0331",
         "co2e_kg": 4651.4
       },
@@ -15073,7 +15073,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-360486a6",
         "name": "Serafin Iii Geson",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -15122,7 +15122,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-78a67bab",
         "name": "Shaman Patel",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0176",
         "co2e_kg": 2145.3
       },
@@ -15178,21 +15178,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9db51e7f",
         "name": "Shawna Foo",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-3a77ef51",
         "name": "Shay Almagor",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0265",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-bb0bea68",
         "name": "Shay Viehman",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0184",
         "co2e_kg": 3363.9
       },
@@ -15220,7 +15220,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cb1d609a",
         "name": "Shelby Gantt",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0016",
         "co2e_kg": 3698.3
       },
@@ -15262,7 +15262,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-77214b0c",
         "name": "Shouraseni Roy",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0357",
         "co2e_kg": 3306.8
       },
@@ -15276,21 +15276,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-792d3099",
         "name": "Shumpei Maruyama",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0319",
         "co2e_kg": 2686.0
       },
       {
         "id": "offset-0549707a",
         "name": "Sibelle O'donnell",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0325",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-27f55c04",
         "name": "Silvana Guzman",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -15304,7 +15304,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4cbea0d8",
         "name": "Sittiporn Pengsakun",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0223",
         "co2e_kg": 2445.1
       },
@@ -15325,21 +15325,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4ee29212",
         "name": "Somok Banerjee",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0004",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-54e70534",
         "name": "Sonora Meiling",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-99baac23",
         "name": "Sophia Diane Gaton",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0402",
         "co2e_kg": 2047.7
       },
@@ -15367,7 +15367,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-377221e7",
         "name": "Sophia Zummo",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0237",
         "co2e_kg": 2674.0
       },
@@ -15402,7 +15402,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4e621a0c",
         "name": "Spencer Parr",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
@@ -15437,7 +15437,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b0fa2c7c",
         "name": "Stephanie Green",
-        "affiliation": "University of Alberta",
+        "affiliation": "University of Alberta, Canada",
         "location_id": "emis-loc-0307",
         "co2e_kg": 3104.2
       },
@@ -15451,7 +15451,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-be241e7f",
         "name": "Stephanie Reynaud",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0032",
         "co2e_kg": 4770.9
       },
@@ -15472,7 +15472,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-97facc8c",
         "name": "Stephen Swearer",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0417",
         "co2e_kg": 891.1
       },
@@ -15493,7 +15493,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cca73e65",
         "name": "Stuart Sandin",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0237",
         "co2e_kg": 2674.0
       },
@@ -15521,7 +15521,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ddb41cc7",
         "name": "Supisara Pipithkul",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0409",
         "co2e_kg": 2255.6
       },
@@ -15549,7 +15549,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1449c0c9",
         "name": "Susie Mclaren",
-        "affiliation": "University of Cambridge",
+        "affiliation": "University of Cambridge, United Kingdom",
         "location_id": "emis-loc-0327",
         "co2e_kg": 4670.9
       },
@@ -15584,7 +15584,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ecb8260f",
         "name": "Sébastien Leveque",
-        "affiliation": "Umea University",
+        "affiliation": "Umeå University, Sweden",
         "location_id": "emis-loc-0280",
         "co2e_kg": 4231.2
       },
@@ -15668,7 +15668,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-86ce51e8",
         "name": "Taran McNelly",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0173",
         "co2e_kg": 3300.4
       },
@@ -15696,21 +15696,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bea836b8",
         "name": "Taylor Walker",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0319",
         "co2e_kg": 2686.0
       },
       {
         "id": "offset-cac56a0e",
         "name": "Teresa Baptista Nobre",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0417",
         "co2e_kg": 891.1
       },
       {
         "id": "offset-a1bfe2b6",
         "name": "Teresa Bednarek",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0417",
         "co2e_kg": 891.1
       },
@@ -15724,14 +15724,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1b815d93",
         "name": "Thalia Hernandez Trillo",
-        "affiliation": "Universidad Autonoma de Baja California Sur",
+        "affiliation": "Universidad Autónoma de Baja California Sur, Mexico",
         "location_id": "emis-loc-0282",
         "co2e_kg": 2639.2
       },
       {
         "id": "offset-fdbf1d35",
         "name": "Thamasak Yeemin",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0223",
         "co2e_kg": 2445.1
       },
@@ -15759,7 +15759,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9652d50c",
         "name": "Thomas Johnstone",
-        "affiliation": "Otago University",
+        "affiliation": "University of Otago, New Zealand",
         "location_id": "emis-loc-0211",
         "co2e_kg": 468.3
       },
@@ -15773,14 +15773,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4cb06974",
         "name": "Thomas Oliver",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0184",
         "co2e_kg": 3363.9
       },
       {
         "id": "offset-c1fe55bf",
         "name": "Thomas Quello",
-        "affiliation": "Florida Atlantic University",
+        "affiliation": "Florida Atlantic University, United States",
         "location_id": "emis-loc-0077",
         "co2e_kg": 3313.9
       },
@@ -15801,14 +15801,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-75f6706d",
         "name": "Timothy King",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0105",
         "co2e_kg": 2348.4
       },
       {
         "id": "offset-32e6b6eb",
         "name": "Tina Keller-Costa",
-        "affiliation": "Instituto Superior Tecnico",
+        "affiliation": "Instituto Superior Técnico, Portugal",
         "location_id": "emis-loc-0126",
         "co2e_kg": 5005.7
       },
@@ -15829,7 +15829,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-00942be9",
         "name": "Todd LaJeunesse",
-        "affiliation": "Pennsylvania State University",
+        "affiliation": "Pennsylvania State University, United States",
         "location_id": "emis-loc-0216",
         "co2e_kg": 3562.3
       },
@@ -15843,14 +15843,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-589b7640",
         "name": "Tom Moir",
-        "affiliation": "University of New South Wales",
+        "affiliation": "University of New South Wales, Australia",
         "location_id": "emis-loc-0371",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-e4e49f81",
         "name": "Tom Schils",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
@@ -15885,21 +15885,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f6c0fdda",
         "name": "Triona Barker",
-        "affiliation": "University of Derby",
+        "affiliation": "University of Derby, United Kingdom",
         "location_id": "emis-loc-0331",
         "co2e_kg": 4651.4
       },
       {
         "id": "offset-c5c7a6d6",
         "name": "Tristan Buckell",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-b6b5e138",
         "name": "Tsai-Hsuan Tony Hsu",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
@@ -15941,21 +15941,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6b159336",
         "name": "Tyler Smith",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0406",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-c5b57a17",
         "name": "Tzu-Hao Lin",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0001",
         "co2e_kg": 2262.7
       },
       {
         "id": "offset-da48090d",
         "name": "Ulamila Matairakula - Kotoisuva",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0405",
         "co2e_kg": 587.0
       },
@@ -15969,7 +15969,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-891620cb",
         "name": "Valentina Bautista",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -16018,7 +16018,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3cce2536",
         "name": "Vic Lorence Madariaga",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0403",
         "co2e_kg": 2047.7
       },
@@ -16039,14 +16039,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-95658ab4",
         "name": "Victor Manuel Pinon Gonzlez",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0001",
         "co2e_kg": 2262.7
       },
       {
         "id": "offset-17c4ec9a",
         "name": "Vid Petrovic",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0324",
         "co2e_kg": 2674.0
       },
@@ -16074,7 +16074,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a14862a6",
         "name": "Vinzenz Hofferek",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0356",
         "co2e_kg": 723.0
       },
@@ -16095,7 +16095,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-29b754c5",
         "name": "Vittoria Calabretta",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0364",
         "co2e_kg": 4716.9
       },
@@ -16109,14 +16109,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-55e83012",
         "name": "Vivian Li",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los Angeles, United States",
         "location_id": "emis-loc-0321",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-7373980d",
         "name": "Viviana Brambilla",
-        "affiliation": "University of Lisbon",
+        "affiliation": "University of Lisbon, Portugal",
         "location_id": "emis-loc-0348",
         "co2e_kg": 5005.7
       },
@@ -16151,7 +16151,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-265ec725",
         "name": "W. Ryan James",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -16172,7 +16172,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-122f0d51",
         "name": "Wanlaya Klinthong",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0223",
         "co2e_kg": 2445.1
       },
@@ -16200,14 +16200,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4db09ca3",
         "name": "Wesley Sparagon",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0237",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-274a44c5",
         "name": "Whitney Schwab",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
@@ -16221,7 +16221,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3e5e1445",
         "name": "Will Figueira",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2674.0
       },
@@ -16242,7 +16242,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-16bd90b7",
         "name": "William Barriera",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0081",
         "co2e_kg": 3300.3
       },
@@ -16263,28 +16263,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ba6c2b4b",
         "name": "Wing Yan Chan",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0356",
         "co2e_kg": 723.0
       },
       {
         "id": "offset-839a711e",
         "name": "Wiphawan Aunkhongthong",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0223",
         "co2e_kg": 2445.1
       },
       {
         "id": "offset-a83a8cd8",
         "name": "Wyatt Million",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0398",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-ab69bdbe",
         "name": "Ya-Yi Huang",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0001",
         "co2e_kg": 2262.7
       },
@@ -16326,7 +16326,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3040f4d3",
         "name": "Yohan Louis",
-        "affiliation": "University of Milan-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0362",
         "co2e_kg": 4716.9
       },
@@ -16340,14 +16340,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f9d3a491",
         "name": "Yossi Loya",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0265",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-527bab32",
         "name": "Yu-De Pei",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0105",
         "co2e_kg": 2348.4
       },
@@ -16361,7 +16361,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-723cbf6b",
         "name": "Yuk Kwan Wong",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0105",
         "co2e_kg": 2348.4
       },
@@ -16382,7 +16382,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-76ba4d11",
         "name": "Yun Scholten",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0176",
         "co2e_kg": 2145.3
       },
@@ -16431,14 +16431,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b884ec86",
         "name": "Zach Niedermaier",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0201",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-26030b62",
         "name": "Zach Quinlan",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0340",
         "co2e_kg": 1808.8
       },
@@ -16452,7 +16452,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a309f871",
         "name": "Zahidah Afrin",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0405",
         "co2e_kg": 587.0
       },
@@ -16473,21 +16473,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ac245ccb",
         "name": "Zhongyue Wan",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0343",
         "co2e_kg": 4533.9
       },
       {
         "id": "offset-0b3ab561",
         "name": "Zoe Ariellius",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0336",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-a1b4521e",
         "name": "Zoe Dellaert",
-        "affiliation": "University of Rhode Island",
+        "affiliation": "University of Rhode Island, United States",
         "location_id": "emis-loc-0386",
         "co2e_kg": 3684.5
       },
@@ -16565,7 +16565,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0357",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami",
         "lat": 25.7169568,
         "lon": -80.2798198,
         "speaker_count": 24,
@@ -16649,7 +16649,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0340",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa",
         "lat": 21.2998224,
         "lon": -157.8182521,
         "speaker_count": 28,
@@ -16691,7 +16691,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0390",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo",
         "lat": -23.561048,
         "lon": -46.725226,
         "speaker_count": 16,
@@ -16718,7 +16718,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0054",
-        "affiliation": "CRIOBE, Reunion",
+        "affiliation": "CRIOBE, Réunion",
         "lat": -17.51906,
         "lon": -149.849702,
         "speaker_count": 9,
@@ -16801,7 +16801,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0403",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman",
         "lat": 14.6538783,
         "lon": 121.0684573,
         "speaker_count": 18,
@@ -17474,7 +17474,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0017",
-        "affiliation": "Bergische Universitat Wuppertal",
+        "affiliation": "Bergische Universität Wuppertal",
         "lat": 51.256505,
         "lon": 7.164153,
         "speaker_count": 1,
@@ -17940,7 +17940,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0051",
-        "affiliation": "Cinvestav Merida",
+        "affiliation": "Cinvestav Mérida",
         "lat": 21.021872,
         "lon": -89.626851,
         "speaker_count": 1,
@@ -18323,7 +18323,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0079",
-        "affiliation": "CRIOBE, Reunion",
+        "affiliation": "CRIOBE, Réunion",
         "lat": -17.51906,
         "lon": -149.849702,
         "speaker_count": 10,
@@ -18430,7 +18430,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0087",
-        "affiliation": "Department of Environment and Natural Resources - Philippines Philippines",
+        "affiliation": "Department of Environment and Natural Resources - Philippines",
         "lat": 12.750349,
         "lon": 122.73121,
         "speaker_count": 1,
@@ -18498,7 +18498,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0092",
-        "affiliation": "Division of Aquatic Resources - Hawai'i",
+        "affiliation": "Hawaiʻi Division of Aquatic Resources",
         "lat": 21.3055433,
         "lon": -157.8558282,
         "speaker_count": 1,
@@ -18635,7 +18635,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0102",
-        "affiliation": "ENTROPIE, Reunion",
+        "affiliation": "ENTROPIE, Réunion",
         "lat": 48.155125,
         "lon": -3.799268,
         "speaker_count": 1,
@@ -18662,7 +18662,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0104",
-        "affiliation": "Faculty of Engineering - University of Porto",
+        "affiliation": "University of Porto",
         "lat": 41.178622253392895,
         "lon": -8.595858641207045,
         "speaker_count": 1,
@@ -18676,7 +18676,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0105",
-        "affiliation": "Federal University of Parana",
+        "affiliation": "Federal University of Paraná",
         "lat": -26.196282,
         "lon": -52.689964,
         "speaker_count": 1,
@@ -18896,7 +18896,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0121",
-        "affiliation": "Fundacion Dominicana de Estudios Marinos",
+        "affiliation": "Fundación Dominicana de Estudios Marinos",
         "lat": 19.097403,
         "lon": -70.302803,
         "speaker_count": 1,
@@ -18990,7 +18990,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0128",
-        "affiliation": "Goethe-Universitat",
+        "affiliation": "Goethe-Universität",
         "lat": 48.529715,
         "lon": 9.057581,
         "speaker_count": 1,
@@ -19155,7 +19155,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0140",
-        "affiliation": "Hawai'i Institute of Marine Biology",
+        "affiliation": "Hawaiʻi Institute of Marine Biology",
         "lat": 21.4325581,
         "lon": -157.7880442,
         "speaker_count": 2,
@@ -19183,7 +19183,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0142",
-        "affiliation": "Hawaii Division of Aquatic Resources",
+        "affiliation": "Hawaiʻi Division of Aquatic Resources",
         "lat": 19.593802,
         "lon": -155.42837,
         "speaker_count": 1,
@@ -19210,7 +19210,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0144",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaiʻi Institute of Marine Biology",
         "lat": 21.4325581,
         "lon": -157.7880442,
         "speaker_count": 6,
@@ -19280,7 +19280,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0149",
-        "affiliation": "Hoala Kealakekua Nui, Inc.",
+        "affiliation": "Hoʻāla Kealakekua Nui, Inc.",
         "lat": 19.5181493,
         "lon": -155.9206778,
         "speaker_count": 1,
@@ -19444,7 +19444,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0161",
-        "affiliation": "Institut de recherche pour le Developpement",
+        "affiliation": "Institut de Recherche pour le Developpement",
         "lat": -12.094179,
         "lon": -77.015213,
         "speaker_count": 3,
@@ -19583,7 +19583,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0171",
-        "affiliation": "Instituto de Zoologia y Ecologia Tropical",
+        "affiliation": "Instituto de Zoología y Ecología Tropical",
         "lat": 10.486966,
         "lon": -66.895851,
         "speaker_count": 1,
@@ -19610,7 +19610,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0173",
-        "affiliation": "Instituto Superior Tecnico",
+        "affiliation": "Instituto Superior Técnico",
         "lat": 38.736745,
         "lon": -9.138391,
         "speaker_count": 1,
@@ -19623,7 +19623,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0174",
-        "affiliation": "Instituto Tecnologico de Bahia de Banderas",
+        "affiliation": "Instituto Tecnológico de Bahía de Banderas",
         "lat": 20.749999,
         "lon": -105.382219,
         "speaker_count": 2,
@@ -20021,7 +20021,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0203",
-        "affiliation": "Korero O Te 'Orau",
+        "affiliation": "Kōrero O Te 'Ōrau",
         "lat": -19.996972,
         "lon": -157.785871,
         "speaker_count": 1,
@@ -20034,7 +20034,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0204",
-        "affiliation": "Kuaaina Ulu Auamo",
+        "affiliation": "Kuaʻāina Ulu ʻAuamo",
         "lat": 39.78373,
         "lon": -100.445882,
         "speaker_count": 1,
@@ -20060,7 +20060,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0206",
-        "affiliation": "KUPA - Hoala Kealakekua Nui",
+        "affiliation": "KUPA - Ho’āla Kealakekua Nui",
         "lat": 39.78373,
         "lon": -100.445882,
         "speaker_count": 1,
@@ -20632,7 +20632,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0248",
-        "affiliation": "National Center of Wildlife",
+        "affiliation": "National Center for Wildlife",
         "lat": 25.624262,
         "lon": 42.352833,
         "speaker_count": 1,
@@ -21143,7 +21143,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0285",
-        "affiliation": "Oldenburg University",
+        "affiliation": "University of Oldenburg",
         "lat": 53.1467333,
         "lon": 8.183124,
         "speaker_count": 1,
@@ -21171,7 +21171,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0287",
-        "affiliation": "Otago University",
+        "affiliation": "University of Otago",
         "lat": -45.8646835,
         "lon": 170.5144227,
         "speaker_count": 1,
@@ -21212,7 +21212,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0290",
-        "affiliation": "Paepae o Heeia",
+        "affiliation": "Paepae o Heʻeia",
         "lat": 39.78373,
         "lon": -100.445882,
         "speaker_count": 1,
@@ -21252,7 +21252,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0293",
-        "affiliation": "Pattimura University",
+        "affiliation": "University of Pattimura",
         "lat": -3.6546187,
         "lon": 128.1956754,
         "speaker_count": 2,
@@ -21530,7 +21530,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0313",
-        "affiliation": "Reef Renewal Foundation - Curacao, Curacao",
+        "affiliation": "Reef Renewal Foundation",
         "lat": 12.117649,
         "lon": -68.930926,
         "speaker_count": 1,
@@ -21556,7 +21556,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0315",
-        "affiliation": "Rosenstiel School of Marine, Atmospheric and Earth Science",
+        "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science",
         "lat": 25.7324169,
         "lon": -80.1636566,
         "speaker_count": 1,
@@ -21971,7 +21971,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0345",
-        "affiliation": "State of Hawai'i",
+        "affiliation": "State of Hawaiʻi",
         "lat": 19.708546749900975,
         "lon": -155.59210907543473,
         "speaker_count": 2,
@@ -21985,7 +21985,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0346",
-        "affiliation": "State of Hawaii",
+        "affiliation": "State of Hawaiʻi",
         "lat": 19.708546749900975,
         "lon": -155.59210907543473,
         "speaker_count": 1,
@@ -22231,7 +22231,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0364",
-        "affiliation": "the Nature Conservancy - Reef Resilience Network",
+        "affiliation": "The Nature Conservancy - Reef Resilience Network",
         "lat": 39.78373,
         "lon": -100.445882,
         "speaker_count": 1,
@@ -22433,7 +22433,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0379",
-        "affiliation": "Umea University",
+        "affiliation": "Umeå University",
         "lat": 63.821776,
         "lon": 20.304316,
         "speaker_count": 1,
@@ -22460,7 +22460,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0381",
-        "affiliation": "Universidad Autonoma de Baja California Sur",
+        "affiliation": "Universidad Autónoma de Baja California Sur",
         "lat": 22.896494,
         "lon": -109.91358,
         "speaker_count": 3,
@@ -22529,7 +22529,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0386",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México",
         "lat": 19.321597,
         "lon": -99.184926,
         "speaker_count": 7,
@@ -22612,7 +22612,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0392",
-        "affiliation": "Universidade Lurio",
+        "affiliation": "Universidade Lúrio",
         "lat": -15.120738,
         "lon": 39.199658,
         "speaker_count": 2,
@@ -22652,7 +22652,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0395",
-        "affiliation": "Universite Cote d'azur",
+        "affiliation": "Université Côte d'azur",
         "lat": 43.717013,
         "lon": 7.267577,
         "speaker_count": 1,
@@ -22665,7 +22665,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0396",
-        "affiliation": "Universite de Bretagne Occidentale",
+        "affiliation": "Université de Bretagne Occidentale",
         "lat": -12.094179,
         "lon": -77.015213,
         "speaker_count": 1,
@@ -22678,7 +22678,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0397",
-        "affiliation": "Universite de la Polynesie Francaise",
+        "affiliation": "Université de la Polynésie Française",
         "lat": -17.576993,
         "lon": -149.608662,
         "speaker_count": 3,
@@ -22691,7 +22691,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0398",
-        "affiliation": "Universite Laval",
+        "affiliation": "Université Laval",
         "lat": 46.78192270161853,
         "lon": -71.27475313351863,
         "speaker_count": 1,
@@ -22705,7 +22705,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0399",
-        "affiliation": "Universite Libre de Bruxelles",
+        "affiliation": "Université Libre de Bruxelles",
         "lat": 50.813472,
         "lon": 4.381253,
         "speaker_count": 1,
@@ -23306,7 +23306,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0442",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi",
         "lat": 21.2998224,
         "lon": -157.8182521,
         "speaker_count": 15,
@@ -23320,7 +23320,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0443",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo",
         "lat": 19.6997798,
         "lon": -155.0848929,
         "speaker_count": 4,
@@ -23334,7 +23334,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0444",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa",
         "lat": 21.2998224,
         "lon": -157.8182521,
         "speaker_count": 32,
@@ -23348,7 +23348,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0445",
-        "affiliation": "University of Hawai'i - Maui College",
+        "affiliation": "University of Hawaiʻi - Maui College",
         "lat": 20.890805564835343,
         "lon": -156.4795825633126,
         "speaker_count": 1,
@@ -23375,7 +23375,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0447",
-        "affiliation": "University of Hawaii at Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo",
         "lat": 19.6997798,
         "lon": -155.0848929,
         "speaker_count": 1,
@@ -23445,7 +23445,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0452",
-        "affiliation": "University of Liege",
+        "affiliation": "University of Liège",
         "lat": 50.63686,
         "lon": 5.562425,
         "speaker_count": 2,
@@ -23472,7 +23472,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0454",
-        "affiliation": "University of Maine, Presque Isle; University of Southern California, Los Angeles",
+        "affiliation": "University Of Maine, Presque Isle; University of Southern California, Los Angeles",
         "lat": 46.668861,
         "lon": -68.017908,
         "speaker_count": 1,
@@ -23555,7 +23555,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0460",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University Of Mauritius",
         "lat": -20.2349416,
         "lon": 57.4962994,
         "speaker_count": 4,
@@ -23583,7 +23583,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0462",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami",
         "lat": 25.7169568,
         "lon": -80.2798198,
         "speaker_count": 27,
@@ -23624,7 +23624,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0465",
-        "affiliation": "University of Miami, CIMAS",
+        "affiliation": "University Of Miami, CIMAS",
         "lat": 25.717272,
         "lon": -80.278707,
         "speaker_count": 1,
@@ -23637,7 +23637,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0466",
-        "affiliation": "University of Michigan",
+        "affiliation": "University Of Michigan",
         "lat": 42.277145,
         "lon": -83.7382071,
         "speaker_count": 3,
@@ -23651,7 +23651,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0467",
-        "affiliation": "University of Milan-Bicocca",
+        "affiliation": "University of Milano - Bicocca",
         "lat": 45.5182898,
         "lon": 9.2137614,
         "speaker_count": 1,
@@ -23679,7 +23679,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0469",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca",
         "lat": 45.5182898,
         "lon": 9.2137614,
         "speaker_count": 7,
@@ -23721,7 +23721,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0472",
-        "affiliation": "University of Mons",
+        "affiliation": "University Of Mons",
         "lat": 50.464,
         "lon": 3.9551,
         "speaker_count": 1,
@@ -23944,7 +23944,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0488",
-        "affiliation": "University of Puerto Rico - Mayaguez",
+        "affiliation": "University of Puerto Rico at Mayagüez",
         "lat": 18.2108895,
         "lon": -67.14090250000001,
         "speaker_count": 2,
@@ -23958,7 +23958,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0489",
-        "affiliation": "University of Puerto Rico at Mayaguez",
+        "affiliation": "University of Puerto Rico at Mayagüez",
         "lat": 18.213478,
         "lon": -67.149536,
         "speaker_count": 1,
@@ -24041,7 +24041,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0495",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo",
         "lat": -23.561048,
         "lon": -46.725226,
         "speaker_count": 16,
@@ -24236,7 +24236,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0509",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman",
         "lat": 14.6538783,
         "lon": 121.0684573,
         "speaker_count": 21,
@@ -24264,7 +24264,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0511",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific",
         "lat": -18.1480462,
         "lon": 178.4476007,
         "speaker_count": 13,
@@ -24292,7 +24292,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0513",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands",
         "lat": 40.0060889,
         "lon": -83.0282624,
         "speaker_count": 10,
@@ -24947,7 +24947,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b386620e",
         "name": "A.Prof Armagan Sabetian",
-        "affiliation": "Auckland University of Technology",
+        "affiliation": "Auckland University of Technology, New Zealand",
         "location_id": "emis-loc-0012",
         "co2e_kg": 296.2
       },
@@ -24975,35 +24975,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b34e3547",
         "name": "A/Prof Steve Doo",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo, United States",
         "location_id": "emis-loc-0443",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-2e626ba2",
         "name": "Aaron Bugaj",
-        "affiliation": "University of Arizona",
+        "affiliation": "University of Arizona, United States",
         "location_id": "emis-loc-0412",
         "co2e_kg": 2776.4
       },
       {
         "id": "offset-e0a2f6a9",
         "name": "Abbie Wilson",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-3c3310dc",
         "name": "Abdul M. Ada",
-        "affiliation": "Louisiana State University",
+        "affiliation": "Louisiana State University, United States",
         "location_id": "emis-loc-0213",
         "co2e_kg": 3153.2
       },
       {
         "id": "offset-a0bc2ea3",
         "name": "Abigail Gretta",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
@@ -25017,35 +25017,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6a3c2bf5",
         "name": "Abigail Renegar",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-b67726ff",
         "name": "Abigail Turnlund",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity, Germany",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
       {
         "id": "offset-8fb87467",
         "name": "Abigail Wilson",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-75e9546d",
         "name": "Adahara Muñoz-Alfaro",
-        "affiliation": "Universidad Autonoma de Baja California Sur",
+        "affiliation": "Universidad Autónoma de Baja California Sur, Mexico",
         "location_id": "emis-loc-0381",
         "co2e_kg": 2639.2
       },
       {
         "id": "offset-6b17599c",
         "name": "Adelaide Dahl",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
@@ -25059,7 +25059,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1844a860",
         "name": "Adeline Shelby",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
@@ -25073,7 +25073,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2b7c48f7",
         "name": "Adib Mustofa",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0500",
         "co2e_kg": 2681.7
       },
@@ -25087,7 +25087,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ec2f7c2d",
         "name": "Adrian Cheh",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0024",
         "co2e_kg": 3698.3
       },
@@ -25101,7 +25101,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c1b81054",
         "name": "Adrian Stier",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
@@ -25115,14 +25115,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b19d5dd5",
         "name": "Afrah Alothman",
-        "affiliation": "National Center for Wildlife",
+        "affiliation": "National Center for Wildlife, Saudi Arabia",
         "location_id": "emis-loc-0247",
         "co2e_kg": 3807.4
       },
       {
         "id": "offset-5deff5f5",
         "name": "Afrin Priya Talukder",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0216",
         "co2e_kg": 591.9
       },
@@ -25136,7 +25136,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ee90368e",
         "name": "Agustina Piccaluga",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
@@ -25157,42 +25157,42 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-68ec7d9f",
         "name": "Ahmi Cacapit",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0427",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-96d8a698",
         "name": "Aidan Healy",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-455f8ac5",
         "name": "Aidan Stockley",
-        "affiliation": "Auckland University of Technology",
+        "affiliation": "Auckland University of Technology, New Zealand",
         "location_id": "emis-loc-0012",
         "co2e_kg": 0.0
       },
       {
         "id": "offset-0ff6f7b1",
         "name": "Aileen Maypa",
-        "affiliation": "Silliman University",
+        "affiliation": "Silliman University, Philippines",
         "location_id": "emis-loc-0333",
         "co2e_kg": 1904.4
       },
       {
         "id": "offset-64daec7e",
         "name": "Akili Ligons",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-32791ae4",
         "name": "Alain Duran",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -25206,21 +25206,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-53a7a46e",
         "name": "Alan Gojanovic",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
       {
         "id": "offset-3f9e7616",
         "name": "Alan Gojanović",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
       {
         "id": "offset-40848357",
         "name": "Alastair Harborne",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -25262,7 +25262,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-932d69a0",
         "name": "Alejandra Robles-Payán",
-        "affiliation": "Universidad Autonoma de Baja California Sur",
+        "affiliation": "Universidad Autónoma de Baja California Sur, Mexico",
         "location_id": "emis-loc-0381",
         "co2e_kg": 2639.2
       },
@@ -25276,7 +25276,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-285fcb27",
         "name": "Alessandra Shea",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 3123.0
       },
@@ -25304,7 +25304,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ebec4786",
         "name": "Alexa Huzar",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0507",
         "co2e_kg": 3003.4
       },
@@ -25318,35 +25318,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c8f37500",
         "name": "Alexander Venn",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0046",
         "co2e_kg": 4770.9
       },
       {
         "id": "offset-bb4c400a",
         "name": "Alexander Waller",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-1e5bf102",
         "name": "Alexander Wheeler",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-ee97ea34",
         "name": "Alexandra Butler",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-5313a5c5",
         "name": "Alexandra Cormack",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0011",
         "co2e_kg": 2780.4
       },
@@ -25381,7 +25381,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3e9b7e38",
         "name": "Alexandra Khrizman",
-        "affiliation": "Stanford University",
+        "affiliation": "Stanford University, United States",
         "location_id": "emis-loc-0343",
         "co2e_kg": 2708.2
       },
@@ -25395,21 +25395,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0ef61ec9",
         "name": "Alexandra Skeer",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-05d5ccc0",
         "name": "Alexandra Wen",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-bf9d6eb9",
         "name": "Alexandra Zelaya",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0479",
         "co2e_kg": 3580.4
       },
@@ -25423,14 +25423,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-aa3f51b8",
         "name": "Alexi Meltel",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-86759292",
         "name": "Alexis Sturm",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0257",
         "co2e_kg": 3363.9
       },
@@ -25458,7 +25458,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e6a4b095",
         "name": "Alice Ball",
-        "affiliation": "University of Cambridge",
+        "affiliation": "University of Cambridge, United Kingdom",
         "location_id": "emis-loc-0430",
         "co2e_kg": 4670.9
       },
@@ -25472,7 +25472,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-efc81c17",
         "name": "Alicia Emberson-Semisi",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 587.0
       },
@@ -25486,7 +25486,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c59b958c",
         "name": "Aline Shimada da Cruz",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
@@ -25514,7 +25514,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e20616e0",
         "name": "Aliyah True",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -25528,7 +25528,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-833f0226",
         "name": "Allie Durdall",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
@@ -25542,7 +25542,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c27f88b4",
         "name": "Allison Klein",
-        "affiliation": "Florida Atlantic University",
+        "affiliation": "Florida Atlantic University, United States",
         "location_id": "emis-loc-0111",
         "co2e_kg": 3313.9
       },
@@ -25556,14 +25556,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7f2b7f10",
         "name": "Ally Swan",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-4f9f6800",
         "name": "Ally Swank",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0024",
         "co2e_kg": 3698.3
       },
@@ -25577,7 +25577,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5db34f6d",
         "name": "Allyson DeMerlis",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -25591,7 +25591,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a32e19ff",
         "name": "Almog Haim",
-        "affiliation": "Bar-Ilan University",
+        "affiliation": "Bar-Ilan University, Israel",
         "location_id": "emis-loc-0015",
         "co2e_kg": 4165.6
       },
@@ -25626,7 +25626,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-84a0a0a3",
         "name": "Amalia Seigel",
-        "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science",
+        "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science, United States",
         "location_id": "emis-loc-0316",
         "co2e_kg": 3300.3
       },
@@ -25640,21 +25640,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-db80aa5e",
         "name": "Amanda Badai",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-200c2abb",
         "name": "Amanda Ford",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 587.0
       },
       {
         "id": "offset-37160271",
         "name": "Amanda Melendez-Perez",
-        "affiliation": "University of Puerto Rico at Mayaguez",
+        "affiliation": "University of Puerto Rico at Mayagüez, United States",
         "location_id": "emis-loc-0489",
         "co2e_kg": 3300.4
       },
@@ -25668,14 +25668,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-43f1c2bf",
         "name": "Amara Jabeen",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0216",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-632ff53f",
         "name": "Ambar Condori Boughton",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3123.0
       },
@@ -25689,7 +25689,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d4e0f504",
         "name": "Ambrocio Melvin Matias",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -25710,7 +25710,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8ead0f44",
         "name": "Amy Carmignani",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
@@ -25731,7 +25731,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8af9eed2",
         "name": "Ana Lilia Molina Hernandez",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0386",
         "co2e_kg": 2779.3
       },
@@ -25752,7 +25752,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6ae69503",
         "name": "Ana Yranzo Duque",
-        "affiliation": "Instituto de Zoologia y Ecologia Tropical",
+        "affiliation": "Instituto de Zoología y Ecología Tropical",
         "location_id": "emis-loc-0171",
         "co2e_kg": 3370.8
       },
@@ -25773,7 +25773,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4c809695",
         "name": "Andia Chaves-Fonnegra",
-        "affiliation": "Florida Atlantic University",
+        "affiliation": "Florida Atlantic University, United States",
         "location_id": "emis-loc-0111",
         "co2e_kg": 3313.9
       },
@@ -25815,7 +25815,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5366fa8f",
         "name": "Andressa Silva",
-        "affiliation": "Universidade Federal do Rio Grande do Norte",
+        "affiliation": "Universidade Federal do Rio Grande do Norte, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3653.9
       },
@@ -25829,7 +25829,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5cef0cac",
         "name": "Andrew Baker",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -25850,14 +25850,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bff38cad",
         "name": "Anela Duenas",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-ef6c3061",
         "name": "Angel Avedo",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -25899,21 +25899,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e0e07b86",
         "name": "Ankitha Manohar",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0450",
         "co2e_kg": 4623.6
       },
       {
         "id": "offset-7f9be9e9",
         "name": "Anna Berrettini",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-99b7dc74",
         "name": "Anna C Vinton",
-        "affiliation": "University of Maine, Presque Isle; University of Southern California, Los Angeles",
+        "affiliation": "University Of Maine, Presque Isle; University of Southern California, Los Angeles, United States",
         "location_id": "emis-loc-0454",
         "co2e_kg": 3476.4
       },
@@ -25948,7 +25948,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-05e9d88d",
         "name": "Anna Koivunen",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -25976,7 +25976,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ff4594cf",
         "name": "Annemarie Selle",
-        "affiliation": "University of Oldenburg",
+        "affiliation": "University of Oldenburg, Germany",
         "location_id": "emis-loc-0480",
         "co2e_kg": 4574.3
       },
@@ -26004,7 +26004,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dbb320bd",
         "name": "Anthony Bellantuono",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los Angeles, United States",
         "location_id": "emis-loc-0424",
         "co2e_kg": 2681.7
       },
@@ -26018,7 +26018,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c638c5be",
         "name": "Antoni Badowski",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
@@ -26053,14 +26053,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f2ee685a",
         "name": "Aran Sofer",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0356",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-d4b9fbd3",
         "name": "Aranya Dhibar",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0507",
         "co2e_kg": 3003.4
       },
@@ -26081,7 +26081,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0606bc6c",
         "name": "Ariel Pezner",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
@@ -26109,7 +26109,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8898cd4a",
         "name": "Arnaud Droit",
-        "affiliation": "Universite Laval",
+        "affiliation": "Université Laval, Canada",
         "location_id": "emis-loc-0398",
         "co2e_kg": 3190.2
       },
@@ -26123,7 +26123,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9a8ebeab",
         "name": "Arthur Loures Choucair Rodrigues de Oliveira",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
@@ -26137,21 +26137,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-136ad2fb",
         "name": "Ashley Carreiro",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-947b0397",
         "name": "Ashley Halim",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0500",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-94fbc4db",
         "name": "Ashley Hope Castro",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
@@ -26193,7 +26193,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f66ced06",
         "name": "Atsuko Fukunaga",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
@@ -26228,35 +26228,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1d8cfa8f",
         "name": "Avery Coble",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-e0f4bc73",
         "name": "Ayaka Umeda Paul",
-        "affiliation": "University of Cambridge",
+        "affiliation": "University of Cambridge, United Kingdom",
         "location_id": "emis-loc-0430",
         "co2e_kg": 4670.9
       },
       {
         "id": "offset-2df45c91",
         "name": "Ayala Porat",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0356",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-54d8b0d2",
         "name": "Ayumi Maeda",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0515",
         "co2e_kg": 2255.6
       },
       {
         "id": "offset-ed88f857",
         "name": "Bailey Marquardt",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -26270,7 +26270,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-aeb1715d",
         "name": "Bastian Bentlage",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
@@ -26284,7 +26284,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d64d53a6",
         "name": "Beatriz Corazza",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
@@ -26305,7 +26305,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d626b9ac",
         "name": "Ben Charo",
-        "affiliation": "University of Rhode Island",
+        "affiliation": "University of Rhode Island, United States",
         "location_id": "emis-loc-0491",
         "co2e_kg": 3684.5
       },
@@ -26340,21 +26340,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e7267a32",
         "name": "Benjamin Farmer",
-        "affiliation": "Louisiana State University",
+        "affiliation": "Louisiana State University, United States",
         "location_id": "emis-loc-0213",
         "co2e_kg": 3153.2
       },
       {
         "id": "offset-4a07b148",
         "name": "Benjamin Glass",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0024",
         "co2e_kg": 3698.3
       },
       {
         "id": "offset-d1c79a42",
         "name": "Benjamin Henley",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0461",
         "co2e_kg": 723.0
       },
@@ -26368,7 +26368,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c9293175",
         "name": "Bernhard Riegl",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -26389,7 +26389,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f5027769",
         "name": "Bess Ruff",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
@@ -26410,7 +26410,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2b1305fa",
         "name": "Bibi Renssen",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0322",
         "co2e_kg": 2674.0
       },
@@ -26431,7 +26431,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-76db482a",
         "name": "Bing Lin",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
@@ -26445,7 +26445,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3e4b05c2",
         "name": "Blake Ushijima",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0479",
         "co2e_kg": 3580.4
       },
@@ -26466,42 +26466,42 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7b06ed88",
         "name": "Bradley Arrington",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-3d50f6f1",
         "name": "Bradley Weiler",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-b668f052",
         "name": "Brady Estrada",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-6c65a863",
         "name": "Brandon Sosa",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-70be8dcd",
         "name": "Brett Taylor",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-dbf90416",
         "name": "Brian Beck",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0257",
         "co2e_kg": 3363.9
       },
@@ -26515,28 +26515,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ec3a113a",
         "name": "Brian Stockwell",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 587.0
       },
       {
         "id": "offset-96086fdf",
         "name": "Brian Zgliczynski",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0322",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-8552a320",
         "name": "Brigitte Sommer",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-d6ba765f",
         "name": "Bronte Connolly",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
@@ -26585,7 +26585,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-99a27671",
         "name": "Caitlin Lloyd-Hall",
-        "affiliation": "University of Alberta",
+        "affiliation": "University of Alberta, Canada",
         "location_id": "emis-loc-0409",
         "co2e_kg": 3104.2
       },
@@ -26599,7 +26599,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2a475172",
         "name": "Caitlin Younis",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
@@ -26613,7 +26613,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5ab2c111",
         "name": "Callie Stephenson",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -26634,14 +26634,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-db2bdbcf",
         "name": "Camila Kato",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-dd2443fb",
         "name": "Camile Avelino",
-        "affiliation": "University of Derby",
+        "affiliation": "University of Derby, United Kingdom",
         "location_id": "emis-loc-0435",
         "co2e_kg": 4651.4
       },
@@ -26669,7 +26669,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dc877a60",
         "name": "Carlo Caruso",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaiʻi Institute of Marine Biology, United States",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -26683,21 +26683,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-50b18fac",
         "name": "Carlos Prada",
-        "affiliation": "University of Rhode Island",
+        "affiliation": "University of Rhode Island, United States",
         "location_id": "emis-loc-0491",
         "co2e_kg": 3684.5
       },
       {
         "id": "offset-6fd96d65",
         "name": "Carlos Tramonte",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-d99f8bc7",
         "name": "Carly E. Karrick",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0421",
         "co2e_kg": 2686.0
       },
@@ -26718,7 +26718,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-592fba91",
         "name": "Caroline Dennison",
-        "affiliation": "Rosenstiel School of Marine, Atmospheric and Earth Science",
+        "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science, United States",
         "location_id": "emis-loc-0315",
         "co2e_kg": 3300.3
       },
@@ -26739,7 +26739,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0156b399",
         "name": "Caroline Romo",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
@@ -26753,7 +26753,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9fa7ce81",
         "name": "Carsten Grupstra",
-        "affiliation": "Florida Atlantic University",
+        "affiliation": "Florida Atlantic University, United States",
         "location_id": "emis-loc-0111",
         "co2e_kg": 3313.9
       },
@@ -26767,14 +26767,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cb664e41",
         "name": "Casey Whalen",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-074733e0",
         "name": "Cat Hauser",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0024",
         "co2e_kg": 3698.3
       },
@@ -26788,7 +26788,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a82a6038",
         "name": "Catheline Y.M. Froehlich",
-        "affiliation": "University of Alabama",
+        "affiliation": "University of Alabama, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 3277.3
       },
@@ -26802,7 +26802,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0bd37461",
         "name": "Catherine Kim",
-        "affiliation": "Queensland University of Technology",
+        "affiliation": "Queensland University of Technology, Australia",
         "location_id": "emis-loc-0305",
         "co2e_kg": 629.2
       },
@@ -26816,7 +26816,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3a64970b",
         "name": "Catherine Lee Hing",
-        "affiliation": "Stanford University",
+        "affiliation": "Stanford University, United States",
         "location_id": "emis-loc-0343",
         "co2e_kg": 2708.2
       },
@@ -26830,7 +26830,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7c3bd94a",
         "name": "Catherine Mullenmeister",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0427",
         "co2e_kg": 2674.0
       },
@@ -26872,14 +26872,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e0f2ba75",
         "name": "Celia Leto",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0242",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-6cdd1431",
         "name": "Celine Luisa Campos",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -26900,21 +26900,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-12669752",
         "name": "Charernmee Chamchoy",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0306",
         "co2e_kg": 2445.1
       },
       {
         "id": "offset-6a0d870c",
         "name": "Charles Birkeland",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-cc1c3696",
         "name": "Charles Gongaware",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0479",
         "co2e_kg": 3580.4
       },
@@ -26928,7 +26928,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-65242633",
         "name": "Charlotte Clay",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0450",
         "co2e_kg": 4623.6
       },
@@ -26942,7 +26942,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c8013310",
         "name": "Chatoolsingh Dawosing",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University Of Mauritius, Mauritius",
         "location_id": "emis-loc-0460",
         "co2e_kg": 2766.6
       },
@@ -26963,7 +26963,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e1f4e1c4",
         "name": "Cher Chow",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0208",
         "co2e_kg": 4641.4
       },
@@ -27012,14 +27012,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2be93482",
         "name": "Chloe Manley",
-        "affiliation": "Georgia Institute of Technology",
+        "affiliation": "Georgia Institute of Technology, United States",
         "location_id": "emis-loc-0123",
         "co2e_kg": 3326.5
       },
       {
         "id": "offset-ee4c7970",
         "name": "Chloé Pozas-Schacre",
-        "affiliation": "Universite de la Polynesie Francaise",
+        "affiliation": "Université de la Polynésie Française, French Polynesia",
         "location_id": "emis-loc-0397",
         "co2e_kg": 4781.9
       },
@@ -27040,21 +27040,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-809232fa",
         "name": "Christina Hicks",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0208",
         "co2e_kg": 4641.4
       },
       {
         "id": "offset-7d421e27",
         "name": "Christina Jayne",
-        "affiliation": "State of Hawai'i",
+        "affiliation": "State of Hawaiʻi, United States",
         "location_id": "emis-loc-0345",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-3fc5a6ab",
         "name": "Christine Baran",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0508",
         "co2e_kg": 2047.7
       },
@@ -27068,14 +27068,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8b53d538",
         "name": "Christine Roper",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-066b679d",
         "name": "Christopher Cooney",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
@@ -27096,7 +27096,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f9e8e766",
         "name": "Christopher Grant",
-        "affiliation": "University of Alabama",
+        "affiliation": "University of Alabama, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 3277.3
       },
@@ -27138,42 +27138,42 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dfc452be",
         "name": "Claire Ittleson",
-        "affiliation": "University of Bristol",
+        "affiliation": "University of Bristol, United Kingdom",
         "location_id": "emis-loc-0419",
         "co2e_kg": 4696.0
       },
       {
         "id": "offset-090199fb",
         "name": "Claire Moreland-Ochoa",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-86e4ad18",
         "name": "Clancy McIntyre",
-        "affiliation": "Pennsylvania State University",
+        "affiliation": "Pennsylvania State University, United States",
         "location_id": "emis-loc-0296",
         "co2e_kg": 3562.3
       },
       {
         "id": "offset-3c2cdc35",
         "name": "Clara Diaz",
-        "affiliation": "University of Plymouth",
+        "affiliation": "University of Plymouth, United Kingdom",
         "location_id": "emis-loc-0486",
         "co2e_kg": 4696.9
       },
       {
         "id": "offset-6563036a",
         "name": "Clarissa Reboton",
-        "affiliation": "Silliman University",
+        "affiliation": "Silliman University, Philippines",
         "location_id": "emis-loc-0333",
         "co2e_kg": 1904.4
       },
       {
         "id": "offset-3361b400",
         "name": "Claudia Gibson",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
@@ -27194,14 +27194,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0ba8d995",
         "name": "Clelia Mula",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
       {
         "id": "offset-12888c19",
         "name": "Clemence Forin",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0046",
         "co2e_kg": 4770.9
       },
@@ -27215,35 +27215,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5976c745",
         "name": "Cody Clements",
-        "affiliation": "Georgia Institute of Technology",
+        "affiliation": "Georgia Institute of Technology, United States",
         "location_id": "emis-loc-0123",
         "co2e_kg": 3326.5
       },
       {
         "id": "offset-716f9dbd",
         "name": "Cole Sheeley",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-5a799737",
         "name": "Colin Anthony",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0515",
         "co2e_kg": 2255.6
       },
       {
         "id": "offset-6f42575d",
         "name": "Colin Howe",
-        "affiliation": "Pennsylvania State University",
+        "affiliation": "Pennsylvania State University, United States",
         "location_id": "emis-loc-0296",
         "co2e_kg": 3562.3
       },
       {
         "id": "offset-27d5cbd5",
         "name": "Colin Lock",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
@@ -27257,7 +27257,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ff90adce",
         "name": "Colleen Shortal",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0479",
         "co2e_kg": 3580.4
       },
@@ -27271,7 +27271,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-770267b8",
         "name": "Corin Schofield",
-        "affiliation": "University of Plymouth",
+        "affiliation": "University of Plymouth, United Kingdom",
         "location_id": "emis-loc-0486",
         "co2e_kg": 4696.9
       },
@@ -27285,7 +27285,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8bb9d800",
         "name": "Corinne Pickering",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0322",
         "co2e_kg": 2674.0
       },
@@ -27299,14 +27299,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-babb0e23",
         "name": "Courtney Klepac",
-        "affiliation": "Stanford University",
+        "affiliation": "Stanford University, United States",
         "location_id": "emis-loc-0343",
         "co2e_kg": 2708.2
       },
       {
         "id": "offset-d970513a",
         "name": "Courtney Powell",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 587.0
       },
@@ -27327,14 +27327,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-723e7ceb",
         "name": "Criselda Castor",
-        "affiliation": "Department of Environment and Natural Resources - Philippines",
+        "affiliation": "Department of Environment and Natural Resources - Philippines, Philippines",
         "location_id": "emis-loc-0086",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-73c79798",
         "name": "Crissa Ann Lilagan",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0003",
         "co2e_kg": 2262.7
       },
@@ -27390,7 +27390,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2ca32c55",
         "name": "Cynthia Silveira",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -27411,14 +27411,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ed4db2be",
         "name": "Daisy Flores",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0507",
         "co2e_kg": 3003.4
       },
       {
         "id": "offset-0be24c5a",
         "name": "Damien Carrasquet",
-        "affiliation": "Universite de la Polynesie Francaise",
+        "affiliation": "Université de la Polynésie Française, French Polynesia",
         "location_id": "emis-loc-0397",
         "co2e_kg": 4781.9
       },
@@ -27446,14 +27446,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a60edf65",
         "name": "Danae Stephens",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-f8d16cea",
         "name": "Dane Wattle",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
@@ -27474,7 +27474,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b4a2dc8c",
         "name": "Daniel Wangpraseurt",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0322",
         "co2e_kg": 2674.0
       },
@@ -27495,14 +27495,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-66607494",
         "name": "Danielle Jayewardene",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0257",
         "co2e_kg": 3363.9
       },
       {
         "id": "offset-e6d35eb2",
         "name": "Danielle M. Barnas",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
@@ -27523,7 +27523,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-664c0e49",
         "name": "David Anderson",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
@@ -27537,7 +27537,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-877322b1",
         "name": "David Baker",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0448",
         "co2e_kg": 4533.9
       },
@@ -27586,7 +27586,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b48b79e3",
         "name": "David Munoz-Maravilla",
-        "affiliation": "University of Puerto Rico - Mayaguez",
+        "affiliation": "University of Puerto Rico at Mayagüez, United States",
         "location_id": "emis-loc-0488",
         "co2e_kg": 3300.4
       },
@@ -27614,21 +27614,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-794716c6",
         "name": "Davide Seveso",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0469",
         "co2e_kg": 4716.9
       },
       {
         "id": "offset-62689a1b",
         "name": "Dawn Kaufman",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-819c7132",
         "name": "Dayana Chadda-Harmer",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
@@ -27649,7 +27649,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-db055582",
         "name": "Dean Tysdale",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
@@ -27670,14 +27670,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8fb868fc",
         "name": "Deepeeka Kaullysing",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University Of Mauritius, Mauritius",
         "location_id": "emis-loc-0460",
         "co2e_kg": 2766.6
       },
       {
         "id": "offset-c750693e",
         "name": "Delaney Deinlein",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -27691,7 +27691,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-94f1332f",
         "name": "Dennis Stanley",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
@@ -27705,7 +27705,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-40407665",
         "name": "Denzyl Divinagracia",
-        "affiliation": "Silliman University",
+        "affiliation": "Silliman University, Philippines",
         "location_id": "emis-loc-0333",
         "co2e_kg": 1904.4
       },
@@ -27733,7 +27733,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7682e9d3",
         "name": "Devavrat Bishwa",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 587.0
       },
@@ -27754,7 +27754,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cdb4f65e",
         "name": "Diana Beltran Rodriguez",
-        "affiliation": "University of Rhode Island",
+        "affiliation": "University of Rhode Island, United States",
         "location_id": "emis-loc-0491",
         "co2e_kg": 3684.5
       },
@@ -27768,21 +27768,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-891e8c3a",
         "name": "Diana Morales-de-Anda",
-        "affiliation": "Cinvestav Merida",
+        "affiliation": "Cinvestav Mérida, Mexico",
         "location_id": "emis-loc-0051",
         "co2e_kg": 3027.3
       },
       {
         "id": "offset-04eea599",
         "name": "Diana Vergara",
-        "affiliation": "University of Michigan",
+        "affiliation": "University Of Michigan, United States",
         "location_id": "emis-loc-0466",
         "co2e_kg": 3453.8
       },
       {
         "id": "offset-22941961",
         "name": "Diane Thompson",
-        "affiliation": "University of Arizona",
+        "affiliation": "University of Arizona, United States",
         "location_id": "emis-loc-0412",
         "co2e_kg": 2776.4
       },
@@ -27796,14 +27796,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ee79ffc5",
         "name": "Didier Zoccola",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0046",
         "co2e_kg": 4770.9
       },
       {
         "id": "offset-57047ebb",
         "name": "Diego Lera-Lozano",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los Angeles, United States",
         "location_id": "emis-loc-0424",
         "co2e_kg": 2681.7
       },
@@ -27817,7 +27817,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5b21486b",
         "name": "Dione Swanson",
-        "affiliation": "University of Miami, CIMAS",
+        "affiliation": "University Of Miami, CIMAS, United States",
         "location_id": "emis-loc-0465",
         "co2e_kg": 3306.8
       },
@@ -27831,21 +27831,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1a2790e3",
         "name": "Dominic Bravenboer",
-        "affiliation": "Auckland University of Technology",
+        "affiliation": "Auckland University of Technology, New Zealand",
         "location_id": "emis-loc-0012",
         "co2e_kg": 296.2
       },
       {
         "id": "offset-132edce6",
         "name": "Dominique Gallery",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0242",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-b72fb171",
         "name": "Donna Brown",
-        "affiliation": "University of Hawai'i - Maui College",
+        "affiliation": "University of Hawaii - Maui College",
         "location_id": "emis-loc-0445",
         "co2e_kg": 3123.0
       },
@@ -27859,7 +27859,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-22be71af",
         "name": "Dorian Tsai",
-        "affiliation": "Queensland University of Technology",
+        "affiliation": "Queensland University of Technology, Australia",
         "location_id": "emis-loc-0305",
         "co2e_kg": 629.2
       },
@@ -27915,14 +27915,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-86852efc",
         "name": "Dr Andrea Kealoha",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-55a0049e",
         "name": "Dr Angela Richards Donà",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 3123.0
       },
@@ -27971,7 +27971,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b6caa94f",
         "name": "Dr Caroline Dubé",
-        "affiliation": "Universite de la Polynesie Francaise",
+        "affiliation": "Université de la Polynésie Française, French Polynesia",
         "location_id": "emis-loc-0397",
         "co2e_kg": 1044.6
       },
@@ -28013,7 +28013,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3a151ae7",
         "name": "Dr Dan Breen",
-        "affiliation": "Auckland University of Technology",
+        "affiliation": "Auckland University of Technology, New Zealand",
         "location_id": "emis-loc-0012",
         "co2e_kg": 296.2
       },
@@ -28048,7 +28048,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c976fc65",
         "name": "Dr Evelyn Cox",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaiʻi Institute of Marine Biology, United States",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -28062,7 +28062,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-051e10be",
         "name": "Dr Frank Stanton",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 3123.0
       },
@@ -28090,7 +28090,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7a9f020b",
         "name": "Dr Harry Lin",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0003",
         "co2e_kg": 2229.9
       },
@@ -28104,7 +28104,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-074f7984",
         "name": "Dr Isaiah Bolden",
-        "affiliation": "Georgia Institute of Technology",
+        "affiliation": "Georgia Institute of Technology, United States",
         "location_id": "emis-loc-0123",
         "co2e_kg": 3123.0
       },
@@ -28132,7 +28132,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-29dc76d4",
         "name": "Dr Jon Martinez",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 3123.0
       },
@@ -28195,7 +28195,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-587d0cfe",
         "name": "Dr Megan Donahue",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaiʻi Institute of Marine Biology, United States",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -28209,7 +28209,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2d506d09",
         "name": "Dr Michael Atrigenio",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -28223,7 +28223,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a2473ec7",
         "name": "Dr Mishal Gudka",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0461",
         "co2e_kg": 891.1
       },
@@ -28251,7 +28251,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-822e0ddf",
         "name": "Dr Patrick Cabaitan",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0508",
         "co2e_kg": 2047.7
       },
@@ -28265,7 +28265,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0ded786e",
         "name": "Dr Pros Naval",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0508",
         "co2e_kg": 2047.7
       },
@@ -28279,7 +28279,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f25fffac",
         "name": "Dr Robin Martin",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0011",
         "co2e_kg": 3123.0
       },
@@ -28293,7 +28293,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-25bd4314",
         "name": "Dr Rolando Santos",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3123.0
       },
@@ -28370,14 +28370,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5b1d7de6",
         "name": "Dr Tim King",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0151",
         "co2e_kg": 2339.8
       },
       {
         "id": "offset-362b2766",
         "name": "Dr Ting Xu",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0151",
         "co2e_kg": 2799.8
       },
@@ -28405,7 +28405,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a46cec14",
         "name": "Dr Van Rodriguez",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -28419,7 +28419,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bcc81976",
         "name": "Dustin Kemp",
-        "affiliation": "University of Alabama at Birmingham",
+        "affiliation": "University of Alabama at Birmingham, United States",
         "location_id": "emis-loc-0408",
         "co2e_kg": 3277.3
       },
@@ -28447,7 +28447,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0730233a",
         "name": "Eduardo Islas-Dominguez",
-        "affiliation": "Goethe-Universitat",
+        "affiliation": "Goethe-Universität, Germany",
         "location_id": "emis-loc-0128",
         "co2e_kg": 4661.2
       },
@@ -28461,14 +28461,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-52f4a753",
         "name": "Eena Marie Nuevas",
-        "affiliation": "Department of Environment and Natural Resources - Philippines Philippines",
+        "affiliation": "Department of Environment and Natural Resources - Philippines, Philippines",
         "location_id": "emis-loc-0087",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-0e31cb81",
         "name": "Eileen Nalley",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -28510,14 +28510,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-78d8a9e0",
         "name": "Elise Keister",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0242",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-3f3e4000",
         "name": "Elizabeth Boville",
-        "affiliation": "Pennsylvania State University",
+        "affiliation": "Pennsylvania State University, United States",
         "location_id": "emis-loc-0296",
         "co2e_kg": 3562.3
       },
@@ -28538,7 +28538,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-502f14f7",
         "name": "Elizabeth Gomez-Requilme",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0508",
         "co2e_kg": 2047.7
       },
@@ -28559,35 +28559,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1ea7a1d6",
         "name": "Elizabeth Weatherup",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0479",
         "co2e_kg": 3580.4
       },
       {
         "id": "offset-a0649493",
         "name": "Elizabeth Wu",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0011",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-362cb912",
         "name": "Ellen Regina Skelton",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-9f5aeced",
         "name": "Elly Perez",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-ab173f88",
         "name": "Ellyn Darke",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0479",
         "co2e_kg": 3580.4
       },
@@ -28608,7 +28608,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-be1bb934",
         "name": "Emily Croasdale",
-        "affiliation": "University of Lisbon",
+        "affiliation": "University of Lisbon, Portugal",
         "location_id": "emis-loc-0453",
         "co2e_kg": 5005.7
       },
@@ -28622,14 +28622,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-611233f4",
         "name": "Emily Hall",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0242",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-3522a904",
         "name": "Emily Jackson",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -28643,7 +28643,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cc29ae55",
         "name": "Emily Rutkowski",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
@@ -28664,28 +28664,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-19b9724a",
         "name": "Emma Camp",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-4af1d752",
         "name": "Emma Garcia",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-c33c4a9c",
         "name": "Emma Miller",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-10f84471",
         "name": "Emma Pontes",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -28720,14 +28720,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1eb98ea4",
         "name": "Enora Carnac",
-        "affiliation": "University of Liege",
+        "affiliation": "University of Liège, Belgium",
         "location_id": "emis-loc-0452",
         "co2e_kg": 4663.9
       },
       {
         "id": "offset-5462937a",
         "name": "Eric Béraud",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0046",
         "co2e_kg": 4770.9
       },
@@ -28762,7 +28762,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cf08f26c",
         "name": "Erica Towle",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0257",
         "co2e_kg": 3363.9
       },
@@ -28783,14 +28783,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9178a22d",
         "name": "Erik Franklin",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-8bac22df",
         "name": "Erik Krieger",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0046",
         "co2e_kg": 4770.9
       },
@@ -28811,7 +28811,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4692b711",
         "name": "Erin Cain",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -28825,21 +28825,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-99a9d16c",
         "name": "Erin Hollander",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-03531704",
         "name": "Erin Lausterer",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-fd8503e4",
         "name": "Erin Papke",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0479",
         "co2e_kg": 3580.4
       },
@@ -28860,21 +28860,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-631fa5d6",
         "name": "Erinn Muller",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0242",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-53ba8b18",
         "name": "Ernest Raphael Arceo",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-72fbcc06",
         "name": "Eseta Drova",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 587.0
       },
@@ -28888,7 +28888,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ae2dc410",
         "name": "Esmeralda Perez-Cervantes",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0386",
         "co2e_kg": 2779.3
       },
@@ -28916,7 +28916,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3bd4720b",
         "name": "Evan Heit",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0461",
         "co2e_kg": 723.0
       },
@@ -28930,7 +28930,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7a336961",
         "name": "Evan Lawrence",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0421",
         "co2e_kg": 2686.0
       },
@@ -28972,7 +28972,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a901dc2e",
         "name": "Fabrizio Lepiz Conejo",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -28986,14 +28986,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-22f4be61",
         "name": "Farah Oyhenart",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-983becaf",
         "name": "Farai Divan Patel",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0421",
         "co2e_kg": 2686.0
       },
@@ -29014,7 +29014,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b4ddcf96",
         "name": "Faye Diederiks",
-        "affiliation": "Queensland University of Technology",
+        "affiliation": "Queensland University of Technology, Australia",
         "location_id": "emis-loc-0305",
         "co2e_kg": 629.2
       },
@@ -29028,14 +29028,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-48e72e23",
         "name": "Federica Siena",
-        "affiliation": "University of Milano-bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0469",
         "co2e_kg": 4716.9
       },
       {
         "id": "offset-c2780cfd",
         "name": "Felipe Mattos",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0003",
         "co2e_kg": 2262.7
       },
@@ -29070,7 +29070,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d74f5540",
         "name": "Fiona Chong",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0450",
         "co2e_kg": 4623.6
       },
@@ -29091,7 +29091,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-36fe614c",
         "name": "Francesca Cohn",
-        "affiliation": "Stanford University",
+        "affiliation": "Stanford University, United States",
         "location_id": "emis-loc-0343",
         "co2e_kg": 2708.2
       },
@@ -29105,7 +29105,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c13afeb4",
         "name": "François Seneca",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0046",
         "co2e_kg": 4770.9
       },
@@ -29126,7 +29126,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-10d20caa",
         "name": "Freya Goetz",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0500",
         "co2e_kg": 2681.7
       },
@@ -29140,7 +29140,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-87aebcc0",
         "name": "Fulori Waqairagata",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 587.0
       },
@@ -29154,21 +29154,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8536b69e",
         "name": "Gabriela Cristina Mitsuhashi",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-c81552ac",
         "name": "Gabriela Gutierrez",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0386",
         "co2e_kg": 2779.3
       },
       {
         "id": "offset-e7633f9a",
         "name": "Gaby Carpenter",
-        "affiliation": "Louisiana State University",
+        "affiliation": "Louisiana State University, United States",
         "location_id": "emis-loc-0213",
         "co2e_kg": 3153.2
       },
@@ -29182,14 +29182,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2c38420b",
         "name": "Gal Eyal",
-        "affiliation": "Bar-Ilan University",
+        "affiliation": "Bar-Ilan University, Israel",
         "location_id": "emis-loc-0015",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-529ef15c",
         "name": "Gang Liu",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0257",
         "co2e_kg": 3363.9
       },
@@ -29203,7 +29203,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cf4d0a6d",
         "name": "Gaurav Shimpi",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0515",
         "co2e_kg": 2255.6
       },
@@ -29245,21 +29245,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bcda4edd",
         "name": "Georgina Musson",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0450",
         "co2e_kg": 4623.6
       },
       {
         "id": "offset-4a164da1",
         "name": "Georgina Ramirez-ortiz",
-        "affiliation": "Universidad Nacional Autonoma De Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0386",
         "co2e_kg": 2779.3
       },
       {
         "id": "offset-4b11bba5",
         "name": "Geraldine Rengiil",
-        "affiliation": "Palau International Coral Reef Center",
+        "affiliation": "Palau International Coral Reef Center, Palau",
         "location_id": "emis-loc-0292",
         "co2e_kg": 1650.5
       },
@@ -29280,7 +29280,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-529993b2",
         "name": "Giada Tortorelli",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaiʻi Institute of Marine Biology, United States",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -29301,14 +29301,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-53f489a8",
         "name": "Gillian Coleman",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-6c3c4744",
         "name": "Gina Badlowski",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -29322,7 +29322,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d61804f6",
         "name": "Gino Valentino Limmon",
-        "affiliation": "University of Pattimura",
+        "affiliation": "University of Pattimura, Indonesia",
         "location_id": "emis-loc-0483",
         "co2e_kg": 1536.7
       },
@@ -29350,7 +29350,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a08159b7",
         "name": "Giulia Braz",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
@@ -29371,14 +29371,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1955f93e",
         "name": "Gonzalo Pérez-Rosales",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0151",
         "co2e_kg": 2348.4
       },
       {
         "id": "offset-5d5a4dad",
         "name": "Gouri Anil",
-        "affiliation": "Louisiana State University",
+        "affiliation": "Louisiana State University, United States",
         "location_id": "emis-loc-0213",
         "co2e_kg": 3153.2
       },
@@ -29399,7 +29399,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-43e43f48",
         "name": "Graham Hinchliffe",
-        "affiliation": "Auckland University of Technology",
+        "affiliation": "Auckland University of Technology, New Zealand",
         "location_id": "emis-loc-0012",
         "co2e_kg": 0.0
       },
@@ -29420,7 +29420,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3c4664a3",
         "name": "Greta Gaiani",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
@@ -29434,7 +29434,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-145eee4a",
         "name": "Guan-Yan Chen",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -29455,7 +29455,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c390db45",
         "name": "Guohan Yang",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0450",
         "co2e_kg": 4623.6
       },
@@ -29546,21 +29546,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-195da48a",
         "name": "Hannah Kish",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-5335ff54",
         "name": "Hannah Lyford",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-e04e966f",
         "name": "Hannah S. Rempel",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0507",
         "co2e_kg": 3003.4
       },
@@ -29574,21 +29574,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bb1ea9b3",
         "name": "Hannah Whitaker",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
       {
         "id": "offset-cc616d2a",
         "name": "Hans Joshua Farinas",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-55748994",
         "name": "Haoya Tong",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0448",
         "co2e_kg": 4533.9
       },
@@ -29602,14 +29602,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1b166cd2",
         "name": "Harley Erickson",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-4a23c62a",
         "name": "Harmony Martell",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -29644,7 +29644,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5d33b1ae",
         "name": "Hayden Acors",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -29693,7 +29693,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b2fe126f",
         "name": "Heidi Hirsh",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -29714,21 +29714,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-93308fff",
         "name": "Helen Yan",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-7f2baeb6",
         "name": "Hellen Nanlohy",
-        "affiliation": "Pattimura University",
+        "affiliation": "University of Pattimura, Indonesia",
         "location_id": "emis-loc-0293",
         "co2e_kg": 1536.7
       },
       {
         "id": "offset-a30b8e54",
         "name": "Henrique Bravo",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0245",
         "co2e_kg": 2145.3
       },
@@ -29756,7 +29756,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ca671b6d",
         "name": "Hillary Smith",
-        "affiliation": "University of New South Wales",
+        "affiliation": "University of New South Wales, Australia",
         "location_id": "emis-loc-0476",
         "co2e_kg": 591.9
       },
@@ -29791,7 +29791,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0c2a7135",
         "name": "Hiʻilei Kawelo",
-        "affiliation": "Paepae o Heeia",
+        "affiliation": "Paepae o Heʻeia, United States",
         "location_id": "emis-loc-0290",
         "co2e_kg": 3123.0
       },
@@ -29805,7 +29805,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-398a0f7a",
         "name": "Hollie Putnam",
-        "affiliation": "University of Rhode Island",
+        "affiliation": "University of Rhode Island, United States",
         "location_id": "emis-loc-0491",
         "co2e_kg": 3684.5
       },
@@ -29819,7 +29819,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2be25c06",
         "name": "Hope Wilson",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3123.0
       },
@@ -29854,14 +29854,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1f4690fe",
         "name": "Héloïse Maniquet",
-        "affiliation": "University of Liege",
+        "affiliation": "University of Liège, Belgium",
         "location_id": "emis-loc-0452",
         "co2e_kg": 4663.9
       },
       {
         "id": "offset-4ea59034",
         "name": "Hélène Meehl",
-        "affiliation": "Hawaii Division of Aquatic Resources",
+        "affiliation": "Hawaiʻi Division of Aquatic Resources, United States",
         "location_id": "emis-loc-0142",
         "co2e_kg": 3274.8
       },
@@ -29875,7 +29875,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ff66436b",
         "name": "Ian Johnson",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -29896,7 +29896,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0c753122",
         "name": "Iliana Baums",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity, Germany",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
@@ -29924,14 +29924,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f01425db",
         "name": "Immy Ashley",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-143dcc52",
         "name": "Indiana Riley",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
@@ -29945,7 +29945,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b12bac26",
         "name": "Ioan Fuller",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0011",
         "co2e_kg": 2780.4
       },
@@ -29966,28 +29966,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-40a09ab8",
         "name": "Isabel Marques Silva",
-        "affiliation": "Universidade Lurio",
+        "affiliation": "Universidade Lúrio, Mozambique",
         "location_id": "emis-loc-0392",
         "co2e_kg": 3170.6
       },
       {
         "id": "offset-6d1209d9",
         "name": "Isabella Deary",
-        "affiliation": "Queensland University of Technology",
+        "affiliation": "Queensland University of Technology, Australia",
         "location_id": "emis-loc-0305",
         "co2e_kg": 629.2
       },
       {
         "id": "offset-405b6954",
         "name": "Isabella Ghizzi",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0469",
         "co2e_kg": 4716.9
       },
       {
         "id": "offset-41a6064c",
         "name": "Isabella Marrable",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
@@ -30001,7 +30001,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-40afc28b",
         "name": "Isabelle Basden",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0513",
         "co2e_kg": 3437.5
       },
@@ -30022,21 +30022,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c0e18a26",
         "name": "Isabelle Osuna",
-        "affiliation": "Georgia Institute of Technology",
+        "affiliation": "Georgia Institute of Technology, United States",
         "location_id": "emis-loc-0123",
         "co2e_kg": 3326.5
       },
       {
         "id": "offset-91ac445a",
         "name": "Isla Turcke",
-        "affiliation": "University of Alberta",
+        "affiliation": "University of Alberta, Canada",
         "location_id": "emis-loc-0409",
         "co2e_kg": 3104.2
       },
       {
         "id": "offset-88842477",
         "name": "Itai Grisaru",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0356",
         "co2e_kg": 4165.6
       },
@@ -30050,7 +30050,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5ac866f6",
         "name": "J.J.  Adolfo Tortolero-Langarica",
-        "affiliation": "Instituto Tecnologico de Bahia de Banderas",
+        "affiliation": "Instituto Tecnológico de Bahía de Banderas, Mexico",
         "location_id": "emis-loc-0174",
         "co2e_kg": 2687.4
       },
@@ -30064,21 +30064,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-316e0582",
         "name": "Jackson Ferber",
-        "affiliation": "Louisiana State University",
+        "affiliation": "Louisiana State University, United States",
         "location_id": "emis-loc-0213",
         "co2e_kg": 3153.2
       },
       {
         "id": "offset-b032bc72",
         "name": "Jackson Shields",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-1d1e888c",
         "name": "Jacob Allgeier",
-        "affiliation": "University of Michigan",
+        "affiliation": "University Of Michigan, United States",
         "location_id": "emis-loc-0466",
         "co2e_kg": 3453.8
       },
@@ -30106,7 +30106,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-00984576",
         "name": "Jacopo Gobbato",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0469",
         "co2e_kg": 4716.9
       },
@@ -30162,7 +30162,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f076a379",
         "name": "James Fifer",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0427",
         "co2e_kg": 2674.0
       },
@@ -30190,7 +30190,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-76617407",
         "name": "James Robinson",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0208",
         "co2e_kg": 4568.3
       },
@@ -30218,14 +30218,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e19a5154",
         "name": "Jamie McDevitt-Irwin",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-2d2ee4ad",
         "name": "Jamison Gove",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0257",
         "co2e_kg": 3363.9
       },
@@ -30239,7 +30239,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fa0d5875",
         "name": "Jan Theodore Miranda",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0508",
         "co2e_kg": 2047.7
       },
@@ -30274,7 +30274,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-91de1b03",
         "name": "Jann-Fredryck Matias",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -30295,14 +30295,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5aab1252",
         "name": "Jarrod Little",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-767b8ba5",
         "name": "Jasha Dehm",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 587.0
       },
@@ -30330,7 +30330,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7981d93a",
         "name": "Jason Spadaro",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0242",
         "co2e_kg": 3300.4
       },
@@ -30372,7 +30372,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-124bcb50",
         "name": "JD Banogon",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -30400,14 +30400,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-967d6402",
         "name": "Jeffry Jeve",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-6cb95e15",
         "name": "Jen Matthews",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
@@ -30421,14 +30421,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bb74e12d",
         "name": "Jenna Dilworth",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0500",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-13120cb4",
         "name": "Jennifer Caselle",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
@@ -30463,7 +30463,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d79d5470",
         "name": "Jenny Wang",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
@@ -30477,14 +30477,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7d7ab0bf",
         "name": "Jeric Diocton",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0508",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-ecd8076b",
         "name": "Jeroen Schneider",
-        "affiliation": "Reef Renewal Foundation - Curacao, Curacao",
+        "affiliation": "Reef Renewal Foundation",
         "location_id": "emis-loc-0313",
         "co2e_kg": 3353.1
       },
@@ -30498,21 +30498,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-864e30a0",
         "name": "Jessica Eri Fernandez",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-5c163c43",
         "name": "Jessica Glazner",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-c1055ce7",
         "name": "Jessica Hodge",
-        "affiliation": "University of Bristol",
+        "affiliation": "University of Bristol, United Kingdom",
         "location_id": "emis-loc-0419",
         "co2e_kg": 4696.0
       },
@@ -30533,7 +30533,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e7001058",
         "name": "Jessica Reichert",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaiʻi Institute of Marine Biology, United States",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       },
@@ -30547,14 +30547,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-63e5d0dd",
         "name": "Jhon Reimer Fajardo",
-        "affiliation": "Silliman University",
+        "affiliation": "Silliman University, Philippines",
         "location_id": "emis-loc-0333",
         "co2e_kg": 1904.4
       },
       {
         "id": "offset-327c598d",
         "name": "Ji-yen Cheng",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0003",
         "co2e_kg": 2262.7
       },
@@ -30582,7 +30582,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4ad071e2",
         "name": "Jimena Paredes-De la Vega",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0448",
         "co2e_kg": 4533.9
       },
@@ -30603,14 +30603,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-acce7e2c",
         "name": "Joana F. Couceiro",
-        "affiliation": "University of Lisbon",
+        "affiliation": "University of Lisbon, Portugal",
         "location_id": "emis-loc-0453",
         "co2e_kg": 5005.7
       },
       {
         "id": "offset-a2f2c59c",
         "name": "Joana Figueiredo",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -30631,7 +30631,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-47d694cd",
         "name": "Joaquin Rodrigo Garza-Perez",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0386",
         "co2e_kg": 2779.3
       },
@@ -30659,7 +30659,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-436c855f",
         "name": "Joelle Mattos",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -30673,14 +30673,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1237e456",
         "name": "John Burns",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo, United States",
         "location_id": "emis-loc-0443",
         "co2e_kg": 1800.6
       },
       {
         "id": "offset-109dd261",
         "name": "John McManus",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -30701,7 +30701,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-557c71c7",
         "name": "Johnenn Manalang",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -30715,14 +30715,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9e429256",
         "name": "Jokim Kitolelei",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 587.0
       },
       {
         "id": "offset-d24194a5",
         "name": "Jonas Dreesmann",
-        "affiliation": "Bergische Universitat Wuppertal",
+        "affiliation": "Bergische Universität Wuppertal, Germany",
         "location_id": "emis-loc-0017",
         "co2e_kg": 4641.1
       },
@@ -30736,14 +30736,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-20cb62bc",
         "name": "Jonathan Martinez",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-82f86320",
         "name": "Jonathan Whitney",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0257",
         "co2e_kg": 3363.9
       },
@@ -30764,42 +30764,42 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4a71e845",
         "name": "Jordan Pierce",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0427",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-09f75b7f",
         "name": "Jordan Ruiz",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0479",
         "co2e_kg": 3580.4
       },
       {
         "id": "offset-bb8f08fe",
         "name": "Jordan Sims",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0421",
         "co2e_kg": 2686.0
       },
       {
         "id": "offset-d26ad0fb",
         "name": "Joseane Marques",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity, Germany",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
       {
         "id": "offset-4082aae3",
         "name": "Joseph Brennan",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0448",
         "co2e_kg": 4533.9
       },
       {
         "id": "offset-0b04b61b",
         "name": "Joseph Townsend",
-        "affiliation": "University of Puerto Rico - Mayaguez",
+        "affiliation": "University of Puerto Rico at Mayagüez, United States",
         "location_id": "emis-loc-0488",
         "co2e_kg": 3300.4
       },
@@ -30813,35 +30813,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cfa6cd1b",
         "name": "Josh Hardin",
-        "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science",
+        "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science, United States",
         "location_id": "emis-loc-0316",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-0e855972",
         "name": "Joshua Bennett-Williams",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0151",
         "co2e_kg": 2348.4
       },
       {
         "id": "offset-6a95cc1c",
         "name": "Joshua Cinner",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-ee416dd2",
         "name": "Joshua Feingold",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-4757b9e4",
         "name": "Joshua Voss",
-        "affiliation": "Florida Atlantic University",
+        "affiliation": "Florida Atlantic University, United States",
         "location_id": "emis-loc-0111",
         "co2e_kg": 3313.9
       },
@@ -30862,7 +30862,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2d699987",
         "name": "José Bastos",
-        "affiliation": "Universidade Federal do Rio Grande do Norte",
+        "affiliation": "Universidade Federal do Rio Grande do Norte, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3653.9
       },
@@ -30883,14 +30883,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-402983e1",
         "name": "Juan Esquivel-muelbert",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0216",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-9cd20036",
         "name": "Juan Pablo D'Olivo Cordero",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0386",
         "co2e_kg": 2779.3
       },
@@ -30904,14 +30904,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e0c38922",
         "name": "Julia Briand",
-        "affiliation": "University of Alberta",
+        "affiliation": "University of Alberta, Canada",
         "location_id": "emis-loc-0409",
         "co2e_kg": 3104.2
       },
       {
         "id": "offset-9c5a1f17",
         "name": "Julia Cole",
-        "affiliation": "University of Michigan",
+        "affiliation": "University Of Michigan, United States",
         "location_id": "emis-loc-0466",
         "co2e_kg": 3453.8
       },
@@ -30925,14 +30925,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1840b98b",
         "name": "Julia Terra Torres",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-de11b6ea",
         "name": "Julian Christopher Maypa",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -30953,7 +30953,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e5fd0c22",
         "name": "Julianna Renzi",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
@@ -30988,35 +30988,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dc9e5fa1",
         "name": "Juntong Hu",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0461",
         "co2e_kg": 723.0
       },
       {
         "id": "offset-d951f161",
         "name": "Justin Berg",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-a36bfb57",
         "name": "Kahaku Poepoe",
-        "affiliation": "Kuaaina Ulu Auamo",
+        "affiliation": "Kuaʻāina Ulu ʻAuamo, United States",
         "location_id": "emis-loc-0204",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-514def25",
         "name": "Kaho Tisthammer",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-b33e380f",
         "name": "Kaiku Kaholoaa",
-        "affiliation": "Stanford University",
+        "affiliation": "Stanford University, United States",
         "location_id": "emis-loc-0343",
         "co2e_kg": 2708.2
       },
@@ -31030,42 +31030,42 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4d5efa0d",
         "name": "Kailey Pascoe",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0011",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-5871b460",
         "name": "Kainalu Keliʻikuli-Grace",
-        "affiliation": "Hoala Kealakekua Nui, Inc.",
+        "affiliation": "Hoʻāla Kealakekua Nui, Inc., United States",
         "location_id": "emis-loc-0149",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-90174ead",
         "name": "Kainalu Steward",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-28e13d0d",
         "name": "Kamaka Frasco",
-        "affiliation": "University of Hawaii at Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo, United States",
         "location_id": "emis-loc-0447",
         "co2e_kg": 1800.6
       },
       {
         "id": "offset-7e6321ce",
         "name": "Kamalani Oshiro",
-        "affiliation": "Hawai'i Institute of Marine Biology",
+        "affiliation": "Hawaiʻi Institute of Marine Biology, United States",
         "location_id": "emis-loc-0140",
         "co2e_kg": 3274.8
       },
       {
         "id": "offset-5fbcbdb3",
         "name": "Kanani Enos",
-        "affiliation": "KUPA - Hoala Kealakekua Nui",
+        "affiliation": "KUPA - Ho’āla Kealakekua Nui, United States",
         "location_id": "emis-loc-0206",
         "co2e_kg": 3123.0
       },
@@ -31079,7 +31079,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0610425b",
         "name": "Kara Rising",
-        "affiliation": "University of Derby",
+        "affiliation": "University of Derby, United Kingdom",
         "location_id": "emis-loc-0435",
         "co2e_kg": 4651.4
       },
@@ -31093,14 +31093,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ac0a35ee",
         "name": "Karen Neely",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-9084f8b2",
         "name": "Karim Primov",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0507",
         "co2e_kg": 3003.4
       },
@@ -31114,14 +31114,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ec6b98cd",
         "name": "Kate Fetkenhour",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0011",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-64db611d",
         "name": "Kate Heffner",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -31142,7 +31142,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d243a5aa",
         "name": "Katharina Bauda",
-        "affiliation": "Instituto Tecnologico de Bahia de Banderas",
+        "affiliation": "Instituto Tecnológico de Bahía de Banderas, Mexico",
         "location_id": "emis-loc-0174",
         "co2e_kg": 2687.4
       },
@@ -31177,7 +31177,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c0179d7c",
         "name": "Kathia Jaramillo",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -31205,7 +31205,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-80b11a2b",
         "name": "Kathryn Cobleigh",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
@@ -31219,7 +31219,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c565319b",
         "name": "Kathryn Scafidi",
-        "affiliation": "University of Otago",
+        "affiliation": "University of Otago, New Zealand",
         "location_id": "emis-loc-0481",
         "co2e_kg": 468.3
       },
@@ -31233,21 +31233,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dc15a6a5",
         "name": "Katie Cramer",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0011",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-8eeb8537",
         "name": "Katie Eaton",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-d9e65409",
         "name": "Katie Lubarsky",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0322",
         "co2e_kg": 2674.0
       },
@@ -31268,7 +31268,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a3652125",
         "name": "Katy Rylance",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0450",
         "co2e_kg": 4623.6
       },
@@ -31282,7 +31282,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-85b0b5aa",
         "name": "Kay Watty",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity, Germany",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
@@ -31303,7 +31303,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d7e52ef6",
         "name": "Kealiʻi Sagum",
-        "affiliation": "State of Hawaii",
+        "affiliation": "State of Hawaiʻi, United States",
         "location_id": "emis-loc-0346",
         "co2e_kg": 3274.8
       },
@@ -31317,35 +31317,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dddab9ad",
         "name": "Keanu Rochette-yu Tsuen",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-afd1bab2",
         "name": "Keiko Wilkins",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-773a51f6",
         "name": "Kekuʻiapōiula Keliipuleole",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-1a20f051",
         "name": "Kelly",
-        "affiliation": "Georgia Institute of Technology",
+        "affiliation": "Georgia Institute of Technology, United States",
         "location_id": "emis-loc-0123",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-901eac38",
         "name": "Kelly Inagaki",
-        "affiliation": "Universidade Federal do Rio Grande do Norte",
+        "affiliation": "Universidade Federal do Rio Grande do Norte, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3653.9
       },
@@ -31394,7 +31394,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8a9d4f47",
         "name": "Kendall Chancellor",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0427",
         "co2e_kg": 2674.0
       },
@@ -31408,21 +31408,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9fe22ce8",
         "name": "Kenneth Hoadley",
-        "affiliation": "University of Alabama",
+        "affiliation": "University of Alabama, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-18662cf5",
         "name": "Keno Hsueh",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-5314ea7d",
         "name": "Kenzie Cooke",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -31443,7 +31443,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-75f5a117",
         "name": "Keolohilani Lopes Jr",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
@@ -31457,7 +31457,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f1ade3c7",
         "name": "Kerri Dobson",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0479",
         "co2e_kg": 3580.4
       },
@@ -31478,28 +31478,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-072e4531",
         "name": "Keyla Plichon",
-        "affiliation": "Universite Cote d'azur",
+        "affiliation": "Université Côte d'azur, France",
         "location_id": "emis-loc-0395",
         "co2e_kg": 4779.0
       },
       {
         "id": "offset-23ce7a80",
         "name": "Khatija Alliji",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0208",
         "co2e_kg": 4641.4
       },
       {
         "id": "offset-7c4ec132",
         "name": "Killian Ver Hoeye",
-        "affiliation": "University of Mons, Belgium",
+        "affiliation": "University of Mons",
         "location_id": "emis-loc-0472",
         "co2e_kg": 4677.6
       },
       {
         "id": "offset-81842c93",
         "name": "Kim de Luca",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity, Germany",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
@@ -31527,21 +31527,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f1535e98",
         "name": "Kira Brereton",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
       {
         "id": "offset-f4c7a4ec",
         "name": "Kira Hughes",
-        "affiliation": "State of Hawai'i",
+        "affiliation": "State of Hawaiʻi, United States",
         "location_id": "emis-loc-0345",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-f3532565",
         "name": "Kirsty Frith",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0450",
         "co2e_kg": 4623.6
       },
@@ -31590,21 +31590,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a4f0826b",
         "name": "Krista Laforest",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0479",
         "co2e_kg": 3580.4
       },
       {
         "id": "offset-6f57e5f6",
         "name": "Kristen Reed",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-2ab99482",
         "name": "Kristin Grimes",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
@@ -31618,42 +31618,42 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-006984e3",
         "name": "Krystle-blue Pahl",
-        "affiliation": "University of Alabama",
+        "affiliation": "University of Alabama, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 3277.3
       },
       {
         "id": "offset-2c8aecae",
         "name": "Kyle John Alan Zawada",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0216",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-ca88d040",
         "name": "Kyle Morgan",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0245",
         "co2e_kg": 2145.3
       },
       {
         "id": "offset-485d048d",
         "name": "Kyle Pisano",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-72cc934d",
         "name": "Lachan Roth",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0356",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-99563f0d",
         "name": "Laetitia Hédouin",
-        "affiliation": "CRIOBE, Reunion",
+        "affiliation": "CRIOBE, Réunion",
         "location_id": "emis-loc-0079",
         "co2e_kg": 4781.9
       },
@@ -31667,14 +31667,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-902d1335",
         "name": "Laongdow Jungrak",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0306",
         "co2e_kg": 2445.1
       },
       {
         "id": "offset-d0ae5160",
         "name": "Lara Virginia Birkart",
-        "affiliation": "Universidad Nacional Autonoma de Mexico",
+        "affiliation": "Universidad Nacional Autónoma De México, Mexico",
         "location_id": "emis-loc-0386",
         "co2e_kg": 2779.3
       },
@@ -31702,7 +31702,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c93f9ce3",
         "name": "Laura Fiegel",
-        "affiliation": "University of Oldenburg",
+        "affiliation": "University of Oldenburg, Germany",
         "location_id": "emis-loc-0480",
         "co2e_kg": 4574.3
       },
@@ -31737,21 +31737,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6ff2f869",
         "name": "Laura-Li Jeannot",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0208",
         "co2e_kg": 4641.4
       },
       {
         "id": "offset-6cebc146",
         "name": "Laurel Diaz",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los Angeles, United States",
         "location_id": "emis-loc-0424",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-6ee01b36",
         "name": "Lauren Enright",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
@@ -31772,14 +31772,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-31701690",
         "name": "Lauren Olinger",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-8036e204",
         "name": "Lauren Speare",
-        "affiliation": "Georgia Institute of Technology",
+        "affiliation": "Georgia Institute of Technology, United States",
         "location_id": "emis-loc-0123",
         "co2e_kg": 3326.5
       },
@@ -31800,14 +31800,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a519e2ae",
         "name": "Laurie Raymundo",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-e303b335",
         "name": "Layla Iijima",
-        "affiliation": "Universite de Bretagne Occidentale",
+        "affiliation": "Université de Bretagne Occidentale, France",
         "location_id": "emis-loc-0396",
         "co2e_kg": 2744.4
       },
@@ -31828,7 +31828,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0b21eb6a",
         "name": "Leah Barkai",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -31863,7 +31863,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-019bb8e7",
         "name": "Leon Tran",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -31884,14 +31884,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-031cd86f",
         "name": "Les Kaufman",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0024",
         "co2e_kg": 3698.3
       },
       {
         "id": "offset-80012b19",
         "name": "Letícia Pinheiro",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
@@ -31919,7 +31919,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3746271d",
         "name": "Liam Abrams",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -31940,14 +31940,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1b6fcaf5",
         "name": "Liat Biniuri",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0356",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-38ecf27b",
         "name": "Liav Meoded Stern",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
@@ -31961,21 +31961,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f2bf1cb5",
         "name": "Lily Borema",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-f3c9e9b1",
         "name": "Linda Eggertsen",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-e818ad11",
         "name": "Lindsay Dade",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
@@ -31996,7 +31996,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1a8c8e38",
         "name": "Lisa Goberdhan",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0208",
         "co2e_kg": 4641.4
       },
@@ -32010,7 +32010,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d45940dd",
         "name": "Lisa McManus",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -32045,7 +32045,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9532da02",
         "name": "Liza Roger",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0011",
         "co2e_kg": 2780.4
       },
@@ -32066,7 +32066,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3089c24f",
         "name": "Lorenzo Massimo Toniolo",
-        "affiliation": "University of Milano - Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0468",
         "co2e_kg": 4716.9
       },
@@ -32108,7 +32108,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-db032e57",
         "name": "Lucas Koh",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0245",
         "co2e_kg": 2145.3
       },
@@ -32129,7 +32129,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c4c1161a",
         "name": "Lucia Hu",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0151",
         "co2e_kg": 2348.4
       },
@@ -32178,28 +32178,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-52628096",
         "name": "Luisa Fontoura",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0216",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-2cb6ba55",
         "name": "Luisa Meister",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0448",
         "co2e_kg": 4533.9
       },
       {
         "id": "offset-7af3be77",
         "name": "Luiza P. Campos",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-4f658736",
         "name": "Luiza Waechter",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -32213,7 +32213,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6ff22161",
         "name": "Luna Mayura da Fonseca Bauer",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
@@ -32227,7 +32227,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-20d3aaf9",
         "name": "Lyndsey Holland",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0513",
         "co2e_kg": 209.9
       },
@@ -32262,7 +32262,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-74b2529c",
         "name": "Ma. Chrischelle Bullecer",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -32297,56 +32297,56 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-78c04ed7",
         "name": "Mackenzie Kawahara",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-f2c42052",
         "name": "Madchen Gebhard",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-3c1d74e2",
         "name": "Maddison Shiels",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-23a43bba",
         "name": "Madeleine JH van Oppen",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0461",
         "co2e_kg": 723.0
       },
       {
         "id": "offset-79f729b8",
         "name": "Madeleine Sherman",
-        "affiliation": "Hawai'i Institute of Marine Biology",
+        "affiliation": "Hawaiʻi Institute of Marine Biology, United States",
         "location_id": "emis-loc-0140",
         "co2e_kg": 3274.8
       },
       {
         "id": "offset-40425b94",
         "name": "Madeleine Ward",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-c21eee28",
         "name": "Madelief Schelvis",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-5eb84ce8",
         "name": "Madeline Berger",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -32360,14 +32360,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-43986770",
         "name": "Madison Androne",
-        "affiliation": "Division of Aquatic Resources - Hawai'i",
+        "affiliation": "Hawaiʻi Division of Aquatic Resources, United States",
         "location_id": "emis-loc-0092",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-6ab8a0f0",
         "name": "Madison Weise",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
@@ -32402,7 +32402,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d61f8c9f",
         "name": "Maile Coberly",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0513",
         "co2e_kg": 3274.8
       },
@@ -32416,7 +32416,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fb67ec1b",
         "name": "Makamas Sutthacheep",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0306",
         "co2e_kg": 2445.1
       },
@@ -32465,14 +32465,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-974441e0",
         "name": "Manuel Ploner",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-d64dfe76",
         "name": "Manuel Poretti",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0461",
         "co2e_kg": 723.0
       },
@@ -32486,7 +32486,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b5c8fef2",
         "name": "Marcela Prado-Zapata",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0427",
         "co2e_kg": 2674.0
       },
@@ -32514,14 +32514,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c96b6be6",
         "name": "Marco Contardi",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0469",
         "co2e_kg": 4716.9
       },
       {
         "id": "offset-d4a5349c",
         "name": "Marcos Barbeitos",
-        "affiliation": "Federal University of Parana",
+        "affiliation": "Federal University of Paraná, Brazil",
         "location_id": "emis-loc-0105",
         "co2e_kg": 2979.6
       },
@@ -32549,7 +32549,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c7398af2",
         "name": "Margarita Brandt",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0513",
         "co2e_kg": 2931.1
       },
@@ -32570,35 +32570,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3b04f2ad",
         "name": "Maria Andersen",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-8160248f",
         "name": "Maria Beger",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0450",
         "co2e_kg": 4623.6
       },
       {
         "id": "offset-cb0383c7",
         "name": "Maria Byrne",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-757ed51d",
         "name": "Maria Carolina Pacheco",
-        "affiliation": "Universidade Federal do Rio Grande do Norte",
+        "affiliation": "Universidade Federal do Rio Grande do Norte, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3653.9
       },
       {
         "id": "offset-224cfb78",
         "name": "Maria Dornelas",
-        "affiliation": "University of Lisbon",
+        "affiliation": "University of Lisbon, Portugal",
         "location_id": "emis-loc-0453",
         "co2e_kg": 5005.7
       },
@@ -32619,7 +32619,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bf93d0a4",
         "name": "Maria Jordana Olano",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -32640,14 +32640,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-229cb06c",
         "name": "Maria Vanessa Baria-Rodriguez",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-b15ab720",
         "name": "Mariana Acipreste",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
@@ -32661,14 +32661,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-697fedb6",
         "name": "Mariana Marcondes",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-80ef7d46",
         "name": "Mariana Rocha De Souza",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
@@ -32682,14 +32682,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e99924c0",
         "name": "Marianna Coppola",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-704b0157",
         "name": "Marichelle Barolo",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -32710,7 +32710,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9d00965c",
         "name": "Marilyn Brandt",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
@@ -32724,7 +32724,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2456e1d0",
         "name": "Marina Garmendia",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -32752,7 +32752,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e7f70cfc",
         "name": "Marisa Agarwal",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0322",
         "co2e_kg": 2674.0
       },
@@ -32787,7 +32787,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fbe20456",
         "name": "Mark Meekan",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0513",
         "co2e_kg": 891.1
       },
@@ -32801,14 +32801,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-791b9524",
         "name": "Markus Rummel",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0151",
         "co2e_kg": 2348.4
       },
       {
         "id": "offset-f2edc006",
         "name": "Marlena Joppien",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0245",
         "co2e_kg": 2145.3
       },
@@ -32843,7 +32843,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dece24ca",
         "name": "Mary Donovan",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -32864,7 +32864,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3f062b70",
         "name": "Mary Williams",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -32892,7 +32892,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-afe055ba",
         "name": "Masumi Kamata",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0515",
         "co2e_kg": 2255.6
       },
@@ -32913,14 +32913,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f5009bc3",
         "name": "Mathilde Godefroid",
-        "affiliation": "Universite Libre de Bruxelles",
+        "affiliation": "Université Libre de Bruxelles, Belgium",
         "location_id": "emis-loc-0399",
         "co2e_kg": 4666.6
       },
       {
         "id": "offset-a6d6c6de",
         "name": "Matias Gomez Corrales",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -32934,21 +32934,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e79c9825",
         "name": "Matilde Lanzini",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-415cce1a",
         "name": "Matilde Marques",
-        "affiliation": "University of Lisbon",
+        "affiliation": "University of Lisbon, Portugal",
         "location_id": "emis-loc-0453",
         "co2e_kg": 5005.7
       },
       {
         "id": "offset-d3398c66",
         "name": "Matlyn Ua",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo, United States",
         "location_id": "emis-loc-0443",
         "co2e_kg": 1800.6
       },
@@ -32976,14 +32976,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6d0e3392",
         "name": "Matthew Clements",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-e1a694cb",
         "name": "Matthew Doherty",
-        "affiliation": "University of Plymouth",
+        "affiliation": "University of Plymouth, United Kingdom",
         "location_id": "emis-loc-0486",
         "co2e_kg": 4696.9
       },
@@ -33011,7 +33011,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-be20c2a6",
         "name": "Matthieu Leray",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0448",
         "co2e_kg": 4533.9
       },
@@ -33060,35 +33060,35 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3b702e68",
         "name": "Maya Becker",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-6596db98",
         "name": "Maya Gomez",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0500",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-b7ca2b06",
         "name": "Maya Olin",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0513",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-a329868f",
         "name": "Maya Otsu",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-1ca4ed3d",
         "name": "Maya Powell",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -33102,28 +33102,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7d775544",
         "name": "McClaran Shirley",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0427",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-bd9f306a",
         "name": "Meenatchi Ramanan",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0450",
         "co2e_kg": 4623.6
       },
       {
         "id": "offset-096ceb84",
         "name": "Meg Van Horn",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-b0d342db",
         "name": "Megan Carney",
-        "affiliation": "University of Hawai'i - Hilo",
+        "affiliation": "University of Hawaiʻi - Hilo, United States",
         "location_id": "emis-loc-0443",
         "co2e_kg": 1800.6
       },
@@ -33137,7 +33137,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f375c811",
         "name": "Mehdi Bouhaddou",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los Angeles, United States",
         "location_id": "emis-loc-0424",
         "co2e_kg": 2681.7
       },
@@ -33165,14 +33165,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a7ca592d",
         "name": "Melina Ferreira Martello",
-        "affiliation": "Universidade Federal do Rio Grande do Norte",
+        "affiliation": "Universidade Federal do Rio Grande do Norte, Brazil",
         "location_id": "emis-loc-0390",
         "co2e_kg": 3653.9
       },
       {
         "id": "offset-22d11955",
         "name": "Melissa Allen (Sante)",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0242",
         "co2e_kg": 3300.4
       },
@@ -33186,14 +33186,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-65ff7db9",
         "name": "Melman Neill",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0507",
         "co2e_kg": 3003.4
       },
       {
         "id": "offset-e31d1057",
         "name": "Melody Salesa",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 613.8
       },
@@ -33207,7 +33207,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-58662d6a",
         "name": "Mengjin Zhang",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0448",
         "co2e_kg": 4533.9
       },
@@ -33221,14 +33221,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bf0b7dd7",
         "name": "Meshal Shawkrah",
-        "affiliation": "National Center of Wildlife",
+        "affiliation": "National Center for Wildlife, Saudi Arabia",
         "location_id": "emis-loc-0248",
         "co2e_kg": 3967.9
       },
       {
         "id": "offset-b6b8e4bc",
         "name": "Mia Vallee",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -33249,7 +33249,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-df61531a",
         "name": "Michael Gibson",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
@@ -33277,28 +33277,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0d1cbeed",
         "name": "Michael Studivan",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-ed04b55e",
         "name": "Michalis Mihalitsis",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-421e5b29",
         "name": "Michelle Amario",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
       {
         "id": "offset-b5415acd",
         "name": "Michelle Ballesteros",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -33319,14 +33319,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-74b8e6c7",
         "name": "Michelle Graulty",
-        "affiliation": "the Nature Conservancy - Reef Resilience Network",
+        "affiliation": "The Nature Conservancy - Reef Resilience Network, United States",
         "location_id": "emis-loc-0364",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-5013e9cc",
         "name": "Michelle Mair",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -33340,7 +33340,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e23ec5fe",
         "name": "Miguel Mies",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo, Brazil",
         "location_id": "emis-loc-0495",
         "co2e_kg": 3060.9
       },
@@ -33354,14 +33354,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8123a2e3",
         "name": "Mika Doron",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0356",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-b1c7faf2",
         "name": "Mikayla Deigan",
-        "affiliation": "University of Arizona",
+        "affiliation": "University of Arizona, United States",
         "location_id": "emis-loc-0412",
         "co2e_kg": 2776.4
       },
@@ -33375,14 +33375,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ca10c5d0",
         "name": "Mikhail Matz",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0507",
         "co2e_kg": 3003.4
       },
       {
         "id": "offset-1f4b8f33",
         "name": "Mikito Murakami",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0515",
         "co2e_kg": 2255.6
       },
@@ -33445,7 +33445,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9ff57ed8",
         "name": "Mitchell Smelser",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0427",
         "co2e_kg": 2674.0
       },
@@ -33459,14 +33459,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-65cb3bb2",
         "name": "Miya Isabelle McGlone",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0508",
         "co2e_kg": 2047.7
       },
       {
         "id": "offset-572dabdc",
         "name": "Miyah Brooks",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -33487,7 +33487,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f260eba8",
         "name": "Molly Blyth",
-        "affiliation": "University of Plymouth",
+        "affiliation": "University of Plymouth, United Kingdom",
         "location_id": "emis-loc-0486",
         "co2e_kg": 4696.9
       },
@@ -33501,7 +33501,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6a72095f",
         "name": "Molly Mae Baker",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
@@ -33515,14 +33515,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-81e4fc36",
         "name": "Monica Medina",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los Angeles, United States",
         "location_id": "emis-loc-0424",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-a7323782",
         "name": "Morgan Bennett-Smith",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0024",
         "co2e_kg": 3698.3
       },
@@ -33564,7 +33564,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-01f5899c",
         "name": "Moriah Bass",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
@@ -33578,7 +33578,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-08a58cf0",
         "name": "Moshe Perez",
-        "affiliation": "Bar-Ilan University",
+        "affiliation": "Bar-Ilan University, Israel",
         "location_id": "emis-loc-0015",
         "co2e_kg": 4165.6
       },
@@ -33599,7 +33599,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0679da42",
         "name": "Mu-Han Chen",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0024",
         "co2e_kg": 3698.3
       },
@@ -33648,7 +33648,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-daaeacb8",
         "name": "Na'ama Rose Kochman",
-        "affiliation": "University of New South Wales",
+        "affiliation": "University of New South Wales, Australia",
         "location_id": "emis-loc-0476",
         "co2e_kg": 591.9
       },
@@ -33718,28 +33718,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7e015543",
         "name": "Natalia Perez",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-b8f199f6",
         "name": "Natalia Rivas-Escobar",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-5ccb40cf",
         "name": "Natalie Goeler-Slough",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-dcfff690",
         "name": "Natalie Rosser",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
@@ -33781,7 +33781,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b7dd6785",
         "name": "Nathan Crowe",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0479",
         "co2e_kg": 3580.4
       },
@@ -33823,7 +33823,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-99655b83",
         "name": "Nicholas Durgadeen",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
@@ -33844,7 +33844,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e699033c",
         "name": "Nicholas Jones",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -33865,14 +33865,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ca4f9bae",
         "name": "Nick Graham",
-        "affiliation": "Lancaster University",
+        "affiliation": "Lancaster University, United Kingdom",
         "location_id": "emis-loc-0208",
         "co2e_kg": 4641.4
       },
       {
         "id": "offset-aac7d725",
         "name": "Nick Mcmahon",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0242",
         "co2e_kg": 3300.4
       },
@@ -33886,7 +33886,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-200088a9",
         "name": "Nicola Foster",
-        "affiliation": "University of Plymouth",
+        "affiliation": "University of Plymouth, United Kingdom",
         "location_id": "emis-loc-0486",
         "co2e_kg": 4696.9
       },
@@ -33914,7 +33914,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b6de9cdf",
         "name": "Nicolas Rivas",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -33928,14 +33928,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9be5037d",
         "name": "Nicole Dilernia",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-2eb2d4f4",
         "name": "Nicole K Young",
-        "affiliation": "Florida Atlantic University",
+        "affiliation": "Florida Atlantic University, United States",
         "location_id": "emis-loc-0111",
         "co2e_kg": 3313.9
       },
@@ -33949,7 +33949,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-d4ae58dc",
         "name": "Nicole Pedersen",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0322",
         "co2e_kg": 2674.0
       },
@@ -33963,7 +33963,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a14e009a",
         "name": "Nicole Schroeter",
-        "affiliation": "Oldenburg University",
+        "affiliation": "University of Oldenburg, Germany",
         "location_id": "emis-loc-0285",
         "co2e_kg": 4574.3
       },
@@ -33977,14 +33977,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8da8412d",
         "name": "Nikki Fogarty",
-        "affiliation": "University of North Carolina - Wilmington",
+        "affiliation": "University of North Carolina - Wilmington, United States",
         "location_id": "emis-loc-0479",
         "co2e_kg": 3580.4
       },
       {
         "id": "offset-ea3663d7",
         "name": "Nikko Galanto",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
@@ -34005,28 +34005,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-914626e7",
         "name": "Nils Rädecker",
-        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
+        "affiliation": "Helmholtz Institute for Functional Marine Biodiversity, Germany",
         "location_id": "emis-loc-0146",
         "co2e_kg": 4574.3
       },
       {
         "id": "offset-7907da89",
         "name": "Nina Bean",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-34cbe5d4",
         "name": "Nina Schiettekatte",
-        "affiliation": "University of Lisbon",
+        "affiliation": "University of Lisbon, Portugal",
         "location_id": "emis-loc-0453",
         "co2e_kg": 5005.7
       },
       {
         "id": "offset-9bc30002",
         "name": "Nina Yasuda",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0515",
         "co2e_kg": 2255.6
       },
@@ -34054,14 +34054,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-341d1e49",
         "name": "Noa Ben Ami",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0356",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-1a84ab46",
         "name": "Noa Simon-blecher",
-        "affiliation": "Bar-Ilan University",
+        "affiliation": "Bar-Ilan University, Israel",
         "location_id": "emis-loc-0015",
         "co2e_kg": 4165.6
       },
@@ -34096,7 +34096,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9192d081",
         "name": "Nour Alhoda Akel",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0356",
         "co2e_kg": 4165.6
       },
@@ -34117,7 +34117,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2a1d5b30",
         "name": "Nurfaida Salam Dumato",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -34131,7 +34131,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-48437149",
         "name": "Nyssa Silbiger",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -34152,7 +34152,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8ed14c41",
         "name": "Océane Boulais",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0322",
         "co2e_kg": 2674.0
       },
@@ -34187,7 +34187,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dc67812b",
         "name": "Olivia Isbell",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
@@ -34201,7 +34201,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1a138232",
         "name": "Omri Bronstein",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0356",
         "co2e_kg": 4165.6
       },
@@ -34222,7 +34222,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-03867cee",
         "name": "Oren Levy",
-        "affiliation": "Bar-Ilan University",
+        "affiliation": "Bar-Ilan University, Israel",
         "location_id": "emis-loc-0015",
         "co2e_kg": 4165.6
       },
@@ -34236,7 +34236,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bdc15009",
         "name": "Orlando Timmerman",
-        "affiliation": "University of Cambridge",
+        "affiliation": "University of Cambridge, United Kingdom",
         "location_id": "emis-loc-0430",
         "co2e_kg": 4670.9
       },
@@ -34257,28 +34257,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b6d159d0",
         "name": "Paige Duffin",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0500",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-59962857",
         "name": "Paige Sawyers",
-        "affiliation": "University of New South Wales",
+        "affiliation": "University of New South Wales, Australia",
         "location_id": "emis-loc-0476",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-6fb145a5",
         "name": "Paige Strudwick",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-6b84f883",
         "name": "Pallavi Seburn",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University Of Mauritius, Mauritius",
         "location_id": "emis-loc-0460",
         "co2e_kg": 2766.6
       },
@@ -34299,21 +34299,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fd950798",
         "name": "Patrick Buerger",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0216",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-cabf68a2",
         "name": "Patrick Idank Idank",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-e9884023",
         "name": "Patrick Kiel",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -34341,7 +34341,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7e0cca78",
         "name": "Paula E. Pabon Quintero",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -34376,14 +34376,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-629c2998",
         "name": "Peter Houk",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-67e4aa16",
         "name": "Peter Hughes",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0216",
         "co2e_kg": 891.1
       },
@@ -34481,14 +34481,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-35835aad",
         "name": "Prandito Simanjuntak",
-        "affiliation": "Pattimura University",
+        "affiliation": "University of Pattimura, Indonesia",
         "location_id": "emis-loc-0293",
         "co2e_kg": 1536.7
       },
       {
         "id": "offset-918bf575",
         "name": "Prerana Gawde",
-        "affiliation": "Stanford University",
+        "affiliation": "Stanford University, United States",
         "location_id": "emis-loc-0343",
         "co2e_kg": 2708.2
       },
@@ -34516,7 +34516,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3157bc1c",
         "name": "Prof Bob Richmond",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 3123.0
       },
@@ -34551,7 +34551,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-89001dbc",
         "name": "Prof Isabel Marques da Silva",
-        "affiliation": "Universidade Lurio",
+        "affiliation": "Universidade Lúrio, Mozambique",
         "location_id": "emis-loc-0392",
         "co2e_kg": 3170.6
       },
@@ -34586,21 +34586,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-559012d3",
         "name": "Prof Jorge Lino",
-        "affiliation": "Faculty of Engineering - University of Porto",
+        "affiliation": "University of Porto",
         "location_id": "emis-loc-0104",
         "co2e_kg": 5005.7
       },
       {
         "id": "offset-c85f81be",
         "name": "Prof Michael Hellberg",
-        "affiliation": "Louisiana State University",
+        "affiliation": "Louisiana State University, United States",
         "location_id": "emis-loc-0213",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-4a1fb55d",
         "name": "Prof Paolo Galli",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0469",
         "co2e_kg": 4686.0
       },
@@ -34628,7 +34628,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5a47c2ea",
         "name": "Prof Terry Donaldson",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 1641.2
       },
@@ -34642,14 +34642,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-de793c5b",
         "name": "Rachel Carlson",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0421",
         "co2e_kg": 2686.0
       },
       {
         "id": "offset-2738a2af",
         "name": "Rachel Ionata",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -34691,7 +34691,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-79f7d177",
         "name": "Raffi Isah",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -34712,7 +34712,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8e1de153",
         "name": "Ranjeet Bhagooli",
-        "affiliation": "University of Mauritius",
+        "affiliation": "University Of Mauritius, Mauritius",
         "location_id": "emis-loc-0460",
         "co2e_kg": 2766.6
       },
@@ -34726,7 +34726,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9c99d668",
         "name": "Rasheeda Alexander",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0257",
         "co2e_kg": 3363.9
       },
@@ -34740,14 +34740,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-92135c1d",
         "name": "Raymond Banister",
-        "affiliation": "University of Alabama",
+        "affiliation": "University of Alabama, United States",
         "location_id": "emis-loc-0407",
         "co2e_kg": 3277.3
       },
       {
         "id": "offset-f055c9c2",
         "name": "Rayna Mcclintock",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -34761,7 +34761,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1fa25ed7",
         "name": "Reagan Sharkey",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -34775,28 +34775,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5d47f54c",
         "name": "Rebecca Lacy",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
       {
         "id": "offset-3d2b242f",
         "name": "Rebecca Loy",
-        "affiliation": "University of Bristol",
+        "affiliation": "University of Bristol, United Kingdom",
         "location_id": "emis-loc-0419",
         "co2e_kg": 4696.0
       },
       {
         "id": "offset-7fc8066c",
         "name": "Rebecca Vega Thurber",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-c79ed3e2",
         "name": "Rebecca Wenker",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0513",
         "co2e_kg": 3363.9
       },
@@ -34810,7 +34810,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f83f1d29",
         "name": "Remy Oddenyo",
-        "affiliation": "Macquarie University",
+        "affiliation": "Macquarie University, Australia",
         "location_id": "emis-loc-0216",
         "co2e_kg": 591.9
       },
@@ -34859,7 +34859,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5d41c05c",
         "name": "Rhea Mae Luciano",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -34908,7 +34908,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f1b56243",
         "name": "Riovie Ramos",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0245",
         "co2e_kg": 2145.3
       },
@@ -34929,7 +34929,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-641effd1",
         "name": "Rita Sellares",
-        "affiliation": "Fundacion Dominicana de Estudios Marinos",
+        "affiliation": "Fundación Dominicana de Estudios Marinos, Dominican Republic",
         "location_id": "emis-loc-0121",
         "co2e_kg": 3430.2
       },
@@ -34957,49 +34957,49 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-fc7f4628",
         "name": "Robert Richmond",
-        "affiliation": "University of Hawai'i",
+        "affiliation": "University of Hawaiʻi, United States",
         "location_id": "emis-loc-0442",
         "co2e_kg": 1808.8
       },
       {
         "id": "offset-331c6cdf",
         "name": "Robert Spekis",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-693d346a",
         "name": "Robert Streit",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0461",
         "co2e_kg": 723.0
       },
       {
         "id": "offset-e7fcf16f",
         "name": "Robert Tomasetti",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
       {
         "id": "offset-4416dc51",
         "name": "Roberta Martin",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0011",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-fd184d7c",
         "name": "Robin Hartley",
-        "affiliation": "University of Otago",
+        "affiliation": "University of Otago, New Zealand",
         "location_id": "emis-loc-0481",
         "co2e_kg": 468.3
       },
       {
         "id": "offset-f320b66e",
         "name": "Robin Smith",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0513",
         "co2e_kg": 2780.4
       },
@@ -35041,7 +35041,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-14c7f4e6",
         "name": "Ronen Liberman",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -35055,14 +35055,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-39ed1a46",
         "name": "Rosie Rallings",
-        "affiliation": "University of Bristol",
+        "affiliation": "University of Bristol, United Kingdom",
         "location_id": "emis-loc-0419",
         "co2e_kg": 4696.0
       },
       {
         "id": "offset-89640145",
         "name": "Rowan Martindale",
-        "affiliation": "University of Texas - Austin",
+        "affiliation": "University of Texas - Austin, United States",
         "location_id": "emis-loc-0507",
         "co2e_kg": 3003.4
       },
@@ -35083,14 +35083,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-cb0d4c05",
         "name": "Roxanne Siual Blesam",
-        "affiliation": "Palau International Coral Reef Center",
+        "affiliation": "Palau International Coral Reef Center, Palau",
         "location_id": "emis-loc-0292",
         "co2e_kg": 1650.5
       },
       {
         "id": "offset-0eb412ab",
         "name": "Ruiqi Li",
-        "affiliation": "University of Southern California",
+        "affiliation": "University of Southern California, United States",
         "location_id": "emis-loc-0500",
         "co2e_kg": 2681.7
       },
@@ -35111,7 +35111,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7e58c861",
         "name": "Ryan Carl De Juan",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -35146,7 +35146,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2ec04106",
         "name": "Saborni Chowdhury",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0011",
         "co2e_kg": 2780.4
       },
@@ -35160,7 +35160,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-16bf395e",
         "name": "Sadie Cwikiel",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
@@ -35174,7 +35174,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-54ef835d",
         "name": "Sai-Kit Yeung",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0151",
         "co2e_kg": 2348.4
       },
@@ -35188,28 +35188,28 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4299d8a7",
         "name": "Sam King Fung YIU",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0448",
         "co2e_kg": 4533.9
       },
       {
         "id": "offset-13d99629",
         "name": "Samantha Cook",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3123.0
       },
       {
         "id": "offset-ab7e7541",
         "name": "Samantha Gillis",
-        "affiliation": "Auckland University of Technology",
+        "affiliation": "Auckland University of Technology, New Zealand",
         "location_id": "emis-loc-0012",
         "co2e_kg": 0.0
       },
       {
         "id": "offset-4e7a099c",
         "name": "Samantha King",
-        "affiliation": "University of Arizona",
+        "affiliation": "University of Arizona, United States",
         "location_id": "emis-loc-0412",
         "co2e_kg": 2776.4
       },
@@ -35223,7 +35223,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1fe32e57",
         "name": "Samantha Shedd",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0513",
         "co2e_kg": 1808.8
       },
@@ -35265,7 +35265,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-621513f0",
         "name": "Sanna Eriksson",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
@@ -35286,14 +35286,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-81d5edee",
         "name": "Sara Swaminathan",
-        "affiliation": "University of the Virgin Islands Virgin Islands (U.S.)",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0513",
         "co2e_kg": 3722.6
       },
       {
         "id": "offset-0363aab6",
         "name": "Sara Williams",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0242",
         "co2e_kg": 3300.4
       },
@@ -35307,21 +35307,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-55735a35",
         "name": "Sarah Leinbach",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-db179938",
         "name": "Sarah Martin",
-        "affiliation": "University of Leeds",
+        "affiliation": "University of Leeds, United Kingdom",
         "location_id": "emis-loc-0450",
         "co2e_kg": 4623.6
       },
       {
         "id": "offset-899e90ad",
         "name": "Sarah O'Connor",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0257",
         "co2e_kg": 3363.9
       },
@@ -35349,14 +35349,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5304d0a4",
         "name": "Sarah W. Davies",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0024",
         "co2e_kg": 3698.3
       },
       {
         "id": "offset-d81d902f",
         "name": "Sarina Bao",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0515",
         "co2e_kg": 2255.6
       },
@@ -35377,14 +35377,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-30db0bcc",
         "name": "Savanna R. Saunders",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-80dd8894",
         "name": "Scarlett Raine",
-        "affiliation": "Queensland University of Technology",
+        "affiliation": "Queensland University of Technology, Australia",
         "location_id": "emis-loc-0305",
         "co2e_kg": 629.2
       },
@@ -35398,21 +35398,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c83af136",
         "name": "Scott Miller",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-bc422df3",
         "name": "Sean Ben-Shaprut",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0356",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-393222a3",
         "name": "Sean Bensadon",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
@@ -35433,7 +35433,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-49d6f97a",
         "name": "Sebastian Metz",
-        "affiliation": "University of Derby",
+        "affiliation": "University of Derby, United Kingdom",
         "location_id": "emis-loc-0435",
         "co2e_kg": 4651.4
       },
@@ -35461,7 +35461,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-af95292d",
         "name": "Serafin Iii Geson",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -35524,7 +35524,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c7532c9d",
         "name": "Shaman Patel",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0245",
         "co2e_kg": 2145.3
       },
@@ -35580,21 +35580,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-710b1555",
         "name": "Shawna Foo",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-4de82ac1",
         "name": "Shay Almagor",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0356",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-97af1d80",
         "name": "Shay Viehman",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0257",
         "co2e_kg": 3363.9
       },
@@ -35622,7 +35622,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c31f9299",
         "name": "Shelby Gantt",
-        "affiliation": "Boston University",
+        "affiliation": "Boston University, United States",
         "location_id": "emis-loc-0024",
         "co2e_kg": 3698.3
       },
@@ -35685,7 +35685,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-60ac8db5",
         "name": "Shouraseni Roy",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami, United States",
         "location_id": "emis-loc-0462",
         "co2e_kg": 3306.8
       },
@@ -35699,14 +35699,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-eb772c46",
         "name": "Shumpei Maruyama",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0421",
         "co2e_kg": 2686.0
       },
       {
         "id": "offset-83b20596",
         "name": "Sibelle O'donnell",
-        "affiliation": "University of California - Santa Barbara",
+        "affiliation": "University of California - Santa Barbara, United States",
         "location_id": "emis-loc-0428",
         "co2e_kg": 2681.7
       },
@@ -35720,7 +35720,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-ba4cc77b",
         "name": "Silvana Guzman",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -35741,7 +35741,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6171c3c8",
         "name": "Sittiporn Pengsakun",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0306",
         "co2e_kg": 2445.1
       },
@@ -35762,21 +35762,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4fe4d23c",
         "name": "Somok Banerjee",
-        "affiliation": "Arizona State University",
+        "affiliation": "Arizona State University, United States",
         "location_id": "emis-loc-0011",
         "co2e_kg": 2780.4
       },
       {
         "id": "offset-3e748674",
         "name": "Sonora Meiling",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-302a22cc",
         "name": "Sophia Diane Gaton",
-        "affiliation": "University of the Philippines",
+        "affiliation": "University of the Philippines, Philippines",
         "location_id": "emis-loc-0508",
         "co2e_kg": 2047.7
       },
@@ -35811,7 +35811,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-41a75ad6",
         "name": "Sophia Zummo",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0322",
         "co2e_kg": 2674.0
       },
@@ -35853,7 +35853,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-37ef9b4c",
         "name": "Spencer Parr",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
@@ -35888,7 +35888,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-07fd57ab",
         "name": "Stephanie Green",
-        "affiliation": "University of Alberta",
+        "affiliation": "University of Alberta, Canada",
         "location_id": "emis-loc-0409",
         "co2e_kg": 3104.2
       },
@@ -35902,7 +35902,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c5151efa",
         "name": "Stephanie Reynaud",
-        "affiliation": "Centre Scientifique de Monaco",
+        "affiliation": "Centre Scientifique de Monaco, France",
         "location_id": "emis-loc-0046",
         "co2e_kg": 4770.9
       },
@@ -35930,7 +35930,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a72b902c",
         "name": "Stephen Swearer",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
@@ -35951,7 +35951,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-600ff490",
         "name": "Stuart Sandin",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0322",
         "co2e_kg": 2674.0
       },
@@ -35979,7 +35979,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-62df89fb",
         "name": "Supisara Pipithkul",
-        "affiliation": "University of Tokyo",
+        "affiliation": "University of Tokyo, Japan",
         "location_id": "emis-loc-0515",
         "co2e_kg": 2255.6
       },
@@ -36007,7 +36007,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1afa7369",
         "name": "Susie Mclaren",
-        "affiliation": "University of Cambridge",
+        "affiliation": "University of Cambridge, United Kingdom",
         "location_id": "emis-loc-0430",
         "co2e_kg": 4670.9
       },
@@ -36042,7 +36042,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8d570aab",
         "name": "Sébastien Leveque",
-        "affiliation": "Umea University",
+        "affiliation": "Umeå University, Sweden",
         "location_id": "emis-loc-0379",
         "co2e_kg": 4231.2
       },
@@ -36126,7 +36126,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-52997f87",
         "name": "Taran McNelly",
-        "affiliation": "Mote Marine Laboratory",
+        "affiliation": "Mote Marine Laboratory, United States",
         "location_id": "emis-loc-0242",
         "co2e_kg": 3300.4
       },
@@ -36147,7 +36147,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-786622c9",
         "name": "Taylor DeSilva",
-        "affiliation": "University of South Carolina Beaufort",
+        "affiliation": "University of South Carolina - Beaufort, United States",
         "location_id": "emis-loc-0497",
         "co2e_kg": 3123.0
       },
@@ -36161,21 +36161,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-3b4416eb",
         "name": "Taylor Walker",
-        "affiliation": "University of California - Berkeley",
+        "affiliation": "University of California - Berkeley, United States",
         "location_id": "emis-loc-0421",
         "co2e_kg": 2686.0
       },
       {
         "id": "offset-53328c16",
         "name": "Teresa Baptista Nobre",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
       {
         "id": "offset-ca7c1f7e",
         "name": "Teresa Bednarek",
-        "affiliation": "University of Western Australia",
+        "affiliation": "The University Of Western Australia, Australia",
         "location_id": "emis-loc-0523",
         "co2e_kg": 891.1
       },
@@ -36189,14 +36189,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b1e7d9e0",
         "name": "Thalia Hernandez Trillo",
-        "affiliation": "Universidad Autonoma de Baja California Sur",
+        "affiliation": "Universidad Autónoma de Baja California Sur, Mexico",
         "location_id": "emis-loc-0381",
         "co2e_kg": 2639.2
       },
       {
         "id": "offset-728f2961",
         "name": "Thamasak Yeemin",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0306",
         "co2e_kg": 2445.1
       },
@@ -36224,7 +36224,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a841a841",
         "name": "Thomas Johnstone",
-        "affiliation": "Otago University",
+        "affiliation": "University of Otago, New Zealand",
         "location_id": "emis-loc-0287",
         "co2e_kg": 468.3
       },
@@ -36238,14 +36238,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-39402e04",
         "name": "Thomas Oliver",
-        "affiliation": "National Oceanic and Atmospheric Administration",
+        "affiliation": "National Oceanic and Atmospheric Administration, United States",
         "location_id": "emis-loc-0257",
         "co2e_kg": 3363.9
       },
       {
         "id": "offset-696f1cfd",
         "name": "Thomas Quello",
-        "affiliation": "Florida Atlantic University",
+        "affiliation": "Florida Atlantic University, United States",
         "location_id": "emis-loc-0111",
         "co2e_kg": 3313.9
       },
@@ -36280,14 +36280,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e1fdd636",
         "name": "Timothy King",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0151",
         "co2e_kg": 2348.4
       },
       {
         "id": "offset-37f38abd",
         "name": "Tina Keller-Costa",
-        "affiliation": "Instituto Superior Tecnico",
+        "affiliation": "Instituto Superior Técnico, Portugal",
         "location_id": "emis-loc-0173",
         "co2e_kg": 5005.7
       },
@@ -36315,7 +36315,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-12a7cff7",
         "name": "Todd LaJeunesse",
-        "affiliation": "Pennsylvania State University",
+        "affiliation": "Pennsylvania State University, United States",
         "location_id": "emis-loc-0296",
         "co2e_kg": 3562.3
       },
@@ -36329,14 +36329,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-7b837ef0",
         "name": "Tom Moir",
-        "affiliation": "University of New South Wales",
+        "affiliation": "University of New South Wales, Australia",
         "location_id": "emis-loc-0476",
         "co2e_kg": 591.9
       },
       {
         "id": "offset-f60ad8eb",
         "name": "Tom Schils",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
@@ -36385,21 +36385,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-2abf74c2",
         "name": "Triona Barker",
-        "affiliation": "University of Derby",
+        "affiliation": "University of Derby, United Kingdom",
         "location_id": "emis-loc-0435",
         "co2e_kg": 4651.4
       },
       {
         "id": "offset-45bba463",
         "name": "Tristan Buckell",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-22fb229a",
         "name": "Tsai-Hsuan Tony Hsu",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
@@ -36441,14 +36441,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-5df3dd46",
         "name": "Tyler Smith",
-        "affiliation": "University of the Virgin Islands",
+        "affiliation": "University of the Virgin Islands, United States",
         "location_id": "emis-loc-0512",
         "co2e_kg": 3300.4
       },
       {
         "id": "offset-c7b57d3d",
         "name": "Tzu-Hao Lin",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0003",
         "co2e_kg": 2262.7
       },
@@ -36462,7 +36462,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-c1d58727",
         "name": "Ulamila Matairakula - Kotoisuva",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 587.0
       },
@@ -36490,7 +36490,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-6bd3fe00",
         "name": "Valentina Bautista",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -36560,7 +36560,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-365dfe3d",
         "name": "Vic Lorence Madariaga",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman, Philippines",
         "location_id": "emis-loc-0509",
         "co2e_kg": 2047.7
       },
@@ -36581,14 +36581,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-97658dda",
         "name": "Victor Manuel Pinon Gonzlez",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0003",
         "co2e_kg": 2262.7
       },
       {
         "id": "offset-9bc50b72",
         "name": "Victor Pinon-Gonzalez",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0003",
         "co2e_kg": 2229.9
       },
@@ -36602,7 +36602,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-1c759c14",
         "name": "Vid Petrovic",
-        "affiliation": "University of California - San Diego",
+        "affiliation": "University of California - San Diego, United States",
         "location_id": "emis-loc-0427",
         "co2e_kg": 2674.0
       },
@@ -36637,7 +36637,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-985e444d",
         "name": "Vinzenz Hofferek",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0461",
         "co2e_kg": 723.0
       },
@@ -36658,7 +36658,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b47c5ee9",
         "name": "Vittoria Calabretta",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0469",
         "co2e_kg": 4716.9
       },
@@ -36672,14 +36672,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-552f381f",
         "name": "Vivian Li",
-        "affiliation": "University of California - Los Angeles",
+        "affiliation": "University of California - Los Angeles, United States",
         "location_id": "emis-loc-0424",
         "co2e_kg": 2681.7
       },
       {
         "id": "offset-bf747354",
         "name": "Viviana Brambilla",
-        "affiliation": "University of Lisbon",
+        "affiliation": "University of Lisbon, Portugal",
         "location_id": "emis-loc-0453",
         "co2e_kg": 5005.7
       },
@@ -36714,7 +36714,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8c074f16",
         "name": "W. Ryan James",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -36735,7 +36735,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-85c1e4fd",
         "name": "Wanlaya Klinthong",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0306",
         "co2e_kg": 2445.1
       },
@@ -36763,14 +36763,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-71232fda",
         "name": "Wesley Sparagon",
-        "affiliation": "Scripps Institution of Oceanography",
+        "affiliation": "Scripps Institution of Oceanography, United States",
         "location_id": "emis-loc-0322",
         "co2e_kg": 2674.0
       },
       {
         "id": "offset-b342d264",
         "name": "Whitney Schwab",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
@@ -36784,7 +36784,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-51037753",
         "name": "Will Figueira",
-        "affiliation": "University of Sydney",
+        "affiliation": "University of Sydney, Australia",
         "location_id": "emis-loc-0502",
         "co2e_kg": 2674.0
       },
@@ -36812,7 +36812,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0066e874",
         "name": "William Barriera",
-        "affiliation": "Florida International University",
+        "affiliation": "Florida International University, United States",
         "location_id": "emis-loc-0115",
         "co2e_kg": 3300.3
       },
@@ -36833,7 +36833,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-bc2394af",
         "name": "Wilson Hazelman",
-        "affiliation": "Corals For Conservation",
+        "affiliation": "Corals For Conservation, Fiji",
         "location_id": "emis-loc-0077",
         "co2e_kg": 587.0
       },
@@ -36847,21 +36847,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-dc65ed00",
         "name": "Wing Yan Chan",
-        "affiliation": "University of Melbourne",
+        "affiliation": "University of Melbourne, Australia",
         "location_id": "emis-loc-0461",
         "co2e_kg": 723.0
       },
       {
         "id": "offset-14079fbe",
         "name": "Wiphawan Aunkhongthong",
-        "affiliation": "Ramkhamhaeng University",
+        "affiliation": "Ramkhamhaeng University, Thailand",
         "location_id": "emis-loc-0306",
         "co2e_kg": 2445.1
       },
       {
         "id": "offset-89d28edc",
         "name": "Wyatt Million",
-        "affiliation": "University of Technology Sydney",
+        "affiliation": "University of Technology Sydney, Australia",
         "location_id": "emis-loc-0504",
         "co2e_kg": 591.9
       },
@@ -36875,7 +36875,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-a969ba98",
         "name": "Ya-Yi Huang",
-        "affiliation": "Academia Sinica",
+        "affiliation": "Academia Sinica, Taiwan",
         "location_id": "emis-loc-0003",
         "co2e_kg": 2262.7
       },
@@ -36917,7 +36917,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-9dc4b883",
         "name": "Yohan Louis",
-        "affiliation": "University of Milan-Bicocca",
+        "affiliation": "University of Milano - Bicocca, Italy",
         "location_id": "emis-loc-0467",
         "co2e_kg": 4716.9
       },
@@ -36931,14 +36931,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-0d43e001",
         "name": "Yossi Loya",
-        "affiliation": "Tel Aviv University",
+        "affiliation": "Tel Aviv University, Israel",
         "location_id": "emis-loc-0356",
         "co2e_kg": 4165.6
       },
       {
         "id": "offset-6a889ced",
         "name": "Yu-De Pei",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0151",
         "co2e_kg": 2348.4
       },
@@ -36952,7 +36952,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-da309730",
         "name": "Yuk Kwan Wong",
-        "affiliation": "Hong Kong University of Science and Technology",
+        "affiliation": "Hong Kong University of Science and Technology, Hong Kong",
         "location_id": "emis-loc-0151",
         "co2e_kg": 2348.4
       },
@@ -36973,7 +36973,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f12411b3",
         "name": "Yun Scholten",
-        "affiliation": "Nanyang Technological University",
+        "affiliation": "Nanyang Technological University, Singapore",
         "location_id": "emis-loc-0245",
         "co2e_kg": 2145.3
       },
@@ -37022,14 +37022,14 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-b8782093",
         "name": "Zach Niedermaier",
-        "affiliation": "Nova Southeastern University",
+        "affiliation": "Nova Southeastern University, United States",
         "location_id": "emis-loc-0275",
         "co2e_kg": 3451.2
       },
       {
         "id": "offset-e206d590",
         "name": "Zach Quinlan",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa, United States",
         "location_id": "emis-loc-0444",
         "co2e_kg": 1808.8
       },
@@ -37050,7 +37050,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-829769f3",
         "name": "Zahidah Afrin",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 587.0
       },
@@ -37064,7 +37064,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-e52a6d82",
         "name": "Zaidy Nisa",
-        "affiliation": "University of the South Pacific",
+        "affiliation": "University Of The South Pacific, Vanuatu",
         "location_id": "emis-loc-0511",
         "co2e_kg": 587.0
       },
@@ -37078,21 +37078,21 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-4e445027",
         "name": "Zhongyue Wan",
-        "affiliation": "University of Hong Kong",
+        "affiliation": "University of Hong Kong, Hong Kong",
         "location_id": "emis-loc-0448",
         "co2e_kg": 4533.9
       },
       {
         "id": "offset-1d9e234b",
         "name": "Zoe Ariellius",
-        "affiliation": "University of Guam",
+        "affiliation": "University of Guam, United States",
         "location_id": "emis-loc-0440",
         "co2e_kg": 3760.1
       },
       {
         "id": "offset-1e8b26a7",
         "name": "Zoe Dellaert",
-        "affiliation": "University of Rhode Island",
+        "affiliation": "University of Rhode Island, United States",
         "location_id": "emis-loc-0491",
         "co2e_kg": 3684.5
       },
@@ -37134,7 +37134,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-f0b82059",
         "name": "Zoe Teikamata-tito",
-        "affiliation": "Korero O Te 'Orau",
+        "affiliation": "Kōrero O Te 'Ōrau, Cook Islands",
         "location_id": "emis-loc-0203",
         "co2e_kg": 826.3
       },
@@ -37148,7 +37148,7 @@ export const EMISSIONS_DATA = {
       {
         "id": "offset-8766d697",
         "name": "ʻAʻaliʻi Kelling",
-        "affiliation": "Hawaii Institute of Marine Biology",
+        "affiliation": "Hawaiʻi Institute of Marine Biology, United States",
         "location_id": "emis-loc-0144",
         "co2e_kg": 3274.8
       }
@@ -37184,7 +37184,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0462",
-        "affiliation": "University of Miami",
+        "affiliation": "University Of Miami",
         "lat": 25.7169568,
         "lon": -80.2798198,
         "speaker_count": 27,
@@ -37254,7 +37254,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0444",
-        "affiliation": "University of Hawai'i - Manoa",
+        "affiliation": "University of Hawaiʻi - Mānoa",
         "lat": 21.2998224,
         "lon": -157.8182521,
         "speaker_count": 32,
@@ -37324,7 +37324,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0495",
-        "affiliation": "University of Sao Paulo",
+        "affiliation": "University of São Paulo",
         "lat": -23.561048,
         "lon": -46.725226,
         "speaker_count": 16,
@@ -37337,7 +37337,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0079",
-        "affiliation": "CRIOBE, Reunion",
+        "affiliation": "CRIOBE, Réunion",
         "lat": -17.51906,
         "lon": -149.849702,
         "speaker_count": 10,
@@ -37378,7 +37378,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0509",
-        "affiliation": "University of the Philippines - Diliman",
+        "affiliation": "University Of The Philippines - Diliman",
         "lat": 14.6538783,
         "lon": 121.0684573,
         "speaker_count": 21,
@@ -37531,7 +37531,7 @@ export const EMISSIONS_DATA = {
       },
       {
         "id": "emis-loc-0469",
-        "affiliation": "University of Milano-Bicocca",
+        "affiliation": "University of Milano - Bicocca",
         "lat": 45.5182898,
         "lon": 9.2137614,
         "speaker_count": 7,

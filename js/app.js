@@ -238,9 +238,14 @@ function showPersonInNetwork(name) {
   if (nodeId) networkView.selectNode(nodeId, { focus: true });
 }
 
-function showAffiliationOnMap(locationId) {
+function showAffiliationOnMap(locationId, speakerName) {
   setTab("map");
-  if (locationId) mapView.selectLocation(locationId, { fly: true });
+  if (locationId) {
+    mapView.selectLocation(locationId, {
+      fly: true,
+      speakerName: speakerName || undefined,
+    });
+  }
 }
 
 const mapView = createMapView(
@@ -535,7 +540,7 @@ function renderSuggestions(items) {
       event.preventDefault();
       els.query.value = item.query;
       mapView.applySearch(item.query);
-      mapView.selectLocation(item.locationId);
+      mapView.selectLocation(item.locationId, { speakerName: item.speakerName });
       els.suggestions.classList.remove("open");
     });
     els.suggestions.appendChild(btn);

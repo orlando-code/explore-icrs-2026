@@ -44,6 +44,7 @@ def main() -> None:
     profiles: dict[str, dict] = {}
     cache_by_name = {entry["name"]: entry for entry in cache.values()}
     verified = 0
+    with_email = 0
 
     for name, (affiliation, role, affiliation_explicit) in roster.items():
         src = cache.get(_profile_key(name, affiliation)) or cache_by_name.get(name)
@@ -54,13 +55,18 @@ def main() -> None:
         cleaned["affiliation_explicit"] = affiliation_explicit
         if src.get("verified"):
             verified += 1
+        if cleaned.get("has_verified_email"):
+            with_email += 1
         profiles[name] = cleaned
 
     output_path.write_text(
         match.group(1) + json.dumps(profiles, ensure_ascii=True, indent=2) + match.group(3),
         encoding="utf-8",
     )
-    print(f"Exported {len(profiles)} public profiles ({verified} verified, no emails)")
+    print(
+        f"Exported {len(profiles)} public profiles "
+        f"({verified} verified, {with_email} with verified email, no emails in JS)"
+    )
 
 
 if __name__ == "__main__":

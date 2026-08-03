@@ -27,9 +27,11 @@ from rich.progress import (
 
 DEFAULT_CACHE_PATH = Path("data/geocode_cache.json")
 DEFAULT_OVERRIDES_PATH = Path("data/geocode_overrides.json")
+DEFAULT_DISPLAY_ALIASES_PATH = Path("data/affiliation_display_aliases.json")
 DEFAULT_COUNTRY_CACHE_PATH = Path("data/country_centroids.json")
 DEFAULT_USER_AGENT = "explore-icrs-2026/0.1"
 _CONSOLE = Console()
+_DISPLAY_ALIASES_CACHE: dict[str, str] | None = None
 
 # Affiliation fragments mapped to clearer geocoding queries.
 _AFFILIATION_ALIASES: dict[str, str] = {
@@ -349,8 +351,65 @@ def affiliation_base_name(affiliation: str) -> str:
     return normalized
 
 
+def load_affiliation_display_aliases(
+    path: Path = DEFAULT_DISPLAY_ALIASES_PATH,
+) -> dict[str, str]:
+    global _DISPLAY_ALIASES_CACHE
+    if _DISPLAY_ALIASES_CACHE is not None:
+        return _DISPLAY_ALIASES_CACHE
+    payload = _load_json(path)
+    aliases = payload.get("aliases") if isinstance(payload, dict) else {}
+    if not isinstance(aliases, dict):
+        aliases = {}
+    _DISPLAY_ALIASES_CACHE = {
+        str(key).strip(): str(value).strip()
+        for key, value in aliases.items()
+        if str(key).strip() and str(value).strip()
+    }
+    return _DISPLAY_ALIASES_CACHE
+
+
+def save_affiliation_display_aliases(
+    payload: dict[str, Any],
+    path: Path = DEFAULT_DISPLAY_ALIASES_PATH,
+) -> Path:
+    global _DISPLAY_ALIASES_CACHE
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=2, sort_keys=True)
+        handle.write("\n")
+    aliases = payload.get("aliases") if isinstance(payload, dict) else {}
+    _DISPLAY_ALIASES_CACHE = {
+        str(key).strip(): str(value).strip()
+        for key, value in (aliases or {}).items()
+        if str(key).strip() and str(value).strip()
+    }
+    return path
+
+
+def resolve_affiliation_alias(affiliation: str) -> str:
+    """Return a reviewed standard affiliation label when one is known."""
+    text = str(affiliation or "").strip()
+    if not text:
+        return text
+    aliases = load_affiliation_display_aliases()
+    if not aliases:
+        return text
+    if text in aliases:
+        return aliases[text]
+    base = affiliation_base_name(text)
+    if base in aliases:
+        return aliases[base]
+    fingerprint = _affiliation_fingerprint(text)
+    for key, value in aliases.items():
+        if _affiliation_fingerprint(key) == fingerprint:
+            return value
+    return text
+
+
 def affiliation_display_name(affiliation: str) -> str:
     """Human-readable affiliation label with accents and regional qualifiers."""
+    affiliation = resolve_affiliation_alias(affiliation)
     text = _clean_affiliation_display(_strip_country_suffix_display(affiliation))
     if not text:
         return ""
@@ -402,6 +461,7 @@ def _affiliation_fingerprint(text: str) -> str:
 
 def canonical_affiliation_key(affiliation: str) -> str:
     """Stable key for deduplicating institution variants."""
+    affiliation = resolve_affiliation_alias(affiliation)
     base = _clean_affiliation_display(
         _strip_country_suffix_display(affiliation) or affiliation_base_name(affiliation)
     )

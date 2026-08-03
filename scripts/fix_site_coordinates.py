@@ -19,6 +19,7 @@ from src.geocode import (
     attach_coordinates,
     canonical_affiliation_key,
     geocode_affiliations,
+    load_affiliation_display_aliases,
     _load_json,
     _lookup_override,
 )
@@ -497,7 +498,14 @@ def _patch_object_tree(node, overrides: dict) -> int:
 
 def patch_emissions_file(path: Path, overrides: dict) -> int:
     payload = _read_js_export(path, "EMISSIONS_DATA")
-    replacements = delegate_affiliation_replacements()
+    replacements = {
+        **delegate_affiliation_replacements(),
+        **load_affiliation_display_aliases(),
+    }
+    replacements = {
+        key: affiliation_display_name(value) or value
+        for key, value in replacements.items()
+    }
     by_name = _delegate_affiliation_display_by_name()
     changed = 0
     changed += _patch_incomplete_emissions_affiliations(payload)
@@ -522,13 +530,116 @@ def patch_emissions_file(path: Path, overrides: dict) -> int:
     return changed
 
 
+def _merge_speaker_details(details: list[dict]) -> list[dict]:
+    merged: dict[str, dict] = {}
+    for detail in details:
+        if not isinstance(detail, dict):
+            continue
+        name = str(detail.get("name") or "").strip()
+        if not name:
+            continue
+        key = name.casefold()
+        existing = merged.get(key)
+        if not existing:
+            merged[key] = dict(detail)
+            continue
+        titles = list(existing.get("talk_titles") or [])
+        seen = {str(title) for title in titles}
+        for title in detail.get("talk_titles") or []:
+            text = str(title)
+            if text and text not in seen:
+                titles.append(text)
+                seen.add(text)
+        existing["talk_titles"] = titles
+        if len(str(detail.get("search_text") or "")) > len(str(existing.get("search_text") or "")):
+            existing["search_text"] = detail.get("search_text")
+    return sorted(merged.values(), key=lambda item: str(item.get("name") or "").casefold())
+
+
+def _merge_map_locations(payload: dict) -> int:
+    locations = payload.get("locations") or []
+    if not locations:
+        return 0
+
+    grouped: dict[str, list[dict]] = {}
+    for location in locations:
+        affiliation = str(location.get("affiliation") or "").strip()
+        display = affiliation_display_name(affiliation) or affiliation
+        if display != affiliation:
+            location["affiliation"] = display
+        key = canonical_affiliation_key(display).casefold()
+        grouped.setdefault(key, []).append(location)
+
+    if len(grouped) == len(locations):
+        return 0
+
+    merged_locations: list[dict] = []
+    for index, (_, bucket) in enumerate(
+        sorted(grouped.items(), key=lambda item: str(item[1][0].get("affiliation") or "").casefold()),
+        start=1,
+    ):
+        def _location_rank(item: dict) -> tuple[int, int, int]:
+            level = str(item.get("geocode_level") or "")
+            institute = 1 if level == "institute" else 0
+            return (
+                institute,
+                int(item.get("speaker_count") or 0),
+                int(item.get("talk_count") or 0),
+            )
+
+        primary = max(bucket, key=_location_rank)
+        speakers: list[str] = []
+        speaker_details: list[dict] = []
+        talk_count = 0
+        search_parts: list[str] = []
+        for location in bucket:
+            talk_count += int(location.get("talk_count") or 0)
+            for speaker in location.get("speakers") or []:
+                if speaker and speaker not in speakers:
+                    speakers.append(speaker)
+            speaker_details.extend(location.get("speaker_details") or [])
+            if location.get("search_text"):
+                search_parts.append(str(location["search_text"]))
+
+        display = affiliation_display_name(primary.get("affiliation") or "") or primary.get(
+            "affiliation"
+        )
+        merged = {
+            **primary,
+            "id": f"loc-{index:04d}",
+            "affiliation": display,
+            "speakers": speakers,
+            "speaker_details": _merge_speaker_details(speaker_details),
+            "speaker_count": len(speakers) or int(primary.get("speaker_count") or 0),
+            "talk_count": talk_count or int(primary.get("talk_count") or 0),
+            "search_text": " ".join([display, *search_parts]).lower(),
+        }
+        merged_locations.append(merged)
+
+    payload["locations"] = merged_locations
+    return 1
+
+
 def patch_locations_file(path: Path, overrides: dict) -> int:
     payload = _read_js_export(path, "SITE_DATA")
-    replacements = delegate_affiliation_replacements()
+    replacements = {
+        **delegate_affiliation_replacements(),
+        **load_affiliation_display_aliases(),
+    }
+    replacements = {
+        key: affiliation_display_name(value) or value
+        for key, value in replacements.items()
+    }
+    replacements = {
+        key: affiliation_display_name(value) or value
+        for key, value in replacements.items()
+    }
     by_name = _affiliation_by_person_name()
     changed = _patch_incomplete_affiliation_tree(payload, by_name)
     changed += _patch_affiliation_strings(payload, replacements)
     changed += _patch_object_tree(payload, overrides)
+    changed += _merge_map_locations(payload)
+    changed += _patch_affiliation_strings(payload, replacements)
     if changed:
         _write_js_export(path, "SITE_DATA", payload, "fix_site_coordinates.py")
     return changed
@@ -547,11 +658,22 @@ def refresh_talk_geocodes() -> None:
 
 
 def main() -> None:
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--locations-only",
+        action="store_true",
+        help="Patch js/locations.js only (skip slow emissions geocode refresh)",
+    )
+    args = parser.parse_args()
+
     overrides = _load_json(OVERRIDES_PATH)
     loc_changed = patch_locations_file(LOCATIONS_PATH, overrides)
-    em_changed = patch_emissions_file(EMISSIONS_PATH, overrides)
     print(f"Patched {loc_changed} locations in {LOCATIONS_PATH.name}")
-    print(f"Patched {em_changed} locations in {EMISSIONS_PATH.name}")
+    if not args.locations_only:
+        em_changed = patch_emissions_file(EMISSIONS_PATH, overrides)
+        print(f"Patched {em_changed} locations in {EMISSIONS_PATH.name}")
 
 
 if __name__ == "__main__":

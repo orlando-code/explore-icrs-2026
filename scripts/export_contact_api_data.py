@@ -12,7 +12,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.speaker_profiles import DEFAULT_CACHE_PATH, _profile_key
+from src.speaker_profiles import DEFAULT_CACHE_PATH, _profile_key, verified_contact_email
 
 DEFAULT_OUTPUT_PATH = PROJECT_ROOT / "backend" / "data" / "contacts.json"
 
@@ -21,13 +21,8 @@ def export_contacts(cache_path: Path = DEFAULT_CACHE_PATH) -> dict[str, str]:
     cache = json.loads(cache_path.read_text(encoding="utf-8"))
     contacts: dict[str, str] = {}
     for key, profile in cache.items():
-        if profile.get("verified") is not True:
-            continue
-        primary = profile.get("primary") or {}
-        if primary.get("type") != "email":
-            continue
-        email = str(primary.get("label") or "").strip()
-        if not email or "@" not in email:
+        email = verified_contact_email(profile)
+        if not email:
             continue
         name = str(profile.get("name") or key.split("|", 1)[0]).strip()
         affiliation = str(profile.get("affiliation") or "").strip()

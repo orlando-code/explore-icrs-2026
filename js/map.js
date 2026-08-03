@@ -62,6 +62,7 @@ export function createMapView(
   let hoverCardLocationId = null;
   let highlightedAuthorName = null;
   let authorHighlightLocationId = null;
+  let focusedSpeakerName = null;
   let abstractHighlighted = false;
   let talkHighlightLocationIds = new Set();
   let speakerLocationIndex = new Map();
@@ -147,6 +148,7 @@ export function createMapView(
 
     highlightedAuthorName = trimmed;
     authorHighlightLocationId = locationId;
+    focusedSpeakerName = trimmed;
     abstractHighlighted = false;
     talkHighlightLocationIds = new Set();
     if (elements.talkAbstract) {
@@ -154,8 +156,49 @@ export function createMapView(
       elements.talkAbstract.setAttribute("aria-pressed", "false");
     }
     refreshTalkAuthors();
+    selectedId = locationId;
+    hoveredId = locationId;
+    renderHoverCard(locationById(locationId));
+    elements.renderResults({
+      searchQuery,
+      matchedIds,
+      selectedId,
+      selectLocation,
+      locationList: locations,
+    });
     upsertMapData();
     flyToLocation(locationById(locationId));
+  }
+
+  function resolveFocusedSpeaker(location, explicitName = null) {
+    const name = String(explicitName || "").trim();
+    if (name) return name;
+    if (highlightedAuthorName) return highlightedAuthorName;
+    if (searchQuery) {
+      const matched = matchedSpeakersByLocation.get(location.id);
+      if (matched?.size) return [...matched][0];
+    }
+    const details = location.speaker_details || [];
+    const speakers = details.filter((speaker) => !speaker.non_speaking_delegate);
+    if (speakers.length === 1) {
+      return String(speakers[0].name || speakers[0]).trim();
+    }
+    return null;
+  }
+
+  function scrollSpeakerIntoView(name) {
+    if (!elements.hoverSpeakers) return;
+    window.requestAnimationFrame(() => {
+      if (!name) {
+        elements.hoverSpeakers.scrollTop = 0;
+        return;
+      }
+      const entry = elements.hoverSpeakers.querySelector(
+        `[data-speaker-name="${CSS.escape(name)}"]`
+      );
+      if (!entry) return;
+      entry.scrollIntoView({ block: "start", behavior: "smooth" });
+    });
   }
 
   function toggleTalkAbstractHighlight() {
@@ -409,7 +452,9 @@ export function createMapView(
 
     const highlightedSpeakers = matchedSpeakersByLocation.get(location.id) || new Set();
     const searching = Boolean(searchQuery);
-    renderSpeakerList(location, { highlightedSpeakers, searching });
+    focusedSpeakerName = resolveFocusedSpeaker(location, focusedSpeakerName);
+    renderSpeakerList(location, { highlightedSpeakers, searching, focusedSpeakerName });
+    scrollSpeakerIntoView(focusedSpeakerName);
     if (selectedTalkId) {
       setSpeakerListVisible(false);
       if (elements.talkBack) elements.talkBack.hidden = false;
@@ -424,7 +469,10 @@ export function createMapView(
     }
   }
 
-  function renderSpeakerList(location, { highlightedSpeakers = new Set(), searching = false } = {}) {
+  function renderSpeakerList(
+    location,
+    { highlightedSpeakers = new Set(), searching = false, focusedSpeakerName: focusedName = null } = {}
+  ) {
     const details = location.speaker_details || location.speakers.map((name) => ({ name }));
     const speakers = details.filter((speaker) => !speaker.non_speaking_delegate);
     const delegates = details.filter((speaker) => speaker.non_speaking_delegate);
@@ -438,13 +486,14 @@ export function createMapView(
       .map((speaker) => {
         const name = speaker.name || speaker;
         const isMatch = searching && highlightedSpeakers.has(name);
+        const isFocused = focusedName && name === focusedName;
         const titlesHtml = renderTalkTitlesHtml(speaker.talk_titles || [], {
           kicker: "",
           selectedTalkId,
           resolveTalkId: (entry) => resolveTalkId(entry, talksData, name),
         });
         return `
-          <li class="speaker-entry${isMatch ? " speaker-match" : ""}">
+          <li class="speaker-entry${isMatch ? " speaker-match" : ""}${isFocused ? " speaker-focused" : ""}" data-speaker-name="${escapeHtml(name)}">
             <div class="speaker-name-row">
               <span class="speaker-name">${escapeHtml(name)}</span>
               ${networkLinkHtml(name)}
@@ -463,8 +512,9 @@ export function createMapView(
               .map((speaker) => {
                 const name = speaker.name || speaker;
                 const isMatch = searching && highlightedSpeakers.has(name);
+                const isFocused = focusedName && name === focusedName;
                 const link = networkLinkHtml(name);
-                return `<li class="${isMatch ? "speaker-match" : ""}"><span class="speaker-delegate-name">${escapeHtml(name)}</span>${link ? ` ${link}` : ""}</li>`;
+                return `<li class="${isMatch ? "speaker-match" : ""}${isFocused ? " speaker-focused" : ""}" data-speaker-name="${escapeHtml(name)}"><span class="speaker-delegate-name">${escapeHtml(name)}</span>${link ? ` ${link}` : ""}</li>`;
               })
               .join("")}
           </ul>
@@ -544,10 +594,18 @@ export function createMapView(
     });
   }
 
-  function selectLocation(id, { fly = true, toggle = false } = {}) {
+  function selectLocation(id, { fly = true, toggle = false, speakerName = undefined } = {}) {
+    const previousId = selectedId;
     const nextId = toggle && selectedId === id ? null : id;
-    if (nextId !== selectedId) clearTalkHighlights();
+    if (nextId !== previousId) clearTalkHighlights();
     selectedId = nextId;
+    if (!nextId) {
+      focusedSpeakerName = null;
+    } else if (speakerName !== undefined) {
+      focusedSpeakerName = String(speakerName || "").trim() || null;
+    } else if (nextId !== previousId) {
+      focusedSpeakerName = null;
+    }
     renderHoverCard(locationById(selectedId));
     elements.renderResults({
       searchQuery,
@@ -620,6 +678,7 @@ export function createMapView(
             detail: location.affiliation,
             query: speaker.name,
             locationId: location.id,
+            speakerName: speaker.name,
           });
         }
       }
@@ -886,7 +945,9 @@ export function createMapView(
       renderSpeakerList(location, {
         highlightedSpeakers,
         searching: Boolean(searchQuery),
+        focusedSpeakerName,
       });
+      scrollSpeakerIntoView(focusedSpeakerName);
     });
   }
 

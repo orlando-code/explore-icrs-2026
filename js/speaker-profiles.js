@@ -24,6 +24,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.kaust.edu.sa/en/study/faculty/david-suggett"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -51,6 +52,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://biologicalsciences.leeds.ac.uk/school-of-biology/staff/24/dr-maria-beger"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -78,6 +80,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://msi.upd.edu.ph/faculty/maria-vanessa-baria-rodriguez/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -105,6 +108,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://coralreefhealthlab.weebly.com/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -132,6 +136,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://emmafcamp.com/contact/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -159,6 +164,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://about.uq.edu.au/experts/2387"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -186,6 +192,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.biologie.uni-konstanz.de/voolstra/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -239,6 +246,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://coralreeffutures.earth.miami.edu/people/lab-members/andrew-baker/index.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -266,6 +274,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/23036/cynthia-riginos"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -293,6 +302,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "http://miseryukyu.com/MISE@University_of_the_Ryukyus/James_Reimer.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -320,6 +330,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.mesophotic.org/members/166"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -347,6 +358,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.coralresiliencelab.com/crawford-drury"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -391,6 +403,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://hifmb.de/people/iliana-baums/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -418,6 +431,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.ncl.ac.uk/nes/people/profile/jamesguest1.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -445,6 +459,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "http://miguelmies.com.br/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -472,6 +487,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://biologicalsciences.leeds.ac.uk/biological-sciences/staff/3615/fiona-chong"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -499,6 +515,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.kaust.edu.sa/en/study/faculty/michael-berumen"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -543,6 +560,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://profiles.ucsd.edu/stuart.sandin"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -570,6 +588,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cbcs.centre.uq.edu.au/profile/3405/liam-lachs"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -597,6 +616,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.umb.edu/directory/guilhermelongo/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -624,6 +644,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aoml.noaa.gov/people/ian-enochs/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -651,6 +672,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uog.edu/directory/raymundo-laurie"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -668,6 +690,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -695,6 +718,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.bu.edu/biology/people/profiles/sarah-w-davies/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -722,6 +746,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://dr.ntu.edu.sg/entities/person/Kyle-Morgan"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -754,6 +779,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aims.gov.au/about/our-people/dr-line-bay"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -786,6 +812,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.a.u-tokyo.ac.jp/english/researchers_e/profile_e/?id=prof-yasuda_nina"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -813,6 +840,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://sites.google.com/view/emelnus/people/peter-a-todd?authuser=0"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -840,6 +868,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.kaust.edu.sa/en/study/faculty/susana-carvalho"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -867,6 +896,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.scifac.hku.hk/people/leray-matthieu"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -894,6 +924,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uncw.edu/profiles/f/fogartyn"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -921,6 +952,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uom.ac.mu/FOS/index.php/index.php?option=com_content&view=article&id=77&Itemid=484"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -992,6 +1024,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www2.whoi.edu/site/amy-apprill/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1009,6 +1042,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1053,6 +1087,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "http://wio-ecsn.wiomsa.org/personnel/deepeeka-kaullysing/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1080,6 +1115,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.scu.edu.au/about/contacts/directory/112497/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1107,6 +1143,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://oceanservice.noaa.gov/profiles/2021/erica-towle.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1161,6 +1198,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uta.edu/academics/faculty/profile?user=mydlarz"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1188,6 +1226,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://findanexpert.unimelb.edu.au/profile/726007-madeleine-van-oppen"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1215,6 +1254,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aims.gov.au/about/our-people/dr-manuel-gonzalez-rivero"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1269,6 +1309,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.ioes.ucla.edu/person/monica-medina/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1296,6 +1337,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://portfolio.jcu.edu.au/researchers/morgan.pratchett"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1323,6 +1365,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aims.gov.au/about/our-people/dr-neal-cantin"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1350,6 +1393,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.scu.edu.au/about/contacts/directory/100916/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1404,6 +1448,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://about.uq.edu.au/experts/10263"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1431,6 +1476,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://case.fiu.edu/about/directory/profiles/duran-alain.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1458,6 +1504,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://discovery.fiu.edu/display/person-harbornealastair"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1529,6 +1576,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.ncl.ac.uk/nes/people/profile/chanceymacdonald.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1556,6 +1604,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://sandinlab.ucsd.edu/staff-members/clinton-edwards/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1583,6 +1632,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.star.nesdis.noaa.gov/star/Manzello_D.php"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1637,6 +1687,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://web.uri.edu/bio/meet/hollie-putnam/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1664,6 +1715,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.criobe.pf/laboratoire/membres-page-personnel/?smid=3274"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1691,6 +1743,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://profiles.ucsd.edu/nicole.pedersen"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1718,6 +1771,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://researchmap.jp/read0069717?lang=en"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1804,6 +1858,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://shelbymcilroy.com/bio/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1821,6 +1876,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1875,6 +1931,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://hcas.nova.edu/research/labs/scieractian-coral-biology.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1902,6 +1959,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://biology.science.upd.edu.ph/profile-ambrocio-melvin-a-matias/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1956,6 +2014,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/8972/chris-roelfsema"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -1983,6 +2042,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.odu.edu/directory/dan-barshis"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2010,6 +2070,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://search.asu.edu/profile/3398779"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2027,6 +2088,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2076,6 +2138,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://scholars.nova.edu/en/persons/joana-figueiredo/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2130,6 +2193,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.laurenolinger.org/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2164,6 +2228,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2191,6 +2256,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aims.gov.au/about/our-people/dr-mike-emslie"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2218,6 +2284,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aims.gov.au/about/our-people/dr-muhammad-azmi-abdul-wahab"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2245,6 +2312,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://life-sciences.biu.ac.il/en/node/706"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2272,6 +2340,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "http://www.bio.sci.ru.ac.th/index.php/2018-08-11-06-45-38/instructor?layout=edit&id=14"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2289,6 +2358,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2316,6 +2386,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uva.nl/en/profile/s/c/v.schoepf/v.schoepf.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2343,6 +2414,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.coralassistlab.com/william-figueira"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2370,6 +2442,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://facultyprofiles.hkust.edu.hk/profiles.php?profile=alex-wyatt-wyatt"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2397,6 +2470,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.usp.ac.fj/discipline-of-marine-studies/staff-profiles/dr-amanda-ford/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2424,6 +2498,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://anampc.github.io/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2451,6 +2526,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uog.edu/directory/bentlage-bastian"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2495,6 +2571,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.coralassistlab.com/brigitte-sommer"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2647,6 +2724,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://profiles.uts.edu.au/Jennifer.Matthews"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2664,6 +2742,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2717,6 +2796,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://experts.utexas.edu/mikhail_matz"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2744,6 +2824,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://mcr.lternet.edu/people/nyssa-silbiger"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2771,6 +2852,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://portfolio.jcu.edu.au/researchers/scott.heron"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2850,6 +2932,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://pure.kaist.ac.kr/en/persons/tae-hyun-kim/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2877,6 +2960,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://research.unsw.edu.au/people/associate-professor-tracy-ainsworth"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2930,6 +3014,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.ecu.edu.au/schools/science/staff/profiles/research-staff/vice-chancellors-research-fellow/dr-alexandre-siqueira"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -2957,6 +3042,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://about.uq.edu.au/experts/16349"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3026,6 +3112,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.newcastle.edu.au/profile/bill-leggat"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3053,6 +3140,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.ushijima-lab.com/people"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3080,6 +3168,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.umces.edu/directory/carys-mitchelmore/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3149,6 +3238,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://futureforum.kaust.edu.sa/speakers/detail/liz"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3202,6 +3292,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://marinemicrobiomeslab.kaust.edu.sa/people"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3458,6 +3549,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aims.gov.au/about/our-people/dr-luke-thomas"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3579,6 +3671,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://reefecology.kaust.edu.sa/people/details/micaela-justo"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3632,6 +3725,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.eemb.ucsb.edu/people/faculty/vega-thurber"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3711,6 +3805,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://reefecology.kaust.edu.sa/people/details/tullia-isotta-terraneo"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3816,6 +3911,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.taxonomyaustralia.org.au/tcd/zoe--richards"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3848,6 +3944,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.perryinstitute.org/staff/aaron-hartman-phd/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3901,6 +3998,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://marinemicrobiomeslab.kaust.edu.sa/people"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3928,6 +4026,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.coralresiliencelab.com/carlo-caruso"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -3981,6 +4080,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://people.wgtn.ac.nz/christopher.cornwall"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4008,6 +4108,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://palumbilab.stanford.edu/people/courtney-klepac"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4061,6 +4162,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://portfolio.jcu.edu.au/researchers/ira.cooke"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4140,6 +4242,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://reefecology.kaust.edu.sa/people/details/dr.-jessica-bouwmeester"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4188,6 +4291,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://nova.elsevierpure.com/en/persons/karen-l-neely"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4215,6 +4319,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://search.asu.edu/profile/4413932"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4258,6 +4363,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uog.edu/directory/houk-peter"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4311,6 +4417,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://biologicalsciences.leeds.ac.uk/school-of-biology/staff/5816/sarah-martin"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4381,6 +4488,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://portfolio.jcu.edu.au/researchers/tom.bridge"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4509,6 +4617,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://hifmb.de/people/abigail-turnland/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4614,6 +4723,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://experts.ufl.edu/experts/andrew.altieri/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4641,6 +4751,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aims.gov.au/about/our-people/dr-andrew-negri"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4741,6 +4852,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://biology.fau.edu/directory/grupstra/index.php"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4862,6 +4974,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.wgtn.ac.nz/sbs/about/staff/clint-oakley"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -4889,6 +5002,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/10472/daniel-harris"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -5078,6 +5192,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://biology.sdsu.edu/people/forest-rohwer/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -5173,6 +5288,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://coralsymbiomics.kaust.edu.sa/people/detail/guoxin-cui"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -5304,6 +5420,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.usf.edu/arts-sciences/departments/ib/people/faculty/johnparkinson.aspx"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -5347,6 +5464,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -5416,6 +5534,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://reefresearch.org/member/dr-laura-marangoni/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -5491,13 +5610,14 @@ export const SPEAKER_PROFILES = {
     "name": "Mary Donovan",
     "affiliation": "University of Hawai'i - M\u0101noa",
     "confidence": "high",
+    "verified": true,
     "lookup_version": 7,
-    "institutional_page": "https://donovan-lab-at-himb.github.io/people.html",
+    "institutional_page": "https://www.himb.hawaii.edu/people/mary-donovan/",
     "links": [
       {
         "kind": "institution",
         "label": "University profile",
-        "url": "https://donovan-lab-at-himb.github.io/people.html"
+        "url": "https://www.himb.hawaii.edu/people/mary-donovan/"
       },
       {
         "kind": "linkedin_search",
@@ -5508,8 +5628,9 @@ export const SPEAKER_PROFILES = {
     "primary": {
       "type": "institution",
       "label": "University profile",
-      "url": "https://donovan-lab-at-himb.github.io/people.html"
+      "url": "https://www.himb.hawaii.edu/people/mary-donovan/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -5751,6 +5872,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://portfolio.jcu.edu.au/researchers/peter.doll"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -5794,6 +5916,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -5821,6 +5944,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.kaust.edu.sa/en/study/faculty/renato-morais"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -5874,6 +5998,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.pbrc.hawaii.edu/index.php/staff-member/robert-h-richmond-director-kml/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -5953,6 +6078,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://search.asu.edu/profile/3423914"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -5980,6 +6106,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://portfolio.jcu.edu.au/researchers/sterling.tebbett"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -6101,6 +6228,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://reefecology.kaust.edu.sa/people/details/walter-rich"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -6128,6 +6256,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://search.asu.edu/profile/4317971"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -6155,6 +6284,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://su.edu.ph/faculty-staff/maypa-aileen-p/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -6335,6 +6465,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uog.edu/directory/taylor-brett"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -6466,6 +6597,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://scmb.uq.edu.au/profile/6318/cheong-xin-chan"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -6571,6 +6703,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aims.gov.au/about/our-people/dr-daniela-ceccarelli"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -6624,6 +6757,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cbcs.centre.uq.edu.au/profile/3370/david-enrique-carrasco-rivera"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -6948,6 +7082,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cbcs.centre.uq.edu.au/profile/2776/ilha-byrne"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -7415,6 +7550,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.hpu.edu/faculty/cncs/matthew-j-iacchei.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -7635,6 +7771,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.floridamuseum.ufl.edu/science/hidden-in-plain-sight-dna-reveals-15-overlooked-coral-lineages-in-the-indo-pacific/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -7652,6 +7789,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -7669,6 +7807,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -7894,6 +8033,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://eeb.arizona.edu/person/samantha-king"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -7973,6 +8113,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://tajrc.kaust.edu.sa/people/current"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -8052,6 +8193,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://bsc.ua.edu/graduate-student/14295/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -8105,6 +8247,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.kaust.edu.sa/en/study/faculty/tadd-truscott"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -8242,6 +8385,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -8391,6 +8535,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://marinemicrobiomeslab.kaust.edu.sa/people"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -8418,6 +8563,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://people.wgtn.ac.nz/alice.rogers?_ga=2.67488978.298887445.1785125051-452730456.1783324996"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -8497,6 +8643,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://tajrc.kaust.edu.sa/people/current"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -8524,6 +8671,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://research-repository.uwa.edu.au/en/persons/anna-cresswell/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -8629,6 +8777,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://crestcache.fiu.edu/about/students/profiles/sosa-brandon.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -8755,6 +8904,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cheryl-barnes.github.io/people.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -8808,6 +8958,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.bu.edu/physics/profile/christopher-grant/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -8835,6 +8986,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.plymouth.ac.uk/staff/clara-diaz"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -9004,6 +9156,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://gbrrestoration.org/research-team/deborah-burn/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -9021,6 +9174,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -9074,6 +9228,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.soest.hawaii.edu/soestwp/about/directory/eileen-m-nalley/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -9143,6 +9298,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -9572,6 +9728,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -9782,6 +9939,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://research.ncl.ac.uk/one-planet/ourresearchers/cohort5/johnstratford.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -9861,6 +10019,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uvic.ca/science/biology/people/profiles/baum-julia.php"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -9993,6 +10152,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/23825/katharine-prata"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10058,6 +10218,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.bio.upenn.edu/people/katie-barott"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10195,6 +10356,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10212,6 +10374,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10239,6 +10402,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.bio.txst.edu/faculty-staff/lauren-fuess.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10293,6 +10457,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.lewisajones.com/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10336,6 +10501,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10436,6 +10602,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aims.gov.au/about/our-people/dr-marji-puotinen"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10542,6 +10709,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://coralsymbiomics.kaust.edu.sa/people/detail/max-dhillon"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10595,6 +10763,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://mote.org/staff/melissa-sante/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10716,6 +10885,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10795,6 +10965,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://coralsymbiomics.kaust.edu.sa/people/detail/octavio-salazar-moya"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10822,6 +10993,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://scripps.ucsd.edu/profiles/oboulais"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10875,6 +11047,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.marineomicslab.com/contact"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -10902,6 +11075,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aims.gov.au/about/our-people/dr-patrick-laffy"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -11012,6 +11186,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://gisandspatialecologylab.weebly.com/lab-members.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -11363,6 +11538,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://pursuit.unimelb.edu.au/individuals/professor-stephen-swearer"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -11416,6 +11592,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/22154/sun-kim"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -11485,6 +11662,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aims.gov.au/about/our-people/dr-sven-uthicke"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -11538,6 +11716,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://aims.jcu.edu.au/our-people/students/tiny-remmers-barry.711/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -11633,6 +11812,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.kaust.edu.sa/en/study/faculty/klaus-viktor-peinemann"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -11712,6 +11892,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.perryinstitute.org/staff/will-greene-bsc/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -11765,6 +11946,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://young-lab.eemb.ucsb.edu/people/addie-dahl"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -11866,6 +12048,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.fisheriesreform.com/team.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -11971,6 +12154,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.umces.edu/directory/allen-place/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -12014,6 +12198,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -12183,6 +12368,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://annavinton.com/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -12422,6 +12608,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://highco2-vi.org/meet-the-committees/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -12475,6 +12662,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.scu.edu.au/about/contacts/directory/125610/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -12606,6 +12794,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://scholars.nova.edu/en/persons/bernhard-riegl/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -12717,6 +12906,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://grgusyd.org/caroline-romo/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -12854,6 +13044,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.wgtn.ac.nz/sbs/study/current-postgraduates"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -12881,6 +13072,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.kent.edu/trumbull/profile/chris-cooney"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -12986,6 +13178,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cbcs.centre.uq.edu.au/profile/2281/courtney-morgans"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -13170,6 +13363,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -13223,6 +13417,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cbcs.centre.uq.edu.au/profile/870/devin-rowell"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -13470,6 +13665,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.soest.hawaii.edu/soestwp/about/directory/erik-c-franklin/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -13549,6 +13745,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/21680/eugenia-nijgh-de-sampayo-garrido"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -13644,6 +13841,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -13687,6 +13885,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -13891,6 +14090,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://marinescience.utexas.edu/directory/hannah-s-rempel"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -13976,6 +14176,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://profiles.sydney.edu.au/helen.yan"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -14087,6 +14288,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -14260,6 +14462,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://fish.uw.edu/faculty/jacqueline-padilla-gamino/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -14365,6 +14568,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://profiles.ucsd.edu/james.fifer"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -14502,6 +14706,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "http://personal.victoria.ac.nz/jeffrey_shima/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -14633,6 +14838,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://jensneed.weebly.com/contact.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -14853,6 +15059,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://search.asu.edu/profile/3598790"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15085,6 +15292,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15112,6 +15320,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://labs.eemb.ucsb.edu/burkepile/deron/members/enright"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15139,6 +15348,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://ocean.gatech.edu/people/dr-lauren-speare"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15224,6 +15434,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15303,6 +15514,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.ecu.edu.au/schools/science/research-students/profiles/postgraduate-research-students/lucas-lutzenkirchen"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15408,6 +15620,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.wgtn.ac.nz/sbs/study/current-postgraduates"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15461,6 +15674,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.eemb.ucsb.edu/people/students/kawahara"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15488,6 +15702,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://labs.eemb.ucsb.edu/burkepile/deron/members/ward"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15541,6 +15756,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/27212/mandy-cheung"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15679,6 +15895,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://scripps.ucsd.edu/profiles/m1agarwal"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15732,6 +15949,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://aims.jcu.edu.au/our-people/students/marko-terzin.542/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15818,6 +16036,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uib.no/en/michaelsarscentre/172182/guest-researchers-kaust-visit-michael-sars-centre-learn-new-techniques"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15861,6 +16080,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -15910,6 +16130,7 @@ export const SPEAKER_PROFILES = {
     "name": "McClaran Shirley",
     "affiliation": "University of California - San Diego",
     "confidence": "high",
+    "verified": true,
     "lookup_version": 7,
     "institutional_page": "https://sandinlab.ucsd.edu/staff-members/mcclaran-shirley/",
     "links": [
@@ -15929,6 +16150,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://sandinlab.ucsd.edu/staff-members/mcclaran-shirley/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -16123,6 +16345,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://hcas.nova.edu/people/index.html?search=Morgan+Hightshoe"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -16244,6 +16467,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.nathan-crowe.com/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -16297,6 +16521,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://about.uq.edu.au/experts/38771"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -16324,6 +16549,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.plymouth.ac.uk/staff/nicola-foster"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -16351,6 +16577,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://nico-rivas.com/fiu.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -16738,6 +16965,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://search.asu.edu/profile/3403192"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -16765,6 +16993,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://search.asu.edu/profile/5009045"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -16849,6 +17078,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.jsg.utexas.edu/researcher/rowan_martindale/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17246,6 +17476,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.fisheriesreform.com/team.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17351,6 +17582,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://sites.google.com/view/thexianglab"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17462,6 +17694,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://findanexpert.unimelb.edu.au/profile/810450-vinzenz-hofferek"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17531,6 +17764,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://findanexpert.unimelb.edu.au/profile/839217-wing-yan-chan"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17662,6 +17896,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/22175/zoe-meziere"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17689,6 +17924,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.asfb.org.au/zoe-storm"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17756,6 +17992,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17783,6 +18020,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://dornsife.usc.edu/meb/people/graduate-students/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17810,6 +18048,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.igpms.ucsb.edu/people/core-faculty/adrian-stier"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17837,6 +18076,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.kaust.edu.sa/en/study/students/ahmed-al-saggaf"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17864,6 +18104,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://sandinlab.ucsd.edu/staff-members/ahmi-cacapit/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -17908,6 +18149,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://akaciahallidayisaac.weebly.com/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -18004,6 +18246,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://gisandspatialecologylab.weebly.com/lab-members.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -18057,6 +18300,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://profiles.stanford.edu/alexy-khrizman"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -18230,6 +18474,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.cnidimmunitylab.com/bio/allyson-demerlis"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -18283,6 +18528,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.wgtn.ac.nz/sbs/study/current-postgraduates"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -18388,6 +18634,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.instantcheckmate.com/people/andres-novoa/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -18509,6 +18756,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://sites.google.com/view/emelnus/people/research-staff/annie-chew"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -18715,6 +18963,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://accscience.com/journal/MSAM/2/3/10.36922/msam.1786"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -18732,6 +18981,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -18759,6 +19009,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/22703/arne-adam"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -18786,6 +19037,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aims.gov.au/about/our-people/dr-ashton-gainsford"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -18839,6 +19091,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://mlml.sjsu.edu/invertebrate-ecology/lab-members/ava-besecker/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -18986,6 +19239,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -19435,6 +19689,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.zsl.org/about-zsl/our-people/dr-catherine-head"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -19666,6 +19921,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://about.uq.edu.au/experts/41087"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -19740,6 +19996,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -19783,6 +20040,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.ursinus.edu/live/profiles/7498-colleen-bove"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -20102,6 +20360,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://hmns.uq.edu.au/profile/1493/david-jenkins"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -20369,6 +20628,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/13253/dylan-cowley"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -20475,6 +20735,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.adelphi.edu/program/graduate/environmental-studies/faculty-staff/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -20560,6 +20821,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.umces.edu/directory/emily-jolly/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -21090,6 +21352,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://reefecology.kaust.edu.sa/people/details/gloria-gil-ramos"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -21133,6 +21396,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.connectingcoastalcommunities.com/graham-hinchliffe"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -21150,6 +21414,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -21219,6 +21484,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -21272,6 +21538,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.eemb.ucsb.edu/people/students/lyford"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -21367,6 +21634,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://charleston.edu/biology/faculty/spalding-heather.php"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -21515,6 +21783,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.criobe.pf/laboratoire/membres-page-personnel/?smid=16286"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -21698,6 +21967,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://reefecology.kaust.edu.sa/people/details/jacob-asher"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -21794,6 +22064,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.newcastle.edu.au/profile/james-wong"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -21895,6 +22166,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -22141,6 +22413,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/29715/joanna-smart"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -22408,6 +22681,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://scholars.nova.edu/en/persons/joshua-feingold/?_gl=1*1i1a59o*_gcl_au*MTgwNDEwODQ2MS4xNzg0ODc5NjkzLjE3Mjg2MjkzNC4xNzg1MTg4NDIyLjE3ODUxODk5MzIuMTk4MzkxMzU5OS4xNzg1MTg4NDIyLjE3ODUxODk5MzI."
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -22556,6 +22830,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.connectingcoastalcommunities.com/julian-lilkendey"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -22609,6 +22884,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.eemb.ucsb.edu/people/students/renzi"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -22746,6 +23022,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/29700/kailash-cook"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -22941,6 +23218,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -22994,6 +23272,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/21527/katrina-mcguigan"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -23298,6 +23577,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.usf.edu/arts-sciences/departments/anthropology/people/hinds.aspx"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -23921,6 +24201,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -24016,6 +24297,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.bio.upenn.edu/people/marcelina-martynek"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -24164,6 +24446,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -24280,6 +24563,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -24333,6 +24617,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://aims.jcu.edu.au/our-people/students/martina-burgo.701/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -24433,6 +24718,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.wgtn.ac.nz/stout-centre/study/student-profiles/museum-and-heritage-studies/past-students/phd/matteo-collina"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -24512,6 +24798,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://reefecology.kaust.edu.sa/people/details/matthew-tietbohl"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -24659,6 +24946,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://marinescience.utexas.edu/directory/melman-neill"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -24864,6 +25152,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.wgtn.ac.nz/sbs/research/marine-biology-research/sponge-marine-ecology/people"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -24907,6 +25196,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://profiles.ucsd.edu/mitchell.smelser"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -25018,6 +25308,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -25149,6 +25440,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://fiusports.com/staff-directory/natalia-perez-carmona/151"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -25374,6 +25666,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environmentalepigenetics.com/team/nina-bean"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -25573,6 +25866,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://bren.ucsb.edu/people/olivia-isbell"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -25824,6 +26118,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.thebellwoodreeffishlab.com/people-1.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -25846,6 +26141,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -25920,6 +26216,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://vcresearch.berkeley.edu/faculty/rachel-carlson"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -25947,6 +26244,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://portfolio.jcu.edu.au/researchers/rachel.neil"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -25974,6 +26272,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://gbrrestoration.org/our-team/management/rachel-pears/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -26179,6 +26478,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://findanexpert.unimelb.edu.au/profile/1074439-robert-streit"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -26253,6 +26553,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -26358,6 +26659,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://meganlhead.weebly.com/people.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -26443,6 +26745,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -26538,6 +26841,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -26799,6 +27103,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.shumpei.me/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -26930,6 +27235,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://scripps.ucsd.edu/profiles/szummo"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -27228,6 +27534,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cbcs.centre.uq.edu.au/profile/3366/tania-kenyon"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -27401,6 +27708,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uog.edu/directory/schils-tom"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -27428,6 +27736,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://nyuad.nyu.edu/en/research/faculty-labs-and-projects/nyuad-cgsb/research/environmental-adaptation-and-sustainability/the-role-of-the-microbiome-in-the-high-thermal-tolerance-adaptat/trent-haydon.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -27533,6 +27842,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.himb.hawaii.edu/people/van-wishingrad/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -27717,6 +28027,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cemse.kaust.edu.sa/profiles/ioannis-yannis-zografopoulos"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -27843,6 +28154,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://biosphere2.org/person/aaron-bugaj"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -27914,6 +28226,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -28002,6 +28315,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://sites.bu.edu/urban/profile/adrian-cheh/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -28046,6 +28360,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.marineomicslab.com/get-to-know-us"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -28080,6 +28395,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -28114,6 +28430,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -28141,6 +28458,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://arms.kaust.edu.sa/people/current"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -28168,6 +28486,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://alecleitman.weebly.com/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -28238,6 +28557,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://reefecology.kaust.edu.sa/people/details/alessio-bernardi"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -28568,6 +28888,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "http://personal.victoria.ac.nz/jeffrey_shima/lab/index.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -28820,6 +29141,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.wgtn.ac.nz/sbs/study/current-postgraduates"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -28852,6 +29174,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://schmidtocean.org/person/amy-carmignani/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -29553,6 +29876,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -29648,6 +29972,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://findanexpert.unimelb.edu.au/profile/649483-benjamin-henley"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -29786,6 +30111,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -29813,6 +30139,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.biogeographyuts.org/bronte-connolly"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -30117,6 +30444,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.hpu.edu/faculty/cncs/cataixa-lopez-batista.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -30144,6 +30472,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.catherinejkim.com/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -30171,6 +30500,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://profiles.stanford.edu/cat-lee-hing"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -30198,6 +30528,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.conncoll.edu/directories/faculty-profiles/cassie-raker/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -30215,6 +30546,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -30300,6 +30632,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -30562,6 +30895,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.hbs.edu/mba/student-life/claudia-hill"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -30647,6 +30981,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.scu.edu.au/about/contacts/directory/122924/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -30674,6 +31009,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.plymouth.ac.uk/staff/tigan-schofield"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -30717,6 +31053,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://portfolio.jcu.edu.au/researchers/courtney.burns"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -30796,6 +31133,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://aims.jcu.edu.au/our-people/students/crystle-wee.896/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -31309,6 +31647,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://geography.exeter.ac.uk/people/academic/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -31482,6 +31821,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.harteresearch.org/people/eleanor-tenbrink"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -31708,6 +32048,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cos.northeastern.edu/people/emily-trytten/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -31969,6 +32310,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://engineering.oregonstate.edu/people/erich-white"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -32201,6 +32543,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://orbit.dtu.dk/en/persons/fernanda-carolina-da-silva-2/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -32682,6 +33025,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://chsharrison.wordpress.com/gouri-anil/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -32783,6 +33127,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -32999,6 +33344,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://scholars.westpac.com.au/scholars/profile/2025/2027/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -33026,6 +33372,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://crestcache.fiu.edu/about/students/profiles/lamle-hannah-marie.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -33053,6 +33400,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cbcs.centre.uq.edu.au/profile/2525/harris-heng-wei-khang"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -33106,6 +33454,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://crestcache.fiu.edu/about/students/profiles/acors-hayden.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -33175,6 +33524,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://sea.edu/team/heather-page/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -33365,6 +33715,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -33648,6 +33999,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://jadeshivak.com/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -33675,6 +34027,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.reeffunctionhub.org/our-people.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -33828,6 +34181,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -33897,6 +34251,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.unsw.edu.au/staff/jenny-wang"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -33929,6 +34284,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.cnu.ac.kr/~jeonghyunlee/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -34034,6 +34390,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://pi-casc.soest.hawaii.edu/directory/students-post-docs/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -34061,6 +34418,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.kaust.edu.sa/en/study/faculty/jessica-zamborain-mason"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -34292,6 +34650,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -34702,6 +35061,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -34755,6 +35115,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://reuben.ox.ac.uk/people/katherine-faulkner"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -34782,6 +35143,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cvpa.gmu.edu/node/9181"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -34809,6 +35171,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.kaust.edu.sa/en/study/faculty"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -35029,6 +35392,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://siocpg.ucsd.edu/team/kelsey-kingsbury/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -35271,6 +35635,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -35424,6 +35789,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://reefecology.kaust.edu.sa/people/details/lea-palm"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -35661,6 +36027,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://expertfile.com/experts/lisa.rodrigues/lisa-rodrigues-phd"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -35688,6 +36055,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://talents.vaia.com/companies/ncobps/assistant-professor-in-environmental-studies-40223480/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -35715,6 +36083,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://bemlab.kaust.edu.sa/team/member/louis-simon"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -36056,6 +36425,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://hcas.nova.edu/people/index.html?search=Madison+Androne"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -36083,6 +36453,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://aims.jcu.edu.au/our-people/students/magena-marzonie.699/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -36168,6 +36539,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -36211,6 +36583,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -36358,6 +36731,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/28356/maria-kottermair"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -36528,6 +36902,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://meetingorganizer.copernicus.org/ICG2022/ICG2022-516.html"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -36743,6 +37118,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -36838,6 +37214,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uwa.edu.au/oceans-institute/partnerships/aims-uwa/spotlight-max"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -36881,6 +37258,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -37180,6 +37558,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aucegypt.edu/fac/michael-gibson"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -37233,6 +37612,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://colsa.unh.edu/person/michael-lesser"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -37260,6 +37640,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.uog.edu/directory/mihalitsis-michalis"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -37377,6 +37758,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -37927,6 +38309,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://nataschavarona.com/about/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -37975,6 +38358,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.jcu.edu.au/ierc/indigenous-research-support-network/our-members"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -38174,6 +38558,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://environment.uq.edu.au/profile/9923/nicole-leonard"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -38525,6 +38910,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://dornsife.usc.edu/profile/paige-duffin/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -38620,6 +39006,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -38825,6 +39212,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -38998,6 +39386,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.bu.edu/chemed/profile/rebecca-loy/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -39117,6 +39506,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -39171,6 +39561,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cbcs.centre.uq.edu.au/profile/2575/rio-button"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -39214,6 +39605,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -39404,6 +39796,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "http://reefecology.kaust.edu.sa/people/current"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -39551,6 +39944,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://bren.ucsb.edu/people/sadie-cwikiel"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -39762,6 +40156,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.clemson.edu/science/academics/departments/biosci/about/profiles/sprider"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -39883,6 +40278,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://mcr.lternet.edu/people/scott-miller"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -39916,6 +40312,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -39959,6 +40356,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.gov.uk/government/people/selina-stead"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -40122,6 +40520,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://cbcs.centre.uq.edu.au/profile/2630/sharad-bayyana"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -40311,6 +40710,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://reefecology.kaust.edu.sa/people/details/sofia-walzer"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -40364,6 +40764,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.soest.hawaii.edu/soestwp/about/directory/sophia-rahnke/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -40407,6 +40808,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.marine-omics.net/people/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -40460,6 +40862,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://aims.jcu.edu.au/our-people/students/stephanie-diperna.414/"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -40738,6 +41141,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://olemiss.edu/profiles/tlgoulet"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -40843,6 +41247,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.bweems.org/member-directory/taylor-walker"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -41153,6 +41558,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -41520,6 +41926,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://scripps.ucsd.edu/profiles/wsparagon"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -41537,6 +41944,7 @@ export const SPEAKER_PROFILES = {
       }
     ],
     "primary": null,
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -41564,6 +41972,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://portfolio.jcu.edu.au/researchers/william.arlidge"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -41685,6 +42094,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://urbanlab.kaust.edu.sa/people"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
@@ -42105,6 +42515,7 @@ export const SPEAKER_PROFILES = {
       "label": "University profile",
       "url": "https://www.aquaticmicro.org/people"
     },
+    "has_verified_email": true,
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
