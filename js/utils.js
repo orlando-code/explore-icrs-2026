@@ -545,6 +545,75 @@ export function buildDelegateMapLocations(
   return supplemental;
 }
 
+/** Align emissions map pins with the main map: site geocodes + emissions totals. */
+export function mergeEmissionsMapLocations(
+  emissionsLocations = [],
+  siteLocations = [],
+  {
+    includeNonSpeakers = false,
+    delegateIndex = new Map(),
+    delegateEmissionsLocations = [],
+  } = {}
+) {
+  let sitePool = [...siteLocations];
+  if (includeNonSpeakers) {
+    sitePool = [
+      ...enrichSpeakerLocationsWithDelegates(siteLocations, delegateIndex),
+      ...buildDelegateMapLocations(siteLocations, delegateEmissionsLocations, delegateIndex),
+    ];
+  }
+  sitePool = applyAffiliationGeocodeOverrides(sitePool);
+
+  const emissionsByKey = new Map();
+  for (const location of emissionsLocations) {
+    const key = affiliationMapKey(location.affiliation);
+    if (!key) continue;
+    const existing = emissionsByKey.get(key);
+    if (!existing || (Number(location.co2e_kg) || 0) > (Number(existing.co2e_kg) || 0)) {
+      emissionsByKey.set(key, location);
+    }
+  }
+
+  const merged = [];
+
+  for (const siteLocation of sitePool) {
+    const key = affiliationMapKey(siteLocation.affiliation);
+    const emissions = key ? emissionsByKey.get(key) : null;
+    if (emissions) {
+      merged.push({
+        ...emissions,
+        id: siteLocation.id,
+        lat: siteLocation.lat,
+        lon: siteLocation.lon,
+        geocode_level: siteLocation.geocode_level || emissions.geocode_level,
+        speaker_count: siteLocation.speaker_count ?? emissions.speaker_count,
+        travel_attendees:
+          emissions.travel_attendees ?? siteLocation.speaker_count ?? emissions.speaker_count ?? 0,
+      });
+      continue;
+    }
+
+    merged.push({
+      id: siteLocation.id,
+      affiliation: siteLocation.affiliation,
+      lat: siteLocation.lat,
+      lon: siteLocation.lon,
+      speaker_count: siteLocation.speaker_count || 0,
+      travel_attendees: siteLocation.speaker_count || 0,
+      co2e_kg: 0,
+      co2e_low_kg: 0,
+      co2e_high_kg: 0,
+      co2e_per_speaker_kg: 0,
+      distance_km: siteLocation.distance_km ?? null,
+      geocode_level: siteLocation.geocode_level,
+      origin_country: "",
+      country_cluster_id: "",
+    });
+  }
+
+  return merged;
+}
+
 function normalizePersonNameForExclusion(name) {
   return String(name || "")
     .replace(/^(dr|prof|professor|mr|mrs|ms|miss)\.?\s+/i, "")

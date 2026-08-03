@@ -9,6 +9,7 @@ import {
   greatCircleArc,
   haversineKm,
   buildDelegateIndex,
+  mergeEmissionsMapLocations,
 } from "./utils.js";
 import {
   buildEmissionsAttendeesFromSite,
@@ -150,7 +151,15 @@ export function createEmissionsView(
 
   function applyPool() {
     emissionsData = includeNonSpeakers ? normalized.all_delegates : normalized.speakers;
-    allLocations = emissionsData.locations || [];
+    allLocations = mergeEmissionsMapLocations(
+      emissionsData.locations || [],
+      siteData.locations || [],
+      {
+        includeNonSpeakers,
+        delegateIndex,
+        delegateEmissionsLocations: normalized.all_delegates?.locations || [],
+      }
+    );
     locations = allLocations.filter((location) => location.co2e_kg > 0);
     headline = emissionsData.meta.headline || {};
     rankings = emissionsData.rankings || [];
