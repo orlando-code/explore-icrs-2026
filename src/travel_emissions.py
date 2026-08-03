@@ -422,9 +422,23 @@ def load_attendee_legs(
             geo,
             geocode_level=row.get("geocode_level"),
         )
+        from src.origin_country import country_from_affiliation, resolve_origin_country
+
         country_code = row.get("country_code")
-        if pd.notna(country_code) and str(country_code).strip():
-            origin_country = str(country_code).strip().upper()
+        resolved = resolve_origin_country(
+            affiliation=str(row.get("affiliation") or ""),
+            lat=lat,
+            lon=lon,
+            reverse_cache=reverse_cache,
+            existing=str(country_code or origin_country or ""),
+        )
+        if resolved:
+            origin_country = resolved
+        elif str(origin_country).upper() in {"", "UNKNOWN"}:
+            origin_country = country_from_affiliation(str(row.get("affiliation") or ""))
+        if _looks_like_coordinates(origin_location):
+            organisation = str(row.get("affiliation") or "").split(",")[0].strip()
+            origin_location = organisation or origin_location
         transport_mode = (
             "car" if origin_country == DEFAULT_DESTINATION_COUNTRY else "flight"
         )
@@ -572,6 +586,11 @@ def estimate_unique_routes(
         .sort_values(["transport_mode", "origin_country", "origin_location"])
         .reset_index(drop=True)
     )
+    routes = routes[
+        routes["origin_country"]
+        .astype(str)
+        .str.fullmatch(r"[A-Z]{2}", na=False)
+    ].reset_index(drop=True)
     if limit is not None:
         routes = routes.head(limit)
 
@@ -1587,6 +1606,10 @@ def export_emissions_site_data(
         )
     else:
         payload["all_delegates"] = speakers_pool
+
+    from src.emissions_site_enrichment import enrich_emissions_payload
+
+    payload = enrich_emissions_payload(payload)
 
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
