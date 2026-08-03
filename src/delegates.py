@@ -25,8 +25,13 @@ COL_FIRST = 4
 COL_LAST = 32
 COL_ORG = 57
 COL_COUNTRY = 114
+# Layout country text usually begins near here; used for wrap-line routing.
+_COUNTRY_COL_MIN = 90
+# Last-name column starts at COL_LAST; organisation text is further right.
+_ORG_COL_MIN = 45
 
 TITLE_RE = re.compile(r"^(dr|prof|professor|mr|mrs|ms|miss)\.?\s+", re.I)
+_MOJIBAKE_MARKERS_RE = re.compile(r"[√ÃÂ]")
 
 COUNTRY_ALIASES = {
     "united states": "United States",
@@ -34,15 +39,19 @@ COUNTRY_ALIASES = {
     "hong kong": "Hong Kong",
     "french polynesia": "French Polynesia",
     "marshall islands": "Marshall Islands",
-    "south korea": "Korea, Republic of",
-    "republic of korea": "Korea, Republic of",
+    "south korea": "South Korea",
+    "korea, republic of": "South Korea",
+    "republic of korea": "South Korea",
     "taiwan": "Taiwan",
     "russia": "Russian Federation",
     "vietnam": "Viet Nam",
     "bolivia": "Bolivia, Plurinational State of",
+    "bolivia, plurinational state of": "Bolivia, Plurinational State of",
     "iran": "Iran, Islamic Republic of",
     "tanzania": "Tanzania, United Republic of",
+    "tanzania, united republic of": "Tanzania, United Republic of",
     "venezuela": "Venezuela, Bolivarian Republic of",
+    "venezuela, bolivarian republic of": "Venezuela, Bolivarian Republic of",
     "usa": "United States",
     "uk": "United Kingdom",
     "uae": "United Arab Emirates",
@@ -53,8 +62,21 @@ COUNTRY_ALIASES = {
     "cook islands": "Cook Islands",
     "solomon islands": "Solomon Islands",
     "northern mariana islands": "Northern Mariana Islands",
+    "northern mariana": "Northern Mariana Islands",
     "federated states of micronesia": "Micronesia, Federated States of",
     "micronesia": "Micronesia, Federated States of",
+    "micronesia (the federated states of)": "Micronesia, Federated States of",
+    "micronesia (the": "Micronesia, Federated States of",
+    "virgin islands (u.s.)": "United States Virgin Islands",
+    "virgin islands (us)": "United States Virgin Islands",
+    "u.s. virgin islands": "United States Virgin Islands",
+    "us virgin islands": "United States Virgin Islands",
+    "united states virgin islands": "United States Virgin Islands",
+    "sint maarten": "Sint Maarten",
+    "nederland": "Netherlands",
+    "netherlands": "Netherlands",
+    "curaçao": "Curaçao",
+    "curacao": "Curaçao",
 }
 
 _EXTRA_COUNTRY_NAMES = {
@@ -73,6 +95,11 @@ _EXTRA_COUNTRY_NAMES = {
     "Northern Mariana Islands",
     "Micronesia, Federated States of",
     "Federated States of Micronesia",
+    "South Korea",
+    "Korea, Republic of",
+    "Sint Maarten",
+    "United States Virgin Islands",
+    "Virgin Islands (U.S.)",
     "American Samoa",
     "Puerto Rico",
     "Palau",
@@ -374,11 +401,16 @@ def organisation_override_for_row(row: pd.Series | dict[str, Any]) -> str | None
     return None
 
 
-def organisation_for_delegate_row(row: pd.Series | dict[str, Any]) -> str:
+def organisation_for_delegate_row(
+    row: pd.Series | dict[str, Any],
+    *,
+    apply_overrides: bool = True,
+) -> str:
     """Resolve the best organisation string for a delegate row."""
-    override = organisation_override_for_row(row)
-    if override:
-        return override
+    if apply_overrides:
+        override = organisation_override_for_row(row)
+        if override:
+            return override
     return sanitize_delegate_organisation(
         str(row.get("organisation") or ""),
         first_name=str(row.get("first_name") or ""),
@@ -387,28 +419,42 @@ def organisation_for_delegate_row(row: pd.Series | dict[str, Any]) -> str:
     )
 
 
-def delegate_affiliation_for_row(row: pd.Series | dict[str, Any]) -> str:
+def delegate_affiliation_for_row(
+    row: pd.Series | dict[str, Any],
+    *,
+    apply_overrides: bool = True,
+) -> str:
     """Return a cleaned affiliation string for geocoding and map grouping."""
     if isinstance(row, pd.Series):
         row = row.to_dict()
-    organisation = organisation_for_delegate_row(row)
+    organisation = organisation_for_delegate_row(row, apply_overrides=apply_overrides)
     country = str(row.get("country") or "").strip()
     if organisation and country:
         return f"{organisation}, {country}"
     return organisation or str(row.get("affiliation") or "").strip()
 
 
-def normalize_delegate_records(delegates: pd.DataFrame) -> pd.DataFrame:
+def normalize_delegate_records(
+    delegates: pd.DataFrame,
+    *,
+    apply_overrides: bool = True,
+) -> pd.DataFrame:
     """Repair merged organisation fields from the delegate PDF layout."""
     delegates = delegates.copy()
     for index, row in delegates.iterrows():
-        organisation = organisation_for_delegate_row(row)
+        organisation = organisation_for_delegate_row(
+            row, apply_overrides=apply_overrides
+        )
         affiliation = delegate_affiliation_for_row(
             {
                 "organisation": organisation,
                 "country": row.get("country"),
                 "affiliation": row.get("affiliation"),
-            }
+                "first_name": row.get("first_name"),
+                "last_name": row.get("last_name"),
+                "full_name": row.get("full_name"),
+            },
+            apply_overrides=False,
         )
         delegates.at[index, "organisation"] = organisation
         delegates.at[index, "affiliation"] = affiliation
@@ -436,47 +482,75 @@ def name_tokens(value: str) -> set[str]:
     return {token for token in normalize_person_name(value).split() if len(token) > 1}
 
 
+def repair_mojibake(text: str) -> str:
+    """Repair UTF-8 text that was mis-decoded as MacRoman (√≥ → ó, etc.)."""
+    value = str(text or "")
+    if not value or not _MOJIBAKE_MARKERS_RE.search(value):
+        return value
+    try:
+        repaired = value.encode("mac_roman").decode("utf-8")
+    except UnicodeError:
+        return value
+    if repaired.count("�") >= value.count("�"):
+        return repaired
+    return value
+
+
 def country_to_iso2(country_name: str) -> str:
-    cleaned = str(country_name).strip()
+    cleaned = repair_mojibake(str(country_name)).strip()
     if not cleaned:
         return ""
     alias = COUNTRY_ALIASES.get(cleaned.casefold())
     lookup_name = alias or cleaned
+    # Map display aliases back to pycountry names where needed.
+    pycountry_names = {
+        "South Korea": "Korea, Republic of",
+        "United States Virgin Islands": "Virgin Islands, U.S.",
+        "Sint Maarten": "Sint Maarten (Dutch part)",
+        "Curaçao": "Curaçao",
+    }
+    lookup_name = pycountry_names.get(lookup_name, lookup_name)
     try:
         return pycountry.countries.lookup(lookup_name).alpha_2
     except LookupError:
-        return ""
+        # Last-resort direct alias ISO map for awkward territories.
+        direct = {
+            "south korea": "KR",
+            "korea, republic of": "KR",
+            "sint maarten": "SX",
+            "united states virgin islands": "VI",
+            "virgin islands (u.s.)": "VI",
+            "northern mariana islands": "MP",
+            "micronesia, federated states of": "FM",
+            "curaçao": "CW",
+            "curacao": "CW",
+        }
+        return direct.get(cleaned.casefold(), "")
 
 
 def extract_layout_text(
     pdf_path: Path = DEFAULT_DELEGATE_PDF_PATH,
     *,
     cache_path: Path = DEFAULT_DELEGATES_LAYOUT_CACHE,
+    refresh: bool = False,
 ) -> str:
     pdf_path = Path(pdf_path)
-    if cache_path.exists() and cache_path.stat().st_mtime >= pdf_path.stat().st_mtime:
-        return cache_path.read_text(encoding="utf-8")
+    cache_path = Path(cache_path)
+    if (
+        not refresh
+        and cache_path.exists()
+        and cache_path.stat().st_mtime >= pdf_path.stat().st_mtime
+    ):
+        return repair_mojibake(cache_path.read_text(encoding="utf-8"))
 
     result = subprocess.run(
-        ["pdftotext", "-layout", str(pdf_path), "-"],
+        ["pdftotext", "-enc", "UTF-8", "-layout", str(pdf_path), "-"],
         check=True,
         capture_output=True,
-        text=True,
     )
-    cache_path.write_text(result.stdout, encoding="utf-8")
-    return result.stdout
-
-
-def country_to_iso2(country_name: str) -> str:
-    cleaned = str(country_name).strip()
-    if not cleaned:
-        return ""
-    alias = COUNTRY_ALIASES.get(cleaned.casefold())
-    lookup_name = alias or cleaned
-    try:
-        return pycountry.countries.lookup(lookup_name).alpha_2
-    except LookupError:
-        return ""
+    text = repair_mojibake(result.stdout.decode("utf-8"))
+    cache_path.write_text(text, encoding="utf-8")
+    return text
 
 
 def _known_country_suffixes() -> list[str]:
@@ -486,16 +560,167 @@ def _known_country_suffixes() -> list[str]:
 
     names = set(_EXTRA_COUNTRY_NAMES)
     names.update(country.name for country in pycountry.countries)
+    names.update(COUNTRY_ALIASES.keys())
     names.update(COUNTRY_ALIASES.values())
+    # Title-case alias keys so endswith checks against PDF text still work.
+    names.update(
+        " ".join(part.capitalize() for part in key.split())
+        for key in COUNTRY_ALIASES
+    )
     _COUNTRY_SUFFIXES = sorted(names, key=len, reverse=True)
     return _COUNTRY_SUFFIXES
 
 
+def _canonicalize_country(name: str) -> str:
+    cleaned = repair_mojibake(name).strip()
+    if not cleaned:
+        return ""
+    alias = COUNTRY_ALIASES.get(cleaned.casefold())
+    if alias:
+        return alias
+    for known in _known_country_suffixes():
+        if known.casefold() == cleaned.casefold():
+            return known
+    return cleaned
+
+
+def _match_country_label(text: str) -> tuple[str | None, bool]:
+    """Return (country_label, needs_wrap_continuation)."""
+    cleaned = repair_mojibake(text).strip().rstrip(",")
+    if not cleaned or len(cleaned) < 2:
+        return None, False
+
+    if country_to_iso2(cleaned):
+        return _canonicalize_country(cleaned), False
+
+    fold = cleaned.casefold()
+    prefix_hits = [
+        name
+        for name in _known_country_suffixes()
+        if name.casefold().startswith(fold) and len(cleaned) >= 6
+    ]
+    # Prefer exact official / alias forms over random capitalizations.
+    prefix_hits = sorted(set(prefix_hits), key=lambda item: (len(item), item))
+    if len(prefix_hits) == 1:
+        label = _canonicalize_country(prefix_hits[0])
+        return label, label.casefold() != fold and not fold.endswith(
+            label.casefold().split()[-1]
+        )
+    if len(prefix_hits) > 1:
+        # Unique canonical form?
+        canon = {_canonicalize_country(item) for item in prefix_hits}
+        if len(canon) == 1:
+            label = next(iter(canon))
+            return label, True
+        label = _canonicalize_country(prefix_hits[0])
+        return label, True
+
+    if fold.startswith("micronesia"):
+        return "Micronesia, Federated States of", True
+    if fold.startswith("northern mariana"):
+        return "Northern Mariana Islands", True
+    if fold.startswith("venezuela"):
+        return "Venezuela, Bolivarian Republic of", True
+    if fold.startswith("tanzania"):
+        return "Tanzania, United Republic of", True
+    if fold.startswith("bolivia"):
+        return "Bolivia, Plurinational State of", True
+
+    return None, False
+
+
+def _country_is_incomplete(label: str) -> bool:
+    cleaned = repair_mojibake(label).strip()
+    if not cleaned:
+        return False
+    fold = cleaned.casefold()
+    if fold in {
+        "northern mariana",
+        "micronesia (the",
+        "venezuela, bolivarian",
+        "tanzania, united",
+        "bolivia, plurinational",
+    }:
+        return True
+    matched, incomplete = _match_country_label(cleaned)
+    if matched and incomplete:
+        return True
+    # Recognized full forms are complete.
+    if matched and country_to_iso2(matched):
+        return False
+    # Unmatched trailing fragments that look like wrapped official names.
+    return cleaned.endswith(",") or cleaned.endswith("(") or fold.endswith("(the")
+
+
+def _merge_wrapped_country(existing: str, addition: str) -> str:
+    existing = repair_mojibake(existing).strip()
+    addition = repair_mojibake(addition).strip()
+    if not addition:
+        return existing
+    if not existing:
+        matched, _ = _match_country_label(addition)
+        return matched or addition
+
+    candidates = [
+        f"{existing} {addition}",
+        f"{existing}{addition}",
+        re.sub(r"\s+", " ", f"{existing} {addition}").strip(),
+    ]
+    # "Micronesia (the" + "Federated States of)" → normalize punctuation.
+    candidates.append(
+        re.sub(r"\s+", " ", f"{existing} {addition}").replace(" )", ")").strip()
+    )
+    for candidate in candidates:
+        matched, incomplete = _match_country_label(candidate)
+        if matched and not incomplete and country_to_iso2(matched):
+            return matched
+        if country_to_iso2(candidate):
+            return _canonicalize_country(candidate)
+
+    matched, _ = _match_country_label(f"{existing} {addition}".strip())
+    return matched or f"{existing} {addition}".strip()
+
+
+def _layout_fields(line: str) -> list[tuple[int, str]]:
+    """Split a layout line into columns; only single spaces allowed within a field."""
+    return [
+        (match.start(), match.group())
+        for match in re.finditer(r"\S+(?: \S+)*(?=\s{2,}|\s*$)", line)
+    ]
+
+
+def _is_skippable_layout_line(line: str) -> bool:
+    if not line.startswith("    ") or not line.strip():
+        return True
+    markers = (
+        "First name",
+        "List of Delegates",
+        "Excluding those",
+        "Created ",
+    )
+    if any(marker in line for marker in markers):
+        return True
+    return line.strip().startswith("Page:")
+
+
 def _extract_country_suffix(line: str) -> tuple[str | None, str]:
-    stripped = line.rstrip()
+    """Backward-compatible helper: split a person line into country + prefix."""
+    stripped = repair_mojibake(line).rstrip()
+    fields = _layout_fields(stripped)
+    if len(fields) >= 3:
+        country_text = fields[-1][1]
+        matched, incomplete = _match_country_label(country_text)
+        if matched and not incomplete:
+            prefix_end = fields[-1][0]
+            return matched, stripped[:prefix_end].rstrip()
+        if matched and incomplete:
+            prefix_end = fields[-1][0]
+            return country_text, stripped[:prefix_end].rstrip()
+
     country_col = stripped[COL_COUNTRY:].strip() if len(stripped) > COL_COUNTRY else ""
-    if country_col and len(country_col) >= 4 and country_to_iso2(country_col):
-        return country_col, stripped[:COL_COUNTRY].rstrip()
+    matched, incomplete = _match_country_label(country_col)
+    if matched and not incomplete:
+        return matched, stripped[:COL_COUNTRY].rstrip()
 
     tail = stripped[COL_ORG:].rstrip() if len(stripped) > COL_ORG else stripped
     for country in _known_country_suffixes():
@@ -509,13 +734,15 @@ def _extract_country_suffix(line: str) -> tuple[str | None, str]:
         prefix = stripped[:index].rstrip()
         if len(prefix) < 8:
             continue
-        return country, prefix
+        return _canonicalize_country(country), prefix
     return None, stripped
 
 
 def _parse_name_org(prefix: str) -> tuple[str, str, str]:
     parts = [
-        part.strip() for part in re.split(r"\s{2,}", prefix.strip()) if part.strip()
+        part.strip()
+        for part in re.split(r"\s{2,}", repair_mojibake(prefix).strip())
+        if part.strip()
     ]
     if len(parts) >= 3:
         return parts[0], parts[1], " ".join(parts[2:])
@@ -526,47 +753,131 @@ def _parse_name_org(prefix: str) -> tuple[str, str, str]:
     return "", "", ""
 
 
+def _parse_person_layout_line(line: str) -> dict[str, Any]:
+    stripped = repair_mojibake(line).rstrip()
+    fields = _layout_fields(stripped)
+    first = stripped[COL_FIRST:COL_LAST].strip() if len(stripped) > COL_FIRST else ""
+
+    # Drop the first-name field; remainder starts at last name or organisation.
+    if fields and fields[0][0] < COL_LAST:
+        rest = fields[1:]
+    else:
+        rest = fields
+
+    last = ""
+    remainder = rest
+    if rest and rest[0][0] < _ORG_COL_MIN:
+        last = rest[0][1]
+        remainder = rest[1:]
+
+    organisation = ""
+    country = ""
+    country_incomplete = False
+
+    if remainder:
+        country_text = remainder[-1][1]
+        matched, incomplete = _match_country_label(country_text)
+        if matched:
+            country = country_text if incomplete else matched
+            country_incomplete = incomplete or _country_is_incomplete(country_text)
+            organisation = " ".join(text for _, text in remainder[:-1]).strip()
+        else:
+            organisation = " ".join(text for _, text in remainder).strip()
+
+    organisation = re.sub(r"\s+", " ", organisation).strip()
+    return {
+        "first_name": first,
+        "last_name": last,
+        "organisation": organisation,
+        "country": country,
+        "_country_incomplete": country_incomplete,
+        "_org_incomplete": is_incomplete_organisation(organisation),
+    }
+
+
+def _append_continuation(current: dict[str, Any], line: str) -> None:
+    stripped = repair_mojibake(line).rstrip()
+    fields = _layout_fields(stripped)
+    if not fields:
+        return
+
+    org_bits: list[str] = []
+    country_bits: list[str] = []
+    for start, text in fields:
+        if start >= _COUNTRY_COL_MIN:
+            country_bits.append(text)
+        else:
+            org_bits.append(text)
+
+    if country_bits:
+        addition = " ".join(country_bits)
+        current["country"] = _merge_wrapped_country(
+            str(current.get("country") or ""), addition
+        )
+        current["_country_incomplete"] = _country_is_incomplete(
+            str(current.get("country") or "")
+        )
+    if org_bits:
+        addition = " ".join(org_bits)
+        merged = f"{current.get('organisation', '')} {addition}".strip()
+        current["organisation"] = re.sub(r"\s+", " ", merged)
+        current["_org_incomplete"] = is_incomplete_organisation(
+            current["organisation"]
+        )
+
+
 def parse_delegate_layout_text(text: str) -> pd.DataFrame:
     """Parse pdftotext -layout output into delegate records."""
     records: list[dict[str, str]] = []
-    current: dict[str, str] | None = None
+    current: dict[str, Any] | None = None
+    ignore_continuations = False
 
-    for line in text.splitlines():
-        if not line.startswith("    ") or not line.strip():
+    def flush() -> None:
+        nonlocal current
+        if current is None:
+            return
+        record = {
+            "first_name": str(current.get("first_name") or "").strip(),
+            "last_name": str(current.get("last_name") or "").strip(),
+            "organisation": re.sub(
+                r"\s+", " ", str(current.get("organisation") or "")
+            ).strip(),
+            "country": _canonicalize_country(str(current.get("country") or "")),
+        }
+        records.append(record)
+        current = None
+
+    for raw_line in repair_mojibake(text).splitlines():
+        line = raw_line.rstrip("\n")
+        if _is_skippable_layout_line(line):
+            if any(
+                marker in line
+                for marker in ("First name", "List of Delegates", "Page:")
+            ):
+                ignore_continuations = True
             continue
-        if any(
-            marker in line
-            for marker in (
-                "First name",
-                "List of Delegates",
-                "Excluding those",
-                "Created ",
-            )
-        ) or line.strip().startswith("Page:"):
+
+        first = line[COL_FIRST:COL_LAST].strip() if len(line) > COL_FIRST else ""
+        if first:
+            flush()
+            ignore_continuations = False
+            current = _parse_person_layout_line(line)
             continue
 
-        country, prefix = _extract_country_suffix(line)
-        if country:
-            if current is not None:
-                records.append(current)
-            first, last, organisation = _parse_name_org(prefix)
-            current = {
-                "first_name": first,
-                "last_name": last,
-                "organisation": organisation,
-                "country": country,
-            }
+        if current is None or ignore_continuations:
             continue
 
-        if current is not None:
-            continuation = line.strip()
-            if continuation:
-                current["organisation"] = (
-                    f"{current['organisation']} {continuation}".strip()
-                )
+        # Accept wraps for incomplete org/country, or clearly country-column text.
+        fields = _layout_fields(line)
+        has_country_col = any(start >= _COUNTRY_COL_MIN for start, _ in fields)
+        if (
+            current.get("_org_incomplete")
+            or current.get("_country_incomplete")
+            or has_country_col
+        ):
+            _append_continuation(current, line)
 
-    if current is not None:
-        records.append(current)
+    flush()
 
     if not records:
         return pd.DataFrame(
@@ -584,9 +895,11 @@ def parse_delegate_layout_text(text: str) -> pd.DataFrame:
     df["full_name"] = (
         df["first_name"].str.strip() + " " + df["last_name"].str.strip()
     ).str.strip()
-    df = normalize_delegate_records(df)
+    # Fresh PDF parses should not reuse stale organisation overrides that were
+    # authored against earlier merged-row extraction bugs.
+    df = normalize_delegate_records(df, apply_overrides=False)
     df["country_code"] = df["country"].map(country_to_iso2)
-    df = df[df["country_code"].astype(bool)].copy()
+    # Keep rows even when country is missing so PDF gaps remain visible for review.
     return df
 
 
@@ -601,18 +914,24 @@ def load_delegates(
     if json_path.exists() and not refresh:
         if not pdf_path.exists() or json_path.stat().st_mtime >= pdf_path.stat().st_mtime:
             payload = _load_json(json_path)
-            return normalize_delegate_records(pd.DataFrame(payload["delegates"]))
+            # JSON is already cleaned at save time; do not re-apply organisation
+            # overrides here (many predate the layout-parser fix and are stale).
+            return normalize_delegate_records(
+                pd.DataFrame(payload["delegates"]), apply_overrides=False
+            )
 
     if not pdf_path.exists():
         if json_path.exists():
             payload = _load_json(json_path)
-            return normalize_delegate_records(pd.DataFrame(payload["delegates"]))
+            return normalize_delegate_records(
+                pd.DataFrame(payload["delegates"]), apply_overrides=False
+            )
         raise FileNotFoundError(
             f"Delegate PDF not found: {pdf_path}. "
             f"Place the list PDF there or keep {json_path} up to date."
         )
 
-    text = extract_layout_text(pdf_path)
+    text = extract_layout_text(pdf_path, refresh=refresh)
     delegates = parse_delegate_layout_text(text)
     delegates = mark_delegate_speakers(delegates)
     save_delegates(delegates, json_path=json_path, source_pdf=pdf_path)

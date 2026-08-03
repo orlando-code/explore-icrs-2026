@@ -32,6 +32,9 @@
     <meta name="icrs-offset-api" content="https://icrs-offset-api.fly.dev/api/offsets" />
     <meta name="icrs-contact-api" content="https://icrs-offset-api.fly.dev/api/contact" />
     <meta name="icrs-require-delegate-id" content="1" />
+    <!-- Offset map modes (default on): set content="0" to disable country choropleth or affiliation slices -->
+    <!-- <meta name="icrs-offset-country-choropleth" content="0" /> -->
+    <!-- <meta name="icrs-offset-affiliation-slices" content="0" /> -->
     <meta name="icrs-turnstile-site-key" content="0x4AAAAAAD_imTavnxW9TlYT" />
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <link rel="canonical" href="https://orlando-codes.com/explore-icrs-2026/" />
@@ -313,10 +316,17 @@
           </div>
           <form class="emissions-offset-register entry-form" id="emissions-offset-form" autocomplete="off">
             <h3 class="emissions-offset-register-title">Register your offset</h3>
-            <p class="emissions-offset-suggestion">
-              The best offset is an unnecessary offset, but when done well they're better than nothing. Consider <a href="#methods-offsetting">offsetting</a> your conference travel emissions and registering it below.
-         
-            </p>
+            <div class="emissions-offset-suggestion">
+              <p>Suggested carbon contribution providers:</p>
+              <ul>
+                <li><a href="https://www.cooleffect.org/travel-offset" target="_blank">Cool Effect</a></li>
+                <li><a href="https://www.greenfleet.com.au/" target="_blank">Greenfleet</a></li>
+                <!-- <li><a href="https://www.carbontrust.com/" target="_blank">Carbon Trust</a></li> -->
+              </ul>
+              <p>
+                See '<a href="#methods-carbon-contributions">Methods</a>' for more information.
+              </p>
+            </div>
             <div class="field search-wrap">
               <label class="visually-hidden" for="emissions-offset-query">...Let's turn this map green!</label>
               <input
@@ -413,7 +423,7 @@
             </p>
           </section>
 
-          <section class="methods-section" id="methods-offsetting">
+          <section class="methods-section" id="methods-carbon-contributions">
             <h3>Acting on travel emissions</h3>
             <p>
               Gathering thousands of scientists for ICRS every four years builds the collaborations and knowledge-sharing necessary to <i><a href="https://www.icrs2026.nz/ target="_blank">"ensure a future for our coral reefs"</a></i>. However, we acknowledge the significant quantities of emissions required to bring together our global community in this way.

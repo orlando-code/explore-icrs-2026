@@ -286,6 +286,8 @@ export function createOffsetTracker({
   let delegateIdErrorMessage = "";
   let aggregate = emptyAggregate();
   let offsetCountByAffiliation = new Map();
+  let clusterAttendeeCounts = new Map();
+  let clusterOffsetCounts = new Map();
   const pendingRegistrationIds = new Set();
 
   function activePool() {
@@ -301,6 +303,42 @@ export function createOffsetTracker({
         offsetCountByAffiliation.set(key, (offsetCountByAffiliation.get(key) || 0) + value);
       }
     }
+    rebuildClusterOffsetCounts();
+  }
+
+  function rebuildClusterOffsetCounts() {
+    clusterAttendeeCounts = new Map();
+    for (const attendee of attendees) {
+      const clusterId = attendee.country_cluster_id;
+      if (!clusterId) continue;
+      clusterAttendeeCounts.set(clusterId, (clusterAttendeeCounts.get(clusterId) || 0) + 1);
+    }
+
+    clusterOffsetCounts = new Map();
+    for (const [affiliationKey, count] of offsetCountByAffiliation.entries()) {
+      const matched = attendees.filter(
+        (attendee) => affiliationMapKey(attendee.affiliation) === affiliationKey
+      );
+      if (!matched.length) continue;
+      const byCluster = new Map();
+      for (const attendee of matched) {
+        const clusterId = attendee.country_cluster_id;
+        if (!clusterId) continue;
+        byCluster.set(clusterId, (byCluster.get(clusterId) || 0) + 1);
+      }
+      for (const [clusterId, clusterPeople] of byCluster.entries()) {
+        const allocated = count * (clusterPeople / matched.length);
+        clusterOffsetCounts.set(clusterId, (clusterOffsetCounts.get(clusterId) || 0) + allocated);
+      }
+    }
+  }
+
+  function offsetShareForCluster(clusterId) {
+    if (!clusterId) return 0;
+    const total = clusterAttendeeCounts.get(clusterId) || 0;
+    if (!total) return 0;
+    const offsets = clusterOffsetCounts.get(clusterId) || 0;
+    return Math.min(1, offsets / total);
   }
 
   async function loadRegistrations() {
@@ -823,6 +861,7 @@ export function createOffsetTracker({
     stopPolling,
     refreshAttendees,
     offsetShareForLocation,
+    offsetShareForCluster,
     stats,
     OFFSET_GREEN,
   };

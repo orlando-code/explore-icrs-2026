@@ -1,9 +1,9 @@
 {
   "meta": {
     "source_pdf": "data/delegate_list_230726.pdf",
-    "delegate_count": 1893,
-    "speaker_count": 1624,
-    "non_speaker_count": 269
+    "delegate_count": 1955,
+    "speaker_count": 1676,
+    "non_speaker_count": 279
   },
   "delegates": [
     {
@@ -389,7 +389,7 @@
       "affiliation": "Great Barrier Reef Safaris, Australia",
       "country_code": "AU",
       "norm_name": "stuart alexander",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Hannah",
@@ -581,12 +581,23 @@
     {
       "first_name": "Madison",
       "last_name": "Androne",
-      "organisation": "Nova Southeastern University Maria                       Angst               Division of Aquatic Resources - Hawai'i",
+      "organisation": "Nova Southeastern University",
       "country": "United States",
       "full_name": "Madison Androne",
-      "affiliation": "Nova Southeastern University Maria                       Angst               Division of Aquatic Resources - Hawai'i, United States",
+      "affiliation": "Nova Southeastern University, United States",
       "country_code": "US",
       "norm_name": "madison androne",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Maria",
+      "last_name": "Angst",
+      "organisation": "Division of Aquatic Resources - Hawai'i",
+      "country": "",
+      "full_name": "Maria Angst",
+      "affiliation": "Division of Aquatic Resources - Hawai'i",
+      "country_code": "",
+      "norm_name": "maria angst",
       "is_speaker": true
     },
     {
@@ -713,12 +724,23 @@
     {
       "first_name": "Dr David",
       "last_name": "Armstrong",
-      "organisation": "Texas A&M University - Corpus Christi Bradley                     Arrington           University of the Virgin Islands                   Virgin Islands (U.S.)",
+      "organisation": "Texas A&M University - Corpus Christi",
       "country": "United States",
       "full_name": "Dr David Armstrong",
-      "affiliation": "Texas A&M University - Corpus Christi Bradley                     Arrington           University of the Virgin Islands                   Virgin Islands (U.S.), United States",
+      "affiliation": "Texas A&M University - Corpus Christi, United States",
       "country_code": "US",
       "norm_name": "david armstrong",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Bradley",
+      "last_name": "Arrington",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Bradley Arrington",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "bradley arrington",
       "is_speaker": true
     },
     {
@@ -768,12 +790,23 @@
     {
       "first_name": "Dr Immy",
       "last_name": "Ashley",
-      "organisation": "University of California - Los Angeles Dr Greg                     Asner               Global Discovery and Conservation Science",
+      "organisation": "University of California - Los Angeles",
       "country": "United States",
       "full_name": "Dr Immy Ashley",
-      "affiliation": "University of California - Los Angeles Dr Greg                     Asner               Global Discovery and Conservation Science, United States",
+      "affiliation": "University of California - Los Angeles, United States",
       "country_code": "US",
       "norm_name": "immy ashley",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Greg",
+      "last_name": "Asner",
+      "organisation": "Global Discovery and Conservation Science",
+      "country": "",
+      "full_name": "Dr Greg Asner",
+      "affiliation": "Global Discovery and Conservation Science",
+      "country_code": "",
+      "norm_name": "greg asner",
       "is_speaker": true
     },
     {
@@ -983,7 +1016,7 @@
       "affiliation": "Nova Southeastern University, United States",
       "country_code": "US",
       "norm_name": "stephanie ball",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Michelle",
@@ -1010,12 +1043,23 @@
     {
       "first_name": "Brianna",
       "last_name": "Bambic",
-      "organisation": "Resource and Ecosystem Management Tamatoa                     Bambridge           National Center for Scientific Research - R\u0101hui Center",
+      "organisation": "Resource and Ecosystem Management",
       "country": "United States",
       "full_name": "Brianna Bambic",
-      "affiliation": "Resource and Ecosystem Management Tamatoa                     Bambridge           National Center for Scientific Research - R\u0101hui Center, United States",
+      "affiliation": "Resource and Ecosystem Management, United States",
       "country_code": "US",
       "norm_name": "brianna bambic",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Tamatoa",
+      "last_name": "Bambridge",
+      "organisation": "National Center for Scientific Research - R\u0101hui Center",
+      "country": "",
+      "full_name": "Tamatoa Bambridge",
+      "affiliation": "National Center for Scientific Research - R\u0101hui Center",
+      "country_code": "",
+      "norm_name": "tamatoa bambridge",
       "is_speaker": true
     },
     {
@@ -1230,13 +1274,24 @@
     {
       "first_name": "Isabelle",
       "last_name": "Basden",
-      "organisation": "Ohio State University Moriah                      Sevier              University of the Virgin Islands                         Virgin Islands (U.S.)",
+      "organisation": "Ohio State University",
       "country": "United States",
       "full_name": "Isabelle Basden",
-      "affiliation": "Ohio State University Moriah                      Sevier              University of the Virgin Islands                         Virgin Islands (U.S.), United States",
+      "affiliation": "Ohio State University, United States",
       "country_code": "US",
       "norm_name": "isabelle basden",
       "is_speaker": true
+    },
+    {
+      "first_name": "Moriah",
+      "last_name": "Sevier",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Moriah Sevier",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "moriah sevier",
+      "is_speaker": false
     },
     {
       "first_name": "Dr Tahlia",
@@ -1736,12 +1791,23 @@
     {
       "first_name": "Prof Michael",
       "last_name": "Berumen",
-      "organisation": "KAUST Tadzio                      Bervoets           Coral Restoration Consortium                     Sint Maarten",
+      "organisation": "KAUST",
       "country": "Saudi Arabia",
       "full_name": "Prof Michael Berumen",
-      "affiliation": "KAUST Tadzio                      Bervoets           Coral Restoration Consortium                     Sint Maarten, Saudi Arabia",
+      "affiliation": "KAUST, Saudi Arabia",
       "country_code": "SA",
       "norm_name": "michael berumen",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Tadzio",
+      "last_name": "Bervoets",
+      "organisation": "Coral Restoration Consortium",
+      "country": "Sint Maarten",
+      "full_name": "Tadzio Bervoets",
+      "affiliation": "Coral Restoration Consortium, Sint Maarten",
+      "country_code": "SX",
+      "norm_name": "tadzio bervoets",
       "is_speaker": true
     },
     {
@@ -2209,13 +2275,24 @@
     {
       "first_name": "Erin",
       "last_name": "Bowman",
-      "organisation": "Backpacker Marissa                     Boylan         The Nature Conservancy                             Micronesia (the Federated States of)",
+      "organisation": "Backpacker",
       "country": "United States",
       "full_name": "Erin Bowman",
-      "affiliation": "Backpacker Marissa                     Boylan         The Nature Conservancy                             Micronesia (the Federated States of), United States",
+      "affiliation": "Backpacker, United States",
       "country_code": "US",
       "norm_name": "erin bowman",
       "is_speaker": false
+    },
+    {
+      "first_name": "Marissa",
+      "last_name": "Boylan",
+      "organisation": "The Nature Conservancy",
+      "country": "Micronesia, Federated States of",
+      "full_name": "Marissa Boylan",
+      "affiliation": "The Nature Conservancy, Micronesia, Federated States of",
+      "country_code": "FM",
+      "norm_name": "marissa boylan",
+      "is_speaker": true
     },
     {
       "first_name": "Yves-marie",
@@ -2253,12 +2330,23 @@
     {
       "first_name": "Dr Margarita",
       "last_name": "Brandt",
-      "organisation": "Universidad San Francisco de Quito Dr Marilyn                  Brandt         University of the Virgin Islands                   Virgin Islands (U.S.)",
+      "organisation": "Universidad San Francisco de Quito",
       "country": "Ecuador",
       "full_name": "Dr Margarita Brandt",
-      "affiliation": "Universidad San Francisco de Quito Dr Marilyn                  Brandt         University of the Virgin Islands                   Virgin Islands (U.S.), Ecuador",
+      "affiliation": "Universidad San Francisco de Quito, Ecuador",
       "country_code": "EC",
       "norm_name": "margarita brandt",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Marilyn",
+      "last_name": "Brandt",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Dr Marilyn Brandt",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "marilyn brandt",
       "is_speaker": true
     },
     {
@@ -2517,12 +2605,23 @@
     {
       "first_name": "Molly",
       "last_name": "Brzezinski",
-      "organisation": "University of California - Santa Barbara Ilan                        Bubb           Johnston Applied Marine Sciences/University of     Northern Mariana Amsterdam                                          Islands",
+      "organisation": "University of California - Santa Barbara",
       "country": "United States",
       "full_name": "Molly Brzezinski",
-      "affiliation": "University of California - Santa Barbara Ilan                        Bubb           Johnston Applied Marine Sciences/University of     Northern Mariana Amsterdam                                          Islands, United States",
+      "affiliation": "University of California - Santa Barbara, United States",
       "country_code": "US",
       "norm_name": "molly brzezinski",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Ilan",
+      "last_name": "Bubb",
+      "organisation": "Johnston Applied Marine Sciences/University of Amsterdam",
+      "country": "Northern Mariana Islands",
+      "full_name": "Ilan Bubb",
+      "affiliation": "Johnston Applied Marine Sciences/University of Amsterdam, Northern Mariana Islands",
+      "country_code": "MP",
+      "norm_name": "ilan bubb",
       "is_speaker": true
     },
     {
@@ -2825,10 +2924,10 @@
     {
       "first_name": "Laurence",
       "last_name": "Calagui",
-      "organisation": "Caraga State University / National Sun Yat-sen University",
+      "organisation": "Caraga State University / National Sun Yat-sen",
       "country": "Philippines",
       "full_name": "Laurence Calagui",
-      "affiliation": "Caraga State University / National Sun Yat-sen University, Philippines",
+      "affiliation": "Caraga State University / National Sun Yat-sen, Philippines",
       "country_code": "PH",
       "norm_name": "laurence calagui",
       "is_speaker": true
@@ -2836,10 +2935,10 @@
     {
       "first_name": "Shirlamaine Irina",
       "last_name": "Calagui",
-      "organisation": "Caraga State University / National Sun Yat-sen University",
+      "organisation": "Caraga State University / National Sun Yat-sen",
       "country": "Philippines",
       "full_name": "Shirlamaine Irina Calagui",
-      "affiliation": "Caraga State University / National Sun Yat-sen University, Philippines",
+      "affiliation": "Caraga State University / National Sun Yat-sen, Philippines",
       "country_code": "PH",
       "norm_name": "shirlamaine irina calagui",
       "is_speaker": true
@@ -3150,7 +3249,7 @@
       "affiliation": "University of Guam, Guam",
       "country_code": "GU",
       "norm_name": "fran castro",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Ge\u00f3rgenes",
@@ -3342,10 +3441,10 @@
     {
       "first_name": "Jonathan",
       "last_name": "Charendoff",
-      "organisation": "Cooperative Institute for Marine and Atmospheric Research",
+      "organisation": "Cooperative Institute for Marine and Atmospheric",
       "country": "United States",
       "full_name": "Jonathan Charendoff",
-      "affiliation": "Cooperative Institute for Marine and Atmospheric Research, United States",
+      "affiliation": "Cooperative Institute for Marine and Atmospheric, United States",
       "country_code": "US",
       "norm_name": "jonathan charendoff",
       "is_speaker": true
@@ -3370,7 +3469,7 @@
       "affiliation": "James Cook University, Australia",
       "country_code": "AU",
       "norm_name": "katie chartrand",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Apple",
@@ -3469,7 +3568,7 @@
       "affiliation": "Delta Environmental and Educational Foundation, Taiwan",
       "country_code": "TW",
       "norm_name": "vincent chen",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Prof Ji-Yen",
@@ -3529,13 +3628,24 @@
     {
       "first_name": "Isabelle",
       "last_name": "Chiang",
-      "organisation": "University of Southern California Dr Sun Kyeong               Choi              KIOST                                                South Korea",
+      "organisation": "University of Southern California",
       "country": "United States",
       "full_name": "Isabelle Chiang",
-      "affiliation": "University of Southern California Dr Sun Kyeong               Choi              KIOST                                                South Korea, United States",
+      "affiliation": "University of Southern California, United States",
       "country_code": "US",
       "norm_name": "isabelle chiang",
       "is_speaker": false
+    },
+    {
+      "first_name": "Dr Sun Kyeong",
+      "last_name": "Choi",
+      "organisation": "KIOST",
+      "country": "South Korea",
+      "full_name": "Dr Sun Kyeong Choi",
+      "affiliation": "KIOST, South Korea",
+      "country_code": "KR",
+      "norm_name": "sun kyeong choi",
+      "is_speaker": true
     },
     {
       "first_name": "Dr Fiona",
@@ -3617,12 +3727,23 @@
     {
       "first_name": "Dr Pramod",
       "last_name": "Chumun",
-      "organisation": "United Nations Development Programme - Mauritius & Seychelles Jaeseok                     Chung             KIOST                                                South Korea",
+      "organisation": "United Nations Development Programme - Mauritius & Seychelles",
       "country": "Mauritius",
       "full_name": "Dr Pramod Chumun",
-      "affiliation": "United Nations Development Programme - Mauritius & Seychelles Jaeseok                     Chung             KIOST                                                South Korea, Mauritius",
+      "affiliation": "United Nations Development Programme - Mauritius & Seychelles, Mauritius",
       "country_code": "MU",
       "norm_name": "pramod chumun",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Jaeseok",
+      "last_name": "Chung",
+      "organisation": "KIOST",
+      "country": "South Korea",
+      "full_name": "Jaeseok Chung",
+      "affiliation": "KIOST, South Korea",
+      "country_code": "KR",
+      "norm_name": "jaeseok chung",
       "is_speaker": true
     },
     {
@@ -3694,12 +3815,23 @@
     {
       "first_name": "Maile",
       "last_name": "Coberly",
-      "organisation": "Hawai\u02bbi Division of Aquatic Resources Avery                       Coble             University of the Virgin Islands                     Virgin Islands (U.S.)",
+      "organisation": "Hawai\u02bbi Division of Aquatic Resources",
       "country": "United States",
       "full_name": "Maile Coberly",
-      "affiliation": "Hawai\u02bbi Division of Aquatic Resources Avery                       Coble             University of the Virgin Islands                     Virgin Islands (U.S.), United States",
+      "affiliation": "Hawai\u02bbi Division of Aquatic Resources, United States",
       "country_code": "US",
       "norm_name": "maile coberly",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Avery",
+      "last_name": "Coble",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Avery Coble",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "avery coble",
       "is_speaker": true
     },
     {
@@ -3738,12 +3870,23 @@
     {
       "first_name": "Dr Julia",
       "last_name": "Cole",
-      "organisation": "University of Michigan - Ann Arbor Gillian                     Coleman            University of the Virgin Islands                   Virgin Islands (U.S.)",
+      "organisation": "University of Michigan - Ann Arbor",
       "country": "United States",
       "full_name": "Dr Julia Cole",
-      "affiliation": "University of Michigan - Ann Arbor Gillian                     Coleman            University of the Virgin Islands                   Virgin Islands (U.S.), United States",
+      "affiliation": "University of Michigan - Ann Arbor, United States",
       "country_code": "US",
       "norm_name": "julia cole",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Gillian",
+      "last_name": "Coleman",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Gillian Coleman",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "gillian coleman",
       "is_speaker": true
     },
     {
@@ -4035,10 +4178,10 @@
     {
       "first_name": "Dr Courtney",
       "last_name": "Couch",
-      "organisation": "Cooperative Institute for Marine and Atmospheric Research",
+      "organisation": "Cooperative Institute for Marine and Atmospheric",
       "country": "United States",
       "full_name": "Dr Courtney Couch",
-      "affiliation": "Cooperative Institute for Marine and Atmospheric Research, United States",
+      "affiliation": "Cooperative Institute for Marine and Atmospheric, United States",
       "country_code": "US",
       "norm_name": "courtney couch",
       "is_speaker": true
@@ -4156,12 +4299,23 @@
     {
       "first_name": "Emily",
       "last_name": "Croasdale",
-      "organisation": "University of Lisbon Dr Aldo                     Croquer            The Nature Conservancy                             Venezuela, Bolivarian Republic of",
+      "organisation": "University of Lisbon",
       "country": "Portugal",
       "full_name": "Emily Croasdale",
-      "affiliation": "University of Lisbon Dr Aldo                     Croquer            The Nature Conservancy                             Venezuela, Bolivarian Republic of, Portugal",
+      "affiliation": "University of Lisbon, Portugal",
       "country_code": "PT",
       "norm_name": "emily croasdale",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Aldo",
+      "last_name": "Croquer",
+      "organisation": "The Nature Conservancy",
+      "country": "Venezuela, Bolivarian Republic of",
+      "full_name": "Dr Aldo Croquer",
+      "affiliation": "The Nature Conservancy, Venezuela, Bolivarian Republic of",
+      "country_code": "VE",
+      "norm_name": "aldo croquer",
       "is_speaker": true
     },
     {
@@ -4288,12 +4442,23 @@
     {
       "first_name": "Gabriel",
       "last_name": "Silva",
-      "organisation": "Institute of Science - Tokyo Lindsay                     Dade                 University of the Virgin Islands                         Virgin Islands (U.S.)",
+      "organisation": "Institute of Science - Tokyo",
       "country": "Brazil",
       "full_name": "Gabriel Silva",
-      "affiliation": "Institute of Science - Tokyo Lindsay                     Dade                 University of the Virgin Islands                         Virgin Islands (U.S.), Brazil",
+      "affiliation": "Institute of Science - Tokyo, Brazil",
       "country_code": "BR",
       "norm_name": "gabriel silva",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Lindsay",
+      "last_name": "Dade",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Lindsay Dade",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "lindsay dade",
       "is_speaker": true
     },
     {
@@ -4415,7 +4580,7 @@
       "affiliation": "San Diego State University, United States",
       "country_code": "US",
       "norm_name": "ben darby",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Ellyn",
@@ -4525,7 +4690,7 @@
       "affiliation": "University of Victoria, Canada",
       "country_code": "CA",
       "norm_name": "mika de breuyn",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Camille",
@@ -4728,10 +4893,10 @@
     {
       "first_name": "Dr Carly",
       "last_name": "Dennison",
-      "organisation": "Rosenstiel School of Marine, Atmospheric and Earth Science",
+      "organisation": "Rosenstiel School of Marine, Atmospheric and Earth",
       "country": "United States",
       "full_name": "Dr Carly Dennison",
-      "affiliation": "Rosenstiel School of Marine, Atmospheric and Earth Science, United States",
+      "affiliation": "Rosenstiel School of Marine, Atmospheric and Earth, United States",
       "country_code": "US",
       "norm_name": "carly dennison",
       "is_speaker": true
@@ -5036,10 +5201,10 @@
     {
       "first_name": "Cilun",
       "last_name": "Djakiman",
-      "organisation": "Maritime and Marine Science Centre of Excellence, Pattimura University",
+      "organisation": "Maritime and Marine Science Centre of Excellence,",
       "country": "Indonesia",
       "full_name": "Cilun Djakiman",
-      "affiliation": "Maritime and Marine Science Centre of Excellence, Pattimura University, Indonesia",
+      "affiliation": "Maritime and Marine Science Centre of Excellence,, Indonesia",
       "country_code": "ID",
       "norm_name": "cilun djakiman",
       "is_speaker": true
@@ -5086,7 +5251,7 @@
       "affiliation": "Australian Institute of Marine Science, Australia",
       "country_code": "AU",
       "norm_name": "peter doherty",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Dr Juan Pablo",
@@ -5212,10 +5377,10 @@
     {
       "first_name": "Dr Christopher",
       "last_name": "Doropoulos",
-      "organisation": "Commonwealth Scientific and Industrial Research Organisation",
+      "organisation": "Commonwealth Scientific and Industrial Research",
       "country": "Australia",
       "full_name": "Dr Christopher Doropoulos",
-      "affiliation": "Commonwealth Scientific and Industrial Research Organisation, Australia",
+      "affiliation": "Commonwealth Scientific and Industrial Research, Australia",
       "country_code": "AU",
       "norm_name": "christopher doropoulos",
       "is_speaker": true
@@ -5328,7 +5493,7 @@
       "affiliation": "Hawai\u02bbi Institute of Marine Biology, United States",
       "country_code": "US",
       "norm_name": "ford drury",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Gustavo",
@@ -5421,12 +5586,34 @@
     {
       "first_name": "Dr Alain",
       "last_name": "Duran",
-      "organisation": "Florida International University Allie                       Durdall             University of the Virgin Islands                       Virgin Islands (U.S.) Nicholas                    Durgadeen           University of the Virgin Islands                       Virgin Islands (U.S.)",
+      "organisation": "Florida International University",
       "country": "United States",
       "full_name": "Dr Alain Duran",
-      "affiliation": "Florida International University Allie                       Durdall             University of the Virgin Islands                       Virgin Islands (U.S.) Nicholas                    Durgadeen           University of the Virgin Islands                       Virgin Islands (U.S.), United States",
+      "affiliation": "Florida International University, United States",
       "country_code": "US",
       "norm_name": "alain duran",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Allie",
+      "last_name": "Durdall",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Allie Durdall",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "allie durdall",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Nicholas",
+      "last_name": "Durgadeen",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Nicholas Durgadeen",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "nicholas durgadeen",
       "is_speaker": true
     },
     {
@@ -5553,13 +5740,24 @@
     {
       "first_name": "Dr Holland",
       "last_name": "Elder",
-      "organisation": "Australian Institute of Marine Science Simon                       Ellis               Marine and Environmental Research Institute Of         Micronesia (the Pohnpei                                                Federated States of)",
+      "organisation": "Australian Institute of Marine Science",
       "country": "Australia",
       "full_name": "Dr Holland Elder",
-      "affiliation": "Australian Institute of Marine Science Simon                       Ellis               Marine and Environmental Research Institute Of         Micronesia (the Pohnpei                                                Federated States of), Australia",
+      "affiliation": "Australian Institute of Marine Science, Australia",
       "country_code": "AU",
       "norm_name": "holland elder",
       "is_speaker": true
+    },
+    {
+      "first_name": "Simon",
+      "last_name": "Ellis",
+      "organisation": "Marine and Environmental Research Institute Of Pohnpei",
+      "country": "Micronesia, Federated States of",
+      "full_name": "Simon Ellis",
+      "affiliation": "Marine and Environmental Research Institute Of Pohnpei, Micronesia, Federated States of",
+      "country_code": "FM",
+      "norm_name": "simon ellis",
+      "is_speaker": false
     },
     {
       "first_name": "Rana",
@@ -5911,7 +6109,7 @@
       "affiliation": "Louisiana State University, United States",
       "country_code": "US",
       "norm_name": "ben farmer",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Viliami",
@@ -6224,10 +6422,10 @@
     {
       "first_name": "Andrea",
       "last_name": "Fonseca",
-      "organisation": "Center For Research And Advanced Studies Ipn-m\u00e9rida Unit",
+      "organisation": "Center For Research And Advanced Studies Ipn-m\u00e9rida",
       "country": "Mexico",
       "full_name": "Andrea Fonseca",
-      "affiliation": "Center For Research And Advanced Studies Ipn-m\u00e9rida Unit, Mexico",
+      "affiliation": "Center For Research And Advanced Studies Ipn-m\u00e9rida, Mexico",
       "country_code": "MX",
       "norm_name": "andrea fonseca",
       "is_speaker": true
@@ -6582,7 +6780,7 @@
       "affiliation": "University of Southampton, United Kingdom",
       "country_code": "GB",
       "norm_name": "adrian garcia carreon",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Nepsis",
@@ -6642,11 +6840,11 @@
     {
       "first_name": "Riley",
       "last_name": "Garvey",
-      "organisation": "National Marine Sanctuary of American Samoa American",
-      "country": "Samoa",
+      "organisation": "National Marine Sanctuary of American Samoa",
+      "country": "American Samoa",
       "full_name": "Riley Garvey",
-      "affiliation": "National Marine Sanctuary of American Samoa American, Samoa",
-      "country_code": "WS",
+      "affiliation": "National Marine Sanctuary of American Samoa, American Samoa",
+      "country_code": "AS",
       "norm_name": "riley garvey",
       "is_speaker": true
     },
@@ -6719,11 +6917,11 @@
     {
       "first_name": "Sereana",
       "last_name": "Geno",
-      "organisation": "Central Provincial Administrations Papua New",
-      "country": "Guinea",
+      "organisation": "Central Provincial Administrations",
+      "country": "Papua New Guinea",
       "full_name": "Sereana Geno",
-      "affiliation": "Central Provincial Administrations Papua New, Guinea",
-      "country_code": "GN",
+      "affiliation": "Central Provincial Administrations, Papua New Guinea",
+      "country_code": "PG",
       "norm_name": "sereana geno",
       "is_speaker": false
     },
@@ -6785,10 +6983,10 @@
     {
       "first_name": "Katrina",
       "last_name": "Giambertone",
-      "organisation": "California State University, Monterey Bay And Moss Landing Marine Laboratories",
+      "organisation": "California State University, Monterey Bay And Moss",
       "country": "United States",
       "full_name": "Katrina Giambertone",
-      "affiliation": "California State University, Monterey Bay And Moss Landing Marine Laboratories, United States",
+      "affiliation": "California State University, Monterey Bay And Moss, United States",
       "country_code": "US",
       "norm_name": "katrina giambertone",
       "is_speaker": true
@@ -7060,10 +7258,10 @@
     {
       "first_name": "Dr Kelly",
       "last_name": "Gomez-Campo",
-      "organisation": "Alfred Wegener Institute For Marine And Polar Research (awi)",
+      "organisation": "Alfred Wegener Institute For Marine And Polar Research",
       "country": "Germany",
       "full_name": "Dr Kelly Gomez-Campo",
-      "affiliation": "Alfred Wegener Institute For Marine And Polar Research (awi), Germany",
+      "affiliation": "Alfred Wegener Institute For Marine And Polar Research, Germany",
       "country_code": "DE",
       "norm_name": "kelly gomez campo",
       "is_speaker": true
@@ -7335,10 +7533,10 @@
     {
       "first_name": "Brody",
       "last_name": "Gray",
-      "organisation": "Gunggandji-Mandingalbay Yidinji Peoples Prescribed Body Corporate Aboriginal Corporation",
+      "organisation": "Gunggandji-Mandingalbay Yidinji Peoples Prescribed",
       "country": "Australia",
       "full_name": "Brody Gray",
-      "affiliation": "Gunggandji-Mandingalbay Yidinji Peoples Prescribed Body Corporate Aboriginal Corporation, Australia",
+      "affiliation": "Gunggandji-Mandingalbay Yidinji Peoples Prescribed, Australia",
       "country_code": "AU",
       "norm_name": "brody gray",
       "is_speaker": true
@@ -7632,12 +7830,23 @@
     {
       "first_name": "Dr Emily",
       "last_name": "Hall",
-      "organisation": "Mote Marine Laboratory Dr Akacia                   Halliday-Isaac    Center for Marine and Environmental Studies           Virgin Islands (U.S.)",
+      "organisation": "Mote Marine Laboratory",
       "country": "United States",
       "full_name": "Dr Emily Hall",
-      "affiliation": "Mote Marine Laboratory Dr Akacia                   Halliday-Isaac    Center for Marine and Environmental Studies           Virgin Islands (U.S.), United States",
+      "affiliation": "Mote Marine Laboratory, United States",
       "country_code": "US",
       "norm_name": "emily hall",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Akacia",
+      "last_name": "Halliday-Isaac",
+      "organisation": "Center for Marine and Environmental Studies",
+      "country": "United States Virgin Islands",
+      "full_name": "Dr Akacia Halliday-Isaac",
+      "affiliation": "Center for Marine and Environmental Studies, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "akacia halliday isaac",
       "is_speaker": true
     },
     {
@@ -7709,10 +7918,10 @@
     {
       "first_name": "Josh",
       "last_name": "Hardin",
-      "organisation": "Rosenstiel School of Marine, Atmospheric, and Earth Science",
+      "organisation": "Rosenstiel School of Marine, Atmospheric, and Earth",
       "country": "United States",
       "full_name": "Josh Hardin",
-      "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science, United States",
+      "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth, United States",
       "country_code": "US",
       "norm_name": "josh hardin",
       "is_speaker": true
@@ -8072,23 +8281,45 @@
     {
       "first_name": "Prof Scott",
       "last_name": "Heron",
-      "organisation": "James Cook University Dr Ana                      Herrera Reveles   Universidad Central de Venezuela                      Venezuela, Bolivarian Republic of",
+      "organisation": "James Cook University",
       "country": "Australia",
       "full_name": "Prof Scott Heron",
-      "affiliation": "James Cook University Dr Ana                      Herrera Reveles   Universidad Central de Venezuela                      Venezuela, Bolivarian Republic of, Australia",
+      "affiliation": "James Cook University, Australia",
       "country_code": "AU",
       "norm_name": "scott heron",
       "is_speaker": true
     },
     {
+      "first_name": "Dr Ana",
+      "last_name": "Herrera Reveles",
+      "organisation": "Universidad Central de Venezuela",
+      "country": "Venezuela, Bolivarian Republic of",
+      "full_name": "Dr Ana Herrera Reveles",
+      "affiliation": "Universidad Central de Venezuela, Venezuela, Bolivarian Republic of",
+      "country_code": "VE",
+      "norm_name": "ana herrera reveles",
+      "is_speaker": true
+    },
+    {
       "first_name": "Morgan",
       "last_name": "Hightshoe",
-      "organisation": "Nova Southeastern University Dan                         Hikuroa           University of Auckland",
+      "organisation": "Nova Southeastern University",
       "country": "United States",
       "full_name": "Morgan Hightshoe",
-      "affiliation": "Nova Southeastern University Dan                         Hikuroa           University of Auckland, United States",
+      "affiliation": "Nova Southeastern University, United States",
       "country_code": "US",
       "norm_name": "morgan hightshoe",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dan",
+      "last_name": "Hikuroa",
+      "organisation": "University of Auckland",
+      "country": "",
+      "full_name": "Dan Hikuroa",
+      "affiliation": "University of Auckland",
+      "country_code": "",
+      "norm_name": "dan hikuroa",
       "is_speaker": true
     },
     {
@@ -8226,12 +8457,23 @@
     {
       "first_name": "Dr Mykle",
       "last_name": "Hoban",
-      "organisation": "Hawai\u2018i Institute of Marine Biology Alyssa                      Hobbs            Johnston Applied Marine Sciences                         Northern Mariana Islands",
+      "organisation": "Hawai\u2018i Institute of Marine Biology",
       "country": "United States",
       "full_name": "Dr Mykle Hoban",
-      "affiliation": "Hawai\u2018i Institute of Marine Biology Alyssa                      Hobbs            Johnston Applied Marine Sciences                         Northern Mariana Islands, United States",
+      "affiliation": "Hawai\u2018i Institute of Marine Biology, United States",
       "country_code": "US",
       "norm_name": "mykle hoban",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Alyssa",
+      "last_name": "Hobbs",
+      "organisation": "Johnston Applied Marine Sciences",
+      "country": "Northern Mariana Islands",
+      "full_name": "Alyssa Hobbs",
+      "affiliation": "Johnston Applied Marine Sciences, Northern Mariana Islands",
+      "country_code": "MP",
+      "norm_name": "alyssa hobbs",
       "is_speaker": true
     },
     {
@@ -8292,12 +8534,23 @@
     {
       "first_name": "Dr Lyndsey",
       "last_name": "Holland",
-      "organisation": "Department of Conservation - New Zealand Erin                        Hollander        University of the Virgin Islands                         Virgin Islands (U.S.)",
+      "organisation": "Department of Conservation - New Zealand",
       "country": "New Zealand",
       "full_name": "Dr Lyndsey Holland",
-      "affiliation": "Department of Conservation - New Zealand Erin                        Hollander        University of the Virgin Islands                         Virgin Islands (U.S.), New Zealand",
+      "affiliation": "Department of Conservation - New Zealand, New Zealand",
       "country_code": "NZ",
       "norm_name": "lyndsey holland",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Erin",
+      "last_name": "Hollander",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Erin Hollander",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "erin hollander",
       "is_speaker": true
     },
     {
@@ -8545,10 +8798,10 @@
     {
       "first_name": "Dr Brittany",
       "last_name": "Huntington",
-      "organisation": "Cooperative Institute Of Marine and Atmospheric Research",
+      "organisation": "Cooperative Institute Of Marine and Atmospheric",
       "country": "United States",
       "full_name": "Dr Brittany Huntington",
-      "affiliation": "Cooperative Institute Of Marine and Atmospheric Research, United States",
+      "affiliation": "Cooperative Institute Of Marine and Atmospheric, United States",
       "country_code": "US",
       "norm_name": "brittany huntington",
       "is_speaker": true
@@ -8655,10 +8908,10 @@
     {
       "first_name": "Layla",
       "last_name": "Iijima",
-      "organisation": "Institut de Recherche pour le D\u00e9veloppement/Universit\u00e9 de Bretagne Occidentale",
+      "organisation": "Institut de Recherche pour le D\u00e9veloppement/Universit\u00e9",
       "country": "France",
       "full_name": "Layla Iijima",
-      "affiliation": "Institut de Recherche pour le D\u00e9veloppement/Universit\u00e9 de Bretagne Occidentale, France",
+      "affiliation": "Institut de Recherche pour le D\u00e9veloppement/Universit\u00e9, France",
       "country_code": "FR",
       "norm_name": "layla iijima",
       "is_speaker": true
@@ -8666,12 +8919,23 @@
     {
       "first_name": "Dr Ifenna",
       "last_name": "Ilechukwu",
-      "organisation": "Molecular Invertebrate Systematics & Ecology Laboratory Dr Ophery                   Ilomo             University of Dar Es Salaam                           Tanzania, United Republic of",
+      "organisation": "Molecular Invertebrate Systematics & Ecology",
       "country": "Japan",
       "full_name": "Dr Ifenna Ilechukwu",
-      "affiliation": "Molecular Invertebrate Systematics & Ecology Laboratory Dr Ophery                   Ilomo             University of Dar Es Salaam                           Tanzania, United Republic of, Japan",
+      "affiliation": "Molecular Invertebrate Systematics & Ecology, Japan",
       "country_code": "JP",
       "norm_name": "ifenna ilechukwu",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Ophery",
+      "last_name": "Ilomo",
+      "organisation": "University of Dar Es Salaam",
+      "country": "Tanzania, United Republic of",
+      "full_name": "Dr Ophery Ilomo",
+      "affiliation": "University of Dar Es Salaam, Tanzania, United Republic of",
+      "country_code": "TZ",
+      "norm_name": "ophery ilomo",
       "is_speaker": true
     },
     {
@@ -8985,12 +9249,23 @@
     {
       "first_name": "Dr Danielle",
       "last_name": "Jayewardene",
-      "organisation": "National Oceanic and Atmospheric Administration Christina                   Jayne             State of Hawai'i",
+      "organisation": "National Oceanic and Atmospheric Administration",
       "country": "United States",
       "full_name": "Dr Danielle Jayewardene",
-      "affiliation": "National Oceanic and Atmospheric Administration Christina                   Jayne             State of Hawai'i, United States",
+      "affiliation": "National Oceanic and Atmospheric Administration, United States",
       "country_code": "US",
       "norm_name": "danielle jayewardene",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Christina",
+      "last_name": "Jayne",
+      "organisation": "State of Hawai'i",
+      "country": "",
+      "full_name": "Christina Jayne",
+      "affiliation": "State of Hawai'i",
+      "country_code": "",
+      "norm_name": "christina jayne",
       "is_speaker": true
     },
     {
@@ -9073,10 +9348,10 @@
     {
       "first_name": "Nilda",
       "last_name": "Jimenez-Marrero",
-      "organisation": "Puerto Rico Department of Natural and Environmental Resources",
+      "organisation": "Puerto Rico Department of Natural and Environmental",
       "country": "Puerto Rico",
       "full_name": "Nilda Jimenez-Marrero",
-      "affiliation": "Puerto Rico Department of Natural and Environmental Resources, Puerto Rico",
+      "affiliation": "Puerto Rico Department of Natural and Environmental, Puerto Rico",
       "country_code": "PR",
       "norm_name": "nilda jimenez marrero",
       "is_speaker": false
@@ -9150,12 +9425,23 @@
     {
       "first_name": "Dr Bede",
       "last_name": "Johnston",
-      "organisation": "Australian Institute of Marine Science Dr Lyza                     Johnston          Johnston Applied Marine Sciences                      Northern Mariana Islands",
+      "organisation": "Australian Institute of Marine Science",
       "country": "Australia",
       "full_name": "Dr Bede Johnston",
-      "affiliation": "Australian Institute of Marine Science Dr Lyza                     Johnston          Johnston Applied Marine Sciences                      Northern Mariana Islands, Australia",
+      "affiliation": "Australian Institute of Marine Science, Australia",
       "country_code": "AU",
       "norm_name": "bede johnston",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Lyza",
+      "last_name": "Johnston",
+      "organisation": "Johnston Applied Marine Sciences",
+      "country": "Northern Mariana Islands",
+      "full_name": "Dr Lyza Johnston",
+      "affiliation": "Johnston Applied Marine Sciences, Northern Mariana Islands",
+      "country_code": "MP",
+      "norm_name": "lyza johnston",
       "is_speaker": true
     },
     {
@@ -9222,7 +9508,7 @@
       "affiliation": "Coral Guardian, France",
       "country_code": "FR",
       "norm_name": "sol ne jonveaux",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Marlena",
@@ -9238,13 +9524,24 @@
     {
       "first_name": "Sassa",
       "last_name": "Jordan",
-      "organisation": "Newcastle University Eugene                      Joseph             Conservation Society of Pohnpei               Micronesia (the Federated States of)",
+      "organisation": "Newcastle University",
       "country": "Germany",
       "full_name": "Sassa Jordan",
-      "affiliation": "Newcastle University Eugene                      Joseph             Conservation Society of Pohnpei               Micronesia (the Federated States of), Germany",
+      "affiliation": "Newcastle University, Germany",
       "country_code": "DE",
       "norm_name": "sassa jordan",
       "is_speaker": false
+    },
+    {
+      "first_name": "Eugene",
+      "last_name": "Joseph",
+      "organisation": "Conservation Society of Pohnpei",
+      "country": "Micronesia, Federated States of",
+      "full_name": "Eugene Joseph",
+      "affiliation": "Conservation Society of Pohnpei, Micronesia, Federated States of",
+      "country_code": "FM",
+      "norm_name": "eugene joseph",
+      "is_speaker": true
     },
     {
       "first_name": "Dr Jonathan",
@@ -9585,7 +9882,7 @@
       "affiliation": "Ho\u02bb\u0101la Kealakekua Nui, Inc., United States",
       "country_code": "US",
       "norm_name": "kainalu keli ikuli grace",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Ku\u02bbi",
@@ -9667,12 +9964,23 @@
     {
       "first_name": "Dr Dustin",
       "last_name": "Kemp",
-      "organisation": "University of Alabama - Birmingham Prof Paul                   Kench              University of Waikato",
+      "organisation": "University of Alabama - Birmingham",
       "country": "United States",
       "full_name": "Dr Dustin Kemp",
-      "affiliation": "University of Alabama - Birmingham Prof Paul                   Kench              University of Waikato, United States",
+      "affiliation": "University of Alabama - Birmingham, United States",
       "country_code": "US",
       "norm_name": "dustin kemp",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Prof Paul",
+      "last_name": "Kench",
+      "organisation": "University of Waikato",
+      "country": "",
+      "full_name": "Prof Paul Kench",
+      "affiliation": "University of Waikato",
+      "country_code": "",
+      "norm_name": "paul kench",
       "is_speaker": true
     },
     {
@@ -9744,23 +10052,45 @@
     {
       "first_name": "Dr Catherine",
       "last_name": "Kim",
-      "organisation": "Queensland University of Technology Jaehyeon                    Kim              KIOST                                                   South Korea",
+      "organisation": "Queensland University of Technology",
       "country": "Australia",
       "full_name": "Dr Catherine Kim",
-      "affiliation": "Queensland University of Technology Jaehyeon                    Kim              KIOST                                                   South Korea, Australia",
+      "affiliation": "Queensland University of Technology, Australia",
       "country_code": "AU",
       "norm_name": "catherine kim",
       "is_speaker": true
     },
     {
+      "first_name": "Jaehyeon",
+      "last_name": "Kim",
+      "organisation": "KIOST",
+      "country": "South Korea",
+      "full_name": "Jaehyeon Kim",
+      "affiliation": "KIOST, South Korea",
+      "country_code": "KR",
+      "norm_name": "jaehyeon kim",
+      "is_speaker": true
+    },
+    {
       "first_name": "Dr Sun",
       "last_name": "Kim",
-      "organisation": "University of Queensland Dr Taihun                   Kim              KIOST                                                   South Korea",
+      "organisation": "University of Queensland",
       "country": "Australia",
       "full_name": "Dr Sun Kim",
-      "affiliation": "University of Queensland Dr Taihun                   Kim              KIOST                                                   South Korea, Australia",
+      "affiliation": "University of Queensland, Australia",
       "country_code": "AU",
       "norm_name": "sun kim",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Taihun",
+      "last_name": "Kim",
+      "organisation": "KIOST",
+      "country": "South Korea",
+      "full_name": "Dr Taihun Kim",
+      "affiliation": "KIOST, South Korea",
+      "country_code": "KR",
+      "norm_name": "taihun kim",
       "is_speaker": true
     },
     {
@@ -9970,7 +10300,7 @@
       "affiliation": "Island Conservation, United States",
       "country_code": "US",
       "norm_name": "grace klinges",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Dr Wanlaya",
@@ -10480,36 +10810,80 @@
     },
     {
       "first_name": "Dr Mickael",
-      "last_name": "",
-      "organisation": "Leclercq",
+      "last_name": "Leclercq",
+      "organisation": "",
       "country": "Canada",
-      "full_name": "Dr Mickael",
-      "affiliation": "Leclercq, Canada",
+      "full_name": "Dr Mickael Leclercq",
+      "affiliation": "",
       "country_code": "CA",
-      "norm_name": "mickael",
+      "norm_name": "mickael leclercq",
       "is_speaker": false
     },
     {
       "first_name": "Carmine",
       "last_name": "Lee",
-      "organisation": "National University of Singapore Gaby                        Lee             Catholic University of Korea                       South Korea Prof Jeong-Hyun             Lee             Chungnam National University                       South Korea Dr Jimin                    Lee             KIOST                                              South Korea",
+      "organisation": "National University of Singapore",
       "country": "Singapore",
       "full_name": "Carmine Lee",
-      "affiliation": "National University of Singapore Gaby                        Lee             Catholic University of Korea                       South Korea Prof Jeong-Hyun             Lee             Chungnam National University                       South Korea Dr Jimin                    Lee             KIOST                                              South Korea, Singapore",
+      "affiliation": "National University of Singapore, Singapore",
       "country_code": "SG",
       "norm_name": "carmine lee",
       "is_speaker": true
     },
     {
+      "first_name": "Gaby",
+      "last_name": "Lee",
+      "organisation": "Catholic University of Korea",
+      "country": "South Korea",
+      "full_name": "Gaby Lee",
+      "affiliation": "Catholic University of Korea, South Korea",
+      "country_code": "KR",
+      "norm_name": "gaby lee",
+      "is_speaker": false
+    },
+    {
+      "first_name": "Prof Jeong-Hyun",
+      "last_name": "Lee",
+      "organisation": "Chungnam National University",
+      "country": "South Korea",
+      "full_name": "Prof Jeong-Hyun Lee",
+      "affiliation": "Chungnam National University, South Korea",
+      "country_code": "KR",
+      "norm_name": "jeong hyun lee",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Jimin",
+      "last_name": "Lee",
+      "organisation": "KIOST",
+      "country": "South Korea",
+      "full_name": "Dr Jimin Lee",
+      "affiliation": "KIOST, South Korea",
+      "country_code": "KR",
+      "norm_name": "jimin lee",
+      "is_speaker": false
+    },
+    {
       "first_name": "Dr Li-Keat",
       "last_name": "Lee",
-      "organisation": "National University of Singapore Prof Moo Joon               Lee             Seokyeong University                               South Korea",
+      "organisation": "National University of Singapore",
       "country": "Singapore",
       "full_name": "Dr Li-Keat Lee",
-      "affiliation": "National University of Singapore Prof Moo Joon               Lee             Seokyeong University                               South Korea, Singapore",
+      "affiliation": "National University of Singapore, Singapore",
       "country_code": "SG",
       "norm_name": "li keat lee",
       "is_speaker": true
+    },
+    {
+      "first_name": "Prof Moo Joon",
+      "last_name": "Lee",
+      "organisation": "Seokyeong University",
+      "country": "South Korea",
+      "full_name": "Prof Moo Joon Lee",
+      "affiliation": "Seokyeong University, South Korea",
+      "country_code": "KR",
+      "norm_name": "moo joon lee",
+      "is_speaker": false
     },
     {
       "first_name": "Catherine",
@@ -10745,10 +11119,10 @@
     {
       "first_name": "Jessica",
       "last_name": "Levy",
-      "organisation": "Coral Restoration Foundation / Coral Restoration Consortium",
+      "organisation": "Coral Restoration Foundation / Coral Restoration",
       "country": "United States",
       "full_name": "Jessica Levy",
-      "affiliation": "Coral Restoration Foundation / Coral Restoration Consortium, United States",
+      "affiliation": "Coral Restoration Foundation / Coral Restoration, United States",
       "country_code": "US",
       "norm_name": "jessica levy",
       "is_speaker": false
@@ -10866,13 +11240,24 @@
     {
       "first_name": "Dr Julian",
       "last_name": "Lilkendey",
-      "organisation": "Leibniz Centre for Tropical Marine Research Dr Jae Kyu                  Lim          KIOST                                                      South Korea",
+      "organisation": "Leibniz Centre for Tropical Marine Research",
       "country": "New Zealand",
       "full_name": "Dr Julian Lilkendey",
-      "affiliation": "Leibniz Centre for Tropical Marine Research Dr Jae Kyu                  Lim          KIOST                                                      South Korea, New Zealand",
+      "affiliation": "Leibniz Centre for Tropical Marine Research, New Zealand",
       "country_code": "NZ",
       "norm_name": "julian lilkendey",
       "is_speaker": true
+    },
+    {
+      "first_name": "Dr Jae Kyu",
+      "last_name": "Lim",
+      "organisation": "KIOST",
+      "country": "South Korea",
+      "full_name": "Dr Jae Kyu Lim",
+      "affiliation": "KIOST, South Korea",
+      "country_code": "KR",
+      "norm_name": "jae kyu lim",
+      "is_speaker": false
     },
     {
       "first_name": "Dr Ken",
@@ -11207,10 +11592,10 @@
     {
       "first_name": "Stirling",
       "last_name": "Ludwick",
-      "organisation": "Gunggandji-mandingalbay Yidinji Peoples Prescribed Body Corporate Aboriginal Corporation",
+      "organisation": "Gunggandji-mandingalbay Yidinji Peoples Prescribed",
       "country": "Australia",
       "full_name": "Stirling Ludwick",
-      "affiliation": "Gunggandji-mandingalbay Yidinji Peoples Prescribed Body Corporate Aboriginal Corporation, Australia",
+      "affiliation": "Gunggandji-mandingalbay Yidinji Peoples Prescribed, Australia",
       "country_code": "AU",
       "norm_name": "stirling ludwick",
       "is_speaker": true
@@ -11218,24 +11603,24 @@
     {
       "first_name": "Dr Osmar",
       "last_name": "Luiz",
-      "organisation": "Department of Biodiversity, Conservation and Attractions - Western Australia",
+      "organisation": "Department of Biodiversity, Conservation and Attractions",
       "country": "Australia",
       "full_name": "Dr Osmar Luiz",
-      "affiliation": "Department of Biodiversity, Conservation and Attractions - Western Australia, Australia",
+      "affiliation": "Department of Biodiversity, Conservation and Attractions, Australia",
       "country_code": "AU",
       "norm_name": "osmar luiz",
       "is_speaker": true
     },
     {
       "first_name": "Kelly",
-      "last_name": "",
-      "organisation": "Lumpkin",
+      "last_name": "Lumpkin",
+      "organisation": "",
       "country": "United States",
-      "full_name": "Kelly",
-      "affiliation": "Lumpkin, United States",
+      "full_name": "Kelly Lumpkin",
+      "affiliation": "",
       "country_code": "US",
-      "norm_name": "kelly",
-      "is_speaker": false
+      "norm_name": "kelly lumpkin",
+      "is_speaker": true
     },
     {
       "first_name": "Jannis",
@@ -11262,12 +11647,23 @@
     {
       "first_name": "Prof Haiwei",
       "last_name": "Luo",
-      "organisation": "Chinese University of Hong Kong Caitlin                     Lustic       The Nature Conservancy                                     Virgin Islands (U.S.)",
+      "organisation": "Chinese University of Hong Kong",
       "country": "Hong Kong",
       "full_name": "Prof Haiwei Luo",
-      "affiliation": "Chinese University of Hong Kong Caitlin                     Lustic       The Nature Conservancy                                     Virgin Islands (U.S.), Hong Kong",
+      "affiliation": "Chinese University of Hong Kong, Hong Kong",
       "country_code": "HK",
       "norm_name": "haiwei luo",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Caitlin",
+      "last_name": "Lustic",
+      "organisation": "The Nature Conservancy",
+      "country": "United States Virgin Islands",
+      "full_name": "Caitlin Lustic",
+      "affiliation": "The Nature Conservancy, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "caitlin lustic",
       "is_speaker": true
     },
     {
@@ -11356,7 +11752,7 @@
       "affiliation": "University of California - Merced, United States",
       "country_code": "US",
       "norm_name": "sophie macvittie",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "VL",
@@ -11400,7 +11796,7 @@
       "affiliation": "Kalanihale, United States",
       "country_code": "US",
       "norm_name": "will mae huihui",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Nicolas",
@@ -11840,15 +12236,15 @@
       "affiliation": "Rockefeller University, United States",
       "country_code": "US",
       "norm_name": "reagan mason",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Robert",
       "last_name": "Mason",
-      "organisation": "Commonwealth Scientific and Industrial Research Organisation",
+      "organisation": "Commonwealth Scientific and Industrial Research",
       "country": "Australia",
       "full_name": "Dr Robert Mason",
-      "affiliation": "Commonwealth Scientific and Industrial Research Organisation, Australia",
+      "affiliation": "Commonwealth Scientific and Industrial Research, Australia",
       "country_code": "AU",
       "norm_name": "robert mason",
       "is_speaker": true
@@ -12307,12 +12703,23 @@
     {
       "first_name": "Dr Mark",
       "last_name": "Meekan",
-      "organisation": "University of Western Australia Sonora                      Meiling          University of the Virgin Islands             Virgin Islands (U.S.)",
+      "organisation": "University of Western Australia",
       "country": "Australia",
       "full_name": "Dr Mark Meekan",
-      "affiliation": "University of Western Australia Sonora                      Meiling          University of the Virgin Islands             Virgin Islands (U.S.), Australia",
+      "affiliation": "University of Western Australia, Australia",
       "country_code": "AU",
       "norm_name": "mark meekan",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Sonora",
+      "last_name": "Meiling",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Sonora Meiling",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "sonora meiling",
       "is_speaker": true
     },
     {
@@ -12357,7 +12764,7 @@
       "affiliation": "University of Hawai'i, United States",
       "country_code": "US",
       "norm_name": "melissa melendez",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Amanda",
@@ -12406,12 +12813,23 @@
     {
       "first_name": "Dr Thiago",
       "last_name": "Mendes",
-      "organisation": "Projeto Cost\u00e3o Rochoso Jasmine                     Mendiola         Conservation Society of Pohnpei              Micronesia (the Federated States of)",
+      "organisation": "Projeto Cost\u00e3o Rochoso",
       "country": "Brazil",
       "full_name": "Dr Thiago Mendes",
-      "affiliation": "Projeto Cost\u00e3o Rochoso Jasmine                     Mendiola         Conservation Society of Pohnpei              Micronesia (the Federated States of), Brazil",
+      "affiliation": "Projeto Cost\u00e3o Rochoso, Brazil",
       "country_code": "BR",
       "norm_name": "thiago mendes",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Jasmine",
+      "last_name": "Mendiola",
+      "organisation": "Conservation Society of Pohnpei",
+      "country": "Micronesia, Federated States of",
+      "full_name": "Jasmine Mendiola",
+      "affiliation": "Conservation Society of Pohnpei, Micronesia, Federated States of",
+      "country_code": "FM",
+      "norm_name": "jasmine mendiola",
       "is_speaker": true
     },
     {
@@ -12615,12 +13033,23 @@
     {
       "first_name": "Makeda",
       "last_name": "Mills",
-      "organisation": "Texas A&M University Dr Won-Gi                   Min              KIOST (korea Institute Of Ocean Science &               South Korea Technology)",
+      "organisation": "Texas A&M University",
       "country": "United States",
       "full_name": "Makeda Mills",
-      "affiliation": "Texas A&M University Dr Won-Gi                   Min              KIOST (korea Institute Of Ocean Science &               South Korea Technology), United States",
+      "affiliation": "Texas A&M University, United States",
       "country_code": "US",
       "norm_name": "makeda mills",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Won-Gi",
+      "last_name": "Min",
+      "organisation": "KIOST (korea Institute Of Ocean Science & Technology)",
+      "country": "South Korea",
+      "full_name": "Dr Won-Gi Min",
+      "affiliation": "KIOST (korea Institute Of Ocean Science & Technology), South Korea",
+      "country_code": "KR",
+      "norm_name": "won gi min",
       "is_speaker": true
     },
     {
@@ -12665,7 +13094,7 @@
       "affiliation": "Yas Seaworld Research and Rescue Center, United Arab Emirates",
       "country_code": "AE",
       "norm_name": "matt mitchell",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Carys",
@@ -12769,10 +13198,10 @@
     {
       "first_name": "Dr Nury",
       "last_name": "Molina",
-      "organisation": "National Oceanic and Atmospheric Administration - Sea Grant",
+      "organisation": "National Oceanic and Atmospheric Administration - Sea",
       "country": "United States",
       "full_name": "Dr Nury Molina",
-      "affiliation": "National Oceanic and Atmospheric Administration - Sea Grant, United States",
+      "affiliation": "National Oceanic and Atmospheric Administration - Sea, United States",
       "country_code": "US",
       "norm_name": "nury molina",
       "is_speaker": true
@@ -12791,12 +13220,23 @@
     {
       "first_name": "Prof Simone",
       "last_name": "Montano",
-      "organisation": "University of Milano-Bicocca Dr Hye-won                  Moon             National Marine Biodiversity Institute of Korea         South Korea",
+      "organisation": "University of Milano-Bicocca",
       "country": "Italy",
       "full_name": "Prof Simone Montano",
-      "affiliation": "University of Milano-Bicocca Dr Hye-won                  Moon             National Marine Biodiversity Institute of Korea         South Korea, Italy",
+      "affiliation": "University of Milano-Bicocca, Italy",
       "country_code": "IT",
       "norm_name": "simone montano",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Hye-won",
+      "last_name": "Moon",
+      "organisation": "National Marine Biodiversity Institute of Korea",
+      "country": "South Korea",
+      "full_name": "Dr Hye-won Moon",
+      "affiliation": "National Marine Biodiversity Institute of Korea, South Korea",
+      "country_code": "KR",
+      "norm_name": "hye won moon",
       "is_speaker": true
     },
     {
@@ -12901,10 +13341,10 @@
     {
       "first_name": "Dr John",
       "last_name": "Morris",
-      "organisation": "Cooperative Institute For Marine and Atmospheric Studies",
+      "organisation": "Cooperative Institute For Marine and Atmospheric",
       "country": "United States",
       "full_name": "Dr John Morris",
-      "affiliation": "Cooperative Institute For Marine and Atmospheric Studies, United States",
+      "affiliation": "Cooperative Institute For Marine and Atmospheric, United States",
       "country_code": "US",
       "norm_name": "john morris",
       "is_speaker": true
@@ -13336,7 +13776,7 @@
       "affiliation": "University of Texas - Austin, United States",
       "country_code": "US",
       "norm_name": "caitlin neill",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Melman",
@@ -13352,12 +13792,23 @@
     {
       "first_name": "Brian",
       "last_name": "Neilson",
-      "organisation": "State of Hawai'i Joseph                      Nekaifes        Johnston Applied Marine Sciences                       Northern Mariana Islands",
+      "organisation": "State of Hawai'i",
       "country": "United States",
       "full_name": "Brian Neilson",
-      "affiliation": "State of Hawai'i Joseph                      Nekaifes        Johnston Applied Marine Sciences                       Northern Mariana Islands, United States",
+      "affiliation": "State of Hawai'i, United States",
       "country_code": "US",
       "norm_name": "brian neilson",
+      "is_speaker": false
+    },
+    {
+      "first_name": "Joseph",
+      "last_name": "Nekaifes",
+      "organisation": "Johnston Applied Marine Sciences",
+      "country": "Northern Mariana Islands",
+      "full_name": "Joseph Nekaifes",
+      "affiliation": "Johnston Applied Marine Sciences, Northern Mariana Islands",
+      "country_code": "MP",
+      "norm_name": "joseph nekaifes",
       "is_speaker": false
     },
     {
@@ -13418,12 +13869,23 @@
     {
       "first_name": "Isabelle",
       "last_name": "Ng",
-      "organisation": "James Cook University Godfrey                     Ngupula         Tanzania Marine Parks and Reserves Unit                Tanzania, United Republic of",
+      "organisation": "James Cook University",
       "country": "Australia",
       "full_name": "Isabelle Ng",
-      "affiliation": "James Cook University Godfrey                     Ngupula         Tanzania Marine Parks and Reserves Unit                Tanzania, United Republic of, Australia",
+      "affiliation": "James Cook University, Australia",
       "country_code": "AU",
       "norm_name": "isabelle ng",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Godfrey",
+      "last_name": "Ngupula",
+      "organisation": "Tanzania Marine Parks and Reserves Unit",
+      "country": "Tanzania, United Republic of",
+      "full_name": "Godfrey Ngupula",
+      "affiliation": "Tanzania Marine Parks and Reserves Unit, Tanzania, United Republic of",
+      "country_code": "TZ",
+      "norm_name": "godfrey ngupula",
       "is_speaker": true
     },
     {
@@ -13517,10 +13979,10 @@
     {
       "first_name": "Eena Marie",
       "last_name": "Nuevas",
-      "organisation": "Department of Environment and Natural Resources - Philippines Philippines",
+      "organisation": "Department of Environment and Natural Resources - Philippines",
       "country": "Philippines",
       "full_name": "Eena Marie Nuevas",
-      "affiliation": "Department of Environment and Natural Resources - Philippines Philippines, Philippines",
+      "affiliation": "Department of Environment and Natural Resources - Philippines, Philippines",
       "country_code": "PH",
       "norm_name": "eena marie nuevas",
       "is_speaker": false
@@ -13556,7 +14018,7 @@
       "affiliation": "MesoReef DAO Foundation, Mexico",
       "country_code": "MX",
       "norm_name": "rodrigo nu ez",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Marissa",
@@ -13671,13 +14133,24 @@
     {
       "first_name": "Maya",
       "last_name": "Olin",
-      "organisation": "University of Hawai'i Dr Lauren                   Olinger              University of the Virgin Islands                      Virgin Islands (U.S.)",
+      "organisation": "University of Hawai'i",
       "country": "United States",
       "full_name": "Maya Olin",
-      "affiliation": "University of Hawai'i Dr Lauren                   Olinger              University of the Virgin Islands                      Virgin Islands (U.S.), United States",
+      "affiliation": "University of Hawai'i, United States",
       "country_code": "US",
       "norm_name": "maya olin",
       "is_speaker": false
+    },
+    {
+      "first_name": "Dr Lauren",
+      "last_name": "Olinger",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Dr Lauren Olinger",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "lauren olinger",
+      "is_speaker": true
     },
     {
       "first_name": "Dr Javiera",
@@ -14023,12 +14496,23 @@
     {
       "first_name": "Dr John",
       "last_name": "Parkinson",
-      "organisation": "University of South Florida Spencer                     Parr                 University of the Virgin Islands                      Virgin Islands (U.S.)",
+      "organisation": "University of South Florida",
       "country": "United States",
       "full_name": "Dr John Parkinson",
-      "affiliation": "University of South Florida Spencer                     Parr                 University of the Virgin Islands                      Virgin Islands (U.S.), United States",
+      "affiliation": "University of South Florida, United States",
       "country_code": "US",
       "norm_name": "john parkinson",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Spencer",
+      "last_name": "Parr",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Spencer Parr",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "spencer parr",
       "is_speaker": true
     },
     {
@@ -14694,10 +15178,10 @@
     {
       "first_name": "Dr Javier",
       "last_name": "Porobic",
-      "organisation": "Commonwealth Scientific and Industrial Research Organisation",
+      "organisation": "Commonwealth Scientific and Industrial Research",
       "country": "Australia",
       "full_name": "Dr Javier Porobic",
-      "affiliation": "Commonwealth Scientific and Industrial Research Organisation, Australia",
+      "affiliation": "Commonwealth Scientific and Industrial Research, Australia",
       "country_code": "AU",
       "norm_name": "javier porobic",
       "is_speaker": true
@@ -15085,7 +15569,7 @@
       "affiliation": "Universidad Nacional Aut\u00f3noma De M\u00e9xico, Mexico",
       "country_code": "MX",
       "norm_name": "georgina ram rez ortiz",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Gandhi",
@@ -15167,10 +15651,10 @@
     {
       "first_name": "Janet",
       "last_name": "Rande",
-      "organisation": "Maritime and Marine Science Center of Excellence, Pattimura University",
+      "organisation": "Maritime and Marine Science Center of Excellence,",
       "country": "Indonesia",
       "full_name": "Janet Rande",
-      "affiliation": "Maritime and Marine Science Center of Excellence, Pattimura University, Indonesia",
+      "affiliation": "Maritime and Marine Science Center of Excellence,, Indonesia",
       "country_code": "ID",
       "norm_name": "janet rande",
       "is_speaker": true
@@ -15492,7 +15976,7 @@
       "affiliation": "University of Hawai'i - M\u0101noa, United States",
       "country_code": "US",
       "norm_name": "angela richards don",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Keana",
@@ -15563,12 +16047,23 @@
     {
       "first_name": "Bernhard",
       "last_name": "Riegl Jr.",
-      "organisation": "James Cook University Cynthia                     Riginos             Australian Institute of Marine Science",
+      "organisation": "James Cook University",
       "country": "United States",
       "full_name": "Bernhard Riegl Jr.",
-      "affiliation": "James Cook University Cynthia                     Riginos             Australian Institute of Marine Science, United States",
+      "affiliation": "James Cook University, United States",
       "country_code": "US",
       "norm_name": "bernhard riegl jr",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Cynthia",
+      "last_name": "Riginos",
+      "organisation": "Australian Institute of Marine Science",
+      "country": "",
+      "full_name": "Cynthia Riginos",
+      "affiliation": "Australian Institute of Marine Science",
+      "country_code": "",
+      "norm_name": "cynthia riginos",
       "is_speaker": true
     },
     {
@@ -15668,7 +16163,7 @@
       "affiliation": "Lancaster University, United Kingdom",
       "country_code": "GB",
       "norm_name": "james robinson",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Julie",
@@ -15783,10 +16278,10 @@
     {
       "first_name": "Miel",
       "last_name": "Rodr\u00edguez-jim\u00e9nez",
-      "organisation": "Centre for Scientific Research and Higher Education of Ensenada Ensenada",
+      "organisation": "Centre for Scientific Research and Higher Education of Ensenada",
       "country": "Mexico",
       "full_name": "Miel Rodr\u00edguez-jim\u00e9nez",
-      "affiliation": "Centre for Scientific Research and Higher Education of Ensenada Ensenada, Mexico",
+      "affiliation": "Centre for Scientific Research and Higher Education of Ensenada, Mexico",
       "country_code": "MX",
       "norm_name": "miel rodr guez jim nez",
       "is_speaker": true
@@ -15998,15 +16493,15 @@
       "affiliation": "Hawai\u02bbi Institute of Marine Biology, United States",
       "country_code": "US",
       "norm_name": "nina rosset",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Dr Ashley",
       "last_name": "Rossin",
-      "organisation": "Cooperative Institute for Marine and Atmospheric Studies",
+      "organisation": "Cooperative Institute for Marine and Atmospheric",
       "country": "United States",
       "full_name": "Dr Ashley Rossin",
-      "affiliation": "Cooperative Institute for Marine and Atmospheric Studies, United States",
+      "affiliation": "Cooperative Institute for Marine and Atmospheric, United States",
       "country_code": "US",
       "norm_name": "ashley rossin",
       "is_speaker": true
@@ -16157,10 +16652,10 @@
     {
       "first_name": "James Charlie",
       "last_name": "Rupiasa",
-      "organisation": "Maritime and Marine Science Center of Excellence, Pattimura University",
+      "organisation": "Maritime and Marine Science Center of Excellence,",
       "country": "Indonesia",
       "full_name": "James Charlie Rupiasa",
-      "affiliation": "Maritime and Marine Science Center of Excellence, Pattimura University, Indonesia",
+      "affiliation": "Maritime and Marine Science Center of Excellence,, Indonesia",
       "country_code": "ID",
       "norm_name": "james charlie rupiasa",
       "is_speaker": true
@@ -16168,10 +16663,10 @@
     {
       "first_name": "Shannon",
       "last_name": "Ruseborn",
-      "organisation": "National Oceanic and Atmospheric Administration Restoration Center",
+      "organisation": "National Oceanic and Atmospheric Administration",
       "country": "United States",
       "full_name": "Shannon Ruseborn",
-      "affiliation": "National Oceanic and Atmospheric Administration Restoration Center, United States",
+      "affiliation": "National Oceanic and Atmospheric Administration, United States",
       "country_code": "US",
       "norm_name": "shannon ruseborn",
       "is_speaker": true
@@ -16696,10 +17191,10 @@
     {
       "first_name": "Sandra",
       "last_name": "Schleier",
-      "organisation": "Puerto Rico Department of Natural and Environmental Resources",
+      "organisation": "Puerto Rico Department of Natural and Environmental",
       "country": "Puerto Rico",
       "full_name": "Sandra Schleier",
-      "affiliation": "Puerto Rico Department of Natural and Environmental Resources, Puerto Rico",
+      "affiliation": "Puerto Rico Department of Natural and Environmental, Puerto Rico",
       "country_code": "PR",
       "norm_name": "sandra schleier",
       "is_speaker": true
@@ -16872,21 +17367,32 @@
     {
       "first_name": "Maja",
       "last_name": "Seier",
-      "organisation": "University of Copenhagen J\u00f6rg-Dieter                 Seifert-Granzin   University of Salzburg                                Bolivia, Plurinational State of",
+      "organisation": "University of Copenhagen",
       "country": "Denmark",
       "full_name": "Maja Seier",
-      "affiliation": "University of Copenhagen J\u00f6rg-Dieter                 Seifert-Granzin   University of Salzburg                                Bolivia, Plurinational State of, Denmark",
+      "affiliation": "University of Copenhagen, Denmark",
       "country_code": "DK",
       "norm_name": "maja seier",
       "is_speaker": true
     },
     {
+      "first_name": "J\u00f6rg-Dieter",
+      "last_name": "Seifert-Granzin",
+      "organisation": "University of Salzburg",
+      "country": "Bolivia, Plurinational State of",
+      "full_name": "J\u00f6rg-Dieter Seifert-Granzin",
+      "affiliation": "University of Salzburg, Bolivia, Plurinational State of",
+      "country_code": "BO",
+      "norm_name": "j rg dieter seifert granzin",
+      "is_speaker": false
+    },
+    {
       "first_name": "Amalia",
       "last_name": "Seigel",
-      "organisation": "Rosenstiel School of Marine, Atmospheric, and Earth Science",
+      "organisation": "Rosenstiel School of Marine, Atmospheric, and Earth",
       "country": "United States",
       "full_name": "Amalia Seigel",
-      "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth Science, United States",
+      "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth, United States",
       "country_code": "US",
       "norm_name": "amalia seigel",
       "is_speaker": true
@@ -17004,23 +17510,45 @@
     {
       "first_name": "Samantha",
       "last_name": "Shedd",
-      "organisation": "University of Hawai'i - M\u0101noa Cole                        Sheeley             University of the Virgin Islands                      Virgin Islands (U.S.)",
+      "organisation": "University of Hawai'i - M\u0101noa",
       "country": "United States",
       "full_name": "Samantha Shedd",
-      "affiliation": "University of Hawai'i - M\u0101noa Cole                        Sheeley             University of the Virgin Islands                      Virgin Islands (U.S.), United States",
+      "affiliation": "University of Hawai'i - M\u0101noa, United States",
       "country_code": "US",
       "norm_name": "samantha shedd",
       "is_speaker": true
     },
     {
+      "first_name": "Cole",
+      "last_name": "Sheeley",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Cole Sheeley",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "cole sheeley",
+      "is_speaker": true
+    },
+    {
       "first_name": "Dr Dor",
       "last_name": "Shefy",
-      "organisation": "Israel Oceanographic and Limnological Research Adeline                     Shelby              University of the Virgin Islands                      Virgin Islands (U.S.)",
+      "organisation": "Israel Oceanographic and Limnological Research",
       "country": "Israel",
       "full_name": "Dr Dor Shefy",
-      "affiliation": "Israel Oceanographic and Limnological Research Adeline                     Shelby              University of the Virgin Islands                      Virgin Islands (U.S.), Israel",
+      "affiliation": "Israel Oceanographic and Limnological Research, Israel",
       "country_code": "IL",
       "norm_name": "dor shefy",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Adeline",
+      "last_name": "Shelby",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Adeline Shelby",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "adeline shelby",
       "is_speaker": true
     },
     {
@@ -17147,10 +17675,10 @@
     {
       "first_name": "Morgan",
       "last_name": "Short",
-      "organisation": "National Oceanic and Atmospheric Administration Restoration Center",
+      "organisation": "National Oceanic and Atmospheric Administration",
       "country": "United States",
       "full_name": "Morgan Short",
-      "affiliation": "National Oceanic and Atmospheric Administration Restoration Center, United States",
+      "affiliation": "National Oceanic and Atmospheric Administration, United States",
       "country_code": "US",
       "norm_name": "morgan short",
       "is_speaker": false
@@ -17263,7 +17791,7 @@
       "affiliation": "Universidade L\u00fario, Mozambique",
       "country_code": "MZ",
       "norm_name": "isabel marques da silva",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Dr Cynthia",
@@ -17378,10 +17906,10 @@
     {
       "first_name": "Dr Shubha",
       "last_name": "Singh",
-      "organisation": "Secretariat of the Pacific Regional Environment Programme",
+      "organisation": "Secretariat of the Pacific Regional Environment",
       "country": "Samoa",
       "full_name": "Dr Shubha Singh",
-      "affiliation": "Secretariat of the Pacific Regional Environment Programme, Samoa",
+      "affiliation": "Secretariat of the Pacific Regional Environment, Samoa",
       "country_code": "WS",
       "norm_name": "shubha singh",
       "is_speaker": true
@@ -17543,10 +18071,10 @@
     {
       "first_name": "Dr Joy",
       "last_name": "Smith",
-      "organisation": "Cooperative Institute for Marine and Atmospheric Research",
+      "organisation": "Cooperative Institute for Marine and Atmospheric",
       "country": "United States",
       "full_name": "Dr Joy Smith",
-      "affiliation": "Cooperative Institute for Marine and Atmospheric Research, United States",
+      "affiliation": "Cooperative Institute for Marine and Atmospheric, United States",
       "country_code": "US",
       "norm_name": "joy smith",
       "is_speaker": true
@@ -17554,12 +18082,23 @@
     {
       "first_name": "Dr Robin",
       "last_name": "Smith",
-      "organisation": "Arizona State University Dr Tyler                    Smith            University of the Virgin Islands                       Virgin Islands (U.S.)",
+      "organisation": "Arizona State University",
       "country": "United States",
       "full_name": "Dr Robin Smith",
-      "affiliation": "Arizona State University Dr Tyler                    Smith            University of the Virgin Islands                       Virgin Islands (U.S.), United States",
+      "affiliation": "Arizona State University, United States",
       "country_code": "US",
       "norm_name": "robin smith",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Tyler",
+      "last_name": "Smith",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Dr Tyler Smith",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "tyler smith",
       "is_speaker": true
     },
     {
@@ -17620,21 +18159,43 @@
     {
       "first_name": "Dr Brigitte",
       "last_name": "Sommer",
-      "organisation": "University of Sydney Dr Young Baek               Son              KIOST                                                  South Korea Byeungsu                    Song             KIOST                                                  South Korea",
+      "organisation": "University of Sydney",
       "country": "Australia",
       "full_name": "Dr Brigitte Sommer",
-      "affiliation": "University of Sydney Dr Young Baek               Son              KIOST                                                  South Korea Byeungsu                    Song             KIOST                                                  South Korea, Australia",
+      "affiliation": "University of Sydney, Australia",
       "country_code": "AU",
       "norm_name": "brigitte sommer",
       "is_speaker": true
     },
     {
+      "first_name": "Dr Young Baek",
+      "last_name": "Son",
+      "organisation": "KIOST",
+      "country": "South Korea",
+      "full_name": "Dr Young Baek Son",
+      "affiliation": "KIOST, South Korea",
+      "country_code": "KR",
+      "norm_name": "young baek son",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Byeungsu",
+      "last_name": "Song",
+      "organisation": "KIOST",
+      "country": "South Korea",
+      "full_name": "Byeungsu Song",
+      "affiliation": "KIOST, South Korea",
+      "country_code": "KR",
+      "norm_name": "byeungsu song",
+      "is_speaker": true
+    },
+    {
       "first_name": "Dr Se",
       "last_name": "Songploy",
-      "organisation": "Aquatic Resources Research Institute, Chualalongkorn University",
+      "organisation": "Aquatic Resources Research Institute, Chualalongkorn",
       "country": "Thailand",
       "full_name": "Dr Se Songploy",
-      "affiliation": "Aquatic Resources Research Institute, Chualalongkorn University, Thailand",
+      "affiliation": "Aquatic Resources Research Institute, Chualalongkorn, Thailand",
       "country_code": "TH",
       "norm_name": "se songploy",
       "is_speaker": true
@@ -17807,10 +18368,10 @@
     {
       "first_name": "Dr Alexandra",
       "last_name": "Steckbauer",
-      "organisation": "G20 Coral Research and Development Accelerator Platform",
+      "organisation": "G20 Coral Research and Development Accelerator",
       "country": "Saudi Arabia",
       "full_name": "Dr Alexandra Steckbauer",
-      "affiliation": "G20 Coral Research and Development Accelerator Platform, Saudi Arabia",
+      "affiliation": "G20 Coral Research and Development Accelerator, Saudi Arabia",
       "country_code": "SA",
       "norm_name": "alexandra steckbauer",
       "is_speaker": true
@@ -17873,10 +18434,10 @@
     {
       "first_name": "Maren",
       "last_name": "Stickley",
-      "organisation": "University Of Miami Rosenstiel School of Marine, Atmospheric, and Earth Science",
+      "organisation": "University Of Miami Rosenstiel School of Marine,",
       "country": "United States",
       "full_name": "Maren Stickley",
-      "affiliation": "University Of Miami Rosenstiel School of Marine, Atmospheric, and Earth Science, United States",
+      "affiliation": "University Of Miami Rosenstiel School of Marine,, United States",
       "country_code": "US",
       "norm_name": "maren stickley",
       "is_speaker": true
@@ -18038,12 +18599,23 @@
     {
       "first_name": "Dr Wichin",
       "last_name": "Suebpala",
-      "organisation": "Ramkhamhaeng University David                       Suggett             KAUST",
+      "organisation": "Ramkhamhaeng University",
       "country": "Thailand",
       "full_name": "Dr Wichin Suebpala",
-      "affiliation": "Ramkhamhaeng University David                       Suggett             KAUST, Thailand",
+      "affiliation": "Ramkhamhaeng University, Thailand",
       "country_code": "TH",
       "norm_name": "wichin suebpala",
+      "is_speaker": true
+    },
+    {
+      "first_name": "David",
+      "last_name": "Suggett",
+      "organisation": "KAUST",
+      "country": "",
+      "full_name": "David Suggett",
+      "affiliation": "KAUST",
+      "country_code": "",
+      "norm_name": "david suggett",
       "is_speaker": true
     },
     {
@@ -18137,12 +18709,23 @@
     {
       "first_name": "Dr Sara",
       "last_name": "Swaminathan",
-      "organisation": "Bigelow Laboratory for Ocean Sciences Ally                        Swan                University of the Virgin Islands                        Virgin Islands (U.S.)",
+      "organisation": "Bigelow Laboratory for Ocean Sciences",
       "country": "United States",
       "full_name": "Dr Sara Swaminathan",
-      "affiliation": "Bigelow Laboratory for Ocean Sciences Ally                        Swan                University of the Virgin Islands                        Virgin Islands (U.S.), United States",
+      "affiliation": "Bigelow Laboratory for Ocean Sciences, United States",
       "country_code": "US",
       "norm_name": "sara swaminathan",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Ally",
+      "last_name": "Swan",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Ally Swan",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "ally swan",
       "is_speaker": true
     },
     {
@@ -18533,10 +19116,10 @@
     {
       "first_name": "Hoaka",
       "last_name": "Thomas",
-      "organisation": "Hawai'i State Department of Land and Natural Resources",
+      "organisation": "Hawai'i State Department of Land and Natural",
       "country": "United States",
       "full_name": "Hoaka Thomas",
-      "affiliation": "Hawai'i State Department of Land and Natural Resources, United States",
+      "affiliation": "Hawai'i State Department of Land and Natural, United States",
       "country_code": "US",
       "norm_name": "hoaka thomas",
       "is_speaker": true
@@ -18555,12 +19138,23 @@
     {
       "first_name": "Bill",
       "last_name": "Thomas",
-      "organisation": "Olohana Foundation Bailey                      Thomasson             Coral Restoration Foundation                             Virgin Islands (U.S.)",
+      "organisation": "Olohana Foundation",
       "country": "United States",
       "full_name": "Bill Thomas",
-      "affiliation": "Olohana Foundation Bailey                      Thomasson             Coral Restoration Foundation                             Virgin Islands (U.S.), United States",
+      "affiliation": "Olohana Foundation, United States",
       "country_code": "US",
       "norm_name": "bill thomas",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Bailey",
+      "last_name": "Thomasson",
+      "organisation": "Coral Restoration Foundation",
+      "country": "United States Virgin Islands",
+      "full_name": "Bailey Thomasson",
+      "affiliation": "Coral Restoration Foundation, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "bailey thomasson",
       "is_speaker": true
     },
     {
@@ -18995,10 +19589,10 @@
     {
       "first_name": "Dr Kira",
       "last_name": "Turnham",
-      "organisation": "Cooperative Institute of Marine and Atmospheric Research",
+      "organisation": "Cooperative Institute of Marine and Atmospheric",
       "country": "United States",
       "full_name": "Dr Kira Turnham",
-      "affiliation": "Cooperative Institute of Marine and Atmospheric Research, United States",
+      "affiliation": "Cooperative Institute of Marine and Atmospheric, United States",
       "country_code": "US",
       "norm_name": "kira turnham",
       "is_speaker": true
@@ -19232,7 +19826,7 @@
       "affiliation": "University of Victoria, Canada",
       "country_code": "CA",
       "norm_name": "alex van nynatten",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Prof Madeleine",
@@ -19265,7 +19859,7 @@
       "affiliation": "University of Queensland, Australia",
       "country_code": "AU",
       "norm_name": "liana van woesik",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Sarah",
@@ -19336,10 +19930,10 @@
     {
       "first_name": "Dr Maria",
       "last_name": "Vega-rodriguez",
-      "organisation": "Puerto Rico Department of Natural and Environmental Resources",
+      "organisation": "Puerto Rico Department of Natural and Environmental",
       "country": "Puerto Rico",
       "full_name": "Dr Maria Vega-rodriguez",
-      "affiliation": "Puerto Rico Department of Natural and Environmental Resources, Puerto Rico",
+      "affiliation": "Puerto Rico Department of Natural and Environmental, Puerto Rico",
       "country_code": "PR",
       "norm_name": "maria vega rodriguez",
       "is_speaker": true
@@ -19391,10 +19985,10 @@
     {
       "first_name": "Juliette",
       "last_name": "Verstaen",
-      "organisation": "Cooperative Institute for Marine and Atmospheric Research",
+      "organisation": "Cooperative Institute for Marine and Atmospheric",
       "country": "United States",
       "full_name": "Juliette Verstaen",
-      "affiliation": "Cooperative Institute for Marine and Atmospheric Research, United States",
+      "affiliation": "Cooperative Institute for Marine and Atmospheric, United States",
       "country_code": "US",
       "norm_name": "juliette verstaen",
       "is_speaker": true
@@ -19413,10 +20007,10 @@
     {
       "first_name": "Rindah Talitha",
       "last_name": "Vida",
-      "organisation": "Maritime and Marine Science Center of Excellence, Pattimura University",
+      "organisation": "Maritime and Marine Science Center of Excellence,",
       "country": "Indonesia",
       "full_name": "Rindah Talitha Vida",
-      "affiliation": "Maritime and Marine Science Center of Excellence, Pattimura University, Indonesia",
+      "affiliation": "Maritime and Marine Science Center of Excellence,, Indonesia",
       "country_code": "ID",
       "norm_name": "rindah talitha vida",
       "is_speaker": true
@@ -19446,13 +20040,24 @@
     {
       "first_name": "Natalie",
       "last_name": "Villafranca",
-      "organisation": "University of Southern California Frank                       Villagomez         Coral Reef Initiative                                     Northern Mariana Islands",
+      "organisation": "University of Southern California",
       "country": "United States",
       "full_name": "Natalie Villafranca",
-      "affiliation": "University of Southern California Frank                       Villagomez         Coral Reef Initiative                                     Northern Mariana Islands, United States",
+      "affiliation": "University of Southern California, United States",
       "country_code": "US",
       "norm_name": "natalie villafranca",
       "is_speaker": true
+    },
+    {
+      "first_name": "Frank",
+      "last_name": "Villagomez",
+      "organisation": "Coral Reef Initiative",
+      "country": "Northern Mariana Islands",
+      "full_name": "Frank Villagomez",
+      "affiliation": "Coral Reef Initiative, Northern Mariana Islands",
+      "country_code": "MP",
+      "norm_name": "frank villagomez",
+      "is_speaker": false
     },
     {
       "first_name": "Maria",
@@ -19501,12 +20106,23 @@
     {
       "first_name": "Dr Valerio",
       "last_name": "Visconti",
-      "organisation": "Cefas Dr Petra                    Visser             University of Amsterdam                                   Nederland",
+      "organisation": "Cefas",
       "country": "United Kingdom",
       "full_name": "Dr Valerio Visconti",
-      "affiliation": "Cefas Dr Petra                    Visser             University of Amsterdam                                   Nederland, United Kingdom",
+      "affiliation": "Cefas, United Kingdom",
       "country_code": "GB",
       "norm_name": "valerio visconti",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Petra",
+      "last_name": "Visser",
+      "organisation": "University of Amsterdam",
+      "country": "Netherlands",
+      "full_name": "Dr Petra Visser",
+      "affiliation": "University of Amsterdam, Netherlands",
+      "country_code": "NL",
+      "norm_name": "petra visser",
       "is_speaker": true
     },
     {
@@ -19754,12 +20370,23 @@
     {
       "first_name": "Dr Mark",
       "last_name": "Warner",
-      "organisation": "University of Delaware Bailey                      Warren          Coral Reef Initiative                                    Northern Mariana Islands",
+      "organisation": "University of Delaware",
       "country": "United States",
       "full_name": "Dr Mark Warner",
-      "affiliation": "University of Delaware Bailey                      Warren          Coral Reef Initiative                                    Northern Mariana Islands, United States",
+      "affiliation": "University of Delaware, United States",
       "country_code": "US",
       "norm_name": "mark warner",
+      "is_speaker": false
+    },
+    {
+      "first_name": "Bailey",
+      "last_name": "Warren",
+      "organisation": "Coral Reef Initiative",
+      "country": "Northern Mariana Islands",
+      "full_name": "Bailey Warren",
+      "affiliation": "Coral Reef Initiative, Northern Mariana Islands",
+      "country_code": "MP",
+      "norm_name": "bailey warren",
       "is_speaker": false
     },
     {
@@ -19776,11 +20403,11 @@
     {
       "first_name": "Leilua",
       "last_name": "Watson",
-      "organisation": "Sea Grant American",
-      "country": "Samoa",
+      "organisation": "Sea Grant",
+      "country": "American Samoa",
       "full_name": "Leilua Watson",
-      "affiliation": "Sea Grant American, Samoa",
-      "country_code": "WS",
+      "affiliation": "Sea Grant, American Samoa",
+      "country_code": "AS",
       "norm_name": "leilua watson",
       "is_speaker": false
     },
@@ -19809,10 +20436,10 @@
     {
       "first_name": "Dr Wojciech",
       "last_name": "Wawrzynski",
-      "organisation": "G20 Coral Research and Development Accelerator Platform",
+      "organisation": "G20 Coral Research and Development Accelerator",
       "country": "Saudi Arabia",
       "full_name": "Dr Wojciech Wawrzynski",
-      "affiliation": "G20 Coral Research and Development Accelerator Platform, Saudi Arabia",
+      "affiliation": "G20 Coral Research and Development Accelerator, Saudi Arabia",
       "country_code": "SA",
       "norm_name": "wojciech wawrzynski",
       "is_speaker": false
@@ -19831,12 +20458,23 @@
     {
       "first_name": "Maryann",
       "last_name": "Webb",
-      "organisation": "University of Hawai\u2018i - M\u0101noa Margot                      Webster         Blue Alliance                                            Tanzania, United Republic of",
+      "organisation": "University of Hawai\u2018i - M\u0101noa",
       "country": "United States",
       "full_name": "Maryann Webb",
-      "affiliation": "University of Hawai\u2018i - M\u0101noa Margot                      Webster         Blue Alliance                                            Tanzania, United Republic of, United States",
+      "affiliation": "University of Hawai\u2018i - M\u0101noa, United States",
       "country_code": "US",
       "norm_name": "maryann webb",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Margot",
+      "last_name": "Webster",
+      "organisation": "Blue Alliance",
+      "country": "Tanzania, United Republic of",
+      "full_name": "Margot Webster",
+      "affiliation": "Blue Alliance, Tanzania, United Republic of",
+      "country_code": "TZ",
+      "norm_name": "margot webster",
       "is_speaker": true
     },
     {
@@ -19908,12 +20546,23 @@
     {
       "first_name": "Vivienne",
       "last_name": "Weir",
-      "organisation": "University of Guam Virginia                    Weis            Oregon State University",
+      "organisation": "University of Guam",
       "country": "Guam",
       "full_name": "Vivienne Weir",
-      "affiliation": "University of Guam Virginia                    Weis            Oregon State University, Guam",
+      "affiliation": "University of Guam, Guam",
       "country_code": "GU",
       "norm_name": "vivienne weir",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Virginia",
+      "last_name": "Weis",
+      "organisation": "Oregon State University",
+      "country": "",
+      "full_name": "Virginia Weis",
+      "affiliation": "Oregon State University",
+      "country_code": "",
+      "norm_name": "virginia weis",
       "is_speaker": true
     },
     {
@@ -19969,7 +20618,7 @@
       "affiliation": "National Taiwan Ocean University, Malaysia",
       "country_code": "MY",
       "norm_name": "pei wen tang",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Dr Amelia",
@@ -19985,12 +20634,23 @@
     {
       "first_name": "Rebecca",
       "last_name": "Wenker",
-      "organisation": "National Oceanic and Atmospheric Administration Dr Casey                    Whalen          University of the Virgin Islands                         Virgin Islands (U.S.)",
+      "organisation": "National Oceanic and Atmospheric Administration",
       "country": "United States",
       "full_name": "Rebecca Wenker",
-      "affiliation": "National Oceanic and Atmospheric Administration Dr Casey                    Whalen          University of the Virgin Islands                         Virgin Islands (U.S.), United States",
+      "affiliation": "National Oceanic and Atmospheric Administration, United States",
       "country_code": "US",
       "norm_name": "rebecca wenker",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Casey",
+      "last_name": "Whalen",
+      "organisation": "University of the Virgin Islands",
+      "country": "United States Virgin Islands",
+      "full_name": "Dr Casey Whalen",
+      "affiliation": "University of the Virgin Islands, United States Virgin Islands",
+      "country_code": "VI",
+      "norm_name": "casey whalen",
       "is_speaker": true
     },
     {
@@ -20051,11 +20711,11 @@
     {
       "first_name": "Jane",
       "last_name": "Wia",
-      "organisation": "The Nature Conservancy Papua New",
-      "country": "Guinea",
+      "organisation": "The Nature Conservancy",
+      "country": "Papua New Guinea",
       "full_name": "Jane Wia",
-      "affiliation": "The Nature Conservancy Papua New, Guinea",
-      "country_code": "GN",
+      "affiliation": "The Nature Conservancy, Papua New Guinea",
+      "country_code": "PG",
       "norm_name": "jane wia",
       "is_speaker": false
     },
@@ -20205,12 +20865,23 @@
     {
       "first_name": "Sophie",
       "last_name": "Wong",
-      "organisation": "University of Alabama Dr Seonock                  Woo                 KIOST                                                     South Korea",
+      "organisation": "University of Alabama",
       "country": "United States",
       "full_name": "Sophie Wong",
-      "affiliation": "University of Alabama Dr Seonock                  Woo                 KIOST                                                     South Korea, United States",
+      "affiliation": "University of Alabama, United States",
       "country_code": "US",
       "norm_name": "sophie wong",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Dr Seonock",
+      "last_name": "Woo",
+      "organisation": "KIOST",
+      "country": "South Korea",
+      "full_name": "Dr Seonock Woo",
+      "affiliation": "KIOST, South Korea",
+      "country_code": "KR",
+      "norm_name": "seonock woo",
       "is_speaker": true
     },
     {
@@ -20475,7 +21146,7 @@
       "affiliation": "National University of Singapore, Singapore",
       "country_code": "SG",
       "norm_name": "clara yong",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Momoe",
@@ -20524,12 +21195,23 @@
     {
       "first_name": "Caitlin",
       "last_name": "Younis",
-      "organisation": "University of Technology Sydney Ana                         Yranzo Duque        Instituto de Zoolog\u00eda y Ecolog\u00eda Tropical                 Venezuela",
+      "organisation": "University of Technology Sydney",
       "country": "Australia",
       "full_name": "Caitlin Younis",
-      "affiliation": "University of Technology Sydney Ana                         Yranzo Duque        Instituto de Zoolog\u00eda y Ecolog\u00eda Tropical                 Venezuela, Australia",
+      "affiliation": "University of Technology Sydney, Australia",
       "country_code": "AU",
       "norm_name": "caitlin younis",
+      "is_speaker": true
+    },
+    {
+      "first_name": "Ana",
+      "last_name": "Yranzo Duque",
+      "organisation": "Instituto de Zoolog\u00eda y Ecolog\u00eda Tropical",
+      "country": "Venezuela, Bolivarian Republic of",
+      "full_name": "Ana Yranzo Duque",
+      "affiliation": "Instituto de Zoolog\u00eda y Ecolog\u00eda Tropical, Venezuela, Bolivarian Republic of",
+      "country_code": "VE",
+      "norm_name": "ana yranzo duque",
       "is_speaker": true
     },
     {
@@ -20541,7 +21223,7 @@
       "affiliation": "National Cheng Kung University, Taiwan",
       "country_code": "TW",
       "norm_name": "sing pei yu",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "Dr Xiaolei",
@@ -20574,7 +21256,7 @@
       "affiliation": "Soneva Conservation and Sustainability Maldives, Maldives",
       "country_code": "MV",
       "norm_name": "ben yuen",
-      "is_speaker": true
+      "is_speaker": false
     },
     {
       "first_name": "Nanda",
@@ -20612,10 +21294,10 @@
     {
       "first_name": "Jean Aim\u00e9",
       "last_name": "Zafimahatradraibe",
-      "organisation": "Institut Halieutique et des Sciences Marines/University of Toliara of Toliara",
+      "organisation": "Institut Halieutique et des Sciences Marines/University",
       "country": "Madagascar",
       "full_name": "Jean Aim\u00e9 Zafimahatradraibe",
-      "affiliation": "Institut Halieutique et des Sciences Marines/University of Toliara of Toliara, Madagascar",
+      "affiliation": "Institut Halieutique et des Sciences Marines/University, Madagascar",
       "country_code": "MG",
       "norm_name": "jean aim zafimahatradraibe",
       "is_speaker": true
@@ -20629,7 +21311,7 @@
       "affiliation": "North Carolina State University, United States",
       "country_code": "US",
       "norm_name": "zach zagon",
-      "is_speaker": false
+      "is_speaker": true
     },
     {
       "first_name": "A.Prof Jessica",

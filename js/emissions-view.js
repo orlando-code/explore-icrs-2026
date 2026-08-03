@@ -17,12 +17,23 @@ import {
   pieSlicePolygon,
 } from "./offset-tracker.js";
 import { createMapCelebration } from "./celebration.js";
+import { createCountryChoropleth } from "./country-choropleth.js";
+import { OFFSET_AFFILIATION_SLICES, OFFSET_COUNTRY_CHOROPLETH } from "./config.js";
 
-const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
+const MAP_STYLE = "https://demotiles.maplibre.org/style.json";
+const DEMO_BASEMAP_LAYERS_TO_HIDE = ["crimea-fill", "geolines", "geolines-label"];
 const MAX_ZOOM = 10;
 const FLIGHT_PREMIUM_ECONOMY_MULTIPLIER = 1.6;
 const FLIGHT_BUSINESS_MULTIPLIER = 2.9;
 const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
+
+function configureDemoBasemap(map) {
+  for (const layerId of DEMO_BASEMAP_LAYERS_TO_HIDE) {
+    if (map.getLayer(layerId)) {
+      map.setLayoutProperty(layerId, "visibility", "none");
+    }
+  }
+}
 
 function isMobileLayout() {
   return window.matchMedia("(max-width: 900px)").matches;
@@ -107,6 +118,14 @@ export function createEmissionsView(
   let mapUpdateTimer = null;
   let cachedAttendees = null;
   let cachedAttendeesKey = "";
+  let countryToCluster = {};
+  let countryIso3ToCluster = {};
+  let countryClusterLabels = {};
+  let countryChoropleth = null;
+  const choroplethConfig = normalized.meta?.offset_choropleth || {};
+  const useCountryChoropleth =
+    OFFSET_COUNTRY_CHOROPLETH && choroplethConfig.enabled !== false;
+  const useAffiliationSlices = OFFSET_AFFILIATION_SLICES;
 
   const map = new maplibregl.Map({
     container: elements.mapContainer,
@@ -137,6 +156,9 @@ export function createEmissionsView(
     rankings = emissionsData.rankings || [];
     byCountry = emissionsData.by_country || [];
     context = emissionsData.meta.context || {};
+    countryToCluster = emissionsData.country_to_cluster || {};
+    countryIso3ToCluster = emissionsData.country_iso3_to_cluster || {};
+    countryClusterLabels = emissionsData.country_cluster_labels || {};
 
     positiveCo2e = locations.map((location) => location.co2e_kg);
     maxCo2e = Math.max(...positiveCo2e, 1);
@@ -264,7 +286,7 @@ export function createEmissionsView(
   }
 
   function updateOffsetSlices() {
-    if (!mapReady || !offsetTracker) return;
+    if (!mapReady || !offsetTracker || !useAffiliationSlices) return;
     map.getSource("offset-slices")?.setData({
       type: "FeatureCollection",
       features: offsetSliceFeatures(),
@@ -277,6 +299,7 @@ export function createEmissionsView(
     mapUpdateTimer = window.requestAnimationFrame(() => {
       mapUpdateTimer = null;
       upsertMapData();
+      countryChoropleth?.update();
     });
   }
 
@@ -469,6 +492,13 @@ export function createEmissionsView(
         .join("")}
       <p class="legend-note">Click a bar or map point to show the route to Auckland, or toggle routes for all affiliations.</p>
     `;
+    if (
+      useCountryChoropleth &&
+      countryChoropleth &&
+      !elements.legend.querySelector(".offset-choropleth-legend")
+    ) {
+      countryChoropleth.renderLegend(elements.legend);
+    }
   }
 
   function renderBarChart() {
@@ -829,6 +859,7 @@ export function createEmissionsView(
     includeNonSpeakers = Boolean(enabled);
     applyPool();
     offsetTracker?.refreshAttendees();
+    countryChoropleth?.update();
     renderSidebar();
     upsertMapData();
     renderHoverCard(null);
@@ -844,16 +875,9 @@ export function createEmissionsView(
     renderAssumptions();
   }
 
-  map.on("load", () => {
+  map.on("load", async () => {
     mapReady = true;
-    map.setSky?.({
-      "sky-color": "#87CEEB",
-      "sky-horizon-blend": 0.6,
-      "horizon-color": "#ffffff",
-      "horizon-fog-blend": 0.4,
-      "fog-color": "#ffffff",
-      "fog-ground-blend": 0.3,
-    });
+    configureDemoBasemap(map);
 
     map.addSource("locations", {
       type: "geojson",
@@ -904,6 +928,26 @@ export function createEmissionsView(
         "line-width": 10,
       },
     });
+
+    if (useCountryChoropleth) {
+      countryChoropleth = createCountryChoropleth(map, {
+        boundariesPath: choroplethConfig.boundaries_path || "data/country_boundaries.geojson",
+        colorLow: choroplethConfig.color_low || "#d95f02",
+        colorHigh: choroplethConfig.color_high || "#2d8a4e",
+        getIso3ToCluster: () => countryIso3ToCluster,
+        getCountryToCluster: () => countryToCluster,
+        getClusterLabels: () => countryClusterLabels,
+        getClusterShare: (clusterId) => offsetTracker?.offsetShareForCluster(clusterId) || 0,
+        beforeLayerId: "distance-lines-visible",
+      });
+      try {
+        await countryChoropleth.load();
+        renderLegend();
+      } catch (error) {
+        console.warn("Country choropleth unavailable:", error);
+      }
+    }
+
     map.addLayer({
       id: "auckland-circle",
       type: "circle",
@@ -965,6 +1009,7 @@ export function createEmissionsView(
       type: "fill",
       source: "offset-slices",
       layout: {
+        visibility: useAffiliationSlices ? "visible" : "none",
         "fill-sort-key": ["get", "sort_key"],
       },
       paint: {

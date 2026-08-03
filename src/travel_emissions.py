@@ -1414,13 +1414,18 @@ def _build_emissions_attendees(
     estimates: pd.DataFrame,
     legs: pd.DataFrame,
     key_to_id: dict[str, str],
+    *,
+    country_to_cluster: dict[str, str] | None = None,
 ) -> list[dict[str, Any]]:
     from src.geocode import affiliation_base_name, affiliation_display_name, canonical_affiliation_key
 
     leg_cols = legs[
         ["presenter", "affiliation", "latitude", "longitude"]
     ].drop_duplicates(subset=["presenter"])
-    merged = estimates.merge(leg_cols, on=["presenter", "affiliation"], how="left")
+    estimate_cols = ["presenter", "affiliation", "co2e_kg"]
+    if "origin_country" in estimates.columns:
+        estimate_cols.append("origin_country")
+    merged = estimates[estimate_cols].merge(leg_cols, on=["presenter", "affiliation"], how="left")
 
     attendees: list[dict[str, Any]] = []
     seen: set[str] = set()
@@ -1437,6 +1442,10 @@ def _build_emissions_attendees(
         if dedupe_key in seen:
             continue
         seen.add(dedupe_key)
+        origin_country = ""
+        if "origin_country" in row and pd.notna(row["origin_country"]):
+            origin_country = str(row["origin_country"]).strip().upper()
+        cluster_id = country_to_cluster.get(origin_country, "") if origin_country else ""
         attendees.append(
             {
                 "id": _stable_attendee_id(name, location_id),
@@ -1444,6 +1453,8 @@ def _build_emissions_attendees(
                 "affiliation": affiliation_display_name(affiliation) or affiliation,
                 "location_id": location_id,
                 "co2e_kg": round(float(row["co2e_kg"]), 1),
+                "origin_country": origin_country,
+                "country_cluster_id": cluster_id,
             }
         )
     attendees.sort(key=lambda item: item["name"].casefold())
@@ -1454,14 +1465,26 @@ def _build_pool_payload(
     estimates: pd.DataFrame,
     summary: dict[str, Any],
     legs: pd.DataFrame,
+    *,
+    country_centroids: dict[str, tuple[float, float]] | None = None,
 ) -> dict[str, Any]:
+    from src.country_clusters import build_country_clusters, country_counts_from_estimates
+
     if not summary.get("context"):
         summary = {
             **summary,
             "context": _build_emissions_context(estimates, float(summary["co2e_kg"])),
         }
     location_rows, key_to_id = _build_emissions_locations(estimates, legs)
-    attendee_rows = _build_emissions_attendees(estimates, legs, key_to_id)
+    country_counts = country_counts_from_estimates(estimates)
+    centroids = country_centroids or {}
+    clusters, country_to_cluster = build_country_clusters(country_counts, centroids)
+    attendee_rows = _build_emissions_attendees(
+        estimates,
+        legs,
+        key_to_id,
+        country_to_cluster=country_to_cluster,
+    )
     rankings = sorted(location_rows, key=lambda row: row["co2e_kg"], reverse=True)
     return {
         "meta": {
@@ -1485,6 +1508,8 @@ def _build_pool_payload(
         "attendees": attendee_rows,
         "rankings": rankings[:30],
         "by_country": summary.get("by_country", [])[:30],
+        "country_clusters": clusters,
+        "country_to_cluster": country_to_cluster,
     }
 
 
@@ -1514,6 +1539,13 @@ def export_emissions_site_data(
         "meta": {
             "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
             "delegate_meta": delegate_meta or {},
+            "offset_choropleth": {
+                "enabled": True,
+                "boundaries_path": "data/country_boundaries.geojson",
+                "min_cluster_size": 3,
+                "color_low": "#d95f02",
+                "color_high": "#2d8a4e",
+            },
         },
         "speakers": speakers_pool,
     }

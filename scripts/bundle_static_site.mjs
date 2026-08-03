@@ -54,6 +54,10 @@ cpSync(
   path.join(ROOT, "data", "offset-registrations.json"),
   path.join(resolvedTargetDir, "data", "offset-registrations.json")
 );
+cpSync(
+  path.join(ROOT, "data", "country_boundaries.geojson"),
+  path.join(resolvedTargetDir, "data", "country_boundaries.geojson")
+);
 
 const indexHtml = patchIndexHtml(readFileSync(path.join(ROOT, "index.html"), "utf8"));
 writeFileSync(path.join(resolvedTargetDir, "index.html"), indexHtml);

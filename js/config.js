@@ -23,6 +23,14 @@ function metaFlag(name) {
 
 export const REQUIRE_DELEGATE_ID = metaFlag("icrs-require-delegate-id");
 
+export const OFFSET_COUNTRY_CHOROPLETH = metaContent("icrs-offset-country-choropleth")
+  ? metaFlag("icrs-offset-country-choropleth")
+  : true;
+
+export const OFFSET_AFFILIATION_SLICES = metaContent("icrs-offset-affiliation-slices")
+  ? metaFlag("icrs-offset-affiliation-slices")
+  : true;
+
 export const SKIP_TURNSTILE =
   metaFlag("icrs-skip-turnstile") ||
   /^https?:\/\/(127\.0\.0\.1|localhost)(:\d+)?\//i.test(OFFSET_API_URL);
