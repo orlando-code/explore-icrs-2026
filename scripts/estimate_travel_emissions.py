@@ -158,9 +158,14 @@ def main() -> None:
             raise SystemExit("Need existing summary JSON and attendee CSV for --export-site-only.")
         import pandas as pd
 
+        from src.travel_emissions import _clean_affiliation_value
+
         with args.output.open(encoding="utf-8") as handle:
             speaker_summary = json.load(handle)
         speaker_estimates = pd.read_csv(args.details_output)
+        speaker_estimates["affiliation"] = speaker_estimates["affiliation"].map(
+            _clean_affiliation_value
+        )
         speaker_legs, _ = load_attendee_legs(load_geocoded_talks(), show_progress=False)
 
         all_delegates = None
@@ -168,6 +173,9 @@ def main() -> None:
             with args.all_delegates_output.open(encoding="utf-8") as handle:
                 delegate_summary = json.load(handle)
             delegate_estimates = pd.read_csv(args.all_delegates_details_output)
+            delegate_estimates["affiliation"] = delegate_estimates["affiliation"].map(
+                _clean_affiliation_value
+            )
             if delegates is not None:
                 all_talks = combined_attendee_talks(
                     load_geocoded_talks(),

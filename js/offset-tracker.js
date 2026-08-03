@@ -186,6 +186,10 @@ function normalizeAggregate(payload) {
   return aggregate;
 }
 
+function aggregateSignature(aggregate) {
+  return JSON.stringify(aggregate);
+}
+
 function stableAttendeeId(name, locationId) {
   const key = `${name.trim().toLowerCase()}|${locationId}`;
   let hash = 2166136261;
@@ -350,7 +354,7 @@ export function createOffsetTracker({
         aggregate = normalizeAggregate(payload);
         return;
       } catch (error) {
-        loadError = "Could not refresh live offset totals.";
+        loadError = "Could not refresh live totals.";
         console.warn("Offset API unavailable:", error);
       }
     }
@@ -584,7 +588,7 @@ export function createOffsetTracker({
     }
     if (elements.label) {
       const rounded = percent < 10 ? percent.toFixed(1) : Math.round(percent).toString();
-      elements.label.innerHTML = `<strong>${rounded}%</strong> offset · <strong>${registeredCount.toLocaleString()}</strong> of ${totalAttendees.toLocaleString()} ${getHeadline()?.attendee_label || "delegates"} offsetted`;
+      elements.label.innerHTML = `<strong>${rounded}%</strong> offset · <strong>${registeredCount.toLocaleString()}</strong> of ${totalAttendees.toLocaleString()} ${getHeadline()?.attendee_label || "delegates"} pledged`;
     }
     if (elements.form) {
       elements.form.classList.toggle("emissions-offset-register--pending", isRegistering);
@@ -825,9 +829,11 @@ export function createOffsetTracker({
     if (!apiUrl || pollTimer) return;
     pollTimer = window.setInterval(() => {
       if (document.visibilityState !== "visible") return;
+      const before = aggregateSignature(aggregate);
       void loadRegistrations().then(() => {
+        const changed = before !== aggregateSignature(aggregate);
         rebuildOffsetCounts();
-        render({ updateMap: true });
+        render({ updateMap: changed });
       });
     }, POLL_INTERVAL_MS);
   }

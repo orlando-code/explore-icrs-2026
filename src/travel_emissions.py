@@ -22,6 +22,23 @@ from rich.table import Table
 from src.geocode import _extract_country_hints, attach_coordinates, geocode_affiliations
 from src.programme import load_talks
 
+_MISSING_AFFILIATION_TOKENS = frozenset({"nan", "none", "<na>", "nat"})
+
+
+def _clean_affiliation_value(value: Any) -> str:
+    """Normalize affiliation fields; treat pandas NaN and literal 'nan' as missing."""
+    if value is None:
+        return ""
+    try:
+        if pd.isna(value):
+            return ""
+    except (TypeError, ValueError):
+        pass
+    text = str(value).strip()
+    if text.casefold() in _MISSING_AFFILIATION_TOKENS:
+        return ""
+    return text
+
 API_BASE_URL = "https://api.emissions.dev/v1/travel/emissions"
 API_CONNECT_TIMEOUT_SECONDS = 15
 API_READ_TIMEOUT_SECONDS = 90
@@ -1355,7 +1372,7 @@ def _build_emissions_locations(
     buckets: dict[str, list[pd.DataFrame]] = {}
     display_name: dict[str, str] = {}
     for _, row in merged.iterrows():
-        affiliation = "" if pd.isna(row["affiliation"]) else str(row["affiliation"])
+        affiliation = _clean_affiliation_value(row["affiliation"])
         key = canonical_affiliation_key(affiliation)
         buckets.setdefault(key, []).append(row.to_frame().T)
         rule = _institution_rule(affiliation)
@@ -1431,7 +1448,7 @@ def _build_emissions_attendees(
     seen: set[str] = set()
     for _, row in merged.iterrows():
         name = "" if pd.isna(row["presenter"]) else str(row["presenter"]).strip()
-        affiliation = "" if pd.isna(row["affiliation"]) else str(row["affiliation"]).strip()
+        affiliation = _clean_affiliation_value(row["affiliation"])
         if not name:
             continue
         key = canonical_affiliation_key(affiliation)

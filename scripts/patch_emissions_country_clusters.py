@@ -14,6 +14,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.country_clusters import build_country_clusters
+from src.territory_overlays import territory_overlay_codes
 from src.origin_country import country_from_affiliation, country_label, iso3_from_iso2, resolve_origin_country
 from src.travel_emissions import DEFAULT_EMISSIONS_SITE_PATH, DEFAULT_REVERSE_CACHE_PATH
 
@@ -283,6 +284,10 @@ def main() -> None:
             )
 
     payload.setdefault("meta", {})
+    active_countries: set[str] = set()
+    for pool_name in ("speakers", "all_delegates"):
+        pool = payload.get(pool_name) or {}
+        active_countries.update(pool.get("country_to_cluster", {}).keys())
     payload["meta"]["offset_choropleth"] = {
         "enabled": True,
         "boundaries_path": "data/country_boundaries.geojson",
@@ -290,6 +295,7 @@ def main() -> None:
         "color_low": "#d95f02",
         "color_high": "#2d8a4e",
         "boundaries_source": "maplibre-demotiles",
+        "territory_overlay_iso2": territory_overlay_codes(active_countries),
     }
     _write_js_export(emissions_path, payload)
     for pool_name in ("speakers", "all_delegates"):

@@ -35,14 +35,11 @@ NEIGHBOR_OVERRIDES: dict[str, list[str]] = {
 PROXIMITY_MAX_KM = 1_350
 PROXIMITY_MAX_NEIGHBORS = 6
 
-# Prefer attaching overseas territories to a nearby mainland country.
+# Prefer attaching microstates to a nearby mainland country (not overseas territories).
 HOST_PREFERENCES: dict[str, str] = {
-    "YT": "MG",
-    "RE": "MG",
     "HK": "CN",
     "MO": "CN",
     "GI": "ES",
-    "MC": "FR",
     "SM": "IT",
     "VA": "IT",
 }

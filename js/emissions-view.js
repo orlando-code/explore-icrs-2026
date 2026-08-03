@@ -423,7 +423,7 @@ export function createEmissionsView(
       const low = context.conference_vs_lowest_national;
       const high = context.conference_vs_highest_national;
       bullets.push(
-        `Personally, as a delegate from the UK, this return trip was equivalent to a year's worth of emissions...${sourceLink(nationalSource)}.`
+        `Personally, as a delegate from the UK, this return trip was equivalent to a regular year's worth of emissions...${sourceLink(nationalSource)}.`
       );
     }
 
@@ -938,6 +938,7 @@ export function createEmissionsView(
         getCountryToCluster: () => countryToCluster,
         getClusterLabels: () => countryClusterLabels,
         getClusterShare: (clusterId) => offsetTracker?.offsetShareForCluster(clusterId) || 0,
+        getTerritoryOverlayIso2: () => choroplethConfig.territory_overlay_iso2 || [],
         beforeLayerId: "distance-lines-visible",
       });
       try {

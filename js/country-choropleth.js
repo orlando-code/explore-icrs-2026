@@ -4,6 +4,7 @@ export const OFFSET_RED = "#d95f02";
 export const OFFSET_GREEN = "#2d8a4e";
 
 const NATIVE_COUNTRY_LAYER = "countries-fill";
+const TERRITORY_LAYER = "territory-offset-fill";
 const NATIVE_COUNTRY_PROP = "ADM0_A3";
 const DEFAULT_UNCLUSTERED = "#D8E8F4";
 
@@ -48,6 +49,7 @@ export function createCountryChoropleth(map, options = {}) {
     getIso3ToCluster = () => ({}),
     getClusterLabels = () => ({}),
     getCountryToCluster = () => ({}),
+    getTerritoryOverlayIso2 = () => [],
     beforeLayerId = "distance-lines-visible",
   } = options;
 
@@ -91,28 +93,6 @@ export function createCountryChoropleth(map, options = {}) {
     return getClusterLabels()[clusterId] || clusterId;
   }
 
-  function nativeIso3Colors() {
-    const colors = new Map();
-    for (const [iso3, clusterId] of Object.entries(getIso3ToCluster())) {
-      const code = String(iso3 || "").trim().toUpperCase();
-      if (!code) continue;
-      const share = getClusterShare(clusterId) || 0;
-      colors.set(code, mixChannel(colorLow, colorHigh, share));
-    }
-    return colors;
-  }
-
-  function updateNativeLayer() {
-    if (!map.getLayer(NATIVE_COUNTRY_LAYER)) return;
-    const colors = nativeIso3Colors();
-    map.setPaintProperty(
-      NATIVE_COUNTRY_LAYER,
-      "fill-color",
-      buildMatchColorExpression(colors, DEFAULT_UNCLUSTERED)
-    );
-    map.setPaintProperty(NATIVE_COUNTRY_LAYER, "fill-opacity", visible ? 0.55 : 0);
-  }
-
   function clusterLabelForCountry(isoCode) {
     const countryToCluster = getCountryToCluster();
     const clusterLabels = getClusterLabels();
@@ -128,6 +108,50 @@ export function createCountryChoropleth(map, options = {}) {
     const clusterId = countryToCluster[code];
     if (!clusterId) return 0;
     return getClusterShare(clusterId) || 0;
+  }
+
+  function territoryOverlayCodes() {
+    const countryToCluster = getCountryToCluster();
+    const configured = (getTerritoryOverlayIso2() || [])
+      .map((code) => String(code || "").trim().toUpperCase())
+      .filter(Boolean);
+    return configured.filter((code) => countryToCluster[code]);
+  }
+
+  function nativeIso3Colors() {
+    const colors = new Map();
+    for (const [iso3, clusterId] of Object.entries(getIso3ToCluster())) {
+      const code = String(iso3 || "").trim().toUpperCase();
+      if (!code) continue;
+      const share = getClusterShare(clusterId) || 0;
+      colors.set(code, mixChannel(colorLow, colorHigh, share));
+    }
+    return colors;
+  }
+
+  function territoryFeatureCollection() {
+    const overlayCodes = new Set(territoryOverlayCodes());
+    return {
+      type: "FeatureCollection",
+      features: baseFeatures
+        .filter((feature) => overlayCodes.has(String(feature.properties?.iso_a2 || "").toUpperCase()))
+        .map((feature) => {
+          const iso = feature.properties?.iso_a2;
+          const code = String(iso || "").trim().toUpperCase();
+          const clusterId = getCountryToCluster()[code] || "";
+          const offsetShare = clusterId ? clusterShareForCountry(iso) : 0;
+          return {
+            ...feature,
+            properties: {
+              ...feature.properties,
+              in_cluster: clusterId ? 1 : 0,
+              cluster_id: clusterId,
+              cluster_label: clusterLabelForCountry(iso),
+              offset_share: offsetShare,
+            },
+          };
+        }),
+    };
   }
 
   function featureCollection() {
@@ -152,6 +176,67 @@ export function createCountryChoropleth(map, options = {}) {
         };
       }),
     };
+  }
+
+  function updateNativeLayer() {
+    if (!map.getLayer(NATIVE_COUNTRY_LAYER)) return;
+    const colors = nativeIso3Colors();
+    map.setPaintProperty(
+      NATIVE_COUNTRY_LAYER,
+      "fill-color",
+      buildMatchColorExpression(colors, DEFAULT_UNCLUSTERED)
+    );
+    map.setPaintProperty(NATIVE_COUNTRY_LAYER, "fill-opacity", visible ? 0.55 : 0);
+  }
+
+  function ensureTerritoryLayer() {
+    if (!nativeMode || !baseFeatures.length) return;
+    if (!map.getSource("territory-offset-boundaries")) {
+      map.addSource("territory-offset-boundaries", {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: [] },
+      });
+    }
+    if (!map.getLayer(TERRITORY_LAYER)) {
+      map.addLayer(
+        {
+          id: TERRITORY_LAYER,
+          type: "fill",
+          source: "territory-offset-boundaries",
+          layout: {
+            visibility: visible ? "visible" : "none",
+          },
+          paint: {
+            "fill-color": [
+              "interpolate",
+              ["linear"],
+              ["coalesce", ["get", "offset_share"], 0],
+              0,
+              colorLow,
+              1,
+              colorHigh,
+            ],
+            "fill-opacity": [
+              "case",
+              ["==", ["get", "in_cluster"], 1],
+              0.55,
+              0,
+            ],
+            "fill-antialias": true,
+          },
+        },
+        beforeLayerId
+      );
+    }
+  }
+
+  function updateTerritoryLayer() {
+    if (!nativeMode) return;
+    ensureTerritoryLayer();
+    map.getSource("territory-offset-boundaries")?.setData(territoryFeatureCollection());
+    if (map.getLayer(TERRITORY_LAYER)) {
+      map.setLayoutProperty(TERRITORY_LAYER, "visibility", visible ? "visible" : "none");
+    }
   }
 
   function ensureGeoJsonLayer() {
@@ -207,38 +292,35 @@ export function createCountryChoropleth(map, options = {}) {
     if (hoverHandlersBound) return;
     hoverHandlersBound = true;
 
-    const layerId = nativeMode ? NATIVE_COUNTRY_LAYER : "country-offset-fill";
+    const layers = nativeMode
+      ? [TERRITORY_LAYER, NATIVE_COUNTRY_LAYER]
+      : ["country-offset-fill"];
 
-    map.on("mousemove", layerId, (event) => {
-      const feature = event.features?.[0];
-      if (!feature) {
-        hideTooltip();
-        return;
-      }
-      const label = nativeMode
-        ? labelForIso3(feature.properties?.[NATIVE_COUNTRY_PROP])
-        : feature.properties?.cluster_label || feature.properties?.name || "";
-      if (!label) {
-        hideTooltip();
-        return;
-      }
-      showTooltip(label, event.point);
-    });
+    for (const layerId of layers) {
+      map.on("mousemove", layerId, (event) => {
+        const feature = event.features?.[0];
+        if (!feature) {
+          hideTooltip();
+          return;
+        }
+        const label =
+          layerId === NATIVE_COUNTRY_LAYER
+            ? labelForIso3(feature.properties?.[NATIVE_COUNTRY_PROP])
+            : feature.properties?.cluster_label || feature.properties?.name || "";
+        if (!label) {
+          hideTooltip();
+          return;
+        }
+        showTooltip(label, event.point);
+      });
 
-    map.on("mouseleave", layerId, () => {
-      hideTooltip();
-    });
+      map.on("mouseleave", layerId, () => {
+        hideTooltip();
+      });
+    }
   }
 
-  async function load() {
-    nativeMode = Boolean(map.getLayer(NATIVE_COUNTRY_LAYER));
-    if (nativeMode) {
-      ready = true;
-      bindHoverHandlers();
-      update();
-      return Object.keys(getIso3ToCluster()).length;
-    }
-
+  async function loadBoundaries() {
     const url = resolveAssetUrl(boundariesPath);
     const response = await fetch(url, { cache: "force-cache" });
     if (!response.ok) {
@@ -246,16 +328,36 @@ export function createCountryChoropleth(map, options = {}) {
     }
     const payload = await response.json();
     baseFeatures = (payload.features || []).filter((feature) => feature.properties?.iso_a2);
+    return baseFeatures.length;
+  }
+
+  async function load() {
+    nativeMode = Boolean(map.getLayer(NATIVE_COUNTRY_LAYER));
+    if (nativeMode) {
+      try {
+        await loadBoundaries();
+      } catch (error) {
+        console.warn("Territory overlay boundaries unavailable:", error);
+      }
+      ready = true;
+      bindHoverHandlers();
+      update();
+      return Object.keys(getIso3ToCluster()).length;
+    }
+
+    baseFeatures = [];
+    const count = await loadBoundaries();
     ready = true;
     bindHoverHandlers();
     update();
-    return baseFeatures.length;
+    return count;
   }
 
   function update() {
     if (!ready) return;
     if (nativeMode) {
       updateNativeLayer();
+      updateTerritoryLayer();
       return;
     }
     updateGeoJsonLayer();
@@ -265,6 +367,7 @@ export function createCountryChoropleth(map, options = {}) {
     visible = Boolean(enabled);
     if (nativeMode) {
       updateNativeLayer();
+      updateTerritoryLayer();
     } else if (map.getLayer("country-offset-fill")) {
       map.setLayoutProperty(
         "country-offset-fill",
@@ -275,7 +378,7 @@ export function createCountryChoropleth(map, options = {}) {
     if (!visible) hideTooltip();
   }
 
-  function renderLegend(container, { title = "Regional offset progress" } = {}) {
+  function renderLegend(container, { title = "Regional pledge progress" } = {}) {
     if (!container) return;
     container.insertAdjacentHTML(
       "beforeend",
@@ -284,10 +387,10 @@ export function createCountryChoropleth(map, options = {}) {
         <h3>${title}</h3>
         <div class="offset-choropleth-gradient" style="background: linear-gradient(to right, ${colorLow}, ${colorHigh})"></div>
         <div class="offset-choropleth-labels">
-          <span>None offset</span>
-          <span>All offset</span>
+          <span>None pledged</span>
+          <span>All pledged!</span>
         </div>
-        <p class="legend-note">Countries are grouped so each shaded region represents at least three delegates. Hover a country for grouped names.</p>
+        <p class="legend-note">Countries are grouped so each shaded region represents at least three delegates.</p>
       </div>`
     );
   }

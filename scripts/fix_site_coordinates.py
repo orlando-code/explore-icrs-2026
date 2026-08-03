@@ -50,21 +50,53 @@ def _write_js_export(path: Path, export_name: str, payload: dict, generator: str
     path.write_text(body, encoding="utf-8")
 
 
-def _coords_from_cache(affiliation: str) -> tuple[float, float] | None:
-    geocoded = geocode_affiliations([affiliation], cache_only=True, show_progress=False)
-    if geocoded.empty:
-        return None
-    row = geocoded.iloc[0]
-    latitude = row.get("latitude")
-    longitude = row.get("longitude")
+_COORDS_CACHE_LOOKUP: dict[str, tuple[float, float]] | None = None
+
+
+def _coords_lookup_from_rows(geocoded) -> dict[str, tuple[float, float]]:
+    lookup: dict[str, tuple[float, float]] = {}
+    for _, row in geocoded.iterrows():
+        affiliation = str(row.get("affiliation") or "").strip()
+        if not affiliation:
+            continue
+        try:
+            lat = float(row.get("latitude"))
+            lon = float(row.get("longitude"))
+        except (TypeError, ValueError):
+            continue
+        if math.isnan(lat) or math.isnan(lon):
+            continue
+        lookup[affiliation] = (lat, lon)
+        lookup[canonical_affiliation_key(affiliation).casefold()] = (lat, lon)
+    return lookup
+
+
+def _coords_by_affiliations(affiliations: list[str]) -> dict[str, tuple[float, float]]:
+    unique = sorted({aff.strip() for aff in affiliations if aff and aff.strip()})
+    if not unique:
+        return {}
     try:
-        lat = float(latitude)
-        lon = float(longitude)
-    except (TypeError, ValueError):
+        geocoded = geocode_affiliations(unique, cache_only=True, show_progress=False)
+    except (json.JSONDecodeError, OSError):
+        return {}
+    return _coords_lookup_from_rows(geocoded)
+
+
+def _coords_from_cache(affiliation: str) -> tuple[float, float] | None:
+    global _COORDS_CACHE_LOOKUP
+    if _COORDS_CACHE_LOOKUP is None:
+        _COORDS_CACHE_LOOKUP = {}
+    key = affiliation.strip()
+    if not key:
         return None
-    if math.isnan(lat) or math.isnan(lon):
-        return None
-    return lat, lon
+    cached = _COORDS_CACHE_LOOKUP.get(key) or _COORDS_CACHE_LOOKUP.get(
+        canonical_affiliation_key(key).casefold()
+    )
+    if cached is not None:
+        return cached
+    lookup = _coords_by_affiliations([key])
+    _COORDS_CACHE_LOOKUP.update(lookup)
+    return lookup.get(key) or lookup.get(canonical_affiliation_key(key).casefold())
 
 
 def delegate_affiliation_replacements() -> dict[str, str]:
@@ -209,10 +241,12 @@ def _rebuild_emissions_locations(pool: dict, overrides: dict) -> int:
         return 0
 
     groups: dict[str, dict] = {}
+    affiliation_labels: list[str] = []
     for attendee in attendees:
         affiliation = str(attendee.get("affiliation") or "").strip()
         if not affiliation:
             continue
+        affiliation_labels.append(affiliation)
         key = canonical_affiliation_key(affiliation).casefold()
         display = affiliation_display_name(affiliation) or affiliation
         bucket = groups.setdefault(
@@ -227,6 +261,9 @@ def _rebuild_emissions_locations(pool: dict, overrides: dict) -> int:
             bucket["affiliation"] = display
         bucket["attendees"].append(attendee)
         bucket["co2e_kg"] += float(attendee.get("co2e_kg") or 0)
+
+    global _COORDS_CACHE_LOOKUP
+    _COORDS_CACHE_LOOKUP = _coords_by_affiliations(affiliation_labels)
 
     locations: list[dict] = []
     for index, bucket in enumerate(
@@ -515,15 +552,16 @@ def patch_emissions_file(path: Path, overrides: dict) -> int:
             continue
         changed += _patch_emissions_pool_from_delegates(pool, by_name)
         changed += _patch_affiliation_strings(pool, replacements)
+        changed += _rebuild_emissions_locations(pool, overrides)
         for location in pool.get("locations", []):
             affiliation = str(location.get("affiliation") or "").strip()
             display = affiliation_display_name(affiliation)
             if display and display != affiliation:
                 location["affiliation"] = display
                 changed += 1
-            if _patch_location(location, overrides, allow_cache=True):
-                changed += 1
-        changed += _rebuild_emissions_locations(pool, overrides)
+            if location.get("lat") is None or location.get("lon") is None:
+                if _patch_location(location, overrides, allow_cache=True):
+                    changed += 1
     changed += _sync_emissions_rankings(payload)
     if changed:
         _write_js_export(path, "EMISSIONS_DATA", payload, "fix_site_coordinates.py")
@@ -664,13 +702,21 @@ def main() -> None:
     parser.add_argument(
         "--locations-only",
         action="store_true",
-        help="Patch js/locations.js only (skip slow emissions geocode refresh)",
+        help="Patch js/locations.js only (skip emissions export).",
+    )
+    parser.add_argument(
+        "--emissions-only",
+        action="store_true",
+        help="Patch js/emissions-data.js only (skip map locations export).",
     )
     args = parser.parse_args()
+    if args.locations_only and args.emissions_only:
+        raise SystemExit("Use only one of --locations-only or --emissions-only.")
 
     overrides = _load_json(OVERRIDES_PATH)
-    loc_changed = patch_locations_file(LOCATIONS_PATH, overrides)
-    print(f"Patched {loc_changed} locations in {LOCATIONS_PATH.name}")
+    if not args.emissions_only:
+        loc_changed = patch_locations_file(LOCATIONS_PATH, overrides)
+        print(f"Patched {loc_changed} locations in {LOCATIONS_PATH.name}")
     if not args.locations_only:
         em_changed = patch_emissions_file(EMISSIONS_PATH, overrides)
         print(f"Patched {em_changed} locations in {EMISSIONS_PATH.name}")
