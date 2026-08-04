@@ -517,10 +517,12 @@ export function createOffsetTracker({
     if (!text) return;
     if (underDelegateField) {
       setDelegateIdError(text);
+      // Keep the field-level message only — avoid a duplicate in #status.
+      setStatus("", { error: false, success: false });
     } else {
       clearDelegateIdError();
+      setStatus(text, { error: true, success: false });
     }
-    setStatus(text, { error: true, success: false });
     render({ updateMap: false });
   }
 
@@ -588,7 +590,7 @@ export function createOffsetTracker({
     }
     if (elements.label) {
       const rounded = percent < 10 ? percent.toFixed(1) : Math.round(percent).toString();
-      elements.label.innerHTML = `<strong>${rounded}%</strong> offset · <strong>${registeredCount.toLocaleString()}</strong> of ${totalAttendees.toLocaleString()} ${getHeadline()?.attendee_label || "delegates"} pledged`;
+      elements.label.innerHTML = `<strong>${rounded}%</strong> offset · <strong>${registeredCount.toLocaleString()}</strong> of ${totalAttendees.toLocaleString()} ${getHeadline()?.attendee_label || "delegates"} with location information pledged`;
     }
     if (elements.form) {
       elements.form.classList.toggle("emissions-offset-register--pending", isRegistering);
