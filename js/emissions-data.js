@@ -88,7 +88,7 @@ export const EMISSIONS_DATA = {
             "id": "travel",
             "label": "Return-trip travel estimates",
             "url": "https://emissions.dev/docs/api/travel",
-            "note": "emissions.dev Travel API (economy flights; NZ shared car)."
+            "note": "emissions.dev Travel API (economy flights; Auckland shared car)."
           },
           {
             "id": "national_per_capita",
@@ -21061,7 +21061,7 @@ export const EMISSIONS_DATA = {
             "id": "travel",
             "label": "Return-trip travel estimates",
             "url": "https://emissions.dev/docs/api/travel",
-            "note": "emissions.dev Travel API (economy flights; NZ shared car)"
+            "note": "emissions.dev Travel API (economy flights; Auckland shared car)"
           },
           {
             "id": "national_per_capita",

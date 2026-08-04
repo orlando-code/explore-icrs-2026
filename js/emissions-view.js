@@ -502,7 +502,7 @@ export function createEmissionsView(
     const modes = emissionsData.meta.by_transport_mode || [];
     elements.modeBreakdown.innerHTML = modes
       .map((row) => {
-        const label = row.transport_mode === "car" ? "NZ shared car" : "Return flights";
+        const label = row.transport_mode === "car" ? "Auckland shared car" : "Return flights";
         const share = headline.co2e_kg
           ? Math.round((row.co2e_kg / headline.co2e_kg) * 100)
           : 0;

@@ -138,19 +138,19 @@ function buildEmissionsContext(estimates, totalCo2eKg, nationalByIso2, attendeeT
         id: "travel",
         label: "Return-trip travel estimates",
         url: "https://emissions.dev/docs/api/travel",
-        note: "emissions.dev Travel API (economy flights; NZ shared car)",
+        note: "emissions.dev Travel API (economy flights; Auckland shared car).",
       },
       {
         id: "national_per_capita",
         label: "National per-capita CO₂",
         url: SOURCE_URL,
-        note: `World Bank ${INDICATOR}, ${YEAR}, metric tonnes CO₂e per person (excl. LULUCF)`,
+        note: `World Bank ${INDICATOR}, ${YEAR}, metric tonnes CO₂e per person (excl. LULUCF).`,
       },
       {
         id: "tree_uptake",
         label: "Tree CO₂ uptake (~22 kg/yr)",
         url: "https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-references",
-        note: "US EPA GHG equivalencies (≈48 lb CO₂ per tree per year)",
+        note: "US EPA GHG equivalencies (≈48 lb CO₂ per tree per year).",
       },
     ],
   };
