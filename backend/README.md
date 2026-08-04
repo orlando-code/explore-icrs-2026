@@ -140,7 +140,12 @@ Without `--yes` it only lists what it would touch.
 
 ## Back up the ledger
 
-The database lives on one Fly volume, so it is one lost volume away from gone. Set an export token, then pull the whole ledger — registrations and audit trail — somewhere else:
+Every successful pledge writes a timestamped snapshot of the full ledger (JSON + SQLite) to the Fly volume under `/data/backups/` (override with `OFFSET_BACKUP_DIR`). `offsets-latest.json` / `offsets-latest.db` always point at the newest copy. Snapshots prune to the last `OFFSET_BACKUP_KEEP` (default 500; `0` keeps all).
+
+That keeps a durable history on the same volume as the live DB. For a second copy elsewhere, either:
+
+1. **Optional webhook** — set `BACKUP_WEBHOOK_URL` (and optional `BACKUP_WEBHOOK_TOKEN`) as Fly secrets; each pledge POSTs the JSON snapshot there (OneDrive/Zapier/n8n/etc.).
+2. **Periodic pull** — set an export token and pull to a private folder (OneDrive, Dropbox, external drive):
 
 ```bash
 fly secrets set ADMIN_TOKEN="$(openssl rand -hex 32)"
@@ -150,15 +155,16 @@ ADMIN_TOKEN=… python scripts/backup_offsets.py \
     --dir ~/OneDrive/icrs-offset-backups
 ```
 
-Each run writes a timestamped JSON snapshot, never overwriting an existing one, and prunes to the last `--keep` (default 30). Snapshots contain names and caller digests, so **the destination must be private** — the default `backups/` directory is gitignored. Schedule it (`crontab -e`, daily) for the offsite copy to be worth anything.
+Each pull writes a timestamped JSON snapshot, never overwriting an existing one, and prunes to the last `--keep` (default 30). Snapshots contain names and caller digests, so **the destination must be private** — the default `backups/` directory is gitignored. Schedule it (`crontab -e`, daily) if you are not using a webhook.
 
-Fly's own daily volume snapshots are a second layer; `fly volumes snapshots list offset_data` lists them.
+Fly's own daily volume snapshots are a third layer; `fly volumes snapshots list offset_data` lists them.
 
-Without a token you can still copy the database off and snapshot it locally:
+Without a token you can still copy the database (or a pledge snapshot) off and snapshot it locally:
 
 ```bash
 # fly.toml lives in backend/ — pass -a or cd there first
 flyctl ssh sftp get /data/offsets.db ./backend/offsets-live.db -a icrs-offset-api
+flyctl ssh sftp get /data/backups/offsets-latest.json ./backups/offsets-latest.json -a icrs-offset-api
 
 # Run manage/backup commands from the repo root with the downloaded copy:
 OFFSET_DB_PATH=./backend/offsets-live.db python scripts/manage_offset_registrations.py stats
@@ -226,6 +232,10 @@ The network tab shows a **Show verified email** button for profiles marked `veri
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | `OFFSET_DB_PATH` | `data/offsets.db` | SQLite file path |
+| `OFFSET_BACKUP_DIR` | `<db-dir>/backups` | Where each pledge writes JSON + SQLite snapshots |
+| `OFFSET_BACKUP_KEEP` | `500` | Timestamped snapshots to retain (`0` = keep all) |
+| `BACKUP_WEBHOOK_URL` | *(unset)* | Optional URL that receives a POST of each pledge snapshot |
+| `BACKUP_WEBHOOK_TOKEN` | *(unset)* | Optional Bearer token for the backup webhook |
 | `ALLOWED_ORIGINS` | GitHub Pages + localhost | Comma-separated CORS origins |
 | `PORT` | `8080` | Listen port (Railway sets this automatically) |
 | `TURNSTILE_SECRET` | *(required for POST)* | Cloudflare Turnstile secret key for `POST /api/offsets` siteverify |

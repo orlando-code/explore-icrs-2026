@@ -65,6 +65,7 @@ REQUEST_TIMEOUT_SECONDS = 20
 _db_lock = threading.Lock()
 _rate_lock = threading.Lock()
 _contacts_lock = threading.Lock()
+_backup_lock = threading.Lock()
 
 _rate_windows: dict[str, dict[str, list[float]]] = {}
 _global_windows: dict[str, list[float]] = {}
@@ -76,9 +77,27 @@ _delegate_ids_loaded_path: str | None = None
 # process lifetime but are not linkable across restarts.
 _ephemeral_hint_salt = secrets.token_hex(16)
 
+BACKUP_SNAPSHOT_RE = re.compile(r"^offsets-\d{8}T\d{6}Z(?:-\d+)?\.(json|db)$")
+
 
 def _db_path() -> str:
     return os.environ.get("OFFSET_DB_PATH", "data/offsets.db")
+
+
+def _backup_dir() -> Path:
+    raw = os.environ.get("OFFSET_BACKUP_DIR", "").strip()
+    if raw:
+        return Path(raw)
+    return Path(_db_path()).resolve().parent / "backups"
+
+
+def _backup_keep() -> int:
+    """How many timestamped pledge snapshots to retain (0 = keep all)."""
+    raw = os.environ.get("OFFSET_BACKUP_KEEP", "500").strip()
+    try:
+        return max(0, int(raw))
+    except ValueError:
+        return 500
 
 
 def _contacts_path() -> str:
@@ -334,6 +353,135 @@ def _init_db() -> None:
             conn.commit()
         finally:
             conn.close()
+
+
+def _export_ledger_payload() -> dict[str, Any]:
+    """Full registrations + audit trail (names included — keep private)."""
+    with _db_lock:
+        conn = sqlite3.connect(_db_path())
+        conn.row_factory = sqlite3.Row
+        try:
+            registrations = [
+                dict(row)
+                for row in conn.execute(
+                    "SELECT * FROM registrations ORDER BY created_at ASC"
+                )
+            ]
+            events = [
+                dict(row)
+                for row in conn.execute(
+                    "SELECT * FROM registration_events ORDER BY id ASC"
+                )
+            ]
+        finally:
+            conn.close()
+    return {
+        "exported_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "registrations": registrations,
+        "events": events,
+    }
+
+
+def _prune_backup_snapshots(directory: Path, keep: int) -> int:
+    if keep <= 0:
+        return 0
+    removed = 0
+    for suffix in ("json", "db"):
+        snapshots = sorted(
+            path
+            for path in directory.glob(f"offsets-*.{suffix}")
+            if BACKUP_SNAPSHOT_RE.match(path.name)
+        )
+        stale = snapshots[:-keep] if len(snapshots) > keep else []
+        for path in stale:
+            try:
+                path.unlink()
+                removed += 1
+            except OSError:
+                pass
+    return removed
+
+
+def _post_backup_webhook(payload: dict[str, Any]) -> None:
+    url = os.environ.get("BACKUP_WEBHOOK_URL", "").strip()
+    if not url:
+        return
+    body = json.dumps(payload, ensure_ascii=True, separators=(",", ":")).encode("utf-8")
+    request = urllib.request.Request(url, data=body, method="POST")
+    request.add_header("Content-Type", "application/json")
+    token = os.environ.get("BACKUP_WEBHOOK_TOKEN", "").strip()
+    if token:
+        request.add_header("Authorization", f"Bearer {token}")
+    try:
+        with urllib.request.urlopen(request, timeout=15) as response:
+            _log("registration_backup_webhook", status=response.status)
+    except (urllib.error.URLError, TimeoutError, OSError) as error:
+        _log("registration_backup_webhook_failed", error=str(error)[:200])
+
+
+def _write_registration_backup(*, reason: str, attendee_id: str = "") -> None:
+    """Snapshot the ledger after a pledge. Failures must not break registration."""
+    try:
+        with _backup_lock:
+            directory = _backup_dir()
+            directory.mkdir(parents=True, exist_ok=True)
+            payload = _export_ledger_payload()
+            stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
+            json_path = directory / f"offsets-{stamp}.json"
+            suffix = 1
+            while json_path.exists() or json_path.with_suffix(".db").exists():
+                json_path = directory / f"offsets-{stamp}-{suffix}.json"
+                suffix += 1
+
+            snapshot = {
+                "source": _db_path(),
+                "reason": reason,
+                "attendee_id": attendee_id or None,
+                "backed_up_at": datetime.now(UTC).isoformat(timespec="seconds"),
+                **payload,
+            }
+            json_path.write_text(
+                json.dumps(snapshot, ensure_ascii=True, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            latest_json = directory / "offsets-latest.json"
+            latest_json.write_text(
+                json.dumps(snapshot, ensure_ascii=True, indent=2) + "\n",
+                encoding="utf-8",
+            )
+
+            db_path = Path(_db_path())
+            sqlite_path = json_path.with_suffix(".db")
+            if db_path.exists():
+                with _db_lock:
+                    with sqlite3.connect(db_path) as src, sqlite3.connect(sqlite_path) as dest:
+                        src.backup(dest)
+                latest_db = directory / "offsets-latest.db"
+                with sqlite3.connect(sqlite_path) as src, sqlite3.connect(latest_db) as dest:
+                    src.backup(dest)
+
+            pruned = _prune_backup_snapshots(directory, _backup_keep())
+            _log(
+                "registration_backup",
+                path=str(json_path),
+                registrations=len(payload.get("registrations") or []),
+                events=len(payload.get("events") or []),
+                pruned=pruned,
+                reason=reason,
+            )
+        _post_backup_webhook(snapshot)
+    except Exception as error:  # noqa: BLE001 — backup must never fail the pledge
+        _log("registration_backup_failed", error=str(error)[:300], reason=reason)
+
+
+def _schedule_registration_backup(*, reason: str, attendee_id: str = "") -> None:
+    thread = threading.Thread(
+        target=_write_registration_backup,
+        kwargs={"reason": reason, "attendee_id": attendee_id},
+        name="offset-backup",
+        daemon=True,
+    )
+    thread.start()
 
 
 def _aggregate_registrations() -> dict[str, Any]:
@@ -741,35 +889,13 @@ class OffsetHandler(BaseHTTPRequestHandler):
         if self._check_rate_limit("admin", 60, 120) is None:
             return
 
-        with _db_lock:
-            conn = sqlite3.connect(_db_path())
-            conn.row_factory = sqlite3.Row
-            try:
-                registrations = [
-                    dict(row)
-                    for row in conn.execute(
-                        "SELECT * FROM registrations ORDER BY created_at ASC"
-                    )
-                ]
-                events = [
-                    dict(row)
-                    for row in conn.execute(
-                        "SELECT * FROM registration_events ORDER BY id ASC"
-                    )
-                ]
-            finally:
-                conn.close()
-
-        _log("admin_export", registrations=len(registrations), events=len(events))
-        _json_response(
-            self,
-            200,
-            {
-                "exported_at": datetime.now(UTC).isoformat(timespec="seconds"),
-                "registrations": registrations,
-                "events": events,
-            },
+        payload = _export_ledger_payload()
+        _log(
+            "admin_export",
+            registrations=len(payload.get("registrations") or []),
+            events=len(payload.get("events") or []),
         )
+        _json_response(self, 200, payload)
 
     def do_POST(self) -> None:
         if not self._require_allowed_origin():
@@ -925,6 +1051,11 @@ class OffsetHandler(BaseHTTPRequestHandler):
                 reactivated=reactivated,
                 client=hint,
             )
+        if accepted:
+            _schedule_registration_backup(
+                reason="pending" if held else "registered",
+                attendee_id=attendee_id,
+            )
         _json_response(
             self,
             201 if accepted else 200,
@@ -1000,6 +1131,11 @@ def main() -> None:
         print("WARNING: TURNSTILE_SECRET is unset — POST endpoints will return 503.")
     if not os.environ.get("ADMIN_TOKEN", "").strip():
         print("NOTE: ADMIN_TOKEN is unset — /api/admin/export is disabled (404).")
+    print(
+        f"Pledge backups: {_backup_dir()} "
+        f"(keep={_backup_keep() or 'all'}"
+        f"{', webhook' if os.environ.get('BACKUP_WEBHOOK_URL', '').strip() else ''})"
+    )
     server.serve_forever()
 
 
