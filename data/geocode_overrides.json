@@ -386,5 +386,35 @@
     "latitude": -33.884413480513594, 
     "longitude": 151.18748619056922,
     "query_used": "override:University of Sydney"
+  },
+  "University of New South Wales - Sydney": {
+    "geocode_level": "institute",
+    "latitude": -33.91720498116743, 
+    "longitude": 151.23126909990444,
+    "query_used": "override:University of New South Wales - Sydney"
+  },
+  "Southern Cross University and Lizard Island Research Station": {
+    "geocode_level": "institute",
+    "latitude": -14.380781717159865, 
+    "longitude": 145.4088353716433, 
+    "query_used": "override:Southern Cross University and Lizard Island Research Station"
+  },
+  "University of California - Berkeley": {
+    "geocode_level": "institute",
+    "latitude": 37.8712141,
+    "longitude": -122.255463,
+    "query_used": "override:University of California - Berkeley"
+  },
+  "University of Berkeley": {
+    "geocode_level": "institute",
+    "latitude": 37.8712141,
+    "longitude": -122.255463,
+    "query_used": "override:University of California - Berkeley"
+  },
+  "South China Sea Institute of Oceanology": {
+    "geocode_level": "institute",
+    "latitude": 22.82555745769912, 
+    "longitude": 113.54118700836342, 
+    "query_used": "override:South China Sea Institute of Oceanology"
   }
 }
