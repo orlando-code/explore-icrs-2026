@@ -32,7 +32,7 @@ _COUNTRY_COL_MIN = 90
 # Last-name column starts at COL_LAST; organisation text is further right.
 _ORG_COL_MIN = 45
 
-TITLE_RE = re.compile(r"^(dr|prof|professor|mr|mrs|ms|miss)\.?\s+", re.I)
+TITLE_RE = re.compile(r"^(dr|prof|professor|mr|mrs|ms|miss)\.?\s+", re.IGNORECASE)
 _MOJIBAKE_MARKERS_RE = re.compile(r"[√ÃÂ]")
 
 COUNTRY_ALIASES = {
@@ -131,7 +131,6 @@ _EXTRA_COUNTRY_NAMES = {
     "Singapore",
     "Thailand",
     "Viet Nam",
-    "Korea, Republic of",
     "Spain",
     "Italy",
     "Netherlands",
@@ -190,7 +189,6 @@ _EXTRA_COUNTRY_NAMES = {
     "Belize",
     "Guam",
     "Hawaii, USA",
-    "United States Virgin Islands",
     "Pohnpei, Federated States of Micronesia",
 }
 
@@ -203,18 +201,16 @@ _ORG_HINT_RE = re.compile(
     r"organization|organisation|limited|ltd|inc|consulting|studies|resources?|"
     r"management|bureau|office|authority|commission|programme|program|unit|fund|"
     r"academy|society|association|network|partners|group|company|tech|a&m)\b",
-    re.I,
+    re.IGNORECASE,
 )
 
 _BLEED_NAME_RE = re.compile(r"^[A-Z][a-z'`-]+(?:\s+[A-Z][a-z'`-]+){0,2}$")
 
-_TITLE_TOKENS = frozenset(
-    {"dr", "prof", "professor", "mr", "mrs", "ms", "miss"}
-)
+_TITLE_TOKENS = frozenset({"dr", "prof", "professor", "mr", "mrs", "ms", "miss"})
 
 _BLEED_TITLE_NAME_RE = re.compile(
     r"^(.*?)(?:\s+(?:Dr|Prof|Professor|Mr|Mrs|Ms|Miss)\.?\s+[A-Z].*)$",
-    re.I,
+    re.IGNORECASE,
 )
 
 _INCOMPLETE_ORG_ENDINGS = frozenset(
@@ -237,8 +233,12 @@ def is_incomplete_organisation(name: str) -> bool:
         return True
     # Directional/region words alone after "University of" usually mean truncation.
     parts = [part for part in cleaned.split() if part]
-    if len(parts) == 3 and parts[0].casefold() == "university" and parts[1].casefold() == "of":
-        if parts[2].casefold() in {
+    return (
+        len(parts) == 3
+        and parts[0].casefold() == "university"
+        and parts[1].casefold() == "of"
+        and parts[2].casefold()
+        in {
             "southern",
             "northern",
             "eastern",
@@ -250,9 +250,8 @@ def is_incomplete_organisation(name: str) -> bool:
             "north",
             "east",
             "west",
-        }:
-            return True
-    return False
+        }
+    )
 
 
 def _is_title_token(word: str) -> bool:
@@ -463,14 +462,14 @@ def infer_country_from_organisation(organisation: str) -> str:
     if key in _ORGANISATION_COUNTRY_OVERRIDES:
         return _ORGANISATION_COUNTRY_OVERRIDES[key]
 
-    if re.search(r"hawai['\u2019]?i?\b", org, re.I):
+    if re.search(r"hawai['\u2019]?i?\b", org, re.IGNORECASE):
         return "United States"
-    if re.search(r"\baustralian\b", org, re.I):
+    if re.search(r"\baustralian\b", org, re.IGNORECASE):
         return "Australia"
     if re.search(
         r"\b(university of auckland|university of waikato|victoria university of wellington)\b",
         org,
-        re.I,
+        re.IGNORECASE,
     ):
         return "New Zealand"
 
@@ -671,8 +670,7 @@ def _known_country_suffixes() -> list[str]:
     names.update(COUNTRY_ALIASES.values())
     # Title-case alias keys so endswith checks against PDF text still work.
     names.update(
-        " ".join(part.capitalize() for part in key.split())
-        for key in COUNTRY_ALIASES
+        " ".join(part.capitalize() for part in key.split()) for key in COUNTRY_ALIASES
     )
     _COUNTRY_SUFFIXES = sorted(names, key=len, reverse=True)
     return _COUNTRY_SUFFIXES
@@ -756,7 +754,7 @@ def _country_is_incomplete(label: str) -> bool:
     if matched and country_to_iso2(matched):
         return False
     # Unmatched trailing fragments that look like wrapped official names.
-    return cleaned.endswith(",") or cleaned.endswith("(") or fold.endswith("(the")
+    return cleaned.endswith((",", "(")) or fold.endswith("(the")
 
 
 def _merge_wrapped_country(existing: str, addition: str) -> str:
@@ -928,9 +926,7 @@ def _append_continuation(current: dict[str, Any], line: str) -> None:
         addition = " ".join(org_bits)
         merged = f"{current.get('organisation', '')} {addition}".strip()
         current["organisation"] = re.sub(r"\s+", " ", merged)
-        current["_org_incomplete"] = is_incomplete_organisation(
-            current["organisation"]
-        )
+        current["_org_incomplete"] = is_incomplete_organisation(current["organisation"])
 
 
 def parse_delegate_layout_text(text: str) -> pd.DataFrame:
@@ -1018,14 +1014,20 @@ def load_delegates(
 ) -> pd.DataFrame:
     pdf_path = Path(pdf_path)
     json_path = Path(json_path)
-    if json_path.exists() and not refresh:
-        if not pdf_path.exists() or json_path.stat().st_mtime >= pdf_path.stat().st_mtime:
-            payload = _load_json(json_path)
-            # JSON is already cleaned at save time; do not re-apply organisation
-            # overrides here (many predate the layout-parser fix and are stale).
-            return normalize_delegate_records(
-                pd.DataFrame(payload["delegates"]), apply_overrides=False
-            )
+    if (
+        json_path.exists()
+        and not refresh
+        and (
+            not pdf_path.exists()
+            or json_path.stat().st_mtime >= pdf_path.stat().st_mtime
+        )
+    ):
+        payload = _load_json(json_path)
+        # JSON is already cleaned at save time; do not re-apply organisation
+        # overrides here (many predate the layout-parser fix and are stale).
+        return normalize_delegate_records(
+            pd.DataFrame(payload["delegates"]), apply_overrides=False
+        )
 
     if not pdf_path.exists():
         if json_path.exists():
@@ -1102,7 +1104,9 @@ def delegate_list_groups(
         name = str(row.get("full_name") or "").strip()
         if not name or is_map_excluded(name, set(map_exclusions.names)):
             continue
-        display = affiliation_display_name(affiliation) or organisation_for_delegate_row(row)
+        display = affiliation_display_name(
+            affiliation
+        ) or organisation_for_delegate_row(row)
         if is_incomplete_organisation(display):
             continue
         key = canonical_affiliation_key(affiliation).casefold()
@@ -1169,7 +1173,7 @@ def save_delegates(
     payload = {
         "meta": {
             "source_pdf": str(source_pdf),
-            "delegate_count": int(len(delegates)),
+            "delegate_count": len(delegates),
             "speaker_count": int(delegates["is_speaker"].sum()),
             "non_speaker_count": int((~delegates["is_speaker"]).sum()),
         },
@@ -1348,10 +1352,7 @@ def combined_attendee_talks(
         if str(name).strip()
     }
     extra = extra.loc[
-        ~extra["presenter"]
-        .astype(str)
-        .map(delegate_person_key)
-        .isin(talk_person_keys)
+        ~extra["presenter"].astype(str).map(delegate_person_key).isin(talk_person_keys)
     ]
 
     combined = pd.concat(
@@ -1362,8 +1363,12 @@ def combined_attendee_talks(
         ignore_index=True,
     )
     combined = combined.assign(
-        _person_key=lambda frame: frame["presenter"].astype(str).map(delegate_person_key),
-        _has_coords=lambda frame: frame["latitude"].notna() & frame["longitude"].notna(),
+        _person_key=lambda frame: (
+            frame["presenter"].astype(str).map(delegate_person_key)
+        ),
+        _has_coords=lambda frame: (
+            frame["latitude"].notna() & frame["longitude"].notna()
+        ),
     )
     combined = combined.sort_values(
         ["_person_key", "_has_coords", "geocode_level"],
