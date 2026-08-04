@@ -1146,13 +1146,15 @@ def export_non_speaking_delegates_js(
     *,
     delegates: pd.DataFrame | None = None,
 ) -> Path:
-    """Export non-speaking delegate names grouped by affiliation."""
+    """Export delegate-list groups and name→person_key aliases for the map site."""
     groups = delegate_list_groups(delegates)
+    person_key_aliases = load_delegate_person_keys()
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     body = (
         "/** Generated from data/delegates.json – do not edit by hand. */\n"
         f"export const NON_SPEAKING_DELEGATE_GROUPS = {json.dumps(groups, ensure_ascii=False, indent=2)};\n"
+        f"export const DELEGATE_PERSON_KEY_ALIASES = {json.dumps(person_key_aliases, ensure_ascii=False, indent=2)};\n"
     )
     output_path.write_text(body, encoding="utf-8")
     return output_path

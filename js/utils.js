@@ -509,10 +509,33 @@ export function normalizePersonName(name) {
     .trim();
 }
 
+let delegatePersonKeyAliases = null;
+
+/** Load name→person_key aliases exported with delegate groups. */
+export function setDelegatePersonKeyAliases(aliases = {}) {
+  delegatePersonKeyAliases = aliases && typeof aliases === "object" ? aliases : {};
+}
+
+export function resolveDelegatePersonKey(name) {
+  const cleaned = String(name || "").trim();
+  if (!cleaned) return "";
+  const normalized = normalizePersonName(cleaned);
+  const lowered = cleaned.toLowerCase();
+  if (delegatePersonKeyAliases) {
+    const alias =
+      delegatePersonKeyAliases[normalized] ||
+      delegatePersonKeyAliases[lowered] ||
+      delegatePersonKeyAliases[cleaned];
+    if (alias) return String(alias);
+  }
+  return normalized || lowered;
+}
+
 function delegateIdentityKeys(delegate) {
   const keys = new Set();
   if (!delegate) return keys;
-  if (delegate.person_key) keys.add(String(delegate.person_key));
+  const personKey = delegate.person_key || resolveDelegatePersonKey(delegate.name);
+  if (personKey) keys.add(String(personKey));
   const normalized = normalizePersonName(delegate.name);
   if (normalized) keys.add(normalized);
   const lowered = String(delegate.name || "").trim().toLowerCase();
@@ -528,6 +551,17 @@ function locationDelegateIdentityKeys(location) {
     }
   }
   return keys;
+}
+
+function annotateSpeakerDetails(speakerDetails = []) {
+  return speakerDetails.map((speaker) => ({
+    ...speaker,
+    person_key: speaker.person_key || resolveDelegatePersonKey(speaker.name),
+  }));
+}
+
+function countNonSpeakingDelegates(speakerDetails = []) {
+  return speakerDetails.filter((speaker) => speaker.non_speaking_delegate).length;
 }
 
 export function buildDelegateIndex(delegateGroups = []) {
@@ -560,13 +594,34 @@ function mergeDelegateSearchText(location, speakerDetails) {
 }
 
 export function enrichSpeakerLocationsWithDelegates(speakerLocations, delegateIndex) {
-  if (!delegateIndex?.size) return speakerLocations;
+  if (!delegateIndex?.size) {
+    return speakerLocations.map((location) => ({
+      ...location,
+      speaker_details: annotateSpeakerDetails(location.speaker_details || []),
+      non_speaking_delegate_count: countNonSpeakingDelegates(location.speaker_details || []),
+    }));
+  }
 
   return speakerLocations.map((location) => {
-    const delegates = delegateIndex.get(affiliationMapKey(location.affiliation)) || [];
-    if (!delegates.length) return location;
+    const baseDetails = annotateSpeakerDetails(location.speaker_details || []);
+    const delegates = (delegateIndex.get(affiliationMapKey(location.affiliation)) || []).filter(
+      (delegate) => delegate.is_speaker === false,
+    );
+    if (!delegates.length) {
+      return {
+        ...location,
+        speaker_details: baseDetails,
+        non_speaking_delegate_count: countNonSpeakingDelegates(baseDetails),
+      };
+    }
 
-    const existingKeys = locationDelegateIdentityKeys(location);
+    const existingKeys = new Set();
+    for (const speaker of baseDetails) {
+      for (const key of delegateIdentityKeys(speaker)) {
+        existingKeys.add(key);
+      }
+    }
+
     const newDelegates = delegates.filter((delegate) => {
       const keys = delegateIdentityKeys(delegate);
       for (const key of keys) {
@@ -574,12 +629,15 @@ export function enrichSpeakerLocationsWithDelegates(speakerLocations, delegateIn
       }
       return true;
     });
-    if (!newDelegates.length) return location;
+    if (!newDelegates.length) {
+      return {
+        ...location,
+        speaker_details: baseDetails,
+        non_speaking_delegate_count: countNonSpeakingDelegates(baseDetails),
+      };
+    }
 
-    const speakerDetails = [
-      ...(location.speaker_details || []),
-      ...delegateSpeakerDetails(newDelegates),
-    ];
+    const speakerDetails = [...baseDetails, ...delegateSpeakerDetails(newDelegates)];
     speakerDetails.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
 
     return {
@@ -587,7 +645,7 @@ export function enrichSpeakerLocationsWithDelegates(speakerLocations, delegateIn
       speakers: speakerDetails.map((speaker) => speaker.name),
       speaker_details: speakerDetails,
       speaker_count: speakerDetails.length,
-      non_speaking_delegate_count: newDelegates.length,
+      non_speaking_delegate_count: countNonSpeakingDelegates(speakerDetails),
       search_text: mergeDelegateSearchText(location, speakerDetails),
     };
   });
@@ -611,8 +669,10 @@ export function buildDelegateMapLocations(
     if (knownKeys.has(key) || seenDelegateKeys.has(key)) continue;
     seenDelegateKeys.add(key);
 
-    const speakerDetails = delegateSpeakerDetails(delegateIndex.get(key) || []);
-    const count = speakerDetails.length || location.travel_attendees || location.speaker_count || 1;
+    const speakerDetails = delegateSpeakerDetails(
+      (delegateIndex.get(key) || []).filter((delegate) => delegate.is_speaker === false),
+    );
+    const count = speakerDetails.length || 0;
     supplemental.push({
       id: `delegate-loc-${supplemental.length + 1}`,
       affiliation,
@@ -627,7 +687,7 @@ export function buildDelegateMapLocations(
       search_text: mergeDelegateSearchText({ affiliation, search_text: affiliation.toLowerCase() }, speakerDetails),
       connection_count: 0,
       delegate_only: true,
-      non_speaking_delegate_count: speakerDetails.length,
+      non_speaking_delegate_count: count,
     });
   }
   return supplemental;
@@ -716,14 +776,20 @@ export function mergeEmissionsMapLocations(
 
     const key = affiliationMapKey(siteLocation.affiliation);
     const emissions = key ? emissionsByKey.get(key) : null;
+    const attendeeCount = Number(siteLocation.speaker_count) || 0;
+    const siteFields = {
+      speakers: siteLocation.speakers,
+      speaker_details: siteLocation.speaker_details,
+      non_speaking_delegate_count: siteLocation.non_speaking_delegate_count || 0,
+      delegate_only: siteLocation.delegate_only,
+      talk_count: siteLocation.talk_count,
+      connection_count: siteLocation.connection_count,
+      search_text: siteLocation.search_text,
+    };
     if (emissions) {
-      const attendeeCount = Math.max(
-        Number(siteLocation.speaker_count) || 0,
-        Number(emissions.travel_attendees) || 0,
-        Number(emissions.speaker_count) || 0,
-      );
       merged.push({
         ...emissions,
+        ...siteFields,
         emissions_id: emissions.id,
         id: siteLocation.id,
         affiliation: siteLocation.affiliation,
@@ -746,8 +812,9 @@ export function mergeEmissionsMapLocations(
       affiliation: siteLocation.affiliation,
       lat,
       lon,
-      speaker_count: siteLocation.speaker_count || 0,
-      travel_attendees: siteLocation.speaker_count || 0,
+      ...siteFields,
+      speaker_count: attendeeCount,
+      travel_attendees: attendeeCount,
       co2e_kg: 0,
       co2e_low_kg: 0,
       co2e_high_kg: 0,

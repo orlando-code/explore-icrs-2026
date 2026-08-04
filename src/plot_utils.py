@@ -460,11 +460,14 @@ def _affiliation_location_records(
         lon = float(group[lon_col].iloc[0])
         display = display_name.get(bucket_key) or bucket_key.split("\t", 1)[0]
 
+        from src.delegates import delegate_person_key
+
         speaker_details: list[dict[str, str]] = []
         for presenter, speaker_group in group.groupby(presenter_col, dropna=True):
             if pd.isna(presenter):
                 continue
-            parts = [str(presenter)]
+            presenter_name = str(presenter)
+            parts = [presenter_name]
             talk_titles: list[str] = []
             for _, talk in speaker_group.iterrows():
                 title = talk.get(title_col)
@@ -477,9 +480,10 @@ def _affiliation_location_records(
                     parts.append(str(abstract))
             speaker_details.append(
                 {
-                    "name": str(presenter),
+                    "name": presenter_name,
                     "search_text": " ".join(parts).lower(),
                     "talk_titles": talk_titles,
+                    "person_key": delegate_person_key(presenter_name),
                 }
             )
         speaker_details.sort(key=lambda item: item["name"].casefold())

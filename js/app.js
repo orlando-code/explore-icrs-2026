@@ -3,7 +3,10 @@ import { TALKS_DATA } from "./talks.js";
 import { TALK_SIMILARITIES } from "./talk-similarities.js";
 import { EMISSIONS_DATA } from "./emissions-data.js";
 import { SPEAKER_PROFILES } from "./speaker-profiles.js";
-import { NON_SPEAKING_DELEGATE_GROUPS } from "./non-speaking-delegates.js";
+import {
+  NON_SPEAKING_DELEGATE_GROUPS,
+  DELEGATE_PERSON_KEY_ALIASES,
+} from "./non-speaking-delegates.js";
 import {
   MAP_EXCLUDED_AFFILIATION_KEYS,
   MAP_EXCLUDED_NAMES,
@@ -12,7 +15,16 @@ import { createMapView } from "./map.js";
 import { createNetworkView } from "./network.js";
 import { createEmissionsView } from "./emissions-view.js";
 import { createShareView } from "./more.js";
-import { escapeHtml, buildDelegateIndex, applyAffiliationGeocodeOverrides, setMapExclusions, filterEmissionsPool } from "./utils.js";
+import {
+  escapeHtml,
+  buildDelegateIndex,
+  applyAffiliationGeocodeOverrides,
+  setMapExclusions,
+  filterEmissionsPool,
+  setDelegatePersonKeyAliases,
+} from "./utils.js";
+
+setDelegatePersonKeyAliases(DELEGATE_PERSON_KEY_ALIASES);
 
 setMapExclusions({
   names: MAP_EXCLUDED_NAMES,
