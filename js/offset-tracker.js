@@ -150,7 +150,9 @@ function mountOffsetTurnstile() {
       sitekey: TURNSTILE_SITE_KEY,
       action: "offset-pledge",
       size: "compact",
-      appearance: "interaction-only",
+      // Always show the compact checkbox (not interaction-only, which stays
+      // invisible when Cloudflare auto-passes low-risk visitors).
+      appearance: "always",
       callback: (token) => {
         offsetTurnstileToken = token;
         setOffsetTurnstileState("ready");
@@ -722,7 +724,7 @@ export function createOffsetTracker({
     }
     if (elements.label) {
       const rounded = percent < 10 ? percent.toFixed(1) : Math.round(percent).toString();
-      elements.label.innerHTML = `<strong>${rounded}%</strong> offset · <strong>${registeredCount.toLocaleString()}</strong> of ${totalAttendees.toLocaleString()} ${getHeadline()?.attendee_label || "delegates"} with location information pledged`;
+      elements.label.innerHTML = `<strong>${rounded}%</strong> offset · <strong>${registeredCount.toLocaleString()}</strong> of ${totalAttendees.toLocaleString()} ${getHeadline()?.attendee_label || "delegates"}`;
     }
     if (elements.form) {
       elements.form.classList.toggle("emissions-offset-register--pending", isRegistering);
