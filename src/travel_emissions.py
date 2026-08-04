@@ -425,12 +425,17 @@ def load_attendee_legs(
         from src.origin_country import country_from_affiliation, resolve_origin_country
 
         country_code = row.get("country_code")
+        existing_country = (
+            ""
+            if pd.isna(country_code)
+            else str(country_code)
+        ) or str(origin_country or "")
         resolved = resolve_origin_country(
             affiliation=str(row.get("affiliation") or ""),
             lat=lat,
             lon=lon,
             reverse_cache=reverse_cache,
-            existing=str(country_code or origin_country or ""),
+            existing=existing_country,
         )
         if resolved:
             origin_country = resolved

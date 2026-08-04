@@ -8,16 +8,33 @@ from typing import Any
 import pandas as pd
 
 from src.delegates import load_delegates, normalize_person_name, country_to_iso2
-from src.geocode import canonical_affiliation_key
+from src.geocode import (
+    DEFAULT_OVERRIDES_PATH,
+    _load_json,
+    _lookup_override,
+    canonical_affiliation_key,
+)
 
 DEFAULT_GEOCODES_CSV = Path("data/affiliation_geocodes.csv")
+_GEOCODE_OVERRIDES_CACHE: dict[str, dict] | None = None
+
+
+def load_geocode_overrides(
+    path: Path | str = DEFAULT_OVERRIDES_PATH,
+) -> dict[str, dict]:
+    """Load geocode overrides used as the highest-priority coordinate source."""
+    global _GEOCODE_OVERRIDES_CACHE
+    if _GEOCODE_OVERRIDES_CACHE is None:
+        payload = _load_json(Path(path))
+        _GEOCODE_OVERRIDES_CACHE = payload if isinstance(payload, dict) else {}
+    return _GEOCODE_OVERRIDES_CACHE
 
 
 def load_ok_geocodes(
     path: Path | str = DEFAULT_GEOCODES_CSV,
 ) -> pd.DataFrame:
     """Return geocode rows with status OK and finite coordinates."""
-    df = pd.read_csv(path)
+    df = pd.read_csv(path, encoding="utf-8", encoding_errors="replace")
     ok = df.loc[df["status"].eq("OK")].copy()
     ok["latitude"] = pd.to_numeric(ok["latitude"], errors="coerce")
     ok["longitude"] = pd.to_numeric(ok["longitude"], errors="coerce")
@@ -90,6 +107,7 @@ def resolve_geocode(
     presenter: str = "",
     lookup: dict[str, Any] | None = None,
     delegate_lookup: dict[str, tuple[str, str]] | None = None,
+    overrides: dict[str, dict] | None = None,
 ) -> dict[str, Any] | None:
     if lookup is None:
         lookup = build_geocode_lookup(load_ok_geocodes())
@@ -97,6 +115,26 @@ def resolve_geocode(
     affiliation = str(affiliation or "").strip()
     if not affiliation:
         return None
+
+    override_lookup = overrides if overrides is not None else load_geocode_overrides()
+    override = _lookup_override(affiliation, override_lookup)
+    if (
+        override is not None
+        and override.get("latitude") is not None
+        and override.get("longitude") is not None
+    ):
+        organisation, country = _parse_affiliation_parts(affiliation)
+        return {
+            "latitude": float(override["latitude"]),
+            "longitude": float(override["longitude"]),
+            "formatted_address": "",
+            "query_used": str(override.get("query_used") or "override"),
+            "geocode_level": str(override.get("geocode_level") or "institute"),
+            "geocoded": True,
+            "organisation": organisation,
+            "country": country,
+            "affiliation": affiliation,
+        }
 
     hit = lookup["by_affiliation"].get(affiliation.casefold())
     if hit is not None:

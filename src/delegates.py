@@ -1109,73 +1109,29 @@ def save_delegates(
     return Path(json_path)
 
 
-def _resolve_delegate_country_coords(
-    country_name: str,
-    centroids: dict[str, tuple[float, float]],
-) -> tuple[float, float] | None:
-    candidates = [country_name.strip()]
-    alias = COUNTRY_ALIASES.get(country_name.strip().casefold())
-    if alias:
-        candidates.append(alias)
-    try:
-        candidates.append(pycountry.countries.lookup(country_name).name)
-    except LookupError:
-        pass
-
-    for candidate in candidates:
-        if candidate in centroids:
-            return centroids[candidate]
-    for candidate in candidates:
-        for key, coords in centroids.items():
-            if key.casefold() == candidate.casefold():
-                return coords
-    return None
-
-
-def _fill_missing_with_country_centroids(rows: pd.DataFrame) -> pd.DataFrame:
-    """Use delegate-list country when organisation geocoding failed."""
-    from geopy.geocoders import Nominatim
-
-    from src.geocode import (
-        DEFAULT_COUNTRY_CACHE_PATH,
-        DEFAULT_USER_AGENT,
-        _ensure_country_coords,
-        _load_country_coords_cache,
-    )
+def _fill_missing_with_capital_fallback(rows: pd.DataFrame) -> pd.DataFrame:
+    """Use state/country capitals when institute geocoding is missing."""
+    from src.capital_coords import resolve_capital_fallback
 
     rows = rows.copy()
     missing_mask = rows["latitude"].isna() | rows["longitude"].isna()
     if not missing_mask.any():
         return rows
 
-    centroids = _load_country_coords_cache(DEFAULT_COUNTRY_CACHE_PATH)
-    missing_countries = (
-        rows.loc[missing_mask, "country"].dropna().astype(str).unique().tolist()
-    )
-    unresolved = [
-        country
-        for country in missing_countries
-        if _resolve_delegate_country_coords(country, centroids) is None
-    ]
-    if unresolved:
-        geolocator = Nominatim(user_agent=DEFAULT_USER_AGENT)
-        _ensure_country_coords(
-            geolocator,
-            unresolved,
-            country_coords_cache=centroids,
-            country_cache_path=DEFAULT_COUNTRY_CACHE_PATH,
-            pause_seconds=1.0,
-        )
-
     for index, row in rows.loc[missing_mask].iterrows():
-        coords = _resolve_delegate_country_coords(str(row["country"]), centroids)
-        if coords is None:
+        country = str(row.get("country") or "").strip()
+        if not country:
             continue
-        rows.at[index, "latitude"] = coords[0]
-        rows.at[index, "longitude"] = coords[1]
+        organisation = str(row.get("organisation") or "").strip()
+        fallback = resolve_capital_fallback(organisation, country)
+        if fallback is None:
+            continue
+        _city, lat, lon, query_label = fallback
+        rows.at[index, "latitude"] = lat
+        rows.at[index, "longitude"] = lon
         rows.at[index, "geocode_level"] = "country"
         rows.at[index, "geocoded"] = True
-        rows.at[index, "query_used"] = f"country:{row['country']}"
+        rows.at[index, "query_used"] = query_label
 
     return rows
 
@@ -1186,7 +1142,12 @@ def geocoded_non_speakers(
     show_progress: bool = False,
 ) -> pd.DataFrame:
     """Return geocoded rows for non-speaking delegates."""
-    from src.affiliation_geocodes import resolve_geocode, build_geocode_lookup, load_ok_geocodes
+    from src.affiliation_geocodes import (
+        build_geocode_lookup,
+        load_geocode_overrides,
+        load_ok_geocodes,
+        resolve_geocode,
+    )
 
     if delegates is None:
         delegates = load_delegates()
@@ -1214,11 +1175,13 @@ def geocoded_non_speakers(
     rows["query_used"] = pd.NA
 
     lookup = build_geocode_lookup(load_ok_geocodes())
+    overrides = load_geocode_overrides()
     for index, row in rows.iterrows():
         hit = resolve_geocode(
             str(row["affiliation"]),
             presenter=str(row["presenter"]),
             lookup=lookup,
+            overrides=overrides,
         )
         if hit is None:
             continue
@@ -1228,7 +1191,7 @@ def geocoded_non_speakers(
         rows.at[index, "geocoded"] = True
         rows.at[index, "query_used"] = hit.get("query_used")
 
-    rows = _fill_missing_with_country_centroids(rows)
+    rows = _fill_missing_with_capital_fallback(rows)
     if "country_code" not in rows.columns:
         rows["country_code"] = rows["country"].map(country_to_iso2)
     if show_progress:

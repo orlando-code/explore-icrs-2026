@@ -27,6 +27,7 @@ NEIGHBOR_OVERRIDES: dict[str, list[str]] = {
     "QA": ["SA"],
     "RE": ["MG", "YT"],
     "SG": ["MY"],
+    "SX": ["CW", "GP", "MQ", "AG", "KN", "DO"],
     "SM": ["IT"],
     "VA": ["IT"],
     "YT": ["MG", "RE"],
@@ -41,6 +42,7 @@ HOST_PREFERENCES: dict[str, str] = {
     "MO": "CN",
     "GI": "ES",
     "SM": "IT",
+    "SX": "CW",
     "VA": "IT",
 }
 
