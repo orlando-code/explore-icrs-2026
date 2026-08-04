@@ -368,5 +368,23 @@
     "latitude": -31.9507,
     "longitude": 115.7979,
     "query_used": "override:University of Western Australia, Crawley, Perth, Australia"
+  },
+  "Universidade Federal Fluminense": {
+    "geocode_level": "institute",
+    "latitude": -22.807947428159128,
+    "longitude": -43.12501206622452,
+    "query_used": "override:Universidade Federal Fluminense"
+  },
+  "Macquarie University": {
+    "geocode_level": "institute",
+    "latitude": -33.7736047769375, 
+    "longitude": 151.11264344166628,
+    "query_used": "override:Macquarie University"
+  },
+  "University of Sydney": {
+    "geocode_level": "institute",
+    "latitude": -33.884413480513594, 
+    "longitude": 151.18748619056922,
+    "query_used": "override:University of Sydney"
   }
 }
