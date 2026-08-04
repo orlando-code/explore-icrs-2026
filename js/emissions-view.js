@@ -965,23 +965,41 @@ export function createEmissionsView(
       upsertMapData();
     }
 
+    const originCountry = String(location.origin_country || "").trim().toUpperCase();
+    const clusterId =
+      (originCountry && countryToCluster[originCountry]) || location.country_cluster_id || "";
+    const clusterCountries = clusterId
+      ? Object.entries(countryToCluster)
+          .filter(([, id]) => id === clusterId)
+          .map(([iso2]) => iso2)
+      : originCountry
+        ? [originCountry]
+        : [];
+
     const targetZoom = Math.min(
       MAX_ZOOM,
       Math.max(map.getZoom(), isMobileLayout() ? 4.8 : 6)
     );
 
-    let sparked = false;
-    const sparkWhenCentral = () => {
-      if (sparked) return;
-      if (!launchSparkAt(location)) return;
-      sparked = true;
+    let celebrated = false;
+    const finishCelebration = () => {
+      if (celebrated) return;
+      celebrated = true;
+      launchSparkAt(location);
+      // Update the lasting choropleth colour, then flash green over it.
       scheduleMapUpdate();
+      if (clusterCountries.length && countryChoropleth?.isReady()) {
+        countryChoropleth.pulseCountries(clusterCountries, {
+          durationMs: 2600,
+          peakMs: 750,
+        });
+      }
     };
 
-    map.once("moveend", sparkWhenCentral);
+    map.once("moveend", finishCelebration);
     flyToLocation(location, { zoom: targetZoom, duration: 1400 });
     if (!map.isMoving()) {
-      window.requestAnimationFrame(sparkWhenCentral);
+      window.requestAnimationFrame(finishCelebration);
     }
   }
 

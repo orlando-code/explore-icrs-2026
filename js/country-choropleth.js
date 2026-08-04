@@ -363,6 +363,119 @@ export function createCountryChoropleth(map, options = {}) {
     updateGeoJsonLayer();
   }
 
+  function ensurePulseLayers() {
+    if (!map.getSource("country-offset-pulse")) {
+      map.addSource("country-offset-pulse", {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: [] },
+      });
+    }
+    if (!map.getLayer("country-offset-pulse-fill")) {
+      map.addLayer(
+        {
+          id: "country-offset-pulse-fill",
+          type: "fill",
+          source: "country-offset-pulse",
+          paint: {
+            "fill-color": colorHigh,
+            "fill-opacity": 0,
+          },
+        },
+        beforeLayerId
+      );
+    }
+    if (!map.getLayer("country-offset-pulse-line")) {
+      map.addLayer(
+        {
+          id: "country-offset-pulse-line",
+          type: "line",
+          source: "country-offset-pulse",
+          paint: {
+            "line-color": colorHigh,
+            "line-width": 2.5,
+            "line-opacity": 0,
+          },
+        },
+        beforeLayerId
+      );
+    }
+  }
+
+  let pulseRaf = 0;
+  let pulseToken = 0;
+
+  function clearCountryPulse() {
+    pulseToken += 1;
+    if (pulseRaf) {
+      window.cancelAnimationFrame(pulseRaf);
+      pulseRaf = 0;
+    }
+    if (!map.getSource("country-offset-pulse")) return;
+    map.getSource("country-offset-pulse").setData({ type: "FeatureCollection", features: [] });
+    if (map.getLayer("country-offset-pulse-fill")) {
+      map.setPaintProperty("country-offset-pulse-fill", "fill-opacity", 0);
+    }
+    if (map.getLayer("country-offset-pulse-line")) {
+      map.setPaintProperty("country-offset-pulse-line", "line-opacity", 0);
+    }
+  }
+
+  /**
+   * Flash matching countries bright green, then ease out so the updated
+   * choropleth colour underneath becomes the lasting state.
+   */
+  function pulseCountries(iso2Codes, { durationMs = 2400, peakMs = 700 } = {}) {
+    const codes = new Set(
+      (Array.isArray(iso2Codes) ? iso2Codes : [iso2Codes])
+        .map((code) => String(code || "").trim().toUpperCase())
+        .filter(Boolean)
+    );
+    if (!ready || !codes.size || !baseFeatures.length) return false;
+
+    ensurePulseLayers();
+    const features = baseFeatures.filter((feature) =>
+      codes.has(String(feature.properties?.iso_a2 || "").toUpperCase())
+    );
+    if (!features.length) return false;
+
+    clearCountryPulse();
+    const token = pulseToken;
+    map.getSource("country-offset-pulse").setData({
+      type: "FeatureCollection",
+      features,
+    });
+
+    const started = performance.now();
+    const tick = (now) => {
+      if (token !== pulseToken) return;
+      const elapsed = now - started;
+      let opacity = 0;
+      if (elapsed <= peakMs) {
+        opacity = 0.15 + 0.7 * (elapsed / peakMs);
+      } else if (elapsed <= durationMs) {
+        const t = (elapsed - peakMs) / Math.max(1, durationMs - peakMs);
+        opacity = 0.85 * (1 - t) * (1 - t);
+      }
+      if (map.getLayer("country-offset-pulse-fill")) {
+        map.setPaintProperty("country-offset-pulse-fill", "fill-opacity", opacity);
+      }
+      if (map.getLayer("country-offset-pulse-line")) {
+        map.setPaintProperty(
+          "country-offset-pulse-line",
+          "line-opacity",
+          Math.min(1, opacity + 0.15)
+        );
+      }
+      if (elapsed < durationMs) {
+        pulseRaf = window.requestAnimationFrame(tick);
+      } else {
+        clearCountryPulse();
+      }
+    };
+    pulseRaf = window.requestAnimationFrame(tick);
+    return true;
+  }
+
   function setVisible(enabled) {
     visible = Boolean(enabled);
     if (nativeMode) {
@@ -400,6 +513,8 @@ export function createCountryChoropleth(map, options = {}) {
     update,
     setVisible,
     renderLegend,
+    pulseCountries,
+    clearCountryPulse,
     mixChannel,
     isReady: () => ready,
     usesNativeLayer: () => nativeMode,

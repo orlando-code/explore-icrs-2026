@@ -1649,6 +1649,11 @@ button:active {
   display: none;
 }
 
+/* Field-level ID errors own the message — never also show the status clone. */
+.emissions-offset-register--error .emissions-offset-feedback {
+  display: none !important;
+}
+
 .emissions-offset-register .form-actions {
   display: flex;
   flex-direction: column;

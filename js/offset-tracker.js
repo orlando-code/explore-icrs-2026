@@ -517,8 +517,15 @@ export function createOffsetTracker({
     if (!text) return;
     if (underDelegateField) {
       setDelegateIdError(text);
-      // Keep the field-level message only — avoid a duplicate in #status.
-      setStatus("", { error: false, success: false });
+      // Field error is the only visible message (status is also CSS-hidden).
+      statusMessage = "";
+      statusIsError = false;
+      statusIsSuccess = false;
+      if (elements.status) {
+        elements.status.textContent = "";
+        elements.status.hidden = true;
+        elements.status.classList.remove("error", "success");
+      }
     } else {
       clearDelegateIdError();
       setStatus(text, { error: true, success: false });
