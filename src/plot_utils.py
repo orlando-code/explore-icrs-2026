@@ -443,18 +443,22 @@ def _affiliation_location_records(
         affiliation_text = (
             "" if pd.isna(row[affiliation_col]) else str(row[affiliation_col])
         )
-        key = canonical_affiliation_key(affiliation_text)
-        buckets.setdefault(key, []).append(row.to_frame().T)
+        aff_key = canonical_affiliation_key(affiliation_text)
+        lat = round(float(row[lat_col]), 4)
+        lon = round(float(row[lon_col]), 4)
+        bucket_key = f"{aff_key}\t{lat}\t{lon}"
+        buckets.setdefault(bucket_key, []).append(row.to_frame().T)
         preferred = affiliation_display_name(affiliation_text) or affiliation_text
-        existing = display_name.get(key)
+        existing = display_name.get(bucket_key)
         if not existing or len(preferred) > len(existing):
-            display_name[key] = preferred
+            display_name[bucket_key] = preferred
 
     records: list[dict[str, Any]] = []
-    for index, (key, row_frames) in enumerate(sorted(buckets.items()), start=1):
+    for index, (bucket_key, row_frames) in enumerate(sorted(buckets.items()), start=1):
         group = pd.concat(row_frames, ignore_index=True)
         lat = float(group[lat_col].iloc[0])
         lon = float(group[lon_col].iloc[0])
+        display = display_name.get(bucket_key) or bucket_key.split("\t", 1)[0]
 
         speaker_details: list[dict[str, str]] = []
         for presenter, speaker_group in group.groupby(presenter_col, dropna=True):
@@ -488,7 +492,7 @@ def _affiliation_location_records(
             if levels:
                 geocode_level = "institute" if "institute" in levels else str(levels[0])
 
-        affiliation_text = display_name.get(key, key)
+        affiliation_text = display
         search_parts = [affiliation_text, *speakers]
         for item in speaker_details:
             search_parts.append(item["search_text"])

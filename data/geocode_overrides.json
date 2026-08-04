@@ -399,6 +399,24 @@
     "longitude": 145.4088353716433, 
     "query_used": "override:Southern Cross University and Lizard Island Research Station"
   },
+  "ENTROPIE": {
+    "geocode_level": "institute",
+    "latitude": -20.8823,
+    "longitude": 55.4504,
+    "query_used": "override:ENTROPIE, Réunion"
+  },
+  "ENTROPIE, Réunion": {
+    "geocode_level": "institute",
+    "latitude": -20.8823,
+    "longitude": 55.4504,
+    "query_used": "override:ENTROPIE, Réunion"
+  },
+  "CRIOBE, Réunion": {
+    "geocode_level": "institute",
+    "latitude": -20.8823,
+    "longitude": 55.4504,
+    "query_used": "override:CRIOBE, Réunion"
+  },
   "University of California - Berkeley": {
     "geocode_level": "institute",
     "latitude": 37.8712141,

@@ -119,6 +119,14 @@ def _env_flag(name: str, default: bool = False) -> bool:
     return raw in ("1", "true", "yes", "on")
 
 
+def _truthy_payload(value: Any) -> bool:
+    if value is True:
+        return True
+    if isinstance(value, (int, float)):
+        return value == 1
+    return str(value or "").strip().lower() in ("1", "true", "yes", "on")
+
+
 def _log(event: str, **fields: Any) -> None:
     payload = {
         "ts": datetime.now(UTC).isoformat(timespec="seconds"),
@@ -975,7 +983,11 @@ class OffsetHandler(BaseHTTPRequestHandler):
             return False
         turnstile_token = _extract_turnstile_token(payload)
         if not _verify_turnstile(turnstile_token, self._client_ip()):
-            _json_response(self, 403, {"error": "Verification failed."})
+            _json_response(
+                self,
+                403,
+                {"error": "Verification failed.", "code": "turnstile_failed"},
+            )
             return False
         return True
 
@@ -1013,17 +1025,31 @@ class OffsetHandler(BaseHTTPRequestHandler):
                 _json_response(
                     self,
                     403,
-                    {"error": "Delegate ID does not match this name."},
+                    {
+                        "error": "Delegate ID does not match this name.",
+                        "code": "delegate_id_rejected",
+                    },
                 )
                 return
 
-        if not self._require_turnstile(payload):
-            return
-
-        threshold = _review_threshold()
-        recent = _recent_registration_count()
-        held = bool(threshold) and recent >= threshold
-        status = STATUS_PENDING if held else STATUS_PUBLISHED
+        verification_fallback = _truthy_payload(payload.get("verification_fallback"))
+        if verification_fallback:
+            if not _require_delegate_id():
+                _json_response(
+                    self,
+                    400,
+                    {"error": "Manual review is not available."},
+                )
+                return
+            held = True
+            status = STATUS_PENDING
+        else:
+            if not self._require_turnstile(payload):
+                return
+            threshold = _review_threshold()
+            recent = _recent_registration_count()
+            held = bool(threshold) and recent >= threshold
+            status = STATUS_PENDING if held else STATUS_PUBLISHED
 
         created, reactivated = _add_registration(
             attendee_id,
@@ -1035,7 +1061,15 @@ class OffsetHandler(BaseHTTPRequestHandler):
             status=status,
         )
         accepted = created or reactivated
-        if held and accepted:
+        if verification_fallback and accepted:
+            _log(
+                "offset_registered_fallback",
+                attendee_id=attendee_id,
+                created=created,
+                reactivated=reactivated,
+                client=hint,
+            )
+        elif held and accepted and not verification_fallback:
             _log(
                 "registration_held_for_review",
                 attendee_id=attendee_id,

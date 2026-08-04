@@ -1288,9 +1288,45 @@ def combined_attendee_talks(
         return talks_geo
 
     extra = geocoded_delegate_list(delegates, show_progress=show_progress)
+    delegate_by_key = {
+        delegate_person_key(str(row["presenter"])): row
+        for _, row in extra.iterrows()
+        if str(row.get("presenter") or "").strip()
+    }
+
+    talks_out = talks_geo.copy()
+    geo_columns = (
+        "latitude",
+        "longitude",
+        "geocode_level",
+        "geocoded",
+        "query_used",
+        "country_code",
+    )
+    for col in geo_columns:
+        if col not in talks_out.columns:
+            talks_out[col] = pd.NA
+
+    for index, row in talks_out.iterrows():
+        if pd.notna(row.get("latitude")) and pd.notna(row.get("longitude")):
+            continue
+        presenter = str(row.get("presenter") or "").strip()
+        if not presenter:
+            continue
+        hit = delegate_by_key.get(delegate_person_key(presenter))
+        if hit is None or pd.isna(hit.get("latitude")) or pd.isna(hit.get("longitude")):
+            continue
+        talks_out.at[index, "latitude"] = hit["latitude"]
+        talks_out.at[index, "longitude"] = hit["longitude"]
+        talks_out.at[index, "geocoded"] = True
+        talks_out.at[index, "geocode_level"] = hit.get("geocode_level")
+        talks_out.at[index, "query_used"] = hit.get("query_used")
+        if "country_code" in hit.index and pd.notna(hit.get("country_code")):
+            talks_out.at[index, "country_code"] = hit["country_code"]
+
     extra = extra.dropna(subset=["latitude", "longitude"])
     if extra.empty:
-        return talks_geo
+        return talks_out
 
     speaker_cols = [
         "presenter",
@@ -1306,7 +1342,7 @@ def combined_attendee_talks(
 
     talk_person_keys = {
         delegate_person_key(str(name))
-        for name in talks_geo["presenter"].dropna().astype(str)
+        for name in talks_out["presenter"].dropna().astype(str)
         if str(name).strip()
     }
     extra = extra.loc[
@@ -1318,15 +1354,20 @@ def combined_attendee_talks(
 
     combined = pd.concat(
         [
-            talks_geo,
+            talks_out,
             extra[speaker_cols],
         ],
         ignore_index=True,
     )
     combined = combined.assign(
-        _person_key=lambda frame: frame["presenter"].astype(str).map(delegate_person_key)
+        _person_key=lambda frame: frame["presenter"].astype(str).map(delegate_person_key),
+        _has_coords=lambda frame: frame["latitude"].notna() & frame["longitude"].notna(),
     )
-    combined = combined.sort_values(["_person_key", "geocode_level"], na_position="last")
+    combined = combined.sort_values(
+        ["_person_key", "_has_coords", "geocode_level"],
+        ascending=[True, False, True],
+        na_position="last",
+    )
     return combined.drop_duplicates(subset=["_person_key"], keep="first").drop(
-        columns=["_person_key"]
+        columns=["_person_key", "_has_coords"]
     )

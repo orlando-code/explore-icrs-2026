@@ -1663,6 +1663,71 @@ button:active {
   margin: 0;
 }
 
+.emissions-offset-register-action {
+  position: relative;
+  width: 100%;
+}
+
+.emissions-offset-turnstile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  margin-bottom: 0.35rem;
+  transition: opacity 0.2s ease, max-height 0.25s ease, margin 0.25s ease;
+}
+
+.emissions-offset-turnstile:empty {
+  display: none;
+}
+
+.emissions-offset-register-action--loading .emissions-offset-turnstile,
+.emissions-offset-register-action--challenge .emissions-offset-turnstile {
+  min-height: 65px;
+}
+
+.emissions-offset-register-action--ready .emissions-offset-turnstile {
+  max-height: 0;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.emissions-offset-turnstile-hint {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--muted);
+  text-align: center;
+}
+
+.emissions-offset-turnstile-hint[hidden] {
+  display: none;
+}
+
+.emissions-offset-register-action--ready .emissions-offset-turnstile-hint {
+  display: none;
+}
+
+.emissions-offset-register-action--loading .btn-primary,
+.emissions-offset-register-action--challenge .btn-primary {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.emissions-offset-register-action--failed .emissions-offset-turnstile {
+  display: none;
+}
+
+.emissions-offset-register-action--failed .emissions-offset-turnstile-hint {
+  color: #8a5a00;
+}
+
+.emissions-offset-register-action .btn-primary {
+  width: 100%;
+}
+
 .emissions-offset-register .form-actions .btn-primary,
 .emissions-offset-register .form-actions .btn-ghost {
   width: 100%;

@@ -7,6 +7,7 @@ from typing import Any
 
 import pandas as pd
 
+from src.capital_coords import resolve_capital_fallback
 from src.delegates import load_delegates, normalize_person_name, country_to_iso2
 from src.geocode import (
     DEFAULT_OVERRIDES_PATH,
@@ -101,6 +102,73 @@ def build_geocode_lookup(geocodes: pd.DataFrame) -> dict[str, Any]:
     }
 
 
+def _override_hit(
+    affiliation: str,
+    override_lookup: dict[str, dict],
+    *,
+    organisation: str = "",
+    country: str = "",
+) -> dict[str, Any] | None:
+    candidates = [affiliation]
+    if organisation and country:
+        candidates.append(f"{organisation}, {country}")
+    for candidate in candidates:
+        override = _lookup_override(candidate, override_lookup)
+        if (
+            override is not None
+            and override.get("latitude") is not None
+            and override.get("longitude") is not None
+        ):
+            return {
+                "latitude": float(override["latitude"]),
+                "longitude": float(override["longitude"]),
+                "formatted_address": "",
+                "query_used": str(override.get("query_used") or "override"),
+                "geocode_level": str(override.get("geocode_level") or "institute"),
+                "geocoded": True,
+                "organisation": organisation or _parse_affiliation_parts(affiliation)[0],
+                "country": country or _parse_affiliation_parts(affiliation)[1],
+                "affiliation": affiliation,
+            }
+    return None
+
+
+def _org_country_hit(
+    organisation: str,
+    country: str,
+    *,
+    affiliation: str,
+    lookup: dict[str, Any],
+) -> dict[str, Any] | None:
+    composite = f"{organisation}, {country}"
+    for key in (composite.casefold(), canonical_affiliation_key(composite).casefold()):
+        hit = lookup["by_affiliation"].get(key)
+        if hit is not None:
+            return hit
+
+    hit = lookup["by_org_country"].get(
+        (organisation.casefold(), country.casefold())
+    )
+    if hit is not None:
+        return hit
+
+    fallback = resolve_capital_fallback(organisation, country)
+    if fallback is not None:
+        _city, lat, lon, query_label = fallback
+        return {
+            "latitude": lat,
+            "longitude": lon,
+            "formatted_address": "",
+            "query_used": query_label,
+            "geocode_level": "country",
+            "geocoded": True,
+            "organisation": organisation,
+            "country": country,
+            "affiliation": affiliation,
+        }
+    return None
+
+
 def resolve_geocode(
     affiliation: str,
     *,
@@ -116,32 +184,36 @@ def resolve_geocode(
     if not affiliation:
         return None
 
+    organisation, country = _parse_affiliation_parts(affiliation)
+    if not country and presenter:
+        delegate = delegate_lookup or _delegate_org_country_lookup()
+        match = delegate.get(normalize_person_name(presenter)) or delegate.get(
+            presenter.strip().casefold()
+        )
+        if match:
+            delegate_org, delegate_country = match
+            organisation = organisation or delegate_org
+            country = delegate_country
+
     override_lookup = overrides if overrides is not None else load_geocode_overrides()
-    override = _lookup_override(affiliation, override_lookup)
-    if (
-        override is not None
-        and override.get("latitude") is not None
-        and override.get("longitude") is not None
-    ):
-        organisation, country = _parse_affiliation_parts(affiliation)
-        if not country and presenter:
-            delegate = delegate_lookup or _delegate_org_country_lookup()
-            match = delegate.get(normalize_person_name(presenter)) or delegate.get(
-                presenter.strip().casefold()
-            )
-            if match:
-                organisation, country = match
-        return {
-            "latitude": float(override["latitude"]),
-            "longitude": float(override["longitude"]),
-            "formatted_address": "",
-            "query_used": str(override.get("query_used") or "override"),
-            "geocode_level": str(override.get("geocode_level") or "institute"),
-            "geocoded": True,
-            "organisation": organisation,
-            "country": country,
-            "affiliation": affiliation,
-        }
+    override = _override_hit(
+        affiliation,
+        override_lookup,
+        organisation=organisation,
+        country=country,
+    )
+    if override is not None:
+        return override
+
+    if organisation and country:
+        hit = _org_country_hit(
+            organisation,
+            country,
+            affiliation=affiliation,
+            lookup=lookup,
+        )
+        if hit is not None:
+            return hit
 
     hit = lookup["by_affiliation"].get(affiliation.casefold())
     if hit is not None:
@@ -150,25 +222,18 @@ def resolve_geocode(
     if hit is not None:
         return hit
 
-    organisation, country = _parse_affiliation_parts(affiliation)
-    if not country and presenter:
-        delegate = delegate_lookup or _delegate_org_country_lookup()
-        match = delegate.get(normalize_person_name(presenter)) or delegate.get(
-            presenter.strip().casefold()
-        )
-        if match:
-            organisation, country = match
-
-    if organisation and country:
-        hit = lookup["by_org_country"].get(
-            (organisation.casefold(), country.casefold())
-        )
-        if hit is not None:
-            return hit
-
     if organisation:
         candidates = lookup["by_org"].get(organisation.casefold(), [])
-        if len(candidates) == 1:
+        if country:
+            country_key = country.casefold()
+            country_matches = [
+                candidate
+                for candidate in candidates
+                if str(candidate.get("country") or "").casefold() == country_key
+            ]
+            if len(country_matches) == 1:
+                return country_matches[0]
+        elif len(candidates) == 1:
             return candidates[0]
 
     return None

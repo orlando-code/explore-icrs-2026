@@ -4,13 +4,42 @@ import { OFFSET_API_URL, REQUIRE_DELEGATE_ID, SKIP_TURNSTILE, TURNSTILE_SITE_KEY
 let offsetTurnstileWidgetId = null;
 let offsetTurnstileToken = "";
 let offsetTurnstilePending = null;
+/** @type {"loading"|"challenge"|"ready"|"failed"} */
+let offsetTurnstileState = "loading";
+let offsetTurnstileFailureReason = "";
 
-const TURNSTILE_READY_TIMEOUT_MS = 12_000;
-const TURNSTILE_EXECUTE_TIMEOUT_MS = 20_000;
+const TURNSTILE_READY_TIMEOUT_MS = 15_000;
+const TURNSTILE_EXECUTE_TIMEOUT_MS = 25_000;
+const TURNSTILE_SCRIPT_POLL_MS = 100;
 const FETCH_TIMEOUT_MS = 25_000;
 
+const TURNSTILE_LOAD_FAILED_MSG =
+  "Security check could not load. If you use an ad blocker or VPN, try disabling it briefly, or submit for manual review below.";
+const TURNSTILE_TIMEOUT_MSG =
+  "Security check timed out. Check your connection and try again, or submit for manual review.";
+const TURNSTILE_CHALLENGE_MSG = "Complete the security check above to register.";
+
+async function waitForTurnstileScript(timeoutMs = TURNSTILE_READY_TIMEOUT_MS) {
+  if (window.turnstile) return true;
+  const started = Date.now();
+  return new Promise((resolve) => {
+    const timerId = window.setInterval(() => {
+      if (window.turnstile) {
+        window.clearInterval(timerId);
+        resolve(true);
+        return;
+      }
+      if (Date.now() - started >= timeoutMs) {
+        window.clearInterval(timerId);
+        resolve(false);
+      }
+    }, TURNSTILE_SCRIPT_POLL_MS);
+  });
+}
+
 async function waitForTurnstileReady(timeoutMs = TURNSTILE_READY_TIMEOUT_MS) {
-  if (!window.turnstile) return false;
+  const scriptReady = await waitForTurnstileScript(timeoutMs);
+  if (!scriptReady || !window.turnstile) return false;
   if (!window.turnstile.ready) return true;
   return new Promise((resolve) => {
     let settled = false;
@@ -27,6 +56,47 @@ async function waitForTurnstileReady(timeoutMs = TURNSTILE_READY_TIMEOUT_MS) {
       finish(Boolean(window.turnstile));
     }
   });
+}
+
+function setOffsetTurnstileState(state, reason = "") {
+  offsetTurnstileState = state;
+  offsetTurnstileFailureReason = reason;
+}
+
+function offsetTurnstileActionEl() {
+  return document.getElementById("emissions-offset-register-action");
+}
+
+function offsetTurnstileHintEl() {
+  return document.getElementById("emissions-offset-turnstile-hint");
+}
+
+function syncOffsetTurnstileChrome() {
+  const action = offsetTurnstileActionEl();
+  if (!action) return;
+  action.classList.remove(
+    "emissions-offset-register-action--loading",
+    "emissions-offset-register-action--challenge",
+    "emissions-offset-register-action--ready",
+    "emissions-offset-register-action--failed",
+  );
+  if (SKIP_TURNSTILE || !TURNSTILE_SITE_KEY) {
+    action.classList.add("emissions-offset-register-action--ready");
+    return;
+  }
+  action.classList.add(`emissions-offset-register-action--${offsetTurnstileState}`);
+
+  const hint = offsetTurnstileHintEl();
+  if (!hint) return;
+  if (offsetTurnstileState === "challenge") {
+    hint.textContent = TURNSTILE_CHALLENGE_MSG;
+    hint.hidden = false;
+  } else if (offsetTurnstileState === "failed") {
+    hint.textContent = offsetTurnstileFailureReason || TURNSTILE_LOAD_FAILED_MSG;
+    hint.hidden = false;
+  } else {
+    hint.hidden = true;
+  }
 }
 
 async function fetchJsonWithTimeout(url, options = {}, timeoutMs = FETCH_TIMEOUT_MS) {
@@ -49,15 +119,7 @@ function finishOffsetTurnstilePending(token = "") {
 }
 
 function offsetTurnstileMountEl() {
-  let mount = document.getElementById("emissions-offset-turnstile");
-  if (!mount) {
-    mount = document.createElement("div");
-    mount.id = "emissions-offset-turnstile";
-    mount.className = "turnstile-mount";
-    mount.setAttribute("aria-hidden", "true");
-    document.body.appendChild(mount);
-  }
-  return mount;
+  return document.getElementById("emissions-offset-turnstile");
 }
 
 function resetTurnstile() {
@@ -76,28 +138,45 @@ function resetTurnstile() {
 function mountOffsetTurnstile() {
   resetTurnstile();
   const mount = offsetTurnstileMountEl();
-  if (!TURNSTILE_SITE_KEY || !window.turnstile) return;
+  if (!TURNSTILE_SITE_KEY || !window.turnstile || !mount) {
+    setOffsetTurnstileState("failed", TURNSTILE_LOAD_FAILED_MSG);
+    syncOffsetTurnstileChrome();
+    return false;
+  }
+  setOffsetTurnstileState("challenge");
+  syncOffsetTurnstileChrome();
   try {
     offsetTurnstileWidgetId = window.turnstile.render(mount, {
       sitekey: TURNSTILE_SITE_KEY,
-      action: "turnstile-spin-v2",
-      size: "invisible",
+      action: "offset-pledge",
+      size: "compact",
+      appearance: "interaction-only",
       callback: (token) => {
         offsetTurnstileToken = token;
+        setOffsetTurnstileState("ready");
+        syncOffsetTurnstileChrome();
         finishOffsetTurnstilePending(token);
       },
       "expired-callback": () => {
         offsetTurnstileToken = "";
+        setOffsetTurnstileState("challenge");
+        syncOffsetTurnstileChrome();
         finishOffsetTurnstilePending("");
       },
       "error-callback": () => {
         offsetTurnstileToken = "";
+        setOffsetTurnstileState("failed", TURNSTILE_LOAD_FAILED_MSG);
+        syncOffsetTurnstileChrome();
         finishOffsetTurnstilePending("");
       },
     });
+    return true;
   } catch (error) {
     offsetTurnstileWidgetId = null;
     console.warn("Turnstile mount failed:", error);
+    setOffsetTurnstileState("failed", TURNSTILE_LOAD_FAILED_MSG);
+    syncOffsetTurnstileChrome();
+    return false;
   }
 }
 
@@ -108,23 +187,60 @@ function offsetTurnstileResponse() {
 }
 
 async function ensureOffsetTurnstileToken() {
-  const existing = offsetTurnstileResponse();
-  if (existing) return existing;
-  if (offsetTurnstileWidgetId == null) {
-    const ready = await waitForTurnstileReady();
-    if (!ready) return "";
-    mountOffsetTurnstile();
+  if (offsetTurnstileState === "ready") {
+    const existing = offsetTurnstileResponse();
+    if (existing) return existing;
   }
-  if (offsetTurnstileWidgetId == null || !window.turnstile?.execute) return "";
+
+  if (offsetTurnstileWidgetId == null) {
+    setOffsetTurnstileState("loading");
+    syncOffsetTurnstileChrome();
+    const ready = await waitForTurnstileReady();
+    if (!ready) {
+      setOffsetTurnstileState("failed", TURNSTILE_LOAD_FAILED_MSG);
+      syncOffsetTurnstileChrome();
+      return "";
+    }
+    if (!mountOffsetTurnstile()) return "";
+  }
+
+  const cached = offsetTurnstileResponse();
+  if (cached) {
+    setOffsetTurnstileState("ready");
+    syncOffsetTurnstileChrome();
+    return cached;
+  }
+
+  if (!window.turnstile?.execute) {
+    setOffsetTurnstileState("failed", TURNSTILE_LOAD_FAILED_MSG);
+    syncOffsetTurnstileChrome();
+    return "";
+  }
+
+  setOffsetTurnstileState("challenge");
+  syncOffsetTurnstileChrome();
 
   return new Promise((resolve) => {
     const timeoutId = window.setTimeout(() => {
-      finishOffsetTurnstilePending(offsetTurnstileResponse());
+      const token = offsetTurnstileResponse();
+      if (token) {
+        setOffsetTurnstileState("ready");
+        syncOffsetTurnstileChrome();
+        resolve(token);
+        return;
+      }
+      setOffsetTurnstileState("failed", TURNSTILE_TIMEOUT_MSG);
+      syncOffsetTurnstileChrome();
+      finishOffsetTurnstilePending("");
     }, TURNSTILE_EXECUTE_TIMEOUT_MS);
 
     offsetTurnstilePending = {
       resolve: (token) => {
         window.clearTimeout(timeoutId);
+        if (token) {
+          setOffsetTurnstileState("ready");
+          syncOffsetTurnstileChrome();
+        }
         resolve(token);
       },
     };
@@ -133,35 +249,37 @@ async function ensureOffsetTurnstileToken() {
       window.turnstile.execute(offsetTurnstileWidgetId);
     } catch {
       window.clearTimeout(timeoutId);
+      setOffsetTurnstileState("failed", TURNSTILE_LOAD_FAILED_MSG);
+      syncOffsetTurnstileChrome();
       finishOffsetTurnstilePending("");
     }
   });
 }
 
-function initOffsetTurnstile() {
-  if (!TURNSTILE_SITE_KEY || SKIP_TURNSTILE || offsetTurnstileWidgetId != null) return;
-
-  const tryMount = () => {
-    void waitForTurnstileReady().then((ready) => {
-      if (ready && offsetTurnstileWidgetId == null) mountOffsetTurnstile();
-    });
-  };
-
-  if (window.turnstile) {
-    tryMount();
+async function initOffsetTurnstile(onStateChange) {
+  if (!TURNSTILE_SITE_KEY || SKIP_TURNSTILE) {
+    setOffsetTurnstileState("ready");
+    syncOffsetTurnstileChrome();
+    onStateChange?.();
     return;
   }
 
-  let attempts = 0;
-  const timerId = window.setInterval(() => {
-    attempts += 1;
-    if (window.turnstile) {
-      window.clearInterval(timerId);
-      tryMount();
-    } else if (attempts >= 150) {
-      window.clearInterval(timerId);
-    }
-  }, 100);
+  setOffsetTurnstileState("loading");
+  syncOffsetTurnstileChrome();
+
+  const ready = await waitForTurnstileReady();
+  if (!ready) {
+    setOffsetTurnstileState("failed", TURNSTILE_LOAD_FAILED_MSG);
+    syncOffsetTurnstileChrome();
+    onStateChange?.();
+    return;
+  }
+
+  if (mountOffsetTurnstile()) {
+    void ensureOffsetTurnstileToken().then(() => onStateChange?.());
+  } else {
+    onStateChange?.();
+  }
 }
 
 const STATIC_REGISTRATIONS_URL = "data/offset-registrations.json";
@@ -589,6 +707,13 @@ export function createOffsetTracker({
     renderStatus();
   }
 
+  function turnstileAllowsSubmit() {
+    if (SKIP_TURNSTILE || !TURNSTILE_SITE_KEY) return true;
+    if (offsetTurnstileState === "ready" && offsetTurnstileResponse()) return true;
+    if (offsetTurnstileState === "failed" && requireDelegateId && delegateIdReady()) return true;
+    return false;
+  }
+
   function renderTracker() {
     const { registeredCount, totalAttendees, percent } = stats();
     const isRegistering = pendingRegistrationIds.size > 0;
@@ -602,14 +727,33 @@ export function createOffsetTracker({
     if (elements.form) {
       elements.form.classList.toggle("emissions-offset-register--pending", isRegistering);
     }
+    syncOffsetTurnstileChrome();
     if (elements.registerButton) {
       const attendee = resolveSelectedAttendee();
+      const awaitingTurnstile =
+        !SKIP_TURNSTILE &&
+        TURNSTILE_SITE_KEY &&
+        (offsetTurnstileState === "loading" || offsetTurnstileState === "challenge");
       elements.registerButton.disabled =
         isRegistering ||
         !attendee ||
         !delegateIdReady() ||
-        pendingRegistrationIds.has(attendee.id);
-      elements.registerButton.textContent = isRegistering ? "Registering…" : "I've offset my travel";
+        !turnstileAllowsSubmit() ||
+        awaitingTurnstile ||
+        pendingRegistrationIds.has(attendee?.id);
+      let label = "I've pledged";
+      if (isRegistering) {
+        label = "Registering…";
+      } else if (awaitingTurnstile) {
+        label = offsetTurnstileState === "loading" ? "Preparing…" : "Complete check above";
+      } else if (
+        offsetTurnstileState === "failed" &&
+        requireDelegateId &&
+        delegateIdReady()
+      ) {
+        label = "Submit for manual review";
+      }
+      elements.registerButton.textContent = label;
       elements.registerButton.setAttribute("aria-busy", isRegistering ? "true" : "false");
     }
   }
@@ -622,33 +766,51 @@ export function createOffsetTracker({
     if (updateMap) onChange?.();
   }
 
-  async function persistRegistration(attendee, token) {
+  async function persistRegistration(attendee, token, { verificationFallback = false } = {}) {
     try {
+      const body = {
+        id: attendee.id,
+        name: attendee.name,
+        affiliation_key: affiliationMapKey(attendee.affiliation || ""),
+        pool: isSpeakerAttendee?.(attendee) === false ? "delegates" : "speakers",
+        ...(requireDelegateId ? { delegate_id: normalizedDelegateId() } : {}),
+      };
+      if (verificationFallback) {
+        body.verification_fallback = true;
+      } else {
+        body["cf-turnstile-response"] = token;
+      }
+
       const { response, payload } = await fetchJsonWithTimeout(apiUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          id: attendee.id,
-          name: attendee.name,
-          affiliation_key: affiliationMapKey(attendee.affiliation || ""),
-          pool: isSpeakerAttendee?.(attendee) === false ? "delegates" : "speakers",
-          ...(requireDelegateId ? { delegate_id: normalizedDelegateId() } : {}),
-          "cf-turnstile-response": token,
-        }),
+        body: JSON.stringify(body),
       });
 
       if (!response.ok) {
         offsetTurnstileToken = "";
         window.turnstile?.reset?.(offsetTurnstileWidgetId);
+        const errorText = String(payload.error || "");
         const delegateMismatch =
+          requireDelegateId && errorText.toLowerCase().includes("delegate id");
+        const turnstileFailed =
+          payload.code === "turnstile_failed" ||
+          errorText.toLowerCase().includes("verification failed");
+        if (
+          turnstileFailed &&
           requireDelegateId &&
-          (response.status === 403 ||
-            String(payload.error || "").toLowerCase().includes("delegate id"));
+          delegateIdReady() &&
+          !verificationFallback
+        ) {
+          return persistRegistration(attendee, "", { verificationFallback: true });
+        }
         return {
           created: false,
           error: delegateMismatch
             ? DELEGATE_ID_ERROR
-            : payload.error || "Registration failed. Please try again.",
+            : turnstileFailed
+              ? "Security check failed on the server. Try again, or submit for manual review."
+              : errorText || "Registration failed. Please try again.",
           underDelegateField: delegateMismatch,
         };
       }
@@ -752,12 +914,28 @@ export function createOffsetTracker({
     }
 
     let token = "local-dev";
-    if (!SKIP_TURNSTILE) {
-      setStatus("Verifying…");
-      token = await ensureOffsetTurnstileToken();
+    let verificationFallback = false;
+    if (!SKIP_TURNSTILE && TURNSTILE_SITE_KEY) {
+      token = offsetTurnstileResponse();
       if (!token) {
-        setStatus("Verification failed. Please try again.", { error: true });
-        return false;
+        setStatus("Verifying…");
+        token = await ensureOffsetTurnstileToken();
+      }
+      if (!token) {
+        if (requireDelegateId && delegateIdReady() && offsetTurnstileState === "failed") {
+          verificationFallback = true;
+          setStatus(
+            "Security check unavailable — submitting your pledge for manual review…",
+          );
+        } else if (offsetTurnstileState === "challenge") {
+          setStatus(TURNSTILE_CHALLENGE_MSG, { error: true });
+          return false;
+        } else {
+          setStatus(offsetTurnstileFailureReason || TURNSTILE_LOAD_FAILED_MSG, {
+            error: true,
+          });
+          return false;
+        }
       }
     }
 
@@ -767,7 +945,7 @@ export function createOffsetTracker({
     elements.query?.blur();
 
     try {
-      const result = await persistRegistration(attendee, token);
+      const result = await persistRegistration(attendee, token, { verificationFallback });
       applyRegistrationResult(result);
       if (result?.created) onRegisterSuccess?.(attendee);
       return Boolean(result?.created);
@@ -857,11 +1035,11 @@ export function createOffsetTracker({
     if (elements.delegateField) {
       elements.delegateField.hidden = !requireDelegateId;
     }
-    initOffsetTurnstile();
     refreshAttendees();
     bindEvents();
     startPolling();
     render();
+    void initOffsetTurnstile(() => render({ updateMap: false }));
     try {
       await loadRegistrations();
       rebuildOffsetCounts();

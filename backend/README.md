@@ -7,7 +7,7 @@ Small stdlib-only HTTP service that stores self-reported travel offsets for the 
 | Method | Path | Description |
 |--------|------|-------------|
 | `GET` | `/api/offsets` | Aggregate counts only — `{ counts: { speakers, delegates }, totals: { speakers, delegates } }` |
-| `POST` | `/api/offsets` | Body `{ "id": "offset-…", "name": "…", "affiliation_key": "…", "pool": "speakers", "cf-turnstile-response": "…" }` — idempotent |
+| `POST` | `/api/offsets` | Body `{ "id": "offset-…", "name": "…", "affiliation_key": "…", "pool": "speakers", "cf-turnstile-response": "…" }` — idempotent. If Turnstile cannot run in the browser but a valid `delegate_id` was supplied, send `"verification_fallback": true` instead of a Turnstile token; the row is stored as `pending` for manual review. |
 | `POST` | `/api/contact` | Body `{ "name": "…", "affiliation": "…", "cf-turnstile-response": "…" }` — verified email lookup |
 | `GET` | `/api/admin/export` | Full ledger + audit trail. Needs `Authorization: Bearer $ADMIN_TOKEN`; `404` when unset |
 | `GET` | `/health` | Liveness check |
@@ -127,6 +127,8 @@ Point `OFFSET_DB_PATH` at the production volume (or run it inside the deployed c
 ### If registrations spike
 
 Once more than `REVIEW_THRESHOLD_PER_HOUR` registrations arrive in an hour, new rows are stored as `pending` instead of `published`. The visitor is still thanked and nothing is lost, but the public totals stop moving until someone looks. `registration_held_for_review` appears in the logs when this trips.
+
+If the browser cannot complete Cloudflare Turnstile (blocker, timeout, etc.) but the delegate ID matches, the frontend may POST with `"verification_fallback": true` and no Turnstile token. Those rows are always `pending`; look for `offset_registered_fallback` in the logs.
 
 `stats` shows the per-hour rate and the busiest callers as salted digests. To withdraw a burst, preview it and then apply:
 

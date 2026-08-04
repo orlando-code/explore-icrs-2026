@@ -12,7 +12,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.affiliation_geocodes import attach_affiliation_geocodes
-from src.delegates import export_non_speaking_delegates_js
+from src.delegates import combined_attendee_talks, export_non_speaking_delegates_js, load_delegates
 from src.map_exclusions import export_map_exclusions_js
 from src.plot_utils import export_attendee_site_data
 from src.talks_export import export_talks_catalog
@@ -50,6 +50,11 @@ def main() -> None:
 
     talks = load_talks()
     talks_geo = attach_affiliation_geocodes(talks)
+    talks_geo = combined_attendee_talks(
+        talks_geo,
+        include_non_speakers=True,
+        delegates=load_delegates(),
+    )
     exclusions_output = export_map_exclusions_js()
     output = export_attendee_site_data(talks_geo, save_path=args.output)
     talks_output = export_talks_catalog(talks_geo)
