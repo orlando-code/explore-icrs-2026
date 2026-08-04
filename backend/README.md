@@ -63,12 +63,12 @@ API at `http://localhost:8080/api/offsets`. Data persists in a Docker volume.
 
 ### Delegate ID verification (feature branch)
 
-See [docs/DELEGATE-ID-TESTING.md](../docs/DELEGATE-ID-TESTING.md). Docker Compose enables `REQUIRE_DELEGATE_ID=1` and mounts `backend/data/delegate_ids.sample.csv`.
+See [docs/DELEGATE-ID-TESTING.md](../docs/DELEGATE-ID-TESTING.md). Docker Compose enables `REQUIRE_DELEGATE_ID=1` and mounts `backend/data/delegate_ids.csv` (generate first).
 
-Generate the full list (gitignored):
+Export the curated name → ID list (gitignored):
 
 ```bash
-python3 scripts/generate_delegate_ids_csv.py
+python3 scripts/export_delegate_ids_csv.py
 ```
 
 Environment variables:

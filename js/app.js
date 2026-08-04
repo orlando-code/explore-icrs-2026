@@ -129,6 +129,7 @@ const els = {
   emissionsOffsetTracker: $("emissions-offset-tracker"),
   emissionsOffsetTrackerFill: $("emissions-offset-tracker-fill"),
   emissionsOffsetTrackerLabel: $("emissions-offset-tracker-label"),
+  emissionsOffsetChoroplethLegend: $("emissions-offset-choropleth-legend"),
   emissionsContext: $("emissions-context"),
   emissionsModeBreakdown: $("emissions-mode-breakdown"),
   emissionsLegend: $("emissions-legend"),
@@ -137,6 +138,7 @@ const els = {
   emissionsResultsTitle: $("emissions-results-title"),
   emissionsAssumptions: $("emissions-assumptions"),
   emissionsMap: $("emissions-map"),
+  emissionsDistanceLabels: $("emissions-distance-labels"),
   emissionsLineTooltip: $("emissions-line-tooltip"),
   emissionsHoverCard: $("emissions-hover-card"),
   emissionsHoverAffiliation: $("emissions-hover-affiliation"),
@@ -320,6 +322,7 @@ const shareView = createShareView(SITE_DATA, {
 
 const emissionsView = createEmissionsView(EMISSIONS_DATA, SITE_DATA, {
   mapContainer: els.emissionsMap,
+  distanceLabels: els.emissionsDistanceLabels,
   lineTooltip: els.emissionsLineTooltip,
   headline: els.emissionsHeadline,
   headlineTotal: $("emissions-total"),
@@ -339,6 +342,7 @@ const emissionsView = createEmissionsView(EMISSIONS_DATA, SITE_DATA, {
   offsetTracker: els.emissionsOffsetTracker,
   offsetTrackerFill: els.emissionsOffsetTrackerFill,
   offsetTrackerLabel: els.emissionsOffsetTrackerLabel,
+  offsetChoroplethLegend: els.emissionsOffsetChoroplethLegend,
   context: els.emissionsContext,
   modeBreakdown: els.emissionsModeBreakdown,
   legend: els.emissionsLegend,
@@ -405,6 +409,9 @@ function tabForHash(hash) {
   if (hash === "methods-panel" || hash === "methods-offsetting" || hash.startsWith("methods-")) {
     return "methods";
   }
+  if (hash === "share-contact-title" || hash.startsWith("share-")) {
+    return "share";
+  }
   return null;
 }
 
@@ -421,6 +428,17 @@ function navigateToHash({ scroll = true } = {}) {
   });
 }
 
+function openShareContact(event) {
+  event?.preventDefault?.();
+  setTab("share");
+  requestAnimationFrame(() => {
+    document.getElementById("share-contact-title")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+}
+
 function setTab(tab) {
   if (!VALID_TABS.has(tab)) tab = "map";
   activeTab = tab;
@@ -428,14 +446,14 @@ function setTab(tab) {
   els.tabButtons.forEach((button) => {
     button.classList.toggle("active", button.dataset.tab === tab);
   });
-  els.mapPanel.hidden = tab !== "map";
-  els.networkPanel.hidden = tab !== "network";
-  els.emissionsPanel.hidden = tab !== "emissions";
-  els.methodsPanel.hidden = tab !== "methods";
-  els.mapStage.hidden = tab !== "map";
-  els.networkStage.hidden = tab !== "network";
-  els.emissionsStage.hidden = tab !== "emissions";
-  els.shareStage.hidden = tab !== "share";
+  if (els.mapPanel) els.mapPanel.hidden = tab !== "map";
+  if (els.networkPanel) els.networkPanel.hidden = tab !== "network";
+  if (els.emissionsPanel) els.emissionsPanel.hidden = tab !== "emissions";
+  if (els.methodsPanel) els.methodsPanel.hidden = tab !== "methods";
+  if (els.mapStage) els.mapStage.hidden = tab !== "map";
+  if (els.networkStage) els.networkStage.hidden = tab !== "network";
+  if (els.emissionsStage) els.emissionsStage.hidden = tab !== "emissions";
+  if (els.shareStage) els.shareStage.hidden = tab !== "share";
   layout?.classList.toggle("layout-methods", tab === "methods");
   layout?.classList.toggle("layout-share", tab === "share");
   if (tab === "map") {
@@ -455,6 +473,10 @@ function setTab(tab) {
 
 els.tabButtons.forEach((button) => {
   button.addEventListener("click", () => setTab(button.dataset.tab));
+});
+
+document.querySelectorAll("[data-open-share-contact]").forEach((link) => {
+  link.addEventListener("click", openShareContact);
 });
 
 els.networkModeButtons.forEach((button) => {

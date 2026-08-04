@@ -751,9 +751,9 @@ export function createNetworkView(siteData, elements) {
       `on author list of ${node.connections.toLocaleString()} talk${node.connections === 1 ? "" : "s"}`,
     ];
     // Travel distance hidden for now – re-enable when individual travel estimates are ready.
-    // if (node.distance_km != null) {
-    //   parts.push(`${formatDistance(node.distance_km)} from Auckland`);
-    // }
+    if (node.distance_km != null) {
+      parts.push(`${formatDistance(node.distance_km)} from Auckland`);
+    }
     if (mode === "individual" && node.affiliation) {
       parts.push(
         affiliationNote({

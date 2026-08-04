@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
-"""Generate delegate name → 5-digit ID CSV for offset registration.
+"""Generate delegate name → ID CSV for offset registration (legacy hash-based IDs).
 
-IDs are deterministic per name (stable across regenerations). The CSV stays
-server-side only; visitors must know their ID to register.
+Prefer the curated export from match review:
+
+    python scripts/export_delegate_ids_csv.py
+
+This script remains for generating deterministic placeholder IDs from
+delegates.json when the secret ID database is unavailable.
 
     python scripts/generate_delegate_ids_csv.py
     python scripts/generate_delegate_ids_csv.py --limit 25 --output backend/data/delegate_ids.sample.csv

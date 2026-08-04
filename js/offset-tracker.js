@@ -474,7 +474,7 @@ export function createOffsetTracker({
   }
 
   function delegateIdReady() {
-    return !requireDelegateId || /^\d{5}$/.test(normalizedDelegateId());
+    return !requireDelegateId || /^\d{2,5}$/.test(normalizedDelegateId());
   }
 
   function beginRegistering(attendeeId) {
@@ -738,7 +738,7 @@ export function createOffsetTracker({
       return false;
     }
     if (requireDelegateId && !delegateIdReady()) {
-      setStatus("Enter your 5-digit delegate ID.");
+      setStatus("Enter your delegate ID from your welcome email.");
       return false;
     }
 

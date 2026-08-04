@@ -686,6 +686,7 @@ export function mergeEmissionsMapLocations(
     if (emissions) {
       merged.push({
         ...emissions,
+        emissions_id: emissions.id,
         id: siteLocation.id,
         affiliation: siteLocation.affiliation,
         lat,

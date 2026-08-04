@@ -28,7 +28,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 ATTENDEE_ID_RE = re.compile(r"^offset-[0-9a-f]{8}$")
-DELEGATE_ID_RE = re.compile(r"^\d{5}$")
+DELEGATE_ID_RE = re.compile(r"^\d{2,5}$")
 CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f-\x9f]")
 WHITESPACE_RE = re.compile(r"\s+")
 
@@ -165,7 +165,7 @@ def _delegate_name_key(name: str | None) -> str:
 
 
 def _load_delegate_ids() -> dict[str, str]:
-    """Map normalized delegate name → 5-digit ID."""
+    """Map normalized delegate name → registration ID (2–5 digits)."""
     global _delegate_ids_by_name, _delegate_ids_loaded_path
     path = _delegate_ids_path()
     if not path or not os.path.isfile(path):

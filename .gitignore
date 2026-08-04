@@ -253,3 +253,6 @@ keys.yaml
 data/geocode_cache.json
 
 offsets-before-reset.db
+delegate_unique_id_database.csv
+data/delegate_id_match_review.csv
+data/delegate_id_match_review_*.csv

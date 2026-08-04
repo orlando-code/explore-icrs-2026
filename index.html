@@ -290,14 +290,21 @@
           <p>Estimated return-trip CO₂e for speakers and delegates travelling to ICRS in Auckland.</p>
         </div>
 
-        <p class="emissions-prerelease-banner" role="status">
-          This tool is yet to be officially released alongside an upcoming publication – please check back soon to log your contribution!
-        </p>
-
         <div class="emissions-headline" id="emissions-headline">
-          <p class="emissions-kicker">Total estimated emissions of return travel to ICRS 2026 in Auckland</p>
+          <p class="emissions-kicker">Total estimated emissions of return travel to ICRS 2026</p>
           <p class="emissions-total" id="emissions-total"></p>
           <p class="emissions-assumption" id="emissions-assumption"></p>
+          <div class="emissions-offset-tracker" id="emissions-offset-tracker">
+            <div class="emissions-offset-tracker-bar" aria-hidden="true">
+              <div class="emissions-offset-tracker-fill" id="emissions-offset-tracker-fill"></div>
+            </div>
+            <p class="emissions-offset-tracker-label" id="emissions-offset-tracker-label"></p>
+            <div
+              id="emissions-offset-choropleth-legend"
+              class="emissions-offset-choropleth-legend"
+              hidden
+            ></div>
+          </div>
           <div class="emissions-headline-actions toggle-stack" id="emissions-delegate-toggle-wrap">
             <label class="toggle-field emissions-delegate-toggle">
               <input type="checkbox" id="include-non-speaking-delegates" checked />
@@ -307,12 +314,6 @@
               <input type="checkbox" id="emissions-distance-toggle" />
               <span>Show distance and route to ICRS</span>
             </label>
-          </div>
-          <div class="emissions-offset-tracker" id="emissions-offset-tracker">
-            <div class="emissions-offset-tracker-bar" aria-hidden="true">
-              <div class="emissions-offset-tracker-fill" id="emissions-offset-tracker-fill"></div>
-            </div>
-            <p class="emissions-offset-tracker-label" id="emissions-offset-tracker-label"></p>
           </div>
           <form class="emissions-offset-register entry-form" id="emissions-offset-form" autocomplete="off">
             <h3 class="emissions-offset-register-title">Register your pledge</h3>
@@ -335,19 +336,23 @@
                 placeholder="Search your name…"
               />
               <div id="emissions-offset-suggestions" class="suggestions" role="listbox"></div>
+              <p class="emissions-offset-find-yourself">
+                <a href="#share-contact-title" data-open-share-contact>Can't find yourself / having issues?</a>
+              </p>
             </div>
             <div class="field emissions-offset-delegate-field" id="emissions-offset-delegate-field" hidden>
-              <label for="emissions-offset-delegate-id">Your 5-digit delegate ID</label>
+              <label for="emissions-offset-delegate-id">Your delegate ID (from welcome email)</label>
               <input
                 id="emissions-offset-delegate-id"
                 name="delegate-id"
                 inputmode="numeric"
-                pattern="[0-9]{5}"
+                pattern="[0-9]"
+                minlength="2"
                 maxlength="5"
                 autocomplete="off"
-                placeholder="e.g. 12345"
+                placeholder="e.g. 12 or 123 or 12345"
               />
-              <p class="field-hint">Use the ID from your registration confirmation email.</p>
+              <!-- <p class="field-hint">Use the ID from your registration confirmation email.</p> -->
               <p
                 class="delegate-id-error"
                 id="emissions-offset-delegate-error"
@@ -364,9 +369,11 @@
             ></p>
             <div class="form-actions">
               <button class="btn-primary" type="button" id="emissions-offset-register">
-                I've offset my travel
+                I've pledged
               </button>
+              <a class="btn-ghost" href="#share-contact-title" data-open-share-contact>Something wrong?</a>
             </div>
+  
           </form>
           <p class="emissions-meta" id="emissions-meta"></p>
           <p class="emissions-delegate-note" id="emissions-delegate-note" hidden></p>
@@ -623,17 +630,9 @@
 
       <section class="stage stage-stack" id="emissions-stage" hidden>
         <div class="stage-canvas">
-          <div class="emissions-prerelease-banner emissions-prerelease-banner--stage" role="status">
-            <p>
-              This tool is yet to be officially released alongside an upcoming publication – please check back soon to log your contribution! It will say...
-            </p>
-            <div style="margin-bottom: 1.1em;" aria-hidden="true"></div>
-            <p>
-              Let's turn this map from red to green! Log your carbon contributions below.
-            </p>
-          </div>
           <div class="stage-badge emissions-stage-badge">Point size and colour denote estimated travel CO₂e per affiliation</div>
           <div id="emissions-map"></div>
+          <div id="emissions-distance-labels" class="emissions-distance-labels" hidden></div>
           <div id="emissions-line-tooltip" class="line-tooltip" hidden></div>
         </div>
         <aside class="hover-card stage-detail-panel" id="emissions-hover-card" hidden>
@@ -654,8 +653,8 @@
               <p class="hover-kicker">Contact</p>
               <h3 id="share-contact-title">Orlando Timmerman</h3>
               <p class="welcome-lead">
-                If you find an error or have any suggestions, please contact me at
-                <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a>
+                If you find an error, or have any suggestions or feedback, please contact me at
+                <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a>. I'd especially love to hear from you if you attended the conference but your name doesn't appear in the map/network/emissions search, or if your name appears in the wrong place! In the meantime, see <a href="#methods-panel" data-open-methods>Methods</a> for some explanations of why this might have happened.
               </p>
             </aside>
             <div class="share-qr-col">

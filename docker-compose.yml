@@ -19,7 +19,7 @@ services:
       ADMIN_TOKEN: "${ADMIN_TOKEN:-}"
     volumes:
       - offset-data:/data
-      - ./backend/data/delegate_ids.sample.csv:/app/data/delegate_ids.csv:ro
+      - ./backend/data/delegate_ids.csv:/app/data/delegate_ids.csv:ro
     restart: unless-stopped
 
 volumes:
