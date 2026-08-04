@@ -19,7 +19,7 @@ from geopy.geocoders import Nominatim
 from rich.console import Console
 from rich.table import Table
 
-from src.geocode import _extract_country_hints, attach_coordinates, geocode_affiliations
+from src.geocode import _extract_country_hints
 from src.programme import load_talks
 
 _MISSING_AFFILIATION_TOKENS = frozenset({"nan", "none", "<na>", "nat"})
@@ -38,6 +38,7 @@ def _clean_affiliation_value(value: Any) -> str:
     if text.casefold() in _MISSING_AFFILIATION_TOKENS:
         return ""
     return text
+
 
 API_BASE_URL = "https://api.emissions.dev/v1/travel/emissions"
 API_CONNECT_TIMEOUT_SECONDS = 15
@@ -79,7 +80,7 @@ EMISSIONS_SOURCES = [
         "id": "travel",
         "label": "Return-trip travel estimates",
         "url": "https://emissions.dev/docs/api/travel",
-        "note": "emissions.dev Travel API (economy flights; NZ shared car)",
+        "note": "emissions.dev Travel API (economy flights; Auckland shared car)",
     },
     {
         "id": "national_per_capita",
@@ -333,18 +334,25 @@ def load_attendee_legs(
     """Return one travel leg per unique presenter with a geocoded affiliation."""
     geolocator = Nominatim(user_agent=DEFAULT_USER_AGENT)
     reverse_cache = _load_json(reverse_cache_path)
-    from src.delegates import country_to_iso2, delegate_person_key, load_delegates, normalize_person_name
+    from src.delegates import (
+        country_to_iso2,
+        delegate_person_key,
+        load_delegates,
+        normalize_person_name,
+    )
 
     delegate_rows = load_delegates(refresh=False)
     delegate_countries = {
         normalize_person_name(str(row["full_name"])): str(row["country"]).strip()
         for _, row in delegate_rows.iterrows()
-        if str(row.get("full_name") or "").strip() and str(row.get("country") or "").strip()
+        if str(row.get("full_name") or "").strip()
+        and str(row.get("country") or "").strip()
     }
     delegate_countries_by_key = {
         delegate_person_key(str(row["full_name"])): str(row["country"]).strip()
         for _, row in delegate_rows.iterrows()
-        if str(row.get("full_name") or "").strip() and str(row.get("country") or "").strip()
+        if str(row.get("full_name") or "").strip()
+        and str(row.get("country") or "").strip()
     }
 
     attendees = (
@@ -438,11 +446,9 @@ def load_attendee_legs(
         from src.origin_country import country_from_affiliation, resolve_origin_country
 
         country_code = row.get("country_code")
-        existing_country = (
-            ""
-            if pd.isna(country_code)
-            else str(country_code)
-        ) or str(origin_country or "")
+        existing_country = ("" if pd.isna(country_code) else str(country_code)) or str(
+            origin_country or ""
+        )
         resolved = resolve_origin_country(
             affiliation=str(row.get("affiliation") or ""),
             lat=lat,
@@ -459,10 +465,7 @@ def load_attendee_legs(
         ) or delegate_countries_by_key.get(
             delegate_person_key(str(row.get("presenter") or ""))
         )
-        if (
-            delegate_country
-            and str(origin_country).upper() in {"", "UNKNOWN"}
-        ):
+        if delegate_country and str(origin_country).upper() in {"", "UNKNOWN"}:
             origin_country = country_to_iso2(delegate_country) or delegate_country
         if _looks_like_coordinates(origin_location):
             organisation = str(row.get("affiliation") or "").split(",")[0].strip()
@@ -621,9 +624,7 @@ def estimate_unique_routes(
         .reset_index(drop=True)
     )
     routes = routes[
-        routes["origin_country"]
-        .astype(str)
-        .str.fullmatch(r"[A-Z]{2}", na=False)
+        routes["origin_country"].astype(str).str.fullmatch(r"[A-Z]{2}", na=False)
     ].reset_index(drop=True)
     if limit is not None:
         routes = routes.head(limit)
@@ -652,7 +653,7 @@ def estimate_unique_routes(
     else:
         progress = None
 
-    iterator: Any = routes.itertuples(index=False)
+    # iterator: Any = routes.itertuples(index=False)
     if progress is not None:
         with progress:
             task_id = progress.add_task("Querying emissions.dev", total=len(routes))
@@ -1228,7 +1229,7 @@ def _build_emissions_context(
     )
 
     context: dict[str, Any] = {
-        "tree_years": int(round(total_co2e_kg / TREE_ABSORPTION_KG_PER_YEAR)),
+        "tree_years": round(total_co2e_kg / TREE_ABSORPTION_KG_PER_YEAR),
         "tree_kg_per_year_assumption": TREE_ABSORPTION_KG_PER_YEAR,
         "per_attendee_kg": round(total_co2e_kg / max(len(estimates), 1), 1),
         "country_avg_min_attendees": MIN_COUNTRY_ATTENDEES_FOR_CONTEXT,
@@ -1360,7 +1361,7 @@ def summarize_travel_emissions(
         .sort_values("co2e_kg", ascending=False)
     )
     summary = {
-        "attendees_estimated": int(len(estimates)),
+        "attendees_estimated": len(estimates),
         "attendees_missing_location": int(missing_count),
         "unique_presenters": int(total_presenters),
         "unique_routes_queried": int(unique_routes or 0),
@@ -1438,12 +1439,12 @@ def _build_emissions_locations(
     legs: pd.DataFrame,
 ) -> list[dict[str, Any]]:
     from src.geocode import (
-        affiliation_base_name,
-        affiliation_display_name,
-        canonical_affiliation_key,
         _institution_rule,
         _load_json,
         _lookup_override,
+        affiliation_base_name,
+        affiliation_display_name,
+        canonical_affiliation_key,
     )
 
     overrides = _load_json(Path("data/geocode_overrides.json"))
@@ -1508,7 +1509,7 @@ def _build_emissions_locations(
         co2e_kg = float(group["co2e_kg"].sum())
         co2e_low_kg = float(group["co2e_low_kg"].sum())
         co2e_high_kg = float(group["co2e_high_kg"].sum())
-        attendees = int(len(group))
+        attendees = len(group)
         loc_id = f"emis-loc-{index:04d}"
         key_to_id[key] = loc_id
         rows.append(
@@ -1545,7 +1546,10 @@ def _build_emissions_attendees(
     *,
     country_to_cluster: dict[str, str] | None = None,
 ) -> list[dict[str, Any]]:
-    from src.geocode import affiliation_base_name, affiliation_display_name, canonical_affiliation_key
+    from src.geocode import (
+        affiliation_display_name,
+        canonical_affiliation_key,
+    )
 
     leg_cols = legs[
         ["presenter", "affiliation", "latitude", "longitude"]
@@ -1553,7 +1557,9 @@ def _build_emissions_attendees(
     estimate_cols = ["presenter", "affiliation", "co2e_kg"]
     if "origin_country" in estimates.columns:
         estimate_cols.append("origin_country")
-    merged = estimates[estimate_cols].merge(leg_cols, on=["presenter", "affiliation"], how="left")
+    merged = estimates[estimate_cols].merge(
+        leg_cols, on=["presenter", "affiliation"], how="left"
+    )
 
     attendees: list[dict[str, Any]] = []
     seen: set[str] = set()
@@ -1573,7 +1579,9 @@ def _build_emissions_attendees(
         origin_country = ""
         if "origin_country" in row and pd.notna(row["origin_country"]):
             origin_country = str(row["origin_country"]).strip().upper()
-        cluster_id = country_to_cluster.get(origin_country, "") if origin_country else ""
+        cluster_id = (
+            country_to_cluster.get(origin_country, "") if origin_country else ""
+        )
         attendees.append(
             {
                 "id": _stable_attendee_id(name, location_id),
@@ -1596,7 +1604,10 @@ def _build_pool_payload(
     *,
     country_centroids: dict[str, tuple[float, float]] | None = None,
 ) -> dict[str, Any]:
-    from src.country_clusters import build_country_clusters, country_counts_from_estimates
+    from src.country_clusters import (
+        build_country_clusters,
+        country_counts_from_estimates,
+    )
 
     if not summary.get("context"):
         summary = {
