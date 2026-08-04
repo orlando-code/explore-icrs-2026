@@ -333,6 +333,19 @@ def load_attendee_legs(
     """Return one travel leg per unique presenter with a geocoded affiliation."""
     geolocator = Nominatim(user_agent=DEFAULT_USER_AGENT)
     reverse_cache = _load_json(reverse_cache_path)
+    from src.delegates import country_to_iso2, delegate_person_key, load_delegates, normalize_person_name
+
+    delegate_rows = load_delegates(refresh=False)
+    delegate_countries = {
+        normalize_person_name(str(row["full_name"])): str(row["country"]).strip()
+        for _, row in delegate_rows.iterrows()
+        if str(row.get("full_name") or "").strip() and str(row.get("country") or "").strip()
+    }
+    delegate_countries_by_key = {
+        delegate_person_key(str(row["full_name"])): str(row["country"]).strip()
+        for _, row in delegate_rows.iterrows()
+        if str(row.get("full_name") or "").strip() and str(row.get("country") or "").strip()
+    }
 
     attendees = (
         talks_geo.dropna(subset=["latitude", "longitude"])
@@ -441,9 +454,25 @@ def load_attendee_legs(
             origin_country = resolved
         elif str(origin_country).upper() in {"", "UNKNOWN"}:
             origin_country = country_from_affiliation(str(row.get("affiliation") or ""))
+        delegate_country = delegate_countries.get(
+            normalize_person_name(str(row.get("presenter") or ""))
+        ) or delegate_countries_by_key.get(
+            delegate_person_key(str(row.get("presenter") or ""))
+        )
+        if (
+            delegate_country
+            and str(origin_country).upper() in {"", "UNKNOWN"}
+        ):
+            origin_country = country_to_iso2(delegate_country) or delegate_country
         if _looks_like_coordinates(origin_location):
             organisation = str(row.get("affiliation") or "").split(",")[0].strip()
             origin_location = organisation or origin_location
+        if (
+            str(origin_country).upper() == "AU"
+            and "sydney" in str(origin_location or "").casefold()
+            and "university" in str(origin_location or "").casefold()
+        ):
+            origin_location = "Sydney"
         transport_mode = (
             "car" if origin_country == DEFAULT_DESTINATION_COUNTRY else "flight"
         )
@@ -654,6 +683,54 @@ def estimate_unique_routes(
                 )
             )
 
+    return pd.DataFrame(rows)
+
+
+def routes_from_travel_cache(
+    legs: pd.DataFrame,
+    *,
+    travel_cache_path: Path = DEFAULT_TRAVEL_CACHE_PATH,
+) -> pd.DataFrame:
+    """Build route emissions rows using only entries already in the travel cache."""
+    cache = _load_json(travel_cache_path)
+    routes = (
+        legs.drop_duplicates(
+            subset=["origin_country", "origin_location", "transport_mode"]
+        )
+        .sort_values(["transport_mode", "origin_country", "origin_location"])
+        .reset_index(drop=True)
+    )
+    rows: list[dict[str, Any]] = []
+    for route in routes.itertuples(index=False):
+        params = _central_params_for_route(
+            str(route.origin_country),
+            str(route.origin_location),
+            str(route.transport_mode),
+        )
+        payload = cache.get(_cache_key(params))
+        if not payload:
+            continue
+        central_co2e, distance_km = _extract_co2e(payload)
+        low_co2e, high_co2e = _bounds_from_central(
+            central_co2e, str(route.transport_mode)
+        )
+        rows.append(
+            {
+                "route_key": _route_key(
+                    str(route.origin_country),
+                    str(route.origin_location),
+                    str(route.transport_mode),
+                ),
+                "origin_country": route.origin_country,
+                "origin_location": route.origin_location,
+                "transport_mode": route.transport_mode,
+                "co2e_kg": central_co2e,
+                "co2e_low_kg": low_co2e,
+                "co2e_high_kg": high_co2e,
+                "distance_km": distance_km,
+                "query_used": params,
+            }
+        )
     return pd.DataFrame(rows)
 
 

@@ -124,6 +124,13 @@ def resolve_geocode(
         and override.get("longitude") is not None
     ):
         organisation, country = _parse_affiliation_parts(affiliation)
+        if not country and presenter:
+            delegate = delegate_lookup or _delegate_org_country_lookup()
+            match = delegate.get(normalize_person_name(presenter)) or delegate.get(
+                presenter.strip().casefold()
+            )
+            if match:
+                organisation, country = match
         return {
             "latitude": float(override["latitude"]),
             "longitude": float(override["longitude"]),

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild emissions JS export using existing co2e totals and refreshed geocode legs."""
+"""Rebuild emissions JS export using refreshed geocode legs and cached route emissions."""
 
 from __future__ import annotations
 
@@ -17,10 +17,14 @@ if str(PROJECT_ROOT) not in sys.path:
 from src.delegates import combined_attendee_talks, load_delegates
 from src.travel_emissions import (
     DEFAULT_EMISSIONS_SITE_PATH,
+    TravelEstimate,
+    attach_route_emissions,
     export_emissions_site_data,
     load_attendee_legs,
     load_geocoded_talks,
     load_site_locations,
+    routes_from_travel_cache,
+    summarize_travel_emissions,
 )
 
 
@@ -69,19 +73,58 @@ def _pool_to_summary(pool: dict) -> dict:
     }
 
 
+def _estimates_from_legs(legs: pd.DataFrame, missing_count: int, *, attendee_label: str) -> tuple[pd.DataFrame, dict]:
+    routes = routes_from_travel_cache(legs)
+    attendee_estimates = attach_route_emissions(legs, routes)
+    attendee_estimates = attendee_estimates.dropna(subset=["co2e_kg"])
+
+    estimate_records = []
+    for _, row in attendee_estimates.iterrows():
+        estimate_records.append(
+            TravelEstimate(
+                presenter=row["presenter"],
+                affiliation=row["affiliation"],
+                transport_mode=row["transport_mode"],
+                origin_country=row["origin_country"],
+                origin_location=row["origin_location"],
+                geocode_level=row.get("geocode_level"),
+                co2e_kg=float(row["co2e_kg"]),
+                co2e_low_kg=float(row["co2e_low_kg"]),
+                co2e_high_kg=float(row["co2e_high_kg"]),
+                distance_km=None
+                if pd.isna(row.get("distance_km"))
+                else float(row["distance_km"]),
+                passengers=1,
+                return_trip=True,
+                query_used={},
+            )
+        )
+
+    estimates = pd.DataFrame([estimate.__dict__ for estimate in estimate_records])
+    summary = summarize_travel_emissions(
+        estimates,
+        missing_count=missing_count,
+        total_presenters=legs["presenter"].nunique(),
+        unique_routes=len(routes),
+        api_queries=0,
+        attendee_label=attendee_label,
+        exclusion_note=(
+            "Delegates without geocoded affiliations or cached travel routes are excluded."
+        ),
+    )
+    return estimates, summary
+
+
 def main() -> None:
     emissions_path = DEFAULT_EMISSIONS_SITE_PATH
     payload = _read_emissions_js(emissions_path)
     speakers_pool = payload["speakers"]
-    delegates_pool = payload.get("all_delegates", speakers_pool)
 
     speaker_estimates = _pool_to_estimates(speakers_pool)
     speaker_summary = _pool_to_summary(speakers_pool)
-    delegate_estimates = _pool_to_estimates(delegates_pool)
-    delegate_summary = _pool_to_summary(delegates_pool)
 
     speaker_talks = load_geocoded_talks()
-    speaker_legs, _ = load_attendee_legs(speaker_talks, show_progress=True)
+    speaker_legs, speaker_missing = load_attendee_legs(speaker_talks, show_progress=True)
 
     delegates = load_delegates()
     all_talks = combined_attendee_talks(
@@ -90,7 +133,12 @@ def main() -> None:
         delegates=delegates,
         show_progress=False,
     )
-    all_legs, _ = load_attendee_legs(all_talks, show_progress=True)
+    all_legs, all_missing = load_attendee_legs(all_talks, show_progress=True)
+    delegate_estimates, delegate_summary = _estimates_from_legs(
+        all_legs,
+        len(all_missing),
+        attendee_label="delegates",
+    )
 
     locations = load_site_locations("js/locations.js")
     export_emissions_site_data(

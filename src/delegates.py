@@ -18,8 +18,10 @@ DEFAULT_DELEGATES_JSON_PATH = Path("data/delegates.json")
 DEFAULT_DELEGATES_LAYOUT_CACHE = Path("data/delegates_layout.txt")
 DEFAULT_ORG_OVERRIDES_PATH = Path("data/delegate_organisation_overrides.csv")
 DEFAULT_ORG_REVIEW_PATH = Path("data/delegate_organisation_review.csv")
+DEFAULT_ID_MATCH_REVIEW_GLOB = "delegate_id_match_review_*_merged.csv"
 
 _ORGANISATION_OVERRIDE_CACHE: dict[str, str] | None = None
+_DELEGATE_PERSON_KEY_CACHE: dict[str, str] | None = None
 
 COL_FIRST = 4
 COL_LAST = 32
@@ -525,6 +527,64 @@ def normalize_person_name(value: str) -> str:
     return re.sub(r"\s+", " ", value).strip()
 
 
+def _resolve_id_match_review_path(path: Path | None = None) -> Path | None:
+    if path is not None:
+        return path if path.exists() else None
+    data_dir = Path("data")
+    merged = sorted(
+        data_dir.glob(DEFAULT_ID_MATCH_REVIEW_GLOB),
+        key=lambda item: item.stat().st_mtime,
+        reverse=True,
+    )
+    return merged[0] if merged else None
+
+
+def load_delegate_person_keys(
+    path: Path | str | None = None,
+) -> dict[str, str]:
+    """Map delegate name variants to a stable person key (delegate_id)."""
+    global _DELEGATE_PERSON_KEY_CACHE
+    if _DELEGATE_PERSON_KEY_CACHE is not None and path is None:
+        return _DELEGATE_PERSON_KEY_CACHE
+
+    review_path = _resolve_id_match_review_path(
+        Path(path) if path is not None else None
+    )
+    mapping: dict[str, str] = {}
+    if review_path is not None:
+        review = pd.read_csv(review_path, dtype=str).fillna("")
+        matched = review.loc[
+            review["row_kind"].eq("delegate")
+            & review["match_tier"].isin(["perfect", "confirmed"])
+            & review["delegate_id"].astype(str).str.strip().ne("")
+        ]
+        for _, row in matched.iterrows():
+            person_key = str(row["delegate_id"]).strip()
+            for column in ("delegate_full_name", "id_full_name"):
+                name = str(row.get(column) or "").strip()
+                if not name:
+                    continue
+                mapping[normalize_person_name(name)] = person_key
+                mapping[name.casefold()] = person_key
+
+    if path is None:
+        _DELEGATE_PERSON_KEY_CACHE = mapping
+    return mapping
+
+
+def delegate_person_key(name: str) -> str:
+    """Return a stable person key for deduplicating delegate name variants."""
+    cleaned = str(name or "").strip()
+    if not cleaned:
+        return ""
+    aliases = load_delegate_person_keys()
+    return (
+        aliases.get(normalize_person_name(cleaned))
+        or aliases.get(cleaned.casefold())
+        or normalize_person_name(cleaned)
+    )
+
+
 def name_tokens(value: str) -> set[str]:
     return {token for token in normalize_person_name(value).split() if len(token) > 1}
 
@@ -1023,10 +1083,10 @@ def mark_delegate_speakers(delegates: pd.DataFrame) -> pd.DataFrame:
     return delegates
 
 
-def non_speaking_delegate_groups(
+def delegate_list_groups(
     delegates: pd.DataFrame | None = None,
 ) -> list[dict[str, Any]]:
-    """Group non-speaking delegates by affiliation for the map site."""
+    """Group all delegate-list attendees by affiliation for the map site."""
     from src.geocode import affiliation_display_name, canonical_affiliation_key
     from src.map_exclusions import is_map_excluded, load_map_exclusions
 
@@ -1035,8 +1095,7 @@ def non_speaking_delegate_groups(
 
     map_exclusions = load_map_exclusions()
     groups: dict[str, dict[str, Any]] = {}
-    non_speakers = delegates.loc[~delegates["is_speaker"]]
-    for _, row in non_speakers.iterrows():
+    for _, row in delegates.iterrows():
         affiliation = delegate_affiliation_for_row(row)
         if not affiliation:
             continue
@@ -1064,6 +1123,8 @@ def non_speaking_delegate_groups(
                 "search_text": " ".join(
                     part for part in (name, display, country) if part
                 ).lower(),
+                "is_speaker": bool(row.get("is_speaker")),
+                "person_key": delegate_person_key(name),
             }
         )
 
@@ -1073,13 +1134,20 @@ def non_speaking_delegate_groups(
     return sorted(groups.values(), key=lambda item: item["affiliation"].casefold())
 
 
+def non_speaking_delegate_groups(
+    delegates: pd.DataFrame | None = None,
+) -> list[dict[str, Any]]:
+    """Backwards-compatible alias for delegate_list_groups."""
+    return delegate_list_groups(delegates)
+
+
 def export_non_speaking_delegates_js(
     save_path: str | Path = "js/non-speaking-delegates.js",
     *,
     delegates: pd.DataFrame | None = None,
 ) -> Path:
     """Export non-speaking delegate names grouped by affiliation."""
-    groups = non_speaking_delegate_groups(delegates)
+    groups = delegate_list_groups(delegates)
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     body = (
@@ -1136,12 +1204,12 @@ def _fill_missing_with_capital_fallback(rows: pd.DataFrame) -> pd.DataFrame:
     return rows
 
 
-def geocoded_non_speakers(
+def geocoded_delegate_list(
     delegates: pd.DataFrame | None = None,
     *,
     show_progress: bool = False,
 ) -> pd.DataFrame:
-    """Return geocoded rows for non-speaking delegates."""
+    """Return geocoded rows for every delegate on the published list."""
     from src.affiliation_geocodes import (
         build_geocode_lookup,
         load_geocode_overrides,
@@ -1152,8 +1220,7 @@ def geocoded_non_speakers(
     if delegates is None:
         delegates = load_delegates()
 
-    non_speakers = delegates.loc[~delegates["is_speaker"]].copy()
-    if non_speakers.empty:
+    if delegates.empty:
         return pd.DataFrame(
             columns=[
                 "presenter",
@@ -1166,7 +1233,7 @@ def geocoded_non_speakers(
             ]
         )
 
-    rows = non_speakers.rename(columns={"full_name": "presenter"}).copy()
+    rows = delegates.rename(columns={"full_name": "presenter"}).copy()
     rows["affiliation"] = rows.apply(delegate_affiliation_for_row, axis=1)
     rows["latitude"] = pd.NA
     rows["longitude"] = pd.NA
@@ -1196,8 +1263,17 @@ def geocoded_non_speakers(
         rows["country_code"] = rows["country"].map(country_to_iso2)
     if show_progress:
         geocoded_count = rows.dropna(subset=["latitude", "longitude"]).shape[0]
-        print(f"Non-speaking delegates geocoded: {geocoded_count:,} of {len(rows):,}")
+        print(f"Delegate list geocoded: {geocoded_count:,} of {len(rows):,}")
     return rows
+
+
+def geocoded_non_speakers(
+    delegates: pd.DataFrame | None = None,
+    *,
+    show_progress: bool = False,
+) -> pd.DataFrame:
+    """Backwards-compatible alias for geocoded_delegate_list."""
+    return geocoded_delegate_list(delegates, show_progress=show_progress)
 
 
 def combined_attendee_talks(
@@ -1211,7 +1287,7 @@ def combined_attendee_talks(
     if not include_non_speakers:
         return talks_geo
 
-    extra = geocoded_non_speakers(delegates, show_progress=show_progress)
+    extra = geocoded_delegate_list(delegates, show_progress=show_progress)
     extra = extra.dropna(subset=["latitude", "longitude"])
     if extra.empty:
         return talks_geo
@@ -1228,6 +1304,18 @@ def combined_attendee_talks(
         if col not in extra.columns:
             extra[col] = pd.NA
 
+    talk_person_keys = {
+        delegate_person_key(str(name))
+        for name in talks_geo["presenter"].dropna().astype(str)
+        if str(name).strip()
+    }
+    extra = extra.loc[
+        ~extra["presenter"]
+        .astype(str)
+        .map(delegate_person_key)
+        .isin(talk_person_keys)
+    ]
+
     combined = pd.concat(
         [
             talks_geo,
@@ -1235,5 +1323,10 @@ def combined_attendee_talks(
         ],
         ignore_index=True,
     )
-    combined = combined.sort_values(["presenter", "geocode_level"], na_position="last")
-    return combined.drop_duplicates(subset=["presenter"], keep="first")
+    combined = combined.assign(
+        _person_key=lambda frame: frame["presenter"].astype(str).map(delegate_person_key)
+    )
+    combined = combined.sort_values(["_person_key", "geocode_level"], na_position="last")
+    return combined.drop_duplicates(subset=["_person_key"], keep="first").drop(
+        columns=["_person_key"]
+    )
