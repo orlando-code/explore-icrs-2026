@@ -121,15 +121,6 @@
             />
             <div id="search-suggestions" class="suggestions" role="listbox"></div>
           </div>
-          <div class="toggle-stack">
-            <label class="toggle-field">
-              <input type="checkbox" id="map-include-non-speaking-delegates" checked />
-              <span>Include non-speaking delegates</span>
-            </label>
-            <label class="toggle-field">
-              <input type="checkbox" id="connections-size-toggle" />
-              <span>Size points by talks on author lists</span>
-            </label>
           </div>
           <div class="form-actions">
             <button class="btn-primary" type="submit">Search</button>
@@ -344,16 +335,6 @@
               hidden
             ></div>
           </div>
-          <div class="emissions-headline-actions toggle-stack" id="emissions-delegate-toggle-wrap">
-            <label class="toggle-field emissions-delegate-toggle">
-              <input type="checkbox" id="include-non-speaking-delegates" checked />
-              <span>Include non-speaking delegates</span>
-            </label>
-            <label class="toggle-field emissions-distance-toggle">
-              <input type="checkbox" id="emissions-distance-toggle" />
-              <span>Show distance and route to ICRS</span>
-            </label>
-          </div>
           <form class="emissions-offset-register entry-form" id="emissions-offset-form" autocomplete="off">
             <h3 class="emissions-offset-register-title">Register your pledge</h3>
             <div class="emissions-offset-suggestion">
@@ -429,6 +410,16 @@
             </div>
   
           </form>
+          <div class="emissions-headline-actions toggle-stack" id="emissions-delegate-toggle-wrap">
+            <label class="toggle-field emissions-delegate-toggle">
+              <input type="checkbox" id="include-non-speaking-delegates" checked />
+              <span>Include non-speaking delegates</span>
+            </label>
+            <label class="toggle-field emissions-distance-toggle">
+              <input type="checkbox" id="emissions-distance-toggle" />
+              <span>Show distance and route to ICRS</span>
+            </label>
+          </div>
           <p class="emissions-meta" id="emissions-meta"></p>
           <p class="emissions-delegate-note" id="emissions-delegate-note" hidden></p>
         </div>
