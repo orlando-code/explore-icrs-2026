@@ -40,6 +40,15 @@ def _clean_affiliation_value(value: Any) -> str:
     return text
 
 
+def _row_text(row: Any, field: str) -> str:
+    """Read a string field from a DataFrame row without tripping on pandas NA."""
+    if isinstance(row, dict):
+        value = row.get(field)
+    else:
+        value = row.get(field) if hasattr(row, "get") else getattr(row, field, None)
+    return _clean_affiliation_value(value)
+
+
 API_BASE_URL = "https://api.emissions.dev/v1/travel/emissions"
 API_CONNECT_TIMEOUT_SECONDS = 15
 API_READ_TIMEOUT_SECONDS = 90
@@ -168,7 +177,11 @@ def _api_key() -> str | None:
     )
 
 
-def load_api_key(keys_path: Path = DEFAULT_KEYS_PATH) -> str:
+def load_api_key(
+    keys_path: Path = DEFAULT_KEYS_PATH,
+    *,
+    key_name: str | None = None,
+) -> str:
     """Load emissions.dev API key from env or keys.yaml."""
     env_key = _api_key()
     if env_key:
@@ -186,7 +199,19 @@ def load_api_key(keys_path: Path = DEFAULT_KEYS_PATH) -> str:
         raise ImportError("PyYAML is required to read keys.yaml") from exc
 
     payload = yaml.safe_load(keys_path.read_text(encoding="utf-8")) or {}
-    for name in ("emissions-dev", "emissions_dev", "emissions.dev"):
+    if key_name:
+        value = payload.get(key_name)
+        if value:
+            return str(value).strip()
+        raise ValueError(f"No {key_name} key found in {keys_path}")
+
+    for name in (
+        "emissions-dev",
+        "emissions_dev",
+        "emissions.dev",
+        "second-emissions-dev",
+        "third-emissions-dev",
+    ):
         value = payload.get(name)
         if value:
             return str(value).strip()
@@ -449,8 +474,9 @@ def load_attendee_legs(
         existing_country = ("" if pd.isna(country_code) else str(country_code)) or str(
             origin_country or ""
         )
+        affiliation_text = _row_text(row, "affiliation")
         resolved = resolve_origin_country(
-            affiliation=str(row.get("affiliation") or ""),
+            affiliation=affiliation_text,
             lat=lat,
             lon=lon,
             reverse_cache=reverse_cache,
@@ -459,7 +485,7 @@ def load_attendee_legs(
         if resolved:
             origin_country = resolved
         elif str(origin_country).upper() in {"", "UNKNOWN"}:
-            origin_country = country_from_affiliation(str(row.get("affiliation") or ""))
+            origin_country = country_from_affiliation(affiliation_text)
         delegate_country = delegate_countries.get(
             normalize_person_name(str(row.get("presenter") or ""))
         ) or delegate_countries_by_key.get(
@@ -468,7 +494,7 @@ def load_attendee_legs(
         if delegate_country and str(origin_country).upper() in {"", "UNKNOWN"}:
             origin_country = country_to_iso2(delegate_country) or delegate_country
         if _looks_like_coordinates(origin_location):
-            organisation = str(row.get("affiliation") or "").split(",")[0].strip()
+            organisation = affiliation_text.split(",")[0].strip()
             origin_location = organisation or origin_location
         if (
             str(origin_country).upper() == "AU"
