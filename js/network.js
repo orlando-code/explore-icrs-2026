@@ -10,7 +10,7 @@ import {
   formatDistance,
 } from "./utils.js";
 import { createTalkSimilarityLookup, resolveTalkId } from "./talk-similarity.js";
-import { CONTACT_API_URL, TURNSTILE_SITE_KEY } from "./config.js";
+import { CONTACT_API_URL, SKIP_TURNSTILE, TURNSTILE_SITE_KEY } from "./config.js";
 
 const DEFAULT_NODE_LIMIT = 150;
 const MAX_LINKS_ALL = 6000;
@@ -18,7 +18,20 @@ const DATA_REMOVAL_EMAIL = "rt582@cam.ac.uk";
 let contactTurnstileWidgetId = null;
 let contactTurnstileToken = "";
 let contactTurnstilePending = null;
+/** @type {"loading"|"challenge"|"ready"|"failed"} */
+let contactTurnstileState = "loading";
+let contactTurnstileFailureReason = "";
 const revealedContactEmails = new Map();
+
+const TURNSTILE_READY_TIMEOUT_MS = 15_000;
+const TURNSTILE_EXECUTE_TIMEOUT_MS = 25_000;
+const TURNSTILE_SCRIPT_POLL_MS = 100;
+const CONTACT_TURNSTILE_LOAD_FAILED_MSG =
+  "Security check could not load. If you use an ad blocker or VPN, try disabling it briefly, then tap Show email again.";
+const CONTACT_TURNSTILE_TIMEOUT_MSG =
+  "Security check timed out. Check your connection and try again.";
+const CONTACT_TURNSTILE_CHALLENGE_MSG =
+  "Complete the security check above to show the email address.";
 
 function linkEndpointId(endpoint) {
   return typeof endpoint === "object" ? endpoint.id : endpoint;
@@ -210,16 +223,49 @@ function finishContactTurnstilePending(token = "") {
   resolve(token);
 }
 
-function contactTurnstileMountEl() {
-  let mount = document.getElementById("network-contact-turnstile");
-  if (!mount) {
-    mount = document.createElement("div");
-    mount.id = "network-contact-turnstile";
-    mount.className = "turnstile-mount";
-    mount.setAttribute("aria-hidden", "true");
-    document.body.appendChild(mount);
+function setContactTurnstileState(state, reason = "") {
+  contactTurnstileState = state;
+  contactTurnstileFailureReason = reason;
+}
+
+function contactTurnstileGateEl() {
+  return document.querySelector(".network-contact-email-gate");
+}
+
+function contactTurnstileHintEl() {
+  return document.querySelector(".network-contact-turnstile-hint");
+}
+
+function syncContactTurnstileChrome() {
+  const gate = contactTurnstileGateEl();
+  if (!gate) return;
+  gate.classList.remove(
+    "network-contact-email-gate--loading",
+    "network-contact-email-gate--challenge",
+    "network-contact-email-gate--ready",
+    "network-contact-email-gate--failed"
+  );
+  if (SKIP_TURNSTILE || !TURNSTILE_SITE_KEY) {
+    gate.classList.add("network-contact-email-gate--ready");
+    return;
   }
-  return mount;
+  gate.classList.add(`network-contact-email-gate--${contactTurnstileState}`);
+
+  const hint = contactTurnstileHintEl();
+  if (!hint) return;
+  if (contactTurnstileState === "challenge") {
+    hint.textContent = CONTACT_TURNSTILE_CHALLENGE_MSG;
+    hint.hidden = false;
+  } else if (contactTurnstileState === "failed") {
+    hint.textContent = contactTurnstileFailureReason || CONTACT_TURNSTILE_LOAD_FAILED_MSG;
+    hint.hidden = false;
+  } else {
+    hint.hidden = true;
+  }
+}
+
+function contactTurnstileMountEl() {
+  return document.getElementById("network-contact-turnstile");
 }
 
 function resetContactTurnstile() {
@@ -232,34 +278,52 @@ function resetContactTurnstile() {
   }
   contactTurnstileWidgetId = null;
   contactTurnstileToken = "";
+  contactTurnstileState = "loading";
+  contactTurnstileFailureReason = "";
   finishContactTurnstilePending("");
 }
 
 function mountContactTurnstile() {
   resetContactTurnstile();
   const mount = contactTurnstileMountEl();
-  if (!TURNSTILE_SITE_KEY || !window.turnstile) return;
+  if (!mount) return false;
+  if (!TURNSTILE_SITE_KEY || !window.turnstile) {
+    setContactTurnstileState("failed", CONTACT_TURNSTILE_LOAD_FAILED_MSG);
+    syncContactTurnstileChrome();
+    return false;
+  }
+  setContactTurnstileState("challenge");
+  syncContactTurnstileChrome();
   try {
     contactTurnstileWidgetId = window.turnstile.render(mount, {
       sitekey: TURNSTILE_SITE_KEY,
-      action: "turnstile-spin-v2",
-      size: "invisible",
+      action: "contact-email",
       callback: (token) => {
         contactTurnstileToken = token;
+        setContactTurnstileState("ready");
+        syncContactTurnstileChrome();
         finishContactTurnstilePending(token);
       },
       "expired-callback": () => {
         contactTurnstileToken = "";
+        setContactTurnstileState("challenge");
+        syncContactTurnstileChrome();
         finishContactTurnstilePending("");
       },
       "error-callback": () => {
         contactTurnstileToken = "";
+        setContactTurnstileState("failed", CONTACT_TURNSTILE_LOAD_FAILED_MSG);
+        syncContactTurnstileChrome();
         finishContactTurnstilePending("");
       },
     });
+    return true;
   } catch (error) {
     contactTurnstileWidgetId = null;
     console.warn("Turnstile mount failed:", error);
+    setContactTurnstileState("failed", CONTACT_TURNSTILE_LOAD_FAILED_MSG);
+    syncContactTurnstileChrome();
+    return false;
   }
 }
 
@@ -269,48 +333,76 @@ function contactTurnstileResponse() {
   return window.turnstile.getResponse(contactTurnstileWidgetId) || "";
 }
 
-async function waitForContactTurnstileApi(timeoutMs = 15_000) {
+async function waitForContactTurnstileApi(timeoutMs = TURNSTILE_READY_TIMEOUT_MS) {
   if (typeof window.turnstile?.render === "function") return true;
   const started = Date.now();
-  while (Date.now() - started < timeoutMs) {
-    if (typeof window.turnstile?.render === "function") return true;
-    await new Promise((resolve) => window.setTimeout(resolve, 100));
-  }
-  return false;
+  return new Promise((resolve) => {
+    const timerId = window.setInterval(() => {
+      if (typeof window.turnstile?.render === "function") {
+        window.clearInterval(timerId);
+        resolve(true);
+        return;
+      }
+      if (Date.now() - started >= timeoutMs) {
+        window.clearInterval(timerId);
+        resolve(false);
+      }
+    }, TURNSTILE_SCRIPT_POLL_MS);
+  });
 }
 
 async function ensureContactTurnstileToken() {
-  const existing = contactTurnstileResponse();
-  if (existing) return existing;
-  if (contactTurnstileWidgetId == null) {
-    const ready = await waitForContactTurnstileApi();
-    if (!ready) return "";
-    mountContactTurnstile();
+  if (SKIP_TURNSTILE) return "skip";
+  if (contactTurnstileState === "ready") {
+    const existing = contactTurnstileResponse();
+    if (existing) return existing;
   }
-  if (contactTurnstileWidgetId == null || !window.turnstile?.execute) return "";
+  if (contactTurnstileWidgetId == null) {
+    setContactTurnstileState("loading");
+    syncContactTurnstileChrome();
+    const ready = await waitForContactTurnstileApi();
+    if (!ready) {
+      setContactTurnstileState("failed", CONTACT_TURNSTILE_LOAD_FAILED_MSG);
+      syncContactTurnstileChrome();
+      return "";
+    }
+    if (!mountContactTurnstile()) return "";
+  }
+
+  const cached = contactTurnstileResponse();
+  if (cached) {
+    setContactTurnstileState("ready");
+    syncContactTurnstileChrome();
+    return cached;
+  }
+
+  setContactTurnstileState("challenge");
+  syncContactTurnstileChrome();
 
   return new Promise((resolve) => {
     const timeoutId = window.setTimeout(() => {
-      if (!contactTurnstilePending) return;
-      contactTurnstilePending = null;
-      resolve(contactTurnstileResponse());
-    }, 30000);
+      setContactTurnstileState("failed", CONTACT_TURNSTILE_TIMEOUT_MSG);
+      syncContactTurnstileChrome();
+      finishContactTurnstilePending("");
+      resolve("");
+    }, TURNSTILE_EXECUTE_TIMEOUT_MS);
 
     contactTurnstilePending = {
       resolve: (token) => {
         window.clearTimeout(timeoutId);
+        if (token) {
+          setContactTurnstileState("ready");
+          syncContactTurnstileChrome();
+        }
         resolve(token);
       },
     };
-
-    try {
-      window.turnstile.execute(contactTurnstileWidgetId);
-    } catch {
-      window.clearTimeout(timeoutId);
-      contactTurnstilePending = null;
-      resolve("");
-    }
   });
+}
+
+function setContactEmailError(message) {
+  setContactTurnstileState("failed", message);
+  syncContactTurnstileChrome();
 }
 
 function renderEmailRevealHtml(node, profile) {
@@ -331,7 +423,9 @@ function renderEmailRevealHtml(node, profile) {
   }
 
   return `
-    <div class="network-contact-email-gate">
+    <div class="network-contact-email-gate network-contact-email-gate--loading">
+      <div id="network-contact-turnstile" class="network-contact-turnstile"></div>
+      <p class="network-contact-turnstile-hint" hidden></p>
       <button
         type="button"
         class="btn-small network-contact-show-email"
@@ -345,9 +439,16 @@ function renderEmailRevealHtml(node, profile) {
 }
 
 async function fetchVerifiedEmail(name, affiliation, button) {
+  if (button) {
+    button.disabled = true;
+    button.textContent = "Checking…";
+  }
   const token = await ensureContactTurnstileToken();
   if (!token) {
-    if (button) button.textContent = "Try again";
+    if (button) {
+      button.disabled = false;
+      button.textContent = "Show email";
+    }
     return null;
   }
   try {
@@ -357,23 +458,33 @@ async function fetchVerifiedEmail(name, affiliation, button) {
       body: JSON.stringify({
         name,
         affiliation,
-        "cf-turnstile-response": token,
+        "cf-turnstile-response": token === "skip" ? "" : token,
       }),
     });
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) {
       contactTurnstileToken = "";
       window.turnstile?.reset?.(contactTurnstileWidgetId);
-      if (button) button.textContent = payload.error || "Unavailable";
+      setContactEmailError(payload.error || "Email lookup unavailable right now.");
+      if (button) {
+        button.disabled = false;
+        button.textContent = "Show email";
+      }
       return null;
     }
     contactTurnstileToken = "";
     window.turnstile?.reset?.(contactTurnstileWidgetId);
+    setContactTurnstileState("ready");
+    syncContactTurnstileChrome();
     return typeof payload.email === "string" ? payload.email : null;
   } catch {
     contactTurnstileToken = "";
     window.turnstile?.reset?.(contactTurnstileWidgetId);
-    if (button) button.textContent = "Try again";
+    setContactEmailError("Network error while fetching email. Try again.");
+    if (button) {
+      button.disabled = false;
+      button.textContent = "Show email";
+    }
     return null;
   }
 }
@@ -923,7 +1034,16 @@ export function createNetworkView(siteData, elements) {
     elements.cardContacts.hidden = false;
     elements.cardContacts.innerHTML = renderContactLinksHtml(node);
     if (CONTACT_API_URL && profileForNode(node)?.has_verified_email) {
-      window.requestAnimationFrame(() => mountContactTurnstile());
+      window.requestAnimationFrame(() => {
+        void waitForContactTurnstileApi().then((ready) => {
+          if (!ready) {
+            setContactTurnstileState("failed", CONTACT_TURNSTILE_LOAD_FAILED_MSG);
+            syncContactTurnstileChrome();
+            return;
+          }
+          mountContactTurnstile();
+        });
+      });
     }
   }
 
@@ -1232,14 +1352,24 @@ export function createNetworkView(siteData, elements) {
     return neighborIdsFromLinks(nodeId, graphLinks);
   }
 
+  function defaultLabelNodeIds(nodes) {
+    const sorted = [...nodes].sort(
+      (a, b) => b.connections - a.connections || a.label.localeCompare(b.label)
+    );
+    const count = Math.min(48, Math.max(20, Math.ceil(nodes.length * 0.22)));
+    return new Set(sorted.slice(0, count).map((node) => node.id));
+  }
+
   function labelNodes(nodes) {
     const searching = Boolean(searchQuery);
     const neighbors = neighborIds(selectedNodeId);
+    const defaultLabels =
+      !searchQuery && !selectedNodeId ? defaultLabelNodeIds(nodes) : null;
     return nodes.filter((node) => {
       if (node.id === selectedNodeId) return false;
       if (selectedNodeId && neighbors.has(node.id)) return true;
       if (searching && matchedNodeIds.has(node.id)) return true;
-      if (!searchQuery && !selectedNodeId && node.connections >= 35) return true;
+      if (defaultLabels?.has(node.id)) return true;
       return false;
     });
   }
@@ -1349,7 +1479,7 @@ export function createNetworkView(siteData, elements) {
   }
 
   function scrollToSelectedSidebar() {
-    if (!selectedNodeId) return;
+    if (!selectedNodeId || isCoarsePointer) return;
     requestAnimationFrame(() => {
       const selector = `[data-node-id="${CSS.escape(selectedNodeId)}"]`;
       const target =
@@ -1357,10 +1487,6 @@ export function createNetworkView(siteData, elements) {
         elements.results?.querySelector(selector);
       if (target) {
         target.scrollIntoView({ block: "center", behavior: "auto" });
-        return;
-      }
-      if (elements.card && !elements.card.hidden) {
-        elements.card.scrollIntoView({ block: "nearest", behavior: "auto" });
       }
     });
   }
@@ -2122,16 +2248,8 @@ export function createNetworkView(siteData, elements) {
         event.stopPropagation();
         const name = showEmailButton.dataset.contactName || "";
         const affiliation = showEmailButton.dataset.contactAffiliation || "";
-        showEmailButton.disabled = true;
-        showEmailButton.textContent = "Verifying humanity...";
         void fetchVerifiedEmail(name, affiliation, showEmailButton).then((email) => {
-          showEmailButton.disabled = false;
-          if (!email) {
-            if (showEmailButton.textContent === "Verifying humanity...") {
-              showEmailButton.textContent = "Show email";
-            }
-            return;
-          }
+          if (!email) return;
           revealedContactEmails.set(contactRevealKey(name, affiliation), email);
           if (selectedNodeId) {
             const currentNode = graphNodes.find((node) => node.id === selectedNodeId);

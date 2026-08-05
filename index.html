@@ -196,6 +196,44 @@
           <p id="network-search-status" class="status" aria-live="polite"></p>
         </div>
 
+        <section class="stage network-stage stage-stack" id="network-stage" hidden>
+          <div class="network-hint-banner" id="network-hint-banner" hidden>
+            <div
+              class="network-hint-card"
+              role="dialog"
+              aria-labelledby="network-hint-title"
+              aria-modal="true"
+            >
+              <p class="hover-kicker">Network search</p>
+              <h2 id="network-hint-title">Find collaborators by topic</h2>
+              <p class="network-hint-lead">
+                Search talk titles and abstracts for a keyword – e.g. <strong>bleaching</strong>,
+                <strong>OAE</strong>, or <strong>restoration</strong> – to highlight speakers working on
+                that theme and their co-authors on ICRS talks.
+              </p>
+              <img
+                class="network-hint-illustration"
+                src="assets/network-search-hint.svg"
+                width="640"
+                height="320"
+                alt="Diagram: typing bleaching in the search box highlights related speakers and their co-authorship links in the network"
+              />
+              <ol class="network-hint-steps">
+                <li>Type a topic or name in <strong>Search network</strong>.</li>
+                <li>Matching nodes light up along with their co-authors.</li>
+                <li>Click a node to inspect talks, connections, and public contact links; switch to <strong>By affiliation</strong> for institutional clusterings.</li>
+              </ol>
+              <button type="button" class="btn-primary network-hint-dismiss" id="network-hint-dismiss">
+                Got it
+              </button>
+            </div>
+          </div>
+          <div class="stage-canvas network-stage-canvas">
+            <div class="stage-badge network-help-badge">pinch/scroll to zoom · drag to pan · tap/click a node to select</div>
+            <svg id="network-svg" aria-label="Co-authorship network"></svg>
+          </div>
+        </section>
+
         <div class="network-sidebar-scroll">
           <div class="network-card-slot" id="network-card-slot">
           <aside class="network-side-card" id="network-card" hidden>
@@ -603,44 +641,6 @@
             ></div>
           </div>
         </aside>
-      </section>
-
-      <section class="stage network-stage stage-stack" id="network-stage" hidden>
-        <div class="network-hint-banner" id="network-hint-banner" hidden>
-          <div
-            class="network-hint-card"
-            role="dialog"
-            aria-labelledby="network-hint-title"
-            aria-modal="true"
-          >
-            <p class="hover-kicker">Network search</p>
-            <h2 id="network-hint-title">Find collaborators by topic</h2>
-            <p class="network-hint-lead">
-              Search talk titles and abstracts for a keyword – e.g. <strong>bleaching</strong>,
-              <strong>OAE</strong>, or <strong>restoration</strong> – to highlight speakers working on
-              that theme and their co-authors on ICRS talks.
-            </p>
-            <img
-              class="network-hint-illustration"
-              src="assets/network-search-hint.svg"
-              width="640"
-              height="320"
-              alt="Diagram: typing bleaching in the search box highlights related speakers and their co-authorship links in the network"
-            />
-            <ol class="network-hint-steps">
-              <li>Type a topic or name in <strong>Search network</strong>.</li>
-              <li>Matching nodes light up along with their co-authors.</li>
-              <li>Click a node to inspect talks, connections, and public contact links; switch to <strong>By affiliation</strong> for institutional clusterings.</li>
-            </ol>
-            <button type="button" class="btn-primary network-hint-dismiss" id="network-hint-dismiss">
-              Got it
-            </button>
-          </div>
-        </div>
-        <div class="stage-canvas network-stage-canvas">
-          <div class="stage-badge network-help-badge">pinch/scroll to zoom · drag to pan · tap/click a node to select</div>
-          <svg id="network-svg" aria-label="Co-authorship network"></svg>
-        </div>
       </section>
 
       <section class="stage stage-stack" id="emissions-stage" hidden>

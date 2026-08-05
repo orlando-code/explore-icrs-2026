@@ -229,7 +229,13 @@ a.btn-small {
 }
 
 .network-card-slot {
-  order: -1;
+  order: 0;
+}
+
+@media (min-width: 901px) {
+  .network-card-slot {
+    order: -1;
+  }
 }
 
 .network-sidebar-scroll .network-card-slot .network-side-card {
@@ -408,6 +414,59 @@ a.btn-small {
 
 .network-contact-email-gate {
   margin: 0.65rem 0 0.35rem;
+}
+
+.network-contact-turnstile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  margin-bottom: 0.35rem;
+  transition: opacity 0.2s ease, max-height 0.25s ease, margin 0.25s ease;
+}
+
+.network-contact-turnstile:empty {
+  display: none;
+}
+
+.network-contact-email-gate--loading .network-contact-turnstile,
+.network-contact-email-gate--challenge .network-contact-turnstile {
+  min-height: 65px;
+}
+
+.network-contact-email-gate--ready .network-contact-turnstile {
+  min-height: 65px;
+  opacity: 1;
+}
+
+.network-contact-turnstile-hint {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--muted);
+  text-align: left;
+}
+
+.network-contact-turnstile-hint[hidden] {
+  display: none;
+}
+
+.network-contact-email-gate--ready .network-contact-turnstile-hint {
+  display: none;
+}
+
+.network-contact-email-gate--loading .network-contact-show-email,
+.network-contact-email-gate--challenge .network-contact-show-email {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.network-contact-email-gate--failed .network-contact-turnstile {
+  min-height: 0;
+}
+
+.network-contact-email-gate--failed .network-contact-turnstile-hint {
+  color: #b42318;
 }
 
 .turnstile-mount {
@@ -2810,6 +2869,47 @@ button:active {
     flex-direction: column;
   }
 
+  #network-panel:not([hidden]) {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(300px, 360px) minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    align-content: stretch;
+    min-height: 0;
+    max-height: 100%;
+    overflow: hidden;
+  }
+
+  #network-panel:not([hidden]) > .panel-header {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  #network-panel:not([hidden]) > .network-controls {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  #network-panel:not([hidden]) > .network-sidebar-scroll {
+    grid-column: 1;
+    grid-row: 3;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  #network-panel:not([hidden]) > .network-legend-stack {
+    grid-column: 1;
+    grid-row: 4;
+    flex: none;
+  }
+
+  #network-panel:not([hidden]) > #network-stage {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    min-height: 0;
+    height: 100%;
+  }
+
   .network-card-slot:empty {
     display: none;
   }
@@ -2894,10 +2994,29 @@ button:active {
   }
 
   #map-stage.stage-stack,
-  #emissions-stage.stage-stack,
-  .network-stage.stage-stack {
+  #emissions-stage.stage-stack {
     display: flex;
     flex-direction: column;
+  }
+
+  .network-stage.stage-stack {
+    order: 0;
+  }
+
+  #network-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  #network-panel > #network-stage {
+    flex: none;
+  }
+
+  #network-panel .network-sidebar-scroll {
+    max-height: none;
+    overflow: visible;
+    flex: none;
   }
 
   .stage-canvas {
