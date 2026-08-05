@@ -429,106 +429,144 @@ def _affiliation_location_records(
     abstract_col: str = "abstract",
     auckland_lat: float = AUCKLAND_LAT,
     auckland_lon: float = AUCKLAND_LON,
+    show_progress: bool = False,
 ) -> list[dict[str, Any]]:
     """Group geocoded talks by canonical affiliation."""
-    from src.geocode import affiliation_base_name, affiliation_display_name, canonical_affiliation_key
+    from src.delegates import load_person_identity_maps, normalize_person_name
+    from src.export_progress import make_progress
+    from src.geocode import affiliation_display_name, canonical_affiliation_key
 
     points = _geocoded_points(df, lat_col=lat_col, lon_col=lon_col)
     if points.empty:
         return []
 
-    buckets: dict[str, list[pd.DataFrame]] = {}
-    display_name: dict[str, str] = {}
-    for _, row in points.iterrows():
-        affiliation_text = (
-            "" if pd.isna(row[affiliation_col]) else str(row[affiliation_col])
+    variant_to_key, key_to_canonical = load_person_identity_maps()
+
+    def _person_key(name: object) -> str:
+        cleaned = str(name or "").strip()
+        if not cleaned:
+            return ""
+        return (
+            variant_to_key.get(normalize_person_name(cleaned))
+            or variant_to_key.get(cleaned.casefold())
+            or variant_to_key.get(cleaned)
+            or normalize_person_name(cleaned)
         )
-        aff_key = canonical_affiliation_key(affiliation_text)
-        lat = round(float(row[lat_col]), 4)
-        lon = round(float(row[lon_col]), 4)
-        bucket_key = f"{aff_key}\t{lat}\t{lon}"
-        buckets.setdefault(bucket_key, []).append(row.to_frame().T)
-        preferred = affiliation_display_name(affiliation_text) or affiliation_text
-        existing = display_name.get(bucket_key)
-        if not existing or len(preferred) > len(existing):
-            display_name[bucket_key] = preferred
+
+    def _display_name(name: object) -> str:
+        cleaned = str(name or "").strip()
+        if not cleaned:
+            return ""
+        return key_to_canonical.get(_person_key(cleaned), cleaned)
+
+    working = points.copy()
+    affiliation_text = working[affiliation_col].fillna("").astype(str)
+    working["_lat_r"] = working[lat_col].astype(float).round(4)
+    working["_lon_r"] = working[lon_col].astype(float).round(4)
+    working["_aff_key"] = affiliation_text.map(canonical_affiliation_key)
+    working["_bucket"] = (
+        working["_aff_key"]
+        + "\t"
+        + working["_lat_r"].astype(str)
+        + "\t"
+        + working["_lon_r"].astype(str)
+    )
+    working["_display_candidate"] = affiliation_text.map(
+        lambda value: affiliation_display_name(value) or value if value.strip() else ""
+    )
+    display_name = (
+        working.groupby("_bucket", sort=False)["_display_candidate"]
+        .agg(lambda values: max(values, key=len))
+        .to_dict()
+    )
 
     records: list[dict[str, Any]] = []
-    for index, (bucket_key, row_frames) in enumerate(sorted(buckets.items()), start=1):
-        group = pd.concat(row_frames, ignore_index=True)
-        lat = float(group[lat_col].iloc[0])
-        lon = float(group[lon_col].iloc[0])
-        display = display_name.get(bucket_key) or bucket_key.split("\t", 1)[0]
+    bucket_groups = list(working.groupby("_bucket", sort=True))
+    progress = make_progress(disable=not show_progress)
+    with progress:
+        task_id = progress.add_task(
+            "Grouping affiliations into map pins",
+            total=len(bucket_groups),
+        )
+        for index, (bucket_key, group) in enumerate(bucket_groups, start=1):
+            lat = float(group[lat_col].iloc[0])
+            lon = float(group[lon_col].iloc[0])
+            display = display_name.get(bucket_key) or bucket_key.split("\t", 1)[0]
 
-        from src.delegates import canonical_person_name, delegate_person_key
+            speaker_by_key: dict[str, dict[str, Any]] = {}
+            for presenter, speaker_group in group.groupby(presenter_col, dropna=True):
+                if pd.isna(presenter):
+                    continue
+                presenter_name = str(presenter)
+                person_key = _person_key(presenter_name)
+                titles = (
+                    speaker_group[title_col]
+                    .dropna()
+                    .astype(str)
+                    .str.strip()
+                )
+                talk_titles = titles[titles != ""].tolist()
+                abstract_parts = (
+                    speaker_group[abstract_col]
+                    .dropna()
+                    .astype(str)
+                    .str.strip()
+                )
+                abstract_parts = abstract_parts[abstract_parts != ""].tolist()
+                search_text = " ".join(
+                    [presenter_name, *talk_titles, *abstract_parts]
+                ).lower()
 
-        speaker_details: list[dict[str, str]] = []
-        speaker_by_key: dict[str, dict[str, Any]] = {}
-        for presenter, speaker_group in group.groupby(presenter_col, dropna=True):
-            if pd.isna(presenter):
-                continue
-            presenter_name = str(presenter)
-            person_key = delegate_person_key(presenter_name)
-            parts = [presenter_name]
-            talk_titles: list[str] = []
-            for _, talk in speaker_group.iterrows():
-                title = talk.get(title_col)
-                abstract = talk.get(abstract_col)
-                if pd.notna(title) and str(title).strip():
-                    title_text = str(title).strip()
-                    parts.append(title_text)
-                    talk_titles.append(title_text)
-                if pd.notna(abstract) and str(abstract).strip():
-                    parts.append(str(abstract))
+                existing = speaker_by_key.get(person_key)
+                if existing is None:
+                    speaker_by_key[person_key] = {
+                        "name": _display_name(presenter_name),
+                        "search_text": search_text,
+                        "talk_titles": talk_titles,
+                        "person_key": person_key,
+                    }
+                    continue
 
-            existing = speaker_by_key.get(person_key)
-            if existing is None:
-                speaker_by_key[person_key] = {
-                    "name": canonical_person_name(presenter_name),
-                    "search_text": " ".join(parts).lower(),
-                    "talk_titles": talk_titles,
-                    "person_key": person_key,
+                existing["search_text"] = (
+                    f"{existing['search_text']} {search_text}".strip()
+                )
+                existing["talk_titles"].extend(talk_titles)
+
+            speaker_details = sorted(
+                speaker_by_key.values(),
+                key=lambda item: str(item["name"]).casefold(),
+            )
+            speakers = [item["name"] for item in speaker_details]
+
+            level = group.get("geocode_level")
+            geocode_level = ""
+            if level is not None:
+                levels = [value for value in level.dropna().unique() if str(value).strip()]
+                if levels:
+                    geocode_level = "institute" if "institute" in levels else str(levels[0])
+
+            search_parts = [display, *speakers]
+            for item in speaker_details:
+                search_parts.append(item["search_text"])
+            records.append(
+                {
+                    "id": f"loc-{index:04d}",
+                    "affiliation": display,
+                    "lat": lat,
+                    "lon": lon,
+                    "speakers": speakers,
+                    "speaker_details": speaker_details,
+                    "speaker_count": len(speakers),
+                    "talk_count": len(group),
+                    "geocode_level": geocode_level,
+                    "distance_km": round(
+                        _haversine_km(lat, lon, auckland_lat, auckland_lon),
+                        1,
+                    ),
+                    "search_text": " ".join(search_parts).lower(),
                 }
-                continue
-
-            existing["search_text"] = f"{existing['search_text']} {' '.join(parts).lower()}".strip()
-            existing["talk_titles"].extend(talk_titles)
-
-        speaker_details = sorted(
-            speaker_by_key.values(),
-            key=lambda item: str(item["name"]).casefold(),
-        )
-        speakers = [item["name"] for item in speaker_details]
-
-        level = group.get("geocode_level")
-        geocode_level = ""
-        if level is not None:
-            levels = [value for value in level.dropna().unique() if str(value).strip()]
-            if levels:
-                geocode_level = "institute" if "institute" in levels else str(levels[0])
-
-        affiliation_text = display
-        search_parts = [affiliation_text, *speakers]
-        for item in speaker_details:
-            search_parts.append(item["search_text"])
-        records.append(
-            {
-                "id": f"loc-{index:04d}",
-                "affiliation": affiliation_text,
-                "lat": lat,
-                "lon": lon,
-                "speakers": speakers,
-                "speaker_details": speaker_details,
-                "speaker_count": len(speakers),
-                "talk_count": len(group),
-                "geocode_level": geocode_level,
-                "distance_km": round(
-                    _haversine_km(lat, lon, auckland_lat, auckland_lon),
-                    1,
-                ),
-                "search_text": " ".join(search_parts).lower(),
-            }
-        )
+            )
+            progress.advance(task_id)
     return records
 
 
@@ -912,8 +950,6 @@ def export_attendee_site_data(
         exclusions=map_exclusions,
         presenter_col=presenter_col,
     )
-    if show_progress:
-        console().print("  Grouping affiliations into map pins")
     locations = _affiliation_location_records(
         map_df,
         lat_col=lat_col,
@@ -924,6 +960,7 @@ def export_attendee_site_data(
         abstract_col=abstract_col,
         auckland_lat=auckland_lat,
         auckland_lon=auckland_lon,
+        show_progress=show_progress,
     )
     if not locations:
         raise ValueError("No geocoded affiliations available for site export.")
