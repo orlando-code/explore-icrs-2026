@@ -32,7 +32,6 @@ const CONTACT_TURNSTILE_TIMEOUT_MSG =
   "Security check timed out. Check your connection and try again.";
 const CONTACT_TURNSTILE_CHALLENGE_MSG =
   "Complete the security check above to show the email address.";
-let contactTurnstileLayoutSync = null;
 
 function linkEndpointId(endpoint) {
   return typeof endpoint === "object" ? endpoint.id : endpoint;
@@ -305,7 +304,6 @@ function mountContactTurnstile() {
         setContactTurnstileState("ready");
         syncContactTurnstileChrome();
         finishContactTurnstilePending(token);
-        contactTurnstileLayoutSync?.();
       },
       "expired-callback": () => {
         contactTurnstileToken = "";
@@ -426,7 +424,7 @@ function renderEmailRevealHtml(node, profile) {
   }
 
   return `
-    <div class="network-contact-email-gate network-contact-email-gate--loading">
+    <div class="network-contact-email-gate">
       <div id="network-contact-turnstile" class="network-contact-turnstile"></div>
       <p class="network-contact-turnstile-hint" hidden></p>
       <button
@@ -445,6 +443,20 @@ async function fetchVerifiedEmail(name, affiliation, button) {
   if (button) {
     button.disabled = true;
     button.textContent = "Checking…";
+  }
+  if (CONTACT_API_URL && TURNSTILE_SITE_KEY && !SKIP_TURNSTILE && contactTurnstileWidgetId == null) {
+    setContactTurnstileState("loading");
+    syncContactTurnstileChrome();
+    const ready = await waitForContactTurnstileApi();
+    if (!ready) {
+      setContactEmailError(CONTACT_TURNSTILE_LOAD_FAILED_MSG);
+      if (button) {
+        button.disabled = false;
+        button.textContent = "Show email";
+      }
+      return null;
+    }
+    mountContactTurnstile();
   }
   const token = await ensureContactTurnstileToken();
   if (!token) {
@@ -727,7 +739,11 @@ export function createNetworkView(siteData, elements) {
     card.classList.toggle("network-side-card--on-stage", cardOnStage());
   }
 
-  let pinSelectionCardTimer = null;
+  function resetPanelSidebarScroll() {
+    const panel = document.getElementById("network-panel");
+    const sidebar = panel?.querySelector(".network-sidebar-scroll");
+    if (sidebar) sidebar.scrollTop = 0;
+  }
 
   function resetSelectionCardScroll() {
     const card = elements.card;
@@ -740,13 +756,24 @@ export function createNetworkView(siteData, elements) {
     const slot = elements.cardSlot;
     if (slot) slot.scrollTop = 0;
 
-    const panel = document.getElementById("network-panel");
-    if (panel && isCoarsePointer) panel.scrollTop = 0;
+    resetPanelSidebarScroll();
+  }
+
+  function syncOnStageCardBounds() {
+    const card = elements.card;
+    if (!card || !cardOnStage()) {
+      if (card) card.style.maxHeight = "";
+      return;
+    }
+    const available = Math.max(canvasEl.clientHeight - 32, 220);
+    const cap = Math.min(window.innerHeight * 0.72, available);
+    card.style.maxHeight = `${cap}px`;
   }
 
   function pinSelectionCardToTop() {
     const card = elements.card;
     if (!card || card.hidden) return;
+    syncOnStageCardBounds();
 
     const run = () => {
       resetSelectionCardScroll();
@@ -755,36 +782,7 @@ export function createNetworkView(siteData, elements) {
 
     run();
     window.requestAnimationFrame(run);
-    window.requestAnimationFrame(() => window.requestAnimationFrame(run));
-
-    if (pinSelectionCardTimer) window.clearTimeout(pinSelectionCardTimer);
-    const delays = [40, 120, 280, 520, 900];
-    for (const delay of delays) {
-      window.setTimeout(run, delay);
-    }
-    pinSelectionCardTimer = window.setTimeout(() => {
-      pinSelectionCardTimer = null;
-    }, delays[delays.length - 1]);
   }
-
-  function alignSelectionCardView() {
-    pinSelectionCardToTop();
-    const card = elements.card;
-    if (!card || card.hidden) return;
-
-    if (cardOnStage()) return;
-
-    window.requestAnimationFrame(() => {
-      pinSelectionCardToTop();
-      const anchor = card.querySelector(".network-card-header") || card;
-      if (isCoarsePointer) {
-        anchor.scrollIntoView({ block: "start", behavior: "auto" });
-      }
-      window.requestAnimationFrame(pinSelectionCardToTop);
-    });
-  }
-
-  contactTurnstileLayoutSync = pinSelectionCardToTop;
 
   const width = () => Math.max(canvasEl.clientWidth, 320);
   const height = () => Math.max(canvasEl.clientHeight, 280);
@@ -1095,19 +1093,6 @@ export function createNetworkView(siteData, elements) {
     }
     elements.cardContacts.hidden = false;
     elements.cardContacts.innerHTML = renderContactLinksHtml(node);
-    if (CONTACT_API_URL && profileForNode(node)?.has_verified_email) {
-      window.requestAnimationFrame(() => {
-        void waitForContactTurnstileApi().then((ready) => {
-          if (!ready) {
-            setContactTurnstileState("failed", CONTACT_TURNSTILE_LOAD_FAILED_MSG);
-            syncContactTurnstileChrome();
-            return;
-          }
-          mountContactTurnstile();
-          alignSelectionCardView();
-        });
-      });
-    }
   }
 
   function updateMatches(query) {
@@ -1542,16 +1527,8 @@ export function createNetworkView(siteData, elements) {
   }
 
   function scrollToSelectedSidebar() {
-    if (!selectedNodeId || isCoarsePointer) return;
-    requestAnimationFrame(() => {
-      const selector = `[data-node-id="${CSS.escape(selectedNodeId)}"]`;
-      const target =
-        elements.barChart?.querySelector(selector) ||
-        elements.results?.querySelector(selector);
-      if (target) {
-        target.scrollIntoView({ block: "center", behavior: "auto" });
-      }
-    });
+    /* Intentionally no-op: scrolling the bar chart into view was jumping the
+       sidebar and speaker card to the wrong position on selection. */
   }
 
   function barChartNodes(nodes) {
@@ -2068,6 +2045,7 @@ export function createNetworkView(siteData, elements) {
   }
 
   function showNodeCard(node) {
+    pinSelectionCardToTop();
     elements.card.hidden = false;
     elements.cardTitle.textContent = node.label;
     const snippet = matchSnippet(node);
@@ -2079,7 +2057,8 @@ export function createNetworkView(siteData, elements) {
     updateNodeTalks(node);
     updateDataInfoLinks(node);
     setDataInfoOpen(false);
-    alignSelectionCardView();
+    pinSelectionCardToTop();
+    window.requestAnimationFrame(pinSelectionCardToTop);
   }
 
   let cardViewLinks = null;
@@ -2244,6 +2223,8 @@ export function createNetworkView(siteData, elements) {
 
   function resize() {
     placeNetworkCard();
+    syncOnStageCardBounds();
+    if (selectedNodeId) pinSelectionCardToTop();
     clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(() => {
       updateDimensions();

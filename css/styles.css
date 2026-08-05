@@ -2826,6 +2826,13 @@ button:active {
   box-shadow: var(--shadow);
   touch-action: pan-y;
   scroll-behavior: auto;
+  overflow-anchor: none;
+  box-sizing: border-box;
+}
+
+.network-stage-canvas .network-side-card--on-stage {
+  /* Stay within the diagram viewport so content scrolls inside the card. */
+  max-height: min(72vh, calc(100% - 2rem));
 }
 
 .network-help-badge {
