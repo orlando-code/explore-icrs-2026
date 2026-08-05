@@ -20,7 +20,6 @@ backend/data/contacts.json
 backend/data/delegate_ids.csv
 data/ne_110m_admin_0_countries.zip
 data/natural_earth/
-data/country_boundaries.geojson
 data/affiliation_duplicate_summary*
 
 # Organisers' delegate list and its raw text dump. Kept local: the site only

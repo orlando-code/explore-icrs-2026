@@ -259,15 +259,22 @@ function contactTurnstileResponse() {
   return window.turnstile.getResponse(contactTurnstileWidgetId) || "";
 }
 
+async function waitForContactTurnstileApi(timeoutMs = 15_000) {
+  if (typeof window.turnstile?.render === "function") return true;
+  const started = Date.now();
+  while (Date.now() - started < timeoutMs) {
+    if (typeof window.turnstile?.render === "function") return true;
+    await new Promise((resolve) => window.setTimeout(resolve, 100));
+  }
+  return false;
+}
+
 async function ensureContactTurnstileToken() {
   const existing = contactTurnstileResponse();
   if (existing) return existing;
   if (contactTurnstileWidgetId == null) {
-    if (window.turnstile?.ready) {
-      await new Promise((resolve) => window.turnstile.ready(resolve));
-    } else if (!window.turnstile) {
-      return "";
-    }
+    const ready = await waitForContactTurnstileApi();
+    if (!ready) return "";
     mountContactTurnstile();
   }
   if (contactTurnstileWidgetId == null || !window.turnstile?.execute) return "";

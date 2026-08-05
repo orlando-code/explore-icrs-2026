@@ -25,12 +25,16 @@ const TURNSTILE_TIMEOUT_MSG =
   "Security check timed out. Check your connection and try again, or submit for manual review.";
 const TURNSTILE_CHALLENGE_MSG = "Complete the security check above to register.";
 
-async function waitForTurnstileScript(timeoutMs = TURNSTILE_READY_TIMEOUT_MS) {
-  if (window.turnstile) return true;
+function turnstileApiReady() {
+  return typeof window.turnstile?.render === "function";
+}
+
+async function waitForTurnstileReady(timeoutMs = TURNSTILE_READY_TIMEOUT_MS) {
+  if (turnstileApiReady()) return true;
   const started = Date.now();
   return new Promise((resolve) => {
     const timerId = window.setInterval(() => {
-      if (window.turnstile) {
+      if (turnstileApiReady()) {
         window.clearInterval(timerId);
         resolve(true);
         return;
@@ -40,27 +44,6 @@ async function waitForTurnstileScript(timeoutMs = TURNSTILE_READY_TIMEOUT_MS) {
         resolve(false);
       }
     }, TURNSTILE_SCRIPT_POLL_MS);
-  });
-}
-
-async function waitForTurnstileReady(timeoutMs = TURNSTILE_READY_TIMEOUT_MS) {
-  const scriptReady = await waitForTurnstileScript(timeoutMs);
-  if (!scriptReady || !window.turnstile) return false;
-  if (!window.turnstile.ready) return true;
-  return new Promise((resolve) => {
-    let settled = false;
-    const finish = (ready) => {
-      if (settled) return;
-      settled = true;
-      window.clearTimeout(timerId);
-      resolve(ready);
-    };
-    const timerId = window.setTimeout(() => finish(Boolean(window.turnstile)), timeoutMs);
-    try {
-      window.turnstile.ready(() => finish(true));
-    } catch {
-      finish(Boolean(window.turnstile));
-    }
   });
 }
 
@@ -219,12 +202,7 @@ async function ensureOffsetTurnstileToken() {
     return cached;
   }
 
-  if (!window.turnstile?.execute) {
-    setOffsetTurnstileState("failed", TURNSTILE_LOAD_FAILED_MSG);
-    syncOffsetTurnstileChrome();
-    return "";
-  }
-
+  // appearance "always" challenges on render — wait for the callback, don't call execute().
   setOffsetTurnstileState("challenge");
   syncOffsetTurnstileChrome();
 
@@ -240,6 +218,7 @@ async function ensureOffsetTurnstileToken() {
       setOffsetTurnstileState("failed", TURNSTILE_TIMEOUT_MSG);
       syncOffsetTurnstileChrome();
       finishOffsetTurnstilePending("");
+      resolve("");
     }, TURNSTILE_EXECUTE_TIMEOUT_MS);
 
     offsetTurnstilePending = {
@@ -252,15 +231,6 @@ async function ensureOffsetTurnstileToken() {
         resolve(token);
       },
     };
-
-    try {
-      window.turnstile.execute(offsetTurnstileWidgetId);
-    } catch {
-      window.clearTimeout(timeoutId);
-      setOffsetTurnstileState("failed", TURNSTILE_LOAD_FAILED_MSG);
-      syncOffsetTurnstileChrome();
-      finishOffsetTurnstilePending("");
-    }
   });
 }
 
@@ -284,7 +254,7 @@ async function initOffsetTurnstile(onStateChange) {
   }
 
   if (mountOffsetTurnstile()) {
-    void ensureOffsetTurnstileToken().then(() => onStateChange?.());
+    onStateChange?.();
   } else {
     onStateChange?.();
   }

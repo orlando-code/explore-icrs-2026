@@ -498,24 +498,6 @@ export function createEmissionsView(
     elements.context.innerHTML = contextHtml;
   }
 
-  // function renderModeBreakdown() {
-  //   const modes = emissionsData.meta.by_transport_mode || [];
-  //   elements.modeBreakdown.innerHTML = modes
-  //     .map((row) => {
-  //       const label = row.transport_mode === "car" ? "Auckland shared car" : "Return flights";
-  //       const share = headline.co2e_kg
-  //         ? Math.round((row.co2e_kg / headline.co2e_kg) * 100)
-  //         : 0;
-  //       return `<div class="emissions-mode-row">
-  //         <span>${label}</span>
-  //         <strong>${formatEmissions(row.co2e_kg, { compact: true })}</strong>
-  //         <span class="emissions-mode-share">${share}%</span>
-  //       </div>`;
-  //     })
-  //     .join("");
-  // }
-    
-
   function renderOffsetChoroplethLegend() {
     const container = elements.offsetChoroplethLegend;
     if (!container) return;
@@ -1062,7 +1044,10 @@ export function createEmissionsView(
   function renderSidebar() {
     renderHeadline();
     renderContext();
-    // renderModeBreakdown();
+    if (elements.modeBreakdown) {
+      elements.modeBreakdown.hidden = true;
+      elements.modeBreakdown.innerHTML = "";
+    }
     renderLegend();
     renderOffsetChoroplethLegend();
     renderBarChart();
