@@ -6,6 +6,8 @@ import {
   dedupeSearchHitsByPerson,
   resolveCanonicalPersonName,
   resolveDelegatePersonKey,
+  normalizePersonName,
+  formatDistance,
 } from "./utils.js";
 import { createTalkSimilarityLookup, resolveTalkId } from "./talk-similarity.js";
 import { CONTACT_API_URL, TURNSTILE_SITE_KEY } from "./config.js";
@@ -415,10 +417,12 @@ function buildAuthorSearchIndex(locations) {
   for (const location of locations) {
     for (const detail of location.speaker_details || []) {
       const name = detail.name;
-      if (!name) continue;
-      const existing = index.get(name) || [];
-      if (detail.search_text) existing.push(detail.search_text);
-      index.set(name, existing);
+      if (!name || !detail.search_text) continue;
+      for (const key of personLookupKeys(name)) {
+        const existing = index.get(key) || [];
+        existing.push(detail.search_text);
+        index.set(key, existing);
+      }
     }
   }
   return index;
@@ -428,22 +432,40 @@ function buildPresenterIndex(talksData) {
   const presenters = new Set();
   for (const talk of Object.values(talksData?.by_id || {})) {
     const presenter = String(talk?.presenter || "").trim();
-    if (presenter) {
-      presenters.add(presenter);
-      presenters.add(resolveCanonicalPersonName(presenter));
+    if (!presenter) continue;
+    for (const key of personLookupKeys(presenter)) {
+      presenters.add(key);
     }
   }
   return presenters;
 }
 
+function personLookupKeys(name) {
+  const cleaned = String(name || "").trim();
+  if (!cleaned) return [];
+  const keys = new Set([
+    cleaned,
+    cleaned.toLowerCase(),
+    resolveCanonicalPersonName(cleaned),
+    resolveDelegatePersonKey(cleaned),
+    normalizePersonName(cleaned),
+  ]);
+  return [...keys].filter(Boolean);
+}
+
+function indexRecordByPersonKeys(record, name, store) {
+  for (const key of personLookupKeys(name)) {
+    const existing = store.get(key);
+    if (!existing || (Array.isArray(record) && record.length > (existing.length || 0))) {
+      store.set(key, record);
+    }
+  }
+}
+
 function buildTalkTitleByPersonKey(talkTitleIndex) {
   const byKey = new Map();
   for (const [name, titles] of talkTitleIndex.entries()) {
-    const personKey = resolveDelegatePersonKey(name);
-    const existing = byKey.get(personKey);
-    if (!existing || titles.length > existing.length) {
-      byKey.set(personKey, titles);
-    }
+    indexRecordByPersonKeys(titles, name, byKey);
   }
   return byKey;
 }
@@ -451,22 +473,28 @@ function buildTalkTitleByPersonKey(talkTitleIndex) {
 function buildProfileByPersonKey(speakerProfiles) {
   const byKey = new Map();
   for (const [name, profile] of Object.entries(speakerProfiles || {})) {
-    byKey.set(resolveDelegatePersonKey(name), profile);
+    indexRecordByPersonKeys(profile, name, byKey);
   }
   return byKey;
 }
 
 function talksForNodeLabel(label, talkTitleIndex, talkTitleByPersonKey) {
-  const direct = talkTitleIndex.get(label) || [];
-  if (direct.length) return direct;
-
-  const canonical = resolveCanonicalPersonName(label);
-  if (canonical !== label) {
-    const byCanonical = talkTitleIndex.get(canonical) || [];
-    if (byCanonical.length) return byCanonical;
+  for (const key of personLookupKeys(label)) {
+    const direct = talkTitleIndex.get(key);
+    if (direct?.length) return direct;
+    const indexed = talkTitleByPersonKey.get(key);
+    if (indexed?.length) return indexed;
   }
+  return [];
+}
 
-  return talkTitleByPersonKey.get(resolveDelegatePersonKey(label)) || [];
+function profileForSpeakerName(label, speakerProfiles, profileByPersonKey) {
+  for (const key of personLookupKeys(label)) {
+    if (speakerProfiles[key]) return speakerProfiles[key];
+    const profile = profileByPersonKey.get(key);
+    if (profile) return profile;
+  }
+  return null;
 }
 
 function authorContextFor(node, profile) {
@@ -559,12 +587,10 @@ export function createNetworkView(siteData, elements) {
   let selectedLabelSelection = null;
   let labelOverlay = null;
   let dragMoved = false;
-  let pendingNodeFocus = false;
   let resizeTimer = null;
   let graphRenderKey = "";
-  let autoFitPending = false;
-  let userAdjustedZoom = false;
   let viewFitGeneration = 0;
+  let userAdjustedZoom = false;
   const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
   const canvasEl =
     elements.stage?.querySelector?.(".network-stage-canvas") || elements.stage;
@@ -786,8 +812,10 @@ export function createNetworkView(siteData, elements) {
     if (node.label.toLowerCase().includes(q)) return true;
     if (mode === "individual" && node.affiliation?.toLowerCase().includes(q)) return true;
     if (mode === "individual") {
-      const texts = authorSearchIndex.get(node.label) || [];
-      if (texts.some((text) => text.includes(q))) return true;
+      for (const key of personLookupKeys(node.label)) {
+        const texts = authorSearchIndex.get(key) || [];
+        if (texts.some((text) => text.includes(q))) return true;
+      }
     } else if (affiliationSearchIndex.get(node.label)?.includes(q)) {
       return true;
     }
@@ -798,7 +826,10 @@ export function createNetworkView(siteData, elements) {
     const profile = profileForNode(node);
     const context = authorContextFor(node, profile);
     const role =
-      context.role || (presenterIndex.has(node.label) ? "presenter" : "co_author");
+      context.role ||
+      [...personLookupKeys(node.label)].some((key) => presenterIndex.has(key))
+        ? "presenter"
+        : "co_author";
     const parts = [
       authorRoleLabel(role),
       `on author list of ${node.connections.toLocaleString()} talk${node.connections === 1 ? "" : "s"}`,
@@ -821,13 +852,7 @@ export function createNetworkView(siteData, elements) {
 
   function profileForNode(node) {
     if (!node || mode !== "individual") return null;
-    const label = node.label;
-    return (
-      speakerProfiles[label]
-      || speakerProfiles[resolveCanonicalPersonName(label)]
-      || profileByPersonKey.get(resolveDelegatePersonKey(label))
-      || null
-    );
+    return profileForSpeakerName(node.label, speakerProfiles, profileByPersonKey);
   }
 
   function renderContactLinksHtml(node) {
@@ -845,7 +870,10 @@ export function createNetworkView(siteData, elements) {
     const profile = profileForNode(node);
     const context = authorContextFor(node, profile);
     const role =
-      context.role || (presenterIndex.has(node.label) ? "presenter" : "co_author");
+      context.role ||
+      [...personLookupKeys(node.label)].some((key) => presenterIndex.has(key))
+        ? "presenter"
+        : "co_author";
     const profileStatus = profileStatusLabel({
       role,
       affiliationExplicit: context.affiliationExplicit,
@@ -1073,7 +1101,7 @@ export function createNetworkView(siteData, elements) {
       .join("");
 
     elements.results.querySelectorAll("[data-node-id]").forEach((button) => {
-      button.addEventListener("click", () => selectNode(button.dataset.nodeId, { focus: true }));
+      button.addEventListener("click", () => selectNode(button.dataset.nodeId));
     });
   }
 
@@ -1411,7 +1439,7 @@ export function createNetworkView(siteData, elements) {
       .join("");
 
     elements.barChart.querySelectorAll("[data-node-id]").forEach((button) => {
-      button.addEventListener("click", () => selectNode(button.dataset.nodeId, { focus: true }));
+      button.addEventListener("click", () => selectNode(button.dataset.nodeId));
     });
   }
 
@@ -1440,7 +1468,7 @@ export function createNetworkView(siteData, elements) {
     }
   }
 
-  function renderGraph({ force = false, resetZoom = false } = {}) {
+  function renderGraph({ force = false } = {}) {
     updateDimensions();
     const graph = prepareGraph();
     const nextRenderKey = graphRenderSignature(graph.nodes, graph.links);
@@ -1449,11 +1477,8 @@ export function createNetworkView(siteData, elements) {
       return;
     }
 
-    if (resetZoom) userAdjustedZoom = false;
-
     graphRenderKey = nextRenderKey;
     const fitGeneration = ++viewFitGeneration;
-    autoFitPending = !pendingNodeFocus && !userAdjustedZoom;
 
     graphLayer.selectAll("*").remove();
     labelOverlay.selectAll("*").remove();
@@ -1504,18 +1529,19 @@ export function createNetworkView(siteData, elements) {
 
     simulation = d3
       .forceSimulation(graphNodes)
-      .alpha(isSearchLayout ? 1 : 0.3)
+      .alpha(isSearchLayout ? 0.65 : 0.12)
       .alphaDecay(
-        isSearchLayout ? (largeGraph ? 0.045 : 0.032) : largeGraph ? 0.06 : 0.0228
+        isSearchLayout ? (largeGraph ? 0.11 : 0.09) : largeGraph ? 0.14 : 0.11
       )
-      .velocityDecay(isSearchLayout ? (largeGraph ? 0.55 : 0.45) : largeGraph ? 0.72 : 0.4)
+      .alphaMin(0.03)
+      .velocityDecay(isSearchLayout ? (largeGraph ? 0.78 : 0.74) : largeGraph ? 0.9 : 0.84)
       .force(
         "link",
         d3
           .forceLink(graphLinks)
           .id((d) => d.id)
           .distance(isSearchLayout ? (largeGraph ? 38 : 48) : largeGraph ? 70 : 90)
-          .strength(isSearchLayout ? (largeGraph ? 0.62 : 0.78) : largeGraph ? 0.3 : 0.45)
+          .strength(isSearchLayout ? (largeGraph ? 0.45 : 0.58) : largeGraph ? 0.18 : 0.28)
       )
       .force(
         "charge",
@@ -1524,13 +1550,13 @@ export function createNetworkView(siteData, elements) {
           .strength(
             isSearchLayout
               ? largeGraph
-                ? -28
-                : -48
+                ? -22
+                : -36
               : largeGraph
-                ? -90
+                ? -55
                 : isCoarsePointer
-                  ? -140
-                  : -180
+                  ? -90
+                  : -115
           )
       )
       .force("center", d3.forceCenter(centerX, centerY))
@@ -1572,18 +1598,7 @@ export function createNetworkView(siteData, elements) {
       })
       .on("end", () => {
         if (fitGeneration !== viewFitGeneration) return;
-
-        if (pendingNodeFocus && selectedNodeId) {
-          focusNode(selectedNodeId);
-          pendingNodeFocus = false;
-          autoFitPending = false;
-          return;
-        }
-
-        if (autoFitPending) {
-          fitToView({ animate: false });
-          autoFitPending = false;
-        }
+        simulation?.stop();
       });
 
     renderLegend(graphNodes, radiusScale);
@@ -1599,7 +1614,7 @@ export function createNetworkView(siteData, elements) {
       .on("start", (event, d) => {
         event.sourceEvent?.stopPropagation?.();
         dragMoved = false;
-        if (!event.active && simulation) simulation.alphaTarget(0.25).restart();
+        if (!event.active && simulation) simulation.alphaTarget(0.03).restart();
         d.fx = d.x;
         d.fy = d.y;
       })
@@ -1612,7 +1627,7 @@ export function createNetworkView(siteData, elements) {
       .on("end", (event, d) => {
         if (!event.active && simulation) simulation.alphaTarget(0);
         if (!dragMoved) {
-          selectNode(d.id, { focus: isCoarsePointer });
+          selectNode(d.id);
         }
         d.fx = null;
         d.fy = null;
@@ -1623,11 +1638,20 @@ export function createNetworkView(siteData, elements) {
     return resolveTalkId(entry, talksData, selectedSpeakerName);
   }
 
-  function nodeIdForAuthor(name) {
+  function findNetworkNodeByAuthorName(name) {
     const trimmed = String(name || "").trim();
     if (!trimmed) return null;
-    const node = network.individual.nodes.find((item) => item.label === trimmed);
-    return node?.id || null;
+    const keys = new Set(personLookupKeys(trimmed));
+    return (
+      network.individual.nodes.find((item) => {
+        if (item.label === trimmed) return true;
+        return personLookupKeys(item.label).some((key) => keys.has(key));
+      }) || null
+    );
+  }
+
+  function nodeIdForAuthor(name) {
+    return findNetworkNodeByAuthorName(name)?.id || null;
   }
 
   function renderTalkAuthorsHtml(authors) {
@@ -1792,6 +1816,7 @@ export function createNetworkView(siteData, elements) {
       selectedTalkId,
       resolveTalkId: resolveTalkIdForEntry,
     });
+    elements.cardTalks.hidden = false;
     if (selectedTalkId) {
       setTalkListVisible(false);
     } else {
@@ -1851,32 +1876,14 @@ export function createNetworkView(siteData, elements) {
     links.innerHTML = `<button type="button" class="btn-ghost btn-small cross-view-link" data-show-on-map="${escapeHtml(locationId)}" data-show-on-map-speaker="${escapeHtml(personName)}">Show on map</button>`;
   }
 
-  function focusNode(nodeId) {
-    const node = graphNodes.find((item) => item.id === nodeId);
-    if (!node || node.x == null || node.y == null) return;
-
-    const focusIds = new Set([nodeId, ...neighborIds(nodeId)]);
-    fitToView({
-      animate: true,
-      transitionMs: 450,
-      nodeIds: focusIds,
-      minScale: isCoarsePointer ? 1.2 : 1.4,
-      maxScale: isCoarsePointer ? 2.2 : 2.8,
-      padding: 72,
-    });
-  }
-
   function clearSelection() {
     selectedNodeId = null;
-    pendingNodeFocus = false;
     clearTalkDetail();
-    renderGraph({ resetZoom: true });
+    renderGraph();
   }
 
-  function selectNode(nodeId, { focus = false } = {}) {
+  function selectNode(nodeId) {
     selectedNodeId = nodeId;
-    pendingNodeFocus = focus;
-    if (!focus) userAdjustedZoom = false;
     renderGraph();
   }
 
@@ -1886,36 +1893,35 @@ export function createNetworkView(siteData, elements) {
 
     if (!searchQuery) {
       setSearchStatus("");
-      renderGraph({ resetZoom: true });
+      renderGraph();
       return;
     }
 
     if (!matchedNodeIds.size) {
       setSearchStatus("No nodes matched that search.", true);
-      renderGraph({ resetZoom: true });
+      renderGraph();
       return;
     }
 
     setSearchStatus(
       `${matchedNodeIds.size.toLocaleString()} match${matchedNodeIds.size === 1 ? "" : "es"} (matches always shown; co-authors fill remaining slots)`
     );
-    renderGraph({ resetZoom: true });
+    renderGraph();
   }
 
-  function applySearch(query, { focus = true } = {}) {
+  function applySearch(query) {
     updateMatches(query);
     selectedNodeId = null;
 
     if (!searchQuery) {
       setSearchStatus("");
-      pendingNodeFocus = false;
-      renderGraph({ resetZoom: true });
+      renderGraph();
       return;
     }
 
     if (!matchedNodeIds.size) {
       setSearchStatus("No nodes matched that search.", true);
-      renderGraph({ resetZoom: true });
+      renderGraph();
       return;
     }
 
@@ -1923,22 +1929,20 @@ export function createNetworkView(siteData, elements) {
       `${matchedNodeIds.size.toLocaleString()} node${matchedNodeIds.size === 1 ? "" : "s"} matched (all matches shown; co-authors fill remaining slots)`
     );
 
-    if (focus) {
-      const firstMatch = currentGraph().nodes.find((node) => matchedNodeIds.has(node.id));
-      if (firstMatch) {
-        selectNode(firstMatch.id, { focus: true });
-        return;
-      }
+    const firstMatch = currentGraph().nodes.find((node) => matchedNodeIds.has(node.id));
+    if (firstMatch) {
+      selectNode(firstMatch.id);
+      return;
     }
 
-    renderGraph({ resetZoom: !focus });
+    renderGraph();
   }
 
   function setNodeLimit(value) {
     const nextLimit = parseNodeLimit(value);
     if (nextLimit === nodeLimit) return;
     nodeLimit = nextLimit;
-    renderGraph({ resetZoom: true });
+    renderGraph();
   }
 
   function buildSuggestions(query) {
@@ -1973,7 +1977,7 @@ export function createNetworkView(siteData, elements) {
     setDataInfoOpen(false);
     if (elements.searchInput) elements.searchInput.value = "";
     setSearchStatus("");
-    renderGraph({ resetZoom: true });
+    renderGraph();
   }
 
   function resetView() {
@@ -1983,9 +1987,7 @@ export function createNetworkView(siteData, elements) {
 
   function resetZoom() {
     userAdjustedZoom = false;
-    autoFitPending = true;
     fitToView({ animate: true });
-    autoFitPending = false;
   }
 
   function updateDimensions() {
@@ -2010,13 +2012,6 @@ export function createNetworkView(siteData, elements) {
         if (searchQuery && matchedNodeIds.size) {
           simulation.force("x", d3.forceX(centerX).strength((d) => (matchedNodeIds.has(d.id) ? 0.06 : 0.025)));
           simulation.force("y", d3.forceY(centerY).strength((d) => (matchedNodeIds.has(d.id) ? 0.06 : 0.025)));
-        }
-      }
-      if (!userAdjustedZoom) {
-        if (selectedNodeId) {
-          focusNode(selectedNodeId);
-        } else {
-          fitToView({ animate: false });
         }
       }
     }, 150);
@@ -2097,7 +2092,7 @@ export function createNetworkView(siteData, elements) {
       if (authorButton && elements.card.contains(authorButton)) {
         event.preventDefault();
         event.stopPropagation();
-        selectNode(authorButton.dataset.nodeId, { focus: true });
+        selectNode(authorButton.dataset.nodeId);
         return;
       }
       const button = event.target.closest("[data-talk-id]");
@@ -2111,7 +2106,11 @@ export function createNetworkView(siteData, elements) {
     elements.talkBack.addEventListener("click", () => {
       clearTalkDetail();
       if (selectedSpeakerName && elements.cardTalks) {
-        const titles = talkTitleIndex.get(selectedSpeakerName) || [];
+        const titles = talksForNodeLabel(
+          selectedSpeakerName,
+          talkTitleIndex,
+          talkTitleByPersonKey
+        );
         elements.cardTalks.innerHTML = renderTalkTitlesHtml(titles, {
           kicker: "Talks",
           resolveTalkId: resolveTalkIdForEntry,
@@ -2121,10 +2120,7 @@ export function createNetworkView(siteData, elements) {
   }
 
   function findNodeIdByName(name) {
-    const trimmed = String(name || "").trim();
-    if (!trimmed) return null;
-    const node = network.individual.nodes.find((item) => item.label === trimmed);
-    return node?.id || null;
+    return findNetworkNodeByAuthorName(name)?.id || null;
   }
 
   renderSearchResults([]);

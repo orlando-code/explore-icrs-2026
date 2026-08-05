@@ -252,7 +252,7 @@ function showPersonInNetwork(name) {
   setTab("network");
   ensureNetworkIndividualMode();
   const nodeId = networkView.findNodeIdByName(name);
-  if (nodeId) networkView.selectNode(nodeId, { focus: true });
+  if (nodeId) networkView.selectNode(nodeId);
 }
 
 function showAffiliationOnMap(locationId, speakerName) {
@@ -653,7 +653,7 @@ function renderNetworkSuggestions(items) {
       event.preventDefault();
       els.networkSearch.value = item.query;
       networkView.applySearch(item.query);
-      networkView.selectNode(item.nodeId, { focus: true });
+      networkView.selectNode(item.nodeId);
       els.networkSuggestions.classList.remove("open");
     });
     els.networkSuggestions.appendChild(btn);
