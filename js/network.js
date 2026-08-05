@@ -1,4 +1,4 @@
-import { escapeHtml, buildTalkTitleIndex, renderTalkTitlesHtml, findLocationIdByAffiliation } from "./utils.js";
+import { escapeHtml, buildTalkTitleIndex, renderTalkTitlesHtml, findLocationIdByAffiliation, dedupeSearchHitsByPerson } from "./utils.js";
 import { createTalkSimilarityLookup, resolveTalkId } from "./talk-similarity.js";
 import { CONTACT_API_URL, TURNSTILE_SITE_KEY } from "./config.js";
 
@@ -1886,16 +1886,19 @@ export function createNetworkView(siteData, elements) {
     const trimmed = query.trim().toLowerCase();
     if (trimmed.length < 2) return [];
 
-    return currentGraph()
-      .nodes.filter((node) => nodeMatchesSearch(node, trimmed))
-      .sort((a, b) => b.connections - a.connections)
-      .slice(0, 8)
-      .map((node) => ({
-        label: node.label,
-        detail: formatNodeMeta(node),
-        query: node.label,
-        nodeId: node.id,
-      }));
+    return dedupeSearchHitsByPerson(
+      currentGraph()
+        .nodes.filter((node) => nodeMatchesSearch(node, trimmed))
+        .sort((a, b) => b.connections - a.connections)
+        .map((node) => ({
+          label: node.label,
+          detail: formatNodeMeta(node),
+          query: node.label,
+          nodeId: node.id,
+          _name: node.label,
+        })),
+      (item) => item._name
+    ).slice(0, 8);
   }
 
   function setMode(nextMode) {

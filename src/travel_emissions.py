@@ -1563,6 +1563,8 @@ def _build_emissions_attendees(
 
     attendees: list[dict[str, Any]] = []
     seen: set[str] = set()
+    from src.delegates import canonical_person_name, delegate_person_key
+
     for _, row in merged.iterrows():
         name = "" if pd.isna(row["presenter"]) else str(row["presenter"]).strip()
         affiliation = _clean_affiliation_value(row["affiliation"])
@@ -1572,7 +1574,8 @@ def _build_emissions_attendees(
         location_id = key_to_id.get(key)
         if not location_id:
             continue
-        dedupe_key = f"{name.casefold()}|{location_id}"
+        display_name = canonical_person_name(name)
+        dedupe_key = f"{delegate_person_key(name)}|{location_id}"
         if dedupe_key in seen:
             continue
         seen.add(dedupe_key)
@@ -1584,8 +1587,8 @@ def _build_emissions_attendees(
         )
         attendees.append(
             {
-                "id": _stable_attendee_id(name, location_id),
-                "name": name,
+                "id": _stable_attendee_id(display_name, location_id),
+                "name": display_name,
                 "affiliation": affiliation_display_name(affiliation) or affiliation,
                 "location_id": location_id,
                 "co2e_kg": round(float(row["co2e_kg"]), 1),

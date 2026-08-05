@@ -1,4 +1,10 @@
-import { affiliationMapKey, escapeHtml, haversineKm } from "./utils.js";
+import {
+  affiliationMapKey,
+  escapeHtml,
+  haversineKm,
+  resolveCanonicalPersonName,
+  resolveDelegatePersonKey,
+} from "./utils.js";
 import { OFFSET_API_URL, REQUIRE_DELEGATE_ID, SKIP_TURNSTILE, TURNSTILE_SITE_KEY } from "./config.js";
 
 let offsetTurnstileWidgetId = null;
@@ -326,8 +332,18 @@ export function personKey(name, affiliation) {
 
 export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocations, exportedAttendees = []) {
   if (exportedAttendees?.length) {
+    const seen = new Set();
     return exportedAttendees
-      .slice()
+      .filter((attendee) => {
+        const personKey = resolveDelegatePersonKey(attendee.name);
+        if (seen.has(personKey)) return false;
+        seen.add(personKey);
+        return true;
+      })
+      .map((attendee) => ({
+        ...attendee,
+        name: resolveCanonicalPersonName(attendee.name),
+      }))
       .sort((left, right) =>
         left.name.localeCompare(right.name, undefined, { sensitivity: "base" })
       );
@@ -368,12 +384,13 @@ export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocation
     for (const name of siteLocation.speakers || []) {
       const trimmed = String(name).trim();
       if (!trimmed) continue;
-      const dedupeKey = `${trimmed.toLowerCase()}|${emissionsLocation.id}`;
-      if (seen.has(dedupeKey)) continue;
-      seen.add(dedupeKey);
+      const personKey = resolveDelegatePersonKey(trimmed);
+      if (seen.has(personKey)) continue;
+      seen.add(personKey);
+      const displayName = resolveCanonicalPersonName(trimmed);
       attendees.push({
-        id: stableAttendeeId(trimmed, emissionsLocation.id),
-        name: trimmed,
+        id: stableAttendeeId(displayName, emissionsLocation.id),
+        name: displayName,
         affiliation: emissionsLocation.affiliation,
         location_id: emissionsLocation.id,
         co2e_kg: emissionsLocation.co2e_per_speaker_kg,
@@ -546,13 +563,22 @@ export function createOffsetTracker({
 
   function filteredAttendees() {
     const query = searchQuery.trim().toLowerCase();
-    if (!query) return attendees.slice(0, 40);
-    return attendees
-      .filter((attendee) => {
-        const haystack = `${attendee.name} ${attendee.affiliation}`.toLowerCase();
-        return haystack.includes(query);
-      })
-      .slice(0, 40);
+    const seen = new Set();
+    const matches = [];
+    const pool = query
+      ? attendees.filter((attendee) => {
+          const haystack = `${attendee.name} ${attendee.affiliation}`.toLowerCase();
+          return haystack.includes(query);
+        })
+      : attendees;
+    for (const attendee of pool) {
+      const personKey = resolveDelegatePersonKey(attendee.name);
+      if (seen.has(personKey)) continue;
+      seen.add(personKey);
+      matches.push(attendee);
+      if (matches.length >= 40) break;
+    }
+    return matches;
   }
 
   function renderSuggestions() {

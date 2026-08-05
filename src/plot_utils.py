@@ -460,13 +460,15 @@ def _affiliation_location_records(
         lon = float(group[lon_col].iloc[0])
         display = display_name.get(bucket_key) or bucket_key.split("\t", 1)[0]
 
-        from src.delegates import delegate_person_key
+        from src.delegates import canonical_person_name, delegate_person_key
 
         speaker_details: list[dict[str, str]] = []
+        speaker_by_key: dict[str, dict[str, Any]] = {}
         for presenter, speaker_group in group.groupby(presenter_col, dropna=True):
             if pd.isna(presenter):
                 continue
             presenter_name = str(presenter)
+            person_key = delegate_person_key(presenter_name)
             parts = [presenter_name]
             talk_titles: list[str] = []
             for _, talk in speaker_group.iterrows():
@@ -478,15 +480,24 @@ def _affiliation_location_records(
                     talk_titles.append(title_text)
                 if pd.notna(abstract) and str(abstract).strip():
                     parts.append(str(abstract))
-            speaker_details.append(
-                {
-                    "name": presenter_name,
+
+            existing = speaker_by_key.get(person_key)
+            if existing is None:
+                speaker_by_key[person_key] = {
+                    "name": canonical_person_name(presenter_name),
                     "search_text": " ".join(parts).lower(),
                     "talk_titles": talk_titles,
-                    "person_key": delegate_person_key(presenter_name),
+                    "person_key": person_key,
                 }
-            )
-        speaker_details.sort(key=lambda item: item["name"].casefold())
+                continue
+
+            existing["search_text"] = f"{existing['search_text']} {' '.join(parts).lower()}".strip()
+            existing["talk_titles"].extend(talk_titles)
+
+        speaker_details = sorted(
+            speaker_by_key.values(),
+            key=lambda item: str(item["name"]).casefold(),
+        )
         speakers = [item["name"] for item in speaker_details]
 
         level = group.get("geocode_level")
@@ -692,14 +703,17 @@ def _build_network_data(
     delegate_affiliations: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     """Build co-authorship networks at individual and affiliation level."""
-    from src.delegates import normalize_person_name
+    from src.delegates import canonical_person_name, normalize_person_name
 
     delegate_affiliations = delegate_affiliations or {}
-    presenter_affiliations = _author_affiliation_map(
-        df,
-        affiliation_col=affiliation_col,
-        presenter_col=presenter_col,
-    )
+    presenter_affiliations = {
+        canonical_person_name(name): affiliation
+        for name, affiliation in _author_affiliation_map(
+            df,
+            affiliation_col=affiliation_col,
+            presenter_col=presenter_col,
+        ).items()
+    }
     author_affiliations = dict(presenter_affiliations)
     explicit_affiliation = {name: True for name in presenter_affiliations}
     affiliation_coords = _affiliation_coord_index(locations)
@@ -710,7 +724,10 @@ def _build_network_data(
     affiliation_edges: dict[tuple[str, str], int] = {}
 
     for _, row in df.iterrows():
-        authors = _talk_authors(row, presenter_col=presenter_col)
+        authors = [
+            canonical_person_name(author)
+            for author in _talk_authors(row, presenter_col=presenter_col)
+        ]
         if not authors:
             continue
 

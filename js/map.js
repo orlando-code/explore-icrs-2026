@@ -10,6 +10,8 @@ import {
   renderTalkTitlesHtml,
   speakerMatchesQuery,
   findLocationIdByAffiliation,
+  dedupeSearchHitsByPerson,
+  resolveCanonicalPersonName,
 } from "./utils.js";
 import { resolveTalkId } from "./talk-similarity.js";
 
@@ -656,7 +658,21 @@ export function createMapView(
     const trimmed = query.trim().toLowerCase();
     if (trimmed.length < 2) return [];
 
-    const speakerHits = new Map();
+    const speakerHits = dedupeSearchHitsByPerson(
+      locations.flatMap((location) =>
+        (location.speaker_details || [])
+          .filter((speaker) => speakerMatchesQuery(speaker, trimmed))
+          .map((speaker) => ({
+            label: speaker.name,
+            detail: location.affiliation,
+            query: speaker.name,
+            locationId: location.id,
+            speakerName: speaker.name,
+            _name: speaker.name,
+          }))
+      ),
+      (item) => item._name
+    );
     const affiliationHits = new Map();
 
     for (const location of locations) {
@@ -668,20 +684,9 @@ export function createMapView(
           locationId: location.id,
         });
       }
-      for (const speaker of location.speaker_details || []) {
-        if (speakerMatchesQuery(speaker, trimmed) && !speakerHits.has(speaker.name)) {
-          speakerHits.set(speaker.name, {
-            label: speaker.name,
-            detail: location.affiliation,
-            query: speaker.name,
-            locationId: location.id,
-            speakerName: speaker.name,
-          });
-        }
-      }
     }
 
-    return [...speakerHits.values(), ...affiliationHits.values()].slice(0, 8);
+    return [...speakerHits, ...affiliationHits.values()].slice(0, 8);
   }
 
   function renderLegend() {

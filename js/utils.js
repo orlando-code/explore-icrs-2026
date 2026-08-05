@@ -510,10 +510,16 @@ export function normalizePersonName(name) {
 }
 
 let delegatePersonKeyAliases = null;
+let personCanonicalNames = null;
 
 /** Load name→person_key aliases exported with delegate groups. */
 export function setDelegatePersonKeyAliases(aliases = {}) {
   delegatePersonKeyAliases = aliases && typeof aliases === "object" ? aliases : {};
+}
+
+/** Load person_key→preferred display name (talk name when available). */
+export function setPersonCanonicalNames(names = {}) {
+  personCanonicalNames = names && typeof names === "object" ? names : {};
 }
 
 export function resolveDelegatePersonKey(name) {
@@ -529,6 +535,32 @@ export function resolveDelegatePersonKey(name) {
     if (alias) return String(alias);
   }
   return normalized || lowered;
+}
+
+export function resolveCanonicalPersonName(name) {
+  const cleaned = String(name || "").trim();
+  if (!cleaned) return "";
+  const personKey = resolveDelegatePersonKey(cleaned);
+  const canonical = personCanonicalNames?.[personKey];
+  return canonical ? String(canonical) : cleaned;
+}
+
+/** Deduplicate search hits by person identity, keeping the canonical display name. */
+export function dedupeSearchHitsByPerson(hits, getName) {
+  const deduped = new Map();
+  for (const hit of hits) {
+    const rawName = getName(hit);
+    const personKey = resolveDelegatePersonKey(rawName);
+    if (deduped.has(personKey)) continue;
+    const { _name, ...rest } = hit;
+    deduped.set(personKey, {
+      ...rest,
+      label: resolveCanonicalPersonName(rawName),
+      query: resolveCanonicalPersonName(rawName),
+      speakerName: resolveCanonicalPersonName(rawName),
+    });
+  }
+  return [...deduped.values()];
 }
 
 function delegateIdentityKeys(delegate) {
@@ -577,10 +609,10 @@ export function buildDelegateIndex(delegateGroups = []) {
 
 function delegateSpeakerDetails(delegates) {
   return (delegates || []).map((delegate) => ({
-    name: delegate.name,
+    name: resolveCanonicalPersonName(delegate.name),
     search_text: delegate.search_text || delegate.name.toLowerCase(),
     talk_titles: [],
-    person_key: delegate.person_key || normalizePersonName(delegate.name),
+    person_key: delegate.person_key || resolveDelegatePersonKey(delegate.name),
     non_speaking_delegate: delegate.is_speaker === false,
   }));
 }

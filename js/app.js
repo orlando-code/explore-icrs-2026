@@ -6,6 +6,7 @@ import { SPEAKER_PROFILES } from "./speaker-profiles.js";
 import {
   NON_SPEAKING_DELEGATE_GROUPS,
   DELEGATE_PERSON_KEY_ALIASES,
+  PERSON_CANONICAL_NAMES,
 } from "./non-speaking-delegates.js";
 import {
   MAP_EXCLUDED_AFFILIATION_KEYS,
@@ -22,9 +23,11 @@ import {
   setMapExclusions,
   filterEmissionsPool,
   setDelegatePersonKeyAliases,
+  setPersonCanonicalNames,
 } from "./utils.js";
 
 setDelegatePersonKeyAliases(DELEGATE_PERSON_KEY_ALIASES);
+setPersonCanonicalNames(PERSON_CANONICAL_NAMES);
 
 setMapExclusions({
   names: MAP_EXCLUDED_NAMES,

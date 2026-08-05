@@ -22,6 +22,7 @@ DEFAULT_ID_MATCH_REVIEW_GLOB = "delegate_id_match_review_*_merged.csv"
 
 _ORGANISATION_OVERRIDE_CACHE: dict[str, str] | None = None
 _DELEGATE_PERSON_KEY_CACHE: dict[str, str] | None = None
+_PERSON_IDENTITY_CACHE: tuple[dict[str, str], dict[str, str]] | None = None
 
 COL_FIRST = 4
 COL_LAST = 32
@@ -571,17 +572,203 @@ def load_delegate_person_keys(
     return mapping
 
 
+class _UnionFind:
+    def __init__(self) -> None:
+        self.parent: dict[str, str] = {}
+
+    def find(self, node: str) -> str:
+        if node not in self.parent:
+            self.parent[node] = node
+        parent = self.parent[node]
+        if parent != node:
+            self.parent[node] = self.find(parent)
+        return self.parent[node]
+
+    def union(self, left: str, right: str) -> None:
+        root_left = self.find(left)
+        root_right = self.find(right)
+        if root_left != root_right:
+            self.parent[root_right] = root_left
+
+
+def _match_single_presenter_norm(
+    name: str,
+    token_index: dict[str, set[str]],
+) -> str | None:
+    candidate_norms: set[str] | None = None
+    for token in name_tokens(name):
+        matches = token_index.get(token)
+        if not matches:
+            continue
+        candidate_norms = matches if candidate_norms is None else candidate_norms & matches
+        if candidate_norms and len(candidate_norms) == 1:
+            return next(iter(candidate_norms))
+    if candidate_norms and len(candidate_norms) == 1:
+        return next(iter(candidate_norms))
+    return None
+
+
+def _register_name_variants(
+    variant_to_key: dict[str, str],
+    *,
+    person_key: str,
+    names: set[str],
+) -> None:
+    for name in names:
+        cleaned = str(name or "").strip()
+        if not cleaned:
+            continue
+        for variant in {cleaned, cleaned.casefold(), normalize_person_name(cleaned)}:
+            if variant:
+                variant_to_key[variant] = person_key
+
+
+def load_person_identity_maps(
+    *,
+    delegates: pd.DataFrame | None = None,
+    talks: pd.DataFrame | None = None,
+    id_keys_path: Path | str | None = None,
+    use_cache: bool = True,
+) -> tuple[dict[str, str], dict[str, str]]:
+    """Map name variants to a stable person key and preferred display name.
+
+    Talk presenter names are preferred over delegate-list spellings when the
+    same person is matched via token overlap or delegate-id review.
+    """
+    global _PERSON_IDENTITY_CACHE
+    if (
+        use_cache
+        and _PERSON_IDENTITY_CACHE is not None
+        and delegates is None
+        and talks is None
+        and id_keys_path is None
+    ):
+        return _PERSON_IDENTITY_CACHE
+
+    if talks is None:
+        talks = load_talks()
+    if delegates is None:
+        delegates = load_delegates()
+
+    uf = _UnionFind()
+    presenter_display: dict[str, str] = {}
+    delegate_display: dict[str, str] = {}
+    id_key_by_norm: dict[str, str] = {}
+
+    token_index: dict[str, set[str]] = {}
+    for presenter in talks["presenter"].dropna().astype(str):
+        cleaned = presenter.strip()
+        if not cleaned:
+            continue
+        norm = normalize_person_name(cleaned)
+        presenter_display.setdefault(norm, cleaned)
+        uf.find(norm)
+        for token in name_tokens(cleaned):
+            token_index.setdefault(token, set()).add(norm)
+
+    id_mapping = load_delegate_person_keys(id_keys_path)
+    id_variants_by_key: dict[str, list[str]] = {}
+    for variant, person_key in id_mapping.items():
+        id_variants_by_key.setdefault(person_key, []).append(variant)
+
+    for variants in id_variants_by_key.values():
+        norms = [
+            normalize_person_name(variant) or variant.strip().casefold()
+            for variant in variants
+            if str(variant).strip()
+        ]
+        if not norms:
+            continue
+        root = norms[0]
+        uf.find(root)
+        for norm in norms[1:]:
+            uf.union(root, norm)
+
+    for person_key, variants in id_variants_by_key.items():
+        for variant in variants:
+            variant_norm = normalize_person_name(variant) or variant.strip().casefold()
+            if variant_norm:
+                id_key_by_norm[uf.find(variant_norm)] = person_key
+
+    for _, row in delegates.iterrows():
+        full_name = str(row.get("full_name") or "").strip()
+        if not full_name:
+            continue
+        norm = str(row.get("norm_name") or normalize_person_name(full_name))
+        delegate_display[norm] = full_name
+        uf.find(norm)
+
+        matched_presenter = _match_single_presenter_norm(full_name, token_index)
+        if matched_presenter:
+            uf.union(norm, matched_presenter)
+
+    components: dict[str, set[str]] = {}
+    for node in uf.parent:
+        components.setdefault(uf.find(node), set()).add(node)
+
+    variant_to_key: dict[str, str] = {}
+    key_to_canonical: dict[str, str] = {}
+    for members in components.values():
+        delegate_ids = {
+            id_key_by_norm[member]
+            for member in members
+            if member in id_key_by_norm
+        }
+        presenter_members = sorted(
+            member for member in members if member in presenter_display
+        )
+        delegate_members = sorted(
+            member for member in members if member in delegate_display
+        )
+        person_key = (
+            sorted(delegate_ids)[0]
+            if delegate_ids
+            else presenter_members[0]
+            if presenter_members
+            else sorted(members)[0]
+        )
+        if presenter_members:
+            canonical = presenter_display[presenter_members[0]]
+        elif delegate_members:
+            canonical = delegate_display[delegate_members[0]]
+        else:
+            canonical = person_key
+
+        key_to_canonical[person_key] = canonical
+        names = {canonical}
+        for member in presenter_members:
+            names.add(presenter_display[member])
+        for member in delegate_members:
+            names.add(delegate_display[member])
+        _register_name_variants(variant_to_key, person_key=person_key, names=names)
+
+    if use_cache and delegates is None and talks is None and id_keys_path is None:
+        _PERSON_IDENTITY_CACHE = (variant_to_key, key_to_canonical)
+    return variant_to_key, key_to_canonical
+
+
 def delegate_person_key(name: str) -> str:
     """Return a stable person key for deduplicating delegate name variants."""
     cleaned = str(name or "").strip()
     if not cleaned:
         return ""
-    aliases = load_delegate_person_keys()
+    variant_to_key, _ = load_person_identity_maps()
     return (
-        aliases.get(normalize_person_name(cleaned))
-        or aliases.get(cleaned.casefold())
+        variant_to_key.get(normalize_person_name(cleaned))
+        or variant_to_key.get(cleaned.casefold())
+        or variant_to_key.get(cleaned)
         or normalize_person_name(cleaned)
     )
+
+
+def canonical_person_name(name: str) -> str:
+    """Return the preferred display name for a person across talk/delegate aliases."""
+    cleaned = str(name or "").strip()
+    if not cleaned:
+        return ""
+    _, key_to_canonical = load_person_identity_maps()
+    person_key = delegate_person_key(cleaned)
+    return key_to_canonical.get(person_key, cleaned)
 
 
 def name_tokens(value: str) -> set[str]:
@@ -1152,13 +1339,14 @@ def export_non_speaking_delegates_js(
 ) -> Path:
     """Export delegate-list groups and name→person_key aliases for the map site."""
     groups = delegate_list_groups(delegates)
-    person_key_aliases = load_delegate_person_keys()
+    variant_to_key, key_to_canonical = load_person_identity_maps()
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     body = (
         "/** Generated from data/delegates.json – do not edit by hand. */\n"
         f"export const NON_SPEAKING_DELEGATE_GROUPS = {json.dumps(groups, ensure_ascii=False, indent=2)};\n"
-        f"export const DELEGATE_PERSON_KEY_ALIASES = {json.dumps(person_key_aliases, ensure_ascii=False, indent=2)};\n"
+        f"export const DELEGATE_PERSON_KEY_ALIASES = {json.dumps(variant_to_key, ensure_ascii=False, indent=2)};\n"
+        f"export const PERSON_CANONICAL_NAMES = {json.dumps(key_to_canonical, ensure_ascii=False, indent=2)};\n"
     )
     output_path.write_text(body, encoding="utf-8")
     return output_path
