@@ -1062,7 +1062,7 @@ export function createEmissionsView(
   function renderSidebar() {
     renderHeadline();
     renderContext();
-    renderModeBreakdown();
+    // renderModeBreakdown();
     renderLegend();
     renderOffsetChoroplethLegend();
     renderBarChart();
