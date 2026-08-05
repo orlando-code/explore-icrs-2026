@@ -503,7 +503,7 @@ export function createCountryChoropleth(map, options = {}) {
           <span>None pledged</span>
           <span>All pledged!</span>
         </div>
-        <p class="legend-note">Countries are grouped so each shaded region represents at least three delegates.</p>
+        <p class="legend-note">Each shaded region represents at least three delegates.</p>
       </div>`
     );
   }

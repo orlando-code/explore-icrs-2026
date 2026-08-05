@@ -2968,13 +2968,8 @@ button:active {
     flex: 1 1 8rem;
   }
 
-  .network-help-badge {
-    display: none;
-  }
-
   .stage-badge {
-    font-size: 0.72rem;
-    padding: 0.4rem 0.65rem;
+    display: none;
   }
 
   .share-stage {
