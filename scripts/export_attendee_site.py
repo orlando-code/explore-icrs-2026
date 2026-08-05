@@ -87,7 +87,7 @@ def main() -> None:
         )
 
     with export_stage("Exporting talks catalog"):
-        talks_output = export_talks_catalog(talks_geo)
+        talks_output = export_talks_catalog(talks_geo, show_progress=show_progress)
 
     with export_stage("Exporting non-speaking delegates"):
         delegates_output = run_with_progress(
