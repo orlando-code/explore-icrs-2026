@@ -52,6 +52,35 @@ if (EMISSIONS_DATA.speakers?.locations) {
     EMISSIONS_DATA.speakers.locations
   );
 }
+const MAP_SEARCH_KEYWORD_HINT =
+  "Search this keyword in names, affiliations, talks, and abstracts";
+const NETWORK_SEARCH_KEYWORD_HINT =
+  "Search this keyword in names, affiliations, talks, and abstracts";
+
+function searchKeywordSuggestion(query, detail) {
+  const trimmed = String(query ?? "").trim();
+  if (trimmed.length < 2) return null;
+  return {
+    kind: "keyword",
+    label: trimmed,
+    detail,
+    query: trimmed,
+  };
+}
+
+function withKeywordSuggestionFirst(query, items, detail, limit = 8) {
+  const keyword = searchKeywordSuggestion(query, detail);
+  if (!keyword) return items.slice(0, limit);
+  return [keyword, ...items.slice(0, Math.max(0, limit - 1))];
+}
+
+function suggestionButtonClass(item, index) {
+  const classes = ["suggestion"];
+  if (index === 0) classes.push("active");
+  if (item.kind === "keyword") classes.push("suggestion--keyword");
+  return classes.join(" ");
+}
+
 const locations = SITE_DATA.locations;
 const meta = SITE_DATA.meta;
 const delegateIndex = buildDelegateIndex(NON_SPEAKING_DELEGATE_GROUPS);
@@ -549,39 +578,87 @@ if (hasDelegatePool) {
   setIncludeNonSpeakingDelegates(true);
 }
 
-els.connectionsSizeToggle.addEventListener("change", (event) => {
-  const enabled = mapView.setConnectionsSize(event.target.checked);
-  els.connectionsSizeToggle.checked = enabled;
-});
+if (els.connectionsSizeToggle) {
+  els.connectionsSizeToggle.addEventListener("change", (event) => {
+    const enabled = mapView.setConnectionsSize(event.target.checked);
+    els.connectionsSizeToggle.checked = enabled;
+  });
+}
 
-let suggestionTimer = null;
-els.query.addEventListener("input", () => {
-  clearTimeout(suggestionTimer);
+function closeMapSuggestions() {
+  els.suggestions?.classList.remove("open");
+}
+
+function closeNetworkSuggestions() {
+  els.networkSuggestions?.classList.remove("open");
+}
+
+function updateMapSearch(query) {
+  if (document.activeElement === els.query) {
+    renderSuggestions(mapView.buildSuggestions(query), query);
+  }
+  mapView.applySearch(query, { fly: false });
+}
+
+function finalizeMapSearch(query) {
+  clearTimeout(mapSearchTimer);
+  mapView.applySearch(query, { fly: false });
+  closeMapSuggestions();
+}
+
+function updateNetworkSearch(query) {
+  if (document.activeElement === els.networkSearch) {
+    renderNetworkSuggestions(networkView.buildSuggestions(query), query);
+  }
+  networkView.previewSearch(query);
+}
+
+function finalizeNetworkSearch(query) {
+  clearTimeout(networkSearchTimer);
+  networkView.previewSearch(query);
+  closeNetworkSuggestions();
+}
+
+let mapSearchTimer = null;
+els.query?.addEventListener("input", () => {
   const query = els.query.value;
-  suggestionTimer = setTimeout(() => {
-    renderSuggestions(mapView.buildSuggestions(query));
-    mapView.applySearch(query, { fly: false });
-  }, 180);
+  clearTimeout(mapSearchTimer);
+  mapSearchTimer = setTimeout(() => updateMapSearch(query), 180);
 });
 
-function renderSuggestions(items) {
+els.query?.addEventListener("focus", () => {
+  const query = els.query?.value ?? "";
+  if (query.trim().length >= 2) {
+    renderSuggestions(mapView.buildSuggestions(query), query);
+  }
+});
+
+function renderSuggestions(items, query = "") {
+  const suggestions = withKeywordSuggestionFirst(query, items, MAP_SEARCH_KEYWORD_HINT);
   els.suggestions.innerHTML = "";
-  if (!items.length) {
+  if (!suggestions.length) {
     els.suggestions.classList.remove("open");
     return;
   }
 
-  items.forEach((item, index) => {
+  suggestions.forEach((item, index) => {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "suggestion" + (index === 0 ? " active" : "");
+    btn.className = suggestionButtonClass(item, index);
     btn.innerHTML = `${escapeHtml(item.label)}<small>${escapeHtml(item.detail)}</small>`;
     btn.addEventListener("mousedown", (event) => {
       event.preventDefault();
       els.query.value = item.query;
-      mapView.applySearch(item.query);
-      mapView.selectLocation(item.locationId, { speakerName: item.speakerName });
-      els.suggestions.classList.remove("open");
+      if (item.kind === "keyword") {
+        finalizeMapSearch(item.query);
+      } else {
+        clearTimeout(mapSearchTimer);
+        mapView.applySearch(item.query);
+        if (item.locationId) {
+          mapView.selectLocation(item.locationId, { speakerName: item.speakerName });
+        }
+        closeMapSuggestions();
+      }
     });
     els.suggestions.appendChild(btn);
   });
@@ -590,40 +667,50 @@ function renderSuggestions(items) {
 
 document.addEventListener("click", (event) => {
   if (!els.suggestions.contains(event.target) && event.target !== els.query) {
-    els.suggestions.classList.remove("open");
+    closeMapSuggestions();
   }
 });
 
-els.form.addEventListener("submit", (event) => {
+els.form?.addEventListener("submit", (event) => {
   event.preventDefault();
-  mapView.applySearch(els.query.value);
+  finalizeMapSearch(els.query.value);
+});
+
+els.query?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    finalizeMapSearch(els.query.value);
+  }
 });
 
 els.clear.addEventListener("click", () => {
   els.query.value = "";
-  mapView.applySearch("");
-  els.suggestions.classList.remove("open");
+  finalizeMapSearch("");
 });
 
-let networkSuggestionTimer = null;
+let networkSearchTimer = null;
 els.networkSearch?.addEventListener("input", () => {
-  clearTimeout(networkSuggestionTimer);
   const query = els.networkSearch.value;
-  networkSuggestionTimer = setTimeout(() => {
-    renderNetworkSuggestions(networkView.buildSuggestions(query));
-    networkView.previewSearch(query);
-  }, 180);
+  clearTimeout(networkSearchTimer);
+  networkSearchTimer = setTimeout(() => updateNetworkSearch(query), 180);
+});
+
+els.networkSearch?.addEventListener("focus", () => {
+  const query = els.networkSearch?.value ?? "";
+  if (query.trim().length >= 2) {
+    renderNetworkSuggestions(networkView.buildSuggestions(query), query);
+  }
 });
 
 els.networkSearch?.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
-    networkView.applySearch(els.networkSearch.value);
+    finalizeNetworkSearch(els.networkSearch.value);
   }
 });
 
 els.networkSearchBtn?.addEventListener("click", () => {
-  networkView.applySearch(els.networkSearch.value);
+  finalizeNetworkSearch(els.networkSearch.value);
 });
 
 els.networkDensity?.addEventListener("change", () => {
@@ -632,29 +719,36 @@ els.networkDensity?.addEventListener("change", () => {
 
 els.networkClearSearch?.addEventListener("click", () => {
   els.networkSearch.value = "";
+  clearTimeout(networkSearchTimer);
   networkView.applySearch("");
-  els.networkSuggestions?.classList.remove("open");
+  closeNetworkSuggestions();
 });
 
-function renderNetworkSuggestions(items) {
+function renderNetworkSuggestions(items, query = "") {
   if (!els.networkSuggestions) return;
+  const suggestions = withKeywordSuggestionFirst(query, items, NETWORK_SEARCH_KEYWORD_HINT);
   els.networkSuggestions.innerHTML = "";
-  if (!items.length) {
+  if (!suggestions.length) {
     els.networkSuggestions.classList.remove("open");
     return;
   }
 
-  items.forEach((item, index) => {
+  suggestions.forEach((item, index) => {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "suggestion" + (index === 0 ? " active" : "");
+    btn.className = suggestionButtonClass(item, index);
     btn.innerHTML = `${escapeHtml(item.label)}<small>${escapeHtml(item.detail)}</small>`;
     btn.addEventListener("mousedown", (event) => {
       event.preventDefault();
       els.networkSearch.value = item.query;
-      networkView.applySearch(item.query);
-      networkView.selectNode(item.nodeId);
-      els.networkSuggestions.classList.remove("open");
+      if (item.kind === "keyword") {
+        finalizeNetworkSearch(item.query);
+      } else {
+        clearTimeout(networkSearchTimer);
+        networkView.applySearch(item.query);
+        networkView.selectNode(item.nodeId);
+        closeNetworkSuggestions();
+      }
     });
     els.networkSuggestions.appendChild(btn);
   });
@@ -667,7 +761,7 @@ document.addEventListener("click", (event) => {
     !els.networkSuggestions.contains(event.target) &&
     event.target !== els.networkSearch
   ) {
-    els.networkSuggestions.classList.remove("open");
+    closeNetworkSuggestions();
   }
 });
 
@@ -687,6 +781,15 @@ renderResults({
   locationList: mapView.getLocations(),
 });
 mapView.applySearch("", { fly: false });
+
+const initialSearchQuery = new URLSearchParams(location.search).get("query");
+if (initialSearchQuery && els.query) {
+  els.query.value = initialSearchQuery;
+  mapView.applySearch(initialSearchQuery);
+  const cleanUrl = `${location.pathname}${location.hash}`;
+  history.replaceState(null, "", cleanUrl);
+}
+
 setTab(location.hash ? tabForHash(decodeURIComponent(location.hash.slice(1))) || getStoredTab() : getStoredTab());
 if (location.hash) navigateToHash();
 window.addEventListener("hashchange", () => navigateToHash());

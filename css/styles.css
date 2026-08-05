@@ -383,6 +383,20 @@ a.btn-small {
   padding-top: 0;
 }
 
+#network-panel .results-wrap.has-search-results {
+  flex: none;
+  background: var(--panel);
+  position: relative;
+  z-index: 1;
+}
+
+#network-panel #network-results {
+  max-height: min(280px, 38vh);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
 #network-panel .results-wrap:not(.has-search-results) {
   display: none;
 }
@@ -971,6 +985,9 @@ a.btn-small {
 
 .network-legend-stack {
   border-top: 1px solid var(--line);
+  background: var(--panel);
+  position: relative;
+  z-index: 0;
 }
 
 .network-legend-stack .network-sidebar-bars,
@@ -1358,6 +1375,15 @@ button:active {
 .suggestion:hover,
 .suggestion.active {
   background: #eef6f9;
+}
+
+.suggestion--keyword {
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.suggestion--keyword small {
+  font-weight: 500;
 }
 
 .suggestion small {
@@ -2913,8 +2939,8 @@ button:active {
   #network-panel:not([hidden]) > .network-sidebar-scroll {
     grid-column: 1;
     grid-row: 3;
-    min-height: 0;
-    overflow: visible;
+    min-height: auto;
+    overflow: hidden;
   }
 
   #network-panel:not([hidden]) > .network-legend-stack {
@@ -3082,12 +3108,13 @@ button:active {
 
   .entry-form,
   .network-controls {
-    position: static;
+    position: relative;
+    z-index: 2;
+    background: var(--panel);
   }
 
-  #network-panel .results-wrap {
-    max-height: none;
-    overflow: visible;
+  #network-panel .network-controls .suggestions.open {
+    max-height: min(240px, 36vh);
   }
 
   .emissions-context,
