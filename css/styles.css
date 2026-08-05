@@ -2843,6 +2843,7 @@ button:active {
 }
 
 .network-sidebar-scroll,
+#network-panel:not([hidden]),
 .results-wrap,
 .stage-stack > .hover-card.stage-detail-panel,
 .network-stage-bars-wrap .network-stage-bars {
@@ -2889,11 +2890,14 @@ button:active {
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: minmax(300px, 360px) minmax(0, 1fr);
-    grid-template-rows: auto auto minmax(0, 1fr) auto;
-    align-content: stretch;
+    grid-template-rows: auto auto auto auto;
+    align-content: start;
     min-height: 0;
     max-height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 
   #network-panel:not([hidden]) > .panel-header {
@@ -2910,7 +2914,7 @@ button:active {
     grid-column: 1;
     grid-row: 3;
     min-height: 0;
-    overflow-y: auto;
+    overflow: visible;
   }
 
   #network-panel:not([hidden]) > .network-legend-stack {
@@ -2922,8 +2926,12 @@ button:active {
   #network-panel:not([hidden]) > #network-stage {
     grid-column: 2;
     grid-row: 1 / -1;
-    min-height: 0;
-    height: 100%;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    min-height: 300px;
+    height: calc(100vh - 5.75rem);
+    max-height: calc(100vh - 5.75rem);
   }
 
   .network-card-slot:empty {

@@ -739,24 +739,20 @@ export function createNetworkView(siteData, elements) {
     card.classList.toggle("network-side-card--on-stage", cardOnStage());
   }
 
-  function resetPanelSidebarScroll() {
-    const panel = document.getElementById("network-panel");
-    const sidebar = panel?.querySelector(".network-sidebar-scroll");
-    if (sidebar) sidebar.scrollTop = 0;
-  }
-
-  function resetSelectionCardScroll() {
+  function resetCardScroll() {
     const card = elements.card;
     if (!card) return;
     card.scrollTop = 0;
+    card.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }
 
-    const sidebar = card.closest(".network-sidebar-scroll");
+  function resetPanelScrollForSelection() {
+    if (cardOnStage()) return;
+    const panel = document.getElementById("network-panel");
+    if (panel) panel.scrollTop = 0;
+    const sidebar = panel?.querySelector(".network-sidebar-scroll");
     if (sidebar) sidebar.scrollTop = 0;
-
-    const slot = elements.cardSlot;
-    if (slot) slot.scrollTop = 0;
-
-    resetPanelSidebarScroll();
+    if (elements.cardSlot) elements.cardSlot.scrollTop = 0;
   }
 
   function syncOnStageCardBounds() {
@@ -770,14 +766,14 @@ export function createNetworkView(siteData, elements) {
     card.style.maxHeight = `${cap}px`;
   }
 
-  function pinSelectionCardToTop() {
+  function pinSelectionCardToTop({ resetPanel = false } = {}) {
     const card = elements.card;
     if (!card || card.hidden) return;
     syncOnStageCardBounds();
 
     const run = () => {
-      resetSelectionCardScroll();
-      card.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      resetCardScroll();
+      if (resetPanel) resetPanelScrollForSelection();
     };
 
     run();
@@ -1624,7 +1620,6 @@ export function createNetworkView(siteData, elements) {
     if (radiusScale) renderLegend(graphNodes, radiusScale);
     scrollToSelectedSidebar();
     refreshTalkAuthors();
-    if (selectedNodeId) pinSelectionCardToTop();
     maybeCenterSelectedNode();
   }
 
@@ -2045,7 +2040,6 @@ export function createNetworkView(siteData, elements) {
   }
 
   function showNodeCard(node) {
-    pinSelectionCardToTop();
     elements.card.hidden = false;
     elements.cardTitle.textContent = node.label;
     const snippet = matchSnippet(node);
@@ -2057,8 +2051,7 @@ export function createNetworkView(siteData, elements) {
     updateNodeTalks(node);
     updateDataInfoLinks(node);
     setDataInfoOpen(false);
-    pinSelectionCardToTop();
-    window.requestAnimationFrame(pinSelectionCardToTop);
+    pinSelectionCardToTop({ resetPanel: true });
   }
 
   let cardViewLinks = null;
@@ -2224,7 +2217,6 @@ export function createNetworkView(siteData, elements) {
   function resize() {
     placeNetworkCard();
     syncOnStageCardBounds();
-    if (selectedNodeId) pinSelectionCardToTop();
     clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(() => {
       updateDimensions();
