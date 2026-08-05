@@ -1505,42 +1505,67 @@ def combined_attendee_talks(
     if not include_non_speakers:
         return talks_geo
 
+    from src.export_progress import console, run_with_progress
+
+    if show_progress:
+        console().print("  Geocoding delegate list")
     extra = geocoded_delegate_list(delegates, show_progress=show_progress)
-    delegate_by_key = {
-        delegate_person_key(str(row["presenter"])): row
-        for _, row in extra.iterrows()
-        if str(row.get("presenter") or "").strip()
-    }
 
-    talks_out = talks_geo.copy()
-    geo_columns = (
-        "latitude",
-        "longitude",
-        "geocode_level",
-        "geocoded",
-        "query_used",
-        "country_code",
+    if show_progress:
+        console().print("  Warming person-identity cache")
+    variant_to_key, _ = load_person_identity_maps()
+
+    def _person_key(name: object) -> str:
+        cleaned = str(name or "").strip()
+        if not cleaned:
+            return ""
+        return (
+            variant_to_key.get(normalize_person_name(cleaned))
+            or variant_to_key.get(cleaned.casefold())
+            or variant_to_key.get(cleaned)
+            or normalize_person_name(cleaned)
+        )
+
+    def _fill_missing_talk_coords(frame: pd.DataFrame, delegate_rows: pd.DataFrame) -> pd.DataFrame:
+        talks_out = frame.copy()
+        geo_columns = (
+            "latitude",
+            "longitude",
+            "geocode_level",
+            "geocoded",
+            "query_used",
+            "country_code",
+        )
+        for col in geo_columns:
+            if col not in talks_out.columns:
+                talks_out[col] = pd.NA
+
+        coord_rows = delegate_rows.dropna(subset=["latitude", "longitude"]).copy()
+        if coord_rows.empty:
+            return talks_out
+
+        coord_rows["_person_key"] = coord_rows["presenter"].astype(str).map(_person_key)
+        lookup = coord_rows.drop_duplicates("_person_key", keep="first").set_index("_person_key")
+        talks_out["_person_key"] = talks_out["presenter"].astype(str).map(_person_key)
+        missing_mask = talks_out["latitude"].isna() | talks_out["longitude"].isna()
+        if not missing_mask.any():
+            return talks_out.drop(columns=["_person_key"])
+
+        for col in ("latitude", "longitude", "geocode_level", "query_used", "country_code"):
+            if col not in lookup.columns:
+                continue
+            mapped = talks_out.loc[missing_mask, "_person_key"].map(lookup[col])
+            talks_out.loc[missing_mask, col] = mapped.combine_first(talks_out.loc[missing_mask, col])
+        talks_out.loc[missing_mask, "geocoded"] = talks_out.loc[missing_mask, "latitude"].notna()
+        return talks_out.drop(columns=["_person_key"])
+
+    if show_progress:
+        console().print("  Filling missing talk coordinates from delegate list")
+    talks_out = run_with_progress(
+        "Applying delegate coordinates to talks",
+        lambda: _fill_missing_talk_coords(talks_geo, extra),
+        show_progress=show_progress,
     )
-    for col in geo_columns:
-        if col not in talks_out.columns:
-            talks_out[col] = pd.NA
-
-    for index, row in talks_out.iterrows():
-        if pd.notna(row.get("latitude")) and pd.notna(row.get("longitude")):
-            continue
-        presenter = str(row.get("presenter") or "").strip()
-        if not presenter:
-            continue
-        hit = delegate_by_key.get(delegate_person_key(presenter))
-        if hit is None or pd.isna(hit.get("latitude")) or pd.isna(hit.get("longitude")):
-            continue
-        talks_out.at[index, "latitude"] = hit["latitude"]
-        talks_out.at[index, "longitude"] = hit["longitude"]
-        talks_out.at[index, "geocoded"] = True
-        talks_out.at[index, "geocode_level"] = hit.get("geocode_level")
-        talks_out.at[index, "query_used"] = hit.get("query_used")
-        if "country_code" in hit.index and pd.notna(hit.get("country_code")):
-            talks_out.at[index, "country_code"] = hit["country_code"]
 
     extra = extra.dropna(subset=["latitude", "longitude"])
     if extra.empty:
@@ -1559,13 +1584,16 @@ def combined_attendee_talks(
             extra[col] = pd.NA
 
     talk_person_keys = {
-        delegate_person_key(str(name))
+        _person_key(name)
         for name in talks_out["presenter"].dropna().astype(str)
         if str(name).strip()
     }
     extra = extra.loc[
-        ~extra["presenter"].astype(str).map(delegate_person_key).isin(talk_person_keys)
+        ~extra["presenter"].astype(str).map(_person_key).isin(talk_person_keys)
     ]
+
+    if show_progress:
+        console().print(f"  Appending {len(extra):,} delegate-only rows")
 
     combined = pd.concat(
         [
@@ -1574,14 +1602,10 @@ def combined_attendee_talks(
         ],
         ignore_index=True,
     )
-    combined = combined.assign(
-        _person_key=lambda frame: (
-            frame["presenter"].astype(str).map(delegate_person_key)
-        ),
-        _has_coords=lambda frame: (
-            frame["latitude"].notna() & frame["longitude"].notna()
-        ),
-    )
+    combined["_person_key"] = combined["presenter"].astype(str).map(_person_key)
+    combined["_has_coords"] = combined["latitude"].notna() & combined["longitude"].notna()
+    if show_progress:
+        console().print("  Deduplicating combined attendee rows")
     combined = combined.sort_values(
         ["_person_key", "_has_coords", "geocode_level"],
         ascending=[True, False, True],
