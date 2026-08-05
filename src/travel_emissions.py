@@ -1459,40 +1459,43 @@ def _build_emissions_locations(
         if override is not None and override.get("latitude") is not None:
             return float(override["latitude"]), float(override["longitude"])
 
+        valid = group.dropna(subset=["latitude", "longitude"])
+        if valid.empty:
+            return None
+
+        lat_rounded = valid["latitude"].astype(float).round(6)
+        lon_rounded = valid["longitude"].astype(float).round(6)
         pairs: dict[tuple[float, float], int] = {}
-        for _, row in group.iterrows():
-            if pd.isna(row["latitude"]) or pd.isna(row["longitude"]):
+        for lat, lon in zip(lat_rounded, lon_rounded, strict=False):
+            coord = (float(lat), float(lon))
+            if coord in country_centroids:
                 continue
-            lat = round(float(row["latitude"]), 6)
-            lon = round(float(row["longitude"]), 6)
-            if (lat, lon) in country_centroids:
-                continue
-            pairs[(lat, lon)] = pairs.get((lat, lon), 0) + 1
-        if not pairs:
-            lat = group["latitude"].dropna()
-            lon = group["longitude"].dropna()
-            if lat.empty or lon.empty:
-                return None
-            return float(lat.iloc[0]), float(lon.iloc[0])
-        return max(pairs.items(), key=lambda item: item[1])[0]
+            pairs[coord] = pairs.get(coord, 0) + 1
+        if pairs:
+            return max(pairs.items(), key=lambda item: item[1])[0]
+        return float(valid["latitude"].iloc[0]), float(valid["longitude"].iloc[0])
 
     leg_cols = legs[
         ["presenter", "affiliation", "latitude", "longitude"]
     ].drop_duplicates(subset=["presenter"])
     merged = estimates.merge(leg_cols, on=["presenter", "affiliation"], how="left")
+    clean_affiliations = merged["affiliation"].map(_clean_affiliation_value)
+    merged = merged.assign(
+        _affiliation_key=clean_affiliations.map(canonical_affiliation_key)
+    )
 
-    buckets: dict[str, list[pd.DataFrame]] = {}
     display_name: dict[str, str] = {}
-    for _, row in merged.iterrows():
-        affiliation = _clean_affiliation_value(row["affiliation"])
-        key = canonical_affiliation_key(affiliation)
-        buckets.setdefault(key, []).append(row.to_frame().T)
-        rule = _institution_rule(affiliation)
+    for affiliation in clean_affiliations.drop_duplicates():
+        if pd.isna(affiliation):
+            continue
+        affiliation_text = str(affiliation)
+        key = canonical_affiliation_key(affiliation_text)
+        rule = _institution_rule(affiliation_text)
         preferred = (
-            affiliation_display_name(affiliation)
+            affiliation_display_name(affiliation_text)
             or (rule.get("canonical") if rule else None)
-            or affiliation_base_name(affiliation)
-            or affiliation
+            or affiliation_base_name(affiliation_text)
+            or affiliation_text
         )
         existing = display_name.get(key)
         if not existing or len(preferred) > len(existing):
@@ -1500,8 +1503,10 @@ def _build_emissions_locations(
 
     rows: list[dict[str, Any]] = []
     key_to_id: dict[str, str] = {}
-    for index, (key, row_frames) in enumerate(sorted(buckets.items()), start=1):
-        group = pd.concat(row_frames, ignore_index=True)
+    for index, (key, group) in enumerate(
+        sorted(merged.groupby("_affiliation_key", sort=True)),
+        start=1,
+    ):
         coords = _best_lat_lon(key, group)
         if coords is None:
             continue
@@ -1565,9 +1570,17 @@ def _build_emissions_attendees(
     seen: set[str] = set()
     from src.delegates import canonical_person_name, delegate_person_key
 
-    for _, row in merged.iterrows():
-        name = "" if pd.isna(row["presenter"]) else str(row["presenter"]).strip()
-        affiliation = _clean_affiliation_value(row["affiliation"])
+    columns = list(merged.columns)
+    presenter_idx = columns.index("presenter")
+    affiliation_idx = columns.index("affiliation")
+    co2e_idx = columns.index("co2e_kg")
+    origin_country_idx = (
+        columns.index("origin_country") if "origin_country" in columns else None
+    )
+
+    for row in merged.itertuples(index=False, name=None):
+        name = "" if pd.isna(row[presenter_idx]) else str(row[presenter_idx]).strip()
+        affiliation = _clean_affiliation_value(row[affiliation_idx])
         if not name:
             continue
         key = canonical_affiliation_key(affiliation)
@@ -1580,8 +1593,8 @@ def _build_emissions_attendees(
             continue
         seen.add(dedupe_key)
         origin_country = ""
-        if "origin_country" in row and pd.notna(row["origin_country"]):
-            origin_country = str(row["origin_country"]).strip().upper()
+        if origin_country_idx is not None and pd.notna(row[origin_country_idx]):
+            origin_country = str(row[origin_country_idx]).strip().upper()
         cluster_id = (
             country_to_cluster.get(origin_country, "") if origin_country else ""
         )
@@ -1591,7 +1604,7 @@ def _build_emissions_attendees(
                 "name": display_name,
                 "affiliation": affiliation_display_name(affiliation) or affiliation,
                 "location_id": location_id,
-                "co2e_kg": round(float(row["co2e_kg"]), 1),
+                "co2e_kg": round(float(row[co2e_idx]), 1),
                 "origin_country": origin_country,
                 "country_cluster_id": cluster_id,
             }

@@ -637,13 +637,13 @@ def load_person_identity_maps(
     same person is matched via token overlap or delegate-id review.
     """
     global _PERSON_IDENTITY_CACHE
-    if (
+    cacheable = (
         use_cache
-        and _PERSON_IDENTITY_CACHE is not None
         and delegates is None
         and talks is None
         and id_keys_path is None
-    ):
+    )
+    if cacheable and _PERSON_IDENTITY_CACHE is not None:
         return _PERSON_IDENTITY_CACHE
 
     if talks is None:
@@ -749,7 +749,7 @@ def load_person_identity_maps(
             names.add(delegate_display[member])
         _register_name_variants(variant_to_key, person_key=person_key, names=names)
 
-    if use_cache and delegates is None and talks is None and id_keys_path is None:
+    if cacheable:
         _PERSON_IDENTITY_CACHE = (variant_to_key, key_to_canonical)
     return variant_to_key, key_to_canonical
 
@@ -1282,6 +1282,7 @@ def mark_delegate_speakers(delegates: pd.DataFrame) -> pd.DataFrame:
 def delegate_list_groups(
     delegates: pd.DataFrame | None = None,
     *,
+    variant_to_key: dict[str, str] | None = None,
     show_progress: bool = False,
 ) -> list[dict[str, Any]]:
     """Group all delegate-list attendees by affiliation for the map site."""
@@ -1293,6 +1294,8 @@ def delegate_list_groups(
         delegates = load_delegates()
 
     map_exclusions = load_map_exclusions()
+    if variant_to_key is None:
+        variant_to_key, _ = load_person_identity_maps(delegates=delegates)
     groups: dict[str, dict[str, Any]] = {}
     for _, row in iterrows_with_progress(
         delegates,
@@ -1322,6 +1325,12 @@ def delegate_list_groups(
         if len(display) > len(group["affiliation"]):
             group["affiliation"] = display
         country = str(row.get("country") or "").strip()
+        person_key = (
+            variant_to_key.get(normalize_person_name(name))
+            or variant_to_key.get(name.casefold())
+            or variant_to_key.get(name)
+            or normalize_person_name(name)
+        )
         group["delegates"].append(
             {
                 "name": name,
@@ -1329,7 +1338,7 @@ def delegate_list_groups(
                     part for part in (name, display, country) if part
                 ).lower(),
                 "is_speaker": bool(row.get("is_speaker")),
-                "person_key": delegate_person_key(name),
+                "person_key": person_key,
             }
         )
 
@@ -1353,9 +1362,13 @@ def export_non_speaking_delegates_js(
     show_progress: bool = False,
 ) -> Path:
     """Export delegate-list groups and name→person_key aliases for the map site."""
-    groups = delegate_list_groups(delegates, show_progress=show_progress)
     variant_to_key, key_to_canonical = load_person_identity_maps(
         delegates=delegates,
+        show_progress=show_progress,
+    )
+    groups = delegate_list_groups(
+        delegates,
+        variant_to_key=variant_to_key,
         show_progress=show_progress,
     )
     output_path = Path(save_path)

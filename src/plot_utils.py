@@ -382,32 +382,56 @@ def _build_talk_title_index(
     *,
     presenter_col: str = "presenter",
     title_col: str = "title",
+    show_progress: bool = False,
 ) -> dict[str, list[dict[str, Any]]]:
-    index: dict[str, dict[str, dict[str, Any]]] = {}
+    from src.export_progress import make_progress
 
-    for _, row in df.iterrows():
-        title = row.get(title_col)
-        if pd.isna(title) or not str(title).strip():
-            continue
-        title_text = str(title).strip()
-        presenter = row.get(presenter_col)
-        presenter_text = "" if pd.isna(presenter) else str(presenter).strip()
-        authors = _talk_authors(row, presenter_col=presenter_col)
-        if not authors:
-            continue
-        for author in authors:
-            author_bucket = index.setdefault(author, {})
-            is_primary = author == presenter_text or (
-                not presenter_text and author == authors[0]
-            )
-            talk_id = row.get("talk_id")
-            talk_id_text = "" if pd.isna(talk_id) else str(talk_id).strip()
-            existing = author_bucket.get(title_text)
-            if not existing or (is_primary and not existing.get("primary")):
-                entry = {"title": title_text, "primary": is_primary}
-                if talk_id_text:
-                    entry["talk_id"] = talk_id_text
-                author_bucket[title_text] = entry
+    index: dict[str, dict[str, dict[str, Any]]] = {}
+    working = _slim_talk_frame(
+        df,
+        presenter_col=presenter_col,
+        title_col=title_col,
+        include_talk_id=True,
+    )
+    rows = list(working.itertuples(index=False, name=None))
+    columns = list(working.columns)
+    presenter_idx = columns.index(presenter_col)
+    title_idx = columns.index(title_col) if title_col in columns else None
+    authors_idx = columns.index("authors")
+    talk_id_idx = columns.index("talk_id") if "talk_id" in columns else None
+
+    progress = make_progress(disable=not show_progress)
+    with progress:
+        task_id = progress.add_task("Indexing talk titles by author", total=len(rows))
+        for row in rows:
+            if title_idx is None:
+                progress.advance(task_id)
+                continue
+            title = row[title_idx]
+            if pd.isna(title) or not str(title).strip():
+                progress.advance(task_id)
+                continue
+            title_text = str(title).strip()
+            presenter = row[presenter_idx]
+            presenter_text = "" if pd.isna(presenter) else str(presenter).strip()
+            authors = _talk_authors_from_values(row[authors_idx], presenter)
+            if not authors:
+                progress.advance(task_id)
+                continue
+            for author in authors:
+                author_bucket = index.setdefault(author, {})
+                is_primary = author == presenter_text or (
+                    not presenter_text and author == authors[0]
+                )
+                talk_id = row[talk_id_idx] if talk_id_idx is not None else None
+                talk_id_text = "" if pd.isna(talk_id) else str(talk_id).strip()
+                existing = author_bucket.get(title_text)
+                if not existing or (is_primary and not existing.get("primary")):
+                    entry = {"title": title_text, "primary": is_primary}
+                    if talk_id_text:
+                        entry["talk_id"] = talk_id_text
+                    author_bucket[title_text] = entry
+            progress.advance(task_id)
 
     result: dict[str, list[dict[str, Any]]] = {}
     for author, titles in sorted(index.items()):
@@ -576,16 +600,15 @@ def _author_affiliation_map(
     affiliation_col: str = "affiliation",
     presenter_col: str = "presenter",
 ) -> dict[str, str]:
-    mapping: dict[str, str] = {}
-    for _, row in df.iterrows():
-        presenter = row.get(presenter_col)
-        affiliation = row.get(affiliation_col)
-        if pd.isna(presenter) or pd.isna(affiliation):
-            continue
-        name = str(presenter).strip()
-        if name and name not in mapping:
-            mapping[name] = str(affiliation).strip()
-    return mapping
+    subset = df[[presenter_col, affiliation_col]].dropna()
+    if subset.empty:
+        return {}
+    names = subset[presenter_col].astype(str).str.strip()
+    affiliations = subset[affiliation_col].astype(str).str.strip()
+    valid = names != ""
+    subset = pd.DataFrame({"name": names[valid], "affiliation": affiliations[valid]})
+    subset = subset.drop_duplicates(subset=["name"], keep="first")
+    return dict(zip(subset["name"], subset["affiliation"], strict=False))
 
 
 def author_profile_entries(
@@ -714,22 +737,72 @@ def author_talk_counts(
 ) -> dict[str, int]:
     """Count talks where each author appears on the author list."""
     counts: dict[str, int] = {}
-    for _, row in df.iterrows():
-        for author in _talk_authors(row, presenter_col=presenter_col):
+    working = _slim_talk_frame(df, presenter_col=presenter_col)
+    presenter_idx = list(working.columns).index(presenter_col)
+    authors_idx = list(working.columns).index("authors")
+    for row in working.itertuples(index=False, name=None):
+        for author in _talk_authors_from_values(row[authors_idx], row[presenter_idx]):
             counts[author] = counts.get(author, 0) + 1
     return counts
 
 
-def _talk_authors(row: pd.Series, *, presenter_col: str = "presenter") -> list[str]:
-    authors = row.get("authors")
+def _talk_authors_from_values(
+    authors: Any,
+    presenter: Any,
+) -> list[str]:
     if isinstance(authors, list) and authors:
         cleaned = [str(author).strip() for author in authors if str(author).strip()]
         if cleaned:
             return cleaned
-    presenter = row.get(presenter_col)
     if pd.isna(presenter):
         return []
-    return [str(presenter).strip()]
+    cleaned_presenter = str(presenter).strip()
+    return [cleaned_presenter] if cleaned_presenter else []
+
+
+def _talk_authors(row: pd.Series, *, presenter_col: str = "presenter") -> list[str]:
+    return _talk_authors_from_values(row.get("authors"), row.get(presenter_col))
+
+
+def _person_identity_lookup() -> tuple[Any, Any]:
+    from src.delegates import load_person_identity_maps, normalize_person_name
+
+    variant_to_key, key_to_canonical = load_person_identity_maps()
+
+    def person_key(name: object) -> str:
+        cleaned = str(name or "").strip()
+        if not cleaned:
+            return ""
+        return (
+            variant_to_key.get(normalize_person_name(cleaned))
+            or variant_to_key.get(cleaned.casefold())
+            or variant_to_key.get(cleaned)
+            or normalize_person_name(cleaned)
+        )
+
+    def display_name(name: object) -> str:
+        cleaned = str(name or "").strip()
+        if not cleaned:
+            return ""
+        return key_to_canonical.get(person_key(cleaned), cleaned)
+
+    return person_key, display_name
+
+
+def _slim_talk_frame(
+    df: pd.DataFrame,
+    *,
+    presenter_col: str = "presenter",
+    affiliation_col: str = "affiliation",
+    title_col: str = "title",
+    include_talk_id: bool = False,
+) -> pd.DataFrame:
+    columns = [presenter_col, affiliation_col, "authors"]
+    if title_col in df.columns:
+        columns.append(title_col)
+    if include_talk_id and "talk_id" in df.columns:
+        columns.append("talk_id")
+    return df.loc[:, [column for column in columns if column in df.columns]].copy()
 
 
 def _build_network_data(
@@ -739,18 +812,22 @@ def _build_network_data(
     affiliation_col: str = "affiliation",
     presenter_col: str = "presenter",
     delegate_affiliations: dict[str, str] | None = None,
+    show_progress: bool = False,
 ) -> dict[str, Any]:
     """Build co-authorship networks at individual and affiliation level."""
-    from src.delegates import canonical_person_name, normalize_person_name
+    from src.delegates import normalize_person_name
+    from src.export_progress import make_progress
 
+    _, display_name = _person_identity_lookup()
     delegate_affiliations = delegate_affiliations or {}
+    raw_presenter_affiliations = _author_affiliation_map(
+        df,
+        affiliation_col=affiliation_col,
+        presenter_col=presenter_col,
+    )
     presenter_affiliations = {
-        canonical_person_name(name): affiliation
-        for name, affiliation in _author_affiliation_map(
-            df,
-            affiliation_col=affiliation_col,
-            presenter_col=presenter_col,
-        ).items()
+        display_name(name): affiliation
+        for name, affiliation in raw_presenter_affiliations.items()
     }
     author_affiliations = dict(presenter_affiliations)
     explicit_affiliation = {name: True for name in presenter_affiliations}
@@ -761,47 +838,60 @@ def _build_network_data(
     individual_edges: dict[tuple[str, str], int] = {}
     affiliation_edges: dict[tuple[str, str], int] = {}
 
-    for _, row in df.iterrows():
-        authors = [
-            canonical_person_name(author)
-            for author in _talk_authors(row, presenter_col=presenter_col)
-        ]
-        if not authors:
-            continue
+    working = _slim_talk_frame(df, presenter_col=presenter_col, affiliation_col=affiliation_col)
+    columns = list(working.columns)
+    presenter_idx = columns.index(presenter_col)
+    affiliation_idx = columns.index(affiliation_col)
+    authors_idx = columns.index("authors")
+    rows = list(working.itertuples(index=False, name=None))
 
-        affiliation = row.get(affiliation_col)
-        affiliation_text = "" if pd.isna(affiliation) else str(affiliation).strip()
+    progress = make_progress(disable=not show_progress)
+    with progress:
+        task_id = progress.add_task("Building co-authorship network", total=len(rows))
+        for row in rows:
+            authors = [
+                display_name(author)
+                for author in _talk_authors_from_values(
+                    row[authors_idx],
+                    row[presenter_idx],
+                )
+            ]
+            if not authors:
+                progress.advance(task_id)
+                continue
 
-        for author in authors:
-            individual_talk_count[author] = individual_talk_count.get(author, 0) + 1
-            if affiliation_text and author not in author_affiliations:
-                author_affiliations[author] = affiliation_text
-                explicit_affiliation[author] = False
+            affiliation = row[affiliation_idx]
+            affiliation_text = "" if pd.isna(affiliation) else str(affiliation).strip()
 
-        if affiliation_text:
-            affiliation_talk_count[affiliation_text] = (
-                affiliation_talk_count.get(affiliation_text, 0) + 1
-            )
+            for author in authors:
+                individual_talk_count[author] = individual_talk_count.get(author, 0) + 1
+                if affiliation_text and author not in author_affiliations:
+                    author_affiliations[author] = affiliation_text
+                    explicit_affiliation[author] = False
 
-        if len(authors) < 2:
-            continue
+            if affiliation_text:
+                affiliation_talk_count[affiliation_text] = (
+                    affiliation_talk_count.get(affiliation_text, 0) + 1
+                )
 
-        talk_affiliations = {
-            author_affiliations[author]
-            for author in authors
-            if author in author_affiliations
-        }
+            if len(authors) >= 2:
+                talk_affiliations = {
+                    author_affiliations[author]
+                    for author in authors
+                    if author in author_affiliations
+                }
 
-        for index, author_a in enumerate(authors):
-            for author_b in authors[index + 1 :]:
-                key = tuple(sorted((author_a, author_b)))
-                individual_edges[key] = individual_edges.get(key, 0) + 1
+                for index, author_a in enumerate(authors):
+                    for author_b in authors[index + 1 :]:
+                        key = tuple(sorted((author_a, author_b)))
+                        individual_edges[key] = individual_edges.get(key, 0) + 1
 
-        affiliation_list = sorted(talk_affiliations)
-        for index, affiliation_a in enumerate(affiliation_list):
-            for affiliation_b in affiliation_list[index + 1 :]:
-                key = tuple(sorted((affiliation_a, affiliation_b)))
-                affiliation_edges[key] = affiliation_edges.get(key, 0) + 1
+                affiliation_list = sorted(talk_affiliations)
+                for index, affiliation_a in enumerate(affiliation_list):
+                    for affiliation_b in affiliation_list[index + 1 :]:
+                        key = tuple(sorted((affiliation_a, affiliation_b)))
+                        affiliation_edges[key] = affiliation_edges.get(key, 0) + 1
+            progress.advance(task_id)
 
     for author in individual_talk_count:
         norm = normalize_person_name(author)
@@ -967,21 +1057,25 @@ def export_attendee_site_data(
     if show_progress:
         console().print(f"  {len(locations):,} location pins")
 
+    delegate_affiliations = _delegate_affiliation_map()
+
     # Network, talks index, and stats use the full programme; map locations do not.
-    if show_progress:
-        console().print("  Building co-authorship network")
     network = _build_network_data(
         df,
         locations,
         affiliation_col=affiliation_col,
         presenter_col=presenter_col,
-        delegate_affiliations=_delegate_affiliation_map(),
+        delegate_affiliations=delegate_affiliations,
+        show_progress=show_progress,
     )
     talk_titles_by_author = _build_talk_title_index(
         df,
         presenter_col=presenter_col,
         title_col=title_col,
+        show_progress=show_progress,
     )
+    if show_progress:
+        console().print("  Attaching talk titles to map speakers")
     for location in locations:
         for speaker in location["speaker_details"]:
             speaker["talk_titles"] = talk_titles_by_author.get(speaker["name"], [])
