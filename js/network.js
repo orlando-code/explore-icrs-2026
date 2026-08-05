@@ -1,4 +1,12 @@
-import { escapeHtml, buildTalkTitleIndex, renderTalkTitlesHtml, findLocationIdByAffiliation, dedupeSearchHitsByPerson } from "./utils.js";
+import {
+  escapeHtml,
+  buildTalkTitleIndex,
+  renderTalkTitlesHtml,
+  findLocationIdByAffiliation,
+  dedupeSearchHitsByPerson,
+  resolveCanonicalPersonName,
+  resolveDelegatePersonKey,
+} from "./utils.js";
 import { createTalkSimilarityLookup, resolveTalkId } from "./talk-similarity.js";
 import { CONTACT_API_URL, TURNSTILE_SITE_KEY } from "./config.js";
 
@@ -420,9 +428,45 @@ function buildPresenterIndex(talksData) {
   const presenters = new Set();
   for (const talk of Object.values(talksData?.by_id || {})) {
     const presenter = String(talk?.presenter || "").trim();
-    if (presenter) presenters.add(presenter);
+    if (presenter) {
+      presenters.add(presenter);
+      presenters.add(resolveCanonicalPersonName(presenter));
+    }
   }
   return presenters;
+}
+
+function buildTalkTitleByPersonKey(talkTitleIndex) {
+  const byKey = new Map();
+  for (const [name, titles] of talkTitleIndex.entries()) {
+    const personKey = resolveDelegatePersonKey(name);
+    const existing = byKey.get(personKey);
+    if (!existing || titles.length > existing.length) {
+      byKey.set(personKey, titles);
+    }
+  }
+  return byKey;
+}
+
+function buildProfileByPersonKey(speakerProfiles) {
+  const byKey = new Map();
+  for (const [name, profile] of Object.entries(speakerProfiles || {})) {
+    byKey.set(resolveDelegatePersonKey(name), profile);
+  }
+  return byKey;
+}
+
+function talksForNodeLabel(label, talkTitleIndex, talkTitleByPersonKey) {
+  const direct = talkTitleIndex.get(label) || [];
+  if (direct.length) return direct;
+
+  const canonical = resolveCanonicalPersonName(label);
+  if (canonical !== label) {
+    const byCanonical = talkTitleIndex.get(canonical) || [];
+    if (byCanonical.length) return byCanonical;
+  }
+
+  return talkTitleByPersonKey.get(resolveDelegatePersonKey(label)) || [];
 }
 
 function authorContextFor(node, profile) {
@@ -485,6 +529,8 @@ export function createNetworkView(siteData, elements) {
     siteData.locations || [],
     siteData.talk_titles_by_author
   );
+  const talkTitleByPersonKey = buildTalkTitleByPersonKey(talkTitleIndex);
+  const profileByPersonKey = buildProfileByPersonKey(speakerProfiles);
   const talksData = elements.talksData || { by_id: {}, title_index: {} };
   const talksById = talksData.by_id || {};
   const presenterIndex = buildPresenterIndex(talksData);
@@ -775,7 +821,13 @@ export function createNetworkView(siteData, elements) {
 
   function profileForNode(node) {
     if (!node || mode !== "individual") return null;
-    return speakerProfiles[node.label] || null;
+    const label = node.label;
+    return (
+      speakerProfiles[label]
+      || speakerProfiles[resolveCanonicalPersonName(label)]
+      || profileByPersonKey.get(resolveDelegatePersonKey(label))
+      || null
+    );
   }
 
   function renderContactLinksHtml(node) {
@@ -1728,7 +1780,7 @@ export function createNetworkView(siteData, elements) {
       clearTalkDetail();
     }
     selectedSpeakerName = node.label;
-    const titles = talkTitleIndex.get(node.label) || [];
+    const titles = talksForNodeLabel(node.label, talkTitleIndex, talkTitleByPersonKey);
     if (!titles.length) {
       elements.cardTalks.hidden = true;
       elements.cardTalks.innerHTML = "";

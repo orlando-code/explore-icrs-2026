@@ -386,6 +386,7 @@ def _build_talk_title_index(
 ) -> dict[str, list[dict[str, Any]]]:
     from src.export_progress import make_progress
 
+    _, display_name = _person_identity_lookup()
     index: dict[str, dict[str, dict[str, Any]]] = {}
     working = _slim_talk_frame(
         df,
@@ -419,9 +420,10 @@ def _build_talk_title_index(
                 progress.advance(task_id)
                 continue
             for author in authors:
-                author_bucket = index.setdefault(author, {})
-                is_primary = author == presenter_text or (
-                    not presenter_text and author == authors[0]
+                author_name = display_name(author)
+                author_bucket = index.setdefault(author_name, {})
+                is_primary = author_name == display_name(presenter_text) or (
+                    not presenter_text and author_name == display_name(authors[0])
                 )
                 talk_id = row[talk_id_idx] if talk_id_idx is not None else None
                 talk_id_text = "" if pd.isna(talk_id) else str(talk_id).strip()
