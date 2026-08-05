@@ -32,6 +32,7 @@ const CONTACT_TURNSTILE_TIMEOUT_MSG =
   "Security check timed out. Check your connection and try again.";
 const CONTACT_TURNSTILE_CHALLENGE_MSG =
   "Complete the security check above to show the email address.";
+let contactTurnstileLayoutSync = null;
 
 function linkEndpointId(endpoint) {
   return typeof endpoint === "object" ? endpoint.id : endpoint;
@@ -304,6 +305,7 @@ function mountContactTurnstile() {
         setContactTurnstileState("ready");
         syncContactTurnstileChrome();
         finishContactTurnstilePending(token);
+        contactTurnstileLayoutSync?.();
       },
       "expired-callback": () => {
         contactTurnstileToken = "";
@@ -725,6 +727,37 @@ export function createNetworkView(siteData, elements) {
     card.classList.toggle("network-side-card--on-stage", cardOnStage());
   }
 
+  function resetSelectionCardScroll() {
+    const card = elements.card;
+    if (!card) return;
+    card.scrollTop = 0;
+
+    const sidebar = card.closest(".network-sidebar-scroll");
+    if (sidebar) sidebar.scrollTop = 0;
+
+    const slot = elements.cardSlot;
+    if (slot) slot.scrollTop = 0;
+  }
+
+  function alignSelectionCardView() {
+    resetSelectionCardScroll();
+    const card = elements.card;
+    if (!card || card.hidden) return;
+
+    window.requestAnimationFrame(() => {
+      resetSelectionCardScroll();
+      if (cardOnStage()) return;
+
+      const anchor = card.querySelector(".network-card-header") || card;
+      if (isCoarsePointer) {
+        anchor.scrollIntoView({ block: "start", behavior: "auto" });
+      }
+      window.requestAnimationFrame(resetSelectionCardScroll);
+    });
+  }
+
+  contactTurnstileLayoutSync = alignSelectionCardView;
+
   const width = () => Math.max(canvasEl.clientWidth, 320);
   const height = () => Math.max(canvasEl.clientHeight, 280);
 
@@ -1043,6 +1076,7 @@ export function createNetworkView(siteData, elements) {
             return;
           }
           mountContactTurnstile();
+          alignSelectionCardView();
         });
       });
     }
@@ -1881,10 +1915,13 @@ export function createNetworkView(siteData, elements) {
     const container = elements.card;
     if (!target || !container || target.hidden) return;
     window.requestAnimationFrame(() => {
-      target.scrollIntoView({ block: "nearest", behavior: "smooth" });
       if (container.scrollHeight > container.clientHeight) {
         const top = Math.max(0, target.offsetTop - 12);
         container.scrollTo({ top, behavior: "smooth" });
+        return;
+      }
+      if (!isCoarsePointer) {
+        target.scrollIntoView({ block: "nearest", behavior: "smooth" });
       }
     });
   }
@@ -2013,6 +2050,7 @@ export function createNetworkView(siteData, elements) {
     updateNodeTalks(node);
     updateDataInfoLinks(node);
     setDataInfoOpen(false);
+    alignSelectionCardView();
   }
 
   let cardViewLinks = null;
