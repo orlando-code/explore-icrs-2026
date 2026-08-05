@@ -595,14 +595,15 @@ def _match_single_presenter_norm(
     name: str,
     token_index: dict[str, set[str]],
 ) -> str | None:
+    tokens = name_tokens(name)
+    if not tokens:
+        return None
     candidate_norms: set[str] | None = None
-    for token in name_tokens(name):
+    for token in tokens:
         matches = token_index.get(token)
         if not matches:
-            continue
+            return None
         candidate_norms = matches if candidate_norms is None else candidate_norms & matches
-        if candidate_norms and len(candidate_norms) == 1:
-            return next(iter(candidate_norms))
     if candidate_norms and len(candidate_norms) == 1:
         return next(iter(candidate_norms))
     return None
@@ -1262,17 +1263,18 @@ def mark_delegate_speakers(delegates: pd.DataFrame) -> pd.DataFrame:
             token_index.setdefault(token, set()).add(norm)
 
     for index, row in delegates.loc[~delegates["is_speaker"]].iterrows():
+        tokens = name_tokens(row["full_name"])
+        if not tokens:
+            continue
         candidate_norms: set[str] | None = None
-        for token in name_tokens(row["full_name"]):
+        for token in tokens:
             matches = token_index.get(token)
             if not matches:
-                continue
+                candidate_norms = None
+                break
             candidate_norms = (
                 matches if candidate_norms is None else candidate_norms & matches
             )
-            if candidate_norms and len(candidate_norms) == 1:
-                delegates.at[index, "is_speaker"] = True
-                break
         if candidate_norms and len(candidate_norms) == 1:
             delegates.at[index, "is_speaker"] = True
 

@@ -34,3 +34,19 @@ def test_id_review_delegate_id_becomes_person_key():
 
     assert delegate_person_key(talk_name) == delegate_person_key(delegate_name)
     assert delegate_person_key(talk_name).isdigit()
+
+
+def test_shared_surname_does_not_merge_distinct_burts():
+    import src.delegates as delegates_module
+
+    delegates_module._PERSON_IDENTITY_CACHE = None
+    delegates_module._DELEGATE_PERSON_KEY_CACHE = None
+
+    john_key = delegate_person_key("Prof John Burt")
+    nicole_key = delegate_person_key("Nicole Burt")
+
+    assert john_key != nicole_key
+    assert john_key == "17228"
+    assert nicole_key == "13525"
+    assert canonical_person_name("Prof John Burt") == "Prof John Burt"
+    assert canonical_person_name("Nicole Burt") == "Nicole Burt"
