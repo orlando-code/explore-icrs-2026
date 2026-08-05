@@ -677,7 +677,7 @@ def _delegate_affiliation_map(
 ) -> dict[str, str]:
     """Map normalized person name to affiliation from the official delegate list."""
     from src.delegates import normalize_person_name
-    from src.geocode import affiliation_base_name
+    from src.geocode import affiliation_display_name
 
     path = Path(delegates_path)
     if not path.exists():
@@ -694,14 +694,18 @@ def _delegate_affiliation_map(
             continue
         norm = normalize_person_name(name)
         if norm and norm not in mapping:
-            mapping[norm] = affiliation_base_name(affiliation) or affiliation
+            mapping[norm] = affiliation_display_name(affiliation) or affiliation
     return mapping
 
 
 def _affiliation_coord_index(
     locations: list[dict[str, Any]],
 ) -> dict[str, tuple[float, float]]:
-    from src.geocode import affiliation_base_name, canonical_affiliation_key
+    from src.geocode import (
+        affiliation_base_name,
+        affiliation_display_name,
+        canonical_affiliation_key,
+    )
 
     index: dict[str, tuple[float, float]] = {}
     for location in locations:
@@ -709,6 +713,7 @@ def _affiliation_coord_index(
         affiliation = location["affiliation"]
         for candidate in (
             affiliation,
+            affiliation_display_name(affiliation),
             affiliation_base_name(affiliation),
             canonical_affiliation_key(affiliation),
         ):
@@ -721,12 +726,25 @@ def _resolve_affiliation_coords(
     affiliation: str,
     coord_index: dict[str, tuple[float, float]],
 ) -> tuple[str, tuple[float, float] | None]:
-    from src.geocode import affiliation_base_name, canonical_affiliation_key
+    from src.geocode import (
+        affiliation_base_name,
+        affiliation_display_name,
+        canonical_affiliation_key,
+    )
 
     if not affiliation:
         return "", None
-    display = affiliation_base_name(affiliation) or affiliation
-    for candidate in (display, affiliation, canonical_affiliation_key(affiliation)):
+    display = (
+        affiliation_display_name(affiliation)
+        or affiliation_base_name(affiliation)
+        or affiliation
+    )
+    for candidate in (
+        display,
+        affiliation,
+        affiliation_base_name(affiliation),
+        canonical_affiliation_key(affiliation),
+    ):
         if candidate in coord_index:
             return display, coord_index[candidate]
     return display, None
@@ -819,6 +837,7 @@ def _build_network_data(
     """Build co-authorship networks at individual and affiliation level."""
     from src.delegates import normalize_person_name
     from src.export_progress import make_progress
+    from src.geocode import affiliation_display_name
 
     _, display_name = _person_identity_lookup()
     delegate_affiliations = delegate_affiliations or {}
@@ -828,7 +847,7 @@ def _build_network_data(
         presenter_col=presenter_col,
     )
     presenter_affiliations = {
-        display_name(name): affiliation
+        display_name(name): affiliation_display_name(affiliation) or affiliation
         for name, affiliation in raw_presenter_affiliations.items()
     }
     author_affiliations = dict(presenter_affiliations)
@@ -863,7 +882,12 @@ def _build_network_data(
                 continue
 
             affiliation = row[affiliation_idx]
-            affiliation_text = "" if pd.isna(affiliation) else str(affiliation).strip()
+            raw_affiliation = "" if pd.isna(affiliation) else str(affiliation).strip()
+            affiliation_text = (
+                affiliation_display_name(raw_affiliation) or raw_affiliation
+                if raw_affiliation
+                else ""
+            )
 
             for author in authors:
                 individual_talk_count[author] = individual_talk_count.get(author, 0) + 1

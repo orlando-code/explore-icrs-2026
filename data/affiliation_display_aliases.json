@@ -1,5 +1,5 @@
 {
-  "alias_count": 295,
+  "alias_count": 296,
   "aliases": {
     "Academia Sinica": "Academia Sinica, Taiwan",
     "Arizona State University": "Arizona State University, United States",
@@ -296,7 +296,8 @@
     "Conservation Society of Pohnpei Micronesia (the Federated States of)": "Conservation Society of Pohnpei",
     "the Nature Conservancy Micronesia (the Federated States of)": "The Nature Conservancy",
     "the Nature Conservancy Venezuela, Bolivarian Republic of": "The Nature Conservancy",
-    "Australian Institute Of Marine Science": "Australian Institute of Marine Science"
+    "Australian Institute Of Marine Science": "Australian Institute of Marine Science",
+    "King Abdullah University of Science and Technology": "KAUST"
   },
   "source": "data/affiliation_duplicate_summary_150corrected.csv",
   "split_clusters": [

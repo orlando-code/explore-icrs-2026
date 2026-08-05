@@ -434,5 +434,17 @@
     "latitude": 22.82555745769912, 
     "longitude": 113.54118700836342, 
     "query_used": "override:South China Sea Institute of Oceanology"
+  },
+  "KAUST": {
+    "geocode_level": "institute",
+    "latitude": 22.313334807841677, 
+    "longitude": 39.10943754819546, 
+    "query_used": "override:KAUST"
+  },
+  "KAUST Coral Restoration Initiative": {
+    "geocode_level": "institute",
+    "latitude": 22.313334807841677, 
+    "longitude": 39.10943754819546, 
+    "query_used": "override:KAUST Coral Restoration Initiative"
   }
 }
