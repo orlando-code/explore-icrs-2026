@@ -255,6 +255,7 @@ a.btn-small {
   border-radius: 14px;
   background: #f7fafc;
   border: 1px solid var(--line);
+  overflow-anchor: none;
 }
 
 .network-card-header {
@@ -2824,6 +2825,7 @@ button:active {
   background: rgba(255, 255, 255, 0.96);
   box-shadow: var(--shadow);
   touch-action: pan-y;
+  scroll-behavior: auto;
 }
 
 .network-help-badge {
@@ -3066,14 +3068,6 @@ button:active {
   .entry-form,
   .network-controls {
     position: static;
-  }
-
-  .network-sidebar-scroll {
-    max-height: 52dvh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-    flex: none;
   }
 
   #network-panel .results-wrap {

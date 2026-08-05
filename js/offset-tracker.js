@@ -976,6 +976,32 @@ export function createOffsetTracker({
       renderTracker();
     });
 
+    elements.query?.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter") return;
+      if (elements.suggestions?.classList.contains("open")) {
+        event.preventDefault();
+        const first = elements.suggestions.querySelector(".suggestion[data-attendee-id]");
+        if (first && !pendingRegistrationIds.has(first.dataset.attendeeId)) {
+          const attendee = attendeeById.get(first.dataset.attendeeId);
+          if (attendee) {
+            lockSelection(attendee);
+            renderTracker();
+            renderStatus();
+          }
+        }
+        return;
+      }
+      if (hasLockedSelection()) return;
+      event.preventDefault();
+      if (searchQuery.trim()) setStatus("Select your name from the suggestions.");
+    });
+
+    elements.delegateId?.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter") return;
+      event.preventDefault();
+      elements.form?.requestSubmit();
+    });
+
     elements.query?.addEventListener("focus", () => {
       if (hasLockedSelection()) return;
       if (searchQuery.trim()) renderSuggestions();
@@ -993,10 +1019,6 @@ export function createOffsetTracker({
 
     elements.form?.addEventListener("submit", (event) => {
       event.preventDefault();
-      void registerSelected();
-    });
-
-    elements.registerButton?.addEventListener("click", () => {
       void registerSelected();
     });
 

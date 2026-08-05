@@ -727,6 +727,8 @@ export function createNetworkView(siteData, elements) {
     card.classList.toggle("network-side-card--on-stage", cardOnStage());
   }
 
+  let pinSelectionCardTimer = null;
+
   function resetSelectionCardScroll() {
     const card = elements.card;
     if (!card) return;
@@ -737,26 +739,52 @@ export function createNetworkView(siteData, elements) {
 
     const slot = elements.cardSlot;
     if (slot) slot.scrollTop = 0;
+
+    const panel = document.getElementById("network-panel");
+    if (panel && isCoarsePointer) panel.scrollTop = 0;
   }
 
-  function alignSelectionCardView() {
-    resetSelectionCardScroll();
+  function pinSelectionCardToTop() {
     const card = elements.card;
     if (!card || card.hidden) return;
 
-    window.requestAnimationFrame(() => {
+    const run = () => {
       resetSelectionCardScroll();
-      if (cardOnStage()) return;
+      card.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    };
 
+    run();
+    window.requestAnimationFrame(run);
+    window.requestAnimationFrame(() => window.requestAnimationFrame(run));
+
+    if (pinSelectionCardTimer) window.clearTimeout(pinSelectionCardTimer);
+    const delays = [40, 120, 280, 520, 900];
+    for (const delay of delays) {
+      window.setTimeout(run, delay);
+    }
+    pinSelectionCardTimer = window.setTimeout(() => {
+      pinSelectionCardTimer = null;
+    }, delays[delays.length - 1]);
+  }
+
+  function alignSelectionCardView() {
+    pinSelectionCardToTop();
+    const card = elements.card;
+    if (!card || card.hidden) return;
+
+    if (cardOnStage()) return;
+
+    window.requestAnimationFrame(() => {
+      pinSelectionCardToTop();
       const anchor = card.querySelector(".network-card-header") || card;
       if (isCoarsePointer) {
         anchor.scrollIntoView({ block: "start", behavior: "auto" });
       }
-      window.requestAnimationFrame(resetSelectionCardScroll);
+      window.requestAnimationFrame(pinSelectionCardToTop);
     });
   }
 
-  contactTurnstileLayoutSync = alignSelectionCardView;
+  contactTurnstileLayoutSync = pinSelectionCardToTop;
 
   const width = () => Math.max(canvasEl.clientWidth, 320);
   const height = () => Math.max(canvasEl.clientHeight, 280);
@@ -1619,6 +1647,7 @@ export function createNetworkView(siteData, elements) {
     if (radiusScale) renderLegend(graphNodes, radiusScale);
     scrollToSelectedSidebar();
     refreshTalkAuthors();
+    if (selectedNodeId) pinSelectionCardToTop();
     maybeCenterSelectedNode();
   }
 
