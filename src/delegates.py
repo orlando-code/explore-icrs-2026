@@ -629,6 +629,7 @@ def load_person_identity_maps(
     talks: pd.DataFrame | None = None,
     id_keys_path: Path | str | None = None,
     use_cache: bool = True,
+    show_progress: bool = False,
 ) -> tuple[dict[str, str], dict[str, str]]:
     """Map name variants to a stable person key and preferred display name.
 
@@ -690,7 +691,13 @@ def load_person_identity_maps(
             if variant_norm:
                 id_key_by_norm[uf.find(variant_norm)] = person_key
 
-    for _, row in delegates.iterrows():
+    from src.export_progress import iterrows_with_progress
+
+    for _, row in iterrows_with_progress(
+        delegates,
+        "Linking delegate names to talk presenters",
+        show_progress=show_progress,
+    ):
         full_name = str(row.get("full_name") or "").strip()
         if not full_name:
             continue
@@ -1274,9 +1281,12 @@ def mark_delegate_speakers(delegates: pd.DataFrame) -> pd.DataFrame:
 
 def delegate_list_groups(
     delegates: pd.DataFrame | None = None,
+    *,
+    show_progress: bool = False,
 ) -> list[dict[str, Any]]:
     """Group all delegate-list attendees by affiliation for the map site."""
     from src.geocode import affiliation_display_name, canonical_affiliation_key
+    from src.export_progress import iterrows_with_progress
     from src.map_exclusions import is_map_excluded, load_map_exclusions
 
     if delegates is None:
@@ -1284,7 +1294,11 @@ def delegate_list_groups(
 
     map_exclusions = load_map_exclusions()
     groups: dict[str, dict[str, Any]] = {}
-    for _, row in delegates.iterrows():
+    for _, row in iterrows_with_progress(
+        delegates,
+        "Grouping delegates by affiliation",
+        show_progress=show_progress,
+    ):
         affiliation = delegate_affiliation_for_row(row)
         if not affiliation:
             continue
@@ -1336,10 +1350,14 @@ def export_non_speaking_delegates_js(
     save_path: str | Path = "js/non-speaking-delegates.js",
     *,
     delegates: pd.DataFrame | None = None,
+    show_progress: bool = False,
 ) -> Path:
     """Export delegate-list groups and name→person_key aliases for the map site."""
-    groups = delegate_list_groups(delegates)
-    variant_to_key, key_to_canonical = load_person_identity_maps()
+    groups = delegate_list_groups(delegates, show_progress=show_progress)
+    variant_to_key, key_to_canonical = load_person_identity_maps(
+        delegates=delegates,
+        show_progress=show_progress,
+    )
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     body = (
@@ -1437,7 +1455,13 @@ def geocoded_delegate_list(
 
     lookup = build_geocode_lookup(load_ok_geocodes())
     overrides = load_geocode_overrides()
-    for index, row in rows.iterrows():
+    from src.export_progress import iterrows_with_progress
+
+    for index, row in iterrows_with_progress(
+        rows,
+        "Geocoding delegate list",
+        show_progress=show_progress,
+    ):
         hit = resolve_geocode(
             str(row["affiliation"]),
             presenter=str(row["presenter"]),

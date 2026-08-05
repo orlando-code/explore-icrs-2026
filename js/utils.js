@@ -546,21 +546,33 @@ export function resolveCanonicalPersonName(name) {
 }
 
 /** Deduplicate search hits by person identity, keeping the canonical display name. */
+function searchNamePriority(hit) {
+  const titles = hit.talkTitles;
+  if (Array.isArray(titles) && titles.length > 0) return 2;
+  if (!hit.nonSpeakingDelegate) return 1;
+  return 0;
+}
+
 export function dedupeSearchHitsByPerson(hits, getName) {
   const deduped = new Map();
   for (const hit of hits) {
     const rawName = getName(hit);
     const personKey = resolveDelegatePersonKey(rawName);
-    if (deduped.has(personKey)) continue;
-    const { _name, ...rest } = hit;
-    deduped.set(personKey, {
+    const canonical = resolveCanonicalPersonName(rawName);
+    const { _name, _priority, ...rest } = hit;
+    const candidate = {
       ...rest,
-      label: resolveCanonicalPersonName(rawName),
-      query: resolveCanonicalPersonName(rawName),
-      speakerName: resolveCanonicalPersonName(rawName),
-    });
+      label: canonical,
+      query: canonical,
+      speakerName: canonical,
+      _priority: searchNamePriority(hit),
+    };
+    const existing = deduped.get(personKey);
+    if (!existing || candidate._priority > existing._priority) {
+      deduped.set(personKey, candidate);
+    }
   }
-  return [...deduped.values()];
+  return [...deduped.values()].map(({ _priority, ...entry }) => entry);
 }
 
 function delegateIdentityKeys(delegate) {

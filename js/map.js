@@ -668,6 +668,8 @@ export function createMapView(
             query: speaker.name,
             locationId: location.id,
             speakerName: speaker.name,
+            talkTitles: speaker.talk_titles,
+            nonSpeakingDelegate: Boolean(speaker.non_speaking_delegate),
             _name: speaker.name,
           }))
       ),

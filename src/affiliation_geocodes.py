@@ -243,8 +243,11 @@ def attach_affiliation_geocodes(
     talks: pd.DataFrame,
     *,
     geocodes_path: Path | str = DEFAULT_GEOCODES_CSV,
+    show_progress: bool = False,
 ) -> pd.DataFrame:
     """Attach latitude/longitude from affiliation_geocodes.csv (OK rows only)."""
+    from src.export_progress import iterrows_with_progress
+
     geocodes = load_ok_geocodes(geocodes_path)
     lookup = build_geocode_lookup(geocodes)
     delegate_lookup = _delegate_org_country_lookup()
@@ -262,7 +265,11 @@ def attach_affiliation_geocodes(
         if column not in enriched.columns:
             enriched[column] = pd.NA
 
-    for index, row in enriched.iterrows():
+    for index, row in iterrows_with_progress(
+        enriched,
+        "Attaching affiliation geocodes to talks",
+        show_progress=show_progress,
+    ):
         affiliation = row.get("affiliation")
         if pd.isna(affiliation):
             continue

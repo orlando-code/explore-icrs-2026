@@ -1664,9 +1664,12 @@ def export_emissions_site_data(
     all_delegates: tuple[pd.DataFrame, dict[str, Any], pd.DataFrame] | None = None,
     delegate_meta: dict[str, Any] | None = None,
     save_path: str | Path = DEFAULT_EMISSIONS_SITE_PATH,
+    show_progress: bool = False,
 ) -> Path:
     """Export travel emissions for the static emissions tab."""
     from datetime import UTC, datetime
+
+    from src.export_progress import run_with_progress
 
     if legs is None:
         legs = estimates[["presenter", "affiliation"]].copy()

@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -15,6 +16,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.delegates import combined_attendee_talks, load_delegates
+from src.export_progress import console, export_stage, run_with_progress
 from src.travel_emissions import (
     DEFAULT_EMISSIONS_SITE_PATH,
     TravelEstimate,
@@ -116,41 +118,74 @@ def _estimates_from_legs(legs: pd.DataFrame, missing_count: int, *, attendee_lab
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Disable progress output",
+    )
+    args = parser.parse_args()
+    show_progress = not args.quiet
+
     emissions_path = DEFAULT_EMISSIONS_SITE_PATH
-    payload = _read_emissions_js(emissions_path)
+
+    with export_stage("Reading existing emissions-data.js"):
+        payload = _read_emissions_js(emissions_path)
     speakers_pool = payload["speakers"]
 
     speaker_estimates = _pool_to_estimates(speakers_pool)
     speaker_summary = _pool_to_summary(speakers_pool)
 
-    speaker_talks = load_geocoded_talks()
-    speaker_legs, speaker_missing = load_attendee_legs(speaker_talks, show_progress=True)
+    with export_stage("Loading geocoded speaker talks"):
+        speaker_talks = load_geocoded_talks()
 
-    delegates = load_delegates()
-    all_talks = combined_attendee_talks(
-        speaker_talks,
-        include_non_speakers=True,
-        delegates=delegates,
-        show_progress=False,
-    )
-    all_legs, all_missing = load_attendee_legs(all_talks, show_progress=True)
-    delegate_estimates, delegate_summary = _estimates_from_legs(
-        all_legs,
-        len(all_missing),
-        attendee_label="delegates",
-    )
+    with export_stage("Building speaker travel legs"):
+        speaker_legs, speaker_missing = load_attendee_legs(
+            speaker_talks,
+            show_progress=show_progress,
+        )
 
-    locations = load_site_locations("js/locations.js")
-    export_emissions_site_data(
-        speaker_estimates,
-        speaker_summary,
-        locations,
-        legs=speaker_legs,
-        all_delegates=(delegate_estimates, delegate_summary, all_legs),
-        delegate_meta=payload.get("meta", {}).get("delegate_meta", {}),
-        save_path=emissions_path,
-    )
-    print(f"Rebuilt {emissions_path}")
+    with export_stage("Loading delegates"):
+        delegates = load_delegates()
+
+    with export_stage("Merging delegate locations into talks"):
+        all_talks = combined_attendee_talks(
+            speaker_talks,
+            include_non_speakers=True,
+            delegates=delegates,
+            show_progress=show_progress,
+        )
+
+    with export_stage("Building all-delegate travel legs"):
+        all_legs, all_missing = load_attendee_legs(all_talks, show_progress=show_progress)
+
+    with export_stage("Summarising delegate travel emissions"):
+        delegate_estimates, delegate_summary = _estimates_from_legs(
+            all_legs,
+            len(all_missing),
+            attendee_label="delegates",
+        )
+
+    with export_stage("Loading site locations"):
+        locations = load_site_locations("js/locations.js")
+
+    with export_stage("Writing emissions-data.js"):
+        run_with_progress(
+            "Exporting emissions site data",
+            lambda: export_emissions_site_data(
+                speaker_estimates,
+                speaker_summary,
+                locations,
+                legs=speaker_legs,
+                all_delegates=(delegate_estimates, delegate_summary, all_legs),
+                delegate_meta=payload.get("meta", {}).get("delegate_meta", {}),
+                save_path=emissions_path,
+                show_progress=show_progress,
+            ),
+            show_progress=show_progress,
+        )
+
+    console().print(f"Rebuilt {emissions_path}")
 
 
 if __name__ == "__main__":

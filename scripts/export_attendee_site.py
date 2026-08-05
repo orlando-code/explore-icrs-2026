@@ -13,10 +13,11 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from src.affiliation_geocodes import attach_affiliation_geocodes
 from src.delegates import combined_attendee_talks, export_non_speaking_delegates_js, load_delegates
+from src.export_progress import console, export_stage, run_with_progress
 from src.map_exclusions import export_map_exclusions_js
 from src.plot_utils import export_attendee_site_data
-from src.talks_export import export_talks_catalog
 from src.programme import load_talks
+from src.talks_export import export_talks_catalog
 
 
 def main() -> None:
@@ -25,6 +26,11 @@ def main() -> None:
         "--output",
         default="js/locations.js",
         help="Path to write the generated locations module",
+    )
+    parser.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Disable progress output",
     )
     parser.add_argument(
         "--retry-failed",
@@ -47,24 +53,58 @@ def main() -> None:
         help="Supplement geocodes with Google Maps Geocoding API (see keys.yaml)",
     )
     args = parser.parse_args()
+    show_progress = not args.quiet
 
-    talks = load_talks()
-    talks_geo = attach_affiliation_geocodes(talks)
-    talks_geo = combined_attendee_talks(
-        talks_geo,
-        include_non_speakers=True,
-        delegates=load_delegates(),
-    )
-    exclusions_output = export_map_exclusions_js()
-    output = export_attendee_site_data(talks_geo, save_path=args.output)
-    talks_output = export_talks_catalog(talks_geo)
-    delegates_output = export_non_speaking_delegates_js()
+    with export_stage("Loading programme talks"):
+        talks = load_talks()
+    if show_progress:
+        console().print(f"  {len(talks):,} talks loaded")
+
+    with export_stage("Attaching affiliation geocodes"):
+        talks_geo = attach_affiliation_geocodes(talks, show_progress=show_progress)
+
+    with export_stage("Loading delegates"):
+        delegates = load_delegates()
+    if show_progress:
+        console().print(f"  {len(delegates):,} delegates loaded")
+
+    with export_stage("Merging delegate locations into talks"):
+        talks_geo = combined_attendee_talks(
+            talks_geo,
+            include_non_speakers=True,
+            delegates=delegates,
+            show_progress=show_progress,
+        )
+
+    with export_stage("Exporting map exclusions"):
+        exclusions_output = export_map_exclusions_js()
+
+    with export_stage("Building and writing locations.js"):
+        output = export_attendee_site_data(
+            talks_geo,
+            save_path=args.output,
+            show_progress=show_progress,
+        )
+
+    with export_stage("Exporting talks catalog"):
+        talks_output = export_talks_catalog(talks_geo)
+
+    with export_stage("Exporting non-speaking delegates"):
+        delegates_output = run_with_progress(
+            "Writing js/non-speaking-delegates.js",
+            lambda: export_non_speaking_delegates_js(
+                delegates=delegates,
+                show_progress=show_progress,
+            ),
+            show_progress=show_progress,
+        )
+
     stats = output.read_text(encoding="utf-8").split('"stats":', 1)[-1][:120]
-    print(f"Wrote {output}")
-    print(f"Wrote {exclusions_output}")
-    print(f"Wrote {talks_output}")
-    print(f"Wrote {delegates_output}")
-    print(f"Preview: ...stats{stats}...")
+    console().print(f"Wrote {output}")
+    console().print(f"Wrote {exclusions_output}")
+    console().print(f"Wrote {talks_output}")
+    console().print(f"Wrote {delegates_output}")
+    console().print(f"Preview: ...stats{stats}...")
 
 
 if __name__ == "__main__":

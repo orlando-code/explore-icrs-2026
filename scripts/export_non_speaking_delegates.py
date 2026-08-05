@@ -16,6 +16,7 @@ from src.delegates import (
     load_delegates,
     non_speaking_delegate_groups,
 )
+from src.export_progress import console, export_stage
 from src.map_exclusions import export_map_exclusions_js
 
 
@@ -26,17 +27,35 @@ def main() -> None:
         default="js/non-speaking-delegates.js",
         help="Path for generated JS module.",
     )
+    parser.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Disable progress output",
+    )
     args = parser.parse_args()
+    show_progress = not args.quiet
 
-    delegates = load_delegates()
-    exclusions_output = export_map_exclusions_js()
-    group_list = non_speaking_delegate_groups(delegates)
-    output = export_non_speaking_delegates_js(args.output, delegates=delegates)
+    with export_stage("Loading delegates"):
+        delegates = load_delegates()
+
+    with export_stage("Exporting map exclusions"):
+        exclusions_output = export_map_exclusions_js()
+
+    with export_stage("Building delegate groups"):
+        group_list = non_speaking_delegate_groups(delegates)
+
+    with export_stage("Writing non-speaking-delegates.js"):
+        output = export_non_speaking_delegates_js(
+            args.output,
+            delegates=delegates,
+            show_progress=show_progress,
+        )
+
     delegate_count = sum(len(group["delegates"]) for group in group_list)
-    print(
+    console().print(
         f"Wrote {output} ({delegate_count:,} delegates across {len(group_list):,} affiliations)"
     )
-    print(f"Wrote {exclusions_output}")
+    console().print(f"Wrote {exclusions_output}")
 
 
 if __name__ == "__main__":
