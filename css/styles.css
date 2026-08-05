@@ -431,12 +431,18 @@ a.btn-small {
 
 .network-contact-email-gate--loading .network-contact-turnstile,
 .network-contact-email-gate--challenge .network-contact-turnstile {
-  min-height: 65px;
+  min-height: 58px;
+  max-height: 70px;
+  overflow: hidden;
 }
 
 .network-contact-email-gate--ready .network-contact-turnstile {
-  min-height: 65px;
-  opacity: 1;
+  min-height: 0;
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .network-contact-turnstile-hint {
@@ -2809,8 +2815,9 @@ button:active {
   right: 1rem;
   left: auto;
   width: min(360px, calc(100% - 2rem));
-  max-height: min(420px, calc(100% - 2rem));
+  max-height: min(72vh, calc(100% - 2rem));
   margin: 0;
+  overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;

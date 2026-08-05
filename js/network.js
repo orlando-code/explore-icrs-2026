@@ -298,6 +298,7 @@ function mountContactTurnstile() {
     contactTurnstileWidgetId = window.turnstile.render(mount, {
       sitekey: TURNSTILE_SITE_KEY,
       action: "contact-email",
+      size: "compact",
       callback: (token) => {
         contactTurnstileToken = token;
         setContactTurnstileState("ready");
