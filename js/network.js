@@ -591,6 +591,7 @@ export function createNetworkView(siteData, elements) {
   let graphRenderKey = "";
   let viewFitGeneration = 0;
   let userAdjustedZoom = false;
+  let pendingNodeCenter = false;
   const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
   const canvasEl =
     elements.stage?.querySelector?.(".network-stage-canvas") || elements.stage;
@@ -762,12 +763,12 @@ export function createNetworkView(siteData, elements) {
       .sort((a, b) => b.connections - a.connections || a.label.localeCompare(b.label));
     const otherNodes = nodes.filter((node) => !matchedNodeIds.has(node.id));
     const matchCount = Math.max(matchNodes.length, 1);
-    const baseRadius = Math.max(28, Math.min(140, 12 + Math.sqrt(matchCount) * 7));
+    const baseRadius = Math.max(36, Math.min(180, 18 + Math.sqrt(matchCount) * 10));
 
     matchNodes.forEach((node, index) => {
       const ring = Math.floor(index / Math.max(1, Math.ceil(Math.sqrt(matchCount))));
       const angle = (2 * Math.PI * index) / matchCount + ring * 0.35;
-      const radius = baseRadius + ring * (16 + baseRadius * 0.12);
+      const radius = baseRadius + ring * (22 + baseRadius * 0.14);
       node.x = centerX + radius * Math.cos(angle);
       node.y = centerY + radius * Math.sin(angle);
       delete node.vx;
@@ -792,7 +793,7 @@ export function createNetworkView(siteData, elements) {
     otherNodes.forEach((node, index) => {
       const anchor = anchorByNodeId.get(node.id);
       const angle = (2 * Math.PI * index) / Math.max(otherNodes.length, 1);
-      const offset = 24 + (index % 5) * 8;
+      const offset = 36 + (index % 5) * 10;
       if (anchor?.x != null && anchor?.y != null) {
         node.x = anchor.x + offset * Math.cos(angle);
         node.y = anchor.y + offset * Math.sin(angle);
@@ -1011,6 +1012,34 @@ export function createNetworkView(siteData, elements) {
     }
   }
 
+  function centerOnNode(node, { animate = true, transitionMs = 300 } = {}) {
+    const target = typeof node === "string" ? graphNodes.find((item) => item.id === node) : node;
+    if (!target || target.x == null || target.y == null) return;
+
+    const w = width();
+    const h = height();
+    const { k } = d3.zoomTransform(svg.node());
+    const transform = d3.zoomIdentity
+      .translate(w / 2, h / 2)
+      .scale(k)
+      .translate(-target.x, -target.y);
+
+    if (animate) {
+      svg.transition().duration(transitionMs).call(zoom.transform, transform);
+    } else {
+      svg.call(zoom.transform, transform);
+    }
+  }
+
+  function maybeCenterSelectedNode({ animate = true } = {}) {
+    if (!pendingNodeCenter || !selectedNodeId) return;
+    const node = graphNodes.find((item) => item.id === selectedNodeId);
+    if (!node || node.x == null || node.y == null) return;
+    if (simulation && simulation.alpha() > simulation.alphaMin() + 0.001) return;
+    centerOnNode(node, { animate });
+    pendingNodeCenter = false;
+  }
+
   function prepareGraph() {
     const graph = currentGraph();
     const fullLinks = graph.links;
@@ -1066,6 +1095,19 @@ export function createNetworkView(siteData, elements) {
     const minCount = Math.max(1, d3.min(counts));
     const maxCount = Math.max(minCount + 1, d3.max(counts));
     return d3.scaleLog().domain([minCount, maxCount]).range([4, 26]).clamp(true);
+  }
+
+  function labelDisplayLength(label) {
+    return Math.min(String(label || "").length, 28);
+  }
+
+  function nodeCollisionRadius(d, scale = radiusScale) {
+    const nodeRadius = scale ? scale(Math.max(1, d.connections)) : 8;
+    const labelChars = labelDisplayLength(d.label);
+    const labelHalfWidth = labelChars * 3.4;
+    const labelHeight = 16;
+    const pad = isCoarsePointer ? 10 : 8;
+    return Math.max(nodeRadius + pad, labelHalfWidth + pad, nodeRadius + labelHeight + pad);
   }
 
   function renderSearchResults(nodes) {
@@ -1197,7 +1239,7 @@ export function createNetworkView(siteData, elements) {
       if (node.id === selectedNodeId) return false;
       if (selectedNodeId && neighbors.has(node.id)) return true;
       if (searching && matchedNodeIds.has(node.id)) return true;
-      if (!searchQuery && !selectedNodeId && node.connections >= 20) return true;
+      if (!searchQuery && !selectedNodeId && node.connections >= 35) return true;
       return false;
     });
   }
@@ -1216,6 +1258,10 @@ export function createNetworkView(siteData, elements) {
   function raiseSelectedLabel() {
     labelOverlay?.raise();
     selectedLabelSelection?.raise();
+  }
+
+  function selectedLabelDy(d) {
+    return -radiusScale(Math.max(1, d.connections)) - 3;
   }
 
   function updateSelectedLabel(node) {
@@ -1247,7 +1293,7 @@ export function createNetworkView(siteData, elements) {
       .attr("stroke-width", 5)
       .attr("stroke-opacity", 0.95)
       .attr("paint-order", "stroke")
-      .attr("dy", (d) => -radiusScale(Math.max(1, d.connections)) - 8)
+      .attr("dy", selectedLabelDy)
       .text((d) => (d.label.length > 32 ? `${d.label.slice(0, 30)}…` : d.label))
       .attr("x", (d) => d.x)
       .attr("y", (d) => d.y);
@@ -1396,7 +1442,7 @@ export function createNetworkView(siteData, elements) {
       .attr("stroke-width", 3)
       .attr("stroke-opacity", 0.88)
       .attr("paint-order", "stroke")
-      .attr("dy", (d) => -radiusScale(Math.max(1, d.connections)) - 4)
+      .attr("dy", (d) => -radiusScale(Math.max(1, d.connections)) - 0)
       .text((d) => (d.label.length > 28 ? `${d.label.slice(0, 26)}…` : d.label))
       .attr("x", (d) => d.x)
       .attr("y", (d) => d.y);
@@ -1412,6 +1458,7 @@ export function createNetworkView(siteData, elements) {
     if (radiusScale) renderLegend(graphNodes, radiusScale);
     scrollToSelectedSidebar();
     refreshTalkAuthors();
+    maybeCenterSelectedNode();
   }
 
   function renderBarChart(nodes) {
@@ -1540,8 +1587,8 @@ export function createNetworkView(siteData, elements) {
         d3
           .forceLink(graphLinks)
           .id((d) => d.id)
-          .distance(isSearchLayout ? (largeGraph ? 38 : 48) : largeGraph ? 70 : 90)
-          .strength(isSearchLayout ? (largeGraph ? 0.45 : 0.58) : largeGraph ? 0.18 : 0.28)
+          .distance(isSearchLayout ? (largeGraph ? 120 : 130) : largeGraph ? 100 : 120)
+          .strength(isSearchLayout ? (largeGraph ? 0.16 : 0.18) : largeGraph ? 0.08 : 0.1)
       )
       .force(
         "charge",
@@ -1550,13 +1597,13 @@ export function createNetworkView(siteData, elements) {
           .strength(
             isSearchLayout
               ? largeGraph
-                ? -22
-                : -36
+                ? -34
+                : -52
               : largeGraph
-                ? -55
+                ? -85
                 : isCoarsePointer
-                  ? -90
-                  : -115
+                  ? -130
+                  : -165
           )
       )
       .force("center", d3.forceCenter(centerX, centerY))
@@ -1564,7 +1611,9 @@ export function createNetworkView(siteData, elements) {
         "collide",
         d3
           .forceCollide()
-          .radius((d) => radiusScale(Math.max(1, d.connections)) + (isCoarsePointer ? 8 : 4))
+          .radius((d) => nodeCollisionRadius(d))
+          .strength(0.92)
+          .iterations(3)
       )
       .force(
         "topicCluster",
@@ -1599,6 +1648,7 @@ export function createNetworkView(siteData, elements) {
       .on("end", () => {
         if (fitGeneration !== viewFitGeneration) return;
         simulation?.stop();
+        maybeCenterSelectedNode();
       });
 
     renderLegend(graphNodes, radiusScale);
@@ -1878,12 +1928,14 @@ export function createNetworkView(siteData, elements) {
 
   function clearSelection() {
     selectedNodeId = null;
+    pendingNodeCenter = false;
     clearTalkDetail();
     renderGraph();
   }
 
   function selectNode(nodeId) {
     selectedNodeId = nodeId;
+    pendingNodeCenter = true;
     renderGraph();
   }
 
