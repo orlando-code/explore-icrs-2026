@@ -262,3 +262,6 @@ data/overrides/delegate_id_match_review.csv
 data/overrides/delegate_id_match_review_*.csv
 
 dev.ipynb
+
+backend/offsets*.db
+backend/snapshots/offsets*.db
