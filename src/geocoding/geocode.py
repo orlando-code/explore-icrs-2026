@@ -24,11 +24,16 @@ from rich.progress import (
     TextColumn,
     TimeElapsedColumn,
 )
+from src.data_paths import (
+    AFFILIATION_DISPLAY_ALIASES_JSON,
+    CACHE,
+    GEOCODE_OVERRIDES_JSON,
+)
 
-DEFAULT_CACHE_PATH = Path("data/geocode_cache.json")
-DEFAULT_OVERRIDES_PATH = Path("data/geocode_overrides.json")
-DEFAULT_DISPLAY_ALIASES_PATH = Path("data/affiliation_display_aliases.json")
-DEFAULT_COUNTRY_CACHE_PATH = Path("data/country_centroids.json")
+DEFAULT_CACHE_PATH = CACHE / "geocode_cache.json"
+DEFAULT_OVERRIDES_PATH = GEOCODE_OVERRIDES_JSON
+DEFAULT_DISPLAY_ALIASES_PATH = AFFILIATION_DISPLAY_ALIASES_JSON
+DEFAULT_COUNTRY_CACHE_PATH = CACHE / "country_centroids.json"
 DEFAULT_USER_AGENT = "explore-icrs-2026/0.1"
 _CONSOLE = Console()
 _DISPLAY_ALIASES_CACHE: dict[str, str] | None = None
@@ -199,6 +204,61 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
             "canonical": "Coral Restoration Foundation",
         },
     ),
+    (
+        re.compile(r"\bbermuda institute of ocean sciences\b", re.I),
+        {
+            "countries": ["Bermuda"],
+            "cities": [("St. George's", 32.3708572, -64.6961517, 50.0)],
+            "query": "Bermuda Institute of Ocean Sciences, Bermuda",
+            "canonical": "Bermuda Institute of Ocean Sciences",
+        },
+    ),
+    (
+        re.compile(r"\bbangor university\b", re.I),
+        {
+            "countries": ["United Kingdom"],
+            "cities": [("Bangor", 53.228, -4.129, 40.0)],
+            "query": "Bangor University, Bangor, United Kingdom",
+            "canonical": "Bangor University",
+        },
+    ),
+    (
+        re.compile(r"\buniversity of the ryukyus\b", re.I),
+        {
+            "countries": ["Japan"],
+            "cities": [("Naha", 26.2124, 127.6809, 80.0)],
+            "query": "University of the Ryukyus, Okinawa, Japan",
+            "canonical": "University of the Ryukyus",
+        },
+    ),
+    (
+        re.compile(r"\bsouthern cross university\b", re.I),
+        {
+            "countries": ["Australia"],
+            "cities": [("Lismore", -28.816, 153.283, 120.0)],
+            "query": "Southern Cross University, Lismore, Australia",
+            "canonical": "Southern Cross University",
+        },
+    ),
+    (
+        re.compile(r"\bthe nature conservancy\b", re.I),
+        {
+            "query": "The Nature Conservancy",
+            "canonical": "The Nature Conservancy",
+            "regionalize": True,
+            "regional_countries": {
+                "Federated States of Micronesia": "Micronesia",
+                "Guam": "Guam",
+                "Jamaica": "Jamaica",
+                "Mexico": "Mexico",
+                "Micronesia, Federated States of": "Micronesia",
+                "Papua New Guinea": "Papua New Guinea",
+                "United States": "United States",
+                "United States Virgin Islands": "US Virgin Islands",
+                "Venezuela, Bolivarian Republic of": "Venezuela",
+            },
+        },
+    ),
 )
 
 # Region or informal place names mapped to geocodable country queries.
@@ -222,6 +282,7 @@ _COUNTRY_ALIASES: dict[str, str] = {
     "caribbean": "Jamaica",
     "india": "India",
     "australia": "Australia",
+    "bermuda": "Bermuda",
     "new zealand": "New Zealand",
     "fiji": "Fiji",
     "kenya": "Kenya",
@@ -359,7 +420,7 @@ def _trailing_country_part_count(parts: list[str]) -> int:
     if len(parts) < 2:
         return 0
 
-    from src.delegates import country_to_iso2
+    from src.sources.delegates import country_to_iso2
 
     normalized_parts = [_normalize_text(part) for part in parts]
     max_parts = min(4, len(parts) - 1)

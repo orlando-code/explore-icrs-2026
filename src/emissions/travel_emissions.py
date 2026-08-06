@@ -14,13 +14,18 @@ from typing import Any
 import pandas as pd
 import pycountry
 import requests
-from geopy.exc import GeocoderServiceError, GeocoderTimedOut
-from geopy.geocoders import Nominatim
 from rich.console import Console
 from rich.table import Table
 
-from src.geocode import _extract_country_hints
-from src.programme import load_talks
+from src.geocoding.geocode import _extract_country_hints
+from src.sources.programme import load_talks
+from src.data_paths import (
+    COUNTRY_BOUNDARIES_REL,
+    GEOCODE_OVERRIDES_JSON,
+    NATIONAL_PER_CAPITA_JSON,
+    REVERSE_GEOCODE_CACHE_JSON,
+    TRAVEL_EMISSIONS_CACHE_JSON,
+)
 
 _MISSING_AFFILIATION_TOKENS = frozenset({"nan", "none", "<na>", "nat"})
 
@@ -58,15 +63,20 @@ API_RETRY_STATUS_CODES = {429, 500, 502, 503, 504}
 DEFAULT_DESTINATION_COUNTRY = "NZ"
 DEFAULT_DESTINATION_LOCATION = "AKL"
 DEFAULT_KEYS_PATH = Path("keys.yaml")
-DEFAULT_REVERSE_CACHE_PATH = Path("data/reverse_geocode_cache.json")
-DEFAULT_TRAVEL_CACHE_PATH = Path("data/travel_emissions_cache.json")
+DEFAULT_TRAVEL_CACHE_PATH = TRAVEL_EMISSIONS_CACHE_JSON
+THIRD_EMISSIONS_KEY_NAME = "third-emissions-dev"
+FOURTH_EMISSIONS_KEY_NAME = "fourth-emissions-dev"
+FIFTH_EMISSIONS_KEY_NAME = "fifth-emissions-dev"
+# Key used when fetching only routes not yet in travel_emissions_cache.json
+MISSING_ROUTES_KEY_NAME = FIFTH_EMISSIONS_KEY_NAME
+DEFAULT_REVERSE_CACHE_PATH = REVERSE_GEOCODE_CACHE_JSON
 DEFAULT_OUTPUT_PATH = Path("outputs/travel_emissions_summary.json")
 DEFAULT_EMISSIONS_SITE_PATH = Path("js/emissions-data.js")
 DEFAULT_USER_AGENT = "explore-icrs-2026/0.1"
 TREE_ABSORPTION_KG_PER_YEAR = 22.0
 MIN_COUNTRY_ATTENDEES_FOR_CONTEXT = 3
 MIN_NATIONAL_PER_CAPITA_TONNES = 0.2
-DEFAULT_NATIONAL_PER_CAPITA_PATH = Path("data/national_per_capita_co2.json")
+DEFAULT_NATIONAL_PER_CAPITA_PATH = NATIONAL_PER_CAPITA_JSON
 NATIONAL_PER_CAPITA_INDICATOR = "EN.GHG.CO2.PC.CE.AR5"
 NATIONAL_PER_CAPITA_YEAR = 2024
 WORLD_BANK_NATIONAL_PER_CAPITA_URL = (
@@ -177,6 +187,22 @@ def _api_key() -> str | None:
     )
 
 
+def _parse_keys_yaml(path: Path) -> dict[str, str]:
+    """Minimal keys.yaml reader (avoids PyYAML dependency for simple key files)."""
+    payload: dict[str, str] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        if ":" not in stripped:
+            continue
+        key, _, value = stripped.partition(":")
+        value = value.strip().strip('"').strip("'")
+        if key.strip():
+            payload[key.strip()] = value
+    return payload
+
+
 def load_api_key(
     keys_path: Path = DEFAULT_KEYS_PATH,
     *,
@@ -195,10 +221,10 @@ def load_api_key(
 
     try:
         import yaml
-    except ImportError as exc:
-        raise ImportError("PyYAML is required to read keys.yaml") from exc
 
-    payload = yaml.safe_load(keys_path.read_text(encoding="utf-8")) or {}
+        payload = yaml.safe_load(keys_path.read_text(encoding="utf-8")) or {}
+    except ImportError:
+        payload = _parse_keys_yaml(keys_path)
     if key_name:
         value = payload.get(key_name)
         if value:
@@ -211,6 +237,8 @@ def load_api_key(
         "emissions.dev",
         "second-emissions-dev",
         "third-emissions-dev",
+        "fourth-emissions-dev",
+        "fifth-emissions-dev",
     ):
         value = payload.get(name)
         if value:
@@ -238,52 +266,6 @@ def _cache_key(params: dict[str, Any]) -> str:
     return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
 
 
-def _reverse_geocode(
-    lat: float,
-    lon: float,
-    *,
-    geolocator: Nominatim,
-    cache: dict[str, dict[str, str]],
-    pause_seconds: float = 1.0,
-    refresh_incomplete: bool = False,
-) -> dict[str, str]:
-    key = f"{lat:.4f},{lon:.4f}"
-    cached = cache.get(key)
-    if cached is not None and (cached.get("country_code") or not refresh_incomplete):
-        return cached
-
-    for attempt in range(3):
-        try:
-            location = geolocator.reverse((lat, lon), language="en", timeout=10)
-            break
-        except (GeocoderTimedOut, GeocoderServiceError):
-            if attempt == 2:
-                location = None
-            time.sleep(pause_seconds * (attempt + 1))
-    else:
-        location = None
-
-    if location is None or not location.raw.get("address"):
-        result = {"country_code": "", "location_name": f"{lat:.3f},{lon:.3f}"}
-    else:
-        address = location.raw["address"]
-        country_code = (address.get("country_code") or "").upper()
-        location_name = (
-            address.get("city")
-            or address.get("town")
-            or address.get("village")
-            or address.get("state")
-            or address.get("county")
-            or address.get("country")
-            or f"{lat:.3f},{lon:.3f}"
-        )
-        result = {"country_code": country_code, "location_name": location_name}
-
-    cache[key] = result
-    time.sleep(pause_seconds)
-    return result
-
-
 def _country_name_to_alpha2(country_name: str) -> str | None:
     try:
         return pycountry.countries.lookup(country_name).alpha_2
@@ -291,93 +273,67 @@ def _country_name_to_alpha2(country_name: str) -> str | None:
         return None
 
 
-def _looks_like_coordinates(value: str) -> bool:
-    return bool(re.fullmatch(r"-?\d+\.\d+,-?\d+\.\d+", value.strip()))
+def _origin_geo_from_row(row: Any) -> dict[str, str]:
+    """Derive emissions.dev origin country/location from affiliation metadata."""
+    affiliation = _row_text(row, "affiliation")
+    hints = _extract_country_hints(affiliation)
+    country_code = _row_text(row, "country_code").upper()
+    if not country_code and hints:
+        country_code = _country_name_to_alpha2(hints[0]) or ""
+    if not country_code:
+        parts = [part.strip() for part in affiliation.split(",") if part.strip()]
+        if parts:
+            country_code = _country_name_to_alpha2(parts[-1]) or ""
 
-
-def _origin_from_attendee(
-    affiliation: str,
-    geo: dict[str, str],
-    *,
-    geocode_level: str | None,
-) -> tuple[str, str]:
-    """Resolve emissions.dev origin country (ISO-2) and city/location label."""
-    affiliation_text = "" if pd.isna(affiliation) else str(affiliation)
-    hints = _extract_country_hints(affiliation_text)
-    country_code = (geo.get("country_code") or "").upper()
-    location_name = (geo.get("location_name") or "").strip()
-
-    if not hints and location_name:
-        hints = _extract_country_hints(location_name)
-        if not hints and "," in location_name:
-            hints = _extract_country_hints(location_name.rsplit(",", 1)[-1])
-
-    country_name = hints[0] if hints else None
-    if not country_code and country_name:
-        country_code = _country_name_to_alpha2(country_name) or ""
+    formatted = _row_text(row, "formatted_address")
+    geocode_level = str(row.get("geocode_level") or "").strip().casefold()
+    if geocode_level == "country" and hints:
+        location_name = hints[0]
+    elif formatted:
+        location_name = formatted.split(",")[0].strip()
+    elif hints:
+        location_name = hints[0]
+    else:
+        location_name = affiliation.split(",")[0].strip() if affiliation else "Unknown"
 
     if not country_code:
         country_code = "Unknown"
-
-    if geocode_level == "country" and country_name:
-        origin_location = country_name
-    elif location_name and not _looks_like_coordinates(location_name):
-        origin_location = location_name.split(",")[0].strip() or location_name
-    elif country_name:
-        origin_location = country_name
-    else:
-        origin_location = location_name or "Unknown"
-
-    return country_code, origin_location
-
-
-def _try_affiliation_geo(
-    affiliation: str,
-    geocode_level: str | None,
-) -> dict[str, str] | None:
-    """Skip Nominatim when affiliation already defines a country-level origin."""
-    if geocode_level != "country":
-        return None
-    affiliation_text = "" if pd.isna(affiliation) else str(affiliation)
-    hints = _extract_country_hints(affiliation_text)
-    if not hints:
-        return None
-    country_code = _country_name_to_alpha2(hints[0]) or ""
-    if not country_code:
-        return None
-    return {"country_code": country_code, "location_name": hints[0]}
+    return {"country_code": country_code, "location_name": location_name or "Unknown"}
 
 
 def load_attendee_legs(
     talks_geo: pd.DataFrame,
     *,
-    reverse_cache_path: Path = DEFAULT_REVERSE_CACHE_PATH,
-    pause_seconds: float = 1.0,
-    show_progress: bool = True,
-    refresh_incomplete: bool = False,
+    show_progress: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Return one travel leg per unique presenter with a geocoded affiliation."""
-    geolocator = Nominatim(user_agent=DEFAULT_USER_AGENT)
-    reverse_cache = _load_json(reverse_cache_path)
-    from src.delegates import (
+    """Return one travel leg per presenter with a geocoded affiliation."""
+    from src.sources.delegates import (
         country_to_iso2,
+        delegate_org_country_for_row,
         delegate_person_key,
         load_delegates,
         normalize_person_name,
     )
+    from src.registry.affiliation_registry import parse_affiliation_parts
+    from src.emissions.origin_country import country_from_affiliation, resolve_origin_country
+    from src.registry.person_registry import DEFAULT_REGISTRY_PATH, load_person_registry
 
     delegate_rows = load_delegates(refresh=False)
+    registry_people = load_person_registry(DEFAULT_REGISTRY_PATH)
+    registry_countries = {
+        normalize_person_name(str(row["canonical_name"])): str(row.get("country") or "").strip()
+        for _, row in registry_people.iterrows()
+        if str(row.get("canonical_name") or "").strip()
+    }
     delegate_countries = {
-        normalize_person_name(str(row["full_name"])): str(row["country"]).strip()
+        normalize_person_name(str(row["full_name"])): delegate_org_country_for_row(row)[1]
         for _, row in delegate_rows.iterrows()
         if str(row.get("full_name") or "").strip()
-        and str(row.get("country") or "").strip()
     }
     delegate_countries_by_key = {
-        delegate_person_key(str(row["full_name"])): str(row["country"]).strip()
+        delegate_person_key(str(row["full_name"])): delegate_org_country_for_row(row)[1]
         for _, row in delegate_rows.iterrows()
         if str(row.get("full_name") or "").strip()
-        and str(row.get("country") or "").strip()
     }
 
     attendees = (
@@ -387,115 +343,51 @@ def load_attendee_legs(
         .copy()
     )
 
-    coord_rows = (
-        attendees.groupby(["latitude", "longitude"], as_index=False)
-        .agg(
-            affiliation=("affiliation", "first"),
-            geocode_level=("geocode_level", "first"),
-        )
-        .sort_values(["latitude", "longitude"])
-    )
-    coord_lookup: dict[tuple[float, float], dict[str, str]] = {}
-
-    def process_coord(row: Any) -> None:
-        lat = float(row.latitude)
-        lon = float(row.longitude)
-        fast_geo = _try_affiliation_geo(row.affiliation, row.geocode_level)
-        if fast_geo is None:
-            hints = _extract_country_hints(str(row.affiliation or ""))
-            if hints:
-                country_code = _country_name_to_alpha2(hints[0]) or ""
-                if country_code:
-                    organisation = str(row.affiliation or "").split(",")[0].strip()
-                    fast_geo = {
-                        "country_code": country_code,
-                        "location_name": organisation or hints[0],
-                    }
-        if fast_geo is not None:
-            coord_lookup[(lat, lon)] = fast_geo
-            return
-        coord_lookup[(lat, lon)] = _reverse_geocode(
-            lat,
-            lon,
-            geolocator=geolocator,
-            cache=reverse_cache,
-            pause_seconds=pause_seconds,
-            refresh_incomplete=refresh_incomplete,
-        )
-
-    if show_progress:
-        from rich.progress import (
-            BarColumn,
-            MofNCompleteColumn,
-            Progress,
-            SpinnerColumn,
-            TextColumn,
-            TimeElapsedColumn,
-            TimeRemainingColumn,
-        )
-
-        with Progress(
-            SpinnerColumn(),
-            TextColumn("[progress.description]{task.description}"),
-            BarColumn(),
-            MofNCompleteColumn(),
-            TimeElapsedColumn(),
-            TimeRemainingColumn(),
-            console=_CONSOLE,
-        ) as progress:
-            task_id = progress.add_task(
-                "Reverse geocoding coordinates", total=len(coord_rows)
-            )
-            for row in coord_rows.itertuples(index=False):
-                lat = float(row.latitude)
-                lon = float(row.longitude)
-                progress.update(
-                    task_id, description=f"[cyan]Geocode {lat:.2f}, {lon:.2f}[/]"
-                )
-                process_coord(row)
-                progress.advance(task_id)
-    else:
-        for row in coord_rows.itertuples(index=False):
-            process_coord(row)
-
     rows: list[dict[str, Any]] = []
     for _, row in attendees.iterrows():
-        lat = float(row["latitude"])
-        lon = float(row["longitude"])
-        geo = coord_lookup[(lat, lon)]
+        geo = _origin_geo_from_row(row)
         origin_country, origin_location = _origin_from_attendee(
             row["affiliation"],
             geo,
             geocode_level=row.get("geocode_level"),
         )
-        from src.origin_country import country_from_affiliation, resolve_origin_country
-
-        country_code = row.get("country_code")
-        existing_country = ("" if pd.isna(country_code) else str(country_code)) or str(
-            origin_country or ""
-        )
         affiliation_text = _row_text(row, "affiliation")
         resolved = resolve_origin_country(
             affiliation=affiliation_text,
-            lat=lat,
-            lon=lon,
-            reverse_cache=reverse_cache,
-            existing=existing_country,
+            existing=str(origin_country or ""),
+            delegate_country=delegate_countries.get(
+                normalize_person_name(str(row.get("presenter") or ""))
+            )
+            or delegate_countries_by_key.get(
+                delegate_person_key(str(row.get("presenter") or ""))
+            )
+            or "",
         )
         if resolved:
             origin_country = resolved
         elif str(origin_country).upper() in {"", "UNKNOWN"}:
             origin_country = country_from_affiliation(affiliation_text)
-        delegate_country = delegate_countries.get(
-            normalize_person_name(str(row.get("presenter") or ""))
-        ) or delegate_countries_by_key.get(
-            delegate_person_key(str(row.get("presenter") or ""))
+        delegate_country = (
+            delegate_countries.get(normalize_person_name(str(row.get("presenter") or "")))
+            or delegate_countries_by_key.get(
+                delegate_person_key(str(row.get("presenter") or ""))
+            )
+            or registry_countries.get(normalize_person_name(str(row.get("presenter") or "")))
+            or ""
         )
         if delegate_country and str(origin_country).upper() in {"", "UNKNOWN"}:
             origin_country = country_to_iso2(delegate_country) or delegate_country
+        country_code = _row_text(row, "country_code").upper()
+        if country_code and not re.fullmatch(r"[A-Z]{2}", str(origin_country or "")):
+            origin_country = country_code
+        if not re.fullmatch(r"[A-Z]{2}", str(origin_country or "")):
+            parts_org, parts_country = parse_affiliation_parts(affiliation_text)
+            if parts_country:
+                origin_country = country_to_iso2(parts_country) or country_from_affiliation(
+                    affiliation_text
+                )
         if _looks_like_coordinates(origin_location):
-            organisation = affiliation_text.split(",")[0].strip()
-            origin_location = organisation or origin_location
+            origin_location = affiliation_text.split(",")[0].strip() or origin_location
         if (
             str(origin_country).upper() == "AU"
             and "sydney" in str(origin_location or "").casefold()
@@ -508,7 +400,7 @@ def load_attendee_legs(
         rows.append(
             {
                 "presenter": row["presenter"],
-                "affiliation": row["affiliation"],
+                "affiliation": affiliation_text,
                 "latitude": row["latitude"],
                 "longitude": row["longitude"],
                 "geocode_level": row.get("geocode_level"),
@@ -517,14 +409,97 @@ def load_attendee_legs(
                 "transport_mode": transport_mode,
             }
         )
-    _save_json(reverse_cache_path, reverse_cache)
 
     legs = pd.DataFrame(rows)
     missing = talks_geo.loc[
         ~talks_geo["presenter"].isin(legs["presenter"]), "presenter"
     ].drop_duplicates()
-    missing_df = pd.DataFrame({"presenter": missing})
-    return legs, missing_df
+    return legs, pd.DataFrame({"presenter": missing})
+
+
+def _looks_like_coordinates(value: str) -> bool:
+    return bool(re.fullmatch(r"-?\d+\.\d+,-?\d+\.\d+", value.strip()))
+
+
+def _emissions_location_key(affiliation: str) -> str:
+    """Group map pins by org+delegate country so foreign-delegate anchors stay separate."""
+    from src.registry.affiliation_registry import parse_affiliation_parts
+
+    affiliation = str(affiliation or "").strip()
+    if not affiliation:
+        return ""
+    organisation, country = parse_affiliation_parts(affiliation)
+    if organisation and country:
+        return f"{organisation.strip().casefold()}|{country.strip().casefold()}"
+    from src.geocoding.geocode import canonical_affiliation_key
+
+    return canonical_affiliation_key(affiliation).casefold()
+
+
+def _origin_from_attendee(
+    affiliation: str,
+    geo: dict[str, str],
+    *,
+    geocode_level: str | None,
+) -> tuple[str, str]:
+    """Resolve emissions.dev origin country (ISO-2) and city/location label."""
+    from src.geocoding.capital_coords import (
+        organisation_country_mismatch,
+        resolve_capital_fallback,
+    )
+    from src.geocoding.geocode import affiliation_base_name
+    from src.sources.delegates import country_to_iso2
+
+    affiliation_text = "" if pd.isna(affiliation) else str(affiliation)
+    parts = [part.strip() for part in affiliation_text.split(",") if part.strip()]
+    delegate_country = parts[-1] if len(parts) >= 2 else ""
+    org_name = parts[0] if len(parts) >= 2 else affiliation_base_name(affiliation_text)
+
+    country_code = (geo.get("country_code") or "").upper()
+    if delegate_country:
+        delegate_iso = country_to_iso2(delegate_country)
+        if delegate_iso:
+            country_code = delegate_iso
+
+    use_capital = (
+        str(geocode_level or "").strip().casefold() == "country"
+        or (
+            delegate_country
+            and organisation_country_mismatch(org_name, delegate_country)
+        )
+    )
+    if use_capital and delegate_country:
+        fallback = resolve_capital_fallback(org_name, delegate_country)
+        if fallback:
+            city, _, _, _ = fallback
+            return country_code or country_to_iso2(delegate_country) or "Unknown", city
+
+    hints = _extract_country_hints(affiliation_text)
+    location_name = (geo.get("location_name") or "").strip()
+
+    if delegate_country:
+        country_name = delegate_country
+    elif hints:
+        country_name = hints[-1]
+    else:
+        country_name = None
+
+    if not country_code and country_name:
+        country_code = _country_name_to_alpha2(country_name) or ""
+
+    if not country_code:
+        country_code = "Unknown"
+
+    if location_name and not _looks_like_coordinates(location_name):
+        origin_location = location_name.split(",")[0].strip() or location_name
+    elif org_name and delegate_country:
+        origin_location = org_name
+    elif country_name:
+        origin_location = country_name
+    else:
+        origin_location = location_name or "Unknown"
+
+    return country_code, origin_location
 
 
 def _query_travel_emissions(
@@ -639,6 +614,7 @@ def estimate_unique_routes(
     pause_seconds: float = 0.2,
     show_progress: bool = True,
     limit: int | None = None,
+    missing_only: bool = True,
 ) -> pd.DataFrame:
     """Query emissions.dev once per unique origin route (efficient for API quotas)."""
     cache = _load_json(travel_cache_path)
@@ -652,6 +628,21 @@ def estimate_unique_routes(
     routes = routes[
         routes["origin_country"].astype(str).str.fullmatch(r"[A-Z]{2}", na=False)
     ].reset_index(drop=True)
+    if missing_only:
+        pending: list[pd.Series] = []
+        for route in routes.itertuples(index=False):
+            params = _central_params_for_route(
+                str(route.origin_country),
+                str(route.origin_location),
+                str(route.transport_mode),
+            )
+            if _cache_key(params) not in cache:
+                pending.append(pd.Series(route._asdict()))
+        routes = (
+            pd.DataFrame(pending)
+            if pending
+            else pd.DataFrame(columns=routes.columns)
+        )
     if limit is not None:
         routes = routes.head(limit)
 
@@ -759,6 +750,28 @@ def routes_from_travel_cache(
             }
         )
     return pd.DataFrame(rows)
+
+
+def routes_missing_from_cache(
+    legs: pd.DataFrame,
+    *,
+    travel_cache_path: Path = DEFAULT_TRAVEL_CACHE_PATH,
+) -> int:
+    """Count unique routes in legs that are not yet in the travel emissions cache."""
+    cache = _load_json(travel_cache_path)
+    routes = legs.drop_duplicates(
+        subset=["origin_country", "origin_location", "transport_mode"]
+    )
+    missing = 0
+    for route in routes.itertuples(index=False):
+        params = _central_params_for_route(
+            str(route.origin_country),
+            str(route.origin_location),
+            str(route.transport_mode),
+        )
+        if _cache_key(params) not in cache:
+            missing += 1
+    return missing
 
 
 def _estimate_route_row(
@@ -942,22 +955,14 @@ def estimate_conference_travel(
     legs: pd.DataFrame | None = None,
     missing: pd.DataFrame | None = None,
     travel_cache_path: Path = DEFAULT_TRAVEL_CACHE_PATH,
-    reverse_cache_path: Path = DEFAULT_REVERSE_CACHE_PATH,
     pause_seconds: float = 0.2,
     show_progress: bool = True,
-    refresh_incomplete: bool = False,
     limit: int | None = None,
     attendee_label: str = "speakers",
     exclusion_note: str = "Speakers without geocoded affiliations are excluded from totals.",
 ) -> tuple[pd.DataFrame, dict[str, Any]]:
     if legs is None or missing is None:
-        legs, missing = load_attendee_legs(
-            talks_geo,
-            reverse_cache_path=reverse_cache_path,
-            pause_seconds=1.0,
-            show_progress=show_progress,
-            refresh_incomplete=refresh_incomplete,
-        )
+        legs, missing = load_attendee_legs(talks_geo, show_progress=show_progress)
 
     routes = estimate_unique_routes(
         legs,
@@ -1464,7 +1469,7 @@ def _build_emissions_locations(
     estimates: pd.DataFrame,
     legs: pd.DataFrame,
 ) -> list[dict[str, Any]]:
-    from src.geocode import (
+    from src.geocoding.geocode import (
         _institution_rule,
         _load_json,
         _lookup_override,
@@ -1473,7 +1478,7 @@ def _build_emissions_locations(
         canonical_affiliation_key,
     )
 
-    overrides = _load_json(Path("data/geocode_overrides.json"))
+    overrides = _load_json(GEOCODE_OVERRIDES_JSON)
     country_centroids = {
         (-24.776109, 134.755),  # Australia
         (54.702354, -3.276575),  # United Kingdom
@@ -1507,7 +1512,7 @@ def _build_emissions_locations(
     merged = estimates.merge(leg_cols, on=["presenter", "affiliation"], how="left")
     clean_affiliations = merged["affiliation"].map(_clean_affiliation_value)
     merged = merged.assign(
-        _affiliation_key=clean_affiliations.map(canonical_affiliation_key)
+        _affiliation_key=clean_affiliations.map(_emissions_location_key)
     )
 
     display_name: dict[str, str] = {}
@@ -1515,7 +1520,7 @@ def _build_emissions_locations(
         if pd.isna(affiliation):
             continue
         affiliation_text = str(affiliation)
-        key = canonical_affiliation_key(affiliation_text)
+        key = _emissions_location_key(affiliation_text)
         rule = _institution_rule(affiliation_text)
         preferred = (
             affiliation_display_name(affiliation_text)
@@ -1529,6 +1534,8 @@ def _build_emissions_locations(
 
     rows: list[dict[str, Any]] = []
     key_to_id: dict[str, str] = {}
+    from src.registry.affiliation_registry import _make_affiliation, parse_affiliation_parts
+
     for index, (key, group) in enumerate(
         sorted(merged.groupby("_affiliation_key", sort=True)),
         start=1,
@@ -1543,10 +1550,17 @@ def _build_emissions_locations(
         attendees = len(group)
         loc_id = f"emis-loc-{index:04d}"
         key_to_id[key] = loc_id
+        affiliation_label = display_name.get(key, key)
+        for raw_affiliation in group["affiliation"].dropna().unique():
+            organisation, country = parse_affiliation_parts(str(raw_affiliation))
+            if organisation and country:
+                affiliation_label = _make_affiliation(affiliation_label, country)
+                break
+
         rows.append(
             {
                 "id": loc_id,
-                "affiliation": display_name.get(key, key),
+                "affiliation": affiliation_label,
                 "lat": lat_value,
                 "lon": lon_value,
                 "speaker_count": attendees,
@@ -1577,7 +1591,7 @@ def _build_emissions_attendees(
     *,
     country_to_cluster: dict[str, str] | None = None,
 ) -> list[dict[str, Any]]:
-    from src.geocode import (
+    from src.geocoding.geocode import (
         affiliation_display_name,
         canonical_affiliation_key,
     )
@@ -1594,7 +1608,7 @@ def _build_emissions_attendees(
 
     attendees: list[dict[str, Any]] = []
     seen: set[str] = set()
-    from src.delegates import canonical_person_name, delegate_person_key
+    from src.sources.delegates import canonical_person_name, delegate_person_key
 
     columns = list(merged.columns)
     presenter_idx = columns.index("presenter")
@@ -1609,7 +1623,7 @@ def _build_emissions_attendees(
         affiliation = _clean_affiliation_value(row[affiliation_idx])
         if not name:
             continue
-        key = canonical_affiliation_key(affiliation)
+        key = _emissions_location_key(affiliation)
         location_id = key_to_id.get(key)
         if not location_id:
             continue
@@ -1646,7 +1660,7 @@ def _build_pool_payload(
     *,
     country_centroids: dict[str, tuple[float, float]] | None = None,
 ) -> dict[str, Any]:
-    from src.country_clusters import (
+    from src.geography.country_clusters import (
         build_country_clusters,
         country_counts_from_estimates,
     )
@@ -1708,7 +1722,7 @@ def export_emissions_site_data(
     """Export travel emissions for the static emissions tab."""
     from datetime import UTC, datetime
 
-    from src.export_progress import run_with_progress
+    from src.site.export_progress import run_with_progress
 
     if legs is None:
         legs = estimates[["presenter", "affiliation"]].copy()
@@ -1716,7 +1730,7 @@ def export_emissions_site_data(
         legs["longitude"] = pd.NA
 
     speakers_pool = _build_pool_payload(estimates, summary, legs)
-    from src.map_exclusions import filter_emissions_pool
+    from src.site.map_exclusions import filter_emissions_pool
 
     speakers_pool = filter_emissions_pool(speakers_pool)
     payload: dict[str, Any] = {
@@ -1725,7 +1739,7 @@ def export_emissions_site_data(
             "delegate_meta": delegate_meta or {},
             "offset_choropleth": {
                 "enabled": True,
-                "boundaries_path": "data/country_boundaries.geojson",
+                "boundaries_path": COUNTRY_BOUNDARIES_REL,
                 "min_cluster_size": 3,
                 "color_low": "#d95f02",
                 "color_high": "#2d8a4e",
@@ -1745,7 +1759,7 @@ def export_emissions_site_data(
     else:
         payload["all_delegates"] = speakers_pool
 
-    from src.emissions_site_enrichment import enrich_emissions_payload
+    from src.emissions.emissions_site_enrichment import enrich_emissions_payload
 
     payload = enrich_emissions_payload(payload)
 
@@ -1854,6 +1868,6 @@ def export_emissions_site_data_legacy(
 
 
 def load_geocoded_talks() -> pd.DataFrame:
-    from src.affiliation_geocodes import attach_affiliation_geocodes
+    from src.registry.registry_export import build_map_talks
 
-    return attach_affiliation_geocodes(load_talks())
+    return build_map_talks()

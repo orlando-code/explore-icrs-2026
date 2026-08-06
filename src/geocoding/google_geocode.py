@@ -12,7 +12,7 @@ import requests
 from rich.console import Console
 from rich.table import Table
 
-from src.geocode import (
+from src.geocoding.geocode import (
     DEFAULT_CACHE_PATH,
     DEFAULT_OVERRIDES_PATH,
     _haversine_km,
@@ -25,9 +25,10 @@ from src.geocode import (
     affiliation_lookup_keys,
     canonical_affiliation_key,
 )
+from src.data_paths import GOOGLE_GEOCODE_CACHE_JSON, GOOGLE_GEOCODE_FLAGS_JSON
 
-DEFAULT_GOOGLE_CACHE_PATH = Path("data/google_geocode_cache.json")
-DEFAULT_GOOGLE_FLAGS_PATH = Path("data/google_geocode_flags.json")
+DEFAULT_GOOGLE_CACHE_PATH = GOOGLE_GEOCODE_CACHE_JSON
+DEFAULT_GOOGLE_FLAGS_PATH = GOOGLE_GEOCODE_FLAGS_JSON
 DEFAULT_KEYS_PATH = Path("keys.yaml")
 DISTANCE_FLAG_KM = 10.0
 _GOOGLE_GEOCODE_URL = "https://maps.googleapis.com/maps/api/geocode/json"

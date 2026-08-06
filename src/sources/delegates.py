@@ -11,16 +11,23 @@ from typing import Any
 import pandas as pd
 import pycountry
 
-from src.programme import load_talks
+from src.sources.programme import load_talks
+from src.data_paths import (
+    DELEGATE_ORG_OVERRIDES_CSV,
+    DELEGATE_PDF,
+    DELEGATES_JSON,
+    DELEGATES_LAYOUT_TXT,
+    delegate_id_match_review_files,
+)
 
-DEFAULT_DELEGATE_PDF_PATH = Path("data/delegate_list_230726.pdf")
-DEFAULT_DELEGATES_JSON_PATH = Path("data/delegates.json")
-DEFAULT_DELEGATES_LAYOUT_CACHE = Path("data/delegates_layout.txt")
-DEFAULT_ORG_OVERRIDES_PATH = Path("data/delegate_organisation_overrides.csv")
-DEFAULT_ORG_REVIEW_PATH = Path("data/delegate_organisation_review.csv")
+DEFAULT_DELEGATE_PDF_PATH = DELEGATE_PDF
+DEFAULT_DELEGATES_JSON_PATH = DELEGATES_JSON
+DEFAULT_DELEGATES_LAYOUT_CACHE = DELEGATES_LAYOUT_TXT
+DEFAULT_ORG_OVERRIDES_PATH = DELEGATE_ORG_OVERRIDES_CSV
+DEFAULT_ORG_REVIEW_PATH = DELEGATE_ORG_OVERRIDES_CSV.parent / "delegate_organisation_review.csv"
 DEFAULT_ID_MATCH_REVIEW_GLOB = "delegate_id_match_review_*_merged.csv"
 
-_ORGANISATION_OVERRIDE_CACHE: dict[str, str] | None = None
+_ORGANISATION_OVERRIDE_CACHE: dict[str, tuple[str, str]] | None = None
 _DELEGATE_PERSON_KEY_CACHE: dict[str, str] | None = None
 _PERSON_IDENTITY_CACHE: tuple[dict[str, str], dict[str, str]] | None = None
 
@@ -360,13 +367,16 @@ def sanitize_delegate_organisation(
 
 def load_organisation_overrides(
     path: Path = DEFAULT_ORG_OVERRIDES_PATH,
-) -> dict[str, str]:
-    """Return manual organisation overrides keyed by normalized person name."""
+) -> dict[str, tuple[str, str]]:
+    """Return manual delegate overrides keyed by normalized person name.
+
+    Values are ``(organisation, country)``; country may be empty when unchanged.
+    """
     global _ORGANISATION_OVERRIDE_CACHE
     if _ORGANISATION_OVERRIDE_CACHE is not None and path == DEFAULT_ORG_OVERRIDES_PATH:
         return _ORGANISATION_OVERRIDE_CACHE
 
-    overrides: dict[str, str] = {}
+    overrides: dict[str, tuple[str, str]] = {}
     if not path.exists():
         _ORGANISATION_OVERRIDE_CACHE = overrides
         return overrides
@@ -376,19 +386,28 @@ def load_organisation_overrides(
         organisation = str(row.get("organisation") or "").strip()
         if not organisation:
             continue
+        country_raw = row.get("country")
+        if pd.isna(country_raw):
+            country = ""
+        else:
+            country = str(country_raw).strip()
+        if country.casefold() in {"", "nan", "none"}:
+            country = ""
         for name_column in ("full_name", "name"):
             name = str(row.get(name_column) or "").strip()
             if not name:
                 continue
-            overrides[normalize_person_name(name)] = organisation
-            overrides[name.casefold()] = organisation
+            overrides[normalize_person_name(name)] = (organisation, country)
+            overrides[name.casefold()] = (organisation, country)
 
     if path == DEFAULT_ORG_OVERRIDES_PATH:
         _ORGANISATION_OVERRIDE_CACHE = overrides
     return overrides
 
 
-def organisation_override_for_row(row: pd.Series | dict[str, Any]) -> str | None:
+def delegate_override_for_row(
+    row: pd.Series | dict[str, Any],
+) -> tuple[str, str] | None:
     if isinstance(row, pd.Series):
         row = row.to_dict()
     overrides = load_organisation_overrides()
@@ -401,6 +420,99 @@ def organisation_override_for_row(row: pd.Series | dict[str, Any]) -> str | None
         if key and key in overrides:
             return overrides[key]
     return None
+
+
+def organisation_override_for_row(row: pd.Series | dict[str, Any]) -> str | None:
+    override = delegate_override_for_row(row)
+    if override:
+        return override[0] or None
+    return None
+
+
+def country_override_for_row(row: pd.Series | dict[str, Any]) -> str | None:
+    override = delegate_override_for_row(row)
+    if not override:
+        return None
+    country = str(override[1] or "").strip()
+    if country.casefold() in {"", "nan", "none"}:
+        return None
+    return country
+
+
+def resolve_compound_org_country(
+    organisation: str,
+    country: str,
+    *,
+    data_dir: Path | str = "data",
+) -> tuple[str, str]:
+    """Map compound affiliations to reviewed primary org + country."""
+    organisation = str(organisation or "").strip()
+    country = str(country or "").strip()
+    if country.casefold() in {"", "nan", "none"}:
+        country = ""
+    if not organisation:
+        return organisation, country
+    from src.registry.affiliation_registry import (
+        _build_org_redirects,
+        _resolve_attendee_org_country,
+        load_affiliation_review,
+    )
+
+    reviews = load_affiliation_review(data_dir)
+    if reviews.empty:
+        return organisation, country
+    return _resolve_attendee_org_country(
+        organisation,
+        country,
+        _build_org_redirects(reviews),
+    )
+
+
+def resolve_compound_affiliation_string(affiliation: str, *, data_dir: Path | str = "data") -> str:
+    """Return affiliation text with compound orgs mapped to reviewed primary."""
+    from src.registry.affiliation_registry import parse_affiliation_parts
+
+    organisation, country = parse_affiliation_parts(str(affiliation or ""))
+    organisation, country = resolve_compound_org_country(
+        organisation, country, data_dir=data_dir
+    )
+    if organisation and country:
+        return f"{organisation}, {country}"
+    return organisation or str(affiliation or "").strip()
+
+
+def delegate_country_for_row(
+    row: pd.Series | dict[str, Any],
+    *,
+    apply_overrides: bool = True,
+) -> str:
+    if isinstance(row, pd.Series):
+        row = row.to_dict()
+    if apply_overrides:
+        override = country_override_for_row(row)
+        if override:
+            return override
+    raw_country = row.get("country")
+    if pd.isna(raw_country):
+        return ""
+    country = str(raw_country or "").strip()
+    if country.casefold() in {"", "nan", "none"}:
+        return ""
+    return country
+
+
+def delegate_org_country_for_row(
+    row: pd.Series | dict[str, Any],
+    *,
+    apply_overrides: bool = True,
+    data_dir: Path | str = "data",
+) -> tuple[str, str]:
+    """Resolved organisation and country for a delegate row."""
+    organisation = organisation_for_delegate_row(row, apply_overrides=apply_overrides)
+    country = delegate_country_for_row(row, apply_overrides=apply_overrides)
+    if not country:
+        country = infer_country_from_organisation(organisation)
+    return resolve_compound_org_country(organisation, country, data_dir=data_dir)
 
 
 def organisation_for_delegate_row(
@@ -429,8 +541,9 @@ def delegate_affiliation_for_row(
     """Return a cleaned affiliation string for geocoding and map grouping."""
     if isinstance(row, pd.Series):
         row = row.to_dict()
-    organisation = organisation_for_delegate_row(row, apply_overrides=apply_overrides)
-    country = str(row.get("country") or "").strip()
+    organisation, country = delegate_org_country_for_row(
+        row, apply_overrides=apply_overrides
+    )
     if organisation and country:
         return f"{organisation}, {country}"
     return organisation or str(row.get("affiliation") or "").strip()
@@ -449,7 +562,7 @@ _ORGANISATION_COUNTRY_OVERRIDES: dict[str, str] = {
     "state of hawai'i": "United States",
     "state of hawaii": "United States",
     "university of auckland": "New Zealand",
-    "university of waikato": "New Zealand",
+    "university of the virgin islands": "United States Virgin Islands",
 }
 
 
@@ -489,6 +602,10 @@ def normalize_delegate_records(
             row, apply_overrides=apply_overrides
         )
         country = str(row.get("country") or "").strip()
+        if apply_overrides:
+            country_override = country_override_for_row(row)
+            if country_override:
+                country = country_override
         if not country:
             country = infer_country_from_organisation(organisation)
         affiliation = delegate_affiliation_for_row(
@@ -530,13 +647,8 @@ def normalize_person_name(value: str) -> str:
 def _resolve_id_match_review_path(path: Path | None = None) -> Path | None:
     if path is not None:
         return path if path.exists() else None
-    data_dir = Path("data")
-    merged = sorted(
-        data_dir.glob(DEFAULT_ID_MATCH_REVIEW_GLOB),
-        key=lambda item: item.stat().st_mtime,
-        reverse=True,
-    )
-    return merged[0] if merged else None
+    merged = delegate_id_match_review_files()
+    return merged[-1] if merged else None
 
 
 def load_delegate_person_keys(
@@ -692,7 +804,7 @@ def load_person_identity_maps(
             if variant_norm:
                 id_key_by_norm[uf.find(variant_norm)] = person_key
 
-    from src.export_progress import iterrows_with_progress
+    from src.site.export_progress import iterrows_with_progress
 
     for _, row in iterrows_with_progress(
         delegates,
@@ -1288,9 +1400,9 @@ def delegate_list_groups(
     show_progress: bool = False,
 ) -> list[dict[str, Any]]:
     """Group all delegate-list attendees by affiliation for the map site."""
-    from src.geocode import affiliation_display_name, canonical_affiliation_key
-    from src.export_progress import iterrows_with_progress
-    from src.map_exclusions import is_map_excluded, load_map_exclusions
+    from src.geocoding.geocode import affiliation_display_name, canonical_affiliation_key
+    from src.site.export_progress import iterrows_with_progress
+    from src.site.map_exclusions import is_map_excluded, load_map_exclusions
 
     if delegates is None:
         delegates = load_delegates()
@@ -1376,7 +1488,7 @@ def export_non_speaking_delegates_js(
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     body = (
-        "/** Generated from data/delegates.json – do not edit by hand. */\n"
+        "/** Generated from data/sources/delegates.json – do not edit by hand. */\n"
         f"export const NON_SPEAKING_DELEGATE_GROUPS = {json.dumps(groups, ensure_ascii=False, indent=2)};\n"
         f"export const DELEGATE_PERSON_KEY_ALIASES = {json.dumps(variant_to_key, ensure_ascii=False, indent=2)};\n"
         f"export const PERSON_CANONICAL_NAMES = {json.dumps(key_to_canonical, ensure_ascii=False, indent=2)};\n"
@@ -1406,7 +1518,7 @@ def save_delegates(
 
 def _fill_missing_with_capital_fallback(rows: pd.DataFrame) -> pd.DataFrame:
     """Use state/country capitals when institute geocoding is missing."""
-    from src.capital_coords import resolve_capital_fallback
+    from src.geocoding.capital_coords import resolve_capital_fallback
 
     rows = rows.copy()
     missing_mask = rows["latitude"].isna() | rows["longitude"].isna()
@@ -1437,7 +1549,7 @@ def geocoded_delegate_list(
     show_progress: bool = False,
 ) -> pd.DataFrame:
     """Return geocoded rows for every delegate on the published list."""
-    from src.affiliation_geocodes import (
+    from src.geocoding.affiliation_geocodes import (
         build_geocode_lookup,
         load_geocode_overrides,
         load_ok_geocodes,
@@ -1470,7 +1582,10 @@ def geocoded_delegate_list(
 
     lookup = build_geocode_lookup(load_ok_geocodes())
     overrides = load_geocode_overrides()
-    from src.export_progress import iterrows_with_progress
+    from src.registry.affiliation_lookup import AffiliationIndex, registry_geocode_hit
+
+    affiliation_index = AffiliationIndex.load()
+    from src.site.export_progress import iterrows_with_progress
 
     for index, row in iterrows_with_progress(
         rows,
@@ -1483,6 +1598,11 @@ def geocoded_delegate_list(
             lookup=lookup,
             overrides=overrides,
         )
+        if hit is None:
+            from src.registry.affiliation_registry import parse_affiliation_parts
+
+            organisation, country = parse_affiliation_parts(str(row["affiliation"]))
+            hit = registry_geocode_hit(organisation, country, index=affiliation_index)
         if hit is None:
             continue
         rows.at[index, "latitude"] = float(hit["latitude"])
@@ -1520,7 +1640,7 @@ def combined_attendee_talks(
     if not include_non_speakers:
         return talks_geo
 
-    from src.export_progress import console, run_with_progress
+    from src.site.export_progress import console, run_with_progress
 
     if show_progress:
         console().print("  Geocoding delegate list")
@@ -1541,7 +1661,9 @@ def combined_attendee_talks(
             or normalize_person_name(cleaned)
         )
 
-    def _fill_missing_talk_coords(frame: pd.DataFrame, delegate_rows: pd.DataFrame) -> pd.DataFrame:
+    def _enrich_talks_from_delegates(
+        frame: pd.DataFrame, delegate_rows: pd.DataFrame
+    ) -> pd.DataFrame:
         talks_out = frame.copy()
         geo_columns = (
             "latitude",
@@ -1554,31 +1676,59 @@ def combined_attendee_talks(
         for col in geo_columns:
             if col not in talks_out.columns:
                 talks_out[col] = pd.NA
+        if "affiliation" not in talks_out.columns:
+            talks_out["affiliation"] = pd.NA
 
-        coord_rows = delegate_rows.dropna(subset=["latitude", "longitude"]).copy()
-        if coord_rows.empty:
+        delegate_rows = delegate_rows.dropna(subset=["presenter"]).copy()
+        if delegate_rows.empty:
             return talks_out
 
-        coord_rows["_person_key"] = coord_rows["presenter"].astype(str).map(_person_key)
-        lookup = coord_rows.drop_duplicates("_person_key", keep="first").set_index("_person_key")
+        delegate_rows["_person_key"] = delegate_rows["presenter"].astype(str).map(_person_key)
+        lookup = delegate_rows.drop_duplicates("_person_key", keep="first").set_index("_person_key")
         talks_out["_person_key"] = talks_out["presenter"].astype(str).map(_person_key)
-        missing_mask = talks_out["latitude"].isna() | talks_out["longitude"].isna()
-        if not missing_mask.any():
-            return talks_out.drop(columns=["_person_key"])
 
-        for col in ("latitude", "longitude", "geocode_level", "query_used", "country_code"):
-            if col not in lookup.columns:
+        for index, row in talks_out.iterrows():
+            person_key = str(row.get("_person_key") or "").strip()
+            if not person_key or person_key not in lookup.index:
                 continue
-            mapped = talks_out.loc[missing_mask, "_person_key"].map(lookup[col])
-            talks_out.loc[missing_mask, col] = mapped.combine_first(talks_out.loc[missing_mask, col])
-        talks_out.loc[missing_mask, "geocoded"] = talks_out.loc[missing_mask, "latitude"].notna()
+            delegate = lookup.loc[person_key]
+            raw_talk_affiliation = row.get("affiliation")
+            talk_affiliation = (
+                ""
+                if pd.isna(raw_talk_affiliation)
+                else str(raw_talk_affiliation).strip()
+            )
+            raw_delegate_affiliation = delegate.get("affiliation")
+            delegate_affiliation = (
+                ""
+                if pd.isna(raw_delegate_affiliation)
+                else str(raw_delegate_affiliation).strip()
+            )
+            if delegate_affiliation and (
+                "," in delegate_affiliation
+                and ("," not in talk_affiliation or len(delegate_affiliation) > len(talk_affiliation))
+            ):
+                talks_out.at[index, "affiliation"] = delegate_affiliation
+
+            missing_coords = pd.isna(row.get("latitude")) or pd.isna(row.get("longitude"))
+            if not missing_coords:
+                continue
+            for col in geo_columns:
+                if col not in delegate.index:
+                    continue
+                value = delegate.get(col)
+                if pd.notna(value):
+                    talks_out.at[index, col] = value
+            if pd.notna(talks_out.at[index, "latitude"]):
+                talks_out.at[index, "geocoded"] = True
+
         return talks_out.drop(columns=["_person_key"])
 
     if show_progress:
-        console().print("  Filling missing talk coordinates from delegate list")
+        console().print("  Enriching speaker talks from delegate list")
     talks_out = run_with_progress(
         "Applying delegate coordinates to talks",
-        lambda: _fill_missing_talk_coords(talks_geo, extra),
+        lambda: _enrich_talks_from_delegates(talks_geo, extra),
         show_progress=show_progress,
     )
 

@@ -7,18 +7,23 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-from src.country_clusters import build_country_clusters
-from src.origin_country import (
+from src.geography.country_clusters import build_country_clusters
+from src.emissions.origin_country import (
     country_from_affiliation,
     country_label,
     iso3_from_iso2,
     resolve_origin_country,
 )
-from src.territory_overlays import territory_overlay_codes
-from src.travel_emissions import DEFAULT_REVERSE_CACHE_PATH
+from src.geography.territory_overlays import territory_overlay_codes
+from src.emissions.travel_emissions import DEFAULT_REVERSE_CACHE_PATH
+from src.data_paths import (
+    COUNTRY_BOUNDARIES_REL,
+    COUNTRY_BOUNDARIES_CENTROIDS_JSON,
+    DELEGATES_JSON,
+)
 
-CENTROIDS_PATH = Path("data/country_boundaries_centroids.json")
-DELEGATES_PATH = Path("data/delegates.json")
+CENTROIDS_PATH = COUNTRY_BOUNDARIES_CENTROIDS_JSON
+DELEGATES_PATH = DELEGATES_JSON
 
 
 def _normalize_person_name(name: str) -> str:
@@ -277,7 +282,7 @@ def enrich_emissions_payload(payload: dict[str, Any]) -> dict[str, Any]:
     payload.setdefault("meta", {})
     payload["meta"]["offset_choropleth"] = {
         "enabled": True,
-        "boundaries_path": "data/country_boundaries.geojson",
+        "boundaries_path": COUNTRY_BOUNDARIES_REL,
         "min_cluster_size": 3,
         "color_low": "#d95f02",
         "color_high": "#2d8a4e",

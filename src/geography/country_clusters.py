@@ -5,8 +5,8 @@ from __future__ import annotations
 import math
 from typing import Any
 
-from src.country_continents import continent_for_country, load_country_continents, same_continent
-from src.country_neighbors import load_country_neighbors, neighbors_for_country
+from src.geography.country_continents import continent_for_country, load_country_continents, same_continent
+from src.geography.country_neighbors import load_country_neighbors, neighbors_for_country
 
 MIN_OFFSET_CLUSTER_SIZE = 3
 
@@ -61,7 +61,7 @@ def _best_neighbor_host(
     continents: dict[str, str],
     centroids: dict[str, tuple[float, float]],
 ) -> str | None:
-    from src.country_neighbors import HOST_PREFERENCES
+    from src.geography.country_neighbors import HOST_PREFERENCES
 
     candidates = _neighbor_candidates(code, counts, neighbors, continents)
     if not candidates:

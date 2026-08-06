@@ -8,16 +8,28 @@ from typing import Any
 
 import pandas as pd
 
-from src.capital_coords import resolve_capital_fallback
-from src.delegates import load_delegates, normalize_person_name, country_to_iso2
-from src.geocode import (
+from src.geocoding.capital_coords import (
+    coords_plausible_for_country,
+    organisation_country_mismatch,
+    resolve_capital_fallback,
+    resolve_country_anchor_fallback,
+)
+from src.sources.delegates import normalize_person_name, country_to_iso2
+from src.registry.affiliation_registry import parse_affiliation_parts
+from src.geocoding.geocode import (
     DEFAULT_OVERRIDES_PATH,
     _load_json,
     _lookup_override,
     canonical_affiliation_key,
 )
+from src.data_paths import (
+    AFFILIATION_GEOCODES_CSV,
+    AFFILIATION_GEOCODES_MANUAL_CSV,
+    GEOCODE_OVERRIDES_JSON,
+)
 
-DEFAULT_GEOCODES_CSV = Path("data/affiliation_geocodes.csv")
+DEFAULT_GEOCODES_CSV = AFFILIATION_GEOCODES_CSV
+DEFAULT_MANUAL_GEOCODES_CSV = AFFILIATION_GEOCODES_MANUAL_CSV
 _GEOCODE_OVERRIDES_CACHE: dict[str, dict] | None = None
 
 
@@ -32,39 +44,69 @@ def load_geocode_overrides(
     return _GEOCODE_OVERRIDES_CACHE
 
 
+def load_geocode_source_frames(
+  path: Path | str = DEFAULT_GEOCODES_CSV,
+  *,
+  manual_path: Path | str = DEFAULT_MANUAL_GEOCODES_CSV,
+) -> pd.DataFrame:
+    """Load main and manual geocode CSVs, deduped by org+country (best status wins)."""
+    frames: list[pd.DataFrame] = []
+    for candidate in (Path(path), Path(manual_path)):
+        if candidate.exists():
+            frames.append(pd.read_csv(candidate, encoding="utf-8", encoding_errors="replace"))
+    if not frames:
+        return pd.DataFrame()
+    combined = pd.concat(frames, ignore_index=True)
+    combined["_priority"] = combined["status"].map(
+        lambda value: {"OK": 3, "FALLBACK": 2, "IMPRECISE": 1}.get(str(value).strip(), 0)
+    )
+    combined["_org"] = combined["organisation"].astype(str).str.strip().str.casefold()
+    combined["_country"] = combined["country"].astype(str).str.strip().str.casefold()
+    combined = combined.sort_values(["_org", "_country", "_priority"], ascending=[True, True, False])
+    return combined.drop_duplicates(subset=["_org", "_country"], keep="first")
+
+
 def load_ok_geocodes(
     path: Path | str = DEFAULT_GEOCODES_CSV,
+    *,
+    manual_path: Path | str = DEFAULT_MANUAL_GEOCODES_CSV,
+    include_fallback: bool = False,
 ) -> pd.DataFrame:
-    """Return geocode rows with status OK and finite coordinates."""
-    df = pd.read_csv(path, encoding="utf-8", encoding_errors="replace")
-    ok = df.loc[df["status"].eq("OK")].copy()
+    """Return geocode rows with OK coordinates (optionally include FALLBACK rows)."""
+    df = load_geocode_source_frames(path, manual_path=manual_path)
+    if df.empty:
+        return df
+    allowed = {"OK"} if not include_fallback else {"OK", "FALLBACK"}
+    ok = df.loc[df["status"].isin(allowed)].copy()
     ok["latitude"] = pd.to_numeric(ok["latitude"], errors="coerce")
     ok["longitude"] = pd.to_numeric(ok["longitude"], errors="coerce")
     return ok.dropna(subset=["latitude", "longitude"]).reset_index(drop=True)
 
 
-def _parse_affiliation_parts(affiliation: str) -> tuple[str, str]:
-    parts = [part.strip() for part in str(affiliation).split(",") if part.strip()]
-    if not parts:
-        return "", ""
-    if len(parts) == 1:
-        return parts[0], ""
-    return parts[0], ", ".join(parts[1:])
-
-
 def _delegate_org_country_lookup() -> dict[str, tuple[str, str]]:
+    """Presenter name → (organisation, country) from attended people in person_registry."""
+    from src.registry.person_registry import DEFAULT_REGISTRY_PATH, load_person_registry
+
     lookup: dict[str, tuple[str, str]] = {}
-    for _, row in load_delegates(refresh=False).iterrows():
+    if not DEFAULT_REGISTRY_PATH.exists():
+        return lookup
+    for _, row in load_person_registry().iterrows():
+        if str(row.get("attended") or "").strip().lower() not in {"true", "1", "yes"}:
+            continue
         organisation = str(row.get("organisation") or "").strip()
         country = str(row.get("country") or "").strip()
         if not organisation:
             continue
-        for key in {
-            normalize_person_name(str(row.get("full_name") or "")),
-            str(row.get("full_name") or "").strip().casefold(),
-        }:
-            if key:
-                lookup[key] = (organisation, country)
+        for name in (
+            str(row.get("canonical_name") or "").strip(),
+            *str(row.get("name_variants") or "").split(";"),
+        ):
+            name = name.strip()
+            if not name:
+                continue
+            for key in {normalize_person_name(name), name.casefold()}:
+                if key:
+                    lookup[key] = (organisation, country)
     return lookup
 
 
@@ -73,6 +115,12 @@ def build_geocode_lookup(geocodes: pd.DataFrame) -> dict[str, Any]:
     by_affiliation: dict[str, dict[str, Any]] = {}
     by_org_country: dict[tuple[str, str], dict[str, Any]] = {}
     by_org: dict[str, list[dict[str, Any]]] = {}
+
+    org_country_counts = (
+        geocodes.groupby("organisation")["country"].nunique().to_dict()
+        if not geocodes.empty
+        else {}
+    )
 
     for row in geocodes.to_dict(orient="records"):
         organisation = str(row.get("organisation") or "").strip()
@@ -91,7 +139,9 @@ def build_geocode_lookup(geocodes: pd.DataFrame) -> dict[str, Any]:
         }
         if affiliation:
             by_affiliation[affiliation.casefold()] = record
-            by_affiliation[canonical_affiliation_key(affiliation).casefold()] = record
+            canonical = canonical_affiliation_key(affiliation).casefold()
+            if canonical != affiliation.casefold() and org_country_counts.get(organisation, 1) <= 1:
+                by_affiliation[canonical] = record
         key = (organisation.casefold(), country.casefold())
         by_org_country[key] = record
         by_org.setdefault(organisation.casefold(), []).append(record)
@@ -120,18 +170,68 @@ def _override_hit(
             and override.get("latitude") is not None
             and override.get("longitude") is not None
         ):
-            return {
+            hit = {
                 "latitude": float(override["latitude"]),
                 "longitude": float(override["longitude"]),
                 "formatted_address": "",
                 "query_used": str(override.get("query_used") or "override"),
                 "geocode_level": str(override.get("geocode_level") or "institute"),
                 "geocoded": True,
-                "organisation": organisation or _parse_affiliation_parts(affiliation)[0],
-                "country": country or _parse_affiliation_parts(affiliation)[1],
+                "organisation": organisation or parse_affiliation_parts(affiliation)[0],
+                "country": country or parse_affiliation_parts(affiliation)[1],
                 "affiliation": affiliation,
             }
+            return _accept_org_country_hit(
+                hit,
+                organisation=organisation or parse_affiliation_parts(affiliation)[0],
+                country=country or parse_affiliation_parts(affiliation)[1],
+                affiliation=affiliation,
+            )
     return None
+
+
+def _capital_fallback_record(
+    organisation: str,
+    country: str,
+    affiliation: str,
+) -> dict[str, Any] | None:
+    anchor = resolve_country_anchor_fallback(organisation, country)
+    if anchor is None:
+        anchor = resolve_capital_fallback(organisation, country)
+    if anchor is None:
+        return None
+    city, lat, lon, query_label = anchor
+    return {
+        "latitude": lat,
+        "longitude": lon,
+        "formatted_address": f"{city}, {country}",
+        "query_used": query_label,
+        "geocode_level": "country",
+        "geocoded": True,
+        "organisation": organisation,
+        "country": country,
+        "affiliation": affiliation,
+    }
+
+
+def _accept_org_country_hit(
+    hit: dict[str, Any] | None,
+    *,
+    organisation: str,
+    country: str,
+    affiliation: str,
+) -> dict[str, Any] | None:
+    if hit is None:
+        return None
+    if not organisation_country_mismatch(organisation, country):
+        return hit
+    lat = hit.get("latitude")
+    lon = hit.get("longitude")
+    if lat is None or lon is None:
+        return hit
+    if coords_plausible_for_country(float(lat), float(lon), country):
+        return hit
+    return _capital_fallback_record(organisation, country, affiliation)
 
 
 def _org_country_hit(
@@ -141,33 +241,28 @@ def _org_country_hit(
     affiliation: str,
     lookup: dict[str, Any],
 ) -> dict[str, Any] | None:
-    composite = f"{organisation}, {country}"
-    for key in (composite.casefold(), canonical_affiliation_key(composite).casefold()):
-        hit = lookup["by_affiliation"].get(key)
-        if hit is not None:
-            return hit
+    anchor_hit = _capital_fallback_record(organisation, country, affiliation)
+    if organisation_country_mismatch(organisation, country) and anchor_hit is not None:
+        return anchor_hit
 
-    hit = lookup["by_org_country"].get(
-        (organisation.casefold(), country.casefold())
+    composite = f"{organisation}, {country}"
+    hit = lookup["by_affiliation"].get(composite.casefold())
+    hit = _accept_org_country_hit(
+        hit, organisation=organisation, country=country, affiliation=affiliation
     )
     if hit is not None:
         return hit
 
-    fallback = resolve_capital_fallback(organisation, country)
-    if fallback is not None:
-        _city, lat, lon, query_label = fallback
-        return {
-            "latitude": lat,
-            "longitude": lon,
-            "formatted_address": "",
-            "query_used": query_label,
-            "geocode_level": "country",
-            "geocoded": True,
-            "organisation": organisation,
-            "country": country,
-            "affiliation": affiliation,
-        }
-    return None
+    hit = lookup["by_org_country"].get(
+        (organisation.casefold(), country.casefold())
+    )
+    hit = _accept_org_country_hit(
+        hit, organisation=organisation, country=country, affiliation=affiliation
+    )
+    if hit is not None:
+        return hit
+
+    return anchor_hit or _capital_fallback_record(organisation, country, affiliation)
 
 
 def _geocode_lookup_candidates(
@@ -176,7 +271,7 @@ def _geocode_lookup_candidates(
     organisation: str = "",
     country: str = "",
 ) -> list[str]:
-    from src.geocode import affiliation_display_name, resolve_affiliation_alias
+    from src.geocoding.geocode import affiliation_display_name, resolve_affiliation_alias
 
     candidates: list[str] = []
     for value in (
@@ -215,7 +310,7 @@ def resolve_geocode(
     if not affiliation:
         return None
 
-    organisation, country = _parse_affiliation_parts(affiliation)
+    organisation, country = parse_affiliation_parts(affiliation)
     if not country and presenter:
         delegate = delegate_lookup or _delegate_org_country_lookup()
         match = delegate.get(normalize_person_name(presenter)) or delegate.get(
@@ -233,12 +328,22 @@ def resolve_geocode(
     )
     lookup_org = next(
         (
-            _parse_affiliation_parts(candidate)[0]
+            parse_affiliation_parts(candidate)[0]
             for candidate in lookup_candidates
-            if _parse_affiliation_parts(candidate)[0]
+            if parse_affiliation_parts(candidate)[0]
         ),
         organisation,
     )
+
+    if lookup_org and country:
+        hit = _org_country_hit(
+            lookup_org,
+            country,
+            affiliation=affiliation,
+            lookup=lookup,
+        )
+        if hit is not None:
+            return hit
 
     override_lookup = overrides if overrides is not None else load_geocode_overrides()
     for candidate in lookup_candidates:
@@ -252,23 +357,18 @@ def resolve_geocode(
             override["affiliation"] = affiliation
             return override
 
-    if lookup_org and country:
-        hit = _org_country_hit(
-            lookup_org,
-            country,
-            affiliation=affiliation,
-            lookup=lookup,
-        )
-        if hit is not None:
-            return hit
-
     for candidate in lookup_candidates:
         hit = lookup["by_affiliation"].get(candidate.casefold())
         if hit is not None:
+            if country and str(hit.get("country") or "").strip().casefold() != country.casefold():
+                continue
             return hit
-        hit = lookup["by_affiliation"].get(canonical_affiliation_key(candidate).casefold())
-        if hit is not None:
-            return hit
+        if not country:
+            hit = lookup["by_affiliation"].get(
+                canonical_affiliation_key(candidate).casefold()
+            )
+            if hit is not None:
+                return hit
 
     if lookup_org:
         candidates = lookup["by_org"].get(lookup_org.casefold(), [])
@@ -281,7 +381,9 @@ def resolve_geocode(
             ]
             if len(country_matches) == 1:
                 return country_matches[0]
-        elif len(candidates) == 1:
+        elif len(candidates) == 1 and not organisation_country_mismatch(
+            lookup_org, country
+        ):
             return candidates[0]
 
     return None
@@ -294,11 +396,15 @@ def attach_affiliation_geocodes(
     show_progress: bool = False,
 ) -> pd.DataFrame:
     """Attach latitude/longitude from affiliation_geocodes.csv (OK rows only)."""
-    from src.export_progress import iterrows_with_progress
+    from src.registry.affiliation_lookup import AffiliationIndex, registry_geocode_hit
+    from src.registry.affiliation_registry import parse_affiliation_parts
+    from src.sources.delegates import resolve_compound_org_country
+    from src.site.export_progress import iterrows_with_progress
 
     geocodes = load_ok_geocodes(geocodes_path)
     lookup = build_geocode_lookup(geocodes)
     delegate_lookup = _delegate_org_country_lookup()
+    affiliation_index = AffiliationIndex.load()
 
     enriched = talks.copy()
     for column in (
@@ -321,12 +427,25 @@ def attach_affiliation_geocodes(
         affiliation = row.get("affiliation")
         if pd.isna(affiliation):
             continue
+        affiliation_text = str(affiliation).strip()
+        organisation, country = parse_affiliation_parts(affiliation_text)
+        organisation, country = resolve_compound_org_country(organisation, country)
+        if organisation and country:
+            affiliation_text = f"{organisation}, {country}"
         hit = resolve_geocode(
-            str(affiliation),
+            affiliation_text,
             presenter=str(row.get("presenter") or ""),
             lookup=lookup,
             delegate_lookup=delegate_lookup,
         )
+        if hit is None:
+            hit = registry_geocode_hit(
+                organisation or affiliation_text,
+                country,
+                index=affiliation_index,
+            )
+        if organisation and country:
+            enriched.at[index, "affiliation"] = f"{organisation}, {country}"
         if hit is None:
             continue
         enriched.at[index, "latitude"] = hit["latitude"]
@@ -346,7 +465,7 @@ def export_geocode_overrides_js(
     save_path: str | Path = "js/geocode-overrides.js",
 ) -> Path:
     """Export data/geocode_overrides.json for runtime map pin correction."""
-    from src.geocode import (
+    from src.geocoding.geocode import (
         affiliation_base_name,
         affiliation_display_name,
         load_affiliation_display_aliases,
@@ -392,7 +511,7 @@ def export_geocode_overrides_js(
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     body = (
-        "/** Generated from data/geocode_overrides.json – do not edit by hand. */\n"
+        "/** Generated from data/geocodes/geocode_overrides.json – do not edit by hand. */\n"
         f"export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = {json.dumps(entries, ensure_ascii=False, indent=2)};\n"
     )
     output_path.write_text(body, encoding="utf-8")

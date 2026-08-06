@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import json
 from functools import lru_cache
-from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-CONTINENTS_PATH = PROJECT_ROOT / "data" / "country_continents.json"
+from src.data_paths import COUNTRY_CONTINENTS_JSON
+
+CONTINENTS_PATH = COUNTRY_CONTINENTS_JSON
 
 
 @lru_cache(maxsize=1)

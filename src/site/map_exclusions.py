@@ -13,11 +13,12 @@ from typing import Any
 
 import pandas as pd
 
-from src.delegates import normalize_person_name
-from src.geocode import canonical_affiliation_key
+from src.sources.delegates import normalize_person_name
+from src.geocoding.geocode import canonical_affiliation_key
+from src.data_paths import MAP_EXCLUDED_NAMES_JSON, MAP_EXCLUDED_NAMES_TXT
 
-DEFAULT_MAP_EXCLUSIONS_PATH = Path("data/map_excluded_names.txt")
-DEFAULT_MAP_EXCLUSIONS_JSON_PATH = Path("data/map_excluded_names.json")
+DEFAULT_MAP_EXCLUSIONS_PATH = MAP_EXCLUDED_NAMES_TXT
+DEFAULT_MAP_EXCLUSIONS_JSON_PATH = MAP_EXCLUDED_NAMES_JSON
 DEFAULT_MAP_EXCLUSIONS_JS_PATH = Path("js/map-excluded-names.js")
 
 
@@ -227,7 +228,7 @@ def export_map_exclusions_js(
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     body = (
-        "/** Generated from data/map_excluded_names.txt – do not edit by hand. */\n"
+        "/** Generated from data/overrides/map_excluded_names.txt – do not edit by hand. */\n"
         f"export const MAP_EXCLUDED_NAMES = {json.dumps(sorted(exclusions.names), ensure_ascii=True)};\n"
         f"export const MAP_EXCLUDED_AFFILIATION_KEYS = {json.dumps(sorted(exclusions.affiliations), ensure_ascii=True)};\n"
     )

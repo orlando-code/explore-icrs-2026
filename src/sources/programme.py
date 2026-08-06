@@ -8,6 +8,8 @@ from typing import Any
 
 import pandas as pd
 
+from src.data_paths import ABSTRACTS_JSON, PROGRAMME_JSON
+
 TALK_COLUMNS = [
     "talk_id",
     "sid",
@@ -40,8 +42,8 @@ def _load_json(path: Path) -> Any:
 
 
 def load_talks(
-    programme_path: str | Path = "data/programme.json",
-    abstracts_path: str | Path | None = "data/abstracts.json",
+    programme_path: str | Path = PROGRAMME_JSON,
+    abstracts_path: str | Path | None = ABSTRACTS_JSON,
 ) -> pd.DataFrame:
     """Flatten session talks into one row per talk.
 
@@ -72,7 +74,7 @@ def load_talks(
                     "presenter": presenter,
                     "primary_author": presenter,
                     "authors": authors,
-                    "affiliation": (talk.get("affiliation") or "").strip() or pd.NA,
+                    "affiliation": (talk.get("affiliation") or "").strip(),
                     "honorific": talk.get("honorific") or pd.NA,
                     "position": talk.get("position") or pd.NA,
                     "has_abstract": bool(talk.get("hasAbstract")),

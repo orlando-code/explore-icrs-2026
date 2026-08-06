@@ -18,7 +18,7 @@ def build_talk_catalog(
     presenter_col: str = "presenter",
     show_progress: bool = False,
 ) -> dict[str, Any]:
-    from src.export_progress import make_progress
+    from src.site.export_progress import make_progress
 
     by_id: dict[str, dict[str, Any]] = {}
     title_index: dict[str, list[str]] = {}

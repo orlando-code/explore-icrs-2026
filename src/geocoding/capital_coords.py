@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 import unicodedata
 
-from src.delegates import COUNTRY_ALIASES, country_to_iso2
+from src.sources.delegates import COUNTRY_ALIASES, country_to_iso2
 
 US_STATE_CAPITALS: dict[str, tuple[str, float, float]] = {
     "Alabama": ("Montgomery", 32.3668, -86.3000),
@@ -71,6 +71,7 @@ COUNTRY_CAPITALS: dict[str, tuple[str, float, float]] = {
     "Australia": ("Canberra", -35.2809, 149.1300),
     "Barbados": ("Bridgetown", 13.0975, -59.6167),
     "Bolivia, Plurinational State of": ("Sucre", -19.0196, -65.2620),
+    "Bermuda": ("Hamilton", 32.2949, -64.7830),
     "Brazil": ("Brasília", -15.7939, -47.8828),
     "Canada": ("Ottawa", 45.4215, -75.6972),
     "China": ("Beijing", 39.9042, 116.4074),
@@ -198,6 +199,103 @@ def _detect_us_state(*texts: str) -> str | None:
         if canonical.casefold() == matched.casefold():
             return canonical
     return matched
+
+
+_MAX_PLAUSIBLE_COUNTRY_DISTANCE_KM = 1_500
+
+
+def _countries_implied_by_organisation(organisation: str) -> list[str]:
+    """Country/territory names embedded in an organisation string (not delegate country)."""
+    from src.geocoding.geocode import (
+        _COUNTRY_ALIASES,
+        _extract_country_hints,
+        _institution_rule,
+        _normalize_text,
+    )
+
+    organisation = str(organisation or "").strip()
+    if not organisation:
+        return []
+
+    implied = list(_extract_country_hints(organisation))
+    rule = _institution_rule(organisation)
+    if rule:
+        for name in rule.get("countries") or []:
+            if name not in implied:
+                implied.append(str(name))
+
+    lowered = _normalize_text(organisation).lower()
+    for alias, country in sorted(_COUNTRY_ALIASES.items(), key=lambda item: -len(item[0])):
+        if len(alias) < 4:
+            continue
+        if re.search(rf"\b{re.escape(alias)}\b", lowered) and country not in implied:
+            implied.append(country)
+    return implied
+
+
+def _country_reference_point(country: str) -> tuple[float, float] | None:
+    canonical = _canonical_country(country)
+    if canonical in COUNTRY_CAPITALS:
+        _, lat, lon = COUNTRY_CAPITALS[canonical]
+        return lat, lon
+    if canonical in US_STATE_CAPITALS:
+        _, lat, lon = US_STATE_CAPITALS[canonical]
+        return lat, lon
+    return None
+
+
+def coords_plausible_for_country(lat: float, lon: float, country: str) -> bool:
+    """Rough check that coordinates lie near the delegate country (capital within ~1500 km)."""
+    from src.geocoding.geocode import _haversine_km
+
+    reference = _country_reference_point(country)
+    if reference is None:
+        return True
+    ref_lat, ref_lon = reference
+    return _haversine_km(lat, lon, ref_lat, ref_lon) <= _MAX_PLAUSIBLE_COUNTRY_DISTANCE_KM
+
+
+def organisation_country_mismatch(organisation: str, country: str) -> bool:
+    """True when the organisation name implies a home country different from delegate country.
+
+    Example: "Bermuda Institute of Ocean Sciences" with country "French Polynesia" should
+    not geocode to Bermuda — use the delegate country's capital instead (like multi-country
+    Nature Conservancy rows).
+    """
+    from src.geocoding.geocode import _institution_rule
+
+    organisation = str(organisation or "").strip()
+    country = str(country or "").strip()
+    if not organisation or not country:
+        return False
+
+    implied = _countries_implied_by_organisation(organisation)
+    rule = _institution_rule(f"{organisation}, {country}")
+    if rule and not rule.get("countries"):
+        return False
+
+    if not implied:
+        return False
+
+    stated_iso = country_to_iso2(country)
+    stated_cf = country.casefold()
+    for hint in implied:
+        hint_iso = country_to_iso2(hint)
+        if hint_iso and stated_iso and hint_iso == stated_iso:
+            return False
+        if hint.casefold() == stated_cf:
+            return False
+    return True
+
+
+def resolve_country_anchor_fallback(
+    organisation: str,
+    country: str,
+) -> tuple[str, float, float, str] | None:
+    """Capital of delegate country when the org name points elsewhere."""
+    if not organisation_country_mismatch(organisation, country):
+        return None
+    return resolve_capital_fallback(organisation, country)
 
 
 def resolve_capital_fallback(

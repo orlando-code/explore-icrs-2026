@@ -7,11 +7,11 @@ import math
 from functools import lru_cache
 from pathlib import Path
 
-from src.country_continents import continent_for_country, load_country_continents
+from src.geography.country_continents import continent_for_country, load_country_continents
+from src.data_paths import COUNTRY_BOUNDARIES_CENTROIDS_JSON, COUNTRY_NEIGHBORS_JSON
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-NEIGHBORS_PATH = PROJECT_ROOT / "data" / "country_neighbors.json"
-CENTROIDS_PATH = PROJECT_ROOT / "data" / "country_boundaries_centroids.json"
+NEIGHBORS_PATH = COUNTRY_NEIGHBORS_JSON
+CENTROIDS_PATH = COUNTRY_BOUNDARIES_CENTROIDS_JSON
 
 # Applied even when a generated adjacency file exists.
 NEIGHBOR_OVERRIDES: dict[str, list[str]] = {

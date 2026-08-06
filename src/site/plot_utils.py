@@ -17,6 +17,8 @@ from matplotlib.axes import Axes
 from matplotlib.collections import PolyCollection
 from matplotlib.figure import Figure
 
+from src.data_paths import DELEGATES_JSON
+
 GEO = ccrs.PlateCarree()
 
 AUCKLAND_LAT = -36.8485
@@ -384,7 +386,7 @@ def _build_talk_title_index(
     title_col: str = "title",
     show_progress: bool = False,
 ) -> dict[str, list[dict[str, Any]]]:
-    from src.export_progress import make_progress
+    from src.site.export_progress import make_progress
 
     _, display_name = _person_identity_lookup()
     index: dict[str, dict[str, dict[str, Any]]] = {}
@@ -458,10 +460,10 @@ def _affiliation_location_records(
     show_progress: bool = False,
 ) -> list[dict[str, Any]]:
     """Group geocoded talks by canonical affiliation."""
-    from src.delegates import load_person_identity_maps, normalize_person_name
-    from src.export_progress import make_progress
-    from src.geocode import affiliation_display_name, canonical_affiliation_key
-    from src.affiliation_geocodes import resolve_geocode
+    from src.sources.delegates import load_person_identity_maps, normalize_person_name
+    from src.site.export_progress import make_progress
+    from src.geocoding.geocode import affiliation_display_name, canonical_affiliation_key
+    from src.geocoding.affiliation_geocodes import resolve_geocode
 
     points = _geocoded_points(df, lat_col=lat_col, lon_col=lon_col)
     if points.empty:
@@ -576,17 +578,27 @@ def _affiliation_location_records(
             for item in speaker_details:
                 search_parts.append(item["search_text"])
 
-            override_hit = resolve_geocode(display)
+            sample_affiliation = next(
+                (
+                    value
+                    for value in group[affiliation_col].dropna().astype(str).unique()
+                    if str(value).strip()
+                ),
+                display,
+            )
+            override_hit = resolve_geocode(sample_affiliation)
             if override_hit and override_hit.get("latitude") is not None:
                 lat = float(override_hit["latitude"])
                 lon = float(override_hit["longitude"])
                 if override_hit.get("geocode_level"):
                     geocode_level = str(override_hit["geocode_level"])
 
+            affiliation_label = sample_affiliation if "," in sample_affiliation else display
+
             records.append(
                 {
                     "id": f"loc-{index:04d}",
-                    "affiliation": display,
+                    "affiliation": affiliation_label,
                     "lat": lat,
                     "lon": lon,
                     "speakers": speakers,
@@ -635,7 +647,7 @@ def author_profile_entries(
     affiliation. Co-authors are included only when the delegate list provides
     an explicit affiliation.
     """
-    from src.delegates import normalize_person_name
+    from src.sources.delegates import normalize_person_name
 
     delegate_affiliations = delegate_affiliations or _delegate_affiliation_map()
     presenter_map = _author_affiliation_map(
@@ -682,11 +694,11 @@ def speakers_by_profile_connections(
 
 
 def _delegate_affiliation_map(
-    delegates_path: str | Path = "data/delegates.json",
+    delegates_path: str | Path = DELEGATES_JSON,
 ) -> dict[str, str]:
     """Map normalized person name to affiliation from the official delegate list."""
-    from src.delegates import normalize_person_name
-    from src.geocode import affiliation_display_name
+    from src.sources.delegates import normalize_person_name
+    from src.geocoding.geocode import affiliation_display_name
 
     path = Path(delegates_path)
     if not path.exists():
@@ -710,22 +722,29 @@ def _delegate_affiliation_map(
 def _affiliation_coord_index(
     locations: list[dict[str, Any]],
 ) -> dict[str, tuple[float, float]]:
-    from src.geocode import (
+    from src.geocoding.geocode import (
         affiliation_base_name,
         affiliation_display_name,
         canonical_affiliation_key,
     )
+    from src.registry.affiliation_registry import parse_affiliation_parts
 
     index: dict[str, tuple[float, float]] = {}
     for location in locations:
         coords = (location["lat"], location["lon"])
         affiliation = location["affiliation"]
-        for candidate in (
-            affiliation,
-            affiliation_display_name(affiliation),
-            affiliation_base_name(affiliation),
-            canonical_affiliation_key(affiliation),
-        ):
+        organisation, country = parse_affiliation_parts(affiliation)
+        candidates = [affiliation]
+        if organisation and country:
+            candidates.append(f"{organisation}, {country}")
+        candidates.extend(
+            (
+                affiliation_display_name(affiliation),
+                affiliation_base_name(affiliation),
+                canonical_affiliation_key(affiliation),
+            )
+        )
+        for candidate in candidates:
             if candidate and candidate not in index:
                 index[candidate] = coords
     return index
@@ -735,7 +754,7 @@ def _resolve_affiliation_coords(
     affiliation: str,
     coord_index: dict[str, tuple[float, float]],
 ) -> tuple[str, tuple[float, float] | None]:
-    from src.geocode import (
+    from src.geocoding.geocode import (
         affiliation_base_name,
         affiliation_display_name,
         canonical_affiliation_key,
@@ -749,8 +768,8 @@ def _resolve_affiliation_coords(
         or affiliation
     )
     for candidate in (
-        display,
         affiliation,
+        display,
         affiliation_base_name(affiliation),
         canonical_affiliation_key(affiliation),
     ):
@@ -794,7 +813,7 @@ def _talk_authors(row: pd.Series, *, presenter_col: str = "presenter") -> list[s
 
 
 def _person_identity_lookup() -> tuple[Any, Any]:
-    from src.delegates import load_person_identity_maps, normalize_person_name
+    from src.sources.delegates import load_person_identity_maps, normalize_person_name
 
     variant_to_key, key_to_canonical = load_person_identity_maps()
 
@@ -844,9 +863,9 @@ def _build_network_data(
     show_progress: bool = False,
 ) -> dict[str, Any]:
     """Build co-authorship networks at individual and affiliation level."""
-    from src.delegates import normalize_person_name
-    from src.export_progress import make_progress
-    from src.geocode import affiliation_display_name
+    from src.sources.delegates import normalize_person_name
+    from src.site.export_progress import make_progress
+    from src.geocoding.geocode import affiliation_display_name
 
     _, display_name = _person_identity_lookup()
     delegate_affiliations = delegate_affiliations or {}
@@ -856,7 +875,7 @@ def _build_network_data(
         presenter_col=presenter_col,
     )
     presenter_affiliations = {
-        display_name(name): affiliation_display_name(affiliation) or affiliation
+        display_name(name): affiliation
         for name, affiliation in raw_presenter_affiliations.items()
     }
     author_affiliations = dict(presenter_affiliations)
@@ -892,11 +911,7 @@ def _build_network_data(
 
             affiliation = row[affiliation_idx]
             raw_affiliation = "" if pd.isna(affiliation) else str(affiliation).strip()
-            affiliation_text = (
-                affiliation_display_name(raw_affiliation) or raw_affiliation
-                if raw_affiliation
-                else ""
-            )
+            affiliation_text = raw_affiliation
 
             for author in authors:
                 individual_talk_count[author] = individual_talk_count.get(author, 0) + 1
@@ -1021,6 +1036,33 @@ def _build_network_data(
     }
 
 
+def _affiliation_connection_lookup_keys(affiliation: str) -> list[str]:
+    """Match map pins to network affiliation nodes across label variants."""
+    from src.geocoding.geocode import affiliation_base_name, affiliation_display_name
+    from src.registry.affiliation_registry import parse_affiliation_parts
+
+    affiliation = str(affiliation or "").strip()
+    if not affiliation:
+        return []
+    keys: list[str] = [affiliation]
+    organisation, country = parse_affiliation_parts(affiliation)
+    if organisation and country:
+        keys.append(f"{organisation}, {country}")
+    display = affiliation_display_name(affiliation)
+    if display:
+        keys.append(display)
+    base = affiliation_base_name(affiliation)
+    if base:
+        keys.append(base)
+    if organisation:
+        keys.append(organisation)
+    deduped: list[str] = []
+    for key in keys:
+        if key and key not in deduped:
+            deduped.append(key)
+    return deduped
+
+
 def _attendee_site_stats(
     df: pd.DataFrame,
     locations: list[dict[str, Any]],
@@ -1059,8 +1101,8 @@ def export_attendee_site_data(
     """Export grouped affiliation locations for the static JS map site."""
     from datetime import UTC, datetime
 
-    from src.export_progress import console, run_with_progress
-    from src.map_exclusions import (
+    from src.site.export_progress import console, run_with_progress
+    from src.site.map_exclusions import (
         export_map_exclusions_js,
         load_map_exclusions,
         map_talks_for_export,
@@ -1114,14 +1156,21 @@ def export_attendee_site_data(
     for location in locations:
         for speaker in location["speaker_details"]:
             speaker["talk_titles"] = talk_titles_by_author.get(speaker["name"], [])
-    affiliation_connections = {
-        node["label"]: node["connections"] for node in network["affiliation"]["nodes"]
-    }
+    affiliation_connections: dict[str, int] = {}
+    for node in network["affiliation"]["nodes"]:
+        label = str(node.get("label") or "").strip()
+        if not label:
+            continue
+        connections = int(node.get("connections") or 0)
+        for key in _affiliation_connection_lookup_keys(label):
+            affiliation_connections[key] = connections
     for location in locations:
-        location["connection_count"] = affiliation_connections.get(
-            location["affiliation"],
-            0,
-        )
+        connection_count = 0
+        for key in _affiliation_connection_lookup_keys(str(location.get("affiliation") or "")):
+            connection_count = affiliation_connections.get(key, 0)
+            if connection_count:
+                break
+        location["connection_count"] = connection_count
 
     payload = {
         "meta": {

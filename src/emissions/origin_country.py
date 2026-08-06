@@ -8,8 +8,8 @@ from typing import Any
 
 import pycountry
 
-from src.geocode import _extract_country_hints
-from src.travel_emissions import _country_name_to_alpha2
+from src.geocoding.geocode import _extract_country_hints
+from src.emissions.travel_emissions import _country_name_to_alpha2
 
 
 def _load_reverse_cache(path: Path) -> dict[str, dict[str, str]]:
