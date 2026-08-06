@@ -725,6 +725,10 @@ def main() -> None:
         raise SystemExit("Use only one of --locations-only or --emissions-only.")
 
     overrides = _load_json(OVERRIDES_PATH)
+    from src.affiliation_geocodes import export_geocode_overrides_js
+
+    overrides_output = export_geocode_overrides_js()
+    print(f"Wrote {overrides_output.name}")
     if not args.emissions_only:
         loc_changed = patch_locations_file(LOCATIONS_PATH, overrides)
         print(f"Patched {loc_changed} locations in {LOCATIONS_PATH.name}")

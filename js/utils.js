@@ -1,3 +1,5 @@
+import { AFFILIATION_GEOCODE_OVERRIDE_ENTRIES } from "./geocode-overrides.js";
+
 export function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -307,6 +309,7 @@ export const AUSTRALIA_CENTROID = { lat: -24.7761086, lon: 134.755 };
 export const NEW_ZEALAND_CENTROID = { lat: -41.500083, lon: 172.834408 };
 
 const AFFILIATION_COORD_OVERRIDE_ENTRIES = [
+  ...AFFILIATION_GEOCODE_OVERRIDE_ENTRIES,
   ["James Cook University", -19.3289618, 146.756645],
   ["University of Western Australia", -31.9507, 115.7979],
   ["the University of Western Australia", -31.9507, 115.7979],
@@ -373,10 +376,10 @@ export function applyAffiliationGeocodeOverrides(locations) {
     const lat = Number(location.lat);
     const lon = Number(location.lon);
     if (
-      !isAustraliaCentroid(lat, lon) &&
-      !isNewZealandCentroid(lat, lon) &&
-      Math.abs(lat - override.lat) < 0.0001 &&
-      Math.abs(lon - override.lon) < 0.0001
+      Number.isFinite(lat) &&
+      Number.isFinite(lon) &&
+      Math.abs(lat - override.lat) < 0.000001 &&
+      Math.abs(lon - override.lon) < 0.000001
     ) {
       return location;
     }

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 from typing import Any
 
@@ -169,6 +170,36 @@ def _org_country_hit(
     return None
 
 
+def _geocode_lookup_candidates(
+    affiliation: str,
+    *,
+    organisation: str = "",
+    country: str = "",
+) -> list[str]:
+    from src.geocode import affiliation_display_name, resolve_affiliation_alias
+
+    candidates: list[str] = []
+    for value in (
+        affiliation,
+        resolve_affiliation_alias(affiliation),
+        affiliation_display_name(affiliation),
+        organisation,
+        resolve_affiliation_alias(organisation),
+        affiliation_display_name(organisation),
+        f"{organisation}, {country}" if organisation and country else "",
+        f"{resolve_affiliation_alias(organisation)}, {country}"
+        if organisation and country
+        else "",
+        f"{affiliation_display_name(organisation)}, {country}"
+        if organisation and country
+        else "",
+    ):
+        text = str(value or "").strip()
+        if text and text not in candidates:
+            candidates.append(text)
+    return candidates
+
+
 def resolve_geocode(
     affiliation: str,
     *,
@@ -195,19 +226,35 @@ def resolve_geocode(
             organisation = organisation or delegate_org
             country = delegate_country
 
-    override_lookup = overrides if overrides is not None else load_geocode_overrides()
-    override = _override_hit(
+    lookup_candidates = _geocode_lookup_candidates(
         affiliation,
-        override_lookup,
         organisation=organisation,
         country=country,
     )
-    if override is not None:
-        return override
+    lookup_org = next(
+        (
+            _parse_affiliation_parts(candidate)[0]
+            for candidate in lookup_candidates
+            if _parse_affiliation_parts(candidate)[0]
+        ),
+        organisation,
+    )
 
-    if organisation and country:
+    override_lookup = overrides if overrides is not None else load_geocode_overrides()
+    for candidate in lookup_candidates:
+        override = _override_hit(
+            candidate,
+            override_lookup,
+            organisation=lookup_org,
+            country=country,
+        )
+        if override is not None:
+            override["affiliation"] = affiliation
+            return override
+
+    if lookup_org and country:
         hit = _org_country_hit(
-            organisation,
+            lookup_org,
             country,
             affiliation=affiliation,
             lookup=lookup,
@@ -215,15 +262,16 @@ def resolve_geocode(
         if hit is not None:
             return hit
 
-    hit = lookup["by_affiliation"].get(affiliation.casefold())
-    if hit is not None:
-        return hit
-    hit = lookup["by_affiliation"].get(canonical_affiliation_key(affiliation).casefold())
-    if hit is not None:
-        return hit
+    for candidate in lookup_candidates:
+        hit = lookup["by_affiliation"].get(candidate.casefold())
+        if hit is not None:
+            return hit
+        hit = lookup["by_affiliation"].get(canonical_affiliation_key(candidate).casefold())
+        if hit is not None:
+            return hit
 
-    if organisation:
-        candidates = lookup["by_org"].get(organisation.casefold(), [])
+    if lookup_org:
+        candidates = lookup["by_org"].get(lookup_org.casefold(), [])
         if country:
             country_key = country.casefold()
             country_matches = [
@@ -292,6 +340,63 @@ def attach_affiliation_geocodes(
             enriched.at[index, "country_code"] = country_to_iso2(country)
 
     return enriched
+
+
+def export_geocode_overrides_js(
+    save_path: str | Path = "js/geocode-overrides.js",
+) -> Path:
+    """Export data/geocode_overrides.json for runtime map pin correction."""
+    from src.geocode import (
+        affiliation_base_name,
+        affiliation_display_name,
+        load_affiliation_display_aliases,
+    )
+
+    overrides = load_geocode_overrides()
+    entries: list[list[str | float]] = []
+    seen: set[str] = set()
+
+    def add(name: str, lat: float, lon: float) -> None:
+        key = str(name or "").strip()
+        if not key:
+            return
+        map_key = key.casefold()
+        if map_key in seen:
+            return
+        seen.add(map_key)
+        entries.append([key, lat, lon])
+
+    for name, payload in sorted(overrides.items()):
+        if payload.get("latitude") is None or payload.get("longitude") is None:
+            continue
+        add(name, float(payload["latitude"]), float(payload["longitude"]))
+
+    aliases = load_affiliation_display_aliases()
+    for source, target in aliases.items():
+        for candidate in (
+            target,
+            affiliation_display_name(target),
+            affiliation_base_name(target),
+        ):
+            override = overrides.get(candidate)
+            if override is None or override.get("latitude") is None:
+                continue
+            add(
+                source,
+                float(override["latitude"]),
+                float(override["longitude"]),
+            )
+            break
+
+    entries.sort(key=lambda item: str(item[0]).casefold())
+    output_path = Path(save_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    body = (
+        "/** Generated from data/geocode_overrides.json – do not edit by hand. */\n"
+        f"export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = {json.dumps(entries, ensure_ascii=False, indent=2)};\n"
+    )
+    output_path.write_text(body, encoding="utf-8")
+    return output_path
 
 
 def geocode_affiliations_dataframe(

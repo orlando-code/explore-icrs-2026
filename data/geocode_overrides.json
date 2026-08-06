@@ -437,13 +437,19 @@
   },
   "KAUST": {
     "geocode_level": "institute",
-    "latitude": 22.313334807841677, 
+    "latitude": 22.413334807841677, 
+    "longitude": 39.10943754819546, 
+    "query_used": "override:KAUST"
+  },
+  "King Abdullah University of Science and Technology": {
+    "geocode_level": "institute",
+    "latitude": 22.413334807841677, 
     "longitude": 39.10943754819546, 
     "query_used": "override:KAUST"
   },
   "KAUST Coral Restoration Initiative": {
     "geocode_level": "institute",
-    "latitude": 22.313334807841677, 
+    "latitude": 22.413334807841677, 
     "longitude": 39.10943754819546, 
     "query_used": "override:KAUST Coral Restoration Initiative"
   }

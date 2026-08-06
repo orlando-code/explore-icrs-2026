@@ -461,6 +461,7 @@ def _affiliation_location_records(
     from src.delegates import load_person_identity_maps, normalize_person_name
     from src.export_progress import make_progress
     from src.geocode import affiliation_display_name, canonical_affiliation_key
+    from src.affiliation_geocodes import resolve_geocode
 
     points = _geocoded_points(df, lat_col=lat_col, lon_col=lon_col)
     if points.empty:
@@ -574,6 +575,14 @@ def _affiliation_location_records(
             search_parts = [display, *speakers]
             for item in speaker_details:
                 search_parts.append(item["search_text"])
+
+            override_hit = resolve_geocode(display)
+            if override_hit and override_hit.get("latitude") is not None:
+                lat = float(override_hit["latitude"])
+                lon = float(override_hit["longitude"])
+                if override_hit.get("geocode_level"):
+                    geocode_level = str(override_hit["geocode_level"])
+
             records.append(
                 {
                     "id": f"loc-{index:04d}",

@@ -11,7 +11,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.affiliation_geocodes import attach_affiliation_geocodes
+from src.affiliation_geocodes import attach_affiliation_geocodes, export_geocode_overrides_js
 from src.delegates import combined_attendee_talks, export_non_speaking_delegates_js, load_delegates
 from src.export_progress import console, export_stage, run_with_progress
 from src.map_exclusions import export_map_exclusions_js
@@ -79,6 +79,9 @@ def main() -> None:
     with export_stage("Exporting map exclusions"):
         exclusions_output = export_map_exclusions_js()
 
+    with export_stage("Exporting geocode overrides"):
+        overrides_output = export_geocode_overrides_js()
+
     with export_stage("Building and writing locations.js"):
         output = export_attendee_site_data(
             talks_geo,
@@ -102,6 +105,7 @@ def main() -> None:
     stats = output.read_text(encoding="utf-8").split('"stats":', 1)[-1][:120]
     console().print(f"Wrote {output}")
     console().print(f"Wrote {exclusions_output}")
+    console().print(f"Wrote {overrides_output}")
     console().print(f"Wrote {talks_output}")
     console().print(f"Wrote {delegates_output}")
     console().print(f"Preview: ...stats{stats}...")
