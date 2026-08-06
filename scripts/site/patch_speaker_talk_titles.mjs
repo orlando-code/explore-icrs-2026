@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const locationsPath = join(root, "js/locations.js");
-const programmePath = join(root, "data/programme.json");
+const programmePath = join(root, "data/sources/programme.json");
 
 const locationsSource = readFileSync(locationsPath, "utf8");
 const payloadMatch = locationsSource.match(/export const SITE_DATA = (\{[\s\S]*\});\s*$/);

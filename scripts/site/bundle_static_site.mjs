@@ -11,7 +11,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, "..");
+const ROOT = path.resolve(__dirname, "..", "..");
 
 const args = process.argv.slice(2);
 const basePathArg = args.find((arg) => arg.startsWith("--base-path="));
@@ -55,8 +55,9 @@ cpSync(
   path.join(resolvedTargetDir, "data", "offset-registrations.json")
 );
 cpSync(
-  path.join(ROOT, "data", "country_boundaries.geojson"),
-  path.join(resolvedTargetDir, "data", "country_boundaries.geojson")
+  path.join(ROOT, "data", "geography"),
+  path.join(resolvedTargetDir, "data", "geography"),
+  { recursive: true }
 );
 
 const indexHtml = patchIndexHtml(readFileSync(path.join(ROOT, "index.html"), "utf8"));

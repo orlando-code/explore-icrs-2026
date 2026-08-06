@@ -7,17 +7,17 @@ import argparse
 import sys
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.affiliation_geocodes import attach_affiliation_geocodes, export_geocode_overrides_js
-from src.delegates import combined_attendee_talks, export_non_speaking_delegates_js, load_delegates
-from src.export_progress import console, export_stage, run_with_progress
-from src.map_exclusions import export_map_exclusions_js
-from src.plot_utils import export_attendee_site_data
-from src.programme import load_talks
-from src.talks_export import export_talks_catalog
+from src.geocoding.affiliation_geocodes import export_geocode_overrides_js
+from src.sources.delegates import export_non_speaking_delegates_js, load_delegates
+from src.site.export_progress import console, export_stage, run_with_progress
+from src.site.map_exclusions import export_map_exclusions_js
+from src.site.plot_utils import export_attendee_site_data
+from src.registry.registry_export import build_map_talks
+from src.site.talks_export import export_talks_catalog
 
 
 def main() -> None:
@@ -32,49 +32,18 @@ def main() -> None:
         action="store_true",
         help="Disable progress output",
     )
-    parser.add_argument(
-        "--retry-failed",
-        action="store_true",
-        help="Re-query affiliations that previously failed geocoding",
-    )
-    parser.add_argument(
-        "--refresh-geocodes",
-        action="store_true",
-        help="Call Nominatim for missing or upgradeable affiliations (slow)",
-    )
-    parser.add_argument(
-        "--upgrade-incomplete",
-        action="store_true",
-        help="With --refresh-geocodes, retry country-level or implausible cache hits",
-    )
-    parser.add_argument(
-        "--google-geocode",
-        action="store_true",
-        help="Supplement geocodes with Google Maps Geocoding API (see keys.yaml)",
-    )
     args = parser.parse_args()
     show_progress = not args.quiet
 
-    with export_stage("Loading programme talks"):
-        talks = load_talks()
+    with export_stage("Building registry-backed map talks"):
+        talks_geo = build_map_talks(show_progress=show_progress)
     if show_progress:
-        console().print(f"  {len(talks):,} talks loaded")
-
-    with export_stage("Attaching affiliation geocodes"):
-        talks_geo = attach_affiliation_geocodes(talks, show_progress=show_progress)
+        console().print(f"  {len(talks_geo):,} attendee rows")
 
     with export_stage("Loading delegates"):
         delegates = load_delegates()
     if show_progress:
         console().print(f"  {len(delegates):,} delegates loaded")
-
-    with export_stage("Merging delegate locations into talks"):
-        talks_geo = combined_attendee_talks(
-            talks_geo,
-            include_non_speakers=True,
-            delegates=delegates,
-            show_progress=show_progress,
-        )
 
     with export_stage("Exporting map exclusions"):
         exclusions_output = export_map_exclusions_js()
