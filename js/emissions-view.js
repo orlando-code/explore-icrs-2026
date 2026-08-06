@@ -161,6 +161,7 @@ export function createEmissionsView(
         includeNonSpeakers,
         delegateIndex,
         delegateEmissionsLocations: normalized.all_delegates?.locations || [],
+        emissionsAttendees: emissionsData.attendees || [],
       }
     ).map((location) => ({
       ...location,
@@ -188,7 +189,7 @@ export function createEmissionsView(
       .domain([minCo2e, maxCo2e])
       .range([7, 30])
       .clamp(true);
-    displayPositions = buildDisplayPositions(allLocations);
+    displayPositions = buildDisplayPositions(locations);
     selectedId = null;
     selectedCountry = null;
     hoveredId = null;
@@ -810,7 +811,7 @@ export function createEmissionsView(
   }
 
   function locationFeatures() {
-    return allLocations.map((location) => {
+    return locations.map((location) => {
       const display = displayForLocation(location);
       const selected =
         location.id === selectedId || isLocationInSelectedCountry(location);
@@ -1111,7 +1112,7 @@ export function createEmissionsView(
 
     if (useCountryChoropleth) {
       countryChoropleth = createCountryChoropleth(map, {
-        boundariesPath: choroplethConfig.boundaries_path || "data/country_boundaries.geojson",
+        boundariesPath: choroplethConfig.boundaries_path || "data/geography/country_boundaries.geojson",
         colorLow: choroplethConfig.color_low || "#d95f02",
         colorHigh: choroplethConfig.color_high || "#2d8a4e",
         getIso3ToCluster: () => countryIso3ToCluster,

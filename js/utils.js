@@ -487,6 +487,7 @@ export function affiliationMapKey(affiliation) {
       "brazil",
       "south africa",
       "indonesia",
+      "saudi arabia",
     ]);
     if (countries.has(last)) {
       const base = parts.slice(0, -1).join(", ");
@@ -494,6 +495,31 @@ export function affiliationMapKey(affiliation) {
     }
   }
   return canonicalAffiliationKey(normalized.toLowerCase());
+}
+
+/** Keys used to match speaker vs delegate-only map pins (org with and without country). */
+export function affiliationDedupeKeys(affiliation) {
+  const keys = new Set();
+  const text = String(affiliation || "").trim();
+  if (!text) return keys;
+  const primary = affiliationMapKey(text);
+  if (primary) keys.add(primary);
+  const parts = text.split(",").map((part) => part.trim()).filter(Boolean);
+  if (parts.length >= 2) {
+    const org = parts.slice(0, -1).join(", ");
+    const orgKey = affiliationMapKey(org);
+    if (orgKey) keys.add(orgKey);
+  }
+  return keys;
+}
+
+function coordsNear(a, b, epsilon = 0.05) {
+  return (
+    a &&
+    b &&
+    Math.abs(Number(a.lat) - Number(b.lat)) < epsilon &&
+    Math.abs(Number(a.lon) - Number(b.lon)) < epsilon
+  );
 }
 
 export function findLocationIdByAffiliation(locations, affiliation) {
@@ -703,23 +729,31 @@ export function buildDelegateMapLocations(
   delegateEmissionsLocations = [],
   delegateIndex = new Map(),
 ) {
-  const knownKeys = new Set(
-    speakerLocations.map((location) => affiliationMapKey(location.affiliation))
-  );
+  const knownKeys = new Set();
+  for (const location of speakerLocations) {
+    for (const key of affiliationDedupeKeys(location.affiliation)) {
+      knownKeys.add(key);
+    }
+  }
   const seenDelegateKeys = new Set();
   const supplemental = [];
 
   for (const location of filterDelegateEmissionsLocationsForMap(delegateEmissionsLocations)) {
     const affiliation = location.affiliation;
     if (!affiliation || location.lat == null || location.lon == null) continue;
-    const key = affiliationMapKey(affiliation);
-    if (knownKeys.has(key) || seenDelegateKeys.has(key)) continue;
-    seenDelegateKeys.add(key);
+    const dedupeKeys = affiliationDedupeKeys(affiliation);
+    if ([...dedupeKeys].some((key) => knownKeys.has(key))) continue;
+    if ([...dedupeKeys].some((key) => seenDelegateKeys.has(key))) continue;
 
+    const indexKey = [...dedupeKeys][0] || affiliationMapKey(affiliation);
     const speakerDetails = delegateSpeakerDetails(
-      (delegateIndex.get(key) || []).filter((delegate) => delegate.is_speaker === false),
+      (delegateIndex.get(indexKey) || []).filter((delegate) => delegate.is_speaker === false),
     );
     const count = speakerDetails.length || 0;
+    if (count === 0) continue;
+    if (speakerLocations.some((speakerLoc) => coordsNear(speakerLoc, location))) continue;
+
+    dedupeKeys.forEach((key) => seenDelegateKeys.add(key));
     supplemental.push({
       id: `delegate-loc-${supplemental.length + 1}`,
       affiliation,
@@ -788,6 +822,50 @@ function inferCountryCodeFromAffiliation(affiliation) {
   return lookup[country] || "";
 }
 
+function indexEmissionsLocationsByAffiliation(emissionsLocations = []) {
+  const byKey = new Map();
+  for (const location of emissionsLocations) {
+    for (const key of affiliationDedupeKeys(location.affiliation)) {
+      if (!byKey.has(key)) byKey.set(key, []);
+      byKey.get(key).push(location);
+    }
+  }
+  return byKey;
+}
+
+function pickEmissionsLocationCandidate(candidates = [], siteLocation) {
+  const unique = [...new Map(candidates.map((candidate) => [candidate.id, candidate])).values()];
+  if (!unique.length) return null;
+  if (unique.length === 1) return unique[0];
+
+  const lat = Number(siteLocation.lat);
+  const lon = Number(siteLocation.lon);
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return unique[0];
+
+  let best = unique[0];
+  let bestDistance = Infinity;
+  for (const candidate of unique) {
+    const candidateLat = Number(candidate.lat);
+    const candidateLon = Number(candidate.lon);
+    if (!Number.isFinite(candidateLat) || !Number.isFinite(candidateLon)) continue;
+    const distance = (candidateLat - lat) ** 2 + (candidateLon - lon) ** 2;
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      best = candidate;
+    }
+  }
+  return best;
+}
+
+function lookupEmissionsForSiteLocation(siteLocation, emissionsByAffiliation) {
+  const candidates = [];
+  for (const key of affiliationDedupeKeys(siteLocation.affiliation)) {
+    const hits = emissionsByAffiliation.get(key);
+    if (hits) candidates.push(...hits);
+  }
+  return pickEmissionsLocationCandidate(candidates, siteLocation);
+}
+
 /** Align emissions map pins with the main map: site geocodes + emissions totals. */
 export function mergeEmissionsMapLocations(
   emissionsLocations = [],
@@ -796,6 +874,7 @@ export function mergeEmissionsMapLocations(
     includeNonSpeakers = false,
     delegateIndex = new Map(),
     delegateEmissionsLocations = [],
+    emissionsAttendees = [],
   } = {}
 ) {
   const sitePool = buildMapLocationPool(siteLocations, {
@@ -804,15 +883,52 @@ export function mergeEmissionsMapLocations(
     delegateEmissionsLocations,
   });
 
-  const emissionsByKey = new Map();
-  for (const location of emissionsLocations) {
-    const key = affiliationMapKey(location.affiliation);
-    if (!key) continue;
-    const existing = emissionsByKey.get(key);
-    if (!existing || (Number(location.co2e_kg) || 0) > (Number(existing.co2e_kg) || 0)) {
-      emissionsByKey.set(key, location);
+  const co2eByLocationId = new Map();
+  for (const attendee of emissionsAttendees) {
+    const locationId = attendee?.location_id;
+    if (!locationId) continue;
+    const co2e = Number(attendee.co2e_kg) || 0;
+    if (co2e <= 0) continue;
+    const bucket = co2eByLocationId.get(locationId) || {
+      co2e_kg: 0,
+      co2e_low_kg: 0,
+      co2e_high_kg: 0,
+      count: 0,
+      origin_country: attendee.origin_country || "",
+      country_cluster_id: attendee.country_cluster_id || "",
+    };
+    bucket.co2e_kg += co2e;
+    bucket.co2e_low_kg += Number(attendee.co2e_low_kg) || co2e;
+    bucket.co2e_high_kg += Number(attendee.co2e_high_kg) || co2e;
+    bucket.count += 1;
+    if (!bucket.origin_country && attendee.origin_country) {
+      bucket.origin_country = attendee.origin_country;
     }
+    if (!bucket.country_cluster_id && attendee.country_cluster_id) {
+      bucket.country_cluster_id = attendee.country_cluster_id;
+    }
+    co2eByLocationId.set(locationId, bucket);
   }
+
+  const emissionsByAffiliation = indexEmissionsLocationsByAffiliation(emissionsLocations);
+  const emissionsById = new Map(
+    emissionsLocations.map((location) => [location.id, { ...location }]),
+  );
+  for (const [locationId, totals] of co2eByLocationId.entries()) {
+    const existing = emissionsById.get(locationId);
+    if (!existing) continue;
+    emissionsById.set(locationId, {
+      ...existing,
+      co2e_kg: totals.co2e_kg,
+      co2e_low_kg: totals.co2e_low_kg,
+      co2e_high_kg: totals.co2e_high_kg,
+      origin_country: totals.origin_country || existing.origin_country || "",
+      country_cluster_id: totals.country_cluster_id || existing.country_cluster_id || "",
+      travel_attendees: totals.count || existing.travel_attendees || 0,
+      co2e_per_speaker_kg: totals.co2e_kg / Math.max(totals.count || 1, 1),
+    });
+  }
+  const indexedEmissions = indexEmissionsLocationsByAffiliation([...emissionsById.values()]);
 
   const merged = [];
 
@@ -821,8 +937,10 @@ export function mergeEmissionsMapLocations(
     const lon = Number(siteLocation.lon);
     if (!Number.isFinite(lat) || !Number.isFinite(lon)) continue;
 
-    const key = affiliationMapKey(siteLocation.affiliation);
-    const emissions = key ? emissionsByKey.get(key) : null;
+    const emissions = lookupEmissionsForSiteLocation(siteLocation, indexedEmissions);
+    const co2eKg = Number(emissions?.co2e_kg) || 0;
+    if (!emissions || co2eKg <= 0) continue;
+
     const attendeeCount = Number(siteLocation.speaker_count) || 0;
     const siteFields = {
       speakers: siteLocation.speakers,
@@ -833,43 +951,21 @@ export function mergeEmissionsMapLocations(
       connection_count: siteLocation.connection_count,
       search_text: siteLocation.search_text,
     };
-    if (emissions) {
-      merged.push({
-        ...emissions,
-        ...siteFields,
-        emissions_id: emissions.id,
-        id: siteLocation.id,
-        affiliation: siteLocation.affiliation,
-        lat,
-        lon,
-        geocode_level: siteLocation.geocode_level || emissions.geocode_level,
-        speaker_count: attendeeCount,
-        travel_attendees: attendeeCount,
-        origin_country:
-          emissions.origin_country ||
-          inferCountryCodeFromAffiliation(siteLocation.affiliation),
-        country_cluster_id: emissions.country_cluster_id || "",
-      });
-      continue;
-    }
-
-    const originCountry = inferCountryCodeFromAffiliation(siteLocation.affiliation);
     merged.push({
+      ...emissions,
+      ...siteFields,
+      emissions_id: emissions.id,
       id: siteLocation.id,
       affiliation: siteLocation.affiliation,
       lat,
       lon,
-      ...siteFields,
+      geocode_level: siteLocation.geocode_level || emissions.geocode_level,
       speaker_count: attendeeCount,
       travel_attendees: attendeeCount,
-      co2e_kg: 0,
-      co2e_low_kg: 0,
-      co2e_high_kg: 0,
-      co2e_per_speaker_kg: 0,
-      distance_km: siteLocation.distance_km ?? null,
-      geocode_level: siteLocation.geocode_level,
-      origin_country: originCountry,
-      country_cluster_id: "",
+      origin_country:
+        emissions.origin_country ||
+        inferCountryCodeFromAffiliation(siteLocation.affiliation),
+      country_cluster_id: emissions.country_cluster_id || "",
     });
   }
 

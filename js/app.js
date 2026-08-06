@@ -246,7 +246,7 @@ function renderResults({
           const peopleLabel = nonSpeaking
             ? `${speakers} speaker${speakers === 1 ? "" : "s"} · ${nonSpeaking} non-speaking`
             : `${location.speaker_count} speaker${location.speaker_count === 1 ? "" : "s"}`;
-          return `${peopleLabel} · ${location.talk_count} talk${location.talk_count === 1 ? "" : "s"} · ${(location.connection_count || 0).toLocaleString()} on author lists`;
+          return `${peopleLabel} · On author lists of ${location.talk_count} talk${location.talk_count === 1 ? "" : "s"} · ${(location.connection_count || 0).toLocaleString()} talk${location.connection_count === 1 ? "" : "s"}`;
         })();
     btn.innerHTML = `
       <div class="affiliation">${escapeHtml(location.affiliation)}</div>
