@@ -1,0 +1,16 @@
+{
+  "affiliations_total": 816,
+  "unique_variants": 1160,
+  "in_delegate_list": 755,
+  "in_programme": 659,
+  "with_attendees": 774,
+  "geocoded_ok_or_fallback": 811,
+  "geocode_missing_or_failed": 5,
+  "plot_on_map": 803,
+  "display_aliases_applied": 293,
+  "geocode_override_pins": 69,
+  "reviewed_rows_applied": 53,
+  "compound_redirects": 3,
+  "secondary_only_hidden": 0,
+  "geocode_coverage_pct": 99.39
+}
