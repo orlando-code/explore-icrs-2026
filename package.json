@@ -1,0 +1,25 @@
+{
+  "name": "explore-icrs-2026",
+  "version": "1.0.0",
+  "description": "Interactive (emissions) map and co-authorship network for ICRS 2026 speakers.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orlando-code/explore-icrs-2026.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/orlando-code/explore-icrs-2026/issues"
+  },
+  "homepage": "https://github.com/orlando-code/explore-icrs-2026#readme"
+}

@@ -3,40 +3,23 @@
 Interactive (emissions) map and co-authorship network for ICRS 2026 speakers.
 
 **Live site:** https://orlando-codes.com/explore-icrs-2026/ (also https://orlando-code.github.io/explore-icrs-2026/)
-<!-- 
-Regenerate speaker profile/contact links for the network tab:
+
+## Data pipeline
+
+Rebuild map and emissions data from registries:
 
 ```bash
-# Refresh failed / outdated lookups (parallel by default)
-python scripts/export_speaker_profiles.py --retry-failed
-
-# Tune concurrency if you hit rate limits (OpenAlex, DuckDuckGo)
-python scripts/export_speaker_profiles.py --retry-failed --workers 4
-
-# Normalize cache after manual edits (fix JSON, set verified fields)
-python scripts/normalize_speaker_profiles_cache.py
-
-# Re-export JS from cache only (sanitizes weak auto-scraped emails)
-python scripts/sanitize_export_profiles.py
-# or, if your Python env has project deps installed:
-python scripts/export_speaker_profiles.py --export-only
-
-# Mark good manual email fixes as verified (skipped by future lookups)
-python scripts/mark_verified_profiles.py
+python scripts/pipeline/build_pipeline.py all --no-fetch-routes
+python scripts/pipeline/check_pipeline_parity.py
+python3 -m http.server 8000   # preview at http://localhost:8000
 ```
 
-Add `"verified": true` to any entry in `data/speaker_profiles_cache.json` to protect manual edits permanently.
+See [pipeline/README.md](pipeline/README.md) for stages, overrides, and API keys.
 
-## Offset registration API
+## Network tab profiles
 
-The emissions tab shares offset pledges through a small SQLite-backed API in `backend/offset_api.py`. Only aggregate counts are published — never a list of who registered. Rows are held for review rather than published when registrations spike, and `scripts/manage_offset_registrations.py` and `scripts/backup_offsets.py` handle inspection, withdrawal, and offsite backups. See [backend/README.md](backend/README.md).
+Committed `js/speaker-profiles.js` is the source of truth for the network tab.
 
-**Quick start (local):** from the repo root, run `docker compose up --build` or `python backend/offset_api.py --port 8787`.
+## Offset API
 
-**Production:** deploy via [Railway](https://railway.app) (GitHub connect, root directory `backend`, volume on `/data`) — see [backend/README.md](backend/README.md). Do not use `fly launch` unless you have Fly.io’s `flyctl` installed; many systems ship Concourse’s unrelated `fly` command instead.
-
-Set the API URL in `index.html`:
-
-```html
-<meta name="icrs-offset-api" content="https://your-api.example.com/api/offsets" />
-``` -->
+See [backend/README.md](backend/README.md). Deploy helpers live under `scripts/deploy/`.

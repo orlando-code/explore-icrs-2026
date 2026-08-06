@@ -1,4 +1,4 @@
-# Local-only exports with contact emails (public site uses sanitize_export_profiles.py)
+# Local-only exports with contact emails
 data/speaker_profiles_private.json
 js/speaker-profiles.private.js
 data/speaker_profiles_cache.json
@@ -7,10 +7,10 @@ data/speaker_profiles_cache_wiped.json
 data/talk_embeddings.npz
 data/talk_embeddings.meta.json
 data/country_centroids.json
-data/travel_emissions_cache.json
-data/reverse_geocode_cache.json
-data/google_geocode_cache.json
-data/google_geocode_flags.json
+data/cache/travel_emissions_cache.json
+data/cache/reverse_geocode_cache.json
+data/cache/google_geocode_cache.json
+data/cache/google_geocode_flags.json
 data/offsets.db
 offsets-live.db
 backend/offsets-live.db
@@ -24,11 +24,13 @@ data/affiliation_duplicate_summary*
 
 # Organisers' delegate list and its raw text dump. Kept local: the site only
 # needs the derived data/delegates.json, and the PDF is not ours to republish.
-data/delegate_list_230726.pdf
-data/delegates_layout.txt
+data/cache/
+data/sources/delegate_list_230726.pdf
+data/sources/delegates_layout.txt
 
 outputs/
 .sectest/
+node_modules/
 __pycache__/
 *.py[codz]
 *$py.class
@@ -249,11 +251,14 @@ __marimo__/
 
 keys.yaml
 .DS_Store
-data/geocode_cache.json
+data/cache/geocode_cache.json
+
+# Local archive of superseded scripts and review data (not part of the pipeline)
+deprecated/
 
 offsets-before-reset.db
 delegate_unique_id_database.csv
-data/delegate_id_match_review.csv
-data/delegate_id_match_review_*.csv
+data/overrides/delegate_id_match_review.csv
+data/overrides/delegate_id_match_review_*.csv
 
 dev.ipynb
