@@ -1,4 +1,4 @@
-/** Generated from data/geocode_overrides.json – do not edit by hand. */
+/** Generated from data/geocodes/geocode_overrides.json – do not edit by hand. */
 export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = [
   [
     "Auckland University of Technology",
@@ -224,16 +224,6 @@ export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = [
     "State of Hawaiʻi Joseph Nekaifes Johnston Applied Marine Sciences Northern Mariana Islands",
     15.223092472156852,
     145.7470777750201
-  ],
-  [
-    "Tanzania Marine Parks and Reserves Unit Tanzania, United Republic of",
-    -19.3254243,
-    146.7597646
-  ],
-  [
-    "Tanzania Marine Parks and Reserves Unit Tanzania, United Republic of, Australia",
-    -19.3254243,
-    146.7597646
   ],
   [
     "the University of Western Australia",

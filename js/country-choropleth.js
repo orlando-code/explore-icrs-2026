@@ -42,7 +42,7 @@ function buildMatchColorExpression(iso3ToColor, fallback) {
 
 export function createCountryChoropleth(map, options = {}) {
   const {
-    boundariesPath = "data/country_boundaries.geojson",
+    boundariesPath = "data/geography/country_boundaries.geojson",
     colorLow = OFFSET_RED,
     colorHigh = OFFSET_GREEN,
     getClusterShare = () => 0,
