@@ -4,6 +4,8 @@ import {
   haversineKm,
   resolveCanonicalPersonName,
   resolveDelegatePersonKey,
+  activateSuggestionAt,
+  handleSuggestionListKeydown,
 } from "./utils.js";
 import { OFFSET_API_URL, REQUIRE_DELEGATE_ID, SKIP_TURNSTILE, TURNSTILE_SITE_KEY } from "./config.js";
 
@@ -582,6 +584,7 @@ export function createOffsetTracker({
       elements.suggestions.appendChild(button);
     }
     elements.suggestions.classList.add("open");
+    activateSuggestionAt(elements.suggestions, 0);
   }
 
   function normalizedDelegateId() {
@@ -977,20 +980,23 @@ export function createOffsetTracker({
     });
 
     elements.query?.addEventListener("keydown", (event) => {
-      if (event.key !== "Enter") return;
-      if (elements.suggestions?.classList.contains("open")) {
-        event.preventDefault();
-        const first = elements.suggestions.querySelector(".suggestion[data-attendee-id]");
-        if (first && !pendingRegistrationIds.has(first.dataset.attendeeId)) {
-          const attendee = attendeeById.get(first.dataset.attendeeId);
-          if (attendee) {
-            lockSelection(attendee);
-            renderTracker();
-            renderStatus();
-          }
-        }
+      if (
+        handleSuggestionListKeydown(event, {
+          container: elements.suggestions,
+          onSelect: (button) => {
+            const attendee = attendeeById.get(button.dataset.attendeeId);
+            if (attendee && !pendingRegistrationIds.has(attendee.id)) {
+              lockSelection(attendee);
+              renderTracker();
+              renderStatus();
+            }
+          },
+          onClose: closeSuggestions,
+        })
+      ) {
         return;
       }
+      if (event.key !== "Enter") return;
       if (hasLockedSelection()) return;
       event.preventDefault();
       if (searchQuery.trim()) setStatus("Select your name from the suggestions.");

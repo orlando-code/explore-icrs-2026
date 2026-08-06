@@ -8,6 +8,69 @@ export function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
+export function activateSuggestionAt(container, index) {
+  if (!container) return -1;
+  const buttons = [...container.querySelectorAll(".suggestion")];
+  if (!buttons.length) return -1;
+  const next = Math.max(0, Math.min(index, buttons.length - 1));
+  buttons.forEach((button, buttonIndex) => {
+    button.classList.toggle("active", buttonIndex === next);
+  });
+  buttons[next].scrollIntoView({ block: "nearest" });
+  return next;
+}
+
+export function moveSuggestionSelection(container, delta) {
+  if (!container) return -1;
+  const buttons = [...container.querySelectorAll(".suggestion")];
+  if (!buttons.length) return -1;
+  const current = buttons.findIndex((button) => button.classList.contains("active"));
+  const start = current >= 0 ? current : delta > 0 ? -1 : buttons.length;
+  return activateSuggestionAt(container, start + delta);
+}
+
+export function getActiveSuggestionButton(container) {
+  if (!container) return null;
+  return container.querySelector(".suggestion.active") || container.querySelector(".suggestion");
+}
+
+export function handleSuggestionListKeydown(
+  event,
+  {
+    container,
+    isOpen = () => Boolean(container?.classList.contains("open")),
+    onSelect,
+    onClose,
+  } = {}
+) {
+  if (!container || !isOpen()) return false;
+
+  if (event.key === "ArrowDown") {
+    event.preventDefault();
+    moveSuggestionSelection(container, 1);
+    return true;
+  }
+  if (event.key === "ArrowUp") {
+    event.preventDefault();
+    moveSuggestionSelection(container, -1);
+    return true;
+  }
+  if (event.key === "Escape") {
+    event.preventDefault();
+    onClose?.();
+    return true;
+  }
+  if (event.key === "Enter") {
+    const active = getActiveSuggestionButton(container);
+    if (active) {
+      event.preventDefault();
+      onSelect?.(active);
+      return true;
+    }
+  }
+  return false;
+}
+
 /** Shared affiliation pin styling for the main map and emissions map. */
 export const AFFILIATION_MAP_CIRCLE_PAINT = {
   "circle-radius": [

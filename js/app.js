@@ -24,6 +24,8 @@ import {
   filterEmissionsPool,
   setDelegatePersonKeyAliases,
   setPersonCanonicalNames,
+  activateSuggestionAt,
+  handleSuggestionListKeydown,
 } from "./utils.js";
 
 setDelegatePersonKeyAliases(DELEGATE_PERSON_KEY_ALIASES);
@@ -74,12 +76,14 @@ function withKeywordSuggestionFirst(query, items, detail, limit = 8) {
   return [keyword, ...items.slice(0, Math.max(0, limit - 1))];
 }
 
-function suggestionButtonClass(item, index) {
+function suggestionButtonClass(item) {
   const classes = ["suggestion"];
-  if (index === 0) classes.push("active");
   if (item.kind === "keyword") classes.push("suggestion--keyword");
   return classes.join(" ");
 }
+
+let mapSuggestionItems = [];
+let networkSuggestionItems = [];
 
 const locations = SITE_DATA.locations;
 const meta = SITE_DATA.meta;
@@ -633,36 +637,54 @@ els.query?.addEventListener("focus", () => {
   }
 });
 
+function applyMapSuggestion(item) {
+  els.query.value = item.query;
+  if (item.kind === "keyword") {
+    finalizeMapSearch(item.query);
+    return;
+  }
+  clearTimeout(mapSearchTimer);
+  mapView.applySearch(item.query);
+  if (item.locationId) {
+    mapView.selectLocation(item.locationId, { speakerName: item.speakerName });
+  }
+  closeMapSuggestions();
+}
+
+function applyNetworkSuggestion(item) {
+  els.networkSearch.value = item.query;
+  if (item.kind === "keyword") {
+    finalizeNetworkSearch(item.query);
+    return;
+  }
+  clearTimeout(networkSearchTimer);
+  networkView.applySearch(item.query);
+  networkView.selectNode(item.nodeId);
+  closeNetworkSuggestions();
+}
+
 function renderSuggestions(items, query = "") {
   const suggestions = withKeywordSuggestionFirst(query, items, MAP_SEARCH_KEYWORD_HINT);
+  mapSuggestionItems = suggestions;
   els.suggestions.innerHTML = "";
   if (!suggestions.length) {
     els.suggestions.classList.remove("open");
     return;
   }
 
-  suggestions.forEach((item, index) => {
+  suggestions.forEach((item) => {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = suggestionButtonClass(item, index);
+    btn.className = suggestionButtonClass(item);
     btn.innerHTML = `${escapeHtml(item.label)}<small>${escapeHtml(item.detail)}</small>`;
     btn.addEventListener("mousedown", (event) => {
       event.preventDefault();
-      els.query.value = item.query;
-      if (item.kind === "keyword") {
-        finalizeMapSearch(item.query);
-      } else {
-        clearTimeout(mapSearchTimer);
-        mapView.applySearch(item.query);
-        if (item.locationId) {
-          mapView.selectLocation(item.locationId, { speakerName: item.speakerName });
-        }
-        closeMapSuggestions();
-      }
+      applyMapSuggestion(item);
     });
     els.suggestions.appendChild(btn);
   });
   els.suggestions.classList.add("open");
+  activateSuggestionAt(els.suggestions, 0);
 }
 
 document.addEventListener("click", (event) => {
@@ -677,6 +699,18 @@ els.form?.addEventListener("submit", (event) => {
 });
 
 els.query?.addEventListener("keydown", (event) => {
+  if (
+    handleSuggestionListKeydown(event, {
+      container: els.suggestions,
+      onSelect: (button) => {
+        const index = [...els.suggestions.querySelectorAll(".suggestion")].indexOf(button);
+        if (mapSuggestionItems[index]) applyMapSuggestion(mapSuggestionItems[index]);
+      },
+      onClose: closeMapSuggestions,
+    })
+  ) {
+    return;
+  }
   if (event.key === "Enter") {
     event.preventDefault();
     finalizeMapSearch(els.query.value);
@@ -703,6 +737,20 @@ els.networkSearch?.addEventListener("focus", () => {
 });
 
 els.networkSearch?.addEventListener("keydown", (event) => {
+  if (
+    handleSuggestionListKeydown(event, {
+      container: els.networkSuggestions,
+      onSelect: (button) => {
+        const index = [...els.networkSuggestions.querySelectorAll(".suggestion")].indexOf(
+          button
+        );
+        if (networkSuggestionItems[index]) applyNetworkSuggestion(networkSuggestionItems[index]);
+      },
+      onClose: closeNetworkSuggestions,
+    })
+  ) {
+    return;
+  }
   if (event.key === "Enter") {
     event.preventDefault();
     finalizeNetworkSearch(els.networkSearch.value);
@@ -727,32 +775,26 @@ els.networkClearSearch?.addEventListener("click", () => {
 function renderNetworkSuggestions(items, query = "") {
   if (!els.networkSuggestions) return;
   const suggestions = withKeywordSuggestionFirst(query, items, NETWORK_SEARCH_KEYWORD_HINT);
+  networkSuggestionItems = suggestions;
   els.networkSuggestions.innerHTML = "";
   if (!suggestions.length) {
     els.networkSuggestions.classList.remove("open");
     return;
   }
 
-  suggestions.forEach((item, index) => {
+  suggestions.forEach((item) => {
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.className = suggestionButtonClass(item, index);
+    btn.className = suggestionButtonClass(item);
     btn.innerHTML = `${escapeHtml(item.label)}<small>${escapeHtml(item.detail)}</small>`;
     btn.addEventListener("mousedown", (event) => {
       event.preventDefault();
-      els.networkSearch.value = item.query;
-      if (item.kind === "keyword") {
-        finalizeNetworkSearch(item.query);
-      } else {
-        clearTimeout(networkSearchTimer);
-        networkView.applySearch(item.query);
-        networkView.selectNode(item.nodeId);
-        closeNetworkSuggestions();
-      }
+      applyNetworkSuggestion(item);
     });
     els.networkSuggestions.appendChild(btn);
   });
   els.networkSuggestions.classList.add("open");
+  activateSuggestionAt(els.networkSuggestions, 0);
 }
 
 document.addEventListener("click", (event) => {
