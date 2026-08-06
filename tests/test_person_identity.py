@@ -1,4 +1,4 @@
-from src.delegates import (
+from src.sources.delegates import (
     canonical_person_name,
     delegate_person_key,
     load_person_identity_maps,
@@ -16,7 +16,7 @@ def test_talk_and_delegate_middle_initial_share_person_key():
 
 
 def test_delegate_only_name_uses_delegate_spelling():
-    from src.delegates import load_delegates
+    from src.sources.delegates import load_delegates
 
     delegates = load_delegates()
     non_speaker = delegates.loc[~delegates["is_speaker"]].iloc[0]
@@ -37,7 +37,7 @@ def test_id_review_delegate_id_becomes_person_key():
 
 
 def test_shared_surname_does_not_merge_distinct_burts():
-    import src.delegates as delegates_module
+    import src.sources.delegates as delegates_module
 
     delegates_module._PERSON_IDENTITY_CACHE = None
     delegates_module._DELEGATE_PERSON_KEY_CACHE = None

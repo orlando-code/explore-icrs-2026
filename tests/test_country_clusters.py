@@ -1,5 +1,5 @@
-from src.country_clusters import build_country_clusters
-from src.country_neighbors import load_country_neighbors
+from src.geography.country_clusters import build_country_clusters
+from src.geography.country_neighbors import load_country_neighbors
 
 
 def test_small_country_joins_largest_contiguous_neighbor():
