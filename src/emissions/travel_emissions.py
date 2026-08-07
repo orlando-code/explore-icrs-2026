@@ -72,7 +72,10 @@ DEFAULT_REVERSE_CACHE_PATH = REVERSE_GEOCODE_CACHE_JSON
 DEFAULT_OUTPUT_PATH = Path("outputs/travel_emissions_summary.json")
 DEFAULT_EMISSIONS_SITE_PATH = Path("js/emissions-data.js")
 DEFAULT_USER_AGENT = "explore-icrs-2026/0.1"
-TREE_ABSORPTION_KG_PER_YEAR = 22.0
+FAIR_PER_CAPITA_TONNES_CO2E_2030 = 2.1
+FAIR_PER_CAPITA_TARGET_YEAR = 2030
+FAIR_PER_CAPITA_KG_CO2E_2030 = FAIR_PER_CAPITA_TONNES_CO2E_2030 * 1000
+UNEP_EMISSIONS_GAP_REPORT_2020_URL = "https://www.unep.org/emissions-gap-report-2020"
 MIN_COUNTRY_ATTENDEES_FOR_CONTEXT = 3
 MIN_NATIONAL_PER_CAPITA_TONNES = 0.2
 DEFAULT_NATIONAL_PER_CAPITA_PATH = NATIONAL_PER_CAPITA_JSON
@@ -107,10 +110,13 @@ EMISSIONS_SOURCES = [
         "note": national_per_capita_source_note(),
     },
     {
-        "id": "tree_uptake",
-        "label": "Tree CO₂ uptake (~22 kg/yr)",
-        "url": "https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-references",
-        "note": "US EPA GHG equivalencies (≈48 lb CO₂ per tree per year)",
+        "id": "fair_per_capita_2030",
+        "label": "UNEP fair per-capita budget (2030)",
+        "url": UNEP_EMISSIONS_GAP_REPORT_2020_URL,
+        "note": (
+            "Emissions Gap Report 2020: ~2.1 t CO₂e per person per year by 2030 "
+            "(fair-share mitigation benchmark)"
+        ),
     },
 ]
 NZ_CAR_PASSENGERS_CENTRAL = 2
@@ -1233,7 +1239,7 @@ def refresh_emissions_site_national_context(
 def _build_emissions_context(
     estimates: pd.DataFrame, total_co2e_kg: float
 ) -> dict[str, Any]:
-    """Comparisons for the emissions tab (trees, national per-capita multipliers)."""
+    """Comparisons for the emissions tab (fair per-capita budget, national multipliers)."""
     national_data = _load_national_per_capita()
     national_by_iso2 = national_data.get("countries", {})
     national_meta = national_data.get("meta", {})
@@ -1264,8 +1270,11 @@ def _build_emissions_context(
     )
 
     context: dict[str, Any] = {
-        "tree_years": round(total_co2e_kg / TREE_ABSORPTION_KG_PER_YEAR),
-        "tree_kg_per_year_assumption": TREE_ABSORPTION_KG_PER_YEAR,
+        "fair_budget_person_years": round(
+            total_co2e_kg / FAIR_PER_CAPITA_KG_CO2E_2030
+        ),
+        "fair_per_capita_tonnes_2030": FAIR_PER_CAPITA_TONNES_CO2E_2030,
+        "fair_per_capita_target_year": FAIR_PER_CAPITA_TARGET_YEAR,
         "per_attendee_kg": round(total_co2e_kg / max(len(estimates), 1), 1),
         "country_avg_min_attendees": MIN_COUNTRY_ATTENDEES_FOR_CONTEXT,
         "national_per_capita_year": national_meta.get("year", NATIONAL_PER_CAPITA_YEAR),

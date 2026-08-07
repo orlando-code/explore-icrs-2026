@@ -425,8 +425,10 @@ export function createEmissionsView(
     const minN = context.country_avg_min_attendees || 3;
     const label = attendeeLabel();
     const travelSource = (context.sources || []).find((item) => item.id === "travel");
-    const treeSource = (context.sources || []).find((item) => item.id === "tree_uptake");
+    const fairSource = (context.sources || []).find((item) => item.id === "fair_per_capita_2030");
     const nationalSource = (context.sources || []).find((item) => item.id === "national_per_capita");
+    const fairTonnes = context.fair_per_capita_tonnes_2030 || 2.1;
+    const fairYear = context.fair_per_capita_target_year || 2030;
 
     // Helper for [source] snippet if available
     function sourceLink(source) {
@@ -435,10 +437,9 @@ export function createEmissionsView(
         : "";
     }
 
-    if (context.tree_years) {
-      const kgPerTree = context.tree_kg_per_year_assumption || 22;
+    if (context.fair_budget_person_years) {
       bullets.push(
-        `About <strong>${formatCount(context.tree_years)} tree-years</strong> of CO₂ uptake to offset this total with the estimated equivalent of ≈${kgPerTree} kg per mature tree per year${sourceLink(treeSource)}.`
+        `Total return travel is equivalent to <strong>${formatCount(context.fair_budget_person_years)} person-years</strong> of a <strong>${fairTonnes} t CO₂e</strong> fair annual per-capita budget for ${fairYear}${sourceLink(fairSource)}.`
       );
     }
 
@@ -658,13 +659,21 @@ export function createEmissionsView(
     `;
   }
 
-  function treeKgPerYear() {
-    return context.tree_kg_per_year_assumption || 22;
+  function fairPerCapitaKg() {
+    return (context.fair_per_capita_tonnes_2030 || 2.1) * 1000;
   }
 
-  function treeYearsForCo2e(kg) {
+  function fairBudgetRatioForCo2eKg(kg) {
     if (!kg || kg <= 0) return null;
-    return Math.round(kg / treeKgPerYear());
+    return kg / fairPerCapitaKg();
+  }
+
+  function formatFairBudgetRatio(ratio) {
+    if (ratio == null) return null;
+    const rounded = ratio >= 10 ? Math.round(ratio).toLocaleString() : ratio.toFixed(1);
+    const fairYear = context.fair_per_capita_target_year || 2030;
+    const fairTonnes = context.fair_per_capita_tonnes_2030 || 2.1;
+    return `≈${rounded}× ${fairYear} fair per-capita annual budget (${fairTonnes} t CO₂e)`;
   }
 
   function renderHoverCard(location) {
@@ -674,7 +683,7 @@ export function createEmissionsView(
     }
     elements.hoverCard.hidden = false;
     elements.hoverAffiliation.textContent = location.affiliation;
-    const treeYears = treeYearsForCo2e(location.co2e_kg);
+    const fairRatio = fairBudgetRatioForCo2eKg(location.co2e_per_speaker_kg);
     const metaParts = [
       formatEmissions(location.co2e_kg, { compact: true }),
       `${location.travel_attendees} attendee${location.travel_attendees === 1 ? "" : "s"}`,
@@ -688,8 +697,9 @@ export function createEmissionsView(
         metaParts.push(`${formatDistance(distanceKm)} from Auckland`);
       }
     }
-    if (treeYears != null) {
-      metaParts.push(`≈${formatCount(treeYears)} tree-years to offset`);
+    const fairBudgetLabel = formatFairBudgetRatio(fairRatio);
+    if (fairBudgetLabel) {
+      metaParts.push(fairBudgetLabel);
     }
     elements.hoverMeta.textContent = metaParts.join(" · ");
 
