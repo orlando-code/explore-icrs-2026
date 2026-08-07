@@ -17,8 +17,6 @@ import requests
 from rich.console import Console
 from rich.table import Table
 
-from src.geocoding.geocode import _extract_country_hints
-from src.sources.programme import load_talks
 from src.data_paths import (
     COUNTRY_BOUNDARIES_REL,
     GEOCODE_OVERRIDES_JSON,
@@ -26,6 +24,7 @@ from src.data_paths import (
     REVERSE_GEOCODE_CACHE_JSON,
     TRAVEL_EMISSIONS_CACHE_JSON,
 )
+from src.geocoding.geocode import _extract_country_hints
 
 _MISSING_AFFILIATION_TOKENS = frozenset({"nan", "none", "<na>", "nat"})
 
@@ -307,6 +306,12 @@ def load_attendee_legs(
     show_progress: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Return one travel leg per presenter with a geocoded affiliation."""
+    from src.emissions.origin_country import (
+        country_from_affiliation,
+        resolve_origin_country,
+    )
+    from src.registry.affiliation_registry import parse_affiliation_parts
+    from src.registry.person_registry import DEFAULT_REGISTRY_PATH, load_person_registry
     from src.sources.delegates import (
         country_to_iso2,
         delegate_org_country_for_row,
@@ -314,19 +319,20 @@ def load_attendee_legs(
         load_delegates,
         normalize_person_name,
     )
-    from src.registry.affiliation_registry import parse_affiliation_parts
-    from src.emissions.origin_country import country_from_affiliation, resolve_origin_country
-    from src.registry.person_registry import DEFAULT_REGISTRY_PATH, load_person_registry
 
     delegate_rows = load_delegates(refresh=False)
     registry_people = load_person_registry(DEFAULT_REGISTRY_PATH)
     registry_countries = {
-        normalize_person_name(str(row["canonical_name"])): str(row.get("country") or "").strip()
+        normalize_person_name(str(row["canonical_name"])): str(
+            row.get("country") or ""
+        ).strip()
         for _, row in registry_people.iterrows()
         if str(row.get("canonical_name") or "").strip()
     }
     delegate_countries = {
-        normalize_person_name(str(row["full_name"])): delegate_org_country_for_row(row)[1]
+        normalize_person_name(str(row["full_name"])): delegate_org_country_for_row(row)[
+            1
+        ]
         for _, row in delegate_rows.iterrows()
         if str(row.get("full_name") or "").strip()
     }
@@ -368,11 +374,15 @@ def load_attendee_legs(
         elif str(origin_country).upper() in {"", "UNKNOWN"}:
             origin_country = country_from_affiliation(affiliation_text)
         delegate_country = (
-            delegate_countries.get(normalize_person_name(str(row.get("presenter") or "")))
+            delegate_countries.get(
+                normalize_person_name(str(row.get("presenter") or ""))
+            )
             or delegate_countries_by_key.get(
                 delegate_person_key(str(row.get("presenter") or ""))
             )
-            or registry_countries.get(normalize_person_name(str(row.get("presenter") or "")))
+            or registry_countries.get(
+                normalize_person_name(str(row.get("presenter") or ""))
+            )
             or ""
         )
         if delegate_country and str(origin_country).upper() in {"", "UNKNOWN"}:
@@ -383,9 +393,9 @@ def load_attendee_legs(
         if not re.fullmatch(r"[A-Z]{2}", str(origin_country or "")):
             parts_org, parts_country = parse_affiliation_parts(affiliation_text)
             if parts_country:
-                origin_country = country_to_iso2(parts_country) or country_from_affiliation(
-                    affiliation_text
-                )
+                origin_country = country_to_iso2(
+                    parts_country
+                ) or country_from_affiliation(affiliation_text)
         if _looks_like_coordinates(origin_location):
             origin_location = affiliation_text.split(",")[0].strip() or origin_location
         if (
@@ -461,12 +471,8 @@ def _origin_from_attendee(
         if delegate_iso:
             country_code = delegate_iso
 
-    use_capital = (
-        str(geocode_level or "").strip().casefold() == "country"
-        or (
-            delegate_country
-            and organisation_country_mismatch(org_name, delegate_country)
-        )
+    use_capital = str(geocode_level or "").strip().casefold() == "country" or (
+        delegate_country and organisation_country_mismatch(org_name, delegate_country)
     )
     if use_capital and delegate_country:
         fallback = resolve_capital_fallback(org_name, delegate_country)
@@ -639,9 +645,7 @@ def estimate_unique_routes(
             if _cache_key(params) not in cache:
                 pending.append(pd.Series(route._asdict()))
         routes = (
-            pd.DataFrame(pending)
-            if pending
-            else pd.DataFrame(columns=routes.columns)
+            pd.DataFrame(pending) if pending else pd.DataFrame(columns=routes.columns)
         )
     if limit is not None:
         routes = routes.head(limit)
@@ -1403,7 +1407,7 @@ def summarize_travel_emissions(
         },
         "assumptions": {
             "non_nz_transport": "return economy flight to Auckland",
-            "nz_transport": "return shared car trip for attendees in New Zealand",
+            "nz_transport": "Assumed shared car trip for attendees in Auckland.",
             "flight_business_multiplier": FLIGHT_BUSINESS_MULTIPLIER,
             "return_trip": True,
             "api_strategy": "one emissions.dev query per unique origin route",
@@ -1475,7 +1479,6 @@ def _build_emissions_locations(
         _lookup_override,
         affiliation_base_name,
         affiliation_display_name,
-        canonical_affiliation_key,
     )
 
     overrides = _load_json(GEOCODE_OVERRIDES_JSON)
@@ -1534,7 +1537,10 @@ def _build_emissions_locations(
 
     rows: list[dict[str, Any]] = []
     key_to_id: dict[str, str] = {}
-    from src.registry.affiliation_registry import _make_affiliation, parse_affiliation_parts
+    from src.registry.affiliation_registry import (
+        _make_affiliation,
+        parse_affiliation_parts,
+    )
 
     for index, (key, group) in enumerate(
         sorted(merged.groupby("_affiliation_key", sort=True)),
@@ -1593,7 +1599,6 @@ def _build_emissions_attendees(
 ) -> list[dict[str, Any]]:
     from src.geocoding.geocode import (
         affiliation_display_name,
-        canonical_affiliation_key,
     )
 
     leg_cols = legs[

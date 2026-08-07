@@ -49,7 +49,7 @@ export const EMISSIONS_DATA = {
       },
       "assumptions": {
         "non_nz_transport": "return economy flight to Auckland",
-        "nz_transport": "return shared car trip for attendees in New Zealand",
+        "nz_transport": "Assumed shared car trip for attendees in Auckland.",
         "flight_business_multiplier": 2.9,
         "return_trip": true,
         "api_strategy": "one emissions.dev query per unique origin route"
@@ -27067,7 +27067,7 @@ export const EMISSIONS_DATA = {
       },
       "assumptions": {
         "non_nz_transport": "return economy flight to Auckland",
-        "nz_transport": "return shared car trip for attendees in New Zealand",
+        "nz_transport": "Assumed shared car trip for attendees in Auckland.",
         "flight_business_multiplier": 2.9,
         "return_trip": true,
         "api_strategy": "one emissions.dev query per unique origin route"

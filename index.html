@@ -141,7 +141,7 @@
       <aside class="panel" id="network-panel" hidden>
         <div class="panel-header">
           <h2>Co-authorship network</h2>
-          <p>Connections where speakers shared authorship on ICRS talks. Search by name, affiliation, or talk keyword (e.g. bleaching, OAE) to cluster people by topic, then select someone for profile and contact links.</p>
+          <p>Show where speakers shared authorship on ICRS talks. Search by name, affiliation, or talk keyword (e.g. bleaching, OAE) to cluster people by topic; select a node to see their profile, contact, co-authorships, and similar talks.</p>
         </div>
 
         <div class="entry-form network-controls">
@@ -179,7 +179,7 @@
               <button type="button" class="btn-ghost btn-small" id="network-clear-selection" hidden>
                 Clear selection
               </button>
-              <button type="button" class="btn-ghost btn-small" id="network-reset-zoom">Reset view</button>
+              <button type="button" class="segment" id="network-reset-zoom">Reset view</button>
             </div>
           </div>
           <p id="network-summary" class="status"></p>
@@ -219,7 +219,7 @@
             </div>
           </div>
           <div class="stage-canvas network-stage-canvas">
-            <div class="stage-badge network-help-badge">pinch/scroll to zoom · drag to pan · tap/click a node to select</div>
+            <div class="stage-badge network-help-badge">Pinch/scroll to zoom · drag to pan · tap/click a node to select</div>
             <svg id="network-svg" aria-label="Co-authorship network"></svg>
           </div>
         </section>

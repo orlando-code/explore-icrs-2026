@@ -1361,21 +1361,6 @@ export function createNetworkView(siteData, elements) {
             ];
           })();
 
-    const selectionSection = selectedNodeId
-      ? `
-      <h3>Selection</h3>
-      <p>Highlighted links connect the selected node to direct co-authors. Other nodes fade.</p>
-      <div class="legend-row">
-        <span class="legend-line" style="height:3px;background:#1f6f8b"></span>
-        <span>Link to selected node</span>
-      </div>
-      <div class="legend-row">
-        <span class="legend-line"></span>
-        <span>Other co-authorship links</span>
-      </div>
-    `
-      : "";
-
     elements.legendScale.innerHTML = `
       <h3>Node size · talks on author lists (log scale)</h3>
       <p>Circle area scales with talks where the person or affiliation appears on the author list.</p>
@@ -1388,8 +1373,9 @@ export function createNetworkView(siteData, elements) {
         </div>`
         )
         .join("")}
-      ${selectionSection}
+      <p>Lines represent co-authorship links between nodes.</p>
     `;
+    
   }
 
   function neighborIds(nodeId) {
