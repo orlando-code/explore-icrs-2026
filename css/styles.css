@@ -440,8 +440,6 @@ a.btn-small {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 0;
-  margin-bottom: 0.35rem;
   transition: opacity 0.2s ease, max-height 0.25s ease, margin 0.25s ease;
 }
 
@@ -451,15 +449,15 @@ a.btn-small {
 
 .network-contact-email-gate--loading .network-contact-turnstile,
 .network-contact-email-gate--challenge .network-contact-turnstile {
-  min-height: 58px;
-  max-height: 70px;
   overflow: hidden;
 }
 
 .network-contact-email-gate--ready .network-contact-turnstile {
   min-height: 0;
   max-height: 0;
+  height: 0;
   margin: 0;
+  border-width: 0;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
@@ -504,6 +502,50 @@ a.btn-small {
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
+}
+
+.turnstile-pill {
+  --turnstile-native-height: 65px;
+  --turnstile-pill-height: calc(0.7rem * 2 + 1.2rem);
+  --turnstile-pill-scale: 0.68;
+  position: relative;
+  width: 100%;
+  height: var(--turnstile-pill-height);
+  min-height: var(--turnstile-pill-height);
+  max-height: var(--turnstile-pill-height);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #fff;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.35rem;
+  transition:
+    opacity 0.2s ease,
+    max-height 0.25s ease,
+    min-height 0.25s ease,
+    margin 0.25s ease,
+    border-color 0.2s ease;
+}
+
+.turnstile-pill:empty {
+  display: none;
+}
+
+.turnstile-pill > div {
+  width: calc(100% / var(--turnstile-pill-scale)) !important;
+  max-width: none !important;
+  height: var(--turnstile-native-height) !important;
+  transform: scale(var(--turnstile-pill-scale));
+  transform-origin: center center;
+  flex: none;
+}
+
+.turnstile-pill iframe {
+  width: 100% !important;
+  height: var(--turnstile-native-height) !important;
 }
 
 .network-contact-email-note {
@@ -1765,11 +1807,6 @@ button:active {
 }
 
 .emissions-offset-turnstile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 0;
-  margin-bottom: 0.35rem;
   transition: opacity 0.2s ease, max-height 0.25s ease, margin 0.25s ease;
 }
 
@@ -1778,13 +1815,8 @@ button:active {
 }
 
 .emissions-offset-register-action--loading .emissions-offset-turnstile,
-.emissions-offset-register-action--challenge .emissions-offset-turnstile {
-  min-height: 65px;
-}
-
+.emissions-offset-register-action--challenge .emissions-offset-turnstile,
 .emissions-offset-register-action--ready .emissions-offset-turnstile {
-  /* Keep the verified compact widget visible so the check is obvious. */
-  min-height: 65px;
   opacity: 1;
 }
 

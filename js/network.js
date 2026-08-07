@@ -298,7 +298,8 @@ function mountContactTurnstile() {
     contactTurnstileWidgetId = window.turnstile.render(mount, {
       sitekey: TURNSTILE_SITE_KEY,
       action: "contact-email",
-      size: "compact",
+      size: "flexible",
+      theme: "light",
       callback: (token) => {
         contactTurnstileToken = token;
         setContactTurnstileState("ready");
@@ -425,7 +426,7 @@ function renderEmailRevealHtml(node, profile) {
 
   return `
     <div class="network-contact-email-gate">
-      <div id="network-contact-turnstile" class="network-contact-turnstile"></div>
+      <div id="network-contact-turnstile" class="network-contact-turnstile turnstile-pill"></div>
       <p class="network-contact-turnstile-hint" hidden></p>
       <button
         type="button"

@@ -140,7 +140,8 @@ function mountOffsetTurnstile() {
     offsetTurnstileWidgetId = window.turnstile.render(mount, {
       sitekey: TURNSTILE_SITE_KEY,
       action: "offset-pledge",
-      size: "compact",
+      size: "flexible",
+      theme: "light",
       // Always show the compact checkbox (not interaction-only, which stays
       // invisible when Cloudflare auto-passes low-risk visitors).
       appearance: "always",
