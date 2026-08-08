@@ -18,6 +18,8 @@ data/snapshots/
 backups/
 backend/data/contacts.json
 backend/data/delegate_ids.csv
+backend/data/delegate_ids.sample.csv
+data/registry/person_registry_official_ids.csv
 data/ne_110m_admin_0_countries.zip
 data/natural_earth/
 data/affiliation_duplicate_summary*

@@ -7,10 +7,10 @@ Internal source of truth for **people** in the ICRS pipeline.
 | Field | Example | Purpose |
 |-------|---------|---------|
 | `person_key` | `icrs-p-00016` | **Our** stable key — use everywhere in the pipeline |
-| `official_delegate_id` | `5135` | Official offset-registration ID (optional; ~90% coverage) |
+| `official_delegate_id` | *(local only)* | Official offset-registration ID — stored in gitignored `person_registry_official_ids.csv` |
 | `attended` | `True` / `False` | **On delegate list = attended.** Programme-only names are not attended. |
 
-Every person gets an `icrs-p-*` key. Only some also have an `official_delegate_id` from the welcome-email database.
+Every person gets an `icrs-p-*` key. Official delegate IDs are written to `data/registry/person_registry_official_ids.csv` during registry build; that file is **gitignored** and must not be published.
 
 ### Attendance rule
 
@@ -27,15 +27,16 @@ Outputs:
 
 | File | Contents |
 |------|----------|
-| `data/registry/person_registry.csv` | One row per person |
+| `data/registry/person_registry.csv` | One row per person (no official IDs) |
+| `data/registry/person_registry_official_ids.csv` | **Local only** — `person_key` + official delegate ID |
 | `data/registry/person_name_aliases.csv` | Name variant → `person_key` |
 | `data/registry/person_registry_unmatched.csv` | Flagged rows needing review |
 | `data/registry/person_registry.meta.json` | Build metrics |
 
 ## How matching works
 
-1. **Token overlap** — programme presenter ↔ delegate-list name (rejects when presenter name has more tokens, e.g. Sam King ≠ Sam King Fung Yiu)
-2. **Official ID review** — confirmed pairs from all `delegate_id_match_review_*_merged.csv` files (highest version wins per delegate name)
+1. **Token overlap** — programme presenter ↔ delegate-list name (rejects when presenter name has more tokens, e.g. Sam King ≠ Sam King Fung Yiu). Presenters are indexed by **name + affiliation** so homonyms at different institutions stay separate (e.g. the two Takashi Nakamuras).
+2. **Official ID review** — confirmed pairs from all `delegate_id_match_review_*_merged.csv` files (highest version wins per delegate name). Shared `id_full_name` values that map to multiple delegates are **not** used to bridge rows.
 3. **Manual overrides** — `data/registry/person_registry_overrides.csv` for exceptional **name** merges (e.g. duplicate PDF rows). For organisation fixes use `data/overrides/delegate_organisation_overrides.csv` (see below).
 4. Union-find merges linked names into one `person_key`
 

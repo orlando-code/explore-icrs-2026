@@ -28,12 +28,14 @@ def test_delegate_only_name_uses_delegate_spelling():
     assert key_to_canonical[person_key] == delegate_name
 
 
-def test_id_review_delegate_id_becomes_person_key():
+def test_id_review_names_share_registry_person_key():
     talk_name = "Hamzah Abdel Majid"
     delegate_name = "Hamzah Abdel-Majid"
 
-    assert delegate_person_key(talk_name) == delegate_person_key(delegate_name)
-    assert delegate_person_key(talk_name).isdigit()
+    talk_key = delegate_person_key(talk_name)
+    delegate_key = delegate_person_key(delegate_name)
+    assert talk_key == delegate_key
+    assert talk_key.startswith("icrs-p-")
 
 
 def test_shared_surname_does_not_merge_distinct_burts():
@@ -46,7 +48,7 @@ def test_shared_surname_does_not_merge_distinct_burts():
     nicole_key = delegate_person_key("Nicole Burt")
 
     assert john_key != nicole_key
-    assert john_key == "17228"
-    assert nicole_key == "13525"
+    assert john_key.startswith("icrs-p-")
+    assert nicole_key.startswith("icrs-p-")
     assert canonical_person_name("Prof John Burt") == "Prof John Burt"
     assert canonical_person_name("Nicole Burt") == "Nicole Burt"

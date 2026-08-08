@@ -654,30 +654,29 @@ def _resolve_id_match_review_path(path: Path | None = None) -> Path | None:
 def load_delegate_person_keys(
     path: Path | str | None = None,
 ) -> dict[str, str]:
-    """Map delegate name variants to a stable person key (delegate_id)."""
+    """Map delegate name variants to stable icrs-p-* person keys."""
     global _DELEGATE_PERSON_KEY_CACHE
     if _DELEGATE_PERSON_KEY_CACHE is not None and path is None:
         return _DELEGATE_PERSON_KEY_CACHE
 
-    review_path = _resolve_id_match_review_path(
-        Path(path) if path is not None else None
-    )
+    from src.registry.person_registry import DEFAULT_ALIASES_PATH, load_name_aliases
+
+    aliases_path = Path(path) if path is not None else DEFAULT_ALIASES_PATH
+    aliases = load_name_aliases(aliases_path)
     mapping: dict[str, str] = {}
-    if review_path is not None:
-        review = pd.read_csv(review_path, dtype=str).fillna("")
-        matched = review.loc[
-            review["row_kind"].eq("delegate")
-            & review["match_tier"].isin(["perfect", "confirmed"])
-            & review["delegate_id"].astype(str).str.strip().ne("")
-        ]
-        for _, row in matched.iterrows():
-            person_key = str(row["delegate_id"]).strip()
-            for column in ("delegate_full_name", "id_full_name"):
-                name = str(row.get(column) or "").strip()
-                if not name:
-                    continue
-                mapping[normalize_person_name(name)] = person_key
-                mapping[name.casefold()] = person_key
+    for _, row in aliases.iterrows():
+        person_key = str(row.get("person_key") or "").strip()
+        if not person_key:
+            continue
+        for column in ("name_variant", "normalized_name"):
+            name = str(row.get(column) or "").strip()
+            if not name:
+                continue
+            mapping[name.casefold()] = person_key
+            if column == "name_variant":
+                norm = normalize_person_name(name)
+                if norm:
+                    mapping[norm] = person_key
 
     if path is None:
         _DELEGATE_PERSON_KEY_CACHE = mapping
@@ -701,6 +700,89 @@ class _UnionFind:
         root_right = self.find(right)
         if root_left != root_right:
             self.parent[root_right] = root_left
+
+
+PRESENTER_NODE_SEP = "\x1f"
+
+
+def normalize_organisation_label(value: str) -> str:
+    return normalize_person_name(str(value or "").replace(",", " "))
+
+
+def presenter_identity_node(presenter_norm: str, affiliation: str = "") -> str:
+    aff_norm = normalize_organisation_label(affiliation)
+    if aff_norm:
+        return f"{presenter_norm}{PRESENTER_NODE_SEP}{aff_norm}"
+    return presenter_norm
+
+
+def register_talk_presenters(
+    talks: pd.DataFrame,
+    *,
+    presenter_display: dict[str, str],
+    uf: _UnionFind,
+    token_index: dict[str, set[str]],
+) -> None:
+    """Index programme presenters by name tokens and affiliation for homonym disambiguation."""
+    for _, talk in talks.iterrows():
+        presenter = str(talk.get("presenter") or "").strip()
+        if not presenter:
+            continue
+        affiliation = str(talk.get("affiliation") or "").strip()
+        norm = normalize_person_name(presenter)
+        node = presenter_identity_node(norm, affiliation)
+        presenter_display[node] = presenter
+        uf.find(node)
+        for token in name_tokens(presenter):
+            token_index.setdefault(token, set()).add(node)
+
+
+def match_delegate_to_presenter_node(
+    delegate_name: str,
+    delegate_organisation: str,
+    token_index: dict[str, set[str]],
+    presenter_display: dict[str, str],
+) -> str | None:
+    """Match a delegate-list name to a programme presenter without merging homonyms."""
+    delegate_tokens = name_tokens(delegate_name)
+    if not delegate_tokens:
+        return None
+    # Ignore honorific tokens (e.g. "prof" in "A/Prof …") that are not in the index.
+    tokens = [token for token in delegate_tokens if token in token_index]
+    if not tokens:
+        tokens = list(delegate_tokens)
+    candidates: set[str] | None = None
+    for token in tokens:
+        matches = token_index.get(token)
+        if not matches:
+            return None
+        candidates = matches if candidates is None else candidates & matches
+    if not candidates:
+        return None
+
+    filtered: list[str] = []
+    for node in candidates:
+        presenter_name = presenter_display.get(node, node.split(PRESENTER_NODE_SEP, 1)[0])
+        presenter_tokens = name_tokens(presenter_name)
+        if len(presenter_tokens) > len(delegate_tokens):
+            continue
+        filtered.append(node)
+    if not filtered:
+        return None
+    if len(filtered) == 1:
+        return filtered[0]
+
+    org_norm = normalize_organisation_label(delegate_organisation)
+    if org_norm:
+        org_matches = [
+            node
+            for node in filtered
+            if PRESENTER_NODE_SEP in node
+            and node.split(PRESENTER_NODE_SEP, 1)[1] == org_norm
+        ]
+        if len(org_matches) == 1:
+            return org_matches[0]
+    return None
 
 
 def _match_single_presenter_norm(
@@ -770,15 +852,12 @@ def load_person_identity_maps(
     id_key_by_norm: dict[str, str] = {}
 
     token_index: dict[str, set[str]] = {}
-    for presenter in talks["presenter"].dropna().astype(str):
-        cleaned = presenter.strip()
-        if not cleaned:
-            continue
-        norm = normalize_person_name(cleaned)
-        presenter_display.setdefault(norm, cleaned)
-        uf.find(norm)
-        for token in name_tokens(cleaned):
-            token_index.setdefault(token, set()).add(norm)
+    register_talk_presenters(
+        talks,
+        presenter_display=presenter_display,
+        uf=uf,
+        token_index=token_index,
+    )
 
     id_mapping = load_delegate_person_keys(id_keys_path)
     id_variants_by_key: dict[str, list[str]] = {}
@@ -818,7 +897,13 @@ def load_person_identity_maps(
         delegate_display[norm] = full_name
         uf.find(norm)
 
-        matched_presenter = _match_single_presenter_norm(full_name, token_index)
+        organisation = delegate_org_country_for_row(row)[0]
+        matched_presenter = match_delegate_to_presenter_node(
+            full_name,
+            organisation,
+            token_index,
+            presenter_display,
+        )
         if matched_presenter:
             uf.union(norm, matched_presenter)
 

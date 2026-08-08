@@ -15,8 +15,10 @@ from src.sources.delegates import (
     _match_single_presenter_norm,
     delegate_org_country_for_row,
     load_delegates,
+    match_delegate_to_presenter_node,
     name_tokens,
     normalize_person_name,
+    register_talk_presenters,
 )
 from src.sources.programme import load_talks
 
@@ -34,6 +36,7 @@ from src.data_paths import (
     GEOCODE_OVERRIDES_JSON,
     OVERRIDES,
     PERSON_ALIASES_CSV,
+    PERSON_OFFICIAL_IDS_CSV,
     PERSON_REGISTRY_CSV,
     PERSON_OVERRIDES_CSV,
     PERSON_UNMATCHED_CSV,
@@ -47,8 +50,30 @@ DEFAULT_REGISTRY_PATH = PERSON_REGISTRY_CSV
 DEFAULT_ALIASES_PATH = PERSON_ALIASES_CSV
 DEFAULT_UNMATCHED_PATH = PERSON_UNMATCHED_CSV
 DEFAULT_OVERRIDES_PATH = PERSON_OVERRIDES_CSV
+DEFAULT_OFFICIAL_IDS_PATH = PERSON_OFFICIAL_IDS_CSV
 
 PERSON_KEY_PREFIX = "icrs-p-"
+PUBLIC_REGISTRY_COLUMNS = [
+    "person_key",
+    "canonical_name",
+    "organisation",
+    "country",
+    "in_delegate_list",
+    "in_programme",
+    "attended",
+    "is_speaker",
+    "match_methods",
+    "name_variants",
+    "needs_review",
+    "review_reason",
+]
+OFFICIAL_ID_COLUMNS = ["official_delegate_id", "official_id_match_tier"]
+OFFICIAL_IDS_EXPORT_COLUMNS = [
+    "person_key",
+    "canonical_name",
+    "official_delegate_id",
+    "official_id_match_tier",
+]
 
 
 @dataclass
@@ -190,6 +215,17 @@ def _norm_org(value: str) -> str:
     return normalize_person_name(str(value or "").replace(",", " "))
 
 
+def _ambiguous_official_id_norms(id_links: pd.DataFrame) -> set[str]:
+    """id_full_name values shared by multiple delegate-list names must not bridge rows."""
+    by_id_name: dict[str, set[str]] = {}
+    for _, link in id_links.iterrows():
+        id_norm = normalize_person_name(str(link.get("id_full_name") or ""))
+        delegate_norm = normalize_person_name(str(link.get("delegate_full_name") or ""))
+        if id_norm and delegate_norm:
+            by_id_name.setdefault(id_norm, set()).add(delegate_norm)
+    return {norm for norm, delegates in by_id_name.items() if len(delegates) > 1}
+
+
 def _match_presenter_norm(
     delegate_name: str,
     token_index: dict[str, set[str]],
@@ -290,15 +326,12 @@ def build_person_registry(
     canonical_override: dict[str, str] = {}
 
     token_index: dict[str, set[str]] = {}
-    for presenter in talks["presenter"].dropna().astype(str):
-        cleaned = presenter.strip()
-        if not cleaned:
-            continue
-        norm = normalize_person_name(cleaned)
-        presenter_display[norm] = cleaned
-        uf.find(norm)
-        for token in name_tokens(cleaned):
-            token_index.setdefault(token, set()).add(norm)
+    register_talk_presenters(
+        talks,
+        presenter_display=presenter_display,
+        uf=uf,
+        token_index=token_index,
+    )
 
     for index, row in delegates.iterrows():
         full_name = str(row.get("full_name") or "").strip()
@@ -316,12 +349,18 @@ def build_person_registry(
         seed_order[norm] = int(index)
         uf.find(norm)
 
-        matched_presenter = _match_presenter_norm(full_name, token_index, presenter_display)
+        matched_presenter = match_delegate_to_presenter_node(
+            full_name,
+            organisation,
+            token_index,
+            presenter_display,
+        )
         if matched_presenter:
             uf.union(norm, matched_presenter)
 
     id_links = load_confirmed_official_id_links(OVERRIDES)
     official_id_by_norm: dict[str, tuple[str, str, str]] = {}
+    ambiguous_id_norms = _ambiguous_official_id_norms(id_links)
     for _, link in id_links.iterrows():
         official_id = _clean_official_id(link.get("delegate_id"))
         if not official_id:
@@ -329,25 +368,20 @@ def build_person_registry(
         tier = str(link.get("match_tier") or "").strip()
         reason = str(link.get("reason") or "").strip()
         delegate_name = str(link.get("delegate_full_name") or "").strip()
-        norms: list[str] = []
-        for column in ("delegate_full_name", "id_full_name"):
-            name = str(link.get(column) or "").strip()
-            if not name:
-                continue
-            norm = normalize_person_name(name)
-            norms.append(norm)
-            presenter_display.setdefault(norm, name)
-            uf.find(norm)
-        if len(norms) < 2:
-            continue
-        root = norms[0]
-        for norm in norms[1:]:
-            uf.union(root, norm)
         delegate_norm = normalize_person_name(delegate_name)
-        if delegate_norm:
-            official_id_by_norm[delegate_norm] = (official_id, tier, reason)
-            if reason == "manually_confirmed" and delegate_name:
-                canonical_override[delegate_norm] = delegate_name
+        if not delegate_norm:
+            continue
+        uf.find(delegate_norm)
+        official_id_by_norm[delegate_norm] = (official_id, tier, reason)
+        if reason == "manually_confirmed" and delegate_name:
+            canonical_override[delegate_norm] = delegate_name
+
+        id_name = str(link.get("id_full_name") or "").strip()
+        id_norm = normalize_person_name(id_name)
+        if id_norm and id_norm != delegate_norm and id_norm not in ambiguous_id_norms:
+            presenter_display.setdefault(id_norm, id_name)
+            uf.find(id_norm)
+            uf.union(delegate_norm, id_norm)
 
     overrides = load_registry_overrides(DEFAULT_OVERRIDES_PATH)
     _apply_registry_overrides(
@@ -572,17 +606,34 @@ def save_person_registry(
     registry_path: Path | str = DEFAULT_REGISTRY_PATH,
     aliases_path: Path | str = DEFAULT_ALIASES_PATH,
     unmatched_path: Path | str = DEFAULT_UNMATCHED_PATH,
+    official_ids_path: Path | str = DEFAULT_OFFICIAL_IDS_PATH,
 ) -> dict[str, Path]:
     outputs = {
         "registry": Path(registry_path),
         "aliases": Path(aliases_path),
         "unmatched": Path(unmatched_path),
+        "official_ids": Path(official_ids_path),
     }
     for path in outputs.values():
         path.parent.mkdir(parents=True, exist_ok=True)
-    result.registry.to_csv(outputs["registry"], index=False)
+
+    registry = result.registry.copy()
+    official_ids = registry.loc[
+        registry["official_delegate_id"].astype(str).str.strip().ne(""),
+        OFFICIAL_IDS_EXPORT_COLUMNS,
+    ].copy()
+    official_ids.to_csv(outputs["official_ids"], index=False)
+
+    public_registry = registry.reindex(columns=PUBLIC_REGISTRY_COLUMNS)
+    public_registry.to_csv(outputs["registry"], index=False)
+
     result.aliases.to_csv(outputs["aliases"], index=False)
-    result.unmatched.to_csv(outputs["unmatched"], index=False)
+
+    unmatched = result.unmatched.copy()
+    if "official_delegate_id" in unmatched.columns:
+        unmatched = unmatched.drop(columns=["official_delegate_id"])
+    unmatched.to_csv(outputs["unmatched"], index=False)
+
     meta_path = outputs["registry"].with_suffix(".meta.json")
     meta_path.write_text(
         json.dumps(result.metrics, indent=2, ensure_ascii=False) + "\n",
@@ -594,6 +645,16 @@ def save_person_registry(
 
 def load_person_registry(path: Path | str = DEFAULT_REGISTRY_PATH) -> pd.DataFrame:
     return pd.read_csv(path, dtype=str).fillna("")
+
+
+def load_official_delegate_ids(
+    path: Path | str = DEFAULT_OFFICIAL_IDS_PATH,
+) -> pd.DataFrame:
+    """Load local-only official delegate IDs (gitignored)."""
+    official_path = Path(path)
+    if not official_path.exists():
+        return pd.DataFrame(columns=OFFICIAL_IDS_EXPORT_COLUMNS)
+    return pd.read_csv(official_path, dtype=str).fillna("")
 
 
 def load_name_aliases(path: Path | str = DEFAULT_ALIASES_PATH) -> pd.DataFrame:

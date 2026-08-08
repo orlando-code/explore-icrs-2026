@@ -27,6 +27,8 @@ PERSON_ALIASES_CSV = REGISTRY / "person_name_aliases.csv"
 PERSON_OVERRIDES_CSV = REGISTRY / "person_registry_overrides.csv"
 PERSON_UNMATCHED_CSV = REGISTRY / "person_registry_unmatched.csv"
 PERSON_REGISTRY_META_JSON = REGISTRY / "person_registry.meta.json"
+# Local-only: official offset-registration IDs — never commit.
+PERSON_OFFICIAL_IDS_CSV = REGISTRY / "person_registry_official_ids.csv"
 
 # Affiliation registry
 AFFILIATION_REGISTRY_CSV = REGISTRY / "affiliation_registry.csv"

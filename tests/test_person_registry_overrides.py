@@ -20,8 +20,8 @@ class TestOfficialIdHelpers:
     @pytest.mark.parametrize(
         "value,expected",
         [
-            ("17228", "17228"),
-            ("17228.0", "17228"),
+            ("12345", "12345"),
+            ("12345.0", "12345"),
             ("", ""),
             ("nan", ""),
             (None, ""),
@@ -147,6 +147,25 @@ class TestPersonRegistryOverrides:
             f"split action must not union names; john={uf.find(john)!r} "
             f"nicole={uf.find(nicole)!r}"
         )
+
+
+class TestHomonymDelegates:
+    def test_takashi_nakamura_stays_split(self, assert_eq):
+        from src.registry.person_registry import build_person_registry
+
+        registry = build_person_registry().registry
+        hits = registry.loc[
+            registry["canonical_name"].str.contains("Takashi Nakamura", case=False, na=False)
+            | registry["name_variants"].str.contains("Takashi Nakamura", case=False, na=False)
+        ]
+        assert_eq(len(hits), 2, context="two distinct Takashi Nakamura records")
+        orgs = sorted(hits["organisation"].astype(str).tolist())
+        assert_eq(
+            orgs,
+            ["Institute of Science - Tokyo", "University of the Ryukyus"],
+            context="organisations remain distinct",
+        )
+        assert hits["person_key"].nunique() == 2, "distinct person keys"
 
 
 class TestLookupPersonKey:
