@@ -8,12 +8,14 @@ import {
   resolveCanonicalPersonName,
   resolveDelegatePersonKey,
   normalizePersonName,
-  formatDistance,
 } from "./utils.js";
 import { createTalkSimilarityLookup, resolveTalkId } from "./talk-similarity.js";
 import { CONTACT_API_URL, SKIP_TURNSTILE, TURNSTILE_SITE_KEY } from "./config.js";
 
 const DEFAULT_NODE_LIMIT = 150;
+const NETWORK_COLOR_HIGHLIGHT = "#20409a";
+const NETWORK_COLOR_SECONDARY = "#01b9b0";
+const NETWORK_COLOR_ACCENT = "#d95f02";
 const MAX_LINKS_ALL = 6000;
 const DATA_REMOVAL_EMAIL = "rt582@cam.ac.uk";
 let contactTurnstileWidgetId = null;
@@ -642,6 +644,22 @@ function profileForSpeakerName(label, speakerProfiles, profileByPersonKey) {
   return null;
 }
 
+function attendanceLabel(node) {
+  if (node?.attended) return "attended";
+  if (node?.on_programme) return "on programme, did not attend";
+  return "non-attending co-author";
+}
+
+function externalAffiliationLabel(node) {
+  if (!node?.external_coauthor) return "";
+  return node.affiliation_mapped ? "Mapped affiliation on file" : "No mapped affiliation";
+}
+
+function defaultNodeFill(node) {
+  if (node?.external_coauthor) return NETWORK_COLOR_SECONDARY;
+  return NETWORK_COLOR_ACCENT;
+}
+
 function authorContextFor(node, profile) {
   const role = node?.author_role || profile?.profile_role || null;
   const affiliationExplicit =
@@ -656,22 +674,17 @@ function authorRoleLabel(role) {
 }
 
 function profileStatusLabel({ role, affiliationExplicit, hasProfile }) {
-  if (hasProfile && role === "presenter") {
-    return "Presenting author profile";
-  }
-  if (hasProfile && role === "co_author") {
-    return "Co-author profile";
-  }
+  if (hasProfile) return "Profile available";
   if (role === "presenter" && !affiliationExplicit) {
-    return "Presenting author without a confirmed affiliation";
+    return "Without a confirmed affiliation";
   }
   if (role === "co_author" && !affiliationExplicit) {
-    return "Co-author with inferred affiliation only";
+    return "Inferred affiliation only";
   }
   if (role === "co_author") {
-    return "Co-author without a looked-up profile";
+    return "No looked-up profile";
   }
-  return "No profile lookup available";
+  return "";
 }
 
 function affiliationNote({ role, affiliationExplicit, affiliation }) {
@@ -1019,25 +1032,29 @@ export function createNetworkView(siteData, elements) {
     const context = authorContextFor(node, profile);
     const role =
       context.role ||
-      [...personLookupKeys(node.label)].some((key) => presenterIndex.has(key))
+      [...personLookupKeys(node.label, node.person_key)].some((key) => presenterIndex.has(key))
         ? "presenter"
         : "co_author";
     const parts = [
       authorRoleLabel(role),
+      attendanceLabel(node),
       `on author list of ${node.connections.toLocaleString()} talk${node.connections === 1 ? "" : "s"}`,
     ];
-    // Travel distance hidden for now – re-enable when individual travel estimates are ready.
-    if (node.distance_km != null) {
-      parts.push(`${formatDistance(node.distance_km)} from Auckland`);
+    const externalAffiliation = externalAffiliationLabel(node);
+    if (externalAffiliation) {
+      parts.push(externalAffiliation);
     }
     if (mode === "individual" && node.affiliation) {
-      parts.push(
-        affiliationNote({
-          role,
-          affiliationExplicit: context.affiliationExplicit,
-          affiliation: node.affiliation,
-        })
-      );
+      const showAffiliation = !node.external_coauthor || node.affiliation_mapped;
+      if (showAffiliation) {
+        parts.push(
+          affiliationNote({
+            role,
+            affiliationExplicit: context.affiliationExplicit,
+            affiliation: node.affiliation,
+          })
+        );
+      }
     }
     return parts.join(" · ");
   }
@@ -1100,7 +1117,7 @@ export function createNetworkView(siteData, elements) {
     return `
       <p class="hover-kicker network-contact-kicker">Connect</p>
       <p class="network-contact-role">${escapeHtml(authorRoleLabel(role))}</p>
-      <p class="network-contact-status">${escapeHtml(profileStatus)}</p>
+      ${profileStatus ? `<p class="network-contact-status">${escapeHtml(profileStatus)}</p>` : ""}
       <div class="network-contact-copy-details-wrap">
         ${copyDelegateButtonHtml(node.label, affiliation)}
       </div>
@@ -1356,11 +1373,11 @@ export function createNetworkView(siteData, elements) {
       <h3>Topic search</h3>
       <p>Matches cluster at the centre; grey nodes are co-authors on the same talks.</p>
       <div class="legend-row">
-        <span class="legend-dot" style="background:#d95f02"></span>
+        <span class="legend-dot legend-dot--accent"></span>
         <span>Matches “${escapeHtml(searchQuery)}”</span>
       </div>
       <div class="legend-row">
-        <span class="legend-dot" style="background:#b8c4cc"></span>
+        <span class="legend-dot legend-dot--muted"></span>
         <span>Co-authors (not a direct match)</span>
       </div>
     `
@@ -1399,11 +1416,20 @@ export function createNetworkView(siteData, elements) {
         .map(
           (sample) => `
         <div class="legend-row">
-          <span class="legend-dot" style="width:${radiusScale(sample.value) * 2}px;height:${radiusScale(sample.value) * 2}px"></span>
+          <span class="legend-dot legend-dot--accent" style="width:${radiusScale(sample.value) * 2}px;height:${radiusScale(sample.value) * 2}px"></span>
           <span>${sample.label}</span>
         </div>`
         )
         .join("")}
+      <h3>Node colour</h3>
+      <div class="legend-row">
+        <span class="legend-dot legend-dot--accent"></span>
+        <span>Delegate list and programme authors</span>
+      </div>
+      <div class="legend-row">
+        <span class="legend-dot legend-dot--secondary"></span>
+        <span>Co-authors not on programme or delegate list</span>
+      </div>
       <p>Lines represent co-authorship links between nodes.</p>
     `;
     
@@ -1499,10 +1525,38 @@ export function createNetworkView(siteData, elements) {
     };
   }
 
-  function linkIsHighlighted(link) {
-    if (!selectedNodeId) return false;
+  function linkTier(link, neighbors) {
+    if (!selectedNodeId) return "default";
     const { sourceId, targetId } = linkEndpointIds(link);
-    return sourceId === selectedNodeId || targetId === selectedNodeId;
+    if (sourceId === selectedNodeId || targetId === selectedNodeId) return "primary";
+    if (neighbors.has(sourceId) && neighbors.has(targetId)) return "secondary";
+    return "dim";
+  }
+
+  function linkStroke(tier) {
+    if (tier === "primary") return NETWORK_COLOR_HIGHLIGHT;
+    if (tier === "secondary") return NETWORK_COLOR_HIGHLIGHT;
+    return "#94a3ad";
+  }
+
+  function linkOpacity(tier) {
+    if (tier === "default") return 0.18;
+    if (tier === "primary") return 0.5;
+    if (tier === "secondary") return 0.08;
+    return 0.05;
+  }
+
+  function linkWidth(link, tier) {
+    const base = Math.max(0.35, Math.log2(link.weight + 1) * 0.45);
+    if (tier === "primary") return base + 0.9;
+    if (tier === "secondary") return base + 0.15;
+    return base;
+  }
+
+  function nodeFill(node) {
+    if (searchQuery && matchedNodeIds.has(node.id)) return NETWORK_COLOR_ACCENT;
+    if (searchQuery && matchedNodeIds.size) return "#b8c4cc";
+    return defaultNodeFill(node);
   }
 
   function updateSelectionUi() {
@@ -1566,27 +1620,19 @@ export function createNetworkView(siteData, elements) {
     const neighbors = neighborIds(selectedNodeId);
 
     linkSelection
-      .attr("stroke", (d) => (linkIsHighlighted(d) ? "#1f6f8b" : "#94a3ad"))
-      .attr("stroke-opacity", (d) => {
-        if (!selectedNodeId) return 0.18;
-        return linkIsHighlighted(d) ? 0.88 : 0.05;
-      })
-      .attr("stroke-width", (d) => {
-        const base = Math.max(0.35, Math.log2(d.weight + 1) * 0.45);
-        return linkIsHighlighted(d) ? base + 0.9 : base;
-      });
+      .attr("stroke", (d) => linkStroke(linkTier(d, neighbors)))
+      .attr("stroke-opacity", (d) => linkOpacity(linkTier(d, neighbors)))
+      .attr("stroke-width", (d) => linkWidth(d, linkTier(d, neighbors)));
 
     nodeSelection
       .sort((a, b) => nodeDrawOrder(a, neighbors) - nodeDrawOrder(b, neighbors))
-      .attr("fill", (d) => {
-        if (d.id === selectedNodeId) return "#1f6f8b";
-        if (selectedNodeId && neighbors.has(d.id)) return "#4a90a7";
-        if (searching && matchedNodeIds.has(d.id)) return "#d95f02";
-        if (searching) return "#b8c4cc";
-        return "#d95f02";
+      .attr("fill", (d) => nodeFill(d))
+      .attr("stroke", (d) => {
+        if (d.id === selectedNodeId) return NETWORK_COLOR_HIGHLIGHT;
+        return "#ffffff";
       })
       .attr("stroke-width", (d) => {
-        if (d.id === selectedNodeId) return 3;
+        if (d.id === selectedNodeId) return 3.5;
         if (selectedNodeId && neighbors.has(d.id)) return 2.5;
         if (searching && matchedNodeIds.has(d.id)) return 2.5;
         return 1.5;
