@@ -797,7 +797,7 @@ export function createMapView(
           .map(
             (sample) => `
           <div class="legend-row">
-            <span class="legend-dot" style="width:${sample.size}px;height:${sample.size}px"></span>
+            <span class="legend-dot legend-dot--accent" style="width:${sample.size}px;height:${sample.size}px"></span>
             <span>${sample.label}</span>
           </div>`
           )
@@ -827,7 +827,7 @@ export function createMapView(
         .map(
           (sample) => `
         <div class="legend-row">
-          <span class="legend-dot" style="width:${sample.size}px;height:${sample.size}px"></span>
+          <span class="legend-dot legend-dot--accent" style="width:${sample.size}px;height:${sample.size}px"></span>
           <span>${sample.label}</span>
         </div>`
         )

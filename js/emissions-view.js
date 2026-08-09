@@ -532,7 +532,7 @@ export function createEmissionsView(
       .map(
         (sample) => `
       <div class="legend-row">
-        <span class="legend-dot" style="width:${sample.size}px;height:${sample.size}px"></span>
+        <span class="legend-dot legend-dot--accent" style="width:${sample.size}px;height:${sample.size}px"></span>
         <span>${sample.label}</span>
       </div>`
       )
@@ -1093,7 +1093,7 @@ export function createEmissionsView(
       source: "distance-lines",
       layout: { visibility: "none" },
       paint: {
-        "line-color": "#1f6f8b",
+        "line-color": "#20409a",
         "line-opacity": [
           "case",
           ["==", ["get", "selected"], 1],
@@ -1147,7 +1147,7 @@ export function createEmissionsView(
       layout: { visibility: "none" },
       paint: {
         "circle-radius": 7,
-        "circle-color": "#1f6f8b",
+        "circle-color": "#20409a",
         "circle-stroke-width": 2,
         "circle-stroke-color": "#ffffff",
       },
