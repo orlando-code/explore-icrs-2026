@@ -281,10 +281,10 @@ function ensureNetworkIndividualMode() {
   networkView.setMode("individual");
 }
 
-function showPersonInNetwork(name) {
+function showPersonInNetwork(name, personKey = "") {
   setTab("network");
   ensureNetworkIndividualMode();
-  const nodeId = networkView.findNodeIdByName(name);
+  const nodeId = networkView.findNodeIdByName(name, personKey);
   if (nodeId) networkView.selectNode(nodeId);
 }
 
@@ -646,7 +646,10 @@ function applyMapSuggestion(item) {
   clearTimeout(mapSearchTimer);
   mapView.applySearch(item.query);
   if (item.locationId) {
-    mapView.selectLocation(item.locationId, { speakerName: item.speakerName });
+    mapView.selectLocation(item.locationId, {
+      speakerName: item.speakerName,
+      personKey: item.person_key,
+    });
   }
   closeMapSuggestions();
 }

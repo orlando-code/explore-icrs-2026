@@ -4,6 +4,7 @@ import {
   renderTalkTitlesHtml,
   findLocationIdByAffiliation,
   dedupeSearchHitsByPerson,
+  isRegistryPersonKey,
   resolveCanonicalPersonName,
   resolveDelegatePersonKey,
   normalizePersonName,
@@ -545,7 +546,7 @@ function buildAuthorSearchIndex(locations) {
     for (const detail of location.speaker_details || []) {
       const name = detail.name;
       if (!name || !detail.search_text) continue;
-      for (const key of personLookupKeys(name)) {
+      for (const key of personLookupKeys(name, detail.person_key)) {
         const existing = index.get(key) || [];
         existing.push(detail.search_text);
         index.set(key, existing);
@@ -567,32 +568,36 @@ function buildPresenterIndex(talksData) {
   return presenters;
 }
 
-function personLookupKeys(name) {
+function personLookupKeys(name, personKey = "") {
   const cleaned = String(name || "").trim();
-  if (!cleaned) return [];
-  const keys = new Set([
-    cleaned,
-    cleaned.toLowerCase(),
-    resolveCanonicalPersonName(cleaned),
-    resolveDelegatePersonKey(cleaned),
-    normalizePersonName(cleaned),
-  ]);
+  if (!cleaned && !personKey) return [];
+  const keys = new Set();
+  if (isRegistryPersonKey(personKey)) keys.add(personKey);
+  if (cleaned) {
+    keys.add(cleaned);
+    keys.add(cleaned.toLowerCase());
+    keys.add(resolveCanonicalPersonName(cleaned, personKey));
+    const resolved = resolveDelegatePersonKey(cleaned);
+    if (resolved) keys.add(resolved);
+    keys.add(normalizePersonName(cleaned));
+  }
   return [...keys].filter(Boolean);
 }
 
-function indexRecordByPersonKeys(record, name, store) {
-  for (const key of personLookupKeys(name)) {
-    const existing = store.get(key);
-    if (!existing || (Array.isArray(record) && record.length > (existing.length || 0))) {
-      store.set(key, record);
-    }
+function indexRecordByPersonKey(record, personKey, store) {
+  if (!isRegistryPersonKey(personKey)) return;
+  const existing = store.get(personKey);
+  if (!existing || (Array.isArray(record) && record.length > (existing.length || 0))) {
+    store.set(personKey, record);
   }
 }
 
 function buildTalkTitleByPersonKey(talkTitleIndex) {
   const byKey = new Map();
-  for (const [name, titles] of talkTitleIndex.entries()) {
-    indexRecordByPersonKeys(titles, name, byKey);
+  for (const [key, titles] of talkTitleIndex.entries()) {
+    if (isRegistryPersonKey(key)) {
+      indexRecordByPersonKey(titles, key, byKey);
+    }
   }
   return byKey;
 }
@@ -600,7 +605,9 @@ function buildTalkTitleByPersonKey(talkTitleIndex) {
 function buildProfileByPersonKey(speakerProfiles) {
   const byKey = new Map();
   for (const [name, profile] of Object.entries(speakerProfiles || {})) {
-    indexRecordByPersonKeys(profile, name, byKey);
+    for (const key of personLookupKeys(name)) {
+      if (!byKey.has(key)) byKey.set(key, profile);
+    }
   }
   return byKey;
 }
@@ -613,6 +620,17 @@ function talksForNodeLabel(label, talkTitleIndex, talkTitleByPersonKey) {
     if (indexed?.length) return indexed;
   }
   return [];
+}
+
+function talksForNode(node, talkTitleIndex, talkTitleByPersonKey) {
+  const personKey = String(node?.person_key || "").trim();
+  if (personKey) {
+    const direct = talkTitleIndex.get(personKey);
+    if (direct?.length) return direct;
+    const indexed = talkTitleByPersonKey.get(personKey);
+    if (indexed?.length) return indexed;
+  }
+  return talksForNodeLabel(node?.label, talkTitleIndex, talkTitleByPersonKey);
 }
 
 function profileForSpeakerName(label, speakerProfiles, profileByPersonKey) {
@@ -682,7 +700,7 @@ export function createNetworkView(siteData, elements) {
   const affiliationSearchIndex = buildAffiliationSearchIndex(siteData.locations || []);
   const talkTitleIndex = buildTalkTitleIndex(
     siteData.locations || [],
-    siteData.talk_titles_by_author
+    siteData.talk_titles_by_person_key || siteData.talk_titles_by_author
   );
   const talkTitleByPersonKey = buildTalkTitleByPersonKey(talkTitleIndex);
   const profileByPersonKey = buildProfileByPersonKey(speakerProfiles);
@@ -695,6 +713,7 @@ export function createNetworkView(siteData, elements) {
   );
   let selectedTalkId = null;
   let selectedSpeakerName = "";
+  let selectedPersonKey = "";
   let similarRequestId = 0;
   let mode = "individual";
   let nodeLimit = DEFAULT_NODE_LIMIT;
@@ -980,8 +999,12 @@ export function createNetworkView(siteData, elements) {
     const q = query.toLowerCase();
     if (node.label.toLowerCase().includes(q)) return true;
     if (mode === "individual" && node.affiliation?.toLowerCase().includes(q)) return true;
+    if (mode === "individual" && isRegistryPersonKey(node.person_key)) {
+      const canonical = resolveCanonicalPersonName(node.label, node.person_key);
+      if (canonical.toLowerCase().includes(q)) return true;
+    }
     if (mode === "individual") {
-      for (const key of personLookupKeys(node.label)) {
+      for (const key of personLookupKeys(node.label, node.person_key)) {
         const texts = authorSearchIndex.get(key) || [];
         if (texts.some((text) => text.includes(q))) return true;
       }
@@ -1021,6 +1044,13 @@ export function createNetworkView(siteData, elements) {
 
   function profileForNode(node) {
     if (!node || mode !== "individual") return null;
+    const personKey = String(node.person_key || "").trim();
+    if (personKey && speakerProfiles[personKey]) {
+      return speakerProfiles[personKey];
+    }
+    if (personKey && profileByPersonKey.get(personKey)) {
+      return profileByPersonKey.get(personKey);
+    }
     return profileForSpeakerName(node.label, speakerProfiles, profileByPersonKey);
   }
 
@@ -1837,16 +1867,24 @@ export function createNetworkView(siteData, elements) {
     return resolveTalkId(entry, talksData, selectedSpeakerName);
   }
 
-  function findNetworkNodeByAuthorName(name) {
+  function findNetworkNodeByAuthorName(name, personKey = "") {
     const trimmed = String(name || "").trim();
-    if (!trimmed) return null;
-    const keys = new Set(personLookupKeys(trimmed));
-    return (
-      network.individual.nodes.find((item) => {
-        if (item.label === trimmed) return true;
-        return personLookupKeys(item.label).some((key) => keys.has(key));
-      }) || null
-    );
+    if (!trimmed && !isRegistryPersonKey(personKey)) return null;
+    if (isRegistryPersonKey(personKey)) {
+      const byKey = network.individual.nodes.find((item) => item.person_key === personKey);
+      if (byKey) return byKey;
+    }
+    const keys = new Set(personLookupKeys(trimmed, personKey));
+    const matches = network.individual.nodes.filter((item) => {
+      if (trimmed && item.label === trimmed) return true;
+      return personLookupKeys(item.label, item.person_key).some((key) => keys.has(key));
+    });
+    if (!matches.length) return null;
+    if (isRegistryPersonKey(personKey)) {
+      return matches.find((item) => item.person_key === personKey) || null;
+    }
+    if (matches.length === 1) return matches[0];
+    return null;
   }
 
   function nodeIdForAuthor(name) {
@@ -1997,16 +2035,18 @@ export function createNetworkView(siteData, elements) {
     if (!elements.cardTalks) return;
     if (!node || mode !== "individual") {
       selectedSpeakerName = "";
+      selectedPersonKey = "";
       elements.cardTalks.hidden = true;
       elements.cardTalks.innerHTML = "";
       clearTalkDetail();
       return;
     }
-    if (node.label !== selectedSpeakerName) {
+    if (node.label !== selectedSpeakerName || node.person_key !== selectedPersonKey) {
       clearTalkDetail();
     }
     selectedSpeakerName = node.label;
-    const titles = talksForNodeLabel(node.label, talkTitleIndex, talkTitleByPersonKey);
+    selectedPersonKey = String(node.person_key || "").trim();
+    const titles = talksForNode(node, talkTitleIndex, talkTitleByPersonKey);
     if (!titles.length) {
       elements.cardTalks.hidden = true;
       elements.cardTalks.innerHTML = "";
@@ -2163,6 +2203,7 @@ export function createNetworkView(siteData, elements) {
           detail: formatNodeMeta(node),
           query: node.label,
           nodeId: node.id,
+          person_key: node.person_key,
           _name: node.label,
         })),
       (item) => item._name
@@ -2304,8 +2345,8 @@ export function createNetworkView(siteData, elements) {
     elements.talkBack.addEventListener("click", () => {
       clearTalkDetail();
       if (selectedSpeakerName && elements.cardTalks) {
-        const titles = talksForNodeLabel(
-          selectedSpeakerName,
+        const titles = talksForNode(
+          { label: selectedSpeakerName, person_key: selectedPersonKey },
           talkTitleIndex,
           talkTitleByPersonKey
         );
@@ -2317,8 +2358,8 @@ export function createNetworkView(siteData, elements) {
     });
   }
 
-  function findNodeIdByName(name) {
-    return findNetworkNodeByAuthorName(name)?.id || null;
+  function findNodeIdByName(name, personKey = "") {
+    return findNetworkNodeByAuthorName(name, personKey)?.id || null;
   }
 
   renderSearchResults([]);

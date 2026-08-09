@@ -21,17 +21,10 @@ from src.data_paths import (
     COUNTRY_BOUNDARIES_CENTROIDS_JSON,
     DELEGATES_JSON,
 )
+from src.sources.delegates import delegate_person_key, normalize_person_name
 
 CENTROIDS_PATH = COUNTRY_BOUNDARIES_CENTROIDS_JSON
 DELEGATES_PATH = DELEGATES_JSON
-
-
-def _normalize_person_name(name: str) -> str:
-    text = str(name or "").strip().casefold()
-    for prefix in ("dr ", "prof ", "professor ", "mr ", "mrs ", "ms ", "miss "):
-        if text.startswith(prefix):
-            text = text[len(prefix) :].strip()
-    return text
 
 
 def _load_json(path: Path) -> dict:
@@ -41,39 +34,60 @@ def _load_json(path: Path) -> dict:
 
 
 def delegate_lookup() -> tuple[dict[str, str], dict[str, str]]:
+    """Map registry person keys (and legacy name keys) to delegate-list countries."""
     payload = _load_json(DELEGATES_PATH)
+    by_person_key: dict[str, str] = {}
+    by_person_key_code: dict[str, str] = {}
     by_name: dict[str, str] = {}
     by_name_code: dict[str, str] = {}
     for row in payload.get("delegates") or []:
+        name = str(row.get("full_name") or "").strip()
+        affiliation = str(row.get("affiliation") or "").strip()
         country = str(row.get("country") or "").strip()
         country_code = str(row.get("country_code") or "").strip().upper()
-        keys = {
-            str(row.get("full_name") or "").strip().casefold(),
+        person_key = str(row.get("person_key") or "").strip()
+        if not person_key and name:
+            person_key = delegate_person_key(name, affiliation=affiliation)
+        if person_key.startswith("icrs-p-"):
+            if country:
+                by_person_key[person_key] = country
+            if country_code:
+                by_person_key_code[person_key] = country_code
+        for key in {
+            name.casefold(),
             str(row.get("norm_name") or "").strip().casefold(),
-            _normalize_person_name(row.get("full_name") or ""),
-            _normalize_person_name(row.get("norm_name") or ""),
-        }
-        for key in keys:
+            normalize_person_name(name),
+        }:
             if not key:
                 continue
             if country:
                 by_name[key] = country
             if country_code:
                 by_name_code[key] = country_code
-    return by_name, by_name_code
+    return (
+        {**by_name, **by_person_key},
+        {**by_name_code, **by_person_key_code},
+    )
 
 
 def _delegate_for_attendee(
     name: str,
     delegate_countries: dict[str, str],
     delegate_country_codes: dict[str, str],
+    *,
+    person_key: str = "",
 ) -> tuple[str, str]:
-    keys = [str(name or "").strip().casefold(), _normalize_person_name(name)]
+    keys: list[str] = []
+    if person_key.startswith("icrs-p-"):
+        keys.append(person_key)
+    keys.extend(
+        key
+        for key in (str(name or "").strip().casefold(), normalize_person_name(name))
+        if key
+    )
     country = ""
     country_code = ""
     for key in keys:
-        if not key:
-            continue
         country = country or delegate_countries.get(key, "")
         country_code = country_code or delegate_country_codes.get(key, "")
     return country, country_code
@@ -132,6 +146,7 @@ def _country_counts_for_pool(
             str(attendee.get("name") or ""),
             delegate_countries,
             delegate_country_codes,
+            person_key=str(attendee.get("person_key") or ""),
         )
         code = resolve_origin_country(
             affiliation=str(attendee.get("affiliation") or location.get("affiliation") or ""),
@@ -193,6 +208,7 @@ def enrich_emissions_pool(
             str(attendee.get("name") or ""),
             delegate_countries,
             delegate_country_codes,
+            person_key=str(attendee.get("person_key") or ""),
         )
         origin_country = resolve_origin_country(
             affiliation=str(attendee.get("affiliation") or location.get("affiliation") or ""),

@@ -14,9 +14,14 @@ def _clear_pipeline_caches():
         import src.sources.delegates as delegates_module
 
         delegates_module._ORGANISATION_OVERRIDE_CACHE = None
-        delegates_module._PERSON_IDENTITY_CACHE = None
-        delegates_module._DELEGATE_PERSON_KEY_CACHE = None
         delegates_module._COUNTRY_SUFFIXES = None
+    except Exception:
+        pass
+
+    try:
+        from src.registry.key_resolution import clear_registry_key_resolver_cache
+
+        clear_registry_key_resolver_cache()
     except Exception:
         pass
 

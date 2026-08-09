@@ -28,6 +28,28 @@ from src.sources.delegates import load_delegates
 from src.sources.programme import load_talks
 
 
+def _write_keyed_pipeline_artifacts(config: PipelineConfig) -> None:
+    """Attach person_key and affiliation_key to programme/delegate artifacts."""
+    from src.registry.key_resolution import (
+        clear_registry_key_resolver_cache,
+        enrich_delegates_with_registry_keys,
+        enrich_talks_with_registry_keys,
+    )
+
+    clear_registry_key_resolver_cache()
+
+    talks_artifact = config.artifact("talks.csv")
+    if talks_artifact.exists():
+        talks = pd.read_csv(talks_artifact)
+        enrich_talks_with_registry_keys(talks).to_csv(talks_artifact, index=False)
+
+    delegates_artifact = config.artifact("delegates.csv")
+    if delegates_artifact.exists():
+        delegates = pd.read_csv(delegates_artifact)
+        enrich_delegates_with_registry_keys(delegates).to_csv(delegates_artifact, index=False)
+
+
+
 def _pct(numerator: int, denominator: int) -> float:
     if denominator <= 0:
         return 0.0
@@ -165,6 +187,10 @@ def run_registry(config: PipelineConfig) -> StageReport:
     result.registry.to_csv(artifact, index=False)
     report.metrics["artifact"] = str(artifact.relative_to(config.root))
 
+    from src.registry.key_resolution import clear_registry_key_resolver_cache
+
+    clear_registry_key_resolver_cache()
+
     return report
 
 
@@ -193,6 +219,8 @@ def run_affiliations(config: PipelineConfig) -> StageReport:
     artifact = config.artifact("affiliation_registry.csv")
     result.registry.to_csv(artifact, index=False)
     report.metrics["artifact"] = str(artifact.relative_to(config.root))
+
+    _write_keyed_pipeline_artifacts(config)
 
     from src.geocoding.foreign_delegate import (
         build_foreign_delegate_standardisation,

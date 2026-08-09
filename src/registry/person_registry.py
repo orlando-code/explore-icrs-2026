@@ -662,9 +662,14 @@ def load_name_aliases(path: Path | str = DEFAULT_ALIASES_PATH) -> pd.DataFrame:
 
 
 def lookup_person_key(name: str, aliases: pd.DataFrame | None = None) -> str:
+    from src.registry.key_resolution import resolve_person_key
+
     cleaned = str(name or "").strip()
     if not cleaned:
         return ""
+    person_key = resolve_person_key(cleaned)
+    if person_key:
+        return person_key
     norm = normalize_person_name(cleaned)
     if aliases is None:
         aliases = load_name_aliases()

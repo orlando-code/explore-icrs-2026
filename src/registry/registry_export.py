@@ -2,55 +2,27 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-
 import pandas as pd
 
 from src.registry.affiliation_lookup import AffiliationIndex, registry_geocode_hit
 from src.registry.affiliation_registry import _make_affiliation, parse_affiliation_parts
-from src.sources.delegates import country_to_iso2, normalize_person_name
-from src.registry.person_registry import DEFAULT_ALIASES_PATH, DEFAULT_REGISTRY_PATH, load_person_registry
+from src.registry.key_resolution import (
+    AFFILIATION_KEY_COL,
+    PERSON_KEY_COL,
+    RegistryKeyResolver,
+    enrich_talks_with_registry_keys,
+    get_registry_key_resolver,
+)
+from src.registry.person_registry import DEFAULT_REGISTRY_PATH, load_person_registry
+from src.sources.delegates import country_to_iso2
 from src.sources.programme import load_talks
 
 
 def _attended_people() -> pd.DataFrame:
     people = load_person_registry(DEFAULT_REGISTRY_PATH)
-    attended = people.loc[
+    return people.loc[
         people["attended"].astype(str).str.strip().str.lower().isin({"true", "1", "yes"})
     ].copy()
-    return attended
-
-
-def _person_name_lookup(attended: pd.DataFrame) -> dict[str, pd.Series]:
-    lookup: dict[str, pd.Series] = {}
-    aliases_path = DEFAULT_ALIASES_PATH
-    if aliases_path.exists():
-        aliases = pd.read_csv(aliases_path)
-        alias_to_key = {
-            str(row.get("normalized_name") or row.get("name_variant") or "").strip(): str(
-                row.get("person_key") or ""
-            ).strip()
-            for _, row in aliases.iterrows()
-        }
-    else:
-        alias_to_key = {}
-
-    by_key = {str(row["person_key"]): row for _, row in attended.iterrows()}
-    for _, person in attended.iterrows():
-        keys = {normalize_person_name(str(person.get("canonical_name") or ""))}
-        for variant in str(person.get("name_variants") or "").split(";"):
-            variant = variant.strip()
-            if variant:
-                keys.add(normalize_person_name(variant))
-        for key in keys:
-            if key:
-                lookup[key] = person
-
-    for alias_name, person_key in alias_to_key.items():
-        normalized = normalize_person_name(alias_name)
-        if normalized and person_key in by_key and normalized not in lookup:
-            lookup[normalized] = by_key[person_key]
-    return lookup
 
 
 def _affiliation_for_person(person: pd.Series) -> tuple[str, str, str]:
@@ -87,31 +59,41 @@ def _attach_registry_geocode(
 def build_map_talks(
     *,
     show_progress: bool = False,
+    resolver: RegistryKeyResolver | None = None,
 ) -> pd.DataFrame:
-    """Programme talks + attended delegates, geocoded via affiliation registry."""
-    talks = load_talks()
+    """Programme talks + attended delegates, keyed and geocoded via registries."""
+    resolver = resolver or get_registry_key_resolver()
+    talks = enrich_talks_with_registry_keys(load_talks(), resolver=resolver)
     attended = _attended_people()
-    name_lookup = _person_name_lookup(attended)
-    index = AffiliationIndex.load()
+    by_person_key = {str(row["person_key"]): row for _, row in attended.iterrows()}
+    index = resolver.affiliation_index
 
     talk_rows: list[dict[str, object]] = []
-    seen_presenters: set[str] = set()
+    seen_person_keys: set[str] = set()
 
     for _, talk in talks.iterrows():
         presenter = str(talk.get("presenter") or "").strip()
         if not presenter:
             continue
-        normalized = normalize_person_name(presenter)
-        seen_presenters.add(normalized)
         row = talk.to_dict()
-        person = name_lookup.get(normalized)
-        organisation, country, affiliation = "", "", str(row.get("affiliation") or "").strip()
+        person_key = str(row.get(PERSON_KEY_COL) or "").strip()
+        affiliation_key = str(row.get(AFFILIATION_KEY_COL) or "").strip()
+        if person_key:
+            seen_person_keys.add(person_key)
+            row[PERSON_KEY_COL] = person_key
+        if affiliation_key:
+            row[AFFILIATION_KEY_COL] = affiliation_key
+
+        person = by_person_key.get(person_key) if person_key else None
+        programme_affiliation = str(row.get("affiliation") or "").strip()
+        organisation, country, affiliation = "", "", programme_affiliation
         if person is not None:
             organisation, country, affiliation = _affiliation_for_person(person)
             if affiliation:
                 row["affiliation"] = affiliation
-        if not organisation and row.get("affiliation"):
-            organisation, country = parse_affiliation_parts(str(row["affiliation"]))
+        if not organisation and programme_affiliation:
+            organisation, country = parse_affiliation_parts(programme_affiliation)
+
         talk_rows.append(
             _attach_registry_geocode(
                 row,
@@ -123,18 +105,21 @@ def build_map_talks(
 
     extra_rows: list[dict[str, object]] = []
     for _, person in attended.iterrows():
+        person_key = str(person.get("person_key") or "").strip()
+        if not person_key or person_key in seen_person_keys:
+            continue
         name = str(person.get("canonical_name") or "").strip()
         if not name:
-            continue
-        normalized = normalize_person_name(name)
-        if normalized in seen_presenters:
             continue
         organisation, country, affiliation = _affiliation_for_person(person)
         if not organisation:
             continue
+        affiliation_key = resolver.resolve_affiliation_key(organisation, country)
         row: dict[str, object] = {
             "presenter": name,
             "affiliation": affiliation,
+            PERSON_KEY_COL: person_key,
+            AFFILIATION_KEY_COL: affiliation_key,
             "title": pd.NA,
             "abstract": pd.NA,
         }

@@ -383,29 +383,32 @@ def _build_talk_title_index(
     df: pd.DataFrame,
     *,
     presenter_col: str = "presenter",
+    affiliation_col: str = "affiliation",
     title_col: str = "title",
     show_progress: bool = False,
 ) -> dict[str, list[dict[str, Any]]]:
     from src.site.export_progress import make_progress
+    from src.sources.delegates import delegate_person_key
 
-    _, display_name = _person_identity_lookup()
     index: dict[str, dict[str, dict[str, Any]]] = {}
     working = _slim_talk_frame(
         df,
         presenter_col=presenter_col,
+        affiliation_col=affiliation_col,
         title_col=title_col,
         include_talk_id=True,
     )
     rows = list(working.itertuples(index=False, name=None))
     columns = list(working.columns)
     presenter_idx = columns.index(presenter_col)
+    affiliation_idx = columns.index(affiliation_col)
     title_idx = columns.index(title_col) if title_col in columns else None
     authors_idx = columns.index("authors")
     talk_id_idx = columns.index("talk_id") if "talk_id" in columns else None
 
     progress = make_progress(disable=not show_progress)
     with progress:
-        task_id = progress.add_task("Indexing talk titles by author", total=len(rows))
+        task_id = progress.add_task("Indexing talk titles by person", total=len(rows))
         for row in rows:
             if title_idx is None:
                 progress.advance(task_id)
@@ -417,15 +420,28 @@ def _build_talk_title_index(
             title_text = str(title).strip()
             presenter = row[presenter_idx]
             presenter_text = "" if pd.isna(presenter) else str(presenter).strip()
+            affiliation = row[affiliation_idx]
+            affiliation_text = (
+                "" if pd.isna(affiliation) else str(affiliation).strip()
+            )
             authors = _talk_authors_from_values(row[authors_idx], presenter)
             if not authors:
                 progress.advance(task_id)
                 continue
+            presenter_key = (
+                delegate_person_key(presenter_text, affiliation=affiliation_text)
+                if presenter_text
+                else ""
+            )
             for author in authors:
-                author_name = display_name(author)
-                author_bucket = index.setdefault(author_name, {})
-                is_primary = author_name == display_name(presenter_text) or (
-                    not presenter_text and author_name == display_name(authors[0])
+                person_key = delegate_person_key(author, affiliation=affiliation_text)
+                if not person_key:
+                    continue
+                author_bucket = index.setdefault(person_key, {})
+                is_primary = person_key == presenter_key or (
+                    not presenter_key
+                    and str(author).strip().casefold()
+                    == str(authors[0]).strip().casefold()
                 )
                 talk_id = row[talk_id_idx] if talk_id_idx is not None else None
                 talk_id_text = "" if pd.isna(talk_id) else str(talk_id).strip()
@@ -438,8 +454,8 @@ def _build_talk_title_index(
             progress.advance(task_id)
 
     result: dict[str, list[dict[str, Any]]] = {}
-    for author, titles in sorted(index.items()):
-        result[author] = sorted(
+    for person_key, titles in sorted(index.items()):
+        result[person_key] = sorted(
             titles.values(),
             key=lambda item: (not item["primary"], item["title"].casefold()),
         )
@@ -460,7 +476,8 @@ def _affiliation_location_records(
     show_progress: bool = False,
 ) -> list[dict[str, Any]]:
     """Group geocoded talks by canonical affiliation."""
-    from src.sources.delegates import load_person_identity_maps, normalize_person_name
+    from src.registry.key_resolution import AFFILIATION_KEY_COL, get_registry_key_resolver
+    from src.sources.delegates import delegate_person_key
     from src.site.export_progress import make_progress
     from src.geocoding.geocode import affiliation_display_name, canonical_affiliation_key
     from src.geocoding.affiliation_geocodes import resolve_geocode
@@ -469,30 +486,34 @@ def _affiliation_location_records(
     if points.empty:
         return []
 
-    variant_to_key, key_to_canonical = load_person_identity_maps()
+    resolver = get_registry_key_resolver()
+    key_to_canonical = resolver.key_to_canonical
 
-    def _person_key(name: object) -> str:
+    def _person_key(name: object, affiliation: object = "") -> str:
         cleaned = str(name or "").strip()
         if not cleaned:
             return ""
-        return (
-            variant_to_key.get(normalize_person_name(cleaned))
-            or variant_to_key.get(cleaned.casefold())
-            or variant_to_key.get(cleaned)
-            or normalize_person_name(cleaned)
-        )
+        return delegate_person_key(cleaned, affiliation=str(affiliation or ""))
 
-    def _display_name(name: object) -> str:
+    def _display_name(name: object, affiliation: object = "") -> str:
         cleaned = str(name or "").strip()
         if not cleaned:
             return ""
-        return key_to_canonical.get(_person_key(cleaned), cleaned)
+        return key_to_canonical.get(_person_key(cleaned, affiliation), cleaned)
 
     working = points.copy()
     affiliation_text = working[affiliation_col].fillna("").astype(str)
     working["_lat_r"] = working[lat_col].astype(float).round(4)
     working["_lon_r"] = working[lon_col].astype(float).round(4)
-    working["_aff_key"] = affiliation_text.map(canonical_affiliation_key)
+
+    if AFFILIATION_KEY_COL in working.columns:
+        registry_aff_keys = working[AFFILIATION_KEY_COL].fillna("").astype(str).str.strip()
+        working["_aff_key"] = registry_aff_keys.where(
+            registry_aff_keys.ne(""),
+            affiliation_text.map(canonical_affiliation_key),
+        )
+    else:
+        working["_aff_key"] = affiliation_text.map(canonical_affiliation_key)
     working["_bucket"] = (
         working["_aff_key"]
         + "\t"
@@ -527,7 +548,23 @@ def _affiliation_location_records(
                 if pd.isna(presenter):
                     continue
                 presenter_name = str(presenter)
-                person_key = _person_key(presenter_name)
+                sample_affiliation = str(
+                    speaker_group[affiliation_col].dropna().iloc[0]
+                    if affiliation_col in speaker_group.columns
+                    and not speaker_group[affiliation_col].dropna().empty
+                    else ""
+                )
+                from src.registry.key_resolution import PERSON_KEY_COL
+
+                if PERSON_KEY_COL in speaker_group.columns:
+                    key_values = (
+                        speaker_group[PERSON_KEY_COL].dropna().astype(str).str.strip()
+                    )
+                    person_key = key_values.iloc[0] if not key_values.empty else ""
+                else:
+                    person_key = ""
+                if not person_key:
+                    person_key = _person_key(presenter_name, sample_affiliation)
                 titles = (
                     speaker_group[title_col]
                     .dropna()
@@ -549,7 +586,7 @@ def _affiliation_location_records(
                 existing = speaker_by_key.get(person_key)
                 if existing is None:
                     speaker_by_key[person_key] = {
-                        "name": _display_name(presenter_name),
+                        "name": _display_name(presenter_name, sample_affiliation),
                         "search_text": search_text,
                         "talk_titles": talk_titles,
                         "person_key": person_key,
@@ -639,17 +676,14 @@ def author_profile_entries(
     *,
     affiliation_col: str = "affiliation",
     presenter_col: str = "presenter",
-    delegate_affiliations: dict[str, str] | None = None,
+    delegate_affiliations_by_key: dict[str, str] | None = None,
 ) -> list[tuple[str, str, str, bool]]:
-    """Return profile candidates as (name, affiliation, role, affiliation_explicit).
+    """Return profile candidates as (name, affiliation, role, affiliation_explicit)."""
+    from src.sources.delegates import delegate_person_key, normalize_person_name
 
-    Presenters are included only when their presenting talk has an explicit
-    affiliation. Co-authors are included only when the delegate list provides
-    an explicit affiliation.
-    """
-    from src.sources.delegates import normalize_person_name
-
-    delegate_affiliations = delegate_affiliations or _delegate_affiliation_map()
+    delegate_affiliations_by_key = (
+        delegate_affiliations_by_key or _delegate_affiliation_by_person_key()
+    )
     presenter_map = _author_affiliation_map(
         df,
         affiliation_col=affiliation_col,
@@ -659,15 +693,16 @@ def author_profile_entries(
 
     entries: dict[str, tuple[str, str, str, bool]] = {}
     for name, affiliation in presenter_map.items():
-        entries[name] = (name, affiliation, "presenter", True)
+        person_key = delegate_person_key(name, affiliation=affiliation) or normalize_person_name(name)
+        entries[person_key] = (name, affiliation, "presenter", True)
 
     for name in talk_counts:
-        if name in entries:
+        person_key = delegate_person_key(name) or normalize_person_name(name)
+        if person_key in entries:
             continue
-        norm = normalize_person_name(name)
-        delegate_affiliation = delegate_affiliations.get(norm)
+        delegate_affiliation = delegate_affiliations_by_key.get(person_key)
         if delegate_affiliation:
-            entries[name] = (name, delegate_affiliation, "co_author", True)
+            entries[person_key] = (name, delegate_affiliation, "co_author", True)
 
     return list(entries.values())
 
@@ -677,14 +712,14 @@ def speakers_by_profile_connections(
     *,
     affiliation_col: str = "affiliation",
     presenter_col: str = "presenter",
-    delegate_affiliations: dict[str, str] | None = None,
+    delegate_affiliations_by_key: dict[str, str] | None = None,
 ) -> list[tuple[str, str, str, bool]]:
     """Profile candidates sorted by talk count (descending)."""
     entries = author_profile_entries(
         df,
         affiliation_col=affiliation_col,
         presenter_col=presenter_col,
-        delegate_affiliations=delegate_affiliations,
+        delegate_affiliations_by_key=delegate_affiliations_by_key,
     )
     talk_counts = author_talk_counts(df, presenter_col=presenter_col)
     return sorted(
@@ -693,12 +728,12 @@ def speakers_by_profile_connections(
     )
 
 
-def _delegate_affiliation_map(
+def _delegate_affiliation_by_person_key(
     delegates_path: str | Path = DELEGATES_JSON,
 ) -> dict[str, str]:
-    """Map normalized person name to affiliation from the official delegate list."""
-    from src.sources.delegates import normalize_person_name
+    """Map registry person_key to affiliation from the official delegate list."""
     from src.geocoding.geocode import affiliation_display_name
+    from src.sources.delegates import delegate_person_key
 
     path = Path(delegates_path)
     if not path.exists():
@@ -713,9 +748,10 @@ def _delegate_affiliation_map(
         affiliation = str(delegate.get("affiliation") or "").strip()
         if not name or not affiliation:
             continue
-        norm = normalize_person_name(name)
-        if norm and norm not in mapping:
-            mapping[norm] = affiliation_display_name(affiliation) or affiliation
+        display = affiliation_display_name(affiliation) or affiliation
+        person_key = delegate_person_key(name, affiliation=display)
+        if person_key:
+            mapping[person_key] = display
     return mapping
 
 
@@ -812,31 +848,6 @@ def _talk_authors(row: pd.Series, *, presenter_col: str = "presenter") -> list[s
     return _talk_authors_from_values(row.get("authors"), row.get(presenter_col))
 
 
-def _person_identity_lookup() -> tuple[Any, Any]:
-    from src.sources.delegates import load_person_identity_maps, normalize_person_name
-
-    variant_to_key, key_to_canonical = load_person_identity_maps()
-
-    def person_key(name: object) -> str:
-        cleaned = str(name or "").strip()
-        if not cleaned:
-            return ""
-        return (
-            variant_to_key.get(normalize_person_name(cleaned))
-            or variant_to_key.get(cleaned.casefold())
-            or variant_to_key.get(cleaned)
-            or normalize_person_name(cleaned)
-        )
-
-    def display_name(name: object) -> str:
-        cleaned = str(name or "").strip()
-        if not cleaned:
-            return ""
-        return key_to_canonical.get(person_key(cleaned), cleaned)
-
-    return person_key, display_name
-
-
 def _slim_talk_frame(
     df: pd.DataFrame,
     *,
@@ -859,29 +870,21 @@ def _build_network_data(
     *,
     affiliation_col: str = "affiliation",
     presenter_col: str = "presenter",
-    delegate_affiliations: dict[str, str] | None = None,
     show_progress: bool = False,
 ) -> dict[str, Any]:
     """Build co-authorship networks at individual and affiliation level."""
-    from src.sources.delegates import normalize_person_name
+    from src.registry.key_resolution import get_registry_key_resolver
     from src.site.export_progress import make_progress
-    from src.geocoding.geocode import affiliation_display_name
+    from src.sources.delegates import delegate_person_key
 
-    _, display_name = _person_identity_lookup()
-    delegate_affiliations = delegate_affiliations or {}
-    raw_presenter_affiliations = _author_affiliation_map(
-        df,
-        affiliation_col=affiliation_col,
-        presenter_col=presenter_col,
-    )
-    presenter_affiliations = {
-        display_name(name): affiliation
-        for name, affiliation in raw_presenter_affiliations.items()
-    }
-    author_affiliations = dict(presenter_affiliations)
-    explicit_affiliation = {name: True for name in presenter_affiliations}
+    resolver = get_registry_key_resolver()
+    key_to_canonical = resolver.key_to_canonical
+    delegate_affiliations_by_key = _delegate_affiliation_by_person_key()
     affiliation_coords = _affiliation_coord_index(locations)
 
+    author_affiliations: dict[str, str] = {}
+    explicit_affiliation: dict[str, bool] = {}
+    presenter_person_keys: set[str] = set()
     individual_talk_count: dict[str, int] = {}
     affiliation_talk_count: dict[str, int] = {}
     individual_edges: dict[tuple[str, str], int] = {}
@@ -898,42 +901,56 @@ def _build_network_data(
     with progress:
         task_id = progress.add_task("Building co-authorship network", total=len(rows))
         for row in rows:
-            authors = [
-                display_name(author)
-                for author in _talk_authors_from_values(
-                    row[authors_idx],
-                    row[presenter_idx],
-                )
-            ]
-            if not authors:
-                progress.advance(task_id)
-                continue
-
             affiliation = row[affiliation_idx]
             raw_affiliation = "" if pd.isna(affiliation) else str(affiliation).strip()
             affiliation_text = raw_affiliation
 
-            for author in authors:
-                individual_talk_count[author] = individual_talk_count.get(author, 0) + 1
-                if affiliation_text and author not in author_affiliations:
-                    author_affiliations[author] = affiliation_text
-                    explicit_affiliation[author] = False
+            author_keys: list[str] = []
+            for author in _talk_authors_from_values(
+                row[authors_idx],
+                row[presenter_idx],
+            ):
+                person_key = delegate_person_key(author, affiliation=affiliation_text)
+                if not person_key:
+                    continue
+                author_keys.append(person_key)
+                individual_talk_count[person_key] = (
+                    individual_talk_count.get(person_key, 0) + 1
+                )
+                if affiliation_text and person_key not in author_affiliations:
+                    author_affiliations[person_key] = affiliation_text
+                    explicit_affiliation[person_key] = False
+
+            if not author_keys:
+                progress.advance(task_id)
+                continue
+
+            presenter = row[presenter_idx]
+            if not pd.isna(presenter) and affiliation_text:
+                presenter_key = delegate_person_key(
+                    str(presenter).strip(),
+                    affiliation=affiliation_text,
+                )
+                if presenter_key:
+                    presenter_person_keys.add(presenter_key)
+                    author_affiliations[presenter_key] = affiliation_text
+                    explicit_affiliation[presenter_key] = True
 
             if affiliation_text:
                 affiliation_talk_count[affiliation_text] = (
                     affiliation_talk_count.get(affiliation_text, 0) + 1
                 )
 
-            if len(authors) >= 2:
+            if len(author_keys) >= 2:
                 talk_affiliations = {
-                    author_affiliations[author]
-                    for author in authors
-                    if author in author_affiliations
+                    author_affiliations[person_key]
+                    for person_key in author_keys
+                    if person_key in author_affiliations
                 }
 
-                for index, author_a in enumerate(authors):
-                    for author_b in authors[index + 1 :]:
-                        key = tuple(sorted((author_a, author_b)))
+                for index, person_a in enumerate(author_keys):
+                    for person_b in author_keys[index + 1 :]:
+                        key = tuple(sorted((person_a, person_b)))
                         individual_edges[key] = individual_edges.get(key, 0) + 1
 
                 affiliation_list = sorted(talk_affiliations)
@@ -943,19 +960,18 @@ def _build_network_data(
                         affiliation_edges[key] = affiliation_edges.get(key, 0) + 1
             progress.advance(task_id)
 
-    for author in individual_talk_count:
-        norm = normalize_person_name(author)
-        if norm in delegate_affiliations:
-            author_affiliations[author] = delegate_affiliations[norm]
-            explicit_affiliation[author] = True
+    for person_key in individual_talk_count:
+        if person_key in delegate_affiliations_by_key:
+            author_affiliations[person_key] = delegate_affiliations_by_key[person_key]
+            explicit_affiliation[person_key] = True
 
     individual_nodes = []
-    for author, connections in sorted(
+    for person_key, connections in sorted(
         individual_talk_count.items(),
         key=lambda item: (-item[1], item[0].casefold()),
     ):
         affiliation, coords = _resolve_affiliation_coords(
-            author_affiliations.get(author, ""),
+            author_affiliations.get(person_key, ""),
             affiliation_coords,
         )
         lat = None
@@ -967,16 +983,18 @@ def _build_network_data(
                 _haversine_km(lat, lon, AUCKLAND_LAT, AUCKLAND_LON),
                 1,
             )
+        label = key_to_canonical.get(person_key, person_key)
         individual_nodes.append(
             {
-                "id": f"person:{author}",
-                "label": author,
+                "id": f"person:{person_key}",
+                "label": label,
+                "person_key": person_key,
                 "kind": "individual",
                 "affiliation": affiliation,
                 "author_role": (
-                    "presenter" if author in presenter_affiliations else "co_author"
+                    "presenter" if person_key in presenter_person_keys else "co_author"
                 ),
-                "affiliation_explicit": explicit_affiliation.get(author, False),
+                "affiliation_explicit": explicit_affiliation.get(person_key, False),
                 "connections": connections,
                 "lat": lat,
                 "lon": lon,
@@ -1134,20 +1152,17 @@ def export_attendee_site_data(
     if show_progress:
         console().print(f"  {len(locations):,} location pins")
 
-    delegate_affiliations = _delegate_affiliation_map()
-
-    # Network, talks index, and stats use the full programme; map locations do not.
     network = _build_network_data(
         df,
         locations,
         affiliation_col=affiliation_col,
         presenter_col=presenter_col,
-        delegate_affiliations=delegate_affiliations,
         show_progress=show_progress,
     )
-    talk_titles_by_author = _build_talk_title_index(
+    talk_titles_by_person_key = _build_talk_title_index(
         df,
         presenter_col=presenter_col,
+        affiliation_col=affiliation_col,
         title_col=title_col,
         show_progress=show_progress,
     )
@@ -1155,7 +1170,8 @@ def export_attendee_site_data(
         console().print("  Attaching talk titles to map speakers")
     for location in locations:
         for speaker in location["speaker_details"]:
-            speaker["talk_titles"] = talk_titles_by_author.get(speaker["name"], [])
+            person_key = str(speaker.get("person_key") or "").strip()
+            speaker["talk_titles"] = talk_titles_by_person_key.get(person_key, [])
     affiliation_connections: dict[str, int] = {}
     for node in network["affiliation"]["nodes"]:
         label = str(node.get("label") or "").strip()
@@ -1186,7 +1202,7 @@ def export_attendee_site_data(
         },
         "locations": locations,
         "network": network,
-        "talk_titles_by_author": talk_titles_by_author,
+        "talk_titles_by_person_key": talk_titles_by_person_key,
     }
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)

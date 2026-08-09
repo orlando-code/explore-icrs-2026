@@ -1,4 +1,4 @@
-/** Add talk_titles and talk_titles_by_author to js/locations.js from programme data. */
+/** @deprecated Use `scripts/pipeline/export_attendee_site.py` — it writes talk_titles_by_person_key. */
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -13,6 +13,10 @@ if (!payloadMatch) {
   throw new Error(`Could not parse SITE_DATA from ${locationsPath}`);
 }
 const payload = JSON.parse(payloadMatch[1]);
+if (payload.talk_titles_by_person_key) {
+  console.log(`${locationsPath} already has talk_titles_by_person_key; re-run export_attendee_site.py instead.`);
+  process.exit(0);
+}
 const programme = JSON.parse(readFileSync(programmePath, "utf8"));
 
 function talkAuthors(talk) {

@@ -16,7 +16,7 @@ import {
 import {
   buildEmissionsAttendeesFromSite,
   createOffsetTracker,
-  personKey,
+  attendeeDedupeKey,
   pieSlicePolygon,
 } from "./offset-tracker.js";
 import { createMapCelebration } from "./celebration.js";
@@ -296,11 +296,11 @@ export function createEmissionsView(
     if (!speakerPoolKeys) {
       const speakers = normalized.speakers.attendees || [];
       speakerPoolKeys = new Set(
-        speakers.map((person) => personKey(person.name, person.affiliation))
+        speakers.map((person) => attendeeDedupeKey(person.name, person.affiliation))
       );
     }
     if (!speakerPoolKeys.size) return true;
-    return speakerPoolKeys.has(personKey(attendee.name, attendee.affiliation));
+    return speakerPoolKeys.has(attendeeDedupeKey(attendee.name, attendee.affiliation));
   }
 
   function locationOffsetShare(location) {

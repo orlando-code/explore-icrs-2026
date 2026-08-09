@@ -34,6 +34,9 @@ def build_talk_catalog(
             "session_title",
             "date",
             "start",
+            "person_key",
+            "affiliation_key",
+            "affiliation",
         )
         if column in df.columns
     ]
@@ -79,6 +82,18 @@ def build_talk_catalog(
                 if "start" not in column_index or pd.isna(row[column_index["start"]])
                 else str(row[column_index["start"]]).strip(),
             }
+            if "person_key" in column_index:
+                talk["person_key"] = str(row[column_index["person_key"]] or "").strip()
+            if "affiliation_key" in column_index:
+                talk["affiliation_key"] = str(
+                    row[column_index["affiliation_key"]] or ""
+                ).strip()
+            if "affiliation" in column_index:
+                talk["affiliation"] = (
+                    ""
+                    if pd.isna(row[column_index["affiliation"]])
+                    else str(row[column_index["affiliation"]]).strip()
+                )
             by_id[talk_id_text] = talk
             title_index.setdefault(title_text.casefold(), []).append(talk_id_text)
             progress.advance(task_id)

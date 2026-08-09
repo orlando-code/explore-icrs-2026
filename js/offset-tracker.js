@@ -3,7 +3,7 @@ import {
   escapeHtml,
   haversineKm,
   resolveCanonicalPersonName,
-  resolveDelegatePersonKey,
+  personKeyFromRecord,
   activateSuggestionAt,
   handleSuggestionListKeydown,
 } from "./utils.js";
@@ -299,8 +299,14 @@ function stableAttendeeId(name, locationId) {
   return `offset-${(hash >>> 0).toString(16).padStart(8, "0")}`;
 }
 
-export function personKey(name, affiliation) {
+export function attendeeDedupeKey(name, affiliation) {
   return `${String(name).trim().toLowerCase()}|${affiliationMapKey(affiliation)}`;
+}
+
+function attendeeIdentityKey(attendee) {
+  const registryKey = personKeyFromRecord(attendee);
+  if (registryKey) return registryKey;
+  return attendeeDedupeKey(attendee.name, attendee.affiliation);
 }
 
 export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocations, exportedAttendees = []) {
@@ -308,15 +314,19 @@ export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocation
     const seen = new Set();
     return exportedAttendees
       .filter((attendee) => {
-        const personKey = resolveDelegatePersonKey(attendee.name);
-        if (seen.has(personKey)) return false;
-        seen.add(personKey);
+        const key = attendeeIdentityKey(attendee);
+        if (seen.has(key)) return false;
+        seen.add(key);
         return true;
       })
-      .map((attendee) => ({
-        ...attendee,
-        name: resolveCanonicalPersonName(attendee.name),
-      }))
+      .map((attendee) => {
+        const registryKey = personKeyFromRecord(attendee);
+        return {
+          ...attendee,
+          person_key: registryKey || attendee.person_key || "",
+          name: resolveCanonicalPersonName(attendee.name, registryKey),
+        };
+      })
       .sort((left, right) =>
         left.name.localeCompare(right.name, undefined, { sensitivity: "base" })
       );
@@ -354,16 +364,20 @@ export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocation
     const emissionsLocation = emissionsLocationForSite(siteLocation);
     if (!emissionsLocation) continue;
 
-    for (const name of siteLocation.speakers || []) {
-      const trimmed = String(name).trim();
+    for (const speaker of siteLocation.speaker_details?.length
+      ? siteLocation.speaker_details
+      : (siteLocation.speakers || []).map((name) => ({ name }))) {
+      const trimmed = String(speaker.name || speaker).trim();
       if (!trimmed) continue;
-      const personKey = resolveDelegatePersonKey(trimmed);
-      if (seen.has(personKey)) continue;
-      seen.add(personKey);
-      const displayName = resolveCanonicalPersonName(trimmed);
+      const registryKey = personKeyFromRecord(speaker);
+      const identityKey = registryKey || attendeeDedupeKey(trimmed, emissionsLocation.affiliation);
+      if (seen.has(identityKey)) continue;
+      seen.add(identityKey);
+      const displayName = resolveCanonicalPersonName(trimmed, registryKey);
       attendees.push({
         id: stableAttendeeId(displayName, emissionsLocation.id),
         name: displayName,
+        person_key: registryKey || "",
         affiliation: emissionsLocation.affiliation,
         location_id: emissionsLocation.id,
         co2e_kg: emissionsLocation.co2e_per_speaker_kg,
@@ -545,9 +559,9 @@ export function createOffsetTracker({
         })
       : attendees;
     for (const attendee of pool) {
-      const personKey = resolveDelegatePersonKey(attendee.name);
-      if (seen.has(personKey)) continue;
-      seen.add(personKey);
+      const identityKey = attendeeIdentityKey(attendee);
+      if (seen.has(identityKey)) continue;
+      seen.add(identityKey);
       matches.push(attendee);
       if (matches.length >= 40) break;
     }

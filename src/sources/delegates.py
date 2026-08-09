@@ -28,8 +28,6 @@ DEFAULT_ORG_REVIEW_PATH = DELEGATE_ORG_OVERRIDES_CSV.parent / "delegate_organisa
 DEFAULT_ID_MATCH_REVIEW_GLOB = "delegate_id_match_review_*_merged.csv"
 
 _ORGANISATION_OVERRIDE_CACHE: dict[str, tuple[str, str]] | None = None
-_DELEGATE_PERSON_KEY_CACHE: dict[str, str] | None = None
-_PERSON_IDENTITY_CACHE: tuple[dict[str, str], dict[str, str]] | None = None
 
 COL_FIRST = 4
 COL_LAST = 32
@@ -651,38 +649,6 @@ def _resolve_id_match_review_path(path: Path | None = None) -> Path | None:
     return merged[-1] if merged else None
 
 
-def load_delegate_person_keys(
-    path: Path | str | None = None,
-) -> dict[str, str]:
-    """Map delegate name variants to stable icrs-p-* person keys."""
-    global _DELEGATE_PERSON_KEY_CACHE
-    if _DELEGATE_PERSON_KEY_CACHE is not None and path is None:
-        return _DELEGATE_PERSON_KEY_CACHE
-
-    from src.registry.person_registry import DEFAULT_ALIASES_PATH, load_name_aliases
-
-    aliases_path = Path(path) if path is not None else DEFAULT_ALIASES_PATH
-    aliases = load_name_aliases(aliases_path)
-    mapping: dict[str, str] = {}
-    for _, row in aliases.iterrows():
-        person_key = str(row.get("person_key") or "").strip()
-        if not person_key:
-            continue
-        for column in ("name_variant", "normalized_name"):
-            name = str(row.get(column) or "").strip()
-            if not name:
-                continue
-            mapping[name.casefold()] = person_key
-            if column == "name_variant":
-                norm = normalize_person_name(name)
-                if norm:
-                    mapping[norm] = person_key
-
-    if path is None:
-        _DELEGATE_PERSON_KEY_CACHE = mapping
-    return mapping
-
-
 class _UnionFind:
     def __init__(self) -> None:
         self.parent: dict[str, str] = {}
@@ -803,177 +769,30 @@ def _match_single_presenter_norm(
     return None
 
 
-def _register_name_variants(
-    variant_to_key: dict[str, str],
-    *,
-    person_key: str,
-    names: set[str],
-) -> None:
-    for name in names:
-        cleaned = str(name or "").strip()
-        if not cleaned:
-            continue
-        for variant in {cleaned, cleaned.casefold(), normalize_person_name(cleaned)}:
-            if variant:
-                variant_to_key[variant] = person_key
+def delegate_person_key(name: str, *, affiliation: str = "") -> str:
+    """Return a stable icrs-p-* person key from the registry."""
+    from src.registry.key_resolution import resolve_person_key
 
-
-def load_person_identity_maps(
-    *,
-    delegates: pd.DataFrame | None = None,
-    talks: pd.DataFrame | None = None,
-    id_keys_path: Path | str | None = None,
-    use_cache: bool = True,
-    show_progress: bool = False,
-) -> tuple[dict[str, str], dict[str, str]]:
-    """Map name variants to a stable person key and preferred display name.
-
-    Talk presenter names are preferred over delegate-list spellings when the
-    same person is matched via token overlap or delegate-id review.
-    """
-    global _PERSON_IDENTITY_CACHE
-    cacheable = (
-        use_cache
-        and delegates is None
-        and talks is None
-        and id_keys_path is None
-    )
-    if cacheable and _PERSON_IDENTITY_CACHE is not None:
-        return _PERSON_IDENTITY_CACHE
-
-    if talks is None:
-        talks = load_talks()
-    if delegates is None:
-        delegates = load_delegates()
-
-    uf = _UnionFind()
-    presenter_display: dict[str, str] = {}
-    delegate_display: dict[str, str] = {}
-    id_key_by_norm: dict[str, str] = {}
-
-    token_index: dict[str, set[str]] = {}
-    register_talk_presenters(
-        talks,
-        presenter_display=presenter_display,
-        uf=uf,
-        token_index=token_index,
-    )
-
-    id_mapping = load_delegate_person_keys(id_keys_path)
-    id_variants_by_key: dict[str, list[str]] = {}
-    for variant, person_key in id_mapping.items():
-        id_variants_by_key.setdefault(person_key, []).append(variant)
-
-    for variants in id_variants_by_key.values():
-        norms = [
-            normalize_person_name(variant) or variant.strip().casefold()
-            for variant in variants
-            if str(variant).strip()
-        ]
-        if not norms:
-            continue
-        root = norms[0]
-        uf.find(root)
-        for norm in norms[1:]:
-            uf.union(root, norm)
-
-    for person_key, variants in id_variants_by_key.items():
-        for variant in variants:
-            variant_norm = normalize_person_name(variant) or variant.strip().casefold()
-            if variant_norm:
-                id_key_by_norm[uf.find(variant_norm)] = person_key
-
-    from src.site.export_progress import iterrows_with_progress
-
-    for _, row in iterrows_with_progress(
-        delegates,
-        "Linking delegate names to talk presenters",
-        show_progress=show_progress,
-    ):
-        full_name = str(row.get("full_name") or "").strip()
-        if not full_name:
-            continue
-        norm = str(row.get("norm_name") or normalize_person_name(full_name))
-        delegate_display[norm] = full_name
-        uf.find(norm)
-
-        organisation = delegate_org_country_for_row(row)[0]
-        matched_presenter = match_delegate_to_presenter_node(
-            full_name,
-            organisation,
-            token_index,
-            presenter_display,
-        )
-        if matched_presenter:
-            uf.union(norm, matched_presenter)
-
-    components: dict[str, set[str]] = {}
-    for node in uf.parent:
-        components.setdefault(uf.find(node), set()).add(node)
-
-    variant_to_key: dict[str, str] = {}
-    key_to_canonical: dict[str, str] = {}
-    for members in components.values():
-        delegate_ids = {
-            id_key_by_norm[member]
-            for member in members
-            if member in id_key_by_norm
-        }
-        presenter_members = sorted(
-            member for member in members if member in presenter_display
-        )
-        delegate_members = sorted(
-            member for member in members if member in delegate_display
-        )
-        person_key = (
-            sorted(delegate_ids)[0]
-            if delegate_ids
-            else presenter_members[0]
-            if presenter_members
-            else sorted(members)[0]
-        )
-        if presenter_members:
-            canonical = presenter_display[presenter_members[0]]
-        elif delegate_members:
-            canonical = delegate_display[delegate_members[0]]
-        else:
-            canonical = person_key
-
-        key_to_canonical[person_key] = canonical
-        names = {canonical}
-        for member in presenter_members:
-            names.add(presenter_display[member])
-        for member in delegate_members:
-            names.add(delegate_display[member])
-        _register_name_variants(variant_to_key, person_key=person_key, names=names)
-
-    if cacheable:
-        _PERSON_IDENTITY_CACHE = (variant_to_key, key_to_canonical)
-    return variant_to_key, key_to_canonical
-
-
-def delegate_person_key(name: str) -> str:
-    """Return a stable person key for deduplicating delegate name variants."""
     cleaned = str(name or "").strip()
     if not cleaned:
         return ""
-    variant_to_key, _ = load_person_identity_maps()
-    return (
-        variant_to_key.get(normalize_person_name(cleaned))
-        or variant_to_key.get(cleaned.casefold())
-        or variant_to_key.get(cleaned)
-        or normalize_person_name(cleaned)
-    )
+    person_key = resolve_person_key(cleaned, affiliation=affiliation)
+    return person_key if person_key.startswith("icrs-p-") else ""
 
 
 def canonical_person_name(name: str) -> str:
     """Return the preferred display name for a person across talk/delegate aliases."""
+    from src.registry.key_resolution import get_registry_key_resolver, resolve_person_key
+
     cleaned = str(name or "").strip()
     if not cleaned:
         return ""
-    _, key_to_canonical = load_person_identity_maps()
-    person_key = delegate_person_key(cleaned)
-    return key_to_canonical.get(person_key, cleaned)
+    person_key = resolve_person_key(cleaned)
+    if person_key:
+        canonical = get_registry_key_resolver().canonical_name(person_key, fallback=cleaned)
+        if canonical:
+            return canonical
+    return cleaned
 
 
 def name_tokens(value: str) -> set[str]:
@@ -1481,11 +1300,11 @@ def mark_delegate_speakers(delegates: pd.DataFrame) -> pd.DataFrame:
 def delegate_list_groups(
     delegates: pd.DataFrame | None = None,
     *,
-    variant_to_key: dict[str, str] | None = None,
     show_progress: bool = False,
 ) -> list[dict[str, Any]]:
     """Group all delegate-list attendees by affiliation for the map site."""
     from src.geocoding.geocode import affiliation_display_name, canonical_affiliation_key
+    from src.registry.key_resolution import get_registry_key_resolver, resolve_affiliation_key
     from src.site.export_progress import iterrows_with_progress
     from src.site.map_exclusions import is_map_excluded, load_map_exclusions
 
@@ -1493,8 +1312,7 @@ def delegate_list_groups(
         delegates = load_delegates()
 
     map_exclusions = load_map_exclusions()
-    if variant_to_key is None:
-        variant_to_key, _ = load_person_identity_maps(delegates=delegates)
+    resolver = get_registry_key_resolver()
     groups: dict[str, dict[str, Any]] = {}
     for _, row in iterrows_with_progress(
         delegates,
@@ -1512,7 +1330,9 @@ def delegate_list_groups(
         ) or organisation_for_delegate_row(row)
         if is_incomplete_organisation(display):
             continue
-        key = canonical_affiliation_key(affiliation).casefold()
+        organisation, country = delegate_org_country_for_row(row)
+        registry_aff_key = resolve_affiliation_key(organisation, country)
+        key = registry_aff_key or canonical_affiliation_key(affiliation).casefold()
         group = groups.setdefault(
             key,
             {
@@ -1524,12 +1344,9 @@ def delegate_list_groups(
         if len(display) > len(group["affiliation"]):
             group["affiliation"] = display
         country = str(row.get("country") or "").strip()
-        person_key = (
-            variant_to_key.get(normalize_person_name(name))
-            or variant_to_key.get(name.casefold())
-            or variant_to_key.get(name)
-            or normalize_person_name(name)
-        )
+        person_key = str(row.get("person_key") or "").strip()
+        if not person_key:
+            person_key = resolver.resolve_person_key(name, affiliation=affiliation)
         group["delegates"].append(
             {
                 "name": name,
@@ -1561,13 +1378,11 @@ def export_non_speaking_delegates_js(
     show_progress: bool = False,
 ) -> Path:
     """Export delegate-list groups and name→person_key aliases for the map site."""
-    variant_to_key, key_to_canonical = load_person_identity_maps(
-        delegates=delegates,
-        show_progress=show_progress,
-    )
+    from src.registry.key_resolution import get_registry_key_resolver
+
+    resolver = get_registry_key_resolver()
     groups = delegate_list_groups(
         delegates,
-        variant_to_key=variant_to_key,
         show_progress=show_progress,
     )
     output_path = Path(save_path)
@@ -1575,8 +1390,8 @@ def export_non_speaking_delegates_js(
     body = (
         "/** Generated from data/sources/delegates.json – do not edit by hand. */\n"
         f"export const NON_SPEAKING_DELEGATE_GROUPS = {json.dumps(groups, ensure_ascii=False, indent=2)};\n"
-        f"export const DELEGATE_PERSON_KEY_ALIASES = {json.dumps(variant_to_key, ensure_ascii=False, indent=2)};\n"
-        f"export const PERSON_CANONICAL_NAMES = {json.dumps(key_to_canonical, ensure_ascii=False, indent=2)};\n"
+        f"export const DELEGATE_PERSON_KEY_ALIASES = {json.dumps(resolver.variant_to_key, ensure_ascii=False, indent=2)};\n"
+        f"export const PERSON_CANONICAL_NAMES = {json.dumps(resolver.key_to_canonical, ensure_ascii=False, indent=2)};\n"
     )
     output_path.write_text(body, encoding="utf-8")
     return output_path
@@ -1731,20 +1546,11 @@ def combined_attendee_talks(
         console().print("  Geocoding delegate list")
     extra = geocoded_delegate_list(delegates, show_progress=show_progress)
 
-    if show_progress:
-        console().print("  Warming person-identity cache")
-    variant_to_key, _ = load_person_identity_maps()
-
-    def _person_key(name: object) -> str:
+    def _person_key(name: object, affiliation: object = "") -> str:
         cleaned = str(name or "").strip()
         if not cleaned:
             return ""
-        return (
-            variant_to_key.get(normalize_person_name(cleaned))
-            or variant_to_key.get(cleaned.casefold())
-            or variant_to_key.get(cleaned)
-            or normalize_person_name(cleaned)
-        )
+        return delegate_person_key(cleaned, affiliation=str(affiliation or ""))
 
     def _enrich_talks_from_delegates(
         frame: pd.DataFrame, delegate_rows: pd.DataFrame
@@ -1768,9 +1574,15 @@ def combined_attendee_talks(
         if delegate_rows.empty:
             return talks_out
 
-        delegate_rows["_person_key"] = delegate_rows["presenter"].astype(str).map(_person_key)
+        delegate_rows["_person_key"] = delegate_rows.apply(
+            lambda row: _person_key(row["presenter"], row.get("affiliation", "")),
+            axis=1,
+        )
         lookup = delegate_rows.drop_duplicates("_person_key", keep="first").set_index("_person_key")
-        talks_out["_person_key"] = talks_out["presenter"].astype(str).map(_person_key)
+        talks_out["_person_key"] = talks_out.apply(
+            lambda row: _person_key(row["presenter"], row.get("affiliation", "")),
+            axis=1,
+        )
 
         for index, row in talks_out.iterrows():
             person_key = str(row.get("_person_key") or "").strip()

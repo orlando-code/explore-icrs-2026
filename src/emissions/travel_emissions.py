@@ -342,16 +342,29 @@ def load_attendee_legs(
         for _, row in delegate_rows.iterrows()
         if str(row.get("full_name") or "").strip()
     }
-    delegate_countries_by_key = {
-        delegate_person_key(str(row["full_name"])): delegate_org_country_for_row(row)[1]
-        for _, row in delegate_rows.iterrows()
-        if str(row.get("full_name") or "").strip()
-    }
+    delegate_countries_by_key: dict[str, str] = {}
+    for _, row in delegate_rows.iterrows():
+        name = str(row.get("full_name") or "").strip()
+        if not name:
+            continue
+        country = delegate_org_country_for_row(row)[1]
+        if not country:
+            continue
+        person_key = str(row.get("person_key") or "").strip()
+        if not person_key:
+            affiliation = str(row.get("affiliation") or "").strip()
+            person_key = delegate_person_key(name, affiliation=affiliation)
+        if person_key.startswith("icrs-p-"):
+            delegate_countries_by_key[person_key] = country
 
+    dedupe_cols = _attendee_dedupe_columns(talks_geo)
+    sort_cols = [*dedupe_cols]
+    if "geocode_level" in talks_geo.columns:
+        sort_cols.append("geocode_level")
     attendees = (
         talks_geo.dropna(subset=["latitude", "longitude"])
-        .sort_values(["presenter", "geocode_level"], na_position="last")
-        .drop_duplicates(subset=["presenter"], keep="first")
+        .sort_values(sort_cols, na_position="last")
+        .drop_duplicates(subset=dedupe_cols, keep="first")
         .copy()
     )
 
@@ -364,15 +377,15 @@ def load_attendee_legs(
             geocode_level=row.get("geocode_level"),
         )
         affiliation_text = _row_text(row, "affiliation")
+        presenter = str(row.get("presenter") or "").strip()
+        person_key = str(row.get("person_key") or "").strip()
+        if not person_key:
+            person_key = delegate_person_key(presenter, affiliation=affiliation_text)
         resolved = resolve_origin_country(
             affiliation=affiliation_text,
             existing=str(origin_country or ""),
-            delegate_country=delegate_countries.get(
-                normalize_person_name(str(row.get("presenter") or ""))
-            )
-            or delegate_countries_by_key.get(
-                delegate_person_key(str(row.get("presenter") or ""))
-            )
+            delegate_country=delegate_countries_by_key.get(person_key)
+            or delegate_countries.get(normalize_person_name(presenter))
             or "",
         )
         if resolved:
@@ -380,15 +393,9 @@ def load_attendee_legs(
         elif str(origin_country).upper() in {"", "UNKNOWN"}:
             origin_country = country_from_affiliation(affiliation_text)
         delegate_country = (
-            delegate_countries.get(
-                normalize_person_name(str(row.get("presenter") or ""))
-            )
-            or delegate_countries_by_key.get(
-                delegate_person_key(str(row.get("presenter") or ""))
-            )
-            or registry_countries.get(
-                normalize_person_name(str(row.get("presenter") or ""))
-            )
+            delegate_countries_by_key.get(person_key)
+            or delegate_countries.get(normalize_person_name(presenter))
+            or registry_countries.get(normalize_person_name(presenter))
             or ""
         )
         if delegate_country and str(origin_country).upper() in {"", "UNKNOWN"}:
@@ -413,24 +420,48 @@ def load_attendee_legs(
         transport_mode = (
             "car" if origin_country == DEFAULT_DESTINATION_COUNTRY else "flight"
         )
-        rows.append(
-            {
-                "presenter": row["presenter"],
-                "affiliation": affiliation_text,
-                "latitude": row["latitude"],
-                "longitude": row["longitude"],
-                "geocode_level": row.get("geocode_level"),
-                "origin_country": origin_country,
-                "origin_location": origin_location,
-                "transport_mode": transport_mode,
-            }
-        )
+        row_data: dict[str, Any] = {
+            "presenter": row["presenter"],
+            "affiliation": affiliation_text,
+            "latitude": row["latitude"],
+            "longitude": row["longitude"],
+            "geocode_level": row.get("geocode_level"),
+            "origin_country": origin_country,
+            "origin_location": origin_location,
+            "transport_mode": transport_mode,
+        }
+        if person_key.startswith("icrs-p-"):
+            row_data["person_key"] = person_key
+        rows.append(row_data)
 
     legs = pd.DataFrame(rows)
-    missing = talks_geo.loc[
-        ~talks_geo["presenter"].isin(legs["presenter"]), "presenter"
-    ].drop_duplicates()
+    if "person_key" in legs.columns:
+        present_keys = set(legs["person_key"].astype(str).str.strip())
+        missing = talks_geo.loc[
+            ~talks_geo["person_key"].astype(str).str.strip().isin(present_keys),
+            "presenter",
+        ].drop_duplicates()
+    else:
+        missing = talks_geo.loc[
+            ~talks_geo["presenter"].isin(legs["presenter"]), "presenter"
+        ].drop_duplicates()
     return legs, pd.DataFrame({"presenter": missing})
+
+
+def _leg_coordinate_columns(legs: pd.DataFrame) -> pd.DataFrame:
+    """One lat/lon row per attendee; never collapse homonyms that share a presenter name."""
+    cols = ["presenter", "affiliation", "latitude", "longitude"]
+    if "person_key" in legs.columns and legs["person_key"].astype(str).str.startswith("icrs-p-").any():
+        subset = ["person_key"]
+    else:
+        subset = ["presenter", "affiliation"]
+    return legs[cols].drop_duplicates(subset=subset)
+
+
+def _attendee_dedupe_columns(frame: pd.DataFrame) -> list[str]:
+    if "person_key" in frame.columns and frame["person_key"].astype(str).str.startswith("icrs-p-").any():
+        return ["person_key"]
+    return ["presenter", "affiliation"]
 
 
 def _looks_like_coordinates(value: str) -> bool:
@@ -1518,9 +1549,7 @@ def _build_emissions_locations(
             return max(pairs.items(), key=lambda item: item[1])[0]
         return float(valid["latitude"].iloc[0]), float(valid["longitude"].iloc[0])
 
-    leg_cols = legs[
-        ["presenter", "affiliation", "latitude", "longitude"]
-    ].drop_duplicates(subset=["presenter"])
+    leg_cols = _leg_coordinate_columns(legs)
     merged = estimates.merge(leg_cols, on=["presenter", "affiliation"], how="left")
     clean_affiliations = merged["affiliation"].map(_clean_affiliation_value)
     merged = merged.assign(
@@ -1610,9 +1639,7 @@ def _build_emissions_attendees(
         affiliation_display_name,
     )
 
-    leg_cols = legs[
-        ["presenter", "affiliation", "latitude", "longitude"]
-    ].drop_duplicates(subset=["presenter"])
+    leg_cols = _leg_coordinate_columns(legs)
     estimate_cols = ["presenter", "affiliation", "co2e_kg"]
     if "origin_country" in estimates.columns:
         estimate_cols.append("origin_country")
@@ -1622,8 +1649,10 @@ def _build_emissions_attendees(
 
     attendees: list[dict[str, Any]] = []
     seen: set[str] = set()
+    from src.registry.key_resolution import get_registry_key_resolver
     from src.sources.delegates import canonical_person_name, delegate_person_key
 
+    resolver = get_registry_key_resolver()
     columns = list(merged.columns)
     presenter_idx = columns.index("presenter")
     affiliation_idx = columns.index("affiliation")
@@ -1642,7 +1671,10 @@ def _build_emissions_attendees(
         if not location_id:
             continue
         display_name = canonical_person_name(name)
-        dedupe_key = f"{delegate_person_key(name)}|{location_id}"
+        person_key = delegate_person_key(name, affiliation=affiliation)
+        if person_key.startswith("icrs-p-"):
+            display_name = resolver.canonical_name(person_key, fallback=display_name)
+        dedupe_key = f"{person_key}|{location_id}"
         if dedupe_key in seen:
             continue
         seen.add(dedupe_key)
@@ -1656,6 +1688,7 @@ def _build_emissions_attendees(
             {
                 "id": _stable_attendee_id(display_name, location_id),
                 "name": display_name,
+                "person_key": person_key,
                 "affiliation": affiliation_display_name(affiliation) or affiliation,
                 "location_id": location_id,
                 "co2e_kg": round(float(row[co2e_idx]), 1),

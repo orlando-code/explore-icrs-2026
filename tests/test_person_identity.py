@@ -1,7 +1,6 @@
 from src.sources.delegates import (
     canonical_person_name,
     delegate_person_key,
-    load_person_identity_maps,
     normalize_person_name,
 )
 
@@ -22,10 +21,12 @@ def test_delegate_only_name_uses_delegate_spelling():
     non_speaker = delegates.loc[~delegates["is_speaker"]].iloc[0]
     delegate_name = str(non_speaker["full_name"])
     person_key = delegate_person_key(delegate_name)
-    _, key_to_canonical = load_person_identity_maps(use_cache=False)
+    from src.registry.key_resolution import get_registry_key_resolver
+
+    canonical = get_registry_key_resolver().canonical_name(person_key, fallback=delegate_name)
 
     assert person_key
-    assert key_to_canonical[person_key] == delegate_name
+    assert canonical == delegate_name
 
 
 def test_id_review_names_share_registry_person_key():
@@ -40,9 +41,9 @@ def test_id_review_names_share_registry_person_key():
 
 def test_shared_surname_does_not_merge_distinct_burts():
     import src.sources.delegates as delegates_module
+    from src.registry.key_resolution import clear_registry_key_resolver_cache
 
-    delegates_module._PERSON_IDENTITY_CACHE = None
-    delegates_module._DELEGATE_PERSON_KEY_CACHE = None
+    clear_registry_key_resolver_cache()
 
     john_key = delegate_person_key("Prof John Burt")
     nicole_key = delegate_person_key("Nicole Burt")
@@ -52,3 +53,110 @@ def test_shared_surname_does_not_merge_distinct_burts():
     assert nicole_key.startswith("icrs-p-")
     assert canonical_person_name("Prof John Burt") == "Prof John Burt"
     assert canonical_person_name("Nicole Burt") == "Nicole Burt"
+
+
+def test_takashi_nakamura_homonyms_stay_distinct():
+    from src.registry.key_resolution import clear_registry_key_resolver_cache
+
+    clear_registry_key_resolver_cache()
+
+    ryukyus_key = delegate_person_key(
+        "Takashi Nakamura",
+        affiliation="University of the Ryukyus, Japan",
+    )
+    tokyo_key = delegate_person_key(
+        "Takashi Nakamura",
+        affiliation="Institute of Science - Tokyo, Japan",
+    )
+
+    assert ryukyus_key != tokyo_key
+    assert ryukyus_key == "icrs-p-01211"
+    assert tokyo_key == "icrs-p-01212"
+
+
+def test_takashi_nakamura_talk_titles_split_by_person_key():
+    from src.registry.key_resolution import clear_registry_key_resolver_cache
+
+    from src.registry.registry_export import build_map_talks
+    from src.site.plot_utils import _build_talk_title_index
+
+    clear_registry_key_resolver_cache()
+
+    talks = build_map_talks()
+    index = _build_talk_title_index(talks)
+    ryukyus_titles = {item["title"] for item in index.get("icrs-p-01211", [])}
+    tokyo_titles = {item["title"] for item in index.get("icrs-p-01212", [])}
+
+    assert ryukyus_titles != tokyo_titles
+    assert (
+        "Potential shifts in Acropora corals' resilience under repeated bleaching events in Sekisei Lagoon, southern Japan"
+        in ryukyus_titles
+    )
+    assert (
+        "An Integrated Modeling System for Projecting Coral Community Succession Induced by Future Climate Change"
+        in tokyo_titles
+    )
+    assert (
+        "An Integrated Modeling System for Projecting Coral Community Succession Induced by Future Climate Change"
+        not in ryukyus_titles
+    )
+
+
+def test_emissions_attendees_keep_takashi_nakamura_homonyms():
+    import pandas as pd
+
+    from src.emissions.travel_emissions import (
+        _build_emissions_attendees,
+        _emissions_location_key,
+    )
+
+    legs = pd.DataFrame(
+        [
+            {
+                "presenter": "Takashi Nakamura",
+                "affiliation": "University of the Ryukyus, Japan",
+                "latitude": 26.251687,
+                "longitude": 127.768408,
+            },
+            {
+                "presenter": "Takashi Nakamura",
+                "affiliation": "Institute of Science - Tokyo, Japan",
+                "latitude": 35.605902,
+                "longitude": 139.683560,
+            },
+        ]
+    )
+    estimates = legs[["presenter", "affiliation"]].copy()
+    estimates["co2e_kg"] = [2191.8, 2255.6]
+    estimates["origin_country"] = "JP"
+    key_to_id = {
+        _emissions_location_key("University of the Ryukyus, Japan"): "emis-ryu",
+        _emissions_location_key("Institute of Science - Tokyo, Japan"): "emis-tok",
+    }
+    attendees = _build_emissions_attendees(
+        estimates, legs, key_to_id, country_to_cluster={}
+    )
+    takashi = [row for row in attendees if "nakamura" in row["name"].casefold()]
+
+    assert len(takashi) == 2
+    assert {row["person_key"] for row in takashi} == {"icrs-p-01211", "icrs-p-01212"}
+    assert {row["affiliation"] for row in takashi} == {
+        "University of the Ryukyus",
+        "Institute of Science - Tokyo",
+    }
+
+
+def test_enrich_talks_assigns_registry_keys():
+    from src.registry.key_resolution import clear_registry_key_resolver_cache, enrich_talks_with_registry_keys
+    from src.sources.programme import load_talks
+
+    clear_registry_key_resolver_cache()
+    talks = load_talks()
+    enriched = enrich_talks_with_registry_keys(talks)
+    assert "person_key" in enriched.columns
+    assert "affiliation_key" in enriched.columns
+    takashi = enriched.loc[
+        enriched["presenter"].astype(str).str.contains("Takashi Nakamura", na=False)
+    ]
+    keys = set(takashi["person_key"].astype(str).str.strip()) - {""}
+    assert keys == {"icrs-p-01211", "icrs-p-01212"}

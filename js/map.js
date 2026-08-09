@@ -12,6 +12,9 @@ import {
   findLocationIdByAffiliation,
   dedupeSearchHitsByPerson,
   resolveCanonicalPersonName,
+  isRegistryPersonKey,
+  personKeyFromRecord,
+  speakerIdentityKey,
 } from "./utils.js";
 import { resolveTalkId } from "./talk-similarity.js";
 
@@ -33,8 +36,10 @@ export function createMapView(
 ) {
   const speakerLocations = siteData.locations;
   const hasDelegatePool = delegateEmissionsLocations.length > 0;
-  const networkNodeIdsByName = new Map(
-    (siteData.network?.individual?.nodes || []).map((node) => [node.label, node.id])
+  const networkNodeIdsByPersonKey = new Map(
+    (siteData.network?.individual?.nodes || [])
+      .filter((node) => isRegistryPersonKey(node.person_key))
+      .map((node) => [node.person_key, node.id])
   );
   let includeNonSpeakers = hasDelegatePool;
 
@@ -62,9 +67,11 @@ export function createMapView(
   let highlightedAuthorName = null;
   let authorHighlightLocationId = null;
   let focusedSpeakerName = null;
+  let focusedSpeakerKey = null;
   let abstractHighlighted = false;
   let talkHighlightLocationIds = new Set();
   let speakerLocationIndex = new Map();
+  let speakerLocationByPersonKey = new Map();
   const talksData = elements.talksData || { by_id: {}, title_index: {} };
   const talksById = talksData.by_id || {};
   let maxConnectionCount = Math.max(
@@ -75,9 +82,14 @@ export function createMapView(
 
   function rebuildSpeakerLocationIndex() {
     speakerLocationIndex = new Map();
+    speakerLocationByPersonKey = new Map();
     for (const location of locations) {
       for (const speaker of location.speaker_details || []) {
         const name = String(speaker.name || speaker).trim();
+        const personKey = personKeyFromRecord(speaker);
+        if (personKey && !speakerLocationByPersonKey.has(personKey)) {
+          speakerLocationByPersonKey.set(personKey, location.id);
+        }
         if (name && !speakerLocationIndex.has(name)) {
           speakerLocationIndex.set(name, location.id);
         }
@@ -93,10 +105,18 @@ export function createMapView(
 
   rebuildSpeakerLocationIndex();
 
+  function locationIdForSpeaker(name, personKey = "") {
+    const key = String(personKey || "").trim();
+    if (isRegistryPersonKey(key) && speakerLocationByPersonKey.has(key)) {
+      return speakerLocationByPersonKey.get(key);
+    }
+    return speakerLocationIndex.get(String(name || "").trim()) || null;
+  }
+
   function locationIdsForAuthors(authors) {
     const ids = new Set();
     for (const name of authors || []) {
-      const locationId = speakerLocationIndex.get(String(name).trim());
+      const locationId = locationIdForSpeaker(name);
       if (locationId) ids.add(locationId);
     }
     return ids;
@@ -140,14 +160,15 @@ export function createMapView(
       .join("");
   }
 
-  function highlightAuthorOnMap(speakerName) {
+  function highlightAuthorOnMap(speakerName, personKey = "") {
     const trimmed = String(speakerName || "").trim();
-    const locationId = speakerLocationIndex.get(trimmed);
+    const locationId = locationIdForSpeaker(trimmed, personKey);
     if (!locationId) return;
 
     highlightedAuthorName = trimmed;
     authorHighlightLocationId = locationId;
     focusedSpeakerName = trimmed;
+    focusedSpeakerKey = isRegistryPersonKey(personKey) ? personKey : null;
     abstractHighlighted = false;
     talkHighlightLocationIds = new Set();
     if (elements.talkAbstract) {
@@ -169,13 +190,25 @@ export function createMapView(
     flyToLocation(locationById(locationId));
   }
 
-  function resolveFocusedSpeaker(location, explicitName = null) {
-    const name = String(explicitName || "").trim();
+  function resolveFocusedSpeaker(location, explicitName = null, explicitPersonKey = null) {
+    const personKey = String(explicitPersonKey || focusedSpeakerKey || "").trim();
+    if (isRegistryPersonKey(personKey)) {
+      const match = (location.speaker_details || []).find(
+        (speaker) => personKeyFromRecord(speaker) === personKey
+      );
+      if (match) return String(match.name || match).trim();
+    }
+    const name = String(explicitName || focusedSpeakerName || "").trim();
     if (name) return name;
     if (highlightedAuthorName) return highlightedAuthorName;
     if (searchQuery) {
       const matched = matchedSpeakersByLocation.get(location.id);
-      if (matched?.size) return [...matched][0];
+      if (matched?.size) {
+        const match = (location.speaker_details || []).find((speaker) =>
+          matched.has(speakerIdentityKey(speaker))
+        );
+        if (match) return String(match.name || match).trim();
+      }
     }
     const details = location.speaker_details || [];
     const speakers = details.filter((speaker) => !speaker.non_speaking_delegate);
@@ -185,16 +218,24 @@ export function createMapView(
     return null;
   }
 
-  function scrollSpeakerIntoView(name) {
+  function scrollSpeakerIntoView(name, personKey = "") {
     if (!elements.hoverSpeakers) return;
     window.requestAnimationFrame(() => {
-      if (!name) {
+      if (!name && !personKey) {
         elements.hoverSpeakers.scrollTop = 0;
         return;
       }
-      const entry = elements.hoverSpeakers.querySelector(
-        `[data-speaker-name="${CSS.escape(name)}"]`
-      );
+      let entry = null;
+      if (isRegistryPersonKey(personKey)) {
+        entry = elements.hoverSpeakers.querySelector(
+          `[data-speaker-key="${CSS.escape(personKey)}"]`
+        );
+      }
+      if (!entry && name) {
+        entry = elements.hoverSpeakers.querySelector(
+          `[data-speaker-name="${CSS.escape(name)}"]`
+        );
+      }
       if (!entry) return;
       entry.scrollIntoView({ block: "start", behavior: "smooth" });
     });
@@ -451,9 +492,14 @@ export function createMapView(
 
     const highlightedSpeakers = matchedSpeakersByLocation.get(location.id) || new Set();
     const searching = Boolean(searchQuery);
-    focusedSpeakerName = resolveFocusedSpeaker(location, focusedSpeakerName);
-    renderSpeakerList(location, { highlightedSpeakers, searching, focusedSpeakerName });
-    scrollSpeakerIntoView(focusedSpeakerName);
+    focusedSpeakerName = resolveFocusedSpeaker(location, focusedSpeakerName, focusedSpeakerKey);
+    renderSpeakerList(location, {
+      highlightedSpeakers,
+      searching,
+      focusedSpeakerName,
+      focusedSpeakerKey,
+    });
+    scrollSpeakerIntoView(focusedSpeakerName, focusedSpeakerKey);
     if (selectedTalkId) {
       setSpeakerListVisible(false);
       if (elements.talkBack) elements.talkBack.hidden = false;
@@ -470,32 +516,52 @@ export function createMapView(
 
   function renderSpeakerList(
     location,
-    { highlightedSpeakers = new Set(), searching = false, focusedSpeakerName: focusedName = null } = {}
+    {
+      highlightedSpeakers = new Set(),
+      searching = false,
+      focusedSpeakerName: focusedName = null,
+      focusedSpeakerKey: focusedKey = null,
+    } = {}
   ) {
     const details = location.speaker_details || location.speakers.map((name) => ({ name }));
     const speakers = details.filter((speaker) => !speaker.non_speaking_delegate);
     const delegates = details.filter((speaker) => speaker.non_speaking_delegate);
 
-    const networkLinkHtml = (name) => {
-      if (!networkNodeIdsByName.has(name)) return "";
-      return `<button type="button" class="btn-ghost btn-small cross-view-link" data-show-network="${escapeHtml(name)}">Show in network</button>`;
+    const networkLinkHtml = (speaker) => {
+      const name = speaker.name || speaker;
+      const personKey = personKeyFromRecord(speaker);
+      const nodeId = personKey ? networkNodeIdsByPersonKey.get(personKey) : null;
+      if (!nodeId) return "";
+      const attrs = [
+        `data-show-network="${escapeHtml(name)}"`,
+        personKey ? `data-show-network-key="${escapeHtml(personKey)}"` : "",
+      ].join(" ");
+      return `<button type="button" class="btn-ghost btn-small cross-view-link" ${attrs}>Show in network</button>`;
+    };
+
+    const speakerEntryClass = (speaker) => {
+      const identityKey = speakerIdentityKey(speaker);
+      const isMatch = searching && highlightedSpeakers.has(identityKey);
+      const isFocused =
+        (focusedKey && personKeyFromRecord(speaker) === focusedKey) ||
+        (focusedName && (speaker.name || speaker) === focusedName);
+      return `${isMatch ? " speaker-match" : ""}${isFocused ? " speaker-focused" : ""}`;
     };
 
     const speakerHtml = speakers
       .map((speaker) => {
         const name = speaker.name || speaker;
-        const isMatch = searching && highlightedSpeakers.has(name);
-        const isFocused = focusedName && name === focusedName;
+        const personKey = personKeyFromRecord(speaker);
         const titlesHtml = renderTalkTitlesHtml(speaker.talk_titles || [], {
           kicker: "",
           selectedTalkId,
           resolveTalkId: (entry) => resolveTalkId(entry, talksData, name),
         });
         return `
-          <li class="speaker-entry${isMatch ? " speaker-match" : ""}${isFocused ? " speaker-focused" : ""}" data-speaker-name="${escapeHtml(name)}">
+          <li class="speaker-entry${speakerEntryClass(speaker)}" data-speaker-name="${escapeHtml(name)}"${personKey ? ` data-speaker-key="${escapeHtml(personKey)}"` : ""}>
             <div class="speaker-name-row">
               <span class="speaker-name">${escapeHtml(name)}</span>
-              ${networkLinkHtml(name)}
+              ${networkLinkHtml(speaker)}
             </div>
             ${titlesHtml}
           </li>`;
@@ -510,10 +576,9 @@ export function createMapView(
             ${delegates
               .map((speaker) => {
                 const name = speaker.name || speaker;
-                const isMatch = searching && highlightedSpeakers.has(name);
-                const isFocused = focusedName && name === focusedName;
-                const link = networkLinkHtml(name);
-                return `<li class="${isMatch ? "speaker-match" : ""}${isFocused ? " speaker-focused" : ""}" data-speaker-name="${escapeHtml(name)}"><span class="speaker-delegate-name">${escapeHtml(name)}</span>${link ? ` ${link}` : ""}</li>`;
+                const personKey = personKeyFromRecord(speaker);
+                const link = networkLinkHtml(speaker);
+                return `<li class="${speakerEntryClass(speaker).trim() || ""}" data-speaker-name="${escapeHtml(name)}"${personKey ? ` data-speaker-key="${escapeHtml(personKey)}"` : ""}><span class="speaker-delegate-name">${escapeHtml(name)}</span>${link ? ` ${link}` : ""}</li>`;
               })
               .join("")}
           </ul>
@@ -593,17 +658,25 @@ export function createMapView(
     });
   }
 
-  function selectLocation(id, { fly = true, toggle = false, speakerName = undefined } = {}) {
+  function selectLocation(id, { fly = true, toggle = false, speakerName = undefined, personKey = undefined } = {}) {
     const previousId = selectedId;
     const nextId = toggle && selectedId === id ? null : id;
     if (nextId !== previousId) clearTalkHighlights();
     selectedId = nextId;
     if (!nextId) {
       focusedSpeakerName = null;
+      focusedSpeakerKey = null;
+    } else if (personKey !== undefined) {
+      focusedSpeakerKey = isRegistryPersonKey(personKey) ? personKey : null;
+      if (speakerName !== undefined) {
+        focusedSpeakerName = String(speakerName || "").trim() || null;
+      }
     } else if (speakerName !== undefined) {
       focusedSpeakerName = String(speakerName || "").trim() || null;
+      focusedSpeakerKey = null;
     } else if (nextId !== previousId) {
       focusedSpeakerName = null;
+      focusedSpeakerKey = null;
     }
     renderHoverCard(locationById(selectedId));
     elements.renderResults({
@@ -668,6 +741,7 @@ export function createMapView(
             query: speaker.name,
             locationId: location.id,
             speakerName: speaker.name,
+            person_key: speaker.person_key,
             talkTitles: speaker.talk_titles,
             nonSpeakingDelegate: Boolean(speaker.non_speaking_delegate),
             _name: speaker.name,
@@ -873,7 +947,10 @@ export function createMapView(
         if (networkButton && elements.hoverSpeakers?.contains(networkButton)) {
           event.preventDefault();
           event.stopPropagation();
-          elements.onShowInNetwork?.(networkButton.dataset.showNetwork);
+          elements.onShowInNetwork?.(
+            networkButton.dataset.showNetwork,
+            networkButton.dataset.showNetworkKey || ""
+          );
         }
         return;
       }
@@ -900,6 +977,7 @@ export function createMapView(
         highlightedSpeakers,
         searching: Boolean(searchQuery),
         focusedSpeakerName,
+        focusedSpeakerKey,
       });
       scrollSpeakerIntoView(focusedSpeakerName);
     });

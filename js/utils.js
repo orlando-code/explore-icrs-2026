@@ -291,14 +291,14 @@ export function sortTalkTitleEntries(entries) {
   });
 }
 
-export function buildTalkTitleIndex(locations, talkTitlesByAuthor = null) {
-  if (talkTitlesByAuthor) {
+export function buildTalkTitleIndex(locations, talkTitlesByPersonKey = null) {
+  if (talkTitlesByPersonKey) {
     const index = new Map();
-    for (const [name, entries] of Object.entries(talkTitlesByAuthor)) {
+    for (const [personKey, entries] of Object.entries(talkTitlesByPersonKey)) {
       const merged = mergeTalkTitleEntries([], entries)
         .map(normalizeTalkTitleEntry)
         .filter(Boolean);
-      if (merged.length) index.set(name, merged);
+      if (merged.length) index.set(personKey, merged);
     }
     return index;
   }
@@ -306,10 +306,12 @@ export function buildTalkTitleIndex(locations, talkTitlesByAuthor = null) {
   const index = new Map();
   for (const location of locations) {
     for (const speaker of location.speaker_details || []) {
+      const personKey = String(speaker.person_key || "").trim();
+      if (!personKey) continue;
       const titles = speaker.talk_titles || [];
       if (!titles.length) continue;
-      const existing = index.get(speaker.name) || [];
-      index.set(speaker.name, mergeTalkTitleEntries(existing, titles));
+      const existing = index.get(personKey) || [];
+      index.set(personKey, mergeTalkTitleEntries(existing, titles));
     }
   }
   return index;
@@ -347,13 +349,21 @@ export function speakerMatchesQuery(speaker, query) {
   return speaker.search_text.includes(trimmed);
 }
 
+export function speakerIdentityKey(speaker) {
+  const personKey = personKeyFromRecord(speaker);
+  if (personKey) return personKey;
+  const name = String(speaker?.name || speaker || "").trim();
+  return name ? normalizePersonName(name) : "";
+}
+
 export function matchedSpeakersForLocation(location, query) {
   const trimmed = query.trim().toLowerCase();
   if (!trimmed) return new Set();
   const matched = new Set();
   for (const speaker of location.speaker_details || []) {
     if (speakerMatchesQuery(speaker, trimmed)) {
-      matched.add(speaker.name);
+      const key = speakerIdentityKey(speaker);
+      if (key) matched.add(key);
     }
   }
   return matched;
@@ -604,7 +614,11 @@ export function normalizePersonName(name) {
 let delegatePersonKeyAliases = null;
 let personCanonicalNames = null;
 
-/** Load name→person_key aliases exported with delegate groups. */
+export function isRegistryPersonKey(value) {
+  return typeof value === "string" && value.startsWith("icrs-p-");
+}
+
+/** Load name→person_key aliases exported with delegate groups (unique variants only). */
 export function setDelegatePersonKeyAliases(aliases = {}) {
   delegatePersonKeyAliases = aliases && typeof aliases === "object" ? aliases : {};
 }
@@ -612,6 +626,12 @@ export function setDelegatePersonKeyAliases(aliases = {}) {
 /** Load person_key→preferred display name (talk name when available). */
 export function setPersonCanonicalNames(names = {}) {
   personCanonicalNames = names && typeof names === "object" ? names : {};
+}
+
+export function personKeyFromRecord(record = {}) {
+  const key = String(record.person_key || "").trim();
+  if (isRegistryPersonKey(key)) return key;
+  return "";
 }
 
 export function resolveDelegatePersonKey(name) {
@@ -624,16 +644,16 @@ export function resolveDelegatePersonKey(name) {
       delegatePersonKeyAliases[normalized] ||
       delegatePersonKeyAliases[lowered] ||
       delegatePersonKeyAliases[cleaned];
-    if (alias) return String(alias);
+    if (isRegistryPersonKey(alias)) return String(alias);
   }
-  return normalized || lowered;
+  return "";
 }
 
-export function resolveCanonicalPersonName(name) {
+export function resolveCanonicalPersonName(name, personKey = "") {
   const cleaned = String(name || "").trim();
   if (!cleaned) return "";
-  const personKey = resolveDelegatePersonKey(cleaned);
-  const canonical = personCanonicalNames?.[personKey];
+  const key = isRegistryPersonKey(personKey) ? personKey : resolveDelegatePersonKey(cleaned);
+  const canonical = isRegistryPersonKey(key) ? personCanonicalNames?.[key] : "";
   return canonical ? String(canonical) : cleaned;
 }
 
@@ -649,29 +669,44 @@ export function dedupeSearchHitsByPerson(hits, getName) {
   const deduped = new Map();
   for (const hit of hits) {
     const rawName = getName(hit);
-    const personKey = resolveDelegatePersonKey(rawName);
-    const canonical = resolveCanonicalPersonName(rawName);
+    const personKey = personKeyFromRecord(hit);
+    const dedupeKey = personKey
+      ? personKey
+      : `${hit.locationId || hit.nodeId || ""}|${rawName}`;
+    const canonical = resolveCanonicalPersonName(rawName, personKey);
     const { _name, _priority, ...rest } = hit;
     const candidate = {
       ...rest,
+      person_key: personKey || rest.person_key || "",
       label: canonical,
       query: canonical,
       speakerName: canonical,
       _priority: searchNamePriority(hit),
     };
-    const existing = deduped.get(personKey);
+    const existing = deduped.get(dedupeKey);
     if (!existing || candidate._priority > existing._priority) {
-      deduped.set(personKey, candidate);
+      deduped.set(dedupeKey, candidate);
     }
   }
-  return [...deduped.values()].map(({ _priority, ...entry }) => entry);
+  const results = [...deduped.values()].map(({ _priority, ...entry }) => entry);
+  const labelCounts = new Map();
+  for (const hit of results) {
+    labelCounts.set(hit.label, (labelCounts.get(hit.label) || 0) + 1);
+  }
+  return results.map((hit) => {
+    if ((labelCounts.get(hit.label) || 0) <= 1) return hit;
+    const detail = String(hit.detail || "").trim();
+    if (!detail) return hit;
+    const label = `${hit.label} — ${detail}`;
+    return { ...hit, label, query: label, speakerName: hit.speakerName || hit.label };
+  });
 }
 
 function delegateIdentityKeys(delegate) {
   const keys = new Set();
   if (!delegate) return keys;
-  const personKey = delegate.person_key || resolveDelegatePersonKey(delegate.name);
-  if (personKey) keys.add(String(personKey));
+  const personKey = personKeyFromRecord(delegate) || resolveDelegatePersonKey(delegate.name);
+  if (isRegistryPersonKey(personKey)) keys.add(personKey);
   const normalized = normalizePersonName(delegate.name);
   if (normalized) keys.add(normalized);
   const lowered = String(delegate.name || "").trim().toLowerCase();
@@ -692,7 +727,7 @@ function locationDelegateIdentityKeys(location) {
 function annotateSpeakerDetails(speakerDetails = []) {
   return speakerDetails.map((speaker) => ({
     ...speaker,
-    person_key: speaker.person_key || resolveDelegatePersonKey(speaker.name),
+    person_key: personKeyFromRecord(speaker) || resolveDelegatePersonKey(speaker.name),
   }));
 }
 
@@ -1036,12 +1071,7 @@ export function mergeEmissionsMapLocations(
 }
 
 function normalizePersonNameForExclusion(name) {
-  return String(name || "")
-    .replace(/^(dr|prof|professor|mr|mrs|ms|miss)\.?\s+/i, "")
-    .replace(/[^a-z0-9\s]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .toLowerCase();
+  return normalizePersonName(name);
 }
 
 let mapExcludedNames = null;
