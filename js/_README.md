@@ -1,6 +1,6 @@
 # Front-end modules (`js/`)
 
-ES modules loaded by `index.html`. See [pipeline/README.md](../pipeline/README.md) for rebuild commands.
+ES modules loaded by `index.html`. See [pipeline/_README.md](../pipeline/_README.md) for rebuild commands; narrative: [pipeline/METHODOLOGY.md](../pipeline/METHODOLOGY.md).
 
 Person identity in the UI uses registry `person_key` (`icrs-p-*`) end-to-end: generated bundles include `person_key` on speakers/delegates, `utils.js` dedupes search by key, and `offset-tracker.js` uses `attendeeDedupeKey(name, affiliation)` for homonym-safe emissions lookup. Aliases ship in `non-speaking-delegates.js` as `DELEGATE_PERSON_KEY_ALIASES`.
 

@@ -32,6 +32,7 @@ def build_talk_catalog(
             presenter_col,
             "authors",
             "session_title",
+            "presentation_type",
             "date",
             "start",
             "person_key",
@@ -75,6 +76,10 @@ def build_talk_catalog(
                 if "session_title" not in column_index
                 or pd.isna(row[column_index["session_title"]])
                 else str(row[column_index["session_title"]]).strip(),
+                "presentation_type": ""
+                if "presentation_type" not in column_index
+                or pd.isna(row[column_index["presentation_type"]])
+                else str(row[column_index["presentation_type"]]).strip(),
                 "date": ""
                 if "date" not in column_index or pd.isna(row[column_index["date"]])
                 else str(row[column_index["date"]]).strip(),

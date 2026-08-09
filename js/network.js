@@ -8,6 +8,7 @@ import {
   resolveCanonicalPersonName,
   resolveDelegatePersonKey,
   normalizePersonName,
+  setTalkFormatElement,
 } from "./utils.js";
 import { createTalkSimilarityLookup, resolveTalkId } from "./talk-similarity.js";
 import { CONTACT_API_URL, SKIP_TURNSTILE, TURNSTILE_SITE_KEY } from "./config.js";
@@ -1974,6 +1975,7 @@ export function createNetworkView(siteData, elements) {
     if (elements.talkDetail) {
       elements.talkDetail.hidden = true;
       if (elements.talkTitle) elements.talkTitle.textContent = "";
+      setTalkFormatElement(elements.talkFormat, null);
       if (elements.talkAuthors) elements.talkAuthors.innerHTML = "";
       if (elements.talkAbstract) elements.talkAbstract.textContent = "";
     }
@@ -2049,6 +2051,7 @@ export function createNetworkView(siteData, elements) {
     setTalkListVisible(false);
     elements.talkDetail.hidden = false;
     if (elements.talkTitle) elements.talkTitle.textContent = talk.title;
+    setTalkFormatElement(elements.talkFormat, talk);
     if (elements.talkAuthors) {
       elements.talkAuthors.innerHTML = renderTalkAuthorsHtml(talk.authors);
     }

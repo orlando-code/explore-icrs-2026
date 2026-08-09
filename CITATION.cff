@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software or dataset, please cite it as below."
+title: "ICRS 2026 Explorer"
+type: software
+authors:
+  - family-names: Timmerman
+    given-names: Orlando
+    email: rt582@cam.ac.uk
+    affiliation: University of Cambridge
+license: MIT
+repository-code: "https://github.com/orlando-code/explore-icrs-2026"
+url: "https://orlando-codes.com/explore-icrs-2026/"
+abstract: >-
+  Interactive map, co-authorship network, and travel-emissions explorer for
+  delegates of the 2026 International Coral Reef Symposium (Auckland). Built
+  from the public delegate list and conference programme, with open source
+  processing pipeline and static web front end.
+keywords:
+  - coral reefs
+  - ICRS
+  - co-authorship network
+  - travel emissions
+  - open data

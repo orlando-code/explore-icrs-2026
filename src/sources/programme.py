@@ -29,11 +29,24 @@ TALK_COLUMNS = [
     "session_id",
     "session_title",
     "session_kind",
+    "presentation_type",
     "session_code",
     "session_theme",
     "room",
     "location",
 ]
+
+
+def classify_presentation_type(session_kind: object) -> str:
+    """Map programme session kind to poster, oral, or keynote."""
+    kind = str(session_kind or "").strip().casefold()
+    if kind == "poster":
+        return "poster"
+    if kind == "plenary":
+        return "keynote"
+    if kind in {"session", "special"}:
+        return "oral"
+    return ""
 
 
 def _load_json(path: Path) -> Any:
@@ -86,6 +99,7 @@ def load_talks(
                     "session_id": session.get("id"),
                     "session_title": session.get("title"),
                     "session_kind": session.get("kind"),
+                    "presentation_type": classify_presentation_type(session.get("kind")),
                     "session_code": session.get("code"),
                     "session_theme": session.get("theme"),
                     "room": session.get("room"),

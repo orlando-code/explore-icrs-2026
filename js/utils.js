@@ -255,6 +255,26 @@ export function formatTonnes(kg) {
   return `${(Number(kg) / 1000).toLocaleString(undefined, { maximumFractionDigits: 1 })} t CO₂e`;
 }
 
+export function presentationTypeLabel(type) {
+  const value = String(type || "").trim().toLowerCase();
+  if (value === "poster") return "Poster";
+  if (value === "oral") return "Oral presentation";
+  if (value === "keynote") return "Keynote";
+  return "";
+}
+
+export function setTalkFormatElement(element, talk) {
+  if (!element) return;
+  const label = presentationTypeLabel(talk?.presentation_type);
+  if (!label) {
+    element.hidden = true;
+    element.textContent = "";
+    return;
+  }
+  element.hidden = false;
+  element.textContent = label;
+}
+
 export function normalizeTalkTitleEntry(entry) {
   if (!entry) return null;
   if (typeof entry === "string") {

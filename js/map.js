@@ -8,6 +8,7 @@ import {
   matchedSpeakersForLocation,
   locationCorrectionMailto,
   renderTalkTitlesHtml,
+  setTalkFormatElement,
   speakerMatchesQuery,
   findLocationIdByAffiliation,
   dedupeSearchHitsByPerson,
@@ -388,6 +389,7 @@ export function createMapView(
     if (elements.talkBack) elements.talkBack.hidden = true;
     if (elements.talkAuthors) elements.talkAuthors.innerHTML = "";
     if (elements.talkTitle) elements.talkTitle.textContent = "";
+    setTalkFormatElement(elements.talkFormat, null);
     if (elements.talkAbstract) elements.talkAbstract.textContent = "";
     setSpeakerListVisible(true);
     upsertMapData();
@@ -417,6 +419,7 @@ export function createMapView(
     if (elements.talkBack) elements.talkBack.hidden = false;
     elements.talkDetail.hidden = false;
     if (elements.talkTitle) elements.talkTitle.textContent = talk.title;
+    setTalkFormatElement(elements.talkFormat, talk);
     if (elements.talkAuthors) {
       elements.talkAuthors.innerHTML = renderTalkAuthorsHtml(talk.authors);
     }

@@ -916,6 +916,14 @@ a.btn-small {
   color: var(--sea-deep);
 }
 
+.network-talk-format {
+  margin: -0.2rem 0 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--sea);
+}
+
 .network-talk-authors {
   margin: 0 0 0.55rem;
   font-size: 0.82rem;
