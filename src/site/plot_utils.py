@@ -436,7 +436,11 @@ def _build_talk_title_index(
             for author in authors:
                 person_key = delegate_person_key(author, affiliation=affiliation_text)
                 if not person_key:
-                    continue
+                    from src.sources.delegates import normalize_person_name
+
+                    person_key = normalize_person_name(author)
+                    if not person_key:
+                        continue
                 author_bucket = index.setdefault(person_key, {})
                 is_primary = person_key == presenter_key or (
                     not presenter_key
@@ -869,6 +873,30 @@ def _slim_talk_frame(
     return df.loc[:, [column for column in columns if column in df.columns]].copy()
 
 
+def _unmapped_author_network_key(author: str) -> str:
+    from src.sources.delegates import normalize_person_name
+
+    norm = normalize_person_name(author)
+    return f"unmapped:{norm}" if norm else ""
+
+
+def _resolve_network_author_key(
+    author: str,
+    affiliation_text: str,
+) -> tuple[str, bool]:
+    """Return (network_key, is_registry_person)."""
+    from src.sources.delegates import delegate_person_key
+
+    person_key = delegate_person_key(author, affiliation=affiliation_text)
+    if person_key:
+        return person_key, True
+    return _unmapped_author_network_key(author), False
+
+
+def _truthy_export_flag(value: object) -> bool:
+    return str(value or "").strip().lower() in {"true", "1", "yes"}
+
+
 def _build_network_data(
     df: pd.DataFrame,
     locations: list[dict[str, Any]],
@@ -880,12 +908,15 @@ def _build_network_data(
     """Build co-authorship networks at individual and affiliation level."""
     from src.registry.key_resolution import get_registry_key_resolver
     from src.site.export_progress import make_progress
-    from src.sources.delegates import delegate_person_key
 
     resolver = get_registry_key_resolver()
     key_to_canonical = resolver.key_to_canonical
     attended_by_key = {
-        person_key: str(person.get("attended") or "").strip().lower() in {"true", "1", "yes"}
+        person_key: _truthy_export_flag(person.get("attended"))
+        for person_key, person in resolver.people_by_key.items()
+    }
+    in_programme_by_key = {
+        person_key: _truthy_export_flag(person.get("in_programme"))
         for person_key, person in resolver.people_by_key.items()
     }
     delegate_affiliations_by_key = _delegate_affiliation_by_person_key()
@@ -893,6 +924,8 @@ def _build_network_data(
 
     author_affiliations: dict[str, str] = {}
     explicit_affiliation: dict[str, bool] = {}
+    author_labels: dict[str, str] = {}
+    registry_author_keys: set[str] = set()
     presenter_person_keys: set[str] = set()
     individual_talk_count: dict[str, int] = {}
     affiliation_talk_count: dict[str, int] = {}
@@ -919,16 +952,26 @@ def _build_network_data(
                 row[authors_idx],
                 row[presenter_idx],
             ):
-                person_key = delegate_person_key(author, affiliation=affiliation_text)
-                if not person_key:
-                    continue
-                author_keys.append(person_key)
-                individual_talk_count[person_key] = (
-                    individual_talk_count.get(person_key, 0) + 1
+                network_key, is_registry = _resolve_network_author_key(
+                    author,
+                    affiliation_text,
                 )
-                if affiliation_text and person_key not in author_affiliations:
-                    author_affiliations[person_key] = affiliation_text
-                    explicit_affiliation[person_key] = False
+                if not network_key:
+                    continue
+                author_keys.append(network_key)
+                author_labels.setdefault(network_key, str(author).strip())
+                if is_registry:
+                    registry_author_keys.add(network_key)
+                individual_talk_count[network_key] = (
+                    individual_talk_count.get(network_key, 0) + 1
+                )
+                if (
+                    is_registry
+                    and affiliation_text
+                    and network_key not in author_affiliations
+                ):
+                    author_affiliations[network_key] = affiliation_text
+                    explicit_affiliation[network_key] = False
 
             if not author_keys:
                 progress.advance(task_id)
@@ -936,11 +979,12 @@ def _build_network_data(
 
             presenter = row[presenter_idx]
             if not pd.isna(presenter) and affiliation_text:
-                presenter_key = delegate_person_key(
+                presenter_key, presenter_is_registry = _resolve_network_author_key(
                     str(presenter).strip(),
-                    affiliation=affiliation_text,
+                    affiliation_text,
                 )
-                if presenter_key:
+                if presenter_key and presenter_is_registry:
+                    registry_author_keys.add(presenter_key)
                     presenter_person_keys.add(presenter_key)
                     author_affiliations[presenter_key] = affiliation_text
                     explicit_affiliation[presenter_key] = True
@@ -969,18 +1013,29 @@ def _build_network_data(
                         affiliation_edges[key] = affiliation_edges.get(key, 0) + 1
             progress.advance(task_id)
 
-    for person_key in individual_talk_count:
+    for person_key in registry_author_keys:
         if person_key in delegate_affiliations_by_key:
             author_affiliations[person_key] = delegate_affiliations_by_key[person_key]
             explicit_affiliation[person_key] = True
 
     individual_nodes = []
-    for person_key, connections in sorted(
+    network_key_to_id: dict[str, str] = {}
+    for network_key, connections in sorted(
         individual_talk_count.items(),
         key=lambda item: (-item[1], item[0].casefold()),
     ):
+        is_registry = network_key in registry_author_keys
+        person_key = network_key if is_registry else ""
+        attended = attended_by_key.get(person_key, False) if is_registry else False
+        on_programme = in_programme_by_key.get(person_key, False) if is_registry else False
+        external_coauthor = not attended and not on_programme
+        affiliation_text = author_affiliations.get(network_key, "")
+        affiliation_mapped = bool(affiliation_text) and explicit_affiliation.get(
+            network_key,
+            False,
+        )
         affiliation, coords = _resolve_affiliation_coords(
-            author_affiliations.get(person_key, ""),
+            affiliation_text,
             affiliation_coords,
         )
         lat = None
@@ -992,25 +1047,49 @@ def _build_network_data(
                 _haversine_km(lat, lon, AUCKLAND_LAT, AUCKLAND_LON),
                 1,
             )
-        label = key_to_canonical.get(person_key, person_key)
+        if is_registry:
+            label = key_to_canonical.get(person_key, person_key)
+            node_id = f"person:{person_key}"
+        else:
+            label = author_labels.get(
+                network_key,
+                network_key.removeprefix("unmapped:"),
+            )
+            node_id = f"author:{network_key.removeprefix('unmapped:')}"
+        network_key_to_id[network_key] = node_id
         individual_nodes.append(
             {
-                "id": f"person:{person_key}",
+                "id": node_id,
                 "label": label,
                 "person_key": person_key,
                 "kind": "individual",
                 "affiliation": affiliation,
                 "author_role": (
-                    "presenter" if person_key in presenter_person_keys else "co_author"
+                    "presenter"
+                    if network_key in presenter_person_keys
+                    else "co_author"
                 ),
-                "affiliation_explicit": explicit_affiliation.get(person_key, False),
-                "attended": attended_by_key.get(person_key, False),
+                "affiliation_explicit": explicit_affiliation.get(network_key, False),
+                "affiliation_mapped": affiliation_mapped,
+                "attended": attended,
+                "on_programme": on_programme,
+                "external_coauthor": external_coauthor,
                 "connections": connections,
                 "lat": lat,
                 "lon": lon,
                 "distance_km": distance_km,
             }
         )
+
+    def _individual_links(edges: dict[tuple[str, str], int]) -> list[dict[str, Any]]:
+        return [
+            {
+                "source": network_key_to_id[source],
+                "target": network_key_to_id[target],
+                "weight": weight,
+            }
+            for (source, target), weight in edges.items()
+        ]
 
     affiliation_nodes = []
     for affiliation, connections in sorted(
@@ -1055,7 +1134,7 @@ def _build_network_data(
     return {
         "individual": {
             "nodes": individual_nodes,
-            "links": _links(individual_edges, "person:"),
+            "links": _individual_links(individual_edges),
         },
         "affiliation": {
             "nodes": affiliation_nodes,
