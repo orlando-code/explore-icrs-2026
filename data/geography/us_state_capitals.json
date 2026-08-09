@@ -1,0 +1,298 @@
+{
+  "meta": {
+    "schema_version": 1,
+    "generated_at": "2026-08-09T06:01:51+00:00",
+    "description": "US state and territory capitals for delegate-country United States.",
+    "entry_count": 56
+  },
+  "states": {
+    "Alabama": {
+      "city": "Montgomery",
+      "lat": 32.3668,
+      "lon": -86.3
+    },
+    "Alaska": {
+      "city": "Juneau",
+      "lat": 58.3019,
+      "lon": -134.4197
+    },
+    "American Samoa": {
+      "city": "Pago Pago",
+      "lat": -14.2756,
+      "lon": -170.702
+    },
+    "Arizona": {
+      "city": "Phoenix",
+      "lat": 33.4484,
+      "lon": -112.074
+    },
+    "Arkansas": {
+      "city": "Little Rock",
+      "lat": 34.7465,
+      "lon": -92.2896
+    },
+    "California": {
+      "city": "Sacramento",
+      "lat": 38.5816,
+      "lon": -121.4944
+    },
+    "Colorado": {
+      "city": "Denver",
+      "lat": 39.7392,
+      "lon": -104.9903
+    },
+    "Connecticut": {
+      "city": "Hartford",
+      "lat": 41.7658,
+      "lon": -72.6734
+    },
+    "Delaware": {
+      "city": "Dover",
+      "lat": 39.1582,
+      "lon": -75.5244
+    },
+    "District of Columbia": {
+      "city": "Washington",
+      "lat": 38.9072,
+      "lon": -77.0369
+    },
+    "Florida": {
+      "city": "Tallahassee",
+      "lat": 30.4383,
+      "lon": -84.2807
+    },
+    "Georgia": {
+      "city": "Atlanta",
+      "lat": 33.749,
+      "lon": -84.388
+    },
+    "Guam": {
+      "city": "Hagåtña",
+      "lat": 13.476,
+      "lon": 144.7502
+    },
+    "Hawaii": {
+      "city": "Honolulu",
+      "lat": 21.3069,
+      "lon": -157.8583
+    },
+    "Idaho": {
+      "city": "Boise",
+      "lat": 43.615,
+      "lon": -116.2023
+    },
+    "Illinois": {
+      "city": "Springfield",
+      "lat": 39.7817,
+      "lon": -89.6501
+    },
+    "Indiana": {
+      "city": "Indianapolis",
+      "lat": 39.7684,
+      "lon": -86.1581
+    },
+    "Iowa": {
+      "city": "Des Moines",
+      "lat": 41.5868,
+      "lon": -93.625
+    },
+    "Kansas": {
+      "city": "Topeka",
+      "lat": 39.0473,
+      "lon": -95.6752
+    },
+    "Kentucky": {
+      "city": "Frankfort",
+      "lat": 38.2009,
+      "lon": -84.8733
+    },
+    "Louisiana": {
+      "city": "Baton Rouge",
+      "lat": 30.4515,
+      "lon": -91.1871
+    },
+    "Maine": {
+      "city": "Augusta",
+      "lat": 44.3106,
+      "lon": -69.7795
+    },
+    "Maryland": {
+      "city": "Annapolis",
+      "lat": 38.9784,
+      "lon": -76.4922
+    },
+    "Massachusetts": {
+      "city": "Boston",
+      "lat": 42.3601,
+      "lon": -71.0589
+    },
+    "Michigan": {
+      "city": "Lansing",
+      "lat": 42.7325,
+      "lon": -84.5555
+    },
+    "Minnesota": {
+      "city": "Saint Paul",
+      "lat": 44.9537,
+      "lon": -93.09
+    },
+    "Mississippi": {
+      "city": "Jackson",
+      "lat": 32.2988,
+      "lon": -90.1848
+    },
+    "Missouri": {
+      "city": "Jefferson City",
+      "lat": 38.5767,
+      "lon": -92.1735
+    },
+    "Montana": {
+      "city": "Helena",
+      "lat": 46.5891,
+      "lon": -112.0391
+    },
+    "Nebraska": {
+      "city": "Lincoln",
+      "lat": 40.8136,
+      "lon": -96.7026
+    },
+    "Nevada": {
+      "city": "Carson City",
+      "lat": 39.1638,
+      "lon": -119.7674
+    },
+    "New Hampshire": {
+      "city": "Concord",
+      "lat": 43.2081,
+      "lon": -71.5376
+    },
+    "New Jersey": {
+      "city": "Trenton",
+      "lat": 40.2171,
+      "lon": -74.7429
+    },
+    "New Mexico": {
+      "city": "Santa Fe",
+      "lat": 35.687,
+      "lon": -105.9378
+    },
+    "New York": {
+      "city": "Albany",
+      "lat": 42.6526,
+      "lon": -73.7562
+    },
+    "North Carolina": {
+      "city": "Raleigh",
+      "lat": 35.7796,
+      "lon": -78.6382
+    },
+    "North Dakota": {
+      "city": "Bismarck",
+      "lat": 46.8083,
+      "lon": -100.7837
+    },
+    "Northern Mariana Islands": {
+      "city": "Saipan",
+      "lat": 15.1778,
+      "lon": 145.7508
+    },
+    "Ohio": {
+      "city": "Columbus",
+      "lat": 39.9612,
+      "lon": -82.9988
+    },
+    "Oklahoma": {
+      "city": "Oklahoma City",
+      "lat": 35.4676,
+      "lon": -97.5164
+    },
+    "Oregon": {
+      "city": "Salem",
+      "lat": 44.9429,
+      "lon": -123.0351
+    },
+    "Pennsylvania": {
+      "city": "Harrisburg",
+      "lat": 40.2732,
+      "lon": -76.8867
+    },
+    "Puerto Rico": {
+      "city": "San Juan",
+      "lat": 18.4655,
+      "lon": -66.1057
+    },
+    "Rhode Island": {
+      "city": "Providence",
+      "lat": 41.824,
+      "lon": -71.4128
+    },
+    "South Carolina": {
+      "city": "Columbia",
+      "lat": 34.0007,
+      "lon": -81.0348
+    },
+    "South Dakota": {
+      "city": "Pierre",
+      "lat": 44.3683,
+      "lon": -100.351
+    },
+    "Tennessee": {
+      "city": "Nashville",
+      "lat": 36.1627,
+      "lon": -86.7816
+    },
+    "Texas": {
+      "city": "Austin",
+      "lat": 30.2672,
+      "lon": -97.7431
+    },
+    "United States Virgin Islands": {
+      "city": "Charlotte Amalie",
+      "lat": 18.3419,
+      "lon": -64.9307
+    },
+    "Utah": {
+      "city": "Salt Lake City",
+      "lat": 40.7608,
+      "lon": -111.891
+    },
+    "Vermont": {
+      "city": "Montpelier",
+      "lat": 44.2601,
+      "lon": -72.5754
+    },
+    "Virginia": {
+      "city": "Richmond",
+      "lat": 37.5407,
+      "lon": -77.436
+    },
+    "Washington": {
+      "city": "Olympia",
+      "lat": 47.0379,
+      "lon": -122.9007
+    },
+    "West Virginia": {
+      "city": "Charleston",
+      "lat": 38.3498,
+      "lon": -81.6326
+    },
+    "Wisconsin": {
+      "city": "Madison",
+      "lat": 43.0731,
+      "lon": -89.4012
+    },
+    "Wyoming": {
+      "city": "Cheyenne",
+      "lat": 41.14,
+      "lon": -104.8202
+    }
+  },
+  "aliases": {
+    "dc": "District of Columbia",
+    "hawai'i": "Hawaii",
+    "hawaii": "Hawaii",
+    "hawaiʻi": "Hawaii",
+    "washington d.c.": "District of Columbia",
+    "washington dc": "District of Columbia"
+  }
+}

@@ -32,6 +32,7 @@ def _affiliation_for_person(person: pd.Series) -> tuple[str, str, str]:
     return organisation, country, affiliation
 
 
+from src.geocoding.capital_coords import capital_geocode_hit
 def _attach_registry_geocode(
     row: dict[str, object],
     *,
@@ -43,6 +44,10 @@ def _attach_registry_geocode(
     if hit is None and row.get("affiliation"):
         org, ctry = parse_affiliation_parts(str(row["affiliation"]))
         hit = registry_geocode_hit(org or organisation, ctry or country, index=index)
+        organisation = org or organisation
+        country = ctry or country
+    if hit is None and country:
+        hit = capital_geocode_hit(organisation, country, require=True)
     if hit is None:
         return row
     row["latitude"] = hit["latitude"]
@@ -116,8 +121,10 @@ def build_map_talks(
         if not name:
             continue
         organisation, country, affiliation = _affiliation_for_person(person)
-        if not organisation:
+        if not organisation and not country:
             continue
+        if not affiliation and country:
+            affiliation = _make_affiliation(organisation or ".", country)
         affiliation_key = resolver.resolve_affiliation_key(organisation, country)
         row: dict[str, object] = {
             "presenter": name,

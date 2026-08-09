@@ -1561,33 +1561,6 @@ def save_delegates(
     return Path(json_path)
 
 
-def _fill_missing_with_capital_fallback(rows: pd.DataFrame) -> pd.DataFrame:
-    """Use state/country capitals when institute geocoding is missing."""
-    from src.geocoding.capital_coords import resolve_capital_fallback
-
-    rows = rows.copy()
-    missing_mask = rows["latitude"].isna() | rows["longitude"].isna()
-    if not missing_mask.any():
-        return rows
-
-    for index, row in rows.loc[missing_mask].iterrows():
-        country = str(row.get("country") or "").strip()
-        if not country:
-            continue
-        organisation = str(row.get("organisation") or "").strip()
-        fallback = resolve_capital_fallback(organisation, country)
-        if fallback is None:
-            continue
-        _city, lat, lon, query_label = fallback
-        rows.at[index, "latitude"] = lat
-        rows.at[index, "longitude"] = lon
-        rows.at[index, "geocode_level"] = "country"
-        rows.at[index, "geocoded"] = True
-        rows.at[index, "query_used"] = query_label
-
-    return rows
-
-
 def geocoded_delegate_list(
     delegates: pd.DataFrame | None = None,
     *,
@@ -1627,7 +1600,9 @@ def geocoded_delegate_list(
 
     lookup = build_geocode_lookup(load_ok_geocodes())
     overrides = load_geocode_overrides()
+    from src.geocoding.capital_coords import capital_geocode_hit
     from src.registry.affiliation_lookup import AffiliationIndex, registry_geocode_hit
+    from src.registry.affiliation_registry import parse_affiliation_parts
 
     affiliation_index = AffiliationIndex.load()
     from src.site.export_progress import iterrows_with_progress
@@ -1637,6 +1612,12 @@ def geocoded_delegate_list(
         "Geocoding delegate list",
         show_progress=show_progress,
     ):
+        organisation, country = parse_affiliation_parts(str(row["affiliation"]))
+        if not organisation:
+            organisation = str(row.get("organisation") or "").strip()
+        if not country:
+            country = str(row.get("country") or "").strip()
+
         hit = resolve_geocode(
             str(row["affiliation"]),
             presenter=str(row["presenter"]),
@@ -1644,10 +1625,9 @@ def geocoded_delegate_list(
             overrides=overrides,
         )
         if hit is None:
-            from src.registry.affiliation_registry import parse_affiliation_parts
-
-            organisation, country = parse_affiliation_parts(str(row["affiliation"]))
             hit = registry_geocode_hit(organisation, country, index=affiliation_index)
+        if hit is None:
+            hit = capital_geocode_hit(organisation, country, require=bool(country))
         if hit is None:
             continue
         rows.at[index, "latitude"] = float(hit["latitude"])
@@ -1656,7 +1636,6 @@ def geocoded_delegate_list(
         rows.at[index, "geocoded"] = True
         rows.at[index, "query_used"] = hit.get("query_used")
 
-    rows = _fill_missing_with_capital_fallback(rows)
     if "country_code" not in rows.columns:
         rows["country_code"] = rows["country"].map(country_to_iso2)
     if show_progress:

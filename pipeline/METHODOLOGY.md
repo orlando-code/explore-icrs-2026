@@ -155,7 +155,7 @@ Return-trip **[CO₂e](https://www.climatepartner.com/en/knowledge/glossary/carb
 
 Route emissions come from the **[emissions.dev](https://emissions.dev) Travel API**. Flights are assumed to be in economy class: premium economy and business would incur **1.6×** and **2.9×** multipliers respectively.
 
-**Headline figures (speakers pool, cache build):** estimated ~5,228 t CO₂e across geocoded delegates routes; 56 speakers lack a resolvable location and so are excluded from route sums.
+**Headline figures (speakers pool, cache build):** estimated ~5,011 t CO₂e across geocoded delegates.
 
 Map pins on the **Emissions** tab align with the main **Map** tab but only show locations with **CO₂e > 0**.
 

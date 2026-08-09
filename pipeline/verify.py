@@ -10,7 +10,8 @@ from typing import Any
 import pandas as pd
 
 from src.registry.affiliation_lookup import AffiliationIndex
-from src.sources.delegates import normalize_person_name
+from src.sources.delegates import load_delegates, normalize_person_name
+from src.geocoding.capital_data import countries_missing_capital_data
 from src.registry.person_registry import load_person_registry
 from src.data_paths import PERSON_ALIASES_CSV, PERSON_REGISTRY_CSV
 
@@ -139,6 +140,26 @@ def verify_registry_coverage() -> dict[str, Any]:
         metrics["attended_missing_geocode_sample"] = missing.head(8).to_dict(orient="records")
 
     return metrics
+
+
+def verify_capital_data_coverage() -> dict[str, Any]:
+    """Ensure every delegate-list country has capital coordinates in geography data."""
+    delegates = load_delegates()
+    countries = sorted(
+        {
+            str(value).strip()
+            for value in delegates["country"].astype(str)
+            if str(value).strip()
+        }
+    )
+    missing = countries_missing_capital_data(countries)
+    return {
+        "delegate_countries_total": len(countries),
+        "delegate_countries_missing_capital_data": len(missing),
+        "missing_capital_data": [
+            {"country": country, "iso2": iso2} for country, iso2 in missing
+        ],
+    }
 
 
 def build_attendee_artifact() -> pd.DataFrame:

@@ -164,15 +164,11 @@ def registry_geocode_hit(
     geocode_level = "country" if geocode_source == "capital_fallback" or geocode_status == "fallback" else "institute"
     formatted_address = str(row.get("canonical_affiliation") or "")
     if geocode_level == "country" and country_name:
-        from src.geocoding.capital_coords import resolve_capital_fallback
+        from src.geocoding.capital_data import lookup_country_capital
 
-        fallback = resolve_capital_fallback(
-            str(row.get("organisation") or organisation or ""),
-            country_name,
-        )
-        if fallback:
-            city, _, _, _ = fallback
-            formatted_address = f"{city}, {country_name}"
+        record = lookup_country_capital(country_name)
+        if record is not None:
+            formatted_address = f"{record.city}, {country_name}"
     return {
         "latitude": float(latitude),
         "longitude": float(longitude),

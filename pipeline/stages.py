@@ -198,7 +198,27 @@ def run_affiliations(config: PipelineConfig) -> StageReport:
     """Stage 4: Build affiliation registry with internal icrs-a-* keys."""
     from src.registry.affiliation_registry import build_affiliation_registry, save_affiliation_registry
 
+    from pipeline.verify import verify_capital_data_coverage
+
     report = StageReport(stage="affiliations", ok=True)
+    capital_metrics = verify_capital_data_coverage()
+    report.metrics.update(
+        {
+            "capital_delegate_countries_total": capital_metrics["delegate_countries_total"],
+            "capital_delegate_countries_missing": capital_metrics[
+                "delegate_countries_missing_capital_data"
+            ],
+        }
+    )
+    if capital_metrics["delegate_countries_missing_capital_data"]:
+        missing = capital_metrics["missing_capital_data"]
+        report.add_error(
+            f"{len(missing)} delegate-list countries lack capital coordinates in "
+            "data/geography/country_capitals.json"
+        )
+        for item in missing[:5]:
+            report.add_error(f"  missing capital data: {item['country']} ({item['iso2']})")
+
     result = build_affiliation_registry()
     outputs = save_affiliation_registry(
         result,

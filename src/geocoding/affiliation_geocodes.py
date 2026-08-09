@@ -195,9 +195,10 @@ def _capital_fallback_record(
     country: str,
     affiliation: str,
 ) -> dict[str, Any] | None:
-    anchor = resolve_country_anchor_fallback(organisation, country)
+    require = bool(str(country or "").strip())
+    anchor = resolve_country_anchor_fallback(organisation, country, require=require)
     if anchor is None:
-        anchor = resolve_capital_fallback(organisation, country)
+        anchor = resolve_capital_fallback(organisation, country, require=require)
     if anchor is None:
         return None
     city, lat, lon, query_label = anchor

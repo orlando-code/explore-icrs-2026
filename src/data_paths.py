@@ -53,6 +53,8 @@ DELEGATE_ID_MATCH_REVIEW_GLOB = "delegate_id_match_review_*_merged.csv"
 # Geography (emissions choropleth)
 COUNTRY_BOUNDARIES_GEOJSON = GEOGRAPHY / "country_boundaries.geojson"
 COUNTRY_BOUNDARIES_CENTROIDS_JSON = GEOGRAPHY / "country_boundaries_centroids.json"
+COUNTRY_CAPITALS_JSON = GEOGRAPHY / "country_capitals.json"
+US_STATE_CAPITALS_JSON = GEOGRAPHY / "us_state_capitals.json"
 COUNTRY_CONTINENTS_JSON = GEOGRAPHY / "country_continents.json"
 COUNTRY_NEIGHBORS_JSON = GEOGRAPHY / "country_neighbors.json"
 NATIONAL_PER_CAPITA_JSON = GEOGRAPHY / "national_per_capita_co2.json"

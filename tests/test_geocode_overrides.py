@@ -223,6 +223,37 @@ class TestCapitalFallback:
         assert_eq(city, "Washington", context="default US capital")
         assert "United States" in query
 
+    def test_delegate_list_countries_have_capital_fallback(self):
+        from src.geocoding.capital_data import countries_missing_capital_data
+        from src.sources.delegates import load_delegates
+
+        delegates = load_delegates()
+        countries = sorted(
+            {
+                str(value).strip()
+                for value in delegates["country"].astype(str)
+                if str(value).strip()
+            }
+        )
+        missing = countries_missing_capital_data(countries)
+        assert not missing, f"missing capital data for delegate countries: {missing}"
+
+    def test_iran_alias_resolves_to_capital(self, assert_eq):
+        fallback = resolve_capital_fallback("Some Org", "Iran")
+        assert fallback is not None, "expected Iran capital fallback via ISO lookup"
+        city, lat, lon, query = fallback
+        assert_eq(city, "Tehran", context="Iran capital city")
+        assert 35 < lat < 36, f"unexpected Tehran lat {lat}"
+        assert 51 < lon < 52, f"unexpected Tehran lon {lon}"
+
+    def test_missing_capital_data_raises_when_required(self):
+        import pytest
+
+        from src.geocoding.capital_coords import CapitalCoordsError, capital_geocode_hit
+
+        with pytest.raises(CapitalCoordsError):
+            capital_geocode_hit("Org", "Not A Real Country XYZ", require=True)
+
     def test_country_anchor_only_on_mismatch(self, assert_eq):
         mismatch_anchor = resolve_country_anchor_fallback(
             "Bermuda Institute of Ocean Sciences",
@@ -422,6 +453,18 @@ class TestAffiliationGeocodeResolution:
         assert record is not None
         assert_eq(record["geocode_level"], "country", context="fallback level")
         assert record["query_used"].startswith("fallback:capital:")
+
+    def test_resolve_geocode_falls_back_to_capital_for_unknown_org(self, assert_eq):
+        lookup = build_geocode_lookup(pd.DataFrame())
+        hit = resolve_geocode(
+            "Unknown Institute, Belgium",
+            presenter="",
+            lookup=lookup,
+            overrides={},
+        )
+        assert hit is not None, "expected Belgium capital fallback"
+        assert_eq(hit["geocode_level"], "country", context="fallback level")
+        assert_eq(float(hit["latitude"]), 50.8503, context="Brussels latitude")
 
     def test_accept_org_country_hit_keeps_plausible(self, assert_eq):
         hit = {

@@ -26,6 +26,13 @@ def _clear_pipeline_caches():
         pass
 
     try:
+        from src.geocoding.capital_data import clear_capital_data_cache
+
+        clear_capital_data_cache()
+    except Exception:
+        pass
+
+    try:
         import src.geocoding.geocode as geocode_module
 
         geocode_module._DISPLAY_ALIASES_CACHE = None
