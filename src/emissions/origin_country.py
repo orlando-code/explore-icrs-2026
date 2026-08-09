@@ -2,14 +2,12 @@
 
 from __future__ import annotations
 
-import re
 from pathlib import Path
-from typing import Any
 
 import pycountry
 
-from src.geocoding.geocode import _extract_country_hints
 from src.emissions.travel_emissions import _country_name_to_alpha2
+from src.geocoding.geocode import _extract_country_hints
 
 
 def _load_reverse_cache(path: Path) -> dict[str, dict[str, str]]:

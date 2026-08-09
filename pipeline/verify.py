@@ -9,11 +9,11 @@ from typing import Any
 
 import pandas as pd
 
-from src.registry.affiliation_lookup import AffiliationIndex
-from src.sources.delegates import load_delegates, normalize_person_name
-from src.geocoding.capital_data import countries_missing_capital_data
-from src.registry.person_registry import load_person_registry
 from src.data_paths import PERSON_ALIASES_CSV, PERSON_REGISTRY_CSV
+from src.geocoding.capital_data import countries_missing_capital_data
+from src.registry.affiliation_lookup import AffiliationIndex
+from src.registry.person_registry import load_person_registry
+from src.sources.delegates import load_delegates, normalize_person_name
 
 
 def _truthy_series(series: pd.Series) -> pd.Series:
@@ -30,7 +30,7 @@ def _geocoded(frame: pd.DataFrame) -> pd.Series:
 def parse_emissions_js(path: Path | str) -> dict[str, Any]:
     """Load EMISSIONS_DATA from js/emissions-data.js."""
     text = Path(path).read_text(encoding="utf-8")
-    match = re.search(r"export const EMISSIONS_DATA = (\{.*\});\s*$", text, re.S)
+    match = re.search(r"export const EMISSIONS_DATA = (\{.*\});\s*$", text, re.DOTALL)
     if not match:
         raise ValueError(f"Could not parse emissions export in {path}")
     return json.loads(match.group(1))
@@ -51,7 +51,9 @@ def _load_name_aliases_by_person() -> dict[str, set[str]]:
     return by_person
 
 
-def _person_name_keys(person_key: str, canonical_name: str, alias_map: dict[str, set[str]]) -> set[str]:
+def _person_name_keys(
+    person_key: str, canonical_name: str, alias_map: dict[str, set[str]]
+) -> set[str]:
     keys = {normalize_person_name(canonical_name)}
     keys.update(alias_map.get(person_key, set()))
     return {key for key in keys if key}
@@ -90,17 +92,25 @@ def verify_registry_coverage() -> dict[str, Any]:
         ),
         axis=1,
     )
-    attended["_has_affiliation"] = attended["_affiliation_key"].astype(str).str.strip().ne("")
+    attended["_has_affiliation"] = (
+        attended["_affiliation_key"].astype(str).str.strip().ne("")
+    )
     attended["_geocoded"] = attended.apply(
-        lambda row: index.is_geocoded(str(row.get("organisation") or ""), str(row.get("country") or "")),
+        lambda row: index.is_geocoded(
+            str(row.get("organisation") or ""), str(row.get("country") or "")
+        ),
         axis=1,
     )
     attended["_plot_on_map"] = attended.apply(
-        lambda row: index.plot_on_map(str(row.get("organisation") or ""), str(row.get("country") or "")),
+        lambda row: index.plot_on_map(
+            str(row.get("organisation") or ""), str(row.get("country") or "")
+        ),
         axis=1,
     )
 
-    plot_affiliations = affiliations.loc[_truthy_series(affiliations.get("plot_on_map", pd.Series(False)))]
+    plot_affiliations = affiliations.loc[
+        _truthy_series(affiliations.get("plot_on_map", pd.Series(False)))
+    ]
 
     metrics: dict[str, Any] = {
         "people_total": len(people),
@@ -137,7 +147,9 @@ def verify_registry_coverage() -> dict[str, Any]:
     ]
     metrics["attended_missing_geocode"] = len(missing)
     if not missing.empty:
-        metrics["attended_missing_geocode_sample"] = missing.head(8).to_dict(orient="records")
+        metrics["attended_missing_geocode_sample"] = missing.head(8).to_dict(
+            orient="records"
+        )
 
     return metrics
 
@@ -186,7 +198,9 @@ def build_attendee_artifact() -> pd.DataFrame:
         "plot_on_map",
         "redirect_to_affiliation_key",
     ]
-    aff = index.registry.reset_index(drop=True).reindex(columns=affiliation_cols, fill_value="")
+    aff = index.registry.reset_index(drop=True).reindex(
+        columns=affiliation_cols, fill_value=""
+    )
     aff = aff.add_suffix("_affiliation")
     merged = attended.merge(
         aff,
@@ -281,9 +295,11 @@ def build_emissions_coverage_artifact(
             }
         )
 
-    return pd.DataFrame(rows).sort_values(
-        ["emissions_status", "canonical_name"]
-    ).reset_index(drop=True)
+    return (
+        pd.DataFrame(rows)
+        .sort_values(["emissions_status", "canonical_name"])
+        .reset_index(drop=True)
+    )
 
 
 def verify_emissions_coverage(
@@ -324,18 +340,17 @@ def verify_emissions_coverage(
     missing = frame.loc[frame["emissions_status"] != "ok"] if not frame.empty else frame
     metrics["missing_co2e_count"] = len(missing)
     if not missing.empty:
-        metrics["missing_co2e_sample"] = (
-            missing.head(12)[
-                ["canonical_name", "organisation", "emissions_status", "registry_geocoded"]
-            ]
-            .to_dict(orient="records")
-        )
+        metrics["missing_co2e_sample"] = missing.head(12)[
+            ["canonical_name", "organisation", "emissions_status", "registry_geocoded"]
+        ].to_dict(orient="records")
 
     emissions_payload = parse_emissions_js(emissions_js)
     for pool_name in ("speakers", "all_delegates"):
         pool = emissions_payload.get(pool_name, {})
         headline = pool.get("meta", {}).get("headline", {})
         metrics[f"{pool_name}_pool_count"] = len(pool.get("attendees", []))
-        metrics[f"{pool_name}_missing_location"] = headline.get("attendees_missing_location")
+        metrics[f"{pool_name}_missing_location"] = headline.get(
+            "attendees_missing_location"
+        )
 
     return metrics

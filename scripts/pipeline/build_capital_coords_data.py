@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Build data/geography/country_capitals.json and us_state_capitals.json.
 
 Sources (in precedence order for each ISO2):
@@ -33,37 +32,92 @@ DR5HN_COUNTRIES_URL = (
 
 # Curated coordinates keyed by ISO2. These override automated matches when present.
 SEED_COUNTRY_CAPITALS: dict[str, dict[str, object]] = {
-    "AS": {"city": "Pago Pago", "lat": -14.2756, "lon": -170.7020, "country": "American Samoa"},
-    "AG": {"city": "St. John's", "lat": 17.1274, "lon": -61.8468, "country": "Antigua and Barbuda"},
-    "AU": {"city": "Canberra", "lat": -35.2809, "lon": 149.1300, "country": "Australia"},
+    "AS": {
+        "city": "Pago Pago",
+        "lat": -14.2756,
+        "lon": -170.7020,
+        "country": "American Samoa",
+    },
+    "AG": {
+        "city": "St. John's",
+        "lat": 17.1274,
+        "lon": -61.8468,
+        "country": "Antigua and Barbuda",
+    },
+    "AU": {
+        "city": "Canberra",
+        "lat": -35.2809,
+        "lon": 149.1300,
+        "country": "Australia",
+    },
     "BS": {"city": "Nassau", "lat": 25.0443, "lon": -77.3504, "country": "Bahamas"},
-    "BB": {"city": "Bridgetown", "lat": 13.0975, "lon": -59.6167, "country": "Barbados"},
+    "BB": {
+        "city": "Bridgetown",
+        "lat": 13.0975,
+        "lon": -59.6167,
+        "country": "Barbados",
+    },
     "BE": {"city": "Brussels", "lat": 50.8503, "lon": 4.3517, "country": "Belgium"},
     "BZ": {"city": "Belmopan", "lat": 17.2510, "lon": -88.7590, "country": "Belize"},
     "BM": {"city": "Hamilton", "lat": 32.2949, "lon": -64.7830, "country": "Bermuda"},
-    "BO": {"city": "Sucre", "lat": -19.0196, "lon": -65.2620, "country": "Bolivia, Plurinational State of"},
+    "BO": {
+        "city": "Sucre",
+        "lat": -19.0196,
+        "lon": -65.2620,
+        "country": "Bolivia, Plurinational State of",
+    },
     "BR": {"city": "Brasília", "lat": -15.7939, "lon": -47.8828, "country": "Brazil"},
     "CA": {"city": "Ottawa", "lat": 45.4215, "lon": -75.6972, "country": "Canada"},
     "CN": {"city": "Beijing", "lat": 39.9042, "lon": 116.4074, "country": "China"},
     "CO": {"city": "Bogotá", "lat": 4.7110, "lon": -74.0721, "country": "Colombia"},
-    "CK": {"city": "Avarua", "lat": -21.2070, "lon": -159.7716, "country": "Cook Islands"},
+    "CK": {
+        "city": "Avarua",
+        "lat": -21.2070,
+        "lon": -159.7716,
+        "country": "Cook Islands",
+    },
     "CR": {"city": "San José", "lat": 9.9281, "lon": -84.0907, "country": "Costa Rica"},
     "CU": {"city": "Havana", "lat": 23.1136, "lon": -82.3666, "country": "Cuba"},
     "CW": {"city": "Willemstad", "lat": 12.1224, "lon": -68.8824, "country": "Curaçao"},
     "DK": {"city": "Copenhagen", "lat": 55.6761, "lon": 12.5683, "country": "Denmark"},
-    "DO": {"city": "Santo Domingo", "lat": 18.4861, "lon": -69.9312, "country": "Dominican Republic"},
+    "DO": {
+        "city": "Santo Domingo",
+        "lat": 18.4861,
+        "lon": -69.9312,
+        "country": "Dominican Republic",
+    },
     "EC": {"city": "Quito", "lat": -0.1807, "lon": -78.4678, "country": "Ecuador"},
     "EG": {"city": "Cairo", "lat": 30.0444, "lon": 31.2357, "country": "Egypt"},
-    "SV": {"city": "San Salvador", "lat": 13.6929, "lon": -89.2182, "country": "El Salvador"},
+    "SV": {
+        "city": "San Salvador",
+        "lat": 13.6929,
+        "lon": -89.2182,
+        "country": "El Salvador",
+    },
     "FJ": {"city": "Suva", "lat": -18.1416, "lon": 178.4419, "country": "Fiji"},
     "FI": {"city": "Helsinki", "lat": 60.1699, "lon": 24.9384, "country": "Finland"},
     "FR": {"city": "Paris", "lat": 48.8566, "lon": 2.3522, "country": "France"},
-    "PF": {"city": "Papeete", "lat": -17.5516, "lon": -149.5585, "country": "French Polynesia"},
+    "PF": {
+        "city": "Papeete",
+        "lat": -17.5516,
+        "lon": -149.5585,
+        "country": "French Polynesia",
+    },
     "DE": {"city": "Berlin", "lat": 52.5200, "lon": 13.4050, "country": "Germany"},
     "GH": {"city": "Accra", "lat": 5.6037, "lon": -0.1870, "country": "Ghana"},
     "GU": {"city": "Hagåtña", "lat": 13.4760, "lon": 144.7502, "country": "Guam"},
-    "HN": {"city": "Tegucigalpa", "lat": 14.0723, "lon": -87.1921, "country": "Honduras"},
-    "HK": {"city": "Hong Kong", "lat": 22.3193, "lon": 114.1694, "country": "Hong Kong"},
+    "HN": {
+        "city": "Tegucigalpa",
+        "lat": 14.0723,
+        "lon": -87.1921,
+        "country": "Honduras",
+    },
+    "HK": {
+        "city": "Hong Kong",
+        "lat": 22.3193,
+        "lon": 114.1694,
+        "country": "Hong Kong",
+    },
     "IN": {"city": "New Delhi", "lat": 28.6139, "lon": 77.2090, "country": "India"},
     "ID": {"city": "Jakarta", "lat": -6.2088, "lon": 106.8456, "country": "Indonesia"},
     "IR": {"city": "Tehran", "lat": 35.6892, "lon": 51.3890, "country": "Iran"},
@@ -72,53 +126,148 @@ SEED_COUNTRY_CAPITALS: dict[str, dict[str, object]] = {
     "JM": {"city": "Kingston", "lat": 18.0179, "lon": -76.8099, "country": "Jamaica"},
     "JP": {"city": "Tokyo", "lat": 35.6762, "lon": 139.6503, "country": "Japan"},
     "KE": {"city": "Nairobi", "lat": -1.2921, "lon": 36.8219, "country": "Kenya"},
-    "MG": {"city": "Antananarivo", "lat": -18.8792, "lon": 47.5079, "country": "Madagascar"},
-    "MY": {"city": "Kuala Lumpur", "lat": 3.1390, "lon": 101.6869, "country": "Malaysia"},
+    "MG": {
+        "city": "Antananarivo",
+        "lat": -18.8792,
+        "lon": 47.5079,
+        "country": "Madagascar",
+    },
+    "MY": {
+        "city": "Kuala Lumpur",
+        "lat": 3.1390,
+        "lon": 101.6869,
+        "country": "Malaysia",
+    },
     "MV": {"city": "Malé", "lat": 4.1755, "lon": 73.5093, "country": "Maldives"},
-    "MH": {"city": "Majuro", "lat": 7.0897, "lon": 171.3803, "country": "Marshall Islands"},
-    "MU": {"city": "Port Louis", "lat": -20.1609, "lon": 57.5012, "country": "Mauritius"},
+    "MH": {
+        "city": "Majuro",
+        "lat": 7.0897,
+        "lon": 171.3803,
+        "country": "Marshall Islands",
+    },
+    "MU": {
+        "city": "Port Louis",
+        "lat": -20.1609,
+        "lon": 57.5012,
+        "country": "Mauritius",
+    },
     "YT": {"city": "Mamoudzou", "lat": -12.7806, "lon": 45.2278, "country": "Mayotte"},
     "MX": {"city": "Mexico City", "lat": 19.4326, "lon": -99.1332, "country": "Mexico"},
-    "FM": {"city": "Palikir", "lat": 6.9147, "lon": 158.1610, "country": "Micronesia, Federated States of"},
+    "FM": {
+        "city": "Palikir",
+        "lat": 6.9147,
+        "lon": 158.1610,
+        "country": "Micronesia, Federated States of",
+    },
     "MC": {"city": "Monaco", "lat": 43.7384, "lon": 7.4246, "country": "Monaco"},
     "MZ": {"city": "Maputo", "lat": -25.9692, "lon": 32.5732, "country": "Mozambique"},
-    "NL": {"city": "Amsterdam", "lat": 52.3676, "lon": 4.9041, "country": "Netherlands"},
-    "NC": {"city": "Nouméa", "lat": -22.2558, "lon": 166.4505, "country": "New Caledonia"},
-    "NZ": {"city": "Wellington", "lat": -41.2865, "lon": 174.7762, "country": "New Zealand"},
+    "NL": {
+        "city": "Amsterdam",
+        "lat": 52.3676,
+        "lon": 4.9041,
+        "country": "Netherlands",
+    },
+    "NC": {
+        "city": "Nouméa",
+        "lat": -22.2558,
+        "lon": 166.4505,
+        "country": "New Caledonia",
+    },
+    "NZ": {
+        "city": "Wellington",
+        "lat": -41.2865,
+        "lon": 174.7762,
+        "country": "New Zealand",
+    },
     "NG": {"city": "Abuja", "lat": 9.0765, "lon": 7.3986, "country": "Nigeria"},
-    "MP": {"city": "Saipan", "lat": 15.1778, "lon": 145.7508, "country": "Northern Mariana Islands"},
+    "MP": {
+        "city": "Saipan",
+        "lat": 15.1778,
+        "lon": 145.7508,
+        "country": "Northern Mariana Islands",
+    },
     "OM": {"city": "Muscat", "lat": 23.5880, "lon": 58.3829, "country": "Oman"},
     "PW": {"city": "Ngerulmud", "lat": 7.5004, "lon": 134.6242, "country": "Palau"},
     "PA": {"city": "Panama City", "lat": 8.9824, "lon": -79.5199, "country": "Panama"},
-    "PG": {"city": "Port Moresby", "lat": -9.4438, "lon": 147.1803, "country": "Papua New Guinea"},
+    "PG": {
+        "city": "Port Moresby",
+        "lat": -9.4438,
+        "lon": 147.1803,
+        "country": "Papua New Guinea",
+    },
     "PH": {"city": "Manila", "lat": 14.5995, "lon": 120.9842, "country": "Philippines"},
     "PL": {"city": "Warsaw", "lat": 52.2297, "lon": 21.0122, "country": "Poland"},
     "PT": {"city": "Lisbon", "lat": 38.7223, "lon": -9.1393, "country": "Portugal"},
-    "PR": {"city": "San Juan", "lat": 18.4655, "lon": -66.1057, "country": "Puerto Rico"},
+    "PR": {
+        "city": "San Juan",
+        "lat": 18.4655,
+        "lon": -66.1057,
+        "country": "Puerto Rico",
+    },
     "QA": {"city": "Doha", "lat": 25.2854, "lon": 51.5310, "country": "Qatar"},
-    "RE": {"city": "Saint-Denis", "lat": -20.8823, "lon": 55.4504, "country": "Réunion"},
+    "RE": {
+        "city": "Saint-Denis",
+        "lat": -20.8823,
+        "lon": 55.4504,
+        "country": "Réunion",
+    },
     "WS": {"city": "Apia", "lat": -13.8333, "lon": -171.7667, "country": "Samoa"},
     "SA": {"city": "Riyadh", "lat": 24.7136, "lon": 46.6753, "country": "Saudi Arabia"},
     "SC": {"city": "Victoria", "lat": -4.6191, "lon": 55.4513, "country": "Seychelles"},
     "SG": {"city": "Singapore", "lat": 1.3521, "lon": 103.8198, "country": "Singapore"},
-    "SX": {"city": "Philipsburg", "lat": 18.0237, "lon": -63.0458, "country": "Sint Maarten"},
+    "SX": {
+        "city": "Philipsburg",
+        "lat": 18.0237,
+        "lon": -63.0458,
+        "country": "Sint Maarten",
+    },
     "KR": {"city": "Seoul", "lat": 37.5665, "lon": 126.9780, "country": "South Korea"},
     "ES": {"city": "Madrid", "lat": 40.4168, "lon": -3.7038, "country": "Spain"},
     "LK": {"city": "Colombo", "lat": 6.9271, "lon": 79.8612, "country": "Sri Lanka"},
     "SE": {"city": "Stockholm", "lat": 59.3293, "lon": 18.0686, "country": "Sweden"},
     "CH": {"city": "Bern", "lat": 46.9480, "lon": 7.4474, "country": "Switzerland"},
     "TW": {"city": "Taipei", "lat": 25.0330, "lon": 121.5654, "country": "Taiwan"},
-    "TZ": {"city": "Dodoma", "lat": -6.1630, "lon": 35.7516, "country": "Tanzania, United Republic of"},
+    "TZ": {
+        "city": "Dodoma",
+        "lat": -6.1630,
+        "lon": 35.7516,
+        "country": "Tanzania, United Republic of",
+    },
     "TH": {"city": "Bangkok", "lat": 13.7563, "lon": 100.5018, "country": "Thailand"},
     "TK": {"city": "Atafu", "lat": -8.5540, "lon": -172.5156, "country": "Tokelau"},
     "TO": {"city": "Nuku'alofa", "lat": -21.1393, "lon": -175.2049, "country": "Tonga"},
     "TV": {"city": "Funafuti", "lat": -8.5200, "lon": 179.1981, "country": "Tuvalu"},
-    "AE": {"city": "Abu Dhabi", "lat": 24.4539, "lon": 54.3773, "country": "United Arab Emirates"},
-    "GB": {"city": "London", "lat": 51.5074, "lon": -0.1278, "country": "United Kingdom"},
-    "US": {"city": "Washington", "lat": 38.9072, "lon": -77.0369, "country": "United States"},
-    "VI": {"city": "Charlotte Amalie", "lat": 18.3419, "lon": -64.9307, "country": "United States Virgin Islands"},
+    "AE": {
+        "city": "Abu Dhabi",
+        "lat": 24.4539,
+        "lon": 54.3773,
+        "country": "United Arab Emirates",
+    },
+    "GB": {
+        "city": "London",
+        "lat": 51.5074,
+        "lon": -0.1278,
+        "country": "United Kingdom",
+    },
+    "US": {
+        "city": "Washington",
+        "lat": 38.9072,
+        "lon": -77.0369,
+        "country": "United States",
+    },
+    "VI": {
+        "city": "Charlotte Amalie",
+        "lat": 18.3419,
+        "lon": -64.9307,
+        "country": "United States Virgin Islands",
+    },
     "VU": {"city": "Port Vila", "lat": -17.7333, "lon": 168.3273, "country": "Vanuatu"},
-    "VE": {"city": "Caracas", "lat": 10.4806, "lon": -66.9036, "country": "Venezuela, Bolivarian Republic of"},
+    "VE": {
+        "city": "Caracas",
+        "lat": 10.4806,
+        "lon": -66.9036,
+        "country": "Venezuela, Bolivarian Republic of",
+    },
 }
 
 US_STATE_CAPITALS: dict[str, dict[str, object]] = {
@@ -194,7 +343,9 @@ US_STATE_ALIASES = {
 }
 
 
-def _geocode_capital(city: str, country: str, cache: dict[str, dict[str, float]]) -> dict[str, float] | None:
+def _geocode_capital(
+    city: str, country: str, cache: dict[str, dict[str, float]]
+) -> dict[str, float] | None:
     key = f"{city}|{country}".casefold()
     if key in cache:
         return cache[key]
@@ -265,10 +416,14 @@ def build_country_capitals(*, use_geopy: bool = True) -> dict[str, dict[str, obj
         unresolved.append(f"{iso} ({country_name}): {capital}")
 
     cache_path.parent.mkdir(parents=True, exist_ok=True)
-    cache_path.write_text(json.dumps(cache, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    cache_path.write_text(
+        json.dumps(cache, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
 
     if unresolved:
-        print("Unresolved capitals (add to SEED_COUNTRY_CAPITALS or re-run with geopy):")
+        print(
+            "Unresolved capitals (add to SEED_COUNTRY_CAPITALS or re-run with geopy):"
+        )
         for line in unresolved:
             print(" ", line)
 
@@ -315,8 +470,13 @@ def main() -> int:
 
     country_path = GEOGRAPHY / "country_capitals.json"
     state_path = GEOGRAPHY / "us_state_capitals.json"
-    country_path.write_text(json.dumps(country_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    state_path.write_text(json.dumps(state_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    country_path.write_text(
+        json.dumps(country_payload, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    state_path.write_text(
+        json.dumps(state_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
     print(f"Wrote {country_path} ({len(countries)} countries)")
     print(f"Wrote {state_path} ({len(US_STATE_CAPITALS)} states/territories)")
 
