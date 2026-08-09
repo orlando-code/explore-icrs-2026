@@ -16,7 +16,7 @@ python3 -m http.server 8000
 # → http://localhost:8000
 ```
 
-Fetch missing travel routes (needs `keys.yaml`):
+Fetch missing travel routes (needs `keys.yaml` in the repo root; see `keys-example.yaml`):
 
 ```bash
 python scripts/pipeline/build_pipeline.py emissions
@@ -51,7 +51,7 @@ scripts/deploy/        → deploy_offset_api.sh, push_offsets_db.sh
 | `pipeline/verify.py` | Registry + emissions coverage checks |
 | `src/data_paths.py` | Canonical paths under `data/` |
 | `src/sources/` | Programme and delegate list loading |
-| `src/registry/` | Person (`icrs-p-*`) and affiliation (`icrs-a-*`) registries |
+| `src/registry/` | Person (`icrs-p-*`) and affiliation (`icrs-a-*`) registries; `key_resolution.py` for runtime identity |
 | `src/geocoding/` | Geocode CSVs, Google API, overrides |
 | `src/emissions/` | Travel emissions and `emissions-data.js` build |
 | `src/geography/` | Country choropleth clustering |
@@ -73,7 +73,7 @@ scripts/deploy/        → deploy_offset_api.sh, push_offsets_db.sh
 |-------|----------------|-----------|
 | **delegates** | Load or re-parse delegate PDF | `pipeline/artifacts/delegates.csv` |
 | **programme** | Load programme snapshot | `pipeline/artifacts/talks.csv` |
-| **registry** | Person registry (`icrs-p-*`) | `data/registry/person_registry.csv` |
+| **registry** | Person registry (`icrs-p-*`) | `data/registry/person_registry.csv`; enriches `talks.csv` / `delegates.csv` with `person_key` |
 | **affiliations** | Affiliation registry (`icrs-a-*`) | `data/registry/affiliation_registry.csv` |
 | **geocode** | Verify geocode coverage | `pipeline/artifacts/geocoded_attendees.csv` |
 | **export-site** | Map JS modules | `js/locations.js`, `js/talks.js`, … |
