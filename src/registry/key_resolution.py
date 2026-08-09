@@ -24,6 +24,7 @@ from src.sources.delegates import (
     delegate_org_country_for_row,
     normalize_organisation_label,
     normalize_person_name,
+    organisations_likely_same,
     presenter_identity_node,
 )
 
@@ -65,6 +66,16 @@ class RegistryKeyResolver:
             for person_key, row in self.people_by_key.items()
         }
         self.variant_to_key, self.member_to_person_key = self._build_person_caches()
+        self.name_to_person_keys = self._build_name_to_person_keys()
+
+    def _build_name_to_person_keys(self) -> dict[str, list[str]]:
+        name_to_keys: dict[str, list[str]] = {}
+        for person_key, person in self.people_by_key.items():
+            for name_key in _name_keys_for_person(person):
+                bucket = name_to_keys.setdefault(name_key, [])
+                if person_key not in bucket:
+                    bucket.append(person_key)
+        return name_to_keys
 
     def _build_person_caches(self) -> tuple[dict[str, str], dict[str, str]]:
         variant_to_key: dict[str, str] = {}
@@ -114,6 +125,52 @@ class RegistryKeyResolver:
 
         return variant_to_key, member_to_person_key
 
+    def _prefer_attended_person_key(self, matches: list[str]) -> str:
+        if not matches:
+            return ""
+        if len(matches) == 1:
+            return matches[0]
+        attended = [
+            person_key
+            for person_key in matches
+            if _truthy_attended(self.people_by_key.get(person_key, {}).get("attended"))
+        ]
+        if len(attended) == 1:
+            return attended[0]
+        return ""
+
+    def _matches_for_name_and_affiliation(
+        self,
+        norm: str,
+        *,
+        organisation: str = "",
+        country: str = "",
+        affiliation_text: str = "",
+    ) -> list[str]:
+        target_aff_key = self.resolve_affiliation_key(organisation, country)
+        matches: list[str] = []
+        for person_key in self.name_to_person_keys.get(norm, []):
+            person = self.people_by_key[person_key]
+            if target_aff_key:
+                person_aff_key = self.resolve_affiliation_key(
+                    str(person.get("organisation") or ""),
+                    str(person.get("country") or ""),
+                )
+                if person_aff_key != target_aff_key:
+                    continue
+            else:
+                person_org = str(person.get("organisation") or "").strip()
+                if organisation or affiliation_text:
+                    candidate_orgs = [organisation, affiliation_text]
+                    if not any(
+                        organisations_likely_same(person_org, candidate)
+                        for candidate in candidate_orgs
+                        if str(candidate or "").strip()
+                    ):
+                        continue
+            matches.append(person_key)
+        return matches
+
     def resolve_affiliation_key(
         self,
         organisation: str = "",
@@ -141,20 +198,15 @@ class RegistryKeyResolver:
 
         if affiliation_text:
             org, country = parse_affiliation_parts(affiliation_text)
-            target_aff_key = self.resolve_affiliation_key(org, country)
-            if target_aff_key:
-                matches = []
-                for person_key, person in self.people_by_key.items():
-                    if norm not in _name_keys_for_person(person):
-                        continue
-                    person_aff_key = self.resolve_affiliation_key(
-                        str(person.get("organisation") or ""),
-                        str(person.get("country") or ""),
-                    )
-                    if person_aff_key == target_aff_key:
-                        matches.append(person_key)
-                if len(matches) == 1:
-                    return matches[0]
+            matches = self._matches_for_name_and_affiliation(
+                norm,
+                organisation=org,
+                country=country,
+                affiliation_text=affiliation_text,
+            )
+            preferred = self._prefer_attended_person_key(matches)
+            if preferred:
+                return preferred
 
             for org_candidate in _affiliation_org_candidates(affiliation_text):
                 node = presenter_identity_node(norm, org_candidate)
@@ -164,13 +216,20 @@ class RegistryKeyResolver:
             aff_norm = normalize_organisation_label(affiliation_text)
             if aff_norm:
                 prefix = f"{norm}{PRESENTER_NODE_SEP}"
-                matches = {
+                node_matches = {
                     person_key
                     for member, person_key in self.member_to_person_key.items()
-                    if member.startswith(prefix) and aff_norm in member
+                    if member.startswith(prefix)
+                    and organisations_likely_same(aff_norm, member.split(PRESENTER_NODE_SEP, 1)[-1])
                 }
-                if len(matches) == 1:
-                    return next(iter(matches))
+                preferred = self._prefer_attended_person_key(sorted(node_matches))
+                if preferred:
+                    return preferred
+
+        bare_matches = list(self.name_to_person_keys.get(norm, []))
+        preferred = self._prefer_attended_person_key(bare_matches)
+        if preferred:
+            return preferred
 
         return (
             self.variant_to_key.get(norm)

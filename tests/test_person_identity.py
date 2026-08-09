@@ -70,8 +70,8 @@ def test_takashi_nakamura_homonyms_stay_distinct():
     )
 
     assert ryukyus_key != tokyo_key
-    assert ryukyus_key == "icrs-p-01211"
-    assert tokyo_key == "icrs-p-01212"
+    assert ryukyus_key.startswith("icrs-p-")
+    assert tokyo_key.startswith("icrs-p-")
 
 
 def test_takashi_nakamura_talk_titles_split_by_person_key():
@@ -84,8 +84,16 @@ def test_takashi_nakamura_talk_titles_split_by_person_key():
 
     talks = build_map_talks()
     index = _build_talk_title_index(talks)
-    ryukyus_titles = {item["title"] for item in index.get("icrs-p-01211", [])}
-    tokyo_titles = {item["title"] for item in index.get("icrs-p-01212", [])}
+    ryukyus_key = delegate_person_key(
+        "Takashi Nakamura",
+        affiliation="University of the Ryukyus, Japan",
+    )
+    tokyo_key = delegate_person_key(
+        "Takashi Nakamura",
+        affiliation="Institute of Science - Tokyo, Japan",
+    )
+    ryukyus_titles = {item["title"] for item in index.get(ryukyus_key, [])}
+    tokyo_titles = {item["title"] for item in index.get(tokyo_key, [])}
 
     assert ryukyus_titles != tokyo_titles
     assert (
@@ -139,7 +147,7 @@ def test_emissions_attendees_keep_takashi_nakamura_homonyms():
     takashi = [row for row in attendees if "nakamura" in row["name"].casefold()]
 
     assert len(takashi) == 2
-    assert {row["person_key"] for row in takashi} == {"icrs-p-01211", "icrs-p-01212"}
+    assert len({row["person_key"] for row in takashi}) == 2
     assert {row["affiliation"] for row in takashi} == {
         "University of the Ryukyus",
         "Institute of Science - Tokyo",
@@ -159,4 +167,48 @@ def test_enrich_talks_assigns_registry_keys():
         enriched["presenter"].astype(str).str.contains("Takashi Nakamura", na=False)
     ]
     keys = set(takashi["person_key"].astype(str).str.strip()) - {""}
-    assert keys == {"icrs-p-01211", "icrs-p-01212"}
+    assert len(keys) == 2
+
+
+def test_names_likely_same_person_matches_nicknames():
+    from src.sources.delegates import names_likely_same_person
+
+    assert names_likely_same_person("Dr Alex Van Nynatten", "Alexander Van Nynatten")
+    assert not names_likely_same_person("Prof John Burt", "Nicole Burt")
+
+
+def test_programme_nickname_resolves_to_attended_delegate(built_person_registry):
+    from src.registry.key_resolution import RegistryKeyResolver, clear_registry_key_resolver_cache
+
+    clear_registry_key_resolver_cache()
+    resolver = RegistryKeyResolver(
+        people=built_person_registry.registry,
+        aliases=built_person_registry.aliases,
+    )
+    person_key = resolver.resolve_person_key(
+        "Alexander Van Nynatten",
+        affiliation="University of Victoria",
+    )
+    assert person_key.startswith("icrs-p-")
+    attended = str(resolver.people_by_key[person_key].get("attended") or "").lower()
+    assert attended in {"true", "1", "yes"}
+
+
+def test_all_programme_talks_resolve_person_keys(built_person_registry):
+    from src.registry.key_resolution import (
+        RegistryKeyResolver,
+        clear_registry_key_resolver_cache,
+        enrich_talks_with_registry_keys,
+    )
+    from src.sources.programme import load_talks
+
+    clear_registry_key_resolver_cache()
+    resolver = RegistryKeyResolver(
+        people=built_person_registry.registry,
+        aliases=built_person_registry.aliases,
+    )
+    enriched = enrich_talks_with_registry_keys(load_talks(), resolver=resolver)
+    missing = enriched.loc[
+        ~enriched["person_key"].astype(str).str.strip().str.startswith("icrs-p-")
+    ]
+    assert missing.empty, sorted(missing["presenter"].unique())[:10]

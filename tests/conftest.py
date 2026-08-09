@@ -63,3 +63,11 @@ def assert_eq():
         )
 
     return _assert_eq
+
+
+@pytest.fixture(scope="module")
+def built_person_registry():
+    """Built registry shared across tests in a module (expensive to rebuild)."""
+    from src.registry.person_registry import build_person_registry
+
+    return build_person_registry()

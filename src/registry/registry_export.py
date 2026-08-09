@@ -65,7 +65,7 @@ def build_map_talks(
     resolver = resolver or get_registry_key_resolver()
     talks = enrich_talks_with_registry_keys(load_talks(), resolver=resolver)
     attended = _attended_people()
-    by_person_key = {str(row["person_key"]): row for _, row in attended.iterrows()}
+    by_person_key = resolver.people_by_key
     index = resolver.affiliation_index
 
     talk_rows: list[dict[str, object]] = []
@@ -87,7 +87,11 @@ def build_map_talks(
         person = by_person_key.get(person_key) if person_key else None
         programme_affiliation = str(row.get("affiliation") or "").strip()
         organisation, country, affiliation = "", "", programme_affiliation
-        if person is not None:
+        if person is not None and str(person.get("attended") or "").strip().lower() in {
+            "true",
+            "1",
+            "yes",
+        }:
             organisation, country, affiliation = _affiliation_for_person(person)
             if affiliation:
                 row["affiliation"] = affiliation

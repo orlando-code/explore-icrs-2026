@@ -488,6 +488,10 @@ def _affiliation_location_records(
 
     resolver = get_registry_key_resolver()
     key_to_canonical = resolver.key_to_canonical
+    attended_by_key = {
+        person_key: str(person.get("attended") or "").strip().lower() in {"true", "1", "yes"}
+        for person_key, person in resolver.people_by_key.items()
+    }
 
     def _person_key(name: object, affiliation: object = "") -> str:
         cleaned = str(name or "").strip()
@@ -590,6 +594,7 @@ def _affiliation_location_records(
                         "search_text": search_text,
                         "talk_titles": talk_titles,
                         "person_key": person_key,
+                        "attended": attended_by_key.get(person_key, False),
                     }
                     continue
 
@@ -879,6 +884,10 @@ def _build_network_data(
 
     resolver = get_registry_key_resolver()
     key_to_canonical = resolver.key_to_canonical
+    attended_by_key = {
+        person_key: str(person.get("attended") or "").strip().lower() in {"true", "1", "yes"}
+        for person_key, person in resolver.people_by_key.items()
+    }
     delegate_affiliations_by_key = _delegate_affiliation_by_person_key()
     affiliation_coords = _affiliation_coord_index(locations)
 
@@ -995,6 +1004,7 @@ def _build_network_data(
                     "presenter" if person_key in presenter_person_keys else "co_author"
                 ),
                 "affiliation_explicit": explicit_affiliation.get(person_key, False),
+                "attended": attended_by_key.get(person_key, False),
                 "connections": connections,
                 "lat": lat,
                 "lon": lon,

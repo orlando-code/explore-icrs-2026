@@ -13,13 +13,16 @@ import pandas as pd
 from src.sources.delegates import (
     _UnionFind,
     _match_single_presenter_norm,
+    delegate_identity_node,
     delegate_org_country_for_row,
+    link_delegates_to_programme_talks,
     load_delegates,
     match_delegate_to_presenter_node,
     name_tokens,
     normalize_person_name,
     register_talk_presenters,
 )
+from src.registry.affiliation_registry import _make_affiliation
 from src.sources.programme import load_talks
 
 from src.data_paths import (
@@ -322,6 +325,7 @@ def build_person_registry(
     presenter_display: dict[str, str] = {}
     delegate_display: dict[str, str] = {}
     delegate_meta: dict[str, dict[str, Any]] = {}
+    delegation_node_by_full_name: dict[str, str] = {}
     seed_order: dict[str, int] = {}
     canonical_override: dict[str, str] = {}
 
@@ -338,16 +342,23 @@ def build_person_registry(
         if not full_name:
             continue
         norm = str(row.get("norm_name") or normalize_person_name(full_name))
-        delegate_display[norm] = full_name
         organisation, country = delegate_org_country_for_row(row)
-        delegate_meta[norm] = {
+        affiliation = _make_affiliation(organisation, country) if organisation else ""
+        delegation_node = delegate_identity_node(
+            full_name,
+            organisation,
+            country=country,
+        )
+        delegate_display[delegation_node] = full_name
+        delegation_node_by_full_name[full_name] = delegation_node
+        delegate_meta[delegation_node] = {
             "organisation": organisation,
             "country": country,
             "is_speaker": bool(row.get("is_speaker")),
             "delegate_index": int(index),
         }
-        seed_order[norm] = int(index)
-        uf.find(norm)
+        seed_order[delegation_node] = int(index)
+        uf.find(delegation_node)
 
         matched_presenter = match_delegate_to_presenter_node(
             full_name,
@@ -356,10 +367,12 @@ def build_person_registry(
             presenter_display,
         )
         if matched_presenter:
-            uf.union(norm, matched_presenter)
+            uf.union(delegation_node, matched_presenter)
+
+    link_delegates_to_programme_talks(talks, delegates, uf=uf)
 
     id_links = load_confirmed_official_id_links(OVERRIDES)
-    official_id_by_norm: dict[str, tuple[str, str, str]] = {}
+    official_id_by_node: dict[str, tuple[str, str, str]] = {}
     ambiguous_id_norms = _ambiguous_official_id_norms(id_links)
     for _, link in id_links.iterrows():
         official_id = _clean_official_id(link.get("delegate_id"))
@@ -371,17 +384,20 @@ def build_person_registry(
         delegate_norm = normalize_person_name(delegate_name)
         if not delegate_norm:
             continue
-        uf.find(delegate_norm)
-        official_id_by_norm[delegate_norm] = (official_id, tier, reason)
+        delegation_node = delegation_node_by_full_name.get(delegate_name)
+        if not delegation_node:
+            continue
+        uf.find(delegation_node)
+        official_id_by_node[delegation_node] = (official_id, tier, reason)
         if reason == "manually_confirmed" and delegate_name:
-            canonical_override[delegate_norm] = delegate_name
+            canonical_override[delegation_node] = delegate_name
 
         id_name = str(link.get("id_full_name") or "").strip()
         id_norm = normalize_person_name(id_name)
         if id_norm and id_norm != delegate_norm and id_norm not in ambiguous_id_norms:
             presenter_display.setdefault(id_norm, id_name)
             uf.find(id_norm)
-            uf.union(delegate_norm, id_norm)
+            uf.union(delegation_node, id_norm)
 
     overrides = load_registry_overrides(DEFAULT_OVERRIDES_PATH)
     _apply_registry_overrides(
@@ -434,8 +450,8 @@ def build_person_registry(
                 score = 0
                 if member in canonical_override:
                     score += 10
-                if member in official_id_by_norm:
-                    _, tier, reason = official_id_by_norm[member]
+                if member in official_id_by_node:
+                    _, tier, reason = official_id_by_node[member]
                     score += _official_id_priority(tier, reason)
                 scored_members.append(
                     (score, delegate_meta[member]["delegate_index"], member)
@@ -448,12 +464,12 @@ def build_person_registry(
 
         official_candidates = [
             (
-                _official_id_priority(official_id_by_norm[member][1], official_id_by_norm[member][2]),
-                official_id_by_norm[member][0],
-                official_id_by_norm[member][1],
+                _official_id_priority(official_id_by_node[member][1], official_id_by_node[member][2]),
+                official_id_by_node[member][0],
+                official_id_by_node[member][1],
             )
             for member in delegate_members
-            if member in official_id_by_norm
+            if member in official_id_by_node
         ]
         official_delegate_id = ""
         official_tier = ""
@@ -473,7 +489,7 @@ def build_person_registry(
         elif delegate_members:
             methods.append("delegate_list_only")
 
-        if any(member in official_id_by_norm for member in members):
+        if any(member in official_id_by_node for member in members):
             methods.append("official_id_review")
         if any(member in canonical_override for member in members):
             methods.append("manual_canonical")

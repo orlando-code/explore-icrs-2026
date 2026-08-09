@@ -682,6 +682,67 @@ def presenter_identity_node(presenter_norm: str, affiliation: str = "") -> str:
     return presenter_norm
 
 
+HONORIFIC_TOKENS = frozenset(
+    {
+        "a",
+        "assoc",
+        "assistant",
+        "dr",
+        "mr",
+        "mrs",
+        "ms",
+        "mx",
+        "prof",
+        "sir",
+    }
+)
+
+
+def _given_name_tokens(name: str) -> list[str]:
+    return [
+        token
+        for token in normalize_person_name(name).split()
+        if token and token not in HONORIFIC_TOKENS
+    ]
+
+
+def _person_name_parts(name: str) -> tuple[str, str]:
+    tokens = _given_name_tokens(name)
+    if not tokens:
+        return "", ""
+    if len(tokens) == 1:
+        return tokens[0], tokens[0]
+    return tokens[0], tokens[-1]
+
+
+def names_likely_same_person(left: str, right: str) -> bool:
+    """True when two display names plausibly refer to the same person (nickname-safe)."""
+    left_norm = normalize_person_name(left)
+    right_norm = normalize_person_name(right)
+    if not left_norm or not right_norm:
+        return False
+    if left_norm == right_norm:
+        return True
+    left_first, left_last = _person_name_parts(left)
+    right_first, right_last = _person_name_parts(right)
+    if not left_last or left_last != right_last:
+        return False
+    if left_first == right_first:
+        return True
+    return left_first.startswith(right_first) or right_first.startswith(left_first)
+
+
+def organisations_likely_same(left: str, right: str) -> bool:
+    """True when two affiliation labels refer to the same institution."""
+    left_norm = normalize_organisation_label(left)
+    right_norm = normalize_organisation_label(right)
+    if not left_norm or not right_norm:
+        return False
+    if left_norm == right_norm:
+        return True
+    return left_norm in right_norm or right_norm in left_norm
+
+
 def register_talk_presenters(
     talks: pd.DataFrame,
     *,
@@ -729,6 +790,8 @@ def match_delegate_to_presenter_node(
     filtered: list[str] = []
     for node in candidates:
         presenter_name = presenter_display.get(node, node.split(PRESENTER_NODE_SEP, 1)[0])
+        if not names_likely_same_person(delegate_name, presenter_name):
+            continue
         presenter_tokens = name_tokens(presenter_name)
         if len(presenter_tokens) > len(delegate_tokens):
             continue
@@ -744,11 +807,93 @@ def match_delegate_to_presenter_node(
             node
             for node in filtered
             if PRESENTER_NODE_SEP in node
-            and node.split(PRESENTER_NODE_SEP, 1)[1] == org_norm
+            and organisations_likely_same(
+                org_norm,
+                node.split(PRESENTER_NODE_SEP, 1)[1],
+            )
         ]
         if len(org_matches) == 1:
             return org_matches[0]
     return None
+
+
+def delegate_identity_node(name: str, organisation: str = "", *, country: str = "") -> str:
+    """Union-find node for a delegate-list row; affiliation disambiguates homonyms."""
+    norm = normalize_person_name(name)
+    if not norm:
+        return ""
+    organisation = str(organisation or "").strip()
+    country = str(country or "").strip()
+    if organisation:
+        from src.registry.affiliation_registry import _make_affiliation
+
+        affiliation = _make_affiliation(organisation, country) if country else organisation
+        return presenter_identity_node(norm, affiliation)
+    return norm
+
+
+def link_delegates_to_programme_talks(
+    talks: pd.DataFrame,
+    delegates: pd.DataFrame,
+    *,
+    uf: _UnionFind,
+) -> None:
+    """Union delegate-list rows with programme presenters sharing surname + institution."""
+    presenters = talks.get("presenter", pd.Series(dtype=str)).fillna("").astype(str)
+    affiliations = talks.get("affiliation", pd.Series(dtype=str)).fillna("").astype(str)
+
+    by_org: dict[str, list[tuple[str, str]]] = {}
+    seen_pairs: set[tuple[str, str]] = set()
+    for presenter, affiliation in zip(presenters, affiliations, strict=False):
+        presenter = presenter.strip()
+        affiliation = affiliation.strip()
+        if not presenter or not affiliation:
+            continue
+        pair_key = (presenter.casefold(), affiliation.casefold())
+        if pair_key in seen_pairs:
+            continue
+        seen_pairs.add(pair_key)
+        org_norm = normalize_organisation_label(affiliation)
+        if not org_norm:
+            continue
+        node = presenter_identity_node(normalize_person_name(presenter), affiliation)
+        by_org.setdefault(org_norm, []).append((presenter, node))
+
+    if not by_org:
+        return
+
+    org_norms = list(by_org.keys())
+
+    for _, row in delegates.iterrows():
+        delegate_name = str(row.get("full_name") or "").strip()
+        if not delegate_name:
+            continue
+        organisation, country = delegate_org_country_for_row(row)
+        delegate_org_norm = normalize_organisation_label(organisation)
+        if not delegate_org_norm:
+            continue
+        delegate_node = delegate_identity_node(
+            delegate_name,
+            organisation,
+            country=country,
+        )
+        uf.find(delegate_node)
+
+        if delegate_org_norm in by_org:
+            candidate_orgs = [delegate_org_norm]
+        else:
+            candidate_orgs = [
+                org_norm
+                for org_norm in org_norms
+                if organisations_likely_same(delegate_org_norm, org_norm)
+            ]
+
+        for org_norm in candidate_orgs:
+            for presenter, node in by_org[org_norm]:
+                if not names_likely_same_person(delegate_name, presenter):
+                    continue
+                uf.find(node)
+                uf.union(delegate_node, node)
 
 
 def _match_single_presenter_norm(

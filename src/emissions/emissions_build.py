@@ -9,7 +9,7 @@ from typing import Any
 import pandas as pd
 
 from src.sources.delegates import load_delegates, resolve_compound_affiliation_string
-from src.registry.registry_export import build_map_talks
+from src.registry.registry_export import build_map_talks, _attended_people
 from src.sources.programme import load_talks
 from src.emissions.travel_emissions import (
     DEFAULT_EMISSIONS_SITE_PATH,
@@ -103,13 +103,22 @@ def build_emissions_site(
     artifacts_dir = Path(artifacts_dir) if artifacts_dir else Path("pipeline/artifacts")
 
     all_talks = build_map_talks(show_progress=show_progress)
+    attended_keys = {
+        str(row["person_key"]).strip()
+        for _, row in _attended_people().iterrows()
+        if str(row.get("person_key") or "").strip()
+    }
+    attended_talks = all_talks[
+        all_talks["person_key"].astype(str).str.strip().isin(attended_keys)
+    ].copy()
+
     programme_presenters = {
         str(name).strip()
         for name in load_talks()["presenter"].dropna().astype(str)
         if str(name).strip()
     }
-    speaker_talks = all_talks[
-        all_talks["presenter"].astype(str).str.strip().isin(programme_presenters)
+    speaker_talks = attended_talks[
+        attended_talks["presenter"].astype(str).str.strip().isin(programme_presenters)
     ].copy()
 
     speaker_legs, speaker_missing = load_attendee_legs(
@@ -117,7 +126,9 @@ def build_emissions_site(
     )
 
     delegates = load_delegates()
-    all_legs, all_missing = load_attendee_legs(all_talks, show_progress=show_progress)
+    all_legs, all_missing = load_attendee_legs(
+        attended_talks, show_progress=show_progress
+    )
 
     missing_before = routes_missing_from_cache(all_legs, travel_cache_path=travel_cache_path)
     queries_before = api_query_count()

@@ -452,6 +452,7 @@ def _leg_coordinate_columns(legs: pd.DataFrame) -> pd.DataFrame:
     """One lat/lon row per attendee; never collapse homonyms that share a presenter name."""
     cols = ["presenter", "affiliation", "latitude", "longitude"]
     if "person_key" in legs.columns and legs["person_key"].astype(str).str.startswith("icrs-p-").any():
+        cols = ["person_key", *cols]
         subset = ["person_key"]
     else:
         subset = ["presenter", "affiliation"]
