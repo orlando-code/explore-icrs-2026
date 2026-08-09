@@ -13,11 +13,5 @@ url: "https://orlando-codes.com/explore-icrs-2026/"
 abstract: >-
   Interactive map, co-authorship network, and travel-emissions explorer for
   delegates of the 2026 International Coral Reef Symposium (Auckland). Built
-  from the public delegate list and conference programme, with open source
+  from the public delegate list and conference programme with open source
   processing pipeline and static web front end.
-keywords:
-  - coral reefs
-  - ICRS
-  - co-authorship network
-  - travel emissions
-  - open data
