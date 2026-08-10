@@ -21,7 +21,7 @@ Coordinates are metadata on the registry row, resolved from existing geocode fil
 
 ```bash
 python scripts/build_pipeline.py affiliations
-# after person registry:
+# run after person registry:
 python scripts/build_pipeline.py registry affiliations
 ```
 
@@ -30,7 +30,7 @@ Outputs:
 
 | File                                               | Contents                                           |
 | -------------------------------------------------- | -------------------------------------------------- |
-| `data/registry/affiliation_registry.csv`           | One row per org+country                            |
+| `data/registry/affiliation_registry.csv`           | One row per organisation+country                   |
 | `data/registry/affiliation_aliases.csv`            | Raw variant → `affiliation_key`                    |
 | `data/registry/affiliation_registry_unmatched.csv` | Rows still missing geocodes / country after review |
 | `data/registry/affiliation_registry.meta.json`     | Build metrics                                      |
@@ -40,7 +40,7 @@ Outputs:
 
 ## Manual review workflow
 
-Some affiliations need human judgement (missing country on programme-only strings, compound org names, geocode gaps).
+Some affiliations need human judgement (missing country on programme-only strings, compound organisation names, geocode gaps).
 
 1. **Build** the registry (commands above).
 2. **Open** `data/registry/affiliation_registry_unmatched.csv` – one row per affiliation that still needs review.
@@ -56,7 +56,7 @@ Some affiliations need human judgement (missing country on programme-only string
 ### Primary / secondary rules
 
 - Delegates or programme rows with a **secondary organisation** are matched to their **primary** organisation for attendee counts and map placement.
-- Compound affiliation rows get `redirect_to_affiliation_key` pointing at the primary org+country row when one already exists; otherwise the compound row is rewritten in place to the primary org.
+- Compound affiliation rows get `redirect_to_affiliation_key` pointing at the primary organisation+country row when one already exists; otherwise the compound row is rewritten in place to the primary organisation.
 - A **secondary organisation is not plotted** and does not carry emissions **unless** a different delegate lists that organisation as their primary. (Abbreviated names such as `Scripps Inst. of Oceanography` are treated separately from `Scripps Institution of Oceanography`.)
 
 
@@ -64,11 +64,11 @@ Some affiliations need human judgement (missing country on programme-only string
 ## Standardization sources (applied in order)
 
 1. **Delegate list authority** – `organisation` + `country` (+ `country_code`) from `delegates.json` are the source of truth when present
-2. **Smart affiliation parsing** – trailing country segments detected via `country_to_iso2()` (handles org names with commas)
+2. **Smart affiliation parsing** – trailing country segments detected via `country_to_iso2()` (handles organisationnames with commas)
 3. `data/geocodes/affiliation_display_aliases.json` – reviewed display aliases
 4. `src/geocode.py` – `canonical_affiliation_key()` institution rules
 5. `data/registry/affiliation_registry_overrides.csv` – manual merge/canonical overrides
-6. `data/registry/affiliation_registry_unmatched_reviewed.csv` – reviewed country fixes and primary/secondary splits (matched by org+country `group_key`, not `affiliation_key`)
+6. `data/registry/affiliation_registry_unmatched_reviewed.csv` – reviewed country fixes and primary/secondary splits (matched by organisation+country `group_key`, not `affiliation_key`)
 7. Geocode metadata from `data/geocodes/affiliation_geocodes.csv` + `data/geocodes/affiliation_geocodes_manual_01.csv` (rows with invalid countries after parsing are skipped)
 8. Pin overrides from `data/geocodes/geocode_overrides.json`
 
@@ -76,20 +76,20 @@ Some affiliations need human judgement (missing country on programme-only string
 
 ## Lookup
 
-Each affiliation has a stable internal id: `affiliation_key` (`icrs-a-NNNNN`). Keys are reassigned when the registry is rebuilt, so **join on org+country or alias variants**, not saved `affiliation_key` values in review files.
+Each affiliation has a stable internal id: `affiliation_key` (`icrs-a-NNNNN`). Keys are reassigned when the registry is rebuilt, so **join on organisation+country or alias variants**, not saved `affiliation_key` values in review files.
 
 ### `group_key` vs `affiliation_key`
 
 
-|                             | `group_key`                                  | `affiliation_key`                    |
-| --------------------------- | -------------------------------------------- | ------------------------------------ |
-| **Form**                    | `university of queensland|australia`         | `icrs-a-00702`                       |
-| **Purpose**                 | Deduplicate variants of the same org+country | Row id in `affiliation_registry.csv` |
-| **Stable across rebuilds?** | Yes (content-derived)                        | No (serial reassignment)             |
-| **Use for**                 | Merges, alias lookup, review CSV matching    | Traceability in exports, geocode CSV |
+|                             | `group_key`                                           | `affiliation_key`                    |
+| --------------------------- | ----------------------------------------------------- | ------------------------------------ |
+| **Form**                    | `university of queensland`                            | `australia`                          |
+| **Purpose**                 | Deduplicate variants of the same organisation+country | Row id in `affiliation_registry.csv` |
+| **Stable across rebuilds?** | Yes (content-derived)                                 | No (serial reassignment)             |
+| **Use for**                 | Merges, alias lookup, review CSV matching             | Traceability in exports, geocode CSV |
 
 
-`group_key` is the organisation fingerprint (canonical org name + country). It is not a separate entity from `affiliation_key` – it is how we decide which variants belong to the same `icrs-a-*` row. Think of `affiliation_key` as the primary key and `group_key` as the natural key.
+`group_key` is the organisation fingerprint (canonical organisationname + country). It is not a separate entity from `affiliation_key` – it is how I decide which variants belong to the same `icrs-a-*` row. Think of `affiliation_key` as the primary key and `group_key` as the natural key.
 
 ```python
 from src.registry.affiliation_lookup import AffiliationIndex, lookup_affiliation_key
@@ -115,7 +115,7 @@ Cache: `data/cache/google_geocode_cache.json`. New CSV rows include `affiliation
 
 ## Relation to people registry
 
-`attendee_count` on each affiliation row counts attended people (`person_registry.attended=True`) at that org+country, **after** primary/secondary redirects from the reviewed file.
+`attendee_count` on each affiliation row counts attended people (`person_registry.attended=True`) at that organisation+country, **after** primary/secondary redirects from the reviewed file.
 
 Use `redirect_to_affiliation_key` to resolve compound affiliations to the row that should receive map pins and emissions.
 
