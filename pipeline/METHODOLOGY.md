@@ -78,7 +78,7 @@ Cleaning of the resulting database was largely automated but manually verified. 
 
 Thank goodness I find data cleaning satisfying (if vaguely soul-destroying). In many cases (~23%), delegate name from delegate list **≠** delegate name from presentation information on programme: people choose a variant for their name-badge, or perhaps got married! Names were standardised to prevent delegate double-counting. An algorithmic + fuzzy name-matching process partially matched **~1.4%** of those ~23%, and along with the **~21.6% that failed to match**, were manually reviewed.
 
-After review and corrections, **86.8%** of programme speakers are linked to a delegate-list record (`person_registry.meta.json`: 1,676 of 1,930 names in the online programme). At this point, each person receives a stable internal key `icrs-p-`* (`data/registry/person_registry.csv`) for use in further processing.
+After review and corrections, **86.8%** of programme speakers are linked to a delegate-list record (`person_registry.meta.json`: 1,676 of 1,930 names in the online programme). At this point, each person receives a stable internal key `icrs-p-`* (`data/registry/person_registry.csv`) for use in further processing. See [PERSON_REGISTRY.md](pipeline/PERSON_REGISTRY.md) for more information.
 
 **Matching precedence:**
 
@@ -97,7 +97,7 @@ Name variants map through `data/registry/person_name_aliases.csv` (3,155 aliases
 
 ### Affiliation registry and aliases
 
-As with delegates, affiliations were referred to by different names e.g. *'University of California at Berkeley'* and *'University of California - Berkeley'*, and were occasionally mis-spelt. Affiliations were standardised to a single name via the **affiliation registry** (`data/registry/affiliation_registry.csv`, 816 organisation+country rows from 1,160 raw variants).
+As with delegates, affiliations were referred to by different names e.g. *'University of California at Berkeley'* and *'University of California - Berkeley'*, and were occasionally mis-spelt. Affiliations were standardised to a single name via the **affiliation registry** (`data/registry/affiliation_registry.csv`, 816 organisation+country rows from 1,160 raw variants). See [AFFILIATION_REGISTRY.md](pipeline/AFFILIATION_REGISTRY.md) for more information.
 
 **Standardisation sources (in order):**
 
