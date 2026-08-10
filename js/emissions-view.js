@@ -246,7 +246,7 @@ export function createEmissionsView(
     return Math.min(28, 6 + Math.sqrt(count) * 3.2);
   }
 
-  function colorFor(_location, _highlighted) {
+  function colourFor(_location, _highlighted) {
     return "#d95f02";
   }
 
@@ -843,7 +843,7 @@ export function createEmissionsView(
           offset_share: offsetShare,
           sort_key: selected ? 1e9 + (location.co2e_kg || 0) : location.co2e_kg || 0,
           radius: radiusFor(location),
-          color: colorFor(location, true),
+          colour: colourFor(location, true),
         },
         geometry: {
           type: "Point",
@@ -1123,8 +1123,8 @@ export function createEmissionsView(
     if (useCountryChoropleth) {
       countryChoropleth = createCountryChoropleth(map, {
         boundariesPath: choroplethConfig.boundaries_path || "data/geography/country_boundaries.geojson",
-        colorLow: choroplethConfig.color_low || "#d95f02",
-        colorHigh: choroplethConfig.color_high || "#2d8a4e",
+        colourLow: choroplethConfig.colour_low || "#d95f02",
+        colourHigh: choroplethConfig.colour_high || "#2d8a4e",
         getIso3ToCluster: () => countryIso3ToCluster,
         getCountryToCluster: () => countryToCluster,
         getClusterLabels: () => countryClusterLabels,

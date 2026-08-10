@@ -17,14 +17,12 @@ from typing import Any
 from urllib.parse import parse_qs, quote_plus, unquote, urljoin, urlparse
 
 import requests
-from rich.console import Console
+
+from src.util.console import CONSOLE
 from rich.panel import Panel
-from rich.table import Table
-from rich.text import Text
 
 _REQUEST_LOCK = threading.Lock()
 _DDG_WARMED = threading.local()
-_MAX_PAGE_FETCHES = 14
 _MAX_SERP_RESULTS = 10
 SERP_FETCH_LIMIT = 7
 DEFAULT_WORKERS = min(4, max(2, (os.cpu_count() or 4)))
@@ -666,10 +664,6 @@ def _is_plausible_personal_email(email: str, name: str) -> bool:
     return bool(parts) and parts[-1] in local
 
 
-def _filter_personal_emails(emails: list[str], name: str) -> list[str]:
-    personal = [email for email in emails if _is_plausible_personal_email(email, name)]
-    return personal or emails
-
 
 def _is_obviously_junk_email(email: str) -> bool:
     if not email or "@" not in email:
@@ -961,12 +955,6 @@ def brave_api_query_count() -> int:
     with _BRAVE_STATE_LOCK:
         return _BRAVE_REQUEST_COUNT
 
-
-def brave_api_budget_remaining() -> int | None:
-    with _BRAVE_STATE_LOCK:
-        if _BRAVE_BUDGET is None:
-            return None
-        return max(0, _BRAVE_BUDGET - _BRAVE_REQUEST_COUNT)
 
 
 def _brave_budget_allows_request() -> bool:
@@ -1307,21 +1295,6 @@ def _collect_serp_urls(
     return urls
 
 
-def _web_search_queries(
-    name: str, affiliation: str, *, broad: bool = False
-) -> list[str]:
-    return _google_like_search_queries(name, affiliation, broad=broad)
-
-
-def _web_search_profile_urls(
-    session: requests.Session,
-    name: str,
-    affiliation: str,
-    *,
-    max_results: int = 10,
-    broad: bool = False,
-) -> list[str]:
-    return _collect_serp_urls(session, name, affiliation, broad=broad)[:max_results]
 
 
 def _extract_profile_links_from_page(
@@ -2455,79 +2428,6 @@ def classify_profile_outcome(profile: dict[str, Any]) -> str:
     return "failed"
 
 
-def summarize_profiles(profiles: dict[str, dict[str, Any]]) -> dict[str, int]:
-    counts = {
-        "email": 0,
-        "institution": 0,
-        "profile_page": 0,
-        "partial": 0,
-        "failed": 0,
-    }
-    for profile in profiles.values():
-        outcome = classify_profile_outcome(profile)
-        if outcome == "failed":
-            counts["failed"] += 1
-        elif outcome == "partial":
-            counts["partial"] += 1
-        if (profile.get("primary") or {}).get("type") == "email":
-            counts["email"] += 1
-        if profile.get("institutional_page"):
-            counts["institution"] += 1
-        if profile.get("profile_page"):
-            counts["profile_page"] += 1
-    return counts
-
-
-def print_profile_build_summary(
-    stats: ProfileBuildStats,
-    *,
-    cache_path: str | Path,
-    output_path: str | Path | None = None,
-    profile_counts: dict[str, int] | None = None,
-    console: Console | None = None,
-) -> None:
-    console = console or _CONSOLE
-    run_table = Table(title="Lookup run", show_header=True, header_style="bold")
-    run_table.add_column("Metric", style="cyan")
-    run_table.add_column("Count", justify="right")
-    run_table.add_row("Speakers in scope", str(stats.total))
-    if stats.queried or stats.success or stats.partial or stats.failed:
-        run_table.add_row("Loaded from cache", str(stats.cached))
-        run_table.add_row("Queried this run", str(stats.queried))
-        run_table.add_row(
-            "[green]Success[/] (email or profile page)", str(stats.success)
-        )
-        run_table.add_row(
-            "[yellow]Partial[/] (ORCID / OpenAlex / LinkedIn)", str(stats.partial)
-        )
-        run_table.add_row("[red]Failed[/] (search-only or error)", str(stats.failed))
-        if stats.brave_requests:
-            run_table.add_row("Brave Search API requests", str(stats.brave_requests))
-        console.print(run_table)
-    elif stats.total:
-        run_table.add_row("Profiles in cache", str(stats.cached or stats.total))
-        console.print(run_table)
-
-    if profile_counts:
-        totals = Table(
-            title="Cached export totals", show_header=True, header_style="bold"
-        )
-        totals.add_column("Contact type", style="cyan")
-        totals.add_column("Speakers", justify="right")
-        totals.add_row("Public email", str(profile_counts.get("email", 0)))
-        totals.add_row(
-            "University profile page", str(profile_counts.get("institution", 0))
-        )
-        totals.add_row("Personal website", str(profile_counts.get("profile_page", 0)))
-        totals.add_row("Partial matches only", str(profile_counts.get("partial", 0)))
-        totals.add_row("No useful contact", str(profile_counts.get("failed", 0)))
-        console.print(totals)
-
-    footer = Text()
-    footer.append(f"Cache: {Path(cache_path)}", style="dim")
-    if output_path:
-        footer.append(f"\nExport: {Path(output_path)}", style="dim")
-    console.print(Panel(footer, title="Saved", border_style="green"))
 
 
 def load_profile_cache(
@@ -2596,7 +2496,7 @@ def build_speaker_profiles(
     limit: int | None = None,
     retry_failed: bool = False,
     names: list[str] | None = None,
-    console: Console | None = None,
+    console=None,
     workers: int = DEFAULT_WORKERS,
     brave_budget: int | None = DEFAULT_BRAVE_BUDGET,
 ) -> tuple[dict[str, dict[str, Any]], ProfileBuildStats]:
@@ -2606,7 +2506,7 @@ def build_speaker_profiles(
     unique_pairs: list[tuple[str, str]] = []
     seen_names: set[str] = set()
     name_filter = {name.strip() for name in names} if names else None
-    console = console or _CONSOLE
+    console = console or CONSOLE
     stats = ProfileBuildStats()
     workers = max(1, int(workers))
 
@@ -2772,26 +2672,6 @@ def build_speaker_profiles(
     return profiles_by_name, stats
 
 
-def _preserve_verified_profile(
-    existing: dict[str, Any],
-    incoming: dict[str, Any],
-) -> dict[str, Any]:
-    preserved = dict(incoming)
-    for field in (
-        "verified",
-        "primary",
-        "confidence",
-        "institutional_page",
-        "profile_page",
-        "profile_page_label",
-        "email_score",
-        "email_structured",
-    ):
-        if field in existing:
-            preserved[field] = existing[field]
-    preserved["verified"] = True
-    return preserved
-
 
 def _is_public_junk_url(url: str | None) -> bool:
     if not url:
@@ -2854,84 +2734,6 @@ def _is_untrusted_primary_email(profile: dict[str, Any]) -> bool:
         profile["email_score"] = score
     return score < MIN_EMAIL_SCORE
 
-
-def conservative_clean_profile(profile: dict[str, Any]) -> dict[str, int]:
-    """Remove untrusted URLs and emails from a profile. Prefer null over bad data."""
-    stats = {
-        "institutional_page_cleared": 0,
-        "profile_page_cleared": 0,
-        "primary_cleared": 0,
-        "links_removed": 0,
-        "verified_skipped": 0,
-    }
-    verified = profile.get("verified") is True
-
-    def _clear_page_field(field: str, *, youtube_only: bool = False) -> None:
-        value = profile.get(field)
-        if not value:
-            return
-        text = str(value)
-        untrusted = _is_untrusted_profile_url(text)
-        if youtube_only and not (
-            "youtube.com" in text.lower() or "youtu.be" in text.lower()
-        ):
-            return
-        if not youtube_only and not untrusted:
-            return
-        profile.pop(field, None)
-        if field == "profile_page":
-            profile.pop("profile_page_label", None)
-        stats[f"{field}_cleared"] += 1
-
-    if verified:
-        stats["verified_skipped"] += 1
-        for field in ("institutional_page", "profile_page"):
-            _clear_page_field(field, youtube_only=True)
-        primary = profile.get("primary") or {}
-        primary_url = str(primary.get("url") or "")
-        if primary_url and (
-            "youtube.com" in primary_url.lower() or "youtu.be" in primary_url.lower()
-        ):
-            profile["primary"] = None
-            stats["primary_cleared"] += 1
-        cleaned_links: list[dict[str, str]] = []
-        for link in profile.get("links") or []:
-            url = str(link.get("url") or "")
-            if url and (
-                "youtube.com" in url.lower() or "youtu.be" in url.lower()
-            ):
-                stats["links_removed"] += 1
-                continue
-            cleaned_links.append(link)
-        profile["links"] = cleaned_links
-        return stats
-
-    for field in ("institutional_page", "profile_page"):
-        _clear_page_field(field)
-
-    primary = profile.get("primary") or {}
-    primary_url = str(primary.get("url") or "")
-    if primary.get("type") == "email" and _is_untrusted_primary_email(profile):
-        profile["primary"] = None
-        stats["primary_cleared"] += 1
-    elif primary_url and _is_untrusted_profile_url(primary_url):
-        profile["primary"] = None
-        stats["primary_cleared"] += 1
-
-    cleaned_links = []
-    for link in profile.get("links") or []:
-        url = str(link.get("url") or "")
-        kind = str(link.get("kind") or "")
-        if kind in {"scholar_search", "linkedin_search", "openalex", "orcid"}:
-            cleaned_links.append(link)
-            continue
-        if url and _is_untrusted_profile_url(url):
-            stats["links_removed"] += 1
-            continue
-        cleaned_links.append(link)
-    profile["links"] = cleaned_links
-
-    return stats
 
 
 _PUBLIC_EXPORT_LINK_KINDS = frozenset(
@@ -3028,13 +2830,6 @@ def public_profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
     return cleaned
 
 
-def sanitize_profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
-    """Backward-compatible alias for the public site export."""
-    return public_profile_for_export(profile)
-
-
-def _profile_for_export(profile: dict[str, Any]) -> dict[str, Any]:
-    return public_profile_for_export(profile)
 
 
 def export_speaker_profiles_js(
@@ -3044,7 +2839,7 @@ def export_speaker_profiles_js(
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     export_payload = {
-        name: _profile_for_export(profile) for name, profile in profiles_by_name.items()
+        name: public_profile_for_export(profile) for name, profile in profiles_by_name.items()
     }
     body = (
         "/** Generated by export_speaker_profiles – do not edit by hand. */\n"

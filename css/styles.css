@@ -1237,9 +1237,9 @@ a.btn-small {
   font-weight: 700;
 }
 
-.bar-row.neighbor .bar-label,
-.bar-row.neighbor button,
-.result-item.neighbor .affiliation {
+.bar-row.neighbour .bar-label,
+.bar-row.neighbour button,
+.result-item.neighbour .affiliation {
   font-weight: 600;
 }
 
@@ -1826,7 +1826,7 @@ button:active {
   display: none;
 }
 
-/* Field-level ID errors own the message — never also show the status clone. */
+/* Field-level ID errors own the message – never also show the status clone. */
 .emissions-offset-register--error .emissions-offset-feedback {
   display: none !important;
 }
@@ -2193,7 +2193,7 @@ button:active {
   border-color: rgba(32, 64, 154, 0.18);
 }
 
-.result-item.neighbor {
+.result-item.neighbour {
   background: #f8fbfc;
   border-color: rgba(32, 64, 154, 0.1);
 }

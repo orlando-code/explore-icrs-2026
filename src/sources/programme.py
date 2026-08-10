@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
 
 from src.data_paths import ABSTRACTS_JSON, PROGRAMME_JSON
+from src.util.json_io import load_json
 
 TALK_COLUMNS = [
     "talk_id",
@@ -49,11 +49,6 @@ def classify_presentation_type(session_kind: object) -> str:
     return ""
 
 
-def _load_json(path: Path) -> Any:
-    with path.open(encoding="utf-8") as handle:
-        return json.load(handle)
-
-
 def load_talks(
     programme_path: str | Path = PROGRAMME_JSON,
     abstracts_path: str | Path | None = ABSTRACTS_JSON,
@@ -64,13 +59,13 @@ def load_talks(
     is taken from the talk's ``affiliation`` field.
     """
     programme_path = Path(programme_path)
-    programme = _load_json(programme_path)
+    programme = load_json(programme_path)
 
     abstracts: dict[str, str] = {}
     if abstracts_path is not None:
         abstracts_path = Path(abstracts_path)
         if abstracts_path.exists():
-            abstracts = _load_json(abstracts_path)
+            abstracts = load_json(abstracts_path)
 
     rows: list[dict[str, Any]] = []
     for session in programme["sessions"]:

@@ -31,10 +31,10 @@ export function mixChannel(low, high, share) {
   return `#${hex(channel(r1, r2))}${hex(channel(g1, g2))}${hex(channel(b1, b2))}`;
 }
 
-function buildMatchColorExpression(iso3ToColor, fallback) {
+function buildMatchColourExpression(iso3ToColour, fallback) {
   const expression = ["match", ["get", NATIVE_COUNTRY_PROP]];
-  for (const [iso3, color] of iso3ToColor) {
-    expression.push(iso3, color);
+  for (const [iso3, colour] of iso3ToColour) {
+    expression.push(iso3, colour);
   }
   expression.push(fallback);
   return expression;
@@ -43,8 +43,8 @@ function buildMatchColorExpression(iso3ToColor, fallback) {
 export function createCountryChoropleth(map, options = {}) {
   const {
     boundariesPath = "data/geography/country_boundaries.geojson",
-    colorLow = OFFSET_RED,
-    colorHigh = OFFSET_GREEN,
+    colourLow = OFFSET_RED,
+    colourHigh = OFFSET_GREEN,
     getClusterShare = () => 0,
     getIso3ToCluster = () => ({}),
     getClusterLabels = () => ({}),
@@ -118,15 +118,15 @@ export function createCountryChoropleth(map, options = {}) {
     return configured.filter((code) => countryToCluster[code]);
   }
 
-  function nativeIso3Colors() {
-    const colors = new Map();
+  function nativeIso3Colours() {
+    const colours = new Map();
     for (const [iso3, clusterId] of Object.entries(getIso3ToCluster())) {
       const code = String(iso3 || "").trim().toUpperCase();
       if (!code) continue;
       const share = getClusterShare(clusterId) || 0;
-      colors.set(code, mixChannel(colorLow, colorHigh, share));
+      colours.set(code, mixChannel(colourLow, colourHigh, share));
     }
-    return colors;
+    return colours;
   }
 
   function territoryFeatureCollection() {
@@ -180,11 +180,11 @@ export function createCountryChoropleth(map, options = {}) {
 
   function updateNativeLayer() {
     if (!map.getLayer(NATIVE_COUNTRY_LAYER)) return;
-    const colors = nativeIso3Colors();
+    const colours = nativeIso3Colours();
     map.setPaintProperty(
       NATIVE_COUNTRY_LAYER,
       "fill-color",
-      buildMatchColorExpression(colors, DEFAULT_UNCLUSTERED)
+      buildMatchColourExpression(colours, DEFAULT_UNCLUSTERED)
     );
     map.setPaintProperty(NATIVE_COUNTRY_LAYER, "fill-opacity", visible ? 0.55 : 0);
   }
@@ -212,9 +212,9 @@ export function createCountryChoropleth(map, options = {}) {
               ["linear"],
               ["coalesce", ["get", "offset_share"], 0],
               0,
-              colorLow,
+              colourLow,
               1,
-              colorHigh,
+              colourHigh,
             ],
             "fill-opacity": [
               "case",
@@ -261,9 +261,9 @@ export function createCountryChoropleth(map, options = {}) {
               ["linear"],
               ["coalesce", ["get", "offset_share"], 0],
               0,
-              colorLow,
+              colourLow,
               1,
-              colorHigh,
+              colourHigh,
             ],
             "fill-opacity": [
               "case",
@@ -377,7 +377,7 @@ export function createCountryChoropleth(map, options = {}) {
           type: "fill",
           source: "country-offset-pulse",
           paint: {
-            "fill-color": colorHigh,
+            "fill-color": colourHigh,
             "fill-opacity": 0,
           },
         },
@@ -391,7 +391,7 @@ export function createCountryChoropleth(map, options = {}) {
           type: "line",
           source: "country-offset-pulse",
           paint: {
-            "line-color": colorHigh,
+            "line-color": colourHigh,
             "line-width": 2.5,
             "line-opacity": 0,
           },
@@ -498,7 +498,7 @@ export function createCountryChoropleth(map, options = {}) {
       `
       <div class="offset-choropleth-legend">
         <h3>${title}</h3>
-        <div class="offset-choropleth-gradient" style="background: linear-gradient(to right, ${colorLow}, ${colorHigh})"></div>
+        <div class="offset-choropleth-gradient" style="background: linear-gradient(to right, ${colourLow}, ${colourHigh})"></div>
         <div class="offset-choropleth-labels">
           <span>None pledged</span>
           <span>All pledged!</span>

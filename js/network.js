@@ -844,7 +844,7 @@ export function createNetworkView(siteData, elements) {
     return Number.isFinite(parsed) && parsed > 0 ? parsed : DEFAULT_NODE_LIMIT;
   }
 
-  function neighborIdsFromLinks(nodeId, links) {
+  function neighbourIdsFromLinks(nodeId, links) {
     const ids = new Set();
     if (!nodeId) return ids;
     for (const link of links) {
@@ -897,7 +897,7 @@ export function createNetworkView(siteData, elements) {
     const mustInclude = new Set(matchedNodeIds);
     if (selectedNodeId) {
       mustInclude.add(selectedNodeId);
-      for (const id of neighborIdsFromLinks(selectedNodeId, fullLinks)) {
+      for (const id of neighbourIdsFromLinks(selectedNodeId, fullLinks)) {
         mustInclude.add(id);
       }
     }
@@ -912,8 +912,8 @@ export function createNetworkView(siteData, elements) {
   function thinningSummary() {
     if (selectedNodeId) {
       const name = currentGraph().nodes.find((node) => node.id === selectedNodeId)?.label;
-      const neighborCount = Math.max(0, graphNodes.length - 1);
-      return `Showing ${neighborCount.toLocaleString()} co-author${neighborCount === 1 ? "" : "s"} linked to ${name || "selection"}.`;
+      const neighbourCount = Math.max(0, graphNodes.length - 1);
+      return `Showing ${neighbourCount.toLocaleString()} co-author${neighbourCount === 1 ? "" : "s"} linked to ${name || "selection"}.`;
     }
     if (!graphThinned || !graphTotalNodes) return "";
     if (searchQuery && matchedNodeIds.size) {
@@ -1335,7 +1335,7 @@ export function createNetworkView(siteData, elements) {
     }
 
     const matches = nodes.filter((node) => matchedNodeIds.has(node.id));
-    const neighbors = neighborIds(selectedNodeId);
+    const neighbours = neighbourIds(selectedNodeId);
     elements.resultsTitle.textContent = `${matches.length.toLocaleString()} matching node${matches.length === 1 ? "" : "s"}`;
 
     if (!matches.length) {
@@ -1348,7 +1348,7 @@ export function createNetworkView(siteData, elements) {
       .slice(0, 30)
       .map((node) => {
         return `
-        <button type="button" class="result-item${node.id === selectedNodeId ? " selected" : ""}${selectedNodeId && neighbors.has(node.id) ? " neighbor" : ""}" data-node-id="${escapeHtml(node.id)}">
+        <button type="button" class="result-item${node.id === selectedNodeId ? " selected" : ""}${selectedNodeId && neighbours.has(node.id) ? " neighbour" : ""}" data-node-id="${escapeHtml(node.id)}">
           <div class="affiliation">${escapeHtml(node.label)}</div>
           <div class="meta">${escapeHtml(formatNodeMeta(node))}</div>
         </button>`;
@@ -1436,8 +1436,8 @@ export function createNetworkView(siteData, elements) {
     
   }
 
-  function neighborIds(nodeId) {
-    return neighborIdsFromLinks(nodeId, graphLinks);
+  function neighbourIds(nodeId) {
+    return neighbourIdsFromLinks(nodeId, graphLinks);
   }
 
   function defaultLabelNodeIds(nodes) {
@@ -1450,27 +1450,27 @@ export function createNetworkView(siteData, elements) {
 
   function labelNodes(nodes) {
     const searching = Boolean(searchQuery);
-    const neighbors = neighborIds(selectedNodeId);
+    const neighbours = neighbourIds(selectedNodeId);
     const defaultLabels =
       !searchQuery && !selectedNodeId ? defaultLabelNodeIds(nodes) : null;
     return nodes.filter((node) => {
       if (node.id === selectedNodeId) return false;
-      if (selectedNodeId && neighbors.has(node.id)) return true;
+      if (selectedNodeId && neighbours.has(node.id)) return true;
       if (searching && matchedNodeIds.has(node.id)) return true;
       if (defaultLabels?.has(node.id)) return true;
       return false;
     });
   }
 
-  function nodeDrawOrder(node, neighbors) {
+  function nodeDrawOrder(node, neighbours) {
     if (node.id === selectedNodeId) return 3;
-    if (selectedNodeId && neighbors.has(node.id)) return 2;
+    if (selectedNodeId && neighbours.has(node.id)) return 2;
     if (searchQuery && matchedNodeIds.has(node.id)) return 1;
     return 0;
   }
 
-  function labelDrawOrder(node, neighbors) {
-    return nodeDrawOrder(node, neighbors);
+  function labelDrawOrder(node, neighbours) {
+    return nodeDrawOrder(node, neighbours);
   }
 
   function raiseSelectedLabel() {
@@ -1526,11 +1526,11 @@ export function createNetworkView(siteData, elements) {
     };
   }
 
-  function linkTier(link, neighbors) {
+  function linkTier(link, neighbours) {
     if (!selectedNodeId) return "default";
     const { sourceId, targetId } = linkEndpointIds(link);
     if (sourceId === selectedNodeId || targetId === selectedNodeId) return "primary";
-    if (neighbors.has(sourceId) && neighbors.has(targetId)) return "secondary";
+    if (neighbours.has(sourceId) && neighbours.has(targetId)) return "secondary";
     return "dim";
   }
 
@@ -1618,15 +1618,15 @@ export function createNetworkView(siteData, elements) {
     if (!nodeSelection || !linkSelection || !radiusScale) return;
 
     const searching = Boolean(searchQuery);
-    const neighbors = neighborIds(selectedNodeId);
+    const neighbours = neighbourIds(selectedNodeId);
 
     linkSelection
-      .attr("stroke", (d) => linkStroke(linkTier(d, neighbors)))
-      .attr("stroke-opacity", (d) => linkOpacity(linkTier(d, neighbors)))
-      .attr("stroke-width", (d) => linkWidth(d, linkTier(d, neighbors)));
+      .attr("stroke", (d) => linkStroke(linkTier(d, neighbours)))
+      .attr("stroke-opacity", (d) => linkOpacity(linkTier(d, neighbours)))
+      .attr("stroke-width", (d) => linkWidth(d, linkTier(d, neighbours)));
 
     nodeSelection
-      .sort((a, b) => nodeDrawOrder(a, neighbors) - nodeDrawOrder(b, neighbors))
+      .sort((a, b) => nodeDrawOrder(a, neighbours) - nodeDrawOrder(b, neighbours))
       .attr("fill", (d) => nodeFill(d))
       .attr("stroke", (d) => {
         if (d.id === selectedNodeId) return NETWORK_COLOR_HIGHLIGHT;
@@ -1634,14 +1634,14 @@ export function createNetworkView(siteData, elements) {
       })
       .attr("stroke-width", (d) => {
         if (d.id === selectedNodeId) return 3.5;
-        if (selectedNodeId && neighbors.has(d.id)) return 2.5;
+        if (selectedNodeId && neighbours.has(d.id)) return 2.5;
         if (searching && matchedNodeIds.has(d.id)) return 2.5;
         return 1.5;
       })
       .attr("opacity", (d) => {
         if (d.id === selectedNodeId) return 1;
         if (selectedNodeId) {
-          return neighbors.has(d.id) ? 0.72 : 0.16;
+          return neighbours.has(d.id) ? 0.72 : 0.16;
         }
         if (searching && matchedNodeIds.size) {
           return matchedNodeIds.has(d.id) ? 0.95 : 0.14;
@@ -1659,10 +1659,10 @@ export function createNetworkView(siteData, elements) {
       .attr("pointer-events", "none");
     labelSelection = labelEnter.merge(labelSelection);
     labelSelection
-      .sort((a, b) => labelDrawOrder(a, neighbors) - labelDrawOrder(b, neighbors))
+      .sort((a, b) => labelDrawOrder(a, neighbours) - labelDrawOrder(b, neighbours))
       .attr("font-size", 10)
-      .attr("font-weight", (d) => (neighbors.has(d.id) ? 600 : 500))
-      .attr("fill", (d) => (neighbors.has(d.id) ? "#1a3340" : "#14212b"))
+      .attr("font-weight", (d) => (neighbours.has(d.id) ? 600 : 500))
+      .attr("fill", (d) => (neighbours.has(d.id) ? "#1a3340" : "#14212b"))
       .attr("fill-opacity", 1)
       .attr("stroke", "#ffffff")
       .attr("stroke-width", 3)
@@ -1692,18 +1692,18 @@ export function createNetworkView(siteData, elements) {
     const sorted = barChartNodes(nodes);
     const maxConnections = sorted[0]?.connections || 1;
     const logScale = d3.scaleLog().domain([1, maxConnections]).range([0.08, 1]).clamp(true);
-    const neighbors = neighborIds(selectedNodeId);
+    const neighbours = neighbourIds(selectedNodeId);
 
     elements.barChart.innerHTML = sorted
       .map((node) => {
         const widthPct = `${logScale(Math.max(1, node.connections)) * 100}%`;
         const selected = node.id === selectedNodeId;
-        const neighbor = selectedNodeId && neighbors.has(node.id);
+        const neighbour = selectedNodeId && neighbours.has(node.id);
         const dimmed =
           (searchQuery && matchedNodeIds.size && !matchedNodeIds.has(node.id)) ||
-          (selectedNodeId && !selected && !neighbor);
+          (selectedNodeId && !selected && !neighbour);
         return `
-          <button type="button" class="bar-row${selected ? " selected" : ""}${neighbor ? " neighbor" : ""}${dimmed ? " dimmed" : ""}" data-node-id="${escapeHtml(node.id)}">
+          <button type="button" class="bar-row${selected ? " selected" : ""}${neighbour ? " neighbour" : ""}${dimmed ? " dimmed" : ""}" data-node-id="${escapeHtml(node.id)}">
             <span class="bar-label">${escapeHtml(node.label)}</span>
             <div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:${widthPct}"></div></div>
             <span class="bar-count">${node.connections.toLocaleString()}</span>

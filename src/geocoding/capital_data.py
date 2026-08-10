@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-import json
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
 from src.data_paths import GEOGRAPHY
+from src.util.json_io import load_json
 from src.sources.delegates import country_to_iso2
 
 COUNTRY_CAPITALS_JSON = GEOGRAPHY / "country_capitals.json"
@@ -29,18 +29,19 @@ class CapitalRecord:
     source: str = ""
 
 
-def _load_json(path: Path) -> dict[str, Any]:
-    if not path.exists():
+def _load_capital_json(path: Path) -> dict[str, Any]:
+    try:
+        return load_json(path)
+    except FileNotFoundError as exc:
         raise FileNotFoundError(
             f"Missing capital reference data at {path}. "
             "Run: python scripts/pipeline/build_capital_coords_data.py"
-        )
-    return json.loads(path.read_text(encoding="utf-8"))
+        ) from exc
 
 
 @lru_cache(maxsize=1)
 def country_capital_index() -> dict[str, CapitalRecord]:
-    payload = _load_json(COUNTRY_CAPITALS_JSON)
+    payload = _load_capital_json(COUNTRY_CAPITALS_JSON)
     index: dict[str, CapitalRecord] = {}
     for iso2, row in payload.get("countries", {}).items():
         iso = str(iso2 or "").strip().upper()
@@ -59,7 +60,7 @@ def country_capital_index() -> dict[str, CapitalRecord]:
 
 @lru_cache(maxsize=1)
 def us_state_capital_index() -> tuple[dict[str, CapitalRecord], dict[str, str]]:
-    payload = _load_json(US_STATE_CAPITALS_JSON)
+    payload = _load_capital_json(US_STATE_CAPITALS_JSON)
     states: dict[str, CapitalRecord] = {}
     for name, row in payload.get("states", {}).items():
         state_name = str(name or "").strip()

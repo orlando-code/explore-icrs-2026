@@ -2,40 +2,34 @@
 
 from __future__ import annotations
 
-import json
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-from src.geography.country_clusters import build_country_clusters
+from src.data_paths import (
+    COUNTRY_BOUNDARIES_CENTROIDS_JSON,
+    COUNTRY_BOUNDARIES_REL,
+    DELEGATES_JSON,
+)
 from src.emissions.origin_country import (
     country_from_affiliation,
     country_label,
     iso3_from_iso2,
     resolve_origin_country,
 )
-from src.geography.territory_overlays import territory_overlay_codes
 from src.emissions.travel_emissions import DEFAULT_REVERSE_CACHE_PATH
-from src.data_paths import (
-    COUNTRY_BOUNDARIES_REL,
-    COUNTRY_BOUNDARIES_CENTROIDS_JSON,
-    DELEGATES_JSON,
-)
+from src.geography.country_clusters import build_country_clusters
+from src.geography.territory_overlays import territory_overlay_codes
+from src.util.json_io import load_json
 from src.sources.delegates import delegate_person_key, normalize_person_name
 
 CENTROIDS_PATH = COUNTRY_BOUNDARIES_CENTROIDS_JSON
 DELEGATES_PATH = DELEGATES_JSON
 
 
-def _load_json(path: Path) -> dict:
-    if not path.exists():
-        return {}
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
 def delegate_lookup() -> tuple[dict[str, str], dict[str, str]]:
     """Map registry person keys (and legacy name keys) to delegate-list countries."""
-    payload = _load_json(DELEGATES_PATH)
+    payload = load_json(DELEGATES_PATH, default={})
     by_person_key: dict[str, str] = {}
     by_person_key_code: dict[str, str] = {}
     by_name: dict[str, str] = {}
@@ -102,7 +96,7 @@ def _location_index(pool: dict) -> dict[str, dict]:
 
 
 def _roster_country_counts(*, speakers_only: bool) -> dict[str, int]:
-    payload = _load_json(DELEGATES_PATH)
+    payload = load_json(DELEGATES_PATH, default={})
     counts: dict[str, int] = defaultdict(int)
     for row in payload.get("delegates") or []:
         if speakers_only and not row.get("is_speaker"):
@@ -149,7 +143,9 @@ def _country_counts_for_pool(
             person_key=str(attendee.get("person_key") or ""),
         )
         code = resolve_origin_country(
-            affiliation=str(attendee.get("affiliation") or location.get("affiliation") or ""),
+            affiliation=str(
+                attendee.get("affiliation") or location.get("affiliation") or ""
+            ),
             lat=location.get("lat"),
             lon=location.get("lon"),
             reverse_cache=reverse_cache,
@@ -160,7 +156,9 @@ def _country_counts_for_pool(
         if code:
             counts[code] += 1
 
-    for code, roster_total in _roster_country_counts(speakers_only=speakers_only).items():
+    for code, roster_total in _roster_country_counts(
+        speakers_only=speakers_only
+    ).items():
         counts[code] = max(counts.get(code, 0), roster_total)
 
     return dict(counts)
@@ -175,8 +173,14 @@ def enrich_emissions_pool(
     delegate_country_codes: dict[str, str] | None = None,
     speakers_only: bool = True,
 ) -> dict:
-    reverse_cache = reverse_cache if reverse_cache is not None else _load_json(DEFAULT_REVERSE_CACHE_PATH)
-    centroids = centroids if centroids is not None else centroids_from_json(CENTROIDS_PATH)
+    reverse_cache = (
+        reverse_cache
+        if reverse_cache is not None
+        else load_json(DEFAULT_REVERSE_CACHE_PATH, default={})
+    )
+    centroids = (
+        centroids if centroids is not None else centroids_from_json(CENTROIDS_PATH)
+    )
     if delegate_countries is None or delegate_country_codes is None:
         by_name, by_code = delegate_lookup()
         delegate_countries = delegate_countries or by_name
@@ -197,7 +201,8 @@ def enrich_emissions_pool(
         country_labels=country_labels,
     )
     cluster_labels = {
-        cluster["cluster_id"]: cluster.get("label") or ", ".join(cluster.get("countries") or [])
+        cluster["cluster_id"]: cluster.get("label")
+        or ", ".join(cluster.get("countries") or [])
         for cluster in clusters
     }
 
@@ -211,7 +216,9 @@ def enrich_emissions_pool(
             person_key=str(attendee.get("person_key") or ""),
         )
         origin_country = resolve_origin_country(
-            affiliation=str(attendee.get("affiliation") or location.get("affiliation") or ""),
+            affiliation=str(
+                attendee.get("affiliation") or location.get("affiliation") or ""
+            ),
             lat=location.get("lat"),
             lon=location.get("lon"),
             reverse_cache=reverse_cache,
@@ -265,7 +272,7 @@ def enrich_emissions_pool(
 
 
 def centroids_from_json(path: Path) -> dict[str, tuple[float, float]]:
-    payload = _load_json(path)
+    payload = load_json(path, default={})
     return {
         str(code).upper(): (float(value[0]), float(value[1]))
         for code, value in payload.items()
@@ -274,7 +281,7 @@ def centroids_from_json(path: Path) -> dict[str, tuple[float, float]]:
 
 
 def enrich_emissions_payload(payload: dict[str, Any]) -> dict[str, Any]:
-    reverse_cache = _load_json(DEFAULT_REVERSE_CACHE_PATH)
+    reverse_cache = load_json(DEFAULT_REVERSE_CACHE_PATH, default={})
     centroids = centroids_from_json(CENTROIDS_PATH)
     delegate_countries, delegate_country_codes = delegate_lookup()
 
@@ -300,8 +307,8 @@ def enrich_emissions_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "enabled": True,
         "boundaries_path": COUNTRY_BOUNDARIES_REL,
         "min_cluster_size": 3,
-        "color_low": "#d95f02",
-        "color_high": "#2d8a4e",
+        "colour_low": "#d95f02",
+        "colour_high": "#2d8a4e",
         "boundaries_source": "maplibre-demotiles",
         "territory_overlay_iso2": territory_overlay_codes(active_countries),
     }

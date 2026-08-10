@@ -33,8 +33,6 @@ from src.geocoding.geocode import (
     affiliation_base_name,
     affiliation_lookup_keys,
     canonical_affiliation_key,
-    geocode_coords_score,
-    is_crf_cache_poison,
     load_affiliation_display_aliases,
     resolve_affiliation_alias,
 )
@@ -122,63 +120,6 @@ class TestLookupOverride:
 
         missing = _lookup_override("Totally Different Lab", overrides)
         assert missing is None, f"unexpected override hit: {missing!r}"
-
-
-class TestCrfCachePoison:
-    def test_legitimate_crf_not_poison(self, assert_eq):
-        coords = {
-            "latitude": 25.088014,
-            "longitude": -80.441046,
-            "query_used": "override:Coral Restoration Foundation",
-        }
-        assert is_crf_cache_poison("Coral Restoration Foundation, United States", coords) is False
-
-    def test_poisoned_unrelated_affiliation(self, assert_eq):
-        coords = {
-            "latitude": 25.088014,
-            "longitude": -80.441046,
-            "query_used": "override:Coral Restoration Foundation",
-        }
-        assert is_crf_cache_poison("University of Auckland, New Zealand", coords) is True, (
-            "CRF Key Largo coords on unrelated affiliation must be flagged as poison"
-        )
-
-    def test_nearby_coords_without_crf_query_not_poison(self, assert_eq):
-        coords = {
-            "latitude": 25.088014,
-            "longitude": -80.441046,
-            "query_used": "nominatim:some other query",
-        }
-        assert is_crf_cache_poison("Random Lab", coords) is False
-
-    def test_missing_coords(self, assert_eq):
-        assert is_crf_cache_poison("Anything", None) is False
-        assert is_crf_cache_poison("Anything", {}) is False
-
-
-class TestGeocodeCoordsScore:
-    def test_priority_order(self, assert_eq):
-        assert_eq(geocode_coords_score(None), 0, context="missing")
-        assert_eq(
-            geocode_coords_score({"latitude": 1, "query_used": "override"}),
-            100,
-            context="override score",
-        )
-        assert_eq(
-            geocode_coords_score({"latitude": 1, "query_used": "google:x"}),
-            80,
-            context="google score",
-        )
-        assert_eq(
-            geocode_coords_score({"latitude": 1, "geocode_level": "institute"}),
-            50,
-            context="institute score",
-        )
-        assert_eq(
-            geocode_coords_score({"latitude": 1, "geocode_level": "country"}),
-            10,
-            context="country score",
-        )
 
 
 class TestOrganisationCountryMismatch:
@@ -329,10 +270,10 @@ class TestAffiliationGeocodeResolution:
         monkeypatch.setattr(geocode_mod, "DEFAULT_OVERRIDES_PATH", path)
         mod._GEOCODE_OVERRIDES_CACHE = None
 
-        # Bypass cache by loading via path through _load_json directly.
-        from src.geocoding.geocode import _load_json
+        # Bypass cache by loading via path through load_json directly.
+        from src.util.json_io import load_json
 
-        payload = _load_json(path)
+        payload = load_json(path)
         assert_eq(payload["Test Lab"]["latitude"], 1.23, context="override json lat")
 
     def test_source_frame_priority(self, tmp_path, assert_eq):

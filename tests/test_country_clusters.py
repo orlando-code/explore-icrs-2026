@@ -1,10 +1,10 @@
 from src.geography.country_clusters import build_country_clusters
-from src.geography.country_neighbors import load_country_neighbors
+from src.geography.country_neighbours import load_country_neighbours
 
 
-def test_small_country_joins_largest_contiguous_neighbor():
-    neighbors = {
-        **load_country_neighbors(),
+def test_small_country_joins_largest_contiguous_neighbour():
+    neighbours = {
+        **load_country_neighbours(),
         "OM": ["AE", "QA", "SA"],
         "EC": ["CO", "PE"],
         "PE": ["BR", "CO", "EC"],
@@ -24,15 +24,15 @@ def test_small_country_joins_largest_contiguous_neighbor():
         counts,
         centroids,
         min_size=3,
-        neighbors=neighbors,
+        neighbours=neighbours,
     )
     assert mapping["OM"] == mapping["SA"]
     assert mapping["EC"] == mapping["CO"]
 
 
 def test_small_country_stays_within_continent():
-    neighbors = {
-        **load_country_neighbors(),
+    neighbours = {
+        **load_country_neighbours(),
         "FJ": ["VU"],
         "VU": ["FJ"],
         "WS": ["WS"],
@@ -68,7 +68,7 @@ def test_small_country_stays_within_continent():
         counts,
         centroids,
         min_size=3,
-        neighbors=neighbors,
+        neighbours=neighbours,
     )
     assert mapping["OM"] == mapping["SA"]
     assert mapping["MH"] == mapping["AU"]

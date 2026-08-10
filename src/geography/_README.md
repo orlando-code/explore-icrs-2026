@@ -3,12 +3,12 @@
 Country-level geometry and grouping for choropleth contribution registration.
 
 
-| Module                  | Role                                                 |
-| ----------------------- | ---------------------------------------------------- |
-| `country_clusters.py`   | Cluster delegates by origin country on emissions map |
-| `country_neighbours.py`  | Load `data/geography/country_neighbors.json`         |
-| `country_continents.py` | Continent lookup                                     |
-| `territory_overlays.py` | Territory display helpers                            |
+| Module | Role |
+|--------|------|
+| `country_clusters.py` | Privacy clusters for the emissions choropleth |
+| `country_neighbours.py` | Land-border / proximity adjacency (`country_neighbours.json`) |
+| `country_continents.py` | Continent lookup |
+| `territory_overlays.py` | Overseas-territory display helpers |
 
 
 Data files: [data/geography/_README.md](../../data/geography/_README.md)
