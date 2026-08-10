@@ -10,6 +10,7 @@ authors:
 license: MIT
 repository-code: "https://github.com/orlando-code/explore-icrs-2026"
 url: "https://orlando-codes.com/explore-icrs-2026/"
+doi: "10.5281/zenodo.21866334"
 abstract: >-
   Interactive map, co-authorship network, and travel-emissions explorer for
   delegates of the 2026 International Coral Reef Symposium (Auckland). Built
