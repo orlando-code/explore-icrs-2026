@@ -1,4 +1,4 @@
-const SPARK_COLORS = [
+const SPARK_COLOURS = [
   "#7ef0a8",
   "#5fd68a",
   "#b8ffd4",
@@ -58,7 +58,7 @@ export function createMapCelebration(stageCanvas) {
         vy: Math.sin(angle) * speed,
         life: 1,
         decay: randomBetween(0.018, 0.028),
-        color: SPARK_COLORS[Math.floor(Math.random() * SPARK_COLORS.length)],
+        colour: SPARK_COLOURS[Math.floor(Math.random() * SPARK_COLOURS.length)],
         size: randomBetween(2.8, 5.4),
         drag: 0.988,
       });
@@ -69,7 +69,7 @@ export function createMapCelebration(stageCanvas) {
   function drawParticle(particle) {
     const fade = particle.life * particle.life;
     context.globalAlpha = fade;
-    context.fillStyle = particle.color;
+    context.fillStyle = particle.colour;
     const radius = particle.size * (0.55 + fade * 0.55);
     context.beginPath();
     context.arc(particle.x, particle.y, radius, 0, Math.PI * 2);

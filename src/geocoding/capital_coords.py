@@ -118,7 +118,7 @@ def _country_reference_point(country: str) -> tuple[float, float] | None:
 
 def coords_plausible_for_country(lat: float, lon: float, country: str) -> bool:
     """Rough check that coordinates lie near the delegate country (capital within ~1500 km)."""
-    from src.geocoding.geocode import _haversine_km
+    from src.util.geo_math import haversine_km as _haversine_km
 
     reference = _country_reference_point(country)
     if reference is None:

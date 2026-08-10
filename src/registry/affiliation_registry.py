@@ -10,43 +10,39 @@ from typing import Any
 
 import pandas as pd
 
+from src.data_paths import (
+    ABSTRACTS_JSON,
+    AFFILIATION_ALIASES_CSV,
+    AFFILIATION_GEOCODES_CSV,
+    AFFILIATION_GEOCODES_MANUAL_CSV,
+    AFFILIATION_OVERRIDES_CSV,
+    AFFILIATION_REGISTRY_CSV,
+    AFFILIATION_REVIEWED_CSV,
+    AFFILIATION_UNMATCHED_CSV,
+    DELEGATES_JSON,
+    GEOCODE_OVERRIDES_JSON,
+    PERSON_REGISTRY_CSV,
+    PROGRAMME_JSON,
+)
+from src.geocoding.geocode import (
+    _trailing_country_part_count,
+    affiliation_display_name,
+    canonical_affiliation_key,
+    load_affiliation_display_aliases,
+    resolve_affiliation_alias,
+)
 from src.sources.delegates import (
     country_to_iso2,
     load_delegates,
     normalize_person_name,
     organisation_for_delegate_row,
 )
-from src.geocoding.geocode import (
-    affiliation_display_name,
-    canonical_affiliation_key,
-    load_affiliation_display_aliases,
-    resolve_affiliation_alias,
-    _trailing_country_part_count,
-)
 from src.sources.programme import load_talks
-from src.data_paths import (
-    AFFILIATION_ALIASES_CSV,
-    AFFILIATION_GEOCODES_CSV,
-    AFFILIATION_GEOCODES_MANUAL_CSV,
-    AFFILIATION_REGISTRY_CSV,
-    AFFILIATION_OVERRIDES_CSV,
-    AFFILIATION_REVIEWED_CSV,
-    AFFILIATION_UNMATCHED_CSV,
-    DATA_ROOT,
-    DELEGATES_JSON,
-    GEOCODE_OVERRIDES_JSON,
-    PERSON_REGISTRY_CSV,
-    PROGRAMME_JSON,
-    ABSTRACTS_JSON,
-)
 
 DEFAULT_REGISTRY_PATH = AFFILIATION_REGISTRY_CSV
 DEFAULT_ALIASES_PATH = AFFILIATION_ALIASES_CSV
 DEFAULT_UNMATCHED_PATH = AFFILIATION_UNMATCHED_CSV
-DEFAULT_REVIEWED_PATH = AFFILIATION_REVIEWED_CSV
 DEFAULT_OVERRIDES_PATH = AFFILIATION_OVERRIDES_CSV
-DEFAULT_GEOCODE_OVERRIDES_JSON = GEOCODE_OVERRIDES_JSON
-DEFAULT_PERSON_REGISTRY_PATH = PERSON_REGISTRY_CSV
 
 AFFILIATION_KEY_PREFIX = "icrs-a-"
 
@@ -110,7 +106,9 @@ class AffiliationBuildResult:
 
 
 def _read_csv(path: Path) -> pd.DataFrame:
-    return pd.read_csv(path, dtype=str, encoding="utf-8", encoding_errors="replace").fillna("")
+    return pd.read_csv(
+        path, dtype=str, encoding="utf-8", encoding_errors="replace"
+    ).fillna("")
 
 
 def _make_affiliation(organisation: str, country: str) -> str:
@@ -150,7 +148,9 @@ def parse_affiliation_parts(affiliation: str) -> tuple[str, str]:
     return ", ".join(parts), ""
 
 
-def _build_delegate_affiliation_index(delegates: pd.DataFrame) -> dict[str, tuple[str, str]]:
+def _build_delegate_affiliation_index(
+    delegates: pd.DataFrame,
+) -> dict[str, tuple[str, str]]:
     """Map affiliation strings and variants to authoritative org/country from delegates."""
     index: dict[str, tuple[str, str]] = {}
     for _, row in delegates.iterrows():
@@ -195,13 +195,19 @@ def _resolve_org_country(
     if organisation and _is_valid_country(country):
         return organisation, country
 
-    for candidate in (affiliation, _make_affiliation(organisation, country), organisation):
+    for candidate in (
+        affiliation,
+        _make_affiliation(organisation, country),
+        organisation,
+    ):
         if not candidate:
             continue
         parsed_org, parsed_country = parse_affiliation_parts(candidate)
         if parsed_org and _is_valid_country(parsed_country):
             if delegate_index:
-                hit = delegate_index.get(_make_affiliation(parsed_org, parsed_country).casefold())
+                hit = delegate_index.get(
+                    _make_affiliation(parsed_org, parsed_country).casefold()
+                )
                 if hit:
                     return hit
                 hit = delegate_index.get(parsed_org.casefold())
@@ -210,10 +216,6 @@ def _resolve_org_country(
             return parsed_org, parsed_country
 
     return organisation, country
-
-
-def _parse_affiliation_text(affiliation: str) -> tuple[str, str]:
-    return parse_affiliation_parts(affiliation)
 
 
 def group_key(organisation: str, country: str) -> str:
@@ -229,9 +231,9 @@ def canonical_for_parts(organisation: str, country: str) -> str:
     canonical_org = canonical_affiliation_key(org)
     country = str(country or "").strip()
     if country:
-        return affiliation_display_name(f"{canonical_org}, {country}") or _make_affiliation(
-            canonical_org, country
-        )
+        return affiliation_display_name(
+            f"{canonical_org}, {country}"
+        ) or _make_affiliation(canonical_org, country)
     return affiliation_display_name(canonical_org) or canonical_org
 
 
@@ -328,7 +330,12 @@ def _collect_variant_rows() -> list[dict[str, Any]]:
             affiliation=affiliation,
             delegate_index=delegate_index,
         )
-        add(organisation, country, variant=affiliation or _make_affiliation(organisation, country), source="delegate_list")
+        add(
+            organisation,
+            country,
+            variant=affiliation or _make_affiliation(organisation, country),
+            source="delegate_list",
+        )
 
     talks = load_talks(PROGRAMME_JSON, ABSTRACTS_JSON)
     delegate_lookup: dict[str, tuple[str, str]] = {}
@@ -353,9 +360,9 @@ def _collect_variant_rows() -> list[dict[str, Any]]:
             continue
         organisation, country = parse_affiliation_parts(affiliation)
         presenter = str(row.get("presenter") or "").strip()
-        match = delegate_lookup.get(normalize_person_name(presenter)) or delegate_lookup.get(
-            presenter.casefold()
-        )
+        match = delegate_lookup.get(
+            normalize_person_name(presenter)
+        ) or delegate_lookup.get(presenter.casefold())
         if match:
             organisation, country = match
         else:
@@ -365,7 +372,9 @@ def _collect_variant_rows() -> list[dict[str, Any]]:
                 affiliation=affiliation,
                 delegate_index=delegate_index,
             )
-        affiliation = _make_affiliation(organisation, country) if country else affiliation
+        affiliation = (
+            _make_affiliation(organisation, country) if country else affiliation
+        )
         add(organisation, country, variant=affiliation, source="programme")
 
     for alias_from, alias_to in load_affiliation_display_aliases().items():
@@ -403,7 +412,8 @@ def _collect_variant_rows() -> list[dict[str, Any]]:
         add(
             organisation,
             country,
-            variant=str(row.get("affiliation") or "") or _make_affiliation(organisation, country),
+            variant=str(row.get("affiliation") or "")
+            or _make_affiliation(organisation, country),
             source="geocode_csv",
         )
 
@@ -417,7 +427,7 @@ def _clean_review_value(value: str) -> str:
     return text
 
 
-def load_affiliation_review(data_root: Path | str = DATA_ROOT) -> pd.DataFrame:
+def load_affiliation_review() -> pd.DataFrame:
     path = AFFILIATION_REVIEWED_CSV
     if not path.exists():
         return pd.DataFrame()
@@ -478,9 +488,9 @@ def _build_org_redirects(reviews: pd.DataFrame) -> dict[str, tuple[str, str, str
         secondary = _clean_review_value(row.get("secondary organisation"))
         if not secondary:
             continue
-        primary = _clean_review_value(row.get("primary organisation")) or _clean_review_value(
-            row.get("organisation")
-        )
+        primary = _clean_review_value(
+            row.get("primary organisation")
+        ) or _clean_review_value(row.get("organisation"))
         country = _clean_review_value(row.get("country"))
         if not primary:
             continue
@@ -504,9 +514,9 @@ def _build_primary_org_keys(reviews: pd.DataFrame) -> set[str]:
         if organisation:
             primary_orgs.add(canonical_affiliation_key(organisation).casefold())
     for _, row in reviews.iterrows():
-        primary = _clean_review_value(row.get("primary organisation")) or _clean_review_value(
-            row.get("organisation")
-        )
+        primary = _clean_review_value(
+            row.get("primary organisation")
+        ) or _clean_review_value(row.get("organisation"))
         if primary:
             primary_orgs.add(canonical_affiliation_key(primary).casefold())
     return primary_orgs
@@ -564,23 +574,25 @@ def _apply_affiliation_reviews(
     if reviews.empty:
         return {"reviewed_rows_applied": 0}
 
-    # Match reviews by stable org+country group_key — not affiliation_key (keys renumber).
+    # Match reviews by stable org+country group_key – not affiliation_key (keys renumber).
     review_by_gkey: dict[str, pd.Series] = {}
     for _, row in reviews.iterrows():
         for gkey in _review_group_keys(row):
             if gkey.strip("|"):
                 review_by_gkey[gkey] = row
-                # Records with missing country use org| — match reviewed country fixes.
-                org = _clean_review_value(row.get("primary organisation")) or _clean_review_value(
-                    row.get("organisation")
-                )
+                # Records with missing country use org| – match reviewed country fixes.
+                org = _clean_review_value(
+                    row.get("primary organisation")
+                ) or _clean_review_value(row.get("organisation"))
                 if org and _clean_review_value(row.get("country")):
                     review_by_gkey.setdefault(group_key(org, ""), row)
 
     org_redirects = _build_org_redirects(reviews)
     primary_orgs = _build_primary_org_keys(reviews)
     secondary_orgs = {
-        canonical_affiliation_key(_clean_review_value(row.get("secondary organisation"))).casefold()
+        canonical_affiliation_key(
+            _clean_review_value(row.get("secondary organisation"))
+        ).casefold()
         for _, row in reviews.iterrows()
         if _clean_review_value(row.get("secondary organisation"))
     }
@@ -595,7 +607,9 @@ def _apply_affiliation_reviews(
             review = review_by_gkey.get(group_key(record.organisation, ""))
         if review is None:
             org_key = canonical_affiliation_key(record.organisation).casefold()
-            redirect = org_redirects.get(org_key) or org_redirects.get(record.organisation.casefold())
+            redirect = org_redirects.get(org_key) or org_redirects.get(
+                record.organisation.casefold()
+            )
             if not redirect:
                 for compound_key, payload in org_redirects.items():
                     if compound_key in org_key:
@@ -634,7 +648,10 @@ def _apply_affiliation_reviews(
             continue
         applied += 1
 
-        primary = _clean_review_value(review.get("primary organisation")) or record.organisation
+        primary = (
+            _clean_review_value(review.get("primary organisation"))
+            or record.organisation
+        )
         secondary = _clean_review_value(review.get("secondary organisation"))
         country = _clean_review_value(review.get("country")) or record.country
 
@@ -656,11 +673,17 @@ def _apply_affiliation_reviews(
                 record.plot_on_map = False
             else:
                 record.organisation = resolve_affiliation_alias(primary)
-                record.canonical_affiliation = canonical_for_parts(record.organisation, country)
-                record.plot_on_map = bool(record.in_programme or record.attendee_count > 0)
+                record.canonical_affiliation = canonical_for_parts(
+                    record.organisation, country
+                )
+                record.plot_on_map = bool(
+                    record.in_programme or record.attendee_count > 0
+                )
         elif primary and primary != record.organisation:
             record.organisation = resolve_affiliation_alias(primary)
-            record.canonical_affiliation = canonical_for_parts(record.organisation, country)
+            record.canonical_affiliation = canonical_for_parts(
+                record.organisation, country
+            )
 
         _apply_geocode_to_record(
             record,
@@ -715,13 +738,16 @@ def _apply_affiliation_reviews(
 
     return {
         "reviewed_rows_applied": applied,
-        "compound_redirects": sum(1 for record in records if record.redirect_to_affiliation_key),
+        "compound_redirects": sum(
+            1 for record in records if record.redirect_to_affiliation_key
+        ),
         "plot_on_map": sum(1 for record in records if record.plot_on_map),
         "secondary_only_hidden": sum(
             1
             for record in records
             if not record.plot_on_map
-            and canonical_affiliation_key(record.organisation).casefold() in secondary_orgs
+            and canonical_affiliation_key(record.organisation).casefold()
+            in secondary_orgs
         ),
     }
 
@@ -736,7 +762,10 @@ def build_affiliation_registry() -> AffiliationBuildResult:
     variants = pd.DataFrame(variant_rows)
     attendee_counts = _attendee_counts()
 
-    from src.geocoding.affiliation_geocodes import build_geocode_lookup, load_geocode_source_frames
+    from src.geocoding.affiliation_geocodes import (
+        build_geocode_lookup,
+        load_geocode_source_frames,
+    )
 
     geocodes = load_geocode_source_frames(
         AFFILIATION_GEOCODES_CSV,
@@ -748,15 +777,23 @@ def build_affiliation_registry() -> AffiliationBuildResult:
         else geocodes
     )
     if not ok_geocodes.empty:
-        ok_geocodes["latitude"] = pd.to_numeric(ok_geocodes["latitude"], errors="coerce")
-        ok_geocodes["longitude"] = pd.to_numeric(ok_geocodes["longitude"], errors="coerce")
+        ok_geocodes["latitude"] = pd.to_numeric(
+            ok_geocodes["latitude"], errors="coerce"
+        )
+        ok_geocodes["longitude"] = pd.to_numeric(
+            ok_geocodes["longitude"], errors="coerce"
+        )
         ok_geocodes = ok_geocodes.dropna(subset=["latitude", "longitude"])
 
-    geocode_lookup = build_geocode_lookup(ok_geocodes) if not ok_geocodes.empty else {
-        "by_affiliation": {},
-        "by_org_country": {},
-        "by_org": {},
-    }
+    geocode_lookup = (
+        build_geocode_lookup(ok_geocodes)
+        if not ok_geocodes.empty
+        else {
+            "by_affiliation": {},
+            "by_org_country": {},
+            "by_org": {},
+        }
+    )
 
     override_lookup: dict[str, dict[str, Any]] = {}
     if GEOCODE_OVERRIDES_JSON.exists():
@@ -772,20 +809,20 @@ def build_affiliation_registry() -> AffiliationBuildResult:
         right = str(row.get("right") or "").strip()
         if action != "merge" or not left or not right:
             continue
-        left_org, left_country = _parse_affiliation_text(left)
-        right_org, right_country = _parse_affiliation_text(right)
+        left_org, left_country = parse_affiliation_parts(left)
+        right_org, right_country = parse_affiliation_parts(right)
         if not left_org:
             left_org = left
         if not right_org:
             right_org = right
-        merge_map[group_key(left_org, left_country)] = group_key(right_org, right_country)
+        merge_map[group_key(left_org, left_country)] = group_key(
+            right_org, right_country
+        )
         canonical = str(row.get("canonical_affiliation") or "").strip()
         if canonical:
             canonical_overrides[group_key(right_org, right_country)] = canonical
 
-    merge_map = {
-        left: right for left, right in merge_map.items() if left != right
-    }
+    merge_map = {left: right for left, right in merge_map.items() if left != right}
 
     def resolve_group_key(key: str) -> str:
         while key in merge_map:
@@ -918,12 +955,18 @@ def build_affiliation_registry() -> AffiliationBuildResult:
         for record in records:
             geocoded = record.geocode_status in {"ok", "fallback"}
             record.plot_on_map = geocoded and (
-                record.attendee_count > 0 or record.in_delegate_list or record.in_programme
+                record.attendee_count > 0
+                or record.in_delegate_list
+                or record.in_programme
             )
 
-    registry = pd.DataFrame(record.to_row() for record in records).sort_values("affiliation_key")
-    aliases = pd.DataFrame(alias_rows).drop_duplicates().sort_values(
-        ["affiliation_key", "affiliation_variant"]
+    registry = pd.DataFrame(record.to_row() for record in records).sort_values(
+        "affiliation_key"
+    )
+    aliases = (
+        pd.DataFrame(alias_rows)
+        .drop_duplicates()
+        .sort_values(["affiliation_key", "affiliation_variant"])
     )
     unmatched = pd.DataFrame(unmatched_rows)
     if not unmatched.empty:
@@ -937,14 +980,20 @@ def build_affiliation_registry() -> AffiliationBuildResult:
         "in_programme": int(registry["in_programme"].astype(bool).sum()),
         "with_attendees": int((registry["attendee_count"].astype(int) > 0).sum()),
         "geocoded_ok_or_fallback": int(geocoded),
-        "geocode_missing_or_failed": int(registry["needs_review"].astype(str).str.lower().eq("true").sum()),
-        "plot_on_map": int(registry["plot_on_map"].astype(str).str.lower().eq("true").sum()),
+        "geocode_missing_or_failed": int(
+            registry["needs_review"].astype(str).str.lower().eq("true").sum()
+        ),
+        "plot_on_map": int(
+            registry["plot_on_map"].astype(str).str.lower().eq("true").sum()
+        ),
         "display_aliases_applied": len(load_affiliation_display_aliases()),
         "geocode_override_pins": len(override_lookup),
     }
     metrics.update(review_metrics)
     metrics["geocode_coverage_pct"] = round(
-        100.0 * metrics["geocoded_ok_or_fallback"] / max(metrics["affiliations_total"], 1),
+        100.0
+        * metrics["geocoded_ok_or_fallback"]
+        / max(metrics["affiliations_total"], 1),
         2,
     )
 
@@ -984,21 +1033,3 @@ def save_affiliation_registry(
 
 def load_affiliation_registry(path: Path | str = DEFAULT_REGISTRY_PATH) -> pd.DataFrame:
     return _read_csv(path)
-
-
-def lookup_affiliation_key(
-    organisation: str,
-    country: str = "",
-    *,
-    aliases: pd.DataFrame | None = None,
-    registry: pd.DataFrame | None = None,
-) -> str:
-    from src.registry.affiliation_lookup import AffiliationIndex
-
-    if registry is None and aliases is None:
-        return AffiliationIndex.load().resolve_key(organisation, country)
-    if registry is None:
-        registry = load_affiliation_registry()
-    if aliases is None:
-        aliases = _read_csv(DEFAULT_ALIASES_PATH)
-    return AffiliationIndex.from_frames(registry, aliases).resolve_key(organisation, country)

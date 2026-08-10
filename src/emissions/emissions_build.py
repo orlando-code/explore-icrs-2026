@@ -8,9 +8,6 @@ from typing import Any
 
 import pandas as pd
 
-from src.sources.delegates import load_delegates, resolve_compound_affiliation_string
-from src.registry.registry_export import build_map_talks, _attended_people
-from src.sources.programme import load_talks
 from src.emissions.travel_emissions import (
     DEFAULT_EMISSIONS_SITE_PATH,
     DEFAULT_KEYS_PATH,
@@ -23,15 +20,19 @@ from src.emissions.travel_emissions import (
     export_emissions_site_data,
     load_api_key,
     load_attendee_legs,
-    load_site_locations,
     routes_from_travel_cache,
     routes_missing_from_cache,
     summarize_travel_emissions,
 )
+from src.registry.registry_export import _attended_people, build_map_talks
+from src.sources.delegates import load_delegates, resolve_compound_affiliation_string
+from src.sources.programme import load_talks
 
 
 @dataclass
 class EmissionsBuildResult:
+    """Neatly package emissions data from delegate travel information"""
+
     speaker_legs: pd.DataFrame
     all_legs: pd.DataFrame
     speaker_missing: pd.DataFrame
@@ -52,6 +53,7 @@ def _estimates_from_legs(
     *,
     attendee_label: str,
 ) -> tuple[pd.DataFrame, dict[str, Any]]:
+    """Estimate emissions from travel legs"""
     merged = attach_route_emissions(legs, routes).dropna(subset=["co2e_kg"])
     records = [
         TravelEstimate(
@@ -64,7 +66,9 @@ def _estimates_from_legs(
             co2e_kg=float(row["co2e_kg"]),
             co2e_low_kg=float(row["co2e_low_kg"]),
             co2e_high_kg=float(row["co2e_high_kg"]),
-            distance_km=None if pd.isna(row.get("distance_km")) else float(row["distance_km"]),
+            distance_km=None
+            if pd.isna(row.get("distance_km"))
+            else float(row["distance_km"]),
             passengers=1,
             return_trip=True,
             query_used={},
@@ -130,7 +134,9 @@ def build_emissions_site(
         attended_talks, show_progress=show_progress
     )
 
-    missing_before = routes_missing_from_cache(all_legs, travel_cache_path=travel_cache_path)
+    missing_before = routes_missing_from_cache(
+        all_legs, travel_cache_path=travel_cache_path
+    )
     queries_before = api_query_count()
 
     if requery_all_routes or (fetch_missing_routes and missing_before):
@@ -153,9 +159,8 @@ def build_emissions_site(
         all_legs, routes, len(all_missing), attendee_label="delegates"
     )
 
-    locations = load_site_locations("js/locations.js")
     delegate_meta = {
-        "delegate_list_count": int(len(delegates)),
+        "delegate_list_count": len(delegates),
         "speaker_count": int(delegates["is_speaker"].sum()),
         "non_speaker_count": int(len(delegates) - delegates["is_speaker"].sum()),
     }
@@ -163,7 +168,6 @@ def build_emissions_site(
     export_emissions_site_data(
         speaker_estimates,
         speaker_summary,
-        locations,
         legs=speaker_legs,
         all_delegates=(delegate_estimates, delegate_summary, all_legs),
         delegate_meta=delegate_meta,
@@ -174,7 +178,9 @@ def build_emissions_site(
     artifacts_dir.mkdir(parents=True, exist_ok=True)
     all_legs.to_csv(artifacts_dir / "emissions_travel_legs.csv", index=False)
     all_missing.to_csv(artifacts_dir / "emissions_travel_missing.csv", index=False)
-    delegate_estimates.to_csv(artifacts_dir / "emissions_delegate_estimates.csv", index=False)
+    delegate_estimates.to_csv(
+        artifacts_dir / "emissions_delegate_estimates.csv", index=False
+    )
     routes.to_csv(artifacts_dir / "emissions_routes.csv", index=False)
 
     return EmissionsBuildResult(

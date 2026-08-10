@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from pathlib import Path
 
 import pandas as pd
 
@@ -31,7 +30,7 @@ class AffiliationIndex:
     redirects: dict[str, str] = field(default_factory=dict)
 
     @classmethod
-    def load(cls, data_dir: Path | str | None = None) -> AffiliationIndex:
+    def load(cls) -> AffiliationIndex:
         registry = load_affiliation_registry(DEFAULT_REGISTRY_PATH)
         aliases = _read_csv(DEFAULT_ALIASES_PATH)
         return cls.from_frames(registry, aliases)

@@ -47,10 +47,10 @@ def _clear_pipeline_caches():
         pass
 
     try:
-        from src.geography.country_neighbors import load_country_neighbors
+        from src.geography.country_neighbours import load_country_neighbours
         from src.geography.country_continents import load_country_continents
 
-        load_country_neighbors.cache_clear()
+        load_country_neighbours.cache_clear()
         load_country_continents.cache_clear()
     except Exception:
         pass

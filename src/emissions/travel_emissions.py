@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
 import re
 import time
 from dataclasses import dataclass
@@ -14,8 +13,6 @@ from typing import Any
 import pandas as pd
 import pycountry
 import requests
-from rich.console import Console
-from rich.table import Table
 
 from src.data_paths import (
     COUNTRY_BOUNDARIES_REL,
@@ -25,6 +22,8 @@ from src.data_paths import (
     TRAVEL_EMISSIONS_CACHE_JSON,
 )
 from src.geocoding.geocode import _extract_country_hints
+from src.util.console import CONSOLE
+from src.util.json_io import load_json, save_json
 
 _MISSING_AFFILIATION_TOKENS = frozenset({"nan", "none", "<na>", "nat"})
 
@@ -63,15 +62,9 @@ DEFAULT_DESTINATION_COUNTRY = "NZ"
 DEFAULT_DESTINATION_LOCATION = "AKL"
 DEFAULT_KEYS_PATH = Path("keys.yaml")
 DEFAULT_TRAVEL_CACHE_PATH = TRAVEL_EMISSIONS_CACHE_JSON
-THIRD_EMISSIONS_KEY_NAME = "third-emissions-dev"
-FOURTH_EMISSIONS_KEY_NAME = "fourth-emissions-dev"
-FIFTH_EMISSIONS_KEY_NAME = "fifth-emissions-dev"
-# Key used when fetching only routes not yet in travel_emissions_cache.json
-MISSING_ROUTES_KEY_NAME = FIFTH_EMISSIONS_KEY_NAME
+MISSING_ROUTES_KEY_NAME = "fifth-emissions-dev"
 DEFAULT_REVERSE_CACHE_PATH = REVERSE_GEOCODE_CACHE_JSON
-DEFAULT_OUTPUT_PATH = Path("outputs/travel_emissions_summary.json")
 DEFAULT_EMISSIONS_SITE_PATH = Path("js/emissions-data.js")
-DEFAULT_USER_AGENT = "explore-icrs-2026/0.1"
 FAIR_PER_CAPITA_TONNES_CO2E_2030 = 2.1
 FAIR_PER_CAPITA_TARGET_YEAR = 2030
 FAIR_PER_CAPITA_KG_CO2E_2030 = FAIR_PER_CAPITA_TONNES_CO2E_2030 * 1000
@@ -84,18 +77,8 @@ NATIONAL_PER_CAPITA_YEAR = 2024
 WORLD_BANK_NATIONAL_PER_CAPITA_URL = (
     "https://data.worldbank.org/indicator/EN.GHG.CO2.PC.CE.AR5"
 )
-WORLD_BANK_API_URL = "https://api.worldbank.org/v2"
 ILLUSTRATIVE_LOW_PER_CAPITA_COUNTRIES = ("VU", "TZ", "CM", "FJ", "PG")
 ILLUSTRATIVE_HIGH_PER_CAPITA_COUNTRIES = ("US", "AU", "CA", "SA", "AE", "QA")
-
-
-def national_per_capita_source_note(year: int = NATIONAL_PER_CAPITA_YEAR) -> str:
-    return (
-        f"World Bank {NATIONAL_PER_CAPITA_INDICATOR}, {year}, "
-        "metric tonnes CO₂e per person (excl. LULUCF)"
-    )
-
-
 EMISSIONS_SOURCES = [
     {
         "id": "travel",
@@ -107,7 +90,10 @@ EMISSIONS_SOURCES = [
         "id": "national_per_capita",
         "label": "National per-capita CO₂",
         "url": WORLD_BANK_NATIONAL_PER_CAPITA_URL,
-        "note": national_per_capita_source_note(),
+        "note": (
+            f"World Bank {NATIONAL_PER_CAPITA_INDICATOR}, {NATIONAL_PER_CAPITA_YEAR}, "
+            "metric tonnes CO₂e per person (excl. LULUCF)"
+        ),
     },
     {
         "id": "fair_per_capita_2030",
@@ -122,22 +108,8 @@ EMISSIONS_SOURCES = [
 NZ_CAR_PASSENGERS_CENTRAL = 2
 NZ_CAR_PASSENGERS_LOW = 4
 NZ_CAR_PASSENGERS_HIGH = 1
-FLIGHT_PREMIUM_ECONOMY_MULTIPLIER = 1.6
 FLIGHT_BUSINESS_MULTIPLIER = 2.9
-_CONSOLE = Console()
 _query_count = 0
-
-
-@dataclass(frozen=True)
-class TravelLeg:
-    presenter: str
-    affiliation: str
-    origin_country: str
-    origin_location: str
-    transport_mode: str
-    geocode_level: str | None
-    latitude: float
-    longitude: float
 
 
 @dataclass(frozen=True)
@@ -157,41 +129,6 @@ class TravelEstimate:
     query_used: dict[str, Any]
 
 
-def _load_json(path: Path) -> dict[str, Any]:
-    if not path.exists():
-        return {}
-    with path.open(encoding="utf-8") as handle:
-        return json.load(handle)
-
-
-def _save_json(path: Path, payload: dict[str, Any]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as handle:
-        json.dump(payload, handle, indent=2, sort_keys=True)
-
-
-def load_site_locations(
-    path: str | Path = "js/locations.js",
-) -> list[dict[str, Any]]:
-    """Load affiliation locations exported for the static site."""
-    js_path = Path(path)
-    if not js_path.exists():
-        raise FileNotFoundError(f"Site locations file not found: {js_path}")
-    text = js_path.read_text(encoding="utf-8")
-    marker = "export const SITE_DATA = "
-    start = text.find(marker)
-    if start < 0:
-        raise ValueError(f"Could not parse SITE_DATA from {js_path}")
-    payload = json.loads(text[start + len(marker) :].rstrip().rstrip(";"))
-    return payload.get("locations", [])
-
-
-def _api_key() -> str | None:
-    return os.environ.get("EMISSIONS_DEV_API_KEY") or os.environ.get(
-        "EMISSIONS_API_KEY"
-    )
-
-
 def _parse_keys_yaml(path: Path) -> dict[str, str]:
     """Minimal keys.yaml reader (avoids PyYAML dependency for simple key files)."""
     payload: dict[str, str] = {}
@@ -209,21 +146,25 @@ def _parse_keys_yaml(path: Path) -> dict[str, str]:
 
 
 def load_api_key(
-    keys_path: Path = DEFAULT_KEYS_PATH,
-    *,
-    key_name: str | None = None,
+    keys_path: Path = DEFAULT_KEYS_PATH, *, key_name: str | None = None
 ) -> str:
     """Load emissions.dev API key from env or keys.yaml."""
+
+    def _api_key() -> str | None:
+        """Get current emissions.dev API key from environmental variables (I've generated a few to get round rate limits)"""
+        import os
+
+        return os.environ.get("EMISSIONS_DEV_API_KEY") or os.environ.get(
+            "EMISSIONS_API_KEY"
+        )
+
     env_key = _api_key()
     if env_key:
         return env_key
-
     if not keys_path.exists():
         raise ValueError(
-            f"Missing API key. Set EMISSIONS_DEV_API_KEY or create {keys_path} "
-            "(see https://emissions.dev/register)."
+            f"Missing API key. Set EMISSIONS_DEV_API_KEY or create {keys_path} (see https://emissions.dev/register)."
         )
-
     try:
         import yaml
 
@@ -235,7 +176,6 @@ def load_api_key(
         if value:
             return str(value).strip()
         raise ValueError(f"No {key_name} key found in {keys_path}")
-
     for name in (
         "emissions-dev",
         "emissions_dev",
@@ -248,7 +188,6 @@ def load_api_key(
         value = payload.get(name)
         if value:
             return str(value).strip()
-
     raise ValueError(f"No emissions-dev key found in {keys_path}")
 
 
@@ -289,7 +228,6 @@ def _origin_geo_from_row(row: Any) -> dict[str, str]:
         parts = [part.strip() for part in affiliation.split(",") if part.strip()]
         if parts:
             country_code = _country_name_to_alpha2(parts[-1]) or ""
-
     formatted = _row_text(row, "formatted_address")
     geocode_level = str(row.get("geocode_level") or "").strip().casefold()
     if geocode_level == "country" and hints:
@@ -300,16 +238,13 @@ def _origin_geo_from_row(row: Any) -> dict[str, str]:
         location_name = hints[0]
     else:
         location_name = affiliation.split(",")[0].strip() if affiliation else "Unknown"
-
     if not country_code:
         country_code = "Unknown"
     return {"country_code": country_code, "location_name": location_name or "Unknown"}
 
 
 def load_attendee_legs(
-    talks_geo: pd.DataFrame,
-    *,
-    show_progress: bool = False,
+    talks_geo: pd.DataFrame, *, show_progress: bool = False
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Return one travel leg per presenter with a geocoded affiliation."""
     from src.emissions.origin_country import (
@@ -356,7 +291,6 @@ def load_attendee_legs(
             person_key = delegate_person_key(name, affiliation=affiliation)
         if person_key.startswith("icrs-p-"):
             delegate_countries_by_key[person_key] = country
-
     dedupe_cols = _attendee_dedupe_columns(talks_geo)
     sort_cols = [*dedupe_cols]
     if "geocode_level" in talks_geo.columns:
@@ -367,14 +301,11 @@ def load_attendee_legs(
         .drop_duplicates(subset=dedupe_cols, keep="first")
         .copy()
     )
-
     rows: list[dict[str, Any]] = []
     for _, row in attendees.iterrows():
         geo = _origin_geo_from_row(row)
         origin_country, origin_location = _origin_from_attendee(
-            row["affiliation"],
-            geo,
-            geocode_level=row.get("geocode_level"),
+            row["affiliation"], geo, geocode_level=row.get("geocode_level")
         )
         affiliation_text = _row_text(row, "affiliation")
         presenter = str(row.get("presenter") or "").strip()
@@ -401,10 +332,10 @@ def load_attendee_legs(
         if delegate_country and str(origin_country).upper() in {"", "UNKNOWN"}:
             origin_country = country_to_iso2(delegate_country) or delegate_country
         country_code = _row_text(row, "country_code").upper()
-        if country_code and not re.fullmatch(r"[A-Z]{2}", str(origin_country or "")):
+        if country_code and (not re.fullmatch("[A-Z]{2}", str(origin_country or ""))):
             origin_country = country_code
-        if not re.fullmatch(r"[A-Z]{2}", str(origin_country or "")):
-            parts_org, parts_country = parse_affiliation_parts(affiliation_text)
+        if not re.fullmatch("[A-Z]{2}", str(origin_country or "")):
+            _, parts_country = parse_affiliation_parts(affiliation_text)
             if parts_country:
                 origin_country = country_to_iso2(
                     parts_country
@@ -414,7 +345,7 @@ def load_attendee_legs(
         if (
             str(origin_country).upper() == "AU"
             and "sydney" in str(origin_location or "").casefold()
-            and "university" in str(origin_location or "").casefold()
+            and ("university" in str(origin_location or "").casefold())
         ):
             origin_location = "Sydney"
         transport_mode = (
@@ -433,7 +364,6 @@ def load_attendee_legs(
         if person_key.startswith("icrs-p-"):
             row_data["person_key"] = person_key
         rows.append(row_data)
-
     legs = pd.DataFrame(rows)
     if "person_key" in legs.columns:
         present_keys = set(legs["person_key"].astype(str).str.strip())
@@ -445,13 +375,16 @@ def load_attendee_legs(
         missing = talks_geo.loc[
             ~talks_geo["presenter"].isin(legs["presenter"]), "presenter"
         ].drop_duplicates()
-    return legs, pd.DataFrame({"presenter": missing})
+    return (legs, pd.DataFrame({"presenter": missing}))
 
 
 def _leg_coordinate_columns(legs: pd.DataFrame) -> pd.DataFrame:
     """One lat/lon row per attendee; never collapse homonyms that share a presenter name."""
     cols = ["presenter", "affiliation", "latitude", "longitude"]
-    if "person_key" in legs.columns and legs["person_key"].astype(str).str.startswith("icrs-p-").any():
+    if (
+        "person_key" in legs.columns
+        and legs["person_key"].astype(str).str.startswith("icrs-p-").any()
+    ):
         cols = ["person_key", *cols]
         subset = ["person_key"]
     else:
@@ -460,13 +393,16 @@ def _leg_coordinate_columns(legs: pd.DataFrame) -> pd.DataFrame:
 
 
 def _attendee_dedupe_columns(frame: pd.DataFrame) -> list[str]:
-    if "person_key" in frame.columns and frame["person_key"].astype(str).str.startswith("icrs-p-").any():
+    if (
+        "person_key" in frame.columns
+        and frame["person_key"].astype(str).str.startswith("icrs-p-").any()
+    ):
         return ["person_key"]
     return ["presenter", "affiliation"]
 
 
 def _looks_like_coordinates(value: str) -> bool:
-    return bool(re.fullmatch(r"-?\d+\.\d+,-?\d+\.\d+", value.strip()))
+    return bool(re.fullmatch("-?\\d+\\.\\d+,-?\\d+\\.\\d+", value.strip()))
 
 
 def _emissions_location_key(affiliation: str) -> str:
@@ -485,10 +421,7 @@ def _emissions_location_key(affiliation: str) -> str:
 
 
 def _origin_from_attendee(
-    affiliation: str,
-    geo: dict[str, str],
-    *,
-    geocode_level: str | None,
+    affiliation: str, geo: dict[str, str], *, geocode_level: str | None
 ) -> tuple[str, str]:
     """Resolve emissions.dev origin country (ISO-2) and city/location label."""
     from src.geocoding.capital_coords import (
@@ -502,13 +435,11 @@ def _origin_from_attendee(
     parts = [part.strip() for part in affiliation_text.split(",") if part.strip()]
     delegate_country = parts[-1] if len(parts) >= 2 else ""
     org_name = parts[0] if len(parts) >= 2 else affiliation_base_name(affiliation_text)
-
     country_code = (geo.get("country_code") or "").upper()
     if delegate_country:
         delegate_iso = country_to_iso2(delegate_country)
         if delegate_iso:
             country_code = delegate_iso
-
     use_capital = str(geocode_level or "").strip().casefold() == "country" or (
         delegate_country and organisation_country_mismatch(org_name, delegate_country)
     )
@@ -516,25 +447,23 @@ def _origin_from_attendee(
         fallback = resolve_capital_fallback(org_name, delegate_country)
         if fallback:
             city, _, _, _ = fallback
-            return country_code or country_to_iso2(delegate_country) or "Unknown", city
-
+            return (
+                country_code or country_to_iso2(delegate_country) or "Unknown",
+                city,
+            )
     hints = _extract_country_hints(affiliation_text)
     location_name = (geo.get("location_name") or "").strip()
-
     if delegate_country:
         country_name = delegate_country
     elif hints:
         country_name = hints[-1]
     else:
         country_name = None
-
     if not country_code and country_name:
         country_code = _country_name_to_alpha2(country_name) or ""
-
     if not country_code:
         country_code = "Unknown"
-
-    if location_name and not _looks_like_coordinates(location_name):
+    if location_name and (not _looks_like_coordinates(location_name)):
         origin_location = location_name.split(",")[0].strip() or location_name
     elif org_name and delegate_country:
         origin_location = org_name
@@ -542,8 +471,7 @@ def _origin_from_attendee(
         origin_location = country_name
     else:
         origin_location = location_name or "Unknown"
-
-    return country_code, origin_location
+    return (country_code, origin_location)
 
 
 def _query_travel_emissions(
@@ -558,7 +486,6 @@ def _query_travel_emissions(
     key = _cache_key(params)
     if key in cache:
         return cache[key]
-
     last_error: Exception | None = None
     route_label = f"{params.get('origin_country')} · {params.get('origin_location')}"
     for attempt in range(API_MAX_RETRIES):
@@ -571,13 +498,12 @@ def _query_travel_emissions(
             )
             if response.status_code in API_RETRY_STATUS_CODES:
                 raise requests.HTTPError(
-                    f"{response.status_code} from emissions.dev",
-                    response=response,
+                    f"{response.status_code} from emissions.dev", response=response
                 )
             response.raise_for_status()
             payload = response.json()
             cache[key] = payload
-            _save_json(cache_path, cache)
+            save_json(cache_path, cache)
             _query_count += 1
             time.sleep(pause_seconds)
             return payload
@@ -592,16 +518,12 @@ def _query_travel_emissions(
             if status not in API_RETRY_STATUS_CODES:
                 raise
             last_error = exc
-
         if attempt < API_MAX_RETRIES - 1:
-            wait = API_RETRY_BACKOFF_SECONDS * (2**attempt)
-            _CONSOLE.print(
-                f"[yellow]API error for {route_label} "
-                f"(attempt {attempt + 1}/{API_MAX_RETRIES}): {last_error}. "
-                f"Retrying in {wait:.0f}s…[/]"
+            wait = API_RETRY_BACKOFF_SECONDS * 2**attempt
+            CONSOLE.print(
+                f"[yellow]API error for {route_label} (attempt {attempt + 1}/{API_MAX_RETRIES}): {last_error}. Retrying in {wait:.0f}s…[/]"
             )
             time.sleep(wait)
-
     assert last_error is not None
     raise last_error
 
@@ -610,7 +532,7 @@ def _extract_co2e(payload: dict[str, Any]) -> tuple[float, float | None]:
     attrs = payload["data"]["attributes"]
     emissions = attrs["emissions"]
     distance = attrs.get("route", {}).get("total_distance_km")
-    return float(emissions["co2e"]), None if distance is None else float(distance)
+    return (float(emissions["co2e"]), None if distance is None else float(distance))
 
 
 def _bounds_from_central(
@@ -619,14 +541,12 @@ def _bounds_from_central(
     if transport_mode == "car":
         low = central_co2e * (NZ_CAR_PASSENGERS_CENTRAL / NZ_CAR_PASSENGERS_LOW)
         high = central_co2e * (NZ_CAR_PASSENGERS_CENTRAL / NZ_CAR_PASSENGERS_HIGH)
-        return low, high
-    return central_co2e, central_co2e * FLIGHT_BUSINESS_MULTIPLIER
+        return (low, high)
+    return (central_co2e, central_co2e * FLIGHT_BUSINESS_MULTIPLIER)
 
 
 def _central_params_for_route(
-    origin_country: str,
-    origin_location: str,
-    transport_mode: str,
+    origin_country: str, origin_location: str, transport_mode: str
 ) -> dict[str, Any]:
     base = {
         "origin_country": origin_country,
@@ -643,11 +563,7 @@ def _central_params_for_route(
             "passengers": NZ_CAR_PASSENGERS_CENTRAL,
             "vehicle_type": "average",
         }
-    return {
-        **base,
-        "transport_mode": "flight",
-        "cabin_class": "economy",
-    }
+    return {**base, "transport_mode": "flight", "cabin_class": "economy"}
 
 
 def estimate_unique_routes(
@@ -661,7 +577,7 @@ def estimate_unique_routes(
     missing_only: bool = True,
 ) -> pd.DataFrame:
     """Query emissions.dev once per unique origin route (efficient for API quotas)."""
-    cache = _load_json(travel_cache_path)
+    cache = load_json(travel_cache_path, default={})
     routes = (
         legs.drop_duplicates(
             subset=["origin_country", "origin_location", "transport_mode"]
@@ -670,7 +586,7 @@ def estimate_unique_routes(
         .reset_index(drop=True)
     )
     routes = routes[
-        routes["origin_country"].astype(str).str.fullmatch(r"[A-Z]{2}", na=False)
+        routes["origin_country"].astype(str).str.fullmatch("[A-Z]{2}", na=False)
     ].reset_index(drop=True)
     if missing_only:
         pending: list[pd.Series] = []
@@ -687,7 +603,6 @@ def estimate_unique_routes(
         )
     if limit is not None:
         routes = routes.head(limit)
-
     rows: list[dict[str, Any]] = []
     if show_progress:
         from rich.progress import (
@@ -707,12 +622,10 @@ def estimate_unique_routes(
             MofNCompleteColumn(),
             TimeElapsedColumn(),
             TimeRemainingColumn(),
-            console=_CONSOLE,
+            console=CONSOLE,
         )
     else:
         progress = None
-
-    # iterator: Any = routes.itertuples(index=False)
     if progress is not None:
         with progress:
             task_id = progress.add_task("Querying emissions.dev", total=len(routes))
@@ -742,17 +655,14 @@ def estimate_unique_routes(
                     pause_seconds=pause_seconds,
                 )
             )
-
     return pd.DataFrame(rows)
 
 
 def routes_from_travel_cache(
-    legs: pd.DataFrame,
-    *,
-    travel_cache_path: Path = DEFAULT_TRAVEL_CACHE_PATH,
+    legs: pd.DataFrame, *, travel_cache_path: Path = DEFAULT_TRAVEL_CACHE_PATH
 ) -> pd.DataFrame:
     """Build route emissions rows using only entries already in the travel cache."""
-    cache = _load_json(travel_cache_path)
+    cache = load_json(travel_cache_path, default={})
     routes = (
         legs.drop_duplicates(
             subset=["origin_country", "origin_location", "transport_mode"]
@@ -795,12 +705,10 @@ def routes_from_travel_cache(
 
 
 def routes_missing_from_cache(
-    legs: pd.DataFrame,
-    *,
-    travel_cache_path: Path = DEFAULT_TRAVEL_CACHE_PATH,
+    legs: pd.DataFrame, *, travel_cache_path: Path = DEFAULT_TRAVEL_CACHE_PATH
 ) -> int:
     """Count unique routes in legs that are not yet in the travel emissions cache."""
-    cache = _load_json(travel_cache_path)
+    cache = load_json(travel_cache_path, default={})
     routes = legs.drop_duplicates(
         subset=["origin_country", "origin_location", "transport_mode"]
     )
@@ -866,193 +774,11 @@ def attach_route_emissions(legs: pd.DataFrame, routes: pd.DataFrame) -> pd.DataF
         axis=1,
     )
     merged = legs.merge(
-        routes[
-            [
-                "route_key",
-                "co2e_kg",
-                "co2e_low_kg",
-                "co2e_high_kg",
-                "distance_km",
-            ]
-        ],
+        routes[["route_key", "co2e_kg", "co2e_low_kg", "co2e_high_kg", "distance_km"]],
         on="route_key",
         how="left",
     )
     return merged
-
-
-def _leg_value(leg: TravelLeg | pd.Series | dict[str, Any], key: str) -> Any:
-    if isinstance(leg, dict):
-        return leg[key]
-    if isinstance(leg, pd.Series):
-        return leg[key]
-    return getattr(leg, key)
-
-
-def estimate_leg_emissions(
-    leg: TravelLeg | pd.Series | dict[str, Any],
-    *,
-    api_key: str,
-    cache: dict[str, Any],
-    cache_path: Path,
-    nz_car_passengers: int = 2,
-    nz_car_passengers_low: int = 4,
-    nz_car_passengers_high: int = 1,
-    flight_cabin_central: str = "economy",
-    flight_cabin_high: str = "business",
-    pause_seconds: float = 0.2,
-) -> TravelEstimate:
-    base_params = {
-        "origin_country": _leg_value(leg, "origin_country"),
-        "origin_location": _leg_value(leg, "origin_location"),
-        "destination_country": DEFAULT_DESTINATION_COUNTRY,
-        "destination_location": "Auckland",
-        "return_trip": "true",
-        "passengers": 1,
-    }
-    transport_mode = _leg_value(leg, "transport_mode")
-
-    if transport_mode == "car":
-        central_params = {
-            **base_params,
-            "transport_mode": "car",
-            "passengers": nz_car_passengers,
-            "vehicle_type": "average",
-        }
-        low_params = {**central_params, "passengers": nz_car_passengers_low}
-        high_params = {**central_params, "passengers": nz_car_passengers_high}
-    else:
-        central_params = {
-            **base_params,
-            "transport_mode": "flight",
-            "cabin_class": flight_cabin_central,
-        }
-        low_params = central_params
-        high_params = {
-            **base_params,
-            "transport_mode": "flight",
-            "cabin_class": flight_cabin_high,
-        }
-
-    central_payload = _query_travel_emissions(
-        central_params,
-        api_key=api_key,
-        cache=cache,
-        cache_path=cache_path,
-        pause_seconds=pause_seconds,
-    )
-    low_payload = _query_travel_emissions(
-        low_params,
-        api_key=api_key,
-        cache=cache,
-        cache_path=cache_path,
-        pause_seconds=pause_seconds,
-    )
-    high_payload = _query_travel_emissions(
-        high_params,
-        api_key=api_key,
-        cache=cache,
-        cache_path=cache_path,
-        pause_seconds=pause_seconds,
-    )
-
-    central_co2e, distance_km = _extract_co2e(central_payload)
-    low_co2e, _ = _extract_co2e(low_payload)
-    high_co2e, _ = _extract_co2e(high_payload)
-
-    if isinstance(leg, (pd.Series, dict)):
-        presenter = _leg_value(leg, "presenter")
-        affiliation = _leg_value(leg, "affiliation")
-        geocode_level = _leg_value(leg, "geocode_level")
-        origin_country = _leg_value(leg, "origin_country")
-        origin_location = _leg_value(leg, "origin_location")
-    else:
-        presenter = leg.presenter
-        affiliation = leg.affiliation
-        geocode_level = leg.geocode_level
-        origin_country = leg.origin_country
-        origin_location = leg.origin_location
-
-    return TravelEstimate(
-        presenter=presenter,
-        affiliation=affiliation,
-        transport_mode=transport_mode,
-        origin_country=origin_country,
-        origin_location=origin_location,
-        geocode_level=geocode_level,
-        co2e_kg=central_co2e,
-        co2e_low_kg=min(low_co2e, high_co2e),
-        co2e_high_kg=max(low_co2e, high_co2e),
-        distance_km=distance_km,
-        passengers=nz_car_passengers if transport_mode == "car" else 1,
-        return_trip=True,
-        query_used=central_params,
-    )
-
-
-def estimate_conference_travel(
-    talks_geo: pd.DataFrame,
-    *,
-    api_key: str,
-    legs: pd.DataFrame | None = None,
-    missing: pd.DataFrame | None = None,
-    travel_cache_path: Path = DEFAULT_TRAVEL_CACHE_PATH,
-    pause_seconds: float = 0.2,
-    show_progress: bool = True,
-    limit: int | None = None,
-    attendee_label: str = "speakers",
-    exclusion_note: str = "Speakers without geocoded affiliations are excluded from totals.",
-) -> tuple[pd.DataFrame, dict[str, Any]]:
-    if legs is None or missing is None:
-        legs, missing = load_attendee_legs(talks_geo, show_progress=show_progress)
-
-    routes = estimate_unique_routes(
-        legs,
-        api_key=api_key,
-        travel_cache_path=travel_cache_path,
-        pause_seconds=pause_seconds,
-        show_progress=show_progress,
-        limit=limit,
-    )
-    attendee_estimates = attach_route_emissions(legs, routes)
-    attendee_estimates = attendee_estimates.dropna(subset=["co2e_kg"])
-
-    estimate_records = []
-    for _, row in attendee_estimates.iterrows():
-        estimate_records.append(
-            TravelEstimate(
-                presenter=row["presenter"],
-                affiliation=row["affiliation"],
-                transport_mode=row["transport_mode"],
-                origin_country=row["origin_country"],
-                origin_location=row["origin_location"],
-                geocode_level=row.get("geocode_level"),
-                co2e_kg=float(row["co2e_kg"]),
-                co2e_low_kg=float(row["co2e_low_kg"]),
-                co2e_high_kg=float(row["co2e_high_kg"]),
-                distance_km=None
-                if pd.isna(row.get("distance_km"))
-                else float(row["distance_km"]),
-                passengers=NZ_CAR_PASSENGERS_CENTRAL
-                if row["transport_mode"] == "car"
-                else 1,
-                return_trip=True,
-                query_used={},
-            )
-        )
-
-    estimate_df = pd.DataFrame([estimate.__dict__ for estimate in estimate_records])
-    summary = summarize_travel_emissions(
-        estimate_df,
-        missing_count=len(missing),
-        total_presenters=talks_geo["presenter"].nunique(),
-        unique_routes=len(routes),
-        api_queries=api_query_count(),
-        attendee_label=attendee_label,
-        exclusion_note=exclusion_note,
-    )
-    summary["routes"] = routes.to_dict(orient="records")
-    return estimate_df, summary
 
 
 def _load_national_per_capita(
@@ -1060,212 +786,7 @@ def _load_national_per_capita(
 ) -> dict[str, Any]:
     if not path.exists():
         return {"meta": {}, "countries": {}}
-    return _load_json(path)
-
-
-def fetch_world_bank_national_per_capita(
-    *,
-    year: int = NATIONAL_PER_CAPITA_YEAR,
-    country_codes: list[str] | None = None,
-    timeout: float = 30.0,
-) -> dict[str, Any]:
-    """Fetch national per-capita CO₂ from the World Bank API."""
-    indicator = NATIONAL_PER_CAPITA_INDICATOR
-    values_by_code: dict[str, float] = {}
-    page = 1
-    while True:
-        response = requests.get(
-            f"{WORLD_BANK_API_URL}/country/all/indicator/{indicator}",
-            params={
-                "format": "json",
-                "per_page": 20000,
-                "date": str(year),
-                "page": page,
-            },
-            timeout=timeout,
-        )
-        response.raise_for_status()
-        payload = response.json()
-        if not isinstance(payload, list) or len(payload) < 2:
-            break
-        meta, rows = payload[0], payload[1]
-        for row in rows:
-            code = str(row.get("country", {}).get("id", "")).strip()
-            value = row.get("value")
-            if not code or value is None:
-                continue
-            values_by_code[code] = float(value)
-
-        total_pages = int(meta.get("pages", 1))
-        if page >= total_pages:
-            break
-        page += 1
-
-    requested = country_codes
-    if requested is None and DEFAULT_NATIONAL_PER_CAPITA_PATH.exists():
-        existing = _load_national_per_capita()
-        requested = sorted(existing.get("countries", {}).keys())
-
-    if requested:
-        missing = [code for code in requested if code not in values_by_code]
-        for code in missing:
-            response = requests.get(
-                f"{WORLD_BANK_API_URL}/country/{code}/indicator/{indicator}",
-                params={"format": "json", "mrv": 1},
-                timeout=timeout,
-            )
-            response.raise_for_status()
-            payload = response.json()
-            if not isinstance(payload, list) or len(payload) < 2:
-                continue
-            for row in payload[1]:
-                value = row.get("value")
-                if value is None:
-                    continue
-                values_by_code[code] = float(value)
-                break
-
-    countries: dict[str, dict[str, float]] = {}
-    for code, tonnes in sorted(values_by_code.items()):
-        if requested and code not in requested:
-            continue
-        countries[code] = {
-            "tonnes_co2e_per_capita": round(tonnes, 3),
-            "kg_co2e_per_capita": round(tonnes * 1000, 1),
-        }
-
-    return {
-        "countries": countries,
-        "meta": {
-            "indicator": indicator,
-            "source_label": f"World Bank national CO₂ per capita ({year})",
-            "source_url": WORLD_BANK_NATIONAL_PER_CAPITA_URL,
-            "unit": "metric tonnes CO2e per capita (excl. LULUCF)",
-            "year": year,
-        },
-    }
-
-
-def save_national_per_capita(
-    data: dict[str, Any],
-    path: Path = DEFAULT_NATIONAL_PER_CAPITA_PATH,
-) -> Path:
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps(data, ensure_ascii=True, indent=2) + "\n", encoding="utf-8"
-    )
-    return path
-
-
-def _estimates_from_by_country(
-    by_country: list[dict[str, Any]],
-    *,
-    fallback_per_attendee_kg: float | None = None,
-) -> pd.DataFrame:
-    rows: list[dict[str, Any]] = []
-    for index, row in enumerate(by_country):
-        code = str(row.get("origin_country", "")).strip()
-        if not code:
-            continue
-        attendee_count = row.get("attendee_count")
-        co2e_kg = row.get("co2e_kg")
-        co2e_per_attendee_kg = row.get("co2e_per_attendee_kg")
-        if (
-            attendee_count is None
-            and co2e_kg is not None
-            and co2e_per_attendee_kg is not None
-        ):
-            attendee_count = max(1, round(float(co2e_kg) / float(co2e_per_attendee_kg)))
-        if attendee_count is None and co2e_kg is not None and fallback_per_attendee_kg:
-            attendee_count = max(
-                1, round(float(co2e_kg) / float(fallback_per_attendee_kg))
-            )
-        if not attendee_count:
-            continue
-        if co2e_per_attendee_kg is None and co2e_kg is not None:
-            co2e_per_attendee_kg = float(co2e_kg) / int(attendee_count)
-        if co2e_per_attendee_kg is None:
-            continue
-        for subindex in range(int(attendee_count)):
-            rows.append(
-                {
-                    "presenter": f"{code}-{index}-{subindex}",
-                    "origin_country": code,
-                    "co2e_kg": float(co2e_per_attendee_kg),
-                }
-            )
-    return pd.DataFrame(rows)
-
-
-def refresh_emissions_site_national_context(
-    site_path: str | Path = DEFAULT_EMISSIONS_SITE_PATH,
-) -> Path:
-    """Recompute national per-capita comparisons in the exported emissions tab."""
-    site_path = Path(site_path)
-    source = site_path.read_text(encoding="utf-8")
-    prefix = "export const EMISSIONS_DATA = "
-    start = source.index(prefix) + len(prefix)
-    end = source.rindex(";\n")
-    payload = json.loads(source[start:end])
-
-    for pool_name in ("speakers", "all_delegates"):
-        pool = payload.get(pool_name)
-        if not pool:
-            continue
-        headline = pool.get("meta", {}).get("headline", {})
-        total_co2e_kg = float(headline.get("co2e_kg", 0))
-        existing_context = pool.get("meta", {}).get("context", {})
-        fallback_per_attendee = existing_context.get("per_attendee_kg")
-        estimates = _estimates_from_by_country(
-            pool.get("by_country", []),
-            fallback_per_attendee_kg=fallback_per_attendee,
-        )
-        if estimates.empty:
-            continue
-        context = _build_emissions_context(
-            estimates,
-            total_co2e_kg,
-        )
-        attendee_total = int(headline.get("attendees_estimated") or len(estimates) or 1)
-        context["per_attendee_kg"] = round(total_co2e_kg / max(attendee_total, 1), 1)
-        conf_avg_kg = context["per_attendee_kg"]
-        if context.get("conference_vs_lowest_national"):
-            lowest_tonnes = context["conference_vs_lowest_national"][
-                "national_tonnes_per_capita"
-            ]
-            lowest_kg = lowest_tonnes * 1000
-            context["conference_vs_lowest_national"]["conference_per_attendee_kg"] = (
-                conf_avg_kg
-            )
-            context["conference_vs_lowest_national"]["ratio_vs_national_annual"] = (
-                round(conf_avg_kg / lowest_kg, 2)
-            )
-        if context.get("conference_vs_highest_national"):
-            highest_tonnes = context["conference_vs_highest_national"][
-                "national_tonnes_per_capita"
-            ]
-            highest_kg = highest_tonnes * 1000
-            context["conference_vs_highest_national"]["conference_per_attendee_kg"] = (
-                conf_avg_kg
-            )
-            context["conference_vs_highest_national"]["ratio_vs_national_annual"] = (
-                round(conf_avg_kg / highest_kg, 2)
-            )
-        if context.get("illustrative_per_capita"):
-            for row in context["illustrative_per_capita"]:
-                row["conference_per_attendee_kg"] = conf_avg_kg
-                row["ratio_vs_national_annual"] = round(
-                    conf_avg_kg / float(row["national_kg_per_capita"]), 2
-                )
-        pool.setdefault("meta", {})["context"] = context
-
-    js_body = (
-        "/** Generated by estimate_travel_emissions.py – do not edit by hand. */\n"
-        f"export const EMISSIONS_DATA = {json.dumps(payload, ensure_ascii=False, indent=2)};\n"
-    )
-    site_path.write_text(js_body, encoding="utf-8")
-    return site_path
+    return load_json(path, default={})
 
 
 def _build_emissions_context(
@@ -1275,7 +796,6 @@ def _build_emissions_context(
     national_data = _load_national_per_capita()
     national_by_iso2 = national_data.get("countries", {})
     national_meta = national_data.get("meta", {})
-
     by_country = (
         estimates.groupby("origin_country")
         .agg(
@@ -1300,11 +820,8 @@ def _build_emissions_context(
     by_country["ratio_vs_national_annual"] = (
         by_country["co2e_per_attendee_kg"] / by_country["national_kg_per_capita"]
     )
-
     context: dict[str, Any] = {
-        "fair_budget_person_years": round(
-            total_co2e_kg / FAIR_PER_CAPITA_KG_CO2E_2030
-        ),
+        "fair_budget_person_years": round(total_co2e_kg / FAIR_PER_CAPITA_KG_CO2E_2030),
         "fair_per_capita_tonnes_2030": FAIR_PER_CAPITA_TONNES_CO2E_2030,
         "fair_per_capita_target_year": FAIR_PER_CAPITA_TARGET_YEAR,
         "per_attendee_kg": round(total_co2e_kg / max(len(estimates), 1), 1),
@@ -1312,7 +829,6 @@ def _build_emissions_context(
         "national_per_capita_year": national_meta.get("year", NATIONAL_PER_CAPITA_YEAR),
         "sources": EMISSIONS_SOURCES,
     }
-
     if not by_country.empty:
         lowest_pc = by_country.sort_values("national_tonnes_per_capita").iloc[0]
         highest_pc = by_country.sort_values("national_tonnes_per_capita").iloc[-1]
@@ -1322,7 +838,6 @@ def _build_emissions_context(
         context["highest_national_per_capita"] = _country_per_capita_comparison_row(
             highest_pc
         )
-
         conf_avg_kg = context["per_attendee_kg"]
         if national_meta:
             for key, row in (
@@ -1339,7 +854,6 @@ def _build_emissions_context(
                         conf_avg_kg / float(row["national_kg_per_capita"]), 2
                     ),
                 }
-
         present = set(estimates["origin_country"].astype(str))
         illustrative: list[dict[str, Any]] = []
         for iso2 in ILLUSTRATIVE_LOW_PER_CAPITA_COUNTRIES:
@@ -1366,7 +880,6 @@ def _build_emissions_context(
                 break
         if illustrative:
             context["illustrative_per_capita"] = illustrative
-
     return context
 
 
@@ -1456,7 +969,7 @@ def summarize_travel_emissions(
         "co2e_kg": float(estimates["co2e_kg"].sum()),
         "co2e_low_kg": float(estimates["co2e_low_kg"].sum()),
         "co2e_high_kg": float(estimates["co2e_high_kg"].sum()),
-        "co2e_tonnes": float(estimates["co2e_kg"].sum() / 1_000),
+        "co2e_tonnes": float(estimates["co2e_kg"].sum() / 1000),
         "by_transport_mode": estimates.groupby("transport_mode")[
             ["co2e_kg", "co2e_low_kg", "co2e_high_kg"]
         ]
@@ -1479,65 +992,30 @@ def summarize_travel_emissions(
     return summary
 
 
-def print_travel_summary(summary: dict[str, Any]) -> None:
-    table = Table(title="ICRS 2026 travel emissions estimate")
-    table.add_column("Metric")
-    table.add_column("Value", justify="right")
-    table.add_row("Attendees estimated", f"{summary['attendees_estimated']:,}")
-    table.add_row("Missing location", f"{summary['attendees_missing_location']:,}")
-    table.add_row(
-        "Central total",
-        f"{summary['co2e_kg']:,.0f} kg CO2e ({summary['co2e_tonnes']:,.1f} t)",
-    )
-    table.add_row(
-        "Assumption",
-        f"Economy flights (business class ~{FLIGHT_BUSINESS_MULTIPLIER}×, premium economy ~{FLIGHT_PREMIUM_ECONOMY_MULTIPLIER}×)",
-    )
-    _CONSOLE.print(table)
-
-    mode_table = Table(title="By transport mode")
-    mode_table.add_column("Mode")
-    mode_table.add_column("Central kg", justify="right")
-    mode_table.add_column("Low kg", justify="right")
-    mode_table.add_column("High kg", justify="right")
-    for row in summary["by_transport_mode"]:
-        mode_table.add_row(
-            str(row["transport_mode"]),
-            f"{row['co2e_kg']:,.0f}",
-            f"{row['co2e_low_kg']:,.0f}",
-            f"{row['co2e_high_kg']:,.0f}",
-        )
-    _CONSOLE.print(mode_table)
-
-
 def _build_emissions_locations(
-    estimates: pd.DataFrame,
-    legs: pd.DataFrame,
+    estimates: pd.DataFrame, legs: pd.DataFrame
 ) -> list[dict[str, Any]]:
     from src.geocoding.geocode import (
         _institution_rule,
-        _load_json,
         _lookup_override,
         affiliation_base_name,
         affiliation_display_name,
     )
 
-    overrides = _load_json(GEOCODE_OVERRIDES_JSON)
+    overrides = load_json(GEOCODE_OVERRIDES_JSON)
     country_centroids = {
-        (-24.776109, 134.755),  # Australia
-        (54.702354, -3.276575),  # United Kingdom
-        (-41.500083, 172.834408),  # New Zealand
+        (-24.776109, 134.755),
+        (54.702354, -3.276575),
+        (-41.500083, 172.834408),
     }
 
     def _best_lat_lon(key: str, group: pd.DataFrame) -> tuple[float, float] | None:
         override = _lookup_override(key, overrides)
         if override is not None and override.get("latitude") is not None:
-            return float(override["latitude"]), float(override["longitude"])
-
+            return (float(override["latitude"]), float(override["longitude"]))
         valid = group.dropna(subset=["latitude", "longitude"])
         if valid.empty:
             return None
-
         lat_rounded = valid["latitude"].astype(float).round(6)
         lon_rounded = valid["longitude"].astype(float).round(6)
         pairs: dict[tuple[float, float], int] = {}
@@ -1548,7 +1026,7 @@ def _build_emissions_locations(
             pairs[coord] = pairs.get(coord, 0) + 1
         if pairs:
             return max(pairs.items(), key=lambda item: item[1])[0]
-        return float(valid["latitude"].iloc[0]), float(valid["longitude"].iloc[0])
+        return (float(valid["latitude"].iloc[0]), float(valid["longitude"].iloc[0]))
 
     leg_cols = _leg_coordinate_columns(legs)
     merged = estimates.merge(leg_cols, on=["presenter", "affiliation"], how="left")
@@ -1556,7 +1034,6 @@ def _build_emissions_locations(
     merged = merged.assign(
         _affiliation_key=clean_affiliations.map(_emissions_location_key)
     )
-
     display_name: dict[str, str] = {}
     for affiliation in clean_affiliations.drop_duplicates():
         if pd.isna(affiliation):
@@ -1573,7 +1050,6 @@ def _build_emissions_locations(
         existing = display_name.get(key)
         if not existing or len(preferred) > len(existing):
             display_name[key] = preferred
-
     rows: list[dict[str, Any]] = []
     key_to_id: dict[str, str] = {}
     from src.registry.affiliation_registry import (
@@ -1582,8 +1058,7 @@ def _build_emissions_locations(
     )
 
     for index, (key, group) in enumerate(
-        sorted(merged.groupby("_affiliation_key", sort=True)),
-        start=1,
+        sorted(merged.groupby("_affiliation_key", sort=True)), start=1
     ):
         coords = _best_lat_lon(key, group)
         if coords is None:
@@ -1601,7 +1076,6 @@ def _build_emissions_locations(
             if organisation and country:
                 affiliation_label = _make_affiliation(affiliation_label, country)
                 break
-
         rows.append(
             {
                 "id": loc_id,
@@ -1617,7 +1091,7 @@ def _build_emissions_locations(
                 "distance_km": None,
             }
         )
-    return rows, key_to_id
+    return (rows, key_to_id)
 
 
 def _stable_attendee_id(name: str, location_id: str) -> str:
@@ -1625,7 +1099,7 @@ def _stable_attendee_id(name: str, location_id: str) -> str:
     hash_value = 2166136261
     for char in key.encode():
         hash_value ^= char
-        hash_value = (hash_value * 16777619) & 0xFFFFFFFF
+        hash_value = hash_value * 16777619 & 4294967295
     return f"offset-{hash_value:08x}"
 
 
@@ -1636,9 +1110,7 @@ def _build_emissions_attendees(
     *,
     country_to_cluster: dict[str, str] | None = None,
 ) -> list[dict[str, Any]]:
-    from src.geocoding.geocode import (
-        affiliation_display_name,
-    )
+    from src.geocoding.geocode import affiliation_display_name
 
     leg_cols = _leg_coordinate_columns(legs)
     estimate_cols = ["presenter", "affiliation", "co2e_kg"]
@@ -1647,7 +1119,6 @@ def _build_emissions_attendees(
     merged = estimates[estimate_cols].merge(
         leg_cols, on=["presenter", "affiliation"], how="left"
     )
-
     attendees: list[dict[str, Any]] = []
     seen: set[str] = set()
     from src.registry.key_resolution import get_registry_key_resolver
@@ -1661,7 +1132,6 @@ def _build_emissions_attendees(
     origin_country_idx = (
         columns.index("origin_country") if "origin_country" in columns else None
     )
-
     for row in merged.itertuples(index=False, name=None):
         name = "" if pd.isna(row[presenter_idx]) else str(row[presenter_idx]).strip()
         affiliation = _clean_affiliation_value(row[affiliation_idx])
@@ -1702,31 +1172,17 @@ def _build_emissions_attendees(
 
 
 def _build_pool_payload(
-    estimates: pd.DataFrame,
-    summary: dict[str, Any],
-    legs: pd.DataFrame,
-    *,
-    country_centroids: dict[str, tuple[float, float]] | None = None,
+    estimates: pd.DataFrame, summary: dict[str, Any], legs: pd.DataFrame
 ) -> dict[str, Any]:
-    from src.geography.country_clusters import (
-        build_country_clusters,
-        country_counts_from_estimates,
-    )
-
+    """Build a speaker/delegate pool; country clusters are added later by enrichment."""
     if not summary.get("context"):
         summary = {
             **summary,
             "context": _build_emissions_context(estimates, float(summary["co2e_kg"])),
         }
     location_rows, key_to_id = _build_emissions_locations(estimates, legs)
-    country_counts = country_counts_from_estimates(estimates)
-    centroids = country_centroids or {}
-    clusters, country_to_cluster = build_country_clusters(country_counts, centroids)
     attendee_rows = _build_emissions_attendees(
-        estimates,
-        legs,
-        key_to_id,
-        country_to_cluster=country_to_cluster,
+        estimates, legs, key_to_id, country_to_cluster={}
     )
     rankings = sorted(location_rows, key=lambda row: row["co2e_kg"], reverse=True)
     return {
@@ -1751,15 +1207,14 @@ def _build_pool_payload(
         "attendees": attendee_rows,
         "rankings": rankings[:30],
         "by_country": summary.get("by_country", [])[:30],
-        "country_clusters": clusters,
-        "country_to_cluster": country_to_cluster,
+        "country_clusters": [],
+        "country_to_cluster": {},
     }
 
 
 def export_emissions_site_data(
     estimates: pd.DataFrame,
     summary: dict[str, Any],
-    site_locations: list[dict[str, Any]],
     *,
     legs: pd.DataFrame | None = None,
     all_delegates: tuple[pd.DataFrame, dict[str, Any], pd.DataFrame] | None = None,
@@ -1776,7 +1231,6 @@ def export_emissions_site_data(
         legs = estimates[["presenter", "affiliation"]].copy()
         legs["latitude"] = pd.NA
         legs["longitude"] = pd.NA
-
     speakers_pool = _build_pool_payload(estimates, summary, legs)
     from src.site.map_exclusions import filter_emissions_pool
 
@@ -1789,8 +1243,8 @@ def export_emissions_site_data(
                 "enabled": True,
                 "boundaries_path": COUNTRY_BOUNDARIES_REL,
                 "min_cluster_size": 3,
-                "color_low": "#d95f02",
-                "color_high": "#2d8a4e",
+                "colour_low": "#d95f02",
+                "colour_high": "#2d8a4e",
             },
         },
         "speakers": speakers_pool,
@@ -1798,27 +1252,18 @@ def export_emissions_site_data(
     if all_delegates is not None:
         delegate_estimates, delegate_summary, delegate_legs = all_delegates
         payload["all_delegates"] = filter_emissions_pool(
-            _build_pool_payload(
-                delegate_estimates,
-                delegate_summary,
-                delegate_legs,
-            )
+            _build_pool_payload(delegate_estimates, delegate_summary, delegate_legs)
         )
     else:
         payload["all_delegates"] = speakers_pool
-
     from src.emissions.emissions_site_enrichment import enrich_emissions_payload
 
     payload = enrich_emissions_payload(payload)
-
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     def _write_export() -> None:
-        js_body = (
-            "/** Generated by estimate_travel_emissions.py – do not edit by hand. */\n"
-            f"export const EMISSIONS_DATA = {json.dumps(payload, ensure_ascii=False, indent=2)};\n"
-        )
+        js_body = f"/** Generated by estimate_travel_emissions.py – do not edit by hand. */\nexport const EMISSIONS_DATA = {json.dumps(payload, ensure_ascii=False, indent=2)};\n"
         output_path.write_text(js_body, encoding="utf-8")
 
     if show_progress:
@@ -1826,96 +1271,3 @@ def export_emissions_site_data(
     else:
         _write_export()
     return output_path
-
-
-def export_emissions_site_data_legacy(
-    estimates: pd.DataFrame,
-    summary: dict[str, Any],
-    site_locations: list[dict[str, Any]],
-    *,
-    save_path: str | Path = DEFAULT_EMISSIONS_SITE_PATH,
-) -> Path:
-    """Export travel emissions for the static emissions tab."""
-    from datetime import UTC, datetime
-
-    affiliation_stats = (
-        estimates.groupby("affiliation")
-        .agg(
-            co2e_kg=("co2e_kg", "sum"),
-            co2e_low_kg=("co2e_low_kg", "sum"),
-            co2e_high_kg=("co2e_high_kg", "sum"),
-            attendee_count=("presenter", "count"),
-        )
-        .reset_index()
-    )
-    affiliation_map = {
-        row["affiliation"]: row for _, row in affiliation_stats.iterrows()
-    }
-
-    location_rows: list[dict[str, Any]] = []
-    for location in site_locations:
-        stats = affiliation_map.get(location["affiliation"])
-        co2e_kg = round(float(stats["co2e_kg"]), 1) if stats is not None else 0.0
-        co2e_low_kg = (
-            round(float(stats["co2e_low_kg"]), 1) if stats is not None else 0.0
-        )
-        co2e_high_kg = (
-            round(float(stats["co2e_high_kg"]), 1) if stats is not None else 0.0
-        )
-        attendees = int(stats["attendee_count"]) if stats is not None else 0
-        location_rows.append(
-            {
-                "id": location["id"],
-                "affiliation": location["affiliation"],
-                "lat": location["lat"],
-                "lon": location["lon"],
-                "speaker_count": location["speaker_count"],
-                "travel_attendees": attendees,
-                "co2e_kg": co2e_kg,
-                "co2e_low_kg": co2e_low_kg,
-                "co2e_high_kg": co2e_high_kg,
-                "co2e_per_speaker_kg": round(co2e_kg / max(attendees, 1), 1),
-                "distance_km": location.get("distance_km"),
-            }
-        )
-
-    rankings = sorted(location_rows, key=lambda row: row["co2e_kg"], reverse=True)
-    by_country = summary.get("by_country", [])
-
-    payload = {
-        "meta": {
-            "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
-            "headline": {
-                "co2e_kg": round(summary["co2e_kg"], 1),
-                "co2e_low_kg": round(summary["co2e_low_kg"], 1),
-                "co2e_high_kg": round(summary["co2e_high_kg"], 1),
-                "co2e_tonnes": round(summary["co2e_tonnes"], 2),
-                "attendees_estimated": summary["attendees_estimated"],
-                "attendees_missing_location": summary["attendees_missing_location"],
-                "unique_routes_queried": summary.get("unique_routes_queried", 0),
-                "api_queries_used": summary.get("api_queries_used", 0),
-            },
-            "assumptions": summary.get("assumptions", {}),
-            "uncertainty": summary.get("uncertainty", {}),
-            "by_transport_mode": summary.get("by_transport_mode", []),
-            "context": summary.get("context", {}),
-        },
-        "locations": location_rows,
-        "rankings": rankings[:30],
-        "by_country": by_country[:30],
-    }
-
-    output_path = Path(save_path)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    js_body = (
-        "/** Generated by estimate_travel_emissions.py – do not edit by hand. */\n"
-        f"export const EMISSIONS_DATA = {json.dumps(payload, ensure_ascii=False, indent=2)};\n"
-    )
-    output_path.write_text(js_body, encoding="utf-8")
-    return output_path
-
-
-def load_geocoded_talks() -> pd.DataFrame:
-    from src.registry.registry_export import build_map_talks
-
-    return build_map_talks()

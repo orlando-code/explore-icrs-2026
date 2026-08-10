@@ -1,44 +1,20 @@
-"""Geocode affiliation strings with query variants and a persistent cache."""
+"""Affiliation string helpers: aliases, overrides, query variants, country hints."""
 
 from __future__ import annotations
 
-import json
-import math
-import os
 import re
-import time
 import unicodedata
 from pathlib import Path
-from typing import Any, Callable, Iterable
+from typing import Any
 
-import pandas as pd
 import pycountry
-from geopy.exc import GeocoderServiceError, GeocoderTimedOut
-from geopy.geocoders import Nominatim
-from rich.console import Console
-from rich.progress import (
-    BarColumn,
-    MofNCompleteColumn,
-    Progress,
-    SpinnerColumn,
-    TextColumn,
-    TimeElapsedColumn,
-)
-from src.data_paths import (
-    AFFILIATION_DISPLAY_ALIASES_JSON,
-    CACHE,
-    GEOCODE_OVERRIDES_JSON,
-)
 
-DEFAULT_CACHE_PATH = CACHE / "geocode_cache.json"
+from src.data_paths import AFFILIATION_DISPLAY_ALIASES_JSON, GEOCODE_OVERRIDES_JSON
+from src.util.json_io import load_json
+
 DEFAULT_OVERRIDES_PATH = GEOCODE_OVERRIDES_JSON
 DEFAULT_DISPLAY_ALIASES_PATH = AFFILIATION_DISPLAY_ALIASES_JSON
-DEFAULT_COUNTRY_CACHE_PATH = CACHE / "country_centroids.json"
-DEFAULT_USER_AGENT = "explore-icrs-2026/0.1"
-_CONSOLE = Console()
 _DISPLAY_ALIASES_CACHE: dict[str, str] | None = None
-
-# Affiliation fragments mapped to clearer geocoding queries.
 _AFFILIATION_ALIASES: dict[str, str] = {
     "cimas": "University of Miami, Florida",
     "rosenstiel school": "Rosenstiel School University of Miami",
@@ -64,12 +40,12 @@ _AFFILIATION_ALIASES: dict[str, str] = {
     "western australian museum": "Western Australian Museum, Perth, Western Australia, Australia",
     "department of biodiversity, conservation and attractions": "Department of Biodiversity, Conservation and Attractions, Perth, Western Australia, Australia",
 }
-
-# Institutions whose country suffix must not contradict their geography.
-# cities: (name, lat, lon, max_distance_km) for institute-level plausibility checks.
 _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
     (
-        re.compile(r"\b(university of wellington|victoria university of wellington)\b", re.I),
+        re.compile(
+            "\\b(university of wellington|victoria university of wellington)\\b",
+            re.IGNORECASE,
+        ),
         {
             "countries": ["New Zealand"],
             "cities": [("Wellington", -41.2889, 174.7762, 90.0)],
@@ -78,7 +54,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"chinese university of hong kong", re.I),
+        re.compile("chinese university of hong kong", re.IGNORECASE),
         {
             "countries": ["Hong Kong"],
             "cities": [("Hong Kong", 22.419, 114.206, 80.0)],
@@ -87,7 +63,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"(?<!chinese )university of hong kong\b", re.I),
+        re.compile("(?<!chinese )university of hong kong\\b", re.IGNORECASE),
         {
             "countries": ["Hong Kong"],
             "cities": [("Hong Kong", 22.283, 114.137, 80.0)],
@@ -97,8 +73,8 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
     ),
     (
         re.compile(
-            r"\b(university of western australia|the university of western australia)\b",
-            re.I,
+            "\\b(university of western australia|the university of western australia)\\b",
+            re.IGNORECASE,
         ),
         {
             "countries": ["Australia"],
@@ -108,7 +84,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"\bjames cook university\b", re.I),
+        re.compile("\\bjames cook university\\b", re.IGNORECASE),
         {
             "countries": ["Australia"],
             "cities": [("Townsville", -19.329, 146.757, 120.0)],
@@ -117,7 +93,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"\buniversity of leicester\b", re.I),
+        re.compile("\\buniversity of leicester\\b", re.IGNORECASE),
         {
             "countries": ["United Kingdom"],
             "cities": [("Leicester", 52.6206, -1.1099, 40.0)],
@@ -126,7 +102,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"\buniversity of auckland\b", re.I),
+        re.compile("\\buniversity of auckland\\b", re.IGNORECASE),
         {
             "countries": ["New Zealand"],
             "cities": [("Auckland", -36.8661, 174.7737, 90.0)],
@@ -135,7 +111,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"\buniversity of canterbury\b", re.I),
+        re.compile("\\buniversity of canterbury\\b", re.IGNORECASE),
         {
             "countries": ["New Zealand"],
             "cities": [("Christchurch", -43.5233, 172.5823, 90.0)],
@@ -144,7 +120,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"\bauckland university of technology\b", re.I),
+        re.compile("\\bauckland university of technology\\b", re.IGNORECASE),
         {
             "countries": ["New Zealand"],
             "cities": [("Auckland", -36.853, 174.7664, 90.0)],
@@ -153,7 +129,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"western australian museum", re.I),
+        re.compile("western australian museum", re.IGNORECASE),
         {
             "countries": ["Australia"],
             "cities": [("Perth", -31.9492, 115.8645, 90.0)],
@@ -163,8 +139,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
     ),
     (
         re.compile(
-            r"department of biodiversity, conservation and attractions",
-            re.I,
+            "department of biodiversity, conservation and attractions", re.IGNORECASE
         ),
         {
             "countries": ["Australia"],
@@ -174,20 +149,17 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"\bworld wildlife fund\b", re.I),
+        re.compile("\\bworld wildlife fund\\b", re.IGNORECASE),
         {
             "countries": ["Australia", "Indonesia", "United States", "United Kingdom"],
             "query": "World Wildlife Fund",
             "canonical": "World Wildlife Fund",
             "regionalize": True,
-            "regional_countries": {
-                "Australia": "Australia",
-                "Indonesia": "Indonesia",
-            },
+            "regional_countries": {"Australia": "Australia", "Indonesia": "Indonesia"},
         },
     ),
     (
-        re.compile(r"\buniversity of south carolina\b.*\bbeaufort\b", re.I),
+        re.compile("\\buniversity of south carolina\\b.*\\bbeaufort\\b", re.IGNORECASE),
         {
             "countries": ["United States"],
             "cities": [("Beaufort", 32.4577, -80.6727, 50.0)],
@@ -196,7 +168,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"\bcoral restoration foundation\b", re.I),
+        re.compile("\\bcoral restoration foundation\\b", re.IGNORECASE),
         {
             "countries": ["United States"],
             "cities": [("Key Largo", 25.088, -80.441, 80.0)],
@@ -205,7 +177,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"\bbermuda institute of ocean sciences\b", re.I),
+        re.compile("\\bbermuda institute of ocean sciences\\b", re.IGNORECASE),
         {
             "countries": ["Bermuda"],
             "cities": [("St. George's", 32.3708572, -64.6961517, 50.0)],
@@ -214,7 +186,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"\bbangor university\b", re.I),
+        re.compile("\\bbangor university\\b", re.IGNORECASE),
         {
             "countries": ["United Kingdom"],
             "cities": [("Bangor", 53.228, -4.129, 40.0)],
@@ -223,7 +195,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"\buniversity of the ryukyus\b", re.I),
+        re.compile("\\buniversity of the ryukyus\\b", re.IGNORECASE),
         {
             "countries": ["Japan"],
             "cities": [("Naha", 26.2124, 127.6809, 80.0)],
@@ -232,7 +204,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"\bsouthern cross university\b", re.I),
+        re.compile("\\bsouthern cross university\\b", re.IGNORECASE),
         {
             "countries": ["Australia"],
             "cities": [("Lismore", -28.816, 153.283, 120.0)],
@@ -241,7 +213,7 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
     (
-        re.compile(r"\bthe nature conservancy\b", re.I),
+        re.compile("\\bthe nature conservancy\\b", re.IGNORECASE),
         {
             "query": "The Nature Conservancy",
             "canonical": "The Nature Conservancy",
@@ -260,8 +232,6 @@ _INSTITUTION_GEO_RULES: tuple[tuple[re.Pattern[str], dict[str, Any]], ...] = (
         },
     ),
 )
-
-# Region or informal place names mapped to geocodable country queries.
 _COUNTRY_ALIASES: dict[str, str] = {
     "micronesia": "Federated States of Micronesia",
     "micronesian": "Federated States of Micronesia",
@@ -302,108 +272,12 @@ _COUNTRY_ALIASES: dict[str, str] = {
     "hong kong": "Hong Kong",
     "hawaii": "Hawaii, USA",
 }
-
-_MAX_COUNTRY_DISTANCE_KM = 1_500
-
-# Coral Restoration Foundation override coords (Key Largo, FL). A bad propagate/cache
-# write once stamped these onto unrelated affiliations — detect and purge/re-geocode.
-_CRF_OVERRIDE_LAT = 25.088014
-_CRF_OVERRIDE_LON = -80.441046
-_CRF_LEGITIMATE_RE = re.compile(r"\bcoral restoration foundation\b", re.I)
-_CRF_POISON_QUERY_MARKERS = (
-    "override:coral restoration foundation",
-    "coral restoration foundation, key largo",
-)
-
-
-def _coords_near(lat: float, lon: float, ref_lat: float, ref_lon: float, *, km: float = 5.0) -> bool:
-    return _haversine_km(lat, lon, ref_lat, ref_lon) <= km
-
-
-def is_crf_cache_poison(affiliation: str, coords: dict[str, Any] | None) -> bool:
-    """True when coords look like the CRF Key Largo override applied to the wrong affiliation."""
-    if not coords or coords.get("latitude") is None or coords.get("longitude") is None:
-        return False
-    if _CRF_LEGITIMATE_RE.search(str(affiliation or "")):
-        return False
-    try:
-        lat = float(coords["latitude"])
-        lon = float(coords["longitude"])
-    except (TypeError, ValueError):
-        return False
-    if not _coords_near(lat, lon, _CRF_OVERRIDE_LAT, _CRF_OVERRIDE_LON):
-        return False
-    query = str(coords.get("query_used") or "").casefold()
-    return any(marker in query for marker in _CRF_POISON_QUERY_MARKERS)
-
-# Regex replacements applied before query generation.
 _NORMALIZATIONS = (
-    (r"\bOf\b", "of"),
-    (r"\bAnd\b", "and"),
-    (r"\bThe\b", "the"),
-    (r"\s+", " "),
+    ("\\bOf\\b", "of"),
+    ("\\bAnd\\b", "and"),
+    ("\\bThe\\b", "the"),
+    ("\\s+", " "),
 )
-
-
-def _load_country_coords_cache(path: Path) -> dict[str, tuple[float, float]]:
-    raw = _load_json(path)
-    cache: dict[str, tuple[float, float]] = {}
-    for country, coords in raw.items():
-        lat = coords.get("latitude")
-        lon = coords.get("longitude")
-        if lat is not None and lon is not None:
-            cache[country] = (lat, lon)
-    return cache
-
-
-def _save_country_coords_cache(
-    path: Path, cache: dict[str, tuple[float, float]]
-) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    payload = {
-        country: {"latitude": lat, "longitude": lon}
-        for country, (lat, lon) in sorted(cache.items())
-    }
-    with path.open("w", encoding="utf-8") as handle:
-        json.dump(payload, handle, indent=2, sort_keys=True)
-
-
-def _ensure_country_coords(
-    geolocator: Nominatim,
-    countries: Iterable[str],
-    *,
-    country_coords_cache: dict[str, tuple[float, float]],
-    country_cache_path: Path,
-    pause_seconds: float,
-) -> None:
-    updated = False
-    for country in countries:
-        if country in country_coords_cache:
-            continue
-        result = _geocode_country_centroid(
-            geolocator,
-            country,
-            pause_seconds=pause_seconds,
-        )
-        if result["latitude"] is not None:
-            country_coords_cache[country] = (result["latitude"], result["longitude"])
-            updated = True
-        time.sleep(pause_seconds)
-    if updated:
-        _save_country_coords_cache(country_cache_path, country_coords_cache)
-
-
-def _load_json(path: Path) -> dict:
-    if not path.exists():
-        return {}
-    with path.open(encoding="utf-8") as handle:
-        return json.load(handle)
-
-
-def _save_cache(cache_path: Path, cache: dict[str, dict]) -> None:
-    cache_path.parent.mkdir(parents=True, exist_ok=True)
-    with cache_path.open("w", encoding="utf-8") as handle:
-        json.dump(cache, handle, indent=2, sort_keys=True)
 
 
 def _normalize_text(text: str) -> str:
@@ -419,7 +293,6 @@ def _trailing_country_part_count(parts: list[str]) -> int:
     """Return how many trailing comma-separated parts form a country name."""
     if len(parts) < 2:
         return 0
-
     from src.sources.delegates import country_to_iso2
 
     normalized_parts = [_normalize_text(part) for part in parts]
@@ -449,8 +322,8 @@ def _strip_country_suffix_display(affiliation: str) -> str:
 
 
 def _clean_affiliation_display(text: str) -> str:
-    cleaned = re.sub(r"\s+", " ", str(text or "")).strip(" ,;-")
-    cleaned = re.sub(r"\s*/\s*$", "", cleaned).strip()
+    cleaned = re.sub("\\s+", " ", str(text or "")).strip(" ,;-")
+    cleaned = re.sub("\\s*/\\s*$", "", cleaned).strip()
     return cleaned
 
 
@@ -472,7 +345,7 @@ def load_affiliation_display_aliases(
     global _DISPLAY_ALIASES_CACHE
     if _DISPLAY_ALIASES_CACHE is not None:
         return _DISPLAY_ALIASES_CACHE
-    payload = _load_json(path)
+    payload = load_json(path, default={})
     aliases = payload.get("aliases") if isinstance(payload, dict) else {}
     if not isinstance(aliases, dict):
         aliases = {}
@@ -482,24 +355,6 @@ def load_affiliation_display_aliases(
         if str(key).strip() and str(value).strip()
     }
     return _DISPLAY_ALIASES_CACHE
-
-
-def save_affiliation_display_aliases(
-    payload: dict[str, Any],
-    path: Path = DEFAULT_DISPLAY_ALIASES_PATH,
-) -> Path:
-    global _DISPLAY_ALIASES_CACHE
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as handle:
-        json.dump(payload, handle, ensure_ascii=False, indent=2, sort_keys=True)
-        handle.write("\n")
-    aliases = payload.get("aliases") if isinstance(payload, dict) else {}
-    _DISPLAY_ALIASES_CACHE = {
-        str(key).strip(): str(value).strip()
-        for key, value in (aliases or {}).items()
-        if str(key).strip() and str(value).strip()
-    }
-    return path
 
 
 def resolve_affiliation_alias(affiliation: str) -> str:
@@ -541,19 +396,18 @@ def affiliation_display_name(affiliation: str) -> str:
     return text
 
 
-def _regionalized_canonical_name(affiliation: str, rule: dict[str, Any], base: str) -> str:
+def _regionalized_canonical_name(
+    affiliation: str, rule: dict[str, Any], base: str
+) -> str:
     canonical = str(rule.get("canonical") or base or "").strip()
     if not canonical or not rule.get("regionalize"):
         return canonical or base
-
     regional_suffix_re = re.compile(
-        rf"^{re.escape(canonical)}\s*[-–]\s*(.+)$",
-        re.I,
+        f"^{re.escape(canonical)}\\s*[-–]\\s*(.+)$", re.IGNORECASE
     )
     match = regional_suffix_re.match(_clean_affiliation_display(base))
     if match:
         return f"{canonical} - {match.group(1).strip()}"
-
     regional_countries = rule.get("regional_countries") or {}
     for hint in _extract_country_hints(affiliation):
         label = regional_countries.get(hint)
@@ -565,10 +419,10 @@ def _regionalized_canonical_name(affiliation: str, rule: dict[str, Any], base: s
 def _affiliation_fingerprint(text: str) -> str:
     """Fold punctuation/Unicode variants for override and cache matching."""
     folded = unicodedata.normalize("NFKD", str(text or ""))
-    for char in ("\u02bb", "\u02bc", "'", "'", "`", "´", "’", "ʻ"):
+    for char in ("ʻ", "ʼ", "'", "'", "`", "´", "’", "ʻ"):
         folded = folded.replace(char, "")
     folded = folded.encode("ascii", "ignore").decode("ascii")
-    folded = folded.replace("–", "-").replace("—", "-")
+    folded = folded.replace("–", "-").replace("–", "-")
     for pattern, replacement in _NORMALIZATIONS:
         folded = re.sub(pattern, replacement, folded)
     return folded.strip(" ,;-").casefold()
@@ -608,22 +462,6 @@ def affiliation_lookup_keys(affiliation: str) -> list[str]:
     return keys
 
 
-def geocode_coords_score(coords: dict[str, Any] | None) -> int:
-    if not coords or coords.get("latitude") is None:
-        return 0
-    query = str(coords.get("query_used") or "")
-    if query.startswith("override"):
-        return 100
-    if query.startswith("google:"):
-        return 80
-    level = coords.get("geocode_level")
-    if level == "institute":
-        return 50
-    if level == "country":
-        return 10
-    return 20
-
-
 def _institution_rule(affiliation: str) -> dict[str, Any] | None:
     for pattern, rule in _INSTITUTION_GEO_RULES:
         if pattern.search(affiliation):
@@ -643,24 +481,6 @@ def _filtered_country_hints(affiliation: str) -> list[str]:
     return filtered or list(allowed)
 
 
-def _is_plausible_for_affiliation(
-    affiliation: str,
-    lat: float,
-    lon: float,
-    country_hints: list[str],
-    country_coords: dict[str, tuple[float, float]],
-) -> bool:
-    if not _is_plausible_for_hints(lat, lon, country_hints, country_coords):
-        return False
-    rule = _institution_rule(affiliation)
-    if not rule:
-        return True
-    for _city_name, city_lat, city_lon, max_km in rule.get("cities", []):
-        if _haversine_km(lat, lon, city_lat, city_lon) > max_km:
-            return False
-    return True
-
-
 def _override_payload(override: dict[str, Any]) -> dict[str, float | str | None]:
     return {
         "latitude": override.get("latitude"),
@@ -676,10 +496,8 @@ def _lookup_override(
     for key in affiliation_lookup_keys(affiliation):
         if key in overrides:
             return _override_payload(overrides[key])
-
     if not overrides:
         return None
-
     by_fingerprint = {
         _affiliation_fingerprint(key): key
         for key in overrides
@@ -690,35 +508,6 @@ def _lookup_override(
         if matched is not None:
             return _override_payload(overrides[matched])
     return None
-
-
-def _propagate_canonical_geocodes(cache: dict[str, dict]) -> None:
-    """Apply the best geocode for each canonical institution to all variants."""
-    canonical_best: dict[str, tuple[int, dict]] = {}
-    for affiliation, coords in cache.items():
-        if is_crf_cache_poison(affiliation, coords):
-            continue
-        key = canonical_affiliation_key(affiliation)
-        score = geocode_coords_score(coords)
-        existing = canonical_best.get(key)
-        if existing is None or score > existing[0]:
-            canonical_best[key] = (score, coords)
-
-    for affiliation in list(cache.keys()):
-        key = canonical_affiliation_key(affiliation)
-        if key not in canonical_best:
-            if is_crf_cache_poison(affiliation, cache.get(affiliation)):
-                cache[affiliation] = {
-                    "latitude": None,
-                    "longitude": None,
-                    "query_used": None,
-                    "geocode_level": None,
-                }
-            continue
-        candidate = canonical_best[key][1]
-        if is_crf_cache_poison(affiliation, candidate):
-            continue
-        cache[affiliation] = dict(candidate)
 
 
 def _split_primary_segment(affiliation: str) -> str:
@@ -732,11 +521,9 @@ def _lookup_country(name: str) -> str | None:
     cleaned = _normalize_text(name).strip(" ,.-")
     if not cleaned or len(cleaned) < 3:
         return None
-
     alias = _COUNTRY_ALIASES.get(cleaned.lower())
     if alias:
         return alias
-
     try:
         return pycountry.countries.lookup(cleaned).name
     except LookupError:
@@ -758,147 +545,19 @@ def _extract_country_hints(affiliation: str) -> list[str]:
 
     normalized = _normalize_text(affiliation)
     lowered = normalized.lower()
-
     for alias, country in sorted(
         _COUNTRY_ALIASES.items(), key=lambda item: -len(item[0])
     ):
         if alias in lowered:
             add(country, resolved=True)
-
-    for part in re.split(r"[,;/|&]", normalized):
+    for part in re.split("[,;/|&]", normalized):
         add(part.strip())
-
     for sep in (" - ", " – ", " – "):
         if sep in normalized:
             tail = normalized.split(sep, 1)[1]
-            for part in re.split(r"[,;/|&]", tail):
+            for part in re.split("[,;/|&]", tail):
                 add(part.strip())
-
     return hints
-
-
-def _shortest_lon_delta(lon1: float, lon2: float) -> float:
-    delta = lon2 - lon1
-    return (delta + 180.0) % 360.0 - 180.0
-
-
-def _haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    radius_km = 6_371.0
-    phi1, phi2 = math.radians(lat1), math.radians(lat2)
-    d_phi = math.radians(lat2 - lat1)
-    d_lambda = math.radians(_shortest_lon_delta(lon1, lon2))
-    a = (
-        math.sin(d_phi / 2) ** 2
-        + math.cos(phi1) * math.cos(phi2) * math.sin(d_lambda / 2) ** 2
-    )
-    return 2 * radius_km * math.asin(math.sqrt(a))
-
-
-def _geocode_country_centroid(
-    geolocator: Nominatim,
-    country: str,
-    *,
-    pause_seconds: float,
-) -> dict[str, float | str | None]:
-    for query in (country, f"{country} country"):
-        result = _geocode_query(
-            geolocator,
-            query,
-            country_hints=[country],
-            pause_seconds=pause_seconds,
-        )
-        if result["latitude"] is not None:
-            result["query_used"] = f"country:{country}"
-            result["geocode_level"] = "country"
-            return result
-        time.sleep(pause_seconds)
-    return {
-        "latitude": None,
-        "longitude": None,
-        "query_used": None,
-        "geocode_level": None,
-    }
-
-
-def _is_plausible_for_hints(
-    lat: float,
-    lon: float,
-    country_hints: list[str],
-    country_coords: dict[str, tuple[float, float]],
-) -> bool:
-    if not country_hints:
-        return True
-    distances = [
-        _haversine_km(lat, lon, country_coords[hint][0], country_coords[hint][1])
-        for hint in country_hints
-        if hint in country_coords
-    ]
-    if not distances:
-        return True
-    return min(distances) <= _MAX_COUNTRY_DISTANCE_KM
-
-
-def _resolve_country_coords(
-    geolocator: Nominatim,
-    country_hints: list[str],
-    *,
-    pause_seconds: float,
-    country_coords_cache: dict[str, tuple[float, float]],
-) -> dict[str, float | str | None]:
-    for country in country_hints:
-        if country not in country_coords_cache:
-            result = _geocode_country_centroid(
-                geolocator,
-                country,
-                pause_seconds=pause_seconds,
-            )
-            if result["latitude"] is not None:
-                country_coords_cache[country] = (
-                    result["latitude"],
-                    result["longitude"],
-                )
-            else:
-                continue
-        lat, lon = country_coords_cache[country]
-        return {
-            "latitude": lat,
-            "longitude": lon,
-            "query_used": f"country:{country}",
-            "geocode_level": "country",
-        }
-    return {
-        "latitude": None,
-        "longitude": None,
-        "query_used": None,
-        "geocode_level": None,
-    }
-
-
-def _country_codes_for_hints(country_hints: list[str]) -> str | None:
-    codes: list[str] = []
-    for country in country_hints:
-        try:
-            codes.append(pycountry.countries.lookup(country).alpha_2.lower())
-        except LookupError:
-            continue
-    return ",".join(dict.fromkeys(codes)) if codes else None
-
-
-def _looks_like_specific_institution(affiliation: str) -> bool:
-    lowered = affiliation.lower()
-    markers = (
-        "university",
-        "institute",
-        "college",
-        "museum",
-        "laboratory",
-        "laboratories",
-        "school of",
-        "department of",
-        "centre for",
-        "center for",
-    )
-    return any(marker in lowered for marker in markers)
 
 
 def _query_variants(affiliation: str) -> list[str]:
@@ -906,7 +565,6 @@ def _query_variants(affiliation: str) -> list[str]:
     raw = affiliation.strip()
     if not raw:
         return []
-
     normalized = _normalize_text(raw)
     primary = _split_primary_segment(normalized)
     variants: list[str] = []
@@ -923,53 +581,46 @@ def _query_variants(affiliation: str) -> list[str]:
     rule = _institution_rule(raw)
     if rule and rule.get("query"):
         add(rule["query"])
-
     add(raw)
     add(normalized)
     add(primary)
-
     lowered = primary.lower()
     for fragment, alias in _AFFILIATION_ALIASES.items():
         if fragment in lowered:
             add(alias)
-
     country_hints = _filtered_country_hints(raw)
     base_name = affiliation_base_name(raw)
     for country in country_hints:
         add(f"{base_name or primary}, {country}")
         add(f"{primary}, {country}")
-
     if "(" in primary and ")" in primary:
-        add(re.sub(r"\([^)]*\)", "", primary).strip(" ,"))
-
-    parts = [part.strip() for part in re.split(r",", primary) if part.strip()]
+        add(re.sub("\\([^)]*\\)", "", primary).strip(" ,"))
+    parts = [part.strip() for part in re.split(",", primary) if part.strip()]
     if len(parts) >= 2:
         add(f"{parts[0]}, {parts[-1]}")
         add(f"{parts[0]} {parts[-1]}")
         add(parts[0])
         add(f"{parts[0]}, {parts[1]}")
         add(f"{parts[1]}, {parts[0]}")
-
     for sep in (" - ", " – ", " – "):
         if sep in primary:
             add(primary.split(sep, 1)[0])
-
     if " under " in lowered:
         add(primary.split(" under ", 1)[0])
-
     if "university" in lowered:
-        match = re.search(r"((?:the\s+)?university of [^,;/|-]+)", primary, flags=re.I)
+        match = re.search(
+            "((?:the\\s+)?university of [^,;/|-]+)", primary, flags=re.IGNORECASE
+        )
         if match:
             add(match.group(1))
             for country in country_hints:
                 add(f"{match.group(1)}, {country}")
-
     if "institute" in lowered:
-        match = re.search(r"(institute[^,;/|]*?(?:,\s*[^,;/|]+)?)", primary, flags=re.I)
+        match = re.search(
+            "(institute[^,;/|]*?(?:,\\s*[^,;/|]+)?)", primary, flags=re.IGNORECASE
+        )
         if match:
             add(match.group(1))
-
-    # Local-language variants for universities without country hints.
     if "antsiranana" in lowered:
         add("Universite d'Antsiranana, Madagascar")
     if "salento" in lowered:
@@ -978,509 +629,15 @@ def _query_variants(affiliation: str) -> list[str]:
         add("Universite de Toliara, Madagascar")
     if "mons" in lowered and "belgium" in lowered:
         add("Universite de Mons, Belgium")
-
-    # Common trailing department/school noise.
     add(
         re.split(
-            r",\s*(?:Department|School|Faculty|Center|Centre|Division)\b",
+            ",\\s*(?:Department|School|Faculty|Center|Centre|Division)\\b",
             primary,
             maxsplit=1,
         )[0]
     )
-
     return [
         query
         for query in variants
         if len(query) >= 12 or query.lower() in _AFFILIATION_ALIASES
     ]
-
-
-def _geocode_query(
-    geolocator: Nominatim,
-    query: str,
-    *,
-    country_hints: list[str] | None = None,
-    retries: int = 3,
-    pause_seconds: float = 1.0,
-) -> dict[str, float | str | None]:
-    country_codes = _country_codes_for_hints(country_hints or [])
-    geocode_kwargs = {"timeout": 10}
-    if country_codes:
-        geocode_kwargs["country_codes"] = country_codes
-
-    for attempt in range(retries):
-        try:
-            location = geolocator.geocode(query, **geocode_kwargs)
-            if location is None:
-                return {"latitude": None, "longitude": None, "query_used": query}
-            return {
-                "latitude": location.latitude,
-                "longitude": location.longitude,
-                "query_used": query,
-            }
-        except (GeocoderTimedOut, GeocoderServiceError):
-            if attempt == retries - 1:
-                return {"latitude": None, "longitude": None, "query_used": query}
-            time.sleep(pause_seconds * (attempt + 1))
-    return {"latitude": None, "longitude": None, "query_used": query}
-
-
-def _llm_geocode_query(affiliation: str) -> str | None:
-    """Optional LLM fallback to produce a concise geocoding query."""
-    api_key = os.environ.get("OPENAI_API_KEY")
-    if not api_key:
-        return None
-
-    try:
-        from openai import OpenAI
-    except ImportError:
-        return None
-
-    client = OpenAI(api_key=api_key)
-    response = client.chat.completions.create(
-        model=os.environ.get("ICRS_GEOCODE_MODEL", "gpt-4o-mini"),
-        temperature=0,
-        messages=[
-            {
-                "role": "system",
-                "content": (
-                    "Return a concise geocoding query for the main physical location of "
-                    "an academic affiliation. Reply with only the query string."
-                ),
-            },
-            {"role": "user", "content": affiliation},
-        ],
-    )
-    query = response.choices[0].message.content
-    return query.strip() if query else None
-
-
-def _resolve_affiliation(
-    geolocator: Nominatim,
-    affiliation: str,
-    overrides: dict[str, dict],
-    *,
-    pause_seconds: float,
-    use_llm: bool,
-    country_coords_cache: dict[str, tuple[float, float]],
-    country_cache_path: Path,
-    on_query: Callable[[str, int, int], None] | None = None,
-) -> dict[str, float | str | None]:
-    override = _lookup_override(affiliation, overrides)
-    if override is not None:
-        return override
-
-    country_hints = _filtered_country_hints(affiliation)
-    _ensure_country_coords(
-        geolocator,
-        country_hints,
-        country_coords_cache=country_coords_cache,
-        country_cache_path=country_cache_path,
-        pause_seconds=pause_seconds,
-    )
-
-    variants = _query_variants(affiliation)
-    for index, query in enumerate(variants, start=1):
-        if on_query is not None:
-            on_query(query, index, len(variants))
-        result = _geocode_query(
-            geolocator,
-            query,
-            country_hints=country_hints,
-            pause_seconds=pause_seconds,
-        )
-        if result["latitude"] is not None:
-            if _is_plausible_for_affiliation(
-                affiliation,
-                result["latitude"],
-                result["longitude"],
-                country_hints,
-                country_coords_cache,
-            ):
-                result["geocode_level"] = "institute"
-                return result
-        time.sleep(pause_seconds)
-
-    if use_llm:
-        if on_query is not None:
-            on_query("llm fallback", len(variants) + 1, len(variants) + 1)
-        llm_query = _llm_geocode_query(affiliation)
-        if llm_query:
-            result = _geocode_query(
-                geolocator,
-                llm_query,
-                country_hints=country_hints,
-                pause_seconds=pause_seconds,
-            )
-            if result["latitude"] is not None and _is_plausible_for_affiliation(
-                affiliation,
-                result["latitude"],
-                result["longitude"],
-                country_hints,
-                country_coords_cache,
-            ):
-                result["query_used"] = f"llm:{llm_query}"
-                result["geocode_level"] = "institute"
-                return result
-            time.sleep(pause_seconds)
-
-    if country_hints and not _looks_like_specific_institution(affiliation):
-        if on_query is not None:
-            on_query(f"country fallback ({country_hints[0]})", 1, 1)
-        return _resolve_country_coords(
-            geolocator,
-            country_hints,
-            pause_seconds=pause_seconds,
-            country_coords_cache=country_coords_cache,
-        )
-
-    return {
-        "latitude": None,
-        "longitude": None,
-        "query_used": None,
-        "geocode_level": None,
-    }
-
-
-def _needs_reprocessing(
-    affiliation: str,
-    cached: dict | None,
-    *,
-    retry_failed: bool,
-    upgrade_incomplete: bool,
-    country_coords_cache: dict[str, tuple[float, float]],
-) -> bool:
-    if not cached:
-        return True
-    lat = cached.get("latitude")
-    lon = cached.get("longitude")
-    if lat is None or lon is None:
-        return retry_failed
-    if is_crf_cache_poison(affiliation, cached):
-        return True
-    if not upgrade_incomplete:
-        return False
-    if cached.get("geocode_level") == "country" and (
-        _institution_rule(affiliation) or _looks_like_specific_institution(affiliation)
-    ):
-        return True
-    country_hints = _filtered_country_hints(affiliation)
-    if not country_hints:
-        return False
-    return not _is_plausible_for_affiliation(
-        affiliation, lat, lon, country_hints, country_coords_cache
-    )
-
-
-def _affiliations_needing_work(
-    unique_affiliations: list[str],
-    cache: dict[str, dict],
-    overrides: dict[str, dict],
-    *,
-    retry_failed: bool,
-    upgrade_incomplete: bool,
-    country_coords_cache: dict[str, tuple[float, float]],
-) -> tuple[list[str], int, int]:
-    """Return affiliations requiring API calls plus cached/override counts."""
-    pending: list[str] = []
-    cached_count = 0
-    override_count = 0
-
-    for affiliation in unique_affiliations:
-        if not affiliation:
-            continue
-
-        override = _lookup_override(affiliation, overrides)
-        if override is not None and override.get("latitude") is not None:
-            override_count += 1
-            if _needs_reprocessing(
-                affiliation,
-                override,
-                retry_failed=retry_failed,
-                upgrade_incomplete=upgrade_incomplete,
-                country_coords_cache=country_coords_cache,
-            ):
-                pending.append(affiliation)
-            else:
-                cache[affiliation] = override
-                cached_count += 1
-            continue
-
-        cached = cache.get(affiliation)
-        if cached and cached.get("latitude") is not None:
-            if _needs_reprocessing(
-                affiliation,
-                cached,
-                retry_failed=retry_failed,
-                upgrade_incomplete=upgrade_incomplete,
-                country_coords_cache=country_coords_cache,
-            ):
-                pending.append(affiliation)
-                continue
-            cached_count += 1
-            continue
-        if cached and cached.get("latitude") is None and not retry_failed:
-            cached_count += 1
-            continue
-
-        pending.append(affiliation)
-
-    return pending, cached_count, override_count
-
-
-def geocode_affiliations(
-    affiliations: Iterable[str],
-    cache_path: str | Path = DEFAULT_CACHE_PATH,
-    overrides_path: str | Path = DEFAULT_OVERRIDES_PATH,
-    country_cache_path: str | Path = DEFAULT_COUNTRY_CACHE_PATH,
-    *,
-    user_agent: str = DEFAULT_USER_AGENT,
-    pause_seconds: float = 0.1,
-    retry_failed: bool = False,
-    upgrade_incomplete: bool = False,
-    cache_only: bool = False,
-    use_llm: bool = False,
-    show_progress: bool = True,
-) -> pd.DataFrame:
-    """Return coordinates for each unique affiliation string.
-
-    Uses cached results when available. By default, failed or incomplete
-    geocodes are not re-queried. Pass ``retry_failed=True`` to re-attempt
-    affiliations previously stored without coordinates, and
-    ``upgrade_incomplete=True`` to retry country-level or implausible hits.
-    Set ``cache_only=True`` to never call Nominatim (export-friendly).
-    """
-    cache_path = Path(cache_path)
-    overrides_path = Path(overrides_path)
-    country_cache_path = Path(country_cache_path)
-    cache = _load_json(cache_path)
-    overrides = _load_json(overrides_path)
-    geolocator = Nominatim(user_agent=user_agent)
-    country_coords_cache = _load_country_coords_cache(country_cache_path)
-
-    unique_affiliations = sorted({(aff or "").strip() for aff in affiliations})
-    all_country_hints = sorted(
-        {
-            hint
-            for affiliation in unique_affiliations
-            for hint in _extract_country_hints(affiliation)
-        }
-    )
-    if all_country_hints and not cache_only:
-        _ensure_country_coords(
-            geolocator,
-            all_country_hints,
-            country_coords_cache=country_coords_cache,
-            country_cache_path=country_cache_path,
-            pause_seconds=pause_seconds,
-        )
-
-    pending, cached_count, override_count = _affiliations_needing_work(
-        unique_affiliations,
-        cache,
-        overrides,
-        retry_failed=retry_failed,
-        upgrade_incomplete=upgrade_incomplete,
-        country_coords_cache=country_coords_cache,
-    )
-
-    if cache_only:
-        skipped = len(pending)
-        pending = []
-        if show_progress and skipped:
-            _CONSOLE.print(
-                f"[dim]Skipping {skipped} geocode queries "
-                f"(cache-only; use --refresh-geocodes to query Nominatim)[/]"
-            )
-
-    if show_progress:
-        _CONSOLE.print(
-            f"[bold]Geocoding affiliations[/] "
-            f"({len(unique_affiliations)} unique, {cached_count} cached, "
-            f"{override_count} overrides, {len(pending)} to query)"
-        )
-
-    geocoded_count = 0
-    failed_count = 0
-
-    def _process_affiliation(
-        affiliation: str, progress: Progress | None = None, task_id: int | None = None
-    ) -> None:
-        nonlocal geocoded_count, failed_count
-
-        override = _lookup_override(affiliation, overrides)
-        if override is not None:
-            cache[affiliation] = override
-            _save_cache(cache_path, cache)
-            return
-
-        def on_query(query: str, attempt: int, total: int) -> None:
-            if progress is None or task_id is None:
-                return
-            label = affiliation if len(affiliation) <= 42 else f"{affiliation[:39]}..."
-            progress.update(
-                task_id,
-                description=f"[cyan]{label}[/] ({attempt}/{total}) {query[:48]}",
-            )
-
-        cache[affiliation] = _resolve_affiliation(
-            geolocator,
-            affiliation,
-            overrides,
-            pause_seconds=pause_seconds,
-            use_llm=use_llm,
-            country_coords_cache=country_coords_cache,
-            country_cache_path=country_cache_path,
-            on_query=on_query,
-        )
-        _save_cache(cache_path, cache)
-        if cache[affiliation].get("latitude") is not None:
-            geocoded_count += 1
-        else:
-            failed_count += 1
-        time.sleep(pause_seconds)
-
-    if show_progress and pending:
-        progress = Progress(
-            SpinnerColumn(),
-            TextColumn("[progress.description]{task.description}"),
-            BarColumn(),
-            MofNCompleteColumn(),
-            TimeElapsedColumn(),
-            console=_CONSOLE,
-            transient=False,
-        )
-        with progress:
-            task_id = progress.add_task("Querying Nominatim", total=len(pending))
-            for affiliation in pending:
-                _process_affiliation(affiliation, progress, task_id)
-                progress.advance(task_id)
-    else:
-        for affiliation in pending:
-            _process_affiliation(affiliation)
-
-    if show_progress and pending:
-        _CONSOLE.print(
-            f"[green]Done.[/] Geocoded {geocoded_count:,} | Failed {failed_count:,} | "
-            f"Skipped {cached_count:,} cached"
-        )
-
-    _propagate_canonical_geocodes(cache)
-    for affiliation in unique_affiliations:
-        if not affiliation:
-            continue
-        override = _lookup_override(affiliation, overrides)
-        if override is not None and override.get("latitude") is not None:
-            cache[affiliation] = override
-    _propagate_canonical_geocodes(cache)
-    _save_cache(cache_path, cache)
-
-    rows = []
-    for affiliation in unique_affiliations:
-        if not affiliation:
-            rows.append(
-                {
-                    "affiliation": affiliation,
-                    "latitude": pd.NA,
-                    "longitude": pd.NA,
-                    "geocoded": False,
-                    "geocode_level": pd.NA,
-                    "query_used": pd.NA,
-                }
-            )
-            continue
-
-        coords = cache.get(affiliation, {"latitude": None, "longitude": None})
-        lat = coords.get("latitude")
-        lon = coords.get("longitude")
-        geocoded = lat is not None and lon is not None
-
-        rows.append(
-            {
-                "affiliation": affiliation,
-                "latitude": pd.NA if not geocoded else lat,
-                "longitude": pd.NA if not geocoded else lon,
-                "geocoded": geocoded,
-                "geocode_level": coords.get("geocode_level"),
-                "query_used": coords.get("query_used"),
-            }
-        )
-
-    return pd.DataFrame(rows)
-
-
-def attach_coordinates(
-    talks: pd.DataFrame,
-    geocoded: pd.DataFrame,
-    *,
-    affiliation_col: str = "affiliation",
-    overrides_path: str | Path = DEFAULT_OVERRIDES_PATH,
-) -> pd.DataFrame:
-    """Join coordinates onto talks, resolving variants to canonical institutions."""
-    overrides = _load_json(Path(overrides_path))
-    lookup: dict[str, dict[str, Any]] = {}
-    for _, row in geocoded.iterrows():
-        affiliation = row.get(affiliation_col)
-        if pd.isna(affiliation):
-            continue
-        key = canonical_affiliation_key(str(affiliation))
-        coords = {
-            "latitude": row.get("latitude"),
-            "longitude": row.get("longitude"),
-            "geocoded": row.get("geocoded"),
-            "geocode_level": row.get("geocode_level"),
-            "query_used": row.get("query_used"),
-        }
-        score = geocode_coords_score(coords)
-        existing = lookup.get(key)
-        if existing is None or score > existing["score"]:
-            lookup[key] = {"score": score, **coords}
-
-    for key in list(lookup.keys()):
-        override = _lookup_override(key, overrides)
-        if override is not None and override.get("latitude") is not None:
-            lookup[key] = {
-                "score": geocode_coords_score(override),
-                **override,
-                "geocoded": True,
-            }
-
-    enriched = talks.copy()
-    for column in ("latitude", "longitude", "geocoded", "geocode_level", "query_used"):
-        if column not in enriched.columns:
-            enriched[column] = pd.NA
-
-    for index, row in enriched.iterrows():
-        affiliation = row.get(affiliation_col)
-        if pd.isna(affiliation):
-            enriched.loc[
-                index,
-                ["latitude", "longitude", "geocoded", "geocode_level", "query_used"],
-            ] = [
-                pd.NA,
-                pd.NA,
-                False,
-                pd.NA,
-                pd.NA,
-            ]
-            continue
-        key = canonical_affiliation_key(str(affiliation))
-        coords = lookup.get(key)
-        if coords is None:
-            match = geocoded.loc[geocoded[affiliation_col] == affiliation]
-            if match.empty:
-                enriched.loc[index, "geocoded"] = False
-                continue
-            coords = match.iloc[0].to_dict()
-        enriched.at[index, "latitude"] = coords.get("latitude")
-        enriched.at[index, "longitude"] = coords.get("longitude")
-        enriched.at[index, "geocode_level"] = coords.get("geocode_level")
-        enriched.at[index, "query_used"] = coords.get("query_used")
-        enriched.at[index, "geocoded"] = bool(
-            coords.get(
-                "geocoded",
-                coords.get("latitude") is not None and pd.notna(coords.get("latitude")),
-            )
-        )
-
-    return enriched

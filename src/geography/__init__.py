@@ -1,1 +1,1 @@
-"""Country boundaries, neighbors, and choropleth clustering."""
+"""Country boundaries, neighbours, and choropleth clustering."""

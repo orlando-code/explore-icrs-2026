@@ -1,10 +1,11 @@
-# Source modules
+# Source modules (`src/`)
 
 Python library for the data pipeline and static site exports. Entry scripts live under `scripts/pipeline/`.
 
-| Package | Role |
-|---------|------|
+| Path | Role |
+|------|------|
 | `data_paths.py` | Canonical paths under `data/` |
+| [util/](util/) | Shared helpers (`json_io`, `geo_math`, `console`) |
 | [sources/](sources/) | Programme and delegate list loading |
 | [registry/](registry/) | Person and affiliation registries; `key_resolution.py` |
 | [geocoding/](geocoding/) | Affiliation geocoding and overrides |

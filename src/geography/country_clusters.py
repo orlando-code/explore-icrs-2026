@@ -2,68 +2,39 @@
 
 from __future__ import annotations
 
-import math
 from typing import Any
 
+from src.util.geo_math import haversine_km
 from src.geography.country_continents import continent_for_country, load_country_continents, same_continent
-from src.geography.country_neighbors import load_country_neighbors, neighbors_for_country
+from src.geography.country_neighbours import load_country_neighbours, neighbours_for_country
 
 MIN_OFFSET_CLUSTER_SIZE = 3
 
 
-def haversine_km(
-    lat1: float,
-    lon1: float,
-    lat2: float,
-    lon2: float,
-) -> float:
-    radius_km = 6371.0
-    phi1, phi2 = math.radians(lat1), math.radians(lat2)
-    d_phi = math.radians(lat2 - lat1)
-    d_lambda = math.radians(lon2 - lon1)
-    a = (
-        math.sin(d_phi / 2) ** 2
-        + math.cos(phi1) * math.cos(phi2) * math.sin(d_lambda / 2) ** 2
-    )
-    return 2 * radius_km * math.asin(math.sqrt(a))
 
-
-def _cluster_centroid(
-    members: list[str],
-    centroids: dict[str, tuple[float, float]],
-) -> tuple[float, float]:
-    points = [centroids[code] for code in members if code in centroids]
-    if not points:
-        return 0.0, 0.0
-    return (
-        sum(lat for lat, _ in points) / len(points),
-        sum(lon for _, lon in points) / len(points),
-    )
-
-
-def _neighbor_candidates(
+def _neighbour_candidates(
     code: str,
     counts: dict[str, int],
-    neighbors: dict[str, list[str]],
+    neighbours: dict[str, list[str]],
     continents: dict[str, str],
 ) -> list[str]:
     return [
-        neighbor
-        for neighbor in neighbors_for_country(code, neighbors)
-        if neighbor in counts and same_continent(code, neighbor, continents)
+        neighbour
+        for neighbour in neighbours_for_country(code, neighbours)
+        if neighbour in counts and same_continent(code, neighbour, continents)
     ]
 
 
-def _best_neighbor_host(
+def _best_neighbour_host(
     code: str,
     counts: dict[str, int],
-    neighbors: dict[str, list[str]],
+    neighbours: dict[str, list[str]],
     continents: dict[str, str],
     centroids: dict[str, tuple[float, float]],
 ) -> str | None:
-    from src.geography.country_neighbors import HOST_PREFERENCES
+    from src.geography.country_neighbours import HOST_PREFERENCES
 
-    candidates = _neighbor_candidates(code, counts, neighbors, continents)
+    candidates = _neighbour_candidates(code, counts, neighbours, continents)
     if not candidates:
         return None
     preferred = HOST_PREFERENCES.get(code.upper())
@@ -71,11 +42,11 @@ def _best_neighbor_host(
         return preferred
     origin = centroids.get(code)
 
-    def sort_key(neighbor: str) -> tuple[int, float]:
+    def sort_key(neighbour: str) -> tuple[int, float]:
         distance = 0.0
-        if origin and neighbor in centroids:
-            distance = haversine_km(origin[0], origin[1], *centroids[neighbor])
-        return (-counts[neighbor], distance)
+        if origin and neighbour in centroids:
+            distance = haversine_km(origin[0], origin[1], *centroids[neighbour])
+        return (-counts[neighbour], distance)
 
     return min(candidates, key=sort_key)
 
@@ -86,20 +57,20 @@ def _nearest_anchor(
     counts: dict[str, int],
     centroids: dict[str, tuple[float, float]],
     continents: dict[str, str],
-    neighbors: dict[str, list[str]],
+    neighbours: dict[str, list[str]],
 ) -> str | None:
-    neighbor_anchors = [
-        neighbor
-        for neighbor in _neighbor_candidates(
+    neighbour_anchors = [
+        neighbour
+        for neighbour in _neighbour_candidates(
             code,
             {anchor: counts[anchor] for anchor in anchors if anchor in counts},
-            neighbors,
+            neighbours,
             continents,
         )
-        if neighbor in anchors and neighbor in centroids
+        if neighbour in anchors and neighbour in centroids
     ]
-    if neighbor_anchors:
-        return max(neighbor_anchors, key=lambda anchor: counts[anchor])
+    if neighbour_anchors:
+        return max(neighbour_anchors, key=lambda anchor: counts[anchor])
 
     continent_anchors = [
         anchor
@@ -134,12 +105,12 @@ def build_country_clusters(
     min_size: int = MIN_OFFSET_CLUSTER_SIZE,
     country_labels: dict[str, str] | None = None,
     continents: dict[str, str] | None = None,
-    neighbors: dict[str, list[str]] | None = None,
+    neighbours: dict[str, list[str]] | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, str]]:
     """Attach small countries to larger contiguous neighbours; large countries anchor alone."""
     labels = country_labels or {}
     continent_map = continents or load_country_continents()
-    neighbor_map = neighbors or load_country_neighbors()
+    neighbour_map = neighbours or load_country_neighbours()
     counts = {
         str(code).strip().upper(): int(value)
         for code, value in country_counts.items()
@@ -163,7 +134,7 @@ def build_country_clusters(
     )
     unassigned: list[str] = []
     for code in small_codes:
-        host = _best_neighbor_host(code, counts, neighbor_map, continent_map, centroids)
+        host = _best_neighbour_host(code, counts, neighbour_map, continent_map, centroids)
         if host and host in country_to_cluster:
             cluster_id = country_to_cluster[host]
             cluster_members[cluster_id].append(code)
@@ -178,7 +149,7 @@ def build_country_clusters(
             counts,
             centroids,
             continent_map,
-            neighbor_map,
+            neighbour_map,
         )
         if host and host in country_to_cluster:
             cluster_id = country_to_cluster[host]
@@ -216,10 +187,3 @@ def build_country_clusters(
 
     return clusters, country_to_cluster
 
-
-def country_counts_from_estimates(estimates) -> dict[str, int]:
-    if estimates is None or estimates.empty or "origin_country" not in estimates.columns:
-        return {}
-    series = estimates["origin_country"].astype(str).str.strip().str.upper()
-    series = series[series.ne("") & series.ne("UNKNOWN") & series.ne("NAN")]
-    return {code: int(count) for code, count in series.value_counts().items()}

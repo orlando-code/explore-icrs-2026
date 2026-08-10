@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 import json
-import math
 from functools import lru_cache
 from pathlib import Path
 
 from src.geography.country_continents import continent_for_country, load_country_continents
 from src.data_paths import COUNTRY_BOUNDARIES_CENTROIDS_JSON, COUNTRY_NEIGHBOURS_JSON
+from src.util.geo_math import haversine_km as _haversine_km
 
 NEIGHBOURS_PATH = COUNTRY_NEIGHBOURS_JSON
 CENTROIDS_PATH = COUNTRY_BOUNDARIES_CENTROIDS_JSON
@@ -45,23 +45,6 @@ HOST_PREFERENCES: dict[str, str] = {
     "SX": "CW",
     "VA": "IT",
 }
-
-
-def _haversine_km(
-    lat1: float,
-    lon1: float,
-    lat2: float,
-    lon2: float,
-) -> float:
-    radius_km = 6371.0
-    phi1, phi2 = math.radians(lat1), math.radians(lat2)
-    d_phi = math.radians(lat2 - lat1)
-    d_lambda = math.radians(lon2 - lon1)
-    a = (
-        math.sin(d_phi / 2) ** 2
-        + math.cos(phi1) * math.cos(phi2) * math.sin(d_lambda / 2) ** 2
-    )
-    return 2 * radius_km * math.asin(math.sqrt(a))
 
 
 def _proximity_neighbours(

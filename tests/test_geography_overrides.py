@@ -1,62 +1,62 @@
-"""Unit tests for geography overrides: neighbors, hosts, continents, territories."""
+"""Unit tests for geography overrides: neighbours, hosts, continents, territories."""
 
 from __future__ import annotations
 
 import pytest
 
-from src.geography.country_clusters import _best_neighbor_host, build_country_clusters
+from src.geography.country_clusters import _best_neighbour_host, build_country_clusters
 from src.geography.country_continents import continent_for_country, same_continent
-from src.geography.country_neighbors import (
+from src.geography.country_neighbours import (
     HOST_PREFERENCES,
-    NEIGHBOR_OVERRIDES,
-    load_country_neighbors,
-    neighbors_for_country,
+    NEIGHBOUR_OVERRIDES,
+    load_country_neighbours,
+    neighbours_for_country,
 )
 from src.geography.territory_overlays import TERRITORY_OVERLAY_ISO2, territory_overlay_codes
 
 
-class TestNeighborOverrides:
+class TestNeighbourOverrides:
     def test_override_entries_are_bidirectional_in_loaded_map(self, assert_eq):
-        neighbors = load_country_neighbors()
-        for code, expected in NEIGHBOR_OVERRIDES.items():
-            actual = neighbors_for_country(code, neighbors)
-            for neighbor in expected:
-                assert neighbor in actual, (
-                    f"NEIGHBOR_OVERRIDES[{code!r}] expected neighbor {neighbor!r} "
+        neighbours = load_country_neighbours()
+        for code, expected in NEIGHBOUR_OVERRIDES.items():
+            actual = neighbours_for_country(code, neighbours)
+            for neighbour in expected:
+                assert neighbour in actual, (
+                    f"NEIGHBOUR_OVERRIDES[{code!r}] expected neighbour {neighbour!r} "
                     f"in loaded adjacency {actual!r}"
                 )
-                reverse = neighbors_for_country(neighbor, neighbors)
+                reverse = neighbours_for_country(neighbour, neighbours)
                 assert code in reverse, (
-                    f"override adjacency must be bidirectional: {neighbor!r} → {code!r} "
+                    f"override adjacency must be bidirectional: {neighbour!r} → {code!r} "
                     f"missing from {reverse!r}"
                 )
 
     def test_key_microstate_overrides(self, assert_eq):
-        neighbors = load_country_neighbors()
+        neighbours = load_country_neighbours()
         assert_eq(
-            sorted(set(neighbors_for_country("HK", neighbors)) & {"CN"}),
+            sorted(set(neighbours_for_country("HK", neighbours)) & {"CN"}),
             ["CN"],
             context="HK includes CN",
         )
-        assert "ES" in neighbors_for_country("GI", neighbors), (
-            f"Gibraltar should neighbor Spain; got {neighbors_for_country('GI', neighbors)!r}"
+        assert "ES" in neighbours_for_country("GI", neighbours), (
+            f"Gibraltar should neighbour Spain; got {neighbours_for_country('GI', neighbours)!r}"
         )
-        assert "IT" in neighbors_for_country("VA", neighbors), (
-            f"Vatican should neighbor Italy; got {neighbors_for_country('VA', neighbors)!r}"
+        assert "IT" in neighbours_for_country("VA", neighbours), (
+            f"Vatican should neighbour Italy; got {neighbours_for_country('VA', neighbours)!r}"
         )
 
 
 class TestHostPreferences:
-    def test_preferences_point_at_override_neighbors(self, assert_eq):
+    def test_preferences_point_at_override_neighbours(self, assert_eq):
         for code, host in HOST_PREFERENCES.items():
-            assert host in NEIGHBOR_OVERRIDES.get(code, [host]) or host in load_country_neighbors().get(
+            assert host in NEIGHBOUR_OVERRIDES.get(code, [host]) or host in load_country_neighbours().get(
                 code, []
             ), (
-                f"HOST_PREFERENCES[{code!r}]={host!r} is not a known neighbor of {code!r}"
+                f"HOST_PREFERENCES[{code!r}]={host!r} is not a known neighbour of {code!r}"
             )
 
-    def test_best_neighbor_host_prefers_host_preference(self, assert_eq):
-        neighbors = {
+    def test_best_neighbour_host_prefers_host_preference(self, assert_eq):
+        neighbours = {
             "HK": ["CN", "TW"],
             "CN": ["HK"],
             "TW": ["HK"],
@@ -69,7 +69,7 @@ class TestHostPreferences:
             "TW": (23.7, 121.0),
         }
         # Without preference, TW would win on attendee count; preference forces CN.
-        host = _best_neighbor_host("HK", counts, neighbors, continents, centroids)
+        host = _best_neighbour_host("HK", counts, neighbours, continents, centroids)
         assert_eq(host, "CN", context="HK host preference over larger TW")
 
 
@@ -93,8 +93,8 @@ class TestTerritoryOverlays:
 
 class TestHostPreferenceInClustering:
     def test_hong_kong_joins_china_preference(self, assert_eq):
-        neighbors = {
-            **load_country_neighbors(),
+        neighbours = {
+            **load_country_neighbours(),
             "HK": ["CN", "TW"],
             "CN": ["HK", "MN"],
             "TW": ["HK"],
@@ -111,7 +111,7 @@ class TestHostPreferenceInClustering:
             counts,
             centroids,
             min_size=3,
-            neighbors=neighbors,
+            neighbours=neighbours,
         )
         assert mapping["HK"] == mapping["CN"], (
             f"HK should join CN via HOST_PREFERENCES; mapping={mapping!r}"

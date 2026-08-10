@@ -70,7 +70,6 @@ PUBLIC_REGISTRY_COLUMNS = [
     "needs_review",
     "review_reason",
 ]
-OFFICIAL_ID_COLUMNS = ["official_delegate_id", "official_id_match_tier"]
 OFFICIAL_IDS_EXPORT_COLUMNS = [
     "person_key",
     "canonical_name",
@@ -213,9 +212,6 @@ def _clean_official_id(value: object) -> str:
         text = text[:-2]
     return text
 
-
-def _norm_org(value: str) -> str:
-    return normalize_person_name(str(value or "").replace(",", " "))
 
 
 def _ambiguous_official_id_norms(id_links: pd.DataFrame) -> set[str]:
