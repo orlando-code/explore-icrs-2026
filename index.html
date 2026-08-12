@@ -454,7 +454,7 @@
         <div class="methods-body">
           <section class="methods-section">
             <p>
-              For more details on the methodology, see
+              For full details see
               <a href="https://github.com/orlando-code/explore-icrs-2026/blob/main/pipeline/METHODOLOGY.md" target="_blank" rel="noopener">METHODOLOGY.md</a>.
             </p>
           </section>
@@ -462,17 +462,29 @@
           <section class="methods-section">
             <h3>Data sources</h3>
             <p>
-              Speaker names, affiliations, and talk metadata come from the ICRS 2026 programme and delegate list emailed to all participants.
-              Affiliations are geocoded to institutional locations (country-level coordinates are used where a precise
-              campus location is unavailable).
+              Built from the official
+              <a href="https://airdrive.eventsair.com/eventsairaueprod/production-innovators-public/20d10b81d8cd43ad9b0fc3a08e5695f4" target="_blank" rel="noopener">delegate list</a> and the
+              <a href="https://innovators-icrs2026programme.eventsairsite.com/" target="_blank" rel="noopener">online programme</a>.
             </p>
           </section>
 
           <section class="methods-section">
-            <h3>Calculating travel emissions</h3>
+            <h3>Map locations</h3>
             <p>
-              Return-trip CO₂e is estimated per attendee using the <a href="https://emissions.dev/" target="_blank">emissions.dev API</a>. This uses a combination of emission factors and routing data to estimate the average emissions for a given journey between two points. For everyone further than 400 km from Auckland, the journey is assumed to be by plane. Given the deficit of trains in New Zealand, the non-plane overground emissions are assumed to be by car with an occupancy of 1.54 (the <a href="https://www.nzta.govt.nz/resources/research/reports/399" target="_blank">mean occupancy in urban areas</a>).
+              Institute coordinates come from Google geocoding, with manual checks and overrides where needed.
+              If no precise address is available, the pin falls back to a state or country capital such that every
+              attended delegate gets an approximate location.
             </p>
+          </section>
+
+          <section class="methods-section">
+            <h3>Travel emissions</h3>
+            <p>
+              Return-trip CO₂e to Auckland uses the
+              <a href="https://emissions.dev/" target="_blank" rel="noopener">emissions.dev</a> Travel API from each
+              delegate's primary affiliation. Outside New Zealand (or &gt;400&nbsp;km from Auckland): economy flight.
+              Closer NZ trips: shared car at
+              <a href="https://www.nzta.govt.nz/resources/research/reports/399" target="_blank" rel="noopener">1.54 occupancy</a>.            </p>
           </section>
 
           <section class="methods-section" id="methods-carbon-contributions">
@@ -494,7 +506,11 @@
                           <div style="margin-bottom: 1.1em;" aria-hidden="true"></div>
             
             <p>
-              The ability of individuals to contribute will vary greatly. We encourage engaging with schemes at your university where possible. And if your university doesn't have one, why not? Engaging in such discussions could have cascading positive effects far beyond an individual purchase.
+              The ability of individuals to contribute will vary greatly. We encourage engaging with schemes at your university or institution where possible. And if your institution doesn't have such a scheme, why not? Engaging in such discussions could have cascading positive effects far beyond an individual purchase.
+            </p>
+
+            <p>
+
             </p>
             <p>
               Carbon contributions to a range of projects and prices can be made easily via sites such as <a href="https://www.goldstandard.org/" target="_blank">Gold Standard</a>, <a href="https://www.cooleffect.org/travel-offset" target="_blank">Cool Effect</a>, or <a href="https://www.greenfleet.com.au/" target="_blank">Greenfleet</a>.
@@ -523,56 +539,36 @@
           </section>
 
           <section class="methods-section">
-            <h3>Network</h3>
+            <h3>Network and related talks</h3>
             <p>
-              Nodes represent speakers or affiliations; edges connect people who share authorship on at least
-              one ICRS talk. Node size reflects the number of talks on which that speaker or affiliation appears. Keyword search highlights nodes whose
-              talks mention a term in the title or abstract, plus their co-authors on the graph.
-            </p>
-            <div style="margin-bottom: 1.1em;" aria-hidden="true"></div>
-      
-            <p>
-              Selecting an individual shows public profile links found online via their name and
-              affiliation. <strong>Note</strong>: these were generated automatically (see below) and may contain errors.
+              Edges link people (or affiliations) who share authorship on an ICRS presentation.
+              Non-attending co-authors appear on the graph but are not counted in attendance or emissions.
+              Related presentations use a local-hosted large language model (LLM) to surface similar abstracts for follow-up reading and possible collaborations!
             </p>
           </section>
 
           <section class="methods-section">
-            <h3>Related talks</h3>
+            <h3>Contacts</h3>
             <p>
-              Talk abstracts were analysed using a locally-hosted large language model (deepseek-r1:8b via the <a href="https://ollama.com/" target="_blank"></a>Ollama API</a>). Abstracts were first clustered by keywords to reduce token number (decrease processing effort) following which the model was used to generate similarity scores between abstracts in the cluster. We display the top five most similar abstracts for each talk.
-            </p>
-            <!-- <div style="margin-bottom: 1.1em;" aria-hidden="true"></div>
-      
-            <p>
-              Selecting an individual shows public profile links found online via their name and
-              affiliation. <strong>Note</strong>: these were generated automatically (see below) and may contain errors.
-            </p> -->
-          </section>
-
-          <section class="methods-section">
-            <h3>Contact links</h3>
-            <p>
-              Public profile links were gathered from university staff pages and similar sources via the <a href="https://brave.com/search/api/" target="_blank">Brave Search API</a> and <a href="https://lite.duckduckgo.com/" target="_blank">DuckDuckGo</a>. I then spent far too much time going through and manually verifying ~500 of them. Email addresses are never sent to your browser with the rest of the page: each one is fetched individually, only when you ask for it, from a server that requires a <a href="https://www.cloudflare.com/products/turnstile/" target="_blank" rel="noopener">Cloudflare Turnstile</a> check and applies both a per-visitor and an overall hourly limit. That is designed to make bulk collection slow and visible rather than impossible, so please treat these addresses as you would any colleague's.
-            </p>
-            <div style="margin-bottom: 1.1em;" aria-hidden="true"></div>
-            <p><strong>If for any reason you're uncomfortable with your information being displayed here, please contact me</strong> at <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a> or via the '?' on your author box: I'll remove it immediately! If you spot an error in a profile link, or would like an alternative displayed for you, please let me know at the same address.
+              Public profile links for highly connected speakers were found online and checked by hand.
+              Emails are never bundled into the page: each request needs a
+              <a href="https://www.cloudflare.com/products/turnstile/" target="_blank" rel="noopener">Cloudflare Turnstile</a>
+              check and is rate-limited. Unhappy with your details here?
+              Email <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a> and I'll remove them.
             </p>
           </section>
-
-
 
           <section class="methods-section">
             <h3>Limitations</h3>
             <ul>
-              <li>Geocoding is imperfect; some affiliations fall back to country centroids (arranged in a ring) or missed entirely. For 15% of delegates, no geographical affiliation could be found. This likely leads to underestimations of emissions. Furthermore, some delegates may not be geographically based at their named affiliation, or the institute may have multiple campuses.</li>
-              <li>A couple of hundred delegates could not be geocoded from their affiliation titles – these were excluded from the analysis. The exclusion of so many attendees definitely makes this a conservative estimate of total emissions.</li>
-              <li>
-                Travel emissions are mean values – actual route travelled will affect the true value. <a href="https://www.google.com/travel/flights" target="_blank"></a>Google Flights</a> is a nice tool to see estimates of flight emissions!
-              </li>
-              <li>Emissions do not include local transport, accommodation, or conference operations – although we were told that the conference centre, NZICC is <a href="https://nzicc.co.nz/media-centre/nzicc-achieves-earthcheck-silver-certification/" target="_blank">EarthCheck Silver certified</a>.</li>
-              <li>The delegate/author lists may not be completely up to date e.g. cancellations or changes to affiliations.</li>
-              <li>The co-authorship network shows shared programme authorship, not citation or collaboration history outside ICRS.</li>
+              <li>The delegate list is a pre-conference snapshot – late withdrawals still count toward emissions (though most would already have held tickets).</li>
+              <li>Some pins use capital-city fallbacks when no institute address is known; hundreds of routes are country-level only, which can both under- or over-estimate distance to Auckland.</li>
+              <li>Foreign postings (e.g. Bermuda Institute of Ocean Sciences staff based in New Caledonia) keep the institute name but map and route from the delegate's country.</li>
+              <li>Flights assume economy class and a single great-circle leg – real multi-leg itineraries, aircraft type, and <a href="https://map.contrails.org/specific-effects/contrails" target="_blank">specific effect of contrails</a> are not modelled, so figures are indicative.</li>
+              <li>Estimates exclude daily local transport, accommodation, and conference operations.</li>
+              <li>Co-authorship is programme authorship only (talk or poster lists), not wider collaboration, and may have changed between submission and delivery.</li>
+              <li>Non-speaking delegates appear on the map/emissions views but not in the network unless they are also listed as co-authors.</li>
+              <li>Programme-only names (not on the delegate list) are retained for the network but excluded from attendance and emissions tallies.</li>
             </ul>
           </section>
         </div>
