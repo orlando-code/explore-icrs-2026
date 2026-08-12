@@ -6,6 +6,7 @@ import {
   personKeyFromRecord,
   activateSuggestionAt,
   handleSuggestionListKeydown,
+  buildPersonNameSearchHits,
 } from "./utils.js";
 import { OFFSET_API_URL, REQUIRE_DELEGATE_ID, SKIP_TURNSTILE, TURNSTILE_SITE_KEY } from "./config.js";
 
@@ -549,29 +550,16 @@ export function createOffsetTracker({
   }
 
   function filteredAttendees() {
-    const query = searchQuery.trim().toLowerCase();
-    const seen = new Set();
-    const matches = [];
-    const pool = query
-      ? attendees.filter((attendee) => {
-          const haystack = `${attendee.name} ${attendee.affiliation}`.toLowerCase();
-          return haystack.includes(query);
-        })
-      : attendees;
-    for (const attendee of pool) {
-      const identityKey = attendeeIdentityKey(attendee);
-      if (seen.has(identityKey)) continue;
-      seen.add(identityKey);
-      matches.push(attendee);
-      if (matches.length >= 40) break;
-    }
-    return matches;
+    const query = searchQuery.trim();
+    if (query.length < 2) return [];
+    // Same ranked name matching as the map search (aliases + token preference).
+    return buildPersonNameSearchHits(attendees, query, { limit: 40 });
   }
 
   function renderSuggestions() {
     if (!elements.suggestions) return;
     const query = searchQuery.trim();
-    if (!query || hasLockedSelection()) {
+    if (query.length < 2 || hasLockedSelection()) {
       closeSuggestions();
       return;
     }

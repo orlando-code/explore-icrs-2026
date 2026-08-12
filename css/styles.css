@@ -1489,6 +1489,10 @@ button:active {
   color: var(--muted);
 }
 
+.status strong {
+  color: var(--ink);
+}
+
 .status.error {
   color: #b42318;
 }

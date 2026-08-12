@@ -26,6 +26,8 @@ import {
   setPersonCanonicalNames,
   activateSuggestionAt,
   handleSuggestionListKeydown,
+  countUniqueCountries,
+  countUniqueDelegates,
 } from "./utils.js";
 
 setDelegatePersonKeyAliases(DELEGATE_PERSON_KEY_ALIASES);
@@ -201,13 +203,15 @@ const els = {
 };
 
 function renderStats() {
-  const stats = meta.stats;
+  const mapLocations = mapView?.getLocations?.() || SITE_DATA.locations || [];
+  const countryCount = countUniqueCountries(mapLocations);
+  const delegateCount = countUniqueDelegates(mapLocations);
   els.title.textContent = meta.title;
   els.stats.innerHTML = [
-    `<strong>${stats.location_count.toLocaleString()}</strong> affiliation locations on the map`,
-    `<strong>${stats.mapped_speakers.toLocaleString()}</strong> / ${stats.total_speakers.toLocaleString()} speakers geocoded`,
-    `<strong>${stats.mapped_talks.toLocaleString()}</strong> / ${stats.total_talks.toLocaleString()} talks geocoded`,
-  ].join("<br>");
+    `<strong>${delegateCount.toLocaleString()}</strong> delegates displayed`,
+    `<strong>${mapLocations.length.toLocaleString()}</strong> affiliations`,
+    `<strong>${countryCount.toLocaleString()}</strong> unique countries`,
+  ].join(" · ");
 }
 
 function renderResults({
@@ -251,7 +255,7 @@ function renderResults({
           const speakers = Math.max(0, location.speaker_count - nonSpeaking);
           const peopleLabel = nonSpeaking
             ? `${speakers} speaker${speakers === 1 ? "" : "s"} · ${nonSpeaking} non-speaking`
-            : `${location.speaker_count} speaker${location.speaker_count === 1 ? "" : "s"}`;
+            : `${location.speaker_count} delegate${location.speaker_count === 1 ? "" : "s"}`;
           return `${peopleLabel} · On author lists of ${location.talk_count} talk${location.talk_count === 1 ? "" : "s"} · ${(location.connection_count || 0).toLocaleString()} talk${location.connection_count === 1 ? "" : "s"}`;
         })();
     btn.innerHTML = `
@@ -567,6 +571,7 @@ function setIncludeNonSpeakingDelegates(enabled) {
   }
   emissionsView.setIncludeNonSpeakers(include);
   mapView.setIncludeNonSpeakers(include);
+  renderStats();
 }
 
 if (els.includeNonSpeakingDelegates) {

@@ -161,6 +161,7 @@ export function createEmissionsView(
         includeNonSpeakers,
         delegateIndex,
         delegateEmissionsLocations: normalized.all_delegates?.locations || [],
+        nonSpeakerLocations: siteData.non_speaker_locations || [],
         emissionsAttendees: emissionsData.attendees || [],
       }
     ).map((location) => ({
@@ -539,7 +540,7 @@ export function createEmissionsView(
       .join("");
 
     elements.legend.innerHTML = `
-      <h3>Point size · travel CO₂e (log scale)</h3>
+      <h3>Point size · ltravel CO₂e (log scale)</h3>
       <p class="legend-intro">Return-trip estimates per affiliation (flights unless already based in Auckland). We assume economy flights for international travellers; premium economy and business class are roughly <strong>${premiumEconomyMultLabel}×</strong> and <strong>${businessMultLabel}×</strong> higher respectively.</p>
       ${sampleRows}
       <p class="legend-note">Click a bar or map point to show the route to Auckland, or toggle routes for all affiliations.</p>

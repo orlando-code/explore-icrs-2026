@@ -9,9 +9,8 @@ import {
   locationCorrectionMailto,
   renderTalkTitlesHtml,
   setTalkFormatElement,
-  speakerMatchesQuery,
+  buildPersonNameSearchHits,
   findLocationIdByAffiliation,
-  dedupeSearchHitsByPerson,
   resolveCanonicalPersonName,
   isRegistryPersonKey,
   personKeyFromRecord,
@@ -36,7 +35,9 @@ export function createMapView(
   { delegateEmissionsLocations = [], delegateIndex = new Map() } = {}
 ) {
   const speakerLocations = siteData.locations;
-  const hasDelegatePool = delegateEmissionsLocations.length > 0;
+  const nonSpeakerLocations = siteData.non_speaker_locations || [];
+  const hasDelegatePool =
+    delegateEmissionsLocations.length > 0 || nonSpeakerLocations.length > 0;
   const networkNodeIdsByPersonKey = new Map(
     (siteData.network?.individual?.nodes || [])
       .filter((node) => isRegistryPersonKey(node.person_key))
@@ -49,6 +50,7 @@ export function createMapView(
       includeNonSpeakers,
       delegateIndex,
       delegateEmissionsLocations,
+      nonSpeakerLocations,
     });
   }
 
@@ -483,7 +485,7 @@ export function createMapView(
         const nonSpeaking = location.non_speaking_delegate_count || 0;
         const speakers = Math.max(0, location.speaker_count - nonSpeaking);
         const speakerLabel = `${speakers} speaker${speakers === 1 ? "" : "s"}`;
-        if (!nonSpeaking) return speakerLabel;
+        if (!nonSpeaking) return `${location.speaker_count} delegate${location.speaker_count === 1 ? "" : "s"}`;
         return `${speakerLabel} · ${nonSpeaking} non-speaking delegate${nonSpeaking === 1 ? "" : "s"}`;
       })(),
       `${location.talk_count} talk${location.talk_count === 1 ? "" : "s"}`,
@@ -701,7 +703,7 @@ export function createMapView(
       elements.setStatus(
         matchedIds.size
           ? `${matchedIds.size.toLocaleString()} location${matchedIds.size === 1 ? "" : "s"} matched`
-          : "No locations matched that search.",
+          : "No points matched that search.",
         !matchedIds.size
       );
     } else {
@@ -734,31 +736,32 @@ export function createMapView(
     const trimmed = query.trim().toLowerCase();
     if (trimmed.length < 2) return [];
 
-    const speakerHits = dedupeSearchHitsByPerson(
-      locations.flatMap((location) =>
-        (location.speaker_details || [])
-          .filter((speaker) => speakerMatchesQuery(speaker, trimmed))
-          .map((speaker) => ({
-            label: speaker.name,
-            detail: location.affiliation,
-            query: speaker.name,
-            locationId: location.id,
-            speakerName: speaker.name,
-            person_key: speaker.person_key,
-            talkTitles: speaker.talk_titles,
-            nonSpeakingDelegate: Boolean(speaker.non_speaking_delegate),
-            _name: speaker.name,
-          }))
-      ),
-      (item) => item._name
+    const people = locations.flatMap((location) =>
+      (location.speaker_details || []).map((speaker) => ({
+        ...speaker,
+        affiliation: location.affiliation,
+        locationId: location.id,
+        talkTitles: speaker.talk_titles,
+        nonSpeakingDelegate: Boolean(speaker.non_speaking_delegate),
+      }))
     );
+    const speakerHits = buildPersonNameSearchHits(people, trimmed, { limit: 8 }).map((hit) => ({
+      label: hit.name,
+      detail: hit.affiliation,
+      query: hit.name,
+      locationId: hit.locationId,
+      speakerName: hit.name,
+      person_key: hit.person_key,
+      talkTitles: hit.talkTitles,
+      nonSpeakingDelegate: hit.nonSpeakingDelegate,
+    }));
     const affiliationHits = new Map();
 
     for (const location of locations) {
       if (location.affiliation.toLowerCase().includes(trimmed) && !affiliationHits.has(location.id)) {
         affiliationHits.set(location.id, {
           label: location.affiliation,
-          detail: `${location.speaker_count} speakers`,
+          detail: `${location.speaker_count} delegate${location.speaker_count === 1 ? "" : "s"}`,
           query: location.affiliation,
           locationId: location.id,
         });
@@ -819,13 +822,13 @@ export function createMapView(
       .range([8, 28])
       .clamp(true);
     const samples = [
-      { label: `${minCount} speakers`, size: scale(minCount) },
-      { label: `${midCount} speakers`, size: scale(midCount) },
-      { label: `${maxCount} speakers`, size: scale(maxCount) },
+      { label: `${minCount} delegates`, size: scale(minCount) },
+      { label: `${midCount} delegates`, size: scale(midCount) },
+      { label: `${maxCount} delegates`, size: scale(maxCount) },
     ];
     elements.legend.innerHTML = `
-      <h3>Point size · speakers (log scale)</h3>
-      <p>Default view sizes each affiliation by speaker count at that location.</p>
+      <h3>Point size · delegates (log scale)</h3>
+      <p>Default view sizes each affiliation by delegate count at that location.</p>
       ${samples
         .map(
           (sample) => `
