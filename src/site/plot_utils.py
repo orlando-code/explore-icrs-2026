@@ -21,6 +21,63 @@ def _geocoded_points(df: pd.DataFrame, *, lat_col: str='latitude', lon_col: str=
     valid = points[lat_col].between(-90, 90, inclusive='both') & points[lon_col].between(-180, 180, inclusive='both')
     return points.loc[valid].copy()
 
+def _programme_map_frame(df: pd.DataFrame, *, title_col: str='title') -> pd.DataFrame:
+    """Drop attended-only placeholder rows used for emissions geocodes."""
+    if df.empty:
+        return df.copy()
+    if 'attended_only' in df.columns:
+        attended_only = df['attended_only'].fillna(False)
+        if attended_only.dtype == object:
+            attended_only = attended_only.map(lambda value: str(value).strip().lower() in {'true', '1', 'yes'})
+        programme = df.loc[~attended_only.astype(bool)].copy()
+    else:
+        programme = df.copy()
+    if title_col in programme.columns:
+        titles = programme[title_col]
+        has_title = titles.notna() & titles.astype(str).str.strip().ne('') & titles.astype(str).str.strip().str.lower().ne('nan')
+        programme = programme.loc[has_title].copy()
+    elif 'talk_id' in programme.columns:
+        talk_ids = programme['talk_id']
+        has_id = talk_ids.notna() & talk_ids.astype(str).str.strip().ne('')
+        programme = programme.loc[has_id].copy()
+    return programme
+
+def _attended_only_map_frame(df: pd.DataFrame) -> pd.DataFrame:
+    """Rows for attended non-presenters (geocode coverage / delegate-only map pins)."""
+    if df.empty or 'attended_only' not in df.columns:
+        return df.iloc[0:0].copy()
+    attended_only = df['attended_only'].fillna(False)
+    if attended_only.dtype == object:
+        attended_only = attended_only.map(lambda value: str(value).strip().lower() in {'true', '1', 'yes'})
+    return df.loc[attended_only.astype(bool)].copy()
+
+def _as_delegate_only_locations(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Mark affiliation pins that only contain non-presenting attendees."""
+    output: list[dict[str, Any]] = []
+    for index, record in enumerate(records, start=1):
+        details = []
+        for speaker in record.get('speaker_details') or []:
+            details.append({
+                **speaker,
+                'talk_titles': [],
+                'non_speaking_delegate': True,
+            })
+        if not details:
+            continue
+        output.append({
+            **record,
+            'id': f'delegate-export-{index:04d}',
+            'speakers': [item['name'] for item in details],
+            'speaker_details': details,
+            'speaker_count': len(details),
+            'talk_count': 0,
+            'connection_count': 0,
+            'delegate_only': True,
+            'non_speaking_delegate_count': len(details),
+            'geocode_level': record.get('geocode_level') or 'delegate list',
+        })
+    return output
+
 def _build_talk_title_index(df: pd.DataFrame, *, presenter_col: str='presenter', affiliation_col: str='affiliation', title_col: str='title', show_progress: bool=False) -> dict[str, list[dict[str, Any]]]:
     from src.site.export_progress import make_progress
     from src.sources.delegates import delegate_person_key
@@ -139,7 +196,11 @@ def _affiliation_location_records(df: pd.DataFrame, *, lat_col: str='latitude', 
                     person_key = _person_key(presenter_name, sample_affiliation)
                 titles = speaker_group[title_col].dropna().astype(str).str.strip()
                 talk_titles = titles[titles != ''].tolist()
-                abstract_parts = speaker_group[abstract_col].dropna().astype(str).str.strip()
+                abstract_parts = (
+                    speaker_group[abstract_col].dropna().astype(str).str.strip()
+                    if abstract_col in speaker_group.columns
+                    else pd.Series(dtype=str)
+                )
                 abstract_parts = abstract_parts[abstract_parts != ''].tolist()
                 search_text = ' '.join([presenter_name, *talk_titles, *abstract_parts]).lower()
                 existing = speaker_by_key.get(person_key)
@@ -408,16 +469,18 @@ def export_attendee_site_data(df: pd.DataFrame, *, lat_col: str='latitude', lon_
     from src.site.map_exclusions import export_map_exclusions_js, load_map_exclusions, map_talks_for_export
     map_exclusions = load_map_exclusions()
     export_map_exclusions_js()
+    programme_df = _programme_map_frame(df, title_col=title_col)
     if show_progress:
         console().print('  Filtering talks for map export')
-    map_df = map_talks_for_export(df, exclusions=map_exclusions, presenter_col=presenter_col)
+    map_df = map_talks_for_export(programme_df, exclusions=map_exclusions, presenter_col=presenter_col)
     locations = _affiliation_location_records(map_df, lat_col=lat_col, lon_col=lon_col, affiliation_col=affiliation_col, presenter_col=presenter_col, title_col=title_col, abstract_col=abstract_col, auckland_lat=auckland_lat, auckland_lon=auckland_lon, show_progress=show_progress)
     if not locations:
         raise ValueError('No geocoded affiliations available for site export.')
     if show_progress:
         console().print(f'  {len(locations):,} location pins')
-    network = _build_network_data(df, locations, affiliation_col=affiliation_col, presenter_col=presenter_col, show_progress=show_progress)
-    talk_titles_by_person_key = _build_talk_title_index(df, presenter_col=presenter_col, affiliation_col=affiliation_col, title_col=title_col, show_progress=show_progress)
+    # Network is programme co-authorship only: attended non-presenters appear only if listed as authors.
+    network = _build_network_data(programme_df, locations, affiliation_col=affiliation_col, presenter_col=presenter_col, show_progress=show_progress)
+    talk_titles_by_person_key = _build_talk_title_index(programme_df, presenter_col=presenter_col, affiliation_col=affiliation_col, title_col=title_col, show_progress=show_progress)
     if show_progress:
         console().print('  Attaching talk titles to map speakers')
     for location in locations:
@@ -439,7 +502,64 @@ def export_attendee_site_data(df: pd.DataFrame, *, lat_col: str='latitude', lon_
             if connection_count:
                 break
         location['connection_count'] = connection_count
-    payload = {'meta': {'title': title, 'generated_at': datetime.now(UTC).isoformat(timespec='seconds'), 'central_lon': auckland_lon, 'auckland': {'label': 'Auckland, New Zealand', 'lat': auckland_lat, 'lon': auckland_lon}, 'stats': _attendee_site_stats(df, locations, presenter_col=presenter_col)}, 'locations': locations, 'network': network, 'talk_titles_by_person_key': talk_titles_by_person_key}
+
+    non_speaker_locations: list[dict[str, Any]] = []
+    attended_only_df = _attended_only_map_frame(df)
+    if not attended_only_df.empty:
+        if show_progress:
+            console().print('  Building delegate-only map pins for non-presenters')
+        attended_only_map = map_talks_for_export(
+            attended_only_df,
+            exclusions=map_exclusions,
+            presenter_col=presenter_col,
+        )
+        attended_only_records = _affiliation_location_records(
+            attended_only_map,
+            lat_col=lat_col,
+            lon_col=lon_col,
+            affiliation_col=affiliation_col,
+            presenter_col=presenter_col,
+            title_col=title_col,
+            abstract_col=abstract_col,
+            auckland_lat=auckland_lat,
+            auckland_lon=auckland_lon,
+            show_progress=show_progress,
+        )
+        from src.geocoding.geocode import canonical_affiliation_key
+
+        speaker_keys = {
+            canonical_affiliation_key(str(location.get('affiliation') or ''))
+            for location in locations
+            if str(location.get('affiliation') or '').strip()
+        }
+        for record in _as_delegate_only_locations(attended_only_records):
+            aff_key = canonical_affiliation_key(str(record.get('affiliation') or ''))
+            if aff_key and aff_key in speaker_keys:
+                continue
+            non_speaker_locations.append(record)
+        if show_progress:
+            console().print(f'  {len(non_speaker_locations):,} delegate-only pins')
+
+    stats = _attendee_site_stats(map_df, locations, presenter_col=presenter_col)
+    stats['non_speaker_location_count'] = len(non_speaker_locations)
+    stats['country_count'] = len({
+        str(location.get('affiliation') or '').rsplit(',', 1)[-1].strip().casefold()
+        for location in [*locations, *non_speaker_locations]
+        if ',' in str(location.get('affiliation') or '')
+    })
+    payload = {
+        'meta': {
+            'title': title,
+            'generated_at': datetime.now(UTC).isoformat(timespec='seconds'),
+            'central_lon': auckland_lon,
+            'auckland': {'label': 'Auckland, New Zealand', 'lat': auckland_lat, 'lon': auckland_lon},
+            'stats': stats,
+        },
+        'locations': locations,
+        'non_speaker_locations': non_speaker_locations,
+        'network': network,
+        'talk_titles_by_person_key': talk_titles_by_person_key,
+    }
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
