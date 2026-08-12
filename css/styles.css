@@ -448,9 +448,16 @@ a.btn-small {
   display: none;
 }
 
+/* Keep the mount laid out while Turnstile loads — rendering into display:none
+   (:empty) makes the widget fail immediately on mobile Safari. */
 .network-contact-email-gate--loading .network-contact-turnstile,
-.network-contact-email-gate--challenge .network-contact-turnstile {
-  overflow: hidden;
+.network-contact-email-gate--challenge .network-contact-turnstile,
+.network-contact-email-gate--failed .network-contact-turnstile {
+  display: flex !important;
+  overflow: visible;
+  height: auto;
+  min-height: var(--turnstile-pill-height);
+  max-height: none;
 }
 
 .network-contact-email-gate--ready .network-contact-turnstile {
@@ -484,10 +491,6 @@ a.btn-small {
 .network-contact-email-gate--challenge .network-contact-show-email {
   opacity: 0.55;
   cursor: wait;
-}
-
-.network-contact-email-gate--failed .network-contact-turnstile {
-  min-height: 0;
 }
 
 .network-contact-email-gate--failed .network-contact-turnstile-hint {
@@ -643,6 +646,13 @@ a.btn-small {
 .network-contact-copy-details.copied {
   border-color: rgba(45, 138, 78, 0.45);
   background: rgba(45, 138, 78, 0.08);
+}
+
+.network-contact-copy-details.copy-failed,
+.network-contact-copy.copy-failed {
+  border-color: rgba(180, 35, 24, 0.45);
+  background: rgba(180, 35, 24, 0.08);
+  color: #b42318;
 }
 
 .network-contact-copy svg {
