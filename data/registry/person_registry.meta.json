@@ -2,14 +2,14 @@
   "people_total": 2208,
   "in_delegate_list": 1954,
   "attended": 1954,
-  "in_programme": 1930,
-  "linked_presenter_delegate": 1676,
+  "in_programme": 1746,
+  "linked_presenter_delegate": 1492,
   "programme_only_not_attended": 254,
-  "delegate_only": 278,
+  "delegate_only": 462,
   "with_official_delegate_id": 1865,
   "without_official_delegate_id": 343,
   "needs_review": 0,
   "name_aliases": 3155,
   "id_review_links_loaded": 1865,
-  "presenter_delegate_link_pct": 86.84
+  "presenter_delegate_link_pct": 85.45
 }
