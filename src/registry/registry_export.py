@@ -103,6 +103,7 @@ def build_map_talks(
         if not organisation and programme_affiliation:
             organisation, country = parse_affiliation_parts(programme_affiliation)
 
+        row["attended_only"] = False
         talk_rows.append(
             _attach_registry_geocode(
                 row,
@@ -112,6 +113,8 @@ def build_map_talks(
             )
         )
 
+    # Attended non-presenters: keep for emissions / geocode coverage, but mark so
+    # map pins and the co-authorship network do not treat them as programme speakers.
     extra_rows: list[dict[str, object]] = []
     for _, person in attended.iterrows():
         person_key = str(person.get("person_key") or "").strip()
@@ -133,6 +136,7 @@ def build_map_talks(
             AFFILIATION_KEY_COL: affiliation_key,
             "title": pd.NA,
             "abstract": pd.NA,
+            "attended_only": True,
         }
         extra_rows.append(
             _attach_registry_geocode(
