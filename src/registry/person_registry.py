@@ -369,6 +369,8 @@ def build_person_registry(
 
     id_links = load_confirmed_official_id_links(OVERRIDES)
     official_id_by_node: dict[str, tuple[str, str, str]] = {}
+    # Alternate spellings from the ID database are aliases only — never programme presenters.
+    official_name_display: dict[str, str] = {}
     ambiguous_id_norms = _ambiguous_official_id_norms(id_links)
     for _, link in id_links.iterrows():
         official_id = _clean_official_id(link.get("delegate_id"))
@@ -391,7 +393,7 @@ def build_person_registry(
         id_name = str(link.get("id_full_name") or "").strip()
         id_norm = normalize_person_name(id_name)
         if id_norm and id_norm != delegate_norm and id_norm not in ambiguous_id_norms:
-            presenter_display.setdefault(id_norm, id_name)
+            official_name_display.setdefault(id_norm, id_name)
             uf.find(id_norm)
             uf.union(delegation_node, id_norm)
 
@@ -424,6 +426,7 @@ def build_person_registry(
         person_key = component_keys[id(members)]
         presenter_members = sorted(member for member in members if member in presenter_display)
         delegate_members = sorted(member for member in members if member in delegate_display)
+        official_members = sorted(member for member in members if member in official_name_display)
 
         override_names = sorted(
             {canonical_override[member] for member in members if member in canonical_override}
@@ -434,6 +437,8 @@ def build_person_registry(
             canonical = presenter_display[presenter_members[0]]
         elif delegate_members:
             canonical = delegate_display[delegate_members[0]]
+        elif official_members:
+            canonical = official_name_display[official_members[0]]
         else:
             canonical = sorted(members)[0]
 
@@ -506,6 +511,18 @@ def build_person_registry(
         } | {
             delegate_display[member]
             for member in delegate_members
+        } | {
+            official_name_display[member]
+            for member in official_members
+        }
+        presenter_norms = {
+            normalize_person_name(presenter_display[member]) for member in presenter_members
+        }
+        delegate_norms = {
+            normalize_person_name(delegate_display[member]) for member in delegate_members
+        }
+        official_norms = {
+            normalize_person_name(official_name_display[member]) for member in official_members
         }
 
         record = PersonRecord(
@@ -527,20 +544,26 @@ def build_person_registry(
         records[person_key] = record
 
         for variant in variants:
+            variant_norm = normalize_person_name(variant)
+            in_presenter = variant_norm in presenter_norms
+            in_delegate = variant_norm in delegate_norms
+            in_official = variant_norm in official_norms
+            if in_presenter and in_delegate:
+                source = "both"
+            elif in_presenter:
+                source = "programme"
+            elif in_delegate:
+                source = "delegate_list"
+            elif in_official:
+                source = "official_id"
+            else:
+                source = "both"
             alias_rows.append(
                 {
                     "person_key": person_key,
                     "name_variant": variant,
-                    "normalized_name": normalize_person_name(variant),
-                    "source": (
-                        "programme"
-                        if normalize_person_name(variant) in presenter_display
-                        and normalize_person_name(variant) not in delegate_display
-                        else "delegate_list"
-                        if normalize_person_name(variant) in delegate_display
-                        and normalize_person_name(variant) not in presenter_display
-                        else "both"
-                    ),
+                    "normalized_name": variant_norm,
+                    "source": source,
                 }
             )
 
