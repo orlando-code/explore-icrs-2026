@@ -25,6 +25,8 @@ let contactTurnstilePending = null;
 /** @type {"loading"|"challenge"|"ready"|"failed"} */
 let contactTurnstileState = "loading";
 let contactTurnstileFailureReason = "";
+/** Invalidates in-flight prepareContactTurnstile when the card remounts. */
+let contactTurnstilePrepareGen = 0;
 const revealedContactEmails = new Map();
 
 const TURNSTILE_READY_TIMEOUT_MS = 15_000;
@@ -273,6 +275,7 @@ function contactTurnstileMountEl() {
 }
 
 function resetContactTurnstile() {
+  contactTurnstilePrepareGen += 1;
   if (contactTurnstileWidgetId != null && window.turnstile) {
     try {
       window.turnstile.remove(contactTurnstileWidgetId);
@@ -288,7 +291,18 @@ function resetContactTurnstile() {
 }
 
 function mountContactTurnstile() {
-  resetContactTurnstile();
+  // Remove a previous widget without bumping prepareGen (caller owns lifecycle).
+  if (contactTurnstileWidgetId != null && window.turnstile) {
+    try {
+      window.turnstile.remove(contactTurnstileWidgetId);
+    } catch {
+      /* widget may already be gone */
+    }
+  }
+  contactTurnstileWidgetId = null;
+  contactTurnstileToken = "";
+  finishContactTurnstilePending("");
+
   const mount = contactTurnstileMountEl();
   if (!mount) return false;
   if (!TURNSTILE_SITE_KEY || !window.turnstile) {
@@ -296,14 +310,20 @@ function mountContactTurnstile() {
     syncContactTurnstileChrome();
     return false;
   }
+  // Make the mount visible before render. Turnstile fails (often with a
+  // "network error" in the iframe) when rendered into :empty { display: none }.
   setContactTurnstileState("challenge");
   syncContactTurnstileChrome();
+  void mount.offsetWidth;
   try {
     contactTurnstileWidgetId = window.turnstile.render(mount, {
       sitekey: TURNSTILE_SITE_KEY,
       action: "contact-email",
       size: "flexible",
       theme: "light",
+      // Match offset tracker: always show the checkbox (interaction-only stays
+      // invisible when Cloudflare auto-passes, and fails more often on mobile).
+      appearance: "always",
       callback: (token) => {
         contactTurnstileToken = token;
         setContactTurnstileState("ready");
@@ -331,6 +351,29 @@ function mountContactTurnstile() {
     syncContactTurnstileChrome();
     return false;
   }
+}
+
+async function prepareContactTurnstile() {
+  if (SKIP_TURNSTILE || !TURNSTILE_SITE_KEY) {
+    syncContactTurnstileChrome();
+    return;
+  }
+  if (!contactTurnstileMountEl()) return;
+  if (contactTurnstileWidgetId != null) return;
+
+  const gen = contactTurnstilePrepareGen;
+  setContactTurnstileState("loading");
+  syncContactTurnstileChrome();
+  const ready = await waitForContactTurnstileApi();
+  if (gen !== contactTurnstilePrepareGen) return;
+  if (!contactTurnstileMountEl()) return;
+  if (!ready) {
+    setContactTurnstileState("failed", CONTACT_TURNSTILE_LOAD_FAILED_MSG);
+    syncContactTurnstileChrome();
+    return;
+  }
+  if (contactTurnstileWidgetId != null) return;
+  mountContactTurnstile();
 }
 
 function contactTurnstileResponse() {
@@ -363,11 +406,16 @@ async function ensureContactTurnstileToken() {
     const existing = contactTurnstileResponse();
     if (existing) return existing;
   }
-  if (contactTurnstileWidgetId == null) {
+  if (contactTurnstileWidgetId == null || contactTurnstileState === "failed") {
     setContactTurnstileState("loading");
     syncContactTurnstileChrome();
     const ready = await waitForContactTurnstileApi();
     if (!ready) {
+      setContactTurnstileState("failed", CONTACT_TURNSTILE_LOAD_FAILED_MSG);
+      syncContactTurnstileChrome();
+      return "";
+    }
+    if (!contactTurnstileMountEl()) {
       setContactTurnstileState("failed", CONTACT_TURNSTILE_LOAD_FAILED_MSG);
       syncContactTurnstileChrome();
       return "";
@@ -461,7 +509,18 @@ async function fetchVerifiedEmail(name, affiliation, button) {
       }
       return null;
     }
+    if (!contactTurnstileMountEl()) {
+      setContactEmailError(CONTACT_TURNSTILE_LOAD_FAILED_MSG);
+      if (button) {
+        button.disabled = false;
+        button.textContent = "Show email";
+      }
+      return null;
+    }
     mountContactTurnstile();
+  }
+  if (button && !SKIP_TURNSTILE && TURNSTILE_SITE_KEY && !contactTurnstileResponse()) {
+    button.textContent = "Complete check above";
   }
   const token = await ensureContactTurnstileToken();
   if (!token) {
@@ -471,6 +530,7 @@ async function fetchVerifiedEmail(name, affiliation, button) {
     }
     return null;
   }
+  if (button) button.textContent = "Fetching…";
   try {
     const response = await fetch(CONTACT_API_URL, {
       method: "POST",
@@ -520,27 +580,70 @@ function delegateDetailsText(name, affiliation = "") {
   return lines.join("\n");
 }
 
+function copyViaExecCommand(text) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.setAttribute("aria-hidden", "true");
+  textarea.style.cssText =
+    "position:fixed;top:0;left:0;width:1px;height:1px;padding:0;border:0;opacity:0;";
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  textarea.setSelectionRange(0, text.length);
+  let ok = false;
+  try {
+    ok = document.execCommand("copy");
+  } catch {
+    ok = false;
+  }
+  textarea.remove();
+  return ok;
+}
+
+function flashCopyButton(button, ok) {
+  if (!button) return;
+  const originalLabel =
+    button.dataset.originalLabel ||
+    button.getAttribute("aria-label") ||
+    button.textContent ||
+    "Copy";
+  if (!button.dataset.originalLabel) button.dataset.originalLabel = originalLabel;
+  const usesTextLabel = Boolean(button.dataset.originalLabel && button.classList.contains("network-contact-copy-details"));
+
+  button.classList.toggle("copied", ok);
+  button.classList.toggle("copy-failed", !ok);
+  button.setAttribute("aria-label", ok ? "Copied" : "Copy failed");
+  button.setAttribute("title", ok ? "Copied" : "Copy failed");
+  if (usesTextLabel) button.textContent = ok ? "Copied" : "Copy failed";
+
+  window.setTimeout(() => {
+    button.classList.remove("copied", "copy-failed");
+    button.setAttribute("aria-label", originalLabel);
+    button.setAttribute(
+      "title",
+      button.classList.contains("network-contact-copy-details")
+        ? "Copy name and institute"
+        : "Copy email"
+    );
+    if (usesTextLabel) button.textContent = originalLabel;
+  }, 1600);
+}
+
 async function copyTextToClipboard(text, button) {
   if (!text) return false;
   try {
-    await navigator.clipboard.writeText(text);
-    if (button) {
-      button.classList.add("copied");
-      button.setAttribute("aria-label", "Copied");
-      button.setAttribute("title", "Copied");
-      const originalLabel = button.dataset.originalLabel;
-      if (originalLabel) button.textContent = "Copied";
-      window.setTimeout(() => {
-        button.classList.remove("copied");
-        button.setAttribute("aria-label", "Copy speaker details");
-        button.setAttribute("title", "Copy name and institute");
-        if (originalLabel) button.textContent = originalLabel;
-      }, 1500);
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      flashCopyButton(button, true);
+      return true;
     }
-    return true;
   } catch {
-    return false;
+    /* iOS / insecure context: fall through to execCommand */
   }
+  const ok = copyViaExecCommand(text);
+  flashCopyButton(button, ok);
+  return ok;
 }
 
 function buildAuthorSearchIndex(locations) {
@@ -1138,6 +1241,7 @@ export function createNetworkView(siteData, elements) {
     }
     elements.cardContacts.hidden = false;
     elements.cardContacts.innerHTML = renderContactLinksHtml(node);
+    void prepareContactTurnstile();
   }
 
   function updateMatches(query) {
@@ -2034,11 +2138,11 @@ export function createNetworkView(siteData, elements) {
     const results = similarityLookup.findSimilar(talk);
     if (requestId !== similarRequestId || selectedTalkId !== talk.id) return;
     if (!results.length) {
-      setSimilarStatus("No similar talks found.", true);
+      setSimilarStatus("No similar talks found.", { isError: true });
       renderSimilarTalks([]);
       return;
     }
-    setSimilarStatus("Similar talks by topic.");
+    setSimilarStatus("");
     renderSimilarTalks(results);
   }
 
