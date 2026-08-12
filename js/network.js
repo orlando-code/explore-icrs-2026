@@ -913,13 +913,13 @@ export function createNetworkView(siteData, elements) {
     if (selectedNodeId) {
       const name = currentGraph().nodes.find((node) => node.id === selectedNodeId)?.label;
       const neighbourCount = Math.max(0, graphNodes.length - 1);
-      return `Showing ${neighbourCount.toLocaleString()} co-author${neighbourCount === 1 ? "" : "s"} linked to ${name || "selection"}.`;
+      return `Showing <strong>${neighbourCount.toLocaleString()}</strong> co-author${neighbourCount === 1 ? "" : "s"} linked to ${escapeHtml(name || "selection")}.`;
     }
     if (!graphThinned || !graphTotalNodes) return "";
     if (searchQuery && matchedNodeIds.size) {
-      return `Showing ${graphNodes.length.toLocaleString()} of ${graphTotalNodes.toLocaleString()} matches and co-authors. All ${matchedNodeIds.size.toLocaleString()} matches are included.`;
+      return `Showing <strong>${graphNodes.length.toLocaleString()}</strong> of <strong>${graphTotalNodes.toLocaleString()}</strong> matches and co-authors. All <strong>${matchedNodeIds.size.toLocaleString()}</strong> matches are included.`;
     }
-    return `Showing ${graphNodes.length.toLocaleString()} of ${graphTotalNodes.toLocaleString()} nodes (by talk count). Search or increase “Nodes shown” to explore more.`;
+    return `Showing <strong>${graphNodes.length.toLocaleString()}</strong> of <strong>${graphTotalNodes.toLocaleString()}</strong> nodes (by talk count). Search or increase “Nodes shown” to explore more.`;
   }
 
   function currentGraph() {
@@ -1584,10 +1584,10 @@ export function createNetworkView(siteData, elements) {
     }
 
     const thinningNote = thinningSummary();
-    elements.summary.textContent = selectedNodeId
-      ? `${graphNodes.length.toLocaleString()} nodes · tap background or Clear to deselect`
+    elements.summary.innerHTML = selectedNodeId
+      ? `<strong>${graphNodes.length.toLocaleString()}</strong> nodes · tap background or Clear to deselect`
       : [
-          `${graphNodes.length.toLocaleString()} nodes · ${graphLinks.length.toLocaleString()} co-authorship links · ${isCoarsePointer ? "pinch to zoom, drag background to pan" : "scroll to zoom, drag to pan"}`,
+          `<strong>${graphNodes.length.toLocaleString()}</strong> nodes · <strong>${graphLinks.length.toLocaleString()}</strong> co-authorship links · ${isCoarsePointer ? "pinch to zoom, drag background to pan" : "scroll to zoom, drag to pan"}`,
           thinningNote,
         ]
           .filter(Boolean)
