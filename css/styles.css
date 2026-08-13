@@ -439,9 +439,16 @@ a.btn-small {
 
 .network-contact-turnstile {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s ease, max-height 0.25s ease, margin 0.25s ease;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 65px;
+  margin-bottom: 0.45rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: visible;
+  transition: opacity 0.2s ease;
 }
 
 .network-contact-turnstile:empty {
@@ -452,23 +459,15 @@ a.btn-small {
    (:empty) makes the widget fail immediately on mobile Safari. */
 .network-contact-email-gate--loading .network-contact-turnstile,
 .network-contact-email-gate--challenge .network-contact-turnstile,
+.network-contact-email-gate--ready .network-contact-turnstile,
 .network-contact-email-gate--failed .network-contact-turnstile {
   display: flex !important;
   overflow: visible;
+  min-height: 65px;
   height: auto;
-  min-height: var(--turnstile-pill-height);
   max-height: none;
-}
-
-.network-contact-email-gate--ready .network-contact-turnstile {
-  min-height: 0;
-  max-height: 0;
-  height: 0;
-  margin: 0;
-  border-width: 0;
-  overflow: hidden;
-  opacity: 0;
-  pointer-events: none;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .network-contact-turnstile-hint {
@@ -480,10 +479,6 @@ a.btn-small {
 }
 
 .network-contact-turnstile-hint[hidden] {
-  display: none;
-}
-
-.network-contact-email-gate--ready .network-contact-turnstile-hint {
   display: none;
 }
 
@@ -2727,6 +2722,14 @@ button:active {
   flex-direction: column;
 }
 
+/* Talk detail replaces the scrollable speaker list — scroll the card itself. */
+.hover-card.map-card--talk-open {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
 .stage-stack > .hover-card.stage-detail-panel {
   position: static;
   right: auto;
@@ -3001,6 +3004,13 @@ button:active {
     width: min(360px, calc(100% - 2rem));
     max-height: min(420px, calc(100% - 2rem));
     overflow: hidden;
+  }
+
+  #map-stage > .hover-card.stage-detail-panel.map-card--talk-open {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 
   .network-stage.stage-stack {
