@@ -1,0 +1,20 @@
+name = "icrs-api-proxy"
+main = "icrs-api-proxy.js"
+compatibility_date = "2024-11-01"
+# Preview URL while the orlando-codes.com zone lives on another CF account.
+workers_dev = true
+
+# Attach after the domain’s Cloudflare zone is available to this account:
+#   npx wrangler deploy --config cloudflare/wrangler.toml
+# then in the dashboard (Workers → icrs-api-proxy → Triggers → Add route):
+#   orlando-codes.com/explore-icrs-2026/api/*
+#   www.orlando-codes.com/explore-icrs-2026/api/*
+#
+# Or uncomment once this account owns the zone:
+# routes = [
+#   { pattern = "orlando-codes.com/explore-icrs-2026/api/*", zone_name = "orlando-codes.com" },
+#   { pattern = "www.orlando-codes.com/explore-icrs-2026/api/*", zone_name = "orlando-codes.com" },
+# ]
+
+[vars]
+UPSTREAM_ORIGIN = "https://icrs-offset-api.fly.dev"
