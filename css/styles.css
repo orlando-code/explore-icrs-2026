@@ -552,6 +552,17 @@ a.btn-small {
   margin-bottom: 0;
 }
 
+.network-contact-email-desktop-note {
+  margin: 0.65rem 0 0.35rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 10px;
+  border: 1px dashed var(--line);
+  background: rgba(32, 64, 154, 0.04);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
 .network-contact-show-email {
   width: 100%;
 }
