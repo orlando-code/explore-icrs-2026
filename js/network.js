@@ -37,7 +37,9 @@ const CONTACT_TURNSTILE_LOAD_FAILED_MSG =
 const CONTACT_TURNSTILE_TIMEOUT_MSG =
   "Security check timed out. Check your connection and try again.";
 const CONTACT_TURNSTILE_CHALLENGE_MSG =
-  "Complete the security check above to show the email address.";
+  "Complete the security check above, then tap Show email.";
+const CONTACT_EMAIL_FETCH_FAILED_MSG =
+  "Could not reach the email service. On mobile this is often a content blocker, VPN, or Private Relay — try disabling those for this site, or use Wi‑Fi, then try again.";
 
 function linkEndpointId(endpoint) {
   return typeof endpoint === "object" ? endpoint.id : endpoint;
@@ -242,6 +244,29 @@ function contactTurnstileHintEl() {
   return document.querySelector(".network-contact-turnstile-hint");
 }
 
+function syncContactShowEmailButton() {
+  const button = document.querySelector(".network-contact-show-email");
+  if (!button || button.dataset.contactBusy === "1") return;
+  if (SKIP_TURNSTILE || !TURNSTILE_SITE_KEY) {
+    button.disabled = false;
+    button.textContent = "Show email";
+    return;
+  }
+  if (contactTurnstileState === "ready" && contactTurnstileResponse()) {
+    button.disabled = false;
+    button.textContent = "Show email";
+    return;
+  }
+  if (contactTurnstileState === "failed") {
+    button.disabled = false;
+    button.textContent = "Try again";
+    return;
+  }
+  button.disabled = true;
+  button.textContent =
+    contactTurnstileState === "loading" ? "Preparing…" : "Complete check above";
+}
+
 function syncContactTurnstileChrome() {
   const gate = contactTurnstileGateEl();
   if (!gate) return;
@@ -253,21 +278,27 @@ function syncContactTurnstileChrome() {
   );
   if (SKIP_TURNSTILE || !TURNSTILE_SITE_KEY) {
     gate.classList.add("network-contact-email-gate--ready");
+    syncContactShowEmailButton();
     return;
   }
   gate.classList.add(`network-contact-email-gate--${contactTurnstileState}`);
 
   const hint = contactTurnstileHintEl();
-  if (!hint) return;
-  if (contactTurnstileState === "challenge") {
-    hint.textContent = CONTACT_TURNSTILE_CHALLENGE_MSG;
-    hint.hidden = false;
-  } else if (contactTurnstileState === "failed") {
-    hint.textContent = contactTurnstileFailureReason || CONTACT_TURNSTILE_LOAD_FAILED_MSG;
-    hint.hidden = false;
-  } else {
-    hint.hidden = true;
+  if (hint) {
+    if (contactTurnstileState === "challenge") {
+      hint.textContent = CONTACT_TURNSTILE_CHALLENGE_MSG;
+      hint.hidden = false;
+    } else if (contactTurnstileState === "failed") {
+      hint.textContent = contactTurnstileFailureReason || CONTACT_TURNSTILE_LOAD_FAILED_MSG;
+      hint.hidden = false;
+    } else if (contactTurnstileState === "ready") {
+      hint.textContent = "Verified — tap Show email.";
+      hint.hidden = false;
+    } else {
+      hint.hidden = true;
+    }
   }
+  syncContactShowEmailButton();
 }
 
 function contactTurnstileMountEl() {
@@ -319,10 +350,10 @@ function mountContactTurnstile() {
     contactTurnstileWidgetId = window.turnstile.render(mount, {
       sitekey: TURNSTILE_SITE_KEY,
       action: "contact-email",
-      size: "flexible",
+      // compact avoids the scaled "pill" CSS transform, which breaks Turnstile
+      // hit-testing / iframe checks on mobile Safari.
+      size: "compact",
       theme: "light",
-      // Match offset tracker: always show the checkbox (interaction-only stays
-      // invisible when Cloudflare auto-passes, and fails more often on mobile).
       appearance: "always",
       callback: (token) => {
         contactTurnstileToken = token;
@@ -478,7 +509,7 @@ function renderEmailRevealHtml(node, profile) {
 
   return `
     <div class="network-contact-email-gate">
-      <div id="network-contact-turnstile" class="network-contact-turnstile turnstile-pill"></div>
+      <div id="network-contact-turnstile" class="network-contact-turnstile"></div>
       <p class="network-contact-turnstile-hint" hidden></p>
       <button
         type="button"
@@ -494,6 +525,7 @@ function renderEmailRevealHtml(node, profile) {
 
 async function fetchVerifiedEmail(name, affiliation, button) {
   if (button) {
+    button.dataset.contactBusy = "1";
     button.disabled = true;
     button.textContent = "Checking…";
   }
@@ -504,16 +536,16 @@ async function fetchVerifiedEmail(name, affiliation, button) {
     if (!ready) {
       setContactEmailError(CONTACT_TURNSTILE_LOAD_FAILED_MSG);
       if (button) {
-        button.disabled = false;
-        button.textContent = "Show email";
+        button.dataset.contactBusy = "0";
+        syncContactShowEmailButton();
       }
       return null;
     }
     if (!contactTurnstileMountEl()) {
       setContactEmailError(CONTACT_TURNSTILE_LOAD_FAILED_MSG);
       if (button) {
-        button.disabled = false;
-        button.textContent = "Show email";
+        button.dataset.contactBusy = "0";
+        syncContactShowEmailButton();
       }
       return null;
     }
@@ -525,8 +557,8 @@ async function fetchVerifiedEmail(name, affiliation, button) {
   const token = await ensureContactTurnstileToken();
   if (!token) {
     if (button) {
-      button.disabled = false;
-      button.textContent = "Show email";
+      button.dataset.contactBusy = "0";
+      syncContactShowEmailButton();
     }
     return null;
   }
@@ -534,6 +566,8 @@ async function fetchVerifiedEmail(name, affiliation, button) {
   try {
     const response = await fetch(CONTACT_API_URL, {
       method: "POST",
+      mode: "cors",
+      credentials: "omit",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name,
@@ -547,8 +581,8 @@ async function fetchVerifiedEmail(name, affiliation, button) {
       window.turnstile?.reset?.(contactTurnstileWidgetId);
       setContactEmailError(payload.error || "Email lookup unavailable right now.");
       if (button) {
-        button.disabled = false;
-        button.textContent = "Show email";
+        button.dataset.contactBusy = "0";
+        syncContactShowEmailButton();
       }
       return null;
     }
@@ -556,14 +590,20 @@ async function fetchVerifiedEmail(name, affiliation, button) {
     window.turnstile?.reset?.(contactTurnstileWidgetId);
     setContactTurnstileState("ready");
     syncContactTurnstileChrome();
+    if (button) button.dataset.contactBusy = "0";
     return typeof payload.email === "string" ? payload.email : null;
   } catch {
     contactTurnstileToken = "";
     window.turnstile?.reset?.(contactTurnstileWidgetId);
-    setContactEmailError("Network error while fetching email. Try again.");
+    const offline = typeof navigator !== "undefined" && navigator.onLine === false;
+    setContactEmailError(
+      offline
+        ? "You appear to be offline. Check your connection and try again."
+        : CONTACT_EMAIL_FETCH_FAILED_MSG
+    );
     if (button) {
-      button.disabled = false;
-      button.textContent = "Show email";
+      button.dataset.contactBusy = "0";
+      syncContactShowEmailButton();
     }
     return null;
   }
