@@ -496,6 +496,13 @@ function setContactEmailError(message) {
   syncContactTurnstileChrome();
 }
 
+function isMobileContactUi() {
+  if (typeof window === "undefined") return false;
+  if (window.matchMedia("(pointer: coarse)").matches) return true;
+  // iPhone/iPad Chrome reports as CriOS but still uses WebKit networking.
+  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent || "");
+}
+
 function renderEmailRevealHtml(node, profile) {
   if (!CONTACT_API_URL || !profile?.has_verified_email) return "";
 
@@ -510,6 +517,16 @@ function renderEmailRevealHtml(node, profile) {
           ${copyEmailButtonHtml(cachedEmail)}
         </div>
       </div>
+    `;
+  }
+
+  // Mobile browsers (esp. Chrome on iOS) often complete Turnstile then fail the
+  // cross-origin email API fetch. Desktop works; hide reveal on touch devices.
+  if (isMobileContactUi()) {
+    return `
+      <p class="network-contact-email-desktop-note">
+        View on a desktop browser to access email.
+      </p>
     `;
   }
 
