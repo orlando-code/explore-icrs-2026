@@ -8,7 +8,14 @@ import {
   handleSuggestionListKeydown,
   buildPersonNameSearchHits,
 } from "./utils.js";
-import { OFFSET_API_URL, REQUIRE_DELEGATE_ID, SKIP_TURNSTILE, TURNSTILE_SITE_KEY } from "./config.js";
+import {
+  OFFSET_API_URL,
+  REQUIRE_DELEGATE_ID,
+  SKIP_TURNSTILE,
+  TURNSTILE_SITE_KEY,
+  fetchApiJson,
+  offsetApiUrlCandidates,
+} from "./config.js";
 
 let offsetTurnstileWidgetId = null;
 let offsetTurnstileToken = "";
@@ -91,13 +98,14 @@ function syncOffsetTurnstileChrome() {
   }
 }
 
-async function fetchJsonWithTimeout(url, options = {}, timeoutMs = FETCH_TIMEOUT_MS) {
+async function fetchJsonWithTimeout(urlOrCandidates, options = {}, timeoutMs = FETCH_TIMEOUT_MS) {
   const controller = new AbortController();
   const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
   try {
-    const response = await fetch(url, { ...options, signal: controller.signal });
-    const payload = await response.json().catch(() => ({}));
-    return { response, payload };
+    const candidates = Array.isArray(urlOrCandidates)
+      ? urlOrCandidates
+      : offsetApiUrlCandidates(urlOrCandidates);
+    return await fetchApiJson(candidates, { ...options, signal: controller.signal });
   } finally {
     window.clearTimeout(timeoutId);
   }
@@ -787,7 +795,7 @@ export function createOffsetTracker({
 
       const { response, payload } = await fetchJsonWithTimeout(apiUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain;charset=UTF-8" },
         body: JSON.stringify(body),
       });
 

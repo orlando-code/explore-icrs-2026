@@ -32,7 +32,7 @@ DELEGATE_ID_RE = re.compile(r"^\d{2,5}$")
 CONTROL_CHARS_RE = re.compile(r"[\x00-\x1f\x7f-\x9f]")
 WHITESPACE_RE = re.compile(r"\s+")
 
-MAX_BODY_BYTES = 4096
+MAX_BODY_BYTES = 16_384
 MAX_NAME_LENGTH = 120
 MAX_BUCKET_KEY_LENGTH = 160
 
@@ -825,7 +825,7 @@ class OffsetHandler(BaseHTTPRequestHandler):
             self.send_header("Access-Control-Allow-Origin", origin)
             self.send_header("Vary", "Origin")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, Accept")
         self.send_header("Access-Control-Max-Age", "86400")
         self.send_header("X-Content-Type-Options", "nosniff")
 
@@ -943,6 +943,7 @@ class OffsetHandler(BaseHTTPRequestHandler):
         try:
             raw = self.rfile.read(length)
         except (TimeoutError, OSError):
+            _json_response(self, 400, {"error": "Invalid request body."})
             return None
         if len(raw) != length:
             _json_response(self, 400, {"error": "Invalid request body."})

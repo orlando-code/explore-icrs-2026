@@ -11,7 +11,13 @@ import {
   setTalkFormatElement,
 } from "./utils.js";
 import { createTalkSimilarityLookup, resolveTalkId } from "./talk-similarity.js";
-import { CONTACT_API_URL, SKIP_TURNSTILE, TURNSTILE_SITE_KEY } from "./config.js";
+import {
+  CONTACT_API_URL,
+  SKIP_TURNSTILE,
+  TURNSTILE_SITE_KEY,
+  contactApiUrlCandidates,
+  fetchApiJson,
+} from "./config.js";
 
 const DEFAULT_NODE_LIMIT = 150;
 const NETWORK_COLOR_HIGHLIGHT = "#20409a";
@@ -39,7 +45,7 @@ const CONTACT_TURNSTILE_TIMEOUT_MSG =
 const CONTACT_TURNSTILE_CHALLENGE_MSG =
   "Complete the security check above, then tap Show email.";
 const CONTACT_EMAIL_FETCH_FAILED_MSG =
-  "Could not reach the email service. On mobile this is often a content blocker, VPN, or Private Relay — try disabling those for this site, or use Wi‑Fi, then try again.";
+  "Could not reach the email service from this browser. Try Wi‑Fi, disable content blockers for this site, or retry in Safari.";
 
 function linkEndpointId(endpoint) {
   return typeof endpoint === "object" ? endpoint.id : endpoint;
@@ -564,18 +570,19 @@ async function fetchVerifiedEmail(name, affiliation, button) {
   }
   if (button) button.textContent = "Fetching…";
   try {
-    const response = await fetch(CONTACT_API_URL, {
+    // Prefer same-origin Worker proxy, then the configured Fly URL. text/plain
+    // avoids a CORS preflight on the cross-origin fallback (helps mobile WebKit).
+    const { response, payload } = await fetchApiJson(contactApiUrlCandidates(), {
       method: "POST",
       mode: "cors",
       credentials: "omit",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "text/plain;charset=UTF-8" },
       body: JSON.stringify({
         name,
         affiliation,
         "cf-turnstile-response": token === "skip" ? "" : token,
       }),
     });
-    const payload = await response.json().catch(() => ({}));
     if (!response.ok) {
       contactTurnstileToken = "";
       window.turnstile?.reset?.(contactTurnstileWidgetId);
