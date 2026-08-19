@@ -818,13 +818,24 @@ function attendanceLabel(node) {
   return "non-attending co-author";
 }
 
+function isExternalCoauthor(node) {
+  if (node?.external_coauthor === true) return true;
+  if (node?.external_coauthor === false) return false;
+  if (node?.attended) return false;
+  if (node?.on_programme) return false;
+  const personKey = String(node?.person_key || "").trim();
+  if (isRegistryPersonKey(personKey)) return false;
+  if (node?.author_role === "presenter") return false;
+  return true;
+}
+
 function externalAffiliationLabel(node) {
-  if (!node?.external_coauthor) return "";
+  if (!isExternalCoauthor(node)) return "";
   return node.affiliation_mapped ? "Mapped affiliation on file" : "No mapped affiliation";
 }
 
 function defaultNodeFill(node) {
-  if (node?.external_coauthor) return NETWORK_COLOR_SECONDARY;
+  if (isExternalCoauthor(node)) return NETWORK_COLOR_SECONDARY;
   return NETWORK_COLOR_ACCENT;
 }
 
@@ -833,6 +844,15 @@ function authorContextFor(node, profile) {
   const affiliationExplicit =
     node?.affiliation_explicit ?? profile?.affiliation_explicit ?? Boolean(profile);
   return { role, affiliationExplicit };
+}
+
+function resolveAuthorRole(node, profile, presenterIndex) {
+  const context = authorContextFor(node, profile);
+  if (context.role) return context.role;
+  const isPresenter = [...personLookupKeys(node.label, node.person_key)].some((key) =>
+    presenterIndex.has(key)
+  );
+  return isPresenter ? "presenter" : "co_author";
 }
 
 function authorRoleLabel(role) {
@@ -1198,11 +1218,7 @@ export function createNetworkView(siteData, elements) {
   function formatNodeMeta(node) {
     const profile = profileForNode(node);
     const context = authorContextFor(node, profile);
-    const role =
-      context.role ||
-      [...personLookupKeys(node.label, node.person_key)].some((key) => presenterIndex.has(key))
-        ? "presenter"
-        : "co_author";
+    const role = resolveAuthorRole(node, profile, presenterIndex);
     const parts = [
       authorRoleLabel(role),
       attendanceLabel(node),
@@ -1213,7 +1229,7 @@ export function createNetworkView(siteData, elements) {
       parts.push(externalAffiliation);
     }
     if (mode === "individual" && node.affiliation) {
-      const showAffiliation = !node.external_coauthor || node.affiliation_mapped;
+      const showAffiliation = !isExternalCoauthor(node) || node.affiliation_mapped;
       if (showAffiliation) {
         parts.push(
           affiliationNote({
@@ -1253,11 +1269,7 @@ export function createNetworkView(siteData, elements) {
     const affiliation = node.affiliation || "";
     const profile = profileForNode(node);
     const context = authorContextFor(node, profile);
-    const role =
-      context.role ||
-      [...personLookupKeys(node.label)].some((key) => presenterIndex.has(key))
-        ? "presenter"
-        : "co_author";
+    const role = resolveAuthorRole(node, profile, presenterIndex);
     const profileStatus = profileStatusLabel({
       role,
       affiliationExplicit: context.affiliationExplicit,
@@ -1723,8 +1735,7 @@ export function createNetworkView(siteData, elements) {
   }
 
   function nodeFill(node) {
-    if (searchQuery && matchedNodeIds.has(node.id)) return NETWORK_COLOR_ACCENT;
-    if (searchQuery && matchedNodeIds.size) return "#b8c4cc";
+    if (searchQuery && matchedNodeIds.size && !matchedNodeIds.has(node.id)) return "#b8c4cc";
     return defaultNodeFill(node);
   }
 
@@ -1798,6 +1809,7 @@ export function createNetworkView(siteData, elements) {
       .attr("fill", (d) => nodeFill(d))
       .attr("stroke", (d) => {
         if (d.id === selectedNodeId) return NETWORK_COLOR_HIGHLIGHT;
+        if (searching && matchedNodeIds.has(d.id)) return NETWORK_COLOR_HIGHLIGHT;
         return "#ffffff";
       })
       .attr("stroke-width", (d) => {
@@ -2285,7 +2297,7 @@ export function createNetworkView(siteData, elements) {
 
   function showNodeCard(node) {
     elements.card.hidden = false;
-    elements.cardTitle.textContent = node.label;
+    elements.cardTitle.textContent = resolveCanonicalPersonName(node.label, node.person_key);
     const snippet = matchSnippet(node);
     elements.cardMeta.textContent = snippet
       ? `${formatNodeMeta(node)} · ${snippet}`

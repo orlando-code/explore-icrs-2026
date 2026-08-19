@@ -15,6 +15,7 @@ import {
   isRegistryPersonKey,
   personKeyFromRecord,
   speakerIdentityKey,
+  resolveDelegatePersonKey,
 } from "./utils.js";
 import { resolveTalkId } from "./talk-similarity.js";
 
@@ -38,11 +39,35 @@ export function createMapView(
   const nonSpeakerLocations = siteData.non_speaker_locations || [];
   const hasDelegatePool =
     delegateEmissionsLocations.length > 0 || nonSpeakerLocations.length > 0;
-  const networkNodeIdsByPersonKey = new Map(
-    (siteData.network?.individual?.nodes || [])
-      .filter((node) => isRegistryPersonKey(node.person_key))
-      .map((node) => [node.person_key, node.id])
-  );
+  const networkNodes = siteData.network?.individual?.nodes || [];
+  const networkNodeIdsByPersonKey = new Map();
+  const networkNodeIdsByLabel = new Map();
+  const networkNodeByLabel = new Map();
+  for (const node of networkNodes) {
+    if (isRegistryPersonKey(node.person_key)) {
+      networkNodeIdsByPersonKey.set(node.person_key, node.id);
+    }
+    const label = String(node.label || "").trim();
+    if (label) {
+      networkNodeIdsByLabel.set(label, node.id);
+      networkNodeByLabel.set(label, node);
+    }
+  }
+
+  function networkNodeForSpeaker(speaker) {
+    const name = String(speaker?.name || speaker || "").trim();
+    if (!name) return null;
+    const personKey =
+      personKeyFromRecord(speaker) || resolveDelegatePersonKey(name) || "";
+    if (isRegistryPersonKey(personKey)) {
+      const byKey = networkNodeIdsByPersonKey.get(personKey);
+      if (byKey) {
+        return networkNodes.find((n) => n.id === byKey) || null;
+      }
+    }
+    return networkNodeByLabel.get(name) || null;
+  }
+
   let includeNonSpeakers = hasDelegatePool;
 
   function buildLocationPool() {
@@ -150,13 +175,24 @@ export function createMapView(
     return list
       .map((name, index) => {
         const separator = index > 0 ? '<span class="network-talk-author-sep">, </span>' : "";
+        const personKey = resolveDelegatePersonKey(name) || "";
         const locationId = speakerLocationIndex.get(name);
+        const networkNode = networkNodeForSpeaker({ name, person_key: personKey });
+        const networkLink = networkNode
+          ? networkLinkHtml({ name, person_key: personKey }, { external: Boolean(networkNode.external_coauthor) })
+          : "";
+
         if (locationId) {
           const selected =
             name === highlightedAuthorName || locationId === authorHighlightLocationId
               ? " network-talk-author-selected"
               : "";
-          return `${separator}<button type="button" class="network-talk-author-btn${selected}" data-speaker-name="${escapeHtml(name)}">${escapeHtml(name)}</button>`;
+          const speakerButton = `<button type="button" class="network-talk-author-btn${selected}" data-speaker-name="${escapeHtml(name)}"${personKey ? ` data-speaker-key="${escapeHtml(personKey)}"` : ""}>${escapeHtml(name)}</button>`;
+          return `${separator}${speakerButton}${networkLink}`;
+        }
+
+        if (networkLink) {
+          return `${separator}<span class="network-talk-author-plain">${escapeHtml(name)}</span> ${networkLink}`;
         }
         return `${separator}<span class="network-talk-author-plain">${escapeHtml(name)}</span>`;
       })
@@ -532,16 +568,18 @@ export function createMapView(
     const speakers = details.filter((speaker) => !speaker.non_speaking_delegate);
     const delegates = details.filter((speaker) => speaker.non_speaking_delegate);
 
-    const networkLinkHtml = (speaker) => {
+    const networkLinkHtml = (speaker, { external = false } = {}) => {
       const name = speaker.name || speaker;
-      const personKey = personKeyFromRecord(speaker);
-      const nodeId = personKey ? networkNodeIdsByPersonKey.get(personKey) : null;
-      if (!nodeId) return "";
+      const node = networkNodeForSpeaker(speaker);
+      if (!node) return "";
+      const personKey = personKeyFromRecord(speaker) || resolveDelegatePersonKey(name) || "";
       const attrs = [
         `data-show-network="${escapeHtml(name)}"`,
         personKey ? `data-show-network-key="${escapeHtml(personKey)}"` : "",
       ].join(" ");
-      return `<button type="button" class="btn-ghost btn-small cross-view-link" ${attrs}>Show in network</button>`;
+      const isExternal = external || Boolean(node.external_coauthor);
+      const extraClass = isExternal ? " cross-view-link--external" : "";
+      return `<button type="button" class="btn-ghost btn-small cross-view-link${extraClass}" ${attrs}>Show in network</button>`;
     };
 
     const speakerEntryClass = (speaker) => {
@@ -936,7 +974,10 @@ export function createMapView(
       if (authorButton && elements.talkAuthors?.contains(authorButton)) {
         event.preventDefault();
         event.stopPropagation();
-        highlightAuthorOnMap(authorButton.dataset.speakerName);
+        highlightAuthorOnMap(
+          authorButton.dataset.speakerName,
+          authorButton.dataset.speakerKey || ""
+        );
         return;
       }
 
@@ -950,7 +991,11 @@ export function createMapView(
       const button = event.target.closest("[data-talk-id]");
       if (!button || !elements.hoverSpeakers?.contains(button)) {
         const networkButton = event.target.closest("[data-show-network]");
-        if (networkButton && elements.hoverSpeakers?.contains(networkButton)) {
+        if (
+          networkButton &&
+          (elements.hoverSpeakers?.contains(networkButton) ||
+            elements.talkAuthors?.contains(networkButton))
+        ) {
           event.preventDefault();
           event.stopPropagation();
           elements.onShowInNetwork?.(
