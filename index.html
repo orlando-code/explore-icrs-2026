@@ -633,6 +633,39 @@
       </section>
 
       <section class="stage stage-stack" id="emissions-stage" hidden>
+        <div class="network-hint-banner" id="emissions-hint-banner" hidden>
+          <div
+            class="network-hint-card"
+            role="dialog"
+            aria-labelledby="emissions-hint-title"
+            aria-modal="true"
+          >
+            <p class="hover-kicker">Carbon contributions</p>
+            <h2 id="emissions-hint-title">Log a carbon contribution</h2>
+            <p class="network-hint-lead">
+              Take action and register it here: let's turn this map from
+              <span class="emissions-hint-swatch emissions-hint-swatch--low">red</span>
+              to
+              <span class="emissions-hint-swatch emissions-hint-swatch--high">green</span>!
+            </p>
+            <ol class="network-hint-steps">
+              <li>
+                Make a carbon contribution via a provider such as
+                <a href="https://marketplace.goldstandard.org/collections/all" target="_blank" rel="noopener"><strong>Gold Standard</strong></a>,
+                <a href="https://www.cooleffect.org/travel-offset" target="_blank" rel="noopener"><strong>Cool Effect</strong></a>, or
+                <a href="https://www.greenfleet.com.au/" target="_blank" rel="noopener"><strong>Greenfleet</strong></a>.
+              </li>
+              <li>Search your name under <strong>Register your pledge</strong>.</li>
+              <li>Enter your <strong>delegate ID</strong> (on official ICRS emails: search <strong>teawa@conference.nz</strong>).</li>
+              <li>
+                Tap <strong>I've pledged</strong> – your country will get just a little greener!
+              </li>
+            </ol>
+            <button type="button" class="btn-primary network-hint-dismiss" id="emissions-hint-dismiss">
+              Got it
+            </button>
+          </div>
+        </div>
         <div class="stage-canvas">
           <div class="stage-badge emissions-stage-badge" style="max-width:75%; text-align:left; white-space:normal;">
             Point size and colour denote estimated travel CO₂e per affiliation
