@@ -128,6 +128,8 @@ const els = {
   networkStage: $("network-stage"),
   networkHintBanner: $("network-hint-banner"),
   networkHintDismiss: $("network-hint-dismiss"),
+  emissionsHintBanner: $("emissions-hint-banner"),
+  emissionsHintDismiss: $("emissions-hint-dismiss"),
   emissionsStage: $("emissions-stage"),
   shareStage: $("share-stage"),
   mapContainer: $("map"),
@@ -417,6 +419,7 @@ const layout = document.querySelector(".layout");
 const TAB_STORAGE_KEY = "icrs-active-tab";
 const VALID_TABS = new Set(["map", "network", "emissions", "methods", "share"]);
 const NETWORK_HINT_STORAGE_KEY = "icrs-network-hint-dismissed";
+const EMISSIONS_HINT_STORAGE_KEY = "icrs-emissions-hint-dismissed";
 
 function getStoredTab() {
   try {
@@ -457,6 +460,30 @@ function dismissNetworkHint() {
 function showNetworkHintIfNeeded() {
   if (!els.networkHintBanner || isNetworkHintDismissed()) return;
   els.networkHintBanner.hidden = false;
+}
+
+function isEmissionsHintDismissed() {
+  try {
+    return Boolean(localStorage.getItem(EMISSIONS_HINT_STORAGE_KEY));
+  } catch {
+    return false;
+  }
+}
+
+function dismissEmissionsHint() {
+  if (els.emissionsHintBanner) {
+    els.emissionsHintBanner.hidden = true;
+  }
+  try {
+    localStorage.setItem(EMISSIONS_HINT_STORAGE_KEY, "1");
+  } catch {
+    /* private browsing */
+  }
+}
+
+function showEmissionsHintIfNeeded() {
+  if (!els.emissionsHintBanner || isEmissionsHintDismissed()) return;
+  els.emissionsHintBanner.hidden = false;
 }
 
 function tabForHash(hash) {
@@ -522,6 +549,7 @@ function setTab(tab) {
       emissionsView.resize();
       emissionsView.refreshMap?.();
     });
+    showEmissionsHintIfNeeded();
   } else if (tab === "share") {
     shareView.render();
   }
@@ -901,3 +929,19 @@ function initNetworkHint() {
 }
 
 initNetworkHint();
+
+function initEmissionsHint() {
+  if (!els.emissionsHintBanner || !els.emissionsHintDismiss) return;
+
+  els.emissionsHintDismiss.addEventListener("click", dismissEmissionsHint);
+  els.emissionsHintBanner.addEventListener("click", (event) => {
+    if (event.target === els.emissionsHintBanner) dismissEmissionsHint();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && els.emissionsHintBanner && !els.emissionsHintBanner.hidden) {
+      dismissEmissionsHint();
+    }
+  });
+}
+
+initEmissionsHint();
