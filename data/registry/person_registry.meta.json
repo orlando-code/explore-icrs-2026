@@ -1,15 +1,15 @@
 {
-  "people_total": 2208,
+  "people_total": 2207,
   "in_delegate_list": 1954,
   "attended": 1954,
   "in_programme": 1746,
-  "linked_presenter_delegate": 1492,
-  "programme_only_not_attended": 254,
-  "delegate_only": 462,
+  "linked_presenter_delegate": 1493,
+  "programme_only_not_attended": 253,
+  "delegate_only": 461,
   "with_official_delegate_id": 1865,
-  "without_official_delegate_id": 343,
+  "without_official_delegate_id": 342,
   "needs_review": 0,
-  "name_aliases": 3155,
+  "name_aliases": 3154,
   "id_review_links_loaded": 1865,
-  "presenter_delegate_link_pct": 85.45
+  "presenter_delegate_link_pct": 85.51
 }
