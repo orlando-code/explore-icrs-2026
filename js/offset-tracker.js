@@ -299,20 +299,17 @@ function aggregateSignature(aggregate) {
   return JSON.stringify(aggregate);
 }
 
-function stableAttendeeId(nameOrOpts, locationId = "") {
-  // Prefer registry person_key so ids survive emis-loc-* renumbering.
+function stableAttendeeId({ personKey, person_key, name, affiliation, locationId, location_id } = {}) {
+  const registryKey = String(personKey || person_key || "").trim();
   let key;
-  if (nameOrOpts && typeof nameOrOpts === "object") {
-    const personKey = String(nameOrOpts.personKey || nameOrOpts.person_key || "").trim();
-    if (isRegistryPersonKey(personKey)) {
-      key = personKey.toLowerCase();
-    } else {
-      const name = String(nameOrOpts.name || "").trim().toLowerCase();
-      const affiliation = String(nameOrOpts.affiliation || "").trim().toLowerCase();
-      key = affiliation ? `${name}|${affiliation}` : `${name}|${String(nameOrOpts.locationId || locationId || "")}`;
-    }
+  if (isRegistryPersonKey(registryKey)) {
+    key = registryKey.toLowerCase();
   } else {
-    key = `${String(nameOrOpts || "").trim().toLowerCase()}|${locationId}`;
+    const namePart = String(name || "").trim().toLowerCase();
+    const affiliationPart = String(affiliation || "").trim().toLowerCase();
+    key = affiliationPart
+      ? `${namePart}|${affiliationPart}`
+      : `${namePart}|${String(locationId || location_id || "")}`;
   }
   let hash = 2166136261;
   for (let index = 0; index < key.length; index += 1) {
@@ -412,12 +409,6 @@ export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocation
       const displayName = resolveCanonicalPersonName(trimmed, registryKey);
       attendees.push(
         withStableAttendeeId({
-          id: stableAttendeeId({
-            personKey: registryKey,
-            name: displayName,
-            affiliation: emissionsLocation.affiliation,
-            locationId: emissionsLocation.id,
-          }),
           name: displayName,
           person_key: registryKey || "",
           affiliation: emissionsLocation.affiliation,

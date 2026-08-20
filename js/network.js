@@ -727,18 +727,6 @@ function buildAuthorSearchIndex(locations) {
   return index;
 }
 
-function buildPresenterIndex(talksData) {
-  const presenters = new Set();
-  for (const talk of Object.values(talksData?.by_id || {})) {
-    const presenter = String(talk?.presenter || "").trim();
-    if (!presenter) continue;
-    for (const key of personLookupKeys(presenter)) {
-      presenters.add(key);
-    }
-  }
-  return presenters;
-}
-
 function personLookupKeys(name, personKey = "") {
   const cleaned = String(name || "").trim();
   if (!cleaned && !personKey) return [];
@@ -820,14 +808,7 @@ function attendanceLabel(node) {
 }
 
 function isExternalCoauthor(node) {
-  if (node?.external_coauthor === true) return true;
-  if (node?.external_coauthor === false) return false;
-  if (node?.attended) return false;
-  if (node?.on_programme) return false;
-  const personKey = String(node?.person_key || "").trim();
-  if (isRegistryPersonKey(personKey)) return false;
-  if (node?.author_role === "presenter") return false;
-  return true;
+  return Boolean(node?.external_coauthor);
 }
 
 function externalAffiliationLabel(node) {
@@ -845,15 +826,6 @@ function authorContextFor(node, profile) {
   const affiliationExplicit =
     node?.affiliation_explicit ?? profile?.affiliation_explicit ?? Boolean(profile);
   return { role, affiliationExplicit };
-}
-
-function resolveAuthorRole(node, profile, presenterIndex) {
-  const context = authorContextFor(node, profile);
-  if (context.role) return context.role;
-  const isPresenter = [...personLookupKeys(node.label, node.person_key)].some((key) =>
-    presenterIndex.has(key)
-  );
-  return isPresenter ? "presenter" : "co_author";
 }
 
 function authorRoleLabel(role) {
@@ -908,7 +880,6 @@ export function createNetworkView(siteData, elements) {
   const profileByPersonKey = buildProfileByPersonKey(speakerProfiles);
   const talksData = elements.talksData || { by_id: {}, title_index: {} };
   const talksById = talksData.by_id || {};
-  const presenterIndex = buildPresenterIndex(talksData);
   const similarityLookup = createTalkSimilarityLookup(
     elements.similaritiesData || { by_id: {} },
     talksById
@@ -1222,7 +1193,7 @@ export function createNetworkView(siteData, elements) {
   function formatNodeMeta(node) {
     const profile = profileForNode(node);
     const context = authorContextFor(node, profile);
-    const role = resolveAuthorRole(node, profile, presenterIndex);
+    const role = context.role || "co_author";
     const parts = [
       authorRoleLabel(role),
       attendanceLabel(node),
@@ -1273,7 +1244,7 @@ export function createNetworkView(siteData, elements) {
     const affiliation = node.affiliation || "";
     const profile = profileForNode(node);
     const context = authorContextFor(node, profile);
-    const role = resolveAuthorRole(node, profile, presenterIndex);
+    const role = context.role || "co_author";
     const profileStatus = profileStatusLabel({
       role,
       affiliationExplicit: context.affiliationExplicit,
@@ -2118,10 +2089,6 @@ export function createNetworkView(siteData, elements) {
     return null;
   }
 
-  function nodeIdForAuthor(name) {
-    return findNetworkNodeByAuthorName(name)?.id || null;
-  }
-
   function renderTalkAuthorsHtml(authors) {
     const list = (authors || []).map((name) => String(name || "").trim()).filter(Boolean);
     if (!list.length) return "";
@@ -2129,10 +2096,12 @@ export function createNetworkView(siteData, elements) {
     return list
       .map((name, index) => {
         const separator = index > 0 ? '<span class="network-talk-author-sep">, </span>' : "";
-        const nodeId = nodeIdForAuthor(name);
-        if (nodeId) {
-          const selected = nodeId === selectedNodeId ? " network-talk-author-selected" : "";
-          return `${separator}<button type="button" class="network-talk-author-btn${selected}" data-node-id="${escapeHtml(nodeId)}">${escapeHtml(name)}</button>`;
+        const personKey = resolveDelegatePersonKey(name) || "";
+        const node = findNetworkNodeByAuthorName(name, personKey);
+        if (node) {
+          const selected = node.id === selectedNodeId ? " network-talk-author-selected" : "";
+          const externalClass = isExternalCoauthor(node) ? " network-talk-author-external" : "";
+          return `${separator}<a href="#" class="network-talk-author-link${externalClass}${selected}" data-node-id="${escapeHtml(node.id)}">${escapeHtml(name)}</a>`;
         }
         return `${separator}<span class="network-talk-author-plain">${escapeHtml(name)}</span>`;
       })
@@ -2560,11 +2529,11 @@ export function createNetworkView(siteData, elements) {
         });
         return;
       }
-      const authorButton = event.target.closest(".network-talk-author-btn[data-node-id]");
-      if (authorButton && elements.card.contains(authorButton)) {
+      const authorLink = event.target.closest(".network-talk-author-link[data-node-id]");
+      if (authorLink && elements.card.contains(authorLink)) {
         event.preventDefault();
         event.stopPropagation();
-        selectNode(authorButton.dataset.nodeId);
+        selectNode(authorLink.dataset.nodeId);
         return;
       }
       const button = event.target.closest("[data-talk-id]");
