@@ -1094,11 +1094,31 @@ def _build_emissions_locations(
     return (rows, key_to_id)
 
 
-def _stable_attendee_id(name: str, location_id: str) -> str:
-    key = f"{name.strip().casefold()}|{location_id}"
+def _stable_attendee_id(
+    name: str,
+    location_id: str = "",
+    *,
+    person_key: str = "",
+    affiliation: str = "",
+) -> str:
+    """Stable offset id that does not depend on sequential emis-loc-* numbers.
+
+    Prefer registry person_key. Fall back to name|affiliation, then legacy
+    name|location_id only if affiliation is missing.
+    """
+    person_key = str(person_key or "").strip()
+    if person_key.startswith("icrs-p-"):
+        key = person_key.casefold()
+    else:
+        name_part = str(name or "").strip().casefold()
+        affiliation_part = str(affiliation or "").strip().casefold()
+        if name_part and affiliation_part:
+            key = f"{name_part}|{affiliation_part}"
+        else:
+            key = f"{name_part}|{str(location_id or '').strip()}"
     hash_value = 2166136261
-    for char in key.encode():
-        hash_value ^= char
+    for char in key:
+        hash_value ^= ord(char)
         hash_value = hash_value * 16777619 & 4294967295
     return f"offset-{hash_value:08x}"
 
@@ -1145,10 +1165,15 @@ def _build_emissions_attendees(
         person_key = delegate_person_key(name, affiliation=affiliation)
         if person_key.startswith("icrs-p-"):
             display_name = resolver.canonical_name(person_key, fallback=display_name)
-        dedupe_key = f"{person_key}|{location_id}"
-        if dedupe_key in seen:
+        display_affiliation = affiliation_display_name(affiliation) or affiliation
+        identity_key = (
+            person_key.casefold()
+            if person_key.startswith("icrs-p-")
+            else f"{display_name.casefold()}|{display_affiliation.casefold()}"
+        )
+        if identity_key in seen:
             continue
-        seen.add(dedupe_key)
+        seen.add(identity_key)
         origin_country = ""
         if origin_country_idx is not None and pd.notna(row[origin_country_idx]):
             origin_country = str(row[origin_country_idx]).strip().upper()
@@ -1157,10 +1182,15 @@ def _build_emissions_attendees(
         )
         attendees.append(
             {
-                "id": _stable_attendee_id(display_name, location_id),
+                "id": _stable_attendee_id(
+                    display_name,
+                    location_id,
+                    person_key=person_key,
+                    affiliation=display_affiliation,
+                ),
                 "name": display_name,
                 "person_key": person_key,
-                "affiliation": affiliation_display_name(affiliation) or affiliation,
+                "affiliation": display_affiliation,
                 "location_id": location_id,
                 "co2e_kg": round(float(row[co2e_idx]), 1),
                 "origin_country": origin_country,

@@ -4,6 +4,7 @@ import {
   haversineKm,
   resolveCanonicalPersonName,
   personKeyFromRecord,
+  isRegistryPersonKey,
   activateSuggestionAt,
   handleSuggestionListKeydown,
   buildPersonNameSearchHits,
@@ -298,14 +299,40 @@ function aggregateSignature(aggregate) {
   return JSON.stringify(aggregate);
 }
 
-function stableAttendeeId(name, locationId) {
-  const key = `${name.trim().toLowerCase()}|${locationId}`;
+function stableAttendeeId(nameOrOpts, locationId = "") {
+  // Prefer registry person_key so ids survive emis-loc-* renumbering.
+  let key;
+  if (nameOrOpts && typeof nameOrOpts === "object") {
+    const personKey = String(nameOrOpts.personKey || nameOrOpts.person_key || "").trim();
+    if (isRegistryPersonKey(personKey)) {
+      key = personKey.toLowerCase();
+    } else {
+      const name = String(nameOrOpts.name || "").trim().toLowerCase();
+      const affiliation = String(nameOrOpts.affiliation || "").trim().toLowerCase();
+      key = affiliation ? `${name}|${affiliation}` : `${name}|${String(nameOrOpts.locationId || locationId || "")}`;
+    }
+  } else {
+    key = `${String(nameOrOpts || "").trim().toLowerCase()}|${locationId}`;
+  }
   let hash = 2166136261;
   for (let index = 0; index < key.length; index += 1) {
     hash ^= key.charCodeAt(index);
     hash = Math.imul(hash, 16777619);
   }
   return `offset-${(hash >>> 0).toString(16).padStart(8, "0")}`;
+}
+
+function withStableAttendeeId(attendee) {
+  if (!attendee) return attendee;
+  return {
+    ...attendee,
+    id: stableAttendeeId({
+      personKey: attendee.person_key,
+      name: attendee.name,
+      affiliation: attendee.affiliation,
+      locationId: attendee.location_id,
+    }),
+  };
 }
 
 export function attendeeDedupeKey(name, affiliation) {
@@ -330,11 +357,11 @@ export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocation
       })
       .map((attendee) => {
         const registryKey = personKeyFromRecord(attendee);
-        return {
+        return withStableAttendeeId({
           ...attendee,
           person_key: registryKey || attendee.person_key || "",
           name: resolveCanonicalPersonName(attendee.name, registryKey),
-        };
+        });
       })
       .sort((left, right) =>
         left.name.localeCompare(right.name, undefined, { sensitivity: "base" })
@@ -383,14 +410,21 @@ export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocation
       if (seen.has(identityKey)) continue;
       seen.add(identityKey);
       const displayName = resolveCanonicalPersonName(trimmed, registryKey);
-      attendees.push({
-        id: stableAttendeeId(displayName, emissionsLocation.id),
-        name: displayName,
-        person_key: registryKey || "",
-        affiliation: emissionsLocation.affiliation,
-        location_id: emissionsLocation.id,
-        co2e_kg: emissionsLocation.co2e_per_speaker_kg,
-      });
+      attendees.push(
+        withStableAttendeeId({
+          id: stableAttendeeId({
+            personKey: registryKey,
+            name: displayName,
+            affiliation: emissionsLocation.affiliation,
+            locationId: emissionsLocation.id,
+          }),
+          name: displayName,
+          person_key: registryKey || "",
+          affiliation: emissionsLocation.affiliation,
+          location_id: emissionsLocation.id,
+          co2e_kg: emissionsLocation.co2e_per_speaker_kg,
+        })
+      );
     }
   }
 
@@ -504,7 +538,7 @@ export function createOffsetTracker({
   }
 
   function refreshAttendees() {
-    attendees = getAttendees();
+    attendees = getAttendees().map(withStableAttendeeId);
     attendeeById = new Map(attendees.map((attendee) => [attendee.id, attendee]));
     rebuildOffsetCounts();
     render();
