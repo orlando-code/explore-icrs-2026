@@ -345,6 +345,22 @@ def _init_db() -> None:
             conn.execute(
                 "CREATE INDEX IF NOT EXISTS idx_registrations_status ON registrations(status)"
             )
+            # Soft uniqueness for active pledges: same person cannot hold two
+            # published/pending rows under different attendee_ids. Historical
+            # revoked rows are left alone. Index creation is best-effort so an
+            # unexpected legacy duplicate cannot block API startup.
+            try:
+                conn.execute(
+                    """
+                    CREATE UNIQUE INDEX IF NOT EXISTS idx_registrations_active_identity
+                    ON registrations (lower(trim(name)), affiliation_key)
+                    WHERE status IN ('published', 'pending')
+                      AND COALESCE(affiliation_key, '') != ''
+                      AND COALESCE(name, '') != ''
+                    """
+                )
+            except sqlite3.IntegrityError:
+                pass
             conn.execute(
                 """
                 CREATE TABLE IF NOT EXISTS registration_events (
@@ -541,6 +557,36 @@ def _recent_registration_count(window_seconds: int = 3600) -> int:
     return int(row[0]) if row else 0
 
 
+def _active_identity_match(
+    conn: sqlite3.Connection,
+    *,
+    name: str | None,
+    affiliation_key: str,
+) -> tuple[str, str] | None:
+    """Return (attendee_id, status) for an active row with the same person identity.
+
+    Identity is name + affiliation_key (what the site already sends). This catches
+    re-registrations after attendee_id hashes change (e.g. emis-loc renumbering)
+    without rewriting historical rows.
+    """
+    if not name or not affiliation_key:
+        return None
+    row = conn.execute(
+        """
+        SELECT attendee_id, status
+        FROM registrations
+        WHERE status IN (?, ?)
+          AND lower(trim(name)) = lower(trim(?))
+          AND affiliation_key = ?
+        LIMIT 1
+        """,
+        (STATUS_PUBLISHED, STATUS_PENDING, name, affiliation_key),
+    ).fetchone()
+    if not row:
+        return None
+    return str(row[0]), str(row[1])
+
+
 def _add_registration(
     attendee_id: str,
     name: str | None,
@@ -559,6 +605,28 @@ def _add_registration(
     with _db_lock:
         conn = sqlite3.connect(_db_path())
         try:
+            identity = _active_identity_match(
+                conn, name=name, affiliation_key=affiliation_key
+            )
+            if identity and identity[0] != attendee_id:
+                conn.execute(
+                    """
+                    INSERT INTO registration_events
+                        (attendee_id, event, name, source, client_hint, created_at)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        attendee_id,
+                        "duplicate_identity",
+                        name,
+                        source,
+                        client_hint,
+                        created_at,
+                    ),
+                )
+                conn.commit()
+                return False, False
+
             cursor = conn.execute(
                 """
                 INSERT OR IGNORE INTO registrations

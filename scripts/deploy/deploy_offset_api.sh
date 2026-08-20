@@ -6,7 +6,7 @@
 
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 BACKEND="$ROOT/backend"
 CONTACTS="$BACKEND/data/contacts.json"
 TEMPLATE="$BACKEND/data/contacts.template.json"
