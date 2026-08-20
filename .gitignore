@@ -269,3 +269,5 @@ dev.ipynb
 backend/offsets*.db
 backend/snapshots/offsets*.db
 .mplconfig/
+
+docs/
