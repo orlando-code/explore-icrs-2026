@@ -951,22 +951,28 @@ a.btn-small {
   line-height: 1.5;
 }
 
-.network-talk-author-btn {
-  padding: 0;
-  border: 0;
-  background: none;
+.network-talk-author-link {
   color: var(--sea);
-  font: inherit;
-  cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 2px;
+  cursor: pointer;
 }
 
-.network-talk-author-btn:hover,
-.network-talk-author-btn:focus-visible,
-.network-talk-author-btn.network-talk-author-selected {
+.network-talk-author-link:hover,
+.network-talk-author-link:focus-visible,
+.network-talk-author-link.network-talk-author-selected {
   color: var(--sea-deep);
   font-weight: 600;
+}
+
+.network-talk-author-link.network-talk-author-external,
+.network-talk-author-plain.network-talk-author-external {
+  color: var(--muted);
+}
+
+.network-talk-author-link.network-talk-author-external:hover,
+.network-talk-author-link.network-talk-author-external:focus-visible {
+  color: var(--ink);
 }
 
 .network-talk-author-plain {
@@ -984,22 +990,8 @@ a.btn-small {
   margin-top: 0.15rem;
   padding: 0.55rem 0.65rem;
   border-radius: 10px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.map-talk-abstract:hover,
-.map-talk-abstract:focus-visible {
-  background: rgba(32, 64, 154, 0.06);
-  border-color: rgba(32, 64, 154, 0.18);
-  outline: none;
-}
-
-.map-talk-abstract--active {
-  background: rgba(232, 148, 90, 0.12);
-  border-color: rgba(217, 95, 2, 0.28);
-  box-shadow: inset 0 0 0 1px rgba(217, 95, 2, 0.08);
+  user-select: none;
+  cursor: default;
 }
 
 .network-similar-talks {

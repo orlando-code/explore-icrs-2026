@@ -115,11 +115,11 @@ Put nginx/Caddy in front with HTTPS, or expose port 8080 behind your firewall. P
 Rows are never deleted. Each one has a status — `published`, `pending` (held for review), or `revoked` — and every change appends an audit event, so a suspect batch can be excluded from the totals without losing the record that it happened. Any command that changes the database snapshots it first, into `snapshots/` beside the database file.
 
 ```bash
-python scripts/manage_offset_registrations.py stats                  # statuses + rate per hour
-python scripts/manage_offset_registrations.py list --status pending  # the review queue
-python scripts/manage_offset_registrations.py history offset-bdc15009
-python scripts/manage_offset_registrations.py approve offset-bdc15009
-python scripts/manage_offset_registrations.py revoke offset-bdc15009 --reason spam
+python scripts/deploy/manage_offset_registrations.py stats                  # statuses + rate per hour
+python scripts/deploy/manage_offset_registrations.py list --status pending  # the review queue
+python scripts/deploy/manage_offset_registrations.py history offset-bdc15009
+python scripts/deploy/manage_offset_registrations.py approve offset-bdc15009
+python scripts/deploy/manage_offset_registrations.py revoke offset-bdc15009 --reason spam
 ```
 
 Point `OFFSET_DB_PATH` at the production volume (or run it inside the deployed container) to manage live rows.
@@ -133,9 +133,9 @@ If the browser cannot complete Cloudflare Turnstile (blocker, timeout, etc.) but
 `stats` shows the per-hour rate and the busiest callers as salted digests. To withdraw a burst, preview it and then apply:
 
 ```bash
-python scripts/manage_offset_registrations.py revoke-matching --client 49e8159
-python scripts/manage_offset_registrations.py revoke-matching --client 49e8159 --yes --reason "scripted burst"
-python scripts/manage_offset_registrations.py revoke-matching --since 2026-08-01T12:00:00 --yes
+python scripts/deploy/manage_offset_registrations.py revoke-matching --client 49e8159
+python scripts/deploy/manage_offset_registrations.py revoke-matching --client 49e8159 --yes --reason "scripted burst"
+python scripts/deploy/manage_offset_registrations.py revoke-matching --since 2026-08-01T12:00:00 --yes
 ```
 
 Without `--yes` it only lists what it would touch.
@@ -169,8 +169,8 @@ flyctl ssh sftp get /data/offsets.db ./backend/offsets-live.db -a icrs-offset-ap
 flyctl ssh sftp get /data/backups/offsets-latest.json ./backups/offsets-latest.json -a icrs-offset-api
 
 # Run manage/backup commands from the repo root with the downloaded copy:
-OFFSET_DB_PATH=./backend/offsets-live.db python scripts/manage_offset_registrations.py stats
-OFFSET_DB_PATH=./backend/offsets-live.db python scripts/manage_offset_registrations.py list --status all
+OFFSET_DB_PATH=./backend/offsets-live.db python scripts/deploy/manage_offset_registrations.py stats
+OFFSET_DB_PATH=./backend/offsets-live.db python scripts/deploy/manage_offset_registrations.py list --status all
 python scripts/backup_offsets.py --db ./backend/offsets-live.db
 ```
 

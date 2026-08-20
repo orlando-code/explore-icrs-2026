@@ -128,6 +128,3 @@ export function createMapCelebration(stageCanvas) {
 
   return { celebrateAt, pulseMapGlow, resize };
 }
-
-/** @deprecated Use createMapCelebration */
-export const createFireworksOverlay = createMapCelebration;

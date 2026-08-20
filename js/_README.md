@@ -17,7 +17,7 @@ Person identity in the UI uses registry `person_key` (`icrs-p-*`) end-to-end: ge
 | `speaker-profiles.js` | speaker profile export (`src/profiles/speaker_profiles.py`) |
 | `talk-similarities.js` | talk similarity export (`src/profiles/talk_similarity_build.py`) |
 
-Optional post-export patches: `scripts/site/patch_*.mjs` (connections, talk titles on `locations.js`).
+Optional post-export: `scripts/site/bundle_static_site.mjs` for GitHub Pages subpath deploys.
 
 ## Hand-maintained source (edit these)
 
