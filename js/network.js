@@ -9,6 +9,7 @@ import {
   resolveDelegatePersonKey,
   normalizePersonName,
   setTalkFormatElement,
+  foldSearchText,
 } from "./utils.js";
 import { createTalkSimilarityLookup, resolveTalkId } from "./talk-similarity.js";
 import {
@@ -1197,19 +1198,22 @@ export function createNetworkView(siteData, elements) {
   }
 
   function nodeMatchesSearch(node, query) {
-    const q = query.toLowerCase();
-    if (node.label.toLowerCase().includes(q)) return true;
-    if (mode === "individual" && node.affiliation?.toLowerCase().includes(q)) return true;
+    const q = foldSearchText(query).trim();
+    if (!q) return false;
+    if (foldSearchText(node.label).includes(q)) return true;
+    if (mode === "individual" && node.affiliation && foldSearchText(node.affiliation).includes(q)) {
+      return true;
+    }
     if (mode === "individual" && isRegistryPersonKey(node.person_key)) {
       const canonical = resolveCanonicalPersonName(node.label, node.person_key);
-      if (canonical.toLowerCase().includes(q)) return true;
+      if (foldSearchText(canonical).includes(q)) return true;
     }
     if (mode === "individual") {
       for (const key of personLookupKeys(node.label, node.person_key)) {
         const texts = authorSearchIndex.get(key) || [];
-        if (texts.some((text) => text.includes(q))) return true;
+        if (texts.some((text) => foldSearchText(text).includes(q))) return true;
       }
-    } else if (affiliationSearchIndex.get(node.label)?.includes(q)) {
+    } else if (foldSearchText(affiliationSearchIndex.get(node.label) || "").includes(q)) {
       return true;
     }
     return false;
@@ -2420,7 +2424,7 @@ export function createNetworkView(siteData, elements) {
   }
 
   function buildSuggestions(query) {
-    const trimmed = query.trim().toLowerCase();
+    const trimmed = foldSearchText(query).trim();
     if (trimmed.length < 2) return [];
 
     return dedupeSearchHitsByPerson(

@@ -363,36 +363,36 @@ export function renderTalkTitlesHtml(
 }
 
 export function speakerMatchesQuery(speaker, query) {
-  const trimmed = query.trim().toLowerCase();
+  const trimmed = foldSearchText(query).trim();
   if (!trimmed) return false;
-  if (speaker.name.toLowerCase().includes(trimmed)) return true;
-  if (speaker.search_text?.includes(trimmed)) return true;
+  if (foldSearchText(speaker.name).includes(trimmed)) return true;
+  if (speaker.search_text && foldSearchText(speaker.search_text).includes(trimmed)) return true;
   const aliases = personAliasSearchTerms(speaker);
-  return aliases.some((alias) => alias.includes(trimmed));
+  return aliases.some((alias) => foldSearchText(alias).includes(trimmed));
 }
 
 /** Rank name hits so "ant" prefers Ant/Anthony over substring noise. */
 export function speakerQueryRank(speaker, query) {
-  const trimmed = query.trim().toLowerCase();
+  const trimmed = foldSearchText(query).trim();
   if (!trimmed) return 0;
-  const name = String(speaker?.name || "").toLowerCase();
+  const name = foldSearchText(speaker?.name);
   const tokens = new Set(
     [normalizePersonName(speaker?.name), ...personAliasSearchTerms(speaker)]
-      .flatMap((text) => String(text || "").split(/\s+/))
+      .flatMap((text) => foldSearchText(text).split(/\s+/))
       .filter(Boolean)
   );
   if (tokens.has(trimmed)) return 100;
   if ([...tokens].some((token) => token.startsWith(trimmed))) return 80;
   if (name.startsWith(trimmed) || name.includes(` ${trimmed}`)) return 60;
   if (name.includes(trimmed)) return 40;
-  if (speaker.search_text?.includes(trimmed)) return 20;
+  if (speaker.search_text && foldSearchText(speaker.search_text).includes(trimmed)) return 20;
   if ([...tokens].some((token) => token.includes(trimmed))) return 10;
   return 0;
 }
 
 /** Ranked person-name search hits (shared by map + emissions offset search). */
 export function buildPersonNameSearchHits(people = [], query, { limit = 8 } = {}) {
-  const trimmed = String(query || "").trim().toLowerCase();
+  const trimmed = foldSearchText(query).trim();
   if (trimmed.length < 2) return [];
 
   const hits = dedupeSearchHitsByPerson(
@@ -430,7 +430,7 @@ export function speakerIdentityKey(speaker) {
 }
 
 export function matchedSpeakersForLocation(location, query) {
-  const trimmed = query.trim().toLowerCase();
+  const trimmed = foldSearchText(query).trim();
   if (!trimmed) return new Set();
   const matched = new Set();
   for (const speaker of location.speaker_details || []) {
@@ -443,12 +443,14 @@ export function matchedSpeakersForLocation(location, query) {
 }
 
 export function locationMatchesQuery(location, query) {
-  const trimmed = query.trim().toLowerCase();
+  const trimmed = foldSearchText(query).trim();
   if (!trimmed) return true;
-  if (location.affiliation.toLowerCase().includes(trimmed)) return true;
+  if (foldSearchText(location.affiliation).includes(trimmed)) return true;
   if (matchedSpeakersForLocation(location, query).size > 0) return true;
   // Short queries like "ant" are for names; avoid matching every abstract containing those letters.
-  if (trimmed.length >= 4 && location.search_text?.includes(trimmed)) return true;
+  if (trimmed.length >= 4 && location.search_text && foldSearchText(location.search_text).includes(trimmed)) {
+    return true;
+  }
   return false;
 }
 
@@ -785,9 +787,16 @@ export function countUniqueDelegates(locations = []) {
   return people.size;
 }
 
+/** Lowercase and strip diacritics so "dorr" matches "Dörr". */
+export function foldSearchText(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
 export function normalizePersonName(name) {
-  return String(name || "")
-    .toLowerCase()
+  return foldSearchText(name)
     .replace(/\b(dr|prof|professor|mr|mrs|ms|miss)\b\.?/g, "")
     .replace(/[^a-z0-9\s]/g, " ")
     .replace(/\s+/g, " ")
