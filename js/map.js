@@ -15,6 +15,7 @@ import {
   isRegistryPersonKey,
   personKeyFromRecord,
   speakerIdentityKey,
+  foldSearchText,
   resolveDelegatePersonKey,
 } from "./utils.js";
 import { resolveTalkId } from "./talk-similarity.js";
@@ -771,7 +772,7 @@ export function createMapView(
   }
 
   function buildSuggestions(query) {
-    const trimmed = query.trim().toLowerCase();
+    const trimmed = foldSearchText(query).trim();
     if (trimmed.length < 2) return [];
 
     const people = locations.flatMap((location) =>
@@ -796,7 +797,7 @@ export function createMapView(
     const affiliationHits = new Map();
 
     for (const location of locations) {
-      if (location.affiliation.toLowerCase().includes(trimmed) && !affiliationHits.has(location.id)) {
+      if (foldSearchText(location.affiliation).includes(trimmed) && !affiliationHits.has(location.id)) {
         affiliationHits.set(location.id, {
           label: location.affiliation,
           detail: `${location.speaker_count} delegate${location.speaker_count === 1 ? "" : "s"}`,
