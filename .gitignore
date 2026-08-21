@@ -260,6 +260,7 @@ deprecated/
 
 offsets-before-reset.db
 delegate_unique_id_database.csv
+all_delegates_checked_in.csv
 data/overrides/delegate_id_match_review.csv
 data/overrides/delegate_id_match_review_*.csv
 data/registry/delegates_missing_ids.csv
