@@ -28,6 +28,7 @@ PERSON_OVERRIDES_CSV = REGISTRY / "person_registry_overrides.csv"
 PERSON_UNMATCHED_CSV = REGISTRY / "person_registry_unmatched.csv"
 # Local-only: official offset-registration IDs – never commit.
 PERSON_OFFICIAL_IDS_CSV = REGISTRY / "person_registry_official_ids.csv"
+CHECK_IN_DELEGATES_CSV = REGISTRY / "delegates_checked_in_with_privacy.csv"
 
 # Affiliation registry
 AFFILIATION_REGISTRY_CSV = REGISTRY / "affiliation_registry.csv"
@@ -46,6 +47,7 @@ AFFILIATION_DISPLAY_ALIASES_JSON = GEOCODES / "affiliation_display_aliases.json"
 DELEGATE_ORG_OVERRIDES_CSV = OVERRIDES / "delegate_organisation_overrides.csv"
 MAP_EXCLUDED_NAMES_TXT = OVERRIDES / "map_excluded_names.txt"
 MAP_EXCLUDED_NAMES_JSON = OVERRIDES / "map_excluded_names.json"
+CHECK_IN_OVERRIDES_CSV = OVERRIDES / "check_in_overrides.csv"
 DELEGATE_ID_MATCH_REVIEW_GLOB = "delegate_id_match_review_*_merged.csv"
 
 # Geography (emissions choropleth)

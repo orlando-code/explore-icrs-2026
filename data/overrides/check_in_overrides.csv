@@ -1,0 +1,36 @@
+official_delegate_id,country,organisation,first_name,last_name,notes
+1667,New Zealand,Conference Innovators,Terri,,Innovators onsite staff
+17320,New Zealand,Onsite tour desk,Sharron,,
+17321,New Zealand,Onsite tour desk,Anja,,
+17336,New Zealand,Conference Innovators,Megan,,
+17338,New Zealand,Conference Innovators,Emma,,
+17339,New Zealand,Conference Innovators,Brooke,,
+18483,New Zealand,Conference Innovators,Madi,,
+18507,United States,University of California - Riverside,Jess,,Country inferable from institution name
+18535,New Zealand,Onsite tour desk,David,,
+16622,,,Josephine,,Empty org+country in Innovators export — fill country (and organisation if known)
+16623,,,Luise J.,,Empty org+country in Innovators export — fill country (and organisation if known)
+16624,,,Daniel,,Empty org+country in Innovators export — fill country (and organisation if known)
+17791,,,June,,Empty org+country in Innovators export — fill country (and organisation if known)
+18167,,,Hazel,,Empty org+country in Innovators export — fill country (and organisation if known)
+18168,,,William,,Empty org+country in Innovators export — fill country (and organisation if known)
+18379,,,Juliette,,Empty org+country in Innovators export — fill country (and organisation if known)
+18457,,,Jo,,Empty org+country in Innovators export — fill country (and organisation if known)
+18459,,,Christina,,Empty org+country in Innovators export — fill country (and organisation if known)
+18502,,,Guest,,Empty org+country in Innovators export — fill country (and organisation if known)
+18532,,,Luis,,Empty org+country in Innovators export — fill country (and organisation if known)
+18533,,,Salvador,,Empty org+country in Innovators export — fill country (and organisation if known)
+18544,,,Marites,,Empty org+country in Innovators export — fill country (and organisation if known)
+18551,,,Harrison,,Empty org+country in Innovators export — fill country (and organisation if known)
+17193,,Wildlife Conservation Society & Mermaid,Alexandra,,Needs country for geocoding
+18475,,UNSG's Special Envoy for the Ocean,Peter,,Needs country for geocoding
+18517,,International Junior SeaKeepers Programme,Jhaymae,,Needs country for geocoding
+18518,,International Junior SeaKeepers Programme,Sophie,,
+18520,,International Junior SeaKeepers Programme,Isaac Jame,,
+18521,,International Junior SeaKeepers Programme,Rachel,,
+18522,,International Junior SeaKeepers Programme,Stephanie,,
+18523,,International Junior SeaKeepers Programme,Hanna,,
+18524,,International Junior SeaKeepers Programme,Isabel,,
+18530,,Darby Arts,Catherine,,Needs country for geocoding
+18539,,Nortek,Nery,,Needs country for geocoding (e.g. Norway)
+18552,,SMOKE Photography,Tenille,,Needs country for geocoding
