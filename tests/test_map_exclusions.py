@@ -174,6 +174,58 @@ class TestFilterEmissionsPool:
             context="headline co2e",
         )
 
+    def test_preserve_headline_keeps_full_totals(self, assert_eq):
+        pool = {
+            "meta": {
+                "headline": {
+                    "co2e_kg": 300.0,
+                    "co2e_tonnes": 0.3,
+                    "attendees_estimated": 3,
+                }
+            },
+            "attendees": [
+                {
+                    "name": "Keep Me",
+                    "person_key": "icrs-p-00001",
+                    "affiliation": "Visible Lab, Fiji",
+                    "location_id": "loc-1",
+                    "co2e_kg": 100.0,
+                },
+                {
+                    "name": "Hidden Me",
+                    "person_key": "icrs-p-00002",
+                    "affiliation": "Visible Lab, Fiji",
+                    "location_id": "loc-1",
+                    "co2e_kg": 200.0,
+                },
+            ],
+            "locations": [
+                {
+                    "id": "loc-1",
+                    "affiliation": "Visible Lab, Fiji",
+                    "co2e_kg": 300.0,
+                    "travel_attendees": 2,
+                },
+            ],
+            "rankings": [],
+        }
+        filtered = filter_emissions_pool(
+            pool,
+            privacy_person_keys={"icrs-p-00002"},
+            preserve_headline=True,
+        )
+        assert_eq(len(filtered["attendees"]), 1, context="privacy attendee hidden")
+        assert_eq(
+            filtered["meta"]["headline"]["co2e_kg"],
+            300.0,
+            context="headline preserved",
+        )
+        assert_eq(
+            filtered["meta"]["headline"]["attendees_estimated"],
+            3,
+            context="headline attendee count preserved",
+        )
+
     def test_empty_exclusions_passthrough(self, assert_eq):
         pool = {"attendees": [{"name": "A"}], "locations": [], "meta": {}}
         filtered = filter_emissions_pool(

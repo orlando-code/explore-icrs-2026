@@ -1404,11 +1404,13 @@ export function isMapExcludedAffiliation(affiliation) {
   return mapExcludedAffiliationKeys.has(affiliationMapKey(affiliation));
 }
 
-export function filterEmissionsPool(pool) {
+export function filterEmissionsPool(pool, { preserveHeadline = false } = {}) {
   if (!pool) return pool;
   if (!mapExcludedNames?.size && !mapExcludedAffiliationKeys?.size) {
     return pool;
   }
+
+  const originalHeadline = pool.meta?.headline;
 
   const attendees = (pool.attendees || []).filter(
     (attendee) =>
@@ -1450,16 +1452,19 @@ export function filterEmissionsPool(pool) {
 
   const rankings = [...locations].sort((left, right) => right.co2e_kg - left.co2e_kg).slice(0, 30);
   const totalCo2e = Math.round(locations.reduce((sum, row) => sum + row.co2e_kg, 0) * 10) / 10;
-  const headline = pool.meta?.headline
-    ? {
-        ...pool.meta.headline,
-        co2e_kg: totalCo2e,
-        co2e_low_kg: totalCo2e,
-        co2e_high_kg: totalCo2e,
-        co2e_tonnes: Math.round((totalCo2e / 1000) * 100) / 100,
-        attendees_estimated: attendees.length,
-      }
-    : pool.meta?.headline;
+  let headline = pool.meta?.headline;
+  if (preserveHeadline && originalHeadline) {
+    headline = { ...originalHeadline };
+  } else if (headline) {
+    headline = {
+      ...headline,
+      co2e_kg: totalCo2e,
+      co2e_low_kg: totalCo2e,
+      co2e_high_kg: totalCo2e,
+      co2e_tonnes: Math.round((totalCo2e / 1000) * 100) / 100,
+      attendees_estimated: attendees.length,
+    };
+  }
 
   return {
     ...pool,

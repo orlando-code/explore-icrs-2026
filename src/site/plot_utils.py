@@ -456,6 +456,18 @@ def _affiliation_connection_lookup_keys(affiliation: str) -> list[str]:
             deduped.append(key)
     return deduped
 
+def _privacy_hidden_map_frame(df: pd.DataFrame) -> pd.DataFrame:
+    """Drop privacy-restricted non-programme delegates from map pins."""
+    if df.empty or "privacy_hidden" not in df.columns:
+        return df
+    privacy_hidden = df["privacy_hidden"].fillna(False)
+    if privacy_hidden.dtype == object:
+        privacy_hidden = privacy_hidden.map(
+            lambda value: str(value).strip().lower() in {"true", "1", "yes"}
+        )
+    return df.loc[~privacy_hidden.astype(bool)].copy()
+
+
 def _attendee_site_stats(df: pd.DataFrame, locations: list[dict[str, Any]], *, presenter_col: str='presenter') -> dict[str, int]:
     mapped_speakers = sum((location['speaker_count'] for location in locations))
     total_presenters = df[presenter_col].nunique(dropna=True)
@@ -504,7 +516,7 @@ def export_attendee_site_data(df: pd.DataFrame, *, lat_col: str='latitude', lon_
         location['connection_count'] = connection_count
 
     non_speaker_locations: list[dict[str, Any]] = []
-    attended_only_df = _attended_only_map_frame(df)
+    attended_only_df = _privacy_hidden_map_frame(_attended_only_map_frame(df))
     if not attended_only_df.empty:
         if show_progress:
             console().print('  Building delegate-only map pins for non-presenters')

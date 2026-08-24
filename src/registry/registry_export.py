@@ -13,6 +13,7 @@ from src.registry.key_resolution import (
     enrich_talks_with_registry_keys,
     get_registry_key_resolver,
 )
+from src.registry.check_in_attendance import _truthy
 from src.registry.person_registry import DEFAULT_REGISTRY_PATH, load_person_registry
 from src.sources.delegates import country_to_iso2
 from src.sources.programme import load_talks
@@ -137,6 +138,7 @@ def build_map_talks(
             "title": pd.NA,
             "abstract": pd.NA,
             "attended_only": True,
+            "privacy_hidden": _truthy(person.get("privacy_restricted")),
         }
         extra_rows.append(
             _attach_registry_geocode(
