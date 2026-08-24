@@ -140,12 +140,15 @@ def filter_emissions_pool(
     pool: dict[str, Any],
     *,
     exclusions: MapExclusions | None = None,
+    privacy_person_keys: frozenset[str] | set[str] | None = None,
+    preserve_headline: bool = False,
 ) -> dict[str, Any]:
-    """Remove excluded people/affiliations from an emissions pool; re-aggregate locations."""
+    """Remove excluded or privacy-restricted people from a display pool."""
     if not pool:
         return pool
     exclusions = exclusions or load_map_exclusions()
-    if not exclusions.names and not exclusions.affiliations:
+    privacy_keys = set(privacy_person_keys or ())
+    if not exclusions.names and not exclusions.affiliations and not privacy_keys:
         return pool
 
     name_set = set(exclusions.names)
@@ -153,7 +156,11 @@ def filter_emissions_pool(
     attendees = [
         attendee
         for attendee in pool.get("attendees", [])
-        if not is_map_excluded(str(attendee.get("name", "")), name_set)
+        if not (
+            privacy_keys
+            and str(attendee.get("person_key") or "").strip() in privacy_keys
+        )
+        and not is_map_excluded(str(attendee.get("name", "")), name_set)
         and not is_map_excluded_affiliation(str(attendee.get("affiliation", "")), affiliation_set)
     ]
 
@@ -196,7 +203,7 @@ def filter_emissions_pool(
 
     rankings = sorted(locations, key=lambda row: row["co2e_kg"], reverse=True)
     headline = dict(pool.get("meta", {}).get("headline", {}))
-    if headline:
+    if headline and not preserve_headline:
         total_co2e = round(sum(row["co2e_kg"] for row in locations), 1)
         headline = {
             **headline,
