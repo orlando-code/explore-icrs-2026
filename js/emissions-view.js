@@ -371,9 +371,21 @@ export function createEmissionsView(
     });
   }
 
+  function attendanceMetaCounts() {
+    const withEstimates =
+      headline.attendees_with_travel_estimates ?? headline.attendees_estimated;
+    const checkedIn = includeNonSpeakers
+      ? headline.checked_in_count || delegateMeta.checked_in_count || withEstimates
+      : headline.checked_in_count ||
+        delegateMeta.checked_in_speaker_count ||
+        withEstimates;
+    return { checkedIn, withEstimates };
+  }
+
   function renderHeadline() {
     const label = attendeeLabel();
     const showDelegateNote = includeNonSpeakers && delegateMeta.non_speaker_count;
+    const { checkedIn, withEstimates } = attendanceMetaCounts();
 
     if (elements.headlineTotal) {
       elements.headlineTotal.textContent = formatTonnes(headline.co2e_kg);
@@ -382,13 +394,19 @@ export function createEmissionsView(
     //   elements.headlineAssumption.textContent = economyAssumptionNote();
     // }
     if (elements.headlineMeta) {
+      const estimateGap =
+        checkedIn && withEstimates != null ? Math.max(0, checkedIn - withEstimates) : 0;
       let extraNote = "";
       if (showDelegateNote) {
         extraNote = ` · Includes <strong>${formatCount(delegateMeta.non_speaker_count)}</strong> non-speaking delegates.`;
       }
+      const estimateNote =
+        estimateGap > 0
+          ? ` · <strong>${formatCount(estimateGap)}</strong> checked-in without travel estimates (no location information).`
+          : "";
       elements.headlineMeta.innerHTML = `
-        <strong>${headline.attendees_estimated.toLocaleString()}</strong> ${label} with geocoded affiliations ·
-        <strong>${headline.attendees_missing_location.toLocaleString()}</strong> excluded (no location)${extraNote}
+        <strong>${formatCount(checkedIn)}</strong> checked-in ${label} ·
+        emissions summed for <strong>${formatCount(withEstimates ?? headline.attendees_estimated)}</strong>${estimateNote}${extraNote}
       `;
     }
     if (elements.headlineDelegateNote) {
@@ -1253,12 +1271,14 @@ export function createEmissionsView(
       delegateField: elements.offsetDelegateField,
       delegateId: elements.offsetDelegateId,
       delegateIdError: elements.offsetDelegateError,
+      delegateIdHelp: elements.offsetDelegateIdHelp,
       status: elements.offsetStatus,
       fill: elements.offsetTrackerFill,
       label: elements.offsetTrackerLabel,
     },
     getAttendees: currentAttendees,
     getHeadline: () => headline,
+    getDelegateMeta: () => delegateMeta,
     getPool: () => (includeNonSpeakers ? "delegates" : "speakers"),
     isSpeakerAttendee,
     onChange: () => {

@@ -428,6 +428,7 @@ export function createOffsetTracker({
   elements,
   getAttendees,
   getHeadline,
+  getDelegateMeta,
   getPool,
   isSpeakerAttendee,
   onChange,
@@ -544,7 +545,22 @@ export function createOffsetTracker({
   }
 
   function stats() {
-    const totalAttendees = getHeadline()?.attendees_estimated || attendees.length || 1;
+    const headline = getHeadline() || {};
+    const delegateMeta = getDelegateMeta?.() || {};
+    const withEstimates =
+      headline.attendees_with_travel_estimates ?? headline.attendees_estimated;
+    const totalAttendees =
+      activePool() === "delegates"
+        ? headline.checked_in_count ||
+          delegateMeta.checked_in_count ||
+          withEstimates ||
+          attendees.length ||
+          1
+        : headline.checked_in_count ||
+          delegateMeta.checked_in_speaker_count ||
+          withEstimates ||
+          attendees.length ||
+          1;
     const registeredCount =
       aggregate.totals.speakers +
       (activePool() === "delegates" ? aggregate.totals.delegates : 0);
@@ -712,6 +728,9 @@ export function createOffsetTracker({
     }
     if (elements.delegateId) {
       elements.delegateId.setAttribute("aria-invalid", text ? "true" : "false");
+    }
+    if (elements.delegateIdHelp) {
+      elements.delegateIdHelp.open = Boolean(text);
     }
     elements.delegateField?.classList.toggle("field--error", Boolean(text));
     elements.form?.classList.toggle("emissions-offset-register--error", Boolean(text));
