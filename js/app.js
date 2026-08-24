@@ -39,10 +39,14 @@ setMapExclusions({
 });
 
 if (EMISSIONS_DATA.speakers) {
-  EMISSIONS_DATA.speakers = filterEmissionsPool(EMISSIONS_DATA.speakers);
+  EMISSIONS_DATA.speakers = filterEmissionsPool(EMISSIONS_DATA.speakers, {
+    preserveHeadline: true,
+  });
 }
 if (EMISSIONS_DATA.all_delegates) {
-  EMISSIONS_DATA.all_delegates = filterEmissionsPool(EMISSIONS_DATA.all_delegates);
+  EMISSIONS_DATA.all_delegates = filterEmissionsPool(EMISSIONS_DATA.all_delegates, {
+    preserveHeadline: true,
+  });
 }
 
 SITE_DATA.locations = applyAffiliationGeocodeOverrides(SITE_DATA.locations);
@@ -102,6 +106,7 @@ const els = {
   form: $("search-form"),
   clear: $("btn-clear-search"),
   stats: $("stats-card"),
+  mapDelegateToggleWrap: $("map-delegate-toggle-wrap"),
   mapLegend: $("map-legend"),
   resultsTitle: $("results-title"),
   results: $("results-list"),
@@ -179,6 +184,7 @@ const els = {
   emissionsOffsetDelegateField: $("emissions-offset-delegate-field"),
   emissionsOffsetDelegateId: $("emissions-offset-delegate-id"),
   emissionsOffsetDelegateError: $("emissions-offset-delegate-error"),
+  emissionsOffsetDelegateIdHelp: $("emissions-offset-id-help"),
   emissionsOffsetStatus: $("emissions-offset-status"),
   emissionsOffsetTracker: $("emissions-offset-tracker"),
   emissionsOffsetTrackerFill: $("emissions-offset-tracker-fill"),
@@ -208,12 +214,16 @@ function renderStats() {
   const mapLocations = mapView?.getLocations?.() || SITE_DATA.locations || [];
   const countryCount = countUniqueCountries(mapLocations);
   const delegateCount = countUniqueDelegates(mapLocations);
+  const hasDelegatePool = mapView?.hasDelegatePool || emissionsView?.hasDelegatePool;
   els.title.textContent = meta.title;
   els.stats.innerHTML = [
     `<strong>${delegateCount.toLocaleString()}</strong> delegates displayed`,
     `<strong>${mapLocations.length.toLocaleString()}</strong> affiliations`,
     `<strong>${countryCount.toLocaleString()}</strong> unique countries`,
   ].join(" · ");
+  if (els.mapDelegateToggleWrap) {
+    els.mapDelegateToggleWrap.hidden = !hasDelegatePool;
+  }
 }
 
 function renderResults({
@@ -396,6 +406,7 @@ const emissionsView = createEmissionsView(EMISSIONS_DATA, SITE_DATA, {
   offsetDelegateField: els.emissionsOffsetDelegateField,
   offsetDelegateId: els.emissionsOffsetDelegateId,
   offsetDelegateError: els.emissionsOffsetDelegateError,
+  offsetDelegateIdHelp: els.emissionsOffsetDelegateIdHelp,
   offsetStatus: els.emissionsOffsetStatus,
   offsetTracker: els.emissionsOffsetTracker,
   offsetTrackerFill: els.emissionsOffsetTrackerFill,
