@@ -89,7 +89,13 @@ After review and corrections, **86.8%** of programme speakers are linked to a de
 
 Name variants map through `data/registry/person_name_aliases.csv` (3,155 aliases).
 
-**Attendance rule:** `attended=True` only when the person appears on the delegate list (1,954 attended). Programme-only names (254) are retained for the network but excluded from attendance and emissions tallies, since being excluded from the delegate list implies they dropped out. N.B. see [Caveats and limitations](#caveats-and-limitations) for further discussion.
+**Attendance rule:** `attended=True` when the person **checked in at Innovators** (conference check-in export, ~2,069 rows). The July delegate PDF (`in_delegate_list=True`) is retained for matching and dropout analysis but is **not** used as attendance ground truth. Programme-only names without a check-in remain in the network but are excluded from attendance and emissions tallies.
+
+**Privacy:** delegates who requested privacy on check-in and are **not** on the programme still contribute to the **headline emissions total**, but their pins are omitted from the emissions map and they are excluded from emissions search/offset self-registration. Programme authors remain visible on the map, network, and emissions views regardless of privacy flags.
+
+Check-in rows are matched to registry `person_key` via official delegate ID, then name+organisation (+ country) fallbacks; unmatched check-ins become new registry rows (`needs_review`).
+
+N.B. see [Caveats and limitations](#caveats-and-limitations) for dropout / empty-seat underestimates.
 
 ---
 
@@ -173,7 +179,7 @@ Return-trip **[CO₂e](https://www.climatepartner.com/en/knowledge/glossary/carb
 
 Route emissions come from the **[emissions.dev](https://emissions.dev) Travel API**. Flights are assumed to be in economy class: premium economy and business would incur **1.6×** and **2.9×** multipliers respectively.
 
-**Headline figures (delegates pool, cache build):** estimated ~5,011 t CO₂e across geocoded delegates.
+**Headline figures (delegates pool):** estimated travel CO₂e across **checked-in** delegates with geocoded affiliations and cached routes. The emissions tab notes how many July-list delegates did not check in; totals are an **underestimate** because empty booked seats from last-minute drop-outs are not counted.
 
 **Carbon contributions:** delegates may self-report contributions to a carbon/biodiversity project via a lightweight **API** (running on [Fly.io](https://fly.io/), SQLite) and gradually turn the map **from red to green**. Only **aggregate counts per affiliation** are published, never individuals' contributions: this isn't about singling anyone out; it's about quantifying the collective emissions of a research field. Additionally, in order to preserve anonymity, any country with fewer than three delegates in attendance is visually grouped with their neighbour(s).
 
@@ -204,7 +210,9 @@ I've taken a number of steps to help mitigate this:
 
 ## Caveats and limitations
 
-**Inaccurate/out of date delegate list** – the delegate list was provided ~10 days before the start of the conference. A number of people who appear on that list withdrew at the last minute, and therefore may not have made the trip to Auckland at all. This would overestimate the emissions directly attributable to those delegates – although most would have had a travel ticket booked, likely leading to an empty seat on a plane.
+**Check-in vs delegate list** – attendance and headline emissions use Innovators **check-in** data, not the July delegate PDF. People on the PDF who did not check in are excluded from totals (they likely dropped out), which **underestimates** conference-scale emissions: many would still have held booked seats. Conversely, check-in-only attendees not on the PDF are included.
+
+**Inaccurate/out of date delegate list** – the delegate list was provided ~10 days before the start of the conference. A number of people who appear on that list withdrew at the last minute and did not check in.
 
 **Co-authorship** – classed as any person appearing on the authorship of the conference presentation: it should be noted that this may have changed between applying to the conference and delivering the presentation. It also does not imply that the project is published or peer-reviewed yet.
 

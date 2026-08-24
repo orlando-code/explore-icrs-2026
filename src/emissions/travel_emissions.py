@@ -1262,9 +1262,19 @@ def export_emissions_site_data(
         legs["latitude"] = pd.NA
         legs["longitude"] = pd.NA
     speakers_pool = _build_pool_payload(estimates, summary, legs)
+    from src.registry.check_in_attendance import load_privacy_restricted_person_keys
     from src.site.map_exclusions import filter_emissions_pool
 
+    privacy_keys = load_privacy_restricted_person_keys()
     speakers_pool = filter_emissions_pool(speakers_pool)
+    if delegate_meta and delegate_meta.get("checked_in_speaker_count"):
+        speaker_headline = speakers_pool["meta"].get("headline", {})
+        checked_in_speakers = int(delegate_meta["checked_in_speaker_count"])
+        speaker_headline["attendees_with_travel_estimates"] = speaker_headline.get(
+            "attendees_estimated"
+        )
+        speaker_headline["checked_in_count"] = checked_in_speakers
+        speakers_pool["meta"]["headline"] = speaker_headline
     payload: dict[str, Any] = {
         "meta": {
             "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
@@ -1281,9 +1291,23 @@ def export_emissions_site_data(
     }
     if all_delegates is not None:
         delegate_estimates, delegate_summary, delegate_legs = all_delegates
-        payload["all_delegates"] = filter_emissions_pool(
-            _build_pool_payload(delegate_estimates, delegate_summary, delegate_legs)
+        full_delegate_pool = _build_pool_payload(
+            delegate_estimates, delegate_summary, delegate_legs
         )
+        payload["all_delegates"] = filter_emissions_pool(
+            full_delegate_pool,
+            privacy_person_keys=privacy_keys,
+            preserve_headline=True,
+        )
+        if delegate_meta and delegate_meta.get("checked_in_count"):
+            delegate_headline = payload["all_delegates"]["meta"].get("headline", {})
+            checked_in = int(delegate_meta["checked_in_count"])
+            delegate_headline["attendees_with_travel_estimates"] = delegate_headline.get(
+                "attendees_estimated"
+            )
+            delegate_headline["attendees_estimated"] = checked_in
+            delegate_headline["checked_in_count"] = checked_in
+            payload["all_delegates"]["meta"]["headline"] = delegate_headline
     else:
         payload["all_delegates"] = speakers_pool
     from src.emissions.emissions_site_enrichment import enrich_emissions_payload
