@@ -23,6 +23,10 @@ from src.sources.delegates import (
     register_talk_presenters,
 )
 from src.registry.affiliation_registry import _make_affiliation
+from src.registry.check_in_attendance import (
+    apply_check_in_attendance,
+    PUBLIC_REGISTRY_EXTRA_COLUMNS,
+)
 from src.sources.programme import load_talks
 
 from src.data_paths import (
@@ -40,6 +44,7 @@ from src.data_paths import (
     OVERRIDES,
     PERSON_ALIASES_CSV,
     PERSON_OFFICIAL_IDS_CSV,
+    CHECK_IN_DELEGATES_CSV,
     PERSON_REGISTRY_CSV,
     PERSON_OVERRIDES_CSV,
     PERSON_UNMATCHED_CSV,
@@ -69,7 +74,7 @@ PUBLIC_REGISTRY_COLUMNS = [
     "name_variants",
     "needs_review",
     "review_reason",
-]
+] + PUBLIC_REGISTRY_EXTRA_COLUMNS
 OFFICIAL_IDS_EXPORT_COLUMNS = [
     "person_key",
     "canonical_name",
@@ -479,8 +484,9 @@ def build_person_registry(
             official_delegate_id = official_candidates[0][1]
             official_tier = official_candidates[0][2]
 
-        attended = bool(delegate_members)
         in_programme = bool(presenter_members)
+        in_delegate_list = bool(delegate_members)
+        attended = False
 
         methods: list[str] = []
         if presenter_members and delegate_members:
@@ -530,7 +536,7 @@ def build_person_registry(
             canonical_name=canonical,
             organisation=organisation,
             country=country,
-            in_delegate_list=attended,
+            in_delegate_list=in_delegate_list,
             in_programme=in_programme,
             attended=attended,
             is_speaker=is_speaker,
@@ -598,7 +604,40 @@ def build_person_registry(
     aliases = pd.DataFrame(alias_rows).drop_duplicates().sort_values(
         ["person_key", "normalized_name"]
     )
-    unmatched = pd.DataFrame(unmatched_rows).sort_values(["issue", "canonical_name"])
+    unmatched = pd.DataFrame(unmatched_rows)
+
+    registry, aliases, check_in_metrics = apply_check_in_attendance(
+        registry,
+        aliases,
+        check_in_path=CHECK_IN_DELEGATES_CSV,
+        official_ids_path=DEFAULT_OFFICIAL_IDS_PATH,
+    )
+
+    programme_only_not_attended = registry.loc[
+        registry["in_programme"].astype(str).str.strip().str.lower().isin({"true", "1", "yes"})
+        & ~registry["attended"].astype(str).str.strip().str.lower().isin({"true", "1", "yes"})
+    ]
+    if not unmatched.empty:
+        unmatched = unmatched.loc[~unmatched["issue"].eq("programme_only_not_attended")].copy()
+    extra_unmatched: list[dict[str, Any]] = []
+    for _, person in programme_only_not_attended.iterrows():
+        extra_unmatched.append(
+            {
+                "person_key": person["person_key"],
+                "canonical_name": person["canonical_name"],
+                "issue": "programme_only_not_attended",
+                "attended": person["attended"],
+                "in_programme": person["in_programme"],
+                "official_delegate_id": person.get("official_delegate_id", ""),
+                "name_variants": person.get("name_variants", ""),
+            }
+        )
+    if extra_unmatched:
+        unmatched = pd.concat(
+            [unmatched, pd.DataFrame(extra_unmatched)], ignore_index=True
+        )
+    if not unmatched.empty:
+        unmatched = unmatched.sort_values(["issue", "canonical_name"])
 
     metrics = {
         "people_total": len(registry),
@@ -619,6 +658,7 @@ def build_person_registry(
         "needs_review": int(registry["needs_review"].sum()),
         "name_aliases": len(aliases),
         "id_review_links_loaded": len(id_links),
+        **check_in_metrics,
     }
     metrics["presenter_delegate_link_pct"] = round(
         100.0
@@ -653,10 +693,12 @@ def save_person_registry(
         path.parent.mkdir(parents=True, exist_ok=True)
 
     registry = result.registry.copy()
-    official_ids = registry.loc[
-        registry["official_delegate_id"].astype(str).str.strip().ne(""),
-        OFFICIAL_IDS_EXPORT_COLUMNS,
-    ].copy()
+    official_id_mask = registry["official_delegate_id"].astype(str).str.strip().ne("")
+    if "official_id_match_tier" in registry.columns:
+        official_id_mask &= ~registry["official_id_match_tier"].astype(str).str.strip().eq(
+            "check_in_only"
+        )
+    official_ids = registry.loc[official_id_mask, OFFICIAL_IDS_EXPORT_COLUMNS].copy()
     official_ids.to_csv(outputs["official_ids"], index=False)
 
     public_registry = registry.reindex(columns=PUBLIC_REGISTRY_COLUMNS)
