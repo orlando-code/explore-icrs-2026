@@ -25,6 +25,8 @@ from src.emissions.travel_emissions import (
     summarize_travel_emissions,
 )
 from src.registry.registry_export import _attended_people, build_map_talks
+from src.registry.check_in_attendance import _truthy
+from src.registry.person_registry import load_person_registry
 from src.sources.delegates import load_delegates, resolve_compound_affiliation_string
 from src.sources.programme import load_talks
 
@@ -159,10 +161,54 @@ def build_emissions_site(
         all_legs, routes, len(all_missing), attendee_label="delegates"
     )
 
+    registry = load_person_registry()
+    checked_in_count = (
+        int(registry["checked_in"].map(_truthy).sum())
+        if "checked_in" in registry.columns
+        else 0
+    )
+    dropout_count = (
+        int(
+            (
+                registry["in_delegate_list"].map(_truthy)
+                & ~registry["checked_in"].map(_truthy)
+            ).sum()
+        )
+        if "checked_in" in registry.columns
+        else 0
+    )
+    dropout_note = (
+        f"Attendance totals use {checked_in_count:,} Innovators check-ins "
+        "(not the July delegate PDF). This is an underestimate: "
+        f"{dropout_count:,} people on the delegate list did not check in "
+        "(empty booked seats and last-minute drop-outs are not counted)."
+    )
+    travel_estimate_gap = checked_in_count - int(delegate_summary["attendees_estimated"])
+    travel_gap_note = ""
+    if travel_estimate_gap > 0:
+        travel_gap_note = (
+            f"{travel_estimate_gap:,} checked-in delegates lack geocoded "
+            "affiliations or cached travel routes and are excluded from the CO₂e sum."
+        )
+    uncertainty = dict(delegate_summary.get("uncertainty", {}))
+    notes = list(uncertainty.get("notes", []))
+    notes.append(dropout_note)
+    if travel_gap_note:
+        notes.append(travel_gap_note)
+    uncertainty["notes"] = notes
+    uncertainty["last_minute_dropout_count"] = dropout_count
+    uncertainty["checked_in_count"] = checked_in_count
+    delegate_summary["uncertainty"] = uncertainty
+
     delegate_meta = {
         "delegate_list_count": len(delegates),
         "speaker_count": int(delegates["is_speaker"].sum()),
         "non_speaker_count": int(len(delegates) - delegates["is_speaker"].sum()),
+        "checked_in_count": checked_in_count,
+        "checked_in_speaker_count": int(
+            speaker_talks["presenter"].astype(str).str.strip().replace("", pd.NA).dropna().nunique()
+        ),
+        "last_minute_dropout_count": dropout_count,
     }
 
     export_emissions_site_data(
