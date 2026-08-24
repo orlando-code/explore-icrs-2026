@@ -243,8 +243,8 @@ function setContactTurnstileState(state, reason = "") {
   contactTurnstileFailureReason = reason;
 }
 
-function contactTurnstileGateEl() {
-  return document.querySelector(".network-contact-email-gate");
+function contactTurnstileActionEl() {
+  return document.querySelector(".network-contact-email-action");
 }
 
 function contactTurnstileHintEl() {
@@ -275,20 +275,20 @@ function syncContactShowEmailButton() {
 }
 
 function syncContactTurnstileChrome() {
-  const gate = contactTurnstileGateEl();
-  if (!gate) return;
-  gate.classList.remove(
-    "network-contact-email-gate--loading",
-    "network-contact-email-gate--challenge",
-    "network-contact-email-gate--ready",
-    "network-contact-email-gate--failed"
+  const action = contactTurnstileActionEl();
+  if (!action) return;
+  action.classList.remove(
+    "network-contact-email-action--loading",
+    "network-contact-email-action--challenge",
+    "network-contact-email-action--ready",
+    "network-contact-email-action--failed"
   );
   if (SKIP_TURNSTILE || !TURNSTILE_SITE_KEY) {
-    gate.classList.add("network-contact-email-gate--ready");
+    action.classList.add("network-contact-email-action--ready");
     syncContactShowEmailButton();
     return;
   }
-  gate.classList.add(`network-contact-email-gate--${contactTurnstileState}`);
+  action.classList.add(`network-contact-email-action--${contactTurnstileState}`);
 
   const hint = contactTurnstileHintEl();
   if (hint) {
@@ -297,9 +297,6 @@ function syncContactTurnstileChrome() {
       hint.hidden = false;
     } else if (contactTurnstileState === "failed") {
       hint.textContent = contactTurnstileFailureReason || CONTACT_TURNSTILE_LOAD_FAILED_MSG;
-      hint.hidden = false;
-    } else if (contactTurnstileState === "ready") {
-      hint.textContent = "Verified — tap Show email.";
       hint.hidden = false;
     } else {
       hint.hidden = true;
@@ -533,16 +530,22 @@ function renderEmailRevealHtml(node, profile) {
 
   return `
     <div class="network-contact-email-gate">
-      <div id="network-contact-turnstile" class="network-contact-turnstile"></div>
-      <p class="network-contact-turnstile-hint" hidden></p>
-      <button
-        type="button"
-        class="btn-small network-contact-show-email"
-        data-contact-name="${escapeHtml(node.label)}"
-        data-contact-affiliation="${escapeHtml(node.affiliation || "")}"
-      >
-        Show email
-      </button>
+      <div class="network-contact-email-action">
+        <div
+          id="network-contact-turnstile"
+          class="network-contact-turnstile turnstile-pill"
+          aria-hidden="true"
+        ></div>
+        <p class="network-contact-turnstile-hint" hidden></p>
+        <button
+          type="button"
+          class="btn-small network-contact-show-email"
+          data-contact-name="${escapeHtml(node.label)}"
+          data-contact-affiliation="${escapeHtml(node.affiliation || "")}"
+        >
+          Show email
+        </button>
+      </div>
     </div>
   `;
 }
@@ -1078,8 +1081,7 @@ export function createNetworkView(siteData, elements) {
     if (searchQuery && matchedNodeIds.size) {
       return `Showing <strong>${graphNodes.length.toLocaleString()}</strong> of <strong>${graphTotalNodes.toLocaleString()}</strong> matches and co-authors. All <strong>${matchedNodeIds.size.toLocaleString()}</strong> matches are included.`;
     }
-    return `Showing <strong>${graphNodes.length.toLocaleString()}</strong> of <strong>${graphTotalNodes.toLocaleString()}</strong> nodes (by talk count). Search or increase “Nodes shown” to explore more.`;
-  }
+    return `Showing <strong>${graphNodes.length.toLocaleString()}</strong> of <strong>${graphTotalNodes.toLocaleString()}</strong> nodes (by greatest number of connections). Search or increase “Nodes shown” to explore more.`;  }
 
   function currentGraph() {
     return network[mode];
@@ -1541,7 +1543,7 @@ export function createNetworkView(siteData, elements) {
 
     elements.legendCoauthorship.innerHTML = `
       <h3>Co-authorship links</h3>
-      <p>Edges connect speakers or affiliations who share authorship on at least one ICRS talk. Thicker lines mean more shared talks.</p>
+      <p>Edges connect speakers or affiliations (represented by nodes) which share authorship on at least one ICRS talk.</p>
       ${searchSection}
     `;
   }
@@ -1566,8 +1568,8 @@ export function createNetworkView(siteData, elements) {
           })();
 
     elements.legendScale.innerHTML = `
-      <h3>Node size · talks on author lists (log scale)</h3>
-      <p>Circle area scales with talks where the person or affiliation appears on the author list.</p>
+      <h3>Node size</h3>
+      <p>Circle area scales logarithmically with the number of talks on which this node appears.</p>
       ${samples
         .map(
           (sample) => `
@@ -1741,7 +1743,7 @@ export function createNetworkView(siteData, elements) {
     elements.summary.innerHTML = selectedNodeId
       ? `<strong>${graphNodes.length.toLocaleString()}</strong> nodes · tap background or Clear to deselect`
       : [
-          `<strong>${graphNodes.length.toLocaleString()}</strong> nodes · <strong>${graphLinks.length.toLocaleString()}</strong> co-authorship links · ${isCoarsePointer ? "pinch to zoom, drag background to pan" : "scroll to zoom, drag to pan"}`,
+          // `showing <strong>${graphNodes.length.toLocaleString()}</strong> nodes · <strong>${graphLinks.length.toLocaleString()}</strong> co-authorship links}`,
           thinningNote,
         ]
           .filter(Boolean)
