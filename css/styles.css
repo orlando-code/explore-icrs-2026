@@ -437,18 +437,13 @@ a.btn-small {
   margin: 0.65rem 0 0.35rem;
 }
 
-.network-contact-turnstile {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+.network-contact-email-action {
+  position: relative;
   width: 100%;
-  min-height: 65px;
-  margin-bottom: 0.45rem;
-  padding: 0;
-  border: none;
-  background: transparent;
-  overflow: visible;
-  transition: opacity 0.2s ease;
+}
+
+.network-contact-turnstile {
+  transition: opacity 0.2s ease, max-height 0.25s ease, margin 0.25s ease;
 }
 
 .network-contact-turnstile:empty {
@@ -457,15 +452,11 @@ a.btn-small {
 
 /* Keep the mount laid out while Turnstile loads — rendering into display:none
    (:empty) makes the widget fail immediately on mobile Safari. */
-.network-contact-email-gate--loading .network-contact-turnstile,
-.network-contact-email-gate--challenge .network-contact-turnstile,
-.network-contact-email-gate--ready .network-contact-turnstile,
-.network-contact-email-gate--failed .network-contact-turnstile {
+.network-contact-email-action--loading .network-contact-turnstile,
+.network-contact-email-action--challenge .network-contact-turnstile,
+.network-contact-email-action--ready .network-contact-turnstile,
+.network-contact-email-action--failed .network-contact-turnstile {
   display: flex !important;
-  overflow: visible;
-  min-height: 65px;
-  height: auto;
-  max-height: none;
   opacity: 1;
   pointer-events: auto;
 }
@@ -482,13 +473,21 @@ a.btn-small {
   display: none;
 }
 
-.network-contact-email-gate--loading .network-contact-show-email,
-.network-contact-email-gate--challenge .network-contact-show-email {
+.network-contact-email-action--ready .network-contact-turnstile-hint {
+  display: none;
+}
+
+.network-contact-email-action--loading .network-contact-show-email,
+.network-contact-email-action--challenge .network-contact-show-email {
   opacity: 0.55;
   cursor: wait;
 }
 
-.network-contact-email-gate--failed .network-contact-turnstile-hint {
+.network-contact-email-action--failed .network-contact-turnstile {
+  display: none;
+}
+
+.network-contact-email-action--failed .network-contact-turnstile-hint {
   color: #b42318;
 }
 
@@ -1583,7 +1582,8 @@ button:active {
 }
 
 .emissions-delegate-toggle,
-.emissions-distance-toggle {
+.emissions-distance-toggle,
+.map-delegate-toggle {
   margin: 0;
   font-size: 0.88rem;
 }
@@ -1854,6 +1854,70 @@ button:active {
   gap: 0.5rem;
   width: 100%;
   margin: 0;
+}
+
+.panel-help-dropdown,
+.emissions-offset-id-help {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.03);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.panel-help-dropdown[open],
+.emissions-offset-id-help[open] {
+  border-color: rgba(217, 95, 2, 0.35);
+  background: rgba(217, 95, 2, 0.06);
+}
+
+.panel-help-dropdown summary,
+.emissions-offset-id-help summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+
+.panel-help-dropdown summary::-webkit-details-marker,
+.emissions-offset-id-help summary::-webkit-details-marker {
+  display: none;
+}
+
+.panel-help-dropdown summary::before,
+.emissions-offset-id-help summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+.panel-help-dropdown[open] summary::before,
+.emissions-offset-id-help[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.panel-help-dropdown p,
+.emissions-offset-id-help p {
+  margin: 0.5rem 0 0;
+}
+
+.map-search-help {
+  margin-top: 0.15rem;
+  margin-bottom: 0;
+}
+
+#search-form.entry-form {
+  gap: 0.45rem;
+  padding-bottom: 0.55rem;
+}
+
+#search-form .status:empty {
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  display: none;
 }
 
 .emissions-offset-register-action {
@@ -3131,6 +3195,8 @@ button:active {
   html {
     overflow: auto;
     height: auto;
+    /* Block browser pinch-zoom on page text; maps/network use touch-action: none below. */
+    touch-action: manipulation;
   }
 
   body {
@@ -3138,6 +3204,28 @@ button:active {
     height: auto;
     min-height: 100dvh;
     display: block;
+    touch-action: pan-y;
+  }
+
+  .layout,
+  .panel,
+  .welcome-overlay,
+  .topbar,
+  .stage-stack > .hover-card.stage-detail-panel,
+  .network-sidebar-scroll,
+  #network-panel:not([hidden]),
+  .results-wrap,
+  .share-stage {
+    touch-action: pan-y;
+  }
+
+  .stage-canvas,
+  .network-stage-canvas,
+  #map,
+  #emissions-map,
+  .maplibregl-canvas-container,
+  .maplibregl-canvas {
+    touch-action: none;
   }
 
   .topbar {

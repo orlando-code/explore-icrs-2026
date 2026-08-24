@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
     <meta name="icrs-base-path" content="" />
     <meta
       name="icrs-canonical-url"
@@ -119,10 +122,23 @@
             <button class="btn-primary" type="submit">Search</button>
             <button class="btn-ghost" type="button" id="btn-clear-search">Clear</button>
           </div>
+          <details class="panel-help-dropdown map-search-help" id="map-search-help">
+            <summary> Spot a problem?</summary>
+            <p>
+              If something doesn't look right, please let me know at <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a>!
+            </p>
+          </details>
           <div id="search-status" class="status" aria-live="polite"></div>
         </form>
 
         <div class="stats-card" id="stats-card"></div>
+
+        <div class="emissions-headline-actions toggle-stack" id="map-delegate-toggle-wrap">
+          <label class="toggle-field map-delegate-toggle">
+            <input type="checkbox" id="map-include-non-speaking-delegates" checked />
+            <span>Include non-speaking delegates</span>
+          </label>
+        </div>
 
         <div class="network-legend" id="map-legend"></div>
 
@@ -294,6 +310,9 @@
         <div class="network-legend-stack">
           <div class="network-legend" id="network-legend-coauthorship"></div>
           <div class="network-sidebar-bars">
+            <div class="network-legend" id="network-legend-scale"></div>
+          </div>
+          <div class="network-sidebar-bars">
             <div class="results-header network-sidebar-bars-header">
               <h3>Most talks of current network view</h3>
             </div>
@@ -303,7 +322,6 @@
               aria-label="Talk count ranking for visible nodes"
             ></div>
           </div>
-          <div class="network-legend" id="network-legend-scale"></div>
         </div>
       </aside>
 
@@ -349,12 +367,12 @@
                 placeholder="Search your name…"
               />
               <div id="emissions-offset-suggestions" class="suggestions" role="listbox"></div>
-              <p class="emissions-offset-find-yourself">
-                <a href="#share-contact-title" data-open-share-contact>Can't find yourself / having issues?</a>
-              </p>
+              <!-- <p class="emissions-offset-find-yourself"> -->
+                <!-- <a href="#share-contact-title" data-open-share-contact>Can't find yourself / having issues?</a> -->
+              <!-- </p> -->
             </div>
             <div class="field emissions-offset-delegate-field" id="emissions-offset-delegate-field" hidden>
-              <label for="emissions-offset-delegate-id">Your delegate ID (from welcome email)</label>
+              <label for="emissions-offset-delegate-id">Your delegate ID (in teawa@conference.nz emails)</label>
               <input
                 id="emissions-offset-delegate-id"
                 name="delegate-id"
@@ -399,7 +417,13 @@
                   I've pledged
                 </button>
               </div>
-              <a class="btn-ghost" href="#share-contact-title" data-open-share-contact>Something wrong?</a>
+              <details class="panel-help-dropdown emissions-offset-id-help" id="emissions-offset-id-help">
+                <summary> Issues with your delegate ID?</summary>
+                <p>
+                  Your delegate ID is a 2-5 digit number provided on most emails from teawa@conference.nz. Due to some privacy measures or organisational quirks, yours might not show up. If you're having any issues registering your offset, please email me at <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a>.
+                </p>
+              </details>
+              <!-- <a class="btn-ghost" href="#share-contact-title" data-open-share-contact>Can't find yourself / having issues?</a> -->
             </div>
   
           </form>
@@ -690,7 +714,7 @@
               <h3 id="share-contact-title">Orlando Timmerman</h3>
               <p class="welcome-lead">
                 If you find an error, or have any suggestions or feedback, please contact me at
-                <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a>. I'd especially love to hear from you if you attended the conference but your name doesn't appear in the map/network/emissions search, or if your name appears in the wrong place! In the meantime, see <a href="#methods-panel" data-open-methods>Methods</a> for some explanations of why this might have happened.
+                <a href="mailto:rt582@cam.ac.uk">rt582@cam.ac.uk</a>.
               </p>
             </aside>
             <div class="share-qr-col">

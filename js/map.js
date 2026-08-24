@@ -788,8 +788,8 @@ export function createMapView(
               ];
             })();
       elements.legend.innerHTML = `
-        <h3>Point size · talks on author lists (log scale)</h3>
-        <p>Circle area scales with talks where this affiliation appears on the author list.</p>
+        <h3>Point size</h3>
+        <p>Circle area scales logarithmically with the number of talks on which this node appears.</p>
         ${samples
           .map(
             (sample) => `
