@@ -209,6 +209,7 @@ a.btn-small {
 
 .toggle-stack .toggle-field {
   width: 100%;
+  align-items: center;
 }
 
 .toggle-field input {
@@ -1533,6 +1534,22 @@ button:active {
 
 .stats-card strong {
   color: var(--ink);
+}
+
+.stats-card:has(+ .map-delegate-toggle-wrap:not([hidden])) {
+  padding-bottom: 0.55rem;
+  border-bottom: none;
+}
+
+.map-delegate-toggle-wrap {
+  margin: 0;
+  padding: 0.65rem 1.1rem 0.75rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.map-delegate-toggle-wrap[hidden] {
+  display: none;
 }
 
 .emissions-headline {
