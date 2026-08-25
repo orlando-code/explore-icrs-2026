@@ -232,6 +232,14 @@ def cmd_list_privacy(args: argparse.Namespace) -> None:
 
 
 def cmd_register_privacy(args: argparse.Namespace) -> None:
+    db_path = Path(_db_path()).resolve()
+    print(f"Database: {db_path}")
+    if db_path == (PROJECT_DATA / "offsets.db").resolve():
+        print(
+            "WARNING: using default data/offsets.db — set OFFSET_DB_PATH to your "
+            "downloaded Fly copy before registering, then push that same file."
+        )
+
     match = _resolve_privacy_delegate(
         args.id,
         args.first_name,
