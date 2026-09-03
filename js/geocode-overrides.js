@@ -56,6 +56,26 @@ export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = [
     115.8837242
   ],
   [
+    "Department of Environment and Natural Resources - Philippines",
+    14.65170514912507,
+    121.04508668477959
+  ],
+  [
+    "Department of Environment and Natural Resources - Philippines Philippines",
+    14.65170514912507,
+    121.04508668477959
+  ],
+  [
+    "Department of Environment and Natural Resources - Philippines Philippines, Philippines",
+    14.65170514912507,
+    121.04508668477959
+  ],
+  [
+    "Department of Environment and Natural Resources - Philippines, Philippines",
+    14.65170514912507,
+    121.04508668477959
+  ],
+  [
     "ENTROPIE",
     -20.8823,
     55.4504
