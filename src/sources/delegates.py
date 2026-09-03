@@ -764,7 +764,44 @@ def mark_delegate_speakers(delegates: pd.DataFrame) -> pd.DataFrame:
             candidate_norms = matches if candidate_norms is None else candidate_norms & matches
         if candidate_norms and len(candidate_norms) == 1:
             delegates.at[index, 'is_speaker'] = True
+    return _apply_registry_speaker_flags(delegates)
+
+def _truthy_speaker_flag(value: object) -> bool:
+    return str(value or '').strip().lower() in {'true', '1', 'yes'}
+
+def _apply_registry_speaker_flags(delegates: pd.DataFrame) -> pd.DataFrame:
+    """Mark delegates as speakers when the person registry links them to programme presenters."""
+    from src.data_paths import PERSON_REGISTRY_CSV
+    if not Path(PERSON_REGISTRY_CSV).exists():
+        return delegates
+    from src.registry.key_resolution import get_registry_key_resolver
+    resolver = get_registry_key_resolver()
+    delegates = delegates.copy()
+    for index, row in delegates.loc[~delegates['is_speaker']].iterrows():
+        name = str(row.get('full_name') or '').strip()
+        if not name:
+            continue
+        organisation, country = delegate_org_country_for_row(row)
+        from src.registry.affiliation_registry import _make_affiliation
+        affiliation = _make_affiliation(organisation, country) if organisation else organisation
+        person_key = resolver.resolve_person_key(name, affiliation=affiliation)
+        if not person_key:
+            continue
+        person = resolver.people_by_key.get(person_key)
+        if person is not None and _truthy_speaker_flag(person.get('is_speaker')):
+            delegates.at[index, 'is_speaker'] = True
     return delegates
+
+def _delegate_is_speaker(name: str, affiliation: str, *, delegate_flag: bool, person_key: str='', resolver: Any | None=None) -> bool:
+    if delegate_flag:
+        return True
+    if not resolver:
+        return False
+    key = person_key or resolver.resolve_person_key(name, affiliation=affiliation)
+    if not key:
+        return False
+    person = resolver.people_by_key.get(key)
+    return person is not None and _truthy_speaker_flag(person.get('is_speaker'))
 
 def delegate_list_groups(delegates: pd.DataFrame | None=None, *, show_progress: bool=False) -> list[dict[str, Any]]:
     """Group all delegate-list attendees by affiliation for the map site."""
@@ -797,7 +834,14 @@ def delegate_list_groups(delegates: pd.DataFrame | None=None, *, show_progress: 
         person_key = str(row.get('person_key') or '').strip()
         if not person_key:
             person_key = resolver.resolve_person_key(name, affiliation=affiliation)
-        group['delegates'].append({'name': name, 'search_text': ' '.join((part for part in (name, display, country) if part)).lower(), 'is_speaker': bool(row.get('is_speaker')), 'person_key': person_key})
+        is_speaker = _delegate_is_speaker(
+            name,
+            affiliation,
+            delegate_flag=bool(row.get('is_speaker')),
+            person_key=person_key,
+            resolver=resolver,
+        )
+        group['delegates'].append({'name': name, 'search_text': ' '.join((part for part in (name, display, country) if part)).lower(), 'is_speaker': is_speaker, 'person_key': person_key})
     for group in groups.values():
         group['delegates'].sort(key=lambda item: item['name'].casefold())
     return sorted(groups.values(), key=lambda item: item['affiliation'].casefold())
