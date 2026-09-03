@@ -830,7 +830,7 @@ def delegate_list_groups(delegates: pd.DataFrame | None=None, *, show_progress: 
         group = groups.setdefault(key, {'affiliation_key': key, 'affiliation': display, 'delegates': []})
         if len(display) > len(group['affiliation']):
             group['affiliation'] = display
-        country = str(row.get('country') or '').strip()
+        country = delegate_country_for_row(row)
         person_key = str(row.get('person_key') or '').strip()
         if not person_key:
             person_key = resolver.resolve_person_key(name, affiliation=affiliation)
