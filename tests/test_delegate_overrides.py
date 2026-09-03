@@ -328,3 +328,18 @@ class TestRepairMojibake:
 
     def test_empty(self, assert_eq):
         assert_eq(repair_mojibake(""), "", context="empty mojibake")
+
+
+class TestDelegateSpeakerExport:
+    def test_nickname_delegate_marked_speaker_via_registry(self, assert_eq):
+        from src.sources.delegates import delegate_list_groups, load_delegates
+
+        groups = delegate_list_groups(load_delegates())
+        sassa = next(
+            delegate
+            for group in groups
+            for delegate in group["delegates"]
+            if delegate["name"] == "Sassa Jordan"
+        )
+        assert_eq(sassa["is_speaker"], True, context="registry-linked presenter")
+        assert_eq(sassa["person_key"], "icrs-p-00866", context="person key")
