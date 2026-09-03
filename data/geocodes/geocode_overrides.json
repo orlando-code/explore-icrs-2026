@@ -452,5 +452,11 @@
     "latitude": 22.413334807841677, 
     "longitude": 39.10943754819546, 
     "query_used": "override:KAUST Coral Restoration Initiative"
+  },
+  "Department of Environment and Natural Resources - Philippines, Philippines": {
+    "geocode_level": "institute",
+    "latitude": 14.65170514912507, 
+    "longitude": 121.04508668477959, 
+    "query_used": "override:Department of Environment and Natural Resources - Philippines, Philippines"
   }
 }
