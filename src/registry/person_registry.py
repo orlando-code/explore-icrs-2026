@@ -20,6 +20,7 @@ from src.sources.delegates import (
     match_delegate_to_presenter_node,
     name_tokens,
     normalize_person_name,
+    PRESENTER_NODE_SEP,
     register_talk_presenters,
 )
 from src.registry.affiliation_registry import _make_affiliation
@@ -269,6 +270,25 @@ def load_registry_overrides(path: Path | str = DEFAULT_OVERRIDES_PATH) -> pd.Dat
     return frame.reindex(columns=columns, fill_value="")
 
 
+def _union_identity_nodes_for_norms(uf: _UnionFind, norms: set[str]) -> None:
+    """Union bare name nodes and presenter/delegate identity nodes for merged names."""
+    from src.sources.delegates import PRESENTER_NODE_SEP
+
+    matching: list[str] = []
+    for node in list(uf.parent):
+        name_norm = node.split(PRESENTER_NODE_SEP, 1)[0]
+        if name_norm in norms:
+            matching.append(node)
+    for norm in norms:
+        if norm in uf.parent:
+            matching.append(norm)
+    if len(matching) < 2:
+        return
+    root = uf.find(matching[0])
+    for node in matching[1:]:
+        uf.union(root, node)
+
+
 def _apply_registry_overrides(
     uf: _UnionFind,
     overrides: pd.DataFrame,
@@ -286,13 +306,18 @@ def _apply_registry_overrides(
         left_norm = normalize_person_name(left)
         right_norm = normalize_person_name(right)
         if action == "merge":
+            name_norms = {left_norm, right_norm}
             uf.find(left_norm)
             uf.find(right_norm)
             uf.union(left_norm, right_norm)
+            _union_identity_nodes_for_norms(uf, name_norms)
             canonical = str(row.get("canonical_name") or "").strip()
             if canonical:
-                key_to_canonical[left_norm] = canonical
-                key_to_canonical[right_norm] = canonical
+                for norm in name_norms:
+                    key_to_canonical[norm] = canonical
+                for node in list(uf.parent):
+                    if node.split(PRESENTER_NODE_SEP, 1)[0] in name_norms:
+                        key_to_canonical[node] = canonical
         elif action == "split":
             # Split is handled by preventing union; explicit pairs are documented only.
             continue
@@ -467,6 +492,8 @@ def build_person_registry(
             organisation = meta["organisation"]
             country = meta["country"]
             is_speaker = meta["is_speaker"]
+        if presenter_members:
+            is_speaker = True
 
         official_candidates = [
             (
