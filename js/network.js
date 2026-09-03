@@ -807,7 +807,7 @@ function profileForSpeakerName(label, speakerProfiles, profileByPersonKey) {
 function attendanceLabel(node) {
   if (node?.attended) return "attended";
   if (node?.on_programme) return "on programme, did not attend";
-  return "non-attending or private co-author";
+  return "non-presenting co-author";
 }
 
 function isExternalCoauthor(node) {
