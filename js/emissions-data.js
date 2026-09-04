@@ -14,8 +14,20 @@ export const EMISSIONS_DATA = {
       "enabled": true,
       "boundaries_path": "data/geography/country_boundaries.geojson",
       "min_cluster_size": 3,
-      "colour_low": "#d95f02",
-      "colour_high": "#2d8a4e",
+      "colour_palette": [
+        "#ff5117",
+        "#ff7547",
+        "#ff9c7a",
+        "#ffaf94",
+        "#ffc2ad",
+        "#dccf9d",
+        "#b7c384",
+        "#91b66a",
+        "#76ac3c",
+        "#5aa20d"
+      ],
+      "colour_low": "#ff5117",
+      "colour_high": "#5aa20d",
       "boundaries_source": "maplibre-demotiles",
       "territory_overlay_iso2": [
         "AS",

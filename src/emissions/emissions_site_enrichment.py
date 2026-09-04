@@ -11,6 +11,7 @@ from src.data_paths import (
     COUNTRY_BOUNDARIES_REL,
     DELEGATES_JSON,
 )
+from src.emissions.offset_palette import OFFSET_CHOROPLETH_META
 from src.emissions.origin_country import (
     country_from_affiliation,
     country_label,
@@ -304,11 +305,9 @@ def enrich_emissions_payload(payload: dict[str, Any]) -> dict[str, Any]:
 
     payload.setdefault("meta", {})
     payload["meta"]["offset_choropleth"] = {
-        "enabled": True,
+        **OFFSET_CHOROPLETH_META,
         "boundaries_path": COUNTRY_BOUNDARIES_REL,
         "min_cluster_size": 3,
-        "colour_low": "#d95f02",
-        "colour_high": "#2d8a4e",
         "boundaries_source": "maplibre-demotiles",
         "territory_overlay_iso2": territory_overlay_codes(active_countries),
     }

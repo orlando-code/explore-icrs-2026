@@ -275,7 +275,7 @@ async function initOffsetTurnstile(onStateChange) {
 
 const STATIC_REGISTRATIONS_URL = "data/offset-registrations.json";
 const POLL_INTERVAL_MS = 5_000;
-const OFFSET_GREEN = "#2d8a4e";
+const OFFSET_GREEN = "#5aa20d";
 function emptyAggregate() {
   return { counts: { speakers: {}, delegates: {} }, totals: { speakers: 0, delegates: 0 } };
 }

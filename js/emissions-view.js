@@ -20,12 +20,10 @@ import {
   pieSlicePolygon,
 } from "./offset-tracker.js";
 import { createMapCelebration } from "./celebration.js";
-import { createCountryChoropleth, mixChannel } from "./country-choropleth.js";
+import { createCountryChoropleth, colourForOffsetShare } from "./country-choropleth.js";
 import { OFFSET_AFFILIATION_SLICES, OFFSET_COUNTRY_CHOROPLETH } from "./config.js";
 
 const MAP_STYLE = "https://demotiles.maplibre.org/style.json";
-const PLEDGE_COLOUR_LOW = "#d95f02";
-const PLEDGE_COLOUR_HIGH = "#2d8a4e";
 const DEMO_BASEMAP_LAYERS_TO_HIDE = ["crimea-fill", "geolines", "geolines-label"];
 const MAX_ZOOM = 10;
 const FLIGHT_PREMIUM_ECONOMY_MULTIPLIER = 1.6;
@@ -674,7 +672,7 @@ export function createEmissionsView(
       elements.barChart.innerHTML = pledgerRows
         .map((row) => {
           const pledgedWidth = Math.max(row.proportion > 0 ? 4 : 0, row.proportion * 100);
-          const fillColour = mixChannel(PLEDGE_COLOUR_LOW, PLEDGE_COLOUR_HIGH, row.proportion);
+          const fillColour = colourForOffsetShare(row.proportion);
           const selected = isPledgerRowSelected(row);
           return `
           <button type="button" class="bar-row emissions-pledger-row${selected ? " selected" : ""}" data-cluster="${escapeHtml(row.clusterId)}"${row.origin_country ? ` data-country="${escapeHtml(row.origin_country)}"` : ""}>
@@ -1282,8 +1280,7 @@ export function createEmissionsView(
     if (useCountryChoropleth) {
       countryChoropleth = createCountryChoropleth(map, {
         boundariesPath: choroplethConfig.boundaries_path || "data/geography/country_boundaries.geojson",
-        colourLow: choroplethConfig.colour_low || "#d95f02",
-        colourHigh: choroplethConfig.colour_high || "#2d8a4e",
+        colourPalette: choroplethConfig.colour_palette,
         getIso3ToCluster: () => countryIso3ToCluster,
         getCountryToCluster: () => countryToCluster,
         getClusterLabels: () => countryClusterLabels,
