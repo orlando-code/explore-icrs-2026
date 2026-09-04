@@ -281,16 +281,14 @@ def _affiliation_location_records(df: pd.DataFrame, *, lat_col: str='latitude', 
 def _delegate_affiliation_by_person_key(delegates_path: str | Path=DELEGATES_JSON) -> dict[str, str]:
     """Map registry person_key to affiliation from the official delegate list."""
     from src.geocoding.geocode import affiliation_display_name
-    from src.sources.delegates import delegate_person_key
+    from src.sources.delegates import delegate_affiliation_for_row, delegate_person_key, load_delegates
     path = Path(delegates_path)
     if not path.exists():
         return {}
-    with path.open(encoding='utf-8') as handle:
-        payload = json.load(handle)
     mapping: dict[str, str] = {}
-    for delegate in payload.get('delegates', []):
-        name = str(delegate.get('full_name') or '').strip()
-        affiliation = str(delegate.get('affiliation') or '').strip()
+    for _, row in load_delegates(json_path=path).iterrows():
+        name = str(row.get('full_name') or '').strip()
+        affiliation = delegate_affiliation_for_row(row)
         if not name or not affiliation:
             continue
         display = affiliation_display_name(affiliation) or affiliation

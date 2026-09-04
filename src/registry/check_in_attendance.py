@@ -17,7 +17,7 @@ from src.data_paths import (
     REGISTRY,
 )
 from src.registry.affiliation_registry import _make_affiliation
-from src.sources.delegates import normalize_person_name
+from src.sources.delegates import country_override_for_row, normalize_person_name
 
 DEFAULT_CHECK_IN_PATH = CHECK_IN_DELEGATES_CSV
 DEFAULT_CHECK_IN_EDITABLE_PATH = CHECK_IN_DELEGATES_EDITABLE_CSV
@@ -394,7 +394,8 @@ def apply_check_in_attendance(
             checked_in_keys.add(person_key)
             privacy_by_key[person_key] = privacy_flag
             organisation = str(row.get("organisation") or "").strip()
-            country = str(row.get("country") or "").strip()
+            canonical_name = str(registry_by_key[person_key].get("canonical_name") or "").strip()
+            country = _check_in_country_for_person(row, canonical_name=canonical_name)
             if organisation or country:
                 mask = registry["person_key"].astype(str).eq(person_key)
                 if organisation:
@@ -413,8 +414,8 @@ def apply_check_in_attendance(
         metrics["check_in_new_people"] += 1
 
         organisation = str(row.get("organisation") or "").strip()
-        country = str(row.get("country") or "").strip()
         canonical_name = display_name or f"Check-in delegate {int(row['ID'])}"
+        country = _check_in_country_for_person(row, canonical_name=canonical_name)
         new_rows.append(
             {
                 "person_key": person_key,
@@ -523,9 +524,26 @@ def load_privacy_restricted_person_keys(
     return frozenset(registry.loc[mask, "person_key"].astype(str).str.strip())
 
 
+def _check_in_full_name(row: pd.Series, *, canonical_name: str = "") -> str:
+    first = str(row.get("first name") or row.get("first_name") or "").strip()
+    last = str(row.get("last name") or row.get("last_name") or "").strip()
+    return f"{first} {last}".strip() or str(canonical_name or "").strip()
+
+
+def _check_in_country_for_person(row: pd.Series, *, canonical_name: str = "") -> str:
+    """Country from check-in, unless a delegate org override fixes geocoding."""
+    country = str(row.get("country") or "").strip()
+    full_name = _check_in_full_name(row, canonical_name=canonical_name)
+    if full_name:
+        override = country_override_for_row({"full_name": full_name, "presenter": full_name})
+        if override:
+            return override
+    return country
+
+
 def check_in_affiliation(row: pd.Series) -> str:
     organisation = str(row.get("organisation") or "").strip()
-    country = str(row.get("country") or "").strip()
+    country = _check_in_country_for_person(row)
     if organisation and country:
         return _make_affiliation(organisation, country)
     if organisation:
