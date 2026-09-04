@@ -826,8 +826,7 @@ function defaultNodeFill(node) {
 
 function authorContextFor(node, profile) {
   const role = node?.author_role || profile?.profile_role || null;
-  const affiliationExplicit =
-    node?.affiliation_explicit ?? profile?.affiliation_explicit ?? Boolean(profile);
+  const affiliationExplicit = Boolean(node?.affiliation_explicit);
   return { role, affiliationExplicit };
 }
 
@@ -842,22 +841,15 @@ function profileStatusLabel({ role, affiliationExplicit, hasProfile }) {
   if (role === "presenter" && !affiliationExplicit) {
     return "Without a confirmed affiliation";
   }
-  if (role === "co_author" && !affiliationExplicit) {
-    return "Inferred affiliation only";
-  }
   if (role === "co_author") {
     return "No looked-up profile";
   }
   return "";
 }
 
-function affiliationNote({ role, affiliationExplicit, affiliation }) {
-  if (!affiliation) return "";
-  if (affiliationExplicit) return affiliation;
-  if (role === "co_author") {
-    return `${affiliation} (inferred from a presenting author's talk)`;
-  }
-  return `${affiliation} (inferred)`;
+function affiliationNote({ affiliationExplicit, affiliation }) {
+  if (!affiliation || !affiliationExplicit) return "";
+  return affiliation;
 }
 
 function buildAffiliationSearchIndex(locations) {
@@ -1210,7 +1202,6 @@ export function createNetworkView(siteData, elements) {
       if (showAffiliation) {
         parts.push(
           affiliationNote({
-            role,
             affiliationExplicit: context.affiliationExplicit,
             affiliation: node.affiliation,
           })

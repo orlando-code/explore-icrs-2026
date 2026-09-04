@@ -113,3 +113,45 @@ class TestApplyCheckInPrivacyRelease:
         assert_eq(str(person["privacy_restricted"]).lower(), "false", context="privacy cleared")
         assert_eq(metrics["privacy_released_attendees"], 1)
         assert "theresa rueger" in set(updated_aliases["normalized_name"].astype(str))
+
+    def test_check_in_overrides_delegate_list_affiliation(self, tmp_path, assert_eq):
+        check_in = tmp_path / "check_in.csv"
+        check_in.write_text(
+            "ID,first name,last name,privacy,organisation,country\n"
+            "17604,Julian,Lilkendey,FALSE,Auckland University of Technology (AUT),New Zealand\n",
+            encoding="utf-8",
+        )
+        registry = pd.DataFrame(
+            [
+                {
+                    "person_key": "icrs-p-01022",
+                    "canonical_name": "Dr Julian Lilkendey",
+                    "organisation": "Leibniz Centre for Tropical Marine Research",
+                    "country": "New Zealand",
+                    "in_delegate_list": True,
+                    "in_programme": True,
+                    "attended": False,
+                    "is_speaker": True,
+                    "name_variants": "Dr Julian Lilkendey",
+                    "needs_review": False,
+                    "review_reason": "",
+                }
+            ]
+        )
+        aliases = pd.DataFrame(columns=["person_key", "name_variant", "normalized_name", "source"])
+        official_ids = tmp_path / "official_ids.csv"
+        official_ids.write_text(
+            "person_key,official_delegate_id\nicrs-p-01022,17604\n",
+            encoding="utf-8",
+        )
+
+        updated, _, metrics = apply_check_in_attendance(
+            registry,
+            aliases,
+            check_in_path=check_in,
+            official_ids_path=official_ids,
+        )
+        person = updated.loc[updated["person_key"].eq("icrs-p-01022")].iloc[0]
+        assert_eq(person["organisation"], "Auckland University of Technology (AUT)")
+        assert_eq(str(person["checked_in"]).lower(), "true")
+        assert_eq(metrics["check_in_matched"], 1)

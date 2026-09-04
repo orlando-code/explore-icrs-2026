@@ -898,11 +898,11 @@ export function createOffsetTracker({
 
       let message;
       if (payload.pending) {
-        message = `Thanks, ${attendee.name}! Your offset is logged and will be counted once checked.`;
+        message = `Thanks, ${attendee.name}! Your contribution is logged and will be counted once verified.`;
       } else if (accepted) {
         message = payload.reactivated
-          ? `Thanks, ${attendee.name}! Your offset is registered again.`
-          : `Thanks, ${attendee.name}! Your offset is registered.`;
+          ? `Thanks, ${attendee.name}! Your contribution is registered again.`
+          : `Thanks, ${attendee.name}! Your contribution is registered.`;
       } else {
         message = `${attendee.name} is already registered on the server.`;
       }

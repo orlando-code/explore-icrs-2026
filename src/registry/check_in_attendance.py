@@ -359,36 +359,13 @@ def apply_check_in_attendance(
         registry["attended"] = False
         return registry, aliases, metrics
 
-    official_ids = (
-        pd.read_csv(official_ids_path, dtype=str).fillna("")
-        if Path(official_ids_path).exists()
-        else pd.DataFrame(columns=["person_key", "official_delegate_id"])
-    )
-    id_to_person_key = {
-        str(row["official_delegate_id"]).strip(): str(row["person_key"]).strip()
-        for _, row in official_ids.iterrows()
-        if str(row.get("official_delegate_id") or "").strip()
-        and str(row.get("person_key") or "").strip()
-    }
-
     registry = registry.copy()
     if "official_delegate_id" not in registry.columns:
         registry["official_delegate_id"] = ""
 
-    registry_by_key = {
-        str(row["person_key"]): row for _, row in registry.iterrows()
-    }
-    registry_by_name_org: dict[tuple[str, str], str] = {}
-    registry_by_org_first: dict[tuple[str, str], str] = {}
-    for _, person in registry.iterrows():
-        person_key = str(person["person_key"])
-        org_key = _normalize_org(person.get("organisation"))
-        canonical_norm = normalize_person_name(str(person.get("canonical_name") or ""))
-        if org_key and canonical_norm:
-            registry_by_name_org.setdefault((canonical_norm, org_key), person_key)
-        first_token = canonical_norm.split()[0] if canonical_norm else ""
-        if org_key and first_token:
-            registry_by_org_first.setdefault((first_token, org_key), person_key)
+    id_to_person_key, registry_by_key, registry_by_name_org, registry_by_org_first = (
+        _registry_match_indexes(registry, official_ids_path=official_ids_path)
+    )
 
     checked_in_keys: set[str] = set()
     privacy_by_key: dict[str, bool] = {}
@@ -416,6 +393,14 @@ def apply_check_in_attendance(
         if person_key:
             checked_in_keys.add(person_key)
             privacy_by_key[person_key] = privacy_flag
+            organisation = str(row.get("organisation") or "").strip()
+            country = str(row.get("country") or "").strip()
+            if organisation or country:
+                mask = registry["person_key"].astype(str).eq(person_key)
+                if organisation:
+                    registry.loc[mask, "organisation"] = organisation
+                if country:
+                    registry.loc[mask, "country"] = country
             if _is_privacy_released(row.get("privacy")) and display_name:
                 released_names[person_key] = display_name
             metrics["check_in_matched"] += 1
@@ -546,3 +531,74 @@ def check_in_affiliation(row: pd.Series) -> str:
     if organisation:
         return organisation
     return ""
+
+
+def _registry_match_indexes(
+    registry: pd.DataFrame,
+    *,
+    official_ids_path: Path | str = PERSON_OFFICIAL_IDS_CSV,
+) -> tuple[dict[str, str], dict[str, pd.Series], dict[tuple[str, str], str], dict[tuple[str, str], str]]:
+    """Build lookup tables used to match check-in rows to registry person keys."""
+    official_ids = (
+        pd.read_csv(official_ids_path, dtype=str).fillna("")
+        if Path(official_ids_path).exists()
+        else pd.DataFrame(columns=["person_key", "official_delegate_id"])
+    )
+    id_to_person_key = {
+        str(row["official_delegate_id"]).strip(): str(row["person_key"]).strip()
+        for _, row in official_ids.iterrows()
+        if str(row.get("official_delegate_id") or "").strip()
+        and str(row.get("person_key") or "").strip()
+    }
+    registry_by_key = {
+        str(row["person_key"]): row for _, row in registry.iterrows()
+    }
+    registry_by_name_org: dict[tuple[str, str], str] = {}
+    registry_by_org_first: dict[tuple[str, str], str] = {}
+    for _, person in registry.iterrows():
+        person_key = str(person["person_key"])
+        org_key = _normalize_org(person.get("organisation"))
+        canonical_norm = normalize_person_name(str(person.get("canonical_name") or ""))
+        if org_key and canonical_norm:
+            registry_by_name_org.setdefault((canonical_norm, org_key), person_key)
+        first_token = canonical_norm.split()[0] if canonical_norm else ""
+        if org_key and first_token:
+            registry_by_org_first.setdefault((first_token, org_key), person_key)
+    return id_to_person_key, registry_by_key, registry_by_name_org, registry_by_org_first
+
+
+def check_in_affiliation_by_person_key(
+    registry: pd.DataFrame | None = None,
+    *,
+    check_in_path: Path | str | None = None,
+    official_ids_path: Path | str = PERSON_OFFICIAL_IDS_CSV,
+) -> dict[str, str]:
+    """Map person_key to affiliation from Innovators check-in (preferred over delegate list)."""
+    from src.geocoding.geocode import affiliation_display_name
+    from src.registry.person_registry import DEFAULT_REGISTRY_PATH, load_person_registry
+
+    check_in = load_check_in_attendees(check_in_path)
+    if check_in.empty:
+        return {}
+    if registry is None:
+        registry = load_person_registry(DEFAULT_REGISTRY_PATH)
+    id_to_person_key, registry_by_key, registry_by_name_org, registry_by_org_first = (
+        _registry_match_indexes(registry, official_ids_path=official_ids_path)
+    )
+    mapping: dict[str, str] = {}
+    for _, row in check_in.iterrows():
+        person_key = _match_check_in_row(
+            row,
+            id_to_person_key=id_to_person_key,
+            registry_by_key=registry_by_key,
+            registry_by_name_org=registry_by_name_org,
+            registry_by_org_first=registry_by_org_first,
+        )
+        if not person_key or person_key not in registry_by_key:
+            continue
+        affiliation = check_in_affiliation(row)
+        if not affiliation:
+            continue
+        display = affiliation_display_name(affiliation) or affiliation
+        mapping[person_key] = display
+    return mapping
