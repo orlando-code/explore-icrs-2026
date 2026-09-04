@@ -156,6 +156,48 @@ class TestApplyCheckInPrivacyRelease:
         assert_eq(str(person["checked_in"]).lower(), "true")
         assert_eq(metrics["check_in_matched"], 1)
 
+    def test_delegate_country_override_wins_over_check_in_nationality(self, tmp_path, assert_eq):
+        check_in = tmp_path / "check_in.csv"
+        check_in.write_text(
+            "ID,first name,last name,privacy,organisation,country\n"
+            "11043,Novia,Kayfetz-Vuong,FALSE,Lingnan University,United States\n",
+            encoding="utf-8",
+        )
+        registry = pd.DataFrame(
+            [
+                {
+                    "person_key": "icrs-p-00891",
+                    "canonical_name": "Novia Kayfetz-Vuong",
+                    "organisation": "Lingnan University",
+                    "country": "United States",
+                    "in_delegate_list": True,
+                    "in_programme": True,
+                    "attended": False,
+                    "is_speaker": True,
+                    "name_variants": "Novia Kayfetz-Vuong",
+                    "needs_review": False,
+                    "review_reason": "",
+                }
+            ]
+        )
+        aliases = pd.DataFrame(columns=["person_key", "name_variant", "normalized_name", "source"])
+        official_ids = tmp_path / "official_ids.csv"
+        official_ids.write_text(
+            "person_key,official_delegate_id\nicrs-p-00891,11043\n",
+            encoding="utf-8",
+        )
+
+        updated, _, metrics = apply_check_in_attendance(
+            registry,
+            aliases,
+            check_in_path=check_in,
+            official_ids_path=official_ids,
+        )
+        person = updated.loc[updated["person_key"].eq("icrs-p-00891")].iloc[0]
+        assert_eq(person["organisation"], "Lingnan University")
+        assert_eq(person["country"], "Hong Kong")
+        assert_eq(metrics["check_in_matched"], 1)
+
     def test_placeholder_organisation_affiliation_is_country_only(self, assert_eq):
         from src.registry.affiliation_registry import _make_affiliation
         from src.sources.delegates import delegate_affiliation_for_row

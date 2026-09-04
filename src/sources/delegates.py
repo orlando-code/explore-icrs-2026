@@ -722,7 +722,7 @@ def parse_delegate_layout_text(text: str) -> pd.DataFrame:
         return pd.DataFrame(columns=['first_name', 'last_name', 'organisation', 'country', 'full_name', 'affiliation'])
     df = pd.DataFrame(records)
     df['full_name'] = (df['first_name'].str.strip() + ' ' + df['last_name'].str.strip()).str.strip()
-    df = normalize_delegate_records(df, apply_overrides=False)
+    df = normalize_delegate_records(df, apply_overrides=True)
     df['country_code'] = df['country'].map(country_to_iso2)
     return df
 
@@ -731,11 +731,11 @@ def load_delegates(*, pdf_path: Path=DEFAULT_DELEGATE_PDF_PATH, json_path: Path=
     json_path = Path(json_path)
     if json_path.exists() and (not refresh) and (not pdf_path.exists() or json_path.stat().st_mtime >= pdf_path.stat().st_mtime):
         payload = load_json(json_path)
-        return normalize_delegate_records(pd.DataFrame(payload['delegates']), apply_overrides=False)
+        return normalize_delegate_records(pd.DataFrame(payload['delegates']), apply_overrides=True)
     if not pdf_path.exists():
         if json_path.exists():
             payload = load_json(json_path)
-            return normalize_delegate_records(pd.DataFrame(payload['delegates']), apply_overrides=False)
+            return normalize_delegate_records(pd.DataFrame(payload['delegates']), apply_overrides=True)
         raise FileNotFoundError(f'Delegate PDF not found: {pdf_path}. Place the list PDF there or keep {json_path} up to date.')
     text = extract_layout_text(pdf_path, refresh=refresh)
     delegates = parse_delegate_layout_text(text)
