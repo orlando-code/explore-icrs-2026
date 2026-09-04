@@ -456,8 +456,16 @@
 
         <div class="network-legend" id="emissions-legend"></div>
 
-        <div class="results-header">
-          <h3>Top emitters</h3>
+        <div class="results-header emissions-bar-header">
+          <h3 id="emissions-bar-chart-title">Top emitters</h3>
+          <button
+            type="button"
+            class="emissions-chart-mode-btn"
+            id="emissions-pledgers-toggle"
+            aria-pressed="false"
+          >
+            Top pledgers
+          </button>
         </div>
         <div class="results-wrap network-sidebar-scroll">
           <div class="network-bar-chart" id="emissions-bar-chart"></div>

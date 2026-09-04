@@ -194,6 +194,7 @@ const els = {
   emissionsModeBreakdown: $("emissions-mode-breakdown"),
   emissionsLegend: $("emissions-legend"),
   emissionsBarChart: $("emissions-bar-chart"),
+  emissionsBarChartTitle: $("emissions-bar-chart-title"),
   emissionsResults: $("emissions-results"),
   emissionsResultsTitle: $("emissions-results-title"),
   emissionsAssumptions: $("emissions-assumptions"),
@@ -205,6 +206,7 @@ const els = {
   emissionsHoverMeta: $("emissions-hover-meta"),
   includeNonSpeakingDelegates: $("include-non-speaking-delegates"),
   emissionsDistanceToggle: $("emissions-distance-toggle"),
+  emissionsPledgersToggle: $("emissions-pledgers-toggle"),
   tabButtons: [...document.querySelectorAll("[data-tab]")],
   networkModeButtons: [...document.querySelectorAll("[data-network-mode]")],
   emissionsModeButtons: [...document.querySelectorAll("[data-emissions-mode]")],
@@ -416,6 +418,8 @@ const emissionsView = createEmissionsView(EMISSIONS_DATA, SITE_DATA, {
   modeBreakdown: els.emissionsModeBreakdown,
   legend: els.emissionsLegend,
   barChart: els.emissionsBarChart,
+  barChartTitle: els.emissionsBarChartTitle,
+  pledgersToggle: els.emissionsPledgersToggle,
   results: els.emissionsResults,
   resultsTitle: els.emissionsResultsTitle,
   assumptions: els.emissionsAssumptions,
@@ -595,6 +599,13 @@ els.emissionsModeButtons.forEach((button) => {
 if (els.emissionsDistanceToggle) {
   els.emissionsDistanceToggle.addEventListener("change", (event) => {
     emissionsView.setDistanceMode(event.target.checked);
+  });
+}
+
+if (els.emissionsPledgersToggle) {
+  els.emissionsPledgersToggle.addEventListener("click", () => {
+    const enabled = els.emissionsPledgersToggle.getAttribute("aria-pressed") !== "true";
+    emissionsView.setTopPledgersMode(enabled);
   });
 }
 

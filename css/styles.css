@@ -2252,6 +2252,70 @@ button:active {
   cursor: pointer;
 }
 
+.emissions-bar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+
+.emissions-bar-header h3 {
+  flex: 1;
+  min-width: 0;
+}
+
+.emissions-chart-mode-btn {
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.62rem;
+  cursor: pointer;
+}
+
+.emissions-chart-mode-btn:hover {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+}
+
+.emissions-chart-mode-btn[aria-pressed="true"] {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+}
+
+.emissions-pledger-fill {
+  /* Colour set inline from pledge proportion (orange → green). */
+}
+
+.emissions-pledger-row.selected .emissions-pledger-fill {
+  filter: brightness(0.92);
+}
+
+.emissions-pledger-row {
+  grid-template-columns: 1fr;
+  cursor: pointer;
+}
+
+.emissions-pledger-row .bar-track,
+.emissions-pledger-row .emissions-pledger-track {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+}
+
+.emissions-pledger-row .bar-count,
+.emissions-pledger-row .emissions-pledger-annotation {
+  grid-column: 1;
+  grid-row: 3;
+  white-space: nowrap;
+}
+
 .emissions-assumptions {
   margin-top: 0.75rem;
   padding: 0.75rem 0.65rem 0;
