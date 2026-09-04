@@ -20,10 +20,12 @@ import {
   pieSlicePolygon,
 } from "./offset-tracker.js";
 import { createMapCelebration } from "./celebration.js";
-import { createCountryChoropleth } from "./country-choropleth.js";
+import { createCountryChoropleth, mixChannel } from "./country-choropleth.js";
 import { OFFSET_AFFILIATION_SLICES, OFFSET_COUNTRY_CHOROPLETH } from "./config.js";
 
 const MAP_STYLE = "https://demotiles.maplibre.org/style.json";
+const PLEDGE_COLOUR_LOW = "#d95f02";
+const PLEDGE_COLOUR_HIGH = "#2d8a4e";
 const DEMO_BASEMAP_LAYERS_TO_HIDE = ["crimea-fill", "geolines", "geolines-label"];
 const MAX_ZOOM = 10;
 const FLIGHT_PREMIUM_ECONOMY_MULTIPLIER = 1.6;
@@ -112,6 +114,7 @@ export function createEmissionsView(
 
   const auckland = siteData.meta.auckland;
   let rankMode = "affiliation";
+  let topPledgersMode = false;
   let distanceMode = false;
   let selectedId = null;
   let selectedCountry = null;
@@ -558,14 +561,141 @@ export function createEmissionsView(
       .join("");
 
     elements.legend.innerHTML = `
-      <h3>Point size · ltravel CO₂e (log scale)</h3>
+      <h3>Point size · travel CO₂e (log scale)</h3>
       <p class="legend-intro">Return-trip estimates per affiliation (flights unless already based in Auckland). We assume economy flights for international travellers; premium economy and business class are roughly <strong>${premiumEconomyMultLabel}×</strong> and <strong>${businessMultLabel}×</strong> higher respectively.</p>
       ${sampleRows}
       <p class="legend-note">Click a bar or map point to show the route to Auckland, or toggle routes for all affiliations.</p>
     `;
   }
 
+  function formatProportion(value) {
+    if (value >= 0.995) return "100%";
+    if (value > 0 && value < 0.005) return "<1%";
+    return `${Math.round(value * 100)}%`;
+  }
+
+  function primaryCountryForCluster(clusterId) {
+    if (!clusterId) return null;
+    for (const [iso2, mappedClusterId] of Object.entries(countryToCluster)) {
+      if (mappedClusterId === clusterId) return iso2;
+    }
+    return null;
+  }
+
+  function formatPledgeTonnes(kg) {
+    const tonnes = Number(kg) / 1000;
+    if (!Number.isFinite(tonnes) || tonnes <= 0) return "0";
+    if (tonnes >= 100) {
+      return Math.round(tonnes).toLocaleString();
+    }
+    if (tonnes >= 10) {
+      return Math.round(tonnes).toLocaleString();
+    }
+    return tonnes.toLocaleString(undefined, { maximumFractionDigits: 1 });
+  }
+
+  function formatPledgerAnnotation(row) {
+    const pledged = formatPledgeTonnes(row.pledged_co2e_kg);
+    const total = formatPledgeTonnes(row.co2e_kg);
+    return `${formatProportion(row.proportion)} pledged · ${pledged} / ${total} t`;
+  }
+
+  function buildPledgerRows() {
+    if (!offsetTracker?.emissionsPledgeForCluster) return [];
+
+    const clusterIds = new Set();
+    for (const row of byCountry) {
+      const iso2 = String(row.origin_country || "").trim().toUpperCase();
+      if (!iso2) continue;
+      clusterIds.add(countryToCluster[iso2] || `cluster-${iso2}`);
+    }
+    for (const attendee of currentAttendees()) {
+      if (attendee.country_cluster_id) clusterIds.add(attendee.country_cluster_id);
+    }
+
+    const rows = [];
+    for (const clusterId of clusterIds) {
+      const { totalCo2e, pledgedCo2e, proportion } =
+        offsetTracker.emissionsPledgeForCluster(clusterId);
+      if (!totalCo2e) continue;
+      const label =
+        countryClusterLabels[clusterId] ||
+        countryLabel(primaryCountryForCluster(clusterId) || clusterId.replace(/^cluster-/, ""));
+      rows.push({
+        clusterId,
+        label,
+        co2e_kg: totalCo2e,
+        pledged_co2e_kg: pledgedCo2e,
+        proportion,
+        origin_country: primaryCountryForCluster(clusterId),
+      });
+    }
+
+    return rows.sort((left, right) => {
+      if (right.proportion !== left.proportion) {
+        return right.proportion - left.proportion;
+      }
+      return right.co2e_kg - left.co2e_kg;
+    });
+  }
+
+  function isPledgerRowSelected(row) {
+    if (!selectedCountry || !row?.clusterId) return false;
+    return countryToCluster[selectedCountry] === row.clusterId;
+  }
+
+  function renderBarChartHeader() {
+    if (elements.barChartTitle) {
+      elements.barChartTitle.textContent = topPledgersMode
+        ? "Top pledgers"
+        : "Top emitters";
+    }
+    if (elements.pledgersToggle) {
+      elements.pledgersToggle.textContent = topPledgersMode
+        ? "Top emitters"
+        : "Top pledgers";
+      elements.pledgersToggle.setAttribute(
+        "aria-pressed",
+        topPledgersMode ? "true" : "false"
+      );
+      elements.pledgersToggle.setAttribute(
+        "aria-label",
+        topPledgersMode
+          ? "Show top emitters by travel emissions"
+          : "Show share of each country's travel emissions covered by offset pledges"
+      );
+    }
+  }
+
   function renderBarChart() {
+    renderBarChartHeader();
+    if (topPledgersMode) {
+      const pledgerRows = buildPledgerRows().slice(0, 15);
+      elements.barChart.innerHTML = pledgerRows
+        .map((row) => {
+          const pledgedWidth = Math.max(row.proportion > 0 ? 4 : 0, row.proportion * 100);
+          const fillColour = mixChannel(PLEDGE_COLOUR_LOW, PLEDGE_COLOUR_HIGH, row.proportion);
+          const selected = isPledgerRowSelected(row);
+          return `
+          <button type="button" class="bar-row emissions-pledger-row${selected ? " selected" : ""}" data-cluster="${escapeHtml(row.clusterId)}"${row.origin_country ? ` data-country="${escapeHtml(row.origin_country)}"` : ""}>
+            <span class="bar-label">${escapeHtml(row.label)}</span>
+            <div class="bar-track emissions-pledger-track"><div class="bar-fill emissions-pledger-fill" style="width:${pledgedWidth}%;background:${fillColour}"></div></div>
+            <span class="bar-count emissions-pledger-annotation">${escapeHtml(formatPledgerAnnotation(row))}</span>
+          </button>`;
+        })
+        .join("");
+
+      elements.barChart.querySelectorAll("button[data-cluster]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const iso2 = button.dataset.country;
+          if (iso2) {
+            selectCountry(iso2, { fly: true, toggle: true });
+          }
+        });
+      });
+      return;
+    }
+
     if (rankMode === "affiliation") {
       const maxValue = rankings[0]?.co2e_kg || 1;
       elements.barChart.innerHTML = rankings
@@ -1054,6 +1184,16 @@ export function createEmissionsView(
     upsertMapData();
   }
 
+  function setTopPledgersMode(enabled) {
+    topPledgersMode = Boolean(enabled);
+    selectedId = null;
+    selectedCountry = null;
+    hoveredId = null;
+    renderHoverCard(null);
+    renderBarChart();
+    upsertMapData();
+  }
+
   function setDistanceMode(enabled) {
     distanceMode = Boolean(enabled);
     upsertMapData();
@@ -1147,7 +1287,8 @@ export function createEmissionsView(
         getIso3ToCluster: () => countryIso3ToCluster,
         getCountryToCluster: () => countryToCluster,
         getClusterLabels: () => countryClusterLabels,
-        getClusterShare: (clusterId) => offsetTracker?.offsetShareForCluster(clusterId) || 0,
+        getClusterShare: (clusterId) =>
+          offsetTracker?.offsetEmissionsShareForCluster(clusterId) || 0,
         getTerritoryOverlayIso2: () => choroplethConfig.territory_overlay_iso2 || [],
         beforeLayerId: "distance-lines-visible",
       });
@@ -1280,10 +1421,15 @@ export function createEmissionsView(
     getHeadline: () => headline,
     getDelegateMeta: () => delegateMeta,
     getPool: () => (includeNonSpeakers ? "delegates" : "speakers"),
+    getLocationMeta: (locationId) => {
+      const location = locationById(locationId);
+      return { travel_attendees: location?.travel_attendees || 1 };
+    },
     isSpeakerAttendee,
     onChange: () => {
       scheduleMapUpdate();
       renderOffsetChoroplethLegend();
+      if (topPledgersMode) renderBarChart();
     },
     onRegisterSuccess: celebrateOffsetRegistration,
   });
@@ -1294,6 +1440,7 @@ export function createEmissionsView(
 
   return {
     setRankMode,
+    setTopPledgersMode,
     setDistanceMode,
     setIncludeNonSpeakers,
     hasDelegatePool,

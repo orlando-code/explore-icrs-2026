@@ -491,7 +491,7 @@ export function createCountryChoropleth(map, options = {}) {
     if (!visible) hideTooltip();
   }
 
-  function renderLegend(container, { title = "Regional pledge progress" } = {}) {
+  function renderLegend(container, { title = "Pledge coverage by emissions" } = {}) {
     if (!container) return;
     container.insertAdjacentHTML(
       "beforeend",
@@ -501,9 +501,9 @@ export function createCountryChoropleth(map, options = {}) {
         <div class="offset-choropleth-gradient" style="background: linear-gradient(to right, ${colourLow}, ${colourHigh})"></div>
         <div class="offset-choropleth-labels">
           <span>None pledged</span>
-          <span>All pledged!</span>
+          <span>All emissions pledged</span>
         </div>
-        <p class="legend-note">Each shaded region represents at least three delegates.</p>
+        <p class="legend-note">Colour shows the share of each region's travel emissions covered by offset pledges.</p>
       </div>`
     );
   }

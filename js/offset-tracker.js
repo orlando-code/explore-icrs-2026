@@ -430,6 +430,7 @@ export function createOffsetTracker({
   getHeadline,
   getDelegateMeta,
   getPool,
+  getLocationMeta,
   isSpeakerAttendee,
   onChange,
   onRegisterSuccess,
@@ -451,6 +452,7 @@ export function createOffsetTracker({
   let offsetCountByAffiliation = new Map();
   let clusterAttendeeCounts = new Map();
   let clusterOffsetCounts = new Map();
+  let clusterEmissionsPledgeById = new Map();
   const pendingRegistrationIds = new Set();
 
   function activePool() {
@@ -494,6 +496,34 @@ export function createOffsetTracker({
         clusterOffsetCounts.set(clusterId, (clusterOffsetCounts.get(clusterId) || 0) + allocated);
       }
     }
+    rebuildClusterEmissionsPledges();
+  }
+
+  function rebuildClusterEmissionsPledges() {
+    const totals = new Map();
+    const pledged = new Map();
+    for (const attendee of attendees) {
+      const clusterId = attendee.country_cluster_id;
+      if (!clusterId) continue;
+      const co2e = Number(attendee.co2e_kg) || 0;
+      if (!co2e) continue;
+      totals.set(clusterId, (totals.get(clusterId) || 0) + co2e);
+      const meta = getLocationMeta?.(attendee.location_id) || {};
+      const travelAttendees = Number(meta.travel_attendees) || 1;
+      const share =
+        offsetShareForLocation(attendee.location_id, travelAttendees, attendee.affiliation) || 0;
+      pledged.set(clusterId, (pledged.get(clusterId) || 0) + co2e * share);
+    }
+
+    clusterEmissionsPledgeById = new Map();
+    for (const [clusterId, totalCo2e] of totals.entries()) {
+      const pledgedCo2e = pledged.get(clusterId) || 0;
+      clusterEmissionsPledgeById.set(clusterId, {
+        totalCo2e,
+        pledgedCo2e,
+        proportion: totalCo2e > 0 ? Math.min(1, pledgedCo2e / totalCo2e) : 0,
+      });
+    }
   }
 
   function offsetShareForCluster(clusterId) {
@@ -502,6 +532,20 @@ export function createOffsetTracker({
     if (!total) return 0;
     const offsets = clusterOffsetCounts.get(clusterId) || 0;
     return Math.min(1, offsets / total);
+  }
+
+  function emissionsPledgeForCluster(clusterId) {
+    return (
+      clusterEmissionsPledgeById.get(clusterId) || {
+        totalCo2e: 0,
+        pledgedCo2e: 0,
+        proportion: 0,
+      }
+    );
+  }
+
+  function offsetEmissionsShareForCluster(clusterId) {
+    return emissionsPledgeForCluster(clusterId).proportion;
   }
 
   async function loadRegistrations() {
@@ -1136,6 +1180,8 @@ export function createOffsetTracker({
     refreshAttendees,
     offsetShareForLocation,
     offsetShareForCluster,
+    offsetEmissionsShareForCluster,
+    emissionsPledgeForCluster,
     stats,
     OFFSET_GREEN,
   };
