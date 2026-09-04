@@ -889,7 +889,7 @@ icrs-p-00887,Deepeeka Kaullysing,University of Mauritius,Mauritius,True,True,Tru
 icrs-p-00888,Mackenzie Kawahara,University of California - Santa Barbara,United States,True,True,True,True,official_id_review;presenter_delegate_linked,Mackenzie Kawahara,False,,True,False
 icrs-p-00889,Ka'ohinani Kawahigashi,University of Sydney,Australia,True,False,True,True,delegate_list_only;official_id_review,Ka'ohinani Kawahigashi,False,,True,False
 icrs-p-00890,Hiʻilei Kawelo,Paepae o Heʻeia,United States,True,False,False,False,delegate_list_only,Hiʻilei Kawelo,False,,False,False
-icrs-p-00891,Novia Kayfetz-Vuong,Lingnan University,United States,True,True,True,True,official_id_review;presenter_delegate_linked,Novia Kayfetz-Vuong,False,,True,False
+icrs-p-00891,Novia Kayfetz-Vuong,Lingnan University,Hong Kong,True,True,True,True,official_id_review;presenter_delegate_linked,Novia Kayfetz-Vuong,False,,True,False
 icrs-p-00892,Dr Andrea Kealoha,University of Hawai'i - Mānoa,United States,True,False,True,False,delegate_list_only;official_id_review,Dr Andrea Kealoha,False,,True,False
 icrs-p-00893,Billie Kearns,Qubit Systems Inc.,Canada,True,False,True,False,delegate_list_only;manual_canonical;official_id_review,Billie Kearns; William Kearns,False,,True,False
 icrs-p-00894,Seth Keep,James Cook University,Australia,True,True,True,True,official_id_review;presenter_delegate_linked,Seth Keep,False,,True,False
@@ -2321,7 +2321,7 @@ icrs-p-02319,Chris,National Geographic Pristine Seas,United States,False,False,T
 icrs-p-02320,Valeria,University of Milano-Bicocca,Italy,False,False,True,False,check_in_unmatched,Valeria,True,check_in_only_not_in_registry,True,True
 icrs-p-02321,Tai-ying,Marine National Park Headquarters,Taiwan,False,False,True,False,check_in_unmatched,Tai-ying,True,check_in_only_not_in_registry,True,True
 icrs-p-02322,Tries,IPB University,Indonesia,False,False,True,False,check_in_unmatched,Tries,True,check_in_only_not_in_registry,True,True
-icrs-p-02323,Theresa,Newcastle University,United Kingdom,False,False,True,False,check_in_unmatched,Theresa,True,check_in_only_not_in_registry,True,True
+icrs-p-02323,Theresa Rueger,Newcastle University,United Kingdom,False,False,True,False,check_in_unmatched,Theresa Rueger,True,check_in_only_not_in_registry,True,False
 icrs-p-02324,David,University of Florida,United States,False,False,True,False,check_in_unmatched,David,True,check_in_only_not_in_registry,True,True
 icrs-p-02325,Jenny,Western Australian Marine Science Institution,Australia,False,False,True,False,check_in_unmatched,Jenny,True,check_in_only_not_in_registry,True,True
 icrs-p-02326,Ariel,Ben Gurion University of the Negev,Israel,False,False,True,False,check_in_unmatched,Ariel,True,check_in_only_not_in_registry,True,True

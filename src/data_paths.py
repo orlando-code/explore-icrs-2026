@@ -29,6 +29,7 @@ PERSON_UNMATCHED_CSV = REGISTRY / "person_registry_unmatched.csv"
 # Local-only: official offset-registration IDs – never commit.
 PERSON_OFFICIAL_IDS_CSV = REGISTRY / "person_registry_official_ids.csv"
 CHECK_IN_DELEGATES_CSV = REGISTRY / "delegates_checked_in_with_privacy.csv"
+CHECK_IN_DELEGATES_EDITABLE_CSV = REGISTRY / "delegates_checked_in_with_privacy_editable.csv"
 
 # Affiliation registry
 AFFILIATION_REGISTRY_CSV = REGISTRY / "affiliation_registry.csv"

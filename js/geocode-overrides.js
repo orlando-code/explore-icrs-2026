@@ -151,6 +151,16 @@ export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = [
     -155.9206778
   ],
   [
+    "IHPE",
+    43.63158,
+    3.867746
+  ],
+  [
+    "IHPE, France",
+    43.63158,
+    3.867746
+  ],
+  [
     "Indiana University",
     39.16843504356545,
     -86.52286038622873

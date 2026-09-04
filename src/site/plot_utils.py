@@ -78,6 +78,52 @@ def _as_delegate_only_locations(records: list[dict[str, Any]]) -> list[dict[str,
         })
     return output
 
+def _merge_attended_delegates_into_locations(
+    locations: list[dict[str, Any]],
+    attended_records: list[dict[str, Any]],
+    *,
+    talk_titles_by_person_key: dict[str, list[dict[str, Any]]],
+) -> int:
+    """Add attended non-presenters to an existing affiliation pin when one already exists."""
+    from src.geocoding.geocode import canonical_affiliation_key
+
+    by_key: dict[str, dict[str, Any]] = {}
+    for location in locations:
+        affiliation = str(location.get('affiliation') or '').strip()
+        key = canonical_affiliation_key(affiliation)
+        if key:
+            by_key[key] = location
+
+    merged = 0
+    for record in attended_records:
+        affiliation_key = canonical_affiliation_key(str(record.get('affiliation') or ''))
+        location = by_key.get(affiliation_key)
+        if location is None:
+            continue
+        existing_keys = {
+            str(speaker.get('person_key') or '').strip()
+            for speaker in location.get('speaker_details') or []
+            if str(speaker.get('person_key') or '').strip()
+        }
+        for speaker in record.get('speaker_details') or []:
+            person_key = str(speaker.get('person_key') or '').strip()
+            if person_key and person_key in existing_keys:
+                continue
+            location.setdefault('speaker_details', []).append(
+                {
+                    **speaker,
+                    'talk_titles': talk_titles_by_person_key.get(person_key, []),
+                    'non_speaking_delegate': True,
+                }
+            )
+            if person_key:
+                existing_keys.add(person_key)
+            merged += 1
+        details = location.get('speaker_details') or []
+        location['speakers'] = [str(item.get('name') or '') for item in details if str(item.get('name') or '').strip()]
+        location['speaker_count'] = len(details)
+    return merged
+
 def _build_talk_title_index(df: pd.DataFrame, *, presenter_col: str='presenter', affiliation_col: str='affiliation', title_col: str='title', show_progress: bool=False) -> dict[str, list[dict[str, Any]]]:
     from src.site.export_progress import make_progress
     from src.sources.delegates import delegate_person_key
@@ -544,6 +590,13 @@ def export_attendee_site_data(df: pd.DataFrame, *, lat_col: str='latitude', lon_
             for location in locations
             if str(location.get('affiliation') or '').strip()
         }
+        merged_attended = _merge_attended_delegates_into_locations(
+            locations,
+            attended_only_records,
+            talk_titles_by_person_key=talk_titles_by_person_key,
+        )
+        if show_progress and merged_attended:
+            console().print(f'  Merged {merged_attended:,} attended delegate(s) into speaker pins')
         for record in _as_delegate_only_locations(attended_only_records):
             aff_key = canonical_affiliation_key(str(record.get('affiliation') or ''))
             if aff_key and aff_key in speaker_keys:

@@ -458,5 +458,11 @@
     "latitude": 14.65170514912507, 
     "longitude": 121.04508668477959, 
     "query_used": "override:Department of Environment and Natural Resources - Philippines, Philippines"
+  },
+  "IHPE, France": {
+    "geocode_level": "institute",
+    "latitude": 43.631580,
+    "longitude": 3.867746, 
+    "query_used": "override:IHPE, France"
   }
 }

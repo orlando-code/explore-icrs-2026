@@ -15,8 +15,10 @@
   "check_in_matched": 1882,
   "check_in_new_people": 187,
   "check_in_unmatched": 187,
-  "privacy_restricted_attendees": 194,
+  "privacy_restricted_attendees": 193,
+  "privacy_released_attendees": 1,
   "last_minute_dropout_count": 73,
+  "check_in_source": "/Users/rt582/Desktop/explore-icrs-2026/data/registry/delegates_checked_in_with_privacy_editable.csv",
   "checked_in_attendees": 2068,
   "presenter_delegate_link_pct": 85.57
 }
