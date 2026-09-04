@@ -93,6 +93,21 @@ export function createMapView(
     return `<button type="button" class="btn-ghost btn-small cross-view-link${externalClass}" ${attrs}>Show in network</button>`;
   }
 
+  function delegateNameHtml(speaker) {
+    const name = speaker.name || speaker;
+    const node = networkNodeForSpeaker(speaker);
+    if (!node) {
+      return `<span class="speaker-delegate-name">${escapeHtml(name)}</span>`;
+    }
+    const personKey = personKeyFromRecord(speaker) || resolveDelegatePersonKey(name) || "";
+    const externalClass = authorDidNotAttend(speaker) ? " cross-view-link--external" : "";
+    const attrs = [
+      `data-show-network="${escapeHtml(name)}"`,
+      personKey ? `data-show-network-key="${escapeHtml(personKey)}"` : "",
+    ].join(" ");
+    return `<button type="button" class="speaker-delegate-name cross-view-link${externalClass}" ${attrs}>${escapeHtml(name)}</button>`;
+  }
+
   let includeNonSpeakers = hasDelegatePool;
 
   function buildLocationPool() {
@@ -574,7 +589,7 @@ export function createMapView(
               .map((speaker) => {
                 const name = speaker.name || speaker;
                 const personKey = personKeyFromRecord(speaker);
-                return `<li class="${speakerEntryClass(speaker).trim() || ""}" data-speaker-name="${escapeHtml(name)}"${personKey ? ` data-speaker-key="${escapeHtml(personKey)}"` : ""}><span class="speaker-delegate-name">${escapeHtml(name)}</span></li>`;
+                return `<li class="${speakerEntryClass(speaker).trim() || ""}" data-speaker-name="${escapeHtml(name)}"${personKey ? ` data-speaker-key="${escapeHtml(personKey)}"` : ""}>${delegateNameHtml(speaker)}</li>`;
               })
               .join("")}
           </ul>

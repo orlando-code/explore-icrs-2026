@@ -93,6 +93,8 @@ def test_programme_coauthors_remain_in_network_without_presenter_role():
     }
     assert "Example Coauthor NonSpeaker" in nodes
     assert nodes["Example Coauthor NonSpeaker"]["author_role"] == "co_author"
+    assert not nodes["Example Coauthor NonSpeaker"]["affiliation"]
+    assert nodes["Example Coauthor NonSpeaker"]["affiliation_explicit"] is False
     assert "Example Talk Presenter" in nodes
     # Unmapped presenters are still network nodes via the author list.
     assert nodes["Example Talk Presenter"]["connections"] >= 1

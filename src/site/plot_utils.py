@@ -299,6 +299,11 @@ def _delegate_affiliation_by_person_key(delegates_path: str | Path=DELEGATES_JSO
             mapping[person_key] = display
     return mapping
 
+def _check_in_affiliation_by_person_key() -> dict[str, str]:
+    """Map registry person_key to affiliation from Innovators check-in rows."""
+    from src.registry.check_in_attendance import check_in_affiliation_by_person_key
+    return check_in_affiliation_by_person_key()
+
 def _affiliation_coord_index(locations: list[dict[str, Any]]) -> dict[str, tuple[float, float]]:
     from src.geocoding.geocode import affiliation_base_name, affiliation_display_name, canonical_affiliation_key
     from src.registry.affiliation_registry import parse_affiliation_parts
@@ -369,6 +374,7 @@ def _build_network_data(df: pd.DataFrame, locations: list[dict[str, Any]], *, af
     attended_by_key = {person_key: _truthy_export_flag(person.get('attended')) for person_key, person in resolver.people_by_key.items()}
     in_programme_by_key = {person_key: _truthy_export_flag(person.get('in_programme')) for person_key, person in resolver.people_by_key.items()}
     delegate_affiliations_by_key = _delegate_affiliation_by_person_key()
+    check_in_affiliations_by_key = _check_in_affiliation_by_person_key()
     affiliation_coords = _affiliation_coord_index(locations)
     author_affiliations: dict[str, str] = {}
     explicit_affiliation: dict[str, bool] = {}
@@ -402,9 +408,6 @@ def _build_network_data(df: pd.DataFrame, locations: list[dict[str, Any]], *, af
                 if is_registry:
                     registry_author_keys.add(network_key)
                 individual_talk_count[network_key] = individual_talk_count.get(network_key, 0) + 1
-                if is_registry and affiliation_text and (network_key not in author_affiliations):
-                    author_affiliations[network_key] = affiliation_text
-                    explicit_affiliation[network_key] = False
             if not author_keys:
                 progress.advance(task_id)
                 continue
@@ -431,7 +434,10 @@ def _build_network_data(df: pd.DataFrame, locations: list[dict[str, Any]], *, af
                         affiliation_edges[key] = affiliation_edges.get(key, 0) + 1
             progress.advance(task_id)
     for person_key in registry_author_keys:
-        if person_key in delegate_affiliations_by_key:
+        if person_key in check_in_affiliations_by_key:
+            author_affiliations[person_key] = check_in_affiliations_by_key[person_key]
+            explicit_affiliation[person_key] = True
+        elif person_key in delegate_affiliations_by_key:
             author_affiliations[person_key] = delegate_affiliations_by_key[person_key]
             explicit_affiliation[person_key] = True
     individual_nodes = []
@@ -442,8 +448,9 @@ def _build_network_data(df: pd.DataFrame, locations: list[dict[str, Any]], *, af
         attended = attended_by_key.get(person_key, False) if is_registry else False
         on_programme = in_programme_by_key.get(person_key, False) if is_registry else False
         external_coauthor = not attended and (not on_programme)
-        affiliation_text = author_affiliations.get(network_key, '')
-        affiliation_mapped = bool(affiliation_text) and explicit_affiliation.get(network_key, False)
+        is_explicit = explicit_affiliation.get(network_key, False)
+        affiliation_text = author_affiliations.get(network_key, '') if is_explicit else ''
+        affiliation_mapped = bool(affiliation_text) and is_explicit
         affiliation, coords = _resolve_affiliation_coords(affiliation_text, affiliation_coords)
         lat = None
         lon = None
