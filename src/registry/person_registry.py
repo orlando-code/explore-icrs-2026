@@ -27,6 +27,7 @@ from src.registry.affiliation_registry import _make_affiliation
 from src.registry.check_in_attendance import (
     apply_check_in_attendance,
     PUBLIC_REGISTRY_EXTRA_COLUMNS,
+    resolve_check_in_delegates_path,
 )
 from src.sources.programme import load_talks
 
@@ -636,7 +637,7 @@ def build_person_registry(
     registry, aliases, check_in_metrics = apply_check_in_attendance(
         registry,
         aliases,
-        check_in_path=CHECK_IN_DELEGATES_CSV,
+        check_in_path=resolve_check_in_delegates_path(),
         official_ids_path=DEFAULT_OFFICIAL_IDS_PATH,
     )
 

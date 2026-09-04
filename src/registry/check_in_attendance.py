@@ -10,6 +10,7 @@ import pandas as pd
 
 from src.data_paths import (
     CHECK_IN_DELEGATES_CSV,
+    CHECK_IN_DELEGATES_EDITABLE_CSV,
     CHECK_IN_OVERRIDES_CSV,
     PERSON_OFFICIAL_IDS_CSV,
     PERSON_REGISTRY_CSV,
@@ -19,6 +20,7 @@ from src.registry.affiliation_registry import _make_affiliation
 from src.sources.delegates import normalize_person_name
 
 DEFAULT_CHECK_IN_PATH = CHECK_IN_DELEGATES_CSV
+DEFAULT_CHECK_IN_EDITABLE_PATH = CHECK_IN_DELEGATES_EDITABLE_CSV
 DEFAULT_CHECK_IN_SOURCE_PATH = REGISTRY / "all_delegates_checked_in.csv"
 DEFAULT_CHECK_IN_OVERRIDES_PATH = CHECK_IN_OVERRIDES_CSV
 
@@ -38,6 +40,29 @@ def _truthy(value: object) -> bool:
     return str(value or "").strip().lower() in {"true", "1", "yes"}
 
 
+def _is_privacy_released(value: object) -> bool:
+    """Former privacy delegate now cleared for public map/network display."""
+    return str(value or "").strip().casefold() == "ex-true"
+
+
+def _is_privacy_restricted(value: object) -> bool:
+    if _is_privacy_released(value):
+        return False
+    return _truthy(value)
+
+
+def resolve_check_in_delegates_path(
+    *,
+    editable_path: Path | str = DEFAULT_CHECK_IN_EDITABLE_PATH,
+    default_path: Path | str = DEFAULT_CHECK_IN_PATH,
+) -> Path:
+    """Prefer the editable privacy CSV when present (manual EX-TRUE releases)."""
+    editable = Path(editable_path)
+    if editable.exists():
+        return editable
+    return Path(default_path)
+
+
 def _normalize_org(value: object) -> str:
     return re.sub(r"\s+", " ", str(value or "").strip()).casefold()
 
@@ -45,7 +70,7 @@ def _normalize_org(value: object) -> str:
 def _display_name_from_check_in(row: pd.Series) -> str:
     first = str(row.get("first name") or "").strip()
     last = str(row.get("last name") or "").strip()
-    if _truthy(row.get("privacy")) and not last:
+    if _is_privacy_restricted(row.get("privacy")) and not last:
         return first
     parts = [part for part in (first, last) if part]
     return " ".join(parts).strip()
@@ -223,9 +248,9 @@ def build_check_in_privacy_export(
     return output
 
 
-def load_check_in_attendees(path: Path | str = DEFAULT_CHECK_IN_PATH) -> pd.DataFrame:
+def load_check_in_attendees(path: Path | str | None = None) -> pd.DataFrame:
     """Load Innovators check-in export (Latin-1 or UTF-8)."""
-    check_in_path = Path(path)
+    check_in_path = resolve_check_in_delegates_path() if path is None else Path(path)
     if not check_in_path.exists():
         return pd.DataFrame(columns=CHECK_IN_COLUMNS)
 
@@ -241,8 +266,11 @@ def load_check_in_attendees(path: Path | str = DEFAULT_CHECK_IN_PATH) -> pd.Data
     frame = frame.rename(columns=lambda col: str(col).strip())
     frame["ID"] = pd.to_numeric(frame["ID"], errors="coerce").astype("Int64")
     frame = frame.dropna(subset=["ID"]).copy()
-    frame["privacy"] = frame.get("privacy", pd.Series(dtype=str)).map(
-        lambda value: "TRUE" if _truthy(value) else "FALSE"
+    frame["privacy"] = (
+        frame.get("privacy", pd.Series(dtype=str))
+        .astype(str)
+        .str.strip()
+        .replace({"": "FALSE", "nan": "FALSE"})
     )
     for column in ("first name", "last name", "organisation", "country"):
         if column not in frame.columns:
@@ -320,7 +348,9 @@ def apply_check_in_attendance(
         "check_in_new_people": 0,
         "check_in_unmatched": 0,
         "privacy_restricted_attendees": 0,
+        "privacy_released_attendees": 0,
         "last_minute_dropout_count": 0,
+        "check_in_source": str(resolve_check_in_delegates_path()),
     }
     if check_in.empty:
         registry = registry.copy()
@@ -362,6 +392,7 @@ def apply_check_in_attendance(
 
     checked_in_keys: set[str] = set()
     privacy_by_key: dict[str, bool] = {}
+    released_names: dict[str, str] = {}
     new_rows: list[dict[str, Any]] = []
     new_aliases: list[dict[str, str]] = []
     unmatched_rows: list[dict[str, Any]] = []
@@ -376,12 +407,17 @@ def apply_check_in_attendance(
             registry_by_name_org=registry_by_name_org,
             registry_by_org_first=registry_by_org_first,
         )
-        privacy_flag = _truthy(row.get("privacy"))
+        privacy_flag = _is_privacy_restricted(row.get("privacy"))
+        display_name = _display_name_from_check_in(row)
+        if _is_privacy_released(row.get("privacy")):
+            metrics["privacy_released_attendees"] += 1
         if person_key and person_key not in registry_by_key:
             person_key = ""
         if person_key:
             checked_in_keys.add(person_key)
             privacy_by_key[person_key] = privacy_flag
+            if _is_privacy_released(row.get("privacy")) and display_name:
+                released_names[person_key] = display_name
             metrics["check_in_matched"] += 1
             continue
 
@@ -393,7 +429,7 @@ def apply_check_in_attendance(
 
         organisation = str(row.get("organisation") or "").strip()
         country = str(row.get("country") or "").strip()
-        canonical_name = _display_name_from_check_in(row) or f"Check-in delegate {int(row['ID'])}"
+        canonical_name = display_name or f"Check-in delegate {int(row['ID'])}"
         new_rows.append(
             {
                 "person_key": person_key,
@@ -436,6 +472,28 @@ def apply_check_in_attendance(
 
     if new_rows:
         registry = pd.concat([registry, pd.DataFrame(new_rows)], ignore_index=True)
+
+    for person_key, display_name in released_names.items():
+        mask = registry["person_key"].astype(str).eq(person_key)
+        if not mask.any():
+            continue
+        for idx in registry.index[mask]:
+            registry.at[idx, "canonical_name"] = display_name
+            variants = {
+                variant.strip()
+                for variant in str(registry.at[idx, "name_variants"] or "").split(";")
+                if variant.strip()
+            }
+            variants.add(display_name)
+            registry.at[idx, "name_variants"] = "; ".join(sorted(variants))
+        new_aliases.append(
+            {
+                "person_key": person_key,
+                "name_variant": display_name,
+                "normalized_name": normalize_person_name(display_name),
+                "source": "check_in",
+            }
+        )
 
     in_programme = registry["in_programme"].map(_truthy)
     registry["checked_in"] = registry["person_key"].astype(str).isin(checked_in_keys)

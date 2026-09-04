@@ -262,6 +262,7 @@ offsets-before-reset.db
 delegate_unique_id_database.csv
 all_delegates_checked_in.csv
 delegates_checked_in_with_privacy.csv
+delegates_checked_in_with_privacy_editable.csv
 data/overrides/delegate_id_match_review.csv
 data/overrides/delegate_id_match_review_*.csv
 data/registry/delegates_missing_ids.csv
