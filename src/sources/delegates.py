@@ -36,6 +36,8 @@ def is_incomplete_organisation(name: str) -> bool:
     cleaned = str(name or '').strip()
     if not cleaned:
         return True
+    if cleaned in {'.', '-', '—'}:
+        return True
     if cleaned.casefold() in {'nan', 'national', 'lumpkin'}:
         return True
     if re.search('\\s/\\s*$', cleaned):
@@ -232,12 +234,14 @@ def organisation_for_delegate_row(row: pd.Series | dict[str, Any], *, apply_over
 
 def delegate_affiliation_for_row(row: pd.Series | dict[str, Any], *, apply_overrides: bool=True) -> str:
     """Return a cleaned affiliation string for geocoding and map grouping."""
+    from src.registry.affiliation_registry import _make_affiliation
     if isinstance(row, pd.Series):
         row = row.to_dict()
     organisation, country = delegate_org_country_for_row(row, apply_overrides=apply_overrides)
-    if organisation and country:
-        return f'{organisation}, {country}'
-    return organisation or str(row.get('affiliation') or '').strip()
+    affiliation = _make_affiliation(organisation, country)
+    if affiliation:
+        return affiliation
+    return str(row.get('affiliation') or '').strip()
 _ORGANISATION_COUNTRY_OVERRIDES: dict[str, str] = {'australian institute of marine science': 'Australia', "division of aquatic resources - hawai'i": 'United States', 'division of aquatic resources - hawaii': 'United States', 'global discovery and conservation science': 'United States', 'kaust': 'Saudi Arabia', 'national center for scientific research - rahui center': 'French Polynesia', 'national center for scientific research - rāhui center': 'French Polynesia', 'oregon state university': 'United States', "state of hawai'i": 'United States', 'state of hawaii': 'United States', 'university of auckland': 'New Zealand', 'university of the virgin islands': 'United States Virgin Islands'}
 
 def infer_country_from_organisation(organisation: str) -> str:

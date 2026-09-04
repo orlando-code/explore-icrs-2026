@@ -1,16 +1,16 @@
 {
-  "affiliations_total": 816,
-  "unique_variants": 1160,
-  "in_delegate_list": 755,
-  "in_programme": 659,
-  "with_attendees": 774,
-  "geocoded_ok_or_fallback": 816,
-  "geocode_missing_or_failed": 0,
-  "plot_on_map": 808,
-  "display_aliases_applied": 293,
-  "geocode_override_pins": 69,
-  "reviewed_rows_applied": 53,
+  "affiliations_total": 805,
+  "unique_variants": 1142,
+  "in_delegate_list": 757,
+  "in_programme": 649,
+  "with_attendees": 698,
+  "geocoded_ok_or_fallback": 804,
+  "geocode_missing_or_failed": 1,
+  "plot_on_map": 799,
+  "display_aliases_applied": 294,
+  "geocode_override_pins": 73,
+  "reviewed_rows_applied": 54,
   "compound_redirects": 3,
   "secondary_only_hidden": 0,
-  "geocode_coverage_pct": 100.0
+  "geocode_coverage_pct": 99.88
 }

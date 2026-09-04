@@ -86,7 +86,8 @@ class TestGroupKeyAndCanonical:
             context="make affiliation",
         )
         assert_eq(_make_affiliation("KAUST", ""), "KAUST", context="make affiliation no country")
-        assert_eq(_make_affiliation("", "Fiji"), "", context="empty org")
+        assert_eq(_make_affiliation("", "Fiji"), "Fiji", context="country only")
+        assert_eq(_make_affiliation(".", "New Zealand"), "New Zealand", context="placeholder org")
 
     def test_canonical_for_parts_includes_country(self, assert_eq):
         label = canonical_for_parts("University of Auckland", "New Zealand")
