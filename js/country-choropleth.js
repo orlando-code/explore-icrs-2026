@@ -1,7 +1,21 @@
 import { SITE_BASE_PATH } from "./config.js";
 
-export const OFFSET_RED = "#d95f02";
-export const OFFSET_GREEN = "#2d8a4e";
+/** Discrete offset-progress palette: low pledge share → high. */
+export const OFFSET_PROGRESS_PALETTE = [
+  "#ff5117", // tiger-flame
+  "#ff7547", // coral-glow
+  "#ff9c7a", // tangerine-dream
+  "#ffaf94", // powder-blush
+  "#ffc2ad", // powder-blush-2
+  "#dccf9d", // vanilla-custard
+  "#b7c384", // muted-olive
+  "#91b66a", // muted-olive-2
+  "#76ac3c", // bright-fern
+  "#5aa20d", // bright-fern-2
+];
+
+export const OFFSET_RED = OFFSET_PROGRESS_PALETTE[0];
+export const OFFSET_GREEN = OFFSET_PROGRESS_PALETTE[OFFSET_PROGRESS_PALETTE.length - 1];
 
 const NATIVE_COUNTRY_LAYER = "countries-fill";
 const TERRITORY_LAYER = "territory-offset-fill";
@@ -31,6 +45,23 @@ export function mixChannel(low, high, share) {
   return `#${hex(channel(r1, r2))}${hex(channel(g1, g2))}${hex(channel(b1, b2))}`;
 }
 
+export function colourForOffsetShare(share, palette = OFFSET_PROGRESS_PALETTE) {
+  const proportion = Math.max(0, Math.min(1, Number(share) || 0));
+  const index = Math.min(palette.length - 1, Math.floor(proportion * palette.length));
+  return palette[index];
+}
+
+export function buildOffsetStepColourExpression(
+  palette = OFFSET_PROGRESS_PALETTE,
+  property = "offset_share"
+) {
+  const expression = ["step", ["coalesce", ["get", property], 0], palette[0]];
+  for (let index = 1; index < palette.length; index += 1) {
+    expression.push(index / palette.length, palette[index]);
+  }
+  return expression;
+}
+
 function buildMatchColourExpression(iso3ToColour, fallback) {
   const expression = ["match", ["get", NATIVE_COUNTRY_PROP]];
   for (const [iso3, colour] of iso3ToColour) {
@@ -40,11 +71,38 @@ function buildMatchColourExpression(iso3ToColour, fallback) {
   return expression;
 }
 
+function pointInRing(lng, lat, ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i];
+    const [xj, yj] = ring[j];
+    const intersects =
+      yi > lat !== yj > lat &&
+      lng < ((xj - xi) * (lat - yi)) / (yj - yi || Number.EPSILON) + xi;
+    if (intersects) inside = !inside;
+  }
+  return inside;
+}
+
+function pointInGeometry(lng, lat, geometry) {
+  if (!geometry) return false;
+  if (geometry.type === "Polygon") {
+    const [outer, ...holes] = geometry.coordinates;
+    if (!pointInRing(lng, lat, outer)) return false;
+    return holes.every((hole) => !pointInRing(lng, lat, hole));
+  }
+  if (geometry.type === "MultiPolygon") {
+    return geometry.coordinates.some((polygon) =>
+      pointInGeometry(lng, lat, { type: "Polygon", coordinates: polygon })
+    );
+  }
+  return false;
+}
+
 export function createCountryChoropleth(map, options = {}) {
   const {
     boundariesPath = "data/geography/country_boundaries.geojson",
-    colourLow = OFFSET_RED,
-    colourHigh = OFFSET_GREEN,
+    colourPalette = OFFSET_PROGRESS_PALETTE,
     getClusterShare = () => 0,
     getIso3ToCluster = () => ({}),
     getClusterLabels = () => ({}),
@@ -53,12 +111,42 @@ export function createCountryChoropleth(map, options = {}) {
     beforeLayerId = "distance-lines-visible",
   } = options;
 
+  const palette = colourPalette.length ? colourPalette : OFFSET_PROGRESS_PALETTE;
+  const colourHigh = palette[palette.length - 1];
+  const stepColourExpression = buildOffsetStepColourExpression(palette);
+
   let baseFeatures = [];
   let ready = false;
   let visible = true;
   let tooltipEl = null;
   let hoverHandlersBound = false;
   let nativeMode = false;
+  let territoryHitFeatures = [];
+
+  function rebuildTerritoryHitFeatures() {
+    const overlayCodes = new Set(territoryOverlayCodes());
+    territoryHitFeatures = baseFeatures
+      .filter((feature) =>
+        overlayCodes.has(String(feature.properties?.iso_a2 || "").toUpperCase())
+      )
+      .map((feature) => {
+        const iso = feature.properties?.iso_a2;
+        return {
+          geometry: feature.geometry,
+          label: clusterLabelForCountry(iso),
+        };
+      })
+      .filter((entry) => entry.label);
+  }
+
+  function territoryLabelAtLngLat(lngLat) {
+    const lng = lngLat.lng;
+    const lat = lngLat.lat;
+    for (const entry of territoryHitFeatures) {
+      if (pointInGeometry(lng, lat, entry.geometry)) return entry.label;
+    }
+    return "";
+  }
 
   function ensureTooltip() {
     if (tooltipEl) return tooltipEl;
@@ -124,7 +212,7 @@ export function createCountryChoropleth(map, options = {}) {
       const code = String(iso3 || "").trim().toUpperCase();
       if (!code) continue;
       const share = getClusterShare(clusterId) || 0;
-      colours.set(code, mixChannel(colourLow, colourHigh, share));
+      colours.set(code, colourForOffsetShare(share, palette));
     }
     return colours;
   }
@@ -207,15 +295,7 @@ export function createCountryChoropleth(map, options = {}) {
             visibility: visible ? "visible" : "none",
           },
           paint: {
-            "fill-color": [
-              "interpolate",
-              ["linear"],
-              ["coalesce", ["get", "offset_share"], 0],
-              0,
-              colourLow,
-              1,
-              colourHigh,
-            ],
+            "fill-color": stepColourExpression,
             "fill-opacity": [
               "case",
               ["==", ["get", "in_cluster"], 1],
@@ -233,9 +313,18 @@ export function createCountryChoropleth(map, options = {}) {
   function updateTerritoryLayer() {
     if (!nativeMode) return;
     ensureTerritoryLayer();
+    rebuildTerritoryHitFeatures();
     map.getSource("territory-offset-boundaries")?.setData(territoryFeatureCollection());
     if (map.getLayer(TERRITORY_LAYER)) {
       map.setLayoutProperty(TERRITORY_LAYER, "visibility", visible ? "visible" : "none");
+      map.setPaintProperty(TERRITORY_LAYER, "fill-color", stepColourExpression);
+      map.setPaintProperty(TERRITORY_LAYER, "fill-opacity", [
+        "case",
+        ["==", ["get", "in_cluster"], 1],
+        0.55,
+        0,
+      ]);
+      map.setPaintProperty(TERRITORY_LAYER, "fill-antialias", true);
     }
   }
 
@@ -256,15 +345,7 @@ export function createCountryChoropleth(map, options = {}) {
             visibility: visible ? "visible" : "none",
           },
           paint: {
-            "fill-color": [
-              "interpolate",
-              ["linear"],
-              ["coalesce", ["get", "offset_share"], 0],
-              0,
-              colourLow,
-              1,
-              colourHigh,
-            ],
+            "fill-color": stepColourExpression,
             "fill-opacity": [
               "case",
               ["==", ["get", "in_cluster"], 1],
@@ -298,15 +379,17 @@ export function createCountryChoropleth(map, options = {}) {
 
     for (const layerId of layers) {
       map.on("mousemove", layerId, (event) => {
+        const territoryLabel = territoryLabelAtLngLat(event.lngLat);
         const feature = event.features?.[0];
-        if (!feature) {
+        if (!feature && !territoryLabel) {
           hideTooltip();
           return;
         }
         const label =
-          layerId === NATIVE_COUNTRY_LAYER
-            ? labelForIso3(feature.properties?.[NATIVE_COUNTRY_PROP])
-            : feature.properties?.cluster_label || feature.properties?.name || "";
+          territoryLabel ||
+          (layerId === NATIVE_COUNTRY_LAYER
+            ? labelForIso3(feature?.properties?.[NATIVE_COUNTRY_PROP])
+            : feature?.properties?.cluster_label || feature?.properties?.name || "");
         if (!label) {
           hideTooltip();
           return;
@@ -498,7 +581,7 @@ export function createCountryChoropleth(map, options = {}) {
       `
       <div class="offset-choropleth-legend">
         <h3>${title}</h3>
-        <div class="offset-choropleth-gradient" style="background: linear-gradient(to right, ${colourLow}, ${colourHigh})"></div>
+        <div class="offset-choropleth-gradient offset-choropleth-gradient--discrete"></div>
         <div class="offset-choropleth-labels">
           <span>None pledged</span>
           <span>All emissions pledged</span>
@@ -515,7 +598,7 @@ export function createCountryChoropleth(map, options = {}) {
     renderLegend,
     pulseCountries,
     clearCountryPulse,
-    mixChannel,
+    colourForOffsetShare,
     isReady: () => ready,
     usesNativeLayer: () => nativeMode,
   };

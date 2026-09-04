@@ -21,6 +21,7 @@ from src.data_paths import (
     REVERSE_GEOCODE_CACHE_JSON,
     TRAVEL_EMISSIONS_CACHE_JSON,
 )
+from src.emissions.offset_palette import OFFSET_CHOROPLETH_META
 from src.geocoding.geocode import _extract_country_hints
 from src.util.console import CONSOLE
 from src.util.json_io import load_json, save_json
@@ -1280,11 +1281,9 @@ def export_emissions_site_data(
             "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
             "delegate_meta": delegate_meta or {},
             "offset_choropleth": {
-                "enabled": True,
+                **OFFSET_CHOROPLETH_META,
                 "boundaries_path": COUNTRY_BOUNDARIES_REL,
                 "min_cluster_size": 3,
-                "colour_low": "#d95f02",
-                "colour_high": "#2d8a4e",
             },
         },
         "speakers": speakers_pool,

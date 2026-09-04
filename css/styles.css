@@ -13,6 +13,16 @@
   --radius: 18px;
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Figtree", system-ui, sans-serif;
+  --tiger-flame: #ea3a00;
+  --coral-glow: #e75d2f;
+  --tangerine-dream: #eb7d58;
+  --powder-blush: #ffaf94;
+  --powder-blush-2: #ffc2ad;
+  --vanilla-custard: #dccf9d;
+  --muted-olive: #b7c384;
+  --muted-olive-2: #91b66a;
+  --bright-fern: #76ac3c;
+  --bright-fern-2: #5aa20d;
 }
 
 * {
@@ -1189,6 +1199,32 @@ a.btn-small {
   border-radius: 999px;
   border: 1px solid rgba(20, 33, 43, 0.12);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+.offset-choropleth-gradient--discrete {
+  background: linear-gradient(
+    to right,
+    var(--tiger-flame) 0%,
+    var(--tiger-flame) 10%,
+    var(--coral-glow) 10%,
+    var(--coral-glow) 20%,
+    var(--tangerine-dream) 20%,
+    var(--tangerine-dream) 30%,
+    var(--powder-blush) 30%,
+    var(--powder-blush) 40%,
+    var(--powder-blush-2) 40%,
+    var(--powder-blush-2) 50%,
+    var(--vanilla-custard) 50%,
+    var(--vanilla-custard) 60%,
+    var(--muted-olive) 60%,
+    var(--muted-olive) 70%,
+    var(--muted-olive-2) 70%,
+    var(--muted-olive-2) 80%,
+    var(--bright-fern) 80%,
+    var(--bright-fern) 90%,
+    var(--bright-fern-2) 90%,
+    var(--bright-fern-2) 100%
+  );
 }
 
 .offset-choropleth-labels {
