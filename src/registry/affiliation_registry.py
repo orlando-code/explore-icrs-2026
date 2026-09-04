@@ -114,8 +114,10 @@ def _read_csv(path: Path) -> pd.DataFrame:
 def _make_affiliation(organisation: str, country: str) -> str:
     org = str(organisation or "").strip()
     country = str(country or "").strip()
+    if org.casefold() in {".", "-", "n/a", "na", "none"}:
+        org = ""
     if not org:
-        return ""
+        return country
     return f"{org}, {country}" if country else org
 
 

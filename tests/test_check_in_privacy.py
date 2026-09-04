@@ -155,3 +155,19 @@ class TestApplyCheckInPrivacyRelease:
         assert_eq(person["organisation"], "Auckland University of Technology (AUT)")
         assert_eq(str(person["checked_in"]).lower(), "true")
         assert_eq(metrics["check_in_matched"], 1)
+
+    def test_placeholder_organisation_affiliation_is_country_only(self, assert_eq):
+        from src.registry.affiliation_registry import _make_affiliation
+        from src.sources.delegates import delegate_affiliation_for_row
+
+        assert_eq(_make_affiliation(".", "New Zealand"), "New Zealand")
+        row = pd.Series(
+            {
+                "organisation": ".",
+                "country": "New Zealand",
+                "first_name": "Georgina",
+                "last_name": "Nicholson",
+                "full_name": "Dr Georgina Nicholson",
+            }
+        )
+        assert_eq(delegate_affiliation_for_row(row), "New Zealand")

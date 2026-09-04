@@ -128,7 +128,7 @@ def build_map_talks(
         if not organisation and not country:
             continue
         if not affiliation and country:
-            affiliation = _make_affiliation(organisation or ".", country)
+            affiliation = country
         affiliation_key = resolver.resolve_affiliation_key(organisation, country)
         row: dict[str, object] = {
             "presenter": name,

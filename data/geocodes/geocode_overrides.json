@@ -464,5 +464,17 @@
     "latitude": 43.631580,
     "longitude": 3.867746, 
     "query_used": "override:IHPE, France"
+  },
+  "University of Maryland Center for Environmental Sciences- Institute of Marine and Environmental Technology": {
+    "geocode_level": "institute",
+    "latitude": 38.9869183,
+    "longitude": -76.9425543,
+    "query_used": "override:University of Maryland, United States"
+  },
+  "University of Maryland Center for Environmental Sciences- Institute of Marine and Environmental Technology, United States": {
+    "geocode_level": "institute",
+    "latitude": 38.9869183,
+    "longitude": -76.9425543,
+    "query_used": "override:University of Maryland, United States"
   }
 }

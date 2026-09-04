@@ -356,6 +356,16 @@ export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = [
     -1.1246117
   ],
   [
+    "University of Maryland Center for Environmental Sciences- Institute of Marine and Environmental Technology",
+    38.9869183,
+    -76.9425543
+  ],
+  [
+    "University of Maryland Center for Environmental Sciences- Institute of Marine and Environmental Technology, United States",
+    38.9869183,
+    -76.9425543
+  ],
+  [
     "University of Miyazaki",
     31.8295664,
     131.4141929
