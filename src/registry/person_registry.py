@@ -85,6 +85,24 @@ OFFICIAL_IDS_EXPORT_COLUMNS = [
 ]
 
 
+def _truthy(value: object) -> bool:
+    return str(value or "").strip().lower() in {"true", "1", "yes"}
+
+
+def official_ids_export_mask(registry: pd.DataFrame) -> pd.Series:
+    """Rows eligible for welcome-email / offset delegate IDs."""
+    has_id = registry["official_delegate_id"].astype(str).str.strip().ne("")
+    if "official_id_match_tier" not in registry.columns:
+        return has_id
+    tier = registry["official_id_match_tier"].astype(str).str.strip()
+    pre_registered = has_id & ~tier.eq("check_in_only")
+    if "privacy_restricted" not in registry.columns:
+        return pre_registered
+    privacy_cleared = ~registry["privacy_restricted"].map(_truthy)
+    released_check_in = has_id & tier.eq("check_in_only") & privacy_cleared
+    return pre_registered | released_check_in
+
+
 @dataclass
 class PersonRecord:
     person_key: str
@@ -721,12 +739,9 @@ def save_person_registry(
         path.parent.mkdir(parents=True, exist_ok=True)
 
     registry = result.registry.copy()
-    official_id_mask = registry["official_delegate_id"].astype(str).str.strip().ne("")
-    if "official_id_match_tier" in registry.columns:
-        official_id_mask &= ~registry["official_id_match_tier"].astype(str).str.strip().eq(
-            "check_in_only"
-        )
-    official_ids = registry.loc[official_id_mask, OFFICIAL_IDS_EXPORT_COLUMNS].copy()
+    official_ids = registry.loc[
+        official_ids_export_mask(registry), OFFICIAL_IDS_EXPORT_COLUMNS
+    ].copy()
     official_ids.to_csv(outputs["official_ids"], index=False)
 
     public_registry = registry.reindex(columns=PUBLIC_REGISTRY_COLUMNS)
