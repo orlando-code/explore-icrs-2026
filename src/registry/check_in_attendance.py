@@ -14,6 +14,7 @@ from src.data_paths import (
     CHECK_IN_OVERRIDES_CSV,
     PERSON_OFFICIAL_IDS_CSV,
     PERSON_REGISTRY_CSV,
+    PROJECT_ROOT,
     REGISTRY,
 )
 from src.registry.affiliation_registry import _make_affiliation
@@ -23,6 +24,16 @@ DEFAULT_CHECK_IN_PATH = CHECK_IN_DELEGATES_CSV
 DEFAULT_CHECK_IN_EDITABLE_PATH = CHECK_IN_DELEGATES_EDITABLE_CSV
 DEFAULT_CHECK_IN_SOURCE_PATH = REGISTRY / "all_delegates_checked_in.csv"
 DEFAULT_CHECK_IN_OVERRIDES_PATH = CHECK_IN_OVERRIDES_CSV
+
+
+def _relative_data_path(path: Path | str) -> str:
+    """Store repo-relative paths in exported metadata (never absolute machine paths)."""
+    resolved = Path(path).resolve()
+    try:
+        return str(resolved.relative_to(PROJECT_ROOT.resolve()))
+    except ValueError:
+        return str(path)
+
 
 CHECK_IN_COLUMNS = [
     "ID",
@@ -350,7 +361,7 @@ def apply_check_in_attendance(
         "privacy_restricted_attendees": 0,
         "privacy_released_attendees": 0,
         "last_minute_dropout_count": 0,
-        "check_in_source": str(resolve_check_in_delegates_path()),
+        "check_in_source": _relative_data_path(resolve_check_in_delegates_path()),
     }
     if check_in.empty:
         registry = registry.copy()
