@@ -15,6 +15,7 @@ from src.emissions.travel_emissions import (
     _emissions_location_key,
     _looks_like_coordinates,
     _origin_from_attendee,
+    load_attendee_legs,
 )
 
 
@@ -171,3 +172,32 @@ class TestOriginFromAttendee:
     def test_looks_like_coordinates(self, assert_eq):
         assert _looks_like_coordinates("-25.0,133.0") is True
         assert _looks_like_coordinates("Auckland") is False
+
+
+class TestLoadAttendeeLegsEmissionsOrigin:
+    def test_pim_bongaerts_uses_auckland_car_origin(self, assert_eq):
+        import pandas as pd
+
+        talks_geo = pd.DataFrame(
+            [
+                {
+                    "presenter": "Pim Bongaerts",
+                    "affiliation": "California Academy of Sciences, United States",
+                    "latitude": 37.7698646,
+                    "longitude": -122.4660947,
+                    "geocode_level": "institute",
+                    "person_key": "icrs-p-00188",
+                }
+            ]
+        )
+        legs, missing = load_attendee_legs(talks_geo)
+        assert missing.empty, f"unexpected missing presenters: {missing!r}"
+        row = legs.iloc[0]
+        assert_eq(row["origin_country"], "NZ", context="Auckland-based origin country")
+        assert_eq(row["origin_location"], "Auckland", context="Auckland city origin")
+        assert_eq(row["transport_mode"], "car", context="local NZ delegate transport")
+        assert_eq(
+            row["affiliation"],
+            "California Academy of Sciences, United States",
+            context="map affiliation unchanged",
+        )

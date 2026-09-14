@@ -258,6 +258,7 @@ def load_attendee_legs(
         country_to_iso2,
         delegate_org_country_for_row,
         delegate_person_key,
+        emissions_origin_override_for_row,
         load_delegates,
         normalize_person_name,
     )
@@ -313,25 +314,50 @@ def load_attendee_legs(
         person_key = str(row.get("person_key") or "").strip()
         if not person_key:
             person_key = delegate_person_key(presenter, affiliation=affiliation_text)
-        resolved = resolve_origin_country(
-            affiliation=affiliation_text,
-            existing=str(origin_country or ""),
-            delegate_country=delegate_countries_by_key.get(person_key)
-            or delegate_countries.get(normalize_person_name(presenter))
-            or "",
-        )
-        if resolved:
-            origin_country = resolved
-        elif str(origin_country).upper() in {"", "UNKNOWN"}:
-            origin_country = country_from_affiliation(affiliation_text)
         delegate_country = (
             delegate_countries_by_key.get(person_key)
             or delegate_countries.get(normalize_person_name(presenter))
             or registry_countries.get(normalize_person_name(presenter))
             or ""
         )
-        if delegate_country and str(origin_country).upper() in {"", "UNKNOWN"}:
-            origin_country = country_to_iso2(delegate_country) or delegate_country
+        delegate_country_code = country_to_iso2(delegate_country) or ""
+        emissions_override = emissions_origin_override_for_row(
+            {"full_name": presenter, "presenter": presenter}
+        )
+        if emissions_override:
+            override_country, override_city = emissions_override
+            origin_country = country_to_iso2(override_country) or override_country
+            if override_city:
+                origin_location = override_city
+        else:
+            resolved = resolve_origin_country(
+                affiliation=affiliation_text,
+                existing=str(origin_country or ""),
+                delegate_country=delegate_country,
+                delegate_country_code=delegate_country_code,
+            )
+            if resolved:
+                origin_country = resolved
+            elif str(origin_country).upper() in {"", "UNKNOWN"}:
+                origin_country = country_from_affiliation(affiliation_text)
+            if delegate_country and str(origin_country).upper() in {"", "UNKNOWN"}:
+                origin_country = country_to_iso2(delegate_country) or delegate_country
+            affiliation_iso = country_from_affiliation(affiliation_text)
+            if (
+                delegate_country_code
+                and re.fullmatch("[A-Z]{2}", str(origin_country or ""))
+                and affiliation_iso
+                and str(origin_country).upper() == delegate_country_code
+                and str(origin_country).upper() != affiliation_iso
+            ):
+                from src.geocoding.capital_coords import resolve_capital_fallback
+                from src.registry.affiliation_registry import parse_affiliation_parts
+
+                org_name, _ = parse_affiliation_parts(affiliation_text)
+                if org_name and delegate_country:
+                    fallback = resolve_capital_fallback(org_name, delegate_country)
+                    if fallback:
+                        origin_location = fallback[0]
         country_code = _row_text(row, "country_code").upper()
         if country_code and (not re.fullmatch("[A-Z]{2}", str(origin_country or ""))):
             origin_country = country_code

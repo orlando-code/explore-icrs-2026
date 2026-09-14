@@ -46,6 +46,9 @@ AFFILIATION_DISPLAY_ALIASES_JSON = GEOCODES / "affiliation_display_aliases.json"
 
 # Overrides & review
 DELEGATE_ORG_OVERRIDES_CSV = OVERRIDES / "delegate_organisation_overrides.csv"
+DELEGATE_EMISSIONS_ORIGIN_OVERRIDES_CSV = (
+    OVERRIDES / "delegate_emissions_origin_overrides.csv"
+)
 MAP_EXCLUDED_NAMES_TXT = OVERRIDES / "map_excluded_names.txt"
 MAP_EXCLUDED_NAMES_JSON = OVERRIDES / "map_excluded_names.json"
 CHECK_IN_OVERRIDES_CSV = OVERRIDES / "check_in_overrides.csv"

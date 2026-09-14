@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -22,7 +23,12 @@ from src.emissions.travel_emissions import DEFAULT_REVERSE_CACHE_PATH
 from src.geography.country_clusters import build_country_clusters
 from src.geography.territory_overlays import territory_overlay_codes
 from src.util.json_io import load_json
-from src.sources.delegates import delegate_person_key, normalize_person_name
+from src.sources.delegates import (
+    country_to_iso2,
+    delegate_person_key,
+    emissions_origin_override_for_row,
+    normalize_person_name,
+)
 
 CENTROIDS_PATH = COUNTRY_BOUNDARIES_CENTROIDS_JSON
 DELEGATES_PATH = DELEGATES_JSON
@@ -88,6 +94,37 @@ def _delegate_for_attendee(
     return country, country_code
 
 
+def _emissions_origin_country_for_attendee(
+    *,
+    name: str,
+    person_key: str = "",
+    affiliation: str = "",
+    lat: float | None = None,
+    lon: float | None = None,
+    reverse_cache: dict[str, dict[str, str]],
+    delegate_country: str = "",
+    delegate_country_code: str = "",
+    existing: str = "",
+) -> str:
+    override = emissions_origin_override_for_row(
+        {"full_name": name, "presenter": name, "person_key": person_key}
+    )
+    if override:
+        override_country, _ = override
+        code = country_to_iso2(override_country) or override_country
+        if re.fullmatch("[A-Z]{2}", str(code or "").upper()):
+            return str(code).upper()
+    return resolve_origin_country(
+        affiliation=affiliation,
+        lat=lat,
+        lon=lon,
+        reverse_cache=reverse_cache,
+        delegate_country=delegate_country,
+        delegate_country_code=delegate_country_code,
+        existing=existing,
+    )
+
+
 def _location_index(pool: dict) -> dict[str, dict]:
     return {
         str(location.get("id")): location
@@ -143,7 +180,9 @@ def _country_counts_for_pool(
             delegate_country_codes,
             person_key=str(attendee.get("person_key") or ""),
         )
-        code = resolve_origin_country(
+        code = _emissions_origin_country_for_attendee(
+            name=str(attendee.get("name") or ""),
+            person_key=str(attendee.get("person_key") or ""),
             affiliation=str(
                 attendee.get("affiliation") or location.get("affiliation") or ""
             ),
@@ -216,7 +255,9 @@ def enrich_emissions_pool(
             delegate_country_codes,
             person_key=str(attendee.get("person_key") or ""),
         )
-        origin_country = resolve_origin_country(
+        origin_country = _emissions_origin_country_for_attendee(
+            name=str(attendee.get("name") or ""),
+            person_key=str(attendee.get("person_key") or ""),
             affiliation=str(
                 attendee.get("affiliation") or location.get("affiliation") or ""
             ),

@@ -8,13 +8,21 @@ from typing import Any
 import pandas as pd
 import pycountry
 from src.sources.programme import load_talks
-from src.data_paths import DELEGATE_ORG_OVERRIDES_CSV, DELEGATE_PDF, DELEGATES_JSON, DELEGATES_LAYOUT_TXT
+from src.data_paths import (
+    DELEGATE_EMISSIONS_ORIGIN_OVERRIDES_CSV,
+    DELEGATE_ORG_OVERRIDES_CSV,
+    DELEGATE_PDF,
+    DELEGATES_JSON,
+    DELEGATES_LAYOUT_TXT,
+)
 from src.util.json_io import load_json, save_json
 DEFAULT_DELEGATE_PDF_PATH = DELEGATE_PDF
 DEFAULT_DELEGATES_JSON_PATH = DELEGATES_JSON
 DEFAULT_DELEGATES_LAYOUT_CACHE = DELEGATES_LAYOUT_TXT
 DEFAULT_ORG_OVERRIDES_PATH = DELEGATE_ORG_OVERRIDES_CSV
+DEFAULT_EMISSIONS_ORIGIN_OVERRIDES_PATH = DELEGATE_EMISSIONS_ORIGIN_OVERRIDES_CSV
 _ORGANISATION_OVERRIDE_CACHE: dict[str, tuple[str, str]] | None = None
+_EMISSIONS_ORIGIN_OVERRIDE_CACHE: dict[str, tuple[str, str]] | None = None
 COL_FIRST = 4
 COL_LAST = 32
 COL_ORG = 57
@@ -177,6 +185,61 @@ def country_override_for_row(row: pd.Series | dict[str, Any]) -> str | None:
     if country.casefold() in {'', 'nan', 'none'}:
         return None
     return country
+
+def load_emissions_origin_overrides(
+    path: Path = DEFAULT_EMISSIONS_ORIGIN_OVERRIDES_PATH,
+) -> dict[str, tuple[str, str]]:
+    """Return emissions-only travel origins keyed by normalized person name.
+
+    Values are ``(origin_country, origin_city)``; city may be empty.
+    """
+    global _EMISSIONS_ORIGIN_OVERRIDE_CACHE
+    if (
+        _EMISSIONS_ORIGIN_OVERRIDE_CACHE is not None
+        and path == DEFAULT_EMISSIONS_ORIGIN_OVERRIDES_PATH
+    ):
+        return _EMISSIONS_ORIGIN_OVERRIDE_CACHE
+    overrides: dict[str, tuple[str, str]] = {}
+    if not path.exists():
+        _EMISSIONS_ORIGIN_OVERRIDE_CACHE = overrides
+        return overrides
+    frame = pd.read_csv(path)
+    for _, row in frame.iterrows():
+        country = str(row.get('origin_country') or '').strip()
+        if country.casefold() in {'', 'nan', 'none'}:
+            continue
+        city_raw = row.get('origin_city')
+        if pd.isna(city_raw):
+            city = ''
+        else:
+            city = str(city_raw).strip()
+        if city.casefold() in {'', 'nan', 'none'}:
+            city = ''
+        for name_column in ('full_name', 'name'):
+            name = str(row.get(name_column) or '').strip()
+            if not name:
+                continue
+            overrides[normalize_person_name(name)] = (country, city)
+            overrides[name.casefold()] = (country, city)
+    if path == DEFAULT_EMISSIONS_ORIGIN_OVERRIDES_PATH:
+        _EMISSIONS_ORIGIN_OVERRIDE_CACHE = overrides
+    return overrides
+
+def emissions_origin_override_for_row(
+    row: pd.Series | dict[str, Any],
+) -> tuple[str, str] | None:
+    if isinstance(row, pd.Series):
+        row = row.to_dict()
+    overrides = load_emissions_origin_overrides()
+    for key in (
+        normalize_person_name(str(row.get('full_name') or '')),
+        str(row.get('full_name') or '').strip().casefold(),
+        normalize_person_name(str(row.get('presenter') or '')),
+        str(row.get('presenter') or '').strip().casefold(),
+    ):
+        if key and key in overrides:
+            return overrides[key]
+    return None
 
 def resolve_compound_org_country(organisation: str, country: str, *, data_dir: Path | str='data') -> tuple[str, str]:
     """Map compound affiliations to reviewed primary org + country."""

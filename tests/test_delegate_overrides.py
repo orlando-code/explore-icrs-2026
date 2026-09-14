@@ -10,8 +10,10 @@ from src.sources.delegates import (
     country_to_iso2,
     delegate_affiliation_for_row,
     delegate_country_for_row,
+    emissions_origin_override_for_row,
     infer_country_from_organisation,
     is_incomplete_organisation,
+    load_emissions_origin_overrides,
     load_organisation_overrides,
     normalize_person_name,
     organisation_for_delegate_row,
@@ -109,6 +111,51 @@ class TestSanitizeDelegateOrganisation:
     def test_empty_returns_empty(self, assert_eq):
         assert_eq(sanitize_delegate_organisation(""), "", context="empty org")
         assert_eq(sanitize_delegate_organisation("   "), "", context="whitespace org")
+
+
+class TestEmissionsOriginOverrides:
+    def test_load_overrides_from_temp_csv(self, tmp_path, assert_eq):
+        csv_path = tmp_path / "emissions_origin_overrides.csv"
+        csv_path.write_text(
+            "full_name,origin_country,origin_city,notes\n"
+            "Alice Example,New Zealand,Auckland,manual\n"
+            "Bob Example,Australia,,country only\n"
+            ",Should Skip,Fiji,Auckland,missing name\n",
+            encoding="utf-8",
+        )
+        overrides = load_emissions_origin_overrides(csv_path)
+        assert_eq(
+            overrides[normalize_person_name("Alice Example")],
+            ("New Zealand", "Auckland"),
+            context="alice emissions override",
+        )
+        assert_eq(
+            overrides[normalize_person_name("Bob Example")],
+            ("Australia", ""),
+            context="bob country-only override",
+        )
+        assert "should skip" not in overrides
+
+    def test_override_lookup_by_presenter(self, tmp_path, monkeypatch, assert_eq):
+        csv_path = tmp_path / "emissions_origin_overrides.csv"
+        csv_path.write_text(
+            "full_name,origin_country,origin_city,notes\n"
+            "Carol Example,New Zealand,Wellington,note\n",
+            encoding="utf-8",
+        )
+        import src.sources.delegates as delegates_module
+
+        loaded = load_emissions_origin_overrides(csv_path)
+        monkeypatch.setattr(
+            delegates_module,
+            "load_emissions_origin_overrides",
+            lambda path=csv_path: loaded,
+        )
+        assert_eq(
+            emissions_origin_override_for_row({"presenter": "Carol Example"}),
+            ("New Zealand", "Wellington"),
+            context="presenter-key emissions override",
+        )
 
 
 class TestOrganisationOverrides:
