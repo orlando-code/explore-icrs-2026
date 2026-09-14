@@ -1100,7 +1100,7 @@ def _build_emissions_locations(
         affiliation_label = display_name.get(key, key)
         for raw_affiliation in group["affiliation"].dropna().unique():
             organisation, country = parse_affiliation_parts(str(raw_affiliation))
-            if organisation and country:
+            if organisation and country and "," not in affiliation_label:
                 affiliation_label = _make_affiliation(affiliation_label, country)
                 break
         rows.append(

@@ -273,7 +273,11 @@ def _affiliation_location_records(df: pd.DataFrame, *, lat_col: str='latitude', 
                 lon = float(override_hit['longitude'])
                 if override_hit.get('geocode_level'):
                     geocode_level = str(override_hit['geocode_level'])
-            affiliation_label = sample_affiliation if ',' in sample_affiliation else display
+            affiliation_label = (
+                affiliation_display_name(sample_affiliation)
+                or display
+                or sample_affiliation
+            )
             records.append({'id': f'loc-{index:04d}', 'affiliation': affiliation_label, 'lat': lat, 'lon': lon, 'speakers': speakers, 'speaker_details': speaker_details, 'speaker_count': len(speakers), 'talk_count': len(group), 'geocode_level': geocode_level, 'distance_km': round(_haversine_km(lat, lon, auckland_lat, auckland_lon), 1), 'search_text': ' '.join(search_parts).lower()})
             progress.advance(task_id)
     return records

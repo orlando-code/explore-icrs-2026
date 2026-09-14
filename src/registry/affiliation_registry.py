@@ -381,11 +381,11 @@ def _collect_variant_rows() -> list[dict[str, Any]]:
 
     for alias_from, alias_to in load_affiliation_display_aliases().items():
         organisation, country = _resolve_org_country(
-            *parse_affiliation_parts(alias_to),
-            affiliation=alias_to,
+            *parse_affiliation_parts(alias_from),
+            affiliation=alias_from,
             delegate_index=delegate_index,
         )
-        if organisation:
+        if organisation and _is_valid_country(country):
             add(organisation, country, variant=alias_from, source="display_alias")
             add(
                 organisation,

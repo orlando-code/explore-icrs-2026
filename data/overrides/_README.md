@@ -6,7 +6,7 @@ Manual corrections for organisations and map visibility.
 | File                                        | Description                             |
 | ------------------------------------------- | --------------------------------------- |
 | `delegate_organisation_overrides.csv`       | Fix org/country by delegate `full_name` |
-| `delegate_emissions_origin_overrides.csv`   | Emissions-only travel origin (country/city); map affiliation unchanged |
+| `delegate_emissions_origin_overrides.csv`   | Emissions-only travel origin (country/city); map affiliation unchanged unless paired with org override |
 | `map_excluded_names.txt`                    | Optional names/affiliations to omit from delegate + emissions maps |
 
 

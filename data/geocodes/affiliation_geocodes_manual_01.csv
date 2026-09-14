@@ -52,6 +52,7 @@ Bureau of Meteorology,Australia,"Bureau of Meteorology, Australia",,"fallback:ca
 Byoguides,Australia,"Byoguides, Australia",,"fallback:capital:Canberra, Australia",-35.2809,149.13,"Canberra, Australia",FALLBACK
 C2o Consulting And James Cook University,Australia,"C2o Consulting And James Cook University, Australia",,"C2o Consulting And James Cook University, Australia",-19.3254243,146.7597646,"1 James Cook Dr, Douglas QLD 4814, Australia",OK
 California Academy of Sciences,Australia,"California Academy of Sciences, Australia",,"fallback:capital:Canberra, Australia",-35.2809,149.13,"Canberra, Australia",FALLBACK
+California Academy of Sciences,New Zealand,"California Academy of Sciences, New Zealand",,"override:Auckland-based delegate (Pim Bongaerts)",-36.8521,174.76318,"Auckland, New Zealand",OK
 California Academy of Sciences,United States,"California Academy of Sciences, United States",,"California Academy of Sciences, United States",37.7698646,-122.4660947,"55 Music Concourse Dr, San Francisco, CA 94118, USA",OK
 California State Polytechnic University,United States,"California State Polytechnic University, United States",,"California State Polytechnic University, United States",34.0596172,-117.8240278,"S University Dr, San Dimas, CA 91773, USA",OK
 California State University Monterey Bay,United States,"California State University Monterey Bay, United States",,"California State University Monterey Bay, United States",36.653712,-121.7989787,"100 Campus Ctr, Seaside, CA 93955, USA",OK
