@@ -275,3 +275,4 @@ backend/snapshots/offsets*.db
 .mplconfig/
 
 docs/
+author_list_in_progress.csv
