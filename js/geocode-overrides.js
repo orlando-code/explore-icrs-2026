@@ -271,6 +271,11 @@ export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = [
     -66.87919
   ],
   [
+    "Universidad San Francisco de Quito",
+    -0.895563,
+    -89.608881
+  ],
+  [
     "Universidade Federal Fluminense",
     -22.807947428159128,
     -43.12501206622452
