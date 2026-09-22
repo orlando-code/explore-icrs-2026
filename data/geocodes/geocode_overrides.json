@@ -476,6 +476,11 @@
     "latitude": 38.9869183,
     "longitude": -76.9425543,
     "query_used": "override:University of Maryland, United States"
+  },
+  "Universidad San Francisco de Quito": {
+    "geocode_level": "institute",
+    "latitude": -0.895563, 
+    "longitude": -89.608881,
+    "query_used": "override:Universidad San Francisco de Quito"
   }
-
 }
