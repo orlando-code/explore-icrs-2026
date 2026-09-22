@@ -356,8 +356,8 @@ class TestAffiliationGeocodeResolution:
         assert_eq(float(hit["latitude"]), 12.34, context="_override_hit lat")
         assert_eq(float(hit["longitude"]), 56.78, context="_override_hit lon")
 
-    def test_resolve_geocode_org_country_hit_before_override(self, assert_eq):
-        """Current resolve order: org+country CSV/capital path runs before override lookup."""
+    def test_resolve_geocode_override_before_org_country_hit(self, assert_eq):
+        """Manual geocode overrides win over org+country CSV/capital fallback."""
         geocodes = pd.DataFrame(
             [
                 {
@@ -374,7 +374,7 @@ class TestAffiliationGeocodeResolution:
         )
         lookup = build_geocode_lookup(geocodes)
         overrides = {
-            "Test Lab, Fiji": {
+            "Test Lab": {
                 "latitude": -17.5,
                 "longitude": 177.5,
                 "query_used": "override:Test Lab",
@@ -387,7 +387,26 @@ class TestAffiliationGeocodeResolution:
             overrides=overrides,
         )
         assert hit is not None, "expected geocode hit"
-        assert_eq(float(hit["latitude"]), -18.0, context="CSV org+country currently wins")
+        assert_eq(float(hit["latitude"]), -17.5, context="override wins over CSV org+country")
+        assert "override" in str(hit["query_used"]).casefold()
+
+    def test_resolve_geocode_usfq_override_beats_wrong_country_capital(self, assert_eq):
+        """Org-only override applies even when affiliation carries a wrong delegate country."""
+        hit = resolve_geocode(
+            "Universidad San Francisco de Quito, United States Virgin Islands",
+            presenter="Margarita Brandt",
+            lookup=build_geocode_lookup(pd.DataFrame()),
+            overrides={
+                "Universidad San Francisco de Quito": {
+                    "latitude": -0.895563,
+                    "longitude": -89.608881,
+                    "query_used": "override:Universidad San Francisco de Quito",
+                }
+            },
+        )
+        assert hit is not None, "expected USFQ override hit"
+        assert_eq(float(hit["latitude"]), -0.895563, context="USFQ override lat")
+        assert_eq(float(hit["longitude"]), -89.608881, context="USFQ override lon")
 
     def test_capital_fallback_record(self, assert_eq):
         record = _capital_fallback_record("Some Org", "Australia", "Some Org, Australia")

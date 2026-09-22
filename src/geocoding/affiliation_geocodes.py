@@ -165,16 +165,16 @@ def resolve_geocode(affiliation: str, *, presenter: str='', lookup: dict[str, An
             country = delegate_country
     lookup_candidates = _geocode_lookup_candidates(affiliation, organisation=organisation, country=country)
     lookup_org = next((parse_affiliation_parts(candidate)[0] for candidate in lookup_candidates if parse_affiliation_parts(candidate)[0]), organisation)
-    if lookup_org and country:
-        hit = _org_country_hit(lookup_org, country, affiliation=affiliation, lookup=lookup)
-        if hit is not None:
-            return hit
     override_lookup = overrides if overrides is not None else load_geocode_overrides()
     for candidate in lookup_candidates:
         override = _override_hit(candidate, override_lookup, organisation=lookup_org, country=country)
         if override is not None:
             override['affiliation'] = affiliation
             return override
+    if lookup_org and country:
+        hit = _org_country_hit(lookup_org, country, affiliation=affiliation, lookup=lookup)
+        if hit is not None:
+            return hit
     for candidate in lookup_candidates:
         hit = lookup['by_affiliation'].get(candidate.casefold())
         if hit is not None:
