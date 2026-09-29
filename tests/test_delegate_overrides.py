@@ -12,7 +12,9 @@ from src.sources.delegates import (
     delegate_country_for_row,
     emissions_origin_override_for_row,
     infer_country_from_organisation,
+    is_emissions_excluded,
     is_incomplete_organisation,
+    load_emissions_excluded,
     load_emissions_origin_overrides,
     load_organisation_overrides,
     normalize_person_name,
@@ -155,6 +157,49 @@ class TestEmissionsOriginOverrides:
             emissions_origin_override_for_row({"presenter": "Carol Example"}),
             ("New Zealand", "Wellington"),
             context="presenter-key emissions override",
+        )
+
+
+class TestEmissionsExcludedDelegates:
+    def test_load_excluded_from_temp_csv(self, tmp_path, assert_eq):
+        csv_path = tmp_path / "delegate_emissions_excluded.csv"
+        csv_path.write_text(
+            "full_name,person_key,notes\n"
+            "Alice Example,icrs-p-00001,local\n"
+            "Bob Example,,name only\n",
+            encoding="utf-8",
+        )
+        excluded = load_emissions_excluded(csv_path)
+        assert_eq(
+            excluded.person_keys,
+            frozenset({"icrs-p-00001"}),
+            context="person keys",
+        )
+        assert normalize_person_name("Alice Example") in excluded.names
+        assert normalize_person_name("Bob Example") in excluded.names
+
+    def test_is_emissions_excluded_by_key_or_name(self, tmp_path, assert_eq):
+        csv_path = tmp_path / "delegate_emissions_excluded.csv"
+        csv_path.write_text(
+            "full_name,person_key,notes\n"
+            "Carol Example,icrs-p-00002,local\n",
+            encoding="utf-8",
+        )
+        excluded = load_emissions_excluded(csv_path)
+        assert_eq(
+            is_emissions_excluded("Carol Example", "icrs-p-00002", excluded=excluded),
+            True,
+            context="key match",
+        )
+        assert_eq(
+            is_emissions_excluded("Carol Example", excluded=excluded),
+            True,
+            context="name match",
+        )
+        assert_eq(
+            is_emissions_excluded("Someone Else", excluded=excluded),
+            False,
+            context="not excluded",
         )
 
 

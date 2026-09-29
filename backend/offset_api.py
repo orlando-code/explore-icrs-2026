@@ -73,6 +73,9 @@ _contacts_cache: tuple[str, float, int, dict[str, str]] | None = None
 _delegate_ids_lock = threading.Lock()
 _delegate_ids_by_name: dict[str, str] | None = None
 _delegate_ids_loaded_path: str | None = None
+_emissions_excluded_lock = threading.Lock()
+_emissions_excluded_cache: tuple[frozenset[str], frozenset[str]] | None = None
+_emissions_excluded_loaded_path: str | None = None
 # Only used when CLIENT_HINT_SALT is unset: hints stay comparable within a
 # process lifetime but are not linkable across restarts.
 _ephemeral_hint_salt = secrets.token_hex(16)
@@ -189,6 +192,58 @@ def _clean_name(value: Any) -> str | None:
 def _delegate_name_key(name: str | None) -> str:
     cleaned = _clean_name(name)
     return cleaned.lower() if cleaned else ""
+
+
+def _emissions_excluded_path() -> Path | None:
+    raw = os.environ.get("EMISSIONS_EXCLUDED_PATH", "").strip()
+    if raw:
+        path = Path(raw)
+        return path if path.is_file() else None
+    default = Path(__file__).resolve().parent / "data" / "emissions_excluded.json"
+    return default if default.is_file() else None
+
+
+def _load_emissions_excluded() -> tuple[frozenset[str], frozenset[str]]:
+    global _emissions_excluded_cache, _emissions_excluded_loaded_path
+    path = _emissions_excluded_path()
+    if path is None:
+        return frozenset(), frozenset()
+
+    path_str = str(path.resolve())
+    with _emissions_excluded_lock:
+        if (
+            _emissions_excluded_cache is not None
+            and _emissions_excluded_loaded_path == path_str
+        ):
+            return _emissions_excluded_cache
+
+        person_keys: set[str] = set()
+        names: set[str] = set()
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            for key in payload.get("person_keys") or []:
+                text = str(key or "").strip()
+                if text.startswith("icrs-p-"):
+                    person_keys.add(text)
+            for name in payload.get("names") or []:
+                text = str(name or "").strip().casefold()
+                if text:
+                    names.add(text)
+        except (OSError, json.JSONDecodeError, TypeError):
+            person_keys = set()
+            names = set()
+
+        _emissions_excluded_cache = (frozenset(person_keys), frozenset(names))
+        _emissions_excluded_loaded_path = path_str
+        return _emissions_excluded_cache
+
+
+def _is_emissions_excluded_registration(clean_name: str | None) -> bool:
+    _, names = _load_emissions_excluded()
+    if not names:
+        return False
+    key = _delegate_name_key(clean_name)
+    return bool(key) and key in names
 
 
 def _load_delegate_ids() -> dict[str, str]:
@@ -1079,6 +1134,16 @@ class OffsetHandler(BaseHTTPRequestHandler):
         clean_name = _clean_name(payload.get("name"))
         if payload.get("name") not in (None, "") and clean_name is None:
             _json_response(self, 400, {"error": "Invalid name."})
+            return
+        if clean_name and _is_emissions_excluded_registration(clean_name):
+            _json_response(
+                self,
+                403,
+                {
+                    "error": "This delegate is not eligible for offset registration.",
+                    "code": "emissions_excluded",
+                },
+            )
             return
         affiliation_key = _clean_bucket_key(payload.get("affiliation_key"))
         pool = _clean_pool(payload.get("pool"))

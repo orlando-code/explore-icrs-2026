@@ -20,6 +20,10 @@ from src.data_paths import MAP_EXCLUDED_NAMES_JSON, MAP_EXCLUDED_NAMES_TXT
 DEFAULT_MAP_EXCLUSIONS_PATH = MAP_EXCLUDED_NAMES_TXT
 DEFAULT_MAP_EXCLUSIONS_JSON_PATH = MAP_EXCLUDED_NAMES_JSON
 DEFAULT_MAP_EXCLUSIONS_JS_PATH = Path("js/map-excluded-names.js")
+DEFAULT_EMISSIONS_EXCLUDED_JS_PATH = Path("js/emissions-excluded-delegates.js")
+DEFAULT_EMISSIONS_EXCLUDED_BACKEND_PATH = Path(
+    "backend/data/emissions_excluded.json"
+)
 
 
 @dataclass(frozen=True)
@@ -103,6 +107,59 @@ def is_map_excluded_affiliation(
     return _affiliation_key(affiliation) in keys
 
 
+def load_emissions_excluded_for_site():
+    from src.sources.delegates import load_emissions_excluded
+
+    return load_emissions_excluded()
+
+
+def is_emissions_excluded_person(
+    name: str,
+    person_key: str | None = None,
+    *,
+    excluded=None,
+) -> bool:
+    from src.sources.delegates import is_emissions_excluded
+
+    return is_emissions_excluded(name, person_key, excluded=excluded)
+
+
+def export_emissions_excluded_js(
+    save_path: str | Path = DEFAULT_EMISSIONS_EXCLUDED_JS_PATH,
+    *,
+    excluded=None,
+) -> Path:
+    excluded = excluded or load_emissions_excluded_for_site()
+    output_path = Path(save_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    body = (
+        "/** Generated from data/overrides/delegate_emissions_excluded.csv – do not edit by hand. */\n"
+        f"export const EMISSIONS_EXCLUDED_PERSON_KEYS = {json.dumps(sorted(excluded.person_keys), ensure_ascii=True)};\n"
+        f"export const EMISSIONS_EXCLUDED_NAMES = {json.dumps(sorted(excluded.names), ensure_ascii=True)};\n"
+    )
+    output_path.write_text(body, encoding="utf-8")
+    return output_path
+
+
+def export_emissions_excluded_backend_json(
+    save_path: str | Path = DEFAULT_EMISSIONS_EXCLUDED_BACKEND_PATH,
+    *,
+    excluded=None,
+) -> Path:
+    excluded = excluded or load_emissions_excluded_for_site()
+    output_path = Path(save_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "person_keys": sorted(excluded.person_keys),
+        "names": sorted(excluded.names),
+    }
+    output_path.write_text(
+        json.dumps(payload, ensure_ascii=True, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return output_path
+
+
 def map_talks_for_export(
     talks: pd.DataFrame,
     *,
@@ -148,7 +205,14 @@ def filter_emissions_pool(
         return pool
     exclusions = exclusions or load_map_exclusions()
     privacy_keys = set(privacy_person_keys or ())
-    if not exclusions.names and not exclusions.affiliations and not privacy_keys:
+    emissions_excluded = load_emissions_excluded_for_site()
+    if (
+        not exclusions.names
+        and not exclusions.affiliations
+        and not privacy_keys
+        and not emissions_excluded.person_keys
+        and not emissions_excluded.names
+    ):
         return pool
 
     name_set = set(exclusions.names)
@@ -162,6 +226,11 @@ def filter_emissions_pool(
         )
         and not is_map_excluded(str(attendee.get("name", "")), name_set)
         and not is_map_excluded_affiliation(str(attendee.get("affiliation", "")), affiliation_set)
+        and not is_emissions_excluded_person(
+            str(attendee.get("name", "")),
+            str(attendee.get("person_key") or "").strip() or None,
+            excluded=emissions_excluded,
+        )
     ]
 
     location_by_id = {

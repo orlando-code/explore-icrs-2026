@@ -12,6 +12,10 @@ import {
   MAP_EXCLUDED_AFFILIATION_KEYS,
   MAP_EXCLUDED_NAMES,
 } from "./map-excluded-names.js";
+import {
+  EMISSIONS_EXCLUDED_NAMES,
+  EMISSIONS_EXCLUDED_PERSON_KEYS,
+} from "./emissions-excluded-delegates.js";
 import { createMapView } from "./map.js";
 import { createNetworkView } from "./network.js";
 import { createEmissionsView } from "./emissions-view.js";
@@ -22,6 +26,7 @@ import {
   applyAffiliationGeocodeOverrides,
   setMapExclusions,
   filterEmissionsPool,
+  setEmissionsExclusions,
   setDelegatePersonKeyAliases,
   setPersonCanonicalNames,
   activateSuggestionAt,
@@ -36,6 +41,11 @@ setPersonCanonicalNames(PERSON_CANONICAL_NAMES);
 setMapExclusions({
   names: MAP_EXCLUDED_NAMES,
   affiliationKeys: MAP_EXCLUDED_AFFILIATION_KEYS,
+});
+
+setEmissionsExclusions({
+  personKeys: EMISSIONS_EXCLUDED_PERSON_KEYS,
+  names: EMISSIONS_EXCLUDED_NAMES,
 });
 
 if (EMISSIONS_DATA.speakers) {

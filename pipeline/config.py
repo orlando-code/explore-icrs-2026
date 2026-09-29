@@ -77,5 +77,6 @@ OVERRIDE_PRECEDENCE = (
     "geocodes/affiliation_geocodes_manual_01.csv",  # manual / capital fallbacks
     "geocodes/affiliation_display_aliases.json",  # canonical display strings
     "overrides/delegate_organisation_overrides.csv",  # PDF org fixes (applied at PDF→JSON only)
+    "overrides/delegate_emissions_excluded.csv",  # omit from CO₂ totals + offset UI/API
     "overrides/map_excluded_names.txt",  # hide from map
 )

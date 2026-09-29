@@ -8,7 +8,10 @@ from typing import Any
 import pandas as pd
 import pycountry
 from src.sources.programme import load_talks
+from dataclasses import dataclass
+
 from src.data_paths import (
+    DELEGATE_EMISSIONS_EXCLUDED_CSV,
     DELEGATE_EMISSIONS_ORIGIN_OVERRIDES_CSV,
     DELEGATE_ORG_OVERRIDES_CSV,
     DELEGATE_PDF,
@@ -21,8 +24,18 @@ DEFAULT_DELEGATES_JSON_PATH = DELEGATES_JSON
 DEFAULT_DELEGATES_LAYOUT_CACHE = DELEGATES_LAYOUT_TXT
 DEFAULT_ORG_OVERRIDES_PATH = DELEGATE_ORG_OVERRIDES_CSV
 DEFAULT_EMISSIONS_ORIGIN_OVERRIDES_PATH = DELEGATE_EMISSIONS_ORIGIN_OVERRIDES_CSV
+DEFAULT_EMISSIONS_EXCLUDED_PATH = DELEGATE_EMISSIONS_EXCLUDED_CSV
+
+
+@dataclass(frozen=True)
+class EmissionsExcluded:
+    person_keys: frozenset[str]
+    names: frozenset[str]
+
+
 _ORGANISATION_OVERRIDE_CACHE: dict[str, tuple[str, str]] | None = None
 _EMISSIONS_ORIGIN_OVERRIDE_CACHE: dict[str, tuple[str, str]] | None = None
+_EMISSIONS_EXCLUDED_CACHE: EmissionsExcluded | None = None
 COL_FIRST = 4
 COL_LAST = 32
 COL_ORG = 57
@@ -224,6 +237,76 @@ def load_emissions_origin_overrides(
     if path == DEFAULT_EMISSIONS_ORIGIN_OVERRIDES_PATH:
         _EMISSIONS_ORIGIN_OVERRIDE_CACHE = overrides
     return overrides
+
+def load_emissions_excluded(
+    path: Path = DEFAULT_EMISSIONS_EXCLUDED_PATH,
+) -> EmissionsExcluded:
+    """Return people omitted from travel CO₂ totals and offset registration."""
+    global _EMISSIONS_EXCLUDED_CACHE
+    if (
+        _EMISSIONS_EXCLUDED_CACHE is not None
+        and path == DEFAULT_EMISSIONS_EXCLUDED_PATH
+    ):
+        return _EMISSIONS_EXCLUDED_CACHE
+    person_keys: set[str] = set()
+    names: set[str] = set()
+    if path.exists():
+        frame = pd.read_csv(path)
+        for _, row in frame.iterrows():
+            person_key = str(row.get("person_key") or "").strip()
+            if person_key.startswith("icrs-p-"):
+                person_keys.add(person_key)
+            for name_column in ("full_name", "name"):
+                name = str(row.get(name_column) or "").strip()
+                if not name:
+                    continue
+                names.add(normalize_person_name(name))
+    result = EmissionsExcluded(
+        person_keys=frozenset(person_keys),
+        names=frozenset(names),
+    )
+    if path == DEFAULT_EMISSIONS_EXCLUDED_PATH:
+        _EMISSIONS_EXCLUDED_CACHE = result
+    return result
+
+
+def is_emissions_excluded(
+    name: str,
+    person_key: str | None = None,
+    *,
+    excluded: EmissionsExcluded | None = None,
+) -> bool:
+    excluded = excluded or load_emissions_excluded()
+    if not excluded.person_keys and not excluded.names:
+        return False
+    key = str(person_key or "").strip()
+    if key.startswith("icrs-p-") and key in excluded.person_keys:
+        return True
+    normalized = normalize_person_name(str(name or ""))
+    return bool(normalized) and normalized in excluded.names
+
+
+def emissions_excluded_for_row(
+    row: pd.Series | dict[str, Any],
+    *,
+    excluded: EmissionsExcluded | None = None,
+) -> bool:
+    if isinstance(row, pd.Series):
+        row = row.to_dict()
+    person_key = str(row.get("person_key") or "").strip()
+    if not person_key:
+        affiliation = str(row.get("affiliation") or "").strip()
+        for name_column in ("full_name", "presenter", "name"):
+            name = str(row.get(name_column) or "").strip()
+            if name:
+                person_key = delegate_person_key(name, affiliation=affiliation)
+                break
+    for name_column in ("full_name", "presenter", "name"):
+        name = str(row.get(name_column) or "").strip()
+        if name and is_emissions_excluded(name, person_key, excluded=excluded):
+            return True
+    return False
+
 
 def emissions_origin_override_for_row(
     row: pd.Series | dict[str, Any],

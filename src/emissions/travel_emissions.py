@@ -259,6 +259,7 @@ def load_attendee_legs(
         delegate_org_country_for_row,
         delegate_person_key,
         emissions_origin_override_for_row,
+        is_emissions_excluded,
         load_delegates,
         normalize_person_name,
     )
@@ -314,6 +315,8 @@ def load_attendee_legs(
         person_key = str(row.get("person_key") or "").strip()
         if not person_key:
             person_key = delegate_person_key(presenter, affiliation=affiliation_text)
+        if is_emissions_excluded(presenter, person_key):
+            continue
         delegate_country = (
             delegate_countries_by_key.get(person_key)
             or delegate_countries.get(normalize_person_name(presenter))
@@ -1338,6 +1341,13 @@ def export_emissions_site_data(
     from src.emissions.emissions_site_enrichment import enrich_emissions_payload
 
     payload = enrich_emissions_payload(payload)
+    from src.site.map_exclusions import (
+        export_emissions_excluded_backend_json,
+        export_emissions_excluded_js,
+    )
+
+    export_emissions_excluded_js()
+    export_emissions_excluded_backend_json()
     output_path = Path(save_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 

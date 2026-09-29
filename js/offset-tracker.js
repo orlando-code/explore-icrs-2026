@@ -8,6 +8,7 @@ import {
   activateSuggestionAt,
   handleSuggestionListKeydown,
   buildPersonNameSearchHits,
+  isEmissionsExcludedPerson,
 } from "./utils.js";
 import {
   OFFSET_API_URL,
@@ -347,6 +348,11 @@ export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocation
     const seen = new Set();
     return exportedAttendees
       .filter((attendee) => {
+        if (
+          isEmissionsExcludedPerson(attendee?.name, personKeyFromRecord(attendee) || attendee?.person_key)
+        ) {
+          return false;
+        }
         const key = attendeeIdentityKey(attendee);
         if (seen.has(key)) return false;
         seen.add(key);
@@ -403,6 +409,7 @@ export function buildEmissionsAttendeesFromSite(siteLocations, emissionsLocation
       const trimmed = String(speaker.name || speaker).trim();
       if (!trimmed) continue;
       const registryKey = personKeyFromRecord(speaker);
+      if (isEmissionsExcludedPerson(trimmed, registryKey)) continue;
       const identityKey = registryKey || attendeeDedupeKey(trimmed, emissionsLocation.affiliation);
       if (seen.has(identityKey)) continue;
       seen.add(identityKey);
@@ -998,6 +1005,15 @@ export function createOffsetTracker({
     const attendee = resolveSelectedAttendee();
     if (!attendee) {
       if (searchQuery.trim()) setStatus("Select your name from the suggestions.");
+      return false;
+    }
+    if (
+      isEmissionsExcludedPerson(
+        attendee.name,
+        personKeyFromRecord(attendee) || attendee.person_key
+      )
+    ) {
+      setStatus("This delegate is not eligible for travel offset registration.");
       return false;
     }
     if (pendingRegistrationIds.has(attendee.id)) {

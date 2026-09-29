@@ -226,10 +226,64 @@ class TestFilterEmissionsPool:
             context="headline attendee count preserved",
         )
 
-    def test_empty_exclusions_passthrough(self, assert_eq):
+    def test_empty_exclusions_passthrough(self, monkeypatch, assert_eq):
+        import src.sources.delegates as delegates_module
+
+        monkeypatch.setattr(
+            delegates_module,
+            "load_emissions_excluded",
+            lambda path=None: delegates_module.EmissionsExcluded(frozenset(), frozenset()),
+        )
         pool = {"attendees": [{"name": "A"}], "locations": [], "meta": {}}
         filtered = filter_emissions_pool(
             pool,
             exclusions=MapExclusions(names=frozenset(), affiliations=frozenset()),
         )
         assert filtered is pool or filtered["attendees"] == pool["attendees"]
+
+    def test_emissions_excluded_delegate_removed_from_pool(
+        self, monkeypatch, assert_eq
+    ):
+        import src.sources.delegates as delegates_module
+
+        excluded = delegates_module.EmissionsExcluded(
+            person_keys=frozenset({"icrs-p-99999"}),
+            names=frozenset({normalize_person_name("Local Delegate")}),
+        )
+        monkeypatch.setattr(
+            delegates_module,
+            "load_emissions_excluded",
+            lambda path=None: excluded,
+        )
+        pool = {
+            "meta": {"headline": {"co2e_kg": 150.0, "attendees_estimated": 2}},
+            "attendees": [
+                {
+                    "name": "Travel Delegate",
+                    "person_key": "icrs-p-00001",
+                    "affiliation": "Far Lab, Fiji",
+                    "location_id": "loc-1",
+                    "co2e_kg": 100.0,
+                },
+                {
+                    "name": "Local Delegate",
+                    "person_key": "icrs-p-99999",
+                    "affiliation": "Home Lab, New Zealand",
+                    "location_id": "loc-1",
+                    "co2e_kg": 50.0,
+                },
+            ],
+            "locations": [
+                {
+                    "id": "loc-1",
+                    "affiliation": "Far Lab, Fiji",
+                    "co2e_kg": 150.0,
+                    "travel_attendees": 2,
+                }
+            ],
+            "rankings": [],
+        }
+        filtered = filter_emissions_pool(pool, exclusions=MapExclusions(frozenset(), frozenset()))
+        names = [row["name"] for row in filtered["attendees"]]
+        assert_eq(names, ["Travel Delegate"], context="local delegate omitted")
+        assert_eq(filtered["locations"][0]["co2e_kg"], 100.0, context="co2e recomputed")

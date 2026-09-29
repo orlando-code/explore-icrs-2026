@@ -1386,12 +1386,30 @@ function normalizePersonNameForExclusion(name) {
 
 let mapExcludedNames = null;
 let mapExcludedAffiliationKeys = null;
+let emissionsExcludedPersonKeys = null;
+let emissionsExcludedNames = null;
 
 export function setMapExclusions({ names = [], affiliationKeys = [] } = {}) {
   mapExcludedNames = new Set(names.map(normalizePersonNameForExclusion));
   mapExcludedAffiliationKeys = new Set(
     affiliationKeys.map((key) => String(key || "").trim().toLowerCase()).filter(Boolean)
   );
+}
+
+export function setEmissionsExclusions({ personKeys = [], names = [] } = {}) {
+  emissionsExcludedPersonKeys = new Set(
+    personKeys.map((key) => String(key || "").trim()).filter(Boolean)
+  );
+  emissionsExcludedNames = new Set(names.map(normalizePersonNameForExclusion));
+}
+
+export function isEmissionsExcludedPerson(name, personKey = "") {
+  const key = String(personKey || "").trim();
+  if (emissionsExcludedPersonKeys?.size && key && emissionsExcludedPersonKeys.has(key)) {
+    return true;
+  }
+  if (!emissionsExcludedNames?.size) return false;
+  return emissionsExcludedNames.has(normalizePersonNameForExclusion(name));
 }
 
 export function isMapExcludedPerson(name) {
@@ -1406,7 +1424,12 @@ export function isMapExcludedAffiliation(affiliation) {
 
 export function filterEmissionsPool(pool, { preserveHeadline = false } = {}) {
   if (!pool) return pool;
-  if (!mapExcludedNames?.size && !mapExcludedAffiliationKeys?.size) {
+  if (
+    !mapExcludedNames?.size &&
+    !mapExcludedAffiliationKeys?.size &&
+    !emissionsExcludedPersonKeys?.size &&
+    !emissionsExcludedNames?.size
+  ) {
     return pool;
   }
 
@@ -1415,7 +1438,8 @@ export function filterEmissionsPool(pool, { preserveHeadline = false } = {}) {
   const attendees = (pool.attendees || []).filter(
     (attendee) =>
       !isMapExcludedPerson(attendee?.name) &&
-      !isMapExcludedAffiliation(attendee?.affiliation)
+      !isMapExcludedAffiliation(attendee?.affiliation) &&
+      !isEmissionsExcludedPerson(attendee?.name, attendee?.person_key)
   );
 
   const locationById = new Map(

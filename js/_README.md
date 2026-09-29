@@ -13,6 +13,7 @@ Person identity in the UI uses registry `person_key` (`icrs-p-*`) end-to-end: ge
 | `non-speaking-delegates.js` | same |
 | `geocode-overrides.js` | same |
 | `map-excluded-names.js` | same |
+| `emissions-excluded-delegates.js` | emissions rebuild (`export_emissions_site_data`) |
 | `emissions-data.js` | `scripts/pipeline/rebuild_emissions_export.py` |
 | `speaker-profiles.js` | speaker profile export (`src/profiles/speaker_profiles.py`) |
 | `talk-similarities.js` | talk similarity export (`src/profiles/talk_similarity_build.py`) |
