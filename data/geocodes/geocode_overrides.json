@@ -482,5 +482,11 @@
     "latitude": -0.895563, 
     "longitude": -89.608881,
     "query_used": "override:Universidad San Francisco de Quito"
-  }
+  },
+  "Instituto de Acuicultura Torre de la Sal, Spanish National Research Council (CSIC)": {
+    "geocode_level": "institute",
+    "latitude": 40.13811734090203, 
+    "longitude": 0.16554457551331586,
+    "query_used": "override:Instituto de Acuicultura Torre de la Sal, Spanish National Research Council (CSIC)"
+  } 
 }
