@@ -151,6 +151,16 @@ export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = [
     -155.9206778
   ],
   [
+    "IATS/CSIC",
+    40.13811734090203,
+    0.16554457551331586
+  ],
+  [
+    "IATS/CSIC, Spain",
+    40.13811734090203,
+    0.16554457551331586
+  ],
+  [
     "IHPE",
     43.63158,
     3.867746
@@ -164,6 +174,11 @@ export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = [
     "Indiana University",
     39.16843504356545,
     -86.52286038622873
+  ],
+  [
+    "Instituto de Acuicultura Torre de la Sal, Spanish National Research Council (CSIC)",
+    40.13811734090203,
+    0.16554457551331586
   ],
   [
     "James Cook University",

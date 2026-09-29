@@ -245,7 +245,7 @@ Horniman Museum and Gardens,United Kingdom,"Horniman Museum and Gardens, United 
 Hoʻāla Kealakekua Nui,Inc.,"Hoʻāla Kealakekua Nui, Inc.",,"Hoʻāla Kealakekua Nui, Inc.",19.5181493,-155.9206778,"81-990 Halekii St Box 1301, Kealakekua, HI 96750, USA",OK
 "Hoʻāla Kealakekua Nui, Inc.",United States,"Hoʻāla Kealakekua Nui, Inc., United States",,"Hoʻāla Kealakekua Nui, Inc., United States",19.5181493,-155.9206778,"81-990 Halekii St Box 1301, Kealakekua, HI 96750, USA",OK
 I.CARE,United States,"I.CARE, United States",,"fallback:capital:Washington, United States",38.9072,-77.0369,"Washington, United States",FALLBACK
-IATS/CSIC,Spain,"IATS/CSIC, Spain",,"fallback:capital:Madrid, Spain",40.4168,-3.7038,"Madrid, Spain",FALLBACK
+IATS/CSIC,Spain,"IATS/CSIC, Spain",override:Torre de la Sal CSIC,40.13811734090203,0.16554457551331586,"Torre de la Sal, Spain",OK
 ICML/UNAM,Mexico,"ICML/UNAM, Mexico",,"ICML/UNAM, Mexico",19.3289134,-99.1788894,"Cto. Exterior s/n, C.U., Coyoacán, 04510 Ciudad de México, CDMX, Mexico",OK
 Ifremer,New Caledonia,"Ifremer, New Caledonia",,"fallback:capital:Nouméa, New Caledonia",-22.2558,166.4505,"Nouméa, New Caledonia",FALLBACK
 IHPE,France,"IHPE, France",,"fallback:capital:Paris, France",48.8566,2.3522,"Paris, France",FALLBACK
