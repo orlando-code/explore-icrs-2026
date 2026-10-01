@@ -408,6 +408,8 @@ def apply_check_in_attendance(
     registry = registry.copy()
     if "official_delegate_id" not in registry.columns:
         registry["official_delegate_id"] = ""
+    if "official_id_match_tier" not in registry.columns:
+        registry["official_id_match_tier"] = ""
 
     id_to_person_key, registry_by_key, registry_by_name_org, registry_by_org_first = (
         _registry_match_indexes(registry, official_ids_path=official_ids_path)
@@ -442,12 +444,24 @@ def apply_check_in_attendance(
             organisation = str(row.get("organisation") or "").strip()
             canonical_name = str(registry_by_key[person_key].get("canonical_name") or "").strip()
             country = _check_in_country_for_person(row, canonical_name=canonical_name)
+            mask = registry["person_key"].astype(str).eq(person_key)
             if organisation or country:
-                mask = registry["person_key"].astype(str).eq(person_key)
                 if organisation:
                     registry.loc[mask, "organisation"] = organisation
                 if country:
                     registry.loc[mask, "country"] = country
+            check_in_id = str(int(row["ID"]))
+            linked_id = id_to_person_key.get(check_in_id) == person_key
+            for idx in registry.index[mask]:
+                existing_id = str(registry.at[idx, "official_delegate_id"] or "").strip()
+                if not existing_id:
+                    registry.at[idx, "official_delegate_id"] = check_in_id
+                    registry.at[idx, "official_id_match_tier"] = "check_in_only"
+                elif existing_id == check_in_id:
+                    continue
+                elif linked_id:
+                    registry.at[idx, "official_delegate_id"] = check_in_id
+                    registry.at[idx, "official_id_match_tier"] = "check_in_only"
             if _is_privacy_released(row.get("privacy")) and display_name:
                 released_names[person_key] = display_name
             metrics["check_in_matched"] += 1

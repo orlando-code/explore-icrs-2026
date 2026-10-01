@@ -156,6 +156,70 @@ class TestApplyCheckInPrivacyRelease:
         assert_eq(str(person["checked_in"]).lower(), "true")
         assert_eq(metrics["check_in_matched"], 1)
 
+    def test_matched_programme_speaker_gets_check_in_delegate_id(self, tmp_path, assert_eq):
+        check_in = tmp_path / "check_in.csv"
+        check_in.write_text(
+            "ID,first name,last name,privacy,organisation,country\n"
+            "17741,Krystle-Blue,Pahl,EX-TRUE,University of Alabama,United States\n",
+            encoding="utf-8",
+        )
+        registry = pd.DataFrame(
+            [
+                {
+                    "person_key": "icrs-p-02082",
+                    "canonical_name": "Krystle-Blue Pahl",
+                    "organisation": "University of Alabama",
+                    "country": "United States",
+                    "in_delegate_list": False,
+                    "in_programme": True,
+                    "attended": False,
+                    "is_speaker": True,
+                    "official_delegate_id": "",
+                    "official_id_match_tier": "",
+                    "name_variants": "Krystle-Blue Pahl",
+                    "needs_review": False,
+                    "review_reason": "",
+                }
+            ]
+        )
+        aliases = pd.DataFrame(columns=["person_key", "name_variant", "normalized_name", "source"])
+        official_ids = tmp_path / "official_ids.csv"
+        official_ids.write_text("person_key,official_delegate_id\n", encoding="utf-8")
+        links = tmp_path / "links.csv"
+        links.write_text(
+            "check_in_id,person_key,notes\n17741,icrs-p-02082,programme speaker\n",
+            encoding="utf-8",
+        )
+        from src.registry import check_in_attendance as module
+
+        original_loader = module.load_check_in_person_registry_links
+
+        def _links():
+            import csv
+
+            out: dict[str, str] = {}
+            with links.open(encoding="utf-8", newline="") as handle:
+                for row in csv.DictReader(handle):
+                    out[str(row["check_in_id"]).strip()] = str(row["person_key"]).strip()
+            return out
+
+        module.load_check_in_person_registry_links = _links
+        try:
+            updated, _, metrics = apply_check_in_attendance(
+                registry,
+                aliases,
+                check_in_path=check_in,
+                official_ids_path=official_ids,
+            )
+        finally:
+            module.load_check_in_person_registry_links = original_loader
+
+        person = updated.loc[updated["person_key"].eq("icrs-p-02082")].iloc[0]
+        assert_eq(person["official_delegate_id"], "17741")
+        assert_eq(person["official_id_match_tier"], "check_in_only")
+        assert_eq(str(person["privacy_restricted"]).lower(), "false")
+        assert_eq(metrics["check_in_matched"], 1)
+
     def test_delegate_country_override_wins_over_check_in_nationality(self, tmp_path, assert_eq):
         check_in = tmp_path / "check_in.csv"
         check_in.write_text(
