@@ -12,6 +12,7 @@ from src.data_paths import (
     CHECK_IN_DELEGATES_CSV,
     CHECK_IN_DELEGATES_EDITABLE_CSV,
     CHECK_IN_OVERRIDES_CSV,
+    CHECK_IN_PERSON_REGISTRY_LINKS_CSV,
     PERSON_OFFICIAL_IDS_CSV,
     PERSON_REGISTRY_CSV,
     PROJECT_ROOT,
@@ -24,6 +25,24 @@ DEFAULT_CHECK_IN_PATH = CHECK_IN_DELEGATES_CSV
 DEFAULT_CHECK_IN_EDITABLE_PATH = CHECK_IN_DELEGATES_EDITABLE_CSV
 DEFAULT_CHECK_IN_SOURCE_PATH = REGISTRY / "all_delegates_checked_in.csv"
 DEFAULT_CHECK_IN_OVERRIDES_PATH = CHECK_IN_OVERRIDES_CSV
+DEFAULT_CHECK_IN_PERSON_REGISTRY_LINKS_PATH = CHECK_IN_PERSON_REGISTRY_LINKS_CSV
+
+
+def load_check_in_person_registry_links(
+    path: Path | str = DEFAULT_CHECK_IN_PERSON_REGISTRY_LINKS_PATH,
+) -> dict[str, str]:
+    """Map Innovators check-in delegate ID → existing registry person_key."""
+    link_path = Path(path)
+    if not link_path.exists():
+        return {}
+    frame = pd.read_csv(link_path, dtype=str).fillna("")
+    links: dict[str, str] = {}
+    for _, row in frame.iterrows():
+        delegate_id = str(row.get("official_delegate_id") or row.get("check_in_id") or "").strip()
+        person_key = str(row.get("person_key") or "").strip()
+        if delegate_id and person_key.startswith("icrs-p-"):
+            links[delegate_id] = person_key
+    return links
 
 
 def _relative_data_path(path: Path | str) -> str:
@@ -341,6 +360,22 @@ def _match_check_in_row(
             names.update(normalize_person_name(v) for v in variants if v.strip())
             if display_norm in names or (first_norm and first_norm in names):
                 return key
+    if display_norm:
+        for key, person in registry_by_key.items():
+            if not _truthy(person.get("in_programme")):
+                continue
+            names = {normalize_person_name(str(person.get("canonical_name") or ""))}
+            names.update(
+                normalize_person_name(variant)
+                for variant in str(person.get("name_variants") or "").split(";")
+                if str(variant).strip()
+            )
+            if display_norm not in names:
+                continue
+            person_org = _normalize_org(person.get("organisation"))
+            if org_key and person_org and person_org != org_key:
+                continue
+            return key
     return ""
 
 
@@ -579,6 +614,7 @@ def _registry_match_indexes(
         if str(row.get("official_delegate_id") or "").strip()
         and str(row.get("person_key") or "").strip()
     }
+    id_to_person_key.update(load_check_in_person_registry_links())
     registry_by_key = {
         str(row["person_key"]): row for _, row in registry.iterrows()
     }

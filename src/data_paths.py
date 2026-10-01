@@ -53,6 +53,9 @@ DELEGATE_EMISSIONS_EXCLUDED_CSV = OVERRIDES / "delegate_emissions_excluded.csv"
 MAP_EXCLUDED_NAMES_TXT = OVERRIDES / "map_excluded_names.txt"
 MAP_EXCLUDED_NAMES_JSON = OVERRIDES / "map_excluded_names.json"
 CHECK_IN_OVERRIDES_CSV = OVERRIDES / "check_in_overrides.csv"
+CHECK_IN_PERSON_REGISTRY_LINKS_CSV = (
+    OVERRIDES / "check_in_person_registry_links.csv"
+)
 DELEGATE_ID_MATCH_REVIEW_GLOB = "delegate_id_match_review_*_merged.csv"
 
 # Geography (emissions choropleth)

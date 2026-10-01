@@ -8,6 +8,7 @@ Manual corrections for organisations and map visibility.
 | `delegate_organisation_overrides.csv`       | Fix org/country by delegate `full_name` |
 | `delegate_emissions_origin_overrides.csv`   | Emissions-only travel origin (country/city); map affiliation unchanged unless paired with org override |
 | `delegate_emissions_excluded.csv`           | Omit from travel CO₂ totals and offset registration (still on main map / network) |
+| `check_in_person_registry_links.csv`        | Map Innovators check-in ID → existing `icrs-p-*` when auto-match fails |
 | `map_excluded_names.txt`                    | Optional names/affiliations to omit from delegate + emissions maps |
 
 
