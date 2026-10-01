@@ -366,6 +366,11 @@ export function speakerMatchesQuery(speaker, query) {
   const trimmed = foldSearchText(query).trim();
   if (!trimmed) return false;
   if (foldSearchText(speaker.name).includes(trimmed)) return true;
+  const normalizedQuery = normalizePersonName(query);
+  if (normalizedQuery) {
+    const normalizedName = normalizePersonName(speaker.name);
+    if (normalizedName.includes(normalizedQuery)) return true;
+  }
   if (speaker.search_text && foldSearchText(speaker.search_text).includes(trimmed)) return true;
   const aliases = personAliasSearchTerms(speaker);
   return aliases.some((alias) => foldSearchText(alias).includes(trimmed));

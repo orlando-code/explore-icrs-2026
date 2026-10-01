@@ -273,7 +273,6 @@ export function createEmissionsView(
   }
 
   function currentAttendees() {
-    if (emissionsData.attendees?.length) return emissionsData.attendees;
     const cacheKey = includeNonSpeakers ? "all" : "speakers";
     if (cachedAttendees && cachedAttendeesKey === cacheKey) return cachedAttendees;
     let siteLocations = siteData.locations || [];

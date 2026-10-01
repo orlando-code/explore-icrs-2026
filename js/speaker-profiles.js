@@ -35639,8 +35639,8 @@ export const SPEAKER_PROFILES = {
     "profile_role": "presenter",
     "affiliation_explicit": true
   },
-  "Krystle-blue Pahl": {
-    "name": "Krystle-blue Pahl",
+  "Krystle-Blue Pahl": {
+    "name": "Krystle-Blue Pahl",
     "affiliation": "University of Alabama",
     "confidence": "medium",
     "lookup_version": 7,
