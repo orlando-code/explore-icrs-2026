@@ -770,7 +770,14 @@ export function countryLabelFromAffiliation(affiliation) {
 export function countUniqueCountries(locations = []) {
   const countries = new Set();
   for (const location of locations) {
-    const country = countryLabelFromAffiliation(location?.affiliation);
+    const code = String(location?.country_code || "")
+      .trim()
+      .toUpperCase();
+    if (code) {
+      countries.add(code);
+      continue;
+    }
+    const country = String(location?.country || "").trim();
     if (country) countries.add(country.toLowerCase());
   }
   return countries.size;

@@ -9,6 +9,68 @@ from src.util.geo_math import haversine_km as _haversine_km
 AUCKLAND_LAT = -36.8485
 AUCKLAND_LON = 174.7633
 
+
+def _map_pin_country(
+    affiliation: str,
+    geocode_hit: dict[str, Any] | None,
+    *,
+    country_code: str = '',
+) -> tuple[str, str]:
+    """Return standardized ISO2 code and display label for a map pin."""
+    from src.emissions.origin_country import country_label
+    from src.registry.affiliation_registry import parse_affiliation_parts
+    from src.sources.delegates import _canonicalize_country, country_to_iso2
+
+    code = str(country_code or '').strip().upper()
+    if code in {'', 'NAN', 'UNKNOWN'}:
+        code = ''
+
+    country_name = ''
+    if not code and geocode_hit:
+        country_name = str(geocode_hit.get('country') or '').strip()
+        if country_name.casefold() in {'nan', 'unknown'}:
+            country_name = ''
+        country_name = _canonicalize_country(country_name)
+        code = country_to_iso2(country_name) if country_name else ''
+        country_name = ''
+
+    if not code:
+        _, country_name = parse_affiliation_parts(str(affiliation or ''))
+        country_name = _canonicalize_country(country_name)
+        code = country_to_iso2(country_name) if country_name else ''
+
+    label = country_label(code) if code else country_name
+    return code, label
+
+
+def _map_pin_country_fields(
+    affiliation: str,
+    geocode_hit: dict[str, Any] | None,
+    *,
+    country_code: str = '',
+) -> dict[str, str]:
+    code, label = _map_pin_country(affiliation, geocode_hit, country_code=country_code)
+    fields: dict[str, str] = {}
+    if code:
+        fields['country_code'] = code
+    if label:
+        fields['country'] = label
+    return fields
+
+
+def _unique_map_country_count(locations: list[dict[str, Any]]) -> int:
+    codes: set[str] = set()
+    for location in locations:
+        code = str(location.get('country_code') or '').strip().upper()
+        if code:
+            codes.add(code)
+            continue
+        label = str(location.get('country') or '').strip().casefold()
+        if label:
+            codes.add(label)
+    return len(codes)
+
+
 def _coerce_coordinate_series(series: pd.Series) -> pd.Series:
     """Convert coordinate columns to float, dropping non-numeric values."""
     return pd.to_numeric(series, errors='coerce')
@@ -278,7 +340,21 @@ def _affiliation_location_records(df: pd.DataFrame, *, lat_col: str='latitude', 
                 or display
                 or sample_affiliation
             )
-            records.append({'id': f'loc-{index:04d}', 'affiliation': affiliation_label, 'lat': lat, 'lon': lon, 'speakers': speakers, 'speaker_details': speaker_details, 'speaker_count': len(speakers), 'talk_count': len(group), 'geocode_level': geocode_level, 'distance_km': round(_haversine_km(lat, lon, auckland_lat, auckland_lon), 1), 'search_text': ' '.join(search_parts).lower()})
+            registry_country_code = ''
+            if 'country_code' in group.columns:
+                codes = [
+                    str(value).strip().upper()
+                    for value in group['country_code'].dropna().unique()
+                    if str(value).strip() and str(value).strip().upper() not in {'NAN', 'UNKNOWN'}
+                ]
+                if codes:
+                    registry_country_code = codes[0]
+            country_fields = _map_pin_country_fields(
+                sample_affiliation,
+                override_hit,
+                country_code=registry_country_code,
+            )
+            records.append({'id': f'loc-{index:04d}', 'affiliation': affiliation_label, 'lat': lat, 'lon': lon, 'speakers': speakers, 'speaker_details': speaker_details, 'speaker_count': len(speakers), 'talk_count': len(group), 'geocode_level': geocode_level, 'distance_km': round(_haversine_km(lat, lon, auckland_lat, auckland_lon), 1), 'search_text': ' '.join(search_parts).lower(), **country_fields})
             progress.advance(task_id)
     return records
 
@@ -616,11 +692,7 @@ def export_attendee_site_data(df: pd.DataFrame, *, lat_col: str='latitude', lon_
 
     stats = _attendee_site_stats(map_df, locations, presenter_col=presenter_col)
     stats['non_speaker_location_count'] = len(non_speaker_locations)
-    stats['country_count'] = len({
-        str(location.get('affiliation') or '').rsplit(',', 1)[-1].strip().casefold()
-        for location in [*locations, *non_speaker_locations]
-        if ',' in str(location.get('affiliation') or '')
-    })
+    stats['country_count'] = _unique_map_country_count([*locations, *non_speaker_locations])
     payload = {
         'meta': {
             'title': title,
