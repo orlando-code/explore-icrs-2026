@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Minimal offset-registration API for the ICRS emissions tracker.
 
 Stdlib only: SQLite persistence, CORS, rate limiting, Turnstile verification.
@@ -153,7 +152,10 @@ def _client_hint(client_ip: str) -> str:
 
 def _review_threshold() -> int:
     try:
-        return max(0, int(os.environ.get("REVIEW_THRESHOLD_PER_HOUR", REVIEW_THRESHOLD_PER_HOUR)))
+        return max(
+            0,
+            int(os.environ.get("REVIEW_THRESHOLD_PER_HOUR", REVIEW_THRESHOLD_PER_HOUR)),
+        )
     except ValueError:
         return REVIEW_THRESHOLD_PER_HOUR
 
@@ -315,7 +317,12 @@ def _load_contacts() -> dict[str, str]:
 
     with _contacts_lock:
         cached = _contacts_cache
-    if cached and cached[0] == path and cached[1] == stat.st_mtime and cached[2] == stat.st_size:
+    if (
+        cached
+        and cached[0] == path
+        and cached[1] == stat.st_mtime
+        and cached[2] == stat.st_size
+    ):
         return cached[3]
 
     try:
@@ -399,7 +406,9 @@ def _init_db() -> None:
                     "ALTER TABLE registrations ADD COLUMN revoked INTEGER NOT NULL DEFAULT 0"
                 )
             if "affiliation_key" not in existing:
-                conn.execute("ALTER TABLE registrations ADD COLUMN affiliation_key TEXT")
+                conn.execute(
+                    "ALTER TABLE registrations ADD COLUMN affiliation_key TEXT"
+                )
             if "pool" not in existing:
                 conn.execute("ALTER TABLE registrations ADD COLUMN pool TEXT")
             if "status" not in existing:
@@ -546,11 +555,14 @@ def _write_registration_backup(*, reason: str, attendee_id: str = "") -> None:
             db_path = Path(_db_path())
             sqlite_path = json_path.with_suffix(".db")
             if db_path.exists():
-                with _db_lock:
-                    with sqlite3.connect(db_path) as src, sqlite3.connect(sqlite_path) as dest:
-                        src.backup(dest)
+                with _db_lock and sqlite3.connect(db_path) as src, sqlite3.connect(
+                    sqlite_path
+                ) as dest:
+                    src.backup(dest)
                 latest_db = directory / "offsets-latest.db"
-                with sqlite3.connect(sqlite_path) as src, sqlite3.connect(latest_db) as dest:
+                with sqlite3.connect(sqlite_path) as src, sqlite3.connect(
+                    latest_db
+                ) as dest:
                     src.backup(dest)
 
             pruned = _prune_backup_snapshots(directory, _backup_keep())
@@ -607,13 +619,17 @@ def _aggregate_registrations() -> dict[str, Any]:
         bucket = _clean_pool(pool)
         totals[bucket] += tally
         if affiliation_key:
-            counts[bucket][affiliation_key] = counts[bucket].get(affiliation_key, 0) + tally
+            counts[bucket][affiliation_key] = (
+                counts[bucket].get(affiliation_key, 0) + tally
+            )
 
     return {"counts": counts, "totals": totals}
 
 
 def _recent_registration_count(window_seconds: int = 3600) -> int:
-    cutoff = datetime.fromtimestamp(time.time() - window_seconds, UTC).isoformat(timespec="seconds")
+    cutoff = datetime.fromtimestamp(time.time() - window_seconds, UTC).isoformat(
+        timespec="seconds"
+    )
     with _db_lock:
         conn = sqlite3.connect(_db_path())
         try:
@@ -861,11 +877,18 @@ def _verify_turnstile(token: str, remote_ip: str) -> bool:
         headers={"Content-Type": "application/x-www-form-urlencoded"},
     )
     try:
-        with urllib.request.urlopen(request, timeout=TURNSTILE_TIMEOUT_SECONDS) as response:
+        with urllib.request.urlopen(
+            request, timeout=TURNSTILE_TIMEOUT_SECONDS
+        ) as response:
             if response.status != 200:
                 return False
             result = json.loads(response.read().decode("utf-8"))
-    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, UnicodeDecodeError):
+    except (
+        urllib.error.URLError,
+        TimeoutError,
+        json.JSONDecodeError,
+        UnicodeDecodeError,
+    ):
         return False
     return result.get("success") is True
 
@@ -889,7 +912,10 @@ def _json_response(
 
 def _wants_html(handler: BaseHTTPRequestHandler) -> bool:
     accept = handler.headers.get("Accept", "")
-    return "text/html" in accept.lower() and "application/json" not in accept.split(",")[0].lower()
+    return (
+        "text/html" in accept.lower()
+        and "application/json" not in accept.split(",")[0].lower()
+    )
 
 
 def _html_response(handler: BaseHTTPRequestHandler, status: int, html: str) -> None:
@@ -1095,7 +1121,9 @@ class OffsetHandler(BaseHTTPRequestHandler):
             return None
         return payload
 
-    def _check_rate_limit(self, bucket: str, limit: int, global_limit: int) -> str | None:
+    def _check_rate_limit(
+        self, bucket: str, limit: int, global_limit: int
+    ) -> str | None:
         """Returns the caller's hint on success, None after sending a 429."""
         client_ip = self._client_ip()
         allowed, reason = _rate_limit_ok(
@@ -1163,22 +1191,21 @@ class OffsetHandler(BaseHTTPRequestHandler):
         pool = _clean_pool(payload.get("pool"))
         delegate_id = str(payload.get("delegate_id", "")).strip()
 
-        if _require_delegate_id():
-            if not _verify_delegate_id(clean_name, delegate_id):
-                _log(
-                    "delegate_id_rejected",
-                    attendee_id=attendee_id,
-                    client=hint,
-                )
-                _json_response(
-                    self,
-                    403,
-                    {
-                        "error": "Delegate ID does not match this name.",
-                        "code": "delegate_id_rejected",
-                    },
-                )
-                return
+        if _require_delegate_id() and not _verify_delegate_id(clean_name, delegate_id):
+            _log(
+                "delegate_id_rejected",
+                attendee_id=attendee_id,
+                client=hint,
+            )
+            _json_response(
+                self,
+                403,
+                {
+                    "error": "Delegate ID does not match this name.",
+                    "code": "delegate_id_rejected",
+                },
+            )
+            return
 
         verification_fallback = _truthy_payload(payload.get("verification_fallback"))
         if verification_fallback:
@@ -1249,11 +1276,7 @@ class OffsetHandler(BaseHTTPRequestHandler):
                 # The site thanks the visitor either way; a held row simply is
                 # not counted publicly until it has been looked at.
                 "pending": held and accepted,
-                **(
-                    {"delegate_verified": True}
-                    if _require_delegate_id()
-                    else {}
-                ),
+                **({"delegate_verified": True} if _require_delegate_id() else {}),
             },
         )
 
@@ -1279,7 +1302,9 @@ class OffsetHandler(BaseHTTPRequestHandler):
         email = _lookup_contact_email(name, affiliation)
         _log("contact_lookup", name=name, found=bool(email), client=hint)
         if not email:
-            _json_response(self, 404, {"error": "No verified email available for this person."})
+            _json_response(
+                self, 404, {"error": "No verified email available for this person."}
+            )
             return
 
         _json_response(self, 200, {"ok": True, "email": email})
@@ -1298,7 +1323,9 @@ def main() -> None:
     print(f"Database: {_db_path()}")
     print(f"Contacts: {_contacts_path()} ({len(contacts)} verified emails)")
     print(f"Allowed origins: {', '.join(sorted(_allowed_origins()))}")
-    print(f"Client IP header: {os.environ.get('CLIENT_IP_HEADER', 'Fly-Client-IP') or '(socket peer)'}")
+    print(
+        f"Client IP header: {os.environ.get('CLIENT_IP_HEADER', 'Fly-Client-IP') or '(socket peer)'}"
+    )
     print(f"Hold-for-review above: {_review_threshold()} registrations/hour")
     if _require_delegate_id():
         delegate_ids = _load_delegate_ids()
@@ -1306,7 +1333,9 @@ def main() -> None:
             f"Delegate IDs: {_delegate_ids_path()} ({len(delegate_ids)} names, required on POST)"
         )
         if not delegate_ids:
-            print("WARNING: REQUIRE_DELEGATE_ID is set but no delegate IDs were loaded.")
+            print(
+                "WARNING: REQUIRE_DELEGATE_ID is set but no delegate IDs were loaded."
+            )
     if _env_flag("SKIP_TURNSTILE_VERIFY"):
         print("WARNING: SKIP_TURNSTILE_VERIFY is set — Turnstile is not checked.")
     elif not _turnstile_secret():
