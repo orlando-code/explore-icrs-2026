@@ -194,6 +194,20 @@ def _delegate_name_key(name: str | None) -> str:
     return cleaned.lower() if cleaned else ""
 
 
+def _delegate_name_lookup_keys(name: str) -> list[str]:
+    """Keys used when indexing and verifying delegate IDs (case + punctuation)."""
+    cleaned = _clean_name(name)
+    if not cleaned:
+        return []
+    lowered = cleaned.lower()
+    normalized = re.sub(r"[^a-z0-9\s]", " ", lowered)
+    normalized = WHITESPACE_RE.sub(" ", normalized).strip()
+    keys = [lowered]
+    if normalized and normalized not in keys:
+        keys.append(normalized)
+    return keys
+
+
 def _emissions_excluded_path() -> Path | None:
     raw = os.environ.get("EMISSIONS_EXCLUDED_PATH", "").strip()
     if raw:
@@ -266,9 +280,9 @@ def _load_delegate_ids() -> dict[str, str]:
                     delegate_id = str(row.get("delegate_id") or "").strip()
                     if not name or not DELEGATE_ID_RE.fullmatch(delegate_id):
                         continue
-                    key = _delegate_name_key(name)
-                    if key:
-                        by_name[key] = delegate_id
+                    for key in _delegate_name_lookup_keys(name):
+                        if key:
+                            by_name[key] = delegate_id
         except OSError:
             by_name = {}
 
@@ -285,10 +299,10 @@ def _verify_delegate_id(name: str | None, delegate_id: str) -> bool:
     index = _load_delegate_ids()
     if not index:
         return False
-    key = _delegate_name_key(name)
-    if not key:
-        return False
-    return index.get(key) == delegate_id
+    for key in _delegate_name_lookup_keys(name or ""):
+        if index.get(key) == delegate_id:
+            return True
+    return False
 
 
 def _load_contacts() -> dict[str, str]:
