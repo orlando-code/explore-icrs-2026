@@ -106,6 +106,11 @@ export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = [
     -157.7880442
   ],
   [
+    "Hawai?i Institute of Marine Biology",
+    21.4325581,
+    -157.7880442
+  ],
+  [
     "Hawaii Institute of Marine Biology",
     21.4325581,
     -157.7880442
@@ -139,6 +144,11 @@ export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = [
     "Hawai‘i Institute of Marine Biology, United States",
     21.4325581,
     -157.7880442
+  ],
+  [
+    "Ho??la Kealakekua Nui, Inc.",
+    19.5181493,
+    -155.9206778
   ],
   [
     "Hoala Kealakekua Nui, Inc.",
@@ -214,6 +224,11 @@ export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = [
     "Maritime and Marine Science Centre of Excellence, Pattimura University",
     -3.6546187,
     128.1956754
+  ],
+  [
+    "National Center for Scientific Research - R?hui Center",
+    -17.679742,
+    -149.406843
   ],
   [
     "National Center for Scientific Research - Rahui Center",

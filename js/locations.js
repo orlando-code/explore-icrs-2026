@@ -2,7 +2,7 @@
 export const SITE_DATA = {
   "meta": {
     "title": "ICRS 2026",
-    "generated_at": "2026-10-23T09:53:18+00:00",
+    "generated_at": "2026-11-19T05:59:09+00:00",
     "central_lon": 174.7633,
     "auckland": {
       "label": "Auckland, New Zealand",
@@ -10,14 +10,14 @@ export const SITE_DATA = {
       "lon": 174.7633
     },
     "stats": {
-      "location_count": 638,
-      "mapped_speakers": 1830,
-      "missing_speakers": -87,
+      "location_count": 631,
+      "mapped_speakers": 1832,
+      "missing_speakers": -89,
       "mapped_talks": 1964,
       "missing_talks": 95,
       "total_speakers": 1743,
       "total_talks": 2059,
-      "non_speaker_location_count": 120,
+      "non_speaker_location_count": 118,
       "country_count": 82
     }
   },
@@ -521,38 +521,6 @@ export const SITE_DATA = {
     },
     {
       "id": "loc-0011",
-      "affiliation": "Division of Aquatic Resources - Kaua?i",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "speakers": [
-        "Mckenna Allen"
-      ],
-      "speaker_details": [
-        {
-          "name": "Mckenna Allen",
-          "search_text": "mckenna allen spatial patterns and environmental drivers of black-band disease (bbd) in montiporid corals across ʻanini reef, kauaʻi, hi black-band disease (bbd) is a globally significant coral disease associated with rapid tissue loss and high mortality in reef-building corals. within hawaiʻi, the disease has only been recorded on the north shore of kauaʻi. at ʻanini reef, a long-standing outbreak affecting montipora species has persisted since its initial confirmation in 2004. this study quantified bbd prevalence and evaluated colony-level traits, spatial patterns, and environmental drivers, including indicators of land-based pollution, to better understand factors shaping disease dynamics at this culturally and ecologically important reef system.\r\nin summer 2024, surveys of more than 4,600 montipora colonies across 171 inner-reef-flat plots documented a bbd prevalence of 17.8%, considerably higher than previously reported for ʻanini. colony size and species were significant predictors of susceptibility, with larger colonies and montipora patula disproportionately affected. zero-inflated beta regression models supported a frequency-dependent transmission pattern, where bbd prevalence declined with increasing colony density, indicating waterborne or environmentally mediated spread rather than direct density-dependent transmission.\r\na random forest model explained 57% of the variance in bbd prevalence and identified freshwater influence and water depth as the strongest predictors of disease distribution. spatial analyses revealed localized hotspots of high bbd prevalence that did not necessarily correspond with areas of high colony density. this pattern suggests that environmental stressors, likely influenced by watershed inputs and variable hydrodynamics, are driving outbreak persistence\r\nthese findings highlight the importance of environmental conditions in shaping bbd dynamics in hawaiʻi and illustrate how local stressors can interact with global change to undermine reef resilience across oceania. by identifying environmental predictors and spatial patterns of disease, this work supports targeted monitoring, watershed management, and coral restoration strategies. results can inform efforts aimed at reducing disease impacts on vulnerable reef habitats, contributing to regional efforts to “work together to ensure a future for coral reefs.”",
-          "talk_titles": [
-            {
-              "title": "Spatial Patterns and Environmental Drivers of Black-Band Disease (BBD) in Montiporid Corals Across ʻAnini Reef, Kauaʻi, HI",
-              "primary": true,
-              "talk_id": "298855ff-2498-481f-b130-303db2bcb32a"
-            }
-          ],
-          "person_key": "icrs-p-00037",
-          "attended": true
-        }
-      ],
-      "speaker_count": 1,
-      "talk_count": 1,
-      "geocode_level": "country",
-      "distance_km": 13880.4,
-      "search_text": "division of aquatic resources - kaua?i mckenna allen mckenna allen spatial patterns and environmental drivers of black-band disease (bbd) in montiporid corals across ʻanini reef, kauaʻi, hi black-band disease (bbd) is a globally significant coral disease associated with rapid tissue loss and high mortality in reef-building corals. within hawaiʻi, the disease has only been recorded on the north shore of kauaʻi. at ʻanini reef, a long-standing outbreak affecting montipora species has persisted since its initial confirmation in 2004. this study quantified bbd prevalence and evaluated colony-level traits, spatial patterns, and environmental drivers, including indicators of land-based pollution, to better understand factors shaping disease dynamics at this culturally and ecologically important reef system.\r\nin summer 2024, surveys of more than 4,600 montipora colonies across 171 inner-reef-flat plots documented a bbd prevalence of 17.8%, considerably higher than previously reported for ʻanini. colony size and species were significant predictors of susceptibility, with larger colonies and montipora patula disproportionately affected. zero-inflated beta regression models supported a frequency-dependent transmission pattern, where bbd prevalence declined with increasing colony density, indicating waterborne or environmentally mediated spread rather than direct density-dependent transmission.\r\na random forest model explained 57% of the variance in bbd prevalence and identified freshwater influence and water depth as the strongest predictors of disease distribution. spatial analyses revealed localized hotspots of high bbd prevalence that did not necessarily correspond with areas of high colony density. this pattern suggests that environmental stressors, likely influenced by watershed inputs and variable hydrodynamics, are driving outbreak persistence\r\nthese findings highlight the importance of environmental conditions in shaping bbd dynamics in hawaiʻi and illustrate how local stressors can interact with global change to undermine reef resilience across oceania. by identifying environmental predictors and spatial patterns of disease, this work supports targeted monitoring, watershed management, and coral restoration strategies. results can inform efforts aimed at reducing disease impacts on vulnerable reef habitats, contributing to regional efforts to “work together to ensure a future for coral reefs.”",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 1
-    },
-    {
-      "id": "loc-0012",
       "affiliation": "G20 Coral Research and Development Accelerator Platform",
       "lat": 24.7136,
       "lon": 46.6753,
@@ -608,7 +576,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0013",
+      "id": "loc-0012",
       "affiliation": "Gunggandji-mandingalbay Yidinji Peoples Prescribed Body Corporate Aboriginal Corporation",
       "lat": -35.2809,
       "lon": 149.13,
@@ -640,7 +608,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0014",
+      "id": "loc-0013",
       "affiliation": "Hawai'i State Department of Land and Natural Resources",
       "lat": 21.3069,
       "lon": -157.8583,
@@ -682,551 +650,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0015",
-      "affiliation": "Hawai?i Division of Aquatic Resources",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "speakers": [
-        "Hélène Meehl",
-        "Maile Coberly"
-      ],
-      "speaker_details": [
-        {
-          "name": "Hélène Meehl",
-          "search_text": "hélène meehl story of success: the reintroduction of a locally extirpated hawaiian endemic coral in hawai‘i, like many pacific islands, geographic isolation has resulted in many rare and endemic coral populations that play a crucial part in maintaining reef biodiversity. as anthropogenic stressors continue to increase, these populations are at risk of extirpation and extinction. the unique, locally adapted, slow growing reefs of hawaiʻi make restoration challenging, especially for rare corals that are extremely limited in range and vulnerable to land-based impacts on hawaʻi’s nearshore reefs. to preserve and restore these populations, the state’s division of aquatic resources (dar) created a land-based rare hawaiian coral ark at its hawaiʻi coral restoration nursery (hcrn) for holding and restoring rare, uncommon, and endemic coral species. one of the success stories of the coral ark has been the reintroduction of the possibly extirpated knobby finger coral (porites duerdeni) in kāneʻohe bay on the island of oʻahu. p. duerdeni is a critically endangered reef-building coral that is endemic to hawai‘i. in july 2015, in anticipation of a warm water bleaching event in the hawaiian islands, the hcrn collected fragments of p. duerdeni from kāneʻohe bay to add to the rare coral ark. after the bleaching event, no living colonies of p. duerdeni could be found in the bay. the collected pieces of p. duerdeni were later microfragmented and grown onto two concrete pyramid modules at the hcrn, and in 2019 they were outplanted back in kāneʻohe bay. in 2024, after five years of growth, hcrn staff collected fragments from the original modules to continue growing and outplanting additional coral modules. this success story shows how early preparation can lead to successful preservation and restoration of rare corals and can be a model for restoration in other areas with high endemism.",
-          "talk_titles": [
-            {
-              "title": "Story of Success: The Reintroduction of a Locally Extirpated Hawaiian Endemic Coral",
-              "primary": true,
-              "talk_id": "da24cb29-a3e1-4582-85a8-20f6c55068ca"
-            },
-            {
-              "title": "A Decade of Development: Lessons from Innovative Land-Based Restoration Practices for Hawai‘i’s Unique Coral Reef Challenges",
-              "primary": false,
-              "talk_id": "3ead4dd4-64d7-405a-a88c-89aa72e4ab69"
-            }
-          ],
-          "person_key": "icrs-p-01153",
-          "attended": true
-        },
-        {
-          "name": "Maile Coberly",
-          "search_text": "maile coberly the drivers of fish distribution and localized fish populations in the presence of submarine groundwater discharge in maunalua bay, oʻahu, hawaiʻi submarine groundwater discharge is known to change benthic community assemblages of coral reefs; however, the impact on higher-level trophic communities is less understood. in densely populated islands, anthropogenic activities can contaminate natural submarine groundwater with excess nutrients and land-based pollutants. physical habitat structure can also influence fish assemblages through mechanisms such as substrate type, habitat complexity, and food availability. the interaction of submarine groundwater discharge and natural habitat heterogeneity, and how they shape the structure of fish populations on coral reef systems, is understudied. this study aims to investigate the differences in nearshore fish populations in areas with submarine groundwater discharge, with the goal of elucidating which physical and chemical features of the nearshore habitat, such as salinity, silicates, rugosity, and depth, drive changes in biomass and community structure. this study will use fishery-independent fish assemblage and biomass data (collected by the hawaiʻi division of aquatic resources) and water quality measurements (collected by the nature conservancy and researchers at the hawaiʻi institute of marine biology) in maunalua bay, oʻahu, hawaiʻi to determine which physical and environmental parameters influence fish assemblages. by understanding how environmental variables drive changes to fish populations on reef ecosystems, we can mitigate the effects of habitat degradation to conserve nearshore reef health.",
-          "talk_titles": [
-            {
-              "title": "The drivers of fish distribution and localized fish populations in the presence of submarine groundwater discharge in Maunalua Bay, Oʻahu, Hawaiʻi",
-              "primary": true,
-              "talk_id": "61eee72f-2f93-44a7-95bf-1e1138890528"
-            }
-          ],
-          "person_key": "icrs-p-00347",
-          "attended": true
-        }
-      ],
-      "speaker_count": 2,
-      "talk_count": 2,
-      "geocode_level": "country",
-      "distance_km": 13880.4,
-      "search_text": "hawai?i division of aquatic resources hélène meehl maile coberly hélène meehl story of success: the reintroduction of a locally extirpated hawaiian endemic coral in hawai‘i, like many pacific islands, geographic isolation has resulted in many rare and endemic coral populations that play a crucial part in maintaining reef biodiversity. as anthropogenic stressors continue to increase, these populations are at risk of extirpation and extinction. the unique, locally adapted, slow growing reefs of hawaiʻi make restoration challenging, especially for rare corals that are extremely limited in range and vulnerable to land-based impacts on hawaʻi’s nearshore reefs. to preserve and restore these populations, the state’s division of aquatic resources (dar) created a land-based rare hawaiian coral ark at its hawaiʻi coral restoration nursery (hcrn) for holding and restoring rare, uncommon, and endemic coral species. one of the success stories of the coral ark has been the reintroduction of the possibly extirpated knobby finger coral (porites duerdeni) in kāneʻohe bay on the island of oʻahu. p. duerdeni is a critically endangered reef-building coral that is endemic to hawai‘i. in july 2015, in anticipation of a warm water bleaching event in the hawaiian islands, the hcrn collected fragments of p. duerdeni from kāneʻohe bay to add to the rare coral ark. after the bleaching event, no living colonies of p. duerdeni could be found in the bay. the collected pieces of p. duerdeni were later microfragmented and grown onto two concrete pyramid modules at the hcrn, and in 2019 they were outplanted back in kāneʻohe bay. in 2024, after five years of growth, hcrn staff collected fragments from the original modules to continue growing and outplanting additional coral modules. this success story shows how early preparation can lead to successful preservation and restoration of rare corals and can be a model for restoration in other areas with high endemism. maile coberly the drivers of fish distribution and localized fish populations in the presence of submarine groundwater discharge in maunalua bay, oʻahu, hawaiʻi submarine groundwater discharge is known to change benthic community assemblages of coral reefs; however, the impact on higher-level trophic communities is less understood. in densely populated islands, anthropogenic activities can contaminate natural submarine groundwater with excess nutrients and land-based pollutants. physical habitat structure can also influence fish assemblages through mechanisms such as substrate type, habitat complexity, and food availability. the interaction of submarine groundwater discharge and natural habitat heterogeneity, and how they shape the structure of fish populations on coral reef systems, is understudied. this study aims to investigate the differences in nearshore fish populations in areas with submarine groundwater discharge, with the goal of elucidating which physical and chemical features of the nearshore habitat, such as salinity, silicates, rugosity, and depth, drive changes in biomass and community structure. this study will use fishery-independent fish assemblage and biomass data (collected by the hawaiʻi division of aquatic resources) and water quality measurements (collected by the nature conservancy and researchers at the hawaiʻi institute of marine biology) in maunalua bay, oʻahu, hawaiʻi to determine which physical and environmental parameters influence fish assemblages. by understanding how environmental variables drive changes to fish populations on reef ecosystems, we can mitigate the effects of habitat degradation to conserve nearshore reef health.",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 2
-    },
-    {
-      "id": "loc-0016",
-      "affiliation": "Hawai?i Institute of Marine Biology",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "speakers": [
-        "Carlo Caruso",
-        "Dr Ford Drury",
-        "Dr Nina Rosset",
-        "Giada Tortorelli",
-        "Jake Snyder",
-        "Jasmine Razalan Reighard",
-        "Jessica Reichert",
-        "Kamalani Oshiro",
-        "ʻAʻaliʻi Kelling",
-        "Dr Evelyn Cox",
-        "Dr Megan Donahue"
-      ],
-      "speaker_details": [
-        {
-          "name": "Carlo Caruso",
-          "search_text": "carlo caruso heat selection of sexually propagated corals for use in proactive restoration sexual propagation could augment reef restoration efforts by leveraging extant adaptive potential of coral populations to keep pace with warming oceans. we reordered our conventional breeding strategy by creating a large pool of wild-bred corals before screening them for heat tolerance. this “post hoc” approach could provide practitioners with a large genetically diverse cohort of thermally resilient corals. earlier selection (e.g., in larvae or newly settled spat) that translates to durable phenotypes enables greater efficacy and efficiency in a breeding to restoration pipeline. we conducted empirical tests in a reef-building coral species by mass fertilizing gametes from wild spawning slicks of a montipora capitata population in kāneʻohe bay, oʻahu, hawaiʻi. we performed acute heat selection at the larval stage and on a separate cohort of newly settled spat. after recovery, survivors and control corals were subjected to long-term temperature treatments modeled for local conditions in future decades. we obtained thousands of offspring that withstood >8 dhws in these profiles. among corals derived from larval selection, several specific selection treatment variations conferred increased survival. corals derived from heat selection as spat had a clear advantage in growth and survivorship relative to controls, driven by a strong correlative size effect. modelling indicates that applying stronger selective pressure at the spat stage produces more durable heat-tolerance phenotypes, independent of this size effect. survivorship and growth dynamics in future conditions indicate a possible tipping point between the year 2050 and 2100 when temperature stress rapidly outpaces the available phenotypic diversity of this coral population. this impeding acceleration of selective pressure highlights the importance of incorporating resilience in present-day coral restoration projects and the need to identify thermally tolerant coral stocks to support these efforts.",
-          "talk_titles": [
-            {
-              "title": "Heat selection of sexually propagated corals for use in proactive restoration",
-              "primary": true,
-              "talk_id": "763fd5a7-e785-41ed-b08e-e36f5a8a5031"
-            },
-            {
-              "title": "Climate Wise Coral Restoration Through Community Collaboration on Maui (HI)",
-              "primary": false,
-              "talk_id": "3673f25d-88d9-4860-99a4-280373bdb2b9"
-            },
-            {
-              "title": "Genotypic and environmental drivers of symbiont community dynamics in Montipora capitata",
-              "primary": false,
-              "talk_id": "a882110b-ac42-4091-adb9-5a494a1cd714"
-            },
-            {
-              "title": "Metabolome signatures prior to heat stress can predict tolerance across diverse coral–algal associations",
-              "primary": false,
-              "talk_id": "45b3b685-6ad6-4725-bcd2-46ae3294752d"
-            },
-            {
-              "title": "Molecular and Biochemical Mechanisms of Thermal Sensitivity Across Coral–Symbiont Partnerships",
-              "primary": false,
-              "talk_id": "a4eb0849-6f1e-4fcf-9b62-91fa5b3a2eb9"
-            },
-            {
-              "title": "Multi-Scale Photogrammetry for Coral Research and Restoration",
-              "primary": false,
-              "talk_id": "e96a9526-421a-4c5a-96ae-fe94cdc09e4e"
-            },
-            {
-              "title": "Persistence of thermal tolerance in selectively bred Montipora capitata across an environmental gradient",
-              "primary": false,
-              "talk_id": "db2d9caa-4697-4c21-9338-2976f1e75518"
-            }
-          ],
-          "person_key": "icrs-p-00289",
-          "attended": true
-        },
-        {
-          "name": "Dr Ford Drury",
-          "search_text": "crawford drury genetic associations with climate tolerance in montipora capitata the long-term persistence of coral reefs depends in part on the adaptive capacity of contemporary coral populations. defining this capacity requires an improved understanding of the genetic architecture, effect sizes and heritability of genetic markers linked to climate resilience phenotypes. previous work has focused on genetic associations across an environmental mosaic or seascape, but patterns of diversity and association within populations are also important because they represent the raw material available among corals that are likely to cross-fertilize and reproduce. here we  address these knowledge gaps using whole genome sequencing of a cohort of montipora capitata in kāneʻohe bay, oʻahu, hawaiʻi with divergent bleaching phenotypes identified in the 2014/2015 bleaching event. these corals (n=53) display opposite bleaching sensitivities (either completely bleached of visually healthy) despite their adjacent locations on the reef, effectively eliminating environmental or microhabitat drivers of thermal tolerance. using case/control association testing with symbiont community as covariates, we identified dozens of sites distributed across the genome with high association scores. after defining linkage equilibrium in these regions, we used statistical fine mapping to identify several genes with high confidence scores as casual. using these genes as input, we found very high predictive classification accuracy using several machine learning frameworks, highlighting their generalized utility as biomarkers in this system. finally, we explored expression quantitative trait loci associated with these genetic markers, leveraging expression data from a separate heat stress experiment where we used co-expression modules to identity genes with phenotype-specific induced expression only in high temperatures. the unification of these data links genetic variants to genes that are uniquely responsive to stress in the most tolerant individuals. these data provide a comprehensive look at the landscape of genetic variation that creates climate tolerance in a model coral population.",
-          "talk_titles": [
-            {
-              "title": "Genetic associations with climate tolerance in Montipora capitata",
-              "primary": true,
-              "talk_id": "946680e1-834d-4324-93e4-628665380af4"
-            },
-            {
-              "title": "Changes in seasonal calcification and metabolic rates of reef-building corals following a legacy of recurring marine heatwaves",
-              "primary": false,
-              "talk_id": "35d849dd-d1d7-4250-b435-d206a3893a63"
-            },
-            {
-              "title": "Climate Wise Coral Restoration Through Community Collaboration on Maui (HI)",
-              "primary": false,
-              "talk_id": "3673f25d-88d9-4860-99a4-280373bdb2b9"
-            },
-            {
-              "title": "Developing a New Selective Breeding Model using Porites lobata in Hawaii",
-              "primary": false,
-              "talk_id": "584bf5ed-e133-44d1-a05e-3073acea5500"
-            },
-            {
-              "title": "Enzyme-Mediated Lysolipid Dynamics Are Associated with Coral Bleaching Resistance",
-              "primary": false,
-              "talk_id": "1b574e17-40ab-4ac7-8229-232333191f3c"
-            },
-            {
-              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
-              "primary": false,
-              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
-            },
-            {
-              "title": "Genotypic and environmental drivers of symbiont community dynamics in Montipora capitata",
-              "primary": false,
-              "talk_id": "a882110b-ac42-4091-adb9-5a494a1cd714"
-            },
-            {
-              "title": "Heat selection of sexually propagated corals for use in proactive restoration",
-              "primary": false,
-              "talk_id": "763fd5a7-e785-41ed-b08e-e36f5a8a5031"
-            },
-            {
-              "title": "Insights from a Community-Led Ridge-to-Reef Restoration Project in Maunalua Bay, O’ahu, Hawaiʻi",
-              "primary": false,
-              "talk_id": "ae556148-bb10-4793-854b-e855358471ff"
-            },
-            {
-              "title": "Metabolome signatures prior to heat stress can predict tolerance across diverse coral–algal associations",
-              "primary": false,
-              "talk_id": "45b3b685-6ad6-4725-bcd2-46ae3294752d"
-            },
-            {
-              "title": "Molecular and Biochemical Mechanisms of Thermal Sensitivity Across Coral–Symbiont Partnerships",
-              "primary": false,
-              "talk_id": "a4eb0849-6f1e-4fcf-9b62-91fa5b3a2eb9"
-            },
-            {
-              "title": "Multi-Scale Photogrammetry for Coral Research and Restoration",
-              "primary": false,
-              "talk_id": "e96a9526-421a-4c5a-96ae-fe94cdc09e4e"
-            },
-            {
-              "title": "Order or Chaos? Variable Responses of Stony Coral Symbioses to Future Ocean Conditions",
-              "primary": false,
-              "talk_id": "05a588be-38d3-451a-a597-ea4261748fec"
-            },
-            {
-              "title": "Persistence of thermal tolerance in selectively bred Montipora capitata across an environmental gradient",
-              "primary": false,
-              "talk_id": "db2d9caa-4697-4c21-9338-2976f1e75518"
-            },
-            {
-              "title": "Protein Complexes at the Cnidarian-Symbiodiniaceae Interface",
-              "primary": false,
-              "talk_id": "43c0bad7-fab4-4475-bdab-733917ddf822"
-            },
-            {
-              "title": "Reciprocal Transplants Reveal Stable Thermal Performance and Holobiont Traits in Hawaiian Reef-Building Corals",
-              "primary": false,
-              "talk_id": "adc0774e-ae2d-451f-90cc-528d85cb83c8"
-            },
-            {
-              "title": "Restore with Resilience: Community-Driven Coral Restoration",
-              "primary": false,
-              "talk_id": "4942fc36-be37-4615-b2ce-13b7d57f758f"
-            },
-            {
-              "title": "The Global Phosphorylation Landscape of Acute Heat Stress in Reef-Building Corals",
-              "primary": false,
-              "talk_id": "ba1c63cd-9c49-4c46-810d-a0b3b692591f"
-            }
-          ],
-          "person_key": "icrs-p-00499",
-          "attended": true
-        },
-        {
-          "name": "Dr Nina Rosset",
-          "search_text": "sabrina rosset metabolome signatures prior to heat stress can predict tolerance across diverse coral–algal associations corals exhibit substantial intrapopulation variation in their response to ocean warming, a phenomenon that restoration efforts aim to harness by selectively propagating more resilient individuals. yet, the molecular traits underpinning holobiont heat tolerance – emerging from complex host-symbiont interactions – remain poorly resolved. here, we tested the predictive power of coral metabolomes for determining thermal tolerance in a multi-species community with diverse symbiont associations.  \r\nwe sampled 5mm biopsies from 15 colonies of each of eight coral species from kāneʻohe bay, oʻahu, hawaiʻi, for untargeted metabolomics analysis. colony fragments were then subjected to each of five distinct six-month temperature regimes representing both historical and projected conditions in kāneʻohe bay. we quantified thermal tolerance at the end of the experiment based on the rates of decline in symbiont photosynthetic efficiency (effective dose – experimental degree heating weeks – causing 25% fv/fm reduction). using machine learning and correlation analysis, we evaluated how accurately metabolome signatures predicted thermal resilience across and within species and identified metabolite classes and molecular species most strongly associated with heat tolerance. \r\nour results demonstrate that metabolome signatures predicted heat tolerance with moderate to high accuracy. despite individual metabolites most strongly correlated with thermal tolerance being highly species-specific, the underlying metabolic pathways were common and included energy metabolism, membrane composition and oxidation, and lipid-mediated signalling, and related to the algal symbiont, the coral host, and their interaction. increased abundances of specific symbiont-derived lyso lipids and triacylglycerols containing polyunsaturated fatty acids were especially strong biomarkers of decreased bleaching susceptibility. based on our findings, we hypothesise that highly tolerant corals have a more cooperative and metabolically advantageous symbiosis. this research highlights the promising utility of biochemical biomarkers as tools for resilience-based reef restoration and provides new mechanistic insight into metabolic interactions within the coral holobiont that confer climate tolerance to reef-building corals.",
-          "talk_titles": [
-            {
-              "title": "Metabolome signatures prior to heat stress can predict tolerance across diverse coral–algal associations",
-              "primary": true,
-              "talk_id": "45b3b685-6ad6-4725-bcd2-46ae3294752d"
-            },
-            {
-              "title": "Enzyme-Mediated Lysolipid Dynamics Are Associated with Coral Bleaching Resistance",
-              "primary": false,
-              "talk_id": "1b574e17-40ab-4ac7-8229-232333191f3c"
-            },
-            {
-              "title": "Molecular and Biochemical Mechanisms of Thermal Sensitivity Across Coral–Symbiont Partnerships",
-              "primary": false,
-              "talk_id": "a4eb0849-6f1e-4fcf-9b62-91fa5b3a2eb9"
-            },
-            {
-              "title": "The Global Phosphorylation Landscape of Acute Heat Stress in Reef-Building Corals",
-              "primary": false,
-              "talk_id": "ba1c63cd-9c49-4c46-810d-a0b3b692591f"
-            }
-          ],
-          "person_key": "icrs-p-01498",
-          "attended": true
-        },
-        {
-          "name": "Giada Tortorelli",
-          "search_text": "giada tortorelli molecular and biochemical mechanisms of thermal sensitivity across coral–symbiont partnerships the persistence of coral reefs under climate change relies substantially on the identity and plasticity of the coral-symbiodiniaceae mutualism. this partnership hinges on molecular-level recognition between host and symbiont, with lectin–glycan signaling emerging as a key mechanism of compatibility that may underlie partner specificity in the cnidaria–symbiodiniaceae symbiosis. montipora capitata is a broadcast spawner that vertically transmits symbionts through gametes and in kāneʻohe bay, oʻahu, hawaiʻi, genotypes dominated by cladocopium are more sensitive to warmer temperatures and bleach more readily than those hosting durusdinium, which are more thermally tolerant and better equipped to handle future climates. to investigate the molecular and biochemical basis of these differences, we examined cladocopium and durusdinium across adult colonies of m. capitata genotypes, their eggs, and symbionts that were either retained or expelled during simulated bleaching events.\r\nsymbiont cell surface properties and biochemistry differed between cladocopium and durusdinium. combined host-symbiont effects strongly influenced the physiological and metabolic responses to temperature stress, highlighting the individual holobiont–not the symbiont genus alone–as the primary unit of thermal response. elevated temperatures altered the symbiont cell-surface glycome and led to the convergence of betaine lipids biochemistry between the thermosensitive cladocopium and the thermotolerant durusdinium in adult corals. the changes in symbiont cell-surface glycoconjugates and membrane lipids, linked to heat-induced oxidative stress, suggest that changes in these molecular interfaces may disrupt host–symbiont specific symbioses. deviations from stress-free symbiont glycan profiles may therefore contribute to both symbiosis breakdown and the plasticity of partner associations under stress. understanding how symbiodiniaceae regulate stress responses and host affinity helps identify the traits contributing to coral resilience under climate change.",
-          "talk_titles": [
-            {
-              "title": "Molecular and Biochemical Mechanisms of Thermal Sensitivity Across Coral–Symbiont Partnerships",
-              "primary": true,
-              "talk_id": "a4eb0849-6f1e-4fcf-9b62-91fa5b3a2eb9"
-            },
-            {
-              "title": "Metabolome signatures prior to heat stress can predict tolerance across diverse coral–algal associations",
-              "primary": false,
-              "talk_id": "45b3b685-6ad6-4725-bcd2-46ae3294752d"
-            },
-            {
-              "title": "Protein Complexes at the Cnidarian-Symbiodiniaceae Interface",
-              "primary": false,
-              "talk_id": "43c0bad7-fab4-4475-bdab-733917ddf822"
-            },
-            {
-              "title": "The Global Phosphorylation Landscape of Acute Heat Stress in Reef-Building Corals",
-              "primary": false,
-              "talk_id": "ba1c63cd-9c49-4c46-810d-a0b3b692591f"
-            }
-          ],
-          "person_key": "icrs-p-01762",
-          "attended": true
-        },
-        {
-          "name": "Jake Snyder",
-          "search_text": "jacob snyder mechanisms to improve coral reef resilience in sediment- and nutrient-impacted environments: a theoretical analysis pacific nations depend on reefs and are thus highly vulnerable to their degradation. in hawaiʻi, coral reefs are foundational in native hawaiian genealogy, support high levels of endemic biodiversity, and generate over $850 million annually. mitigating land-based pollutants – one of the top three threats to coral reefs globally – can improve reef resilience and preserve these ecosystem services. sediment runoff is a primary contributor to coral decline (and algal dominance), and its deleterious effects are exacerbated by nutrients, which bolster the growth of algae competing with corals for benthic space. a leading management strategy to prevent shifts from coral- to algal-dominated states is maintaining the biomass of herbivorous fish, which consume algal competitors. however, the efficacy of this method can be hindered by sediment-driven changes in fish herbivory.  this study constructs a mathematical model to improve management targets by identifying (1) pollutant thresholds past which herbivore biomass may abruptly decline and (2) primary drivers of resilience. we expand upon a coral-algal competition model by incorporating dynamic herbivorous fish functional groups (browsers, grazers, and scrapers), which interact with the model’s benthic components via algal herbivory. the responses of benthic taxa and herbivore groups to land-based pollutants are parameterized using literature and field data. specifically, algae growth and herbivory rates were measured across three independent riverine runoff gradients in hawaiʻi for one year. analyses reveal that (1) intermediate pollutant levels can generate hysteresis, meaning that returning pollutants to their pre-decline levels may not induce recovery, and (2) browser herbivory maintains coral dominance at low sediment levels but is outpaced by macroalgal growth in highly polluted environments. this model advances the development of tractable decision-support tools to identify management targets on sediment- and nutrient-impacted reef ecosystems globally.",
-          "talk_titles": [
-            {
-              "title": "Mechanisms to Improve Coral Reef Resilience in Sediment- and Nutrient-Impacted Environments: A Theoretical Analysis",
-              "primary": true,
-              "talk_id": "b932519e-2440-42fa-a1c7-fabae4d06453"
-            }
-          ],
-          "person_key": "icrs-p-01647",
-          "attended": true
-        },
-        {
-          "name": "Jasmine Razalan Reighard",
-          "search_text": "jasmine reighard thresholds of sediment stress on herbivory: experimental evidence from a pacific parrotfish sediment runoff is a primary driver of coral reef degradation globally. elevated nutrient inputs from runoff underpin transitions from coral-dominated to algae-dominated ecosystems. herbivorous reef fishes are widely recognized as a critical bastion of defense against these shifts, as they limit the establishment and overgrowth of algal communities. however, evidence also indicates that these fishes are sensitive to sediment exposure, leading to declines in biodiversity, abundance, and grazing pressure. this research aims to test the direct consequences of sedimentation on algal grazing rates by herbivorous fish and quantity the thresholds above which sediment exposure erodes the ecological functions they provide. to investigate these impacts, we conducted a series of feeding experiments in microcosm tanks simulating suspended (sus) and settled sediment (ses) gradients observed on nearshore reefs. our study’s focal species was the pacific bullethead uhu (parrotfish, chlorurus spilurus), a common herbivore throughout pacific tropical nearshore habitats. each fish completed four trials: (1) a no-sediment control, (2) sus exposure, (3) ses exposure, and (4) combined sus + ses exposure, and different individuals experienced different quantifies of sediment exposure ranging from 0-12 mg/l. individuals were given a choice between turf algae collected from a nearshore, runoff-exposed reef and an offshore clear-water reef. behavioral responses were recorded via overhead video to compare feeding strikes across treatments. we discuss our findings of threshold limits and impairments of top-down algal control in relation to common sediment exposure gradients for tropical coral reefs.",
-          "talk_titles": [
-            {
-              "title": "Thresholds of Sediment Stress on Herbivory: Experimental Evidence from a Pacific Parrotfish",
-              "primary": true,
-              "talk_id": "7e56b6b6-e54f-4c9a-9b97-ad640877bb28"
-            },
-            {
-              "title": "Habitat Enhancement Through Indigenous Stone Fish Houses: Evidence from a Two-Year Field Experiment in Hawaiʻi",
-              "primary": false,
-              "talk_id": "4d3efa98-bff0-4f45-833f-97c28dde8328"
-            }
-          ],
-          "person_key": "icrs-p-01434",
-          "attended": true
-        },
-        {
-          "name": "Jessica Reichert",
-          "search_text": "jessica reichert from structure to exposure: using 3d morphometrics and computer vision to capture coral–microplastic interactions spirals that support reefs: helical microhabitats for coral recruitment although plastic pollution is now widely detected in reef environments, its ecological impacts on corals remain poorly understood. this is mainly because in situ exposure is a function of particle concentrations, flow, and organismal responses, which is difficult to quantify under natural conditions. understanding how corals interact with plastic particles requires approaches that resolve fine-scale exposure parameters and behavioral responses. here, we combine quantitative morphometrics, controlled-flow experiments, and computer vision to assess how coral structural complexity and polyp behavior jointly determine microplastic exposure and therewith potential associated ecological impacts. first, we quantified microplastic accumulation in pocillopora acuta colonies in kāneʻohe bay, hawaiʻi, and combined the observed concentrations with a broad set of structural complexity metrics obtained using high-resolution 3d photogrammetry and 3d scanning. we found that colonies with compact, thick-branched morphologies consistently accumulated higher microplastic loads under natural conditions, with mean loads of ~0.03 particles g⁻¹. second, we developed a microflume and video-based experimental platform recording colony–microplastic interactions to resolve the underlying link between exposure conditions, structural complexity, and interaction frequencies. using computer vision and automated image analysis, we track particle–polyp contact events and classify the responses, including ingestion, rejection, and mucus entrapment. this enables continuous quantification of interaction frequencies and durations as a function of microplastic concentration, flow regime, and colony structural complexity. our results show that coral complexity plays a significant role in microplastic exposure and deposition, with implications for coral health and the transfer of microplastics to other reef sinks. by integrating 3d morphometrics with ai-assisted video analysis, this work provides scalable tools for investigating the impacts of plastic pollution. this highlights the value of applying advanced imaging and ai-based methodologies to resolve subtle pollutant responses in structurally complex reef organisms, thereby supporting more accurate ecological risk assessments. a major challenge in reef restoration and nature-positive infrastructure is designing structures that reliably support coral recruitment and early survival. over the past three years, the geometric ecology lab has iteratively developed and tested five generations of settlement modules, each informed by previous field results. a central finding is the strong influence of microhabitat geometry: spiral-shaped (helix) recesses attracted up to 80-fold more larvae than linear ones, with optimal dimensions supporting settlement that persists for years after deployment. hydrodynamics also played a key role–higher flow increased larval entrainment into helix recesses and boosted settlement. these design rules were robust across module shapes and construction materials, with cylindrical units in both concrete and clay performing comparably. small shifts in recess size altered post-settlement survival, emphasizing the need to balance initial recruitment and long-term persistence. although helix designs maximized total recruits, more complex fractal structures supported greater species diversity, revealing trade-offs between abundance and richness. together, these results provide a mechanistic basis for scalable coral-supporting structures and offer new insight into the ecological drivers of larval settlement and survival.",
-          "talk_titles": [
-            {
-              "title": "From structure to exposure: using 3D morphometrics and computer vision to capture coral–microplastic interactions",
-              "primary": true,
-              "talk_id": "43678c40-202a-411d-a280-973cbb38d5de"
-            },
-            {
-              "title": "Spirals that support reefs: helical microhabitats for coral recruitment",
-              "primary": true,
-              "talk_id": "a86c9a1e-141d-4331-8fe5-5e4d14174dd9"
-            },
-            {
-              "title": "Field trials off O'ahu, Hawai’i demonstrate enhanced coral and reef fish larvae settlement using acoustic enrichment, artificial reef structures, and nanoengineered biofilms.",
-              "primary": false,
-              "talk_id": "f21753a1-b7a6-4067-9a5a-99b169e89c90"
-            },
-            {
-              "title": "From Settlement to Survival: disentangling the roles of reef structure and adult coral cover on juvenile corals",
-              "primary": false,
-              "talk_id": "b11e2e43-55aa-4ff6-a4ae-5a40ea165a2c"
-            },
-            {
-              "title": "Linking Sediment Exposure to Coral Performance at a Priority Reef Restoration Site on Maui",
-              "primary": false,
-              "talk_id": "0dd64012-07f4-4243-8fdc-ab3482dc184f"
-            },
-            {
-              "title": "Using burst-motion autonomous cameras to measure acoustic enrichment recruitment effects on coral reef fish larvae",
-              "primary": false,
-              "talk_id": "29ae65a1-5572-4f3b-b5c5-d5f76cdf84a6"
-            }
-          ],
-          "person_key": "icrs-p-01432",
-          "attended": true
-        },
-        {
-          "name": "Kamalani Oshiro",
-          "search_text": "kamalani oshiro developing a new selective breeding model using porites lobata in hawaii as climate change continues to warm oceans, it is critical to understand the relationships between thermal tolerance and the reproductive output of corals. selective breeding of coral in the context of restoration is ongoing in hawaii, however this work is dominated by one coral species, montipora capitata. diversifying species available for breeding, especially those with different life history traits, reproductive biology and ecological function is important for effective conservation. here, we aim to develop a new selective breeding model for p. lobata in kaneohe bay, oahu, hawaii based on direct feedback from the community expressing the ecological and cultural importance of this species. we established a model population of 100 colonies in the field and collected histology samples throughout the summer of 2025 to 1) identify the sex of the colony, 2) the timeline of gametogenesis, and 3) quantify fecundity. fecundity was quantified by counts of all visible gametes per polyp across multiple polyps per one section per slide. small fragments from field source colonies were collected to explore tradeoffs in this species, including the relationship between fecundity and other important traits like growth and thermal tolerance. these fragments were maintained ex situ and buoyant weighed to determine growth before being exposed to a standardized heat-stress assay that reflects natural beaching patterns and elicits. we used pam fluorometry during this stress test to resolve continuous thermal tolerance scores, which will be compared with fecundity and growth metrics to assess tradeoffs. the development of additional selective breeding models supports selective breeding for restoration practitioners in hawaii, creating greater ecological diversity for this conservation approach.",
-          "talk_titles": [
-            {
-              "title": "Developing a New Selective Breeding Model using Porites lobata in Hawaii",
-              "primary": true,
-              "talk_id": "584bf5ed-e133-44d1-a05e-3073acea5500"
-            },
-            {
-              "title": "Heat selection of sexually propagated corals for use in proactive restoration",
-              "primary": false,
-              "talk_id": "763fd5a7-e785-41ed-b08e-e36f5a8a5031"
-            },
-            {
-              "title": "Molecular and Biochemical Mechanisms of Thermal Sensitivity Across Coral–Symbiont Partnerships",
-              "primary": false,
-              "talk_id": "a4eb0849-6f1e-4fcf-9b62-91fa5b3a2eb9"
-            },
-            {
-              "title": "Reciprocal Transplants Reveal Stable Thermal Performance and Holobiont Traits in Hawaiian Reef-Building Corals",
-              "primary": false,
-              "talk_id": "adc0774e-ae2d-451f-90cc-528d85cb83c8"
-            }
-          ],
-          "person_key": "icrs-p-01293",
-          "attended": true
-        },
-        {
-          "name": "ʻAʻaliʻi Kelling",
-          "search_text": "ʻaʻaliʻi kelling habitat enhancement through indigenous stone fish houses: evidence from a two-year field experiment in hawaiʻi coral reefs are declining globally, underscoring the need for conservation strategies that pair ecological science with place-based management. in hawaiʻi, traditional stone fish houses called imu represent an indigenous stewardship practice that may provide effective models for contemporary fisheries enhancement. this study evaluates the ecological role of imu within the hāʻena community-based subsistence fishing area (cbsfa), kauaʻi, where community-led management emphasizes food sovereignty and cultural revitalization. over a two-year period (2023–2024), we deployed imu across three nearshore locations with low structural complexity and compared them with nearby controls and natural reef sites. using standardized fish surveys and underwater video monitoring, we tested whether imu increase fish abundance, biomass, species richness, and juvenile recruitment. imu consistently enhanced local fish communities. fish abundance was 57% higher at imu sites, biomass increased by 86%, and species richness by 42% relative to controls. juveniles (0–10 cm) comprised 78% of individuals at imu, compared to 60% at controls and 35% at natural reefs, indicating that imu function primarily as recruitment structures. community analyses showed imu sites forming distinct assemblages that occupied intermediate space between degraded controls and healthy outer reefs. these results demonstrate that imu are scalable, community-implementable structures that address recruitment bottlenecks in low-complexity habitats. by increasing structural refuge, imu align indigenous resource practices with contemporary reef ecology, offering a culturally grounded and ecologically effective tool to support fish stocks, food security, and community-based stewardship.",
-          "talk_titles": [
-            {
-              "title": "Habitat Enhancement Through Indigenous Stone Fish Houses: Evidence from a Two-Year Field Experiment in Hawaiʻi",
-              "primary": true,
-              "talk_id": "4d3efa98-bff0-4f45-833f-97c28dde8328"
-            }
-          ],
-          "person_key": "icrs-p-00902",
-          "attended": true
-        },
-        {
-          "name": "Dr Evelyn Cox",
-          "search_text": "dr evelyn cox",
-          "talk_titles": [
-            {
-              "title": "Pathogenesis of Acropora Growth Anomalies in American Samoa",
-              "primary": false,
-              "talk_id": "f7025eaa-616e-4e2e-a8ee-759918098899"
-            }
-          ],
-          "person_key": "icrs-p-00383",
-          "attended": true,
-          "non_speaking_delegate": true
-        },
-        {
-          "name": "Dr Megan Donahue",
-          "search_text": "dr megan donahue",
-          "talk_titles": [
-            {
-              "title": "Coral metabolism and contaminant loads track human land use",
-              "primary": false,
-              "talk_id": "4b200719-a5d3-442d-a8e0-734c6c0e7f54"
-            },
-            {
-              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
-              "primary": false,
-              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
-            },
-            {
-              "title": "Linking Sediment Exposure to Coral Performance at a Priority Reef Restoration Site on Maui",
-              "primary": false,
-              "talk_id": "0dd64012-07f4-4243-8fdc-ab3482dc184f"
-            },
-            {
-              "title": "Restoring Corals from Sediment to Symbionts: A Novel Microbiome Approach in Olowalu, Maui",
-              "primary": false,
-              "talk_id": "dfde48fc-eb19-4c40-a944-5cc2e49ed49c"
-            },
-            {
-              "title": "Review of Contaminant Concentrations in Reef and Pelagic Fishes from the Pacific Islands",
-              "primary": false,
-              "talk_id": "b6062eee-794c-4648-a077-603c15115587"
-            },
-            {
-              "title": "The drivers of fish distribution and localized fish populations in the presence of submarine groundwater discharge in Maunalua Bay, Oʻahu, Hawaiʻi",
-              "primary": false,
-              "talk_id": "61eee72f-2f93-44a7-95bf-1e1138890528"
-            },
-            {
-              "title": "The effect of community diversity on thermal stress tolerance of coral reefs in Okinawa, Japan",
-              "primary": false,
-              "talk_id": "ea808f4e-b011-435a-9cc4-4902a334af42"
-            }
-          ],
-          "person_key": "icrs-p-00482",
-          "attended": true,
-          "non_speaking_delegate": true
-        }
-      ],
-      "speaker_count": 11,
-      "talk_count": 10,
-      "geocode_level": "country",
-      "distance_km": 13880.4,
-      "search_text": "hawai?i institute of marine biology carlo caruso dr ford drury dr nina rosset giada tortorelli jake snyder jasmine razalan reighard jessica reichert kamalani oshiro ʻaʻaliʻi kelling carlo caruso heat selection of sexually propagated corals for use in proactive restoration sexual propagation could augment reef restoration efforts by leveraging extant adaptive potential of coral populations to keep pace with warming oceans. we reordered our conventional breeding strategy by creating a large pool of wild-bred corals before screening them for heat tolerance. this “post hoc” approach could provide practitioners with a large genetically diverse cohort of thermally resilient corals. earlier selection (e.g., in larvae or newly settled spat) that translates to durable phenotypes enables greater efficacy and efficiency in a breeding to restoration pipeline. we conducted empirical tests in a reef-building coral species by mass fertilizing gametes from wild spawning slicks of a montipora capitata population in kāneʻohe bay, oʻahu, hawaiʻi. we performed acute heat selection at the larval stage and on a separate cohort of newly settled spat. after recovery, survivors and control corals were subjected to long-term temperature treatments modeled for local conditions in future decades. we obtained thousands of offspring that withstood >8 dhws in these profiles. among corals derived from larval selection, several specific selection treatment variations conferred increased survival. corals derived from heat selection as spat had a clear advantage in growth and survivorship relative to controls, driven by a strong correlative size effect. modelling indicates that applying stronger selective pressure at the spat stage produces more durable heat-tolerance phenotypes, independent of this size effect. survivorship and growth dynamics in future conditions indicate a possible tipping point between the year 2050 and 2100 when temperature stress rapidly outpaces the available phenotypic diversity of this coral population. this impeding acceleration of selective pressure highlights the importance of incorporating resilience in present-day coral restoration projects and the need to identify thermally tolerant coral stocks to support these efforts. crawford drury genetic associations with climate tolerance in montipora capitata the long-term persistence of coral reefs depends in part on the adaptive capacity of contemporary coral populations. defining this capacity requires an improved understanding of the genetic architecture, effect sizes and heritability of genetic markers linked to climate resilience phenotypes. previous work has focused on genetic associations across an environmental mosaic or seascape, but patterns of diversity and association within populations are also important because they represent the raw material available among corals that are likely to cross-fertilize and reproduce. here we  address these knowledge gaps using whole genome sequencing of a cohort of montipora capitata in kāneʻohe bay, oʻahu, hawaiʻi with divergent bleaching phenotypes identified in the 2014/2015 bleaching event. these corals (n=53) display opposite bleaching sensitivities (either completely bleached of visually healthy) despite their adjacent locations on the reef, effectively eliminating environmental or microhabitat drivers of thermal tolerance. using case/control association testing with symbiont community as covariates, we identified dozens of sites distributed across the genome with high association scores. after defining linkage equilibrium in these regions, we used statistical fine mapping to identify several genes with high confidence scores as casual. using these genes as input, we found very high predictive classification accuracy using several machine learning frameworks, highlighting their generalized utility as biomarkers in this system. finally, we explored expression quantitative trait loci associated with these genetic markers, leveraging expression data from a separate heat stress experiment where we used co-expression modules to identity genes with phenotype-specific induced expression only in high temperatures. the unification of these data links genetic variants to genes that are uniquely responsive to stress in the most tolerant individuals. these data provide a comprehensive look at the landscape of genetic variation that creates climate tolerance in a model coral population. sabrina rosset metabolome signatures prior to heat stress can predict tolerance across diverse coral–algal associations corals exhibit substantial intrapopulation variation in their response to ocean warming, a phenomenon that restoration efforts aim to harness by selectively propagating more resilient individuals. yet, the molecular traits underpinning holobiont heat tolerance – emerging from complex host-symbiont interactions – remain poorly resolved. here, we tested the predictive power of coral metabolomes for determining thermal tolerance in a multi-species community with diverse symbiont associations.  \r\nwe sampled 5mm biopsies from 15 colonies of each of eight coral species from kāneʻohe bay, oʻahu, hawaiʻi, for untargeted metabolomics analysis. colony fragments were then subjected to each of five distinct six-month temperature regimes representing both historical and projected conditions in kāneʻohe bay. we quantified thermal tolerance at the end of the experiment based on the rates of decline in symbiont photosynthetic efficiency (effective dose – experimental degree heating weeks – causing 25% fv/fm reduction). using machine learning and correlation analysis, we evaluated how accurately metabolome signatures predicted thermal resilience across and within species and identified metabolite classes and molecular species most strongly associated with heat tolerance. \r\nour results demonstrate that metabolome signatures predicted heat tolerance with moderate to high accuracy. despite individual metabolites most strongly correlated with thermal tolerance being highly species-specific, the underlying metabolic pathways were common and included energy metabolism, membrane composition and oxidation, and lipid-mediated signalling, and related to the algal symbiont, the coral host, and their interaction. increased abundances of specific symbiont-derived lyso lipids and triacylglycerols containing polyunsaturated fatty acids were especially strong biomarkers of decreased bleaching susceptibility. based on our findings, we hypothesise that highly tolerant corals have a more cooperative and metabolically advantageous symbiosis. this research highlights the promising utility of biochemical biomarkers as tools for resilience-based reef restoration and provides new mechanistic insight into metabolic interactions within the coral holobiont that confer climate tolerance to reef-building corals. giada tortorelli molecular and biochemical mechanisms of thermal sensitivity across coral–symbiont partnerships the persistence of coral reefs under climate change relies substantially on the identity and plasticity of the coral-symbiodiniaceae mutualism. this partnership hinges on molecular-level recognition between host and symbiont, with lectin–glycan signaling emerging as a key mechanism of compatibility that may underlie partner specificity in the cnidaria–symbiodiniaceae symbiosis. montipora capitata is a broadcast spawner that vertically transmits symbionts through gametes and in kāneʻohe bay, oʻahu, hawaiʻi, genotypes dominated by cladocopium are more sensitive to warmer temperatures and bleach more readily than those hosting durusdinium, which are more thermally tolerant and better equipped to handle future climates. to investigate the molecular and biochemical basis of these differences, we examined cladocopium and durusdinium across adult colonies of m. capitata genotypes, their eggs, and symbionts that were either retained or expelled during simulated bleaching events.\r\nsymbiont cell surface properties and biochemistry differed between cladocopium and durusdinium. combined host-symbiont effects strongly influenced the physiological and metabolic responses to temperature stress, highlighting the individual holobiont–not the symbiont genus alone–as the primary unit of thermal response. elevated temperatures altered the symbiont cell-surface glycome and led to the convergence of betaine lipids biochemistry between the thermosensitive cladocopium and the thermotolerant durusdinium in adult corals. the changes in symbiont cell-surface glycoconjugates and membrane lipids, linked to heat-induced oxidative stress, suggest that changes in these molecular interfaces may disrupt host–symbiont specific symbioses. deviations from stress-free symbiont glycan profiles may therefore contribute to both symbiosis breakdown and the plasticity of partner associations under stress. understanding how symbiodiniaceae regulate stress responses and host affinity helps identify the traits contributing to coral resilience under climate change. jacob snyder mechanisms to improve coral reef resilience in sediment- and nutrient-impacted environments: a theoretical analysis pacific nations depend on reefs and are thus highly vulnerable to their degradation. in hawaiʻi, coral reefs are foundational in native hawaiian genealogy, support high levels of endemic biodiversity, and generate over $850 million annually. mitigating land-based pollutants – one of the top three threats to coral reefs globally – can improve reef resilience and preserve these ecosystem services. sediment runoff is a primary contributor to coral decline (and algal dominance), and its deleterious effects are exacerbated by nutrients, which bolster the growth of algae competing with corals for benthic space. a leading management strategy to prevent shifts from coral- to algal-dominated states is maintaining the biomass of herbivorous fish, which consume algal competitors. however, the efficacy of this method can be hindered by sediment-driven changes in fish herbivory.  this study constructs a mathematical model to improve management targets by identifying (1) pollutant thresholds past which herbivore biomass may abruptly decline and (2) primary drivers of resilience. we expand upon a coral-algal competition model by incorporating dynamic herbivorous fish functional groups (browsers, grazers, and scrapers), which interact with the model’s benthic components via algal herbivory. the responses of benthic taxa and herbivore groups to land-based pollutants are parameterized using literature and field data. specifically, algae growth and herbivory rates were measured across three independent riverine runoff gradients in hawaiʻi for one year. analyses reveal that (1) intermediate pollutant levels can generate hysteresis, meaning that returning pollutants to their pre-decline levels may not induce recovery, and (2) browser herbivory maintains coral dominance at low sediment levels but is outpaced by macroalgal growth in highly polluted environments. this model advances the development of tractable decision-support tools to identify management targets on sediment- and nutrient-impacted reef ecosystems globally. jasmine reighard thresholds of sediment stress on herbivory: experimental evidence from a pacific parrotfish sediment runoff is a primary driver of coral reef degradation globally. elevated nutrient inputs from runoff underpin transitions from coral-dominated to algae-dominated ecosystems. herbivorous reef fishes are widely recognized as a critical bastion of defense against these shifts, as they limit the establishment and overgrowth of algal communities. however, evidence also indicates that these fishes are sensitive to sediment exposure, leading to declines in biodiversity, abundance, and grazing pressure. this research aims to test the direct consequences of sedimentation on algal grazing rates by herbivorous fish and quantity the thresholds above which sediment exposure erodes the ecological functions they provide. to investigate these impacts, we conducted a series of feeding experiments in microcosm tanks simulating suspended (sus) and settled sediment (ses) gradients observed on nearshore reefs. our study’s focal species was the pacific bullethead uhu (parrotfish, chlorurus spilurus), a common herbivore throughout pacific tropical nearshore habitats. each fish completed four trials: (1) a no-sediment control, (2) sus exposure, (3) ses exposure, and (4) combined sus + ses exposure, and different individuals experienced different quantifies of sediment exposure ranging from 0-12 mg/l. individuals were given a choice between turf algae collected from a nearshore, runoff-exposed reef and an offshore clear-water reef. behavioral responses were recorded via overhead video to compare feeding strikes across treatments. we discuss our findings of threshold limits and impairments of top-down algal control in relation to common sediment exposure gradients for tropical coral reefs. jessica reichert from structure to exposure: using 3d morphometrics and computer vision to capture coral–microplastic interactions spirals that support reefs: helical microhabitats for coral recruitment although plastic pollution is now widely detected in reef environments, its ecological impacts on corals remain poorly understood. this is mainly because in situ exposure is a function of particle concentrations, flow, and organismal responses, which is difficult to quantify under natural conditions. understanding how corals interact with plastic particles requires approaches that resolve fine-scale exposure parameters and behavioral responses. here, we combine quantitative morphometrics, controlled-flow experiments, and computer vision to assess how coral structural complexity and polyp behavior jointly determine microplastic exposure and therewith potential associated ecological impacts. first, we quantified microplastic accumulation in pocillopora acuta colonies in kāneʻohe bay, hawaiʻi, and combined the observed concentrations with a broad set of structural complexity metrics obtained using high-resolution 3d photogrammetry and 3d scanning. we found that colonies with compact, thick-branched morphologies consistently accumulated higher microplastic loads under natural conditions, with mean loads of ~0.03 particles g⁻¹. second, we developed a microflume and video-based experimental platform recording colony–microplastic interactions to resolve the underlying link between exposure conditions, structural complexity, and interaction frequencies. using computer vision and automated image analysis, we track particle–polyp contact events and classify the responses, including ingestion, rejection, and mucus entrapment. this enables continuous quantification of interaction frequencies and durations as a function of microplastic concentration, flow regime, and colony structural complexity. our results show that coral complexity plays a significant role in microplastic exposure and deposition, with implications for coral health and the transfer of microplastics to other reef sinks. by integrating 3d morphometrics with ai-assisted video analysis, this work provides scalable tools for investigating the impacts of plastic pollution. this highlights the value of applying advanced imaging and ai-based methodologies to resolve subtle pollutant responses in structurally complex reef organisms, thereby supporting more accurate ecological risk assessments. a major challenge in reef restoration and nature-positive infrastructure is designing structures that reliably support coral recruitment and early survival. over the past three years, the geometric ecology lab has iteratively developed and tested five generations of settlement modules, each informed by previous field results. a central finding is the strong influence of microhabitat geometry: spiral-shaped (helix) recesses attracted up to 80-fold more larvae than linear ones, with optimal dimensions supporting settlement that persists for years after deployment. hydrodynamics also played a key role–higher flow increased larval entrainment into helix recesses and boosted settlement. these design rules were robust across module shapes and construction materials, with cylindrical units in both concrete and clay performing comparably. small shifts in recess size altered post-settlement survival, emphasizing the need to balance initial recruitment and long-term persistence. although helix designs maximized total recruits, more complex fractal structures supported greater species diversity, revealing trade-offs between abundance and richness. together, these results provide a mechanistic basis for scalable coral-supporting structures and offer new insight into the ecological drivers of larval settlement and survival. kamalani oshiro developing a new selective breeding model using porites lobata in hawaii as climate change continues to warm oceans, it is critical to understand the relationships between thermal tolerance and the reproductive output of corals. selective breeding of coral in the context of restoration is ongoing in hawaii, however this work is dominated by one coral species, montipora capitata. diversifying species available for breeding, especially those with different life history traits, reproductive biology and ecological function is important for effective conservation. here, we aim to develop a new selective breeding model for p. lobata in kaneohe bay, oahu, hawaii based on direct feedback from the community expressing the ecological and cultural importance of this species. we established a model population of 100 colonies in the field and collected histology samples throughout the summer of 2025 to 1) identify the sex of the colony, 2) the timeline of gametogenesis, and 3) quantify fecundity. fecundity was quantified by counts of all visible gametes per polyp across multiple polyps per one section per slide. small fragments from field source colonies were collected to explore tradeoffs in this species, including the relationship between fecundity and other important traits like growth and thermal tolerance. these fragments were maintained ex situ and buoyant weighed to determine growth before being exposed to a standardized heat-stress assay that reflects natural beaching patterns and elicits. we used pam fluorometry during this stress test to resolve continuous thermal tolerance scores, which will be compared with fecundity and growth metrics to assess tradeoffs. the development of additional selective breeding models supports selective breeding for restoration practitioners in hawaii, creating greater ecological diversity for this conservation approach. ʻaʻaliʻi kelling habitat enhancement through indigenous stone fish houses: evidence from a two-year field experiment in hawaiʻi coral reefs are declining globally, underscoring the need for conservation strategies that pair ecological science with place-based management. in hawaiʻi, traditional stone fish houses called imu represent an indigenous stewardship practice that may provide effective models for contemporary fisheries enhancement. this study evaluates the ecological role of imu within the hāʻena community-based subsistence fishing area (cbsfa), kauaʻi, where community-led management emphasizes food sovereignty and cultural revitalization. over a two-year period (2023–2024), we deployed imu across three nearshore locations with low structural complexity and compared them with nearby controls and natural reef sites. using standardized fish surveys and underwater video monitoring, we tested whether imu increase fish abundance, biomass, species richness, and juvenile recruitment. imu consistently enhanced local fish communities. fish abundance was 57% higher at imu sites, biomass increased by 86%, and species richness by 42% relative to controls. juveniles (0–10 cm) comprised 78% of individuals at imu, compared to 60% at controls and 35% at natural reefs, indicating that imu function primarily as recruitment structures. community analyses showed imu sites forming distinct assemblages that occupied intermediate space between degraded controls and healthy outer reefs. these results demonstrate that imu are scalable, community-implementable structures that address recruitment bottlenecks in low-complexity habitats. by increasing structural refuge, imu align indigenous resource practices with contemporary reef ecology, offering a culturally grounded and ecologically effective tool to support fish stocks, food security, and community-based stewardship.",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 10
-    },
-    {
-      "id": "loc-0017",
-      "affiliation": "Hawai?i institute of Marine Biology",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "speakers": [
-        "Alyssa Varela"
-      ],
-      "speaker_details": [
-        {
-          "name": "Alyssa Varela",
-          "search_text": "alyssa varela persistence of thermal tolerance in selectively bred montipora capitata across an environmental gradient corals are increasingly threatened by human-driven changes to ocean conditions, and these large-scale shifts interact differently across reef systems, making it difficult to predict how reefs will respond to future environmental change. as sea surface temperatures continue to rise, it is important to understand how adapting coral populations respond to variation and degradation of other environmental factors such as light, flow, salinity, and water quality. this study investigates whether thermal tolerance in selectively bred juvenile montipora capitata persists across different reef environments in kāneʻohe bay, oʻahu, hawaiʻi. in 2023, gametes were collected from bleaching tolerant and wild-type parent colonies and settled to produce selectively bred and wild-type juveniles. these selectively bred corals represent phenotypes that may dominate future reefs, allowing us to explore how future populations respond to different environmental conditions across the bay. three-year-old juveniles were outplanted to reefs with varied flow, light, temperature, sediment, and salinity. we monitored coral growth, structural complexity, survivorship, symbiont community composition (its2 profiling), and biochemical responses (metabolomic profiling) through time to assess performance. results from this longitudinal study demonstrate how selectively bred m. capitata juveniles perform across different reef environments, providing insight into the persistence of thermal tolerant traits under varied environmental parameters and offering context for restoration and management decisions.",
-          "talk_titles": [
-            {
-              "title": "Persistence of thermal tolerance in selectively bred Montipora capitata across an environmental gradient",
-              "primary": true,
-              "talk_id": "db2d9caa-4697-4c21-9338-2976f1e75518"
-            },
-            {
-              "title": "Heat selection of sexually propagated corals for use in proactive restoration",
-              "primary": false,
-              "talk_id": "763fd5a7-e785-41ed-b08e-e36f5a8a5031"
-            },
-            {
-              "title": "Molecular and Biochemical Mechanisms of Thermal Sensitivity Across Coral–Symbiont Partnerships",
-              "primary": false,
-              "talk_id": "a4eb0849-6f1e-4fcf-9b62-91fa5b3a2eb9"
-            },
-            {
-              "title": "Multi-Scale Photogrammetry for Coral Research and Restoration",
-              "primary": false,
-              "talk_id": "e96a9526-421a-4c5a-96ae-fe94cdc09e4e"
-            },
-            {
-              "title": "Reciprocal Transplants Reveal Stable Thermal Performance and Holobiont Traits in Hawaiian Reef-Building Corals",
-              "primary": false,
-              "talk_id": "adc0774e-ae2d-451f-90cc-528d85cb83c8"
-            }
-          ],
-          "person_key": "icrs-p-01808",
-          "attended": true
-        }
-      ],
-      "speaker_count": 1,
-      "talk_count": 1,
-      "geocode_level": "country",
-      "distance_km": 13880.4,
-      "search_text": "hawai?i institute of marine biology alyssa varela alyssa varela persistence of thermal tolerance in selectively bred montipora capitata across an environmental gradient corals are increasingly threatened by human-driven changes to ocean conditions, and these large-scale shifts interact differently across reef systems, making it difficult to predict how reefs will respond to future environmental change. as sea surface temperatures continue to rise, it is important to understand how adapting coral populations respond to variation and degradation of other environmental factors such as light, flow, salinity, and water quality. this study investigates whether thermal tolerance in selectively bred juvenile montipora capitata persists across different reef environments in kāneʻohe bay, oʻahu, hawaiʻi. in 2023, gametes were collected from bleaching tolerant and wild-type parent colonies and settled to produce selectively bred and wild-type juveniles. these selectively bred corals represent phenotypes that may dominate future reefs, allowing us to explore how future populations respond to different environmental conditions across the bay. three-year-old juveniles were outplanted to reefs with varied flow, light, temperature, sediment, and salinity. we monitored coral growth, structural complexity, survivorship, symbiont community composition (its2 profiling), and biochemical responses (metabolomic profiling) through time to assess performance. results from this longitudinal study demonstrate how selectively bred m. capitata juveniles perform across different reef environments, providing insight into the persistence of thermal tolerant traits under varied environmental parameters and offering context for restoration and management decisions.",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 1
-    },
-    {
-      "id": "loc-0018",
-      "affiliation": "Ho??la Kealakekua Nui, Inc.",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "speakers": [
-        "Akoni Palacat-Nelsen",
-        "Kainalu Keliʻikuli-Grace"
-      ],
-      "speaker_details": [
-        {
-          "name": "Akoni Palacat-Nelsen",
-          "search_text": "shane akoni palacat-nelsen kānāwai kīhoʻihoʻi - the basis of community-based conservation management u.s. congress passed the admission act of 1959 admitting the state of hawaiʻi into the united states.  provisions were made to uphold native hawaiian traditional and customary practices, and in 1969 the state created the highest form of protection for marine resources referred to as the marine life conservation district (mlcd).  the mlcd superseded centuries of traditional governance and management systems, and designated no take zones.  \r\n\r\nwestern science alone could not maintain class aa waters, and the protections for marine life would deteriorate.  in 2004, the water quality reported high turbidity and was no longer classified as class aa.  in 2015, over forty eight commercial boaters were formally permitted to operate recreation tours, with no rest periods.  additionally, the global bleaching events reported more than 50% of the coral reef in kealakekua bay was depleted.  human intervention was required, and when western researchers spoke to the villagers, the native hawaiians immediately built a relationship with the nature conservancy and the state division of aquatic resources to implement the kumu kānāwai kīhoʻihoʻi, and the kanu koʻa reef resilience project was created in both kealakekua bay in south kona and kahuwai bay in north kona on the west side of hawaiʻi island.\r\n\r\nthe native residents of kealakekua bay understood their legal right and cultural obligation to intervene after a 53 year hiatus.   in 2024, a partnership between hoʻāla kealakekua nui, inc., the nature conservancy, and the state of hawaiʻiʻs division of aquatic resources, launched a community-based coral restoration project that led to a success of coral stewardship and learning.  community members are being trained and certified as scientific divers to fulfill the long term goal of normalizing the relationship between humans and coral reefs for future generations.",
-          "talk_titles": [
-            {
-              "title": "Kānāwai Kīhoʻihoʻi - The basis of Community-based Conservation Management",
-              "primary": true,
-              "talk_id": "d89c58a3-a926-445b-83dd-3b539ed8573d"
-            }
-          ],
-          "person_key": "icrs-p-01308",
-          "attended": true
-        },
-        {
-          "name": "Kainalu Keliʻikuli-Grace",
-          "search_text": "kainalu keliʻikuli-grace",
-          "talk_titles": [
-            {
-              "title": "Kānāwai Kīhoʻihoʻi - The basis of Community-based Conservation Management",
-              "primary": false,
-              "talk_id": "d89c58a3-a926-445b-83dd-3b539ed8573d"
-            }
-          ],
-          "person_key": "icrs-p-00898",
-          "attended": true,
-          "non_speaking_delegate": true
-        }
-      ],
-      "speaker_count": 2,
-      "talk_count": 1,
-      "geocode_level": "country",
-      "distance_km": 13880.4,
-      "search_text": "ho??la kealakekua nui, inc. akoni palacat-nelsen shane akoni palacat-nelsen kānāwai kīhoʻihoʻi - the basis of community-based conservation management u.s. congress passed the admission act of 1959 admitting the state of hawaiʻi into the united states.  provisions were made to uphold native hawaiian traditional and customary practices, and in 1969 the state created the highest form of protection for marine resources referred to as the marine life conservation district (mlcd).  the mlcd superseded centuries of traditional governance and management systems, and designated no take zones.  \r\n\r\nwestern science alone could not maintain class aa waters, and the protections for marine life would deteriorate.  in 2004, the water quality reported high turbidity and was no longer classified as class aa.  in 2015, over forty eight commercial boaters were formally permitted to operate recreation tours, with no rest periods.  additionally, the global bleaching events reported more than 50% of the coral reef in kealakekua bay was depleted.  human intervention was required, and when western researchers spoke to the villagers, the native hawaiians immediately built a relationship with the nature conservancy and the state division of aquatic resources to implement the kumu kānāwai kīhoʻihoʻi, and the kanu koʻa reef resilience project was created in both kealakekua bay in south kona and kahuwai bay in north kona on the west side of hawaiʻi island.\r\n\r\nthe native residents of kealakekua bay understood their legal right and cultural obligation to intervene after a 53 year hiatus.   in 2024, a partnership between hoʻāla kealakekua nui, inc., the nature conservancy, and the state of hawaiʻiʻs division of aquatic resources, launched a community-based coral restoration project that led to a success of coral stewardship and learning.  community members are being trained and certified as scientific divers to fulfill the long term goal of normalizing the relationship between humans and coral reefs for future generations.",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 1
-    },
-    {
-      "id": "loc-0019",
+      "id": "loc-0014",
       "affiliation": "Institut de Recherche pour le Développement/Université de Bretagne Occidentale",
       "lat": 48.8566,
       "lon": 2.3522,
@@ -1258,7 +682,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0020",
+      "id": "loc-0015",
       "affiliation": "Institute of Paleobiology, PAS",
       "lat": 52.2297,
       "lon": 21.0122,
@@ -1290,7 +714,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0021",
+      "id": "loc-0016",
       "affiliation": "Instituto de Zoología y Ecología Tropical",
       "lat": 10.4806,
       "lon": -66.9036,
@@ -1327,7 +751,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0022",
+      "id": "loc-0017",
       "affiliation": "King's College London",
       "lat": 30.0444,
       "lon": 31.2357,
@@ -1359,54 +783,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0023",
-      "affiliation": "Kua??ina Ulu ?Auamo",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "speakers": [
-        "Alex Connelly",
-        "Kahaku Poepoe"
-      ],
-      "speaker_details": [
-        {
-          "name": "Alex Connelly",
-          "search_text": "alex connelly co-creating intergenerational knowledge about hawaiian moi (polydactylus sexfilis) reproductive cycles in a changing climate moi (polydactylus sexfilis) is a highly valued resource species in hawaiʻi, traditionally monitored by lawaiʻa (fishers) and konohiki (managers of ahupuaʻa land divisions ). moi experienced significant declines in the mid 20th century, prompting a seasonal fishing ban aligned with then-recorded spawning periods. master lawaiʻa (fisherman) uncle mac poepoe, recently observed spawning season changes, likely due to habitat and environmental stressors, indicating that the ban is not effective for protecting moi during extended spawning periods. in response, uncle mac formed nā kai ʻewalu, a collective of lawaiʻa, to study these changes across islands. this presentation details the research process, priorities and methodologies rooted in indigenous knowledge and driven by kanaka ʻōiwi (native hawaiians). here we showcase our approach: a synchronized lawaiʻa monitoring network and trans-disciplinary collaboration to inform effective fishing regulations and adaptive management in the face of an uncertain climate and human coastal impact. our research integrates traditional knowledge and conventional biology to steward biocultural resources, offering a model for fisheries management globally. current research will estimate the spawning dates for juvenile moi by triangulating spawning estimates from kanaka ʻōiwi traditional practices alongside conventional scientific methods including otolith analysis and epigenetic markers.",
-          "talk_titles": [
-            {
-              "title": "Co-creating intergenerational knowledge about Hawaiian moi (Polydactylus sexfilis) reproductive cycles in a changing climate",
-              "primary": true,
-              "talk_id": "1c33ce6c-590f-4ae6-b998-31f718d153b9"
-            }
-          ],
-          "person_key": "icrs-p-00360",
-          "attended": true
-        },
-        {
-          "name": "Kahaku Poepoe",
-          "search_text": "kahaku poepoe",
-          "talk_titles": [
-            {
-              "title": "Co-creating intergenerational knowledge about Hawaiian moi (Polydactylus sexfilis) reproductive cycles in a changing climate",
-              "primary": false,
-              "talk_id": "1c33ce6c-590f-4ae6-b998-31f718d153b9"
-            }
-          ],
-          "person_key": "icrs-p-01372",
-          "attended": true,
-          "non_speaking_delegate": true
-        }
-      ],
-      "speaker_count": 2,
-      "talk_count": 1,
-      "geocode_level": "country",
-      "distance_km": 13880.4,
-      "search_text": "kua??ina ulu ?auamo alex connelly alex connelly co-creating intergenerational knowledge about hawaiian moi (polydactylus sexfilis) reproductive cycles in a changing climate moi (polydactylus sexfilis) is a highly valued resource species in hawaiʻi, traditionally monitored by lawaiʻa (fishers) and konohiki (managers of ahupuaʻa land divisions ). moi experienced significant declines in the mid 20th century, prompting a seasonal fishing ban aligned with then-recorded spawning periods. master lawaiʻa (fisherman) uncle mac poepoe, recently observed spawning season changes, likely due to habitat and environmental stressors, indicating that the ban is not effective for protecting moi during extended spawning periods. in response, uncle mac formed nā kai ʻewalu, a collective of lawaiʻa, to study these changes across islands. this presentation details the research process, priorities and methodologies rooted in indigenous knowledge and driven by kanaka ʻōiwi (native hawaiians). here we showcase our approach: a synchronized lawaiʻa monitoring network and trans-disciplinary collaboration to inform effective fishing regulations and adaptive management in the face of an uncertain climate and human coastal impact. our research integrates traditional knowledge and conventional biology to steward biocultural resources, offering a model for fisheries management globally. current research will estimate the spawning dates for juvenile moi by triangulating spawning estimates from kanaka ʻōiwi traditional practices alongside conventional scientific methods including otolith analysis and epigenetic markers.",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 1
-    },
-    {
-      "id": "loc-0024",
+      "id": "loc-0018",
       "affiliation": "Louisiana State University & Coastal Eco-Group",
       "lat": 30.4515,
       "lon": -91.1871,
@@ -1458,7 +835,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0025",
+      "id": "loc-0019",
       "affiliation": "MPAConnect Network - Caribbean",
       "lat": -35.2809,
       "lon": 149.13,
@@ -1490,7 +867,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0026",
+      "id": "loc-0020",
       "affiliation": "Maritime and Marine Science Centre of Excellence, Pattimura University",
       "lat": -3.6546187,
       "lon": 128.1956754,
@@ -1577,7 +954,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0027",
+      "id": "loc-0021",
       "affiliation": "Mindanao State University-Iligan Institute of Technology",
       "lat": 14.5995,
       "lon": 120.9842,
@@ -1614,7 +991,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0028",
+      "id": "loc-0022",
       "affiliation": "Molecular Invertebrate Systematics & Ecology Laboratory",
       "lat": 35.6762,
       "lon": 139.6503,
@@ -1656,63 +1033,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0029",
-      "affiliation": "N? Kai ?Ewalu",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "speakers": [
-        "Kēhau Springer",
-        "Nakoa Goo"
-      ],
-      "speaker_details": [
-        {
-          "name": "Kēhau Springer",
-          "search_text": "shauna springer multi-scalar extraction: how hawaiʻi's aquarium trade disrupts kuleana and community stewardship “they came, took the fish, said nothing to anybody - there were no limits back then.” this “sensing of the system” by a fisher captures the paradox at the heart of hawaiʻi’s commercial aquarium trade: coral reefs that appear ecologically vibrant while communities experience them as spiritually, culturally, and materially depleted. this study examines the aquarium trade as a multi-scalar extractive system. one that links localized reef impacts with state governance contradictions and global ornamental markets, also highlighting how indigenous stewardship offers a cross-scale pathway for transformation rooted in kuleana, or relational responsibility.  \r\n\r\ndrawing on ethnography conducted across community and governance settings, this research integrates participant observation at board of land and natural resources hearings, division of aquatic resource and community network meetings, analysis of chapter 91 rulemaking, environmental review documents, legal decisions, public testimony; and interviews with kanaka ʻōiwi fishers and community leaders across hawaiʻi. these data reveal how regulatory authority is repeatedly fragmented or deferred, enabling extraction while obscuring accountability. sustainability narratives deployed at state and global scales further mask structural inequities and ecological decline.\r\n\r\nat the local scale, lawaiʻa describe declines in culturally significant species, shifting recruitment patterns, and the erosion of intergenerational knowledge and practice. these grounded insights “sense the system” from the peripheries, revealing how extraction reverberates across social, cultural and ecological dimensions. yet these same local perspectives also illuminate entry points for cross-scale transformation: strengthening indigenous political authority, revitalizing community stewardship, and reorienting management toward place-based responsibilities.\r\n\r\nby analyzing the aquarium trade across local, state and global scales, this paper demonstrates how community testimonies serve as diagnostic tools for understanding broader governance failures. the analysis argues that transformative coral reef conservation requires strengthening indigenous political authority and restoring kuleana-based stewardship to shift management away from ornamental extraction and toward just and enduring reef futures.",
-          "talk_titles": [
-            {
-              "title": "Multi-Scalar Extraction: How Hawaiʻi's Aquarium Trade Disrupts Kuleana and Community Stewardship",
-              "primary": true,
-              "talk_id": "22927a42-c58f-46a0-b62b-0b9bad8de927"
-            },
-            {
-              "title": "Co-creating intergenerational knowledge about Hawaiian moi (Polydactylus sexfilis) reproductive cycles in a changing climate",
-              "primary": false,
-              "talk_id": "1c33ce6c-590f-4ae6-b998-31f718d153b9"
-            }
-          ],
-          "person_key": "icrs-p-01663",
-          "attended": true
-        },
-        {
-          "name": "Nakoa Goo",
-          "search_text": "nakoa goo investigating declines of native forage fish populations in hawai‘i estuaries native forage fish species in hawai‘i estuaries historically provided a valuable fishing bait and food resource that supported subsistence and commercial based fisheries. following nearly a century of commercial exploitation, the conservation status of these species remains uncertain due to a range of concurrent threats including habitat loss and introduced species competition. declines in native forage fish populations observed by local fishermen have generated concerns in communities where these fish once provided an important fishing resource spanning generations. this presentation will highlight ongoing efforts to preserve traditional fishing knowledge and assess the dietary composition of the hawaiian endemic species known as nehu (encrasicholina purpurea), and ‘iao (atherinomorus insularum) in addition to an introduced species known as goldspot herring (herklotsichthys quadrimaculatus). forage fish diets were characterized using dna metabarcoding techniques and compared to identify potential competitive interactions among the three species which were collected from historically important baiting areas on the islands of o‘ahu, maui and hawai‘i. gathering the perspectives of fishers, scientists and hawaiian cultural practitioners provided additional insights related to the timing, scale and severity of threats believed to negatively impact native forage fish survival. outcomes from this research aim to inform the co-development of management recommendations to support the replenishment of native forage fish populations and improve our current understanding of food web dynamics in hawai'i estuaries.",
-          "talk_titles": [
-            {
-              "title": "Investigating Declines of Native Forage Fish Populations in Hawai‘i Estuaries",
-              "primary": true,
-              "talk_id": "64605163-5f97-47ab-b679-e6d50ea78a12"
-            },
-            {
-              "title": "Co-creating intergenerational knowledge about Hawaiian moi (Polydactylus sexfilis) reproductive cycles in a changing climate",
-              "primary": false,
-              "talk_id": "1c33ce6c-590f-4ae6-b998-31f718d153b9"
-            }
-          ],
-          "person_key": "icrs-p-00669",
-          "attended": true
-        }
-      ],
-      "speaker_count": 2,
-      "talk_count": 2,
-      "geocode_level": "country",
-      "distance_km": 13880.4,
-      "search_text": "n? kai ?ewalu kēhau springer nakoa goo shauna springer multi-scalar extraction: how hawaiʻi's aquarium trade disrupts kuleana and community stewardship “they came, took the fish, said nothing to anybody - there were no limits back then.” this “sensing of the system” by a fisher captures the paradox at the heart of hawaiʻi’s commercial aquarium trade: coral reefs that appear ecologically vibrant while communities experience them as spiritually, culturally, and materially depleted. this study examines the aquarium trade as a multi-scalar extractive system. one that links localized reef impacts with state governance contradictions and global ornamental markets, also highlighting how indigenous stewardship offers a cross-scale pathway for transformation rooted in kuleana, or relational responsibility.  \r\n\r\ndrawing on ethnography conducted across community and governance settings, this research integrates participant observation at board of land and natural resources hearings, division of aquatic resource and community network meetings, analysis of chapter 91 rulemaking, environmental review documents, legal decisions, public testimony; and interviews with kanaka ʻōiwi fishers and community leaders across hawaiʻi. these data reveal how regulatory authority is repeatedly fragmented or deferred, enabling extraction while obscuring accountability. sustainability narratives deployed at state and global scales further mask structural inequities and ecological decline.\r\n\r\nat the local scale, lawaiʻa describe declines in culturally significant species, shifting recruitment patterns, and the erosion of intergenerational knowledge and practice. these grounded insights “sense the system” from the peripheries, revealing how extraction reverberates across social, cultural and ecological dimensions. yet these same local perspectives also illuminate entry points for cross-scale transformation: strengthening indigenous political authority, revitalizing community stewardship, and reorienting management toward place-based responsibilities.\r\n\r\nby analyzing the aquarium trade across local, state and global scales, this paper demonstrates how community testimonies serve as diagnostic tools for understanding broader governance failures. the analysis argues that transformative coral reef conservation requires strengthening indigenous political authority and restoring kuleana-based stewardship to shift management away from ornamental extraction and toward just and enduring reef futures. nakoa goo investigating declines of native forage fish populations in hawai‘i estuaries native forage fish species in hawai‘i estuaries historically provided a valuable fishing bait and food resource that supported subsistence and commercial based fisheries. following nearly a century of commercial exploitation, the conservation status of these species remains uncertain due to a range of concurrent threats including habitat loss and introduced species competition. declines in native forage fish populations observed by local fishermen have generated concerns in communities where these fish once provided an important fishing resource spanning generations. this presentation will highlight ongoing efforts to preserve traditional fishing knowledge and assess the dietary composition of the hawaiian endemic species known as nehu (encrasicholina purpurea), and ‘iao (atherinomorus insularum) in addition to an introduced species known as goldspot herring (herklotsichthys quadrimaculatus). forage fish diets were characterized using dna metabarcoding techniques and compared to identify potential competitive interactions among the three species which were collected from historically important baiting areas on the islands of o‘ahu, maui and hawai‘i. gathering the perspectives of fishers, scientists and hawaiian cultural practitioners provided additional insights related to the timing, scale and severity of threats believed to negatively impact native forage fish survival. outcomes from this research aim to inform the co-development of management recommendations to support the replenishment of native forage fish populations and improve our current understanding of food web dynamics in hawai'i estuaries.",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 2
-    },
-    {
-      "id": "loc-0030",
+      "id": "loc-0023",
       "affiliation": "NOAA Coral Reef Conservation Program",
       "lat": 38.9960671,
       "lon": -77.0280731,
@@ -1749,39 +1070,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0031",
-      "affiliation": "National Center for Scientific Research - R?hui Center",
-      "lat": -17.5516,
-      "lon": -149.5585,
-      "speakers": [
-        "Tamatoa Bambridge"
-      ],
-      "speaker_details": [
-        {
-          "name": "Tamatoa Bambridge",
-          "search_text": "tamatoa bambridge rāhui, mana, and tapu: community-led ocean governance as a model for coral reef resilience originating as a 10th-century polynesian social innovation under tamatoa i, rāhui is far more than a temporary fishing closure. it is a governance system through which communities restore mana–authority, responsibility, and reciprocal relationships–across interconnected socio-ecological systems, linking tapu with adaptive stewardship from ridge to reef. over the past 15 years, the rāhui center has co-developed and supported more than 30 rāhui across 10 islands in four archipelagos of french polynesia. each rāhui reflects local priorities, governance structures, and ecological and cultural objectives, demonstrating that enduring conservation depends on local ownership rather than standardized models. by integrating indigenous knowledge, fisher-led monitoring, hybrid surveillance, and adaptive management, rāhui reconnects governance of watersheds, coastal ecosystems, fisheries, and communities. unlike conventional marine protected areas, it treats coral reefs as outcomes of healthy land–sea relationships and resilient social institutions. persistent challenges include equitable distribution of mana and navigating hybrid governance with state legislation. increasingly recognized internationally, rāhui offers a decolonized governance model that advances coral reef resilience, biodiversity targets such as 30×30, and indigenous self-determination.",
-          "talk_titles": [
-            {
-              "title": "Rāhui, Mana, and Tapu: Community-Led Ocean Governance as a Model for Coral Reef Resilience",
-              "primary": true,
-              "talk_id": "bc2dc42f-82f9-4ec7-9eb7-eb67eef48889"
-            }
-          ],
-          "person_key": "icrs-p-00096",
-          "attended": true
-        }
-      ],
-      "speaker_count": 1,
-      "talk_count": 1,
-      "geocode_level": "country",
-      "distance_km": 4093.2,
-      "search_text": "national center for scientific research - r?hui center tamatoa bambridge tamatoa bambridge rāhui, mana, and tapu: community-led ocean governance as a model for coral reef resilience originating as a 10th-century polynesian social innovation under tamatoa i, rāhui is far more than a temporary fishing closure. it is a governance system through which communities restore mana–authority, responsibility, and reciprocal relationships–across interconnected socio-ecological systems, linking tapu with adaptive stewardship from ridge to reef. over the past 15 years, the rāhui center has co-developed and supported more than 30 rāhui across 10 islands in four archipelagos of french polynesia. each rāhui reflects local priorities, governance structures, and ecological and cultural objectives, demonstrating that enduring conservation depends on local ownership rather than standardized models. by integrating indigenous knowledge, fisher-led monitoring, hybrid surveillance, and adaptive management, rāhui reconnects governance of watersheds, coastal ecosystems, fisheries, and communities. unlike conventional marine protected areas, it treats coral reefs as outcomes of healthy land–sea relationships and resilient social institutions. persistent challenges include equitable distribution of mana and navigating hybrid governance with state legislation. increasingly recognized internationally, rāhui offers a decolonized governance model that advances coral reef resilience, biodiversity targets such as 30×30, and indigenous self-determination.",
-      "country_code": "PF",
-      "country": "French Polynesia",
-      "connection_count": 1
-    },
-    {
-      "id": "loc-0032",
+      "id": "loc-0024",
       "affiliation": "National Oceanic and Atmospheric Administration Restoration Center",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -1843,7 +1132,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0033",
+      "id": "loc-0025",
       "affiliation": "South China Sea Institute of Oceanology, Chinese Academy of Sciences",
       "lat": 39.9042,
       "lon": 116.4074,
@@ -1880,7 +1169,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0034",
+      "id": "loc-0026",
       "affiliation": "State of Hawai'i Division of Aquatic Resources",
       "lat": 21.3069,
       "lon": -157.8583,
@@ -1917,7 +1206,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0035",
+      "id": "loc-0027",
       "affiliation": "São Paulo State University",
       "lat": -15.7939,
       "lon": -47.8828,
@@ -1949,7 +1238,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0036",
+      "id": "loc-0028",
       "affiliation": "The Nature Conservancy - US Virgin Islands",
       "lat": 18.3419,
       "lon": -64.9307,
@@ -1986,7 +1275,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0037",
+      "id": "loc-0029",
       "affiliation": "Turks and Caicos Reef Fund",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -2033,7 +1322,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0038",
+      "id": "loc-0030",
       "affiliation": "UP Marine Science Institute",
       "lat": 14.5995,
       "lon": 120.9842,
@@ -2075,7 +1364,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0039",
+      "id": "loc-0031",
       "affiliation": "University Of Miami Rosenstiel School of Marine, Atmospheric, and Earth Science",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -2127,7 +1416,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0040",
+      "id": "loc-0032",
       "affiliation": "University of Amsterdam",
       "lat": 52.3676,
       "lon": 4.9041,
@@ -2164,7 +1453,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0041",
+      "id": "loc-0033",
       "affiliation": "University of Belize / Boston University",
       "lat": 17.251,
       "lon": -88.759,
@@ -2206,804 +1495,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0042",
-      "affiliation": "University of Hawai'i - M?noa",
-      "lat": 14.5995,
-      "lon": 120.9842,
-      "speakers": [
-        "Raffi Isah"
-      ],
-      "speaker_details": [
-        {
-          "name": "Raffi Isah",
-          "search_text": "raffi isah heterotrophic plasticity of corals under a nutrient and sgd gradient in kahekili, maui, hawaiʻi corals obtain energy through autotrophic nutrition from their endosymbionts and through heterotrophy via feeding on zooplankton and particulate organic matter (pom). while corals thrive in oligotrophic waters, allochthonous sources of nutrients can alter this relationship by increasing resource availability. at kahekili, maui, hawaiʻi, the fringing reef receives submarine groundwater discharge (sgd), of which ~60% is treated wastewater from nearby injection wells. this input elevates nutrients, stimulates primary production, and increases pom availability for heterotrophic feeding. however, the connection between nutrient-rich sgd, enhanced organic matter availability, and shifts in coral trophic strategies is understudied. we characterized nutrients, carbonate chemistry, pom concentrations, and pom stable isotope compositions (δ15n and δ13c) across four sites along an sgd and nutrient gradient. two common reef corals were collected and analyzed for δ15n and δ13c in host and endosymbiont fractions to evaluate how nutritional strategies shift along this gradient. we quantified the relative contributions of autotrophy and heterotrophy using isotopic offsets (δ15nhost-symbiont and δ13chost-symbiont) and estimated proportional food-source contributions (reef, offshore, and sgd pom) using bayesian isotope mixing models. this work clarifies whether enhanced heterotrophy acts as a compensatory mechanism under sgd-driven eutrophication, identifying thresholds at which nutrients may impair coral energy balance.",
-          "talk_titles": [
-            {
-              "title": "Heterotrophic plasticity of corals under a nutrient and SGD gradient in Kahekili, Maui, Hawaiʻi",
-              "primary": true,
-              "talk_id": "0f2b8fc6-5c5a-490e-afe7-5e940eaa7279"
-            }
-          ],
-          "person_key": "icrs-p-00819",
-          "attended": true
-        }
-      ],
-      "speaker_count": 1,
-      "talk_count": 1,
-      "geocode_level": "country",
-      "distance_km": 8023.4,
-      "search_text": "university of hawai'i - m?noa raffi isah raffi isah heterotrophic plasticity of corals under a nutrient and sgd gradient in kahekili, maui, hawaiʻi corals obtain energy through autotrophic nutrition from their endosymbionts and through heterotrophy via feeding on zooplankton and particulate organic matter (pom). while corals thrive in oligotrophic waters, allochthonous sources of nutrients can alter this relationship by increasing resource availability. at kahekili, maui, hawaiʻi, the fringing reef receives submarine groundwater discharge (sgd), of which ~60% is treated wastewater from nearby injection wells. this input elevates nutrients, stimulates primary production, and increases pom availability for heterotrophic feeding. however, the connection between nutrient-rich sgd, enhanced organic matter availability, and shifts in coral trophic strategies is understudied. we characterized nutrients, carbonate chemistry, pom concentrations, and pom stable isotope compositions (δ15n and δ13c) across four sites along an sgd and nutrient gradient. two common reef corals were collected and analyzed for δ15n and δ13c in host and endosymbiont fractions to evaluate how nutritional strategies shift along this gradient. we quantified the relative contributions of autotrophy and heterotrophy using isotopic offsets (δ15nhost-symbiont and δ13chost-symbiont) and estimated proportional food-source contributions (reef, offshore, and sgd pom) using bayesian isotope mixing models. this work clarifies whether enhanced heterotrophy acts as a compensatory mechanism under sgd-driven eutrophication, identifying thresholds at which nutrients may impair coral energy balance.",
-      "country_code": "PH",
-      "country": "Philippines",
-      "connection_count": 1
-    },
-    {
-      "id": "loc-0043",
-      "affiliation": "University of Hawai'i - M?noa",
-      "lat": 21.3069,
-      "lon": -157.8583,
-      "speakers": [
-        "Anela Eliza Kainani Duenas",
-        "Callie Stephenson",
-        "Charles Birkeland",
-        "Claire Moreland-Ochoa",
-        "Danielle Barnas",
-        "Eileen Nalley",
-        "Guan-Yan Chen",
-        "Jamie McDevitt-Irwin",
-        "Jessica Glazner",
-        "Joelle Mattos",
-        "Justin Berg",
-        "Kaho Tisthammer",
-        "Kainalu Steward",
-        "Keiko Wilkins",
-        "Kuʻi Keliipuleole",
-        "Leah Barkai",
-        "Lisa McManus",
-        "Madelief Schelvis",
-        "Madeline Berger",
-        "Mary Donovan",
-        "Maya Otsu",
-        "Maya Powell",
-        "Natalie Goeler-Slough",
-        "Nyssa Silbiger",
-        "Prof Bob Richmond",
-        "Rayna Mcclintock",
-        "Samantha Shedd",
-        "Zach Quinlan"
-      ],
-      "speaker_details": [
-        {
-          "name": "Anela Eliza Kainani Duenas",
-          "search_text": "anela duenas ecophysiology of shifts in coral species dominance on reef flats of guam over the last decade, guam’s reefs have been impacted by successive coral bleaching events, causing a significant decline in live coral cover. following the decline of acropora pulchra, pavona decussata appears to have increased in relative abundance, often overgrowing a. pulchra skeletons. the physiological mechanisms and symbiont dynamics that drive this ecological shift remain unclear. in this study, i conducted an ex situ heat stress experiment to evaluate the metabolic responses of a. pulchra and p. decussata dominated by either cladocopium or durusdinium. coral fragments were exposed to control or heat treatment conditions, and monitored over four timepoints for changes in net photosynthesis, respiration, and symbiodiniaceae community compositions using closed-chamber respirometry and qpcr. results showed that a. pulchra dominated by cladocopium experienced significant declines in photosynthesis and relative symbiont abundance under heat stress. in contrast, a. pulchra fragments dominated by durusdinium maintained stable metabolic function and symbiont composition across treatments. pavona decussata dominated by cladocopium also maintained relatively stable function and symbiont abundance across treatments. multivariate analyses confirmed that physiological variation was more strongly associated with coral species-symbiont pairings than with treatment alone. these findings offer a physiological basis for observed shifts in coral community composition on guam’s reefs. this study contributes to management and restoration efforts by providing crucial information on the role of symbiodiniaceae in thermal stress on guam’s reefs.",
-          "talk_titles": [
-            {
-              "title": "Ecophysiology of shifts in coral species dominance on reef flats of Guam",
-              "primary": true,
-              "talk_id": "dec38f47-d219-4f69-92d7-265909001526"
-            }
-          ],
-          "person_key": "icrs-p-00502",
-          "attended": true
-        },
-        {
-          "name": "Callie Stephenson",
-          "search_text": "callie stephenson embedding community-led science into the governance of hawaiʻi's pūpūkea marine life conservation district adaptive management proposed for the pūpūkea marine life conservation district (mlcd) on o‘ahu, hawaiʻi exemplifies the integration of community voices in coral reef management. the locally-based community stewardship non-profit organization mālama pūpūkea-waimea (mpw) was contracted by the local government to execute a three-year biological carrying capacity (bcc) study to provide empirical data and recommendations for adaptive management related to the potential overuse of the marine reserve by humans.the bcc study focused on the heavily impacted kapoʻo (sharks cove) region to collect rigorous scientific data to create management recommendations. results demonstrate clear ecological degradation linked to persistent, elevated visitor density. since 2022, in-water human presence in the kapoʻo tidepools has increased by 214%, remaining persistent year-round. bcc surveys confirmed that physical damage to coral increased significantly with human density, with an estimated 40% probability of observed damage on coral colonies in hotspots of visitor use. concurrently, non-schooling fish abundance and species richness declined year-over-year across zones. using non-linear analysis of the relationship of non-schooling fish abundance and surrounding human density, we quantified a conservative threshold of 1 human per 10m radius in the kapoʻo tidepools after which precipitous declines in fish abundance are likely, and extrapolates to a maximum acceptable visitation of 27–31 individuals at any given time for the entire area.these findings culminated in recommendations to the state and city governments for adaptive management. this project provides a useful case study in academic partnership, local stewardship, and natural resource management.",
-          "talk_titles": [
-            {
-              "title": "Embedding Community-Led Science into the Governance of Hawaiʻi's Pūpūkea Marine Life Conservation District",
-              "primary": true,
-              "talk_id": "0381812c-4ead-4434-a8a4-23865b133a13"
-            },
-            {
-              "title": "Submarine groundwater discharge alters the biogenic production of dissolved organic matter by reef calcifiers",
-              "primary": false,
-              "talk_id": "c37ed528-6593-4b68-93ea-776dd07f8d8b"
-            }
-          ],
-          "person_key": "icrs-p-01671",
-          "attended": true
-        },
-        {
-          "name": "Charles Birkeland",
-          "search_text": "charles birkeland american samoan coral reefs are doing well by negative feedback between corals and cca despite major cyclones, cots outbreaks, bleaching events, disease, a tsunami, and other disturbances, the living coral cover in american samoa since 2018 has been the greatest in 40 years. we attribute this to the prevalence of the substrate-binding cca porolithon onkodes s.l., which is prevalent because of wave action combined with the high aragonite saturation states in american samoa waters. of 800 successful coral recruits observed on the forereef slope in american samoa in 2018, 94 % were found on cca. recruits are prevalent in the size-classes of at least a hundred of the species of coral on the forereef slope. the reef ecosystem is resilient and stabilized by negative feedback between living-coral cover and cca. as corals expand living cover, cca significantly loses cover, although it commonly overgrows branching acropora and other corals as a refuge. conversely, when coral cover is decreased by disturbances, cca gain cover and provide substrata favorable to coral recruitment and thereby enhance the return of coral to prevalence. however, in backreef areas with little wave action, the rubble is not bound by cca and the coral communities are not as resilient. the relation between cca and corals changes over a gradient in aragonite saturation state. at rose atoll, where wave action is chronic and the aragonite saturation state is greater than 4, the cca generally overgrow corals, although they also enhance recruitment of corals, so the corals are prevalent and resilient, but with generally small colonies.  abundant small colonies of corals and prevalence of cca have been stable aspects of  the forereef of rose atoll since at least 2002. negative feedback provides fundamentally stabilizing mechanisms and thereby resilience on coral reefs.",
-          "talk_titles": [
-            {
-              "title": "American Samoan coral reefs are doing well by negative feedback between corals and CCA",
-              "primary": true,
-              "talk_id": "d7ee11f1-978e-438c-8c53-b4f4deadf5f5"
-            }
-          ],
-          "person_key": "icrs-p-00176",
-          "attended": true
-        },
-        {
-          "name": "Claire Moreland-Ochoa",
-          "search_text": "claire moreland-ochoa linking sediment exposure to coral performance at a priority reef restoration site on maui sedimentation from land-based runoff, erosion, and resuspension affects multiple aspects of coral reef health and ecosystem function. with global declines in coral cover, coral restoration has become a key strategy to restore reef resilience, yet how sedimentation influences restoration success and early recruitment remains unclear. we conducted a year-long, multi-metric study at olowalu reef, a 939-acre site along west maui that seeds local and neighboring reefs, to evaluate how spatial variability in sediment exposure influences benthic communities, coral outplant performance, and natural recruitment. we outplanted porites rus and porites compressa fragments and placed ceramic recruitment domes at twenty stations spanning two depth zones and a sedimentation gradient. continuous water quality (light, temperature, salinity, turbidity) and quarterly sediment deposition captured chronic background conditions and episodic sedimentation events. photogrammetry and benthic surveys quantified partial mortality, growth, survivorship, and coral cover. this integrated design allowed us to assess how chronic and event-driven sediment dynamics shape reef communities. water quality monitoring showed that sedimentation was primarily driven by resuspension during the summer high-wave season rather than episodic runoff during the winter rainy season. high attrition of coral outplants occurred throughout the study, likely due to the site’s energetic environment and limited post-fragmentation recovery periods. coral recruitment exceeded expectations, with abundance and early growth more strongly influenced by microhabitat on recruitment domes (protected vs. exposed surfaces) than station-level sediment exposure. these results highlight the importance of fine-scale flow and deposition processes when identifying ecologically meaningful sediment limits. together, these datasets provide a foundation for developing water-quality thresholds that account for spatial variability and episodic sediment events, key considerations for aligning ridge-to-reef management strategies. our approach offers a replicable framework for co-developing sediment targets with managers and community partners and can guide where coral restoration and erosion-reduction efforts can enhance local reef resilience and habitat quality.",
-          "talk_titles": [
-            {
-              "title": "Linking Sediment Exposure to Coral Performance at a Priority Reef Restoration Site on Maui",
-              "primary": true,
-              "talk_id": "0dd64012-07f4-4243-8fdc-ab3482dc184f"
-            },
-            {
-              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
-              "primary": false,
-              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
-            },
-            {
-              "title": "Identifying Physiological Indicators of Coral Thermal Performance3",
-              "primary": false,
-              "talk_id": "f3a367a1-5234-4916-a1dc-55819e2a3369"
-            },
-            {
-              "title": "Restoring Corals from Sediment to Symbionts: A Novel Microbiome Approach in Olowalu, Maui",
-              "primary": false,
-              "talk_id": "dfde48fc-eb19-4c40-a944-5cc2e49ed49c"
-            },
-            {
-              "title": "The effect of community diversity on thermal stress tolerance of coral reefs in Okinawa, Japan",
-              "primary": false,
-              "talk_id": "ea808f4e-b011-435a-9cc4-4902a334af42"
-            }
-          ],
-          "person_key": "icrs-p-01207",
-          "attended": true
-        },
-        {
-          "name": "Danielle Barnas",
-          "search_text": "danielle m. barnas the effect of community diversity on thermal stress tolerance of coral reefs in okinawa, japan community diversity within natural ecosystems can enhance ecosystem stability and resilience in the face of disturbances and environmental variability. on coral reefs, biodiversity may be impacted by thermal anomalies, resulting in shifts in community composition and ecosystem functioning. seasonal storm activity, while potentially damaging to coral reef structure, can help reduce sea surface temperatures (sst) within coral thermal tolerance ranges in summer months. okinawa, japan, a region that typically benefits from cooling by seasonal typhoons, experienced unusually high sst on coastal coral reefs in 2024 due to storm trajectories shifting northward, leading to a widespread coral bleaching event. in this study, we tested the physiological response (gross photosynthesis [gp] and respiration [r]) of coral reef communities to these elevated sst to understand the impact of thermal anomalies on common coral species as well as the potential buffering effect of community diversity on physiological performance. in august 2025, we collected duplicate fragments from 10 common coral species near the okinawa institute of science and technology marine science station to measure the paired individual rates of gp and r. we then placed those 10 individuals in community assemblages to measure paired community physiological rates across the two temperature treatments. gp was greater in elevated temperatures for <i>acropora sp.</i>, however fully assembled communities showed no temperature effect on the gp rates, indicating that community diversity may buffer the effects of elevated sst on coral reefs. meanwhile, r was augmented by elevated temperatures for <i>porites rus</i> and <i>favites complanata</i>. despite only two species displaying this trend, assembled communities also showed increased r under elevated temperatures, suggesting uneven species contributions to ecosystem metabolism when scaling from individual fragments to community level.",
-          "talk_titles": [
-            {
-              "title": "The effect of community diversity on thermal stress tolerance of coral reefs in Okinawa, Japan",
-              "primary": true,
-              "talk_id": "ea808f4e-b011-435a-9cc4-4902a334af42"
-            },
-            {
-              "title": "Identifying Physiological Indicators of Coral Thermal Performance3",
-              "primary": false,
-              "talk_id": "f3a367a1-5234-4916-a1dc-55819e2a3369"
-            },
-            {
-              "title": "Metabolic depression of Mo’orea’s coral reefs from a multidecadal time-series",
-              "primary": false,
-              "talk_id": "bb5e2afc-293c-4f2e-8b42-4ac4be7ab7e0"
-            },
-            {
-              "title": "Submarine groundwater discharge alters the biogenic production of dissolved organic matter by reef calcifiers",
-              "primary": false,
-              "talk_id": "c37ed528-6593-4b68-93ea-776dd07f8d8b"
-            }
-          ],
-          "person_key": "icrs-p-00110",
-          "attended": true
-        },
-        {
-          "name": "Eileen Nalley",
-          "search_text": "eileen nalley review of contaminant concentrations in reef and pelagic fishes from the pacific islands developing the pacific ciguatera network to understand ciguatera poisoning in the pacific islands marine pollution is understudied throughout the pacific islands but is of critical importance to island nations that traditionally rely on fish as their primary source of protein. to better understand the distribution of contaminants in fishes throughout the pacific, we conducted a systematic review of studies reporting pollutant concentrations. of the 5405 studies examined, 44 met criteria for inclusion in the systematic review, which spanned 226 species from 115 locations representing 66 taxonomic families and six trophic levels. results of the systematic review are contextualized with targeted studies measuring contaminant concentrations in fish from 20 sites in hawaiʻi and six atolls in the republic of the marshall islands. these locations have been impacted by marine pollution from historic and ongoing military activities, urbanization, and agriculture. sites were chosen that vary in land use and human population. metals, pesticides, polychlorinated biphenyls (pcbs), and polycyclic aromatic hydrocarbons (pahs) were examined in reef fishes from multiple trophic levels. the taxa included are commonly consumed throughout the pacific islands and have important cultural, economic, and nutritional value. of the pollutants examined, metals and pcbs were most frequently found at elevated concentrations. though there was evidence of biomagnification to higher trophic levels for certain contaminants, other pollutants (e.g., arsenic and pcbs) were found in both lower and higher trophic level taxa. these case studies and the systematic review provide baseline information that will aid in the development of fisheries management guidelines and recommendations, and they contribute to a data gap that persists for marine pollution data throughout the pacific islands. ciguatera poisoning is the most common form of seafood poisoning in the pacific islands, yet it is understudied in much of the region. the physical, social, and economic impacts of ciguatera can affect access to fisheries and intergenerational knowledge transfer that supports sustainable management. ciguatera is caused by the consumption of seafood that has accumulated ciguatoxins produced by epiphytic dinoflagellates (typically gamberidiscus spp.), and can cause a range of acute or chronic symptoms. the pacific ciguatera network was developed through a partnership between hawaiʻi sea grant and the pacific integrated ocean observing systems at the university of hawaiʻi in collaboration with other universities and more than 30 organizations representing managers, communities, and fishers across the pacific. the network was established to address long-standing questions about ciguatera poisoning, and aims to support standardized data collection to improve regional comparisons and analyses, while also promoting collaboration and capacity building. online surveys and targeted interviews were conducted in hawaiʻi (n = 106 and 20, respectively) and american samoa (n = 102 and 12) to characterize the impacts of ciguatera in these locations, and standardized dinoflagellate sampling was conducted in partnership with local agencies and organizations in hawaiʻi (n = 20 sites), american samoa (n = 6), and the marshall islands to determine the abundance and distribution of gambierdiscus spp. using microscopy, species diversity using dna metabarcoding, and toxin profiles. additional studies have been initiated that explore links between environmental variables with measured gambierdiscus abundances to better understand potential drivers and improve predictive capacity in the region. in addition to generating critical fisheries data, building connectivity, and addressing urgent questions about seafood safety in the pacific, this network is strengthening partnerships and offering technical training through workshops, student engagement, and a post-baccalaureate fellowship program for recent graduates from the pacific islands.",
-          "talk_titles": [
-            {
-              "title": "Developing the Pacific Ciguatera Network to Understand Ciguatera Poisoning in the Pacific Islands",
-              "primary": true,
-              "talk_id": "e0169ccd-6eb5-4f87-bd5f-cf8b76b89961"
-            },
-            {
-              "title": "Review of Contaminant Concentrations in Reef and Pelagic Fishes from the Pacific Islands",
-              "primary": true,
-              "talk_id": "b6062eee-794c-4648-a077-603c15115587"
-            },
-            {
-              "title": "An integrative approach to understanding risk landscapes for ciguatera poisoning in Hawaiʻi",
-              "primary": false,
-              "talk_id": "362cb337-f460-4cbb-bb88-d8d6917df3f0"
-            },
-            {
-              "title": "Using carbonate chemistry to evaluate coral reef metabolism following the Lahaina urban wildfire",
-              "primary": false,
-              "talk_id": "2d95c373-579e-4651-9673-5c6568081237"
-            }
-          ],
-          "person_key": "icrs-p-01240",
-          "attended": true
-        },
-        {
-          "name": "Guan-Yan Chen",
-          "search_text": "guan-yan chen morphological and spatial determinants of coral demography previous studies on coral demography have mostly focused on colony size and simplified 2d competitive interactions and their subsequent ecological consequences. however, corals are among the most morphologically diverse organisms. colony morphology governs how corals interact with the environment and influences the efficiency of resource allocation, while spatial positioning determines modes of competition. this study uses underwater photogrammetry (structure-from-motion) to generate millimeter-resolution 3d reef models across the pacific, based on over three years of time-series data from taiwan, hawai‘i, and lizard island, australia. sam-lora was applied for deep-learning training to automate the delineation of colonies and taxonomic classification. in addition, an innovative gis workflow was developed to quantify morphological and spatial metrics at polyp and colony scale. by integrating the morphological and spatial determinants, this study aims to bridge a key knowledge gap in understanding the drivers of demographic variation in modular organisms. preliminary results show that larger and circular corymbose colonies exhibit higher survival; smaller, more circular colonies grow faster; and irregularly shaped colonies tend to fragment more frequently. at the colony level, spatial determinants revealed that only encrusting colonies exhibited decreased growth rates when the competitor to colony perimeter ratio (c/p ratio) increased. branching colonies showed slightly higher growth rates when their relative height was lower, while shading effect were not significant for any growth form. unlike the colony level, the polyp level exhibited a different trend and demonstrated stronger correlations. a higher c/p ratio polyp was associated with higher mortality across all forms except for massive. lower shading effect favored survival in corymbose and digitate polyps, and greater relative height differences also promoted survival in these two morphologies. overall, morphological and spatial metrics serve as intuitive proxies of demographic performance, providing a foundation for improving population prediction models and informing strategies for coral restoration and resource management.",
-          "talk_titles": [
-            {
-              "title": "Morphological and spatial determinants of coral demography",
-              "primary": true,
-              "talk_id": "349a5e10-a27e-46c2-a380-fba041d3844a"
-            }
-          ],
-          "person_key": "icrs-p-00321",
-          "attended": true
-        },
-        {
-          "name": "Jamie McDevitt-Irwin",
-          "search_text": "jamie mcdevitt-irwin physical disturbances amplify the role of consumers in driving temporal biodiversity and composition on a coral reef ecosystems worldwide are facing a suite of anthropogenic stressors driving rapid biodiversity change, with significant consequences for ecosystem function and resilience. both alpha and beta diversity can help disentangle how anthropogenic stressors are altering communities over time. coral reefs are an iconic ecosystem threatened by local anthropogenic stressors (e.g., fishing pressure and nutrient pollution), in addition to escalating physical disturbances such as tropical cyclones. however, it remains unknown if and how physical disturbances alter the effects of local anthropogenic stressors on biodiversity and community composition. we conducted a four-year field experiment that emulated the impacts of overfishing and nutrient enrichment with an acute physical disturbance, mimicking a tropical cyclone. we evaluated how this altered coral reef benthic community composition and diversity over time, with an emphasis on two main benthic groups: stony coral and macroalgae. in intact areas (not physically disturbed), nutrients and consumer pressure were both important in structuring the benthic community. nutrients were the primary driver of coral community composition and nutrient enrichment reduced coral beta diversity through time by preventing decreases of coral taxa abundances at high consumer pressure. consumer pressure and nutrients interacted to influence macroalgal communities in undisturbed plots, with temporal alpha diversity being highest under a combination of elevated nutrient levels and low consumer pressure. however, in physically disturbed areas, consumer pressure was the primary driver of diversity and community composition. under low consumer pressure, increases in macroalgal alpha diversity were highest and increases in coral alpha diversity were lowest. our results highlight that physical disturbances can alter the impacts of local anthropogenic stressors on diversity and increase the importance of top-down control by consumers, emphasizing the need to conserve consumer populations in this era of escalating physical disturbances.",
-          "talk_titles": [
-            {
-              "title": "Physical disturbances amplify the role of consumers in driving temporal biodiversity and composition on a coral reef",
-              "primary": true,
-              "talk_id": "8122ce4a-05b7-4a40-b78c-a5ee1a3cb729"
-            },
-            {
-              "title": "Bioacoustics and machine learning as key tools in coral reef conservation and restoration",
-              "primary": false,
-              "talk_id": "b40aea0b-dc4f-40c5-aa39-c2e1c2a08ced"
-            },
-            {
-              "title": "Linking Herbivore Community Structure to Ecological Functioning in a Hawaiian Marine Protected Area",
-              "primary": false,
-              "talk_id": "db28de0d-bab7-4959-aada-99d231fb7a3f"
-            }
-          ],
-          "person_key": "icrs-p-01134",
-          "attended": true
-        },
-        {
-          "name": "Jessica Glazner",
-          "search_text": "jessica glazner from seabirds to sewage: distinct nutrient sources influence coral recovery patterns post-bleaching coral reefs receive subsidies in the form of nutrients and organic matter from their adjacent terrestrial environment, and the quality of these subsidies can have substantial impacts on the health and thermal resilience of corals. there is robust experimental evidence that inorganic nutrient enrichment affects coral physiology and reef ecosystem function, and this has been used to explain reef degradation near human populations exposed to nutrient loading, particularly from wastewater effluent. yet recent findings of enhanced coral resilience on remote, seabird-dominated islands receiving guano-derived nutrient subsidies complicate the assumption that elevated nutrients are uniformly harmful to coral reefs. additionally, most nutrient enrichment experiments focus on how inorganic nutrient delivery affects corals, separate from the complex chemical mixtures that naturally accompany nutrient subsidies. to understand the direct effects of these complex nutrient subsidies on corals, separate from the broader ecosystem effects present on remote or populated reefs, we performed a manipulative experiment at the hawai‘i institute of marine biology, dosing corals with seabird guano, wastewater effluent, or inorganic nutrients. we exposed half of the corals to thermal stress and tracked their post-bleaching recovery. our results demonstrate that a) corals at ambient temperature that were exposed to nutrient enrichment had elevated photosynthetic performance after 10 weeks of nutrient exposure, b) corals under the natural seabird guano nutrient enrichment had enhanced recovery of their photosynthetic performance post-bleaching compared to the other treatments, c) wastewater effluent did not support enhanced recovery post-bleaching, and d) the inorganic nutrient treatment demonstrated the greatest susceptibility to bleaching, indicating that experiments using inorganic nutrients only are not capturing the full effects of complex nutrient sources. our data provide experimental evidence that resource subsidy quality impacts coral thermal resilience and is contributing to different reef trajectories observed on populated vs remote island ecosystems.",
-          "talk_titles": [
-            {
-              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
-              "primary": true,
-              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
-            }
-          ],
-          "person_key": "icrs-p-00645",
-          "attended": true
-        },
-        {
-          "name": "Joelle Mattos",
-          "search_text": "joelle mattos using carbonate chemistry to evaluate coral reef metabolism following the lahaina urban wildfire the august 2023 lahaina wildfire, fueled by strong winds and drought, destroyed 2,207 structures and released smoke, ash, and hazardous debris. given lahaina’s coastal setting, fire-derived pollutants likely entered adjacent coral reef ecosystems, raising concerns about coastal acidification, eutrophication, and hypoxia. we investigated wildfire impacts on reef metabolic processes at two coral reefs: one within the burn zone and a control site to the north of lahaina. autosamplers were deployed six times during the first post-fire year and collected seawater for dissolved inorganic carbon (dic) and total alkalinity (ta) analysis every three hours for three consecutive days. two months after the fire, organic carbon cycling was the main driver of seawater co2 variability at the burn zone reef (ta:dic slope ratio of 0.23 ± 0.18) whereas the control reef reflected stronger inorganic carbon influence (ta:dic slope ratio of 0.71 ± 0.68). five months post-fire, the burn zone reef remained dominated by organic carbon cycling (0.28 ± 0.23), while the control reef shifted to organic carbon influence (0.44 ± 0.45). both reefs were generally net calcifying, though early sampling nearest to the fire suggested reduced calcification, and transient periods of net dissolution at the control site; however, hydrodynamic factors such as residence time or mixing may also have influenced these trends. temporal and spatial differences in metabolic signatures highlight the combined influence of multiple, interacting drivers such as wildfire-derived inputs, nutrient enrichment, wastewater discharge, benthic composition, and seasonal dynamics. comparison with pre-fire datasets helps disentangle natural variability from fire-related disturbances, enabling attribution of stressor impacts on reef function. these results provide one of the first assessments of urban wildfire impacts on coral reef carbonate chemistry, offering critical insights for managing coastal ecosystem resilience amid wildfire events amplified by climate change.",
-          "talk_titles": [
-            {
-              "title": "Using carbonate chemistry to evaluate coral reef metabolism following the Lahaina urban wildfire",
-              "primary": true,
-              "talk_id": "2d95c373-579e-4651-9673-5c6568081237"
-            }
-          ],
-          "person_key": "icrs-p-01123",
-          "attended": true
-        },
-        {
-          "name": "Justin Berg",
-          "search_text": "justin berg restoring corals from sediment to symbionts: a novel microbiome approach in olowalu, maui coral restoration programs increasingly rely on outplanting nursery-propagated colonies, yet the ways in which local environmental conditions reshape the holobiont during early post-outplanting remain poorly understood. additionally, sedimentation is a pervasive stressor that can influence coral health and microbiome stability. however, the potential for microbiome research to inform restoration practices remains largely untapped. olowalu reef, maui, a priority reef for conservation in hawaii, provides a practical study system with historically documented sedimentation variability, allowing investigation of coral holobiont responses across spatial and temporal gradients.\r\nthis project examines microbiome dynamics in two hawaiian corals, porites compressa and porites rus, collected from olowalu, fragmented, and re-outplanted to 20 sites (10 shallow, 10 deep) along the reef’s sediment gradient. biopsies were collected from each coral prior to outplanting and again at six-month and one-year intervals to assess changes in the microbial community. fine-scale water-quality monitoring of turbidity, light, temperature, and conductivity were paired with quarterly estimates of sediment deposition, providing an environmental framework for interpreting shifts within the holobiont. to allow repeated sampling of individual colonies, we developed a novel 16-gauge syringe-tip biopsy technique that is minimally invasive and enables resampling of the same colonies over time–an approach not previously applied in coral restoration that enhances the resolution of holobiont dynamics. \r\nmetagenomic analyses will reveal how sedimentation shapes microbiome assembly, stability, and divergence in restored corals. we expect to identify microbial signatures associated with resilience along the gradient, providing new criteria for selecting parent colonies based on holobiont traits rather than solely physiological measures or bleaching history. by integrating restoration, environmental monitoring, and high-resolution microbiome sampling, this work advances understanding of how habitat-forming holobionts respond to sediment stress and provides critical insight for improving restoration outcomes in sediment-impacted reefs.",
-          "talk_titles": [
-            {
-              "title": "Restoring Corals from Sediment to Symbionts: A Novel Microbiome Approach in Olowalu, Maui",
-              "primary": true,
-              "talk_id": "dfde48fc-eb19-4c40-a944-5cc2e49ed49c"
-            },
-            {
-              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
-              "primary": false,
-              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
-            },
-            {
-              "title": "Linking Sediment Exposure to Coral Performance at a Priority Reef Restoration Site on Maui",
-              "primary": false,
-              "talk_id": "0dd64012-07f4-4243-8fdc-ab3482dc184f"
-            }
-          ],
-          "person_key": "icrs-p-00157",
-          "attended": true
-        },
-        {
-          "name": "Kaho Tisthammer",
-          "search_text": "kaho tisthammer proteomic insights into coral reproductive failure along water-quality gradients in florida the survival of coral reefs hinges on successful reproduction, yet reproductive failure in corals has increasingly been observed in recent years. one emerging hypothesis is that chronic exposure to land-based pollutants forces corals to divert key proteins from reproduction to detoxification, compromising egg quality and fertilization. building on our previous work using molecular tools to diagnose coral health, we assessed how water-quality stressors affect coral health and reproductive potential in florida corals. colonies of acropora cervicornis and orbicella faveolata were collected along water-quality gradients from biscayne national park to the marquesas keys prior to spawning, and shotgun proteomics was used to characterize health status, with a focus on proteins involved in detoxification and reproduction. our goals are to develop molecular biomarkers for screening reproductive capacity in corals and to provide mechanistic insight that directly benefits conservation and restoration efforts. preliminary analyses indicate that corals from sites influenced by urban inputs near the port of miami (biscayne national park) show clear enrichment of detoxification-related proteins, suggesting that these areas may be suboptimal as sources or recipients of restoration stock. combined with histological assessments of gametogenesis, these proteomic signatures will provide a practical diagnostic framework to identify reproductively competent corals and prioritize reef sites where restoration investments are most likely to result in self-sustaining populations.",
-          "talk_titles": [
-            {
-              "title": "Proteomic Insights into Coral Reproductive Failure Along Water-Quality Gradients in Florida",
-              "primary": true,
-              "talk_id": "41b62d4a-d938-40a3-be0d-551bf0b53d77"
-            },
-            {
-              "title": "Addressing reproductive decline and failure in corals: Approaches for enhancing reef resilience, persistence and restoration.",
-              "primary": false,
-              "talk_id": "35b5ee28-52d1-4c85-842f-d2e582bc1966"
-            }
-          ],
-          "person_key": "icrs-p-01752",
-          "attended": true
-        },
-        {
-          "name": "Kainalu Steward",
-          "search_text": "kainalu steward ka ʻāina hūnā a kāne: spatial analysis of reef island morphodynamics at lalo following a catastrophic hurricane ka ʻāina hūnā a kāne: leveraging hawaiian ethnohistorical resources to decolonize notions of reef island vulnerability at lalo in papahānaumokuākea atoll islands are dynamic, low-lying (<3 m) sandy islets composed primarily of reef-derived material that accumulate on fossil reef platforms. as human-induced climate change accelerates globally, atoll island environments are among the most sensitive coastal systems to disturbance. lalo, an open atoll within the papahānaumokuākea marine national monument (pmnm), was severely impacted by hurricane walaka (category 3) on october 4, 2018, which devastated terrestrial and marine habitats and nearly erased several sandy islets. to assess the stability and resilience of sandy islets within lalo, this study applies a new geospatial framework, the reef island geomorphic activity assessment (rigaa), to quantify changes in reef-island area, shape, orientation, and position using complete island footprints. high-resolution satellite and aerial imagery (1981-2024) were analyzed in arcgis to evaluate morphodynamic change across four periods: (1) pre-disturbance, (2) post-disturbance, (3) 12-month recovery, and (4) total historical change. wind and wave data will be incorporated in the future to identify external forces driving island reconfiguration. rigaa offers a more holistic approach to analyzing reef island change by accounting for entire island footprints and delivering geospatial data products that support resource management and conservation priorities. grounded in a kuanaʻike hawaiʻi (hawaiian worldview), this study recognizes the natural cycles of reef-islands and their ability to disappear into pō (darkness) and re-emerge into ao (lightness) as intrinsic expressions of their ancestral identity. atoll islands are low-lying (<3 m) sandy islets primarily composed of biogenic reef-derived material that accumulate upon carbonate reef platforms. as anthropogenic climate change (e.g., sea-level rise) accelerates globally, atoll island environments are among the most vulnerable coastal landscapes. however, this globalized perspective on atoll vulnerability favors western frameworks, often overlooking localized coastal processes and the value of indigenous knowledge systems that can enrich our relationship to place and its changes. furthermore, bold claims that atoll islands will become uninhabitable in the future may carry harmful ethical implications for those genealogically connected to these places. by leveraging hawaiian ethnohistorical resources (e.g., hawaiian-language newspapers and traditional place names) alongside geospatial shoreline analysis tools, this project aims to center the natural dynamism of atoll islands and to reframe our understanding of atoll geomorphology through a kuanaʻike hawaiʻi (hawaiian worldview). this study is located on lalo (french frigate shoals), an atoll island within the ancestral realm of pō (deep darkness), formerly known as the papahānaumokuākea marine national monument (pmnm). despite the limited land area covering approximately 0.25 km², lalo serves as a central nesting site for >90% of the threatened native hawaiian green sea turtle population, a critical refuge for >20% of the endangered hawaiian monk seal population, and a vital habitat for seabirds. ultimately, the findings of this project underscore how kānaka ʻōiwi (indigenous hawaiians) perceived low-lying islands, recognizing their natural cycles of eroding into pō (darkness) and re-emerging into ao (light) as intrinsic to their identity as ʻāina kupuna (ancestral islands). this presentation will also highlight the pmnm cultural working group's advocacy for natural atoll subsidence (lalo i lalo) as a long-term adaptive management approach to support responsible stewardship at lalo.",
-          "talk_titles": [
-            {
-              "title": "Ka ʻāina hūnā a Kāne: Leveraging Hawaiian ethnohistorical resources to decolonize notions of reef island vulnerability at Lalo in Papahānaumokuākea",
-              "primary": true,
-              "talk_id": "53c1c410-c1ca-4257-b414-16320e7e0a4f"
-            },
-            {
-              "title": "Ka ʻāina hūnā a Kāne: Spatial Analysis of reef island morphodynamics at Lalo following a catastrophic hurricane",
-              "primary": true,
-              "talk_id": "1e1daba9-4dc5-4c20-8035-dd5c6d854faf"
-            }
-          ],
-          "person_key": "icrs-p-01673",
-          "attended": true
-        },
-        {
-          "name": "Keiko Wilkins",
-          "search_text": "keiko wilkins microplastic leachate effects on coral fertilization and settlement microplastic pollution threatens coral reef resilience, yet the effects of microplastic-associated chemicals remain poorly understood. we conducted two experiments to compare the impacts of microplastic particles and their leachates on early coral life stages. in experiment 1, montipora capitata gametes were exposed to microplastic particles or leachates from four plastic types (nylon, pp, hdpe, ldpe) at three concentrations (50, 100 or 200 particles/l). plastic particles did not affect fertilization, but leachates from the same plastics caused significant reductions in fertilization success and effects on fatty acid quantity and composition. in experiment 2, planula larvae of m. capitata and harbor porites were exposed to the same leachates for 7 days. survival and settlement showed species-, polymer-, and concentration-dependent responses, with both inhibitory and occasionally stimulatory effects. together, these studies show that microplastic-associated chemicals, rather than particles alone, disrupt coral fertilization, larval survival, and settlement. addressing plastic-derived chemical pollution is therefore critical for supporting coral recruitment and reef persistence.",
-          "talk_titles": [
-            {
-              "title": "Microplastic Leachate Effects on Coral Fertilization and Settlement",
-              "primary": true,
-              "talk_id": "75e937fc-9d14-4db2-ab77-252a0fb81886"
-            }
-          ],
-          "person_key": "icrs-p-01883",
-          "attended": true
-        },
-        {
-          "name": "Kuʻi Keliipuleole",
-          "search_text": "kekuʻiapōiula keliipuleole a place-based mentorship program for emerging scientists: building capacity for coastal resilience in hawaiʻi tropical coastal communities with strong economic and sustenance ties to near-shore coral reef ecosystems are facing increasing challenges due to changing ocean conditions. to address these complex challenges, marine researchers and resources managers who are trained to integrate scientific expertise with local knowledge and stewardship practices are needed from these communities. the hawaiian islands are one such area impacted by these issues, however there is still a significant gap between the number of professionals needed and those being produced by the current educational system.\r\n\r\nto better support increased participation and retention of hawaiʻi students in ocean-related fields, we developed and piloted an innovative training program for graduate student instructors and undergraduate near-peer mentors involved in early undergraduate research experiences. our approach focuses on developing the mentoring capacity of emerging scientists by incorporating place-based pedagogy and embracing multiple epistemologies, with a strong emphasis on native hawaiian and pacific world views, and exploring frameworks such as papakū makawalu (a framework that guides understanding through the interpretation of hawaiian texts) and kūlana noiʻi (a community-centered research framework).  \r\nto assess the impacts of this training, we employed pre- and post-workshop surveys and focus-group interviews with mentors to quantify changes in key factors, including: cultural competency, cognitive flexibility, and intelligence mindset. here, we present initial results from our quantitative and qualitative examinations of these factors. next steps will include a correlation analysis linking mentor cognitive factors with student learning outcomes and persistence in reef-related research.\r\nby equipping emerging scientists with the tools to embrace diverse perspectives, we present a model for integrating impactful instructional training into marine education to strengthen the foundation for equitable and effective conservation efforts. thus, we hope to cultivate a supportive, multi-tiered community of ocean-related practitioners who are prepared to contribute novel solutions for both regional sustainability and global scientific challenges.",
-          "talk_titles": [
-            {
-              "title": "A place-based mentorship program for emerging scientists: Building capacity for coastal resilience in Hawaiʻi",
-              "primary": true,
-              "talk_id": "82b39907-c39d-4f0a-9709-6cfa3fc84670"
-            }
-          ],
-          "person_key": "icrs-p-00899",
-          "attended": true
-        },
-        {
-          "name": "Leah Barkai",
-          "search_text": "leah barkai exploring genetic variation in hāwa‘e maoli (tripneustes gratilla) using coi and bindin across hawaiʻi native hāwa‘e maoli (tripneustes gratilla, collector sea urchin), a culturally and ecologically important species, is a bioindicator of ocean health and contributes to coral reef restoration by grazing on invasive algae in hawai‘i. more than one million hatchery-reared urchins have been out-planted onto kāneʻohe bay patch reefs for a reef management strategy to control algae and support reef recovery. despite their importance, little is known about the genetic variation of t. gratilla populations across o‘ahu and neighboring hawaiian islands. previous fertilization studies (unpublished) of kāneʻohe bay out-planted urchins have shown that males collected in 2022–2023 exhibited lower fertilization rates compared to males from other regions, regardless of the female's origin. observed morphological differences and uneven fertilization suggest a possible association with genetic variation. this study explores whether these asymmetric fertilization patterns reflect population structure and variation in the gamete-recognition protein bindin. here we present preliminary results on variation in: (1) mitochondrial cytochrome oxidase i (coi) used to assess population structure using a neutral marker, and (2) bindin, a reproductive protein that mediates sperm–egg compatibility, influences gamete recognition, and evolves rapidly, potentially driving reproductive isolation between populations. tube feet samples from thirty urchins will be collected from sites across o‘ahu and neighboring hawaiian islands. samples will be preserved for dna extraction, sequenced using the oxford nanopore minion, and analyzed to construct haplotype networks, assess population differentiation, and visualize genetic clustering. this research represents one of the first fine-scale genetic assessments of t. gratilla across the hawaiian islands. results will clarify whether hatchery-raised urchins on kāneʻohe bay patch reefs differ genetically from wild populations, informing management and reef restoration efforts. the study will enhance our understanding of genetic diversity, connectivity, and reproductive divergence in hawai‘i’s native urchins, providing insights to improve reef resilience, control invasive algae, and support biodiversity.",
-          "talk_titles": [
-            {
-              "title": "Exploring Genetic Variation in Hāwa‘e Maoli (Tripneustes gratilla) Using COI and Bindin Across Hawaiʻi",
-              "primary": true,
-              "talk_id": "8c185c55-67c7-4d62-b614-dacfb754011b"
-            }
-          ],
-          "person_key": "icrs-p-00108",
-          "attended": true
-        },
-        {
-          "name": "Lisa McManus",
-          "search_text": "lisa mcmanus the importance of growth rate and adaptive capacity for long-term coral persistence thermal tolerance is widely assumed to be the primary determinant of coral persistence under climate change. however, the importance of thermal tolerance relative to other population and species characteristics such as growth rate and genetic variation for long-term persistence has not been systematically evaluated. using a simple eco-evolutionary model, we investigated coral reef futures under climate change across millions of simulations. we explored a comprehensive parameter space encompassing optimal population growth rate, additive genetic variance, thermal tolerance breadth, thermal stress tolerance, effective fecundity, larval immigration rate, and immigrant thermal optima. we forced the model with projected 21st century temperatures for hawaiian reefs under three emissions scenarios (ssp1-2.6, ssp2-4.5, ssp3-7.0) from a dynamically downscaled ocean model. we used random forest regression and permutation importance to quantify the sensitivity of coral cover trajectories to each parameter.\r\n\r\nacross all emissions scenarios, population growth rate and additive genetic variance were the strongest predictors of long-term coral persistence, with thermal tolerance consistently the least important parameter. while corals with low thermal tolerance experienced greater short-term population collapse, populations with high optimal growth rates (>0.1 y⁻¹) and additive genetic variance (>0.1 °c²) best maintained coral cover throughout the century, regardless of thermal tolerance. the relative importance of genetic variance increased under more pessimistic warming scenarios. our findings suggest that fast-growing coral taxa such as acroporids and montiporids may outperform slower-growing, stress-tolerant counterparts post-2050, provided they survive the acute threats of coming decades. these results underscore the critical importance of maintaining genetic diversity in both natural populations and restoration efforts, rather than focusing solely on selecting thermally tolerant genotypes.",
-          "talk_titles": [
-            {
-              "title": "The importance of growth rate and adaptive capacity for long-term coral persistence",
-              "primary": true,
-              "talk_id": "ccfcc814-1145-42aa-8577-b30e0b386473"
-            },
-            {
-              "title": "Coral range expansion: genes, growth rates, and geographic gradients",
-              "primary": false,
-              "talk_id": "d5583183-8cb0-4467-8e0a-745a3001d7ac"
-            },
-            {
-              "title": "CoralPatchSim and some priority empirical needs for improving scenario-testing for coral reef management",
-              "primary": false,
-              "talk_id": "77d02324-f87b-4eb0-bdce-f5fd7c2fc019"
-            },
-            {
-              "title": "Mechanisms of Sustainable Harvest in Complex Reef Ecosystems: Insights from Hawaiian Fisheries Stewardship",
-              "primary": false,
-              "talk_id": "c2b10586-f4f3-4147-81ba-e2035a62b5b3"
-            },
-            {
-              "title": "Mechanisms to Improve Coral Reef Resilience in Sediment- and Nutrient-Impacted Environments: A Theoretical Analysis",
-              "primary": false,
-              "talk_id": "b932519e-2440-42fa-a1c7-fabae4d06453"
-            },
-            {
-              "title": "Mitigation to Management: Evaluating Ocean Alkalinity Enhancement as a Tool for Coral Reef Restoration",
-              "primary": false,
-              "talk_id": "d845d7f7-e549-4e4a-936c-cbc81d0dd552"
-            },
-            {
-              "title": "Morphological and spatial determinants of coral demography",
-              "primary": false,
-              "talk_id": "349a5e10-a27e-46c2-a380-fba041d3844a"
-            },
-            {
-              "title": "Quantitatively linking within-host symbiont density to coral growth rate",
-              "primary": false,
-              "talk_id": "61005e66-61a2-40da-8608-72be274ea042"
-            }
-          ],
-          "person_key": "icrs-p-01147",
-          "attended": true
-        },
-        {
-          "name": "Madelief Schelvis",
-          "search_text": "madelief schelvis ecological role of a resilient coral in honolulu harbor: invasive or pioneer?4 harbor porites is a taxonomically ambiguous and unusually resilient coral found in high abundance in honolulu harbor, an environment hostile to most corals due to sedimentation, reduced water quality, and chronic human disturbance. the success of this little-understood species in such degraded conditions raises questions about its ecological role: specifically, whether it poses a risk as a potential invasive species that could spread to healthy reefs, or functions as a pioneer species supporting reef growth in disturbed habitats.\t\r\nto assess its invasive potential, we conducted a pairwise competition experiment with five common hawaiian corals. harbor porites was consistently dominated by most competitors, showed dominance only against another stress-tolerant species, and interacted neutrally with the closely related porites lobata. these outcomes indicate low competitive ability in mixed-species assemblages and suggest that its distribution may be limited to disturbed environments where competition is reduced. \r\nto assess its pioneer potential, we conducted larval settlement experiments across multiple coral species, testing both the suitability of harbor porites skeleton as a settlement substrate and the influence of chemical cues released by live colonies on larval settlement behaviors. larvae showed a significant preference for settling on harbor porites skeleton relative to other substrates, while chemical cues did not significantly affect settlement rates or timing. these findings suggest that harbor porites may act as a pioneer species by providing stable settlement substrate that facilitates coral recruitment and early reef development in marginal environments.\r\noverall, harbor porites is unlikely to threaten healthy reef communities through competitive dominance but may play a pioneer role in disturbed habitats by providing stable reef structure and settlement substrate that facilitate coral recruitment. understanding how such highly resilient corals function within extreme urban reef systems can inform management and restoration strategies for coastal ecosystems increasingly impacted by human activity.",
-          "talk_titles": [
-            {
-              "title": "Ecological Role of a Resilient Coral in Honolulu Harbor: Invasive or Pioneer?4",
-              "primary": true,
-              "talk_id": "a71dae31-1456-41b1-86f2-1e21be0df7fa"
-            }
-          ],
-          "person_key": "icrs-p-01557",
-          "attended": true
-        },
-        {
-          "name": "Madeline Berger",
-          "search_text": "madeline berger investigating the relationship between long-term watershed-scale deforestation and coral reef nitrogen exposure on the belizean barrier reef land-based pollutants, such as excess nutrient runoff, are a local threat to coral reef ecosystem health and survival. evidence from most coral reef bioregions have demonstrated spatial links between terrestrial ecosystem health, often used as a proxy for nutrient runoff to ocean waters, and indicators of coral reef ecosystem health. however, how major land use and land cover changes (lulcc) correlate with changes in coral reef water quality over long temporal scales has been less studied and presents a knowledge gap impeding effective integrated coastal zone management. to uncover the temporal relationship between lulcc and coral reef nitrogen exposure over long time scales, we paired a sub-annual time series of nitrogen isotopes from coral skeletons, an established proxy for nutrient inputs, with yearly time series data of land use change for watershed catchments in central belize. we first focus our analysis on wide-scale deforestation, hypothesizing that decreasing forest cover is typically associated with a conversion to more intensive land uses (e.g., agriculture), and will coincide with increases in dn15 in coral cores . initial results suggest that while deforestation and coral core dn15 in the most proximate watersheds are indeed negatively correlated for the first portion of our time series, this relationship does not hold for the most recent 10 years. we discuss other variables that may explain the patterns observed in later years, as well as ongoing work to quantify these variables. our study reveals important insights into how linked dynamics between land and sea occur and shift over several decades, and relate to differential exposure of a barrier reef system based on proximity to land-based sources of runoff and changing dynamics of land-use over time.",
-          "talk_titles": [
-            {
-              "title": "Investigating the relationship between long-term watershed-scale deforestation and coral reef nitrogen exposure on the Belizean barrier reef",
-              "primary": true,
-              "talk_id": "f1157b58-923b-43b6-b184-7a58cc2b5c87"
-            },
-            {
-              "title": "Drivers of Atlantic Sargassum expansion and demise",
-              "primary": false,
-              "talk_id": "685ade09-62e3-4d26-906c-13754a3f3e66"
-            }
-          ],
-          "person_key": "icrs-p-00158",
-          "attended": true
-        },
-        {
-          "name": "Mary Donovan",
-          "search_text": "mary donovan collaborative science for informing diverse management of hawaiʻi coral reefs integrating reef monitoring data to support management in hawai‘i data informed decision making is often the aspiration of many natural resource management processes, but the reality of how information is used and by whom is often more complex than we might hope. likewise, human and natural systems are complex and uncertain, and those uncertainties are more evident than ever in a changing climate. within this context, i will share how collaborative science to support effective nearshore management in hawai‘i is allowing for greater uptake of data in decision making, with examples of challenges and opportunities for resilience-based management, community-based management, and for managing tradeoffs among fisheries, pollution, and ecosystems. the ability to bridge data and decisions stem from the efforts of the hawaiʻi monitoring and reporting collaborative (himarc) to bring together diverse datasets inclusive of both reef status and trends and associated drivers at spatial and temporal scales commensurate with management needs. these datasets are combined from multiple sources and involve collaborations among scientists, managers, and community leaders resulting in consensus building that increases the potential for uptake in management. the talk will focus on how innovative scientific products can be most useful for achieving successful conservation outcomes when working collaboratively to define and answer questions at the right scale, build trust, and deliver the information at the right place and time. the hawai‘i monitoring and reporting collaborative (himarc) program was established to support marine resource management by combining data into a collaborative database using underwater benthic and fish survey data collected by a network of monitoring programs across the hawaiian islands. each monitoring program uses unique methods, formats, and workflows, which creates challenges when combining datasets. to address this complexity, himarc developed a standardized data integration pipeline that includes a series of data formatting and comprehensive quality assurance and quality control (qa/qc) protocols. all datasets shared with himarc are: 1) reviewed thoroughly to ensure a clear interpretation of the original data and overall structure of the survey design, 2) transformed into a consistent format designed to retain key features of original data structure, 3) checked for missing data, errors, and duplicates, and 4) integrated into a combined multi-partner database. these data formatting and qa/qc protocols not only produce a unified database but also strengthen communication and relationships between data providers regarding methods, metadata, and data quality. by following this process of data integration, himarc contributes to capacity building for data qa/qc within each partner organization, bridges gaps created by different methodologies, and supports statewide analyses. the collaborative database has served as a vehicle for enhancing the quality and collaborative efforts of coral reef monitoring and resulted in a shared effort between scientists and managers to make informed decisions.",
-          "talk_titles": [
-            {
-              "title": "Collaborative science for informing diverse management of Hawaiʻi coral reefs",
-              "primary": true,
-              "talk_id": "06f7c7f2-7f69-48e5-a09d-1b822919e856"
-            },
-            {
-              "title": "Integrating Reef Monitoring Data to Support Management in Hawai‘i",
-              "primary": true,
-              "talk_id": "3b218ad1-3a71-4d16-a1a5-19e84dd96ef6"
-            },
-            {
-              "title": "Drivers of Atlantic Sargassum expansion and demise",
-              "primary": false,
-              "talk_id": "685ade09-62e3-4d26-906c-13754a3f3e66"
-            },
-            {
-              "title": "Embedding Community-Led Science into the Governance of Hawaiʻi's Pūpūkea Marine Life Conservation District",
-              "primary": false,
-              "talk_id": "0381812c-4ead-4434-a8a4-23865b133a13"
-            },
-            {
-              "title": "Investigating the relationship between long-term watershed-scale deforestation and coral reef nitrogen exposure on the Belizean barrier reef",
-              "primary": false,
-              "talk_id": "f1157b58-923b-43b6-b184-7a58cc2b5c87"
-            },
-            {
-              "title": "Mass Caribbean-wide Acropora coral mortality overshadows emergent thermal tolerance",
-              "primary": false,
-              "talk_id": "5feec230-b8e3-4cc2-af5f-f0337ebc5a57"
-            }
-          ],
-          "person_key": "icrs-p-00485",
-          "attended": true
-        },
-        {
-          "name": "Maya Otsu",
-          "search_text": "maya otsu environmental and anthropogenic drivers of introduced reef fish distributions across the hawaiian archipelago three reef fish species – taʻape (lutjanus kasmira), toʻau (lutjanus fulvus), and roi (cephalopholis argus) – were introduced to hawaiʻi in the 1950s for fisheries enhancement. today, local fishers seldom target these “invasive” species, expressing concern about their potential negative impacts on native reef fish. despite being introduced simultaneously, their distributions and densities differ markedly across the main hawaiian islands (mhi) and northwestern hawaiian islands (nwhi). taʻape are observed in shallow waters across the mhi and nwhi and extend into mesophotic depths (45-100 m) as far north as french frigate shoals (lalo). toʻau and roi are restricted to shallow waters (<45 m) up to lalo, with no detections in the northernmost islands. we used species distribution models with >6000 sampling sites of noaa monitoring data to examine how environmental and anthropogenic variables shape these patterns. taʻape and toʻau distributions are constrained by temperature extremes (<22°c and >27°c), with lower-limit annual sea surface temperatures influencing their northward range limits. however, the lower-limit temperature-distribution relationship for taʻape and toʻau varied by scale: positive across the full archipelago but negative within the mhi, likely reflecting greater temperature stability in the mhi, where island-scale windward-leeward temperature gradients outweigh archipelago-wide seasonal shifts. ecologically, taʻape occur in deeper, structurally complex habitats with lower coral cover, while toʻau are found in higher-sediment habitats, potentially linked to freshwater outflows that are not prevalent in the low-lying nwhi. spearfishing negatively affects detectability in all three species, highlighting the role of human pressure in limiting their presence. these results provide insight into the drivers of introduced reef fish distributions, highlighting the potential for climate-driven range expansions into the northernmost reefs of papahānaumokuākea, which are dominated by endemic species. our findings underscore the importance of targeted monitoring and management to mitigate the impacts of invasive fishes under ongoing oceanographic change.",
-          "talk_titles": [
-            {
-              "title": "Environmental and Anthropogenic Drivers of Introduced Reef Fish Distributions Across the Hawaiian Archipelago",
-              "primary": true,
-              "talk_id": "a19e6eab-b09b-429e-9ee3-7f308495dcd5"
-            }
-          ],
-          "person_key": "icrs-p-01296",
-          "attended": true
-        },
-        {
-          "name": "Maya Powell",
-          "search_text": "maya powell identifying physiological indicators of coral thermal performance3 coral reefs are threatened by rising ocean temperatures which continue to degrade reef ecosystem structure and function. reefs in okinawa, japan maintain high coral biodiversity and cover, providing an ideal place to assess interspecific trait variation. trait based analyses to predict heat stress-resistance are key to projecting coral survival, and thus future reef community structure and dynamics. in this study, we examined interspecific variation in thermal performance and physiology of ten coral species from okinawa, japan. we utilized thermal performance curves (tpcs) of coral metabolism (respiration and photosynthesis) to directly measure functional coral stress tolerance. furthermore, we quantified differences in holobiont physiology including chlorophyll a concentration and host protein content for all species, and tissue biomass and symbiont density for seven species. we then correlated these metrics with coral thermal performance to assess potential physiological drivers of thermal performance. we showed variation across species for both bulk physiological metrics and thermal performance. dominant reef builders such as porites rus consistently had the highest bulk physiology values and metabolic rates while thinner, plating corals such as montipora aequituberculata displayed lower physiological and thermal performance metrics. notably, corals favites complanata and montipora vietnamensis maintained the highest thermal optima across our dataset. by linking physiological traits to thermal performance, we identified tissue biomass as a key physiological predictor of coral thermal optima. these findings highlight interspecific variability in coral responses to thermal stress. furthermore, these results allow us to understand which coral species may survive under rapidly increasing temperatures, and are thus targets for restoration as they are likely to persist under future climate change. we advocate for incorporating interspecific differences in stress tolerance and physiology into targeted management and restoration strategies for coral reefs.",
-          "talk_titles": [
-            {
-              "title": "Identifying Physiological Indicators of Coral Thermal Performance3",
-              "primary": true,
-              "talk_id": "f3a367a1-5234-4916-a1dc-55819e2a3369"
-            },
-            {
-              "title": "Characterizing coral community structure and flow dynamics across eight reefs in Okinawa, Japan",
-              "primary": false,
-              "talk_id": "3dfc5c76-8bfd-4736-875e-ba57f75cf74f"
-            },
-            {
-              "title": "The effect of community diversity on thermal stress tolerance of coral reefs in Okinawa, Japan",
-              "primary": false,
-              "talk_id": "ea808f4e-b011-435a-9cc4-4902a334af42"
-            }
-          ],
-          "person_key": "icrs-p-01381",
-          "attended": true
-        },
-        {
-          "name": "Natalie Goeler-Slough",
-          "search_text": "natalie goeler-slough linking herbivore community structure to ecological functioning in a hawaiian marine protected area coral reef resilience depends on the competitive balance between reef-building corals and algae. herbivory is a crucial top-down process maintaining this balance, where herbivorous fish graze algal competitors, clear substrate for coral recruitment, and promote crustose coralline algae. while marine protected areas (mpas) have been used successfully to restore herbivore biomass, high standing stock doesn’t automatically lead to high ecological functioning required to control algal dominance. the temporal dynamics of species interactions also remain understudied, as traditional static surveys fail to capture fluctuations that drive sustained ecosystem functioning. as reefs face increasing anthropogenic stressors, it is critical to understand how herbivore community structure relates to realized grazing pressure, and ultimately reef resilience. this study investigates the relationship between herbivore community structure and benthic grazing intensity over space and time. to evaluate how grazing rates vary over time, we set up underwater video stations paired with benthic quadrats to monitor grazing within 1m² focal areas at monthly intervals at hanauma bay, a no-take marine life conservation district on oʻahu. we identified fishes to species and measured body lengths to calculate biomass, while simultaneously quantifying bite rates. we also assess habitat complexity using structure-from-motion (sfm) to evaluate how grazing rates vary with complexity. to complement this time series at hanauma bay, we are deploying video stations at additional sites around oʻahu at a single time point, to compare grazing rates across gradients of sites varying in protection level and human impact. we are integrating these behavioral assays with community metric analyses, including taxonomic α-diversity, β-diversity, and functional redundancy, to assess if diverse assemblages can maximize grazing efficiency. this research will develop a mechanistic understanding of how mpas contribute to ecosystem function, assessing if protection merely preserves fish biomass, or safeguards the community composition and functional processes required for reef resilience.",
-          "talk_titles": [
-            {
-              "title": "Linking Herbivore Community Structure to Ecological Functioning in a Hawaiian Marine Protected Area",
-              "primary": true,
-              "talk_id": "db28de0d-bab7-4959-aada-99d231fb7a3f"
-            }
-          ],
-          "person_key": "icrs-p-00650",
-          "attended": true
-        },
-        {
-          "name": "Nyssa Silbiger",
-          "search_text": "nyssa silbiger metabolic depression of mo’orea’s coral reefs from a multidecadal time-series coral reefs have been the archetype of highly productive oceanic ecosystems. this high productivity is driven in part by the efficient cycling of organic and inorganic carbon, which are the foundation for coral reef metabolic function. coral reef metabolic rates, such as net ecosystem production, ecosystem respiration, and net ecosystem calcification, scale up to affect all living organisms on coral reefs by filtering carbon through the food web and building the calcium carbonate structures that support the high biodiversity of reefs. these metabolic processes are primarily driven by light, temperature, and water flow and are modulated by the composition and biomass of organisms (e.g., relative amount of producers or calcifiers). each of these environmental conditions are shifting as a result of anthropogenic climate change which may threaten the critical metabolic rates that maintain coral reef ecosystems. based on an 18-year time-series from mo’orea, french polynesia, we showed significant declines in gross ecosystem production, ecosystem respiration, and net ecosystem calcification. using a bayesian structural equation model, we demonstrate that coral loss was the primary driver of these dramatic declines in reef metabolism, which was driven primarily by a depression in ecosystem respiration. there is an urgent need to integrate time-series measurements of both organic and inorganic carbon cycles to truly understand how global climate change and other local stressors are interacting to influence critical coral ecosystem functioning.",
-          "talk_titles": [
-            {
-              "title": "Metabolic depression of Mo’orea’s coral reefs from a multidecadal time-series",
-              "primary": true,
-              "talk_id": "bb5e2afc-293c-4f2e-8b42-4ac4be7ab7e0"
-            },
-            {
-              "title": "Characterizing coral community structure and flow dynamics across eight reefs in Okinawa, Japan",
-              "primary": false,
-              "talk_id": "3dfc5c76-8bfd-4736-875e-ba57f75cf74f"
-            },
-            {
-              "title": "Evidence of Microbialization from Coral-Algal Phase Shifts in Lagoon Reefs of Mo’orea, French Polynesia.",
-              "primary": false,
-              "talk_id": "4c9d67bc-129d-4561-a08c-4d2dcbebc21d"
-            },
-            {
-              "title": "Identifying Physiological Indicators of Coral Thermal Performance3",
-              "primary": false,
-              "talk_id": "f3a367a1-5234-4916-a1dc-55819e2a3369"
-            },
-            {
-              "title": "Island-wide mapping of groundwater microclimates in coral reef ecosystems",
-              "primary": false,
-              "talk_id": "2a90728c-6488-46c6-9a15-20c907d34189"
-            },
-            {
-              "title": "Revisiting the Darwin Point 40 years later: spatial patterns and temporal change in coral reef carbonate production across the Hawaiian Archipelago",
-              "primary": false,
-              "talk_id": "457cd1dd-5403-43bd-ac1a-bb48a9a4f11b"
-            },
-            {
-              "title": "Shifting benthic communities create chemical legacies that alter coral physiology",
-              "primary": false,
-              "talk_id": "c8f537df-e204-4069-b10d-8ced816ecfed"
-            },
-            {
-              "title": "The effect of community diversity on thermal stress tolerance of coral reefs in Okinawa, Japan",
-              "primary": false,
-              "talk_id": "ea808f4e-b011-435a-9cc4-4902a334af42"
-            },
-            {
-              "title": "Understanding variability in carbonate accretion rates across the Hawaiian Islands",
-              "primary": false,
-              "talk_id": "c09ff4aa-88b2-4b07-bd1d-1482f5ffcc44"
-            }
-          ],
-          "person_key": "icrs-p-01613",
-          "attended": true
-        },
-        {
-          "name": "Prof Bob Richmond",
-          "search_text": "robert richmond addressing reproductive decline and failure in corals: approaches for enhancing reef resilience, persistence and restoration. reproduction and recruitment are the paired processes through which coral reef ecosystems persist.  as coral cover decreases and the distance between reproductive colonies increases, fertilization rates of spawned eggs decline precipitously due to the allee effect.  fecundity in corals is affected by energy availability for egg production, and lipid composition effects egg quality.  protein allocation and availability are also important for successful reproduction, with detoxifying enzymes having dual roles for both cell protection and colony reproduction.  documented declines in fecundity, reproductive success during limited mass spawning events and planula larval recruitment are tied to anthropogenic stressors associated with pollution and climate change.  water quality affects colony energetics, gamete formation and fertilization success, while substratum quality affects larval recruitment.  heavy rains and coastal runoff during spawning events result in degraded surface water quality, which can damage gametes and prevent fertilization.  detoxifying protein expression in parent colonies do not protect gametes once they are released.  this may explain why brooding species appear to do better than spawners in degraded environments such as harbors.  reproductive plasticity in certain coral genera (e.g. porites) raises the question: can corals be induced to switch from spawning to brooding epigenetically, and can reef restoration efforts be augmented through the development of reef reproductive modules? multi-omics provide data that can help diagnose the molecular basis of compromised reproductive capacity in corals, and help guide interventions to facilitate reef resilience, recovery and restoration.",
-          "talk_titles": [
-            {
-              "title": "Addressing reproductive decline and failure in corals: Approaches for enhancing reef resilience, persistence and restoration.",
-              "primary": true,
-              "talk_id": "35b5ee28-52d1-4c85-842f-d2e582bc1966"
-            },
-            {
-              "title": "Ecological Role of a Resilient Coral in Honolulu Harbor: Invasive or Pioneer?4",
-              "primary": false,
-              "talk_id": "a71dae31-1456-41b1-86f2-1e21be0df7fa"
-            },
-            {
-              "title": "Evaluating the sub-lethal impacts to coral from the overgrowth of an invasive algal-mat forming species on a Hawaiian coral reef.",
-              "primary": false,
-              "talk_id": "81c838a0-8430-4a56-98bf-ff45f622fb23"
-            },
-            {
-              "title": "Microplastic Leachate Effects on Coral Fertilization and Settlement",
-              "primary": false,
-              "talk_id": "75e937fc-9d14-4db2-ab77-252a0fb81886"
-            },
-            {
-              "title": "Physiological responses to heat stress in corals from a resilient reef system in Palau",
-              "primary": false,
-              "talk_id": "68e8fc7e-0e71-4cd4-87ca-17db45f8bbe8"
-            },
-            {
-              "title": "Proteomic Insights into Coral Reproductive Failure Along Water-Quality Gradients in Florida",
-              "primary": false,
-              "talk_id": "41b62d4a-d938-40a3-be0d-551bf0b53d77"
-            }
-          ],
-          "person_key": "icrs-p-01453",
-          "attended": true
-        },
-        {
-          "name": "Rayna Mcclintock",
-          "search_text": "rayna mcclintock the effect of alkalinity enhancement on montipora capitata at multiple life stages ocean alkalinity enhancement is a proposed carbon removal technique involving the dissemination of alkaline minerals rich in calcium, sodium, or magnesium into coastal waters to mitigate ocean acidification locally and reduce atmospheric carbon dioxide globally. the addition of these materials induces the formation of carbonate and bicarbonate altering ph, dic, and aragonite saturation state and increasing trace metal concentrations. the impacts of this altered seawater chemistry on coastal ecosystems remains unknown. this study investigates the changes ocean alkalinity enhancement induces in the coral microbiome and metabolism at multiple life stages by exposing larval and adult montipora capitata to equilibrated seawater enriched with olivine, calcium oxide, and sodium hydroxide at multiple levels. larvae were exposed to an extreme range of alkalinity enhancement: ambient ta (~2,200 umol/kg), medium enrichment (~3,500 umol/kg), and high enrichment (~5,000 umol/kg) for 2 weeks. these treatments resulted in significant shifts in the microbial community of coral larvae. oxygen measurements during light and dark incubation periods indicated elevated photosynthesis in calcium oxide and olivine treatments. adult corals were exposed to an alkalinity enrichment of +200 umol/kg in a mesocosm system for 2 months. coral microbiome composition, metabolite profiles, and calcification rates were measured alongside the dissolved organic matter dynamics in the surrounding seawater. this research furthers our understanding of ocean alkalinity enhancement techniques, the resulting impacts on foundational coastal species, and the potential uses for coral restoration.",
-          "talk_titles": [
-            {
-              "title": "The Effect of Alkalinity Enhancement on Montipora capitata at Multiple Life Stages",
-              "primary": true,
-              "talk_id": "171948ea-d1fa-408a-bf24-95a3b82e10be"
-            },
-            {
-              "title": "Evidence of Microbialization from Coral-Algal Phase Shifts in Lagoon Reefs of Mo’orea, French Polynesia.",
-              "primary": false,
-              "talk_id": "4c9d67bc-129d-4561-a08c-4d2dcbebc21d"
-            },
-            {
-              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
-              "primary": false,
-              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
-            },
-            {
-              "title": "From spawn to settlement: assessing the in-situ lifecycle of Florida’s Acropora corals for restoration management",
-              "primary": false,
-              "talk_id": "659a2aa3-4244-4f8c-9726-d0708e076d5b"
-            },
-            {
-              "title": "Metabolites and Microbes as Water-Column Indicators of Thermal Stress in Coral Reefs",
-              "primary": false,
-              "talk_id": "b0ca9ac0-2765-45fb-9774-c6786c9bd848"
-            }
-          ],
-          "person_key": "icrs-p-01133",
-          "attended": true
-        },
-        {
-          "name": "Samantha Shedd",
-          "search_text": "samantha shedd coral adaptive potential on hawaiian reefs: the role of genetic and environmental interactions coral reefs are biologically rich and culturally significant ecosystems that are facing increasing degradation from ocean warming, pollution, and coastal development.  using seascape genomics, i investigated how environmental gradients and genetic variation interact to shape the adaptive potential of three common reef-building coral species (montipora capitata, pocillopora acuta, porites compressa) around o‘ahu, hawai‘i. 640 coral samples were collected from 194 sites across o‘ahu using a stratified random design to capture environmental heterogeneity and assess environmental drivers of coral population structure.  coral genomic dna was processed using reduced representation genomic sequencing (rad-seq) to generate high-density snp data, and symbiodiniaceae community structure was characterized using its2 metabarcoding. distance-based rda (dbrda) was then used to assess the influence of eight environmental factors (sea-surface temperature, wave action, sedimentation, nutrient effluent, irradiance, primary production, reef complexity & coastal development) on coral holobiont population structure. significant genotype-environment associations (geas) were identified using the samβada pipeline, and outlier loci associated with geas were annotated and mapped spatially to locate potential hotspots of adaptive capacity. overall, this approach seeks to identify individuals and populations with putative tolerance to specific environmental stressors. by integrating genetic, symbiont, and environmental data, this project provides the most spatially extensive seascape genomics assessment in hawai‘i to date. the results will offer critical, spatially explicit data to support coral reef ecosystem management and conservation strategies that prioritize resilient coral populations and adaptive genetic diversity in the face of climate change.",
-          "talk_titles": [
-            {
-              "title": "Coral Adaptive Potential on Hawaiian Reefs: The Role of Genetic and Environmental Interactions",
-              "primary": true,
-              "talk_id": "59b21c72-b3d6-4beb-8645-3ea8985e74d4"
-            }
-          ],
-          "person_key": "icrs-p-01591",
-          "attended": true
-        },
-        {
-          "name": "Zach Quinlan",
-          "search_text": "zach quinlan coral metabolism and contaminant loads track human land use anthropogenic activities pose a significant risk to vulnerable marine ecosystems like coral reefs, particularly those near human population centers. despite coral reefs being one of the systems most at risk, the relationship between contaminant exposure and coral health across gradients of ecosystem disturbance remains poorly understood. our metabolomic analysis of 380 corals from 16 sites spanning an anthropogenic impact gradient revealed that the coral metabolome is predictive of anthropogenic ecosystem disturbance. we found that human activities both within catchments and in the marine ecosystem altered the chemodiversity of coral metabolomes with a direct relationship to historic trends in coral cover: nitrogen reserves and metabolome energetic potential were reduced, while stress metabolites were enriched at more impacted sites. we further identified 25 anthropogenic contaminants from agricultural, cosmetological, industrial, and pharmaceutical sources accumulated in coral metabolomes. our results suggest that the bioaccumulation of pollutants in corals impacts all but the most remote reef ecosystems, which will disproportionately threaten communities reliant on reefs. together, our findings demonstrate a direct relationship between coral health, accumulation of dangerous contaminants within corals, and anthropogenic disturbance that is consistent across species.",
-          "talk_titles": [
-            {
-              "title": "Coral metabolism and contaminant loads track human land use",
-              "primary": true,
-              "talk_id": "4b200719-a5d3-442d-a8e0-734c6c0e7f54"
-            },
-            {
-              "title": "Bio-Inspired Chemical and living Microhabitats for Coral Settlement and Early Survivorship",
-              "primary": false,
-              "talk_id": "8a91d712-e34f-45ad-b3d8-882c975e6775"
-            },
-            {
-              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
-              "primary": false,
-              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
-            },
-            {
-              "title": "Metabolites and Microbes as Water-Column Indicators of Thermal Stress in Coral Reefs",
-              "primary": false,
-              "talk_id": "b0ca9ac0-2765-45fb-9774-c6786c9bd848"
-            },
-            {
-              "title": "The Effect of Alkalinity Enhancement on Montipora capitata at Multiple Life Stages",
-              "primary": false,
-              "talk_id": "171948ea-d1fa-408a-bf24-95a3b82e10be"
-            }
-          ],
-          "person_key": "icrs-p-01401",
-          "attended": true
-        }
-      ],
-      "speaker_count": 28,
-      "talk_count": 31,
-      "geocode_level": "country",
-      "distance_km": 7075.7,
-      "search_text": "university of hawai'i - m?noa anela eliza kainani duenas callie stephenson charles birkeland claire moreland-ochoa danielle barnas eileen nalley guan-yan chen jamie mcdevitt-irwin jessica glazner joelle mattos justin berg kaho tisthammer kainalu steward keiko wilkins kuʻi keliipuleole leah barkai lisa mcmanus madelief schelvis madeline berger mary donovan maya otsu maya powell natalie goeler-slough nyssa silbiger prof bob richmond rayna mcclintock samantha shedd zach quinlan anela duenas ecophysiology of shifts in coral species dominance on reef flats of guam over the last decade, guam’s reefs have been impacted by successive coral bleaching events, causing a significant decline in live coral cover. following the decline of acropora pulchra, pavona decussata appears to have increased in relative abundance, often overgrowing a. pulchra skeletons. the physiological mechanisms and symbiont dynamics that drive this ecological shift remain unclear. in this study, i conducted an ex situ heat stress experiment to evaluate the metabolic responses of a. pulchra and p. decussata dominated by either cladocopium or durusdinium. coral fragments were exposed to control or heat treatment conditions, and monitored over four timepoints for changes in net photosynthesis, respiration, and symbiodiniaceae community compositions using closed-chamber respirometry and qpcr. results showed that a. pulchra dominated by cladocopium experienced significant declines in photosynthesis and relative symbiont abundance under heat stress. in contrast, a. pulchra fragments dominated by durusdinium maintained stable metabolic function and symbiont composition across treatments. pavona decussata dominated by cladocopium also maintained relatively stable function and symbiont abundance across treatments. multivariate analyses confirmed that physiological variation was more strongly associated with coral species-symbiont pairings than with treatment alone. these findings offer a physiological basis for observed shifts in coral community composition on guam’s reefs. this study contributes to management and restoration efforts by providing crucial information on the role of symbiodiniaceae in thermal stress on guam’s reefs. callie stephenson embedding community-led science into the governance of hawaiʻi's pūpūkea marine life conservation district adaptive management proposed for the pūpūkea marine life conservation district (mlcd) on o‘ahu, hawaiʻi exemplifies the integration of community voices in coral reef management. the locally-based community stewardship non-profit organization mālama pūpūkea-waimea (mpw) was contracted by the local government to execute a three-year biological carrying capacity (bcc) study to provide empirical data and recommendations for adaptive management related to the potential overuse of the marine reserve by humans.the bcc study focused on the heavily impacted kapoʻo (sharks cove) region to collect rigorous scientific data to create management recommendations. results demonstrate clear ecological degradation linked to persistent, elevated visitor density. since 2022, in-water human presence in the kapoʻo tidepools has increased by 214%, remaining persistent year-round. bcc surveys confirmed that physical damage to coral increased significantly with human density, with an estimated 40% probability of observed damage on coral colonies in hotspots of visitor use. concurrently, non-schooling fish abundance and species richness declined year-over-year across zones. using non-linear analysis of the relationship of non-schooling fish abundance and surrounding human density, we quantified a conservative threshold of 1 human per 10m radius in the kapoʻo tidepools after which precipitous declines in fish abundance are likely, and extrapolates to a maximum acceptable visitation of 27–31 individuals at any given time for the entire area.these findings culminated in recommendations to the state and city governments for adaptive management. this project provides a useful case study in academic partnership, local stewardship, and natural resource management. charles birkeland american samoan coral reefs are doing well by negative feedback between corals and cca despite major cyclones, cots outbreaks, bleaching events, disease, a tsunami, and other disturbances, the living coral cover in american samoa since 2018 has been the greatest in 40 years. we attribute this to the prevalence of the substrate-binding cca porolithon onkodes s.l., which is prevalent because of wave action combined with the high aragonite saturation states in american samoa waters. of 800 successful coral recruits observed on the forereef slope in american samoa in 2018, 94 % were found on cca. recruits are prevalent in the size-classes of at least a hundred of the species of coral on the forereef slope. the reef ecosystem is resilient and stabilized by negative feedback between living-coral cover and cca. as corals expand living cover, cca significantly loses cover, although it commonly overgrows branching acropora and other corals as a refuge. conversely, when coral cover is decreased by disturbances, cca gain cover and provide substrata favorable to coral recruitment and thereby enhance the return of coral to prevalence. however, in backreef areas with little wave action, the rubble is not bound by cca and the coral communities are not as resilient. the relation between cca and corals changes over a gradient in aragonite saturation state. at rose atoll, where wave action is chronic and the aragonite saturation state is greater than 4, the cca generally overgrow corals, although they also enhance recruitment of corals, so the corals are prevalent and resilient, but with generally small colonies.  abundant small colonies of corals and prevalence of cca have been stable aspects of  the forereef of rose atoll since at least 2002. negative feedback provides fundamentally stabilizing mechanisms and thereby resilience on coral reefs. claire moreland-ochoa linking sediment exposure to coral performance at a priority reef restoration site on maui sedimentation from land-based runoff, erosion, and resuspension affects multiple aspects of coral reef health and ecosystem function. with global declines in coral cover, coral restoration has become a key strategy to restore reef resilience, yet how sedimentation influences restoration success and early recruitment remains unclear. we conducted a year-long, multi-metric study at olowalu reef, a 939-acre site along west maui that seeds local and neighboring reefs, to evaluate how spatial variability in sediment exposure influences benthic communities, coral outplant performance, and natural recruitment. we outplanted porites rus and porites compressa fragments and placed ceramic recruitment domes at twenty stations spanning two depth zones and a sedimentation gradient. continuous water quality (light, temperature, salinity, turbidity) and quarterly sediment deposition captured chronic background conditions and episodic sedimentation events. photogrammetry and benthic surveys quantified partial mortality, growth, survivorship, and coral cover. this integrated design allowed us to assess how chronic and event-driven sediment dynamics shape reef communities. water quality monitoring showed that sedimentation was primarily driven by resuspension during the summer high-wave season rather than episodic runoff during the winter rainy season. high attrition of coral outplants occurred throughout the study, likely due to the site’s energetic environment and limited post-fragmentation recovery periods. coral recruitment exceeded expectations, with abundance and early growth more strongly influenced by microhabitat on recruitment domes (protected vs. exposed surfaces) than station-level sediment exposure. these results highlight the importance of fine-scale flow and deposition processes when identifying ecologically meaningful sediment limits. together, these datasets provide a foundation for developing water-quality thresholds that account for spatial variability and episodic sediment events, key considerations for aligning ridge-to-reef management strategies. our approach offers a replicable framework for co-developing sediment targets with managers and community partners and can guide where coral restoration and erosion-reduction efforts can enhance local reef resilience and habitat quality. danielle m. barnas the effect of community diversity on thermal stress tolerance of coral reefs in okinawa, japan community diversity within natural ecosystems can enhance ecosystem stability and resilience in the face of disturbances and environmental variability. on coral reefs, biodiversity may be impacted by thermal anomalies, resulting in shifts in community composition and ecosystem functioning. seasonal storm activity, while potentially damaging to coral reef structure, can help reduce sea surface temperatures (sst) within coral thermal tolerance ranges in summer months. okinawa, japan, a region that typically benefits from cooling by seasonal typhoons, experienced unusually high sst on coastal coral reefs in 2024 due to storm trajectories shifting northward, leading to a widespread coral bleaching event. in this study, we tested the physiological response (gross photosynthesis [gp] and respiration [r]) of coral reef communities to these elevated sst to understand the impact of thermal anomalies on common coral species as well as the potential buffering effect of community diversity on physiological performance. in august 2025, we collected duplicate fragments from 10 common coral species near the okinawa institute of science and technology marine science station to measure the paired individual rates of gp and r. we then placed those 10 individuals in community assemblages to measure paired community physiological rates across the two temperature treatments. gp was greater in elevated temperatures for <i>acropora sp.</i>, however fully assembled communities showed no temperature effect on the gp rates, indicating that community diversity may buffer the effects of elevated sst on coral reefs. meanwhile, r was augmented by elevated temperatures for <i>porites rus</i> and <i>favites complanata</i>. despite only two species displaying this trend, assembled communities also showed increased r under elevated temperatures, suggesting uneven species contributions to ecosystem metabolism when scaling from individual fragments to community level. eileen nalley review of contaminant concentrations in reef and pelagic fishes from the pacific islands developing the pacific ciguatera network to understand ciguatera poisoning in the pacific islands marine pollution is understudied throughout the pacific islands but is of critical importance to island nations that traditionally rely on fish as their primary source of protein. to better understand the distribution of contaminants in fishes throughout the pacific, we conducted a systematic review of studies reporting pollutant concentrations. of the 5405 studies examined, 44 met criteria for inclusion in the systematic review, which spanned 226 species from 115 locations representing 66 taxonomic families and six trophic levels. results of the systematic review are contextualized with targeted studies measuring contaminant concentrations in fish from 20 sites in hawaiʻi and six atolls in the republic of the marshall islands. these locations have been impacted by marine pollution from historic and ongoing military activities, urbanization, and agriculture. sites were chosen that vary in land use and human population. metals, pesticides, polychlorinated biphenyls (pcbs), and polycyclic aromatic hydrocarbons (pahs) were examined in reef fishes from multiple trophic levels. the taxa included are commonly consumed throughout the pacific islands and have important cultural, economic, and nutritional value. of the pollutants examined, metals and pcbs were most frequently found at elevated concentrations. though there was evidence of biomagnification to higher trophic levels for certain contaminants, other pollutants (e.g., arsenic and pcbs) were found in both lower and higher trophic level taxa. these case studies and the systematic review provide baseline information that will aid in the development of fisheries management guidelines and recommendations, and they contribute to a data gap that persists for marine pollution data throughout the pacific islands. ciguatera poisoning is the most common form of seafood poisoning in the pacific islands, yet it is understudied in much of the region. the physical, social, and economic impacts of ciguatera can affect access to fisheries and intergenerational knowledge transfer that supports sustainable management. ciguatera is caused by the consumption of seafood that has accumulated ciguatoxins produced by epiphytic dinoflagellates (typically gamberidiscus spp.), and can cause a range of acute or chronic symptoms. the pacific ciguatera network was developed through a partnership between hawaiʻi sea grant and the pacific integrated ocean observing systems at the university of hawaiʻi in collaboration with other universities and more than 30 organizations representing managers, communities, and fishers across the pacific. the network was established to address long-standing questions about ciguatera poisoning, and aims to support standardized data collection to improve regional comparisons and analyses, while also promoting collaboration and capacity building. online surveys and targeted interviews were conducted in hawaiʻi (n = 106 and 20, respectively) and american samoa (n = 102 and 12) to characterize the impacts of ciguatera in these locations, and standardized dinoflagellate sampling was conducted in partnership with local agencies and organizations in hawaiʻi (n = 20 sites), american samoa (n = 6), and the marshall islands to determine the abundance and distribution of gambierdiscus spp. using microscopy, species diversity using dna metabarcoding, and toxin profiles. additional studies have been initiated that explore links between environmental variables with measured gambierdiscus abundances to better understand potential drivers and improve predictive capacity in the region. in addition to generating critical fisheries data, building connectivity, and addressing urgent questions about seafood safety in the pacific, this network is strengthening partnerships and offering technical training through workshops, student engagement, and a post-baccalaureate fellowship program for recent graduates from the pacific islands. guan-yan chen morphological and spatial determinants of coral demography previous studies on coral demography have mostly focused on colony size and simplified 2d competitive interactions and their subsequent ecological consequences. however, corals are among the most morphologically diverse organisms. colony morphology governs how corals interact with the environment and influences the efficiency of resource allocation, while spatial positioning determines modes of competition. this study uses underwater photogrammetry (structure-from-motion) to generate millimeter-resolution 3d reef models across the pacific, based on over three years of time-series data from taiwan, hawai‘i, and lizard island, australia. sam-lora was applied for deep-learning training to automate the delineation of colonies and taxonomic classification. in addition, an innovative gis workflow was developed to quantify morphological and spatial metrics at polyp and colony scale. by integrating the morphological and spatial determinants, this study aims to bridge a key knowledge gap in understanding the drivers of demographic variation in modular organisms. preliminary results show that larger and circular corymbose colonies exhibit higher survival; smaller, more circular colonies grow faster; and irregularly shaped colonies tend to fragment more frequently. at the colony level, spatial determinants revealed that only encrusting colonies exhibited decreased growth rates when the competitor to colony perimeter ratio (c/p ratio) increased. branching colonies showed slightly higher growth rates when their relative height was lower, while shading effect were not significant for any growth form. unlike the colony level, the polyp level exhibited a different trend and demonstrated stronger correlations. a higher c/p ratio polyp was associated with higher mortality across all forms except for massive. lower shading effect favored survival in corymbose and digitate polyps, and greater relative height differences also promoted survival in these two morphologies. overall, morphological and spatial metrics serve as intuitive proxies of demographic performance, providing a foundation for improving population prediction models and informing strategies for coral restoration and resource management. jamie mcdevitt-irwin physical disturbances amplify the role of consumers in driving temporal biodiversity and composition on a coral reef ecosystems worldwide are facing a suite of anthropogenic stressors driving rapid biodiversity change, with significant consequences for ecosystem function and resilience. both alpha and beta diversity can help disentangle how anthropogenic stressors are altering communities over time. coral reefs are an iconic ecosystem threatened by local anthropogenic stressors (e.g., fishing pressure and nutrient pollution), in addition to escalating physical disturbances such as tropical cyclones. however, it remains unknown if and how physical disturbances alter the effects of local anthropogenic stressors on biodiversity and community composition. we conducted a four-year field experiment that emulated the impacts of overfishing and nutrient enrichment with an acute physical disturbance, mimicking a tropical cyclone. we evaluated how this altered coral reef benthic community composition and diversity over time, with an emphasis on two main benthic groups: stony coral and macroalgae. in intact areas (not physically disturbed), nutrients and consumer pressure were both important in structuring the benthic community. nutrients were the primary driver of coral community composition and nutrient enrichment reduced coral beta diversity through time by preventing decreases of coral taxa abundances at high consumer pressure. consumer pressure and nutrients interacted to influence macroalgal communities in undisturbed plots, with temporal alpha diversity being highest under a combination of elevated nutrient levels and low consumer pressure. however, in physically disturbed areas, consumer pressure was the primary driver of diversity and community composition. under low consumer pressure, increases in macroalgal alpha diversity were highest and increases in coral alpha diversity were lowest. our results highlight that physical disturbances can alter the impacts of local anthropogenic stressors on diversity and increase the importance of top-down control by consumers, emphasizing the need to conserve consumer populations in this era of escalating physical disturbances. jessica glazner from seabirds to sewage: distinct nutrient sources influence coral recovery patterns post-bleaching coral reefs receive subsidies in the form of nutrients and organic matter from their adjacent terrestrial environment, and the quality of these subsidies can have substantial impacts on the health and thermal resilience of corals. there is robust experimental evidence that inorganic nutrient enrichment affects coral physiology and reef ecosystem function, and this has been used to explain reef degradation near human populations exposed to nutrient loading, particularly from wastewater effluent. yet recent findings of enhanced coral resilience on remote, seabird-dominated islands receiving guano-derived nutrient subsidies complicate the assumption that elevated nutrients are uniformly harmful to coral reefs. additionally, most nutrient enrichment experiments focus on how inorganic nutrient delivery affects corals, separate from the complex chemical mixtures that naturally accompany nutrient subsidies. to understand the direct effects of these complex nutrient subsidies on corals, separate from the broader ecosystem effects present on remote or populated reefs, we performed a manipulative experiment at the hawai‘i institute of marine biology, dosing corals with seabird guano, wastewater effluent, or inorganic nutrients. we exposed half of the corals to thermal stress and tracked their post-bleaching recovery. our results demonstrate that a) corals at ambient temperature that were exposed to nutrient enrichment had elevated photosynthetic performance after 10 weeks of nutrient exposure, b) corals under the natural seabird guano nutrient enrichment had enhanced recovery of their photosynthetic performance post-bleaching compared to the other treatments, c) wastewater effluent did not support enhanced recovery post-bleaching, and d) the inorganic nutrient treatment demonstrated the greatest susceptibility to bleaching, indicating that experiments using inorganic nutrients only are not capturing the full effects of complex nutrient sources. our data provide experimental evidence that resource subsidy quality impacts coral thermal resilience and is contributing to different reef trajectories observed on populated vs remote island ecosystems. joelle mattos using carbonate chemistry to evaluate coral reef metabolism following the lahaina urban wildfire the august 2023 lahaina wildfire, fueled by strong winds and drought, destroyed 2,207 structures and released smoke, ash, and hazardous debris. given lahaina’s coastal setting, fire-derived pollutants likely entered adjacent coral reef ecosystems, raising concerns about coastal acidification, eutrophication, and hypoxia. we investigated wildfire impacts on reef metabolic processes at two coral reefs: one within the burn zone and a control site to the north of lahaina. autosamplers were deployed six times during the first post-fire year and collected seawater for dissolved inorganic carbon (dic) and total alkalinity (ta) analysis every three hours for three consecutive days. two months after the fire, organic carbon cycling was the main driver of seawater co2 variability at the burn zone reef (ta:dic slope ratio of 0.23 ± 0.18) whereas the control reef reflected stronger inorganic carbon influence (ta:dic slope ratio of 0.71 ± 0.68). five months post-fire, the burn zone reef remained dominated by organic carbon cycling (0.28 ± 0.23), while the control reef shifted to organic carbon influence (0.44 ± 0.45). both reefs were generally net calcifying, though early sampling nearest to the fire suggested reduced calcification, and transient periods of net dissolution at the control site; however, hydrodynamic factors such as residence time or mixing may also have influenced these trends. temporal and spatial differences in metabolic signatures highlight the combined influence of multiple, interacting drivers such as wildfire-derived inputs, nutrient enrichment, wastewater discharge, benthic composition, and seasonal dynamics. comparison with pre-fire datasets helps disentangle natural variability from fire-related disturbances, enabling attribution of stressor impacts on reef function. these results provide one of the first assessments of urban wildfire impacts on coral reef carbonate chemistry, offering critical insights for managing coastal ecosystem resilience amid wildfire events amplified by climate change. justin berg restoring corals from sediment to symbionts: a novel microbiome approach in olowalu, maui coral restoration programs increasingly rely on outplanting nursery-propagated colonies, yet the ways in which local environmental conditions reshape the holobiont during early post-outplanting remain poorly understood. additionally, sedimentation is a pervasive stressor that can influence coral health and microbiome stability. however, the potential for microbiome research to inform restoration practices remains largely untapped. olowalu reef, maui, a priority reef for conservation in hawaii, provides a practical study system with historically documented sedimentation variability, allowing investigation of coral holobiont responses across spatial and temporal gradients.\r\nthis project examines microbiome dynamics in two hawaiian corals, porites compressa and porites rus, collected from olowalu, fragmented, and re-outplanted to 20 sites (10 shallow, 10 deep) along the reef’s sediment gradient. biopsies were collected from each coral prior to outplanting and again at six-month and one-year intervals to assess changes in the microbial community. fine-scale water-quality monitoring of turbidity, light, temperature, and conductivity were paired with quarterly estimates of sediment deposition, providing an environmental framework for interpreting shifts within the holobiont. to allow repeated sampling of individual colonies, we developed a novel 16-gauge syringe-tip biopsy technique that is minimally invasive and enables resampling of the same colonies over time–an approach not previously applied in coral restoration that enhances the resolution of holobiont dynamics. \r\nmetagenomic analyses will reveal how sedimentation shapes microbiome assembly, stability, and divergence in restored corals. we expect to identify microbial signatures associated with resilience along the gradient, providing new criteria for selecting parent colonies based on holobiont traits rather than solely physiological measures or bleaching history. by integrating restoration, environmental monitoring, and high-resolution microbiome sampling, this work advances understanding of how habitat-forming holobionts respond to sediment stress and provides critical insight for improving restoration outcomes in sediment-impacted reefs. kaho tisthammer proteomic insights into coral reproductive failure along water-quality gradients in florida the survival of coral reefs hinges on successful reproduction, yet reproductive failure in corals has increasingly been observed in recent years. one emerging hypothesis is that chronic exposure to land-based pollutants forces corals to divert key proteins from reproduction to detoxification, compromising egg quality and fertilization. building on our previous work using molecular tools to diagnose coral health, we assessed how water-quality stressors affect coral health and reproductive potential in florida corals. colonies of acropora cervicornis and orbicella faveolata were collected along water-quality gradients from biscayne national park to the marquesas keys prior to spawning, and shotgun proteomics was used to characterize health status, with a focus on proteins involved in detoxification and reproduction. our goals are to develop molecular biomarkers for screening reproductive capacity in corals and to provide mechanistic insight that directly benefits conservation and restoration efforts. preliminary analyses indicate that corals from sites influenced by urban inputs near the port of miami (biscayne national park) show clear enrichment of detoxification-related proteins, suggesting that these areas may be suboptimal as sources or recipients of restoration stock. combined with histological assessments of gametogenesis, these proteomic signatures will provide a practical diagnostic framework to identify reproductively competent corals and prioritize reef sites where restoration investments are most likely to result in self-sustaining populations. kainalu steward ka ʻāina hūnā a kāne: spatial analysis of reef island morphodynamics at lalo following a catastrophic hurricane ka ʻāina hūnā a kāne: leveraging hawaiian ethnohistorical resources to decolonize notions of reef island vulnerability at lalo in papahānaumokuākea atoll islands are dynamic, low-lying (<3 m) sandy islets composed primarily of reef-derived material that accumulate on fossil reef platforms. as human-induced climate change accelerates globally, atoll island environments are among the most sensitive coastal systems to disturbance. lalo, an open atoll within the papahānaumokuākea marine national monument (pmnm), was severely impacted by hurricane walaka (category 3) on october 4, 2018, which devastated terrestrial and marine habitats and nearly erased several sandy islets. to assess the stability and resilience of sandy islets within lalo, this study applies a new geospatial framework, the reef island geomorphic activity assessment (rigaa), to quantify changes in reef-island area, shape, orientation, and position using complete island footprints. high-resolution satellite and aerial imagery (1981-2024) were analyzed in arcgis to evaluate morphodynamic change across four periods: (1) pre-disturbance, (2) post-disturbance, (3) 12-month recovery, and (4) total historical change. wind and wave data will be incorporated in the future to identify external forces driving island reconfiguration. rigaa offers a more holistic approach to analyzing reef island change by accounting for entire island footprints and delivering geospatial data products that support resource management and conservation priorities. grounded in a kuanaʻike hawaiʻi (hawaiian worldview), this study recognizes the natural cycles of reef-islands and their ability to disappear into pō (darkness) and re-emerge into ao (lightness) as intrinsic expressions of their ancestral identity. atoll islands are low-lying (<3 m) sandy islets primarily composed of biogenic reef-derived material that accumulate upon carbonate reef platforms. as anthropogenic climate change (e.g., sea-level rise) accelerates globally, atoll island environments are among the most vulnerable coastal landscapes. however, this globalized perspective on atoll vulnerability favors western frameworks, often overlooking localized coastal processes and the value of indigenous knowledge systems that can enrich our relationship to place and its changes. furthermore, bold claims that atoll islands will become uninhabitable in the future may carry harmful ethical implications for those genealogically connected to these places. by leveraging hawaiian ethnohistorical resources (e.g., hawaiian-language newspapers and traditional place names) alongside geospatial shoreline analysis tools, this project aims to center the natural dynamism of atoll islands and to reframe our understanding of atoll geomorphology through a kuanaʻike hawaiʻi (hawaiian worldview). this study is located on lalo (french frigate shoals), an atoll island within the ancestral realm of pō (deep darkness), formerly known as the papahānaumokuākea marine national monument (pmnm). despite the limited land area covering approximately 0.25 km², lalo serves as a central nesting site for >90% of the threatened native hawaiian green sea turtle population, a critical refuge for >20% of the endangered hawaiian monk seal population, and a vital habitat for seabirds. ultimately, the findings of this project underscore how kānaka ʻōiwi (indigenous hawaiians) perceived low-lying islands, recognizing their natural cycles of eroding into pō (darkness) and re-emerging into ao (light) as intrinsic to their identity as ʻāina kupuna (ancestral islands). this presentation will also highlight the pmnm cultural working group's advocacy for natural atoll subsidence (lalo i lalo) as a long-term adaptive management approach to support responsible stewardship at lalo. keiko wilkins microplastic leachate effects on coral fertilization and settlement microplastic pollution threatens coral reef resilience, yet the effects of microplastic-associated chemicals remain poorly understood. we conducted two experiments to compare the impacts of microplastic particles and their leachates on early coral life stages. in experiment 1, montipora capitata gametes were exposed to microplastic particles or leachates from four plastic types (nylon, pp, hdpe, ldpe) at three concentrations (50, 100 or 200 particles/l). plastic particles did not affect fertilization, but leachates from the same plastics caused significant reductions in fertilization success and effects on fatty acid quantity and composition. in experiment 2, planula larvae of m. capitata and harbor porites were exposed to the same leachates for 7 days. survival and settlement showed species-, polymer-, and concentration-dependent responses, with both inhibitory and occasionally stimulatory effects. together, these studies show that microplastic-associated chemicals, rather than particles alone, disrupt coral fertilization, larval survival, and settlement. addressing plastic-derived chemical pollution is therefore critical for supporting coral recruitment and reef persistence. kekuʻiapōiula keliipuleole a place-based mentorship program for emerging scientists: building capacity for coastal resilience in hawaiʻi tropical coastal communities with strong economic and sustenance ties to near-shore coral reef ecosystems are facing increasing challenges due to changing ocean conditions. to address these complex challenges, marine researchers and resources managers who are trained to integrate scientific expertise with local knowledge and stewardship practices are needed from these communities. the hawaiian islands are one such area impacted by these issues, however there is still a significant gap between the number of professionals needed and those being produced by the current educational system.\r\n\r\nto better support increased participation and retention of hawaiʻi students in ocean-related fields, we developed and piloted an innovative training program for graduate student instructors and undergraduate near-peer mentors involved in early undergraduate research experiences. our approach focuses on developing the mentoring capacity of emerging scientists by incorporating place-based pedagogy and embracing multiple epistemologies, with a strong emphasis on native hawaiian and pacific world views, and exploring frameworks such as papakū makawalu (a framework that guides understanding through the interpretation of hawaiian texts) and kūlana noiʻi (a community-centered research framework).  \r\nto assess the impacts of this training, we employed pre- and post-workshop surveys and focus-group interviews with mentors to quantify changes in key factors, including: cultural competency, cognitive flexibility, and intelligence mindset. here, we present initial results from our quantitative and qualitative examinations of these factors. next steps will include a correlation analysis linking mentor cognitive factors with student learning outcomes and persistence in reef-related research.\r\nby equipping emerging scientists with the tools to embrace diverse perspectives, we present a model for integrating impactful instructional training into marine education to strengthen the foundation for equitable and effective conservation efforts. thus, we hope to cultivate a supportive, multi-tiered community of ocean-related practitioners who are prepared to contribute novel solutions for both regional sustainability and global scientific challenges. leah barkai exploring genetic variation in hāwa‘e maoli (tripneustes gratilla) using coi and bindin across hawaiʻi native hāwa‘e maoli (tripneustes gratilla, collector sea urchin), a culturally and ecologically important species, is a bioindicator of ocean health and contributes to coral reef restoration by grazing on invasive algae in hawai‘i. more than one million hatchery-reared urchins have been out-planted onto kāneʻohe bay patch reefs for a reef management strategy to control algae and support reef recovery. despite their importance, little is known about the genetic variation of t. gratilla populations across o‘ahu and neighboring hawaiian islands. previous fertilization studies (unpublished) of kāneʻohe bay out-planted urchins have shown that males collected in 2022–2023 exhibited lower fertilization rates compared to males from other regions, regardless of the female's origin. observed morphological differences and uneven fertilization suggest a possible association with genetic variation. this study explores whether these asymmetric fertilization patterns reflect population structure and variation in the gamete-recognition protein bindin. here we present preliminary results on variation in: (1) mitochondrial cytochrome oxidase i (coi) used to assess population structure using a neutral marker, and (2) bindin, a reproductive protein that mediates sperm–egg compatibility, influences gamete recognition, and evolves rapidly, potentially driving reproductive isolation between populations. tube feet samples from thirty urchins will be collected from sites across o‘ahu and neighboring hawaiian islands. samples will be preserved for dna extraction, sequenced using the oxford nanopore minion, and analyzed to construct haplotype networks, assess population differentiation, and visualize genetic clustering. this research represents one of the first fine-scale genetic assessments of t. gratilla across the hawaiian islands. results will clarify whether hatchery-raised urchins on kāneʻohe bay patch reefs differ genetically from wild populations, informing management and reef restoration efforts. the study will enhance our understanding of genetic diversity, connectivity, and reproductive divergence in hawai‘i’s native urchins, providing insights to improve reef resilience, control invasive algae, and support biodiversity. lisa mcmanus the importance of growth rate and adaptive capacity for long-term coral persistence thermal tolerance is widely assumed to be the primary determinant of coral persistence under climate change. however, the importance of thermal tolerance relative to other population and species characteristics such as growth rate and genetic variation for long-term persistence has not been systematically evaluated. using a simple eco-evolutionary model, we investigated coral reef futures under climate change across millions of simulations. we explored a comprehensive parameter space encompassing optimal population growth rate, additive genetic variance, thermal tolerance breadth, thermal stress tolerance, effective fecundity, larval immigration rate, and immigrant thermal optima. we forced the model with projected 21st century temperatures for hawaiian reefs under three emissions scenarios (ssp1-2.6, ssp2-4.5, ssp3-7.0) from a dynamically downscaled ocean model. we used random forest regression and permutation importance to quantify the sensitivity of coral cover trajectories to each parameter.\r\n\r\nacross all emissions scenarios, population growth rate and additive genetic variance were the strongest predictors of long-term coral persistence, with thermal tolerance consistently the least important parameter. while corals with low thermal tolerance experienced greater short-term population collapse, populations with high optimal growth rates (>0.1 y⁻¹) and additive genetic variance (>0.1 °c²) best maintained coral cover throughout the century, regardless of thermal tolerance. the relative importance of genetic variance increased under more pessimistic warming scenarios. our findings suggest that fast-growing coral taxa such as acroporids and montiporids may outperform slower-growing, stress-tolerant counterparts post-2050, provided they survive the acute threats of coming decades. these results underscore the critical importance of maintaining genetic diversity in both natural populations and restoration efforts, rather than focusing solely on selecting thermally tolerant genotypes. madelief schelvis ecological role of a resilient coral in honolulu harbor: invasive or pioneer?4 harbor porites is a taxonomically ambiguous and unusually resilient coral found in high abundance in honolulu harbor, an environment hostile to most corals due to sedimentation, reduced water quality, and chronic human disturbance. the success of this little-understood species in such degraded conditions raises questions about its ecological role: specifically, whether it poses a risk as a potential invasive species that could spread to healthy reefs, or functions as a pioneer species supporting reef growth in disturbed habitats.\t\r\nto assess its invasive potential, we conducted a pairwise competition experiment with five common hawaiian corals. harbor porites was consistently dominated by most competitors, showed dominance only against another stress-tolerant species, and interacted neutrally with the closely related porites lobata. these outcomes indicate low competitive ability in mixed-species assemblages and suggest that its distribution may be limited to disturbed environments where competition is reduced. \r\nto assess its pioneer potential, we conducted larval settlement experiments across multiple coral species, testing both the suitability of harbor porites skeleton as a settlement substrate and the influence of chemical cues released by live colonies on larval settlement behaviors. larvae showed a significant preference for settling on harbor porites skeleton relative to other substrates, while chemical cues did not significantly affect settlement rates or timing. these findings suggest that harbor porites may act as a pioneer species by providing stable settlement substrate that facilitates coral recruitment and early reef development in marginal environments.\r\noverall, harbor porites is unlikely to threaten healthy reef communities through competitive dominance but may play a pioneer role in disturbed habitats by providing stable reef structure and settlement substrate that facilitate coral recruitment. understanding how such highly resilient corals function within extreme urban reef systems can inform management and restoration strategies for coastal ecosystems increasingly impacted by human activity. madeline berger investigating the relationship between long-term watershed-scale deforestation and coral reef nitrogen exposure on the belizean barrier reef land-based pollutants, such as excess nutrient runoff, are a local threat to coral reef ecosystem health and survival. evidence from most coral reef bioregions have demonstrated spatial links between terrestrial ecosystem health, often used as a proxy for nutrient runoff to ocean waters, and indicators of coral reef ecosystem health. however, how major land use and land cover changes (lulcc) correlate with changes in coral reef water quality over long temporal scales has been less studied and presents a knowledge gap impeding effective integrated coastal zone management. to uncover the temporal relationship between lulcc and coral reef nitrogen exposure over long time scales, we paired a sub-annual time series of nitrogen isotopes from coral skeletons, an established proxy for nutrient inputs, with yearly time series data of land use change for watershed catchments in central belize. we first focus our analysis on wide-scale deforestation, hypothesizing that decreasing forest cover is typically associated with a conversion to more intensive land uses (e.g., agriculture), and will coincide with increases in dn15 in coral cores . initial results suggest that while deforestation and coral core dn15 in the most proximate watersheds are indeed negatively correlated for the first portion of our time series, this relationship does not hold for the most recent 10 years. we discuss other variables that may explain the patterns observed in later years, as well as ongoing work to quantify these variables. our study reveals important insights into how linked dynamics between land and sea occur and shift over several decades, and relate to differential exposure of a barrier reef system based on proximity to land-based sources of runoff and changing dynamics of land-use over time. mary donovan collaborative science for informing diverse management of hawaiʻi coral reefs integrating reef monitoring data to support management in hawai‘i data informed decision making is often the aspiration of many natural resource management processes, but the reality of how information is used and by whom is often more complex than we might hope. likewise, human and natural systems are complex and uncertain, and those uncertainties are more evident than ever in a changing climate. within this context, i will share how collaborative science to support effective nearshore management in hawai‘i is allowing for greater uptake of data in decision making, with examples of challenges and opportunities for resilience-based management, community-based management, and for managing tradeoffs among fisheries, pollution, and ecosystems. the ability to bridge data and decisions stem from the efforts of the hawaiʻi monitoring and reporting collaborative (himarc) to bring together diverse datasets inclusive of both reef status and trends and associated drivers at spatial and temporal scales commensurate with management needs. these datasets are combined from multiple sources and involve collaborations among scientists, managers, and community leaders resulting in consensus building that increases the potential for uptake in management. the talk will focus on how innovative scientific products can be most useful for achieving successful conservation outcomes when working collaboratively to define and answer questions at the right scale, build trust, and deliver the information at the right place and time. the hawai‘i monitoring and reporting collaborative (himarc) program was established to support marine resource management by combining data into a collaborative database using underwater benthic and fish survey data collected by a network of monitoring programs across the hawaiian islands. each monitoring program uses unique methods, formats, and workflows, which creates challenges when combining datasets. to address this complexity, himarc developed a standardized data integration pipeline that includes a series of data formatting and comprehensive quality assurance and quality control (qa/qc) protocols. all datasets shared with himarc are: 1) reviewed thoroughly to ensure a clear interpretation of the original data and overall structure of the survey design, 2) transformed into a consistent format designed to retain key features of original data structure, 3) checked for missing data, errors, and duplicates, and 4) integrated into a combined multi-partner database. these data formatting and qa/qc protocols not only produce a unified database but also strengthen communication and relationships between data providers regarding methods, metadata, and data quality. by following this process of data integration, himarc contributes to capacity building for data qa/qc within each partner organization, bridges gaps created by different methodologies, and supports statewide analyses. the collaborative database has served as a vehicle for enhancing the quality and collaborative efforts of coral reef monitoring and resulted in a shared effort between scientists and managers to make informed decisions. maya otsu environmental and anthropogenic drivers of introduced reef fish distributions across the hawaiian archipelago three reef fish species – taʻape (lutjanus kasmira), toʻau (lutjanus fulvus), and roi (cephalopholis argus) – were introduced to hawaiʻi in the 1950s for fisheries enhancement. today, local fishers seldom target these “invasive” species, expressing concern about their potential negative impacts on native reef fish. despite being introduced simultaneously, their distributions and densities differ markedly across the main hawaiian islands (mhi) and northwestern hawaiian islands (nwhi). taʻape are observed in shallow waters across the mhi and nwhi and extend into mesophotic depths (45-100 m) as far north as french frigate shoals (lalo). toʻau and roi are restricted to shallow waters (<45 m) up to lalo, with no detections in the northernmost islands. we used species distribution models with >6000 sampling sites of noaa monitoring data to examine how environmental and anthropogenic variables shape these patterns. taʻape and toʻau distributions are constrained by temperature extremes (<22°c and >27°c), with lower-limit annual sea surface temperatures influencing their northward range limits. however, the lower-limit temperature-distribution relationship for taʻape and toʻau varied by scale: positive across the full archipelago but negative within the mhi, likely reflecting greater temperature stability in the mhi, where island-scale windward-leeward temperature gradients outweigh archipelago-wide seasonal shifts. ecologically, taʻape occur in deeper, structurally complex habitats with lower coral cover, while toʻau are found in higher-sediment habitats, potentially linked to freshwater outflows that are not prevalent in the low-lying nwhi. spearfishing negatively affects detectability in all three species, highlighting the role of human pressure in limiting their presence. these results provide insight into the drivers of introduced reef fish distributions, highlighting the potential for climate-driven range expansions into the northernmost reefs of papahānaumokuākea, which are dominated by endemic species. our findings underscore the importance of targeted monitoring and management to mitigate the impacts of invasive fishes under ongoing oceanographic change. maya powell identifying physiological indicators of coral thermal performance3 coral reefs are threatened by rising ocean temperatures which continue to degrade reef ecosystem structure and function. reefs in okinawa, japan maintain high coral biodiversity and cover, providing an ideal place to assess interspecific trait variation. trait based analyses to predict heat stress-resistance are key to projecting coral survival, and thus future reef community structure and dynamics. in this study, we examined interspecific variation in thermal performance and physiology of ten coral species from okinawa, japan. we utilized thermal performance curves (tpcs) of coral metabolism (respiration and photosynthesis) to directly measure functional coral stress tolerance. furthermore, we quantified differences in holobiont physiology including chlorophyll a concentration and host protein content for all species, and tissue biomass and symbiont density for seven species. we then correlated these metrics with coral thermal performance to assess potential physiological drivers of thermal performance. we showed variation across species for both bulk physiological metrics and thermal performance. dominant reef builders such as porites rus consistently had the highest bulk physiology values and metabolic rates while thinner, plating corals such as montipora aequituberculata displayed lower physiological and thermal performance metrics. notably, corals favites complanata and montipora vietnamensis maintained the highest thermal optima across our dataset. by linking physiological traits to thermal performance, we identified tissue biomass as a key physiological predictor of coral thermal optima. these findings highlight interspecific variability in coral responses to thermal stress. furthermore, these results allow us to understand which coral species may survive under rapidly increasing temperatures, and are thus targets for restoration as they are likely to persist under future climate change. we advocate for incorporating interspecific differences in stress tolerance and physiology into targeted management and restoration strategies for coral reefs. natalie goeler-slough linking herbivore community structure to ecological functioning in a hawaiian marine protected area coral reef resilience depends on the competitive balance between reef-building corals and algae. herbivory is a crucial top-down process maintaining this balance, where herbivorous fish graze algal competitors, clear substrate for coral recruitment, and promote crustose coralline algae. while marine protected areas (mpas) have been used successfully to restore herbivore biomass, high standing stock doesn’t automatically lead to high ecological functioning required to control algal dominance. the temporal dynamics of species interactions also remain understudied, as traditional static surveys fail to capture fluctuations that drive sustained ecosystem functioning. as reefs face increasing anthropogenic stressors, it is critical to understand how herbivore community structure relates to realized grazing pressure, and ultimately reef resilience. this study investigates the relationship between herbivore community structure and benthic grazing intensity over space and time. to evaluate how grazing rates vary over time, we set up underwater video stations paired with benthic quadrats to monitor grazing within 1m² focal areas at monthly intervals at hanauma bay, a no-take marine life conservation district on oʻahu. we identified fishes to species and measured body lengths to calculate biomass, while simultaneously quantifying bite rates. we also assess habitat complexity using structure-from-motion (sfm) to evaluate how grazing rates vary with complexity. to complement this time series at hanauma bay, we are deploying video stations at additional sites around oʻahu at a single time point, to compare grazing rates across gradients of sites varying in protection level and human impact. we are integrating these behavioral assays with community metric analyses, including taxonomic α-diversity, β-diversity, and functional redundancy, to assess if diverse assemblages can maximize grazing efficiency. this research will develop a mechanistic understanding of how mpas contribute to ecosystem function, assessing if protection merely preserves fish biomass, or safeguards the community composition and functional processes required for reef resilience. nyssa silbiger metabolic depression of mo’orea’s coral reefs from a multidecadal time-series coral reefs have been the archetype of highly productive oceanic ecosystems. this high productivity is driven in part by the efficient cycling of organic and inorganic carbon, which are the foundation for coral reef metabolic function. coral reef metabolic rates, such as net ecosystem production, ecosystem respiration, and net ecosystem calcification, scale up to affect all living organisms on coral reefs by filtering carbon through the food web and building the calcium carbonate structures that support the high biodiversity of reefs. these metabolic processes are primarily driven by light, temperature, and water flow and are modulated by the composition and biomass of organisms (e.g., relative amount of producers or calcifiers). each of these environmental conditions are shifting as a result of anthropogenic climate change which may threaten the critical metabolic rates that maintain coral reef ecosystems. based on an 18-year time-series from mo’orea, french polynesia, we showed significant declines in gross ecosystem production, ecosystem respiration, and net ecosystem calcification. using a bayesian structural equation model, we demonstrate that coral loss was the primary driver of these dramatic declines in reef metabolism, which was driven primarily by a depression in ecosystem respiration. there is an urgent need to integrate time-series measurements of both organic and inorganic carbon cycles to truly understand how global climate change and other local stressors are interacting to influence critical coral ecosystem functioning. robert richmond addressing reproductive decline and failure in corals: approaches for enhancing reef resilience, persistence and restoration. reproduction and recruitment are the paired processes through which coral reef ecosystems persist.  as coral cover decreases and the distance between reproductive colonies increases, fertilization rates of spawned eggs decline precipitously due to the allee effect.  fecundity in corals is affected by energy availability for egg production, and lipid composition effects egg quality.  protein allocation and availability are also important for successful reproduction, with detoxifying enzymes having dual roles for both cell protection and colony reproduction.  documented declines in fecundity, reproductive success during limited mass spawning events and planula larval recruitment are tied to anthropogenic stressors associated with pollution and climate change.  water quality affects colony energetics, gamete formation and fertilization success, while substratum quality affects larval recruitment.  heavy rains and coastal runoff during spawning events result in degraded surface water quality, which can damage gametes and prevent fertilization.  detoxifying protein expression in parent colonies do not protect gametes once they are released.  this may explain why brooding species appear to do better than spawners in degraded environments such as harbors.  reproductive plasticity in certain coral genera (e.g. porites) raises the question: can corals be induced to switch from spawning to brooding epigenetically, and can reef restoration efforts be augmented through the development of reef reproductive modules? multi-omics provide data that can help diagnose the molecular basis of compromised reproductive capacity in corals, and help guide interventions to facilitate reef resilience, recovery and restoration. rayna mcclintock the effect of alkalinity enhancement on montipora capitata at multiple life stages ocean alkalinity enhancement is a proposed carbon removal technique involving the dissemination of alkaline minerals rich in calcium, sodium, or magnesium into coastal waters to mitigate ocean acidification locally and reduce atmospheric carbon dioxide globally. the addition of these materials induces the formation of carbonate and bicarbonate altering ph, dic, and aragonite saturation state and increasing trace metal concentrations. the impacts of this altered seawater chemistry on coastal ecosystems remains unknown. this study investigates the changes ocean alkalinity enhancement induces in the coral microbiome and metabolism at multiple life stages by exposing larval and adult montipora capitata to equilibrated seawater enriched with olivine, calcium oxide, and sodium hydroxide at multiple levels. larvae were exposed to an extreme range of alkalinity enhancement: ambient ta (~2,200 umol/kg), medium enrichment (~3,500 umol/kg), and high enrichment (~5,000 umol/kg) for 2 weeks. these treatments resulted in significant shifts in the microbial community of coral larvae. oxygen measurements during light and dark incubation periods indicated elevated photosynthesis in calcium oxide and olivine treatments. adult corals were exposed to an alkalinity enrichment of +200 umol/kg in a mesocosm system for 2 months. coral microbiome composition, metabolite profiles, and calcification rates were measured alongside the dissolved organic matter dynamics in the surrounding seawater. this research furthers our understanding of ocean alkalinity enhancement techniques, the resulting impacts on foundational coastal species, and the potential uses for coral restoration. samantha shedd coral adaptive potential on hawaiian reefs: the role of genetic and environmental interactions coral reefs are biologically rich and culturally significant ecosystems that are facing increasing degradation from ocean warming, pollution, and coastal development.  using seascape genomics, i investigated how environmental gradients and genetic variation interact to shape the adaptive potential of three common reef-building coral species (montipora capitata, pocillopora acuta, porites compressa) around o‘ahu, hawai‘i. 640 coral samples were collected from 194 sites across o‘ahu using a stratified random design to capture environmental heterogeneity and assess environmental drivers of coral population structure.  coral genomic dna was processed using reduced representation genomic sequencing (rad-seq) to generate high-density snp data, and symbiodiniaceae community structure was characterized using its2 metabarcoding. distance-based rda (dbrda) was then used to assess the influence of eight environmental factors (sea-surface temperature, wave action, sedimentation, nutrient effluent, irradiance, primary production, reef complexity & coastal development) on coral holobiont population structure. significant genotype-environment associations (geas) were identified using the samβada pipeline, and outlier loci associated with geas were annotated and mapped spatially to locate potential hotspots of adaptive capacity. overall, this approach seeks to identify individuals and populations with putative tolerance to specific environmental stressors. by integrating genetic, symbiont, and environmental data, this project provides the most spatially extensive seascape genomics assessment in hawai‘i to date. the results will offer critical, spatially explicit data to support coral reef ecosystem management and conservation strategies that prioritize resilient coral populations and adaptive genetic diversity in the face of climate change. zach quinlan coral metabolism and contaminant loads track human land use anthropogenic activities pose a significant risk to vulnerable marine ecosystems like coral reefs, particularly those near human population centers. despite coral reefs being one of the systems most at risk, the relationship between contaminant exposure and coral health across gradients of ecosystem disturbance remains poorly understood. our metabolomic analysis of 380 corals from 16 sites spanning an anthropogenic impact gradient revealed that the coral metabolome is predictive of anthropogenic ecosystem disturbance. we found that human activities both within catchments and in the marine ecosystem altered the chemodiversity of coral metabolomes with a direct relationship to historic trends in coral cover: nitrogen reserves and metabolome energetic potential were reduced, while stress metabolites were enriched at more impacted sites. we further identified 25 anthropogenic contaminants from agricultural, cosmetological, industrial, and pharmaceutical sources accumulated in coral metabolomes. our results suggest that the bioaccumulation of pollutants in corals impacts all but the most remote reef ecosystems, which will disproportionately threaten communities reliant on reefs. together, our findings demonstrate a direct relationship between coral health, accumulation of dangerous contaminants within corals, and anthropogenic disturbance that is consistent across species.",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 1
-    },
-    {
-      "id": "loc-0044",
-      "affiliation": "University of Hawai'i - M?noa",
-      "lat": 7.5004,
-      "lon": 134.6242,
-      "speakers": [
-        "Alexi Meltel",
-        "Alessandra Shea",
-        "Dr Andrea Kealoha",
-        "Dr Angela Richards Donà"
-      ],
-      "speaker_details": [
-        {
-          "name": "Alexi Meltel",
-          "search_text": "alexi meltel physiological responses to heat stress in corals from a resilient reef system in palau coral reefs are becoming increasingly threatened by rising sea surface temperatures, yet some populations remain resistant. in ngermid bay, a semi enclosed bay in palau, corals thrive despite higher sea surface temperatures and ph levels similar to projections for 2100. to better understand what the future of coral reefs will look like, more research is needed to determine the physiological mechanisms behind coral responses to stressors, particularly in resilient populations. this project investigates physiological responses to heat stress and recovery in porites cf. lobata populations from three sites within ngermid bay in comparison to a reference site with more oceanic influences. in collaboration with the palau international coral reef center (picrc), a 7-day heat stress and 15-day recovery experiment was conducted, and coral fragments were assessed for buoyant weight to evaluate calcification rates and color intensity via the health chart to evaluate bleaching and recovery status at days 0, 7, and 15. changes in calcification and pigmentation across the stress and recovery periods will be used to identify physiological indicators of thermal tolerance in p. cf. lobata, along with recovery potential from stress events. anticipated results from this project will advance understanding of the physiological mechanisms that contribute to coral resilience and adaptation. linking these findings to reef management will support strategies that target conservation and protection of corals in a changing ocean.",
-          "talk_titles": [
-            {
-              "title": "Physiological responses to heat stress in corals from a resilient reef system in Palau",
-              "primary": true,
-              "talk_id": "68e8fc7e-0e71-4cd4-87ca-17db45f8bbe8"
-            }
-          ],
-          "person_key": "icrs-p-01163",
-          "attended": true
-        },
-        {
-          "name": "Alessandra Shea",
-          "search_text": "alessandra shea",
-          "talk_titles": [],
-          "person_key": "icrs-p-01590",
-          "attended": true,
-          "non_speaking_delegate": true
-        },
-        {
-          "name": "Dr Andrea Kealoha",
-          "search_text": "dr andrea kealoha",
-          "talk_titles": [
-            {
-              "title": "Heterotrophic plasticity of corals under a nutrient and SGD gradient in Kahekili, Maui, Hawaiʻi",
-              "primary": false,
-              "talk_id": "0f2b8fc6-5c5a-490e-afe7-5e940eaa7279"
-            },
-            {
-              "title": "Revisiting the Darwin Point 40 years later: spatial patterns and temporal change in coral reef carbonate production across the Hawaiian Archipelago",
-              "primary": false,
-              "talk_id": "457cd1dd-5403-43bd-ac1a-bb48a9a4f11b"
-            },
-            {
-              "title": "Short-term Improvements in Coastal Acidification and Eutrophication along a Maui Coral Reef during the COVID-19 Pandemic",
-              "primary": false,
-              "talk_id": "06e748a5-6df7-48d6-b956-542bd5cccb16"
-            },
-            {
-              "title": "Tissue nutrients and biomass of the red algal invader Chondria tumulosa in the Papahānaumokuākea Marine National Monument, Hawaiʻi",
-              "primary": false,
-              "talk_id": "b4708616-f130-484f-b0e1-53cb83d6aef3"
-            },
-            {
-              "title": "Understanding variability in carbonate accretion rates across the Hawaiian Islands",
-              "primary": false,
-              "talk_id": "c09ff4aa-88b2-4b07-bd1d-1482f5ffcc44"
-            },
-            {
-              "title": "Using carbonate chemistry to evaluate coral reef metabolism following the Lahaina urban wildfire",
-              "primary": false,
-              "talk_id": "2d95c373-579e-4651-9673-5c6568081237"
-            }
-          ],
-          "person_key": "icrs-p-00892",
-          "attended": true,
-          "non_speaking_delegate": true
-        },
-        {
-          "name": "Dr Angela Richards Donà",
-          "search_text": "dr angela richards donà",
-          "talk_titles": [],
-          "person_key": "icrs-p-01451",
-          "attended": true,
-          "non_speaking_delegate": true
-        }
-      ],
-      "speaker_count": 4,
-      "talk_count": 1,
-      "geocode_level": "country",
-      "distance_km": 6461.9,
-      "search_text": "university of hawai'i - m?noa alexi meltel alexi meltel physiological responses to heat stress in corals from a resilient reef system in palau coral reefs are becoming increasingly threatened by rising sea surface temperatures, yet some populations remain resistant. in ngermid bay, a semi enclosed bay in palau, corals thrive despite higher sea surface temperatures and ph levels similar to projections for 2100. to better understand what the future of coral reefs will look like, more research is needed to determine the physiological mechanisms behind coral responses to stressors, particularly in resilient populations. this project investigates physiological responses to heat stress and recovery in porites cf. lobata populations from three sites within ngermid bay in comparison to a reference site with more oceanic influences. in collaboration with the palau international coral reef center (picrc), a 7-day heat stress and 15-day recovery experiment was conducted, and coral fragments were assessed for buoyant weight to evaluate calcification rates and color intensity via the health chart to evaluate bleaching and recovery status at days 0, 7, and 15. changes in calcification and pigmentation across the stress and recovery periods will be used to identify physiological indicators of thermal tolerance in p. cf. lobata, along with recovery potential from stress events. anticipated results from this project will advance understanding of the physiological mechanisms that contribute to coral resilience and adaptation. linking these findings to reef management will support strategies that target conservation and protection of corals in a changing ocean.",
-      "country_code": "PW",
-      "country": "Palau",
-      "connection_count": 1
-    },
-    {
-      "id": "loc-0045",
+      "id": "loc-0034",
       "affiliation": "University of Hawai?i - Hilo",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -3035,105 +1527,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0046",
-      "affiliation": "University of Hawai?i - M?noa",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "speakers": [
-        "Ashley Carreiro",
-        "Leon Tran"
-      ],
-      "speaker_details": [
-        {
-          "name": "Ashley Carreiro",
-          "search_text": "ashley carreiro characterizing coral community structure and flow dynamics across eight reefs in okinawa, japan coral reefs in okinawa, japan are highly diverse and exhibit substantial variation in their structural complexity and benthic community composition, which can be attributed partly to the biophysical conditions. essential ecosystem services–such as habitat for fisheries species and shoreline protection–depend heavily on reef complexity, therefore it is crucial to understand both the drivers of changing reef structure and the impacts of those changes. to better characterize the relationship between hydrodynamics and reef structure on okinawa’s reefs, we deployed instruments less than 50 cm off the bottom that recorded flow velocity across eight sites along the island’s west coast for two weeks in august 2025. we paired these measurements with structure-from-motion photogrammetry to quantify coral community composition and structural complexity. photogrammetry surveys covered 100 m2 at each site and were used to generate digital elevation models for rugosity calculations and orthomosaic images. orthomosaics were analyzed in coralnet to assess community composition at the genus and morphological functional levels. flow regimes differed among sites, with average speeds ranging from 0.80 to 6.28 cm s-1 and max speeds from 6.13 to 25.01 cm s-1. reefs with higher current magnitudes were observed to support a greater abundance of tabular colonies, whereas reefs with lower current magnitudes were dominated by more massive coral morphologies. this work demonstrates the importance of taking an integrative approach to coral reef monitoring, providing insights into the interconnectedness between hydrodynamics and  community composition on one of the most biodiverse reef ecosystems in the world.",
-          "talk_titles": [
-            {
-              "title": "Characterizing coral community structure and flow dynamics across eight reefs in Okinawa, Japan",
-              "primary": true,
-              "talk_id": "3dfc5c76-8bfd-4736-875e-ba57f75cf74f"
-            },
-            {
-              "title": "Coral Connectivity and Conservation: Using Exploration and Genetic Biodiversity to Better Understand and Preserve Mesophotic Coral Ecosystems",
-              "primary": false,
-              "talk_id": "7d94d7bf-2f69-4955-a431-206e126ab869"
-            },
-            {
-              "title": "Population genetic structuring varies across depth and region in corals and sponges in marine protected areas of the Gulf of Mexico and Florida",
-              "primary": false,
-              "talk_id": "11c66692-4523-4cd0-b1cc-1c552a1624d2"
-            },
-            {
-              "title": "The effect of community diversity on thermal stress tolerance of coral reefs in Okinawa, Japan",
-              "primary": false,
-              "talk_id": "ea808f4e-b011-435a-9cc4-4902a334af42"
-            }
-          ],
-          "person_key": "icrs-p-00288",
-          "attended": true
-        },
-        {
-          "name": "Leon Tran",
-          "search_text": "leon tran thermal tolerance and sensitivity to marine heatwaves in the day octopus (octopus cyanea; he’e mauli) the increasing frequency and severity of anthropogenic marine heatwaves are continually altering coral reef ecosystems. of particular concern is the impact of marine heatwaves on reef-dwelling species with commercial, cultural, and recreational importance to coastal communities. the vast majority of these species are tropical ectotherms, adapted to the relatively stable thermal environment of coral reefs. the thermal tolerance of reef-dwelling cephalopods has been relatively understudied, but conflicting evidence exists regarding their vulnerability to climate stressors. ecological studies suggest cephalopods worldwide are becoming more abundant, despite ongoing climate change. additionally, the short generation times, high fecundity, and plastic life histories of cephalopods further suggest potential for adaptation to environmental changes. however, experimental studies clearly indicate the negative physiological effects of ocean warming in cephalopods, particularly in temperature species and early life stages. we present the effects of marine heatwaves on the thermal sensitivity and tolerance in adult and subadult day octopus (octopus cyanea; heʻe mauli). octopus were collected from reefs of oʻahu during the warmest and coolest times of the year. individuals were randomly assigned to a seasonal marine heatwave treatment lasting 10 days (ambient winter temperature, 24.5°c; moderate winter warming, 26.5°c; intense winter warming, 28.5°c; ambient summer temperature, 28.0°c; and moderate summer warming, 30.0°c). we measured metabolic scope using intermittent-flow respirometry to assess thermal sensitivity, followed by measurement of upper critical thermal limits to assess thermal tolerance. we found high metabolic sensitivity to both winter and summer warming, but moderate summer warming induced the greatest reduction in metabolic scope. critical thermal limits increased with temperature and were highest during the summer, revealing limited capacity for thermal acclimation. here we address a critical knowledge gap regarding the physiological consequences and vulnerability of the late life stages in a reef-dwelling octopus to anthropogenic climate change.",
-          "talk_titles": [
-            {
-              "title": "Thermal tolerance and sensitivity to marine heatwaves in the day octopus (Octopus cyanea; He’e mauli)",
-              "primary": true,
-              "talk_id": "43d52206-0087-447d-821f-5e82ad0fc1b0"
-            },
-            {
-              "title": "Habitat Enhancement Through Indigenous Stone Fish Houses: Evidence from a Two-Year Field Experiment in Hawaiʻi",
-              "primary": false,
-              "talk_id": "4d3efa98-bff0-4f45-833f-97c28dde8328"
-            }
-          ],
-          "person_key": "icrs-p-01769",
-          "attended": true
-        }
-      ],
-      "speaker_count": 2,
-      "talk_count": 2,
-      "geocode_level": "country",
-      "distance_km": 13880.4,
-      "search_text": "university of hawai?i - m?noa ashley carreiro leon tran ashley carreiro characterizing coral community structure and flow dynamics across eight reefs in okinawa, japan coral reefs in okinawa, japan are highly diverse and exhibit substantial variation in their structural complexity and benthic community composition, which can be attributed partly to the biophysical conditions. essential ecosystem services–such as habitat for fisheries species and shoreline protection–depend heavily on reef complexity, therefore it is crucial to understand both the drivers of changing reef structure and the impacts of those changes. to better characterize the relationship between hydrodynamics and reef structure on okinawa’s reefs, we deployed instruments less than 50 cm off the bottom that recorded flow velocity across eight sites along the island’s west coast for two weeks in august 2025. we paired these measurements with structure-from-motion photogrammetry to quantify coral community composition and structural complexity. photogrammetry surveys covered 100 m2 at each site and were used to generate digital elevation models for rugosity calculations and orthomosaic images. orthomosaics were analyzed in coralnet to assess community composition at the genus and morphological functional levels. flow regimes differed among sites, with average speeds ranging from 0.80 to 6.28 cm s-1 and max speeds from 6.13 to 25.01 cm s-1. reefs with higher current magnitudes were observed to support a greater abundance of tabular colonies, whereas reefs with lower current magnitudes were dominated by more massive coral morphologies. this work demonstrates the importance of taking an integrative approach to coral reef monitoring, providing insights into the interconnectedness between hydrodynamics and  community composition on one of the most biodiverse reef ecosystems in the world. leon tran thermal tolerance and sensitivity to marine heatwaves in the day octopus (octopus cyanea; he’e mauli) the increasing frequency and severity of anthropogenic marine heatwaves are continually altering coral reef ecosystems. of particular concern is the impact of marine heatwaves on reef-dwelling species with commercial, cultural, and recreational importance to coastal communities. the vast majority of these species are tropical ectotherms, adapted to the relatively stable thermal environment of coral reefs. the thermal tolerance of reef-dwelling cephalopods has been relatively understudied, but conflicting evidence exists regarding their vulnerability to climate stressors. ecological studies suggest cephalopods worldwide are becoming more abundant, despite ongoing climate change. additionally, the short generation times, high fecundity, and plastic life histories of cephalopods further suggest potential for adaptation to environmental changes. however, experimental studies clearly indicate the negative physiological effects of ocean warming in cephalopods, particularly in temperature species and early life stages. we present the effects of marine heatwaves on the thermal sensitivity and tolerance in adult and subadult day octopus (octopus cyanea; heʻe mauli). octopus were collected from reefs of oʻahu during the warmest and coolest times of the year. individuals were randomly assigned to a seasonal marine heatwave treatment lasting 10 days (ambient winter temperature, 24.5°c; moderate winter warming, 26.5°c; intense winter warming, 28.5°c; ambient summer temperature, 28.0°c; and moderate summer warming, 30.0°c). we measured metabolic scope using intermittent-flow respirometry to assess thermal sensitivity, followed by measurement of upper critical thermal limits to assess thermal tolerance. we found high metabolic sensitivity to both winter and summer warming, but moderate summer warming induced the greatest reduction in metabolic scope. critical thermal limits increased with temperature and were highest during the summer, revealing limited capacity for thermal acclimation. here we address a critical knowledge gap regarding the physiological consequences and vulnerability of the late life stages in a reef-dwelling octopus to anthropogenic climate change.",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 2
-    },
-    {
-      "id": "loc-0047",
-      "affiliation": "University of Hawaii - M?noa",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "speakers": [
-        "Maryann Webb"
-      ],
-      "speaker_details": [
-        {
-          "name": "Maryann Webb",
-          "search_text": "maryann webb edna as a tool for native hawaiian restoration efforts recent efforts to reclaim and rebuild loko i‘a, traditional hawaiian aquaculture systems, combine traditional hawaiian management with cutting edge biological technologies to expedite restoration. loko i‘a are situated in coastal marine areas and support fish abundance by protecting and monitoring fish nursery habitats. our study used environmental dna (edna) sampling to quickly and accurately produce a species list for eight protected fishponds on the windward coast of o‘ahu, hi. we worked with the wildlife preserve managers to produce an edna-based species list which included common english and hawaiian names and species’ endangered or invasive status in hawai’i. the sampling and re-formatting of our data allowed resource managers to quickly and easily identify a number of endangered species present in the loko i‘a. we are now in the process of creating a single marine database containing both taxonomic and species information useful to local stewards in hawai’i to increase the usefulness of edna biodiversity surveys in management.  \r\nedna sampling was paired with environmental measures in order to model which environmental drivers were most associated with biological groups of interest (fishes, algae, annelids etc.). redundancy analysis across all sites and biological groups identified temperature as a significant environmental driver. however, different factors played a significant role in species composition when biological groups were modeled separately. for example, actinopteri (bony fishes) were most influenced by turbidity, while porifera (sponges) most corresponded with ph. these results indicate that species or biological groups of interest need to be considered individually as they respond differently to environmental drivers. our study can be used as a quick guide to help managers focus their efforts. by knowing which abiotic factors drive biotic communities, restoration of loko i‘a can be curated to enhance an environment that caters to desired species.",
-          "talk_titles": [
-            {
-              "title": "eDNA as a tool for native Hawaiian restoration efforts",
-              "primary": true,
-              "talk_id": "4615db3f-0cef-474e-8409-fac2db2af95d"
-            }
-          ],
-          "person_key": "icrs-p-01859",
-          "attended": true
-        }
-      ],
-      "speaker_count": 1,
-      "talk_count": 1,
-      "geocode_level": "country",
-      "distance_km": 13880.4,
-      "search_text": "university of hawaii - m?noa maryann webb maryann webb edna as a tool for native hawaiian restoration efforts recent efforts to reclaim and rebuild loko i‘a, traditional hawaiian aquaculture systems, combine traditional hawaiian management with cutting edge biological technologies to expedite restoration. loko i‘a are situated in coastal marine areas and support fish abundance by protecting and monitoring fish nursery habitats. our study used environmental dna (edna) sampling to quickly and accurately produce a species list for eight protected fishponds on the windward coast of o‘ahu, hi. we worked with the wildlife preserve managers to produce an edna-based species list which included common english and hawaiian names and species’ endangered or invasive status in hawai’i. the sampling and re-formatting of our data allowed resource managers to quickly and easily identify a number of endangered species present in the loko i‘a. we are now in the process of creating a single marine database containing both taxonomic and species information useful to local stewards in hawai’i to increase the usefulness of edna biodiversity surveys in management.  \r\nedna sampling was paired with environmental measures in order to model which environmental drivers were most associated with biological groups of interest (fishes, algae, annelids etc.). redundancy analysis across all sites and biological groups identified temperature as a significant environmental driver. however, different factors played a significant role in species composition when biological groups were modeled separately. for example, actinopteri (bony fishes) were most influenced by turbidity, while porifera (sponges) most corresponded with ph. these results indicate that species or biological groups of interest need to be considered individually as they respond differently to environmental drivers. our study can be used as a quick guide to help managers focus their efforts. by knowing which abiotic factors drive biotic communities, restoration of loko i‘a can be curated to enhance an environment that caters to desired species.",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 1
-    },
-    {
-      "id": "loc-0048",
+      "id": "loc-0035",
       "affiliation": "University of North Carolina - Chapel Hill",
       "lat": 35.7796,
       "lon": -78.6382,
@@ -3170,7 +1564,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0049",
+      "id": "loc-0036",
       "affiliation": "University of Science and Technology",
       "lat": 22.3193,
       "lon": 114.1694,
@@ -3222,7 +1616,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0050",
+      "id": "loc-0037",
       "affiliation": "University of the South Pacific and Pacific Blue Foundation",
       "lat": -18.1416,
       "lon": 178.4419,
@@ -3254,7 +1648,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0051",
+      "id": "loc-0038",
       "affiliation": "V-Corals",
       "lat": 31.7683,
       "lon": 35.2137,
@@ -3286,7 +1680,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0052",
+      "id": "loc-0039",
       "affiliation": "Visualizing Coastal Climates, Global Futures",
       "lat": 24.7136,
       "lon": 46.6753,
@@ -3318,7 +1712,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0053",
+      "id": "loc-0040",
       "affiliation": "A*STAR Institute of High Performance Computing",
       "lat": 1.2984608,
       "lon": 103.787255,
@@ -3350,7 +1744,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0054",
+      "id": "loc-0041",
       "affiliation": "Academia Sinica",
       "lat": 25.0422388,
       "lon": 121.6161527,
@@ -3472,7 +1866,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0055",
+      "id": "loc-0042",
       "affiliation": "Adelaide University",
       "lat": -34.920603,
       "lon": 138.6062277,
@@ -3504,7 +1898,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0056",
+      "id": "loc-0043",
       "affiliation": "Adelphi University",
       "lat": 40.7200034,
       "lon": -73.6521126,
@@ -3541,7 +1935,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0057",
+      "id": "loc-0044",
       "affiliation": "Alfred Wegener Institute For Marine And Polar Research (awi)",
       "lat": 52.52,
       "lon": 13.405,
@@ -3608,7 +2002,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0058",
+      "id": "loc-0045",
       "affiliation": "Alligator Head Foundation",
       "lat": 18.175723,
       "lon": -76.4232605,
@@ -3675,7 +2069,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0059",
+      "id": "loc-0046",
       "affiliation": "Arizona State University",
       "lat": 33.4229975,
       "lon": -111.9278306,
@@ -3922,7 +2316,7 @@ export const SITE_DATA = {
       "connection_count": 14
     },
     {
-      "id": "loc-0060",
+      "id": "loc-0047",
       "affiliation": "Atlantic Oceanographic and Meteorological Laboratory",
       "lat": 25.7346912,
       "lon": -80.1621813,
@@ -4024,7 +2418,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0061",
+      "id": "loc-0048",
       "affiliation": "Auckland University of Technology",
       "lat": -36.8536098,
       "lon": 174.7664805,
@@ -4178,7 +2572,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0062",
+      "id": "loc-0049",
       "affiliation": "Australian Institute of Marine Science",
       "lat": -19.266508785523758,
       "lon": 147.05558077860096,
@@ -5397,7 +3791,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0063",
+      "id": "loc-0050",
       "affiliation": "Australian Museum Research Institute",
       "lat": -33.873917,
       "lon": 151.212702,
@@ -5439,7 +3833,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0064",
+      "id": "loc-0051",
       "affiliation": "Bangor University",
       "lat": 4.1755,
       "lon": 73.5093,
@@ -5471,7 +3865,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0065",
+      "id": "loc-0052",
       "affiliation": "Bar-Ilan University",
       "lat": 32.0691989,
       "lon": 34.8430876,
@@ -5634,7 +4028,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0066",
+      "id": "loc-0053",
       "affiliation": "Ben Gurion University of the Negev",
       "lat": 31.261426,
       "lon": 34.7995546,
@@ -5666,7 +4060,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0067",
+      "id": "loc-0054",
       "affiliation": "Bergische Universität Wuppertal",
       "lat": 51.2445542,
       "lon": 7.1501244,
@@ -5698,7 +4092,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0068",
+      "id": "loc-0055",
       "affiliation": "Bermuda Institute of Ocean Sciences",
       "lat": 32.3708572,
       "lon": -64.6961517,
@@ -5755,7 +4149,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0069",
+      "id": "loc-0056",
       "affiliation": "Bermuda Institute of Ocean Sciences",
       "lat": -22.2558,
       "lon": 166.4505,
@@ -5807,7 +4201,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0070",
+      "id": "loc-0057",
       "affiliation": "Bigelow Laboratory for Ocean Sciences",
       "lat": 43.8597347,
       "lon": -69.5800368,
@@ -5854,7 +4248,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0071",
+      "id": "loc-0058",
       "affiliation": "Biodiversity Research Center, Academia Sinica",
       "lat": 25.0450536,
       "lon": 121.6139221,
@@ -5891,7 +4285,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0072",
+      "id": "loc-0059",
       "affiliation": "Blue Alliance",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -5928,7 +4322,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0073",
+      "id": "loc-0060",
       "affiliation": "Blue Alliance",
       "lat": -6.163,
       "lon": 35.7516,
@@ -5995,7 +4389,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0074",
+      "id": "loc-0061",
       "affiliation": "Blue Corner Marine Research",
       "lat": -8.666393,
       "lon": 115.4488612,
@@ -6037,7 +4431,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0075",
+      "id": "loc-0062",
       "affiliation": "Boston College",
       "lat": 42.3355488,
       "lon": -71.1684945,
@@ -6084,7 +4478,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0076",
+      "id": "loc-0063",
       "affiliation": "Boston University",
       "lat": 42.3504997,
       "lon": -71.1053991,
@@ -6423,7 +4817,7 @@ export const SITE_DATA = {
       "connection_count": 9
     },
     {
-      "id": "loc-0077",
+      "id": "loc-0064",
       "affiliation": "Brin",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -6455,7 +4849,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0078",
+      "id": "loc-0065",
       "affiliation": "Bureau of Meteorology",
       "lat": -35.2809,
       "lon": 149.13,
@@ -6492,7 +4886,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0079",
+      "id": "loc-0066",
       "affiliation": "California Academy of Sciences, Auckland",
       "lat": -36.8521,
       "lon": 174.76318,
@@ -6559,7 +4953,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0080",
+      "id": "loc-0067",
       "affiliation": "California Academy of Sciences",
       "lat": 37.7698646,
       "lon": -122.4660947,
@@ -6734,7 +5128,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0081",
+      "id": "loc-0068",
       "affiliation": "California State University Monterey Bay",
       "lat": 36.653712,
       "lon": -121.7989787,
@@ -6810,7 +5204,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0082",
+      "id": "loc-0069",
       "affiliation": "California State University Northridge",
       "lat": 34.2425448,
       "lon": -118.5290922,
@@ -6847,7 +5241,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0083",
+      "id": "loc-0070",
       "affiliation": "California State University",
       "lat": 38.5816,
       "lon": -121.4944,
@@ -6884,7 +5278,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0084",
+      "id": "loc-0071",
       "affiliation": "Cape Eleuthera Institute",
       "lat": 24.8294798,
       "lon": -76.3281061,
@@ -6934,7 +5328,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0085",
+      "id": "loc-0072",
       "affiliation": "Carl Von Ossietzky University of Oldenburg",
       "lat": 53.1467333,
       "lon": 8.183124,
@@ -6986,7 +5380,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0086",
+      "id": "loc-0073",
       "affiliation": "Carl-von-Ossietzky University of Oldenburg",
       "lat": 53.1467333,
       "lon": 8.183124,
@@ -7038,7 +5432,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0087",
+      "id": "loc-0074",
       "affiliation": "Cawthron Institute",
       "lat": -41.271457,
       "lon": 173.2933615,
@@ -7075,7 +5469,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0088",
+      "id": "loc-0075",
       "affiliation": "Cefas",
       "lat": 51.5074,
       "lon": -0.1278,
@@ -7141,7 +5535,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0089",
+      "id": "loc-0076",
       "affiliation": "Center For Research And Advanced Studies Ipn-mérida Unit",
       "lat": 19.4326,
       "lon": -99.1332,
@@ -7173,7 +5567,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0090",
+      "id": "loc-0077",
       "affiliation": "Central Queensland University",
       "lat": -23.3242441,
       "lon": 150.5189056,
@@ -7210,7 +5604,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0091",
+      "id": "loc-0078",
       "affiliation": "Centre de Recherches Insulaires et Observatoire de l'Environnement de Moorea",
       "lat": -17.5388435,
       "lon": -149.8295234,
@@ -7247,7 +5641,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0092",
+      "id": "loc-0079",
       "affiliation": "Centre for Scientific Research and Higher Education of Ensenada",
       "lat": 31.8675086,
       "lon": -116.6652197,
@@ -7293,7 +5687,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0093",
+      "id": "loc-0080",
       "affiliation": "Centre Scientifique de Monaco",
       "lat": 43.7328381,
       "lon": 7.4252867,
@@ -7325,7 +5719,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0094",
+      "id": "loc-0081",
       "affiliation": "Centre Scientifique de Monaco",
       "lat": 43.7328381,
       "lon": 7.4252867,
@@ -7452,7 +5846,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0095",
+      "id": "loc-0082",
       "affiliation": "Centro de Ciências do Mar do Algarve",
       "lat": 37.0435555,
       "lon": -7.9697642,
@@ -7484,7 +5878,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0096",
+      "id": "loc-0083",
       "affiliation": "Centro de Investigaciones Biológicas del Noroeste",
       "lat": 24.1357979,
       "lon": -110.4262387,
@@ -7526,7 +5920,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0097",
+      "id": "loc-0084",
       "affiliation": "Centro Interdisciplinario de Ciencias marinas",
       "lat": 24.140896,
       "lon": -110.3509768,
@@ -7563,7 +5957,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0098",
+      "id": "loc-0085",
       "affiliation": "Charles Darwin Foundation",
       "lat": -0.7424663,
       "lon": -90.3041677,
@@ -7600,7 +5994,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0099",
+      "id": "loc-0086",
       "affiliation": "Chinese University of Hong Kong",
       "lat": 22.419625,
       "lon": 114.2067606,
@@ -7739,7 +6133,7 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0100",
+      "id": "loc-0087",
       "affiliation": "Chulalongkorn University",
       "lat": 13.7385647,
       "lon": 100.5321342,
@@ -7829,7 +6223,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0101",
+      "id": "loc-0088",
       "affiliation": "Chungnam National University",
       "lat": 36.3669174,
       "lon": 127.346504,
@@ -7861,7 +6255,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0102",
+      "id": "loc-0089",
       "affiliation": "Cinvestav Mérida",
       "lat": 21.0215277,
       "lon": -89.6263545,
@@ -7893,7 +6287,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0103",
+      "id": "loc-0090",
       "affiliation": "Citizens of the Reef",
       "lat": -35.2809,
       "lon": 149.13,
@@ -7935,7 +6329,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0104",
+      "id": "loc-0091",
       "affiliation": "Clemson University",
       "lat": 34.6749926,
       "lon": -82.8406184,
@@ -7967,7 +6361,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0105",
+      "id": "loc-0092",
       "affiliation": "CMOANA Consulting",
       "lat": -17.5516,
       "lon": -149.5585,
@@ -8009,7 +6403,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0106",
+      "id": "loc-0093",
       "affiliation": "CNRS/UPVD",
       "lat": 42.6820471,
       "lon": 2.8988581,
@@ -8046,7 +6440,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0107",
+      "id": "loc-0094",
       "affiliation": "CNRS",
       "lat": 48.8566,
       "lon": 2.3522,
@@ -8092,7 +6486,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0108",
+      "id": "loc-0095",
       "affiliation": "CNRS",
       "lat": -17.5516,
       "lon": -149.5585,
@@ -8164,7 +6558,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0109",
+      "id": "loc-0096",
       "affiliation": "College of Charleston",
       "lat": 32.7834441,
       "lon": -79.9370018,
@@ -8215,7 +6609,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0110",
+      "id": "loc-0097",
       "affiliation": "Colorado State University",
       "lat": 40.5729432,
       "lon": -105.0848391,
@@ -8257,7 +6651,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0111",
+      "id": "loc-0098",
       "affiliation": "Columbia University",
       "lat": 40.8075355,
       "lon": -73.9625727,
@@ -8294,7 +6688,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0112",
+      "id": "loc-0099",
       "affiliation": "Connecticut College",
       "lat": 41.3797568,
       "lon": -72.1043429,
@@ -8326,7 +6720,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0113",
+      "id": "loc-0100",
       "affiliation": "Conservation International",
       "lat": -22.2658388,
       "lon": 166.4607968,
@@ -8363,7 +6757,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0114",
+      "id": "loc-0101",
       "affiliation": "Conservation International",
       "lat": -13.8381329,
       "lon": -171.7680701,
@@ -8415,7 +6809,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0115",
+      "id": "loc-0102",
       "affiliation": "Conservation Metrics",
       "lat": 36.9530536,
       "lon": -122.0654221,
@@ -8447,7 +6841,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0116",
+      "id": "loc-0103",
       "affiliation": "Cooperative Institute for Marine and Atmospheric Research",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -8629,7 +7023,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0117",
+      "id": "loc-0104",
       "affiliation": "Coral Guardian",
       "lat": 45.7572412,
       "lon": 4.8470396,
@@ -8666,7 +7060,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0118",
+      "id": "loc-0105",
       "affiliation": "Coral Reef Advisory Group",
       "lat": -14.2756,
       "lon": -170.702,
@@ -8698,7 +7092,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0119",
+      "id": "loc-0106",
       "affiliation": "Coral Reef Alliance",
       "lat": 14.0723,
       "lon": -87.1921,
@@ -8730,7 +7124,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0120",
+      "id": "loc-0107",
       "affiliation": "Coral Reef Alliance",
       "lat": 37.7899574,
       "lon": -122.400884,
@@ -8817,7 +7211,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0121",
+      "id": "loc-0108",
       "affiliation": "Coral Reef Consulting",
       "lat": -14.2756,
       "lon": -170.702,
@@ -8859,7 +7253,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0122",
+      "id": "loc-0109",
       "affiliation": "Coral Reef Watch",
       "lat": -35.2809,
       "lon": 149.13,
@@ -8931,7 +7325,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0123",
+      "id": "loc-0110",
       "affiliation": "Coral Reef Watch",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -9047,7 +7441,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0124",
+      "id": "loc-0111",
       "affiliation": "Coral Restoration Consortium",
       "lat": 18.04248,
       "lon": -63.05483,
@@ -9124,7 +7518,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0125",
+      "id": "loc-0112",
       "affiliation": "Coral Restoration Foundation",
       "lat": 25.088014,
       "lon": -80.441046,
@@ -9244,7 +7638,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0126",
+      "id": "loc-0113",
       "affiliation": "Coral soul",
       "lat": 36.7395595,
       "lon": -3.7532893,
@@ -9276,7 +7670,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0127",
+      "id": "loc-0114",
       "affiliation": "Coral Triangle Center",
       "lat": -8.7029974,
       "lon": 115.2591332,
@@ -9386,7 +7780,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0128",
+      "id": "loc-0115",
       "affiliation": "Coral Vivo Institute",
       "lat": -15.7939,
       "lon": -47.8828,
@@ -9433,7 +7827,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0129",
+      "id": "loc-0116",
       "affiliation": "Corales De Paz",
       "lat": 3.4331807,
       "lon": -76.5463659,
@@ -9465,7 +7859,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0130",
+      "id": "loc-0117",
       "affiliation": "Coralku Solutions",
       "lat": 5.7944933,
       "lon": 102.9000729,
@@ -9497,7 +7891,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0131",
+      "id": "loc-0118",
       "affiliation": "Corals For Conservation",
       "lat": -18.1416,
       "lon": 178.4419,
@@ -9562,7 +7956,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0132",
+      "id": "loc-0119",
       "affiliation": "Coralwatch",
       "lat": -35.2809,
       "lon": 149.13,
@@ -9628,7 +8022,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0133",
+      "id": "loc-0120",
       "affiliation": "CORDIO East Africa",
       "lat": -4.0026058,
       "lon": 39.7277679,
@@ -9679,7 +8073,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0134",
+      "id": "loc-0121",
       "affiliation": "CRIOBE",
       "lat": 42.6807731,
       "lon": 2.9013047,
@@ -9725,7 +8119,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0135",
+      "id": "loc-0122",
       "affiliation": "CRIOBE",
       "lat": -17.5516,
       "lon": -149.5585,
@@ -9917,7 +8311,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0136",
+      "id": "loc-0123",
       "affiliation": "CRIOBE",
       "lat": -20.8823,
       "lon": 55.4504,
@@ -9998,7 +8392,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0137",
+      "id": "loc-0124",
       "affiliation": "CSIR National Institute of Oceanography",
       "lat": 17.7723114,
       "lon": 83.3751484,
@@ -10058,7 +8452,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0138",
+      "id": "loc-0125",
       "affiliation": "CSS-INC., Under Contract to NOAA-NCCOS",
       "lat": 40.8967819,
       "lon": -74.7143554,
@@ -10140,7 +8534,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0139",
+      "id": "loc-0126",
       "affiliation": "Curtin University",
       "lat": -32.0054649,
       "lon": 115.8919818,
@@ -10259,7 +8653,7 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0140",
+      "id": "loc-0127",
       "affiliation": "Darla White - Marine Ecological Consulting, LLC",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -10291,7 +8685,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0141",
+      "id": "loc-0128",
       "affiliation": "Department of Biodiversity, Conservation and Attractions - Western Australia",
       "lat": -31.9961196,
       "lon": 115.8837242,
@@ -10328,7 +8722,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0142",
+      "id": "loc-0129",
       "affiliation": "Department of Conservation - New Zealand",
       "lat": -41.2865,
       "lon": 174.7762,
@@ -10380,7 +8774,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0143",
+      "id": "loc-0130",
       "affiliation": "Department of Planning and Natural Resources - Virgin Islands",
       "lat": 18.336764,
       "lon": -64.8900747,
@@ -10417,7 +8811,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0144",
+      "id": "loc-0131",
       "affiliation": "DHI Water and Environment",
       "lat": 1.3122028,
       "lon": 103.7525406,
@@ -10449,7 +8843,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0145",
+      "id": "loc-0132",
       "affiliation": "Division of Aquatic and Wildlife Resources - Guam",
       "lat": 13.476,
       "lon": 144.7502,
@@ -10496,7 +8890,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0146",
+      "id": "loc-0133",
       "affiliation": "Duke University",
       "lat": 36.0014258,
       "lon": -78.9382286,
@@ -10533,7 +8927,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0147",
+      "id": "loc-0134",
       "affiliation": "Durrell Institute of Conservation and Ecology",
       "lat": 51.2972507,
       "lon": 1.0674462,
@@ -10565,7 +8959,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0148",
+      "id": "loc-0135",
       "affiliation": "Earth and Life Institute",
       "lat": 50.6666064,
       "lon": 4.6211687,
@@ -10602,7 +8996,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0149",
+      "id": "loc-0136",
       "affiliation": "Earth Observatory of Singapore",
       "lat": 1.3466116,
       "lon": 103.6804897,
@@ -10649,7 +9043,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0150",
+      "id": "loc-0137",
       "affiliation": "Earth Sciences New Zealand",
       "lat": -41.2865,
       "lon": 174.7762,
@@ -10739,7 +9133,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0151",
+      "id": "loc-0138",
       "affiliation": "East Carolina University",
       "lat": 35.6068806,
       "lon": -77.3665364,
@@ -10776,7 +9170,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0152",
+      "id": "loc-0139",
       "affiliation": "Eco Marine Consultants Ltd",
       "lat": -20.1609,
       "lon": 57.5012,
@@ -10813,7 +9207,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0153",
+      "id": "loc-0140",
       "affiliation": "Eco-Sud",
       "lat": -20.4403208,
       "lon": 57.719198,
@@ -10850,7 +9244,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0154",
+      "id": "loc-0141",
       "affiliation": "Edith Cowan University",
       "lat": -31.7522505,
       "lon": 115.7728829,
@@ -10931,7 +9325,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0155",
+      "id": "loc-0142",
       "affiliation": "Ehime University",
       "lat": 33.8526386,
       "lon": 132.7743413,
@@ -10968,7 +9362,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0156",
+      "id": "loc-0143",
       "affiliation": "ENTROPIE",
       "lat": -20.8823,
       "lon": 55.4504,
@@ -11010,7 +9404,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0157",
+      "id": "loc-0144",
       "affiliation": "EPHE-Paris PSL-CRIOBE",
       "lat": 48.8575475,
       "lon": 2.3513765,
@@ -11047,7 +9441,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0158",
+      "id": "loc-0145",
       "affiliation": "Eveline Kolijn Studio",
       "lat": 45.4215,
       "lon": -75.6972,
@@ -11079,7 +9473,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0159",
+      "id": "loc-0146",
       "affiliation": "Experience Co",
       "lat": -35.2809,
       "lon": 149.13,
@@ -11126,7 +9520,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0160",
+      "id": "loc-0147",
       "affiliation": "Experimental Marine Ecology Lab",
       "lat": 1.3521,
       "lon": 103.8198,
@@ -11158,7 +9552,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0161",
+      "id": "loc-0148",
       "affiliation": "Federal University of Paraná",
       "lat": -25.4268323,
       "lon": -49.2619041,
@@ -11195,7 +9589,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0162",
+      "id": "loc-0149",
       "affiliation": "Federal University of Pernambuco",
       "lat": -8.0507245,
       "lon": -34.9508812,
@@ -11237,7 +9631,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0163",
+      "id": "loc-0150",
       "affiliation": "Federal University of Santa Maria",
       "lat": -29.7208878,
       "lon": -53.7147551,
@@ -11298,7 +9692,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0164",
+      "id": "loc-0151",
       "affiliation": "Fish-i Inc",
       "lat": 14.5995,
       "lon": 120.9842,
@@ -11335,7 +9729,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0165",
+      "id": "loc-0152",
       "affiliation": "Fisheries Infrastructure Development Center",
       "lat": 35.6762,
       "lon": 139.6503,
@@ -11382,7 +9776,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0166",
+      "id": "loc-0153",
       "affiliation": "Fisheries Research Institute",
       "lat": 25.154645,
       "lon": 121.7631776,
@@ -11414,7 +9808,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0167",
+      "id": "loc-0154",
       "affiliation": "Fisheries Technology Institute",
       "lat": 35.6762,
       "lon": 139.6503,
@@ -11466,7 +9860,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0168",
+      "id": "loc-0155",
       "affiliation": "Florida Atlantic University - Harbor Branch",
       "lat": 27.534486,
       "lon": -80.3578591,
@@ -11536,7 +9930,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0169",
+      "id": "loc-0156",
       "affiliation": "Florida Atlantic University",
       "lat": 26.3737473,
       "lon": -80.1019023,
@@ -11733,7 +10127,7 @@ export const SITE_DATA = {
       "connection_count": 8
     },
     {
-      "id": "loc-0170",
+      "id": "loc-0157",
       "affiliation": "Florida Fish and Wildlife Conservation Commission",
       "lat": 30.4383,
       "lon": -84.2807,
@@ -11799,7 +10193,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0171",
+      "id": "loc-0158",
       "affiliation": "Florida Fish and Wildlife Research Institute",
       "lat": 27.7615125,
       "lon": -82.6335279,
@@ -11860,7 +10254,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0172",
+      "id": "loc-0159",
       "affiliation": "Florida International University",
       "lat": 25.7562465,
       "lon": -80.3755401,
@@ -12505,7 +10899,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0173",
+      "id": "loc-0160",
       "affiliation": "Florida Keys National Marine Sanctuary",
       "lat": 24.4269857,
       "lon": -83.1112798,
@@ -12571,7 +10965,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0174",
+      "id": "loc-0161",
       "affiliation": "Florida State University",
       "lat": 30.442087,
       "lon": -84.2979579,
@@ -12617,7 +11011,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0175",
+      "id": "loc-0162",
       "affiliation": "Fluoresci Research",
       "lat": -35.2809,
       "lon": 149.13,
@@ -12654,7 +11048,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0176",
+      "id": "loc-0163",
       "affiliation": "Fundacion Puntacana",
       "lat": 18.2855138,
       "lon": -71.1842119,
@@ -12701,7 +11095,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0177",
+      "id": "loc-0164",
       "affiliation": "Fundación Dominicana de Estudios Marinos",
       "lat": 18.3678788,
       "lon": -68.8390587,
@@ -12818,7 +11212,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0178",
+      "id": "loc-0165",
       "affiliation": "General Organization for Conservation of Coral Reef in the Red Sea",
       "lat": 24.7136,
       "lon": 46.6753,
@@ -12884,7 +11278,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0179",
+      "id": "loc-0166",
       "affiliation": "Georgia Institute of Technology",
       "lat": 33.7783046,
       "lon": -84.3991657,
@@ -13012,7 +11406,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0180",
+      "id": "loc-0167",
       "affiliation": "Georgia Southern University",
       "lat": 32.4206845,
       "lon": -81.7869734,
@@ -13102,7 +11496,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0181",
+      "id": "loc-0168",
       "affiliation": "GG Biotech Design",
       "lat": 52.52,
       "lon": 13.405,
@@ -13139,7 +11533,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0182",
+      "id": "loc-0169",
       "affiliation": "Global Discovery and Conservation Science",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -13216,7 +11610,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0183",
+      "id": "loc-0170",
       "affiliation": "Global Island Partnership",
       "lat": -41.2865,
       "lon": 174.7762,
@@ -13248,7 +11642,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0184",
+      "id": "loc-0171",
       "affiliation": "Global Reef",
       "lat": 10.0672089,
       "lon": 99.8258651,
@@ -13290,7 +11684,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0185",
+      "id": "loc-0172",
       "affiliation": "Global Science and Technology, LLC",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -13396,7 +11790,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0186",
+      "id": "loc-0173",
       "affiliation": "Goethe-Universität",
       "lat": 50.1270675,
       "lon": 8.6677635,
@@ -13428,7 +11822,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0187",
+      "id": "loc-0174",
       "affiliation": "Great Barrier Reef Foundation",
       "lat": -27.481881,
       "lon": 153.0208454,
@@ -13506,7 +11900,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0188",
+      "id": "loc-0175",
       "affiliation": "Great Barrier Reef Marine Park Authority",
       "lat": -19.2589635,
       "lon": 146.8169483,
@@ -13591,7 +11985,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0189",
+      "id": "loc-0176",
       "affiliation": "Great Barrier Reef Safaris",
       "lat": -17.8646479,
       "lon": 146.1083744,
@@ -13638,7 +12032,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0190",
+      "id": "loc-0177",
       "affiliation": "Griffith University",
       "lat": -27.5530181,
       "lon": 153.0510796,
@@ -13743,7 +12137,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0191",
+      "id": "loc-0178",
       "affiliation": "Guam Coral Reef Initiative",
       "lat": 13.476,
       "lon": 144.7502,
@@ -13799,7 +12193,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0192",
+      "id": "loc-0179",
       "affiliation": "Hamburg University",
       "lat": 53.5659703,
       "lon": 9.9849977,
@@ -13831,7 +12225,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0193",
+      "id": "loc-0180",
       "affiliation": "Hampton University",
       "lat": 37.0298687,
       "lon": -76.3452218,
@@ -13863,7 +12257,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0194",
+      "id": "loc-0181",
       "affiliation": "Harbor Branch Oceanographic Institute",
       "lat": 27.5340658,
       "lon": -80.355442,
@@ -13900,7 +12294,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0195",
+      "id": "loc-0182",
       "affiliation": "Harvey Mudd College",
       "lat": 34.1060906,
       "lon": -117.7086431,
@@ -13957,7 +12351,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0196",
+      "id": "loc-0183",
       "affiliation": "Hawai'i Pacific University",
       "lat": 21.3066648,
       "lon": -157.8653303,
@@ -14023,16 +12417,19 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0197",
+      "id": "loc-0184",
       "affiliation": "Hawaiʻi Division of Aquatic Resources",
       "lat": 19.66812,
       "lon": -156.0245959,
       "speakers": [
         "Eric Dilley",
+        "Hélène Meehl",
         "Kate Gonzalez",
         "Lunalilo Kekoa",
         "Mackenzie Thielmann",
+        "Maile Coberly",
         "Maria Angst",
+        "Mckenna Allen",
         "Zack Craig",
         "Charlie Taylor"
       ],
@@ -14048,6 +12445,24 @@ export const SITE_DATA = {
             }
           ],
           "person_key": "icrs-p-00460",
+          "attended": true
+        },
+        {
+          "name": "Hélène Meehl",
+          "search_text": "hélène meehl story of success: the reintroduction of a locally extirpated hawaiian endemic coral in hawai‘i, like many pacific islands, geographic isolation has resulted in many rare and endemic coral populations that play a crucial part in maintaining reef biodiversity. as anthropogenic stressors continue to increase, these populations are at risk of extirpation and extinction. the unique, locally adapted, slow growing reefs of hawaiʻi make restoration challenging, especially for rare corals that are extremely limited in range and vulnerable to land-based impacts on hawaʻi’s nearshore reefs. to preserve and restore these populations, the state’s division of aquatic resources (dar) created a land-based rare hawaiian coral ark at its hawaiʻi coral restoration nursery (hcrn) for holding and restoring rare, uncommon, and endemic coral species. one of the success stories of the coral ark has been the reintroduction of the possibly extirpated knobby finger coral (porites duerdeni) in kāneʻohe bay on the island of oʻahu. p. duerdeni is a critically endangered reef-building coral that is endemic to hawai‘i. in july 2015, in anticipation of a warm water bleaching event in the hawaiian islands, the hcrn collected fragments of p. duerdeni from kāneʻohe bay to add to the rare coral ark. after the bleaching event, no living colonies of p. duerdeni could be found in the bay. the collected pieces of p. duerdeni were later microfragmented and grown onto two concrete pyramid modules at the hcrn, and in 2019 they were outplanted back in kāneʻohe bay. in 2024, after five years of growth, hcrn staff collected fragments from the original modules to continue growing and outplanting additional coral modules. this success story shows how early preparation can lead to successful preservation and restoration of rare corals and can be a model for restoration in other areas with high endemism.",
+          "talk_titles": [
+            {
+              "title": "Story of Success: The Reintroduction of a Locally Extirpated Hawaiian Endemic Coral",
+              "primary": true,
+              "talk_id": "da24cb29-a3e1-4582-85a8-20f6c55068ca"
+            },
+            {
+              "title": "A Decade of Development: Lessons from Innovative Land-Based Restoration Practices for Hawai‘i’s Unique Coral Reef Challenges",
+              "primary": false,
+              "talk_id": "3ead4dd4-64d7-405a-a88c-89aa72e4ab69"
+            }
+          ],
+          "person_key": "icrs-p-01153",
           "attended": true
         },
         {
@@ -14100,6 +12515,19 @@ export const SITE_DATA = {
           "attended": true
         },
         {
+          "name": "Maile Coberly",
+          "search_text": "maile coberly the drivers of fish distribution and localized fish populations in the presence of submarine groundwater discharge in maunalua bay, oʻahu, hawaiʻi submarine groundwater discharge is known to change benthic community assemblages of coral reefs; however, the impact on higher-level trophic communities is less understood. in densely populated islands, anthropogenic activities can contaminate natural submarine groundwater with excess nutrients and land-based pollutants. physical habitat structure can also influence fish assemblages through mechanisms such as substrate type, habitat complexity, and food availability. the interaction of submarine groundwater discharge and natural habitat heterogeneity, and how they shape the structure of fish populations on coral reef systems, is understudied. this study aims to investigate the differences in nearshore fish populations in areas with submarine groundwater discharge, with the goal of elucidating which physical and chemical features of the nearshore habitat, such as salinity, silicates, rugosity, and depth, drive changes in biomass and community structure. this study will use fishery-independent fish assemblage and biomass data (collected by the hawaiʻi division of aquatic resources) and water quality measurements (collected by the nature conservancy and researchers at the hawaiʻi institute of marine biology) in maunalua bay, oʻahu, hawaiʻi to determine which physical and environmental parameters influence fish assemblages. by understanding how environmental variables drive changes to fish populations on reef ecosystems, we can mitigate the effects of habitat degradation to conserve nearshore reef health.",
+          "talk_titles": [
+            {
+              "title": "The drivers of fish distribution and localized fish populations in the presence of submarine groundwater discharge in Maunalua Bay, Oʻahu, Hawaiʻi",
+              "primary": true,
+              "talk_id": "61eee72f-2f93-44a7-95bf-1e1138890528"
+            }
+          ],
+          "person_key": "icrs-p-00347",
+          "attended": true
+        },
+        {
           "name": "Maria Angst",
           "search_text": "maria angst age-structured stock assessment to determine population structure, growth, and reproductive biology of kala (bluespine unicornfish, naso unicornis) around maui, hawaii acanthurid surgeonfishes are ecologically and culturally important herbivores on pacific coral reefs. yet developing effective management that balances ecological resiliency with food security remains an elusive goal due to limited demographic and life history data. in hawaiʻi, bluespine unicornfish (naso unicornis), known as kala locally, is a highly targeted species within nearshore reef fisheries, but its large size, long lifespan, rapid early growth, and potentially spatially variable life history traits leave local fishers calling the assessments into question and that without their buy-in, management efforts are likely to be ineffective. our objective was to partner with local commercial and noncommercial fishers to develop a comprehensive age, growth, and reproductive dataset for kala around the island of maui to address these limitations. kala (n=578) was collected between may 2024–june 2025, with otoliths and gonads harvested from a subsample of individuals (n=152) to assess age and reproductive development. kala harvested in maui fisheries ranged from 3–38 years, with progressively fewer individuals represented in older age classes. older individuals seemed to concentrate at sites along the northeastern coast of maui, consistent with the local knowledge that older, larger kala may aggregate seasonally for spawning. kala growth was rapid and individuals reached near-asymptotic lengths within their first 3-4 years. preliminary data suggests that growth is sexually dimorphic with slightly larger asymptotic lengths for males than females. these findings indicate possible spatial variability in kala demographics around maui, and the presence of older individuals during peak spawning months also underscores the need for management approaches that account for reproductive timing and age structure. importantly, because these demographic patterns differ from what many local fishers observe on the water, they may reinforce community skepticism toward current stock assessments; without fisher buy-in, future management efforts for kala in hawaiʻi are unlikely to be effective.",
           "talk_titles": [
@@ -14110,6 +12538,19 @@ export const SITE_DATA = {
             }
           ],
           "person_key": "icrs-p-00054",
+          "attended": true
+        },
+        {
+          "name": "Mckenna Allen",
+          "search_text": "mckenna allen spatial patterns and environmental drivers of black-band disease (bbd) in montiporid corals across ʻanini reef, kauaʻi, hi black-band disease (bbd) is a globally significant coral disease associated with rapid tissue loss and high mortality in reef-building corals. within hawaiʻi, the disease has only been recorded on the north shore of kauaʻi. at ʻanini reef, a long-standing outbreak affecting montipora species has persisted since its initial confirmation in 2004. this study quantified bbd prevalence and evaluated colony-level traits, spatial patterns, and environmental drivers, including indicators of land-based pollution, to better understand factors shaping disease dynamics at this culturally and ecologically important reef system.\r\nin summer 2024, surveys of more than 4,600 montipora colonies across 171 inner-reef-flat plots documented a bbd prevalence of 17.8%, considerably higher than previously reported for ʻanini. colony size and species were significant predictors of susceptibility, with larger colonies and montipora patula disproportionately affected. zero-inflated beta regression models supported a frequency-dependent transmission pattern, where bbd prevalence declined with increasing colony density, indicating waterborne or environmentally mediated spread rather than direct density-dependent transmission.\r\na random forest model explained 57% of the variance in bbd prevalence and identified freshwater influence and water depth as the strongest predictors of disease distribution. spatial analyses revealed localized hotspots of high bbd prevalence that did not necessarily correspond with areas of high colony density. this pattern suggests that environmental stressors, likely influenced by watershed inputs and variable hydrodynamics, are driving outbreak persistence\r\nthese findings highlight the importance of environmental conditions in shaping bbd dynamics in hawaiʻi and illustrate how local stressors can interact with global change to undermine reef resilience across oceania. by identifying environmental predictors and spatial patterns of disease, this work supports targeted monitoring, watershed management, and coral restoration strategies. results can inform efforts aimed at reducing disease impacts on vulnerable reef habitats, contributing to regional efforts to “work together to ensure a future for coral reefs.”",
+          "talk_titles": [
+            {
+              "title": "Spatial Patterns and Environmental Drivers of Black-Band Disease (BBD) in Montiporid Corals Across ʻAnini Reef, Kauaʻi, HI",
+              "primary": true,
+              "talk_id": "298855ff-2498-481f-b130-303db2bcb32a"
+            }
+          ],
+          "person_key": "icrs-p-00037",
           "attended": true
         },
         {
@@ -14144,27 +12585,366 @@ export const SITE_DATA = {
           "non_speaking_delegate": true
         }
       ],
-      "speaker_count": 7,
-      "talk_count": 8,
+      "speaker_count": 10,
+      "talk_count": 11,
       "geocode_level": "institute",
       "distance_km": 6991.9,
-      "search_text": "hawaiʻi division of aquatic resources eric dilley kate gonzalez lunalilo kekoa mackenzie thielmann maria angst zack craig eric dilley act fast and smart: community reporting of coral reef threats using arcgis informs rapid response efforts by the hawai'i division of aquatic resources rapid response to coral reef threats is vital for effectively documenting impacts to reefs, minimizing reef damage, and enhancing reef resilience.  the hawai'i division of aquatic resources (dar) is the state agency responsible for managing hawaiian coral reefs and responding to threats such as coral disease, coral bleaching, aquatic invasive species, coral predator outbreaks, and reef damage.  although dar monitors coral reefs throughout the state, dar heavily relies on community reporting to rapidly identify threats to coral reefs.  eyes of the reef (eor) hawai’i is a community-based organization dedicated to training community members on identifying, documenting, and reporting coral reef threats in hawai’i.  to enhance the reporting process, dar and eor collaborated to create a new web form reporting system using arcgis survey123.  reports automatically populate into an arcgis dashboard that visualizes the location of each report with all associated survey data and media.  this reporting system allows dar to efficiently collect information on the nature and scale of reef threats and to determine if a.) further information is needed to verify reports, b.) if delineation surveys are needed to determine the extent of reef threats and c.) if interventions are necessary.  eor therefore serves as a vital part of the rapid response process for dar by providing the information needed for timely decision making on whether intervention is needed to address threats to hawaiian coral reefs.  dar will continue to grow the eor network by working with community groups to serve as eor training hubs for how to identify, document, and report threats to coral reefs.  over time, this will allow dar to better manage and protect coral reefs by creating capacity for community reporting throughout hawai’i and increasing the number of “eyes on the reef” to more rapidly detect and effectively respond to coral reef threats. kate gonzalez invasive cnidarians in hawaiʻi: establishment, impacts, and early intervention rising bioinvasion risks linked to aquarium releases in hawaiʻi non-native cnidarians are increasingly emerging as disruptive benthic competitors on tropical reefs, altering community composition, space availability, and recovery trajectories. in hawaiʻi, three species common in the aquarium trade–anemonia manjano, unomia stolonifera, and a capnella sp.–add to the archipelago’s history of marine invertebrate invasions by providing updated occurrence records, ecological characterization, and applied management for newly established species. each exhibits a distinct invasion pathway but suppresses native corals similarly.\r\nsince 2024, the hawaiʻi division of aquatic resources (dar) has documented a. manjano expanding within an 800 m² buffer zone on an isolated patch reef in kāneʻohe bay, overgrowing endemic porites compressa. in 2025, a non-native capnella sp. was removed from kāneʻohe bay, suggesting a separate aquarium release and reinforcing the risk of repeated introductions. in pearl harbor, u. stolonifera forms extensive mats spanning hectares, overgrowing coral and other nearshore habitat in low-circulation waters within federal jurisdiction. all taxa likely originated from the aquarium trade, with evidence of distinct release events.\r\ndar’s mitigation strategies integrate diver surveys with structure-from-motion photogrammetry to quantify spatial coverage, growth, and recovery. chlorinated tarping trials achieved >95% mortality of a. manjano, while non-chlorinated tarping has been a promising method to reclaim habitat overgrown by u. stolonifera. a hot-water removal unit has been piloted as a non-chemical thermal treatment to remove capnella sp. from complex substrates. persistent regrowth from residual fragments underscores the need for rapid intervention, sustained monitoring, and cross-agency coordination to minimize further establishment and spread.\r\nthese case studies advance our understanding of invasive cnidarian ecology and management in hawaiʻi. they highlight the susceptibility of degraded reef systems to aquarium-release introductions, emphasize prevention campaigns such as the don’t let it loose, and demonstrate that targeted, early interventions can help preserve coral resilience when supported by coordinated response frameworks. home aquarium ownership is increasing globally, and hawaiʻi has seen an increase in reports of introduced species suspected to be the result of suspected aquarium releases over the past few years. while invasive species have historically arrived via ballast water and biofouling, aquarium releases now represent an emerging and significant vector. as a geographically isolated ecosystem, hawaiʻi is especially vulnerable to biological invasions; recent suspected aquarium releases, such as anemonia manjano, have already caused notable impacts on the reef. to address this threat, the hawaiʻi division of aquatic resources aquatic invasive species team and its partners have expanded outreach through the \"don’t let it loose\" campaign, which educates the public about the risks of releasing pets and promotes responsible alternatives. community-based reporting networks, such as eyes of the reef, have become increasingly vital for detecting new incursions and enabling rapid responses. strengthening public engagement, improving early detection, and building rapid response capacity are essential to mitigating the growing risk of aquarium-driven bioinvasions in hawaiʻi. edward kekoa grounding marine management in native hawaiian traditional practices and values shifting agency approach to management in hawai‘i: leveraging community-led participatory governance and inclusive partnerships for more effective coral reef conservation outcomes the holomua marine initiative, led by the hawaiʻi department of land and natural resources division of aquatic resources (dar), represents a transformational, place-based approach to nearshore marine resource management centered around community leadership, indigenous knowledge systems, and collaborative governance. grounded in the recognition that hawaiʻi’s coral reefs and nearshore ecosystems are inseparable from the cultural identity, livelihoods, and well-being of native hawaiian communities, dar seeks to institutionalize traditional practices and values as foundational components of marine management.\r\nthrough a community-led, island-scale planning process, dar convenes local community members including fishers, cultural practitioners, researchers and practitioners to co-design nearshore management strategies that reflect the unique ecological, cultural, and social dimensions of place. this effort emphasizes equitable participation, blending diverse perspectives and worldviews to inform decision-making. locally derived science,  research, and native hawaiian knowledge of ocean conditions, species behavior, and stewardship practices are intertwined in this process to shape adaptive management.\r\nthe holomua marine initiative focuses on addressing community-identified priorities and leverages its position as a state agency to facilitate partnerships among community organizations, funders, and government agencies with local communities to implement and support key management actions. some of these include prioritized support for community-driven monitoring and data collection, expanded training and capacity-building for local resource stewards, and the co-development of management frameworks that identify culturally grounded indicators of reef condition. these approaches are supported by outreach, compliance, and inter-agency collaboration to ensure that management actions reflect local priorities and maintain long-term accountability.\r\nthe holomua marine initiative offers a case study in placing indigenous authority, community governance, and cultural continuity at the center of nearshore resource management. this transformative approach to weave together local experiences, ecological research, and native hawaiian knowledge and values is an effort to develop effective and culturally aligned solutions to sustain the ocean for generations to come. the holomua marine initiative, led by the hawaiʻi department of land and natural resources, division of aquatic resources (dar) represents a transformative, community-driven approach to nearshore resource management, offering valuable insights for scaling coral reef conservation across regions and governance contexts. holomua seeks to convene local communities to develop comprehensive, island-wide strategies through place-based processes based in cultural relevance, community decision-making, and adaptive management. in the recognition that hawaiʻi’s coral reefs and nearshore ecosystems are inseparable from the cultural identity, livelihoods, and well-being of its people, this process emphasizes equitable participation grounded in local community knowledge and sustainable solutions.\r\n the holomua marine initiative leverages its position as a state agency to facilitate inclusive partnerships among community organizations, funders, and other government agencies with local communities to implement and support key management actions based on community-identified priorities. this multi-faceted approach aims to not only to address near-term pressures on coral reefs such as unsustainable use, climate impacts, and declining ecosystem resilience, but also to shift the underlying systems that shape stewardship by strengthening inter-jurisdictional collaboration, resourcing community leadership, and institutionalizing participatory governance.\r\nthis presentation shares examples from holomua highlighting how community-led planning processes and alignment with regional policy can generate leverage points for systemic transformation. in particular, we highlight how the initiative’s emphasis on co-management, equity, and cultural grounding challenges traditional agency-centric models and opens pathways for more just and effective stewardship, honoring the strong connections the people of hawai‘i and other island communities have with their coral reef ecosystems.\r\nby “sensing the system” through holomua’s early experiences, this process offers insight into how diverse place-based strategies can inform larger-scale narratives, decision structures, and inclusive, cross-sector partnerships. as global reef crises intensify, the holomua marine initiative illustrates how locally rooted approaches can catalyze broader shifts in governance, resilience, and collective responsibility. mackenzie thielmann effectiveness of marine protected areas and habitat enhancement sites in supporting hawaiʻi’s nearshore coastal fisheries for generations, local communities in hawaiʻi have utilized the marine resources available on nearshore reef ecosystems for both subsistence and recreational fishing. as fish populations experienced increasing pressure, resource managers began developing strategies to ensure long term sustainability of these culturally and ecologically important reef systems. during the 1960s, hawaiʻi’s division of aquatic resources (dar) established marine protection and habitat enhancement sites intended not only to ecologically restore degraded reefs, but to also increase productivity in nearshore fisheries. here, using monitoring data collected in 2025, we compare fish assemblages and biomass from two nearby locations under different fisheries management strategies: 1) an artificial reef system established in 1961 in maunalua bay as a habitat enhancement site, designed to provide structure in reef limited areas of low relief pavement and to increase fishing opportunities, and 2) adjacent hanauma bay, designated as a marine life conservation district (mlcd) in 1967 to protect the marine resources and promote fish population recovery. while hanauma bay’s ability to support high fish biomass is well documented, and other mlcds in the state have shown to be effective at improving fish biomass and diversity, the artificial reef system in maunalua bay provides a unique opportunity to compare fish assemblages sustained by the two management strategies, as well as their capacity to host high fish biomass. this study will assist dar in prioritizing fisheries management decisions that reflect community values to protect and enhance the sustainability of fishing practices in hawaiʻi. maria angst age-structured stock assessment to determine population structure, growth, and reproductive biology of kala (bluespine unicornfish, naso unicornis) around maui, hawaii acanthurid surgeonfishes are ecologically and culturally important herbivores on pacific coral reefs. yet developing effective management that balances ecological resiliency with food security remains an elusive goal due to limited demographic and life history data. in hawaiʻi, bluespine unicornfish (naso unicornis), known as kala locally, is a highly targeted species within nearshore reef fisheries, but its large size, long lifespan, rapid early growth, and potentially spatially variable life history traits leave local fishers calling the assessments into question and that without their buy-in, management efforts are likely to be ineffective. our objective was to partner with local commercial and noncommercial fishers to develop a comprehensive age, growth, and reproductive dataset for kala around the island of maui to address these limitations. kala (n=578) was collected between may 2024–june 2025, with otoliths and gonads harvested from a subsample of individuals (n=152) to assess age and reproductive development. kala harvested in maui fisheries ranged from 3–38 years, with progressively fewer individuals represented in older age classes. older individuals seemed to concentrate at sites along the northeastern coast of maui, consistent with the local knowledge that older, larger kala may aggregate seasonally for spawning. kala growth was rapid and individuals reached near-asymptotic lengths within their first 3-4 years. preliminary data suggests that growth is sexually dimorphic with slightly larger asymptotic lengths for males than females. these findings indicate possible spatial variability in kala demographics around maui, and the presence of older individuals during peak spawning months also underscores the need for management approaches that account for reproductive timing and age structure. importantly, because these demographic patterns differ from what many local fishers observe on the water, they may reinforce community skepticism toward current stock assessments; without fisher buy-in, future management efforts for kala in hawaiʻi are unlikely to be effective. zachary craig restoring kahalu'u bay corals through collaborative science and community action the west hawai'i division of aquatic resources (dar) has launched a community-based coral restoration initiative in kahalu'u bay in partnership with reef teach staff and volunteers. this project aims to conserve and restore the bay’s natural ecosystem through collaborative science, ultimately identifying best practices for community-led restoration. success of reattachment methods applied in the bay will be evaluated by monitoring the health and distribution of corals through monthly surveys that track the number, size, species, and health conditions of both loose and attached corals. these surveys are conducted within two distinct zones: a restoration zone where active reattachment occurs, and a control zone for comparison.\r\n\r\nthe reattachment process, which occurs, on average, over 3 days every three months, employs cement and two-part epoxy adhesives to reattach detached corals greater than 5 cm in size. snorkelers collect detached corals, cache them at a protected central location, and then replant them onto suitable substrates, ensuring that each coral is securely attached and photographed for documentation. to track progress, 20-30 corals are tagged each quarter for long-term monitoring. the ongoing surveys (20-40 per quarter) assess the effectiveness of reattachment methods and determine if these interventions are outpacing natural detachment rates.\r\n\r\nafter the first year, survey data will be analyzed to identify the optimal timing and conditions for reattachment and the most suitable sub-habitats for restoration based on environmental factors like wave action, sedimentation, and substrate type. the second year will focus on empowering reef teach to lead the project independently, including assisting with their permitting process, training staff and volunteers, and facilitating their transition into full project ownership. this initiative will set a precedent for community-led restoration projects for the conservation of west hawai'i’s coral reefs.",
+      "search_text": "division of aquatic resources - kauaʻi eric dilley hélène meehl kate gonzalez lunalilo kekoa mackenzie thielmann maile coberly maria angst mckenna allen zack craig eric dilley act fast and smart: community reporting of coral reef threats using arcgis informs rapid response efforts by the hawai'i division of aquatic resources rapid response to coral reef threats is vital for effectively documenting impacts to reefs, minimizing reef damage, and enhancing reef resilience.  the hawai'i division of aquatic resources (dar) is the state agency responsible for managing hawaiian coral reefs and responding to threats such as coral disease, coral bleaching, aquatic invasive species, coral predator outbreaks, and reef damage.  although dar monitors coral reefs throughout the state, dar heavily relies on community reporting to rapidly identify threats to coral reefs.  eyes of the reef (eor) hawai’i is a community-based organization dedicated to training community members on identifying, documenting, and reporting coral reef threats in hawai’i.  to enhance the reporting process, dar and eor collaborated to create a new web form reporting system using arcgis survey123.  reports automatically populate into an arcgis dashboard that visualizes the location of each report with all associated survey data and media.  this reporting system allows dar to efficiently collect information on the nature and scale of reef threats and to determine if a.) further information is needed to verify reports, b.) if delineation surveys are needed to determine the extent of reef threats and c.) if interventions are necessary.  eor therefore serves as a vital part of the rapid response process for dar by providing the information needed for timely decision making on whether intervention is needed to address threats to hawaiian coral reefs.  dar will continue to grow the eor network by working with community groups to serve as eor training hubs for how to identify, document, and report threats to coral reefs.  over time, this will allow dar to better manage and protect coral reefs by creating capacity for community reporting throughout hawai’i and increasing the number of “eyes on the reef” to more rapidly detect and effectively respond to coral reef threats. hélène meehl story of success: the reintroduction of a locally extirpated hawaiian endemic coral in hawai‘i, like many pacific islands, geographic isolation has resulted in many rare and endemic coral populations that play a crucial part in maintaining reef biodiversity. as anthropogenic stressors continue to increase, these populations are at risk of extirpation and extinction. the unique, locally adapted, slow growing reefs of hawaiʻi make restoration challenging, especially for rare corals that are extremely limited in range and vulnerable to land-based impacts on hawaʻi’s nearshore reefs. to preserve and restore these populations, the state’s division of aquatic resources (dar) created a land-based rare hawaiian coral ark at its hawaiʻi coral restoration nursery (hcrn) for holding and restoring rare, uncommon, and endemic coral species. one of the success stories of the coral ark has been the reintroduction of the possibly extirpated knobby finger coral (porites duerdeni) in kāneʻohe bay on the island of oʻahu. p. duerdeni is a critically endangered reef-building coral that is endemic to hawai‘i. in july 2015, in anticipation of a warm water bleaching event in the hawaiian islands, the hcrn collected fragments of p. duerdeni from kāneʻohe bay to add to the rare coral ark. after the bleaching event, no living colonies of p. duerdeni could be found in the bay. the collected pieces of p. duerdeni were later microfragmented and grown onto two concrete pyramid modules at the hcrn, and in 2019 they were outplanted back in kāneʻohe bay. in 2024, after five years of growth, hcrn staff collected fragments from the original modules to continue growing and outplanting additional coral modules. this success story shows how early preparation can lead to successful preservation and restoration of rare corals and can be a model for restoration in other areas with high endemism. kate gonzalez invasive cnidarians in hawaiʻi: establishment, impacts, and early intervention rising bioinvasion risks linked to aquarium releases in hawaiʻi non-native cnidarians are increasingly emerging as disruptive benthic competitors on tropical reefs, altering community composition, space availability, and recovery trajectories. in hawaiʻi, three species common in the aquarium trade–anemonia manjano, unomia stolonifera, and a capnella sp.–add to the archipelago’s history of marine invertebrate invasions by providing updated occurrence records, ecological characterization, and applied management for newly established species. each exhibits a distinct invasion pathway but suppresses native corals similarly.\r\nsince 2024, the hawaiʻi division of aquatic resources (dar) has documented a. manjano expanding within an 800 m² buffer zone on an isolated patch reef in kāneʻohe bay, overgrowing endemic porites compressa. in 2025, a non-native capnella sp. was removed from kāneʻohe bay, suggesting a separate aquarium release and reinforcing the risk of repeated introductions. in pearl harbor, u. stolonifera forms extensive mats spanning hectares, overgrowing coral and other nearshore habitat in low-circulation waters within federal jurisdiction. all taxa likely originated from the aquarium trade, with evidence of distinct release events.\r\ndar’s mitigation strategies integrate diver surveys with structure-from-motion photogrammetry to quantify spatial coverage, growth, and recovery. chlorinated tarping trials achieved >95% mortality of a. manjano, while non-chlorinated tarping has been a promising method to reclaim habitat overgrown by u. stolonifera. a hot-water removal unit has been piloted as a non-chemical thermal treatment to remove capnella sp. from complex substrates. persistent regrowth from residual fragments underscores the need for rapid intervention, sustained monitoring, and cross-agency coordination to minimize further establishment and spread.\r\nthese case studies advance our understanding of invasive cnidarian ecology and management in hawaiʻi. they highlight the susceptibility of degraded reef systems to aquarium-release introductions, emphasize prevention campaigns such as the don’t let it loose, and demonstrate that targeted, early interventions can help preserve coral resilience when supported by coordinated response frameworks. home aquarium ownership is increasing globally, and hawaiʻi has seen an increase in reports of introduced species suspected to be the result of suspected aquarium releases over the past few years. while invasive species have historically arrived via ballast water and biofouling, aquarium releases now represent an emerging and significant vector. as a geographically isolated ecosystem, hawaiʻi is especially vulnerable to biological invasions; recent suspected aquarium releases, such as anemonia manjano, have already caused notable impacts on the reef. to address this threat, the hawaiʻi division of aquatic resources aquatic invasive species team and its partners have expanded outreach through the \"don’t let it loose\" campaign, which educates the public about the risks of releasing pets and promotes responsible alternatives. community-based reporting networks, such as eyes of the reef, have become increasingly vital for detecting new incursions and enabling rapid responses. strengthening public engagement, improving early detection, and building rapid response capacity are essential to mitigating the growing risk of aquarium-driven bioinvasions in hawaiʻi. edward kekoa grounding marine management in native hawaiian traditional practices and values shifting agency approach to management in hawai‘i: leveraging community-led participatory governance and inclusive partnerships for more effective coral reef conservation outcomes the holomua marine initiative, led by the hawaiʻi department of land and natural resources division of aquatic resources (dar), represents a transformational, place-based approach to nearshore marine resource management centered around community leadership, indigenous knowledge systems, and collaborative governance. grounded in the recognition that hawaiʻi’s coral reefs and nearshore ecosystems are inseparable from the cultural identity, livelihoods, and well-being of native hawaiian communities, dar seeks to institutionalize traditional practices and values as foundational components of marine management.\r\nthrough a community-led, island-scale planning process, dar convenes local community members including fishers, cultural practitioners, researchers and practitioners to co-design nearshore management strategies that reflect the unique ecological, cultural, and social dimensions of place. this effort emphasizes equitable participation, blending diverse perspectives and worldviews to inform decision-making. locally derived science,  research, and native hawaiian knowledge of ocean conditions, species behavior, and stewardship practices are intertwined in this process to shape adaptive management.\r\nthe holomua marine initiative focuses on addressing community-identified priorities and leverages its position as a state agency to facilitate partnerships among community organizations, funders, and government agencies with local communities to implement and support key management actions. some of these include prioritized support for community-driven monitoring and data collection, expanded training and capacity-building for local resource stewards, and the co-development of management frameworks that identify culturally grounded indicators of reef condition. these approaches are supported by outreach, compliance, and inter-agency collaboration to ensure that management actions reflect local priorities and maintain long-term accountability.\r\nthe holomua marine initiative offers a case study in placing indigenous authority, community governance, and cultural continuity at the center of nearshore resource management. this transformative approach to weave together local experiences, ecological research, and native hawaiian knowledge and values is an effort to develop effective and culturally aligned solutions to sustain the ocean for generations to come. the holomua marine initiative, led by the hawaiʻi department of land and natural resources, division of aquatic resources (dar) represents a transformative, community-driven approach to nearshore resource management, offering valuable insights for scaling coral reef conservation across regions and governance contexts. holomua seeks to convene local communities to develop comprehensive, island-wide strategies through place-based processes based in cultural relevance, community decision-making, and adaptive management. in the recognition that hawaiʻi’s coral reefs and nearshore ecosystems are inseparable from the cultural identity, livelihoods, and well-being of its people, this process emphasizes equitable participation grounded in local community knowledge and sustainable solutions.\r\n the holomua marine initiative leverages its position as a state agency to facilitate inclusive partnerships among community organizations, funders, and other government agencies with local communities to implement and support key management actions based on community-identified priorities. this multi-faceted approach aims to not only to address near-term pressures on coral reefs such as unsustainable use, climate impacts, and declining ecosystem resilience, but also to shift the underlying systems that shape stewardship by strengthening inter-jurisdictional collaboration, resourcing community leadership, and institutionalizing participatory governance.\r\nthis presentation shares examples from holomua highlighting how community-led planning processes and alignment with regional policy can generate leverage points for systemic transformation. in particular, we highlight how the initiative’s emphasis on co-management, equity, and cultural grounding challenges traditional agency-centric models and opens pathways for more just and effective stewardship, honoring the strong connections the people of hawai‘i and other island communities have with their coral reef ecosystems.\r\nby “sensing the system” through holomua’s early experiences, this process offers insight into how diverse place-based strategies can inform larger-scale narratives, decision structures, and inclusive, cross-sector partnerships. as global reef crises intensify, the holomua marine initiative illustrates how locally rooted approaches can catalyze broader shifts in governance, resilience, and collective responsibility. mackenzie thielmann effectiveness of marine protected areas and habitat enhancement sites in supporting hawaiʻi’s nearshore coastal fisheries for generations, local communities in hawaiʻi have utilized the marine resources available on nearshore reef ecosystems for both subsistence and recreational fishing. as fish populations experienced increasing pressure, resource managers began developing strategies to ensure long term sustainability of these culturally and ecologically important reef systems. during the 1960s, hawaiʻi’s division of aquatic resources (dar) established marine protection and habitat enhancement sites intended not only to ecologically restore degraded reefs, but to also increase productivity in nearshore fisheries. here, using monitoring data collected in 2025, we compare fish assemblages and biomass from two nearby locations under different fisheries management strategies: 1) an artificial reef system established in 1961 in maunalua bay as a habitat enhancement site, designed to provide structure in reef limited areas of low relief pavement and to increase fishing opportunities, and 2) adjacent hanauma bay, designated as a marine life conservation district (mlcd) in 1967 to protect the marine resources and promote fish population recovery. while hanauma bay’s ability to support high fish biomass is well documented, and other mlcds in the state have shown to be effective at improving fish biomass and diversity, the artificial reef system in maunalua bay provides a unique opportunity to compare fish assemblages sustained by the two management strategies, as well as their capacity to host high fish biomass. this study will assist dar in prioritizing fisheries management decisions that reflect community values to protect and enhance the sustainability of fishing practices in hawaiʻi. maile coberly the drivers of fish distribution and localized fish populations in the presence of submarine groundwater discharge in maunalua bay, oʻahu, hawaiʻi submarine groundwater discharge is known to change benthic community assemblages of coral reefs; however, the impact on higher-level trophic communities is less understood. in densely populated islands, anthropogenic activities can contaminate natural submarine groundwater with excess nutrients and land-based pollutants. physical habitat structure can also influence fish assemblages through mechanisms such as substrate type, habitat complexity, and food availability. the interaction of submarine groundwater discharge and natural habitat heterogeneity, and how they shape the structure of fish populations on coral reef systems, is understudied. this study aims to investigate the differences in nearshore fish populations in areas with submarine groundwater discharge, with the goal of elucidating which physical and chemical features of the nearshore habitat, such as salinity, silicates, rugosity, and depth, drive changes in biomass and community structure. this study will use fishery-independent fish assemblage and biomass data (collected by the hawaiʻi division of aquatic resources) and water quality measurements (collected by the nature conservancy and researchers at the hawaiʻi institute of marine biology) in maunalua bay, oʻahu, hawaiʻi to determine which physical and environmental parameters influence fish assemblages. by understanding how environmental variables drive changes to fish populations on reef ecosystems, we can mitigate the effects of habitat degradation to conserve nearshore reef health. maria angst age-structured stock assessment to determine population structure, growth, and reproductive biology of kala (bluespine unicornfish, naso unicornis) around maui, hawaii acanthurid surgeonfishes are ecologically and culturally important herbivores on pacific coral reefs. yet developing effective management that balances ecological resiliency with food security remains an elusive goal due to limited demographic and life history data. in hawaiʻi, bluespine unicornfish (naso unicornis), known as kala locally, is a highly targeted species within nearshore reef fisheries, but its large size, long lifespan, rapid early growth, and potentially spatially variable life history traits leave local fishers calling the assessments into question and that without their buy-in, management efforts are likely to be ineffective. our objective was to partner with local commercial and noncommercial fishers to develop a comprehensive age, growth, and reproductive dataset for kala around the island of maui to address these limitations. kala (n=578) was collected between may 2024–june 2025, with otoliths and gonads harvested from a subsample of individuals (n=152) to assess age and reproductive development. kala harvested in maui fisheries ranged from 3–38 years, with progressively fewer individuals represented in older age classes. older individuals seemed to concentrate at sites along the northeastern coast of maui, consistent with the local knowledge that older, larger kala may aggregate seasonally for spawning. kala growth was rapid and individuals reached near-asymptotic lengths within their first 3-4 years. preliminary data suggests that growth is sexually dimorphic with slightly larger asymptotic lengths for males than females. these findings indicate possible spatial variability in kala demographics around maui, and the presence of older individuals during peak spawning months also underscores the need for management approaches that account for reproductive timing and age structure. importantly, because these demographic patterns differ from what many local fishers observe on the water, they may reinforce community skepticism toward current stock assessments; without fisher buy-in, future management efforts for kala in hawaiʻi are unlikely to be effective. mckenna allen spatial patterns and environmental drivers of black-band disease (bbd) in montiporid corals across ʻanini reef, kauaʻi, hi black-band disease (bbd) is a globally significant coral disease associated with rapid tissue loss and high mortality in reef-building corals. within hawaiʻi, the disease has only been recorded on the north shore of kauaʻi. at ʻanini reef, a long-standing outbreak affecting montipora species has persisted since its initial confirmation in 2004. this study quantified bbd prevalence and evaluated colony-level traits, spatial patterns, and environmental drivers, including indicators of land-based pollution, to better understand factors shaping disease dynamics at this culturally and ecologically important reef system.\r\nin summer 2024, surveys of more than 4,600 montipora colonies across 171 inner-reef-flat plots documented a bbd prevalence of 17.8%, considerably higher than previously reported for ʻanini. colony size and species were significant predictors of susceptibility, with larger colonies and montipora patula disproportionately affected. zero-inflated beta regression models supported a frequency-dependent transmission pattern, where bbd prevalence declined with increasing colony density, indicating waterborne or environmentally mediated spread rather than direct density-dependent transmission.\r\na random forest model explained 57% of the variance in bbd prevalence and identified freshwater influence and water depth as the strongest predictors of disease distribution. spatial analyses revealed localized hotspots of high bbd prevalence that did not necessarily correspond with areas of high colony density. this pattern suggests that environmental stressors, likely influenced by watershed inputs and variable hydrodynamics, are driving outbreak persistence\r\nthese findings highlight the importance of environmental conditions in shaping bbd dynamics in hawaiʻi and illustrate how local stressors can interact with global change to undermine reef resilience across oceania. by identifying environmental predictors and spatial patterns of disease, this work supports targeted monitoring, watershed management, and coral restoration strategies. results can inform efforts aimed at reducing disease impacts on vulnerable reef habitats, contributing to regional efforts to “work together to ensure a future for coral reefs.” zachary craig restoring kahalu'u bay corals through collaborative science and community action the west hawai'i division of aquatic resources (dar) has launched a community-based coral restoration initiative in kahalu'u bay in partnership with reef teach staff and volunteers. this project aims to conserve and restore the bay’s natural ecosystem through collaborative science, ultimately identifying best practices for community-led restoration. success of reattachment methods applied in the bay will be evaluated by monitoring the health and distribution of corals through monthly surveys that track the number, size, species, and health conditions of both loose and attached corals. these surveys are conducted within two distinct zones: a restoration zone where active reattachment occurs, and a control zone for comparison.\r\n\r\nthe reattachment process, which occurs, on average, over 3 days every three months, employs cement and two-part epoxy adhesives to reattach detached corals greater than 5 cm in size. snorkelers collect detached corals, cache them at a protected central location, and then replant them onto suitable substrates, ensuring that each coral is securely attached and photographed for documentation. to track progress, 20-30 corals are tagged each quarter for long-term monitoring. the ongoing surveys (20-40 per quarter) assess the effectiveness of reattachment methods and determine if these interventions are outpacing natural detachment rates.\r\n\r\nafter the first year, survey data will be analyzed to identify the optimal timing and conditions for reattachment and the most suitable sub-habitats for restoration based on environmental factors like wave action, sedimentation, and substrate type. the second year will focus on empowering reef teach to lead the project independently, including assisting with their permitting process, training staff and volunteers, and facilitating their transition into full project ownership. this initiative will set a precedent for community-led restoration projects for the conservation of west hawai'i’s coral reefs.",
       "country_code": "US",
       "country": "United States",
-      "connection_count": 3
+      "connection_count": 2
     },
     {
-      "id": "loc-0198",
+      "id": "loc-0185",
       "affiliation": "Hawaiʻi Institute of Marine Biology",
       "lat": 38.9072,
       "lon": -77.0369,
       "speakers": [
+        "Alyssa Varela",
+        "Carlo Caruso",
+        "Dr Ford Drury",
+        "Dr Nina Rosset",
+        "Giada Tortorelli",
+        "Jake Snyder",
+        "Jasmine Razalan Reighard",
+        "Jessica Reichert",
+        "Kamalani Oshiro",
         "Madeleine Sherman",
         "Mykle Hoban",
         "Sophia Rahnke",
-        "Van Wishingrad"
+        "Van Wishingrad",
+        "ʻAʻaliʻi Kelling",
+        "Dr Evelyn Cox",
+        "Dr Megan Donahue"
       ],
       "speaker_details": [
+        {
+          "name": "Alyssa Varela",
+          "search_text": "alyssa varela persistence of thermal tolerance in selectively bred montipora capitata across an environmental gradient corals are increasingly threatened by human-driven changes to ocean conditions, and these large-scale shifts interact differently across reef systems, making it difficult to predict how reefs will respond to future environmental change. as sea surface temperatures continue to rise, it is important to understand how adapting coral populations respond to variation and degradation of other environmental factors such as light, flow, salinity, and water quality. this study investigates whether thermal tolerance in selectively bred juvenile montipora capitata persists across different reef environments in kāneʻohe bay, oʻahu, hawaiʻi. in 2023, gametes were collected from bleaching tolerant and wild-type parent colonies and settled to produce selectively bred and wild-type juveniles. these selectively bred corals represent phenotypes that may dominate future reefs, allowing us to explore how future populations respond to different environmental conditions across the bay. three-year-old juveniles were outplanted to reefs with varied flow, light, temperature, sediment, and salinity. we monitored coral growth, structural complexity, survivorship, symbiont community composition (its2 profiling), and biochemical responses (metabolomic profiling) through time to assess performance. results from this longitudinal study demonstrate how selectively bred m. capitata juveniles perform across different reef environments, providing insight into the persistence of thermal tolerant traits under varied environmental parameters and offering context for restoration and management decisions.",
+          "talk_titles": [
+            {
+              "title": "Persistence of thermal tolerance in selectively bred Montipora capitata across an environmental gradient",
+              "primary": true,
+              "talk_id": "db2d9caa-4697-4c21-9338-2976f1e75518"
+            },
+            {
+              "title": "Heat selection of sexually propagated corals for use in proactive restoration",
+              "primary": false,
+              "talk_id": "763fd5a7-e785-41ed-b08e-e36f5a8a5031"
+            },
+            {
+              "title": "Molecular and Biochemical Mechanisms of Thermal Sensitivity Across Coral–Symbiont Partnerships",
+              "primary": false,
+              "talk_id": "a4eb0849-6f1e-4fcf-9b62-91fa5b3a2eb9"
+            },
+            {
+              "title": "Multi-Scale Photogrammetry for Coral Research and Restoration",
+              "primary": false,
+              "talk_id": "e96a9526-421a-4c5a-96ae-fe94cdc09e4e"
+            },
+            {
+              "title": "Reciprocal Transplants Reveal Stable Thermal Performance and Holobiont Traits in Hawaiian Reef-Building Corals",
+              "primary": false,
+              "talk_id": "adc0774e-ae2d-451f-90cc-528d85cb83c8"
+            }
+          ],
+          "person_key": "icrs-p-01808",
+          "attended": true
+        },
+        {
+          "name": "Carlo Caruso",
+          "search_text": "carlo caruso heat selection of sexually propagated corals for use in proactive restoration sexual propagation could augment reef restoration efforts by leveraging extant adaptive potential of coral populations to keep pace with warming oceans. we reordered our conventional breeding strategy by creating a large pool of wild-bred corals before screening them for heat tolerance. this “post hoc” approach could provide practitioners with a large genetically diverse cohort of thermally resilient corals. earlier selection (e.g., in larvae or newly settled spat) that translates to durable phenotypes enables greater efficacy and efficiency in a breeding to restoration pipeline. we conducted empirical tests in a reef-building coral species by mass fertilizing gametes from wild spawning slicks of a montipora capitata population in kāneʻohe bay, oʻahu, hawaiʻi. we performed acute heat selection at the larval stage and on a separate cohort of newly settled spat. after recovery, survivors and control corals were subjected to long-term temperature treatments modeled for local conditions in future decades. we obtained thousands of offspring that withstood >8 dhws in these profiles. among corals derived from larval selection, several specific selection treatment variations conferred increased survival. corals derived from heat selection as spat had a clear advantage in growth and survivorship relative to controls, driven by a strong correlative size effect. modelling indicates that applying stronger selective pressure at the spat stage produces more durable heat-tolerance phenotypes, independent of this size effect. survivorship and growth dynamics in future conditions indicate a possible tipping point between the year 2050 and 2100 when temperature stress rapidly outpaces the available phenotypic diversity of this coral population. this impeding acceleration of selective pressure highlights the importance of incorporating resilience in present-day coral restoration projects and the need to identify thermally tolerant coral stocks to support these efforts.",
+          "talk_titles": [
+            {
+              "title": "Heat selection of sexually propagated corals for use in proactive restoration",
+              "primary": true,
+              "talk_id": "763fd5a7-e785-41ed-b08e-e36f5a8a5031"
+            },
+            {
+              "title": "Climate Wise Coral Restoration Through Community Collaboration on Maui (HI)",
+              "primary": false,
+              "talk_id": "3673f25d-88d9-4860-99a4-280373bdb2b9"
+            },
+            {
+              "title": "Genotypic and environmental drivers of symbiont community dynamics in Montipora capitata",
+              "primary": false,
+              "talk_id": "a882110b-ac42-4091-adb9-5a494a1cd714"
+            },
+            {
+              "title": "Metabolome signatures prior to heat stress can predict tolerance across diverse coral–algal associations",
+              "primary": false,
+              "talk_id": "45b3b685-6ad6-4725-bcd2-46ae3294752d"
+            },
+            {
+              "title": "Molecular and Biochemical Mechanisms of Thermal Sensitivity Across Coral–Symbiont Partnerships",
+              "primary": false,
+              "talk_id": "a4eb0849-6f1e-4fcf-9b62-91fa5b3a2eb9"
+            },
+            {
+              "title": "Multi-Scale Photogrammetry for Coral Research and Restoration",
+              "primary": false,
+              "talk_id": "e96a9526-421a-4c5a-96ae-fe94cdc09e4e"
+            },
+            {
+              "title": "Persistence of thermal tolerance in selectively bred Montipora capitata across an environmental gradient",
+              "primary": false,
+              "talk_id": "db2d9caa-4697-4c21-9338-2976f1e75518"
+            }
+          ],
+          "person_key": "icrs-p-00289",
+          "attended": true
+        },
+        {
+          "name": "Dr Ford Drury",
+          "search_text": "crawford drury genetic associations with climate tolerance in montipora capitata the long-term persistence of coral reefs depends in part on the adaptive capacity of contemporary coral populations. defining this capacity requires an improved understanding of the genetic architecture, effect sizes and heritability of genetic markers linked to climate resilience phenotypes. previous work has focused on genetic associations across an environmental mosaic or seascape, but patterns of diversity and association within populations are also important because they represent the raw material available among corals that are likely to cross-fertilize and reproduce. here we  address these knowledge gaps using whole genome sequencing of a cohort of montipora capitata in kāneʻohe bay, oʻahu, hawaiʻi with divergent bleaching phenotypes identified in the 2014/2015 bleaching event. these corals (n=53) display opposite bleaching sensitivities (either completely bleached of visually healthy) despite their adjacent locations on the reef, effectively eliminating environmental or microhabitat drivers of thermal tolerance. using case/control association testing with symbiont community as covariates, we identified dozens of sites distributed across the genome with high association scores. after defining linkage equilibrium in these regions, we used statistical fine mapping to identify several genes with high confidence scores as casual. using these genes as input, we found very high predictive classification accuracy using several machine learning frameworks, highlighting their generalized utility as biomarkers in this system. finally, we explored expression quantitative trait loci associated with these genetic markers, leveraging expression data from a separate heat stress experiment where we used co-expression modules to identity genes with phenotype-specific induced expression only in high temperatures. the unification of these data links genetic variants to genes that are uniquely responsive to stress in the most tolerant individuals. these data provide a comprehensive look at the landscape of genetic variation that creates climate tolerance in a model coral population.",
+          "talk_titles": [
+            {
+              "title": "Genetic associations with climate tolerance in Montipora capitata",
+              "primary": true,
+              "talk_id": "946680e1-834d-4324-93e4-628665380af4"
+            },
+            {
+              "title": "Changes in seasonal calcification and metabolic rates of reef-building corals following a legacy of recurring marine heatwaves",
+              "primary": false,
+              "talk_id": "35d849dd-d1d7-4250-b435-d206a3893a63"
+            },
+            {
+              "title": "Climate Wise Coral Restoration Through Community Collaboration on Maui (HI)",
+              "primary": false,
+              "talk_id": "3673f25d-88d9-4860-99a4-280373bdb2b9"
+            },
+            {
+              "title": "Developing a New Selective Breeding Model using Porites lobata in Hawaii",
+              "primary": false,
+              "talk_id": "584bf5ed-e133-44d1-a05e-3073acea5500"
+            },
+            {
+              "title": "Enzyme-Mediated Lysolipid Dynamics Are Associated with Coral Bleaching Resistance",
+              "primary": false,
+              "talk_id": "1b574e17-40ab-4ac7-8229-232333191f3c"
+            },
+            {
+              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
+              "primary": false,
+              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
+            },
+            {
+              "title": "Genotypic and environmental drivers of symbiont community dynamics in Montipora capitata",
+              "primary": false,
+              "talk_id": "a882110b-ac42-4091-adb9-5a494a1cd714"
+            },
+            {
+              "title": "Heat selection of sexually propagated corals for use in proactive restoration",
+              "primary": false,
+              "talk_id": "763fd5a7-e785-41ed-b08e-e36f5a8a5031"
+            },
+            {
+              "title": "Insights from a Community-Led Ridge-to-Reef Restoration Project in Maunalua Bay, O’ahu, Hawaiʻi",
+              "primary": false,
+              "talk_id": "ae556148-bb10-4793-854b-e855358471ff"
+            },
+            {
+              "title": "Metabolome signatures prior to heat stress can predict tolerance across diverse coral–algal associations",
+              "primary": false,
+              "talk_id": "45b3b685-6ad6-4725-bcd2-46ae3294752d"
+            },
+            {
+              "title": "Molecular and Biochemical Mechanisms of Thermal Sensitivity Across Coral–Symbiont Partnerships",
+              "primary": false,
+              "talk_id": "a4eb0849-6f1e-4fcf-9b62-91fa5b3a2eb9"
+            },
+            {
+              "title": "Multi-Scale Photogrammetry for Coral Research and Restoration",
+              "primary": false,
+              "talk_id": "e96a9526-421a-4c5a-96ae-fe94cdc09e4e"
+            },
+            {
+              "title": "Order or Chaos? Variable Responses of Stony Coral Symbioses to Future Ocean Conditions",
+              "primary": false,
+              "talk_id": "05a588be-38d3-451a-a597-ea4261748fec"
+            },
+            {
+              "title": "Persistence of thermal tolerance in selectively bred Montipora capitata across an environmental gradient",
+              "primary": false,
+              "talk_id": "db2d9caa-4697-4c21-9338-2976f1e75518"
+            },
+            {
+              "title": "Protein Complexes at the Cnidarian-Symbiodiniaceae Interface",
+              "primary": false,
+              "talk_id": "43c0bad7-fab4-4475-bdab-733917ddf822"
+            },
+            {
+              "title": "Reciprocal Transplants Reveal Stable Thermal Performance and Holobiont Traits in Hawaiian Reef-Building Corals",
+              "primary": false,
+              "talk_id": "adc0774e-ae2d-451f-90cc-528d85cb83c8"
+            },
+            {
+              "title": "Restore with Resilience: Community-Driven Coral Restoration",
+              "primary": false,
+              "talk_id": "4942fc36-be37-4615-b2ce-13b7d57f758f"
+            },
+            {
+              "title": "The Global Phosphorylation Landscape of Acute Heat Stress in Reef-Building Corals",
+              "primary": false,
+              "talk_id": "ba1c63cd-9c49-4c46-810d-a0b3b692591f"
+            }
+          ],
+          "person_key": "icrs-p-00499",
+          "attended": true
+        },
+        {
+          "name": "Dr Nina Rosset",
+          "search_text": "sabrina rosset metabolome signatures prior to heat stress can predict tolerance across diverse coral–algal associations corals exhibit substantial intrapopulation variation in their response to ocean warming, a phenomenon that restoration efforts aim to harness by selectively propagating more resilient individuals. yet, the molecular traits underpinning holobiont heat tolerance – emerging from complex host-symbiont interactions – remain poorly resolved. here, we tested the predictive power of coral metabolomes for determining thermal tolerance in a multi-species community with diverse symbiont associations.  \r\nwe sampled 5mm biopsies from 15 colonies of each of eight coral species from kāneʻohe bay, oʻahu, hawaiʻi, for untargeted metabolomics analysis. colony fragments were then subjected to each of five distinct six-month temperature regimes representing both historical and projected conditions in kāneʻohe bay. we quantified thermal tolerance at the end of the experiment based on the rates of decline in symbiont photosynthetic efficiency (effective dose – experimental degree heating weeks – causing 25% fv/fm reduction). using machine learning and correlation analysis, we evaluated how accurately metabolome signatures predicted thermal resilience across and within species and identified metabolite classes and molecular species most strongly associated with heat tolerance. \r\nour results demonstrate that metabolome signatures predicted heat tolerance with moderate to high accuracy. despite individual metabolites most strongly correlated with thermal tolerance being highly species-specific, the underlying metabolic pathways were common and included energy metabolism, membrane composition and oxidation, and lipid-mediated signalling, and related to the algal symbiont, the coral host, and their interaction. increased abundances of specific symbiont-derived lyso lipids and triacylglycerols containing polyunsaturated fatty acids were especially strong biomarkers of decreased bleaching susceptibility. based on our findings, we hypothesise that highly tolerant corals have a more cooperative and metabolically advantageous symbiosis. this research highlights the promising utility of biochemical biomarkers as tools for resilience-based reef restoration and provides new mechanistic insight into metabolic interactions within the coral holobiont that confer climate tolerance to reef-building corals.",
+          "talk_titles": [
+            {
+              "title": "Metabolome signatures prior to heat stress can predict tolerance across diverse coral–algal associations",
+              "primary": true,
+              "talk_id": "45b3b685-6ad6-4725-bcd2-46ae3294752d"
+            },
+            {
+              "title": "Enzyme-Mediated Lysolipid Dynamics Are Associated with Coral Bleaching Resistance",
+              "primary": false,
+              "talk_id": "1b574e17-40ab-4ac7-8229-232333191f3c"
+            },
+            {
+              "title": "Molecular and Biochemical Mechanisms of Thermal Sensitivity Across Coral–Symbiont Partnerships",
+              "primary": false,
+              "talk_id": "a4eb0849-6f1e-4fcf-9b62-91fa5b3a2eb9"
+            },
+            {
+              "title": "The Global Phosphorylation Landscape of Acute Heat Stress in Reef-Building Corals",
+              "primary": false,
+              "talk_id": "ba1c63cd-9c49-4c46-810d-a0b3b692591f"
+            }
+          ],
+          "person_key": "icrs-p-01498",
+          "attended": true
+        },
+        {
+          "name": "Giada Tortorelli",
+          "search_text": "giada tortorelli molecular and biochemical mechanisms of thermal sensitivity across coral–symbiont partnerships the persistence of coral reefs under climate change relies substantially on the identity and plasticity of the coral-symbiodiniaceae mutualism. this partnership hinges on molecular-level recognition between host and symbiont, with lectin–glycan signaling emerging as a key mechanism of compatibility that may underlie partner specificity in the cnidaria–symbiodiniaceae symbiosis. montipora capitata is a broadcast spawner that vertically transmits symbionts through gametes and in kāneʻohe bay, oʻahu, hawaiʻi, genotypes dominated by cladocopium are more sensitive to warmer temperatures and bleach more readily than those hosting durusdinium, which are more thermally tolerant and better equipped to handle future climates. to investigate the molecular and biochemical basis of these differences, we examined cladocopium and durusdinium across adult colonies of m. capitata genotypes, their eggs, and symbionts that were either retained or expelled during simulated bleaching events.\r\nsymbiont cell surface properties and biochemistry differed between cladocopium and durusdinium. combined host-symbiont effects strongly influenced the physiological and metabolic responses to temperature stress, highlighting the individual holobiont–not the symbiont genus alone–as the primary unit of thermal response. elevated temperatures altered the symbiont cell-surface glycome and led to the convergence of betaine lipids biochemistry between the thermosensitive cladocopium and the thermotolerant durusdinium in adult corals. the changes in symbiont cell-surface glycoconjugates and membrane lipids, linked to heat-induced oxidative stress, suggest that changes in these molecular interfaces may disrupt host–symbiont specific symbioses. deviations from stress-free symbiont glycan profiles may therefore contribute to both symbiosis breakdown and the plasticity of partner associations under stress. understanding how symbiodiniaceae regulate stress responses and host affinity helps identify the traits contributing to coral resilience under climate change.",
+          "talk_titles": [
+            {
+              "title": "Molecular and Biochemical Mechanisms of Thermal Sensitivity Across Coral–Symbiont Partnerships",
+              "primary": true,
+              "talk_id": "a4eb0849-6f1e-4fcf-9b62-91fa5b3a2eb9"
+            },
+            {
+              "title": "Metabolome signatures prior to heat stress can predict tolerance across diverse coral–algal associations",
+              "primary": false,
+              "talk_id": "45b3b685-6ad6-4725-bcd2-46ae3294752d"
+            },
+            {
+              "title": "Protein Complexes at the Cnidarian-Symbiodiniaceae Interface",
+              "primary": false,
+              "talk_id": "43c0bad7-fab4-4475-bdab-733917ddf822"
+            },
+            {
+              "title": "The Global Phosphorylation Landscape of Acute Heat Stress in Reef-Building Corals",
+              "primary": false,
+              "talk_id": "ba1c63cd-9c49-4c46-810d-a0b3b692591f"
+            }
+          ],
+          "person_key": "icrs-p-01762",
+          "attended": true
+        },
+        {
+          "name": "Jake Snyder",
+          "search_text": "jacob snyder mechanisms to improve coral reef resilience in sediment- and nutrient-impacted environments: a theoretical analysis pacific nations depend on reefs and are thus highly vulnerable to their degradation. in hawaiʻi, coral reefs are foundational in native hawaiian genealogy, support high levels of endemic biodiversity, and generate over $850 million annually. mitigating land-based pollutants – one of the top three threats to coral reefs globally – can improve reef resilience and preserve these ecosystem services. sediment runoff is a primary contributor to coral decline (and algal dominance), and its deleterious effects are exacerbated by nutrients, which bolster the growth of algae competing with corals for benthic space. a leading management strategy to prevent shifts from coral- to algal-dominated states is maintaining the biomass of herbivorous fish, which consume algal competitors. however, the efficacy of this method can be hindered by sediment-driven changes in fish herbivory.  this study constructs a mathematical model to improve management targets by identifying (1) pollutant thresholds past which herbivore biomass may abruptly decline and (2) primary drivers of resilience. we expand upon a coral-algal competition model by incorporating dynamic herbivorous fish functional groups (browsers, grazers, and scrapers), which interact with the model’s benthic components via algal herbivory. the responses of benthic taxa and herbivore groups to land-based pollutants are parameterized using literature and field data. specifically, algae growth and herbivory rates were measured across three independent riverine runoff gradients in hawaiʻi for one year. analyses reveal that (1) intermediate pollutant levels can generate hysteresis, meaning that returning pollutants to their pre-decline levels may not induce recovery, and (2) browser herbivory maintains coral dominance at low sediment levels but is outpaced by macroalgal growth in highly polluted environments. this model advances the development of tractable decision-support tools to identify management targets on sediment- and nutrient-impacted reef ecosystems globally.",
+          "talk_titles": [
+            {
+              "title": "Mechanisms to Improve Coral Reef Resilience in Sediment- and Nutrient-Impacted Environments: A Theoretical Analysis",
+              "primary": true,
+              "talk_id": "b932519e-2440-42fa-a1c7-fabae4d06453"
+            }
+          ],
+          "person_key": "icrs-p-01647",
+          "attended": true
+        },
+        {
+          "name": "Jasmine Razalan Reighard",
+          "search_text": "jasmine reighard thresholds of sediment stress on herbivory: experimental evidence from a pacific parrotfish sediment runoff is a primary driver of coral reef degradation globally. elevated nutrient inputs from runoff underpin transitions from coral-dominated to algae-dominated ecosystems. herbivorous reef fishes are widely recognized as a critical bastion of defense against these shifts, as they limit the establishment and overgrowth of algal communities. however, evidence also indicates that these fishes are sensitive to sediment exposure, leading to declines in biodiversity, abundance, and grazing pressure. this research aims to test the direct consequences of sedimentation on algal grazing rates by herbivorous fish and quantity the thresholds above which sediment exposure erodes the ecological functions they provide. to investigate these impacts, we conducted a series of feeding experiments in microcosm tanks simulating suspended (sus) and settled sediment (ses) gradients observed on nearshore reefs. our study’s focal species was the pacific bullethead uhu (parrotfish, chlorurus spilurus), a common herbivore throughout pacific tropical nearshore habitats. each fish completed four trials: (1) a no-sediment control, (2) sus exposure, (3) ses exposure, and (4) combined sus + ses exposure, and different individuals experienced different quantifies of sediment exposure ranging from 0-12 mg/l. individuals were given a choice between turf algae collected from a nearshore, runoff-exposed reef and an offshore clear-water reef. behavioral responses were recorded via overhead video to compare feeding strikes across treatments. we discuss our findings of threshold limits and impairments of top-down algal control in relation to common sediment exposure gradients for tropical coral reefs.",
+          "talk_titles": [
+            {
+              "title": "Thresholds of Sediment Stress on Herbivory: Experimental Evidence from a Pacific Parrotfish",
+              "primary": true,
+              "talk_id": "7e56b6b6-e54f-4c9a-9b97-ad640877bb28"
+            },
+            {
+              "title": "Habitat Enhancement Through Indigenous Stone Fish Houses: Evidence from a Two-Year Field Experiment in Hawaiʻi",
+              "primary": false,
+              "talk_id": "4d3efa98-bff0-4f45-833f-97c28dde8328"
+            }
+          ],
+          "person_key": "icrs-p-01434",
+          "attended": true
+        },
+        {
+          "name": "Jessica Reichert",
+          "search_text": "jessica reichert from structure to exposure: using 3d morphometrics and computer vision to capture coral–microplastic interactions spirals that support reefs: helical microhabitats for coral recruitment although plastic pollution is now widely detected in reef environments, its ecological impacts on corals remain poorly understood. this is mainly because in situ exposure is a function of particle concentrations, flow, and organismal responses, which is difficult to quantify under natural conditions. understanding how corals interact with plastic particles requires approaches that resolve fine-scale exposure parameters and behavioral responses. here, we combine quantitative morphometrics, controlled-flow experiments, and computer vision to assess how coral structural complexity and polyp behavior jointly determine microplastic exposure and therewith potential associated ecological impacts. first, we quantified microplastic accumulation in pocillopora acuta colonies in kāneʻohe bay, hawaiʻi, and combined the observed concentrations with a broad set of structural complexity metrics obtained using high-resolution 3d photogrammetry and 3d scanning. we found that colonies with compact, thick-branched morphologies consistently accumulated higher microplastic loads under natural conditions, with mean loads of ~0.03 particles g⁻¹. second, we developed a microflume and video-based experimental platform recording colony–microplastic interactions to resolve the underlying link between exposure conditions, structural complexity, and interaction frequencies. using computer vision and automated image analysis, we track particle–polyp contact events and classify the responses, including ingestion, rejection, and mucus entrapment. this enables continuous quantification of interaction frequencies and durations as a function of microplastic concentration, flow regime, and colony structural complexity. our results show that coral complexity plays a significant role in microplastic exposure and deposition, with implications for coral health and the transfer of microplastics to other reef sinks. by integrating 3d morphometrics with ai-assisted video analysis, this work provides scalable tools for investigating the impacts of plastic pollution. this highlights the value of applying advanced imaging and ai-based methodologies to resolve subtle pollutant responses in structurally complex reef organisms, thereby supporting more accurate ecological risk assessments. a major challenge in reef restoration and nature-positive infrastructure is designing structures that reliably support coral recruitment and early survival. over the past three years, the geometric ecology lab has iteratively developed and tested five generations of settlement modules, each informed by previous field results. a central finding is the strong influence of microhabitat geometry: spiral-shaped (helix) recesses attracted up to 80-fold more larvae than linear ones, with optimal dimensions supporting settlement that persists for years after deployment. hydrodynamics also played a key role–higher flow increased larval entrainment into helix recesses and boosted settlement. these design rules were robust across module shapes and construction materials, with cylindrical units in both concrete and clay performing comparably. small shifts in recess size altered post-settlement survival, emphasizing the need to balance initial recruitment and long-term persistence. although helix designs maximized total recruits, more complex fractal structures supported greater species diversity, revealing trade-offs between abundance and richness. together, these results provide a mechanistic basis for scalable coral-supporting structures and offer new insight into the ecological drivers of larval settlement and survival.",
+          "talk_titles": [
+            {
+              "title": "From structure to exposure: using 3D morphometrics and computer vision to capture coral–microplastic interactions",
+              "primary": true,
+              "talk_id": "43678c40-202a-411d-a280-973cbb38d5de"
+            },
+            {
+              "title": "Spirals that support reefs: helical microhabitats for coral recruitment",
+              "primary": true,
+              "talk_id": "a86c9a1e-141d-4331-8fe5-5e4d14174dd9"
+            },
+            {
+              "title": "Field trials off O'ahu, Hawai’i demonstrate enhanced coral and reef fish larvae settlement using acoustic enrichment, artificial reef structures, and nanoengineered biofilms.",
+              "primary": false,
+              "talk_id": "f21753a1-b7a6-4067-9a5a-99b169e89c90"
+            },
+            {
+              "title": "From Settlement to Survival: disentangling the roles of reef structure and adult coral cover on juvenile corals",
+              "primary": false,
+              "talk_id": "b11e2e43-55aa-4ff6-a4ae-5a40ea165a2c"
+            },
+            {
+              "title": "Linking Sediment Exposure to Coral Performance at a Priority Reef Restoration Site on Maui",
+              "primary": false,
+              "talk_id": "0dd64012-07f4-4243-8fdc-ab3482dc184f"
+            },
+            {
+              "title": "Using burst-motion autonomous cameras to measure acoustic enrichment recruitment effects on coral reef fish larvae",
+              "primary": false,
+              "talk_id": "29ae65a1-5572-4f3b-b5c5-d5f76cdf84a6"
+            }
+          ],
+          "person_key": "icrs-p-01432",
+          "attended": true
+        },
+        {
+          "name": "Kamalani Oshiro",
+          "search_text": "kamalani oshiro developing a new selective breeding model using porites lobata in hawaii as climate change continues to warm oceans, it is critical to understand the relationships between thermal tolerance and the reproductive output of corals. selective breeding of coral in the context of restoration is ongoing in hawaii, however this work is dominated by one coral species, montipora capitata. diversifying species available for breeding, especially those with different life history traits, reproductive biology and ecological function is important for effective conservation. here, we aim to develop a new selective breeding model for p. lobata in kaneohe bay, oahu, hawaii based on direct feedback from the community expressing the ecological and cultural importance of this species. we established a model population of 100 colonies in the field and collected histology samples throughout the summer of 2025 to 1) identify the sex of the colony, 2) the timeline of gametogenesis, and 3) quantify fecundity. fecundity was quantified by counts of all visible gametes per polyp across multiple polyps per one section per slide. small fragments from field source colonies were collected to explore tradeoffs in this species, including the relationship between fecundity and other important traits like growth and thermal tolerance. these fragments were maintained ex situ and buoyant weighed to determine growth before being exposed to a standardized heat-stress assay that reflects natural beaching patterns and elicits. we used pam fluorometry during this stress test to resolve continuous thermal tolerance scores, which will be compared with fecundity and growth metrics to assess tradeoffs. the development of additional selective breeding models supports selective breeding for restoration practitioners in hawaii, creating greater ecological diversity for this conservation approach.",
+          "talk_titles": [
+            {
+              "title": "Developing a New Selective Breeding Model using Porites lobata in Hawaii",
+              "primary": true,
+              "talk_id": "584bf5ed-e133-44d1-a05e-3073acea5500"
+            },
+            {
+              "title": "Heat selection of sexually propagated corals for use in proactive restoration",
+              "primary": false,
+              "talk_id": "763fd5a7-e785-41ed-b08e-e36f5a8a5031"
+            },
+            {
+              "title": "Molecular and Biochemical Mechanisms of Thermal Sensitivity Across Coral–Symbiont Partnerships",
+              "primary": false,
+              "talk_id": "a4eb0849-6f1e-4fcf-9b62-91fa5b3a2eb9"
+            },
+            {
+              "title": "Reciprocal Transplants Reveal Stable Thermal Performance and Holobiont Traits in Hawaiian Reef-Building Corals",
+              "primary": false,
+              "talk_id": "adc0774e-ae2d-451f-90cc-528d85cb83c8"
+            }
+          ],
+          "person_key": "icrs-p-01293",
+          "attended": true
+        },
         {
           "name": "Madeleine Sherman",
           "search_text": "madeleine sherman restore with resilience: community-driven coral restoration restore with resilience is a multi-disciplinary initiative proactively restoring coral reefs in hawai'i via selective propagation of thermally tolerant corals of opportunity. combining hands-on restoration with community partnerships, the project has shown a scalable model for locally led restoration. today, six restoration sites across the state are managed by different partner organizations, each tailoring efforts to the needs of their community. following intensive training with coral researchers, nonprofits and community volunteers are now able to carry out coral restoration independently via their own permit approvals and funding, cultivating meaningful local ownership, capacity, and long-term stewardship that can persist beyond the lifespan of a single project. at icrs 2022, we shared our intention to co-develop a set of best practices for coral restoration with the community. four years later, we are proud to present the product: “restore with resilience: a guide to community-driven coral restoration.” this resource reflects the collective knowledge, challenges, and successes of communities restoring the reefs that sustain them.",
@@ -14241,19 +13021,90 @@ export const SITE_DATA = {
           ],
           "person_key": "icrs-p-02186",
           "attended": false
+        },
+        {
+          "name": "ʻAʻaliʻi Kelling",
+          "search_text": "ʻaʻaliʻi kelling habitat enhancement through indigenous stone fish houses: evidence from a two-year field experiment in hawaiʻi coral reefs are declining globally, underscoring the need for conservation strategies that pair ecological science with place-based management. in hawaiʻi, traditional stone fish houses called imu represent an indigenous stewardship practice that may provide effective models for contemporary fisheries enhancement. this study evaluates the ecological role of imu within the hāʻena community-based subsistence fishing area (cbsfa), kauaʻi, where community-led management emphasizes food sovereignty and cultural revitalization. over a two-year period (2023–2024), we deployed imu across three nearshore locations with low structural complexity and compared them with nearby controls and natural reef sites. using standardized fish surveys and underwater video monitoring, we tested whether imu increase fish abundance, biomass, species richness, and juvenile recruitment. imu consistently enhanced local fish communities. fish abundance was 57% higher at imu sites, biomass increased by 86%, and species richness by 42% relative to controls. juveniles (0–10 cm) comprised 78% of individuals at imu, compared to 60% at controls and 35% at natural reefs, indicating that imu function primarily as recruitment structures. community analyses showed imu sites forming distinct assemblages that occupied intermediate space between degraded controls and healthy outer reefs. these results demonstrate that imu are scalable, community-implementable structures that address recruitment bottlenecks in low-complexity habitats. by increasing structural refuge, imu align indigenous resource practices with contemporary reef ecology, offering a culturally grounded and ecologically effective tool to support fish stocks, food security, and community-based stewardship.",
+          "talk_titles": [
+            {
+              "title": "Habitat Enhancement Through Indigenous Stone Fish Houses: Evidence from a Two-Year Field Experiment in Hawaiʻi",
+              "primary": true,
+              "talk_id": "4d3efa98-bff0-4f45-833f-97c28dde8328"
+            }
+          ],
+          "person_key": "icrs-p-00902",
+          "attended": true
+        },
+        {
+          "name": "Dr Evelyn Cox",
+          "search_text": "dr evelyn cox",
+          "talk_titles": [
+            {
+              "title": "Pathogenesis of Acropora Growth Anomalies in American Samoa",
+              "primary": false,
+              "talk_id": "f7025eaa-616e-4e2e-a8ee-759918098899"
+            }
+          ],
+          "person_key": "icrs-p-00383",
+          "attended": true,
+          "non_speaking_delegate": true
+        },
+        {
+          "name": "Dr Megan Donahue",
+          "search_text": "dr megan donahue",
+          "talk_titles": [
+            {
+              "title": "Coral metabolism and contaminant loads track human land use",
+              "primary": false,
+              "talk_id": "4b200719-a5d3-442d-a8e0-734c6c0e7f54"
+            },
+            {
+              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
+              "primary": false,
+              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
+            },
+            {
+              "title": "Linking Sediment Exposure to Coral Performance at a Priority Reef Restoration Site on Maui",
+              "primary": false,
+              "talk_id": "0dd64012-07f4-4243-8fdc-ab3482dc184f"
+            },
+            {
+              "title": "Restoring Corals from Sediment to Symbionts: A Novel Microbiome Approach in Olowalu, Maui",
+              "primary": false,
+              "talk_id": "dfde48fc-eb19-4c40-a944-5cc2e49ed49c"
+            },
+            {
+              "title": "Review of Contaminant Concentrations in Reef and Pelagic Fishes from the Pacific Islands",
+              "primary": false,
+              "talk_id": "b6062eee-794c-4648-a077-603c15115587"
+            },
+            {
+              "title": "The drivers of fish distribution and localized fish populations in the presence of submarine groundwater discharge in Maunalua Bay, Oʻahu, Hawaiʻi",
+              "primary": false,
+              "talk_id": "61eee72f-2f93-44a7-95bf-1e1138890528"
+            },
+            {
+              "title": "The effect of community diversity on thermal stress tolerance of coral reefs in Okinawa, Japan",
+              "primary": false,
+              "talk_id": "ea808f4e-b011-435a-9cc4-4902a334af42"
+            }
+          ],
+          "person_key": "icrs-p-00482",
+          "attended": true,
+          "non_speaking_delegate": true
         }
       ],
-      "speaker_count": 4,
-      "talk_count": 4,
+      "speaker_count": 16,
+      "talk_count": 15,
       "geocode_level": "country",
       "distance_km": 13880.4,
-      "search_text": "hawaiʻi institute of marine biology madeleine sherman mykle hoban sophia rahnke van wishingrad madeleine sherman restore with resilience: community-driven coral restoration restore with resilience is a multi-disciplinary initiative proactively restoring coral reefs in hawai'i via selective propagation of thermally tolerant corals of opportunity. combining hands-on restoration with community partnerships, the project has shown a scalable model for locally led restoration. today, six restoration sites across the state are managed by different partner organizations, each tailoring efforts to the needs of their community. following intensive training with coral researchers, nonprofits and community volunteers are now able to carry out coral restoration independently via their own permit approvals and funding, cultivating meaningful local ownership, capacity, and long-term stewardship that can persist beyond the lifespan of a single project. at icrs 2022, we shared our intention to co-develop a set of best practices for coral restoration with the community. four years later, we are proud to present the product: “restore with resilience: a guide to community-driven coral restoration.” this resource reflects the collective knowledge, challenges, and successes of communities restoring the reefs that sustain them. mykle hoban cryptobenthic crab assemblages are more distinct across a 90 m depth gradient than 2500 km of shallow marine habitat in the hawaiian archipelago despite high biodiversity and the recognized importance of mesophotic habitats, most studies of coral reef community structure have focused on conspicuous taxa such as fishes and corals in shallow habitat <30 m. here, we examined the variability of crab assemblages from autonomous reef monitoring structures (arms) deployed on shallow reefs across the hawaiian islands and along a mesophotic depth gradient on o’ahu. we tested the effects of environmental, ecological, and anthropogenic factors on shallow (8–17 m) crab assemblages. these assemblages were significantly different between the densely inhabited high islands (main hawaiian islands) and the relatively pristine uninhabited atolls of the northwestern hawaiian islands. drivers of these differences include sea-surface temperature, chlorophyll-a, depth, island slope, potential larval immigration, and human impacts. we then compared shallow assemblages to those sampled along a depth gradient (12–90 m) on o’ahu. despite considerable variability among sites distributed across nearly 10 degrees of latitude, differences along the depth gradient on o’ahu alone were greater than among the shallow assemblages across the entire archipelago. this finding suggests that 90 m of depth is a stronger driver of brachyuran assemblage structure than the latitudinal, environmental, and anthropogenic gradients across the entire ~2500 km span of the hawaiian islands. sophia rahnke mechanisms of sustainable harvest in complex reef ecosystems: insights from hawaiian fisheries stewardship coral reef fisheries play a crucial role in supporting food security, livelihoods, and ways of life for communities worldwide, yet many face growing pressures from climate change, habitat degradation, and overexploitation. understanding how different management strategies influence ecological outcomes is therefore critical for sustaining coral reefs and the communities that depend on them. in hawaiʻi, historical reconstructions have revealed that indigenous fisheries management practices supported high fisheries harvest from reef resources for centuries, without evidence of overharvesting. here, we investigate ecological mechanisms that may have contributed to this historical abundance and assess their relevance to contemporary regulations, with a focus on population size–structure, seasonality, and predator-prey relationships . we developed a stage-structured, predator-prey model that incorporates harvest across trophic levels and life-history stages. using this framework, we evaluated historical strategies that may have protected large, fecund adults, imposed harvest closures during spawning events, and accounted for trophic interactions, and compared them with modern approaches that use similar approaches, but differ in implementation. our analyses demonstrate that maximum size limits yielded the greatest harvest, while slot limits supported the greatest range of harvest intensities, suggesting that protection of large adults is a key component of maintaining high biomass and harvest. simulations of temporal closures highlight the benefit of aligning closures with spawning events, but also indicate that ideal closure conditions depend on harvest intensity and species biology. we further show that harvest of the predator population can enhance prey yield under certain ecological conditions. these findings indicate that the ecological mechanisms embedded in indigenous stewardship practices, such as protection of large adults, attention to spawning cycles, and consideration of trophic interactions, can enhance sustainability and may help guide current nearshore regulations in hawaiʻi. van wishingrad surveying biodiverse coral reef ecosystems across the tree of life with environmental dna coral reefs are among the most productive and biologically diverse ecosystems on earth. corals cover 0.1-0.5% of the ocean floor but are home to 25% of marine life, representing a valuable resource to biodiversity. a central challenge in evaluating biodiversity using edna metabarcoding is that each primer set has biases resulting in selective amplification of a unique composition of taxonomic diversity. here we test eleven primer pairs (amaral-zettler 18s v9, govinarajan 18s v9, guardiola 18s v7, stat 18s v4, berry 16s, mifish e 12s, mifish u 12s, riaz 12s, leray co1, martineau 28s, and sherwood 23s) to assess central pacific coral reef diversity in the five kingdoms of marine eukaryotes: chromista, fungi, metazoa, plantae, and protozoa. zero-width otus (zotus) were compared to public sequence databases and resolved to the finest taxonomic rank possible. the highest number of unique taxa was recovered by govinarajan 18s v9 primers (127) largely comprised of chromista and metazoa, followed by martineau 28s primers (100) with similar taxonomic composition.  all primers except the algae-focused sherwood 23s recovered metazoa, while all markers except riaz 12s recovered taxa in the kingdom plantae. none of these primers performed particularly well for fungi, cercozoa or protozoa. at the phylum level, riaz 12s, berry 16s, mifish 12s u and mifish 12s e recovered the most taxa of chordata. marineau 28s, govinarajan 18s v9, and amaral zettler 18s v9 recovered the most porifera taxa, with highest counts coming from the most diverse class demospongiae. at the class level, the “fish” primers (riaz 12s, mifish 12s u, berry 16s, and mifish 12s e) preferentially recovered actinopteri (ray-finned fishes). while each primer set proved uniquely informative for some taxa, the taxon recovery profiles provided here should aid researchers in matching the taxonomic specificity of environmental metabarcoding primers with research questions of interest.",
+      "search_text": "hawaiʻi institute of marine biology alyssa varela carlo caruso dr ford drury dr nina rosset giada tortorelli jake snyder jasmine razalan reighard jessica reichert kamalani oshiro madeleine sherman mykle hoban sophia rahnke van wishingrad ʻaʻaliʻi kelling alyssa varela persistence of thermal tolerance in selectively bred montipora capitata across an environmental gradient corals are increasingly threatened by human-driven changes to ocean conditions, and these large-scale shifts interact differently across reef systems, making it difficult to predict how reefs will respond to future environmental change. as sea surface temperatures continue to rise, it is important to understand how adapting coral populations respond to variation and degradation of other environmental factors such as light, flow, salinity, and water quality. this study investigates whether thermal tolerance in selectively bred juvenile montipora capitata persists across different reef environments in kāneʻohe bay, oʻahu, hawaiʻi. in 2023, gametes were collected from bleaching tolerant and wild-type parent colonies and settled to produce selectively bred and wild-type juveniles. these selectively bred corals represent phenotypes that may dominate future reefs, allowing us to explore how future populations respond to different environmental conditions across the bay. three-year-old juveniles were outplanted to reefs with varied flow, light, temperature, sediment, and salinity. we monitored coral growth, structural complexity, survivorship, symbiont community composition (its2 profiling), and biochemical responses (metabolomic profiling) through time to assess performance. results from this longitudinal study demonstrate how selectively bred m. capitata juveniles perform across different reef environments, providing insight into the persistence of thermal tolerant traits under varied environmental parameters and offering context for restoration and management decisions. carlo caruso heat selection of sexually propagated corals for use in proactive restoration sexual propagation could augment reef restoration efforts by leveraging extant adaptive potential of coral populations to keep pace with warming oceans. we reordered our conventional breeding strategy by creating a large pool of wild-bred corals before screening them for heat tolerance. this “post hoc” approach could provide practitioners with a large genetically diverse cohort of thermally resilient corals. earlier selection (e.g., in larvae or newly settled spat) that translates to durable phenotypes enables greater efficacy and efficiency in a breeding to restoration pipeline. we conducted empirical tests in a reef-building coral species by mass fertilizing gametes from wild spawning slicks of a montipora capitata population in kāneʻohe bay, oʻahu, hawaiʻi. we performed acute heat selection at the larval stage and on a separate cohort of newly settled spat. after recovery, survivors and control corals were subjected to long-term temperature treatments modeled for local conditions in future decades. we obtained thousands of offspring that withstood >8 dhws in these profiles. among corals derived from larval selection, several specific selection treatment variations conferred increased survival. corals derived from heat selection as spat had a clear advantage in growth and survivorship relative to controls, driven by a strong correlative size effect. modelling indicates that applying stronger selective pressure at the spat stage produces more durable heat-tolerance phenotypes, independent of this size effect. survivorship and growth dynamics in future conditions indicate a possible tipping point between the year 2050 and 2100 when temperature stress rapidly outpaces the available phenotypic diversity of this coral population. this impeding acceleration of selective pressure highlights the importance of incorporating resilience in present-day coral restoration projects and the need to identify thermally tolerant coral stocks to support these efforts. crawford drury genetic associations with climate tolerance in montipora capitata the long-term persistence of coral reefs depends in part on the adaptive capacity of contemporary coral populations. defining this capacity requires an improved understanding of the genetic architecture, effect sizes and heritability of genetic markers linked to climate resilience phenotypes. previous work has focused on genetic associations across an environmental mosaic or seascape, but patterns of diversity and association within populations are also important because they represent the raw material available among corals that are likely to cross-fertilize and reproduce. here we  address these knowledge gaps using whole genome sequencing of a cohort of montipora capitata in kāneʻohe bay, oʻahu, hawaiʻi with divergent bleaching phenotypes identified in the 2014/2015 bleaching event. these corals (n=53) display opposite bleaching sensitivities (either completely bleached of visually healthy) despite their adjacent locations on the reef, effectively eliminating environmental or microhabitat drivers of thermal tolerance. using case/control association testing with symbiont community as covariates, we identified dozens of sites distributed across the genome with high association scores. after defining linkage equilibrium in these regions, we used statistical fine mapping to identify several genes with high confidence scores as casual. using these genes as input, we found very high predictive classification accuracy using several machine learning frameworks, highlighting their generalized utility as biomarkers in this system. finally, we explored expression quantitative trait loci associated with these genetic markers, leveraging expression data from a separate heat stress experiment where we used co-expression modules to identity genes with phenotype-specific induced expression only in high temperatures. the unification of these data links genetic variants to genes that are uniquely responsive to stress in the most tolerant individuals. these data provide a comprehensive look at the landscape of genetic variation that creates climate tolerance in a model coral population. sabrina rosset metabolome signatures prior to heat stress can predict tolerance across diverse coral–algal associations corals exhibit substantial intrapopulation variation in their response to ocean warming, a phenomenon that restoration efforts aim to harness by selectively propagating more resilient individuals. yet, the molecular traits underpinning holobiont heat tolerance – emerging from complex host-symbiont interactions – remain poorly resolved. here, we tested the predictive power of coral metabolomes for determining thermal tolerance in a multi-species community with diverse symbiont associations.  \r\nwe sampled 5mm biopsies from 15 colonies of each of eight coral species from kāneʻohe bay, oʻahu, hawaiʻi, for untargeted metabolomics analysis. colony fragments were then subjected to each of five distinct six-month temperature regimes representing both historical and projected conditions in kāneʻohe bay. we quantified thermal tolerance at the end of the experiment based on the rates of decline in symbiont photosynthetic efficiency (effective dose – experimental degree heating weeks – causing 25% fv/fm reduction). using machine learning and correlation analysis, we evaluated how accurately metabolome signatures predicted thermal resilience across and within species and identified metabolite classes and molecular species most strongly associated with heat tolerance. \r\nour results demonstrate that metabolome signatures predicted heat tolerance with moderate to high accuracy. despite individual metabolites most strongly correlated with thermal tolerance being highly species-specific, the underlying metabolic pathways were common and included energy metabolism, membrane composition and oxidation, and lipid-mediated signalling, and related to the algal symbiont, the coral host, and their interaction. increased abundances of specific symbiont-derived lyso lipids and triacylglycerols containing polyunsaturated fatty acids were especially strong biomarkers of decreased bleaching susceptibility. based on our findings, we hypothesise that highly tolerant corals have a more cooperative and metabolically advantageous symbiosis. this research highlights the promising utility of biochemical biomarkers as tools for resilience-based reef restoration and provides new mechanistic insight into metabolic interactions within the coral holobiont that confer climate tolerance to reef-building corals. giada tortorelli molecular and biochemical mechanisms of thermal sensitivity across coral–symbiont partnerships the persistence of coral reefs under climate change relies substantially on the identity and plasticity of the coral-symbiodiniaceae mutualism. this partnership hinges on molecular-level recognition between host and symbiont, with lectin–glycan signaling emerging as a key mechanism of compatibility that may underlie partner specificity in the cnidaria–symbiodiniaceae symbiosis. montipora capitata is a broadcast spawner that vertically transmits symbionts through gametes and in kāneʻohe bay, oʻahu, hawaiʻi, genotypes dominated by cladocopium are more sensitive to warmer temperatures and bleach more readily than those hosting durusdinium, which are more thermally tolerant and better equipped to handle future climates. to investigate the molecular and biochemical basis of these differences, we examined cladocopium and durusdinium across adult colonies of m. capitata genotypes, their eggs, and symbionts that were either retained or expelled during simulated bleaching events.\r\nsymbiont cell surface properties and biochemistry differed between cladocopium and durusdinium. combined host-symbiont effects strongly influenced the physiological and metabolic responses to temperature stress, highlighting the individual holobiont–not the symbiont genus alone–as the primary unit of thermal response. elevated temperatures altered the symbiont cell-surface glycome and led to the convergence of betaine lipids biochemistry between the thermosensitive cladocopium and the thermotolerant durusdinium in adult corals. the changes in symbiont cell-surface glycoconjugates and membrane lipids, linked to heat-induced oxidative stress, suggest that changes in these molecular interfaces may disrupt host–symbiont specific symbioses. deviations from stress-free symbiont glycan profiles may therefore contribute to both symbiosis breakdown and the plasticity of partner associations under stress. understanding how symbiodiniaceae regulate stress responses and host affinity helps identify the traits contributing to coral resilience under climate change. jacob snyder mechanisms to improve coral reef resilience in sediment- and nutrient-impacted environments: a theoretical analysis pacific nations depend on reefs and are thus highly vulnerable to their degradation. in hawaiʻi, coral reefs are foundational in native hawaiian genealogy, support high levels of endemic biodiversity, and generate over $850 million annually. mitigating land-based pollutants – one of the top three threats to coral reefs globally – can improve reef resilience and preserve these ecosystem services. sediment runoff is a primary contributor to coral decline (and algal dominance), and its deleterious effects are exacerbated by nutrients, which bolster the growth of algae competing with corals for benthic space. a leading management strategy to prevent shifts from coral- to algal-dominated states is maintaining the biomass of herbivorous fish, which consume algal competitors. however, the efficacy of this method can be hindered by sediment-driven changes in fish herbivory.  this study constructs a mathematical model to improve management targets by identifying (1) pollutant thresholds past which herbivore biomass may abruptly decline and (2) primary drivers of resilience. we expand upon a coral-algal competition model by incorporating dynamic herbivorous fish functional groups (browsers, grazers, and scrapers), which interact with the model’s benthic components via algal herbivory. the responses of benthic taxa and herbivore groups to land-based pollutants are parameterized using literature and field data. specifically, algae growth and herbivory rates were measured across three independent riverine runoff gradients in hawaiʻi for one year. analyses reveal that (1) intermediate pollutant levels can generate hysteresis, meaning that returning pollutants to their pre-decline levels may not induce recovery, and (2) browser herbivory maintains coral dominance at low sediment levels but is outpaced by macroalgal growth in highly polluted environments. this model advances the development of tractable decision-support tools to identify management targets on sediment- and nutrient-impacted reef ecosystems globally. jasmine reighard thresholds of sediment stress on herbivory: experimental evidence from a pacific parrotfish sediment runoff is a primary driver of coral reef degradation globally. elevated nutrient inputs from runoff underpin transitions from coral-dominated to algae-dominated ecosystems. herbivorous reef fishes are widely recognized as a critical bastion of defense against these shifts, as they limit the establishment and overgrowth of algal communities. however, evidence also indicates that these fishes are sensitive to sediment exposure, leading to declines in biodiversity, abundance, and grazing pressure. this research aims to test the direct consequences of sedimentation on algal grazing rates by herbivorous fish and quantity the thresholds above which sediment exposure erodes the ecological functions they provide. to investigate these impacts, we conducted a series of feeding experiments in microcosm tanks simulating suspended (sus) and settled sediment (ses) gradients observed on nearshore reefs. our study’s focal species was the pacific bullethead uhu (parrotfish, chlorurus spilurus), a common herbivore throughout pacific tropical nearshore habitats. each fish completed four trials: (1) a no-sediment control, (2) sus exposure, (3) ses exposure, and (4) combined sus + ses exposure, and different individuals experienced different quantifies of sediment exposure ranging from 0-12 mg/l. individuals were given a choice between turf algae collected from a nearshore, runoff-exposed reef and an offshore clear-water reef. behavioral responses were recorded via overhead video to compare feeding strikes across treatments. we discuss our findings of threshold limits and impairments of top-down algal control in relation to common sediment exposure gradients for tropical coral reefs. jessica reichert from structure to exposure: using 3d morphometrics and computer vision to capture coral–microplastic interactions spirals that support reefs: helical microhabitats for coral recruitment although plastic pollution is now widely detected in reef environments, its ecological impacts on corals remain poorly understood. this is mainly because in situ exposure is a function of particle concentrations, flow, and organismal responses, which is difficult to quantify under natural conditions. understanding how corals interact with plastic particles requires approaches that resolve fine-scale exposure parameters and behavioral responses. here, we combine quantitative morphometrics, controlled-flow experiments, and computer vision to assess how coral structural complexity and polyp behavior jointly determine microplastic exposure and therewith potential associated ecological impacts. first, we quantified microplastic accumulation in pocillopora acuta colonies in kāneʻohe bay, hawaiʻi, and combined the observed concentrations with a broad set of structural complexity metrics obtained using high-resolution 3d photogrammetry and 3d scanning. we found that colonies with compact, thick-branched morphologies consistently accumulated higher microplastic loads under natural conditions, with mean loads of ~0.03 particles g⁻¹. second, we developed a microflume and video-based experimental platform recording colony–microplastic interactions to resolve the underlying link between exposure conditions, structural complexity, and interaction frequencies. using computer vision and automated image analysis, we track particle–polyp contact events and classify the responses, including ingestion, rejection, and mucus entrapment. this enables continuous quantification of interaction frequencies and durations as a function of microplastic concentration, flow regime, and colony structural complexity. our results show that coral complexity plays a significant role in microplastic exposure and deposition, with implications for coral health and the transfer of microplastics to other reef sinks. by integrating 3d morphometrics with ai-assisted video analysis, this work provides scalable tools for investigating the impacts of plastic pollution. this highlights the value of applying advanced imaging and ai-based methodologies to resolve subtle pollutant responses in structurally complex reef organisms, thereby supporting more accurate ecological risk assessments. a major challenge in reef restoration and nature-positive infrastructure is designing structures that reliably support coral recruitment and early survival. over the past three years, the geometric ecology lab has iteratively developed and tested five generations of settlement modules, each informed by previous field results. a central finding is the strong influence of microhabitat geometry: spiral-shaped (helix) recesses attracted up to 80-fold more larvae than linear ones, with optimal dimensions supporting settlement that persists for years after deployment. hydrodynamics also played a key role–higher flow increased larval entrainment into helix recesses and boosted settlement. these design rules were robust across module shapes and construction materials, with cylindrical units in both concrete and clay performing comparably. small shifts in recess size altered post-settlement survival, emphasizing the need to balance initial recruitment and long-term persistence. although helix designs maximized total recruits, more complex fractal structures supported greater species diversity, revealing trade-offs between abundance and richness. together, these results provide a mechanistic basis for scalable coral-supporting structures and offer new insight into the ecological drivers of larval settlement and survival. kamalani oshiro developing a new selective breeding model using porites lobata in hawaii as climate change continues to warm oceans, it is critical to understand the relationships between thermal tolerance and the reproductive output of corals. selective breeding of coral in the context of restoration is ongoing in hawaii, however this work is dominated by one coral species, montipora capitata. diversifying species available for breeding, especially those with different life history traits, reproductive biology and ecological function is important for effective conservation. here, we aim to develop a new selective breeding model for p. lobata in kaneohe bay, oahu, hawaii based on direct feedback from the community expressing the ecological and cultural importance of this species. we established a model population of 100 colonies in the field and collected histology samples throughout the summer of 2025 to 1) identify the sex of the colony, 2) the timeline of gametogenesis, and 3) quantify fecundity. fecundity was quantified by counts of all visible gametes per polyp across multiple polyps per one section per slide. small fragments from field source colonies were collected to explore tradeoffs in this species, including the relationship between fecundity and other important traits like growth and thermal tolerance. these fragments were maintained ex situ and buoyant weighed to determine growth before being exposed to a standardized heat-stress assay that reflects natural beaching patterns and elicits. we used pam fluorometry during this stress test to resolve continuous thermal tolerance scores, which will be compared with fecundity and growth metrics to assess tradeoffs. the development of additional selective breeding models supports selective breeding for restoration practitioners in hawaii, creating greater ecological diversity for this conservation approach. madeleine sherman restore with resilience: community-driven coral restoration restore with resilience is a multi-disciplinary initiative proactively restoring coral reefs in hawai'i via selective propagation of thermally tolerant corals of opportunity. combining hands-on restoration with community partnerships, the project has shown a scalable model for locally led restoration. today, six restoration sites across the state are managed by different partner organizations, each tailoring efforts to the needs of their community. following intensive training with coral researchers, nonprofits and community volunteers are now able to carry out coral restoration independently via their own permit approvals and funding, cultivating meaningful local ownership, capacity, and long-term stewardship that can persist beyond the lifespan of a single project. at icrs 2022, we shared our intention to co-develop a set of best practices for coral restoration with the community. four years later, we are proud to present the product: “restore with resilience: a guide to community-driven coral restoration.” this resource reflects the collective knowledge, challenges, and successes of communities restoring the reefs that sustain them. mykle hoban cryptobenthic crab assemblages are more distinct across a 90 m depth gradient than 2500 km of shallow marine habitat in the hawaiian archipelago despite high biodiversity and the recognized importance of mesophotic habitats, most studies of coral reef community structure have focused on conspicuous taxa such as fishes and corals in shallow habitat <30 m. here, we examined the variability of crab assemblages from autonomous reef monitoring structures (arms) deployed on shallow reefs across the hawaiian islands and along a mesophotic depth gradient on o’ahu. we tested the effects of environmental, ecological, and anthropogenic factors on shallow (8–17 m) crab assemblages. these assemblages were significantly different between the densely inhabited high islands (main hawaiian islands) and the relatively pristine uninhabited atolls of the northwestern hawaiian islands. drivers of these differences include sea-surface temperature, chlorophyll-a, depth, island slope, potential larval immigration, and human impacts. we then compared shallow assemblages to those sampled along a depth gradient (12–90 m) on o’ahu. despite considerable variability among sites distributed across nearly 10 degrees of latitude, differences along the depth gradient on o’ahu alone were greater than among the shallow assemblages across the entire archipelago. this finding suggests that 90 m of depth is a stronger driver of brachyuran assemblage structure than the latitudinal, environmental, and anthropogenic gradients across the entire ~2500 km span of the hawaiian islands. sophia rahnke mechanisms of sustainable harvest in complex reef ecosystems: insights from hawaiian fisheries stewardship coral reef fisheries play a crucial role in supporting food security, livelihoods, and ways of life for communities worldwide, yet many face growing pressures from climate change, habitat degradation, and overexploitation. understanding how different management strategies influence ecological outcomes is therefore critical for sustaining coral reefs and the communities that depend on them. in hawaiʻi, historical reconstructions have revealed that indigenous fisheries management practices supported high fisheries harvest from reef resources for centuries, without evidence of overharvesting. here, we investigate ecological mechanisms that may have contributed to this historical abundance and assess their relevance to contemporary regulations, with a focus on population size–structure, seasonality, and predator-prey relationships . we developed a stage-structured, predator-prey model that incorporates harvest across trophic levels and life-history stages. using this framework, we evaluated historical strategies that may have protected large, fecund adults, imposed harvest closures during spawning events, and accounted for trophic interactions, and compared them with modern approaches that use similar approaches, but differ in implementation. our analyses demonstrate that maximum size limits yielded the greatest harvest, while slot limits supported the greatest range of harvest intensities, suggesting that protection of large adults is a key component of maintaining high biomass and harvest. simulations of temporal closures highlight the benefit of aligning closures with spawning events, but also indicate that ideal closure conditions depend on harvest intensity and species biology. we further show that harvest of the predator population can enhance prey yield under certain ecological conditions. these findings indicate that the ecological mechanisms embedded in indigenous stewardship practices, such as protection of large adults, attention to spawning cycles, and consideration of trophic interactions, can enhance sustainability and may help guide current nearshore regulations in hawaiʻi. van wishingrad surveying biodiverse coral reef ecosystems across the tree of life with environmental dna coral reefs are among the most productive and biologically diverse ecosystems on earth. corals cover 0.1-0.5% of the ocean floor but are home to 25% of marine life, representing a valuable resource to biodiversity. a central challenge in evaluating biodiversity using edna metabarcoding is that each primer set has biases resulting in selective amplification of a unique composition of taxonomic diversity. here we test eleven primer pairs (amaral-zettler 18s v9, govinarajan 18s v9, guardiola 18s v7, stat 18s v4, berry 16s, mifish e 12s, mifish u 12s, riaz 12s, leray co1, martineau 28s, and sherwood 23s) to assess central pacific coral reef diversity in the five kingdoms of marine eukaryotes: chromista, fungi, metazoa, plantae, and protozoa. zero-width otus (zotus) were compared to public sequence databases and resolved to the finest taxonomic rank possible. the highest number of unique taxa was recovered by govinarajan 18s v9 primers (127) largely comprised of chromista and metazoa, followed by martineau 28s primers (100) with similar taxonomic composition.  all primers except the algae-focused sherwood 23s recovered metazoa, while all markers except riaz 12s recovered taxa in the kingdom plantae. none of these primers performed particularly well for fungi, cercozoa or protozoa. at the phylum level, riaz 12s, berry 16s, mifish 12s u and mifish 12s e recovered the most taxa of chordata. marineau 28s, govinarajan 18s v9, and amaral zettler 18s v9 recovered the most porifera taxa, with highest counts coming from the most diverse class demospongiae. at the class level, the “fish” primers (riaz 12s, mifish 12s u, berry 16s, and mifish 12s e) preferentially recovered actinopteri (ray-finned fishes). while each primer set proved uniquely informative for some taxa, the taxon recovery profiles provided here should aid researchers in matching the taxonomic specificity of environmental metabarcoding primers with research questions of interest. ʻaʻaliʻi kelling habitat enhancement through indigenous stone fish houses: evidence from a two-year field experiment in hawaiʻi coral reefs are declining globally, underscoring the need for conservation strategies that pair ecological science with place-based management. in hawaiʻi, traditional stone fish houses called imu represent an indigenous stewardship practice that may provide effective models for contemporary fisheries enhancement. this study evaluates the ecological role of imu within the hāʻena community-based subsistence fishing area (cbsfa), kauaʻi, where community-led management emphasizes food sovereignty and cultural revitalization. over a two-year period (2023–2024), we deployed imu across three nearshore locations with low structural complexity and compared them with nearby controls and natural reef sites. using standardized fish surveys and underwater video monitoring, we tested whether imu increase fish abundance, biomass, species richness, and juvenile recruitment. imu consistently enhanced local fish communities. fish abundance was 57% higher at imu sites, biomass increased by 86%, and species richness by 42% relative to controls. juveniles (0–10 cm) comprised 78% of individuals at imu, compared to 60% at controls and 35% at natural reefs, indicating that imu function primarily as recruitment structures. community analyses showed imu sites forming distinct assemblages that occupied intermediate space between degraded controls and healthy outer reefs. these results demonstrate that imu are scalable, community-implementable structures that address recruitment bottlenecks in low-complexity habitats. by increasing structural refuge, imu align indigenous resource practices with contemporary reef ecology, offering a culturally grounded and ecologically effective tool to support fish stocks, food security, and community-based stewardship.",
       "country_code": "US",
       "country": "United States",
       "connection_count": 2
     },
     {
-      "id": "loc-0199",
+      "id": "loc-0186",
       "affiliation": "Healthy Reefs for Healthy People",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -14305,7 +13156,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0200",
+      "id": "loc-0187",
       "affiliation": "Helmholtz Institute for Functional Marine Biodiversity",
       "lat": 53.1539129,
       "lon": 8.1753942,
@@ -14616,7 +13467,7 @@ export const SITE_DATA = {
       "connection_count": 11
     },
     {
-      "id": "loc-0201",
+      "id": "loc-0188",
       "affiliation": "HI-LEX CORPORATION",
       "lat": 34.9295845,
       "lon": 135.1634461,
@@ -14653,7 +13504,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0202",
+      "id": "loc-0189",
       "affiliation": "Hiroshima University",
       "lat": 34.3991292,
       "lon": 132.7140406,
@@ -14685,7 +13536,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0203",
+      "id": "loc-0190",
       "affiliation": "Hong Kong Polytechnic University",
       "lat": 22.3045633,
       "lon": 114.1795767,
@@ -14717,7 +13568,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0204",
+      "id": "loc-0191",
       "affiliation": "Hong Kong University of Science and Technology",
       "lat": 22.3374847,
       "lon": 114.2633989,
@@ -14966,7 +13817,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0205",
+      "id": "loc-0192",
       "affiliation": "Hopkins Marine Station of Stanford University",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -15003,7 +13854,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0206",
+      "id": "loc-0193",
       "affiliation": "Horniman Museum and Gardens",
       "lat": 51.4419283,
       "lon": -0.0619967,
@@ -15065,7 +13916,54 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0207",
+      "id": "loc-0194",
+      "affiliation": "Hoʻāla Kealakekua Nui, Inc.",
+      "lat": 19.5181493,
+      "lon": -155.9206778,
+      "speakers": [
+        "Akoni Palacat-Nelsen",
+        "Kainalu Keliʻikuli-Grace"
+      ],
+      "speaker_details": [
+        {
+          "name": "Akoni Palacat-Nelsen",
+          "search_text": "shane akoni palacat-nelsen kānāwai kīhoʻihoʻi - the basis of community-based conservation management u.s. congress passed the admission act of 1959 admitting the state of hawaiʻi into the united states.  provisions were made to uphold native hawaiian traditional and customary practices, and in 1969 the state created the highest form of protection for marine resources referred to as the marine life conservation district (mlcd).  the mlcd superseded centuries of traditional governance and management systems, and designated no take zones.  \r\n\r\nwestern science alone could not maintain class aa waters, and the protections for marine life would deteriorate.  in 2004, the water quality reported high turbidity and was no longer classified as class aa.  in 2015, over forty eight commercial boaters were formally permitted to operate recreation tours, with no rest periods.  additionally, the global bleaching events reported more than 50% of the coral reef in kealakekua bay was depleted.  human intervention was required, and when western researchers spoke to the villagers, the native hawaiians immediately built a relationship with the nature conservancy and the state division of aquatic resources to implement the kumu kānāwai kīhoʻihoʻi, and the kanu koʻa reef resilience project was created in both kealakekua bay in south kona and kahuwai bay in north kona on the west side of hawaiʻi island.\r\n\r\nthe native residents of kealakekua bay understood their legal right and cultural obligation to intervene after a 53 year hiatus.   in 2024, a partnership between hoʻāla kealakekua nui, inc., the nature conservancy, and the state of hawaiʻiʻs division of aquatic resources, launched a community-based coral restoration project that led to a success of coral stewardship and learning.  community members are being trained and certified as scientific divers to fulfill the long term goal of normalizing the relationship between humans and coral reefs for future generations.",
+          "talk_titles": [
+            {
+              "title": "Kānāwai Kīhoʻihoʻi - The basis of Community-based Conservation Management",
+              "primary": true,
+              "talk_id": "d89c58a3-a926-445b-83dd-3b539ed8573d"
+            }
+          ],
+          "person_key": "icrs-p-01308",
+          "attended": true
+        },
+        {
+          "name": "Kainalu Keliʻikuli-Grace",
+          "search_text": "kainalu keliʻikuli-grace",
+          "talk_titles": [
+            {
+              "title": "Kānāwai Kīhoʻihoʻi - The basis of Community-based Conservation Management",
+              "primary": false,
+              "talk_id": "d89c58a3-a926-445b-83dd-3b539ed8573d"
+            }
+          ],
+          "person_key": "icrs-p-00898",
+          "attended": true,
+          "non_speaking_delegate": true
+        }
+      ],
+      "speaker_count": 2,
+      "talk_count": 1,
+      "geocode_level": "institute",
+      "distance_km": 6981.7,
+      "search_text": "hoʻāla kealakekua nui, inc. akoni palacat-nelsen shane akoni palacat-nelsen kānāwai kīhoʻihoʻi - the basis of community-based conservation management u.s. congress passed the admission act of 1959 admitting the state of hawaiʻi into the united states.  provisions were made to uphold native hawaiian traditional and customary practices, and in 1969 the state created the highest form of protection for marine resources referred to as the marine life conservation district (mlcd).  the mlcd superseded centuries of traditional governance and management systems, and designated no take zones.  \r\n\r\nwestern science alone could not maintain class aa waters, and the protections for marine life would deteriorate.  in 2004, the water quality reported high turbidity and was no longer classified as class aa.  in 2015, over forty eight commercial boaters were formally permitted to operate recreation tours, with no rest periods.  additionally, the global bleaching events reported more than 50% of the coral reef in kealakekua bay was depleted.  human intervention was required, and when western researchers spoke to the villagers, the native hawaiians immediately built a relationship with the nature conservancy and the state division of aquatic resources to implement the kumu kānāwai kīhoʻihoʻi, and the kanu koʻa reef resilience project was created in both kealakekua bay in south kona and kahuwai bay in north kona on the west side of hawaiʻi island.\r\n\r\nthe native residents of kealakekua bay understood their legal right and cultural obligation to intervene after a 53 year hiatus.   in 2024, a partnership between hoʻāla kealakekua nui, inc., the nature conservancy, and the state of hawaiʻiʻs division of aquatic resources, launched a community-based coral restoration project that led to a success of coral stewardship and learning.  community members are being trained and certified as scientific divers to fulfill the long term goal of normalizing the relationship between humans and coral reefs for future generations.",
+      "country_code": "US",
+      "country": "United States",
+      "connection_count": 1
+    },
+    {
+      "id": "loc-0195",
       "affiliation": "I.CARE",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -15116,7 +14014,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0208",
+      "id": "loc-0196",
       "affiliation": "IATS/CSIC",
       "lat": 40.13811734090203,
       "lon": 0.16554457551331586,
@@ -15153,7 +14051,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0209",
+      "id": "loc-0197",
       "affiliation": "ICML/UNAM",
       "lat": 19.3289134,
       "lon": -99.1788894,
@@ -15185,7 +14083,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0210",
+      "id": "loc-0198",
       "affiliation": "Ifremer",
       "lat": -22.2558,
       "lon": 166.4505,
@@ -15217,7 +14115,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0211",
+      "id": "loc-0199",
       "affiliation": "IHPE",
       "lat": 43.63158,
       "lon": 3.867746,
@@ -15370,7 +14268,7 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0212",
+      "id": "loc-0200",
       "affiliation": "Imperial College London",
       "lat": 51.4988222,
       "lon": -0.1748735,
@@ -15426,7 +14324,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0213",
+      "id": "loc-0201",
       "affiliation": "Independent Consultant/Researcher",
       "lat": 4.711,
       "lon": -74.0721,
@@ -15458,7 +14356,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0214",
+      "id": "loc-0202",
       "affiliation": "Independent Scientist",
       "lat": -35.2809,
       "lon": 149.13,
@@ -15495,7 +14393,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0215",
+      "id": "loc-0203",
       "affiliation": "Indo Ocean Foundation",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -15527,7 +14425,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0216",
+      "id": "loc-0204",
       "affiliation": "Indonesian Librarian Association of South Sulawesi",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -15559,7 +14457,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0217",
+      "id": "loc-0205",
       "affiliation": "Institut de Recherche pour le Développement",
       "lat": -22.3018746,
       "lon": 166.4442774,
@@ -15620,7 +14518,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0218",
+      "id": "loc-0206",
       "affiliation": "Institut Halieutique et des Sciences Marines",
       "lat": -23.3681539,
       "lon": 43.6733576,
@@ -15652,7 +14550,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0219",
+      "id": "loc-0207",
       "affiliation": "Institut Teknologi Bandung",
       "lat": -6.8903617,
       "lon": 107.6101912,
@@ -15684,7 +14582,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0220",
+      "id": "loc-0208",
       "affiliation": "Institute for Research and Development",
       "lat": -12.7806,
       "lon": 45.2278,
@@ -15756,7 +14654,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0221",
+      "id": "loc-0209",
       "affiliation": "Institute for Systems Biology",
       "lat": 47.6226441,
       "lon": -122.337512,
@@ -15793,7 +14691,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0222",
+      "id": "loc-0210",
       "affiliation": "Institute of Marine and Antarctic Studies",
       "lat": -42.8861888,
       "lon": 147.3353521,
@@ -15825,7 +14723,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0223",
+      "id": "loc-0211",
       "affiliation": "Institute of Science - Tokyo",
       "lat": -15.7939,
       "lon": -47.8828,
@@ -15867,7 +14765,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0224",
+      "id": "loc-0212",
       "affiliation": "Institute of Science - Tokyo",
       "lat": 35.6059021,
       "lon": 139.6835601,
@@ -15933,7 +14831,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0225",
+      "id": "loc-0213",
       "affiliation": "Institute of Zoology",
       "lat": 51.5351446,
       "lon": -0.1580143,
@@ -15970,7 +14868,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0226",
+      "id": "loc-0214",
       "affiliation": "Instituto de Estudos do Mar Almirante Paulo Moreira",
       "lat": -15.7939,
       "lon": -47.8828,
@@ -16021,7 +14919,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0227",
+      "id": "loc-0215",
       "affiliation": "Instituto Politecnico Nacional",
       "lat": 19.501738,
       "lon": -99.1401352,
@@ -16058,7 +14956,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0228",
+      "id": "loc-0216",
       "affiliation": "Instituto Recifes Costeiros",
       "lat": -8.7601598,
       "lon": -35.1012707,
@@ -16095,7 +14993,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0229",
+      "id": "loc-0217",
       "affiliation": "Instituto Superior Técnico",
       "lat": 38.7368192,
       "lon": -9.138705,
@@ -16147,7 +15045,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0230",
+      "id": "loc-0218",
       "affiliation": "Instituto Tecnológico de Bahía de Banderas",
       "lat": 20.7645779,
       "lon": -105.3711023,
@@ -16203,7 +15101,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0231",
+      "id": "loc-0219",
       "affiliation": "International Islamic University Malaysia",
       "lat": 3.2503254,
       "lon": 101.7345347,
@@ -16249,7 +15147,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0232",
+      "id": "loc-0220",
       "affiliation": "Iranian National Institute for Oceanography and Atmospheric Science",
       "lat": 35.7137763,
       "lon": 51.3847796,
@@ -16281,7 +15179,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0233",
+      "id": "loc-0221",
       "affiliation": "Island Conservation",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -16328,7 +15226,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0234",
+      "id": "loc-0222",
       "affiliation": "Istituto Italiano Di Tecnologia",
       "lat": 44.4749312,
       "lon": 8.9064299,
@@ -16360,7 +15258,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0235",
+      "id": "loc-0223",
       "affiliation": "James Cook University",
       "lat": -19.3254243,
       "lon": 146.7597646,
@@ -17243,7 +16141,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0236",
+      "id": "loc-0224",
       "affiliation": "James Cook University",
       "lat": 14.5995,
       "lon": 120.9842,
@@ -17285,7 +16183,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0237",
+      "id": "loc-0225",
       "affiliation": "James Cook University",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -17570,7 +16468,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0238",
+      "id": "loc-0226",
       "affiliation": "John G. Shedd Aquarium",
       "lat": 41.8675726,
       "lon": -87.614038,
@@ -17632,7 +16530,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0239",
+      "id": "loc-0227",
       "affiliation": "Johnston Applied Marine Sciences/University of Amsterdam",
       "lat": 15.1778,
       "lon": 145.7508,
@@ -17664,7 +16562,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0240",
+      "id": "loc-0228",
       "affiliation": "Johnston Applied Marine Sciences",
       "lat": 15.2227121,
       "lon": 145.7461056,
@@ -17738,7 +16636,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0241",
+      "id": "loc-0229",
       "affiliation": "Justus Liebig University Giessen",
       "lat": 50.5804674,
       "lon": 8.6771403,
@@ -17779,7 +16677,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0242",
+      "id": "loc-0230",
       "affiliation": "Kagoshima University",
       "lat": 31.5699425,
       "lon": 130.5442848,
@@ -17811,7 +16709,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0243",
+      "id": "loc-0231",
       "affiliation": "Kalanihale",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -17858,7 +16756,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0244",
+      "id": "loc-0232",
       "affiliation": "Kansai University",
       "lat": 34.7732731,
       "lon": 135.5107369,
@@ -17895,7 +16793,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0245",
+      "id": "loc-0233",
       "affiliation": "Karolinska Institute",
       "lat": 59.3485413,
       "lon": 18.0275982,
@@ -17932,7 +16830,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0246",
+      "id": "loc-0234",
       "affiliation": "KAUST Coral Restoration Initiative",
       "lat": 22.41333480784168,
       "lon": 39.10943754819546,
@@ -17999,7 +16897,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0247",
+      "id": "loc-0235",
       "affiliation": "KAUST",
       "lat": 22.41333480784168,
       "lon": 39.10943754819546,
@@ -20001,7 +18899,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0248",
+      "id": "loc-0236",
       "affiliation": "Kikai Institute for Coral Reef Science",
       "lat": 13.7563,
       "lon": 100.5018,
@@ -20048,7 +18946,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0249",
+      "id": "loc-0237",
       "affiliation": "KIOST",
       "lat": 35.075769,
       "lon": 129.07871,
@@ -20305,7 +19203,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0250",
+      "id": "loc-0238",
       "affiliation": "Kipuka Olowalu",
       "lat": 20.811411,
       "lon": -156.6225893,
@@ -20337,7 +19235,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0251",
+      "id": "loc-0239",
       "affiliation": "Kitasato University",
       "lat": 35.6447768,
       "lon": 139.7256298,
@@ -20388,7 +19286,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0252",
+      "id": "loc-0240",
       "affiliation": "Kochi University",
       "lat": 33.5490378,
       "lon": 133.4867352,
@@ -20420,7 +19318,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0253",
+      "id": "loc-0241",
       "affiliation": "Kokusai Kogyo Co., Ltd.",
       "lat": 35.6762,
       "lon": 139.6503,
@@ -20467,7 +19365,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0254",
+      "id": "loc-0242",
       "affiliation": "Konservasi Indonesia",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -20528,7 +19426,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0255",
+      "id": "loc-0243",
       "affiliation": "Koraï and IH.SM",
       "lat": -18.8792,
       "lon": 47.5079,
@@ -20560,7 +19458,54 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0256",
+      "id": "loc-0244",
+      "affiliation": "Kuaʻāina Ulu ʻAuamo",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "speakers": [
+        "Alex Connelly",
+        "Kahaku Poepoe"
+      ],
+      "speaker_details": [
+        {
+          "name": "Alex Connelly",
+          "search_text": "alex connelly co-creating intergenerational knowledge about hawaiian moi (polydactylus sexfilis) reproductive cycles in a changing climate moi (polydactylus sexfilis) is a highly valued resource species in hawaiʻi, traditionally monitored by lawaiʻa (fishers) and konohiki (managers of ahupuaʻa land divisions ). moi experienced significant declines in the mid 20th century, prompting a seasonal fishing ban aligned with then-recorded spawning periods. master lawaiʻa (fisherman) uncle mac poepoe, recently observed spawning season changes, likely due to habitat and environmental stressors, indicating that the ban is not effective for protecting moi during extended spawning periods. in response, uncle mac formed nā kai ʻewalu, a collective of lawaiʻa, to study these changes across islands. this presentation details the research process, priorities and methodologies rooted in indigenous knowledge and driven by kanaka ʻōiwi (native hawaiians). here we showcase our approach: a synchronized lawaiʻa monitoring network and trans-disciplinary collaboration to inform effective fishing regulations and adaptive management in the face of an uncertain climate and human coastal impact. our research integrates traditional knowledge and conventional biology to steward biocultural resources, offering a model for fisheries management globally. current research will estimate the spawning dates for juvenile moi by triangulating spawning estimates from kanaka ʻōiwi traditional practices alongside conventional scientific methods including otolith analysis and epigenetic markers.",
+          "talk_titles": [
+            {
+              "title": "Co-creating intergenerational knowledge about Hawaiian moi (Polydactylus sexfilis) reproductive cycles in a changing climate",
+              "primary": true,
+              "talk_id": "1c33ce6c-590f-4ae6-b998-31f718d153b9"
+            }
+          ],
+          "person_key": "icrs-p-00360",
+          "attended": true
+        },
+        {
+          "name": "Kahaku Poepoe",
+          "search_text": "kahaku poepoe",
+          "talk_titles": [
+            {
+              "title": "Co-creating intergenerational knowledge about Hawaiian moi (Polydactylus sexfilis) reproductive cycles in a changing climate",
+              "primary": false,
+              "talk_id": "1c33ce6c-590f-4ae6-b998-31f718d153b9"
+            }
+          ],
+          "person_key": "icrs-p-01372",
+          "attended": true,
+          "non_speaking_delegate": true
+        }
+      ],
+      "speaker_count": 2,
+      "talk_count": 1,
+      "geocode_level": "country",
+      "distance_km": 13880.4,
+      "search_text": "kuaʻāina ulu ʻauamo alex connelly alex connelly co-creating intergenerational knowledge about hawaiian moi (polydactylus sexfilis) reproductive cycles in a changing climate moi (polydactylus sexfilis) is a highly valued resource species in hawaiʻi, traditionally monitored by lawaiʻa (fishers) and konohiki (managers of ahupuaʻa land divisions ). moi experienced significant declines in the mid 20th century, prompting a seasonal fishing ban aligned with then-recorded spawning periods. master lawaiʻa (fisherman) uncle mac poepoe, recently observed spawning season changes, likely due to habitat and environmental stressors, indicating that the ban is not effective for protecting moi during extended spawning periods. in response, uncle mac formed nā kai ʻewalu, a collective of lawaiʻa, to study these changes across islands. this presentation details the research process, priorities and methodologies rooted in indigenous knowledge and driven by kanaka ʻōiwi (native hawaiians). here we showcase our approach: a synchronized lawaiʻa monitoring network and trans-disciplinary collaboration to inform effective fishing regulations and adaptive management in the face of an uncertain climate and human coastal impact. our research integrates traditional knowledge and conventional biology to steward biocultural resources, offering a model for fisheries management globally. current research will estimate the spawning dates for juvenile moi by triangulating spawning estimates from kanaka ʻōiwi traditional practices alongside conventional scientific methods including otolith analysis and epigenetic markers.",
+      "country_code": "US",
+      "country": "United States",
+      "connection_count": 1
+    },
+    {
+      "id": "loc-0245",
       "affiliation": "Kyushu University",
       "lat": 33.6227811,
       "lon": 130.4253262,
@@ -20607,7 +19552,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0257",
+      "id": "loc-0246",
       "affiliation": "Lancaster University",
       "lat": 54.0104286,
       "lon": -2.7864467,
@@ -20804,7 +19749,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0258",
+      "id": "loc-0247",
       "affiliation": "Leibniz Centre for Tropical Marine Research",
       "lat": 53.1078275,
       "lon": 8.84592,
@@ -20942,7 +19887,7 @@ export const SITE_DATA = {
       "connection_count": 6
     },
     {
-      "id": "loc-0259",
+      "id": "loc-0248",
       "affiliation": "Leibniz Institute of Plant Biochemistry",
       "lat": 51.4958874,
       "lon": 11.9438817,
@@ -20979,7 +19924,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0260",
+      "id": "loc-0249",
       "affiliation": "Lingnan University",
       "lat": 22.4109705,
       "lon": 113.9830974,
@@ -21049,7 +19994,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0261",
+      "id": "loc-0250",
       "affiliation": "Louisiana State University",
       "lat": 30.4102406,
       "lon": -91.1857059,
@@ -21188,7 +20133,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0262",
+      "id": "loc-0251",
       "affiliation": "LSCE",
       "lat": 48.8566,
       "lon": 2.3522,
@@ -21230,7 +20175,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0263",
+      "id": "loc-0252",
       "affiliation": "Luminocean",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -21340,7 +20285,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0264",
+      "id": "loc-0253",
       "affiliation": "M.M. Bridge Co., Ltd.",
       "lat": 35.6762,
       "lon": 139.6503,
@@ -21377,7 +20322,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0265",
+      "id": "loc-0254",
       "affiliation": "Macquarie University/University of Groningen",
       "lat": 53.2193266,
       "lon": 6.5628301,
@@ -21409,7 +20354,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0266",
+      "id": "loc-0255",
       "affiliation": "Macquarie University",
       "lat": -33.7736047769375,
       "lon": 151.11264344166628,
@@ -21630,7 +20575,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0267",
+      "id": "loc-0256",
       "affiliation": "Mahonia Na Dari",
       "lat": -9.4438,
       "lon": 147.1803,
@@ -21671,7 +20616,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0268",
+      "id": "loc-0257",
       "affiliation": "Malama Maunalua",
       "lat": 21.2822026,
       "lon": -157.7973886,
@@ -21728,7 +20673,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0269",
+      "id": "loc-0258",
       "affiliation": "MARE",
       "lat": 38.7223,
       "lon": -9.1393,
@@ -21775,7 +20720,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0270",
+      "id": "loc-0259",
       "affiliation": "Marine Biological Association",
       "lat": 50.3641851,
       "lon": -4.1391682,
@@ -21807,7 +20752,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0271",
+      "id": "loc-0260",
       "affiliation": "Marine Conservation International",
       "lat": 51.5074,
       "lon": -0.1278,
@@ -21844,7 +20789,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0272",
+      "id": "loc-0261",
       "affiliation": "Marine Conservation Society Seychelles",
       "lat": -4.6210967,
       "lon": 55.4277802,
@@ -21876,7 +20821,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0273",
+      "id": "loc-0262",
       "affiliation": "Marine Environment and Resources Foundation",
       "lat": 14.650675,
       "lon": 121.06904,
@@ -21947,7 +20892,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0274",
+      "id": "loc-0263",
       "affiliation": "Marine Institute at Maui Ocean Center",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -22008,7 +20953,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0275",
+      "id": "loc-0264",
       "affiliation": "MarineGEO",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -22055,7 +21000,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0276",
+      "id": "loc-0265",
       "affiliation": "Maritime And Marine Science Center Of Excellence Of Pattimura University",
       "lat": -3.6546187,
       "lon": 128.1956754,
@@ -22092,7 +21037,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0277",
+      "id": "loc-0266",
       "affiliation": "Maritime and Marine Science Center of Excellence, Pattimura University",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -22217,7 +21162,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0278",
+      "id": "loc-0267",
       "affiliation": "Max Planck Institute for Chemistry",
       "lat": 49.9909856,
       "lon": 8.2290347,
@@ -22293,7 +21238,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0279",
+      "id": "loc-0268",
       "affiliation": "Max Planck Institute for Chemsitry",
       "lat": 49.9909856,
       "lon": 8.2290347,
@@ -22325,7 +21270,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0280",
+      "id": "loc-0269",
       "affiliation": "McGill University",
       "lat": 45.5060184,
       "lon": -73.5783235,
@@ -22362,7 +21307,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0281",
+      "id": "loc-0270",
       "affiliation": "Meio University",
       "lat": 26.6244518,
       "lon": 127.9738733,
@@ -22394,7 +21339,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0282",
+      "id": "loc-0271",
       "affiliation": "Memorial University of Newfoundland and Labrador",
       "lat": 47.5741117,
       "lon": -52.7352094,
@@ -22426,7 +21371,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0283",
+      "id": "loc-0272",
       "affiliation": "Memorial University",
       "lat": 47.5741117,
       "lon": -52.7352094,
@@ -22458,7 +21403,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0284",
+      "id": "loc-0273",
       "affiliation": "Michigan State University",
       "lat": 42.7250725,
       "lon": -84.4790827,
@@ -22490,7 +21435,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0285",
+      "id": "loc-0274",
       "affiliation": "Micronesian Conservation Coalition",
       "lat": -41.2865,
       "lon": 174.7762,
@@ -22522,7 +21467,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0286",
+      "id": "loc-0275",
       "affiliation": "Mindanao State University - Naawan",
       "lat": 8.4291313,
       "lon": 124.2880035,
@@ -22592,7 +21537,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0287",
+      "id": "loc-0276",
       "affiliation": "Minderoo Foundation",
       "lat": -31.9757379,
       "lon": 115.8219527,
@@ -22673,7 +21618,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0288",
+      "id": "loc-0277",
       "affiliation": "Ministry of Fisheries, Oceans and Maritime Affairs - Vanuatu",
       "lat": -17.7333,
       "lon": 168.3273,
@@ -22705,7 +21650,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0289",
+      "id": "loc-0278",
       "affiliation": "MIT-WHOI Joint Program in Oceanography",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -22737,7 +21682,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0290",
+      "id": "loc-0279",
       "affiliation": "MIT-Woods Hole Joint Program",
       "lat": 41.5264977,
       "lon": -70.6730857,
@@ -22774,7 +21719,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0291",
+      "id": "loc-0280",
       "affiliation": "Montana State University",
       "lat": 45.6673524,
       "lon": -111.0546211,
@@ -22806,7 +21751,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0292",
+      "id": "loc-0281",
       "affiliation": "Mote Marine Laboratory",
       "lat": 27.3331533,
       "lon": -82.5773352,
@@ -23209,7 +22154,7 @@ export const SITE_DATA = {
       "connection_count": 12
     },
     {
-      "id": "loc-0293",
+      "id": "loc-0282",
       "affiliation": "MP Tropical Marine Consultant",
       "lat": -35.2809,
       "lon": 149.13,
@@ -23261,7 +22206,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0294",
+      "id": "loc-0283",
       "affiliation": "Murdoch University",
       "lat": -35.2809,
       "lon": 149.13,
@@ -23293,7 +22238,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0295",
+      "id": "loc-0284",
       "affiliation": "Nagoya University",
       "lat": 35.1538553,
       "lon": 136.9682402,
@@ -23364,7 +22309,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0296",
+      "id": "loc-0285",
       "affiliation": "Nanyang Technological University",
       "lat": 1.3483099,
       "lon": 103.6831347,
@@ -23590,7 +22535,39 @@ export const SITE_DATA = {
       "connection_count": 9
     },
     {
-      "id": "loc-0297",
+      "id": "loc-0286",
+      "affiliation": "National Center for Scientific Research - Rāhui Center",
+      "lat": -17.679742,
+      "lon": -149.406843,
+      "speakers": [
+        "Tamatoa Bambridge"
+      ],
+      "speaker_details": [
+        {
+          "name": "Tamatoa Bambridge",
+          "search_text": "tamatoa bambridge rāhui, mana, and tapu: community-led ocean governance as a model for coral reef resilience originating as a 10th-century polynesian social innovation under tamatoa i, rāhui is far more than a temporary fishing closure. it is a governance system through which communities restore mana–authority, responsibility, and reciprocal relationships–across interconnected socio-ecological systems, linking tapu with adaptive stewardship from ridge to reef. over the past 15 years, the rāhui center has co-developed and supported more than 30 rāhui across 10 islands in four archipelagos of french polynesia. each rāhui reflects local priorities, governance structures, and ecological and cultural objectives, demonstrating that enduring conservation depends on local ownership rather than standardized models. by integrating indigenous knowledge, fisher-led monitoring, hybrid surveillance, and adaptive management, rāhui reconnects governance of watersheds, coastal ecosystems, fisheries, and communities. unlike conventional marine protected areas, it treats coral reefs as outcomes of healthy land–sea relationships and resilient social institutions. persistent challenges include equitable distribution of mana and navigating hybrid governance with state legislation. increasingly recognized internationally, rāhui offers a decolonized governance model that advances coral reef resilience, biodiversity targets such as 30×30, and indigenous self-determination.",
+          "talk_titles": [
+            {
+              "title": "Rāhui, Mana, and Tapu: Community-Led Ocean Governance as a Model for Coral Reef Resilience",
+              "primary": true,
+              "talk_id": "bc2dc42f-82f9-4ec7-9eb7-eb67eef48889"
+            }
+          ],
+          "person_key": "icrs-p-00096",
+          "attended": true
+        }
+      ],
+      "speaker_count": 1,
+      "talk_count": 1,
+      "geocode_level": "institute",
+      "distance_km": 4096.8,
+      "search_text": "national center for scientific research - rāhui center tamatoa bambridge tamatoa bambridge rāhui, mana, and tapu: community-led ocean governance as a model for coral reef resilience originating as a 10th-century polynesian social innovation under tamatoa i, rāhui is far more than a temporary fishing closure. it is a governance system through which communities restore mana–authority, responsibility, and reciprocal relationships–across interconnected socio-ecological systems, linking tapu with adaptive stewardship from ridge to reef. over the past 15 years, the rāhui center has co-developed and supported more than 30 rāhui across 10 islands in four archipelagos of french polynesia. each rāhui reflects local priorities, governance structures, and ecological and cultural objectives, demonstrating that enduring conservation depends on local ownership rather than standardized models. by integrating indigenous knowledge, fisher-led monitoring, hybrid surveillance, and adaptive management, rāhui reconnects governance of watersheds, coastal ecosystems, fisheries, and communities. unlike conventional marine protected areas, it treats coral reefs as outcomes of healthy land–sea relationships and resilient social institutions. persistent challenges include equitable distribution of mana and navigating hybrid governance with state legislation. increasingly recognized internationally, rāhui offers a decolonized governance model that advances coral reef resilience, biodiversity targets such as 30×30, and indigenous self-determination.",
+      "country_code": "PF",
+      "country": "French Polynesia",
+      "connection_count": 1
+    },
+    {
+      "id": "loc-0287",
       "affiliation": "National Center for Wildlife",
       "lat": 24.7136,
       "lon": 46.6753,
@@ -23631,7 +22608,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0298",
+      "id": "loc-0288",
       "affiliation": "National Centre for Biological Sciences",
       "lat": 13.0714323,
       "lon": 77.5802103,
@@ -23668,7 +22645,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0299",
+      "id": "loc-0289",
       "affiliation": "National Coral Reef Institute",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -23755,7 +22732,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0300",
+      "id": "loc-0290",
       "affiliation": "National Geographic Society Pristine Seas",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -23802,7 +22779,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0301",
+      "id": "loc-0291",
       "affiliation": "National Institute of Advanced Industrial Science and Technology",
       "lat": 35.6762,
       "lon": 139.6503,
@@ -23936,7 +22913,7 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0302",
+      "id": "loc-0292",
       "affiliation": "National Marine Biodiversity Institute of Korea",
       "lat": 36.0172458,
       "lon": 126.6699838,
@@ -23968,7 +22945,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0303",
+      "id": "loc-0293",
       "affiliation": "National Marine Sanctuary Foundation",
       "lat": 38.9952752,
       "lon": -77.0296757,
@@ -24000,7 +22977,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0304",
+      "id": "loc-0294",
       "affiliation": "National Museum of Marine Biology and Aquarium",
       "lat": 22.0460159,
       "lon": 120.6989058,
@@ -24062,7 +23039,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0305",
+      "id": "loc-0295",
       "affiliation": "National Museum",
       "lat": -23.5448646,
       "lon": -46.7853803,
@@ -24119,7 +23096,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0306",
+      "id": "loc-0296",
       "affiliation": "National Natural Parks of Colombia. Utria National Natural Park",
       "lat": 6.0208234,
       "lon": -77.234003,
@@ -24151,7 +23128,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0307",
+      "id": "loc-0297",
       "affiliation": "National Oceanic and Atmospheric Administration - Fisheries",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -24188,7 +23165,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0308",
+      "id": "loc-0298",
       "affiliation": "National Oceanic and Atmospheric Administration - Pacific Islands",
       "lat": -8.783195,
       "lon": -124.508523,
@@ -24240,7 +23217,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0309",
+      "id": "loc-0299",
       "affiliation": "National Oceanic and Atmospheric Administration",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -24662,7 +23639,7 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0310",
+      "id": "loc-0300",
       "affiliation": "National Pingtung University of Science and Technology",
       "lat": 22.6433454,
       "lon": 120.6098266,
@@ -24694,7 +23671,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0311",
+      "id": "loc-0301",
       "affiliation": "National Research and Innovation Agency",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -24775,7 +23752,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0312",
+      "id": "loc-0302",
       "affiliation": "National Sun Yat-sen University",
       "lat": 22.6283384,
       "lon": 120.2647299,
@@ -24855,7 +23832,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0313",
+      "id": "loc-0303",
       "affiliation": "National Taiwan Ocean University",
       "lat": 3.139,
       "lon": 101.6869,
@@ -24892,7 +23869,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0314",
+      "id": "loc-0304",
       "affiliation": "National Taiwan Ocean University",
       "lat": 25.1505447,
       "lon": 121.7757756,
@@ -24948,7 +23925,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0315",
+      "id": "loc-0305",
       "affiliation": "National Technological Institute of Mexico",
       "lat": 19.4326,
       "lon": -99.1332,
@@ -24980,7 +23957,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0316",
+      "id": "loc-0306",
       "affiliation": "National University of Colombia - Caribbean Campus",
       "lat": 4.711,
       "lon": -74.0721,
@@ -25012,7 +23989,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0317",
+      "id": "loc-0307",
       "affiliation": "National University of Singapore",
       "lat": -41.2865,
       "lon": 174.7762,
@@ -25049,7 +24026,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0318",
+      "id": "loc-0308",
       "affiliation": "National University of Singapore",
       "lat": 1.2976493,
       "lon": 103.7766916,
@@ -25626,7 +24603,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0319",
+      "id": "loc-0309",
       "affiliation": "National Yang Ming Chiao Tung University",
       "lat": 24.7868862,
       "lon": 120.9974969,
@@ -25658,7 +24635,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0320",
+      "id": "loc-0310",
       "affiliation": "Naturalis Biodiversity Center",
       "lat": 52.164895,
       "lon": 4.47336,
@@ -25700,7 +24677,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0321",
+      "id": "loc-0311",
       "affiliation": "Nature Conservation Foundation",
       "lat": 28.6139,
       "lon": 77.209,
@@ -25737,7 +24714,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0322",
+      "id": "loc-0312",
       "affiliation": "Nature Seychelles",
       "lat": -4.6191,
       "lon": 55.4513,
@@ -25769,7 +24746,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0323",
+      "id": "loc-0313",
       "affiliation": "NEOM Nature Reserve",
       "lat": 24.7136,
       "lon": 46.6753,
@@ -25801,7 +24778,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0324",
+      "id": "loc-0314",
       "affiliation": "New York University - Abu Dhabi",
       "lat": 24.5263311,
       "lon": 54.4364913,
@@ -25946,7 +24923,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0325",
+      "id": "loc-0315",
       "affiliation": "Newcastle University",
       "lat": 54.9791871,
       "lon": -1.6146608,
@@ -26326,7 +25303,7 @@ export const SITE_DATA = {
       "connection_count": 14
     },
     {
-      "id": "loc-0326",
+      "id": "loc-0316",
       "affiliation": "North Carolina State University",
       "lat": 35.7850744,
       "lon": -78.6812824,
@@ -26400,7 +25377,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0327",
+      "id": "loc-0317",
       "affiliation": "Northeastern University Marine Science Center",
       "lat": 42.4185262,
       "lon": -70.9073684,
@@ -26442,7 +25419,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0328",
+      "id": "loc-0318",
       "affiliation": "Northeastern University",
       "lat": 42.3398067,
       "lon": -71.0891717,
@@ -26474,7 +25451,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0329",
+      "id": "loc-0319",
       "affiliation": "Northwestern University - Marcelino Lab",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -26506,7 +25483,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0330",
+      "id": "loc-0320",
       "affiliation": "Northwestern University",
       "lat": 42.0564594,
       "lon": -87.67526699999999,
@@ -26578,7 +25555,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0331",
+      "id": "loc-0321",
       "affiliation": "Nova Southeastern University",
       "lat": 26.0791417,
       "lon": -80.2465466,
@@ -27393,7 +26370,63 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0332",
+      "id": "loc-0322",
+      "affiliation": "Nā Kai ʻEwalu",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "speakers": [
+        "Kēhau Springer",
+        "Nakoa Goo"
+      ],
+      "speaker_details": [
+        {
+          "name": "Kēhau Springer",
+          "search_text": "shauna springer multi-scalar extraction: how hawaiʻi's aquarium trade disrupts kuleana and community stewardship “they came, took the fish, said nothing to anybody - there were no limits back then.” this “sensing of the system” by a fisher captures the paradox at the heart of hawaiʻi’s commercial aquarium trade: coral reefs that appear ecologically vibrant while communities experience them as spiritually, culturally, and materially depleted. this study examines the aquarium trade as a multi-scalar extractive system. one that links localized reef impacts with state governance contradictions and global ornamental markets, also highlighting how indigenous stewardship offers a cross-scale pathway for transformation rooted in kuleana, or relational responsibility.  \r\n\r\ndrawing on ethnography conducted across community and governance settings, this research integrates participant observation at board of land and natural resources hearings, division of aquatic resource and community network meetings, analysis of chapter 91 rulemaking, environmental review documents, legal decisions, public testimony; and interviews with kanaka ʻōiwi fishers and community leaders across hawaiʻi. these data reveal how regulatory authority is repeatedly fragmented or deferred, enabling extraction while obscuring accountability. sustainability narratives deployed at state and global scales further mask structural inequities and ecological decline.\r\n\r\nat the local scale, lawaiʻa describe declines in culturally significant species, shifting recruitment patterns, and the erosion of intergenerational knowledge and practice. these grounded insights “sense the system” from the peripheries, revealing how extraction reverberates across social, cultural and ecological dimensions. yet these same local perspectives also illuminate entry points for cross-scale transformation: strengthening indigenous political authority, revitalizing community stewardship, and reorienting management toward place-based responsibilities.\r\n\r\nby analyzing the aquarium trade across local, state and global scales, this paper demonstrates how community testimonies serve as diagnostic tools for understanding broader governance failures. the analysis argues that transformative coral reef conservation requires strengthening indigenous political authority and restoring kuleana-based stewardship to shift management away from ornamental extraction and toward just and enduring reef futures.",
+          "talk_titles": [
+            {
+              "title": "Multi-Scalar Extraction: How Hawaiʻi's Aquarium Trade Disrupts Kuleana and Community Stewardship",
+              "primary": true,
+              "talk_id": "22927a42-c58f-46a0-b62b-0b9bad8de927"
+            },
+            {
+              "title": "Co-creating intergenerational knowledge about Hawaiian moi (Polydactylus sexfilis) reproductive cycles in a changing climate",
+              "primary": false,
+              "talk_id": "1c33ce6c-590f-4ae6-b998-31f718d153b9"
+            }
+          ],
+          "person_key": "icrs-p-01663",
+          "attended": true
+        },
+        {
+          "name": "Nakoa Goo",
+          "search_text": "nakoa goo investigating declines of native forage fish populations in hawai‘i estuaries native forage fish species in hawai‘i estuaries historically provided a valuable fishing bait and food resource that supported subsistence and commercial based fisheries. following nearly a century of commercial exploitation, the conservation status of these species remains uncertain due to a range of concurrent threats including habitat loss and introduced species competition. declines in native forage fish populations observed by local fishermen have generated concerns in communities where these fish once provided an important fishing resource spanning generations. this presentation will highlight ongoing efforts to preserve traditional fishing knowledge and assess the dietary composition of the hawaiian endemic species known as nehu (encrasicholina purpurea), and ‘iao (atherinomorus insularum) in addition to an introduced species known as goldspot herring (herklotsichthys quadrimaculatus). forage fish diets were characterized using dna metabarcoding techniques and compared to identify potential competitive interactions among the three species which were collected from historically important baiting areas on the islands of o‘ahu, maui and hawai‘i. gathering the perspectives of fishers, scientists and hawaiian cultural practitioners provided additional insights related to the timing, scale and severity of threats believed to negatively impact native forage fish survival. outcomes from this research aim to inform the co-development of management recommendations to support the replenishment of native forage fish populations and improve our current understanding of food web dynamics in hawai'i estuaries.",
+          "talk_titles": [
+            {
+              "title": "Investigating Declines of Native Forage Fish Populations in Hawai‘i Estuaries",
+              "primary": true,
+              "talk_id": "64605163-5f97-47ab-b679-e6d50ea78a12"
+            },
+            {
+              "title": "Co-creating intergenerational knowledge about Hawaiian moi (Polydactylus sexfilis) reproductive cycles in a changing climate",
+              "primary": false,
+              "talk_id": "1c33ce6c-590f-4ae6-b998-31f718d153b9"
+            }
+          ],
+          "person_key": "icrs-p-00669",
+          "attended": true
+        }
+      ],
+      "speaker_count": 2,
+      "talk_count": 2,
+      "geocode_level": "country",
+      "distance_km": 13880.4,
+      "search_text": "nā kai ʻewalu kēhau springer nakoa goo shauna springer multi-scalar extraction: how hawaiʻi's aquarium trade disrupts kuleana and community stewardship “they came, took the fish, said nothing to anybody - there were no limits back then.” this “sensing of the system” by a fisher captures the paradox at the heart of hawaiʻi’s commercial aquarium trade: coral reefs that appear ecologically vibrant while communities experience them as spiritually, culturally, and materially depleted. this study examines the aquarium trade as a multi-scalar extractive system. one that links localized reef impacts with state governance contradictions and global ornamental markets, also highlighting how indigenous stewardship offers a cross-scale pathway for transformation rooted in kuleana, or relational responsibility.  \r\n\r\ndrawing on ethnography conducted across community and governance settings, this research integrates participant observation at board of land and natural resources hearings, division of aquatic resource and community network meetings, analysis of chapter 91 rulemaking, environmental review documents, legal decisions, public testimony; and interviews with kanaka ʻōiwi fishers and community leaders across hawaiʻi. these data reveal how regulatory authority is repeatedly fragmented or deferred, enabling extraction while obscuring accountability. sustainability narratives deployed at state and global scales further mask structural inequities and ecological decline.\r\n\r\nat the local scale, lawaiʻa describe declines in culturally significant species, shifting recruitment patterns, and the erosion of intergenerational knowledge and practice. these grounded insights “sense the system” from the peripheries, revealing how extraction reverberates across social, cultural and ecological dimensions. yet these same local perspectives also illuminate entry points for cross-scale transformation: strengthening indigenous political authority, revitalizing community stewardship, and reorienting management toward place-based responsibilities.\r\n\r\nby analyzing the aquarium trade across local, state and global scales, this paper demonstrates how community testimonies serve as diagnostic tools for understanding broader governance failures. the analysis argues that transformative coral reef conservation requires strengthening indigenous political authority and restoring kuleana-based stewardship to shift management away from ornamental extraction and toward just and enduring reef futures. nakoa goo investigating declines of native forage fish populations in hawai‘i estuaries native forage fish species in hawai‘i estuaries historically provided a valuable fishing bait and food resource that supported subsistence and commercial based fisheries. following nearly a century of commercial exploitation, the conservation status of these species remains uncertain due to a range of concurrent threats including habitat loss and introduced species competition. declines in native forage fish populations observed by local fishermen have generated concerns in communities where these fish once provided an important fishing resource spanning generations. this presentation will highlight ongoing efforts to preserve traditional fishing knowledge and assess the dietary composition of the hawaiian endemic species known as nehu (encrasicholina purpurea), and ‘iao (atherinomorus insularum) in addition to an introduced species known as goldspot herring (herklotsichthys quadrimaculatus). forage fish diets were characterized using dna metabarcoding techniques and compared to identify potential competitive interactions among the three species which were collected from historically important baiting areas on the islands of o‘ahu, maui and hawai‘i. gathering the perspectives of fishers, scientists and hawaiian cultural practitioners provided additional insights related to the timing, scale and severity of threats believed to negatively impact native forage fish survival. outcomes from this research aim to inform the co-development of management recommendations to support the replenishment of native forage fish populations and improve our current understanding of food web dynamics in hawai'i estuaries.",
+      "country_code": "US",
+      "country": "United States",
+      "connection_count": 2
+    },
+    {
+      "id": "loc-0323",
       "affiliation": "Observatoire Océanologique De Banyuls-sur-mer",
       "lat": 42.4802804,
       "lon": 3.1366067,
@@ -27430,7 +26463,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0333",
+      "id": "loc-0324",
       "affiliation": "Ocean Rescue Alliance International",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -27462,7 +26495,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0334",
+      "id": "loc-0325",
       "affiliation": "Ocean University of Sri Lanka",
       "lat": 6.9749431,
       "lon": 79.8721717,
@@ -27499,7 +26532,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0335",
+      "id": "loc-0326",
       "affiliation": "Oceanographic Institute",
       "lat": -23.5609893,
       "lon": -46.7320137,
@@ -27541,7 +26574,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0336",
+      "id": "loc-0327",
       "affiliation": "Ochanomizu University",
       "lat": 35.7188353,
       "lon": 139.7315093,
@@ -27573,7 +26606,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0337",
+      "id": "loc-0328",
       "affiliation": "Ohio State University",
       "lat": 40.0060889,
       "lon": -83.0282624,
@@ -27732,7 +26765,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0338",
+      "id": "loc-0329",
       "affiliation": "Okinawa Institute of Science and Technology",
       "lat": 26.4649533,
       "lon": 127.8301187,
@@ -27788,7 +26821,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0339",
+      "id": "loc-0330",
       "affiliation": "Old Dominion University",
       "lat": 36.8853217,
       "lon": -76.3058786,
@@ -27967,7 +27000,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0340",
+      "id": "loc-0331",
       "affiliation": "One People One Reef",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -28023,7 +27056,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0341",
+      "id": "loc-0332",
       "affiliation": "OneReef Worldwide Stewardship",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -28055,7 +27088,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0342",
+      "id": "loc-0333",
       "affiliation": "Oregon State University",
       "lat": 44.5618097,
       "lon": -123.2822671,
@@ -28154,7 +27187,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0343",
+      "id": "loc-0334",
       "affiliation": "Oswaldo Cruz Foundation",
       "lat": -22.8772312,
       "lon": -43.243633,
@@ -28186,7 +27219,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0344",
+      "id": "loc-0335",
       "affiliation": "Pacific Blue Foundation & Scripps Inst. of Oceanography",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -28243,7 +27276,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0345",
+      "id": "loc-0336",
       "affiliation": "Pacific Community",
       "lat": -22.2558,
       "lon": 166.4505,
@@ -28275,7 +27308,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0346",
+      "id": "loc-0337",
       "affiliation": "Pacific Islands Fisheries Science Center",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -28366,7 +27399,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0347",
+      "id": "loc-0338",
       "affiliation": "Palau International Coral Reef Center",
       "lat": 7.3385949,
       "lon": 134.4663622,
@@ -28661,7 +27694,7 @@ export const SITE_DATA = {
       "connection_count": 10
     },
     {
-      "id": "loc-0348",
+      "id": "loc-0339",
       "affiliation": "Pelita Bangsa University",
       "lat": -6.3241085,
       "lon": 107.1696207,
@@ -28703,7 +27736,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0349",
+      "id": "loc-0340",
       "affiliation": "Pennsylvania State University",
       "lat": 40.7982133,
       "lon": -77.8599084,
@@ -28812,7 +27845,7 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0350",
+      "id": "loc-0341",
       "affiliation": "Perry Institute for Marine Science",
       "lat": 4.711,
       "lon": -74.0721,
@@ -28883,7 +27916,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0351",
+      "id": "loc-0342",
       "affiliation": "Perry Institute for Marine Science",
       "lat": 26.9584999,
       "lon": -80.0876701,
@@ -28945,7 +27978,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0352",
+      "id": "loc-0343",
       "affiliation": "Pondicherry University",
       "lat": 12.0182619,
       "lon": 79.8568461,
@@ -28977,7 +28010,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0353",
+      "id": "loc-0344",
       "affiliation": "Posgrado en Ciencias del Mar y Limnología",
       "lat": 19.3289134,
       "lon": -99.1788894,
@@ -29009,7 +28042,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0354",
+      "id": "loc-0345",
       "affiliation": "Positive Ripple Consulting",
       "lat": 48.8566,
       "lon": 2.3522,
@@ -29041,7 +28074,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0355",
+      "id": "loc-0346",
       "affiliation": "Princeton University",
       "lat": 40.3430942,
       "lon": -74.6550739,
@@ -29073,7 +28106,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0356",
+      "id": "loc-0347",
       "affiliation": "Projeto Costão Rochoso",
       "lat": -15.7939,
       "lon": -47.8828,
@@ -29120,7 +28153,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0357",
+      "id": "loc-0348",
       "affiliation": "PT Pupuk Kalimantan Timur",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -29197,7 +28230,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0358",
+      "id": "loc-0349",
       "affiliation": "Qatar University",
       "lat": 25.376139,
       "lon": 51.4830739,
@@ -29234,7 +28267,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0359",
+      "id": "loc-0350",
       "affiliation": "Queensland Museum",
       "lat": -27.473109,
       "lon": 153.0181887,
@@ -29291,7 +28324,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0360",
+      "id": "loc-0351",
       "affiliation": "Queensland University of Technology",
       "lat": -27.4778241,
       "lon": 153.0274859,
@@ -29419,7 +28452,7 @@ export const SITE_DATA = {
       "connection_count": 7
     },
     {
-      "id": "loc-0361",
+      "id": "loc-0352",
       "affiliation": "Raising Coral Costa Rica",
       "lat": 8.5388525,
       "lon": -83.3067291,
@@ -29461,7 +28494,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0362",
+      "id": "loc-0353",
       "affiliation": "Ramkhamhaeng University",
       "lat": 13.7587013,
       "lon": 100.6181488,
@@ -29866,7 +28899,7 @@ export const SITE_DATA = {
       "connection_count": 10
     },
     {
-      "id": "loc-0363",
+      "id": "loc-0354",
       "affiliation": "Randolph-Macon College",
       "lat": 37.7631796,
       "lon": -77.4773666,
@@ -29898,7 +28931,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0364",
+      "id": "loc-0355",
       "affiliation": "Rare - Indonesia",
       "lat": -6.5853769,
       "lon": 106.8010277,
@@ -29935,7 +28968,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0365",
+      "id": "loc-0356",
       "affiliation": "Rebuilding with Nature",
       "lat": 35.6762,
       "lon": 139.6503,
@@ -29967,7 +29000,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0366",
+      "id": "loc-0357",
       "affiliation": "Red Sea Global",
       "lat": 24.7136,
       "lon": 46.6753,
@@ -29999,7 +29032,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0367",
+      "id": "loc-0358",
       "affiliation": "Reef and Rainforest Research Centre",
       "lat": -16.9246983,
       "lon": 145.7789583,
@@ -30075,7 +29108,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0368",
+      "id": "loc-0359",
       "affiliation": "Reef Check Indonesia",
       "lat": -8.6848473,
       "lon": 115.2425564,
@@ -30142,7 +29175,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0369",
+      "id": "loc-0360",
       "affiliation": "Reef Conservation",
       "lat": -19.9902655,
       "lon": 57.5991267,
@@ -30283,7 +29316,7 @@ export const SITE_DATA = {
       "connection_count": 6
     },
     {
-      "id": "loc-0370",
+      "id": "loc-0361",
       "affiliation": "Reef Explorer - Fiji",
       "lat": -18.1416,
       "lon": 178.4419,
@@ -30375,7 +29408,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0371",
+      "id": "loc-0362",
       "affiliation": "Reef Support",
       "lat": 4.711,
       "lon": -74.0721,
@@ -30407,7 +29440,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0372",
+      "id": "loc-0363",
       "affiliation": "Rekam Nusantara Foundation",
       "lat": -6.5888352,
       "lon": 106.7982128,
@@ -30463,7 +29496,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0373",
+      "id": "loc-0364",
       "affiliation": "Research Center for Biota System",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -30505,7 +29538,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0374",
+      "id": "loc-0365",
       "affiliation": "Resiliensea Immersive",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -30537,7 +29570,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0375",
+      "id": "loc-0366",
       "affiliation": "Resource and Ecosystem Management",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -30574,7 +29607,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0376",
+      "id": "loc-0367",
       "affiliation": "Rethinking, Rebuilding, Regenerating Coral Reefs",
       "lat": 14.5995,
       "lon": 120.9842,
@@ -30606,7 +29639,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0377",
+      "id": "loc-0368",
       "affiliation": "Reva Atea",
       "lat": -17.5516,
       "lon": -149.5585,
@@ -30653,7 +29686,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0378",
+      "id": "loc-0369",
       "affiliation": "Rosenstiel School of Marine, Atmospheric, and Earth",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -30763,7 +29796,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0379",
+      "id": "loc-0370",
       "affiliation": "Royal Netherlands Institute for Sea Research",
       "lat": 51.4887209,
       "lon": 4.0568124,
@@ -30810,7 +29843,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0380",
+      "id": "loc-0371",
       "affiliation": "RPI under contract to NOAA National Ocean Service",
       "lat": 42.7297628,
       "lon": -73.6788884,
@@ -30867,7 +29900,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0381",
+      "id": "loc-0372",
       "affiliation": "Ruhr University - Bochum",
       "lat": 51.444419,
       "lon": 7.2613027,
@@ -30924,7 +29957,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0382",
+      "id": "loc-0373",
       "affiliation": "Ruhuna University",
       "lat": 5.9383232,
       "lon": 80.5764962,
@@ -30961,7 +29994,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0383",
+      "id": "loc-0374",
       "affiliation": "Sail for Reefs",
       "lat": 18.4655,
       "lon": -66.1057,
@@ -30998,7 +30031,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0384",
+      "id": "loc-0375",
       "affiliation": "San Diego State University",
       "lat": 32.7754647,
       "lon": -117.0711887,
@@ -31054,7 +30087,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0385",
+      "id": "loc-0376",
       "affiliation": "Saudi Aramco",
       "lat": 24.7136,
       "lon": 46.6753,
@@ -31086,7 +30119,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0386",
+      "id": "loc-0377",
       "affiliation": "Scripps Institution of Oceanography",
       "lat": 32.8681401,
       "lon": -117.2503233,
@@ -31483,7 +30516,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0387",
+      "id": "loc-0378",
       "affiliation": "Sea Education Association",
       "lat": 41.5486144,
       "lon": -70.6453534,
@@ -31515,7 +30548,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0388",
+      "id": "loc-0379",
       "affiliation": "Sea Ventures Marine Response Unit",
       "lat": 18.3401286,
       "lon": -65.6401996,
@@ -31552,7 +30585,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0389",
+      "id": "loc-0380",
       "affiliation": "Sea Women of Melanesia Inc",
       "lat": -9.4438,
       "lon": 147.1803,
@@ -31584,7 +30617,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0390",
+      "id": "loc-0381",
       "affiliation": "Seatrees",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -31651,7 +30684,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0391",
+      "id": "loc-0382",
       "affiliation": "SECORE International",
       "lat": -20.1609,
       "lon": 57.5012,
@@ -31688,7 +30721,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0392",
+      "id": "loc-0383",
       "affiliation": "SECORE International",
       "lat": 19.4326,
       "lon": -99.1332,
@@ -31730,7 +30763,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0393",
+      "id": "loc-0384",
       "affiliation": "SECORE International",
       "lat": 40.037692,
       "lon": -83.142082,
@@ -31841,7 +30874,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0394",
+      "id": "loc-0385",
       "affiliation": "Senckenberg Nature Museum - Frankfurt",
       "lat": 50.1175579,
       "lon": 8.6522363,
@@ -31898,7 +30931,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0395",
+      "id": "loc-0386",
       "affiliation": "Senckenberg Research Institute",
       "lat": 50.9837258,
       "lon": 11.3278793,
@@ -31930,7 +30963,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0396",
+      "id": "loc-0387",
       "affiliation": "Settide, LLC",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -31977,7 +31010,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0397",
+      "id": "loc-0388",
       "affiliation": "Seychelles Islands Foundation",
       "lat": -4.5833333,
       "lon": 55.6666667,
@@ -32034,7 +31067,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0398",
+      "id": "loc-0389",
       "affiliation": "Shahid Beheshti University Of Tehran",
       "lat": 35.7999202,
       "lon": 51.3938048,
@@ -32066,7 +31099,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0399",
+      "id": "loc-0390",
       "affiliation": "Shantou University",
       "lat": 23.409312,
       "lon": 116.63429,
@@ -32098,7 +31131,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0400",
+      "id": "loc-0391",
       "affiliation": "Shenzhen MSU-BIT University",
       "lat": 22.6826092,
       "lon": 114.2056483,
@@ -32135,7 +31168,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0401",
+      "id": "loc-0392",
       "affiliation": "Shoals Rodrigues",
       "lat": -19.6827533,
       "lon": 63.4176398,
@@ -32167,7 +31200,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0402",
+      "id": "loc-0393",
       "affiliation": "Silliiman University",
       "lat": 9.311631,
       "lon": 123.3073105,
@@ -32204,7 +31237,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0403",
+      "id": "loc-0394",
       "affiliation": "Silliman University",
       "lat": 9.311631,
       "lon": 123.3073105,
@@ -32327,7 +31360,7 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0404",
+      "id": "loc-0395",
       "affiliation": "Smithsonian Environmental Research Center",
       "lat": 38.9015623,
       "lon": -76.5564251,
@@ -32397,7 +31430,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0405",
+      "id": "loc-0396",
       "affiliation": "Smithsonian Institution",
       "lat": 38.8860146,
       "lon": -77.0213921,
@@ -32488,7 +31521,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0406",
+      "id": "loc-0397",
       "affiliation": "Smithsonian Marine Station",
       "lat": 27.4600815,
       "lon": -80.311461,
@@ -32530,7 +31563,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0407",
+      "id": "loc-0398",
       "affiliation": "Smithsonian Tropical Research Center",
       "lat": 8.9621166,
       "lon": -79.5445144,
@@ -32562,7 +31595,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0408",
+      "id": "loc-0399",
       "affiliation": "Smithsonian Tropical Research Institute - Panama",
       "lat": 8.9824,
       "lon": -79.5199,
@@ -32599,7 +31632,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0409",
+      "id": "loc-0400",
       "affiliation": "Smithsonian Tropical Research Institute",
       "lat": 60.1699,
       "lon": 24.9384,
@@ -32631,7 +31664,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0410",
+      "id": "loc-0401",
       "affiliation": "Smithsonian Tropical Research Institute",
       "lat": 8.9824,
       "lon": -79.5199,
@@ -32809,7 +31842,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0411",
+      "id": "loc-0402",
       "affiliation": "Smithsonian Tropical Research Institute",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -32841,7 +31874,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0412",
+      "id": "loc-0403",
       "affiliation": "Soneva Conservation and Sustainability Maldives",
       "lat": 4.1755,
       "lon": 73.5093,
@@ -32873,7 +31906,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0413",
+      "id": "loc-0404",
       "affiliation": "South China Sea Institute of Oceanology",
       "lat": 22.82555745769912,
       "lon": 113.54118700836342,
@@ -33009,7 +32042,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0414",
+      "id": "loc-0405",
       "affiliation": "Southeast Fisheries Science Center",
       "lat": 25.7337025,
       "lon": -80.1605119,
@@ -33086,7 +32119,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0415",
+      "id": "loc-0406",
       "affiliation": "Southern Cross University",
       "lat": -28.8193845,
       "lon": 153.2994738,
@@ -33457,7 +32490,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0416",
+      "id": "loc-0407",
       "affiliation": "Southern Cross University",
       "lat": 4.1755,
       "lon": 73.5093,
@@ -33489,7 +32522,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0417",
+      "id": "loc-0408",
       "affiliation": "Southern Cross University",
       "lat": -22.2558,
       "lon": 166.4505,
@@ -33541,7 +32574,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0418",
+      "id": "loc-0409",
       "affiliation": "Southern Cross University",
       "lat": 14.5995,
       "lon": 120.9842,
@@ -33597,7 +32630,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0419",
+      "id": "loc-0410",
       "affiliation": "Southern Marine Science and Engineering Guangdong Laboratory",
       "lat": 39.9042,
       "lon": 116.4074,
@@ -33629,7 +32662,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0420",
+      "id": "loc-0411",
       "affiliation": "Spanish National Research Council",
       "lat": 40.4168,
       "lon": -3.7038,
@@ -33666,7 +32699,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0421",
+      "id": "loc-0412",
       "affiliation": "Stanford University",
       "lat": 37.42766,
       "lon": -122.17006,
@@ -33803,7 +32836,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0422",
+      "id": "loc-0413",
       "affiliation": "Stantec GS",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -33865,7 +32898,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0423",
+      "id": "loc-0414",
       "affiliation": "State of Hawaiʻi",
       "lat": 19.708546749900975,
       "lon": -155.59210907543473,
@@ -33952,7 +32985,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0424",
+      "id": "loc-0415",
       "affiliation": "State University of New York",
       "lat": 40.7127753,
       "lon": -74.0059728,
@@ -33989,7 +33022,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0425",
+      "id": "loc-0416",
       "affiliation": "Stazione Zoologica Anton Dohrn",
       "lat": 40.8327613,
       "lon": 14.2352737,
@@ -34021,7 +33054,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0426",
+      "id": "loc-0417",
       "affiliation": "Stony Brook University",
       "lat": 40.9132244,
       "lon": -73.1261091,
@@ -34121,7 +33154,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0427",
+      "id": "loc-0418",
       "affiliation": "Suganthi Devadason Marine Research Institute",
       "lat": 8.8000266,
       "lon": 78.1571198,
@@ -34206,7 +33239,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0428",
+      "id": "loc-0419",
       "affiliation": "Sultan Qaboos University",
       "lat": 23.5912214,
       "lon": 58.1721266,
@@ -34238,7 +33271,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0429",
+      "id": "loc-0420",
       "affiliation": "Sulubaai Environmental Foundation",
       "lat": 11.0870065,
       "lon": 119.5630652,
@@ -34270,7 +33303,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0430",
+      "id": "loc-0421",
       "affiliation": "Sustainable Environment and Livelihood Solutions",
       "lat": -8.52,
       "lon": 179.1981,
@@ -34307,7 +33340,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0431",
+      "id": "loc-0422",
       "affiliation": "Swedish University of Agricultural Sciences",
       "lat": 59.8163458,
       "lon": 17.6594849,
@@ -34344,7 +33377,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0432",
+      "id": "loc-0423",
       "affiliation": "Talanoa Consulting Fiji",
       "lat": -18.1441605,
       "lon": 178.4306091,
@@ -34386,7 +33419,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0433",
+      "id": "loc-0424",
       "affiliation": "Talanoa Consulting",
       "lat": -18.1441605,
       "lon": 178.4306091,
@@ -34423,7 +33456,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0434",
+      "id": "loc-0425",
       "affiliation": "Tamil Nadu Coastal Restoration Mission",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -34465,7 +33498,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0435",
+      "id": "loc-0426",
       "affiliation": "Tanzania Marine Parks and Reserves Unit",
       "lat": -6.163,
       "lon": 35.7516,
@@ -34497,7 +33530,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0436",
+      "id": "loc-0427",
       "affiliation": "Technical University of Denmark",
       "lat": 55.7860512,
       "lon": 12.5233698,
@@ -34529,7 +33562,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0437",
+      "id": "loc-0428",
       "affiliation": "Technion",
       "lat": 32.7767783,
       "lon": 35.0231271,
@@ -34586,7 +33619,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0438",
+      "id": "loc-0429",
       "affiliation": "Tel Aviv University",
       "lat": 32.113496,
       "lon": 34.803609,
@@ -34807,7 +33840,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0439",
+      "id": "loc-0430",
       "affiliation": "Texas A&M University - Corpus Christi",
       "lat": 27.7123121,
       "lon": -97.3245739,
@@ -34839,7 +33872,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0440",
+      "id": "loc-0431",
       "affiliation": "Texas A&M University - Corpus Christi",
       "lat": 27.7123121,
       "lon": -97.3245739,
@@ -34876,7 +33909,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0441",
+      "id": "loc-0432",
       "affiliation": "Texas A&M University - Galveston",
       "lat": 29.3154967,
       "lon": -94.8182868,
@@ -34918,7 +33951,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0442",
+      "id": "loc-0433",
       "affiliation": "Texas A&M University",
       "lat": 30.6186625,
       "lon": -96.3364251,
@@ -34978,7 +34011,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0443",
+      "id": "loc-0434",
       "affiliation": "Texas State University",
       "lat": 29.888411,
       "lon": -97.938351,
@@ -35083,7 +34116,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0444",
+      "id": "loc-0435",
       "affiliation": "The Florida Aquarium",
       "lat": 27.943972,
       "lon": -82.4448747,
@@ -35184,7 +34217,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0445",
+      "id": "loc-0436",
       "affiliation": "The International Seakeepers Society",
       "lat": -41.2865,
       "lon": 174.7762,
@@ -35216,7 +34249,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0446",
+      "id": "loc-0437",
       "affiliation": "The Nature Conservancy - Jamaica",
       "lat": 18.0179,
       "lon": -76.8099,
@@ -35283,7 +34316,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0447",
+      "id": "loc-0438",
       "affiliation": "The Nature Conservancy - Micronesia & Polynesia",
       "lat": 7.5004,
       "lon": 134.6242,
@@ -35365,7 +34398,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0448",
+      "id": "loc-0439",
       "affiliation": "The Nature Conservancy - Guam",
       "lat": 13.476,
       "lon": 144.7502,
@@ -35397,7 +34430,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0449",
+      "id": "loc-0440",
       "affiliation": "The Nature Conservancy - United States",
       "lat": 37.2933496,
       "lon": -75.9315222,
@@ -35543,7 +34576,7 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0450",
+      "id": "loc-0441",
       "affiliation": "The Nature Conservancy - Venezuela",
       "lat": 10.4806,
       "lon": -66.9036,
@@ -35625,7 +34658,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0451",
+      "id": "loc-0442",
       "affiliation": "The Two Frontiers Project",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -35672,7 +34705,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0452",
+      "id": "loc-0443",
       "affiliation": "Tohoku University",
       "lat": 38.253834,
       "lon": 140.874074,
@@ -35729,7 +34762,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0453",
+      "id": "loc-0444",
       "affiliation": "Tokyo Metroplolitan University",
       "lat": 35.6172487,
       "lon": 139.3771559,
@@ -35761,7 +34794,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0454",
+      "id": "loc-0445",
       "affiliation": "Tokyo Metropolitan University",
       "lat": 35.6172487,
       "lon": 139.3771559,
@@ -35812,7 +34845,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0455",
+      "id": "loc-0446",
       "affiliation": "Transformations Community",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -35849,7 +34882,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0456",
+      "id": "loc-0447",
       "affiliation": "Trent University",
       "lat": 45.4215,
       "lon": -75.6972,
@@ -35881,7 +34914,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0457",
+      "id": "loc-0448",
       "affiliation": "Tulane University",
       "lat": 29.9407282,
       "lon": -90.1203167,
@@ -35913,7 +34946,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0458",
+      "id": "loc-0449",
       "affiliation": "Turks and Caicos Reef Fund",
       "lat": 51.5074,
       "lon": -0.1278,
@@ -35965,7 +34998,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0459",
+      "id": "loc-0450",
       "affiliation": "Tuvalu Meteorological Service",
       "lat": -8.52,
       "lon": 179.1981,
@@ -35997,7 +35030,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0460",
+      "id": "loc-0451",
       "affiliation": "UCLouvain",
       "lat": 50.6696767,
       "lon": 4.615875,
@@ -36049,7 +35082,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0461",
+      "id": "loc-0452",
       "affiliation": "UCSD",
       "lat": 32.881168,
       "lon": -117.2343605,
@@ -36086,7 +35119,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0462",
+      "id": "loc-0453",
       "affiliation": "Umeå University",
       "lat": 63.8201671,
       "lon": 20.3006649,
@@ -36152,7 +35185,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0463",
+      "id": "loc-0454",
       "affiliation": "United Nations Development Programme - Mauritius & Seychelles",
       "lat": -20.1609,
       "lon": 57.5012,
@@ -36184,7 +35217,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0464",
+      "id": "loc-0455",
       "affiliation": "United States Geological Survey",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -36236,7 +35269,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0465",
+      "id": "loc-0456",
       "affiliation": "Universidad Autónoma de Baja California Sur",
       "lat": 24.105262,
       "lon": -110.3077959,
@@ -36306,7 +35339,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0466",
+      "id": "loc-0457",
       "affiliation": "Universidad Autónoma Del Estado de Quintana Roo",
       "lat": 18.5230649,
       "lon": -88.2709592,
@@ -36338,7 +35371,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0467",
+      "id": "loc-0458",
       "affiliation": "Universidad Central de Venezuela",
       "lat": 10.48801,
       "lon": -66.87919,
@@ -36380,7 +35413,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0468",
+      "id": "loc-0459",
       "affiliation": "Universidad Del Magdalena",
       "lat": 11.2262461,
       "lon": -74.1873608,
@@ -36412,7 +35445,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0469",
+      "id": "loc-0460",
       "affiliation": "Universidad del Valle",
       "lat": 3.3767679,
       "lon": -76.5343197,
@@ -36444,7 +35477,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0470",
+      "id": "loc-0461",
       "affiliation": "Universidad Nacional Autónoma De México",
       "lat": 19.3188895,
       "lon": -99.1843676,
@@ -36605,7 +35638,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0471",
+      "id": "loc-0462",
       "affiliation": "Universidad San Francisco de Quito",
       "lat": -0.895563,
       "lon": -89.608881,
@@ -36657,7 +35690,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0472",
+      "id": "loc-0463",
       "affiliation": "Universidade do Estado do Rio de Janeiro",
       "lat": -22.9111739,
       "lon": -43.2361323,
@@ -36738,7 +35771,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0473",
+      "id": "loc-0464",
       "affiliation": "Universidade Estadual Do Norte Fluminense",
       "lat": -15.7939,
       "lon": -47.8828,
@@ -36775,7 +35808,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0474",
+      "id": "loc-0465",
       "affiliation": "Universidade Federal de Santa Catarina",
       "lat": -27.5999578,
       "lon": -48.5194134,
@@ -36822,7 +35855,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0475",
+      "id": "loc-0466",
       "affiliation": "Universidade Federal do Rio de Janeiro",
       "lat": -22.8674532,
       "lon": -43.2151914,
@@ -36887,7 +35920,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0476",
+      "id": "loc-0467",
       "affiliation": "Universidade Federal do Rio Grande do Norte",
       "lat": -5.839721,
       "lon": -35.2016966,
@@ -36980,7 +36013,7 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0477",
+      "id": "loc-0468",
       "affiliation": "Universidade Federal Fluminense",
       "lat": -22.807947428159128,
       "lon": -43.12501206622452,
@@ -37041,7 +36074,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0478",
+      "id": "loc-0469",
       "affiliation": "Universidade Lúrio",
       "lat": -15.1187942,
       "lon": 39.1992777,
@@ -37078,7 +36111,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0479",
+      "id": "loc-0470",
       "affiliation": "Universitat de Barcelona",
       "lat": 41.3866724,
       "lon": 2.1638661,
@@ -37115,7 +36148,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0480",
+      "id": "loc-0471",
       "affiliation": "Universiti Kebangsaan Malaysia",
       "lat": 2.9289681,
       "lon": 101.7800927,
@@ -37147,7 +36180,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0481",
+      "id": "loc-0472",
       "affiliation": "Universiti Malaysia Terengganu",
       "lat": 5.4053119,
       "lon": 103.087693,
@@ -37203,7 +36236,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0482",
+      "id": "loc-0473",
       "affiliation": "Universiti Sains Malaysia",
       "lat": 5.3555943,
       "lon": 100.3025455,
@@ -37235,7 +36268,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0483",
+      "id": "loc-0474",
       "affiliation": "University College London",
       "lat": 51.5245592,
       "lon": -0.1340401,
@@ -37296,7 +36329,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0484",
+      "id": "loc-0475",
       "affiliation": "University Heidelberg",
       "lat": 49.3987524,
       "lon": 8.6724335,
@@ -37333,7 +36366,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0485",
+      "id": "loc-0476",
       "affiliation": "University of Alabama at Birmingham",
       "lat": 33.502086,
       "lon": -86.8051588,
@@ -37390,7 +36423,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0486",
+      "id": "loc-0477",
       "affiliation": "University of Alabama",
       "lat": 33.2114385,
       "lon": -87.5401002,
@@ -37588,7 +36621,7 @@ export const SITE_DATA = {
       "connection_count": 6
     },
     {
-      "id": "loc-0487",
+      "id": "loc-0478",
       "affiliation": "University of Alberta",
       "lat": 53.5232189,
       "lon": -113.5263186,
@@ -37692,7 +36725,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0488",
+      "id": "loc-0479",
       "affiliation": "University of Amsterdam",
       "lat": 52.3558182,
       "lon": 4.9557263,
@@ -37769,7 +36802,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0489",
+      "id": "loc-0480",
       "affiliation": "University of Antsiranana",
       "lat": -12.2819627,
       "lon": 49.3064147,
@@ -37801,7 +36834,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0490",
+      "id": "loc-0481",
       "affiliation": "University of Arizona",
       "lat": 32.2338693,
       "lon": -110.9481326,
@@ -37925,7 +36958,7 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0491",
+      "id": "loc-0482",
       "affiliation": "University of Auckland",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -37957,7 +36990,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0492",
+      "id": "loc-0483",
       "affiliation": "University of Auckland",
       "lat": -36.85088270000001,
       "lon": 174.7644881,
@@ -38102,7 +37135,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0493",
+      "id": "loc-0484",
       "affiliation": "University of Basel",
       "lat": 47.5585281,
       "lon": 7.5838692,
@@ -38134,7 +37167,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0494",
+      "id": "loc-0485",
       "affiliation": "University of Bologna",
       "lat": 4.711,
       "lon": -74.0721,
@@ -38181,7 +37214,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0495",
+      "id": "loc-0486",
       "affiliation": "University of Bremen",
       "lat": 53.1065412,
       "lon": 8.8553306,
@@ -38213,7 +37246,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0496",
+      "id": "loc-0487",
       "affiliation": "University of Bristol",
       "lat": 51.4585376,
       "lon": -2.6021758,
@@ -38311,7 +37344,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0497",
+      "id": "loc-0488",
       "affiliation": "University of British Columbia",
       "lat": 49.2593121,
       "lon": -123.2474966,
@@ -38362,7 +37395,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0498",
+      "id": "loc-0489",
       "affiliation": "University of California - Berkeley",
       "lat": 37.8712141,
       "lon": -122.255463,
@@ -38394,7 +37427,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0499",
+      "id": "loc-0490",
       "affiliation": "University of California - Berkeley",
       "lat": 37.8712141,
       "lon": -122.255463,
@@ -38431,7 +37464,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0500",
+      "id": "loc-0491",
       "affiliation": "University of California - Berkeley",
       "lat": 37.8712141,
       "lon": -122.255463,
@@ -38558,7 +37591,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0501",
+      "id": "loc-0492",
       "affiliation": "University of California - Davis",
       "lat": 38.539095,
       "lon": -121.7608193,
@@ -38643,7 +37676,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0502",
+      "id": "loc-0493",
       "affiliation": "University of California - Los Angeles",
       "lat": 34.0699182,
       "lon": -118.4438495,
@@ -38854,7 +37887,7 @@ export const SITE_DATA = {
       "connection_count": 8
     },
     {
-      "id": "loc-0503",
+      "id": "loc-0494",
       "affiliation": "University of California - Merced",
       "lat": 37.3647584,
       "lon": -120.4260375,
@@ -38905,7 +37938,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0504",
+      "id": "loc-0495",
       "affiliation": "University of California - Riverside",
       "lat": 33.9737055,
       "lon": -117.3280644,
@@ -38937,7 +37970,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0505",
+      "id": "loc-0496",
       "affiliation": "University of California - San Diego",
       "lat": 32.881168,
       "lon": -117.2343605,
@@ -39171,7 +38204,7 @@ export const SITE_DATA = {
       "connection_count": 9
     },
     {
-      "id": "loc-0506",
+      "id": "loc-0497",
       "affiliation": "University of California - Santa Barbara",
       "lat": 34.4153601,
       "lon": -119.8514162,
@@ -39523,7 +38556,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0507",
+      "id": "loc-0498",
       "affiliation": "University of California - Santa Cruz",
       "lat": 36.9905322,
       "lon": -122.0584354,
@@ -39598,7 +38631,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0508",
+      "id": "loc-0499",
       "affiliation": "University of Cambridge",
       "lat": 52.205356,
       "lon": 0.113168,
@@ -39692,7 +38725,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0509",
+      "id": "loc-0500",
       "affiliation": "University of Chicago",
       "lat": 41.7904484,
       "lon": -87.6003953,
@@ -39729,7 +38762,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0510",
+      "id": "loc-0501",
       "affiliation": "University of Copenhagen",
       "lat": 55.6801409,
       "lon": 12.5715182,
@@ -39761,7 +38794,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0511",
+      "id": "loc-0502",
       "affiliation": "University of Dar Es Salaam",
       "lat": -6.7791817,
       "lon": 39.204323,
@@ -39793,7 +38826,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0512",
+      "id": "loc-0503",
       "affiliation": "University of Delaware",
       "lat": 39.6809151,
       "lon": -75.7523313,
@@ -39958,7 +38991,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0513",
+      "id": "loc-0504",
       "affiliation": "University of Derby",
       "lat": 52.9379632,
       "lon": -1.497392,
@@ -40077,7 +39110,7 @@ export const SITE_DATA = {
       "connection_count": 7
     },
     {
-      "id": "loc-0514",
+      "id": "loc-0505",
       "affiliation": "University of Exeter",
       "lat": 50.7371369,
       "lon": -3.5351475,
@@ -40123,7 +39156,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0515",
+      "id": "loc-0506",
       "affiliation": "University of Florida",
       "lat": 29.6465428,
       "lon": -82.3533266,
@@ -40209,7 +39242,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0516",
+      "id": "loc-0507",
       "affiliation": "University of Georgia",
       "lat": 33.9423394,
       "lon": -83.3724242,
@@ -40260,7 +39293,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0517",
+      "id": "loc-0508",
       "affiliation": "University of Guam",
       "lat": 13.4322112,
       "lon": 144.8033219,
@@ -40687,7 +39720,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0518",
+      "id": "loc-0509",
       "affiliation": "University of Guam",
       "lat": 13.476,
       "lon": 144.7502,
@@ -40825,7 +39858,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0519",
+      "id": "loc-0510",
       "affiliation": "University of Haifa",
       "lat": 32.7614296,
       "lon": 35.0195184,
@@ -40881,7 +39914,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0520",
+      "id": "loc-0511",
       "affiliation": "University of Hawaiʻi - Hilo",
       "lat": 19.6997798,
       "lon": -155.0848929,
@@ -40913,7 +39946,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0521",
+      "id": "loc-0512",
       "affiliation": "University of Hawaiʻi - Hilo",
       "lat": 19.6997798,
       "lon": -155.0848929,
@@ -41014,14 +40047,274 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0522",
+      "id": "loc-0513",
       "affiliation": "University of Hawaiʻi - Mānoa",
-      "lat": 21.2973159,
-      "lon": -157.8199094,
+      "lat": 7.5004,
+      "lon": 134.6242,
       "speakers": [
-        "Emily Rutkowski"
+        "Alexi Meltel"
       ],
       "speaker_details": [
+        {
+          "name": "Alexi Meltel",
+          "search_text": "alexi meltel physiological responses to heat stress in corals from a resilient reef system in palau coral reefs are becoming increasingly threatened by rising sea surface temperatures, yet some populations remain resistant. in ngermid bay, a semi enclosed bay in palau, corals thrive despite higher sea surface temperatures and ph levels similar to projections for 2100. to better understand what the future of coral reefs will look like, more research is needed to determine the physiological mechanisms behind coral responses to stressors, particularly in resilient populations. this project investigates physiological responses to heat stress and recovery in porites cf. lobata populations from three sites within ngermid bay in comparison to a reference site with more oceanic influences. in collaboration with the palau international coral reef center (picrc), a 7-day heat stress and 15-day recovery experiment was conducted, and coral fragments were assessed for buoyant weight to evaluate calcification rates and color intensity via the health chart to evaluate bleaching and recovery status at days 0, 7, and 15. changes in calcification and pigmentation across the stress and recovery periods will be used to identify physiological indicators of thermal tolerance in p. cf. lobata, along with recovery potential from stress events. anticipated results from this project will advance understanding of the physiological mechanisms that contribute to coral resilience and adaptation. linking these findings to reef management will support strategies that target conservation and protection of corals in a changing ocean.",
+          "talk_titles": [
+            {
+              "title": "Physiological responses to heat stress in corals from a resilient reef system in Palau",
+              "primary": true,
+              "talk_id": "68e8fc7e-0e71-4cd4-87ca-17db45f8bbe8"
+            }
+          ],
+          "person_key": "icrs-p-01163",
+          "attended": true
+        }
+      ],
+      "speaker_count": 1,
+      "talk_count": 1,
+      "geocode_level": "country",
+      "distance_km": 6461.9,
+      "search_text": "university of hawaiʻi - mānoa alexi meltel alexi meltel physiological responses to heat stress in corals from a resilient reef system in palau coral reefs are becoming increasingly threatened by rising sea surface temperatures, yet some populations remain resistant. in ngermid bay, a semi enclosed bay in palau, corals thrive despite higher sea surface temperatures and ph levels similar to projections for 2100. to better understand what the future of coral reefs will look like, more research is needed to determine the physiological mechanisms behind coral responses to stressors, particularly in resilient populations. this project investigates physiological responses to heat stress and recovery in porites cf. lobata populations from three sites within ngermid bay in comparison to a reference site with more oceanic influences. in collaboration with the palau international coral reef center (picrc), a 7-day heat stress and 15-day recovery experiment was conducted, and coral fragments were assessed for buoyant weight to evaluate calcification rates and color intensity via the health chart to evaluate bleaching and recovery status at days 0, 7, and 15. changes in calcification and pigmentation across the stress and recovery periods will be used to identify physiological indicators of thermal tolerance in p. cf. lobata, along with recovery potential from stress events. anticipated results from this project will advance understanding of the physiological mechanisms that contribute to coral resilience and adaptation. linking these findings to reef management will support strategies that target conservation and protection of corals in a changing ocean.",
+      "country_code": "PW",
+      "country": "Palau",
+      "connection_count": 1
+    },
+    {
+      "id": "loc-0514",
+      "affiliation": "University of Hawaiʻi - Mānoa",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "speakers": [
+        "Raffi Isah"
+      ],
+      "speaker_details": [
+        {
+          "name": "Raffi Isah",
+          "search_text": "raffi isah heterotrophic plasticity of corals under a nutrient and sgd gradient in kahekili, maui, hawaiʻi corals obtain energy through autotrophic nutrition from their endosymbionts and through heterotrophy via feeding on zooplankton and particulate organic matter (pom). while corals thrive in oligotrophic waters, allochthonous sources of nutrients can alter this relationship by increasing resource availability. at kahekili, maui, hawaiʻi, the fringing reef receives submarine groundwater discharge (sgd), of which ~60% is treated wastewater from nearby injection wells. this input elevates nutrients, stimulates primary production, and increases pom availability for heterotrophic feeding. however, the connection between nutrient-rich sgd, enhanced organic matter availability, and shifts in coral trophic strategies is understudied. we characterized nutrients, carbonate chemistry, pom concentrations, and pom stable isotope compositions (δ15n and δ13c) across four sites along an sgd and nutrient gradient. two common reef corals were collected and analyzed for δ15n and δ13c in host and endosymbiont fractions to evaluate how nutritional strategies shift along this gradient. we quantified the relative contributions of autotrophy and heterotrophy using isotopic offsets (δ15nhost-symbiont and δ13chost-symbiont) and estimated proportional food-source contributions (reef, offshore, and sgd pom) using bayesian isotope mixing models. this work clarifies whether enhanced heterotrophy acts as a compensatory mechanism under sgd-driven eutrophication, identifying thresholds at which nutrients may impair coral energy balance.",
+          "talk_titles": [
+            {
+              "title": "Heterotrophic plasticity of corals under a nutrient and SGD gradient in Kahekili, Maui, Hawaiʻi",
+              "primary": true,
+              "talk_id": "0f2b8fc6-5c5a-490e-afe7-5e940eaa7279"
+            }
+          ],
+          "person_key": "icrs-p-00819",
+          "attended": true
+        }
+      ],
+      "speaker_count": 1,
+      "talk_count": 1,
+      "geocode_level": "country",
+      "distance_km": 8023.4,
+      "search_text": "university of hawaiʻi - mānoa raffi isah raffi isah heterotrophic plasticity of corals under a nutrient and sgd gradient in kahekili, maui, hawaiʻi corals obtain energy through autotrophic nutrition from their endosymbionts and through heterotrophy via feeding on zooplankton and particulate organic matter (pom). while corals thrive in oligotrophic waters, allochthonous sources of nutrients can alter this relationship by increasing resource availability. at kahekili, maui, hawaiʻi, the fringing reef receives submarine groundwater discharge (sgd), of which ~60% is treated wastewater from nearby injection wells. this input elevates nutrients, stimulates primary production, and increases pom availability for heterotrophic feeding. however, the connection between nutrient-rich sgd, enhanced organic matter availability, and shifts in coral trophic strategies is understudied. we characterized nutrients, carbonate chemistry, pom concentrations, and pom stable isotope compositions (δ15n and δ13c) across four sites along an sgd and nutrient gradient. two common reef corals were collected and analyzed for δ15n and δ13c in host and endosymbiont fractions to evaluate how nutritional strategies shift along this gradient. we quantified the relative contributions of autotrophy and heterotrophy using isotopic offsets (δ15nhost-symbiont and δ13chost-symbiont) and estimated proportional food-source contributions (reef, offshore, and sgd pom) using bayesian isotope mixing models. this work clarifies whether enhanced heterotrophy acts as a compensatory mechanism under sgd-driven eutrophication, identifying thresholds at which nutrients may impair coral energy balance.",
+      "country_code": "PH",
+      "country": "Philippines",
+      "connection_count": 1
+    },
+    {
+      "id": "loc-0515",
+      "affiliation": "University of Hawaiʻi - Mānoa",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "speakers": [
+        "Anela Eliza Kainani Duenas",
+        "Ashley Carreiro",
+        "Callie Stephenson",
+        "Charles Birkeland",
+        "Claire Moreland-Ochoa",
+        "Danielle Barnas",
+        "Eileen Nalley",
+        "Emily Rutkowski",
+        "Guan-Yan Chen",
+        "Jamie McDevitt-Irwin",
+        "Jessica Glazner",
+        "Joelle Mattos",
+        "Justin Berg",
+        "Kaho Tisthammer",
+        "Kainalu Steward",
+        "Keiko Wilkins",
+        "Kuʻi Keliipuleole",
+        "Leah Barkai",
+        "Leon Tran",
+        "Lisa McManus",
+        "Madelief Schelvis",
+        "Madeline Berger",
+        "Mary Donovan",
+        "Maryann Webb",
+        "Maya Otsu",
+        "Maya Powell",
+        "Natalie Goeler-Slough",
+        "Nyssa Silbiger",
+        "Prof Bob Richmond",
+        "Rayna Mcclintock",
+        "Samantha Shedd",
+        "Zach Quinlan",
+        "Alessandra Shea",
+        "Dr Andrea Kealoha",
+        "Dr Angela Richards Donà",
+        "Maya Olin"
+      ],
+      "speaker_details": [
+        {
+          "name": "Anela Eliza Kainani Duenas",
+          "search_text": "anela duenas ecophysiology of shifts in coral species dominance on reef flats of guam over the last decade, guam’s reefs have been impacted by successive coral bleaching events, causing a significant decline in live coral cover. following the decline of acropora pulchra, pavona decussata appears to have increased in relative abundance, often overgrowing a. pulchra skeletons. the physiological mechanisms and symbiont dynamics that drive this ecological shift remain unclear. in this study, i conducted an ex situ heat stress experiment to evaluate the metabolic responses of a. pulchra and p. decussata dominated by either cladocopium or durusdinium. coral fragments were exposed to control or heat treatment conditions, and monitored over four timepoints for changes in net photosynthesis, respiration, and symbiodiniaceae community compositions using closed-chamber respirometry and qpcr. results showed that a. pulchra dominated by cladocopium experienced significant declines in photosynthesis and relative symbiont abundance under heat stress. in contrast, a. pulchra fragments dominated by durusdinium maintained stable metabolic function and symbiont composition across treatments. pavona decussata dominated by cladocopium also maintained relatively stable function and symbiont abundance across treatments. multivariate analyses confirmed that physiological variation was more strongly associated with coral species-symbiont pairings than with treatment alone. these findings offer a physiological basis for observed shifts in coral community composition on guam’s reefs. this study contributes to management and restoration efforts by providing crucial information on the role of symbiodiniaceae in thermal stress on guam’s reefs.",
+          "talk_titles": [
+            {
+              "title": "Ecophysiology of shifts in coral species dominance on reef flats of Guam",
+              "primary": true,
+              "talk_id": "dec38f47-d219-4f69-92d7-265909001526"
+            }
+          ],
+          "person_key": "icrs-p-00502",
+          "attended": true
+        },
+        {
+          "name": "Ashley Carreiro",
+          "search_text": "ashley carreiro characterizing coral community structure and flow dynamics across eight reefs in okinawa, japan coral reefs in okinawa, japan are highly diverse and exhibit substantial variation in their structural complexity and benthic community composition, which can be attributed partly to the biophysical conditions. essential ecosystem services–such as habitat for fisheries species and shoreline protection–depend heavily on reef complexity, therefore it is crucial to understand both the drivers of changing reef structure and the impacts of those changes. to better characterize the relationship between hydrodynamics and reef structure on okinawa’s reefs, we deployed instruments less than 50 cm off the bottom that recorded flow velocity across eight sites along the island’s west coast for two weeks in august 2025. we paired these measurements with structure-from-motion photogrammetry to quantify coral community composition and structural complexity. photogrammetry surveys covered 100 m2 at each site and were used to generate digital elevation models for rugosity calculations and orthomosaic images. orthomosaics were analyzed in coralnet to assess community composition at the genus and morphological functional levels. flow regimes differed among sites, with average speeds ranging from 0.80 to 6.28 cm s-1 and max speeds from 6.13 to 25.01 cm s-1. reefs with higher current magnitudes were observed to support a greater abundance of tabular colonies, whereas reefs with lower current magnitudes were dominated by more massive coral morphologies. this work demonstrates the importance of taking an integrative approach to coral reef monitoring, providing insights into the interconnectedness between hydrodynamics and  community composition on one of the most biodiverse reef ecosystems in the world.",
+          "talk_titles": [
+            {
+              "title": "Characterizing coral community structure and flow dynamics across eight reefs in Okinawa, Japan",
+              "primary": true,
+              "talk_id": "3dfc5c76-8bfd-4736-875e-ba57f75cf74f"
+            },
+            {
+              "title": "Coral Connectivity and Conservation: Using Exploration and Genetic Biodiversity to Better Understand and Preserve Mesophotic Coral Ecosystems",
+              "primary": false,
+              "talk_id": "7d94d7bf-2f69-4955-a431-206e126ab869"
+            },
+            {
+              "title": "Population genetic structuring varies across depth and region in corals and sponges in marine protected areas of the Gulf of Mexico and Florida",
+              "primary": false,
+              "talk_id": "11c66692-4523-4cd0-b1cc-1c552a1624d2"
+            },
+            {
+              "title": "The effect of community diversity on thermal stress tolerance of coral reefs in Okinawa, Japan",
+              "primary": false,
+              "talk_id": "ea808f4e-b011-435a-9cc4-4902a334af42"
+            }
+          ],
+          "person_key": "icrs-p-00288",
+          "attended": true
+        },
+        {
+          "name": "Callie Stephenson",
+          "search_text": "callie stephenson embedding community-led science into the governance of hawaiʻi's pūpūkea marine life conservation district adaptive management proposed for the pūpūkea marine life conservation district (mlcd) on o‘ahu, hawaiʻi exemplifies the integration of community voices in coral reef management. the locally-based community stewardship non-profit organization mālama pūpūkea-waimea (mpw) was contracted by the local government to execute a three-year biological carrying capacity (bcc) study to provide empirical data and recommendations for adaptive management related to the potential overuse of the marine reserve by humans.the bcc study focused on the heavily impacted kapoʻo (sharks cove) region to collect rigorous scientific data to create management recommendations. results demonstrate clear ecological degradation linked to persistent, elevated visitor density. since 2022, in-water human presence in the kapoʻo tidepools has increased by 214%, remaining persistent year-round. bcc surveys confirmed that physical damage to coral increased significantly with human density, with an estimated 40% probability of observed damage on coral colonies in hotspots of visitor use. concurrently, non-schooling fish abundance and species richness declined year-over-year across zones. using non-linear analysis of the relationship of non-schooling fish abundance and surrounding human density, we quantified a conservative threshold of 1 human per 10m radius in the kapoʻo tidepools after which precipitous declines in fish abundance are likely, and extrapolates to a maximum acceptable visitation of 27–31 individuals at any given time for the entire area.these findings culminated in recommendations to the state and city governments for adaptive management. this project provides a useful case study in academic partnership, local stewardship, and natural resource management.",
+          "talk_titles": [
+            {
+              "title": "Embedding Community-Led Science into the Governance of Hawaiʻi's Pūpūkea Marine Life Conservation District",
+              "primary": true,
+              "talk_id": "0381812c-4ead-4434-a8a4-23865b133a13"
+            },
+            {
+              "title": "Submarine groundwater discharge alters the biogenic production of dissolved organic matter by reef calcifiers",
+              "primary": false,
+              "talk_id": "c37ed528-6593-4b68-93ea-776dd07f8d8b"
+            }
+          ],
+          "person_key": "icrs-p-01671",
+          "attended": true
+        },
+        {
+          "name": "Charles Birkeland",
+          "search_text": "charles birkeland american samoan coral reefs are doing well by negative feedback between corals and cca despite major cyclones, cots outbreaks, bleaching events, disease, a tsunami, and other disturbances, the living coral cover in american samoa since 2018 has been the greatest in 40 years. we attribute this to the prevalence of the substrate-binding cca porolithon onkodes s.l., which is prevalent because of wave action combined with the high aragonite saturation states in american samoa waters. of 800 successful coral recruits observed on the forereef slope in american samoa in 2018, 94 % were found on cca. recruits are prevalent in the size-classes of at least a hundred of the species of coral on the forereef slope. the reef ecosystem is resilient and stabilized by negative feedback between living-coral cover and cca. as corals expand living cover, cca significantly loses cover, although it commonly overgrows branching acropora and other corals as a refuge. conversely, when coral cover is decreased by disturbances, cca gain cover and provide substrata favorable to coral recruitment and thereby enhance the return of coral to prevalence. however, in backreef areas with little wave action, the rubble is not bound by cca and the coral communities are not as resilient. the relation between cca and corals changes over a gradient in aragonite saturation state. at rose atoll, where wave action is chronic and the aragonite saturation state is greater than 4, the cca generally overgrow corals, although they also enhance recruitment of corals, so the corals are prevalent and resilient, but with generally small colonies.  abundant small colonies of corals and prevalence of cca have been stable aspects of  the forereef of rose atoll since at least 2002. negative feedback provides fundamentally stabilizing mechanisms and thereby resilience on coral reefs.",
+          "talk_titles": [
+            {
+              "title": "American Samoan coral reefs are doing well by negative feedback between corals and CCA",
+              "primary": true,
+              "talk_id": "d7ee11f1-978e-438c-8c53-b4f4deadf5f5"
+            }
+          ],
+          "person_key": "icrs-p-00176",
+          "attended": true
+        },
+        {
+          "name": "Claire Moreland-Ochoa",
+          "search_text": "claire moreland-ochoa linking sediment exposure to coral performance at a priority reef restoration site on maui sedimentation from land-based runoff, erosion, and resuspension affects multiple aspects of coral reef health and ecosystem function. with global declines in coral cover, coral restoration has become a key strategy to restore reef resilience, yet how sedimentation influences restoration success and early recruitment remains unclear. we conducted a year-long, multi-metric study at olowalu reef, a 939-acre site along west maui that seeds local and neighboring reefs, to evaluate how spatial variability in sediment exposure influences benthic communities, coral outplant performance, and natural recruitment. we outplanted porites rus and porites compressa fragments and placed ceramic recruitment domes at twenty stations spanning two depth zones and a sedimentation gradient. continuous water quality (light, temperature, salinity, turbidity) and quarterly sediment deposition captured chronic background conditions and episodic sedimentation events. photogrammetry and benthic surveys quantified partial mortality, growth, survivorship, and coral cover. this integrated design allowed us to assess how chronic and event-driven sediment dynamics shape reef communities. water quality monitoring showed that sedimentation was primarily driven by resuspension during the summer high-wave season rather than episodic runoff during the winter rainy season. high attrition of coral outplants occurred throughout the study, likely due to the site’s energetic environment and limited post-fragmentation recovery periods. coral recruitment exceeded expectations, with abundance and early growth more strongly influenced by microhabitat on recruitment domes (protected vs. exposed surfaces) than station-level sediment exposure. these results highlight the importance of fine-scale flow and deposition processes when identifying ecologically meaningful sediment limits. together, these datasets provide a foundation for developing water-quality thresholds that account for spatial variability and episodic sediment events, key considerations for aligning ridge-to-reef management strategies. our approach offers a replicable framework for co-developing sediment targets with managers and community partners and can guide where coral restoration and erosion-reduction efforts can enhance local reef resilience and habitat quality.",
+          "talk_titles": [
+            {
+              "title": "Linking Sediment Exposure to Coral Performance at a Priority Reef Restoration Site on Maui",
+              "primary": true,
+              "talk_id": "0dd64012-07f4-4243-8fdc-ab3482dc184f"
+            },
+            {
+              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
+              "primary": false,
+              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
+            },
+            {
+              "title": "Identifying Physiological Indicators of Coral Thermal Performance3",
+              "primary": false,
+              "talk_id": "f3a367a1-5234-4916-a1dc-55819e2a3369"
+            },
+            {
+              "title": "Restoring Corals from Sediment to Symbionts: A Novel Microbiome Approach in Olowalu, Maui",
+              "primary": false,
+              "talk_id": "dfde48fc-eb19-4c40-a944-5cc2e49ed49c"
+            },
+            {
+              "title": "The effect of community diversity on thermal stress tolerance of coral reefs in Okinawa, Japan",
+              "primary": false,
+              "talk_id": "ea808f4e-b011-435a-9cc4-4902a334af42"
+            }
+          ],
+          "person_key": "icrs-p-01207",
+          "attended": true
+        },
+        {
+          "name": "Danielle Barnas",
+          "search_text": "danielle m. barnas the effect of community diversity on thermal stress tolerance of coral reefs in okinawa, japan community diversity within natural ecosystems can enhance ecosystem stability and resilience in the face of disturbances and environmental variability. on coral reefs, biodiversity may be impacted by thermal anomalies, resulting in shifts in community composition and ecosystem functioning. seasonal storm activity, while potentially damaging to coral reef structure, can help reduce sea surface temperatures (sst) within coral thermal tolerance ranges in summer months. okinawa, japan, a region that typically benefits from cooling by seasonal typhoons, experienced unusually high sst on coastal coral reefs in 2024 due to storm trajectories shifting northward, leading to a widespread coral bleaching event. in this study, we tested the physiological response (gross photosynthesis [gp] and respiration [r]) of coral reef communities to these elevated sst to understand the impact of thermal anomalies on common coral species as well as the potential buffering effect of community diversity on physiological performance. in august 2025, we collected duplicate fragments from 10 common coral species near the okinawa institute of science and technology marine science station to measure the paired individual rates of gp and r. we then placed those 10 individuals in community assemblages to measure paired community physiological rates across the two temperature treatments. gp was greater in elevated temperatures for <i>acropora sp.</i>, however fully assembled communities showed no temperature effect on the gp rates, indicating that community diversity may buffer the effects of elevated sst on coral reefs. meanwhile, r was augmented by elevated temperatures for <i>porites rus</i> and <i>favites complanata</i>. despite only two species displaying this trend, assembled communities also showed increased r under elevated temperatures, suggesting uneven species contributions to ecosystem metabolism when scaling from individual fragments to community level.",
+          "talk_titles": [
+            {
+              "title": "The effect of community diversity on thermal stress tolerance of coral reefs in Okinawa, Japan",
+              "primary": true,
+              "talk_id": "ea808f4e-b011-435a-9cc4-4902a334af42"
+            },
+            {
+              "title": "Identifying Physiological Indicators of Coral Thermal Performance3",
+              "primary": false,
+              "talk_id": "f3a367a1-5234-4916-a1dc-55819e2a3369"
+            },
+            {
+              "title": "Metabolic depression of Mo’orea’s coral reefs from a multidecadal time-series",
+              "primary": false,
+              "talk_id": "bb5e2afc-293c-4f2e-8b42-4ac4be7ab7e0"
+            },
+            {
+              "title": "Submarine groundwater discharge alters the biogenic production of dissolved organic matter by reef calcifiers",
+              "primary": false,
+              "talk_id": "c37ed528-6593-4b68-93ea-776dd07f8d8b"
+            }
+          ],
+          "person_key": "icrs-p-00110",
+          "attended": true
+        },
+        {
+          "name": "Eileen Nalley",
+          "search_text": "eileen nalley review of contaminant concentrations in reef and pelagic fishes from the pacific islands developing the pacific ciguatera network to understand ciguatera poisoning in the pacific islands marine pollution is understudied throughout the pacific islands but is of critical importance to island nations that traditionally rely on fish as their primary source of protein. to better understand the distribution of contaminants in fishes throughout the pacific, we conducted a systematic review of studies reporting pollutant concentrations. of the 5405 studies examined, 44 met criteria for inclusion in the systematic review, which spanned 226 species from 115 locations representing 66 taxonomic families and six trophic levels. results of the systematic review are contextualized with targeted studies measuring contaminant concentrations in fish from 20 sites in hawaiʻi and six atolls in the republic of the marshall islands. these locations have been impacted by marine pollution from historic and ongoing military activities, urbanization, and agriculture. sites were chosen that vary in land use and human population. metals, pesticides, polychlorinated biphenyls (pcbs), and polycyclic aromatic hydrocarbons (pahs) were examined in reef fishes from multiple trophic levels. the taxa included are commonly consumed throughout the pacific islands and have important cultural, economic, and nutritional value. of the pollutants examined, metals and pcbs were most frequently found at elevated concentrations. though there was evidence of biomagnification to higher trophic levels for certain contaminants, other pollutants (e.g., arsenic and pcbs) were found in both lower and higher trophic level taxa. these case studies and the systematic review provide baseline information that will aid in the development of fisheries management guidelines and recommendations, and they contribute to a data gap that persists for marine pollution data throughout the pacific islands. ciguatera poisoning is the most common form of seafood poisoning in the pacific islands, yet it is understudied in much of the region. the physical, social, and economic impacts of ciguatera can affect access to fisheries and intergenerational knowledge transfer that supports sustainable management. ciguatera is caused by the consumption of seafood that has accumulated ciguatoxins produced by epiphytic dinoflagellates (typically gamberidiscus spp.), and can cause a range of acute or chronic symptoms. the pacific ciguatera network was developed through a partnership between hawaiʻi sea grant and the pacific integrated ocean observing systems at the university of hawaiʻi in collaboration with other universities and more than 30 organizations representing managers, communities, and fishers across the pacific. the network was established to address long-standing questions about ciguatera poisoning, and aims to support standardized data collection to improve regional comparisons and analyses, while also promoting collaboration and capacity building. online surveys and targeted interviews were conducted in hawaiʻi (n = 106 and 20, respectively) and american samoa (n = 102 and 12) to characterize the impacts of ciguatera in these locations, and standardized dinoflagellate sampling was conducted in partnership with local agencies and organizations in hawaiʻi (n = 20 sites), american samoa (n = 6), and the marshall islands to determine the abundance and distribution of gambierdiscus spp. using microscopy, species diversity using dna metabarcoding, and toxin profiles. additional studies have been initiated that explore links between environmental variables with measured gambierdiscus abundances to better understand potential drivers and improve predictive capacity in the region. in addition to generating critical fisheries data, building connectivity, and addressing urgent questions about seafood safety in the pacific, this network is strengthening partnerships and offering technical training through workshops, student engagement, and a post-baccalaureate fellowship program for recent graduates from the pacific islands.",
+          "talk_titles": [
+            {
+              "title": "Developing the Pacific Ciguatera Network to Understand Ciguatera Poisoning in the Pacific Islands",
+              "primary": true,
+              "talk_id": "e0169ccd-6eb5-4f87-bd5f-cf8b76b89961"
+            },
+            {
+              "title": "Review of Contaminant Concentrations in Reef and Pelagic Fishes from the Pacific Islands",
+              "primary": true,
+              "talk_id": "b6062eee-794c-4648-a077-603c15115587"
+            },
+            {
+              "title": "An integrative approach to understanding risk landscapes for ciguatera poisoning in Hawaiʻi",
+              "primary": false,
+              "talk_id": "362cb337-f460-4cbb-bb88-d8d6917df3f0"
+            },
+            {
+              "title": "Using carbonate chemistry to evaluate coral reef metabolism following the Lahaina urban wildfire",
+              "primary": false,
+              "talk_id": "2d95c373-579e-4651-9673-5c6568081237"
+            }
+          ],
+          "person_key": "icrs-p-01240",
+          "attended": true
+        },
         {
           "name": "Emily Rutkowski",
           "search_text": "emily rutkowski investigating sponge-mediated nutrient transfer and its effect on coral growth in kāne‘ohe bay, hawai'i coral reefs thrive in oligotrophic waters where efficient nutrient cycling is essential for sustaining productivity and biodiversity. sponges are increasingly recognized as key players in reef nutrient dynamics through the \"sponge loop,\" which transforms dissolved organic matter into bioavailable nutrients that fuel benthic communities. however, whether sponge-mediated nutrient recycling directly benefits coral growth remains poorly understood. this study investigates the hypothesis that the orange keyhole sponge (mycale grandis) enhances coral growth through nutrient transfer, providing bioavailable nitrogen and organic matter to adjacent corals via exhalant water enriched by symbiotic microbial metabolism. we conducted an in situ nursery experiment using three coral species–montipora capitata, pocillopora acuta, and pavona varians–in three treatments: coral free-living, sponge free-living, and coral-sponge association (n=21 per treatment, seven genotypes per species). coral growth was quantified using photogrammetry, and nutrient transfer was assessed through stable isotope analysis (δ¹⁵n, δ¹³c) comparing baseline and post-experiment tissue signatures. sponge exhalant flow rates and nutrient composition were also characterized in situ. we present results examining coral growth responses across treatments and isotopic evidence for sponge-to-coral nutrient transfer. this research addresses a critical knowledge gap regarding facilitative interactions between sponges and corals on nutrient-limited reefs. if m. grandis enhances coral nutrient acquisition, sponges may play an underappreciated role in supporting coral resilience. these findings have implications for reef restoration strategies that leverage natural nutrient cycling processes to improve coral performance and recovery in degraded reef systems.",
@@ -41039,19 +40332,615 @@ export const SITE_DATA = {
           ],
           "person_key": "icrs-p-02018",
           "attended": false
+        },
+        {
+          "name": "Guan-Yan Chen",
+          "search_text": "guan-yan chen morphological and spatial determinants of coral demography previous studies on coral demography have mostly focused on colony size and simplified 2d competitive interactions and their subsequent ecological consequences. however, corals are among the most morphologically diverse organisms. colony morphology governs how corals interact with the environment and influences the efficiency of resource allocation, while spatial positioning determines modes of competition. this study uses underwater photogrammetry (structure-from-motion) to generate millimeter-resolution 3d reef models across the pacific, based on over three years of time-series data from taiwan, hawai‘i, and lizard island, australia. sam-lora was applied for deep-learning training to automate the delineation of colonies and taxonomic classification. in addition, an innovative gis workflow was developed to quantify morphological and spatial metrics at polyp and colony scale. by integrating the morphological and spatial determinants, this study aims to bridge a key knowledge gap in understanding the drivers of demographic variation in modular organisms. preliminary results show that larger and circular corymbose colonies exhibit higher survival; smaller, more circular colonies grow faster; and irregularly shaped colonies tend to fragment more frequently. at the colony level, spatial determinants revealed that only encrusting colonies exhibited decreased growth rates when the competitor to colony perimeter ratio (c/p ratio) increased. branching colonies showed slightly higher growth rates when their relative height was lower, while shading effect were not significant for any growth form. unlike the colony level, the polyp level exhibited a different trend and demonstrated stronger correlations. a higher c/p ratio polyp was associated with higher mortality across all forms except for massive. lower shading effect favored survival in corymbose and digitate polyps, and greater relative height differences also promoted survival in these two morphologies. overall, morphological and spatial metrics serve as intuitive proxies of demographic performance, providing a foundation for improving population prediction models and informing strategies for coral restoration and resource management.",
+          "talk_titles": [
+            {
+              "title": "Morphological and spatial determinants of coral demography",
+              "primary": true,
+              "talk_id": "349a5e10-a27e-46c2-a380-fba041d3844a"
+            }
+          ],
+          "person_key": "icrs-p-00321",
+          "attended": true
+        },
+        {
+          "name": "Jamie McDevitt-Irwin",
+          "search_text": "jamie mcdevitt-irwin physical disturbances amplify the role of consumers in driving temporal biodiversity and composition on a coral reef ecosystems worldwide are facing a suite of anthropogenic stressors driving rapid biodiversity change, with significant consequences for ecosystem function and resilience. both alpha and beta diversity can help disentangle how anthropogenic stressors are altering communities over time. coral reefs are an iconic ecosystem threatened by local anthropogenic stressors (e.g., fishing pressure and nutrient pollution), in addition to escalating physical disturbances such as tropical cyclones. however, it remains unknown if and how physical disturbances alter the effects of local anthropogenic stressors on biodiversity and community composition. we conducted a four-year field experiment that emulated the impacts of overfishing and nutrient enrichment with an acute physical disturbance, mimicking a tropical cyclone. we evaluated how this altered coral reef benthic community composition and diversity over time, with an emphasis on two main benthic groups: stony coral and macroalgae. in intact areas (not physically disturbed), nutrients and consumer pressure were both important in structuring the benthic community. nutrients were the primary driver of coral community composition and nutrient enrichment reduced coral beta diversity through time by preventing decreases of coral taxa abundances at high consumer pressure. consumer pressure and nutrients interacted to influence macroalgal communities in undisturbed plots, with temporal alpha diversity being highest under a combination of elevated nutrient levels and low consumer pressure. however, in physically disturbed areas, consumer pressure was the primary driver of diversity and community composition. under low consumer pressure, increases in macroalgal alpha diversity were highest and increases in coral alpha diversity were lowest. our results highlight that physical disturbances can alter the impacts of local anthropogenic stressors on diversity and increase the importance of top-down control by consumers, emphasizing the need to conserve consumer populations in this era of escalating physical disturbances.",
+          "talk_titles": [
+            {
+              "title": "Physical disturbances amplify the role of consumers in driving temporal biodiversity and composition on a coral reef",
+              "primary": true,
+              "talk_id": "8122ce4a-05b7-4a40-b78c-a5ee1a3cb729"
+            },
+            {
+              "title": "Bioacoustics and machine learning as key tools in coral reef conservation and restoration",
+              "primary": false,
+              "talk_id": "b40aea0b-dc4f-40c5-aa39-c2e1c2a08ced"
+            },
+            {
+              "title": "Linking Herbivore Community Structure to Ecological Functioning in a Hawaiian Marine Protected Area",
+              "primary": false,
+              "talk_id": "db28de0d-bab7-4959-aada-99d231fb7a3f"
+            }
+          ],
+          "person_key": "icrs-p-01134",
+          "attended": true
+        },
+        {
+          "name": "Jessica Glazner",
+          "search_text": "jessica glazner from seabirds to sewage: distinct nutrient sources influence coral recovery patterns post-bleaching coral reefs receive subsidies in the form of nutrients and organic matter from their adjacent terrestrial environment, and the quality of these subsidies can have substantial impacts on the health and thermal resilience of corals. there is robust experimental evidence that inorganic nutrient enrichment affects coral physiology and reef ecosystem function, and this has been used to explain reef degradation near human populations exposed to nutrient loading, particularly from wastewater effluent. yet recent findings of enhanced coral resilience on remote, seabird-dominated islands receiving guano-derived nutrient subsidies complicate the assumption that elevated nutrients are uniformly harmful to coral reefs. additionally, most nutrient enrichment experiments focus on how inorganic nutrient delivery affects corals, separate from the complex chemical mixtures that naturally accompany nutrient subsidies. to understand the direct effects of these complex nutrient subsidies on corals, separate from the broader ecosystem effects present on remote or populated reefs, we performed a manipulative experiment at the hawai‘i institute of marine biology, dosing corals with seabird guano, wastewater effluent, or inorganic nutrients. we exposed half of the corals to thermal stress and tracked their post-bleaching recovery. our results demonstrate that a) corals at ambient temperature that were exposed to nutrient enrichment had elevated photosynthetic performance after 10 weeks of nutrient exposure, b) corals under the natural seabird guano nutrient enrichment had enhanced recovery of their photosynthetic performance post-bleaching compared to the other treatments, c) wastewater effluent did not support enhanced recovery post-bleaching, and d) the inorganic nutrient treatment demonstrated the greatest susceptibility to bleaching, indicating that experiments using inorganic nutrients only are not capturing the full effects of complex nutrient sources. our data provide experimental evidence that resource subsidy quality impacts coral thermal resilience and is contributing to different reef trajectories observed on populated vs remote island ecosystems.",
+          "talk_titles": [
+            {
+              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
+              "primary": true,
+              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
+            }
+          ],
+          "person_key": "icrs-p-00645",
+          "attended": true
+        },
+        {
+          "name": "Joelle Mattos",
+          "search_text": "joelle mattos using carbonate chemistry to evaluate coral reef metabolism following the lahaina urban wildfire the august 2023 lahaina wildfire, fueled by strong winds and drought, destroyed 2,207 structures and released smoke, ash, and hazardous debris. given lahaina’s coastal setting, fire-derived pollutants likely entered adjacent coral reef ecosystems, raising concerns about coastal acidification, eutrophication, and hypoxia. we investigated wildfire impacts on reef metabolic processes at two coral reefs: one within the burn zone and a control site to the north of lahaina. autosamplers were deployed six times during the first post-fire year and collected seawater for dissolved inorganic carbon (dic) and total alkalinity (ta) analysis every three hours for three consecutive days. two months after the fire, organic carbon cycling was the main driver of seawater co2 variability at the burn zone reef (ta:dic slope ratio of 0.23 ± 0.18) whereas the control reef reflected stronger inorganic carbon influence (ta:dic slope ratio of 0.71 ± 0.68). five months post-fire, the burn zone reef remained dominated by organic carbon cycling (0.28 ± 0.23), while the control reef shifted to organic carbon influence (0.44 ± 0.45). both reefs were generally net calcifying, though early sampling nearest to the fire suggested reduced calcification, and transient periods of net dissolution at the control site; however, hydrodynamic factors such as residence time or mixing may also have influenced these trends. temporal and spatial differences in metabolic signatures highlight the combined influence of multiple, interacting drivers such as wildfire-derived inputs, nutrient enrichment, wastewater discharge, benthic composition, and seasonal dynamics. comparison with pre-fire datasets helps disentangle natural variability from fire-related disturbances, enabling attribution of stressor impacts on reef function. these results provide one of the first assessments of urban wildfire impacts on coral reef carbonate chemistry, offering critical insights for managing coastal ecosystem resilience amid wildfire events amplified by climate change.",
+          "talk_titles": [
+            {
+              "title": "Using carbonate chemistry to evaluate coral reef metabolism following the Lahaina urban wildfire",
+              "primary": true,
+              "talk_id": "2d95c373-579e-4651-9673-5c6568081237"
+            }
+          ],
+          "person_key": "icrs-p-01123",
+          "attended": true
+        },
+        {
+          "name": "Justin Berg",
+          "search_text": "justin berg restoring corals from sediment to symbionts: a novel microbiome approach in olowalu, maui coral restoration programs increasingly rely on outplanting nursery-propagated colonies, yet the ways in which local environmental conditions reshape the holobiont during early post-outplanting remain poorly understood. additionally, sedimentation is a pervasive stressor that can influence coral health and microbiome stability. however, the potential for microbiome research to inform restoration practices remains largely untapped. olowalu reef, maui, a priority reef for conservation in hawaii, provides a practical study system with historically documented sedimentation variability, allowing investigation of coral holobiont responses across spatial and temporal gradients.\r\nthis project examines microbiome dynamics in two hawaiian corals, porites compressa and porites rus, collected from olowalu, fragmented, and re-outplanted to 20 sites (10 shallow, 10 deep) along the reef’s sediment gradient. biopsies were collected from each coral prior to outplanting and again at six-month and one-year intervals to assess changes in the microbial community. fine-scale water-quality monitoring of turbidity, light, temperature, and conductivity were paired with quarterly estimates of sediment deposition, providing an environmental framework for interpreting shifts within the holobiont. to allow repeated sampling of individual colonies, we developed a novel 16-gauge syringe-tip biopsy technique that is minimally invasive and enables resampling of the same colonies over time–an approach not previously applied in coral restoration that enhances the resolution of holobiont dynamics. \r\nmetagenomic analyses will reveal how sedimentation shapes microbiome assembly, stability, and divergence in restored corals. we expect to identify microbial signatures associated with resilience along the gradient, providing new criteria for selecting parent colonies based on holobiont traits rather than solely physiological measures or bleaching history. by integrating restoration, environmental monitoring, and high-resolution microbiome sampling, this work advances understanding of how habitat-forming holobionts respond to sediment stress and provides critical insight for improving restoration outcomes in sediment-impacted reefs.",
+          "talk_titles": [
+            {
+              "title": "Restoring Corals from Sediment to Symbionts: A Novel Microbiome Approach in Olowalu, Maui",
+              "primary": true,
+              "talk_id": "dfde48fc-eb19-4c40-a944-5cc2e49ed49c"
+            },
+            {
+              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
+              "primary": false,
+              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
+            },
+            {
+              "title": "Linking Sediment Exposure to Coral Performance at a Priority Reef Restoration Site on Maui",
+              "primary": false,
+              "talk_id": "0dd64012-07f4-4243-8fdc-ab3482dc184f"
+            }
+          ],
+          "person_key": "icrs-p-00157",
+          "attended": true
+        },
+        {
+          "name": "Kaho Tisthammer",
+          "search_text": "kaho tisthammer proteomic insights into coral reproductive failure along water-quality gradients in florida the survival of coral reefs hinges on successful reproduction, yet reproductive failure in corals has increasingly been observed in recent years. one emerging hypothesis is that chronic exposure to land-based pollutants forces corals to divert key proteins from reproduction to detoxification, compromising egg quality and fertilization. building on our previous work using molecular tools to diagnose coral health, we assessed how water-quality stressors affect coral health and reproductive potential in florida corals. colonies of acropora cervicornis and orbicella faveolata were collected along water-quality gradients from biscayne national park to the marquesas keys prior to spawning, and shotgun proteomics was used to characterize health status, with a focus on proteins involved in detoxification and reproduction. our goals are to develop molecular biomarkers for screening reproductive capacity in corals and to provide mechanistic insight that directly benefits conservation and restoration efforts. preliminary analyses indicate that corals from sites influenced by urban inputs near the port of miami (biscayne national park) show clear enrichment of detoxification-related proteins, suggesting that these areas may be suboptimal as sources or recipients of restoration stock. combined with histological assessments of gametogenesis, these proteomic signatures will provide a practical diagnostic framework to identify reproductively competent corals and prioritize reef sites where restoration investments are most likely to result in self-sustaining populations.",
+          "talk_titles": [
+            {
+              "title": "Proteomic Insights into Coral Reproductive Failure Along Water-Quality Gradients in Florida",
+              "primary": true,
+              "talk_id": "41b62d4a-d938-40a3-be0d-551bf0b53d77"
+            },
+            {
+              "title": "Addressing reproductive decline and failure in corals: Approaches for enhancing reef resilience, persistence and restoration.",
+              "primary": false,
+              "talk_id": "35b5ee28-52d1-4c85-842f-d2e582bc1966"
+            }
+          ],
+          "person_key": "icrs-p-01752",
+          "attended": true
+        },
+        {
+          "name": "Kainalu Steward",
+          "search_text": "kainalu steward ka ʻāina hūnā a kāne: spatial analysis of reef island morphodynamics at lalo following a catastrophic hurricane ka ʻāina hūnā a kāne: leveraging hawaiian ethnohistorical resources to decolonize notions of reef island vulnerability at lalo in papahānaumokuākea atoll islands are dynamic, low-lying (<3 m) sandy islets composed primarily of reef-derived material that accumulate on fossil reef platforms. as human-induced climate change accelerates globally, atoll island environments are among the most sensitive coastal systems to disturbance. lalo, an open atoll within the papahānaumokuākea marine national monument (pmnm), was severely impacted by hurricane walaka (category 3) on october 4, 2018, which devastated terrestrial and marine habitats and nearly erased several sandy islets. to assess the stability and resilience of sandy islets within lalo, this study applies a new geospatial framework, the reef island geomorphic activity assessment (rigaa), to quantify changes in reef-island area, shape, orientation, and position using complete island footprints. high-resolution satellite and aerial imagery (1981-2024) were analyzed in arcgis to evaluate morphodynamic change across four periods: (1) pre-disturbance, (2) post-disturbance, (3) 12-month recovery, and (4) total historical change. wind and wave data will be incorporated in the future to identify external forces driving island reconfiguration. rigaa offers a more holistic approach to analyzing reef island change by accounting for entire island footprints and delivering geospatial data products that support resource management and conservation priorities. grounded in a kuanaʻike hawaiʻi (hawaiian worldview), this study recognizes the natural cycles of reef-islands and their ability to disappear into pō (darkness) and re-emerge into ao (lightness) as intrinsic expressions of their ancestral identity. atoll islands are low-lying (<3 m) sandy islets primarily composed of biogenic reef-derived material that accumulate upon carbonate reef platforms. as anthropogenic climate change (e.g., sea-level rise) accelerates globally, atoll island environments are among the most vulnerable coastal landscapes. however, this globalized perspective on atoll vulnerability favors western frameworks, often overlooking localized coastal processes and the value of indigenous knowledge systems that can enrich our relationship to place and its changes. furthermore, bold claims that atoll islands will become uninhabitable in the future may carry harmful ethical implications for those genealogically connected to these places. by leveraging hawaiian ethnohistorical resources (e.g., hawaiian-language newspapers and traditional place names) alongside geospatial shoreline analysis tools, this project aims to center the natural dynamism of atoll islands and to reframe our understanding of atoll geomorphology through a kuanaʻike hawaiʻi (hawaiian worldview). this study is located on lalo (french frigate shoals), an atoll island within the ancestral realm of pō (deep darkness), formerly known as the papahānaumokuākea marine national monument (pmnm). despite the limited land area covering approximately 0.25 km², lalo serves as a central nesting site for >90% of the threatened native hawaiian green sea turtle population, a critical refuge for >20% of the endangered hawaiian monk seal population, and a vital habitat for seabirds. ultimately, the findings of this project underscore how kānaka ʻōiwi (indigenous hawaiians) perceived low-lying islands, recognizing their natural cycles of eroding into pō (darkness) and re-emerging into ao (light) as intrinsic to their identity as ʻāina kupuna (ancestral islands). this presentation will also highlight the pmnm cultural working group's advocacy for natural atoll subsidence (lalo i lalo) as a long-term adaptive management approach to support responsible stewardship at lalo.",
+          "talk_titles": [
+            {
+              "title": "Ka ʻāina hūnā a Kāne: Leveraging Hawaiian ethnohistorical resources to decolonize notions of reef island vulnerability at Lalo in Papahānaumokuākea",
+              "primary": true,
+              "talk_id": "53c1c410-c1ca-4257-b414-16320e7e0a4f"
+            },
+            {
+              "title": "Ka ʻāina hūnā a Kāne: Spatial Analysis of reef island morphodynamics at Lalo following a catastrophic hurricane",
+              "primary": true,
+              "talk_id": "1e1daba9-4dc5-4c20-8035-dd5c6d854faf"
+            }
+          ],
+          "person_key": "icrs-p-01673",
+          "attended": true
+        },
+        {
+          "name": "Keiko Wilkins",
+          "search_text": "keiko wilkins microplastic leachate effects on coral fertilization and settlement microplastic pollution threatens coral reef resilience, yet the effects of microplastic-associated chemicals remain poorly understood. we conducted two experiments to compare the impacts of microplastic particles and their leachates on early coral life stages. in experiment 1, montipora capitata gametes were exposed to microplastic particles or leachates from four plastic types (nylon, pp, hdpe, ldpe) at three concentrations (50, 100 or 200 particles/l). plastic particles did not affect fertilization, but leachates from the same plastics caused significant reductions in fertilization success and effects on fatty acid quantity and composition. in experiment 2, planula larvae of m. capitata and harbor porites were exposed to the same leachates for 7 days. survival and settlement showed species-, polymer-, and concentration-dependent responses, with both inhibitory and occasionally stimulatory effects. together, these studies show that microplastic-associated chemicals, rather than particles alone, disrupt coral fertilization, larval survival, and settlement. addressing plastic-derived chemical pollution is therefore critical for supporting coral recruitment and reef persistence.",
+          "talk_titles": [
+            {
+              "title": "Microplastic Leachate Effects on Coral Fertilization and Settlement",
+              "primary": true,
+              "talk_id": "75e937fc-9d14-4db2-ab77-252a0fb81886"
+            }
+          ],
+          "person_key": "icrs-p-01883",
+          "attended": true
+        },
+        {
+          "name": "Kuʻi Keliipuleole",
+          "search_text": "kekuʻiapōiula keliipuleole a place-based mentorship program for emerging scientists: building capacity for coastal resilience in hawaiʻi tropical coastal communities with strong economic and sustenance ties to near-shore coral reef ecosystems are facing increasing challenges due to changing ocean conditions. to address these complex challenges, marine researchers and resources managers who are trained to integrate scientific expertise with local knowledge and stewardship practices are needed from these communities. the hawaiian islands are one such area impacted by these issues, however there is still a significant gap between the number of professionals needed and those being produced by the current educational system.\r\n\r\nto better support increased participation and retention of hawaiʻi students in ocean-related fields, we developed and piloted an innovative training program for graduate student instructors and undergraduate near-peer mentors involved in early undergraduate research experiences. our approach focuses on developing the mentoring capacity of emerging scientists by incorporating place-based pedagogy and embracing multiple epistemologies, with a strong emphasis on native hawaiian and pacific world views, and exploring frameworks such as papakū makawalu (a framework that guides understanding through the interpretation of hawaiian texts) and kūlana noiʻi (a community-centered research framework).  \r\nto assess the impacts of this training, we employed pre- and post-workshop surveys and focus-group interviews with mentors to quantify changes in key factors, including: cultural competency, cognitive flexibility, and intelligence mindset. here, we present initial results from our quantitative and qualitative examinations of these factors. next steps will include a correlation analysis linking mentor cognitive factors with student learning outcomes and persistence in reef-related research.\r\nby equipping emerging scientists with the tools to embrace diverse perspectives, we present a model for integrating impactful instructional training into marine education to strengthen the foundation for equitable and effective conservation efforts. thus, we hope to cultivate a supportive, multi-tiered community of ocean-related practitioners who are prepared to contribute novel solutions for both regional sustainability and global scientific challenges.",
+          "talk_titles": [
+            {
+              "title": "A place-based mentorship program for emerging scientists: Building capacity for coastal resilience in Hawaiʻi",
+              "primary": true,
+              "talk_id": "82b39907-c39d-4f0a-9709-6cfa3fc84670"
+            }
+          ],
+          "person_key": "icrs-p-00899",
+          "attended": true
+        },
+        {
+          "name": "Leah Barkai",
+          "search_text": "leah barkai exploring genetic variation in hāwa‘e maoli (tripneustes gratilla) using coi and bindin across hawaiʻi native hāwa‘e maoli (tripneustes gratilla, collector sea urchin), a culturally and ecologically important species, is a bioindicator of ocean health and contributes to coral reef restoration by grazing on invasive algae in hawai‘i. more than one million hatchery-reared urchins have been out-planted onto kāneʻohe bay patch reefs for a reef management strategy to control algae and support reef recovery. despite their importance, little is known about the genetic variation of t. gratilla populations across o‘ahu and neighboring hawaiian islands. previous fertilization studies (unpublished) of kāneʻohe bay out-planted urchins have shown that males collected in 2022–2023 exhibited lower fertilization rates compared to males from other regions, regardless of the female's origin. observed morphological differences and uneven fertilization suggest a possible association with genetic variation. this study explores whether these asymmetric fertilization patterns reflect population structure and variation in the gamete-recognition protein bindin. here we present preliminary results on variation in: (1) mitochondrial cytochrome oxidase i (coi) used to assess population structure using a neutral marker, and (2) bindin, a reproductive protein that mediates sperm–egg compatibility, influences gamete recognition, and evolves rapidly, potentially driving reproductive isolation between populations. tube feet samples from thirty urchins will be collected from sites across o‘ahu and neighboring hawaiian islands. samples will be preserved for dna extraction, sequenced using the oxford nanopore minion, and analyzed to construct haplotype networks, assess population differentiation, and visualize genetic clustering. this research represents one of the first fine-scale genetic assessments of t. gratilla across the hawaiian islands. results will clarify whether hatchery-raised urchins on kāneʻohe bay patch reefs differ genetically from wild populations, informing management and reef restoration efforts. the study will enhance our understanding of genetic diversity, connectivity, and reproductive divergence in hawai‘i’s native urchins, providing insights to improve reef resilience, control invasive algae, and support biodiversity.",
+          "talk_titles": [
+            {
+              "title": "Exploring Genetic Variation in Hāwa‘e Maoli (Tripneustes gratilla) Using COI and Bindin Across Hawaiʻi",
+              "primary": true,
+              "talk_id": "8c185c55-67c7-4d62-b614-dacfb754011b"
+            }
+          ],
+          "person_key": "icrs-p-00108",
+          "attended": true
+        },
+        {
+          "name": "Leon Tran",
+          "search_text": "leon tran thermal tolerance and sensitivity to marine heatwaves in the day octopus (octopus cyanea; he’e mauli) the increasing frequency and severity of anthropogenic marine heatwaves are continually altering coral reef ecosystems. of particular concern is the impact of marine heatwaves on reef-dwelling species with commercial, cultural, and recreational importance to coastal communities. the vast majority of these species are tropical ectotherms, adapted to the relatively stable thermal environment of coral reefs. the thermal tolerance of reef-dwelling cephalopods has been relatively understudied, but conflicting evidence exists regarding their vulnerability to climate stressors. ecological studies suggest cephalopods worldwide are becoming more abundant, despite ongoing climate change. additionally, the short generation times, high fecundity, and plastic life histories of cephalopods further suggest potential for adaptation to environmental changes. however, experimental studies clearly indicate the negative physiological effects of ocean warming in cephalopods, particularly in temperature species and early life stages. we present the effects of marine heatwaves on the thermal sensitivity and tolerance in adult and subadult day octopus (octopus cyanea; heʻe mauli). octopus were collected from reefs of oʻahu during the warmest and coolest times of the year. individuals were randomly assigned to a seasonal marine heatwave treatment lasting 10 days (ambient winter temperature, 24.5°c; moderate winter warming, 26.5°c; intense winter warming, 28.5°c; ambient summer temperature, 28.0°c; and moderate summer warming, 30.0°c). we measured metabolic scope using intermittent-flow respirometry to assess thermal sensitivity, followed by measurement of upper critical thermal limits to assess thermal tolerance. we found high metabolic sensitivity to both winter and summer warming, but moderate summer warming induced the greatest reduction in metabolic scope. critical thermal limits increased with temperature and were highest during the summer, revealing limited capacity for thermal acclimation. here we address a critical knowledge gap regarding the physiological consequences and vulnerability of the late life stages in a reef-dwelling octopus to anthropogenic climate change.",
+          "talk_titles": [
+            {
+              "title": "Thermal tolerance and sensitivity to marine heatwaves in the day octopus (Octopus cyanea; He’e mauli)",
+              "primary": true,
+              "talk_id": "43d52206-0087-447d-821f-5e82ad0fc1b0"
+            },
+            {
+              "title": "Habitat Enhancement Through Indigenous Stone Fish Houses: Evidence from a Two-Year Field Experiment in Hawaiʻi",
+              "primary": false,
+              "talk_id": "4d3efa98-bff0-4f45-833f-97c28dde8328"
+            }
+          ],
+          "person_key": "icrs-p-01769",
+          "attended": true
+        },
+        {
+          "name": "Lisa McManus",
+          "search_text": "lisa mcmanus the importance of growth rate and adaptive capacity for long-term coral persistence thermal tolerance is widely assumed to be the primary determinant of coral persistence under climate change. however, the importance of thermal tolerance relative to other population and species characteristics such as growth rate and genetic variation for long-term persistence has not been systematically evaluated. using a simple eco-evolutionary model, we investigated coral reef futures under climate change across millions of simulations. we explored a comprehensive parameter space encompassing optimal population growth rate, additive genetic variance, thermal tolerance breadth, thermal stress tolerance, effective fecundity, larval immigration rate, and immigrant thermal optima. we forced the model with projected 21st century temperatures for hawaiian reefs under three emissions scenarios (ssp1-2.6, ssp2-4.5, ssp3-7.0) from a dynamically downscaled ocean model. we used random forest regression and permutation importance to quantify the sensitivity of coral cover trajectories to each parameter.\r\n\r\nacross all emissions scenarios, population growth rate and additive genetic variance were the strongest predictors of long-term coral persistence, with thermal tolerance consistently the least important parameter. while corals with low thermal tolerance experienced greater short-term population collapse, populations with high optimal growth rates (>0.1 y⁻¹) and additive genetic variance (>0.1 °c²) best maintained coral cover throughout the century, regardless of thermal tolerance. the relative importance of genetic variance increased under more pessimistic warming scenarios. our findings suggest that fast-growing coral taxa such as acroporids and montiporids may outperform slower-growing, stress-tolerant counterparts post-2050, provided they survive the acute threats of coming decades. these results underscore the critical importance of maintaining genetic diversity in both natural populations and restoration efforts, rather than focusing solely on selecting thermally tolerant genotypes.",
+          "talk_titles": [
+            {
+              "title": "The importance of growth rate and adaptive capacity for long-term coral persistence",
+              "primary": true,
+              "talk_id": "ccfcc814-1145-42aa-8577-b30e0b386473"
+            },
+            {
+              "title": "Coral range expansion: genes, growth rates, and geographic gradients",
+              "primary": false,
+              "talk_id": "d5583183-8cb0-4467-8e0a-745a3001d7ac"
+            },
+            {
+              "title": "CoralPatchSim and some priority empirical needs for improving scenario-testing for coral reef management",
+              "primary": false,
+              "talk_id": "77d02324-f87b-4eb0-bdce-f5fd7c2fc019"
+            },
+            {
+              "title": "Mechanisms of Sustainable Harvest in Complex Reef Ecosystems: Insights from Hawaiian Fisheries Stewardship",
+              "primary": false,
+              "talk_id": "c2b10586-f4f3-4147-81ba-e2035a62b5b3"
+            },
+            {
+              "title": "Mechanisms to Improve Coral Reef Resilience in Sediment- and Nutrient-Impacted Environments: A Theoretical Analysis",
+              "primary": false,
+              "talk_id": "b932519e-2440-42fa-a1c7-fabae4d06453"
+            },
+            {
+              "title": "Mitigation to Management: Evaluating Ocean Alkalinity Enhancement as a Tool for Coral Reef Restoration",
+              "primary": false,
+              "talk_id": "d845d7f7-e549-4e4a-936c-cbc81d0dd552"
+            },
+            {
+              "title": "Morphological and spatial determinants of coral demography",
+              "primary": false,
+              "talk_id": "349a5e10-a27e-46c2-a380-fba041d3844a"
+            },
+            {
+              "title": "Quantitatively linking within-host symbiont density to coral growth rate",
+              "primary": false,
+              "talk_id": "61005e66-61a2-40da-8608-72be274ea042"
+            }
+          ],
+          "person_key": "icrs-p-01147",
+          "attended": true
+        },
+        {
+          "name": "Madelief Schelvis",
+          "search_text": "madelief schelvis ecological role of a resilient coral in honolulu harbor: invasive or pioneer?4 harbor porites is a taxonomically ambiguous and unusually resilient coral found in high abundance in honolulu harbor, an environment hostile to most corals due to sedimentation, reduced water quality, and chronic human disturbance. the success of this little-understood species in such degraded conditions raises questions about its ecological role: specifically, whether it poses a risk as a potential invasive species that could spread to healthy reefs, or functions as a pioneer species supporting reef growth in disturbed habitats.\t\r\nto assess its invasive potential, we conducted a pairwise competition experiment with five common hawaiian corals. harbor porites was consistently dominated by most competitors, showed dominance only against another stress-tolerant species, and interacted neutrally with the closely related porites lobata. these outcomes indicate low competitive ability in mixed-species assemblages and suggest that its distribution may be limited to disturbed environments where competition is reduced. \r\nto assess its pioneer potential, we conducted larval settlement experiments across multiple coral species, testing both the suitability of harbor porites skeleton as a settlement substrate and the influence of chemical cues released by live colonies on larval settlement behaviors. larvae showed a significant preference for settling on harbor porites skeleton relative to other substrates, while chemical cues did not significantly affect settlement rates or timing. these findings suggest that harbor porites may act as a pioneer species by providing stable settlement substrate that facilitates coral recruitment and early reef development in marginal environments.\r\noverall, harbor porites is unlikely to threaten healthy reef communities through competitive dominance but may play a pioneer role in disturbed habitats by providing stable reef structure and settlement substrate that facilitate coral recruitment. understanding how such highly resilient corals function within extreme urban reef systems can inform management and restoration strategies for coastal ecosystems increasingly impacted by human activity.",
+          "talk_titles": [
+            {
+              "title": "Ecological Role of a Resilient Coral in Honolulu Harbor: Invasive or Pioneer?4",
+              "primary": true,
+              "talk_id": "a71dae31-1456-41b1-86f2-1e21be0df7fa"
+            }
+          ],
+          "person_key": "icrs-p-01557",
+          "attended": true
+        },
+        {
+          "name": "Madeline Berger",
+          "search_text": "madeline berger investigating the relationship between long-term watershed-scale deforestation and coral reef nitrogen exposure on the belizean barrier reef land-based pollutants, such as excess nutrient runoff, are a local threat to coral reef ecosystem health and survival. evidence from most coral reef bioregions have demonstrated spatial links between terrestrial ecosystem health, often used as a proxy for nutrient runoff to ocean waters, and indicators of coral reef ecosystem health. however, how major land use and land cover changes (lulcc) correlate with changes in coral reef water quality over long temporal scales has been less studied and presents a knowledge gap impeding effective integrated coastal zone management. to uncover the temporal relationship between lulcc and coral reef nitrogen exposure over long time scales, we paired a sub-annual time series of nitrogen isotopes from coral skeletons, an established proxy for nutrient inputs, with yearly time series data of land use change for watershed catchments in central belize. we first focus our analysis on wide-scale deforestation, hypothesizing that decreasing forest cover is typically associated with a conversion to more intensive land uses (e.g., agriculture), and will coincide with increases in dn15 in coral cores . initial results suggest that while deforestation and coral core dn15 in the most proximate watersheds are indeed negatively correlated for the first portion of our time series, this relationship does not hold for the most recent 10 years. we discuss other variables that may explain the patterns observed in later years, as well as ongoing work to quantify these variables. our study reveals important insights into how linked dynamics between land and sea occur and shift over several decades, and relate to differential exposure of a barrier reef system based on proximity to land-based sources of runoff and changing dynamics of land-use over time.",
+          "talk_titles": [
+            {
+              "title": "Investigating the relationship between long-term watershed-scale deforestation and coral reef nitrogen exposure on the Belizean barrier reef",
+              "primary": true,
+              "talk_id": "f1157b58-923b-43b6-b184-7a58cc2b5c87"
+            },
+            {
+              "title": "Drivers of Atlantic Sargassum expansion and demise",
+              "primary": false,
+              "talk_id": "685ade09-62e3-4d26-906c-13754a3f3e66"
+            }
+          ],
+          "person_key": "icrs-p-00158",
+          "attended": true
+        },
+        {
+          "name": "Mary Donovan",
+          "search_text": "mary donovan collaborative science for informing diverse management of hawaiʻi coral reefs integrating reef monitoring data to support management in hawai‘i data informed decision making is often the aspiration of many natural resource management processes, but the reality of how information is used and by whom is often more complex than we might hope. likewise, human and natural systems are complex and uncertain, and those uncertainties are more evident than ever in a changing climate. within this context, i will share how collaborative science to support effective nearshore management in hawai‘i is allowing for greater uptake of data in decision making, with examples of challenges and opportunities for resilience-based management, community-based management, and for managing tradeoffs among fisheries, pollution, and ecosystems. the ability to bridge data and decisions stem from the efforts of the hawaiʻi monitoring and reporting collaborative (himarc) to bring together diverse datasets inclusive of both reef status and trends and associated drivers at spatial and temporal scales commensurate with management needs. these datasets are combined from multiple sources and involve collaborations among scientists, managers, and community leaders resulting in consensus building that increases the potential for uptake in management. the talk will focus on how innovative scientific products can be most useful for achieving successful conservation outcomes when working collaboratively to define and answer questions at the right scale, build trust, and deliver the information at the right place and time. the hawai‘i monitoring and reporting collaborative (himarc) program was established to support marine resource management by combining data into a collaborative database using underwater benthic and fish survey data collected by a network of monitoring programs across the hawaiian islands. each monitoring program uses unique methods, formats, and workflows, which creates challenges when combining datasets. to address this complexity, himarc developed a standardized data integration pipeline that includes a series of data formatting and comprehensive quality assurance and quality control (qa/qc) protocols. all datasets shared with himarc are: 1) reviewed thoroughly to ensure a clear interpretation of the original data and overall structure of the survey design, 2) transformed into a consistent format designed to retain key features of original data structure, 3) checked for missing data, errors, and duplicates, and 4) integrated into a combined multi-partner database. these data formatting and qa/qc protocols not only produce a unified database but also strengthen communication and relationships between data providers regarding methods, metadata, and data quality. by following this process of data integration, himarc contributes to capacity building for data qa/qc within each partner organization, bridges gaps created by different methodologies, and supports statewide analyses. the collaborative database has served as a vehicle for enhancing the quality and collaborative efforts of coral reef monitoring and resulted in a shared effort between scientists and managers to make informed decisions.",
+          "talk_titles": [
+            {
+              "title": "Collaborative science for informing diverse management of Hawaiʻi coral reefs",
+              "primary": true,
+              "talk_id": "06f7c7f2-7f69-48e5-a09d-1b822919e856"
+            },
+            {
+              "title": "Integrating Reef Monitoring Data to Support Management in Hawai‘i",
+              "primary": true,
+              "talk_id": "3b218ad1-3a71-4d16-a1a5-19e84dd96ef6"
+            },
+            {
+              "title": "Drivers of Atlantic Sargassum expansion and demise",
+              "primary": false,
+              "talk_id": "685ade09-62e3-4d26-906c-13754a3f3e66"
+            },
+            {
+              "title": "Embedding Community-Led Science into the Governance of Hawaiʻi's Pūpūkea Marine Life Conservation District",
+              "primary": false,
+              "talk_id": "0381812c-4ead-4434-a8a4-23865b133a13"
+            },
+            {
+              "title": "Investigating the relationship between long-term watershed-scale deforestation and coral reef nitrogen exposure on the Belizean barrier reef",
+              "primary": false,
+              "talk_id": "f1157b58-923b-43b6-b184-7a58cc2b5c87"
+            },
+            {
+              "title": "Mass Caribbean-wide Acropora coral mortality overshadows emergent thermal tolerance",
+              "primary": false,
+              "talk_id": "5feec230-b8e3-4cc2-af5f-f0337ebc5a57"
+            }
+          ],
+          "person_key": "icrs-p-00485",
+          "attended": true
+        },
+        {
+          "name": "Maryann Webb",
+          "search_text": "maryann webb edna as a tool for native hawaiian restoration efforts recent efforts to reclaim and rebuild loko i‘a, traditional hawaiian aquaculture systems, combine traditional hawaiian management with cutting edge biological technologies to expedite restoration. loko i‘a are situated in coastal marine areas and support fish abundance by protecting and monitoring fish nursery habitats. our study used environmental dna (edna) sampling to quickly and accurately produce a species list for eight protected fishponds on the windward coast of o‘ahu, hi. we worked with the wildlife preserve managers to produce an edna-based species list which included common english and hawaiian names and species’ endangered or invasive status in hawai’i. the sampling and re-formatting of our data allowed resource managers to quickly and easily identify a number of endangered species present in the loko i‘a. we are now in the process of creating a single marine database containing both taxonomic and species information useful to local stewards in hawai’i to increase the usefulness of edna biodiversity surveys in management.  \r\nedna sampling was paired with environmental measures in order to model which environmental drivers were most associated with biological groups of interest (fishes, algae, annelids etc.). redundancy analysis across all sites and biological groups identified temperature as a significant environmental driver. however, different factors played a significant role in species composition when biological groups were modeled separately. for example, actinopteri (bony fishes) were most influenced by turbidity, while porifera (sponges) most corresponded with ph. these results indicate that species or biological groups of interest need to be considered individually as they respond differently to environmental drivers. our study can be used as a quick guide to help managers focus their efforts. by knowing which abiotic factors drive biotic communities, restoration of loko i‘a can be curated to enhance an environment that caters to desired species.",
+          "talk_titles": [
+            {
+              "title": "eDNA as a tool for native Hawaiian restoration efforts",
+              "primary": true,
+              "talk_id": "4615db3f-0cef-474e-8409-fac2db2af95d"
+            }
+          ],
+          "person_key": "icrs-p-01859",
+          "attended": true
+        },
+        {
+          "name": "Maya Otsu",
+          "search_text": "maya otsu environmental and anthropogenic drivers of introduced reef fish distributions across the hawaiian archipelago three reef fish species – taʻape (lutjanus kasmira), toʻau (lutjanus fulvus), and roi (cephalopholis argus) – were introduced to hawaiʻi in the 1950s for fisheries enhancement. today, local fishers seldom target these “invasive” species, expressing concern about their potential negative impacts on native reef fish. despite being introduced simultaneously, their distributions and densities differ markedly across the main hawaiian islands (mhi) and northwestern hawaiian islands (nwhi). taʻape are observed in shallow waters across the mhi and nwhi and extend into mesophotic depths (45-100 m) as far north as french frigate shoals (lalo). toʻau and roi are restricted to shallow waters (<45 m) up to lalo, with no detections in the northernmost islands. we used species distribution models with >6000 sampling sites of noaa monitoring data to examine how environmental and anthropogenic variables shape these patterns. taʻape and toʻau distributions are constrained by temperature extremes (<22°c and >27°c), with lower-limit annual sea surface temperatures influencing their northward range limits. however, the lower-limit temperature-distribution relationship for taʻape and toʻau varied by scale: positive across the full archipelago but negative within the mhi, likely reflecting greater temperature stability in the mhi, where island-scale windward-leeward temperature gradients outweigh archipelago-wide seasonal shifts. ecologically, taʻape occur in deeper, structurally complex habitats with lower coral cover, while toʻau are found in higher-sediment habitats, potentially linked to freshwater outflows that are not prevalent in the low-lying nwhi. spearfishing negatively affects detectability in all three species, highlighting the role of human pressure in limiting their presence. these results provide insight into the drivers of introduced reef fish distributions, highlighting the potential for climate-driven range expansions into the northernmost reefs of papahānaumokuākea, which are dominated by endemic species. our findings underscore the importance of targeted monitoring and management to mitigate the impacts of invasive fishes under ongoing oceanographic change.",
+          "talk_titles": [
+            {
+              "title": "Environmental and Anthropogenic Drivers of Introduced Reef Fish Distributions Across the Hawaiian Archipelago",
+              "primary": true,
+              "talk_id": "a19e6eab-b09b-429e-9ee3-7f308495dcd5"
+            }
+          ],
+          "person_key": "icrs-p-01296",
+          "attended": true
+        },
+        {
+          "name": "Maya Powell",
+          "search_text": "maya powell identifying physiological indicators of coral thermal performance3 coral reefs are threatened by rising ocean temperatures which continue to degrade reef ecosystem structure and function. reefs in okinawa, japan maintain high coral biodiversity and cover, providing an ideal place to assess interspecific trait variation. trait based analyses to predict heat stress-resistance are key to projecting coral survival, and thus future reef community structure and dynamics. in this study, we examined interspecific variation in thermal performance and physiology of ten coral species from okinawa, japan. we utilized thermal performance curves (tpcs) of coral metabolism (respiration and photosynthesis) to directly measure functional coral stress tolerance. furthermore, we quantified differences in holobiont physiology including chlorophyll a concentration and host protein content for all species, and tissue biomass and symbiont density for seven species. we then correlated these metrics with coral thermal performance to assess potential physiological drivers of thermal performance. we showed variation across species for both bulk physiological metrics and thermal performance. dominant reef builders such as porites rus consistently had the highest bulk physiology values and metabolic rates while thinner, plating corals such as montipora aequituberculata displayed lower physiological and thermal performance metrics. notably, corals favites complanata and montipora vietnamensis maintained the highest thermal optima across our dataset. by linking physiological traits to thermal performance, we identified tissue biomass as a key physiological predictor of coral thermal optima. these findings highlight interspecific variability in coral responses to thermal stress. furthermore, these results allow us to understand which coral species may survive under rapidly increasing temperatures, and are thus targets for restoration as they are likely to persist under future climate change. we advocate for incorporating interspecific differences in stress tolerance and physiology into targeted management and restoration strategies for coral reefs.",
+          "talk_titles": [
+            {
+              "title": "Identifying Physiological Indicators of Coral Thermal Performance3",
+              "primary": true,
+              "talk_id": "f3a367a1-5234-4916-a1dc-55819e2a3369"
+            },
+            {
+              "title": "Characterizing coral community structure and flow dynamics across eight reefs in Okinawa, Japan",
+              "primary": false,
+              "talk_id": "3dfc5c76-8bfd-4736-875e-ba57f75cf74f"
+            },
+            {
+              "title": "The effect of community diversity on thermal stress tolerance of coral reefs in Okinawa, Japan",
+              "primary": false,
+              "talk_id": "ea808f4e-b011-435a-9cc4-4902a334af42"
+            }
+          ],
+          "person_key": "icrs-p-01381",
+          "attended": true
+        },
+        {
+          "name": "Natalie Goeler-Slough",
+          "search_text": "natalie goeler-slough linking herbivore community structure to ecological functioning in a hawaiian marine protected area coral reef resilience depends on the competitive balance between reef-building corals and algae. herbivory is a crucial top-down process maintaining this balance, where herbivorous fish graze algal competitors, clear substrate for coral recruitment, and promote crustose coralline algae. while marine protected areas (mpas) have been used successfully to restore herbivore biomass, high standing stock doesn’t automatically lead to high ecological functioning required to control algal dominance. the temporal dynamics of species interactions also remain understudied, as traditional static surveys fail to capture fluctuations that drive sustained ecosystem functioning. as reefs face increasing anthropogenic stressors, it is critical to understand how herbivore community structure relates to realized grazing pressure, and ultimately reef resilience. this study investigates the relationship between herbivore community structure and benthic grazing intensity over space and time. to evaluate how grazing rates vary over time, we set up underwater video stations paired with benthic quadrats to monitor grazing within 1m² focal areas at monthly intervals at hanauma bay, a no-take marine life conservation district on oʻahu. we identified fishes to species and measured body lengths to calculate biomass, while simultaneously quantifying bite rates. we also assess habitat complexity using structure-from-motion (sfm) to evaluate how grazing rates vary with complexity. to complement this time series at hanauma bay, we are deploying video stations at additional sites around oʻahu at a single time point, to compare grazing rates across gradients of sites varying in protection level and human impact. we are integrating these behavioral assays with community metric analyses, including taxonomic α-diversity, β-diversity, and functional redundancy, to assess if diverse assemblages can maximize grazing efficiency. this research will develop a mechanistic understanding of how mpas contribute to ecosystem function, assessing if protection merely preserves fish biomass, or safeguards the community composition and functional processes required for reef resilience.",
+          "talk_titles": [
+            {
+              "title": "Linking Herbivore Community Structure to Ecological Functioning in a Hawaiian Marine Protected Area",
+              "primary": true,
+              "talk_id": "db28de0d-bab7-4959-aada-99d231fb7a3f"
+            }
+          ],
+          "person_key": "icrs-p-00650",
+          "attended": true
+        },
+        {
+          "name": "Nyssa Silbiger",
+          "search_text": "nyssa silbiger metabolic depression of mo’orea’s coral reefs from a multidecadal time-series coral reefs have been the archetype of highly productive oceanic ecosystems. this high productivity is driven in part by the efficient cycling of organic and inorganic carbon, which are the foundation for coral reef metabolic function. coral reef metabolic rates, such as net ecosystem production, ecosystem respiration, and net ecosystem calcification, scale up to affect all living organisms on coral reefs by filtering carbon through the food web and building the calcium carbonate structures that support the high biodiversity of reefs. these metabolic processes are primarily driven by light, temperature, and water flow and are modulated by the composition and biomass of organisms (e.g., relative amount of producers or calcifiers). each of these environmental conditions are shifting as a result of anthropogenic climate change which may threaten the critical metabolic rates that maintain coral reef ecosystems. based on an 18-year time-series from mo’orea, french polynesia, we showed significant declines in gross ecosystem production, ecosystem respiration, and net ecosystem calcification. using a bayesian structural equation model, we demonstrate that coral loss was the primary driver of these dramatic declines in reef metabolism, which was driven primarily by a depression in ecosystem respiration. there is an urgent need to integrate time-series measurements of both organic and inorganic carbon cycles to truly understand how global climate change and other local stressors are interacting to influence critical coral ecosystem functioning.",
+          "talk_titles": [
+            {
+              "title": "Metabolic depression of Mo’orea’s coral reefs from a multidecadal time-series",
+              "primary": true,
+              "talk_id": "bb5e2afc-293c-4f2e-8b42-4ac4be7ab7e0"
+            },
+            {
+              "title": "Characterizing coral community structure and flow dynamics across eight reefs in Okinawa, Japan",
+              "primary": false,
+              "talk_id": "3dfc5c76-8bfd-4736-875e-ba57f75cf74f"
+            },
+            {
+              "title": "Evidence of Microbialization from Coral-Algal Phase Shifts in Lagoon Reefs of Mo’orea, French Polynesia.",
+              "primary": false,
+              "talk_id": "4c9d67bc-129d-4561-a08c-4d2dcbebc21d"
+            },
+            {
+              "title": "Identifying Physiological Indicators of Coral Thermal Performance3",
+              "primary": false,
+              "talk_id": "f3a367a1-5234-4916-a1dc-55819e2a3369"
+            },
+            {
+              "title": "Island-wide mapping of groundwater microclimates in coral reef ecosystems",
+              "primary": false,
+              "talk_id": "2a90728c-6488-46c6-9a15-20c907d34189"
+            },
+            {
+              "title": "Revisiting the Darwin Point 40 years later: spatial patterns and temporal change in coral reef carbonate production across the Hawaiian Archipelago",
+              "primary": false,
+              "talk_id": "457cd1dd-5403-43bd-ac1a-bb48a9a4f11b"
+            },
+            {
+              "title": "Shifting benthic communities create chemical legacies that alter coral physiology",
+              "primary": false,
+              "talk_id": "c8f537df-e204-4069-b10d-8ced816ecfed"
+            },
+            {
+              "title": "The effect of community diversity on thermal stress tolerance of coral reefs in Okinawa, Japan",
+              "primary": false,
+              "talk_id": "ea808f4e-b011-435a-9cc4-4902a334af42"
+            },
+            {
+              "title": "Understanding variability in carbonate accretion rates across the Hawaiian Islands",
+              "primary": false,
+              "talk_id": "c09ff4aa-88b2-4b07-bd1d-1482f5ffcc44"
+            }
+          ],
+          "person_key": "icrs-p-01613",
+          "attended": true
+        },
+        {
+          "name": "Prof Bob Richmond",
+          "search_text": "robert richmond addressing reproductive decline and failure in corals: approaches for enhancing reef resilience, persistence and restoration. reproduction and recruitment are the paired processes through which coral reef ecosystems persist.  as coral cover decreases and the distance between reproductive colonies increases, fertilization rates of spawned eggs decline precipitously due to the allee effect.  fecundity in corals is affected by energy availability for egg production, and lipid composition effects egg quality.  protein allocation and availability are also important for successful reproduction, with detoxifying enzymes having dual roles for both cell protection and colony reproduction.  documented declines in fecundity, reproductive success during limited mass spawning events and planula larval recruitment are tied to anthropogenic stressors associated with pollution and climate change.  water quality affects colony energetics, gamete formation and fertilization success, while substratum quality affects larval recruitment.  heavy rains and coastal runoff during spawning events result in degraded surface water quality, which can damage gametes and prevent fertilization.  detoxifying protein expression in parent colonies do not protect gametes once they are released.  this may explain why brooding species appear to do better than spawners in degraded environments such as harbors.  reproductive plasticity in certain coral genera (e.g. porites) raises the question: can corals be induced to switch from spawning to brooding epigenetically, and can reef restoration efforts be augmented through the development of reef reproductive modules? multi-omics provide data that can help diagnose the molecular basis of compromised reproductive capacity in corals, and help guide interventions to facilitate reef resilience, recovery and restoration.",
+          "talk_titles": [
+            {
+              "title": "Addressing reproductive decline and failure in corals: Approaches for enhancing reef resilience, persistence and restoration.",
+              "primary": true,
+              "talk_id": "35b5ee28-52d1-4c85-842f-d2e582bc1966"
+            },
+            {
+              "title": "Ecological Role of a Resilient Coral in Honolulu Harbor: Invasive or Pioneer?4",
+              "primary": false,
+              "talk_id": "a71dae31-1456-41b1-86f2-1e21be0df7fa"
+            },
+            {
+              "title": "Evaluating the sub-lethal impacts to coral from the overgrowth of an invasive algal-mat forming species on a Hawaiian coral reef.",
+              "primary": false,
+              "talk_id": "81c838a0-8430-4a56-98bf-ff45f622fb23"
+            },
+            {
+              "title": "Microplastic Leachate Effects on Coral Fertilization and Settlement",
+              "primary": false,
+              "talk_id": "75e937fc-9d14-4db2-ab77-252a0fb81886"
+            },
+            {
+              "title": "Physiological responses to heat stress in corals from a resilient reef system in Palau",
+              "primary": false,
+              "talk_id": "68e8fc7e-0e71-4cd4-87ca-17db45f8bbe8"
+            },
+            {
+              "title": "Proteomic Insights into Coral Reproductive Failure Along Water-Quality Gradients in Florida",
+              "primary": false,
+              "talk_id": "41b62d4a-d938-40a3-be0d-551bf0b53d77"
+            }
+          ],
+          "person_key": "icrs-p-01453",
+          "attended": true
+        },
+        {
+          "name": "Rayna Mcclintock",
+          "search_text": "rayna mcclintock the effect of alkalinity enhancement on montipora capitata at multiple life stages ocean alkalinity enhancement is a proposed carbon removal technique involving the dissemination of alkaline minerals rich in calcium, sodium, or magnesium into coastal waters to mitigate ocean acidification locally and reduce atmospheric carbon dioxide globally. the addition of these materials induces the formation of carbonate and bicarbonate altering ph, dic, and aragonite saturation state and increasing trace metal concentrations. the impacts of this altered seawater chemistry on coastal ecosystems remains unknown. this study investigates the changes ocean alkalinity enhancement induces in the coral microbiome and metabolism at multiple life stages by exposing larval and adult montipora capitata to equilibrated seawater enriched with olivine, calcium oxide, and sodium hydroxide at multiple levels. larvae were exposed to an extreme range of alkalinity enhancement: ambient ta (~2,200 umol/kg), medium enrichment (~3,500 umol/kg), and high enrichment (~5,000 umol/kg) for 2 weeks. these treatments resulted in significant shifts in the microbial community of coral larvae. oxygen measurements during light and dark incubation periods indicated elevated photosynthesis in calcium oxide and olivine treatments. adult corals were exposed to an alkalinity enrichment of +200 umol/kg in a mesocosm system for 2 months. coral microbiome composition, metabolite profiles, and calcification rates were measured alongside the dissolved organic matter dynamics in the surrounding seawater. this research furthers our understanding of ocean alkalinity enhancement techniques, the resulting impacts on foundational coastal species, and the potential uses for coral restoration.",
+          "talk_titles": [
+            {
+              "title": "The Effect of Alkalinity Enhancement on Montipora capitata at Multiple Life Stages",
+              "primary": true,
+              "talk_id": "171948ea-d1fa-408a-bf24-95a3b82e10be"
+            },
+            {
+              "title": "Evidence of Microbialization from Coral-Algal Phase Shifts in Lagoon Reefs of Mo’orea, French Polynesia.",
+              "primary": false,
+              "talk_id": "4c9d67bc-129d-4561-a08c-4d2dcbebc21d"
+            },
+            {
+              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
+              "primary": false,
+              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
+            },
+            {
+              "title": "From spawn to settlement: assessing the in-situ lifecycle of Florida’s Acropora corals for restoration management",
+              "primary": false,
+              "talk_id": "659a2aa3-4244-4f8c-9726-d0708e076d5b"
+            },
+            {
+              "title": "Metabolites and Microbes as Water-Column Indicators of Thermal Stress in Coral Reefs",
+              "primary": false,
+              "talk_id": "b0ca9ac0-2765-45fb-9774-c6786c9bd848"
+            }
+          ],
+          "person_key": "icrs-p-01133",
+          "attended": true
+        },
+        {
+          "name": "Samantha Shedd",
+          "search_text": "samantha shedd coral adaptive potential on hawaiian reefs: the role of genetic and environmental interactions coral reefs are biologically rich and culturally significant ecosystems that are facing increasing degradation from ocean warming, pollution, and coastal development.  using seascape genomics, i investigated how environmental gradients and genetic variation interact to shape the adaptive potential of three common reef-building coral species (montipora capitata, pocillopora acuta, porites compressa) around o‘ahu, hawai‘i. 640 coral samples were collected from 194 sites across o‘ahu using a stratified random design to capture environmental heterogeneity and assess environmental drivers of coral population structure.  coral genomic dna was processed using reduced representation genomic sequencing (rad-seq) to generate high-density snp data, and symbiodiniaceae community structure was characterized using its2 metabarcoding. distance-based rda (dbrda) was then used to assess the influence of eight environmental factors (sea-surface temperature, wave action, sedimentation, nutrient effluent, irradiance, primary production, reef complexity & coastal development) on coral holobiont population structure. significant genotype-environment associations (geas) were identified using the samβada pipeline, and outlier loci associated with geas were annotated and mapped spatially to locate potential hotspots of adaptive capacity. overall, this approach seeks to identify individuals and populations with putative tolerance to specific environmental stressors. by integrating genetic, symbiont, and environmental data, this project provides the most spatially extensive seascape genomics assessment in hawai‘i to date. the results will offer critical, spatially explicit data to support coral reef ecosystem management and conservation strategies that prioritize resilient coral populations and adaptive genetic diversity in the face of climate change.",
+          "talk_titles": [
+            {
+              "title": "Coral Adaptive Potential on Hawaiian Reefs: The Role of Genetic and Environmental Interactions",
+              "primary": true,
+              "talk_id": "59b21c72-b3d6-4beb-8645-3ea8985e74d4"
+            }
+          ],
+          "person_key": "icrs-p-01591",
+          "attended": true
+        },
+        {
+          "name": "Zach Quinlan",
+          "search_text": "zach quinlan coral metabolism and contaminant loads track human land use anthropogenic activities pose a significant risk to vulnerable marine ecosystems like coral reefs, particularly those near human population centers. despite coral reefs being one of the systems most at risk, the relationship between contaminant exposure and coral health across gradients of ecosystem disturbance remains poorly understood. our metabolomic analysis of 380 corals from 16 sites spanning an anthropogenic impact gradient revealed that the coral metabolome is predictive of anthropogenic ecosystem disturbance. we found that human activities both within catchments and in the marine ecosystem altered the chemodiversity of coral metabolomes with a direct relationship to historic trends in coral cover: nitrogen reserves and metabolome energetic potential were reduced, while stress metabolites were enriched at more impacted sites. we further identified 25 anthropogenic contaminants from agricultural, cosmetological, industrial, and pharmaceutical sources accumulated in coral metabolomes. our results suggest that the bioaccumulation of pollutants in corals impacts all but the most remote reef ecosystems, which will disproportionately threaten communities reliant on reefs. together, our findings demonstrate a direct relationship between coral health, accumulation of dangerous contaminants within corals, and anthropogenic disturbance that is consistent across species.",
+          "talk_titles": [
+            {
+              "title": "Coral metabolism and contaminant loads track human land use",
+              "primary": true,
+              "talk_id": "4b200719-a5d3-442d-a8e0-734c6c0e7f54"
+            },
+            {
+              "title": "Bio-Inspired Chemical and living Microhabitats for Coral Settlement and Early Survivorship",
+              "primary": false,
+              "talk_id": "8a91d712-e34f-45ad-b3d8-882c975e6775"
+            },
+            {
+              "title": "From Seabirds to Sewage: Distinct nutrient sources influence coral recovery patterns post-bleaching",
+              "primary": false,
+              "talk_id": "2c3aaaa2-5e18-4c6b-9e38-905d868e072a"
+            },
+            {
+              "title": "Metabolites and Microbes as Water-Column Indicators of Thermal Stress in Coral Reefs",
+              "primary": false,
+              "talk_id": "b0ca9ac0-2765-45fb-9774-c6786c9bd848"
+            },
+            {
+              "title": "The Effect of Alkalinity Enhancement on Montipora capitata at Multiple Life Stages",
+              "primary": false,
+              "talk_id": "171948ea-d1fa-408a-bf24-95a3b82e10be"
+            }
+          ],
+          "person_key": "icrs-p-01401",
+          "attended": true
+        },
+        {
+          "name": "Alessandra Shea",
+          "search_text": "alessandra shea",
+          "talk_titles": [],
+          "person_key": "icrs-p-01590",
+          "attended": true,
+          "non_speaking_delegate": true
+        },
+        {
+          "name": "Dr Andrea Kealoha",
+          "search_text": "dr andrea kealoha",
+          "talk_titles": [
+            {
+              "title": "Heterotrophic plasticity of corals under a nutrient and SGD gradient in Kahekili, Maui, Hawaiʻi",
+              "primary": false,
+              "talk_id": "0f2b8fc6-5c5a-490e-afe7-5e940eaa7279"
+            },
+            {
+              "title": "Revisiting the Darwin Point 40 years later: spatial patterns and temporal change in coral reef carbonate production across the Hawaiian Archipelago",
+              "primary": false,
+              "talk_id": "457cd1dd-5403-43bd-ac1a-bb48a9a4f11b"
+            },
+            {
+              "title": "Short-term Improvements in Coastal Acidification and Eutrophication along a Maui Coral Reef during the COVID-19 Pandemic",
+              "primary": false,
+              "talk_id": "06e748a5-6df7-48d6-b956-542bd5cccb16"
+            },
+            {
+              "title": "Tissue nutrients and biomass of the red algal invader Chondria tumulosa in the Papahānaumokuākea Marine National Monument, Hawaiʻi",
+              "primary": false,
+              "talk_id": "b4708616-f130-484f-b0e1-53cb83d6aef3"
+            },
+            {
+              "title": "Understanding variability in carbonate accretion rates across the Hawaiian Islands",
+              "primary": false,
+              "talk_id": "c09ff4aa-88b2-4b07-bd1d-1482f5ffcc44"
+            },
+            {
+              "title": "Using carbonate chemistry to evaluate coral reef metabolism following the Lahaina urban wildfire",
+              "primary": false,
+              "talk_id": "2d95c373-579e-4651-9673-5c6568081237"
+            }
+          ],
+          "person_key": "icrs-p-00892",
+          "attended": true,
+          "non_speaking_delegate": true
+        },
+        {
+          "name": "Dr Angela Richards Donà",
+          "search_text": "dr angela richards donà",
+          "talk_titles": [],
+          "person_key": "icrs-p-01451",
+          "attended": true,
+          "non_speaking_delegate": true
+        },
+        {
+          "name": "Maya Olin",
+          "search_text": "maya olin",
+          "talk_titles": [
+            {
+              "title": "Automated Census of Hawaiian Coral Reef Fish: Developing a Region-Specific Computer Vision Pipeline for Detection, Classification, and Tracking",
+              "primary": false,
+              "talk_id": "597540f0-b99e-4df6-87e6-16e3f9a8553b"
+            }
+          ],
+          "person_key": "icrs-p-01284",
+          "attended": true,
+          "non_speaking_delegate": true
         }
       ],
-      "speaker_count": 1,
-      "talk_count": 1,
-      "geocode_level": "institute",
-      "distance_km": 7076.4,
-      "search_text": "university of hawaiʻi - mānoa emily rutkowski emily rutkowski investigating sponge-mediated nutrient transfer and its effect on coral growth in kāne‘ohe bay, hawai'i coral reefs thrive in oligotrophic waters where efficient nutrient cycling is essential for sustaining productivity and biodiversity. sponges are increasingly recognized as key players in reef nutrient dynamics through the \"sponge loop,\" which transforms dissolved organic matter into bioavailable nutrients that fuel benthic communities. however, whether sponge-mediated nutrient recycling directly benefits coral growth remains poorly understood. this study investigates the hypothesis that the orange keyhole sponge (mycale grandis) enhances coral growth through nutrient transfer, providing bioavailable nitrogen and organic matter to adjacent corals via exhalant water enriched by symbiotic microbial metabolism. we conducted an in situ nursery experiment using three coral species–montipora capitata, pocillopora acuta, and pavona varians–in three treatments: coral free-living, sponge free-living, and coral-sponge association (n=21 per treatment, seven genotypes per species). coral growth was quantified using photogrammetry, and nutrient transfer was assessed through stable isotope analysis (δ¹⁵n, δ¹³c) comparing baseline and post-experiment tissue signatures. sponge exhalant flow rates and nutrient composition were also characterized in situ. we present results examining coral growth responses across treatments and isotopic evidence for sponge-to-coral nutrient transfer. this research addresses a critical knowledge gap regarding facilitative interactions between sponges and corals on nutrient-limited reefs. if m. grandis enhances coral nutrient acquisition, sponges may play an underappreciated role in supporting coral resilience. these findings have implications for reef restoration strategies that leverage natural nutrient cycling processes to improve coral performance and recovery in degraded reef systems.",
+      "speaker_count": 36,
+      "talk_count": 35,
+      "geocode_level": "country",
+      "distance_km": 13880.4,
+      "search_text": "university of hawaiʻi - mānoa anela eliza kainani duenas ashley carreiro callie stephenson charles birkeland claire moreland-ochoa danielle barnas eileen nalley emily rutkowski guan-yan chen jamie mcdevitt-irwin jessica glazner joelle mattos justin berg kaho tisthammer kainalu steward keiko wilkins kuʻi keliipuleole leah barkai leon tran lisa mcmanus madelief schelvis madeline berger mary donovan maryann webb maya otsu maya powell natalie goeler-slough nyssa silbiger prof bob richmond rayna mcclintock samantha shedd zach quinlan anela duenas ecophysiology of shifts in coral species dominance on reef flats of guam over the last decade, guam’s reefs have been impacted by successive coral bleaching events, causing a significant decline in live coral cover. following the decline of acropora pulchra, pavona decussata appears to have increased in relative abundance, often overgrowing a. pulchra skeletons. the physiological mechanisms and symbiont dynamics that drive this ecological shift remain unclear. in this study, i conducted an ex situ heat stress experiment to evaluate the metabolic responses of a. pulchra and p. decussata dominated by either cladocopium or durusdinium. coral fragments were exposed to control or heat treatment conditions, and monitored over four timepoints for changes in net photosynthesis, respiration, and symbiodiniaceae community compositions using closed-chamber respirometry and qpcr. results showed that a. pulchra dominated by cladocopium experienced significant declines in photosynthesis and relative symbiont abundance under heat stress. in contrast, a. pulchra fragments dominated by durusdinium maintained stable metabolic function and symbiont composition across treatments. pavona decussata dominated by cladocopium also maintained relatively stable function and symbiont abundance across treatments. multivariate analyses confirmed that physiological variation was more strongly associated with coral species-symbiont pairings than with treatment alone. these findings offer a physiological basis for observed shifts in coral community composition on guam’s reefs. this study contributes to management and restoration efforts by providing crucial information on the role of symbiodiniaceae in thermal stress on guam’s reefs. ashley carreiro characterizing coral community structure and flow dynamics across eight reefs in okinawa, japan coral reefs in okinawa, japan are highly diverse and exhibit substantial variation in their structural complexity and benthic community composition, which can be attributed partly to the biophysical conditions. essential ecosystem services–such as habitat for fisheries species and shoreline protection–depend heavily on reef complexity, therefore it is crucial to understand both the drivers of changing reef structure and the impacts of those changes. to better characterize the relationship between hydrodynamics and reef structure on okinawa’s reefs, we deployed instruments less than 50 cm off the bottom that recorded flow velocity across eight sites along the island’s west coast for two weeks in august 2025. we paired these measurements with structure-from-motion photogrammetry to quantify coral community composition and structural complexity. photogrammetry surveys covered 100 m2 at each site and were used to generate digital elevation models for rugosity calculations and orthomosaic images. orthomosaics were analyzed in coralnet to assess community composition at the genus and morphological functional levels. flow regimes differed among sites, with average speeds ranging from 0.80 to 6.28 cm s-1 and max speeds from 6.13 to 25.01 cm s-1. reefs with higher current magnitudes were observed to support a greater abundance of tabular colonies, whereas reefs with lower current magnitudes were dominated by more massive coral morphologies. this work demonstrates the importance of taking an integrative approach to coral reef monitoring, providing insights into the interconnectedness between hydrodynamics and  community composition on one of the most biodiverse reef ecosystems in the world. callie stephenson embedding community-led science into the governance of hawaiʻi's pūpūkea marine life conservation district adaptive management proposed for the pūpūkea marine life conservation district (mlcd) on o‘ahu, hawaiʻi exemplifies the integration of community voices in coral reef management. the locally-based community stewardship non-profit organization mālama pūpūkea-waimea (mpw) was contracted by the local government to execute a three-year biological carrying capacity (bcc) study to provide empirical data and recommendations for adaptive management related to the potential overuse of the marine reserve by humans.the bcc study focused on the heavily impacted kapoʻo (sharks cove) region to collect rigorous scientific data to create management recommendations. results demonstrate clear ecological degradation linked to persistent, elevated visitor density. since 2022, in-water human presence in the kapoʻo tidepools has increased by 214%, remaining persistent year-round. bcc surveys confirmed that physical damage to coral increased significantly with human density, with an estimated 40% probability of observed damage on coral colonies in hotspots of visitor use. concurrently, non-schooling fish abundance and species richness declined year-over-year across zones. using non-linear analysis of the relationship of non-schooling fish abundance and surrounding human density, we quantified a conservative threshold of 1 human per 10m radius in the kapoʻo tidepools after which precipitous declines in fish abundance are likely, and extrapolates to a maximum acceptable visitation of 27–31 individuals at any given time for the entire area.these findings culminated in recommendations to the state and city governments for adaptive management. this project provides a useful case study in academic partnership, local stewardship, and natural resource management. charles birkeland american samoan coral reefs are doing well by negative feedback between corals and cca despite major cyclones, cots outbreaks, bleaching events, disease, a tsunami, and other disturbances, the living coral cover in american samoa since 2018 has been the greatest in 40 years. we attribute this to the prevalence of the substrate-binding cca porolithon onkodes s.l., which is prevalent because of wave action combined with the high aragonite saturation states in american samoa waters. of 800 successful coral recruits observed on the forereef slope in american samoa in 2018, 94 % were found on cca. recruits are prevalent in the size-classes of at least a hundred of the species of coral on the forereef slope. the reef ecosystem is resilient and stabilized by negative feedback between living-coral cover and cca. as corals expand living cover, cca significantly loses cover, although it commonly overgrows branching acropora and other corals as a refuge. conversely, when coral cover is decreased by disturbances, cca gain cover and provide substrata favorable to coral recruitment and thereby enhance the return of coral to prevalence. however, in backreef areas with little wave action, the rubble is not bound by cca and the coral communities are not as resilient. the relation between cca and corals changes over a gradient in aragonite saturation state. at rose atoll, where wave action is chronic and the aragonite saturation state is greater than 4, the cca generally overgrow corals, although they also enhance recruitment of corals, so the corals are prevalent and resilient, but with generally small colonies.  abundant small colonies of corals and prevalence of cca have been stable aspects of  the forereef of rose atoll since at least 2002. negative feedback provides fundamentally stabilizing mechanisms and thereby resilience on coral reefs. claire moreland-ochoa linking sediment exposure to coral performance at a priority reef restoration site on maui sedimentation from land-based runoff, erosion, and resuspension affects multiple aspects of coral reef health and ecosystem function. with global declines in coral cover, coral restoration has become a key strategy to restore reef resilience, yet how sedimentation influences restoration success and early recruitment remains unclear. we conducted a year-long, multi-metric study at olowalu reef, a 939-acre site along west maui that seeds local and neighboring reefs, to evaluate how spatial variability in sediment exposure influences benthic communities, coral outplant performance, and natural recruitment. we outplanted porites rus and porites compressa fragments and placed ceramic recruitment domes at twenty stations spanning two depth zones and a sedimentation gradient. continuous water quality (light, temperature, salinity, turbidity) and quarterly sediment deposition captured chronic background conditions and episodic sedimentation events. photogrammetry and benthic surveys quantified partial mortality, growth, survivorship, and coral cover. this integrated design allowed us to assess how chronic and event-driven sediment dynamics shape reef communities. water quality monitoring showed that sedimentation was primarily driven by resuspension during the summer high-wave season rather than episodic runoff during the winter rainy season. high attrition of coral outplants occurred throughout the study, likely due to the site’s energetic environment and limited post-fragmentation recovery periods. coral recruitment exceeded expectations, with abundance and early growth more strongly influenced by microhabitat on recruitment domes (protected vs. exposed surfaces) than station-level sediment exposure. these results highlight the importance of fine-scale flow and deposition processes when identifying ecologically meaningful sediment limits. together, these datasets provide a foundation for developing water-quality thresholds that account for spatial variability and episodic sediment events, key considerations for aligning ridge-to-reef management strategies. our approach offers a replicable framework for co-developing sediment targets with managers and community partners and can guide where coral restoration and erosion-reduction efforts can enhance local reef resilience and habitat quality. danielle m. barnas the effect of community diversity on thermal stress tolerance of coral reefs in okinawa, japan community diversity within natural ecosystems can enhance ecosystem stability and resilience in the face of disturbances and environmental variability. on coral reefs, biodiversity may be impacted by thermal anomalies, resulting in shifts in community composition and ecosystem functioning. seasonal storm activity, while potentially damaging to coral reef structure, can help reduce sea surface temperatures (sst) within coral thermal tolerance ranges in summer months. okinawa, japan, a region that typically benefits from cooling by seasonal typhoons, experienced unusually high sst on coastal coral reefs in 2024 due to storm trajectories shifting northward, leading to a widespread coral bleaching event. in this study, we tested the physiological response (gross photosynthesis [gp] and respiration [r]) of coral reef communities to these elevated sst to understand the impact of thermal anomalies on common coral species as well as the potential buffering effect of community diversity on physiological performance. in august 2025, we collected duplicate fragments from 10 common coral species near the okinawa institute of science and technology marine science station to measure the paired individual rates of gp and r. we then placed those 10 individuals in community assemblages to measure paired community physiological rates across the two temperature treatments. gp was greater in elevated temperatures for <i>acropora sp.</i>, however fully assembled communities showed no temperature effect on the gp rates, indicating that community diversity may buffer the effects of elevated sst on coral reefs. meanwhile, r was augmented by elevated temperatures for <i>porites rus</i> and <i>favites complanata</i>. despite only two species displaying this trend, assembled communities also showed increased r under elevated temperatures, suggesting uneven species contributions to ecosystem metabolism when scaling from individual fragments to community level. eileen nalley review of contaminant concentrations in reef and pelagic fishes from the pacific islands developing the pacific ciguatera network to understand ciguatera poisoning in the pacific islands marine pollution is understudied throughout the pacific islands but is of critical importance to island nations that traditionally rely on fish as their primary source of protein. to better understand the distribution of contaminants in fishes throughout the pacific, we conducted a systematic review of studies reporting pollutant concentrations. of the 5405 studies examined, 44 met criteria for inclusion in the systematic review, which spanned 226 species from 115 locations representing 66 taxonomic families and six trophic levels. results of the systematic review are contextualized with targeted studies measuring contaminant concentrations in fish from 20 sites in hawaiʻi and six atolls in the republic of the marshall islands. these locations have been impacted by marine pollution from historic and ongoing military activities, urbanization, and agriculture. sites were chosen that vary in land use and human population. metals, pesticides, polychlorinated biphenyls (pcbs), and polycyclic aromatic hydrocarbons (pahs) were examined in reef fishes from multiple trophic levels. the taxa included are commonly consumed throughout the pacific islands and have important cultural, economic, and nutritional value. of the pollutants examined, metals and pcbs were most frequently found at elevated concentrations. though there was evidence of biomagnification to higher trophic levels for certain contaminants, other pollutants (e.g., arsenic and pcbs) were found in both lower and higher trophic level taxa. these case studies and the systematic review provide baseline information that will aid in the development of fisheries management guidelines and recommendations, and they contribute to a data gap that persists for marine pollution data throughout the pacific islands. ciguatera poisoning is the most common form of seafood poisoning in the pacific islands, yet it is understudied in much of the region. the physical, social, and economic impacts of ciguatera can affect access to fisheries and intergenerational knowledge transfer that supports sustainable management. ciguatera is caused by the consumption of seafood that has accumulated ciguatoxins produced by epiphytic dinoflagellates (typically gamberidiscus spp.), and can cause a range of acute or chronic symptoms. the pacific ciguatera network was developed through a partnership between hawaiʻi sea grant and the pacific integrated ocean observing systems at the university of hawaiʻi in collaboration with other universities and more than 30 organizations representing managers, communities, and fishers across the pacific. the network was established to address long-standing questions about ciguatera poisoning, and aims to support standardized data collection to improve regional comparisons and analyses, while also promoting collaboration and capacity building. online surveys and targeted interviews were conducted in hawaiʻi (n = 106 and 20, respectively) and american samoa (n = 102 and 12) to characterize the impacts of ciguatera in these locations, and standardized dinoflagellate sampling was conducted in partnership with local agencies and organizations in hawaiʻi (n = 20 sites), american samoa (n = 6), and the marshall islands to determine the abundance and distribution of gambierdiscus spp. using microscopy, species diversity using dna metabarcoding, and toxin profiles. additional studies have been initiated that explore links between environmental variables with measured gambierdiscus abundances to better understand potential drivers and improve predictive capacity in the region. in addition to generating critical fisheries data, building connectivity, and addressing urgent questions about seafood safety in the pacific, this network is strengthening partnerships and offering technical training through workshops, student engagement, and a post-baccalaureate fellowship program for recent graduates from the pacific islands. emily rutkowski investigating sponge-mediated nutrient transfer and its effect on coral growth in kāne‘ohe bay, hawai'i coral reefs thrive in oligotrophic waters where efficient nutrient cycling is essential for sustaining productivity and biodiversity. sponges are increasingly recognized as key players in reef nutrient dynamics through the \"sponge loop,\" which transforms dissolved organic matter into bioavailable nutrients that fuel benthic communities. however, whether sponge-mediated nutrient recycling directly benefits coral growth remains poorly understood. this study investigates the hypothesis that the orange keyhole sponge (mycale grandis) enhances coral growth through nutrient transfer, providing bioavailable nitrogen and organic matter to adjacent corals via exhalant water enriched by symbiotic microbial metabolism. we conducted an in situ nursery experiment using three coral species–montipora capitata, pocillopora acuta, and pavona varians–in three treatments: coral free-living, sponge free-living, and coral-sponge association (n=21 per treatment, seven genotypes per species). coral growth was quantified using photogrammetry, and nutrient transfer was assessed through stable isotope analysis (δ¹⁵n, δ¹³c) comparing baseline and post-experiment tissue signatures. sponge exhalant flow rates and nutrient composition were also characterized in situ. we present results examining coral growth responses across treatments and isotopic evidence for sponge-to-coral nutrient transfer. this research addresses a critical knowledge gap regarding facilitative interactions between sponges and corals on nutrient-limited reefs. if m. grandis enhances coral nutrient acquisition, sponges may play an underappreciated role in supporting coral resilience. these findings have implications for reef restoration strategies that leverage natural nutrient cycling processes to improve coral performance and recovery in degraded reef systems. guan-yan chen morphological and spatial determinants of coral demography previous studies on coral demography have mostly focused on colony size and simplified 2d competitive interactions and their subsequent ecological consequences. however, corals are among the most morphologically diverse organisms. colony morphology governs how corals interact with the environment and influences the efficiency of resource allocation, while spatial positioning determines modes of competition. this study uses underwater photogrammetry (structure-from-motion) to generate millimeter-resolution 3d reef models across the pacific, based on over three years of time-series data from taiwan, hawai‘i, and lizard island, australia. sam-lora was applied for deep-learning training to automate the delineation of colonies and taxonomic classification. in addition, an innovative gis workflow was developed to quantify morphological and spatial metrics at polyp and colony scale. by integrating the morphological and spatial determinants, this study aims to bridge a key knowledge gap in understanding the drivers of demographic variation in modular organisms. preliminary results show that larger and circular corymbose colonies exhibit higher survival; smaller, more circular colonies grow faster; and irregularly shaped colonies tend to fragment more frequently. at the colony level, spatial determinants revealed that only encrusting colonies exhibited decreased growth rates when the competitor to colony perimeter ratio (c/p ratio) increased. branching colonies showed slightly higher growth rates when their relative height was lower, while shading effect were not significant for any growth form. unlike the colony level, the polyp level exhibited a different trend and demonstrated stronger correlations. a higher c/p ratio polyp was associated with higher mortality across all forms except for massive. lower shading effect favored survival in corymbose and digitate polyps, and greater relative height differences also promoted survival in these two morphologies. overall, morphological and spatial metrics serve as intuitive proxies of demographic performance, providing a foundation for improving population prediction models and informing strategies for coral restoration and resource management. jamie mcdevitt-irwin physical disturbances amplify the role of consumers in driving temporal biodiversity and composition on a coral reef ecosystems worldwide are facing a suite of anthropogenic stressors driving rapid biodiversity change, with significant consequences for ecosystem function and resilience. both alpha and beta diversity can help disentangle how anthropogenic stressors are altering communities over time. coral reefs are an iconic ecosystem threatened by local anthropogenic stressors (e.g., fishing pressure and nutrient pollution), in addition to escalating physical disturbances such as tropical cyclones. however, it remains unknown if and how physical disturbances alter the effects of local anthropogenic stressors on biodiversity and community composition. we conducted a four-year field experiment that emulated the impacts of overfishing and nutrient enrichment with an acute physical disturbance, mimicking a tropical cyclone. we evaluated how this altered coral reef benthic community composition and diversity over time, with an emphasis on two main benthic groups: stony coral and macroalgae. in intact areas (not physically disturbed), nutrients and consumer pressure were both important in structuring the benthic community. nutrients were the primary driver of coral community composition and nutrient enrichment reduced coral beta diversity through time by preventing decreases of coral taxa abundances at high consumer pressure. consumer pressure and nutrients interacted to influence macroalgal communities in undisturbed plots, with temporal alpha diversity being highest under a combination of elevated nutrient levels and low consumer pressure. however, in physically disturbed areas, consumer pressure was the primary driver of diversity and community composition. under low consumer pressure, increases in macroalgal alpha diversity were highest and increases in coral alpha diversity were lowest. our results highlight that physical disturbances can alter the impacts of local anthropogenic stressors on diversity and increase the importance of top-down control by consumers, emphasizing the need to conserve consumer populations in this era of escalating physical disturbances. jessica glazner from seabirds to sewage: distinct nutrient sources influence coral recovery patterns post-bleaching coral reefs receive subsidies in the form of nutrients and organic matter from their adjacent terrestrial environment, and the quality of these subsidies can have substantial impacts on the health and thermal resilience of corals. there is robust experimental evidence that inorganic nutrient enrichment affects coral physiology and reef ecosystem function, and this has been used to explain reef degradation near human populations exposed to nutrient loading, particularly from wastewater effluent. yet recent findings of enhanced coral resilience on remote, seabird-dominated islands receiving guano-derived nutrient subsidies complicate the assumption that elevated nutrients are uniformly harmful to coral reefs. additionally, most nutrient enrichment experiments focus on how inorganic nutrient delivery affects corals, separate from the complex chemical mixtures that naturally accompany nutrient subsidies. to understand the direct effects of these complex nutrient subsidies on corals, separate from the broader ecosystem effects present on remote or populated reefs, we performed a manipulative experiment at the hawai‘i institute of marine biology, dosing corals with seabird guano, wastewater effluent, or inorganic nutrients. we exposed half of the corals to thermal stress and tracked their post-bleaching recovery. our results demonstrate that a) corals at ambient temperature that were exposed to nutrient enrichment had elevated photosynthetic performance after 10 weeks of nutrient exposure, b) corals under the natural seabird guano nutrient enrichment had enhanced recovery of their photosynthetic performance post-bleaching compared to the other treatments, c) wastewater effluent did not support enhanced recovery post-bleaching, and d) the inorganic nutrient treatment demonstrated the greatest susceptibility to bleaching, indicating that experiments using inorganic nutrients only are not capturing the full effects of complex nutrient sources. our data provide experimental evidence that resource subsidy quality impacts coral thermal resilience and is contributing to different reef trajectories observed on populated vs remote island ecosystems. joelle mattos using carbonate chemistry to evaluate coral reef metabolism following the lahaina urban wildfire the august 2023 lahaina wildfire, fueled by strong winds and drought, destroyed 2,207 structures and released smoke, ash, and hazardous debris. given lahaina’s coastal setting, fire-derived pollutants likely entered adjacent coral reef ecosystems, raising concerns about coastal acidification, eutrophication, and hypoxia. we investigated wildfire impacts on reef metabolic processes at two coral reefs: one within the burn zone and a control site to the north of lahaina. autosamplers were deployed six times during the first post-fire year and collected seawater for dissolved inorganic carbon (dic) and total alkalinity (ta) analysis every three hours for three consecutive days. two months after the fire, organic carbon cycling was the main driver of seawater co2 variability at the burn zone reef (ta:dic slope ratio of 0.23 ± 0.18) whereas the control reef reflected stronger inorganic carbon influence (ta:dic slope ratio of 0.71 ± 0.68). five months post-fire, the burn zone reef remained dominated by organic carbon cycling (0.28 ± 0.23), while the control reef shifted to organic carbon influence (0.44 ± 0.45). both reefs were generally net calcifying, though early sampling nearest to the fire suggested reduced calcification, and transient periods of net dissolution at the control site; however, hydrodynamic factors such as residence time or mixing may also have influenced these trends. temporal and spatial differences in metabolic signatures highlight the combined influence of multiple, interacting drivers such as wildfire-derived inputs, nutrient enrichment, wastewater discharge, benthic composition, and seasonal dynamics. comparison with pre-fire datasets helps disentangle natural variability from fire-related disturbances, enabling attribution of stressor impacts on reef function. these results provide one of the first assessments of urban wildfire impacts on coral reef carbonate chemistry, offering critical insights for managing coastal ecosystem resilience amid wildfire events amplified by climate change. justin berg restoring corals from sediment to symbionts: a novel microbiome approach in olowalu, maui coral restoration programs increasingly rely on outplanting nursery-propagated colonies, yet the ways in which local environmental conditions reshape the holobiont during early post-outplanting remain poorly understood. additionally, sedimentation is a pervasive stressor that can influence coral health and microbiome stability. however, the potential for microbiome research to inform restoration practices remains largely untapped. olowalu reef, maui, a priority reef for conservation in hawaii, provides a practical study system with historically documented sedimentation variability, allowing investigation of coral holobiont responses across spatial and temporal gradients.\r\nthis project examines microbiome dynamics in two hawaiian corals, porites compressa and porites rus, collected from olowalu, fragmented, and re-outplanted to 20 sites (10 shallow, 10 deep) along the reef’s sediment gradient. biopsies were collected from each coral prior to outplanting and again at six-month and one-year intervals to assess changes in the microbial community. fine-scale water-quality monitoring of turbidity, light, temperature, and conductivity were paired with quarterly estimates of sediment deposition, providing an environmental framework for interpreting shifts within the holobiont. to allow repeated sampling of individual colonies, we developed a novel 16-gauge syringe-tip biopsy technique that is minimally invasive and enables resampling of the same colonies over time–an approach not previously applied in coral restoration that enhances the resolution of holobiont dynamics. \r\nmetagenomic analyses will reveal how sedimentation shapes microbiome assembly, stability, and divergence in restored corals. we expect to identify microbial signatures associated with resilience along the gradient, providing new criteria for selecting parent colonies based on holobiont traits rather than solely physiological measures or bleaching history. by integrating restoration, environmental monitoring, and high-resolution microbiome sampling, this work advances understanding of how habitat-forming holobionts respond to sediment stress and provides critical insight for improving restoration outcomes in sediment-impacted reefs. kaho tisthammer proteomic insights into coral reproductive failure along water-quality gradients in florida the survival of coral reefs hinges on successful reproduction, yet reproductive failure in corals has increasingly been observed in recent years. one emerging hypothesis is that chronic exposure to land-based pollutants forces corals to divert key proteins from reproduction to detoxification, compromising egg quality and fertilization. building on our previous work using molecular tools to diagnose coral health, we assessed how water-quality stressors affect coral health and reproductive potential in florida corals. colonies of acropora cervicornis and orbicella faveolata were collected along water-quality gradients from biscayne national park to the marquesas keys prior to spawning, and shotgun proteomics was used to characterize health status, with a focus on proteins involved in detoxification and reproduction. our goals are to develop molecular biomarkers for screening reproductive capacity in corals and to provide mechanistic insight that directly benefits conservation and restoration efforts. preliminary analyses indicate that corals from sites influenced by urban inputs near the port of miami (biscayne national park) show clear enrichment of detoxification-related proteins, suggesting that these areas may be suboptimal as sources or recipients of restoration stock. combined with histological assessments of gametogenesis, these proteomic signatures will provide a practical diagnostic framework to identify reproductively competent corals and prioritize reef sites where restoration investments are most likely to result in self-sustaining populations. kainalu steward ka ʻāina hūnā a kāne: spatial analysis of reef island morphodynamics at lalo following a catastrophic hurricane ka ʻāina hūnā a kāne: leveraging hawaiian ethnohistorical resources to decolonize notions of reef island vulnerability at lalo in papahānaumokuākea atoll islands are dynamic, low-lying (<3 m) sandy islets composed primarily of reef-derived material that accumulate on fossil reef platforms. as human-induced climate change accelerates globally, atoll island environments are among the most sensitive coastal systems to disturbance. lalo, an open atoll within the papahānaumokuākea marine national monument (pmnm), was severely impacted by hurricane walaka (category 3) on october 4, 2018, which devastated terrestrial and marine habitats and nearly erased several sandy islets. to assess the stability and resilience of sandy islets within lalo, this study applies a new geospatial framework, the reef island geomorphic activity assessment (rigaa), to quantify changes in reef-island area, shape, orientation, and position using complete island footprints. high-resolution satellite and aerial imagery (1981-2024) were analyzed in arcgis to evaluate morphodynamic change across four periods: (1) pre-disturbance, (2) post-disturbance, (3) 12-month recovery, and (4) total historical change. wind and wave data will be incorporated in the future to identify external forces driving island reconfiguration. rigaa offers a more holistic approach to analyzing reef island change by accounting for entire island footprints and delivering geospatial data products that support resource management and conservation priorities. grounded in a kuanaʻike hawaiʻi (hawaiian worldview), this study recognizes the natural cycles of reef-islands and their ability to disappear into pō (darkness) and re-emerge into ao (lightness) as intrinsic expressions of their ancestral identity. atoll islands are low-lying (<3 m) sandy islets primarily composed of biogenic reef-derived material that accumulate upon carbonate reef platforms. as anthropogenic climate change (e.g., sea-level rise) accelerates globally, atoll island environments are among the most vulnerable coastal landscapes. however, this globalized perspective on atoll vulnerability favors western frameworks, often overlooking localized coastal processes and the value of indigenous knowledge systems that can enrich our relationship to place and its changes. furthermore, bold claims that atoll islands will become uninhabitable in the future may carry harmful ethical implications for those genealogically connected to these places. by leveraging hawaiian ethnohistorical resources (e.g., hawaiian-language newspapers and traditional place names) alongside geospatial shoreline analysis tools, this project aims to center the natural dynamism of atoll islands and to reframe our understanding of atoll geomorphology through a kuanaʻike hawaiʻi (hawaiian worldview). this study is located on lalo (french frigate shoals), an atoll island within the ancestral realm of pō (deep darkness), formerly known as the papahānaumokuākea marine national monument (pmnm). despite the limited land area covering approximately 0.25 km², lalo serves as a central nesting site for >90% of the threatened native hawaiian green sea turtle population, a critical refuge for >20% of the endangered hawaiian monk seal population, and a vital habitat for seabirds. ultimately, the findings of this project underscore how kānaka ʻōiwi (indigenous hawaiians) perceived low-lying islands, recognizing their natural cycles of eroding into pō (darkness) and re-emerging into ao (light) as intrinsic to their identity as ʻāina kupuna (ancestral islands). this presentation will also highlight the pmnm cultural working group's advocacy for natural atoll subsidence (lalo i lalo) as a long-term adaptive management approach to support responsible stewardship at lalo. keiko wilkins microplastic leachate effects on coral fertilization and settlement microplastic pollution threatens coral reef resilience, yet the effects of microplastic-associated chemicals remain poorly understood. we conducted two experiments to compare the impacts of microplastic particles and their leachates on early coral life stages. in experiment 1, montipora capitata gametes were exposed to microplastic particles or leachates from four plastic types (nylon, pp, hdpe, ldpe) at three concentrations (50, 100 or 200 particles/l). plastic particles did not affect fertilization, but leachates from the same plastics caused significant reductions in fertilization success and effects on fatty acid quantity and composition. in experiment 2, planula larvae of m. capitata and harbor porites were exposed to the same leachates for 7 days. survival and settlement showed species-, polymer-, and concentration-dependent responses, with both inhibitory and occasionally stimulatory effects. together, these studies show that microplastic-associated chemicals, rather than particles alone, disrupt coral fertilization, larval survival, and settlement. addressing plastic-derived chemical pollution is therefore critical for supporting coral recruitment and reef persistence. kekuʻiapōiula keliipuleole a place-based mentorship program for emerging scientists: building capacity for coastal resilience in hawaiʻi tropical coastal communities with strong economic and sustenance ties to near-shore coral reef ecosystems are facing increasing challenges due to changing ocean conditions. to address these complex challenges, marine researchers and resources managers who are trained to integrate scientific expertise with local knowledge and stewardship practices are needed from these communities. the hawaiian islands are one such area impacted by these issues, however there is still a significant gap between the number of professionals needed and those being produced by the current educational system.\r\n\r\nto better support increased participation and retention of hawaiʻi students in ocean-related fields, we developed and piloted an innovative training program for graduate student instructors and undergraduate near-peer mentors involved in early undergraduate research experiences. our approach focuses on developing the mentoring capacity of emerging scientists by incorporating place-based pedagogy and embracing multiple epistemologies, with a strong emphasis on native hawaiian and pacific world views, and exploring frameworks such as papakū makawalu (a framework that guides understanding through the interpretation of hawaiian texts) and kūlana noiʻi (a community-centered research framework).  \r\nto assess the impacts of this training, we employed pre- and post-workshop surveys and focus-group interviews with mentors to quantify changes in key factors, including: cultural competency, cognitive flexibility, and intelligence mindset. here, we present initial results from our quantitative and qualitative examinations of these factors. next steps will include a correlation analysis linking mentor cognitive factors with student learning outcomes and persistence in reef-related research.\r\nby equipping emerging scientists with the tools to embrace diverse perspectives, we present a model for integrating impactful instructional training into marine education to strengthen the foundation for equitable and effective conservation efforts. thus, we hope to cultivate a supportive, multi-tiered community of ocean-related practitioners who are prepared to contribute novel solutions for both regional sustainability and global scientific challenges. leah barkai exploring genetic variation in hāwa‘e maoli (tripneustes gratilla) using coi and bindin across hawaiʻi native hāwa‘e maoli (tripneustes gratilla, collector sea urchin), a culturally and ecologically important species, is a bioindicator of ocean health and contributes to coral reef restoration by grazing on invasive algae in hawai‘i. more than one million hatchery-reared urchins have been out-planted onto kāneʻohe bay patch reefs for a reef management strategy to control algae and support reef recovery. despite their importance, little is known about the genetic variation of t. gratilla populations across o‘ahu and neighboring hawaiian islands. previous fertilization studies (unpublished) of kāneʻohe bay out-planted urchins have shown that males collected in 2022–2023 exhibited lower fertilization rates compared to males from other regions, regardless of the female's origin. observed morphological differences and uneven fertilization suggest a possible association with genetic variation. this study explores whether these asymmetric fertilization patterns reflect population structure and variation in the gamete-recognition protein bindin. here we present preliminary results on variation in: (1) mitochondrial cytochrome oxidase i (coi) used to assess population structure using a neutral marker, and (2) bindin, a reproductive protein that mediates sperm–egg compatibility, influences gamete recognition, and evolves rapidly, potentially driving reproductive isolation between populations. tube feet samples from thirty urchins will be collected from sites across o‘ahu and neighboring hawaiian islands. samples will be preserved for dna extraction, sequenced using the oxford nanopore minion, and analyzed to construct haplotype networks, assess population differentiation, and visualize genetic clustering. this research represents one of the first fine-scale genetic assessments of t. gratilla across the hawaiian islands. results will clarify whether hatchery-raised urchins on kāneʻohe bay patch reefs differ genetically from wild populations, informing management and reef restoration efforts. the study will enhance our understanding of genetic diversity, connectivity, and reproductive divergence in hawai‘i’s native urchins, providing insights to improve reef resilience, control invasive algae, and support biodiversity. leon tran thermal tolerance and sensitivity to marine heatwaves in the day octopus (octopus cyanea; he’e mauli) the increasing frequency and severity of anthropogenic marine heatwaves are continually altering coral reef ecosystems. of particular concern is the impact of marine heatwaves on reef-dwelling species with commercial, cultural, and recreational importance to coastal communities. the vast majority of these species are tropical ectotherms, adapted to the relatively stable thermal environment of coral reefs. the thermal tolerance of reef-dwelling cephalopods has been relatively understudied, but conflicting evidence exists regarding their vulnerability to climate stressors. ecological studies suggest cephalopods worldwide are becoming more abundant, despite ongoing climate change. additionally, the short generation times, high fecundity, and plastic life histories of cephalopods further suggest potential for adaptation to environmental changes. however, experimental studies clearly indicate the negative physiological effects of ocean warming in cephalopods, particularly in temperature species and early life stages. we present the effects of marine heatwaves on the thermal sensitivity and tolerance in adult and subadult day octopus (octopus cyanea; heʻe mauli). octopus were collected from reefs of oʻahu during the warmest and coolest times of the year. individuals were randomly assigned to a seasonal marine heatwave treatment lasting 10 days (ambient winter temperature, 24.5°c; moderate winter warming, 26.5°c; intense winter warming, 28.5°c; ambient summer temperature, 28.0°c; and moderate summer warming, 30.0°c). we measured metabolic scope using intermittent-flow respirometry to assess thermal sensitivity, followed by measurement of upper critical thermal limits to assess thermal tolerance. we found high metabolic sensitivity to both winter and summer warming, but moderate summer warming induced the greatest reduction in metabolic scope. critical thermal limits increased with temperature and were highest during the summer, revealing limited capacity for thermal acclimation. here we address a critical knowledge gap regarding the physiological consequences and vulnerability of the late life stages in a reef-dwelling octopus to anthropogenic climate change. lisa mcmanus the importance of growth rate and adaptive capacity for long-term coral persistence thermal tolerance is widely assumed to be the primary determinant of coral persistence under climate change. however, the importance of thermal tolerance relative to other population and species characteristics such as growth rate and genetic variation for long-term persistence has not been systematically evaluated. using a simple eco-evolutionary model, we investigated coral reef futures under climate change across millions of simulations. we explored a comprehensive parameter space encompassing optimal population growth rate, additive genetic variance, thermal tolerance breadth, thermal stress tolerance, effective fecundity, larval immigration rate, and immigrant thermal optima. we forced the model with projected 21st century temperatures for hawaiian reefs under three emissions scenarios (ssp1-2.6, ssp2-4.5, ssp3-7.0) from a dynamically downscaled ocean model. we used random forest regression and permutation importance to quantify the sensitivity of coral cover trajectories to each parameter.\r\n\r\nacross all emissions scenarios, population growth rate and additive genetic variance were the strongest predictors of long-term coral persistence, with thermal tolerance consistently the least important parameter. while corals with low thermal tolerance experienced greater short-term population collapse, populations with high optimal growth rates (>0.1 y⁻¹) and additive genetic variance (>0.1 °c²) best maintained coral cover throughout the century, regardless of thermal tolerance. the relative importance of genetic variance increased under more pessimistic warming scenarios. our findings suggest that fast-growing coral taxa such as acroporids and montiporids may outperform slower-growing, stress-tolerant counterparts post-2050, provided they survive the acute threats of coming decades. these results underscore the critical importance of maintaining genetic diversity in both natural populations and restoration efforts, rather than focusing solely on selecting thermally tolerant genotypes. madelief schelvis ecological role of a resilient coral in honolulu harbor: invasive or pioneer?4 harbor porites is a taxonomically ambiguous and unusually resilient coral found in high abundance in honolulu harbor, an environment hostile to most corals due to sedimentation, reduced water quality, and chronic human disturbance. the success of this little-understood species in such degraded conditions raises questions about its ecological role: specifically, whether it poses a risk as a potential invasive species that could spread to healthy reefs, or functions as a pioneer species supporting reef growth in disturbed habitats.\t\r\nto assess its invasive potential, we conducted a pairwise competition experiment with five common hawaiian corals. harbor porites was consistently dominated by most competitors, showed dominance only against another stress-tolerant species, and interacted neutrally with the closely related porites lobata. these outcomes indicate low competitive ability in mixed-species assemblages and suggest that its distribution may be limited to disturbed environments where competition is reduced. \r\nto assess its pioneer potential, we conducted larval settlement experiments across multiple coral species, testing both the suitability of harbor porites skeleton as a settlement substrate and the influence of chemical cues released by live colonies on larval settlement behaviors. larvae showed a significant preference for settling on harbor porites skeleton relative to other substrates, while chemical cues did not significantly affect settlement rates or timing. these findings suggest that harbor porites may act as a pioneer species by providing stable settlement substrate that facilitates coral recruitment and early reef development in marginal environments.\r\noverall, harbor porites is unlikely to threaten healthy reef communities through competitive dominance but may play a pioneer role in disturbed habitats by providing stable reef structure and settlement substrate that facilitate coral recruitment. understanding how such highly resilient corals function within extreme urban reef systems can inform management and restoration strategies for coastal ecosystems increasingly impacted by human activity. madeline berger investigating the relationship between long-term watershed-scale deforestation and coral reef nitrogen exposure on the belizean barrier reef land-based pollutants, such as excess nutrient runoff, are a local threat to coral reef ecosystem health and survival. evidence from most coral reef bioregions have demonstrated spatial links between terrestrial ecosystem health, often used as a proxy for nutrient runoff to ocean waters, and indicators of coral reef ecosystem health. however, how major land use and land cover changes (lulcc) correlate with changes in coral reef water quality over long temporal scales has been less studied and presents a knowledge gap impeding effective integrated coastal zone management. to uncover the temporal relationship between lulcc and coral reef nitrogen exposure over long time scales, we paired a sub-annual time series of nitrogen isotopes from coral skeletons, an established proxy for nutrient inputs, with yearly time series data of land use change for watershed catchments in central belize. we first focus our analysis on wide-scale deforestation, hypothesizing that decreasing forest cover is typically associated with a conversion to more intensive land uses (e.g., agriculture), and will coincide with increases in dn15 in coral cores . initial results suggest that while deforestation and coral core dn15 in the most proximate watersheds are indeed negatively correlated for the first portion of our time series, this relationship does not hold for the most recent 10 years. we discuss other variables that may explain the patterns observed in later years, as well as ongoing work to quantify these variables. our study reveals important insights into how linked dynamics between land and sea occur and shift over several decades, and relate to differential exposure of a barrier reef system based on proximity to land-based sources of runoff and changing dynamics of land-use over time. mary donovan collaborative science for informing diverse management of hawaiʻi coral reefs integrating reef monitoring data to support management in hawai‘i data informed decision making is often the aspiration of many natural resource management processes, but the reality of how information is used and by whom is often more complex than we might hope. likewise, human and natural systems are complex and uncertain, and those uncertainties are more evident than ever in a changing climate. within this context, i will share how collaborative science to support effective nearshore management in hawai‘i is allowing for greater uptake of data in decision making, with examples of challenges and opportunities for resilience-based management, community-based management, and for managing tradeoffs among fisheries, pollution, and ecosystems. the ability to bridge data and decisions stem from the efforts of the hawaiʻi monitoring and reporting collaborative (himarc) to bring together diverse datasets inclusive of both reef status and trends and associated drivers at spatial and temporal scales commensurate with management needs. these datasets are combined from multiple sources and involve collaborations among scientists, managers, and community leaders resulting in consensus building that increases the potential for uptake in management. the talk will focus on how innovative scientific products can be most useful for achieving successful conservation outcomes when working collaboratively to define and answer questions at the right scale, build trust, and deliver the information at the right place and time. the hawai‘i monitoring and reporting collaborative (himarc) program was established to support marine resource management by combining data into a collaborative database using underwater benthic and fish survey data collected by a network of monitoring programs across the hawaiian islands. each monitoring program uses unique methods, formats, and workflows, which creates challenges when combining datasets. to address this complexity, himarc developed a standardized data integration pipeline that includes a series of data formatting and comprehensive quality assurance and quality control (qa/qc) protocols. all datasets shared with himarc are: 1) reviewed thoroughly to ensure a clear interpretation of the original data and overall structure of the survey design, 2) transformed into a consistent format designed to retain key features of original data structure, 3) checked for missing data, errors, and duplicates, and 4) integrated into a combined multi-partner database. these data formatting and qa/qc protocols not only produce a unified database but also strengthen communication and relationships between data providers regarding methods, metadata, and data quality. by following this process of data integration, himarc contributes to capacity building for data qa/qc within each partner organization, bridges gaps created by different methodologies, and supports statewide analyses. the collaborative database has served as a vehicle for enhancing the quality and collaborative efforts of coral reef monitoring and resulted in a shared effort between scientists and managers to make informed decisions. maryann webb edna as a tool for native hawaiian restoration efforts recent efforts to reclaim and rebuild loko i‘a, traditional hawaiian aquaculture systems, combine traditional hawaiian management with cutting edge biological technologies to expedite restoration. loko i‘a are situated in coastal marine areas and support fish abundance by protecting and monitoring fish nursery habitats. our study used environmental dna (edna) sampling to quickly and accurately produce a species list for eight protected fishponds on the windward coast of o‘ahu, hi. we worked with the wildlife preserve managers to produce an edna-based species list which included common english and hawaiian names and species’ endangered or invasive status in hawai’i. the sampling and re-formatting of our data allowed resource managers to quickly and easily identify a number of endangered species present in the loko i‘a. we are now in the process of creating a single marine database containing both taxonomic and species information useful to local stewards in hawai’i to increase the usefulness of edna biodiversity surveys in management.  \r\nedna sampling was paired with environmental measures in order to model which environmental drivers were most associated with biological groups of interest (fishes, algae, annelids etc.). redundancy analysis across all sites and biological groups identified temperature as a significant environmental driver. however, different factors played a significant role in species composition when biological groups were modeled separately. for example, actinopteri (bony fishes) were most influenced by turbidity, while porifera (sponges) most corresponded with ph. these results indicate that species or biological groups of interest need to be considered individually as they respond differently to environmental drivers. our study can be used as a quick guide to help managers focus their efforts. by knowing which abiotic factors drive biotic communities, restoration of loko i‘a can be curated to enhance an environment that caters to desired species. maya otsu environmental and anthropogenic drivers of introduced reef fish distributions across the hawaiian archipelago three reef fish species – taʻape (lutjanus kasmira), toʻau (lutjanus fulvus), and roi (cephalopholis argus) – were introduced to hawaiʻi in the 1950s for fisheries enhancement. today, local fishers seldom target these “invasive” species, expressing concern about their potential negative impacts on native reef fish. despite being introduced simultaneously, their distributions and densities differ markedly across the main hawaiian islands (mhi) and northwestern hawaiian islands (nwhi). taʻape are observed in shallow waters across the mhi and nwhi and extend into mesophotic depths (45-100 m) as far north as french frigate shoals (lalo). toʻau and roi are restricted to shallow waters (<45 m) up to lalo, with no detections in the northernmost islands. we used species distribution models with >6000 sampling sites of noaa monitoring data to examine how environmental and anthropogenic variables shape these patterns. taʻape and toʻau distributions are constrained by temperature extremes (<22°c and >27°c), with lower-limit annual sea surface temperatures influencing their northward range limits. however, the lower-limit temperature-distribution relationship for taʻape and toʻau varied by scale: positive across the full archipelago but negative within the mhi, likely reflecting greater temperature stability in the mhi, where island-scale windward-leeward temperature gradients outweigh archipelago-wide seasonal shifts. ecologically, taʻape occur in deeper, structurally complex habitats with lower coral cover, while toʻau are found in higher-sediment habitats, potentially linked to freshwater outflows that are not prevalent in the low-lying nwhi. spearfishing negatively affects detectability in all three species, highlighting the role of human pressure in limiting their presence. these results provide insight into the drivers of introduced reef fish distributions, highlighting the potential for climate-driven range expansions into the northernmost reefs of papahānaumokuākea, which are dominated by endemic species. our findings underscore the importance of targeted monitoring and management to mitigate the impacts of invasive fishes under ongoing oceanographic change. maya powell identifying physiological indicators of coral thermal performance3 coral reefs are threatened by rising ocean temperatures which continue to degrade reef ecosystem structure and function. reefs in okinawa, japan maintain high coral biodiversity and cover, providing an ideal place to assess interspecific trait variation. trait based analyses to predict heat stress-resistance are key to projecting coral survival, and thus future reef community structure and dynamics. in this study, we examined interspecific variation in thermal performance and physiology of ten coral species from okinawa, japan. we utilized thermal performance curves (tpcs) of coral metabolism (respiration and photosynthesis) to directly measure functional coral stress tolerance. furthermore, we quantified differences in holobiont physiology including chlorophyll a concentration and host protein content for all species, and tissue biomass and symbiont density for seven species. we then correlated these metrics with coral thermal performance to assess potential physiological drivers of thermal performance. we showed variation across species for both bulk physiological metrics and thermal performance. dominant reef builders such as porites rus consistently had the highest bulk physiology values and metabolic rates while thinner, plating corals such as montipora aequituberculata displayed lower physiological and thermal performance metrics. notably, corals favites complanata and montipora vietnamensis maintained the highest thermal optima across our dataset. by linking physiological traits to thermal performance, we identified tissue biomass as a key physiological predictor of coral thermal optima. these findings highlight interspecific variability in coral responses to thermal stress. furthermore, these results allow us to understand which coral species may survive under rapidly increasing temperatures, and are thus targets for restoration as they are likely to persist under future climate change. we advocate for incorporating interspecific differences in stress tolerance and physiology into targeted management and restoration strategies for coral reefs. natalie goeler-slough linking herbivore community structure to ecological functioning in a hawaiian marine protected area coral reef resilience depends on the competitive balance between reef-building corals and algae. herbivory is a crucial top-down process maintaining this balance, where herbivorous fish graze algal competitors, clear substrate for coral recruitment, and promote crustose coralline algae. while marine protected areas (mpas) have been used successfully to restore herbivore biomass, high standing stock doesn’t automatically lead to high ecological functioning required to control algal dominance. the temporal dynamics of species interactions also remain understudied, as traditional static surveys fail to capture fluctuations that drive sustained ecosystem functioning. as reefs face increasing anthropogenic stressors, it is critical to understand how herbivore community structure relates to realized grazing pressure, and ultimately reef resilience. this study investigates the relationship between herbivore community structure and benthic grazing intensity over space and time. to evaluate how grazing rates vary over time, we set up underwater video stations paired with benthic quadrats to monitor grazing within 1m² focal areas at monthly intervals at hanauma bay, a no-take marine life conservation district on oʻahu. we identified fishes to species and measured body lengths to calculate biomass, while simultaneously quantifying bite rates. we also assess habitat complexity using structure-from-motion (sfm) to evaluate how grazing rates vary with complexity. to complement this time series at hanauma bay, we are deploying video stations at additional sites around oʻahu at a single time point, to compare grazing rates across gradients of sites varying in protection level and human impact. we are integrating these behavioral assays with community metric analyses, including taxonomic α-diversity, β-diversity, and functional redundancy, to assess if diverse assemblages can maximize grazing efficiency. this research will develop a mechanistic understanding of how mpas contribute to ecosystem function, assessing if protection merely preserves fish biomass, or safeguards the community composition and functional processes required for reef resilience. nyssa silbiger metabolic depression of mo’orea’s coral reefs from a multidecadal time-series coral reefs have been the archetype of highly productive oceanic ecosystems. this high productivity is driven in part by the efficient cycling of organic and inorganic carbon, which are the foundation for coral reef metabolic function. coral reef metabolic rates, such as net ecosystem production, ecosystem respiration, and net ecosystem calcification, scale up to affect all living organisms on coral reefs by filtering carbon through the food web and building the calcium carbonate structures that support the high biodiversity of reefs. these metabolic processes are primarily driven by light, temperature, and water flow and are modulated by the composition and biomass of organisms (e.g., relative amount of producers or calcifiers). each of these environmental conditions are shifting as a result of anthropogenic climate change which may threaten the critical metabolic rates that maintain coral reef ecosystems. based on an 18-year time-series from mo’orea, french polynesia, we showed significant declines in gross ecosystem production, ecosystem respiration, and net ecosystem calcification. using a bayesian structural equation model, we demonstrate that coral loss was the primary driver of these dramatic declines in reef metabolism, which was driven primarily by a depression in ecosystem respiration. there is an urgent need to integrate time-series measurements of both organic and inorganic carbon cycles to truly understand how global climate change and other local stressors are interacting to influence critical coral ecosystem functioning. robert richmond addressing reproductive decline and failure in corals: approaches for enhancing reef resilience, persistence and restoration. reproduction and recruitment are the paired processes through which coral reef ecosystems persist.  as coral cover decreases and the distance between reproductive colonies increases, fertilization rates of spawned eggs decline precipitously due to the allee effect.  fecundity in corals is affected by energy availability for egg production, and lipid composition effects egg quality.  protein allocation and availability are also important for successful reproduction, with detoxifying enzymes having dual roles for both cell protection and colony reproduction.  documented declines in fecundity, reproductive success during limited mass spawning events and planula larval recruitment are tied to anthropogenic stressors associated with pollution and climate change.  water quality affects colony energetics, gamete formation and fertilization success, while substratum quality affects larval recruitment.  heavy rains and coastal runoff during spawning events result in degraded surface water quality, which can damage gametes and prevent fertilization.  detoxifying protein expression in parent colonies do not protect gametes once they are released.  this may explain why brooding species appear to do better than spawners in degraded environments such as harbors.  reproductive plasticity in certain coral genera (e.g. porites) raises the question: can corals be induced to switch from spawning to brooding epigenetically, and can reef restoration efforts be augmented through the development of reef reproductive modules? multi-omics provide data that can help diagnose the molecular basis of compromised reproductive capacity in corals, and help guide interventions to facilitate reef resilience, recovery and restoration. rayna mcclintock the effect of alkalinity enhancement on montipora capitata at multiple life stages ocean alkalinity enhancement is a proposed carbon removal technique involving the dissemination of alkaline minerals rich in calcium, sodium, or magnesium into coastal waters to mitigate ocean acidification locally and reduce atmospheric carbon dioxide globally. the addition of these materials induces the formation of carbonate and bicarbonate altering ph, dic, and aragonite saturation state and increasing trace metal concentrations. the impacts of this altered seawater chemistry on coastal ecosystems remains unknown. this study investigates the changes ocean alkalinity enhancement induces in the coral microbiome and metabolism at multiple life stages by exposing larval and adult montipora capitata to equilibrated seawater enriched with olivine, calcium oxide, and sodium hydroxide at multiple levels. larvae were exposed to an extreme range of alkalinity enhancement: ambient ta (~2,200 umol/kg), medium enrichment (~3,500 umol/kg), and high enrichment (~5,000 umol/kg) for 2 weeks. these treatments resulted in significant shifts in the microbial community of coral larvae. oxygen measurements during light and dark incubation periods indicated elevated photosynthesis in calcium oxide and olivine treatments. adult corals were exposed to an alkalinity enrichment of +200 umol/kg in a mesocosm system for 2 months. coral microbiome composition, metabolite profiles, and calcification rates were measured alongside the dissolved organic matter dynamics in the surrounding seawater. this research furthers our understanding of ocean alkalinity enhancement techniques, the resulting impacts on foundational coastal species, and the potential uses for coral restoration. samantha shedd coral adaptive potential on hawaiian reefs: the role of genetic and environmental interactions coral reefs are biologically rich and culturally significant ecosystems that are facing increasing degradation from ocean warming, pollution, and coastal development.  using seascape genomics, i investigated how environmental gradients and genetic variation interact to shape the adaptive potential of three common reef-building coral species (montipora capitata, pocillopora acuta, porites compressa) around o‘ahu, hawai‘i. 640 coral samples were collected from 194 sites across o‘ahu using a stratified random design to capture environmental heterogeneity and assess environmental drivers of coral population structure.  coral genomic dna was processed using reduced representation genomic sequencing (rad-seq) to generate high-density snp data, and symbiodiniaceae community structure was characterized using its2 metabarcoding. distance-based rda (dbrda) was then used to assess the influence of eight environmental factors (sea-surface temperature, wave action, sedimentation, nutrient effluent, irradiance, primary production, reef complexity & coastal development) on coral holobiont population structure. significant genotype-environment associations (geas) were identified using the samβada pipeline, and outlier loci associated with geas were annotated and mapped spatially to locate potential hotspots of adaptive capacity. overall, this approach seeks to identify individuals and populations with putative tolerance to specific environmental stressors. by integrating genetic, symbiont, and environmental data, this project provides the most spatially extensive seascape genomics assessment in hawai‘i to date. the results will offer critical, spatially explicit data to support coral reef ecosystem management and conservation strategies that prioritize resilient coral populations and adaptive genetic diversity in the face of climate change. zach quinlan coral metabolism and contaminant loads track human land use anthropogenic activities pose a significant risk to vulnerable marine ecosystems like coral reefs, particularly those near human population centers. despite coral reefs being one of the systems most at risk, the relationship between contaminant exposure and coral health across gradients of ecosystem disturbance remains poorly understood. our metabolomic analysis of 380 corals from 16 sites spanning an anthropogenic impact gradient revealed that the coral metabolome is predictive of anthropogenic ecosystem disturbance. we found that human activities both within catchments and in the marine ecosystem altered the chemodiversity of coral metabolomes with a direct relationship to historic trends in coral cover: nitrogen reserves and metabolome energetic potential were reduced, while stress metabolites were enriched at more impacted sites. we further identified 25 anthropogenic contaminants from agricultural, cosmetological, industrial, and pharmaceutical sources accumulated in coral metabolomes. our results suggest that the bioaccumulation of pollutants in corals impacts all but the most remote reef ecosystems, which will disproportionately threaten communities reliant on reefs. together, our findings demonstrate a direct relationship between coral health, accumulation of dangerous contaminants within corals, and anthropogenic disturbance that is consistent across species.",
       "country_code": "US",
       "country": "United States",
       "connection_count": 1
     },
     {
-      "id": "loc-0523",
+      "id": "loc-0516",
       "affiliation": "University of Hawaiʻi",
       "lat": 21.2973159,
       "lon": -157.8199094,
@@ -41066,6 +40955,7 @@ export const SITE_DATA = {
         "Mariana Rocha De Souza",
         "Dr Frank Stanton",
         "Prof Celia Smith",
+        "Sharon Ziegler-Chong",
         "Suzanne Case"
       ],
       "speaker_details": [
@@ -41235,6 +41125,14 @@ export const SITE_DATA = {
           "non_speaking_delegate": true
         },
         {
+          "name": "Sharon Ziegler-Chong",
+          "search_text": "sharon ziegler-chong",
+          "talk_titles": [],
+          "person_key": "icrs-p-01948",
+          "attended": true,
+          "non_speaking_delegate": true
+        },
+        {
           "name": "Suzanne Case",
           "search_text": "suzanne case",
           "talk_titles": [],
@@ -41243,7 +41141,7 @@ export const SITE_DATA = {
           "non_speaking_delegate": true
         }
       ],
-      "speaker_count": 11,
+      "speaker_count": 12,
       "talk_count": 10,
       "geocode_level": "institute",
       "distance_km": 7076.4,
@@ -41253,7 +41151,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0524",
+      "id": "loc-0517",
       "affiliation": "University of Hong Kong",
       "lat": 22.2830891,
       "lon": 114.1365621,
@@ -41512,7 +41410,7 @@ export const SITE_DATA = {
       "connection_count": 10
     },
     {
-      "id": "loc-0525",
+      "id": "loc-0518",
       "affiliation": "University of Konstanz",
       "lat": 23.1136,
       "lon": -82.3666,
@@ -41544,7 +41442,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0526",
+      "id": "loc-0519",
       "affiliation": "University of Konstanz",
       "lat": 47.6898803,
       "lon": 9.1879442,
@@ -41771,7 +41669,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0527",
+      "id": "loc-0520",
       "affiliation": "University of Leeds",
       "lat": 53.8079743,
       "lon": -1.5533339,
@@ -42209,7 +42107,7 @@ export const SITE_DATA = {
       "connection_count": 11
     },
     {
-      "id": "loc-0528",
+      "id": "loc-0521",
       "affiliation": "University of Leicester",
       "lat": 52.6219231,
       "lon": -1.1246117,
@@ -42261,7 +42159,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0529",
+      "id": "loc-0522",
       "affiliation": "University of Lisbon",
       "lat": 38.7526578,
       "lon": -9.158245,
@@ -42497,7 +42395,7 @@ export const SITE_DATA = {
       "connection_count": 8
     },
     {
-      "id": "loc-0530",
+      "id": "loc-0523",
       "affiliation": "University of Liège",
       "lat": 50.6408274,
       "lon": 5.5760585,
@@ -42543,7 +42441,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0531",
+      "id": "loc-0524",
       "affiliation": "University Of Maine, Presque Isle; University of Southern California, Los Angeles",
       "lat": 46.681153,
       "lon": -68.0158615,
@@ -42585,7 +42483,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0532",
+      "id": "loc-0525",
       "affiliation": "University of Maryland",
       "lat": 38.9869183,
       "lon": -76.9425543,
@@ -42617,7 +42515,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0533",
+      "id": "loc-0526",
       "affiliation": "University of Maryland",
       "lat": 38.9869183,
       "lon": -76.9425543,
@@ -42727,7 +42625,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0534",
+      "id": "loc-0527",
       "affiliation": "University of Massachusetts - Boston",
       "lat": 42.3141992,
       "lon": -71.0419953,
@@ -42829,7 +42727,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0535",
+      "id": "loc-0528",
       "affiliation": "University of Massachusetts Lowell",
       "lat": 42.6552587,
       "lon": -71.3247164,
@@ -42861,7 +42759,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0536",
+      "id": "loc-0529",
       "affiliation": "University of Mataram",
       "lat": -8.5872326,
       "lon": 116.092239,
@@ -42893,7 +42791,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0537",
+      "id": "loc-0530",
       "affiliation": "University Of Mauritius",
       "lat": -20.2349416,
       "lon": 57.4962994,
@@ -43238,7 +43136,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0538",
+      "id": "loc-0531",
       "affiliation": "University of Melbourne",
       "lat": -37.7983459,
       "lon": 144.960974,
@@ -43473,7 +43371,7 @@ export const SITE_DATA = {
       "connection_count": 8
     },
     {
-      "id": "loc-0539",
+      "id": "loc-0532",
       "affiliation": "University of Miami / NOAA",
       "lat": 25.7169568,
       "lon": -80.2798198,
@@ -43520,7 +43418,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0540",
+      "id": "loc-0533",
       "affiliation": "University Of Miami, CIMAS",
       "lat": 25.7321908,
       "lon": -80.1637945,
@@ -43552,7 +43450,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0541",
+      "id": "loc-0534",
       "affiliation": "University Of Miami",
       "lat": 25.7216374,
       "lon": -80.2792805,
@@ -44331,7 +44229,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0542",
+      "id": "loc-0535",
       "affiliation": "University of Michigan - Ann Arbor",
       "lat": 42.277145,
       "lon": -83.7382071,
@@ -44378,7 +44276,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0543",
+      "id": "loc-0536",
       "affiliation": "University Of Michigan",
       "lat": 42.277145,
       "lon": -83.7382071,
@@ -44458,7 +44356,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0544",
+      "id": "loc-0537",
       "affiliation": "University of Milano - Bicocca",
       "lat": 45.5182898,
       "lon": 9.2137614,
@@ -44510,7 +44408,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0545",
+      "id": "loc-0538",
       "affiliation": "University of Milano - Bicocca",
       "lat": 45.5182898,
       "lon": 9.2137614,
@@ -44870,7 +44768,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0546",
+      "id": "loc-0539",
       "affiliation": "University of Mississippi",
       "lat": 34.3662492,
       "lon": -89.5379687,
@@ -44917,7 +44815,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0547",
+      "id": "loc-0540",
       "affiliation": "University of Miyazaki",
       "lat": 31.8295664,
       "lon": 131.4141929,
@@ -44949,7 +44847,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0548",
+      "id": "loc-0541",
       "affiliation": "University Of Mons",
       "lat": 50.4516865,
       "lon": 3.9589928,
@@ -44986,7 +44884,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0549",
+      "id": "loc-0542",
       "affiliation": "University of Moratuwa",
       "lat": 6.7951276,
       "lon": 79.900867,
@@ -45018,7 +44916,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0550",
+      "id": "loc-0543",
       "affiliation": "University of New Caledonia",
       "lat": -22.2628981,
       "lon": 166.4032454,
@@ -45064,7 +44962,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0551",
+      "id": "loc-0544",
       "affiliation": "University of New Hampshire",
       "lat": 43.138948,
       "lon": -70.9370252,
@@ -45096,7 +44994,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0552",
+      "id": "loc-0545",
       "affiliation": "University of New South Wales - Sydney",
       "lat": -33.91720498116743,
       "lon": 151.23126909990444,
@@ -45168,7 +45066,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0553",
+      "id": "loc-0546",
       "affiliation": "University of New South Wales",
       "lat": -33.917347,
       "lon": 151.2312675,
@@ -45276,7 +45174,7 @@ export const SITE_DATA = {
       "connection_count": 7
     },
     {
-      "id": "loc-0554",
+      "id": "loc-0547",
       "affiliation": "University of Newcastle",
       "lat": -32.8927718,
       "lon": 151.7041775,
@@ -45376,7 +45274,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0555",
+      "id": "loc-0548",
       "affiliation": "University of North Carolina - Wilmington",
       "lat": 34.224675,
       "lon": -77.8678426,
@@ -45737,7 +45635,7 @@ export const SITE_DATA = {
       "connection_count": 12
     },
     {
-      "id": "loc-0556",
+      "id": "loc-0549",
       "affiliation": "University of Oldenburg",
       "lat": 53.1467333,
       "lon": 8.183124,
@@ -45817,7 +45715,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0557",
+      "id": "loc-0550",
       "affiliation": "University of Otago",
       "lat": -45.8646835,
       "lon": 170.5144227,
@@ -45896,7 +45794,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0558",
+      "id": "loc-0551",
       "affiliation": "University of Oxford",
       "lat": 51.7570429,
       "lon": -1.2545179,
@@ -45952,7 +45850,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0559",
+      "id": "loc-0552",
       "affiliation": "University of Pattimura",
       "lat": -3.6546187,
       "lon": 128.1956754,
@@ -46137,7 +46035,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0560",
+      "id": "loc-0553",
       "affiliation": "University of Pennsylvania",
       "lat": 39.9515013,
       "lon": -75.1910161,
@@ -46232,7 +46130,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0561",
+      "id": "loc-0554",
       "affiliation": "University of Perpignan - Domitia",
       "lat": 42.6820471,
       "lon": 2.8988581,
@@ -46318,7 +46216,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0562",
+      "id": "loc-0555",
       "affiliation": "University of Plymouth",
       "lat": 50.3758892,
       "lon": -4.1395842,
@@ -46446,7 +46344,7 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0563",
+      "id": "loc-0556",
       "affiliation": "University of Porto",
       "lat": 41.1465479,
       "lon": -8.6156998,
@@ -46508,7 +46406,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0564",
+      "id": "loc-0557",
       "affiliation": "University of Puerto Rico at Mayagüez",
       "lat": 18.2108895,
       "lon": -67.1409025,
@@ -46540,7 +46438,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0565",
+      "id": "loc-0558",
       "affiliation": "University of Puerto Rico at Mayagüez",
       "lat": 18.2108895,
       "lon": -67.1409025,
@@ -46577,7 +46475,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0566",
+      "id": "loc-0559",
       "affiliation": "University of Puerto Rico at Mayagüez",
       "lat": 18.4655,
       "lon": -66.1057,
@@ -46609,7 +46507,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0567",
+      "id": "loc-0560",
       "affiliation": "University of Queensland",
       "lat": -27.4976696,
       "lon": 153.0128661,
@@ -47552,7 +47450,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0568",
+      "id": "loc-0561",
       "affiliation": "University of Queensland",
       "lat": 4.711,
       "lon": -74.0721,
@@ -47604,7 +47502,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0569",
+      "id": "loc-0562",
       "affiliation": "University of Queensland",
       "lat": 3.139,
       "lon": 101.6869,
@@ -47636,7 +47534,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0570",
+      "id": "loc-0563",
       "affiliation": "University of Queensland",
       "lat": 14.5995,
       "lon": 120.9842,
@@ -47775,7 +47673,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0571",
+      "id": "loc-0564",
       "affiliation": "University of Rhode Island",
       "lat": 41.824,
       "lon": -71.4128,
@@ -47958,7 +47856,7 @@ export const SITE_DATA = {
       "connection_count": 7
     },
     {
-      "id": "loc-0572",
+      "id": "loc-0565",
       "affiliation": "University of Salento",
       "lat": 40.34956,
       "lon": 18.1672671,
@@ -48014,7 +47912,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0573",
+      "id": "loc-0566",
       "affiliation": "University of San Diego",
       "lat": 32.7721681,
       "lon": -117.1888625,
@@ -48070,7 +47968,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0574",
+      "id": "loc-0567",
       "affiliation": "University of South Florida",
       "lat": 28.0622334,
       "lon": -82.4135057,
@@ -48155,7 +48053,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0575",
+      "id": "loc-0568",
       "affiliation": "University of Southampton",
       "lat": 50.935742,
       "lon": -1.3966381,
@@ -48201,7 +48099,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0576",
+      "id": "loc-0569",
       "affiliation": "University of Southern California",
       "lat": 34.0223519,
       "lon": -118.285117,
@@ -48365,7 +48263,7 @@ export const SITE_DATA = {
       "connection_count": 8
     },
     {
-      "id": "loc-0577",
+      "id": "loc-0570",
       "affiliation": "University of St Andrews",
       "lat": 52.3676,
       "lon": 4.9041,
@@ -48412,7 +48310,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0578",
+      "id": "loc-0571",
       "affiliation": "University of Sydney",
       "lat": -33.884413480513594,
       "lon": 151.18748619056922,
@@ -49053,7 +48951,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0579",
+      "id": "loc-0572",
       "affiliation": "University of São Paulo",
       "lat": -23.5613991,
       "lon": -46.7307891,
@@ -49441,7 +49339,7 @@ export const SITE_DATA = {
       "connection_count": 19
     },
     {
-      "id": "loc-0580",
+      "id": "loc-0573",
       "affiliation": "University of Tasmania",
       "lat": -42.9041118,
       "lon": 147.3247503,
@@ -49512,7 +49410,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0581",
+      "id": "loc-0574",
       "affiliation": "University of Technology Sydney",
       "lat": -33.8836537,
       "lon": 151.2006119,
@@ -50116,7 +50014,7 @@ export const SITE_DATA = {
       "connection_count": 22
     },
     {
-      "id": "loc-0582",
+      "id": "loc-0575",
       "affiliation": "University of Texas - Arlington",
       "lat": 32.7292117,
       "lon": -97.1151971,
@@ -50285,7 +50183,7 @@ export const SITE_DATA = {
       "connection_count": 5
     },
     {
-      "id": "loc-0583",
+      "id": "loc-0576",
       "affiliation": "University of Texas - Austin",
       "lat": 30.2850284,
       "lon": -97.7335226,
@@ -50529,7 +50427,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0584",
+      "id": "loc-0577",
       "affiliation": "University of Texas - Tyler",
       "lat": 32.3150044,
       "lon": -95.2519974,
@@ -50561,7 +50459,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0585",
+      "id": "loc-0578",
       "affiliation": "University of the Philippines - Cebu",
       "lat": 10.3222907,
       "lon": 123.8981953,
@@ -50593,7 +50491,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0586",
+      "id": "loc-0579",
       "affiliation": "University Of The Philippines - Diliman",
       "lat": 14.6538783,
       "lon": 121.0684573,
@@ -51253,7 +51151,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0587",
+      "id": "loc-0580",
       "affiliation": "University of the Philippines",
       "lat": 14.6538783,
       "lon": 121.0684573,
@@ -51671,7 +51569,7 @@ export const SITE_DATA = {
       "connection_count": 12
     },
     {
-      "id": "loc-0588",
+      "id": "loc-0581",
       "affiliation": "University of the Ryukyus",
       "lat": 26.2516868,
       "lon": 127.7684078,
@@ -52189,7 +52087,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0589",
+      "id": "loc-0582",
       "affiliation": "University of the Ryukyus",
       "lat": 4.1755,
       "lon": 73.5093,
@@ -52226,7 +52124,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0590",
+      "id": "loc-0583",
       "affiliation": "University of the Ryukyus",
       "lat": 14.5995,
       "lon": 120.9842,
@@ -52258,7 +52156,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0591",
+      "id": "loc-0584",
       "affiliation": "University Of The South Pacific",
       "lat": -18.1480462,
       "lon": 178.4476007,
@@ -52505,7 +52403,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0592",
+      "id": "loc-0585",
       "affiliation": "University of the Virgin Islands",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -52580,7 +52478,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0593",
+      "id": "loc-0586",
       "affiliation": "University of the Virgin Islands",
       "lat": 18.3419,
       "lon": -64.9307,
@@ -53319,7 +53217,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0594",
+      "id": "loc-0587",
       "affiliation": "University of the West Indies",
       "lat": 17.1185361,
       "lon": -61.8320473,
@@ -53351,7 +53249,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0595",
+      "id": "loc-0588",
       "affiliation": "University of Tokyo",
       "lat": 35.7147555,
       "lon": 139.761332,
@@ -53571,7 +53469,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0596",
+      "id": "loc-0589",
       "affiliation": "University of Toronto",
       "lat": 43.663487,
       "lon": -79.3958273,
@@ -53603,7 +53501,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0597",
+      "id": "loc-0590",
       "affiliation": "University of Victoria",
       "lat": 48.4631345,
       "lon": -123.3121763,
@@ -53707,7 +53605,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0598",
+      "id": "loc-0591",
       "affiliation": "University of Waikato",
       "lat": -37.7866707,
       "lon": 175.3182658,
@@ -53791,7 +53689,7 @@ export const SITE_DATA = {
       "connection_count": 3
     },
     {
-      "id": "loc-0599",
+      "id": "loc-0592",
       "affiliation": "University of Warsaw",
       "lat": 52.2403463,
       "lon": 21.0186012,
@@ -53833,7 +53731,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0600",
+      "id": "loc-0593",
       "affiliation": "University of Warwick",
       "lat": 52.3792525,
       "lon": -1.5614704,
@@ -53879,7 +53777,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0601",
+      "id": "loc-0594",
       "affiliation": "University of Washington",
       "lat": 47.6516448,
       "lon": -122.3081762,
@@ -53935,7 +53833,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0602",
+      "id": "loc-0595",
       "affiliation": "University of Western Australia",
       "lat": -31.9789061,
       "lon": 115.8180721,
@@ -54161,7 +54059,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0603",
+      "id": "loc-0596",
       "affiliation": "University of Western Australia",
       "lat": -41.2865,
       "lon": 174.7762,
@@ -54212,7 +54110,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0604",
+      "id": "loc-0597",
       "affiliation": "University of Wisconsin - Green Bay",
       "lat": 44.5313196,
       "lon": -87.9210482,
@@ -54244,7 +54142,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0605",
+      "id": "loc-0598",
       "affiliation": "University of Wisconsin - Madison",
       "lat": 43.0755143,
       "lon": -89.4154526,
@@ -54286,7 +54184,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0606",
+      "id": "loc-0599",
       "affiliation": "University of Wollongong",
       "lat": -34.4053396,
       "lon": 150.8778394,
@@ -54400,7 +54298,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0607",
+      "id": "loc-0600",
       "affiliation": "University of York",
       "lat": 53.9461089,
       "lon": -1.0517718,
@@ -54432,7 +54330,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0608",
+      "id": "loc-0601",
       "affiliation": "University Wuppertal",
       "lat": 51.2445542,
       "lon": 7.1501244,
@@ -54464,7 +54362,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0609",
+      "id": "loc-0602",
       "affiliation": "Université Côte d'azur",
       "lat": 43.7168559,
       "lon": 7.2679621,
@@ -54501,7 +54399,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0610",
+      "id": "loc-0603",
       "affiliation": "Université de la Polynésie Française",
       "lat": -17.5516,
       "lon": -149.5585,
@@ -54577,7 +54475,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0611",
+      "id": "loc-0604",
       "affiliation": "Université De Mayotte",
       "lat": -12.8454787,
       "lon": 45.1874796,
@@ -54614,7 +54512,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0612",
+      "id": "loc-0605",
       "affiliation": "Université Libre de Bruxelles",
       "lat": 50.8132068,
       "lon": 4.3822222,
@@ -54656,7 +54554,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0613",
+      "id": "loc-0606",
       "affiliation": "Ursinus College",
       "lat": 40.1939677,
       "lon": -75.4563232,
@@ -54693,7 +54591,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0614",
+      "id": "loc-0607",
       "affiliation": "Vavaʻu Environmental Protection Association",
       "lat": -18.622756,
       "lon": -173.9902982,
@@ -54730,7 +54628,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0615",
+      "id": "loc-0608",
       "affiliation": "Victoria University of Wellington",
       "lat": -41.2901075,
       "lon": 174.7678789,
@@ -55248,7 +55146,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0616",
+      "id": "loc-0609",
       "affiliation": "Villanova University",
       "lat": 40.0368926,
       "lon": -75.3425785,
@@ -55280,7 +55178,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0617",
+      "id": "loc-0610",
       "affiliation": "Wageningen University",
       "lat": 51.9863475,
       "lon": 5.6680189,
@@ -55364,7 +55262,7 @@ export const SITE_DATA = {
       "connection_count": 4
     },
     {
-      "id": "loc-0618",
+      "id": "loc-0611",
       "affiliation": "Washington and Lee University",
       "lat": 37.7898776,
       "lon": -79.4458935,
@@ -55401,7 +55299,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0619",
+      "id": "loc-0612",
       "affiliation": "Wayamba University of Sri Lanka",
       "lat": 7.4645435,
       "lon": 80.0216286,
@@ -55438,7 +55336,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0620",
+      "id": "loc-0613",
       "affiliation": "Western Australian Museum",
       "lat": -31.9495403,
       "lon": 115.8618542,
@@ -55484,7 +55382,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0621",
+      "id": "loc-0614",
       "affiliation": "Wildflow",
       "lat": 51.51153458861203,
       "lon": -0.12643724066723255,
@@ -55516,7 +55414,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0622",
+      "id": "loc-0615",
       "affiliation": "Wildlife Conservation Society - Malaysia",
       "lat": 1.5277613,
       "lon": 110.3490123,
@@ -55553,7 +55451,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0623",
+      "id": "loc-0616",
       "affiliation": "Wildlife Conservation Society - Philippines",
       "lat": 14.5995,
       "lon": 120.9842,
@@ -55590,7 +55488,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0624",
+      "id": "loc-0617",
       "affiliation": "Wildlife Conservation Society",
       "lat": 40.8509,
       "lon": -73.877469,
@@ -55657,7 +55555,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0625",
+      "id": "loc-0618",
       "affiliation": "Wildlife Conservation Society",
       "lat": 40.8509,
       "lon": -73.877469,
@@ -55708,7 +55606,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0626",
+      "id": "loc-0619",
       "affiliation": "Wildlife Conservation Society",
       "lat": 40.8509,
       "lon": -73.877469,
@@ -55754,7 +55652,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0627",
+      "id": "loc-0620",
       "affiliation": "Wildlife Conservation Society",
       "lat": 40.8509,
       "lon": -73.877469,
@@ -55847,7 +55745,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0628",
+      "id": "loc-0621",
       "affiliation": "Woods Hole Oceanographic Institution",
       "lat": 41.5245291,
       "lon": -70.6683781,
@@ -55982,7 +55880,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0629",
+      "id": "loc-0622",
       "affiliation": "World Conservation Monitoring Centre",
       "lat": 52.2211821,
       "lon": 0.0955676,
@@ -56019,7 +55917,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0630",
+      "id": "loc-0623",
       "affiliation": "World Wide Fund for Nature - Indonesia",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -56080,7 +55978,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0631",
+      "id": "loc-0624",
       "affiliation": "World Wide Fund for Nature - Malaysia",
       "lat": 3.139,
       "lon": 101.6869,
@@ -56131,7 +56029,7 @@ export const SITE_DATA = {
       "connection_count": 2
     },
     {
-      "id": "loc-0632",
+      "id": "loc-0625",
       "affiliation": "Wwf - Id",
       "lat": -6.2965706,
       "lon": 106.8301646,
@@ -56168,7 +56066,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0633",
+      "id": "loc-0626",
       "affiliation": "Yamaguchi University",
       "lat": 34.1488153,
       "lon": 131.4701034,
@@ -56205,7 +56103,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0634",
+      "id": "loc-0627",
       "affiliation": "Yas Seaworld Research and Rescue Center",
       "lat": 24.4871483,
       "lon": 54.6174899,
@@ -56242,7 +56140,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0635",
+      "id": "loc-0628",
       "affiliation": "Yayasan Konservasi Alam Nusantara",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -56519,7 +56417,7 @@ export const SITE_DATA = {
       "connection_count": 12
     },
     {
-      "id": "loc-0636",
+      "id": "loc-0629",
       "affiliation": "Yayasan WWF Indonesia",
       "lat": 2.1376851,
       "lon": 117.481067,
@@ -56551,7 +56449,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0637",
+      "id": "loc-0630",
       "affiliation": "Zhejiang University",
       "lat": 30.3086844,
       "lon": 120.0864995,
@@ -56588,7 +56486,7 @@ export const SITE_DATA = {
       "connection_count": 1
     },
     {
-      "id": "loc-0638",
+      "id": "loc-0631",
       "affiliation": "Zoological Survey of India",
       "lat": 28.6139,
       "lon": 77.209,
@@ -56651,36 +56549,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0006",
-      "affiliation": "K?rero O Te '?rau",
-      "lat": -21.207,
-      "lon": -159.7716,
-      "speakers": [
-        "Zoe Teikamata-tito"
-      ],
-      "speaker_details": [
-        {
-          "name": "Zoe Teikamata-tito",
-          "search_text": "zoe teikamata-tito",
-          "talk_titles": [],
-          "person_key": "icrs-p-01723",
-          "attended": true,
-          "non_speaking_delegate": true
-        }
-      ],
-      "speaker_count": 1,
-      "talk_count": 0,
-      "geocode_level": "country",
-      "distance_km": 3009.5,
-      "search_text": "k?rero o te '?rau zoe teikamata-tito zoe teikamata-tito",
-      "country_code": "CK",
-      "country": "Cook Islands",
-      "connection_count": 0,
-      "delegate_only": true,
-      "non_speaking_delegate_count": 1
-    },
-    {
-      "id": "delegate-export-0007",
+      "id": "delegate-export-0004",
       "affiliation": "KAUST / CORDAP",
       "lat": 24.7136,
       "lon": 46.6753,
@@ -56709,36 +56578,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0008",
-      "affiliation": "KUPA - Ho?la Kealakekua Nui",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "speakers": [
-        "Kanani Enos"
-      ],
-      "speaker_details": [
-        {
-          "name": "Kanani Enos",
-          "search_text": "kanani enos",
-          "talk_titles": [],
-          "person_key": "icrs-p-00530",
-          "attended": true,
-          "non_speaking_delegate": true
-        }
-      ],
-      "speaker_count": 1,
-      "talk_count": 0,
-      "geocode_level": "country",
-      "distance_km": 13880.4,
-      "search_text": "kupa - ho?la kealakekua nui kanani enos kanani enos",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 0,
-      "delegate_only": true,
-      "non_speaking_delegate_count": 1
-    },
-    {
-      "id": "delegate-export-0009",
+      "id": "delegate-export-0005",
       "affiliation": "Korea Institute of Ocean Science and Technology",
       "lat": 37.5665,
       "lon": 126.978,
@@ -56767,7 +56607,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0011",
+      "id": "delegate-export-0006",
       "affiliation": "Marine and Environmental Research Institute Of Pohnpei",
       "lat": 6.9147,
       "lon": 158.161,
@@ -56796,7 +56636,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0012",
+      "id": "delegate-export-0007",
       "affiliation": "National Oceanic and Atmospheric Administration - Sea Grant",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -56825,7 +56665,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0014",
+      "id": "delegate-export-0009",
       "affiliation": "Puerto Rico Department of Natural and Environmental Resources",
       "lat": 18.4655,
       "lon": -66.1057,
@@ -56854,7 +56694,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0015",
+      "id": "delegate-export-0010",
       "affiliation": "Secretariat of the Pacific Regional Environment Programme",
       "lat": -13.8333,
       "lon": -171.7667,
@@ -56883,7 +56723,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0016",
+      "id": "delegate-export-0011",
       "affiliation": "State of Hawai?i",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -56912,7 +56752,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0017",
+      "id": "delegate-export-0012",
       "affiliation": "The Nature Conservancy - Micronesia",
       "lat": 6.9147,
       "lon": 158.161,
@@ -56941,65 +56781,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0019",
-      "affiliation": "University of Hawai?i",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "speakers": [
-        "Sharon Ziegler-Chong"
-      ],
-      "speaker_details": [
-        {
-          "name": "Sharon Ziegler-Chong",
-          "search_text": "sharon ziegler-chong",
-          "talk_titles": [],
-          "person_key": "icrs-p-01948",
-          "attended": true,
-          "non_speaking_delegate": true
-        }
-      ],
-      "speaker_count": 1,
-      "talk_count": 0,
-      "geocode_level": "country",
-      "distance_km": 13880.4,
-      "search_text": "university of hawai?i sharon ziegler-chong sharon ziegler-chong",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 0,
-      "delegate_only": true,
-      "non_speaking_delegate_count": 1
-    },
-    {
-      "id": "delegate-export-0020",
-      "affiliation": "University of Hawaii - M?noa",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "speakers": [
-        "Maya Olin"
-      ],
-      "speaker_details": [
-        {
-          "name": "Maya Olin",
-          "search_text": "maya olin",
-          "talk_titles": [],
-          "person_key": "icrs-p-01284",
-          "attended": true,
-          "non_speaking_delegate": true
-        }
-      ],
-      "speaker_count": 1,
-      "talk_count": 0,
-      "geocode_level": "country",
-      "distance_km": 13880.4,
-      "search_text": "university of hawaii - m?noa maya olin maya olin",
-      "country_code": "US",
-      "country": "United States",
-      "connection_count": 0,
-      "delegate_only": true,
-      "non_speaking_delegate_count": 1
-    },
-    {
-      "id": "delegate-export-0021",
+      "id": "delegate-export-0013",
       "affiliation": "New Zealand",
       "lat": -41.2865,
       "lon": 174.7762,
@@ -57028,7 +56810,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0022",
+      "id": "delegate-export-0014",
       "affiliation": "A*Star-Agency for Science, Technology and Research",
       "lat": 1.2983903,
       "lon": 103.7886641,
@@ -57057,7 +56839,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0024",
+      "id": "delegate-export-0016",
       "affiliation": "Altasea",
       "lat": 33.7222724,
       "lon": -118.2734459,
@@ -57086,7 +56868,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0025",
+      "id": "delegate-export-0017",
       "affiliation": "American Samoa Community College & University of Hawaii",
       "lat": -14.2756,
       "lon": -170.702,
@@ -57115,7 +56897,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0026",
+      "id": "delegate-export-0018",
       "affiliation": "American Samoa Government",
       "lat": -14.2756,
       "lon": -170.702,
@@ -57144,7 +56926,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0027",
+      "id": "delegate-export-0019",
       "affiliation": "American University",
       "lat": 38.9380155,
       "lon": -77.088922,
@@ -57173,7 +56955,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0031",
+      "id": "delegate-export-0023",
       "affiliation": "Auxilia",
       "lat": 41.9028,
       "lon": 12.4964,
@@ -57202,7 +56984,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0032",
+      "id": "delegate-export-0024",
       "affiliation": "Bloomberg Ocean Fund",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -57231,7 +57013,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0034",
+      "id": "delegate-export-0026",
       "affiliation": "Blue Prosperity Fiji",
       "lat": -18.1416,
       "lon": 178.4419,
@@ -57260,7 +57042,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0035",
+      "id": "delegate-export-0027",
       "affiliation": "Boxfish Robotics Limited",
       "lat": -36.8632518,
       "lon": 174.8106441,
@@ -57289,7 +57071,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0036",
+      "id": "delegate-export-0028",
       "affiliation": "Boxfish Robotics",
       "lat": -36.8632518,
       "lon": 174.8106441,
@@ -57318,7 +57100,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0037",
+      "id": "delegate-export-0029",
       "affiliation": "BRANCH Applications BV / Foundation",
       "lat": 52.3676,
       "lon": 4.9041,
@@ -57356,7 +57138,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 2
     },
     {
-      "id": "delegate-export-0038",
+      "id": "delegate-export-0030",
       "affiliation": "BRANCH Foundation",
       "lat": 52.1024151,
       "lon": 5.0830658,
@@ -57385,7 +57167,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0039",
+      "id": "delegate-export-0031",
       "affiliation": "Byoguides",
       "lat": -35.2809,
       "lon": 149.13,
@@ -57414,7 +57196,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0041",
+      "id": "delegate-export-0033",
       "affiliation": "Camphora Pte Ltd",
       "lat": 1.3521,
       "lon": 103.8198,
@@ -57461,7 +57243,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 3
     },
     {
-      "id": "delegate-export-0043",
+      "id": "delegate-export-0035",
       "affiliation": "Catholic University of Korea",
       "lat": 37.5857654,
       "lon": 127.0048121,
@@ -57490,7 +57272,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0044",
+      "id": "delegate-export-0036",
       "affiliation": "Central Provincial Administrations",
       "lat": -9.4438,
       "lon": 147.1803,
@@ -57519,7 +57301,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0045",
+      "id": "delegate-export-0037",
       "affiliation": "Centre de recherche du CHU de Québec-Université Laval",
       "lat": 46.779197,
       "lon": -71.274742,
@@ -57548,7 +57330,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0046",
+      "id": "delegate-export-0038",
       "affiliation": "Citizens of the Sea",
       "lat": -41.2865,
       "lon": 174.7762,
@@ -57577,7 +57359,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0047",
+      "id": "delegate-export-0039",
       "affiliation": "Civil Society Forum of Tonga",
       "lat": -21.1399022,
       "lon": -175.2065456,
@@ -57606,7 +57388,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0048",
+      "id": "delegate-export-0040",
       "affiliation": "Coastal and Marine Resource Development",
       "lat": -1.2921,
       "lon": 36.8219,
@@ -57635,7 +57417,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0050",
+      "id": "delegate-export-0042",
       "affiliation": "Coral Reef Initiative",
       "lat": 15.1778,
       "lon": 145.7508,
@@ -57673,7 +57455,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 2
     },
     {
-      "id": "delegate-export-0054",
+      "id": "delegate-export-0046",
       "affiliation": "Coralition for Concerned Polyps",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -57702,7 +57484,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0058",
+      "id": "delegate-export-0050",
       "affiliation": "Cut the Mustard Ltd.",
       "lat": -41.2920767,
       "lon": 174.7741007,
@@ -57731,7 +57513,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0059",
+      "id": "delegate-export-0051",
       "affiliation": "Delta Environmental and Educational Foundation",
       "lat": 25.033,
       "lon": 121.5654,
@@ -57787,7 +57569,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 4
     },
     {
-      "id": "delegate-export-0060",
+      "id": "delegate-export-0052",
       "affiliation": "Department of Environment and Natural Resources - Philippines",
       "lat": 14.65170514912507,
       "lon": 121.04508668477959,
@@ -57825,7 +57607,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 2
     },
     {
-      "id": "delegate-export-0061",
+      "id": "delegate-export-0053",
       "affiliation": "Department of Fisheries - Malaysia",
       "lat": 2.9145321,
       "lon": 101.6829575,
@@ -57854,7 +57636,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0062",
+      "id": "delegate-export-0054",
       "affiliation": "Disaster Risk Reduction Center Universitas Indonesia",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -57883,7 +57665,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0063",
+      "id": "delegate-export-0055",
       "affiliation": "Drawaqa Marine Conservation Trust",
       "lat": -17.1669588,
       "lon": 177.1940999,
@@ -57912,7 +57694,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0064",
+      "id": "delegate-export-0056",
       "affiliation": "Early Careers",
       "lat": 51.5074,
       "lon": -0.1278,
@@ -57941,7 +57723,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0066",
+      "id": "delegate-export-0058",
       "affiliation": "Florida Sea Grant",
       "lat": 30.4383,
       "lon": -84.2807,
@@ -57979,7 +57761,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 2
     },
     {
-      "id": "delegate-export-0067",
+      "id": "delegate-export-0059",
       "affiliation": "Fondo Acción",
       "lat": 4.6193088,
       "lon": -74.0683181,
@@ -58008,7 +57790,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0068",
+      "id": "delegate-export-0060",
       "affiliation": "Foreign Commonwealth Development Office",
       "lat": -18.1416,
       "lon": 178.4419,
@@ -58037,7 +57819,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0071",
+      "id": "delegate-export-0063",
       "affiliation": "GIS and Spatial Ecology Lab",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -58066,7 +57848,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0075",
+      "id": "delegate-export-0067",
       "affiliation": "Grow Reefs",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -58095,7 +57877,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0076",
+      "id": "delegate-export-0068",
       "affiliation": "Hasanuddin University",
       "lat": -5.1341871,
       "lon": 119.4880786,
@@ -58124,7 +57906,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0077",
+      "id": "delegate-export-0069",
       "affiliation": "Hawai'i Cooperative Fishery Research Unit",
       "lat": 21.31140986535154,
       "lon": -157.87326953841875,
@@ -58153,7 +57935,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0081",
+      "id": "delegate-export-0075",
       "affiliation": "Indiana University",
       "lat": 39.16843504356545,
       "lon": -86.52286038622873,
@@ -58182,7 +57964,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0082",
+      "id": "delegate-export-0076",
       "affiliation": "Inland Ocean Coalition",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -58211,7 +57993,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0084",
+      "id": "delegate-export-0078",
       "affiliation": "International Coral Reef Society",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -58240,7 +58022,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0085",
+      "id": "delegate-export-0079",
       "affiliation": "IPB University",
       "lat": -6.5552739,
       "lon": 106.7229062,
@@ -58269,7 +58051,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0092",
+      "id": "delegate-export-0086",
       "affiliation": "Kanaloa",
       "lat": 51.5074,
       "lon": -0.1278,
@@ -58298,7 +58080,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0096",
+      "id": "delegate-export-0091",
       "affiliation": "Kuleana Coral Restoration",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -58327,7 +58109,65 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0099",
+      "id": "delegate-export-0092",
+      "affiliation": "KUPA - Ho?la Kealakekua Nui",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "speakers": [
+        "Kanani Enos"
+      ],
+      "speaker_details": [
+        {
+          "name": "Kanani Enos",
+          "search_text": "kanani enos",
+          "talk_titles": [],
+          "person_key": "icrs-p-00530",
+          "attended": true,
+          "non_speaking_delegate": true
+        }
+      ],
+      "speaker_count": 1,
+      "talk_count": 0,
+      "geocode_level": "country",
+      "distance_km": 13880.4,
+      "search_text": "kupa - ho?la kealakekua nui kanani enos kanani enos",
+      "country_code": "US",
+      "country": "United States",
+      "connection_count": 0,
+      "delegate_only": true,
+      "non_speaking_delegate_count": 1
+    },
+    {
+      "id": "delegate-export-0094",
+      "affiliation": "Kōrero O Te 'Ōrau",
+      "lat": -21.207,
+      "lon": -159.7716,
+      "speakers": [
+        "Zoe Teikamata-tito"
+      ],
+      "speaker_details": [
+        {
+          "name": "Zoe Teikamata-tito",
+          "search_text": "zoe teikamata-tito",
+          "talk_titles": [],
+          "person_key": "icrs-p-01723",
+          "attended": true,
+          "non_speaking_delegate": true
+        }
+      ],
+      "speaker_count": 1,
+      "talk_count": 0,
+      "geocode_level": "country",
+      "distance_km": 3009.5,
+      "search_text": "kōrero o te 'ōrau zoe teikamata-tito zoe teikamata-tito",
+      "country_code": "CK",
+      "country": "Cook Islands",
+      "connection_count": 0,
+      "delegate_only": true,
+      "non_speaking_delegate_count": 1
+    },
+    {
+      "id": "delegate-export-0096",
       "affiliation": "Land and Sea Advisory",
       "lat": -35.2809,
       "lon": 149.13,
@@ -58356,7 +58196,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0100",
+      "id": "delegate-export-0097",
       "affiliation": "LMMA Network",
       "lat": -18.1416,
       "lon": 178.4419,
@@ -58385,7 +58225,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0103",
+      "id": "delegate-export-0100",
       "affiliation": "Madagascar National Parks",
       "lat": -18.8782747,
       "lon": 47.5612003,
@@ -58414,7 +58254,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0106",
+      "id": "delegate-export-0103",
       "affiliation": "Mana Island Resort Fiji",
       "lat": -17.672648,
       "lon": 177.1038496,
@@ -58443,7 +58283,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0107",
+      "id": "delegate-export-0104",
       "affiliation": "Marepolis",
       "lat": -17.5516,
       "lon": -149.5585,
@@ -58472,7 +58312,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0108",
+      "id": "delegate-export-0105",
       "affiliation": "Marine Ecology Consulting",
       "lat": -18.1107177,
       "lon": 178.3986407,
@@ -58501,7 +58341,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0109",
+      "id": "delegate-export-0106",
       "affiliation": "Mars Sustainable Solutions",
       "lat": -35.2809,
       "lon": 149.13,
@@ -58530,7 +58370,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0110",
+      "id": "delegate-export-0107",
       "affiliation": "Marshall Islands Conservation Society",
       "lat": 7.1068268,
       "lon": 171.3738313,
@@ -58559,7 +58399,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0111",
+      "id": "delegate-export-0108",
       "affiliation": "Marshall Islands Marine Resources Authority",
       "lat": 7.0851349,
       "lon": 171.3669154,
@@ -58606,7 +58446,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 3
     },
     {
-      "id": "delegate-export-0113",
+      "id": "delegate-export-0110",
       "affiliation": "Ministry of Agriculture, Fisheries and Environment - Palau",
       "lat": 7.3275874,
       "lon": 134.450612,
@@ -58635,7 +58475,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0114",
+      "id": "delegate-export-0111",
       "affiliation": "Ministry of Environment and Natural Resources - Dominican Republic",
       "lat": 18.4861,
       "lon": -69.9312,
@@ -58664,7 +58504,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0115",
+      "id": "delegate-export-0112",
       "affiliation": "Ministry of MEIDECC",
       "lat": -21.1344268,
       "lon": -175.2007613,
@@ -58693,7 +58533,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0116",
+      "id": "delegate-export-0113",
       "affiliation": "National Academy of Marine Research",
       "lat": 25.033,
       "lon": 121.5654,
@@ -58722,7 +58562,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0118",
+      "id": "delegate-export-0115",
       "affiliation": "National Cheng Kung University",
       "lat": 22.998955,
       "lon": 120.2171461,
@@ -58760,7 +58600,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 2
     },
     {
-      "id": "delegate-export-0119",
+      "id": "delegate-export-0116",
       "affiliation": "National Geographic Pristine Seas",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -58789,7 +58629,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0120",
+      "id": "delegate-export-0117",
       "affiliation": "National Marine Sanctuary of American Samoa",
       "lat": -14.2756,
       "lon": -170.702,
@@ -58818,7 +58658,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0125",
+      "id": "delegate-export-0122",
       "affiliation": "Nortek Instruments Australia Pty Ltd",
       "lat": -35.2809,
       "lon": 149.13,
@@ -58847,7 +58687,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0128",
+      "id": "delegate-export-0125",
       "affiliation": "Ocean Futures Group",
       "lat": -35.2809,
       "lon": 149.13,
@@ -58876,7 +58716,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0129",
+      "id": "delegate-export-0126",
       "affiliation": "Ocean Gardener",
       "lat": -8.5152518,
       "lon": 115.5808483,
@@ -58905,7 +58745,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0130",
+      "id": "delegate-export-0127",
       "affiliation": "Ocean Toa",
       "lat": -21.2660389,
       "lon": -159.780294,
@@ -58934,7 +58774,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0131",
+      "id": "delegate-export-0128",
       "affiliation": "Oceanis International",
       "lat": -31.9423772,
       "lon": 115.8237043,
@@ -58963,7 +58803,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0132",
+      "id": "delegate-export-0129",
       "affiliation": "Olohana Foundation",
       "lat": 21.2838312,
       "lon": -157.8304677,
@@ -58992,7 +58832,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0133",
+      "id": "delegate-export-0130",
       "affiliation": "Pacific Blue Foundation",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -59021,7 +58861,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0134",
+      "id": "delegate-export-0131",
       "affiliation": "Palau Governors Association",
       "lat": 7.5004,
       "lon": 134.6242,
@@ -59050,7 +58890,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0137",
+      "id": "delegate-export-0134",
       "affiliation": "Qubit Systems Inc.",
       "lat": 44.2592656,
       "lon": -76.5254426,
@@ -59079,7 +58919,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0138",
+      "id": "delegate-export-0135",
       "affiliation": "Rare",
       "lat": -35.2809,
       "lon": 149.13,
@@ -59108,7 +58948,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0141",
+      "id": "delegate-export-0138",
       "affiliation": "Reef Renewal Foundation",
       "lat": 12.0851416,
       "lon": -68.8966315,
@@ -59137,7 +58977,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0142",
+      "id": "delegate-export-0139",
       "affiliation": "Reef Song",
       "lat": -35.2809,
       "lon": 149.13,
@@ -59166,7 +59006,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0143",
+      "id": "delegate-export-0140",
       "affiliation": "Rockefeller University",
       "lat": 40.7624872,
       "lon": -73.9556762,
@@ -59195,7 +59035,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0144",
+      "id": "delegate-export-0141",
       "affiliation": "Saba Conservation Foundation",
       "lat": 52.3676,
       "lon": 4.9041,
@@ -59224,7 +59064,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0145",
+      "id": "delegate-export-0142",
       "affiliation": "Sea Grant",
       "lat": -14.2756,
       "lon": -170.702,
@@ -59253,7 +59093,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0148",
+      "id": "delegate-export-0145",
       "affiliation": "Seokyeong University",
       "lat": 37.6148855,
       "lon": 127.0133508,
@@ -59282,7 +59122,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0151",
+      "id": "delegate-export-0148",
       "affiliation": "Southern Environmental Association",
       "lat": 16.519986,
       "lon": -88.3706087,
@@ -59311,7 +59151,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0152",
+      "id": "delegate-export-0149",
       "affiliation": "Southern University of Science and Technology",
       "lat": 22.593969,
       "lon": 113.99894,
@@ -59340,7 +59180,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0156",
+      "id": "delegate-export-0153",
       "affiliation": "Taupulega Fakaofo",
       "lat": -9.3802555,
       "lon": -171.2188355,
@@ -59369,7 +59209,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0157",
+      "id": "delegate-export-0154",
       "affiliation": "TerraCarbon LLC",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -59398,7 +59238,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0158",
+      "id": "delegate-export-0155",
       "affiliation": "Tetra Tech Coffey",
       "lat": -41.2865,
       "lon": 174.7762,
@@ -59427,7 +59267,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0159",
+      "id": "delegate-export-0156",
       "affiliation": "The Nature Conservancy - Reef Resilience Network",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -59456,7 +59296,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0161",
+      "id": "delegate-export-0158",
       "affiliation": "The Nature Conservancy - Papua New Guinea",
       "lat": -9.445802,
       "lon": 147.1882966,
@@ -59485,7 +59325,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0163",
+      "id": "delegate-export-0160",
       "affiliation": "Tokelau Ministry of Climate, Ocean and Resilience",
       "lat": -8.554,
       "lon": -172.5156,
@@ -59514,7 +59354,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0164",
+      "id": "delegate-export-0161",
       "affiliation": "Tonga Ministry of Fisheries",
       "lat": -21.1393,
       "lon": -175.2049,
@@ -59543,7 +59383,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0165",
+      "id": "delegate-export-0162",
       "affiliation": "Tubbataha Reefs Natural Park and World Heritage Site",
       "lat": 8.85,
       "lon": 119.9333333,
@@ -59572,7 +59412,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0166",
+      "id": "delegate-export-0163",
       "affiliation": "United Nations Capital Development Funds",
       "lat": 46.948,
       "lon": 7.4474,
@@ -59601,7 +59441,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0167",
+      "id": "delegate-export-0164",
       "affiliation": "United Nations Development Programme",
       "lat": -4.6191,
       "lon": 55.4513,
@@ -59630,7 +59470,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0168",
+      "id": "delegate-export-0165",
       "affiliation": "United Nations Environment Programme",
       "lat": -1.2921,
       "lon": 36.8219,
@@ -59659,7 +59499,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0171",
+      "id": "delegate-export-0168",
       "affiliation": "Universitas Indonesia",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -59688,7 +59528,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0178",
+      "id": "delegate-export-0175",
       "affiliation": "University of Canterbury",
       "lat": -43.5232778,
       "lon": 172.5823435,
@@ -59726,7 +59566,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 2
     },
     {
-      "id": "delegate-export-0183",
+      "id": "delegate-export-0180",
       "affiliation": "University of Hawaiʻi - Maui College",
       "lat": 20.890805564835343,
       "lon": -156.4795825633126,
@@ -59755,7 +59595,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0190",
+      "id": "delegate-export-0188",
       "affiliation": "University Of Newcastle",
       "lat": -32.8927718,
       "lon": 151.7041775,
@@ -59793,7 +59633,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 2
     },
     {
-      "id": "delegate-export-0194",
+      "id": "delegate-export-0192",
       "affiliation": "University of Salzburg",
       "lat": -19.0196,
       "lon": -65.262,
@@ -59822,7 +59662,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0195",
+      "id": "delegate-export-0193",
       "affiliation": "University of South Carolina Beaufort",
       "lat": 32.45765485133005,
       "lon": -80.67268620169327,
@@ -59860,7 +59700,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 2
     },
     {
-      "id": "delegate-export-0207",
+      "id": "delegate-export-0205",
       "affiliation": "Université Laval",
       "lat": 46.78192270161853,
       "lon": -71.27475313351863,
@@ -59889,7 +59729,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0210",
+      "id": "delegate-export-0208",
       "affiliation": "Waitt Institute",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -59927,7 +59767,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 2
     },
     {
-      "id": "delegate-export-0211",
+      "id": "delegate-export-0209",
       "affiliation": "Waseda University",
       "lat": 35.7087334,
       "lon": 139.7196485,
@@ -59956,7 +59796,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0213",
+      "id": "delegate-export-0211",
       "affiliation": "Wholome Arks",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -59985,7 +59825,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0214",
+      "id": "delegate-export-0212",
       "affiliation": "Wholome",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -60014,7 +59854,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0215",
+      "id": "delegate-export-0213",
       "affiliation": "Wilderlab",
       "lat": -33.8913574,
       "lon": 151.2506962,
@@ -60052,7 +59892,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 2
     },
     {
-      "id": "delegate-export-0221",
+      "id": "delegate-export-0219",
       "affiliation": "Windward Community College",
       "lat": 21.413360134617406,
       "lon": -157.8134462543146,
@@ -60081,7 +59921,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0222",
+      "id": "delegate-export-0220",
       "affiliation": "Wofford College",
       "lat": 34.9595796397247,
       "lon": -81.9350682445119,
@@ -60110,7 +59950,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0224",
+      "id": "delegate-export-0222",
       "affiliation": "World Wildlife Fund - Australia",
       "lat": -33.8396,
       "lon": 151.2054,
@@ -60139,7 +59979,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0225",
+      "id": "delegate-export-0223",
       "affiliation": "World Wildlife Fund - Indonesia",
       "lat": -6.225,
       "lon": 106.809,
@@ -60177,7 +60017,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 2
     },
     {
-      "id": "delegate-export-0226",
+      "id": "delegate-export-0224",
       "affiliation": "World Wildlife Fund - Australia",
       "lat": -33.8396,
       "lon": 151.2054,
@@ -60206,7 +60046,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0227",
+      "id": "delegate-export-0225",
       "affiliation": "Yayasan Almanustra",
       "lat": -6.2088,
       "lon": 106.8456,
@@ -60235,7 +60075,7 @@ export const SITE_DATA = {
       "non_speaking_delegate_count": 1
     },
     {
-      "id": "delegate-export-0228",
+      "id": "delegate-export-0226",
       "affiliation": "Yirrganydji Gurabana Aboriginal Corporation",
       "lat": -35.2809,
       "lon": 149.13,
@@ -60510,7 +60350,7 @@ export const SITE_DATA = {
           "label": "Dr Ford Drury",
           "person_key": "icrs-p-00499",
           "kind": "individual",
-          "affiliation": "Hawai?i Institute of Marine Biology",
+          "affiliation": "Hawaiʻi Institute of Marine Biology",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -62516,7 +62356,7 @@ export const SITE_DATA = {
           "label": "Nyssa Silbiger",
           "person_key": "icrs-p-01613",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -62524,9 +62364,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 9,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01650",
@@ -63077,7 +62917,7 @@ export const SITE_DATA = {
           "label": "Lisa McManus",
           "person_key": "icrs-p-01147",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -63085,9 +62925,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 8,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01177",
@@ -63723,7 +63563,7 @@ export const SITE_DATA = {
           "label": "Carlo Caruso",
           "person_key": "icrs-p-00289",
           "kind": "individual",
-          "affiliation": "Hawai?i Institute of Marine Biology",
+          "affiliation": "Hawaiʻi Institute of Marine Biology",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -63842,7 +63682,7 @@ export const SITE_DATA = {
           "label": "Dr Megan Donahue",
           "person_key": "icrs-p-00482",
           "kind": "individual",
-          "affiliation": "Hawai?i Institute of Marine Biology",
+          "affiliation": "Hawaiʻi Institute of Marine Biology",
           "author_role": "co_author",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -64743,7 +64583,7 @@ export const SITE_DATA = {
           "label": "Mary Donovan",
           "person_key": "icrs-p-00485",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -64751,9 +64591,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 6,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00585",
@@ -64998,7 +64838,7 @@ export const SITE_DATA = {
           "label": "Dr Andrea Kealoha",
           "person_key": "icrs-p-00892",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "co_author",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -65006,9 +64846,9 @@ export const SITE_DATA = {
           "on_programme": false,
           "external_coauthor": false,
           "connections": 6,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00935",
@@ -65270,7 +65110,7 @@ export const SITE_DATA = {
           "label": "Jessica Reichert",
           "person_key": "icrs-p-01432",
           "kind": "individual",
-          "affiliation": "Hawai?i Institute of Marine Biology",
+          "affiliation": "Hawaiʻi Institute of Marine Biology",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -65304,7 +65144,7 @@ export const SITE_DATA = {
           "label": "Prof Bob Richmond",
           "person_key": "icrs-p-01453",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -65312,9 +65152,9 @@ export const SITE_DATA = {
           "on_programme": false,
           "external_coauthor": false,
           "connections": 6,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01539",
@@ -67140,7 +66980,7 @@ export const SITE_DATA = {
           "label": "Rayna Mcclintock",
           "person_key": "icrs-p-01133",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -67148,9 +66988,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 5,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01136",
@@ -67225,7 +67065,7 @@ export const SITE_DATA = {
           "label": "Claire Moreland-Ochoa",
           "person_key": "icrs-p-01207",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -67233,9 +67073,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 5,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01212",
@@ -67361,7 +67201,7 @@ export const SITE_DATA = {
           "label": "Zach Quinlan",
           "person_key": "icrs-p-01401",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -67369,9 +67209,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 5,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01404",
@@ -67718,7 +67558,7 @@ export const SITE_DATA = {
           "label": "Alyssa Varela",
           "person_key": "icrs-p-01808",
           "kind": "individual",
-          "affiliation": "Hawai?i institute of Marine Biology",
+          "affiliation": "Hawaiʻi Institute of Marine Biology",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -68857,7 +68697,7 @@ export const SITE_DATA = {
           "label": "Danielle Barnas",
           "person_key": "icrs-p-00110",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -68865,9 +68705,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 4,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00112",
@@ -69146,7 +68986,7 @@ export const SITE_DATA = {
           "label": "Ashley Carreiro",
           "person_key": "icrs-p-00288",
           "kind": "individual",
-          "affiliation": "University of Hawai?i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -69154,9 +68994,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 4,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00313",
@@ -70285,7 +70125,7 @@ export const SITE_DATA = {
           "label": "Eileen Nalley",
           "person_key": "icrs-p-01240",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -70293,9 +70133,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 4,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01242",
@@ -70370,7 +70210,7 @@ export const SITE_DATA = {
           "label": "Kamalani Oshiro",
           "person_key": "icrs-p-01293",
           "kind": "individual",
-          "affiliation": "Hawai?i Institute of Marine Biology",
+          "affiliation": "Hawaiʻi Institute of Marine Biology",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -70676,7 +70516,7 @@ export const SITE_DATA = {
           "label": "Dr Nina Rosset",
           "person_key": "icrs-p-01498",
           "kind": "individual",
-          "affiliation": "Hawai?i Institute of Marine Biology",
+          "affiliation": "Hawaiʻi Institute of Marine Biology",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -70999,7 +70839,7 @@ export const SITE_DATA = {
           "label": "Giada Tortorelli",
           "person_key": "icrs-p-01762",
           "kind": "individual",
-          "affiliation": "Hawai?i Institute of Marine Biology",
+          "affiliation": "Hawaiʻi Institute of Marine Biology",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -73515,7 +73355,7 @@ export const SITE_DATA = {
           "label": "Justin Berg",
           "person_key": "icrs-p-00157",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -73523,9 +73363,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 3,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00168",
@@ -75572,7 +75412,7 @@ export const SITE_DATA = {
           "label": "Jamie McDevitt-Irwin",
           "person_key": "icrs-p-01134",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -75580,9 +75420,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 3,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01137",
@@ -76099,7 +75939,7 @@ export const SITE_DATA = {
           "label": "Maya Powell",
           "person_key": "icrs-p-01381",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -76107,9 +75947,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 3,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01388",
@@ -82185,7 +82025,7 @@ export const SITE_DATA = {
           "label": "Madeline Berger",
           "person_key": "icrs-p-00158",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -82193,9 +82033,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 2,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00164",
@@ -83834,7 +83674,7 @@ export const SITE_DATA = {
           "label": "Nakoa Goo",
           "person_key": "icrs-p-00669",
           "kind": "individual",
-          "affiliation": "N? Kai ?Ewalu",
+          "affiliation": "Nā Kai ʻEwalu",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -85619,7 +85459,7 @@ export const SITE_DATA = {
           "label": "Hélène Meehl",
           "person_key": "icrs-p-01153",
           "kind": "individual",
-          "affiliation": "Hawai?i Division of Aquatic Resources",
+          "affiliation": "Hawaiʻi Division of Aquatic Resources",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -85627,9 +85467,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 2,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": 19.66812,
+          "lon": -156.0245959,
+          "distance_km": 6991.9
         },
         {
           "id": "person:icrs-p-01154",
@@ -86775,7 +86615,7 @@ export const SITE_DATA = {
           "label": "Jasmine Razalan Reighard",
           "person_key": "icrs-p-01434",
           "kind": "individual",
-          "affiliation": "Hawai?i Institute of Marine Biology",
+          "affiliation": "Hawaiʻi Institute of Marine Biology",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -87591,7 +87431,7 @@ export const SITE_DATA = {
           "label": "Kēhau Springer",
           "person_key": "icrs-p-01663",
           "kind": "individual",
-          "affiliation": "N? Kai ?Ewalu",
+          "affiliation": "Nā Kai ʻEwalu",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -87625,7 +87465,7 @@ export const SITE_DATA = {
           "label": "Callie Stephenson",
           "person_key": "icrs-p-01671",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -87633,16 +87473,16 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 2,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01673",
           "label": "Kainalu Steward",
           "person_key": "icrs-p-01673",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -87650,9 +87490,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 2,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01674",
@@ -87914,7 +87754,7 @@ export const SITE_DATA = {
           "label": "Kaho Tisthammer",
           "person_key": "icrs-p-01752",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -87922,9 +87762,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 2,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01757",
@@ -87999,7 +87839,7 @@ export const SITE_DATA = {
           "label": "Leon Tran",
           "person_key": "icrs-p-01769",
           "kind": "individual",
-          "affiliation": "University of Hawai?i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -88007,9 +87847,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 2,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01772",
@@ -88840,9 +88680,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 2,
-          "lat": 21.2973159,
-          "lon": -157.8199094,
-          "distance_km": 7076.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-02019",
@@ -100307,7 +100147,7 @@ export const SITE_DATA = {
           "label": "Mckenna Allen",
           "person_key": "icrs-p-00037",
           "kind": "individual",
-          "affiliation": "Division of Aquatic Resources - Kaua?i",
+          "affiliation": "Hawaiʻi Division of Aquatic Resources",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -100315,9 +100155,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": 19.66812,
+          "lon": -156.0245959,
+          "distance_km": 6991.9
         },
         {
           "id": "person:icrs-p-00041",
@@ -100596,7 +100436,7 @@ export const SITE_DATA = {
           "label": "Tamatoa Bambridge",
           "person_key": "icrs-p-00096",
           "kind": "individual",
-          "affiliation": "National Center for Scientific Research - R?hui Center",
+          "affiliation": "National Center for Scientific Research - Rāhui Center",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -100604,9 +100444,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": -17.5516,
-          "lon": -149.5585,
-          "distance_km": 4093.2
+          "lat": -17.679742,
+          "lon": -149.406843,
+          "distance_km": 4096.8
         },
         {
           "id": "person:icrs-p-00097",
@@ -100681,7 +100521,7 @@ export const SITE_DATA = {
           "label": "Leah Barkai",
           "person_key": "icrs-p-00108",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -100689,9 +100529,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00119",
@@ -100953,7 +100793,7 @@ export const SITE_DATA = {
           "label": "Charles Birkeland",
           "person_key": "icrs-p-00176",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -100961,9 +100801,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00179",
@@ -101684,7 +101524,7 @@ export const SITE_DATA = {
           "label": "Guan-Yan Chen",
           "person_key": "icrs-p-00321",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -101692,9 +101532,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00323",
@@ -101871,7 +101711,7 @@ export const SITE_DATA = {
           "label": "Maile Coberly",
           "person_key": "icrs-p-00347",
           "kind": "individual",
-          "affiliation": "Hawai?i Division of Aquatic Resources",
+          "affiliation": "Hawaiʻi Division of Aquatic Resources",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -101879,9 +101719,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": 19.66812,
+          "lon": -156.0245959,
+          "distance_km": 6991.9
         },
         {
           "id": "person:icrs-p-00348",
@@ -101990,7 +101830,7 @@ export const SITE_DATA = {
           "label": "Alex Connelly",
           "person_key": "icrs-p-00360",
           "kind": "individual",
-          "affiliation": "Kua??ina Ulu ?Auamo",
+          "affiliation": "Kuaʻāina Ulu ʻAuamo",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -102126,7 +101966,7 @@ export const SITE_DATA = {
           "label": "Dr Evelyn Cox",
           "person_key": "icrs-p-00383",
           "kind": "individual",
-          "affiliation": "Hawai?i Institute of Marine Biology",
+          "affiliation": "Hawaiʻi Institute of Marine Biology",
           "author_role": "co_author",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -102840,7 +102680,7 @@ export const SITE_DATA = {
           "label": "Anela Eliza Kainani Duenas",
           "person_key": "icrs-p-00502",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -102848,9 +102688,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00503",
@@ -102993,7 +102833,7 @@ export const SITE_DATA = {
           "label": "Kanani Enos",
           "person_key": "icrs-p-00530",
           "kind": "individual",
-          "affiliation": "KUPA - Ho?la Kealakekua Nui",
+          "affiliation": "KUPA - Ho’āla Kealakekua Nui",
           "author_role": "co_author",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -103605,7 +103445,7 @@ export const SITE_DATA = {
           "label": "Jessica Glazner",
           "person_key": "icrs-p-00645",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -103613,9 +103453,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00647",
@@ -103656,7 +103496,7 @@ export const SITE_DATA = {
           "label": "Natalie Goeler-Slough",
           "person_key": "icrs-p-00650",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -103664,9 +103504,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00652",
@@ -104574,7 +104414,7 @@ export const SITE_DATA = {
           "label": "Raffi Isah",
           "person_key": "icrs-p-00819",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -104582,9 +104422,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00823",
@@ -105050,7 +104890,7 @@ export const SITE_DATA = {
           "label": "Kainalu Keliʻikuli-Grace",
           "person_key": "icrs-p-00898",
           "kind": "individual",
-          "affiliation": "Ho??la Kealakekua Nui, Inc.",
+          "affiliation": "Hoʻāla Kealakekua Nui, Inc.",
           "author_role": "co_author",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -105058,16 +104898,16 @@ export const SITE_DATA = {
           "on_programme": false,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": 19.5181493,
+          "lon": -155.9206778,
+          "distance_km": 6981.7
         },
         {
           "id": "person:icrs-p-00899",
           "label": "Kuʻi Keliipuleole",
           "person_key": "icrs-p-00899",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -105075,16 +104915,16 @@ export const SITE_DATA = {
           "on_programme": false,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-00902",
           "label": "ʻAʻaliʻi Kelling",
           "person_key": "icrs-p-00902",
           "kind": "individual",
-          "affiliation": "Hawai?i Institute of Marine Biology",
+          "affiliation": "Hawaiʻi Institute of Marine Biology",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -106325,7 +106165,7 @@ export const SITE_DATA = {
           "label": "Joelle Mattos",
           "person_key": "icrs-p-01123",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -106333,9 +106173,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01125",
@@ -106529,7 +106369,7 @@ export const SITE_DATA = {
           "label": "Alexi Meltel",
           "person_key": "icrs-p-01163",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -106537,9 +106377,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01167",
@@ -107243,7 +107083,7 @@ export const SITE_DATA = {
           "label": "Maya Olin",
           "person_key": "icrs-p-01284",
           "kind": "individual",
-          "affiliation": "University of Hawaii - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "co_author",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -107251,9 +107091,9 @@ export const SITE_DATA = {
           "on_programme": false,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01295",
@@ -107277,7 +107117,7 @@ export const SITE_DATA = {
           "label": "Maya Otsu",
           "person_key": "icrs-p-01296",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -107285,9 +107125,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01299",
@@ -107362,7 +107202,7 @@ export const SITE_DATA = {
           "label": "Akoni Palacat-Nelsen",
           "person_key": "icrs-p-01308",
           "kind": "individual",
-          "affiliation": "Ho??la Kealakekua Nui, Inc.",
+          "affiliation": "Hoʻāla Kealakekua Nui, Inc.",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -107370,9 +107210,9 @@ export const SITE_DATA = {
           "on_programme": false,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": 19.5181493,
+          "lon": -155.9206778,
+          "distance_km": 6981.7
         },
         {
           "id": "person:icrs-p-01310",
@@ -107634,7 +107474,7 @@ export const SITE_DATA = {
           "label": "Kahaku Poepoe",
           "person_key": "icrs-p-01372",
           "kind": "individual",
-          "affiliation": "Kua??ina Ulu ?Auamo",
+          "affiliation": "Kuaʻāina Ulu ʻAuamo",
           "author_role": "co_author",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -108501,7 +108341,7 @@ export const SITE_DATA = {
           "label": "Madelief Schelvis",
           "person_key": "icrs-p-01557",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -108509,9 +108349,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01561",
@@ -108773,7 +108613,7 @@ export const SITE_DATA = {
           "label": "Samantha Shedd",
           "person_key": "icrs-p-01591",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -108781,9 +108621,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01592",
@@ -109079,7 +108919,7 @@ export const SITE_DATA = {
           "label": "Jake Snyder",
           "person_key": "icrs-p-01647",
           "kind": "individual",
-          "affiliation": "Hawai?i Institute of Marine Biology",
+          "affiliation": "Hawaiʻi Institute of Marine Biology",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -109912,7 +109752,7 @@ export const SITE_DATA = {
           "label": "Maryann Webb",
           "person_key": "icrs-p-01859",
           "kind": "individual",
-          "affiliation": "University of Hawaii - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -109920,9 +109760,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01861",
@@ -110082,7 +109922,7 @@ export const SITE_DATA = {
           "label": "Keiko Wilkins",
           "person_key": "icrs-p-01883",
           "kind": "individual",
-          "affiliation": "University of Hawai'i - M?noa",
+          "affiliation": "University of Hawaiʻi - Mānoa",
           "author_role": "presenter",
           "affiliation_explicit": true,
           "affiliation_mapped": true,
@@ -110090,9 +109930,9 @@ export const SITE_DATA = {
           "on_programme": true,
           "external_coauthor": false,
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "person:icrs-p-01886",
@@ -361470,9 +361310,9 @@ export const SITE_DATA = {
           "label": "University of Hawai'i - M?noa, United States",
           "kind": "affiliation",
           "connections": 31,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "aff:University of Queensland, Australia",
@@ -363477,9 +363317,9 @@ export const SITE_DATA = {
           "label": "Hawai?i Division of Aquatic Resources, United States",
           "kind": "affiliation",
           "connections": 2,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": 19.66812,
+          "lon": -156.0245959,
+          "distance_km": 6991.9
         },
         {
           "id": "aff:Hawaii Institute of Marine Biology, United States",
@@ -364089,9 +363929,9 @@ export const SITE_DATA = {
           "label": "University of Hawai?i - M?noa, United States",
           "kind": "affiliation",
           "connections": 2,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "aff:University of Liège, Belgium",
@@ -364962,9 +364802,9 @@ export const SITE_DATA = {
           "label": "Division of Aquatic Resources - Kaua?i, United States",
           "kind": "affiliation",
           "connections": 1,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": null,
+          "lon": null,
+          "distance_km": null
         },
         {
           "id": "aff:Duke University, United States",
@@ -365358,9 +365198,9 @@ export const SITE_DATA = {
           "label": "Hawai?i institute of Marine Biology, United States",
           "kind": "affiliation",
           "connections": 1,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": null,
+          "lon": null,
+          "distance_km": null
         },
         {
           "id": "aff:HI-LEX CORPORATION, Japan",
@@ -365385,9 +365225,9 @@ export const SITE_DATA = {
           "label": "Ho??la Kealakekua Nui, Inc., United States",
           "kind": "affiliation",
           "connections": 1,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": 19.5181493,
+          "lon": -155.9206778,
+          "distance_km": 6981.7
         },
         {
           "id": "aff:Hong Kong Polytechnic University, Hong Kong",
@@ -366159,9 +365999,9 @@ export const SITE_DATA = {
           "label": "National Center for Scientific Research - R?hui Center, French Polynesia",
           "kind": "affiliation",
           "connections": 1,
-          "lat": -17.5516,
-          "lon": -149.5585,
-          "distance_km": 4093.2
+          "lat": -17.679742,
+          "lon": -149.406843,
+          "distance_km": 4096.8
         },
         {
           "id": "aff:National Center for Wildlife, Saudi Arabia",
@@ -367572,27 +367412,27 @@ export const SITE_DATA = {
           "label": "University of Hawai'i - M?noa, Palau",
           "kind": "affiliation",
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "aff:University of Hawai'i - M?noa, Philippines",
           "label": "University of Hawai'i - M?noa, Philippines",
           "kind": "affiliation",
           "connections": 1,
-          "lat": 14.5995,
-          "lon": 120.9842,
-          "distance_km": 8023.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "aff:University of Hawai'i - Mānoa",
           "label": "University of Hawai'i - Mānoa",
           "kind": "affiliation",
           "connections": 1,
-          "lat": 21.2973159,
-          "lon": -157.8199094,
-          "distance_km": 7076.4
+          "lat": 7.5004,
+          "lon": 134.6242,
+          "distance_km": 6461.9
         },
         {
           "id": "aff:University of Hawai?i - Hilo, United States",
@@ -367608,9 +367448,9 @@ export const SITE_DATA = {
           "label": "University of Hawaii - M?noa, United States",
           "kind": "affiliation",
           "connections": 1,
-          "lat": 38.9072,
-          "lon": -77.0369,
-          "distance_km": 13880.4
+          "lat": null,
+          "lon": null,
+          "distance_km": null
         },
         {
           "id": "aff:University of Hawaiʻi at Hilo",
