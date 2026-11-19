@@ -31,6 +31,7 @@ from src.geocoding.geocode import (
     _affiliation_fingerprint,
     _lookup_override,
     affiliation_base_name,
+    affiliation_display_name,
     affiliation_lookup_keys,
     canonical_affiliation_key,
     load_affiliation_display_aliases,
@@ -93,6 +94,17 @@ class TestDisplayAliases:
             resolve_affiliation_alias("Unknown Lab"),
             "Unknown Lab",
             context="unknown alias passthrough",
+        )
+
+    def test_resolve_mojibake_alias_with_country_suffix(self, assert_eq):
+        import src.geocoding.geocode as geocode_module
+
+        geocode_module._DISPLAY_ALIASES_CACHE = None
+        raw = "KUPA - Ho\x92?la Kealakekua Nui, United States"
+        assert_eq(
+            affiliation_display_name(raw),
+            "KUPA - Ho’āla Kealakekua Nui",
+            context="mojibake alias with country suffix",
         )
 
 

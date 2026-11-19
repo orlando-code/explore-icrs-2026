@@ -271,6 +271,16 @@ export const AFFILIATION_GEOCODE_OVERRIDE_ENTRIES = [
     -155.59210907543473
   ],
   [
+    "State of Hawai?i",
+    19.708546749900975,
+    -155.59210907543473
+  ],
+  [
+    "State of Hawai?i, United States",
+    19.708546749900975,
+    -155.59210907543473
+  ],
+  [
     "State of Hawaii",
     19.708546749900975,
     -155.59210907543473

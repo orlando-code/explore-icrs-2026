@@ -357,14 +357,11 @@ def load_affiliation_display_aliases(
     return _DISPLAY_ALIASES_CACHE
 
 
-def resolve_affiliation_alias(affiliation: str) -> str:
-    """Return a reviewed standard affiliation label when one is known."""
+def _lookup_affiliation_alias(affiliation: str, aliases: dict[str, str]) -> str | None:
+    """Resolve one affiliation candidate against the alias table."""
     text = str(affiliation or "").strip()
     if not text:
-        return text
-    aliases = load_affiliation_display_aliases()
-    if not aliases:
-        return text
+        return None
     if text in aliases:
         return aliases[text]
     base = affiliation_base_name(text)
@@ -374,6 +371,38 @@ def resolve_affiliation_alias(affiliation: str) -> str:
     for key, value in aliases.items():
         if _affiliation_fingerprint(key) == fingerprint:
             return value
+    return None
+
+
+def _affiliation_alias_candidates(affiliation: str) -> list[str]:
+    """Try alias keys on raw text and org-only forms (preserve mojibake bytes)."""
+    from src.registry.affiliation_registry import parse_affiliation_parts
+
+    text = str(affiliation or "").strip()
+    if not text:
+        return []
+    organisation, _country = parse_affiliation_parts(text)
+    stripped = _strip_country_suffix_display(text)
+    candidates: list[str] = []
+    for value in (text, stripped, organisation, affiliation_base_name(text)):
+        cleaned = str(value or "").strip()
+        if cleaned and cleaned not in candidates:
+            candidates.append(cleaned)
+    return candidates
+
+
+def resolve_affiliation_alias(affiliation: str) -> str:
+    """Return a reviewed standard affiliation label when one is known."""
+    text = str(affiliation or "").strip()
+    if not text:
+        return text
+    aliases = load_affiliation_display_aliases()
+    if not aliases:
+        return text
+    for candidate in _affiliation_alias_candidates(text):
+        hit = _lookup_affiliation_alias(candidate, aliases)
+        if hit:
+            return hit
     return text
 
 

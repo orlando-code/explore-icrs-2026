@@ -445,6 +445,7 @@ def _truthy_export_flag(value: object) -> bool:
 
 def _build_network_data(df: pd.DataFrame, locations: list[dict[str, Any]], *, affiliation_col: str='affiliation', presenter_col: str='presenter', show_progress: bool=False) -> dict[str, Any]:
     """Build co-authorship networks at individual and affiliation level."""
+    from src.geocoding.geocode import affiliation_display_name
     from src.registry.key_resolution import get_registry_key_resolver
     from src.site.export_progress import make_progress
     resolver = get_registry_key_resolver()
@@ -475,7 +476,9 @@ def _build_network_data(df: pd.DataFrame, locations: list[dict[str, Any]], *, af
         for row in rows:
             affiliation = row[affiliation_idx]
             raw_affiliation = '' if pd.isna(affiliation) else str(affiliation).strip()
-            affiliation_text = raw_affiliation
+            affiliation_text = (
+                affiliation_display_name(raw_affiliation) or raw_affiliation
+            )
             author_keys: list[str] = []
             for author in _talk_authors_from_values(row[authors_idx], row[presenter_idx]):
                 network_key, is_registry = _resolve_network_author_key(author, affiliation_text)
@@ -513,10 +516,12 @@ def _build_network_data(df: pd.DataFrame, locations: list[dict[str, Any]], *, af
             progress.advance(task_id)
     for person_key in registry_author_keys:
         if person_key in check_in_affiliations_by_key:
-            author_affiliations[person_key] = check_in_affiliations_by_key[person_key]
+            raw = check_in_affiliations_by_key[person_key]
+            author_affiliations[person_key] = affiliation_display_name(raw) or raw
             explicit_affiliation[person_key] = True
         elif person_key in delegate_affiliations_by_key:
-            author_affiliations[person_key] = delegate_affiliations_by_key[person_key]
+            raw = delegate_affiliations_by_key[person_key]
+            author_affiliations[person_key] = affiliation_display_name(raw) or raw
             explicit_affiliation[person_key] = True
     individual_nodes = []
     network_key_to_id: dict[str, str] = {}
